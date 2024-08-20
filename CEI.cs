@@ -3882,6 +3882,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetOwnerAdress", id);
         }
+        public DataSet GetSiteOwnerAdress_Industry(string id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetOwnerAdressForIndustry", id);
+        }
         public DataSet GetPeriodicDetails(string adress, string id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsAdressWise", adress, id);
@@ -4076,6 +4080,10 @@ string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, strin
         public DataSet ExistingInspectionData(string PANNumber)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetExistingInspections", PANNumber);
+        }
+        public DataSet ExistingInspectionData_Industry(string PANNumber)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetExistingInspectionsForIndustry", PANNumber);
         }
 
         #endregion

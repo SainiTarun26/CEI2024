@@ -18,7 +18,7 @@ namespace CEIHaryana.Periodic_Industry
             {
                 if (!Page.IsPostBack)
                 {
-
+                    Session["SiteOwnerId"] = "ASASF1234I";
                     if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
                     {
                        // Session["SiteOwnerId"] = "JVCBN5647K";
@@ -37,7 +37,7 @@ namespace CEIHaryana.Periodic_Industry
             string Id = Session["SiteOwnerId"].ToString();
 
             DataSet ds = new DataSet();
-            ds = CEI.ExistingInspectionData(Id);
+            ds = CEI.ExistingInspectionData_Industry(Id);
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 Periodic.Visible = true;
@@ -253,7 +253,7 @@ namespace CEIHaryana.Periodic_Industry
             {
                 string id = Session["SiteOwnerId"].ToString();
                 DataSet dsAdress = new DataSet();
-                dsAdress = CEI.GetSiteOwnerAdress(id);
+                dsAdress = CEI.GetSiteOwnerAdress_Industry(id);
                 ddlAdress.DataSource = dsAdress;
                 ddlAdress.DataTextField = "siteownerAdress";
                 ddlAdress.DataValueField = "siteownerAdress";

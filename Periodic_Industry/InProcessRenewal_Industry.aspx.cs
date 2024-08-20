@@ -27,7 +27,7 @@ namespace CEIHaryana.Periodic_Industry
                 {
                     if (Session["SiteOwnerId"] != null && Request.Cookies["SiteOwnerId"] != null)
                     {
-                        Session["SiteOwnerId"] = "JVCBN5647K";
+                        //Session["SiteOwnerId"] = "JVCBN5647K";
                         string CartID = Session["CartID"].ToString();
                         DataSet ds = new DataSet();
                         ds = CEI.GetPeriodicType(CartID);

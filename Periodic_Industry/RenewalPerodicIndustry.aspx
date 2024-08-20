@@ -13,6 +13,8 @@
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+
     <!-- Vendor CSS Files -->
     <link href="/assetsnew/vendor/aos/aos.css" rel="stylesheet" />
     <link href="/assetsnew/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -37,15 +39,75 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
-          td.DisplayFLex {
+        .table-striped tbody tr:nth-of-type(odd) {
+    background-color: white;
+}
+        td.DisplayFLex {
             display: flex;
             justify-content: space-around;
+            width:430px;
         }
+
         select {
             width: 90% !important;
         }
 
         input#btnReset {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: .25rem;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        input#BtnViewCart {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: .25rem;
+            padding-top: 2px;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        input#BtnCart {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: .25rem;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        input#btnSearch {
             display: inline-block;
             font-weight: 400;
             text-align: center;
@@ -81,6 +143,41 @@
             transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
         }
 
+        input#btnBack {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: .25rem;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+        a#LinkButton1 {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: .25rem;
+            padding-top: 2px;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
         .input-box {
             height: 30px;
             display: flex;
@@ -506,10 +603,10 @@
         }
 
         .flex-container {
-    display: flex;
-    justify-content: flex-end;
-    height :30px;
-}
+            display: flex;
+            justify-content: flex-end;
+            height: 30px;
+        }
     </style>
 
 
@@ -681,57 +778,61 @@
                             <img src="/Assets/capsules/registration.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
                         </div>
                     </div>--%>
-                     <div class="flex-container">
-    <asp:Button type="submit" ID="BtnViewCart" Text="View Cart" runat="server"  OnClick="BtnViewCart_Click"
-                class="btn btn-primary mr-2" />
-</div>
-                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView4" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" 
-                                                    BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView4_RowCommand" >
-                                                    <PagerStyle CssClass="pagination-ys" />
-                                                    <Columns>
-                                                        <asp:TemplateField HeaderText="SNo">
-                                                            <HeaderStyle Width="5%" CssClass="headercolor" />
-                                                            <ItemStyle Width="5%" />
-                                                            <ItemTemplate>
-                                                                <%#Container.DataItemIndex+1 %>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
+                    <div class="flex-container">
+                      <%--  <asp:Button type="submit" ID="BtnViewCart" Text="View Cart" runat="server" OnClick="BtnViewCart_Click"
+                            class="btn btn-primary mr-2" />--%>
+                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="BtnViewCart_Click" CssClass="btn btn-primary mr-2">
+    <i class="fas fa-shopping-cart"></i> View Cart
+</asp:LinkButton>
 
-                                                      <asp:TemplateField HeaderText="Application">
-                                                            <HeaderStyle Width="25%" CssClass="headercolor" />
-                                                            <ItemStyle Width="25%" />
-                                                            <ItemTemplate>
-                                                                <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("AddressText") %> ' CommandName="Select"><%#Eval("AddressText") %></asp:LinkButton>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
-                                                            <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
-                                                            <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
-                                                        </asp:BoundField>
-                                                        <asp:BoundField DataField="CreatedBy" HeaderText="Owner Id">
-                                                            <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
-                                                            <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
-                                                        </asp:BoundField>
-                                                         <asp:TemplateField HeaderText="Address" Visible="false">
-                                                            <HeaderStyle Width="25%" CssClass="headercolor" />
-                                                            <ItemStyle Width="25%" />
-                                                            <ItemTemplate>
-                                                               <asp:Label ID="lblAddressText" runat="server" Text='<%#Eval("Address") %>'></asp:Label>  
-                                                                <asp:Label ID="lblCartId" runat="server" Text='<%#Eval("CartId") %>'></asp:Label>   
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                       
-                                                    </Columns>
-                                                    <FooterStyle BackColor="White" ForeColor="#000066" />
-                                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                                    <RowStyle ForeColor="#000066" />
-                                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                                </asp:GridView>
+                    </div>
+                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView4" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false"
+                        BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView4_RowCommand">
+                        <PagerStyle CssClass="pagination-ys" />
+                        <Columns>
+                            <asp:TemplateField HeaderText="SNo">
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                <ItemStyle Width="5%" />
+                                <ItemTemplate>
+                                    <%#Container.DataItemIndex+1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Application">
+                                <HeaderStyle Width="25%" CssClass="headercolor" />
+                                <ItemStyle Width="25%" />
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("AddressText") %> ' CommandName="Select"><%#Eval("AddressText") %></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
+                                <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="CreatedBy" HeaderText="Owner Id">
+                                <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="Address" Visible="false">
+                                <HeaderStyle Width="25%" CssClass="headercolor" />
+                                <ItemStyle Width="25%" />
+                                <ItemTemplate>
+                                    <asp:Label ID="lblAddressText" runat="server" Text='<%#Eval("Address") %>'></asp:Label>
+                                    <asp:Label ID="lblCartId" runat="server" Text='<%#Eval("CartId") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                        </Columns>
+                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                        <RowStyle ForeColor="#000066" />
+                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                    </asp:GridView>
 
 
 
@@ -745,317 +846,317 @@
 
                                         <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
                                             <div class="col-md-12">--%>
-                                              <%--  <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Periodic Renewal</h7>
+                                    <%--  <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Periodic Renewal</h7>
                                             </div>
                                         </div>
                                         <hr style="margin-top: 0px !important;" />--%>
-                                            <div class="card-body" runat="server" id="PeriodicData"  visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                                            <div class="row" style="margin-top: 20px;">
-                                                <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" OnPageIndexChanging="GridView1_PageIndexChanging"
-                                                    AllowPaging="true" PageSize="20" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand">
-                                                    <PagerStyle CssClass="pagination-ys" />
-                                                    <Columns>
-                                                        <asp:TemplateField HeaderText="SNo">
-                                                            <HeaderStyle Width="5%" CssClass="headercolor" />
-                                                            <ItemStyle Width="5%" />
-                                                            <ItemTemplate>
-                                                                <%#Container.DataItemIndex+1 %>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
+                                    <div class="card-body" runat="server" id="PeriodicData" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                        <div class="row" style="margin-top: 20px;">
+                                            <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" OnPageIndexChanging="GridView1_PageIndexChanging"
+                                                AllowPaging="true" PageSize="20" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand">
+                                                <PagerStyle CssClass="pagination-ys" />
+                                                <Columns>
+                                                    <asp:TemplateField HeaderText="SNo">
+                                                        <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                        <ItemStyle Width="5%" />
+                                                        <ItemTemplate>
+                                                            <%#Container.DataItemIndex+1 %>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
 
-                                                        <asp:TemplateField HeaderText="Id" Visible="False">
-                                                            <ItemTemplate>
-                                                                <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:TemplateField HeaderText="Application">
-                                                            <HeaderStyle Width="25%" CssClass="headercolor" />
-                                                            <ItemStyle Width="25%" />
-                                                            <ItemTemplate>
-                                                                <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("Name") %> ' CommandName="Select"><%#Eval("Name") %></asp:LinkButton>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
-                                                            <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
-                                                            <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
-                                                        </asp:BoundField>
-                                                        <asp:BoundField DataField="CreatedDate1" HeaderText="Request Date">
-                                                            <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
-                                                            <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
-                                                        </asp:BoundField>
-                                                        <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
-                                                            <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
-                                                            <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
-                                                        </asp:BoundField>
+                                                    <asp:TemplateField HeaderText="Id" Visible="False">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Application">
+                                                        <HeaderStyle Width="25%" CssClass="headercolor" />
+                                                        <ItemStyle Width="25%" />
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("Name") %> ' CommandName="Select"><%#Eval("Name") %></asp:LinkButton>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
+                                                        <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="CreatedDate1" HeaderText="Request Date">
+                                                        <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
+                                                        <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+                                                    </asp:BoundField>
 
-                                                        <%-- <asp:BoundField DataField="ReportType" HeaderText="ReportType">
+                                                    <%-- <asp:BoundField DataField="ReportType" HeaderText="ReportType">
             <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
             <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
         </asp:BoundField>--%>
-                                                    </Columns>
-                                                    <FooterStyle BackColor="White" ForeColor="#000066" />
-                                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                                    <RowStyle ForeColor="#000066" />
-                                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                                </asp:GridView>
+                                                </Columns>
+                                                <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                <RowStyle ForeColor="#000066" />
+                                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                            </asp:GridView>
 
 
 
-                                            </div>
                                         </div>
-                                        <div class="card">
-                                            <div class="card-body" id="Renewal" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                                                <asp:GridView class="table-responsive table table-hover table-striped" Autopostback="true" ID="GridView2" runat="server" Width="100%" OnRowCommand="GridView2_RowCommand" 
-                                                    AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
-                                                    <PagerStyle CssClass="pagination-ys" />
-                                                    <Columns>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body" id="Renewal" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                            <asp:GridView class="table-responsive table table-hover table-striped table-bordered" Autopostback="true" ID="GridView2" runat="server" Width="100%" OnRowCommand="GridView2_RowCommand"
+                                                AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                                                <PagerStyle CssClass="pagination-ys" />
+                                                <Columns>
 
-                                                        <asp:TemplateField HeaderText="Id" Visible="False">
-                                                            <ItemTemplate>
-                                                                <asp:Label ID="lblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
-                                                                <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Typs") %>'></asp:Label>
-                                                                <asp:Label ID="lblVoltageLevel" runat="server" Text='<%#Eval("VoltageLevel") %>'></asp:Label>
-                                                                <asp:Label ID="lblApplicant" runat="server" Text='<%#Eval("Applicant") %>'></asp:Label>
-                                                                <asp:Label ID="lblDivision" runat="server" Text='<%#Eval("Division") %>'></asp:Label>
-                                                                <asp:Label ID="lblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label>
-                                                                <asp:Label ID="lblNoOfInstallations" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
-                                                                <asp:Label ID="lblPermises" runat="server" Text='<%#Eval("Permises") %>'></asp:Label>
-                                                                <asp:Label ID="lblInspectionType" runat="server" Text='<%#Eval("InspectionType") %>'></asp:Label>--%>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:TemplateField HeaderText="SNo">
-                                                            <HeaderStyle Width="5%" CssClass="headercolor" />
-                                                            <ItemStyle Width="5%" />
-                                                            <ItemTemplate>
-                                                                <%#Container.DataItemIndex+1 %>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:BoundField DataField="Typs" HeaderText="Installations Type">
-                                                            <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor" />
-                                                            <ItemStyle HorizontalAlign="Left" Width="10%" />
-                                                        </asp:BoundField>
-                                                        <asp:BoundField DataField="NoOfInstallations" HeaderText="Installations No.">
-                                                            <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor" />
-                                                            <ItemStyle HorizontalAlign="Left" Width="10%" />
-                                                        </asp:BoundField>
-                                                        <asp:TemplateField HeaderText="Test Report">
-                                                            <HeaderStyle Width="10%" CssClass="headercolor" />
-                                                            <ItemStyle Width="10%" HorizontalAlign="Left" />
-                                                            <ItemTemplate>
-                                                                <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true"
-                                                                    CommandName="Select">View Test Report</asp:LinkButton>
-                                                                <input type="hidden" id="InspectionCount" runat="server" value='<%# Eval("InspectionCount") %>' class="inspection-count" />
-                                                                <input type="hidden" id="InspectionId" runat="server" value='<%# Eval("InspectionId") %>' class="inspection-id" />
+                                                    <asp:TemplateField HeaderText="Id" Visible="False">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="lblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
+                                                            <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Typs") %>'></asp:Label>
+                                                            <asp:Label ID="lblVoltageLevel" runat="server" Text='<%#Eval("VoltageLevel") %>'></asp:Label>
+                                                            <asp:Label ID="lblApplicant" runat="server" Text='<%#Eval("Applicant") %>'></asp:Label>
+                                                            <asp:Label ID="lblDivision" runat="server" Text='<%#Eval("Division") %>'></asp:Label>
+                                                            <asp:Label ID="lblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label>
+                                                            <asp:Label ID="lblNoOfInstallations" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
+                                                            <asp:Label ID="lblPermises" runat="server" Text='<%#Eval("Permises") %>'></asp:Label>
+                                                            <asp:Label ID="lblInspectionType" runat="server" Text='<%#Eval("InspectionType") %>'></asp:Label>--%>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="SNo">
+                                                        <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                        <ItemStyle Width="5%" />
+                                                        <ItemTemplate>
+                                                            <%#Container.DataItemIndex+1 %>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="Typs" HeaderText="Installations Type">
+                                                        <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="Left" Width="10%" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="NoOfInstallations" HeaderText="Installations No.">
+                                                        <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="Left" Width="10%" />
+                                                    </asp:BoundField>
+                                                    <asp:TemplateField HeaderText="Test Report">
+                                                        <HeaderStyle Width="10%" CssClass="headercolor" />
+                                                        <ItemStyle Width="10%" HorizontalAlign="Left" />
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true"
+                                                                CommandName="Select">View Test Report</asp:LinkButton>
+                                                            <input type="hidden" id="InspectionCount" runat="server" value='<%# Eval("InspectionCount") %>' class="inspection-count" />
+                                                            <input type="hidden" id="InspectionId" runat="server" value='<%# Eval("InspectionId") %>' class="inspection-id" />
 
 
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
 
-                                                        <asp:BoundField DataField="InspectionType" HeaderText="Inspection Type">
-                                                            <HeaderStyle HorizontalAlign="Left" CssClass="GridViewRowHeader headercolor" />
-                                                            <ItemStyle HorizontalAlign="Left" Width="10%" CssClass="GridViewRowItems" />
-                                                        </asp:BoundField>
-                                                        <asp:TemplateField HeaderText="Prevoius Inspection Date Available">
-                                                            <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
-                                                            <ItemStyle CssClass="DisplayFLex" />
-                                                            <ItemTemplate>
-                                                                <asp:RadioButtonList ID="RadioButtonListInspection" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25" OnSelectedIndexChanged="RadioButtonListInspection_SelectedIndexChanged">
-                                                                    <asp:ListItem Text="Yes" Value="Yes" Selected="True"></asp:ListItem>
-                                                                    <asp:ListItem Text="No" Value="No" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
-                                                                </asp:RadioButtonList>
-                                                                <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Visible="false" Style="width: 50% !important;" ID="ddlInspectionType" TabIndex="2" runat="server">
-                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                    <asp:ListItem Text="1 Year" Value="1"></asp:ListItem>
-                                                                    <asp:ListItem Text="2 year" Value="2"></asp:ListItem>
-                                                                    <asp:ListItem Text="3 year" Value="3"></asp:ListItem>
-                                                                    <asp:ListItem Text="4 year" Value="4"></asp:ListItem>
-                                                                    <asp:ListItem Text="5 year" Value="5"></asp:ListItem>
-                                                                </asp:DropDownList>
+                                                    <asp:BoundField DataField="InspectionType" HeaderText="Inspection Type">
+                                                        <HeaderStyle HorizontalAlign="Left" CssClass="GridViewRowHeader headercolor" />
+                                                        <ItemStyle HorizontalAlign="Left" Width="10%" CssClass="GridViewRowItems" />
+                                                    </asp:BoundField>
+                                                    <asp:TemplateField HeaderText="Prevoius Inspection Date Available">
+                                                        <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
+                                                        <ItemStyle CssClass="DisplayFLex" />
+                                                        <ItemTemplate>
+                                                            <asp:RadioButtonList ID="RadioButtonListInspection" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25" OnSelectedIndexChanged="RadioButtonListInspection_SelectedIndexChanged">
+                                                                <asp:ListItem Text="Yes" Value="Yes" Selected="True"></asp:ListItem>
+                                                                <asp:ListItem Text="No" Value="No" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
+                                                            </asp:RadioButtonList> &nbsp;&nbsp;&nbsp;
+                                                            <asp:DropDownList style="margin-top:12px;" class="form-control" AutoPostBack="true" Visible="false" ID="ddlInspectionType" runat="server">
+                                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                <asp:ListItem Text="1 Year" Value="1"></asp:ListItem>
+                                                                <asp:ListItem Text="2 year" Value="2"></asp:ListItem>
+                                                                <asp:ListItem Text="3 year" Value="3"></asp:ListItem>
+                                                                <asp:ListItem Text="4 year" Value="4"></asp:ListItem>
+                                                                <asp:ListItem Text="5 year" Value="5"></asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="*Select" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlInspectionType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="*Select" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlInspectionType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                            <asp:TextBox style="margin-top:12px;" ID="txtInspectionDate" CssClass="form-control" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" onfocus="disableFutureDates()"></asp:TextBox>
+                                                            <br />
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtInspectionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">*Please Select</asp:RequiredFieldValidator>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
 
-                                                                <asp:TextBox ID="txtInspectionDate" CssClass="form-control" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" onfocus="disableFutureDates()"></asp:TextBox>
-                                                                <br />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtInspectionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">*Please Select</asp:RequiredFieldValidator>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
+                                                </Columns>
+                                                <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                <RowStyle ForeColor="#000066" />
+                                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                            </asp:GridView>
+                                            <div class="row">
+                                                <div class="col-md-12" style="text-align: center; margin-top: 15px;">
+                                                    <asp:Button type="submit" ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+                                                    <asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
 
-                                                    </Columns>
-                                                    <FooterStyle BackColor="White" ForeColor="#000066" />
-                                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                                    <RowStyle ForeColor="#000066" />
-                                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                                </asp:GridView>
-                                                <div class="row">
-                                                    <div class="col-md-12" style="text-align:center;margin-top:15px;">
-                                                        <asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" OnClick="btnSubmit_Click"/>
-                                                         <asp:Button type="submit" ID="btnBack"  Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click"/>
-                                                        </div>
-                                                    </div>
-
+                                                </div>
                                             </div>
-                                      <%--  </div>
+
+                                        </div>
+                                        <%--  </div>
                                     </div>--%>
-                                    <div class="card-body" id="Periodic" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                                        <div class="row" style="margin-bottom: 20px;">
-                                            <div class="col-md-3">
-                                                <label>
-                                                    Address Wise
+                                        <div class="card-body" id="Periodic" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                            <div class="row" style="margin-bottom: 20px;">
+                                                <div class="col-md-3">
+                                                    <label>
+                                                        Address Wise
                                                     <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlAdress" TabIndex="2" runat="server">
-                                                </asp:DropDownList>
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select any adress" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAdress" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                    </label>
+                                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlAdress" TabIndex="2" runat="server">
+                                                    </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select any adress" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAdress" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label>
+                                                        Number Of Delay Days
+                                                    </label>
+                                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlNoOfDays" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlNoOfDays_SelectedIndexChanged">
+                                                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                        <asp:ListItem Text="less than 30 days" Value="1"></asp:ListItem>
+                                                        <asp:ListItem Text="less than 30 days and greater than 15" Value="2"></asp:ListItem>
+                                                        <asp:ListItem Text="less than 15 and Expiry" Value="3"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>
+                                                        Installation Type
+                                                    </label>
+                                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlInstallationType" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlInstallationType_SelectedIndexChanged">
+                                                        <asp:ListItem Text="Select" Value="Select"></asp:ListItem>
+                                                        <asp:ListItem Text="Line" Value="Line"></asp:ListItem>
+                                                        <asp:ListItem Text="Substation Transformer" Value="Substation Transformer"></asp:ListItem>
+                                                        <asp:ListItem Text="Generating Set" Value="Generating Set"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                                <div class="col-1" style="margin-top: auto; padding-left: 0px;">
+
+                                                    <asp:Button type="submit" ID="btnSearch" TabIndex="23" Text="Search" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px; height: 34px; padding-top: 2px;" OnClick="btnSearch_Click" />
+                                                </div>
                                             </div>
+                                            <div>
+                                                <div class="card" id="grid" runat="server" visible="true" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
+                                                    <asp:GridView class="table-responsive table table-striped" ID="GridView3" runat="server" DataKeyNames="Id" Width="100%" AllowPaging="true" PageSize="20" OnRowCommand="GridView3_RowCommand" OnRowDataBound="GridView3_RowDataBound"
+                                                        AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                                                        <PagerStyle CssClass="pagination-ys" />
+                                                        <Columns>
+                                                            <asp:TemplateField ItemStyle-HorizontalAlign="left" ItemStyle-VerticalAlign="Middle">
+                                                                <HeaderTemplate>
+                                                                    <asp:CheckBox ID="chkSelectAll" runat="server" Style="text-align: left !important;" />
+                                                                </HeaderTemplate>
+                                                                <ItemTemplate>
+                                                                    <asp:CheckBox ID="CheckBox1" runat="server" HorizontalAlign="center" />
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
+                                                            <asp:TemplateField HeaderText="SNo">
+                                                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                                <ItemStyle Width="5%" />
+                                                                <ItemTemplate>
+                                                                    <%#Container.DataItemIndex+1 %>
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
 
-                                            <div class="col-md-3">
-                                                <label>
-                                                    Number Of Delay Days
-                                                </label>
-                                                <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlNoOfDays" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlNoOfDays_SelectedIndexChanged">
-                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                    <asp:ListItem Text="less than 30 days" Value="1"></asp:ListItem>
-                                                    <asp:ListItem Text="less than 30 days and greater than 15" Value="2"></asp:ListItem>
-                                                    <asp:ListItem Text="less than 15 and Expiry" Value="3"></asp:ListItem>
-                                                </asp:DropDownList>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label>
-                                                    Installation Type
-                                                </label>
-                                                <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlInstallationType" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlInstallationType_SelectedIndexChanged">
-                                                    <asp:ListItem Text="Select" Value="Select"></asp:ListItem>
-                                                    <asp:ListItem Text="Line" Value="Line"></asp:ListItem>
-                                                    <asp:ListItem Text="Substation Transformer" Value="Substation Transformer"></asp:ListItem>
-                                                    <asp:ListItem Text="Generating Set" Value="Generating Set"></asp:ListItem>
-                                                </asp:DropDownList>
-                                            </div>
-                                            <div class="col-1" style="margin-top: auto; padding-left: 0px;">
-
-                                                <asp:Button type="submit" ID="btnSearch" TabIndex="23" Text="Search" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px; height: 34px; padding-top: 2px;" OnClick="btnSearch_Click" />
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="card" id="grid" runat="server" visible="true" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
-                                                <asp:GridView class="table-responsive table table-striped" ID="GridView3" runat="server" DataKeyNames="Id" Width="100%" AllowPaging="true" PageSize="20" OnRowCommand="GridView3_RowCommand" OnRowDataBound="GridView3_RowDataBound"
-                                                    AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
-                                                    <PagerStyle CssClass="pagination-ys" />
-                                                    <Columns>
-                                                        <asp:TemplateField ItemStyle-HorizontalAlign="left" ItemStyle-VerticalAlign="Middle">
-                                                            <HeaderTemplate>
-                                                                <asp:CheckBox ID="chkSelectAll" runat="server" Style="text-align: left !important;" />
-                                                            </HeaderTemplate>
-                                                            <ItemTemplate>
-                                                                <asp:CheckBox ID="CheckBox1" runat="server" HorizontalAlign="center" />
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:TemplateField HeaderText="SNo">
-                                                            <HeaderStyle Width="5%" CssClass="headercolor" />
-                                                            <ItemStyle Width="5%" />
-                                                            <ItemTemplate>
-                                                                <%#Container.DataItemIndex+1 %>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-
-                                                        <asp:BoundField DataField="IntimationId" HeaderText="Intimation Id">
-                                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                        </asp:BoundField>
-                                                        <asp:BoundField DataField="Id" HeaderText="Inspection Id">
-                                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                        </asp:BoundField>
+                                                            <asp:BoundField DataField="IntimationId" HeaderText="Intimation Id">
+                                                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                            </asp:BoundField>
+                                                            <asp:BoundField DataField="Id" HeaderText="Inspection Id">
+                                                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                            </asp:BoundField>
 
 
-                                                        <asp:BoundField DataField="TypeOf" HeaderText="Installation Type">
-                                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                        </asp:BoundField>
+                                                            <asp:BoundField DataField="TypeOf" HeaderText="Installation Type">
+                                                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                            </asp:BoundField>
 
-                                                        <asp:TemplateField HeaderText="TestReportId">
-                                                            <ItemTemplate>
-                                                                <asp:LinkButton ID="lnkTestReportId" runat="server" Text='<%# Eval("TestRportId") %>' CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>'></asp:LinkButton>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
-                                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                        </asp:BoundField>
-                                                        <asp:BoundField DataField="InspectionDate" HeaderText="Inspection Date">
-                                                            <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                                            <ItemStyle HorizontalAlign="center" Width="12%" />
-                                                        </asp:BoundField>
-                                                        <asp:BoundField DataField="InspectionDueDate" HeaderText="Due Date">
-                                                            <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                                            <ItemStyle HorizontalAlign="center" Width="12%" />
-                                                        </asp:BoundField>
-                                                        <asp:BoundField DataField="Numberofdays" HeaderText="Remaining days">
-                                                            <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                                            <ItemStyle HorizontalAlign="center" Width="12%" />
-                                                        </asp:BoundField>
-                                                        <asp:BoundField DataField="Voltage" HeaderText="Voltage">
-                                                            <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                                            <ItemStyle HorizontalAlign="center" Width="12%" />
-                                                        </asp:BoundField>
-                                                        <asp:BoundField DataField="Capacity" HeaderText="Capacity">
-                                                            <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                                            <ItemStyle HorizontalAlign="center" Width="12%" />
-                                                        </asp:BoundField>
-                                                        <asp:TemplateField HeaderText="Id" Visible="False">
-                                                            <ItemTemplate>
-                                                                <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("TypeOf") %>'></asp:Label>
-                                                              <asp:Label ID="LblTestReportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
-                                                                <asp:Label ID="LblInspectionDate" runat="server" Text='<%#Eval("InspectionDate") %>'></asp:Label>
-                                                                <asp:Label ID="LblInspectionDueDate" runat="server" Text='<%#Eval("InspectionDueDate") %>'></asp:Label>
-                                                                <asp:Label ID="LblNumberofdays" runat="server" Text='<%#Eval("Numberofdays") %>'></asp:Label>
-                                                                <asp:Label ID="LblVoltage" runat="server" Text='<%#Eval("Voltage") %>'></asp:Label>
-                                                                <asp:Label ID="LblCapacity" runat="server" Text='<%#Eval("Capacity") %>'></asp:Label>
-                                                                <asp:Label ID="LblAddress" runat="server" Text='<%#Eval("Address") %>'></asp:Label>
+                                                            <asp:TemplateField HeaderText="TestReportId">
+                                                                <ItemTemplate>
+                                                                    <asp:LinkButton ID="lnkTestReportId" runat="server" Text='<%# Eval("TestRportId") %>' CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>'></asp:LinkButton>
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
+                                                            <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
+                                                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                            </asp:BoundField>
+                                                            <asp:BoundField DataField="InspectionDate" HeaderText="Inspection Date">
+                                                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                            </asp:BoundField>
+                                                            <asp:BoundField DataField="InspectionDueDate" HeaderText="Due Date">
+                                                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                            </asp:BoundField>
+                                                            <asp:BoundField DataField="Numberofdays" HeaderText="Remaining days">
+                                                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                            </asp:BoundField>
+                                                            <asp:BoundField DataField="Voltage" HeaderText="Voltage">
+                                                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                            </asp:BoundField>
+                                                            <asp:BoundField DataField="Capacity" HeaderText="Capacity">
+                                                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                            </asp:BoundField>
+                                                            <asp:TemplateField HeaderText="Id" Visible="False">
+                                                                <ItemTemplate>
+                                                                    <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("TypeOf") %>'></asp:Label>
+                                                                    <asp:Label ID="LblTestReportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
+                                                                    <asp:Label ID="LblInspectionDate" runat="server" Text='<%#Eval("InspectionDate") %>'></asp:Label>
+                                                                    <asp:Label ID="LblInspectionDueDate" runat="server" Text='<%#Eval("InspectionDueDate") %>'></asp:Label>
+                                                                    <asp:Label ID="LblNumberofdays" runat="server" Text='<%#Eval("Numberofdays") %>'></asp:Label>
+                                                                    <asp:Label ID="LblVoltage" runat="server" Text='<%#Eval("Voltage") %>'></asp:Label>
+                                                                    <asp:Label ID="LblCapacity" runat="server" Text='<%#Eval("Capacity") %>'></asp:Label>
+                                                                    <asp:Label ID="LblAddress" runat="server" Text='<%#Eval("Address") %>'></asp:Label>
 
-                                                                <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
-                                                                <asp:Label ID="LblDivision" runat="server" Text='<%#Eval("Division") %>'></asp:Label>
-                                                                <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label>
-                                                                <asp:Label ID="LblCount" runat="server" Text='<%#Eval("number") %>'></asp:Label>
-                                                                <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
-                                                                <asp:Label ID="LblCompleteAdress" runat="server" Text='<%#Eval("CompleteAdress") %>'></asp:Label>
-                                                                <asp:Label ID="LblOwnerName" runat="server" Text='<%#Eval("SiteOwnerName") %>'></asp:Label>
-                                                                <asp:Label ID="LblADRESSDistrict" runat="server" Text='<%#Eval("AdressWithoutDistrict") %>'></asp:Label>
-                                                                <%--<asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>--%>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                    </Columns>
-                                                    <FooterStyle BackColor="White" ForeColor="#000066" />
-                                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                                    <RowStyle ForeColor="#000066" />
-                                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                                </asp:GridView>
+                                                                    <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                                                                    <asp:Label ID="LblDivision" runat="server" Text='<%#Eval("Division") %>'></asp:Label>
+                                                                    <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label>
+                                                                    <asp:Label ID="LblCount" runat="server" Text='<%#Eval("number") %>'></asp:Label>
+                                                                    <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
+                                                                    <asp:Label ID="LblCompleteAdress" runat="server" Text='<%#Eval("CompleteAdress") %>'></asp:Label>
+                                                                    <asp:Label ID="LblOwnerName" runat="server" Text='<%#Eval("SiteOwnerName") %>'></asp:Label>
+                                                                    <asp:Label ID="LblADRESSDistrict" runat="server" Text='<%#Eval("AdressWithoutDistrict") %>'></asp:Label>
+                                                                    <%--<asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>--%>
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
+                                                        </Columns>
+                                                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                        <RowStyle ForeColor="#000066" />
+                                                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                                    </asp:GridView>
 
 
 
-                                            </div>
-                                            <div class="row" style="margin-top: 25px; margin-bottom: -15px;">
-                                                <div class="col-4" style="margin-top: auto;">
-                                                   
-                                                    <asp:Button type="submit" ID="BtnCart" TabIndex="23" Text="Add To Cart" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" OnClick="BtnCart_Click"/>
+                                                </div>
+                                                <div class="row" style="margin-top: 25px; margin-bottom: -15px;">
+                                                    <div class="col-4" style="margin-top: auto;">
+
+                                                        <asp:Button type="submit" ID="BtnCart" TabIndex="23" Text="Add To Cart" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" OnClick="BtnCart_Click" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     </div>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
@@ -1128,7 +1229,7 @@
 
         }
     </script>
-   
+
 
 
 

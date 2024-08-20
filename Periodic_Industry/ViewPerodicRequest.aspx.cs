@@ -23,7 +23,7 @@ namespace CEIHaryana.Periodic_Industry
                        
                         if (Session["SiteOwnerId"].ToString() != "JVCBN5647K")
                         {
-                            Session["SiteOwnerId"] = "JVCBN5647K";
+                            //Session["SiteOwnerId"] = "JVCBN5647K";
                         }
 
                       
