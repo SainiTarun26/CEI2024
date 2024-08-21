@@ -24,6 +24,13 @@
     <!-- Template Main CSS File -->
     <link href="/assetsnew/css/style.css" rel="stylesheet" />
     <style type="text/css">
+        #footer .copyright {
+    text-align: center;
+    float: none !important;
+}
+        #footer {
+        padding-bottom:0px !important;
+        }
         #hero {
             height: 390px !important;
         }
@@ -271,9 +278,9 @@
                         <%-- <i class="bi bi-envelope d-flex align-items-center">
                             <a href="mailto:contact@example.com">contact@example.com</a>
                         </i>--%>
-                        <i class="bi bi-phone d-flex align-items-center ms-4">
-                            <span>0172 270 4090</span>
-                        </i>
+                       <%-- <i class="bi bi-phone d-flex align-items-center ms-4">
+                            <span>+91 7696438770</span>
+                        </i> --%>       
                     </div>
                     <div class="social-links d-none d-md-flex align-items-center">
                         <a href="#" class="twitter">
@@ -287,7 +294,7 @@
                         </a>
                         <a href="#" class="linkedin">
                             <i class="bi bi-linkedin"></i>
-                            </i>
+                           
                         </a>
                     </div>
                 </div>
@@ -296,11 +303,11 @@
             <header id="header" class="d-flex align-items-center"
                 style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
                 <div class="container d-flex align-items-center justify-content-between">
-                    <a href="index.html" class="logo">
+                    <a href="Login.aspx" class="logo">
                         <img src="/Assets/haryana.png" alt="" />
                     </a>
                     <h1 class="logo">
-                        <a href="index.html">
+                        <a href="Login.aspx">
                             <span style="font-size: 25px; margin-left: -30px;">CEI,
             Haryana
                             </span>
@@ -710,7 +717,7 @@
                 <div class="container py-4">
                     <div class="copyright">
                         All Rights Reserved @ <span style="color: blue;">Chief Electrical Inspector Govt. of Haryana,
-                            SCO NO 117-118, Top Floor, Sector 17-B,Chandigarh-160017. </span>
+                            SCO NO 117-118, Top Floor, Sector 17-B, Chandigarh-160017. </span>
                     </div>
                     <%--<div class="credits">
                         <!-- All the links in the footer should remain intact. -->

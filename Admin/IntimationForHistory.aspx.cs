@@ -58,7 +58,7 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/Login.aspx",false);
             }
         }
 
@@ -575,7 +575,7 @@ namespace CEIHaryana.Admin
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Admin/IntimationHistoryForAdmin.aspx");
+            Response.Redirect("/Admin/IntimationHistoryForAdmin.aspx",false);
             Session["InspectionId"] = "";
         }
 
@@ -963,15 +963,15 @@ namespace CEIHaryana.Admin
 
             if (txtWorkType.Text.Trim() == "Line")
             {
-                Response.Redirect("/TestReportModal/LineTestReportModal.aspx");
+                Response.Redirect("/TestReportModal/LineTestReportModal.aspx",false);
             }
             else if (txtWorkType.Text.Trim() == "Substation Transformer")
             {
-                Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx");
+                Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx",false);
             }
             else if (txtWorkType.Text.Trim() == "Generating Set")
             {
-                Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
+                Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx",false);
             }
 
         }

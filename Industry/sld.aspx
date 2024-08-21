@@ -277,7 +277,7 @@
                                 <div class="card-body" style="padding-bottom:0px;" id="SiteAddress" runat="server" visible="false">
                                     <div class="wrapper">
                                         <form class="form-signin">
-                                            <h2 class="form-signin-heading" style="text-align: center;">VERIFY SLD</h2>
+                                            <h2 class="form-signin-heading" style="text-align: center;">SLD REQUEST</h2>
                                             <div class="row">
                                                
                                                 <div class="col-md-6" runat="server" id="DivPancard_TanNo" visible="true">

@@ -516,7 +516,7 @@
     <form id="form1" runat="server">
         <!-- ======= Top Bar ======= -->
         <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
-        <section id="topbar" class="d-flex align-items-center">
+        <%--<section id="topbar" class="d-flex align-items-center">
             <div class="container d-flex justify-content-center justify-content-md-between">
                 <div class="contact-info d-flex align-items-center">
                     <i class="bi bi-envelope d-flex align-items-center">
@@ -542,12 +542,12 @@
                     </a>
                 </div>
             </div>
-        </section>
+        </section>--%>
         <!-- ======= Header ======= -->
         <header id="header" class="d-flex align-items-center"
             style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
             <div class="container d-flex align-items-center justify-content-between" style="margin-left: -36px;">
-                <a href="index.html" class="logo">
+                <a href="Login.aspx" class="logo">
                     <img src="../Assets/Add a heading (1).png" />
                 </a>
                 <%--<h1 class="logo">

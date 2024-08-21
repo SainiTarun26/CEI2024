@@ -193,7 +193,7 @@
                  
                 </asp:UpdatePanel>--%>
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
-                Inspection Attached
+                Inspection Detail
             </div>
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                 <div class="row">
@@ -325,7 +325,7 @@
             </div>
             <div class="row" id="TRAttached" runat="server" visible="true">
                 <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
-                    Test Report Attached
+                    Test Report Detail
                 </div>
             </div>
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="TRAttachedGrid" runat="server" visible="true">

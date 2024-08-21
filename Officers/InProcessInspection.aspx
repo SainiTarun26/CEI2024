@@ -215,7 +215,7 @@
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
             <div class="card-title" style="margin-top: -15px; margin-bottom: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
-                Inspection Details
+                Inspection Detail
             </div>
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                 <div class="row">
@@ -329,7 +329,7 @@
             </div>
             <div class="row" id="divTestReportAttachment" runat="server" visible="true">
                 <div class="card-title" style="margin-bottom: 5px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: -10px;">
-                    Test Report Attached
+                    Test Report Detail
                 </div>
                 <div class="row card" style="padding-top: 10px; margin-left: 0px !important;">
                     <div class="col-12">

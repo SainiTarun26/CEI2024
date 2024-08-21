@@ -544,7 +544,7 @@
                                 <label for="Remarks">
                                     Inspection Remarks<samp style="color: red"> * </samp>
                                 </label>
-                                <asp:TextBox class="form-control" ID="txtInspectionRemarks" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" MaxLength="60" Style="margin-left: 18px" TabIndex="3"></asp:TextBox>
+                                <asp:TextBox class="form-control" ID="txtInspectionRemarks" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" MaxLength="500" Style="margin-left: 18px" TabIndex="3"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtInspectionRemarks" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Inspection Remarks</asp:RequiredFieldValidator>
                             </div>
                         </div>

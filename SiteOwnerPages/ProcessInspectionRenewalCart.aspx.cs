@@ -210,7 +210,7 @@ namespace CEIHaryana.SiteOwnerPages
                 DataTable dt = dsDetails.Tables[0];
 
                 DataRow fixedRow1 = dt.NewRow();
-                fixedRow1["DocumentName"] = "Tresury Challan";
+                fixedRow1["DocumentName"] = "Treasury Challan";
                 dt.Rows.Add(fixedRow1);
 
                 DataRow fixedRow2 = dt.NewRow();

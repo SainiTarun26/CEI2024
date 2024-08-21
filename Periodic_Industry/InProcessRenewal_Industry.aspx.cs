@@ -378,7 +378,7 @@ namespace CEIHaryana.Periodic_Industry
                             case "Previous Inspection Report":
                                 DocumentId = "19";
                                 break;
-                            case "Tresury Challan":
+                            case "Treasury Challan":
                                 DocumentId = "17";
                                 break;
                             case "Other Document":
