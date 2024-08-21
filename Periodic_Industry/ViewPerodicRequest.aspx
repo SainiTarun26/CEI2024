@@ -15,6 +15,8 @@
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet" />
     <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <link href="/assetsnew/vendor/aos/aos.css" rel="stylesheet" />
     <link href="/assetsnew/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/assetsnew/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
@@ -691,10 +693,10 @@
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="CartId" HeaderText="CartId">
+                            <%--<asp:BoundField DataField="CartId" HeaderText="CartId">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
+                            </asp:BoundField>--%>
                             <asp:BoundField DataField="TypeOfInspection" HeaderText="Inspection Type">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />

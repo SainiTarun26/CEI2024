@@ -51,7 +51,17 @@ namespace CEIHaryana.Admin
                         Id = Session["PeriodicMultiple"].ToString();
                     }
                    
+
                     GetDetailsWithId();
+                    //if (Type == "New")
+                    //{
+                    //    GetTestReportData();
+                    //}
+                    //else if (Type == "Periodic")
+                    //{
+                    //    TRAttachedGrid.Visible = false;
+                    //    // GetTestReportDataIfPeriodic();
+                    //}
                     GetTestReportData();
 
                 }

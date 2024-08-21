@@ -38,6 +38,7 @@ namespace CEIHaryana.Officers
                     }
                     else if (Type == "Periodic")
                     {
+                       
                         GetTestReportDataIfPeriodic();
                     }
                 }
