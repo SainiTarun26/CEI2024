@@ -5271,6 +5271,10 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ViewPeriodicInspection", CartId);
         }
+        public DataSet DetailstoPrintFormofPeriodicInspectionDetails(int ID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDetailsforPeriodicPrintForm", ID);
+        }
     }
 }
 

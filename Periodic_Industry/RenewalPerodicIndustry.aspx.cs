@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace CEIHaryana.Periodic_Industry
 {
@@ -18,11 +19,15 @@ namespace CEIHaryana.Periodic_Industry
             {
                 if (!Page.IsPostBack)
                 {
-                    //Session["SiteOwnerId"] = "ASASF1234I";
+                    Session["SiteOwnerId"] = "ASASF1234I";
                     if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
                     {
-                       //Session["SiteOwnerId"] = "JVCBN5647K";
+                        // Session["SiteOwnerId"] = "JVCBN5647K";
+                        //ViewCart();
+                        ViewCartCount();
+                        GridView4.Visible = false;
                         getWorkIntimationData();
+                       
                     }
                 }
             }
@@ -603,16 +608,29 @@ namespace CEIHaryana.Periodic_Industry
         protected void BtnViewCart_Click(object sender, EventArgs e)
         {
             ViewCart();
+            GridView4.Visible = true;
         }
-        private void ViewCart()
+
+        private void ViewCartCount()
         {
             string id = Session["SiteOwnerId"].ToString();
             DataSet ds = new DataSet();
             ds = CEI.ViewCartData(id);
+            lblcartCount.Text = ds.Tables[0].Rows[0]["TotalRecordCount"].ToString();
+        }
+
+            private void ViewCart()
+        {
+            string id = Session["SiteOwnerId"].ToString();
+            DataSet ds = new DataSet();
+            ds = CEI.ViewCartData(id);
+            
             if (ds.Tables[0].Rows.Count > 0 && ds != null)
             {
+                //lblcartCount.Text = ds.Tables[0].Rows[0]["TotalRecordCount"].ToString();
                 GridView4.DataSource = ds;
                 GridView4.DataBind();
+              
                 PeriodicData.Visible = false;
                 Periodic.Visible = false;
             }

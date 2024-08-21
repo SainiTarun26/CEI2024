@@ -1885,6 +1885,7 @@
     <Content Include="OTPVerification.aspx" />
     <Content Include="PaymentPage.aspx" />
     <Content Include="Periodic_Industry\InProcessRenewal_Industry.aspx" />
+    <Content Include="Periodic_Industry\Print_PeriodicIndustry.aspx" />
     <Content Include="Periodic_Industry\RenewalCart_Industry.aspx" />
     <Content Include="Periodic_Industry\RenewalPerodicIndustry.aspx" />
     <Content Include="Periodic_Industry\ViewCart_Industry.aspx" />
@@ -2510,6 +2511,13 @@
     </Compile>
     <Compile Include="Periodic_Industry\InProcessRenewal_Industry.aspx.designer.cs">
       <DependentUpon>InProcessRenewal_Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Periodic_Industry\Print_PeriodicIndustry.aspx.cs">
+      <DependentUpon>Print_PeriodicIndustry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Periodic_Industry\Print_PeriodicIndustry.aspx.designer.cs">
+      <DependentUpon>Print_PeriodicIndustry.aspx</DependentUpon>
     </Compile>
     <Compile Include="Periodic_Industry\RenewalCart_Industry.aspx.cs">
       <DependentUpon>RenewalCart_Industry.aspx</DependentUpon>

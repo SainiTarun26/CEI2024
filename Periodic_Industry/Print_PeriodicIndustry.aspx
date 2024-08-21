@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="InspectionRequestPrint_Industry.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.InspectionRequestPrint_Industry" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Print_PeriodicIndustry.aspx.cs" Inherits="CEIHaryana.Periodic_Industry.Print_PeriodicIndustry" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -103,7 +102,7 @@
                     </div>
                     <div class="col-12" style="text-align: initial; margin-top: auto; margin-bottom: auto;">
                         <asp:Button ID="Button1" Text="Back" runat="server" class="btn btn-primary mr-2" 
-                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;" OnClick="Button1_Click" />
+                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;"  />
                     </div>
                     <div class="card-body">
                         <div id="printableDiv">
@@ -128,37 +127,49 @@
                                     <asp:TextBox class="form-control" ID="txtReqNumber" runat="server" autocomplete="off" ReadOnly="true" Style="margin-left: 18px; border-bottom: 0px solid black !important;"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="row">
+                         <%--   <div class="row">
     <div class="col-6" style="text-align: end; padding-right: 0px;">
         <label for="Name">Test Report No.    : </label>
     </div>
     <div class="col-3" style="padding-left: 0px;">
         <asp:TextBox class="form-control" ID="txtTestReportNo" runat="server" autocomplete="off" ReadOnly="true" Style="margin-left: 18px; border-bottom: 0px solid black !important;"></asp:TextBox>
     </div>
-</div>
+</div>--%>
                             <br />
                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Site Owner Details</u></h6>
                             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <label for="Name">
                                             Site Owner Name:
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtName" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px;">
                                         </asp:TextBox>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <label>Intimation Id:</label>
                                         <asp:TextBox class="form-control" ID="txtIntimationId" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
+                                        <label>
+                                            District:
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtDistrict" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px;">
+                                        </asp:TextBox>
+                                    </div>
+                                    <div class="col-3">
+                                        <label>Applicant Type:</label>
+                                        <asp:TextBox class="form-control" ID="txtApplicant" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
+                                        </asp:TextBox>
+                                    </div>
+                                  <%--  <div class="col-4">
                                         <label>Type 0f Permises</label>
                                         <asp:TextBox class="form-control" ID="txtPermisestype" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
-                                    </div>
+                                    </div>--%>
                                 </div>
-                                <div class="row" style="margin-top: 35px;">
+                                <%--<div class="row" style="margin-top: 35px;">
                                     <div class="col-4">
                                         <label>
                                             District:
@@ -171,14 +182,14 @@
                                         <asp:TextBox class="form-control" ID="txtApplicant" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
-                                </div>
-                                <div class="row" style="margin-top: 35px;">
+                                </div>--%>
+                                <%--<div class="row" style="margin-top: 35px;">
                                     <div class="col-12">
                                         <label>Address</label>
                                         <asp:TextBox class="form-control" ID="txtAddress" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
-                                </div>
+                                </div>--%>
                             </div>
                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Attachments</u></h6>
                             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -202,7 +213,7 @@
                                             <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                             <ItemStyle HorizontalAlign="center" Width="15%" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
+                                          <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
                                             <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                             <ItemStyle HorizontalAlign="center" Width="15%" />
                                         </asp:BoundField>
