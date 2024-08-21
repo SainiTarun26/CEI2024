@@ -676,9 +676,15 @@
                  <div class="card" id="DivGrid" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;" runat="server">
                      <%-- Add Gridview Here --%>
                          <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%"
-                        AutoGenerateColumns="false"  BorderWidth="1px" BorderColor="#dbddff">
+                        AutoGenerateColumns="false"  BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand">
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
+
+                          <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblInspectionId" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>  
                          
                            
                             <asp:BoundField DataField="Id" HeaderText="Inspection Id">
@@ -706,7 +712,24 @@
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
+ <asp:BoundField DataField="CreatedDate" HeaderText="Submitted Date">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
 
+                             <asp:TemplateField>
+                                <HeaderTemplate>
+                                    <asp:Label ID="lblHeader" runat="server" Text="Print form" CssClass="headercolor" />
+                                </HeaderTemplate>
+                                <ItemStyle Width="10%" />
+                                <ItemTemplate>
+                                    <div style="text-align: center;">
+                                        <asp:LinkButton ID="LinkButton1" Style="padding: 5px 7px 5px 7px; font-size: 18px; border-radius: 3px;" runat="server"
+                                            Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
+                                        </asp:LinkButton>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                            
 
                            

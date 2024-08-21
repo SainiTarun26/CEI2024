@@ -61,5 +61,16 @@ namespace CEIHaryana.Periodic_Industry
             }
             ds.Dispose();
         }
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            Control ctrl = e.CommandSource as Control;
+            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+            Label lblInspectionId = (Label)row.FindControl("lblInspectionId");
+            Session["InspectionIdNew"] = lblInspectionId.Text;
+            if (e.CommandName == "Print")
+            {
+                Response.Redirect("/Periodic_Industry/Print_PeriodicIndustry.aspx");
+            }
+        }
     }
 }
