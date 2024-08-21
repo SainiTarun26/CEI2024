@@ -408,7 +408,7 @@
             </div>
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivViewCart" runat="server" visible="false">
                 <div class="col-12" style="padding: 0px;">
-                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" OnRowCommand="GridView2_RowCommand" runat="server" AutoGenerateColumns="false">
+                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive"  runat="server" AutoGenerateColumns="false">
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
                             <asp:TemplateField HeaderText="SNo">

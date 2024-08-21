@@ -240,6 +240,24 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
+        /// DivViewCart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivViewCart;
+
+        /// <summary>
+        /// GridView2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView2;
+
+        /// <summary>
         /// updatepanel1 control.
         /// </summary>
         /// <remarks>

@@ -574,23 +574,7 @@ namespace CEIHaryana.Officers
             }
             catch (Exception ex) { }
         }
-        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            string fileName = "";
-            try
-            {
-                if (e.CommandName == "Select")
-                {
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    string script = $@"<script>window.open('{fileName}','_blank');</script>";
-                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-                }
-            }
-            catch (Exception ex)
-            {
-                // lblerror.Text = ex.Message.ToString()+"---"+ fileName;
-            }
-        }
+       
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Officers/NewApplications.aspx", false);

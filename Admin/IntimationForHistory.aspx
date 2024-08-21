@@ -372,6 +372,45 @@
                 </div>
             </div>
 
+          <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivViewCart" runat="server" visible="false">
+            <div class="col-12" style="padding: 0px;">
+                <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive"  runat="server" AutoGenerateColumns="false">
+                    <headerstyle backcolor="#B7E2F0" />
+                    <columns>
+                        <asp:TemplateField HeaderText="SNo">
+                            <headerstyle width="5%" cssclass="headercolor" />
+                            <itemstyle width="5%" />
+                            <itemtemplate>
+                                <%# Container.DataItemIndex + 1 %>
+                            </itemtemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="InstallationType" HeaderText="InstallationType">
+                            <headerstyle horizontalalign="Left" width="15%" cssclass="headercolor" />
+                            <itemstyle horizontalalign="Left" width="15%" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="TestReportId" HeaderText="TestReportId" Visible="false">
+                            <headerstyle horizontalalign="Left" width="15%" cssclass="headercolor" />
+                            <itemstyle horizontalalign="Left" width="15%" />
+                        </asp:BoundField>
+                        <asp:TemplateField HeaderText="Id" Visible="False">
+                            <itemtemplate>
+                                <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
+                                <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>
+                                <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("NewInspectionId") %>'></asp:Label>
+                            </itemtemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                            <itemtemplate>
+                                <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportId") %>' />
+                            </itemtemplate>
+                            <itemstyle horizontalalign="Center" width="2%" cssclass="headercolor"></itemstyle>
+                            <headerstyle horizontalalign="Left" cssclass="headercolor" />
+                        </asp:TemplateField>
+                    </columns>
+                </asp:GridView>
+
+            </div>
+        </div>
         <asp:UpdatePanel ID="updatepanel1" runat="server">
             <ContentTemplate>
 
