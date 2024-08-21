@@ -406,7 +406,45 @@
 
                 </div>
             </div>
+            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivViewCart" runat="server" visible="false">
+                <div class="col-12" style="padding: 0px;">
+                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" OnRowCommand="GridView2_RowCommand" runat="server" AutoGenerateColumns="false">
+                        <HeaderStyle BackColor="#B7E2F0" />
+                        <Columns>
+                            <asp:TemplateField HeaderText="SNo">
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                <ItemStyle Width="5%" />
+                                <ItemTemplate>
+                                    <%# Container.DataItemIndex + 1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="InstallationType" HeaderText="InstallationType">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="TestReportId" HeaderText="TestReportId" Visible="false">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="Id" Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
+                                    <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>
+                                    <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("NewInspectionId") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportId") %>' />
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
 
+                </div>
+            </div>
             <%--<div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                  <div class="row">
                         <div class="col-md-12">
@@ -418,7 +456,7 @@
                         </div>
                         </div>
                  </div> --%>
-           
+
 
 
             <div class="row">
@@ -432,37 +470,37 @@
                             <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
                         </div>
                     </div>--%>
-             <asp:UpdatePanel ID="Updatepanel1" runat="server">
+            <asp:UpdatePanel ID="Updatepanel1" runat="server">
                 <ContentTemplate>
-            <div class="row">
-                <p style="margin-top: auto; margin-bottom: auto;">Application in order</p>
-                <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
-                    <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
-                    <asp:ListItem Text="No(Return)" Value="1" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
-                </asp:RadioButtonList>
-            </div>
-            <div class="row" id="Rejection" runat="server" visible="false">
-                <div class="col-md-6">
-                    <label>
-                        ReasonType:        
-                    </label>
-                    <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlReasonType" TabIndex="8" runat="server">
-                        <asp:ListItem Value="0" Text="Based On TestReport"></asp:ListItem>
-                        <asp:ListItem Value="1" Text="Based On Documents"></asp:ListItem>
-                    </asp:DropDownList>
-                </div>
-                <div class="col-md-6">
-                    <label>
-                        Reason<samp style="color: red"> * </samp>
-                    </label>
-                    <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                </div>
-            </div>
-             </ContentTemplate>
+                    <div class="row">
+                        <p style="margin-top: auto; margin-bottom: auto;">Application in order</p>
+                        <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                            <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="No(Return)" Value="1" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
+                        </asp:RadioButtonList>
+                    </div>
+                    <div class="row" id="Rejection" runat="server" visible="false">
+                        <div class="col-md-6">
+                            <label>
+                                ReasonType:        
+                            </label>
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlReasonType" TabIndex="8" runat="server">
+                                <asp:ListItem Value="0" Text="Based On TestReport"></asp:ListItem>
+                                <asp:ListItem Value="1" Text="Based On Documents"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                        <div class="col-md-6">
+                            <label>
+                                Reason<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-       
+
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4" style="text-align: center;">

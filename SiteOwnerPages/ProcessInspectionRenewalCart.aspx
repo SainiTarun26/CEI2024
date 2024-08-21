@@ -197,6 +197,11 @@
             </div>
             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;">
                 <div class="row">
+                   <%-- <div class="col-md-12">
+                        <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="true" OnCheckedChanged="CheckBox1_CheckedChanged" />  If You don't have Previous Inspection Report 
+                        </div>--%>
+                    </div>
+                <div class="row">
                     <div class="col-12">
                         <asp:GridView class="table-responsive table table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20"
                             AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
@@ -231,7 +236,9 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
-                                        <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
+                                    <%--    <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>--%>
+                                        <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+
                                         <asp:Label ID="LblCategory" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
                                         <asp:Label ID="LblInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
                                     </ItemTemplate>

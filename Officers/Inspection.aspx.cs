@@ -154,10 +154,8 @@ namespace CEIHaryana.Officers
                 {
                     txtInspectionReportID.Text = ds.Tables[0].Rows[0]["Id"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
-
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                     txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
-
                     txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                     txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
@@ -174,24 +172,26 @@ namespace CEIHaryana.Officers
                     OwnerAddress.Visible = false;
                     //if (txtApplicantType.Text != "Multiple")
                     //{
-                        TRAttached.Visible = true;
-                        TRAttachedGrid.Visible = true;
-                        GridView1.Columns[7].Visible = false;
+                    TRAttached.Visible = true;
+                    TRAttachedGrid.Visible = true;
+                    GridView1.Columns[7].Visible = false;
+                    GridView1.Columns[5].Visible = false;
                     //}
                     //else
                     //{
                     //    TRAttached.Visible = false;
                     //    TRAttachedGrid.Visible = false;
                     //}
-
                     //TRAttached.Visible = false;
                     //TRAttachedGrid.Visible = false;
                     IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
                     grd_Documemnts.Columns[1].Visible = true;
 
                     GridBindDocument();
-                    string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
+                    DivViewCart.Visible = true;
+                    GridToViewCart();
 
+                    string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                     if (Status.Trim() == "InProcess")
                     {
                         RadioButtonList2.SelectedIndex = RadioButtonList2.Items.IndexOf(RadioButtonList2.Items.FindByValue("0"));
@@ -219,7 +219,6 @@ namespace CEIHaryana.Officers
                         btnBack.Visible = true;
                         btnSubmit.Visible = false;
                     }
-
                 }
             }
             catch (Exception ex)
@@ -227,7 +226,6 @@ namespace CEIHaryana.Officers
                 Console.WriteLine(ex.Message);
             }
         }
-
         protected void lnkRedirect_Click(object sender, EventArgs e)
         {
             LinkButton btn = (LinkButton)(sender);
@@ -245,9 +243,7 @@ namespace CEIHaryana.Officers
             {
                 Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx");
             }
-
         }
-
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -268,7 +264,6 @@ namespace CEIHaryana.Officers
             }
 
         }
-
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string fileName = "";
@@ -280,16 +275,13 @@ namespace CEIHaryana.Officers
                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-
                 }
             }
             catch (Exception ex)
             {
                 // lblerror.Text = ex.Message.ToString()+"---"+ fileName;
             }
-
         }
-
         protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
         {
             //if (ddlReview.SelectedValue == "2")
@@ -301,7 +293,6 @@ namespace CEIHaryana.Officers
             //    Rejection.Visible = false;
             //}
         }
-
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -312,16 +303,11 @@ namespace CEIHaryana.Officers
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                 }
             }
-
-
             if (e.Row.RowType == DataControlRowType.Header)
             {
-
-                //e.Row.Cells[2].BackColor = System.Drawing.Color.Blue;
                 e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
             }
         }
-
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             int checksuccessmessage = 0;
@@ -530,11 +516,79 @@ namespace CEIHaryana.Officers
                 {
                     Response.Redirect("/Login.aspx");
                 }
-
             }
             catch (Exception ex)
             {
                 //
+            }
+        }
+        private void GridToViewCart()
+        {
+            try
+            {
+                string ID = Session["InspectionId"].ToString();
+                DataSet dsVC = CEI.GetDetailsToViewCart(ID);
+
+                if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
+                {
+                    GridView2.DataSource = dsVC;
+                    GridView2.DataBind();
+                }
+                else
+                {
+                    GridView2.DataSource = null;
+                    GridView2.DataBind();
+                    string script = "alert('No Record Found');";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception as needed
+            }
+        }
+        protected void lnkRedirect1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton btn = (LinkButton)(sender);
+
+                GridViewRow row = (GridViewRow)btn.NamingContainer;
+                Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
+                string installationName = lblInstallationName.Text.Trim();
+
+                Session["InspectionTestReportId"] = btn.CommandArgument;
+
+                if (installationName == "Line")
+                {
+                    Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
+                }
+                else if (installationName == "Substation Transformer")
+                {
+                    Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+                }
+                else if (installationName == "Generating Set")
+                {
+                    Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+                }
+            }
+            catch (Exception ex) { }
+        }
+        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            string fileName = "";
+            try
+            {
+                if (e.CommandName == "Select")
+                {
+                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    string script = $@"<script>window.open('{fileName}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                }
+            }
+            catch (Exception ex)
+            {
+                // lblerror.Text = ex.Message.ToString()+"---"+ fileName;
             }
         }
         protected void btnBack_Click(object sender, EventArgs e)
@@ -542,7 +596,6 @@ namespace CEIHaryana.Officers
             Response.Redirect("/Officers/NewApplications.aspx", false);
 
         }
-
         protected void GridBindDocument()
         {
             try

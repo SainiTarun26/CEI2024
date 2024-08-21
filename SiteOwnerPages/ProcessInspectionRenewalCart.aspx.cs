@@ -261,8 +261,8 @@ namespace CEIHaryana.SiteOwnerPages
                         Label LblInstallationType = (Label)row.FindControl("LblInstallationType");
                         string InstallTypes = LblInstallationType.Text;
 
-                        Label LblCategory = (Label)row.FindControl("LblCategory");
-                        string Categary = LblCategory.Text;
+                        //Label LblCategory = (Label)row.FindControl("LblCategory");
+                        string Categary = LblInstallationType.Text;
                         Label LblInspectionId = (Label)row.FindControl("LblInspectionId");
                         string InspectionId = LblInspectionId.Text;
 
@@ -333,8 +333,8 @@ namespace CEIHaryana.SiteOwnerPages
                         Label LblInstallationType = (Label)row.FindControl("LblInstallationType2");
                         string InstallTypes = LblInstallationType.Text;
 
-                        Label LblCategory = (Label)row.FindControl("LblCategory2");
-                        string Categary = LblCategory.Text;
+                        //Label LblCategory = (Label)row.FindControl("LblCategory2");
+                        string Categary = LblInstallationType.Text;
                         Label LblInspectionId = (Label)row.FindControl("LblInspectionId2");
                         string InspectionId = LblInspectionId.Text;
 
