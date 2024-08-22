@@ -101,7 +101,7 @@
                             Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
                     </div>
                     <div class="col-12" style="text-align: initial; margin-top: auto; margin-bottom: auto;">
-                        <asp:Button ID="Button1" Text="Back" runat="server" class="btn btn-primary mr-2" 
+                        <asp:Button ID="Button1" Text="Back" runat="server" class="btn btn-primary mr-2"  OnClick="Button1_Click"
                             Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;"  />
                     </div>
                     <div class="card-body">

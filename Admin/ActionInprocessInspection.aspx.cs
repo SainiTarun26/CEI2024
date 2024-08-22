@@ -44,7 +44,7 @@ namespace CEIHaryana.Admin
                         }
                         else if (Type == "Periodic")
                         {
-                            //GetTestReportDataIfPeriodic();
+                            GetTestReportDataIfPeriodic();
                         }
 
                         //GetTestReportData();

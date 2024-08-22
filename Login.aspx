@@ -266,6 +266,28 @@
 */            font-weight: 700;
             transition: all .02s ease;
         }
+         .marquee-wrapper {
+           width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: #6b6bcf;
+    color: white;
+    padding: 5px;
+        }
+        .marquee-text {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll-left 60s linear infinite;
+        }
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
     </style>
 </head>
 <body style="zoom: 90% !important;">
@@ -542,7 +564,7 @@
                                             <div class="signup-link">Don't have an Account?<a href="#" class="text-primary">Create</a></div>
 <%--                                            <div class="signup-link">Don't have an Account?<a href="/UserPages/Registration.aspx" class="text-primary">Create</a></div>--%>
                                             <div class="signup-link"><a href="UserPages/SiteOwnerRegistration.aspx" class="text-primary">Register as Site Owner</a></div>
-                                        </div>
+                                                                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -551,49 +573,15 @@
                 </div>
             </section>
             <!-- End Hero -->
-            <main id="main">
-                <!-- ======= Featured Services Section ======= -->
-                <!-- <section id="featured-services" class="featured-services">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row">
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+          
+        <div class="marquee-wrapper">
+            <div class="marquee-text">
+               <span>Note:-&nbsp;</span> ( To get the user id & password, please email your valid Electrical contractor licence or Electrical Competency Certificate copy to the email id <b color="blue;font-weight: 700;">ceihelpdesk2024@gmail.com</b> from your personal email account. )
             </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-              <div class="icon"><i class="bx bx-world"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-            </div>
-          </div>
-
         </div>
+    
 
-      </div>
-    </section>  -->
-                <!-- End Featured Services Section -->
+            <main id="main">             
                 <!-- ======= About Section ======= -->
                 <section id="about" class="about section-bg" style="margin-top: -40px;">
                     <div class="row">

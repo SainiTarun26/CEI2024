@@ -53,16 +53,16 @@ namespace CEIHaryana.Admin
                    
 
                     GetDetailsWithId();
-                    //if (Type == "New")
-                    //{
-                    //    GetTestReportData();
-                    //}
-                    //else if (Type == "Periodic")
-                    //{
-                    //    TRAttachedGrid.Visible = false;
-                    //    // GetTestReportDataIfPeriodic();
-                    //}
-                    GetTestReportData();
+                    if (Type == "New")
+                    {
+                        GetTestReportData();
+                    }
+                    else if (Type == "Periodic")
+                    {
+                        //TRAttachedGrid.Visible = false;
+                        GetTestReportDataIfPeriodic();
+                    }
+                    //GetTestReportData();
 
                 }
             }
@@ -72,7 +72,31 @@ namespace CEIHaryana.Admin
             }
         }
 
+        private void GetTestReportDataIfPeriodic()
+        {
+            try
+            {
+                ID = Session["InspectionId"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.GetTestReportDataIfPeriodic(ID);
+                string TestRportId = string.Empty;
+                if (ds != null && ds.Tables.Count > 0)
+                {
 
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                ds.Dispose();
+            }
+            catch (Exception ex) { }
+        }
         private void BindDivisions(string District)
         {
             DataSet ds = new DataSet();
