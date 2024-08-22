@@ -794,6 +794,8 @@
         <span>View Cart</span>
                         </asp:LinkButton>
                     </div>
+                  <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                <ContentTemplate>
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView4" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false"
                         BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView4_RowCommand">
                         <PagerStyle CssClass="pagination-ys" />
@@ -841,9 +843,9 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
-
-
-
+                    
+  </ContentTemplate>
+                            </asp:UpdatePanel>
 
                     <div class="row">
                         <div class="col-md-1"></div>
