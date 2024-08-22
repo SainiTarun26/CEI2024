@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="ActionInprocessInspection.aspx.cs" Inherits="CEIHaryana.Admin.ActionInprocessInspection" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -207,14 +208,14 @@
             height: 100px !important;
         }
     </style>
-     <script type="text/javascript">
-         function alertWithRedirectdata(Message) {
-             if (confirm('Inspection Request has been Successfully ' + Message)) {
-                 window.location.href = "/Admin/ActionInspectioHistrory.aspx";
-             } else {
-             }
-         }
-     </script>
+    <script type="text/javascript">
+        function alertWithRedirectdata(Message) {
+            if (confirm('Inspection Request has been Successfully ' + Message)) {
+                window.location.href = "/Admin/ActionInspectioHistrory.aspx";
+            } else {
+            }
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
@@ -293,7 +294,7 @@
                         <label>Supervisor Email</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                     <%--<div class="col-md-4" id="Inspection_Type" runat="server" visible="false">
+                    <%--<div class="col-md-4" id="Inspection_Type" runat="server" visible="false">
                         <label>Inspection Type</label>
                         <asp:TextBox class="form-control" ID="TxtInspection" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>--%>
@@ -406,6 +407,45 @@
                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                         </asp:GridView>
 
+                        <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivTestReports" runat="server" visible="false">
+                            <div class="col-12" style="padding: 0px;">
+                                <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false">
+                                    <HeaderStyle BackColor="#B7E2F0" />
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="SNo">
+                                            <HeaderStyle Width="5%" CssClass="headercolor" />
+                                            <ItemStyle Width="5%" />
+                                            <ItemTemplate>
+                                                <%# Container.DataItemIndex + 1 %>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:BoundField DataField="InstallationType" HeaderText="InstallationType">
+                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="TestReportId" HeaderText="TestReportId" Visible="false">
+                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                        </asp:BoundField>
+                                        <asp:TemplateField HeaderText="Id" Visible="False">
+                                            <ItemTemplate>
+                                                <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
+                                                <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>
+                                                <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("NewInspectionId") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportId") %>' />
+                                            </ItemTemplate>
+                                            <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                            <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                        </asp:TemplateField>
+                                    </Columns>
+                                </asp:GridView>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -422,67 +462,67 @@
 
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
-            <div class="row">
+                    <div class="row">
 
-                <div class="col-md-4" id="ApprovalRequired" runat="server" visible="true">
-                    <label>
-                        Approval<samp style="color: red"> * </samp>
-                    </label>
-                    <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
-                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                        <asp:ListItem Text="Approved" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
-                    </asp:DropDownList>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                </div>
-                <div class="col-md-4" id="InspectionDate" runat="server">
-                    <label for="StartDate">
-                        Inspection Date                           
-                    </label>
-                    <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <div class="col-md-4" id="ApprovalRequired" runat="server" visible="true">
+                            <label>
+                                Approval<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
+                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="Approved" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-md-4" id="InspectionDate" runat="server">
+                            <label for="StartDate">
+                                Inspection Date                           
+                            </label>
+                            <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                </div>
+                        </div>
 
-                <div class="row">
-                    <div class="col-12" id="Rejection" runat="server" visible="false">
-                        <label>
-                            Reason<samp style="color: red"> * </samp>
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtRejected" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                        <div class="row">
+                            <div class="col-12" id="Rejection" runat="server" visible="false">
+                                <label>
+                                    Reason<samp style="color: red"> * </samp>
+                                </label>
+                                <asp:TextBox class="form-control" ID="txtRejected" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                            </div>
+                        </div>
+                        <div class="col-12" id="ddlSuggestions" visible="false" runat="server" style="width: 98% !important;">
+
+                            <label>Select Suggestion</label>
+                            <asp:DropDownList ID="ddlSuggestion" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSuggestion_SelectedIndexChanged">
+                                <asp:ListItem Text="--Select--" Value="-1"></asp:ListItem>
+                                <asp:ListItem Text="Danger Plate And Barbed wire to be provided on each pole of 11KV line." Value="1"></asp:ListItem>
+                                <asp:ListItem Text="Danger notice in hindi or english & the local langauge of the district with a sign of skull & bones be provided on electrical installations." Value="2"></asp:ListItem>
+                                <asp:ListItem Text="safty equiments,earthing arrangements should be maintained in proper working condition." Value="3"></asp:ListItem>
+                                <asp:ListItem Text="Insulating floors or mats confirming to IS 15652:2006 should be provided & maintained in proper working conditions." Value="4"></asp:ListItem>
+                                <asp:ListItem Text="Proper Earthing fencing ,if metallic,of at least 1.8-meter height be provided in front of the transformer room with gate opening outwards." Value="5"></asp:ListItem>
+                                <asp:ListItem Text="Earth mats be provided in front of all electrical panels." Value="6"></asp:ListItem>
+                            </asp:DropDownList>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-12" id="Suggestion" runat="server" visible="false">
+                                <label>
+                                    Suggestions<%--<samp style="color: red"> * </samp>--%>
+                                </label>
+                                <asp:TextBox class="form-control" ID="txtSuggestion" TextMode="MultiLine" Rows="2" MaxLength="1000" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-12" id="ddlSuggestions" visible="false" runat="server" style="width: 98% !important;">
-
-                    <label>Select Suggestion</label>
-                    <asp:DropDownList ID="ddlSuggestion" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSuggestion_SelectedIndexChanged">
-                        <asp:ListItem Text="--Select--" Value="-1"></asp:ListItem>
-                        <asp:ListItem Text="Danger Plate And Barbed wire to be provided on each pole of 11KV line." Value="1"></asp:ListItem>
-                        <asp:ListItem Text="Danger notice in hindi or english & the local langauge of the district with a sign of skull & bones be provided on electrical installations." Value="2"></asp:ListItem>
-                        <asp:ListItem Text="safty equiments,earthing arrangements should be maintained in proper working condition." Value="3"></asp:ListItem>
-                        <asp:ListItem Text="Insulating floors or mats confirming to IS 15652:2006 should be provided & maintained in proper working conditions." Value="4"></asp:ListItem>
-                        <asp:ListItem Text="Proper Earthing fencing ,if metallic,of at least 1.8-meter height be provided in front of the transformer room with gate opening outwards." Value="5"></asp:ListItem>
-                        <asp:ListItem Text="Earth mats be provided in front of all electrical panels." Value="6"></asp:ListItem>
-                    </asp:DropDownList>
-
-                </div>
-                <div class="row">
-
-                    <div class="col-12" id="Suggestion" runat="server" visible="false">
-                        <label>
-                            Suggestions<%--<samp style="color: red"> * </samp>--%>
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtSuggestion" TextMode="MultiLine" Rows="2" MaxLength="1000" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-                </div>
-            </div>
-                    </ContentTemplate>
+                </ContentTemplate>
             </asp:UpdatePanel>
         </div>
     </div>
 
 
-      
+
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4" style="text-align: center;">
@@ -490,7 +530,7 @@
             <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
             <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
         </div>
-    </div>    
+    </div>
     <script type="text/javascript">
         window.onload = (event) => {
             initMultiselect();

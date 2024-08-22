@@ -1563,6 +1563,7 @@
     <Content Include="Contractor\GeneratingSetHistory.aspx" />
     <Content Include="Contractor\PreviousProjects.aspx" />
     <Content Include="Contractor\ReturnedInspection.aspx" />
+    <Content Include="Contractor\ReturnedInspectionForPeriodic.aspx" />
     <Content Include="Contractor\SubstationTransformer.aspx" />
     <Content Include="Contractor\TestReportForContractor.aspx" />
     <Content Include="Contractor\TestReportHistory.aspx" />
@@ -2274,6 +2275,13 @@
     </Compile>
     <Compile Include="Contractor\ReturnedInspection.aspx.designer.cs">
       <DependentUpon>ReturnedInspection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contractor\ReturnedInspectionForPeriodic.aspx.cs">
+      <DependentUpon>ReturnedInspectionForPeriodic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contractor\ReturnedInspectionForPeriodic.aspx.designer.cs">
+      <DependentUpon>ReturnedInspectionForPeriodic.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contractor\SubstationTransformer.aspx.cs">
       <DependentUpon>SubstationTransformer.aspx</DependentUpon>

@@ -538,8 +538,8 @@
         <header id="header" class="d-flex align-items-center"
             style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
             <div class="container d-flex align-items-center justify-content-between" style="margin-left: -36px;">
-                <a href="Login.aspx" class="logo">
-                    <img src="../Assets/Add a heading (1).png" />
+                <a href="../Login.aspx" class="logo">
+                                        <img src="../Assets/Add a heading (1).png" />
                 </a>
                 <%--<h1 class="logo">
             <a href="index.html">

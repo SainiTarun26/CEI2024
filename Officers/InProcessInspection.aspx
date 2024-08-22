@@ -331,7 +331,7 @@
                 <div class="card-title" style="margin-bottom: 5px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: -10px;">
                     Test Report Detail
                 </div>
-                <div class="row card" style="padding-top: 10px; margin-left: 0px !important;">
+                <div class="card" style="padding-top: 10px; margin-left: 0px !important;">
                     <div class="col-12">
 
                         <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
@@ -401,7 +401,47 @@
 
                     </div>
                 </div>
+                 
             </div>
+                            <div class="card" style="margin: -11px;margin-top:15px; padding: 11px; margin-bottom: 20px;" id="DivTestReports" runat="server" visible="false">
+    <div class="col-12" style="padding: 0px;">
+        <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false">
+            <HeaderStyle BackColor="#B7E2F0" />
+            <Columns>
+                <asp:TemplateField HeaderText="SNo">
+                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                    <ItemStyle Width="5%" />
+                    <ItemTemplate>
+                        <%# Container.DataItemIndex + 1 %>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField DataField="InstallationType" HeaderText="InstallationType">
+                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                </asp:BoundField>
+                <asp:BoundField DataField="TestReportId" HeaderText="TestReportId" Visible="false">
+                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                </asp:BoundField>
+                <asp:TemplateField HeaderText="Id" Visible="False">
+                    <ItemTemplate>
+                        <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
+                        <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>
+                        <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("NewInspectionId") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportId") %>' />
+                    </ItemTemplate>
+                    <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+
+    </div>
+</div>
             <%-- <div class="row" style="margin-bottom: 30px;">
                 <div class="col-12" style="text-align: center">
                     <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />

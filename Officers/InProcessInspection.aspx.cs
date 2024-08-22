@@ -234,6 +234,10 @@ namespace CEIHaryana.Officers
                     grd_Documemnts.Columns[1].Visible = true;
 
                     GridView1.Columns[5].Visible = false;
+                    GridView1.Columns[3].Visible = false;
+
+                    DivTestReports.Visible = true;
+                    GridToViewTestReports();
 
                     GridBindDocument();
 
@@ -292,6 +296,33 @@ namespace CEIHaryana.Officers
             {
             }
         }
+
+        private void GridToViewTestReports()
+        {
+            try
+            {
+                string ID = Session["InProcessInspectionId"].ToString();
+                DataSet dsVC = CEI.GetDetailsToViewCart(ID);
+
+                if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
+                {
+                    GridView2.DataSource = dsVC;
+                    GridView2.DataBind();
+                }
+                else
+                {
+                    GridView2.DataSource = null;
+                    GridView2.DataBind();
+                    string script = "alert('No Record Found');";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception as needed
+            }
+        }
+
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string fileName = "";
@@ -369,7 +400,6 @@ namespace CEIHaryana.Officers
                                 }
                             }
 
-
                             CEI.InspectionFinalAction(ID, StaffId, ApprovedorReject, Reason, Suggestions, txtInspectionDate.Text);
 
                             checksuccessmessage = 1;
@@ -430,7 +460,6 @@ namespace CEIHaryana.Officers
 
                                 );
                             }
-
                             //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
                         }
                         catch (TokenManagerException ex)
@@ -496,7 +525,6 @@ namespace CEIHaryana.Officers
                         }
                         catch (Exception ex)
                         {
-
                             // Handle the exception, log it, etc.
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An error occurred.');", true);
                         }
@@ -507,7 +535,6 @@ namespace CEIHaryana.Officers
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
                             }
                         }
-
                     }
                     else
                     {
@@ -525,10 +552,7 @@ namespace CEIHaryana.Officers
                 // Handle the outer exception, log it, etc.
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An error occurred.');", true);
             }
-
         }
-
-
         protected void ddlSuggestion_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lineNumber == 0)
@@ -544,7 +568,6 @@ namespace CEIHaryana.Officers
             ddlSuggestion.Items.Remove(ddlSuggestion.SelectedItem);
             //lineNumber++;
         }
-
         protected void btnPreview_Click(object sender, EventArgs e)
         {
             try
@@ -593,30 +616,21 @@ namespace CEIHaryana.Officers
                             {
                                 Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
                             }
-
-
                         }
                         //btnPreview.Visible = false;
-
                     }
-
                     // }
                 }
-
             }
             catch (Exception ex)
             {
-
                 //throw;
             }
-
         }
-
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Officers/InProcessRequest.aspx", false);
         }
-
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -639,7 +653,33 @@ namespace CEIHaryana.Officers
                 e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
             }
         }
+        protected void lnkRedirect1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton btn = (LinkButton)(sender);
 
+                GridViewRow row = (GridViewRow)btn.NamingContainer;
+                Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
+                string installationName = lblInstallationName.Text.Trim();
+
+                Session["InspectionTestReportId"] = btn.CommandArgument;
+
+                if (installationName == "Line")
+                {
+                    Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
+                }
+                else if (installationName == "Substation Transformer")
+                {
+                    Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+                }
+                else if (installationName == "Generating Set")
+                {
+                    Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+                }
+            }
+            catch (Exception ex) { }
+        }
         protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
         {
             Rejection.Visible = false;
@@ -657,7 +697,6 @@ namespace CEIHaryana.Officers
                 Suggestion.Visible = true;
             }
         }
-
         protected void GridBindDocument()
         {
             try
@@ -684,7 +723,6 @@ namespace CEIHaryana.Officers
                 //throw;
             }
         }
-
         private void GetTestReportData()
         {
             try

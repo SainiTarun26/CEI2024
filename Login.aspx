@@ -476,7 +476,7 @@
             <!-- End Header -->
             <!-- ======= Hero Section ======= -->
             <section id="hero" class="d-flex align-items-center">
-                <div class="container" data-aos="zoom-out" data-aos-delay="100">
+                <div class="container">
                     <div class="row">
                         <div class="col-md-6" style="margin-top: auto; margin-bottom: auto;">
                             <div>
@@ -597,7 +597,7 @@
                 <!-- ======= About Section ======= -->
                 <section id="about" class="about section-bg" style="margin-top: -40px;">
                     <div class="row">
-                        <div class="col-md-2" style="margin-left: 20px;" data-aos="fade-right">
+                        <div class="col-md-2" style="margin-left: 20px;">   <!--  data-aos="fade-right" -->
                             <div class="card" style="width: 220px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                                 <div class="card-header"
                                     style="background-color: #106eea; color: #f9f9f9; text-align: center; font-weight: 700;">
@@ -653,16 +653,16 @@
                             </div>
                         </div>
                         <div class="col-md-9" style="margin-top: -15px;">
-                            <div class="container" data-aos="fade-up">
+                            <div class="container">   <!--  data-aos="fade-right" -->
                                 <div class="row" style="margin-top: 15px;">
-                                    <div class="col-lg-6" data-aos-delay="100">
-                                        <img src="/Assets/about_bg.png" class="img-fluid" alt="" data-aos="flip-up" />
+                                    <div class="col-lg-6">
+                                        <img src="/Assets/about_bg.png" class="img-fluid" alt="" /> <!--  data-aos="fade-right" -->
                                         <br />
                                         <img src="/Assets/about_bg2.png" class="img-fluid" alt="" style="margin-top: 45px;"
-                                            data-aos="flip-down" />
+                                         />
                                     </div>
-                                    <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up"
-                                        data-aos-delay="100" style="margin-top: -40px;">
+                                    <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center"
+                                       style="margin-top: -40px;">
                                         <div class="section-title">
                                             <h3 style="font-size: 30px; margin-top: -20px; text-align: justify">
                                                 <span>About CEI</span>

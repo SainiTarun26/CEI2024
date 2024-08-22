@@ -20,7 +20,7 @@ namespace CEIHaryana.SiteOwnerPages
         DateTime inspectionCreatedDate;
         string voltage = string.Empty;
         string id = string.Empty;
-        string IType = string.Empty;
+        private static string IType = string.Empty;
         bool Edit = false;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -1010,7 +1010,14 @@ namespace CEIHaryana.SiteOwnerPages
             string TestReportId = Session["TestReport"].ToString();
             ID = Session["InspectionId"].ToString();
             DataSet ds = new DataSet();
-            ds = CEI.ContractorRemarks(ID, TestReportId, txtOwnerRemarks.Text.Trim());
+            if (IType == "New")
+            {
+                ds = CEI.ContractorRemarks(ID, TestReportId, txtOwnerRemarks.Text.Trim());
+            }
+            else if (IType == "Periodic")
+            {
+                ds = CEI.ContractorRemarksInPeriodic(ID, txtOwnerRemarks.Text.Trim());
+            }
             //txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata1();", true);
         }

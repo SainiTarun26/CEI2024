@@ -130,6 +130,7 @@ namespace CEIHaryana.Admin
                         IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
 
                         GridBindDocument();
+                        BindDivisions(txtDistrict.Text.Trim());
                         string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
 
                         if (Status.Trim() == "InProcess")

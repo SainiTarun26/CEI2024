@@ -44,7 +44,7 @@ namespace CEIHaryana.Admin
                         }
                         else if (Type == "Periodic")
                         {
-                            GetTestReportDataIfPeriodic();
+                            //GetTestReportDataIfPeriodic();
                         }
 
                         //GetTestReportData();
@@ -234,8 +234,11 @@ namespace CEIHaryana.Admin
                     grd_Documemnts.Columns[1].Visible = true;
 
                     GridView1.Columns[5].Visible = false;
+                    GridView1.Columns[3].Visible = false;
 
                     GridBindDocument();
+                    DivTestReports.Visible = true;
+                    GridToViewCart();
 
                     string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
 
@@ -532,7 +535,58 @@ namespace CEIHaryana.Admin
 
         }
 
+        private void GridToViewCart()
+        {
+            try
+            {
+                string ID = Session["InProcessInspectionId"].ToString();
+                DataSet dsVC = CEI.GetDetailsToViewCart(ID);
 
+                if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
+                {
+                    GridView2.DataSource = dsVC;
+                    GridView2.DataBind();
+                }
+                else
+                {
+                    GridView2.DataSource = null;
+                    GridView2.DataBind();
+                    string script = "alert('No Record Found');";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception as needed
+            }
+        }
+        protected void lnkRedirect1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton btn = (LinkButton)(sender);
+
+                GridViewRow row = (GridViewRow)btn.NamingContainer;
+                Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
+                string installationName = lblInstallationName.Text.Trim();
+
+                Session["InspectionTestReportId"] = btn.CommandArgument;
+
+                if (installationName == "Line")
+                {
+                    Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
+                }
+                else if (installationName == "Substation Transformer")
+                {
+                    Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+                }
+                else if (installationName == "Generating Set")
+                {
+                    Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+                }
+            }
+            catch (Exception ex) { }
+        }
         protected void ddlSuggestion_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lineNumber == 0)
