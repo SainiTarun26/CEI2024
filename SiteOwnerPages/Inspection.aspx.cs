@@ -20,6 +20,7 @@ namespace CEIHaryana.SiteOwnerPages
         DateTime inspectionCreatedDate;
         string voltage = string.Empty;
         string id = string.Empty;
+        string IType = string.Empty;
         bool Edit = false;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -43,7 +44,17 @@ namespace CEIHaryana.SiteOwnerPages
 
                     GetDetailsWithId();
                     GridBind();
-                    GetTestReportData();
+
+                    if (IType == "New")
+                    {
+                        GetTestReportData(); 
+                    }
+                    else if (IType == "Periodic")
+                    {
+                        GetTestReportDataIfPeriodic();
+                    }
+
+                    //GetTestReportData();
 
                     Session["PreviousPage"] = "";
                     if (Convert.ToString(Session["Type"]) != null && Convert.ToString(Session["Type"]) != "")
@@ -137,90 +148,200 @@ namespace CEIHaryana.SiteOwnerPages
 
 
         }
+
+        private void GetTestReportDataIfPeriodic()
+        {
+            try
+            {
+                ID = Session["InspectionId"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.GetTestReportDataIfPeriodic(ID);
+                string TestRportId = string.Empty;
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    GridView2.DataSource = ds;
+                    GridView2.DataBind();
+                }
+                else
+                {
+                    GridView2.DataSource = null;
+                    GridView2.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                ds.Dispose();
+            }
+            catch { }
+        }
+
         public void GetDetailsWithId()
         {
             try
             {
-                if (Session["InspectionId"] != null && Session["InspectionId"] != "")
+                if (Session["InspectionId"] != null && !string.IsNullOrEmpty(Session["InspectionId"].ToString()))
                 {
                     ID = Session["InspectionId"].ToString();
                     DataSet ds = new DataSet();
                     ds = CEI.InspectionData(ID);
-                    txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
-                    txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
-                    txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-                    //txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                    //txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-                    Session["TestReport"] = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-                    txtApplicationNo.Text = ds.Tables[0].Rows[0]["InspectionReportID"].ToString();
 
-                    string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
-                    DateTime.TryParse(createdDate, out inspectionCreatedDate);
-                    string InspectionType = ds.Tables[0].Rows[0]["IType"].ToString();
-                    if(InspectionType== "Periodic")
+                    IType = ds.Tables[0].Rows[0]["IType"].ToString();
+
+                    if (IType == "New")
                     {
-                        voltagelevel.Visible = false;
-                        Type.Visible = false;
-                    }
-                    else
-                    {
+                        txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                        txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                        txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                        //txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                        //txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                        Session["TestReport"] = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                        txtApplicationNo.Text = ds.Tables[0].Rows[0]["InspectionReportID"].ToString();
+
+                        string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
+                        DateTime.TryParse(createdDate, out inspectionCreatedDate);
+                        string InspectionType = ds.Tables[0].Rows[0]["IType"].ToString();
+                        //if (InspectionType == "Periodic")
+                        //{
+                        //    voltagelevel.Visible = false;
+                        //    Type.Visible = false;
+                        //}
+                        //else
+                        //{
                         voltagelevel.Visible = true;
                         Type.Visible = true;
                         txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                         txtInspectionType.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                        //}
+                        string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
+                        if (Status == "Rejected")
+                        {
+                            Rejection.Visible = true;
+                            txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                            ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
+                            //ApprovedReject.Visible = true;
+                            //ApprovalRequired.Visible = false;
+                            ddlReview.Attributes.Add("disabled", "true");
+                            txtRejected.Attributes.Add("disabled", "true");
+                            btnBack.Visible = true;
+                            btnSubmit.Visible = false;
+                        }
+                        if (Status == "Return")
+                        {
+                            ApprovalRequired.Visible = false;
+                            btnSubmit.Visible = false;
+
+                            buttonSubmit.Visible = true;
+                            Remarks.Visible = true;
+
+                            //Rejection.Visible = true;
+                            //txtRejected.Text = ds.Tables[0].Rows[0]["ReturnRemarks"].ToString();
+                            //ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
+                            //ApprovedReject.Visible = true;
+                            //ApprovalRequired.Visible = false;
+                            ddlReview.Attributes.Add("disabled", "true");
+                            //txtRejected.Attributes.Add("disabled", "true");
+                        }
+                        string Reason = ds.Tables[0].Rows[0]["ReasonType"].ToString();
+                        if (Reason == "1")
+                        {
+                            buttonSubmit.Visible = false;
+                            Remarks.Visible = false;
+
+                        }
+                        if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["RemarkForContractor"].ToString()))
+                        {
+                            // If not null or empty, disable the textbox
+                            txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
+                            txtOwnerRemarks.Enabled = false;
+                            buttonSubmit.Enabled = false;
+                        }
                     }
-                    string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
-                    if (Status == "Rejected")
+                    else if (IType == "Periodic")
                     {
-                        Rejection.Visible = true;
-                        txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
-                        ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
-                        //ApprovedReject.Visible = true;
-                        //ApprovalRequired.Visible = false;
-                        ddlReview.Attributes.Add("disabled", "true");
-                        txtRejected.Attributes.Add("disabled", "true");
-                        btnBack.Visible = true;
-                        btnSubmit.Visible = false;
+                        txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                        txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                        txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                        Session["TestReport"] = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                        txtApplicationNo.Text = ds.Tables[0].Rows[0]["InspectionReportID"].ToString();
+
+                        string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
+                        DateTime.TryParse(createdDate, out inspectionCreatedDate);
+                        string InspectionType = ds.Tables[0].Rows[0]["IType"].ToString();
+
+                        voltagelevel.Visible = false;
+                        Type.Visible = false;
+                        GridView2.Columns[3].Visible = false;
+                        GridView2.Columns[5].Visible = false;
+
+                        DivViewCart.Visible = true;
+                        GridToViewCart();
+
+                        string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
+                        if (Status == "Rejected")
+                        {
+                            Rejection.Visible = true;
+                            txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                            ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
+                            ddlReview.Attributes.Add("disabled", "true");
+                            txtRejected.Attributes.Add("disabled", "true");
+                            btnBack.Visible = true;
+                            btnSubmit.Visible = false;
+                        }
+                        if (Status == "Return")
+                        {
+                            ApprovalRequired.Visible = false;
+                            btnSubmit.Visible = false;
+
+                            buttonSubmit.Visible = true;
+                            Remarks.Visible = true;
+                            ddlReview.Attributes.Add("disabled", "true");
+                        }
+                        string Reason = ds.Tables[0].Rows[0]["ReasonType"].ToString();
+                        if (Reason == "1")
+                        {
+                            buttonSubmit.Visible = false;
+                            Remarks.Visible = false;
+
+                        }
+                        if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["RemarkForContractor"].ToString()))
+                        {
+                            txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
+                            txtOwnerRemarks.Enabled = false;
+                            buttonSubmit.Enabled = false;
+                        }
                     }
-
-                    if (Status == "Return")
-                    {
-                        ApprovalRequired.Visible = false;
-                        btnSubmit.Visible = false;
-
-                        buttonSubmit.Visible = true;
-                        Remarks.Visible = true;
-
-                        //Rejection.Visible = true;
-                        //txtRejected.Text = ds.Tables[0].Rows[0]["ReturnRemarks"].ToString();
-                        //ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
-                        //ApprovedReject.Visible = true;
-                        //ApprovalRequired.Visible = false;
-                        ddlReview.Attributes.Add("disabled", "true");
-                        //txtRejected.Attributes.Add("disabled", "true");
-                    }
-                    string Reason = ds.Tables[0].Rows[0]["ReasonType"].ToString();
-                    if (Reason == "1")
-                    {
-                        buttonSubmit.Visible = false;
-                        Remarks.Visible = false;
-
-                    }
-                    if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["RemarkForContractor"].ToString()))
-                    {
-                        // If not null or empty, disable the textbox
-                        txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
-                        txtOwnerRemarks.Enabled = false;
-                        buttonSubmit.Enabled = false;
-                    }
-
                 }
             }
             catch (Exception ex)
             {
-                //
             }
         }
+
+        private void GridToViewCart()
+        {
+            try
+            {
+                string ID = Session["InspectionId"].ToString();
+                DataSet dsVC = CEI.GetDetailsToViewCart(ID);
+
+                if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
+                {
+                    GridView3.DataSource = dsVC;
+                    GridView3.DataBind();
+                }
+                else
+                {
+                    GridView3.DataSource = null;
+                    GridView3.DataBind();
+                    string script = "alert('No Record Found');";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception as needed
+            }
+        }
+
         protected void lnkRedirect_Click(object sender, EventArgs e)
         {
             LinkButton lnkRedirect = (LinkButton)sender;
@@ -788,9 +909,6 @@ namespace CEIHaryana.SiteOwnerPages
                 Response.Redirect("/login.aspx");
             }
         }
-
-
-
         protected void GridBind()
         {
             try
@@ -817,7 +935,6 @@ namespace CEIHaryana.SiteOwnerPages
                 //throw;
             }
         }
-
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string fileName = "";
@@ -845,7 +962,6 @@ namespace CEIHaryana.SiteOwnerPages
                 // lblerror.Text = ex.Message.ToString()+"---"+ fileName;
             }
         }
-
         private void GetTestReportData()
         {
             try
@@ -857,7 +973,6 @@ namespace CEIHaryana.SiteOwnerPages
                 if (ds != null && ds.Tables.Count > 0)
                 {
                     //TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-
                     GridView2.DataSource = ds;
                     GridView2.DataBind();
                 }
@@ -869,12 +984,10 @@ namespace CEIHaryana.SiteOwnerPages
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 //Session["TestRportId"] = TestRportId;
-
                 ds.Dispose();
             }
             catch { }
         }
-
         protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -885,11 +998,8 @@ namespace CEIHaryana.SiteOwnerPages
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                 }
             }
-
-
             if (e.Row.RowType == DataControlRowType.Header)
             {
-
                 //e.Row.Cells[2].BackColor = System.Drawing.Color.Blue;
                 e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
             }
@@ -903,6 +1013,39 @@ namespace CEIHaryana.SiteOwnerPages
             ds = CEI.ContractorRemarks(ID, TestReportId, txtOwnerRemarks.Text.Trim());
             //txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata1();", true);
+        }
+        protected void lnkRedirect1_Click1(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton btn = (LinkButton)(sender);
+
+                GridViewRow row = (GridViewRow)btn.NamingContainer;
+                Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
+                string installationName = lblInstallationName.Text.Trim();
+                LinkButton lnkRedirect1 = (LinkButton)sender;
+                string testReportId = lnkRedirect1.CommandArgument;
+
+                Session["InspectionTestReportId"] = btn.CommandArgument;
+
+                if (installationName == "Line")
+                {
+                    Session["LineID"] = testReportId;
+                    Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
+                }
+                else if (installationName == "Substation Transformer")
+                {
+                    Session["SubStationID"] = testReportId;
+                    Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
+
+                }
+                else if (installationName == "Generating Set")
+                {
+                    Session["GeneratingSetId"] = testReportId;
+                    Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
+                }
+            }
+            catch (Exception ex) { }
         }
     }
 }

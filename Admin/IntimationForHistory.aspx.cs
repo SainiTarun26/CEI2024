@@ -601,6 +601,7 @@ namespace CEIHaryana.Admin
                 {
                     StaffId = Session["AdminID"].ToString();
                     ID = Session["InspectionId"].ToString();
+                    AssignFrom = Session["AdminID"].ToString();
 
                     if (RadioButtonAction.SelectedValue != "" && RadioButtonAction.SelectedValue != null)
                     {

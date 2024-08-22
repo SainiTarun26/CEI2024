@@ -1554,6 +1554,7 @@
     <Content Include="Assets\legend-background.jpg" />
     <Content Include="Assets\legend-background1.jpg" />
     <Content Include="Assets\legend-background2.jpg" />
+    <Content Include="Assets\new1.gif" />
     <Content Include="Assets\style.css" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="Contractor\Approved_Test_Reports.aspx" />
@@ -1969,6 +1970,7 @@
     <Content Include="UserPages\FormPrintWiremen.aspx" />
     <Content Include="UserPages\index.aspx" />
     <Content Include="UserPages\Instructions.aspx" />
+    <Content Include="UserPages\OurServices.aspx" />
     <Content Include="UserPages\PrintGeneratingSetTestReport.aspx" />
     <Content Include="UserPages\PrintLineTestReport.aspx" />
     <Content Include="UserPages\PrintSubstationTransformerTestReport.aspx" />
@@ -3108,6 +3110,13 @@
     <Compile Include="UserPages\Instructions.aspx.designer.cs">
       <DependentUpon>Instructions.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserPages\OurServices.aspx.cs">
+      <DependentUpon>OurServices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\OurServices.aspx.designer.cs">
+      <DependentUpon>OurServices.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserPages\PrintGeneratingSetTestReport.aspx.cs">
       <DependentUpon>PrintGeneratingSetTestReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3384,6 +3393,9 @@
     <Content Include="TestReport\TestReport.Master" />
     <Content Include="SiteOwnerPages\SiteOwner.Master" />
     <Content Include="TestReportsNew\TestReport.Master" />
+    <Content Include="UserManual\USERmanualContractor.pdf" />
+    <Content Include="UserManual\USERmanualSiteowner.pdf" />
+    <Content Include="UserManual\USERmanualSupervisor.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

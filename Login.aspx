@@ -605,6 +605,9 @@
                                 </div>
                                 <div class="card-body" style="font-size: 15px;">
                                     <ul>
+                                         <li>
+                                            <a href="UserPages/OurServices.aspx" id="alertLink" style="position: relative; z-index: 1;">User Manual</a>&nbsp;&nbsp;&nbsp;<img src="Assets/new1.gif" id="alertGif" />
+                                       </li>
                                         <li>
                                             <a href="#">Department Service Rules</a>
                                         </li>
