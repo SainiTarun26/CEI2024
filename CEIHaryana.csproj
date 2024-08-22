@@ -1933,6 +1933,7 @@
     <Content Include="Supervisor\GeneratingSetTestReport.aspx" />
     <Content Include="Supervisor\InstallationDetails.aspx" />
     <Content Include="Supervisor\IntimationData.aspx" />
+    <Content Include="Supervisor\IntimationDataForPeriodic.aspx" />
     <Content Include="Supervisor\LineTestReport.aspx" />
     <Content Include="Supervisor\PrintRenewalCertificateSupervisor.aspx" />
     <Content Include="Supervisor\RenewalCertificateSupervisor.aspx" />
@@ -2830,6 +2831,13 @@
     </Compile>
     <Compile Include="Supervisor\IntimationData.aspx.designer.cs">
       <DependentUpon>IntimationData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\IntimationDataForPeriodic.aspx.cs">
+      <DependentUpon>IntimationDataForPeriodic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\IntimationDataForPeriodic.aspx.designer.cs">
+      <DependentUpon>IntimationDataForPeriodic.aspx</DependentUpon>
     </Compile>
     <Compile Include="Supervisor\LineTestReport.aspx.cs">
       <DependentUpon>LineTestReport.aspx</DependentUpon>
