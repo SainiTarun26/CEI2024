@@ -880,8 +880,8 @@ namespace CEIHaryana.Admin
                 {
                     GridView2.DataSource = null;
                     GridView2.DataBind();
-                    string script = "alert('No Record Found');";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    //string script = "alert('No Record Found');";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
             }
             catch (Exception ex)
@@ -1013,8 +1013,8 @@ namespace CEIHaryana.Admin
                 {
                     grd_Documemnts.DataSource = null;
                     grd_Documemnts.DataBind();
-                    string script = "alert(\"No Record Found for document\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                   // string script = "alert(\"No Record Found for document\");";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 ds.Dispose();
             }
@@ -1041,8 +1041,8 @@ namespace CEIHaryana.Admin
                 {
                     GridView1.DataSource = null;
                     GridView1.DataBind();
-                    string script = "alert(\"No Record Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    //string script = "alert(\"No Record Found\");";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
               
                 ds.Dispose();

@@ -241,7 +241,7 @@
                                             <%# Container.DataItemIndex + 1 %>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:BoundField DataField="Installation Type" HeaderText="InstallationType">
+                                    <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
                                         <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="15%" />
                                     </asp:BoundField>

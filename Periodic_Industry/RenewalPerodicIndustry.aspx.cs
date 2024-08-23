@@ -21,7 +21,7 @@ namespace CEIHaryana.Periodic_Industry
                         // Session["SiteOwnerId"] = "JVCBN5647K";
                         //ViewCart();
                         ViewCartCount();
-                        GridView4.Visible = false;
+                       // GridView4.Visible = false;
                         getWorkIntimationData();
                        
                     }
@@ -604,7 +604,7 @@ namespace CEIHaryana.Periodic_Industry
         protected void BtnViewCart_Click(object sender, EventArgs e)
         {
             ViewCart();
-            GridView4.Visible = true;
+           // GridView4.Visible = true;
         }
 
         private void ViewCartCount()
@@ -620,13 +620,23 @@ namespace CEIHaryana.Periodic_Industry
             string id = Session["SiteOwnerId"].ToString();
             DataSet ds = new DataSet();
             ds = CEI.ViewCartData(id);
-            
-            if (ds.Tables[0].Rows.Count > 0 && ds != null)
+
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
-                //lblcartCount.Text = ds.Tables[0].Rows[0]["TotalRecordCount"].ToString();
-                GridView4.DataSource = ds;
-                GridView4.DataBind();
-              
+                lblcartCount.Text = ds.Tables[0].Rows[0]["TotalRecordCount"].ToString();
+
+                if (lblcartCount.Text == "0")
+                {
+                    GridView4.Visible = false;
+                    string script = "alert(\"No any item in cart\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                else
+                {
+                    GridView4.DataSource = ds;
+                    GridView4.DataBind();
+                }
+
                 PeriodicData.Visible = false;
                 Periodic.Visible = false;
             }
@@ -634,9 +644,10 @@ namespace CEIHaryana.Periodic_Industry
             {
                 GridView4.DataSource = null;
                 GridView4.DataBind();
-                string script = "alert(\"No any item in card\");";
+                string script = "alert(\"No any item in cart\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
+
             ds.Dispose();
         }
 
