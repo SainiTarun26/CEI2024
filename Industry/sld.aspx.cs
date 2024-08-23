@@ -97,8 +97,8 @@ namespace CEIHaryana.Industry
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-                string script = "alert(\"No Record Found\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                // string script = "alert(\"No Record Found\");";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             ds.Dispose();
         }
@@ -414,43 +414,43 @@ namespace CEIHaryana.Industry
 
         protected void btnReSubmit_Click(object sender, EventArgs e)
         {
-                int checksuccessmessage = 0;
-                string SiteOwnerId = Session["SiteOwnerId_Sld_Indus"]?.ToString();
-                string SldId = Session["Sld_id_Indus"]?.ToString();
-                if (string.IsNullOrEmpty(SiteOwnerId) || string.IsNullOrEmpty(SldId))
+            int checksuccessmessage = 0;
+            string SiteOwnerId = Session["SiteOwnerId_Sld_Indus"]?.ToString();
+            string SldId = Session["Sld_id_Indus"]?.ToString();
+            if (string.IsNullOrEmpty(SiteOwnerId) || string.IsNullOrEmpty(SldId))
+            {
+                throw new Exception("Session variables are missing.");
+            }
+
+
+            if (FileUpload1.HasFile)
+            {
+                int maxFileSize = 2 * 1024 * 1024; // 2 MB
+                if (FileUpload1.PostedFile.ContentLength > maxFileSize)
                 {
-                    throw new Exception("Session variables are missing.");
+                    throw new Exception("File size exceeds the 2 MB limit.");
                 }
 
-
-                if (FileUpload1.HasFile)
+                string ext = Path.GetExtension(FileUpload1.PostedFile.FileName).ToLower();
+                if (ext != ".pdf")
                 {
-                    int maxFileSize = 2 * 1024 * 1024; // 2 MB
-                    if (FileUpload1.PostedFile.ContentLength > maxFileSize)
-                    {
-                        throw new Exception("File size exceeds the 2 MB limit.");
-                    }
+                    throw new Exception("Please upload only PDF files.");
+                }
 
-                    string ext = Path.GetExtension(FileUpload1.PostedFile.FileName).ToLower();
-                    if (ext != ".pdf")
-                    {
-                        throw new Exception("Please upload only PDF files.");
-                    }
+                string uploadDirectory = Server.MapPath("~/Attachment/" + SiteOwnerId + "/Sld Document/");
+                if (!Directory.Exists(uploadDirectory))
+                {
+                    Directory.CreateDirectory(uploadDirectory);
+                }
 
-                    string uploadDirectory = Server.MapPath("~/Attachment/" + SiteOwnerId + "/Sld Document/");
-                    if (!Directory.Exists(uploadDirectory))
-                    {
-                        Directory.CreateDirectory(uploadDirectory);
-                    }
+                string newFileName = "Sld_Document_" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
+                string filePath = Path.Combine(uploadDirectory, newFileName);
 
-                    string newFileName = "Sld_Document_" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
-                    string filePath = Path.Combine(uploadDirectory, newFileName);
+                FileUpload1.SaveAs(filePath);
 
-                    FileUpload1.SaveAs(filePath);
-
-                    string filePathInfo = "/Attachment/" + SiteOwnerId + "/Sld Document/" + newFileName;
-                    CEI.UpdateSLD_Industry(SldId, filePathInfo, SiteOwnerId, Session["Serviceid_Sld_Indus"].ToString());
-                    BindGrid();
+                string filePathInfo = "/Attachment/" + SiteOwnerId + "/Sld Document/" + newFileName;
+                CEI.UpdateSLD_Industry(SldId, filePathInfo, SiteOwnerId, Session["Serviceid_Sld_Indus"].ToString());
+                BindGrid();
                 checksuccessmessage = 1;
 
                 try
@@ -582,10 +582,10 @@ namespace CEIHaryana.Industry
 
 
             }
-                else
-                {
-                    throw new Exception("No file uploaded.");
-                }
+            else
+            {
+                throw new Exception("No file uploaded.");
+            }
 
 
             if (checksuccessmessage == 1)
