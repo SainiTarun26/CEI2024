@@ -110,7 +110,7 @@ namespace CEIHaryana.Industry
                     }
 
 
-                    CEI.LogToIndustryApiSuccessDatabase(
+                    CEI.LogToIndustryApiSuccessDatabase_Scheduler(
                     logDetails.Url,
                     logDetails.Method,
                     logDetails.RequestHeaders,
@@ -137,12 +137,12 @@ namespace CEIHaryana.Industry
 
                 );
 
-             }
+                }
 
             }
             catch (TokenManagerException ex)
             {
-                CEI.LogToIndustryApiErrorDatabase(
+                CEI.LogToIndustryApiErrorDatabase_Scheduler(
                     ex.RequestUrl,
                     ex.RequestMethod,
                     ex.RequestHeaders,
@@ -165,12 +165,12 @@ namespace CEIHaryana.Industry
                         ServiceId = ex.ServiceId,
                     }
                 );
-                string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
+                // string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
+                // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
             }
             catch (IndustryApiException ex)
             {
-                CEI.LogToIndustryApiErrorDatabase(
+                CEI.LogToIndustryApiErrorDatabase_Scheduler(
                     ex.RequestUrl,
                     ex.RequestMethod,
                     ex.RequestHeaders,
@@ -195,9 +195,9 @@ namespace CEIHaryana.Industry
                     }
                 );
 
-                string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
+                ///string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
+                // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
             }
             catch (Exception ex)
             {

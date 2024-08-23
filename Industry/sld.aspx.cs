@@ -1,4 +1,5 @@
-﻿using CEI_PRoject;
+﻿using AjaxControlToolkit;
+using CEI_PRoject;
 using CEIHaryana.Model.Industry;
 using System;
 using System.Collections.Generic;
@@ -96,13 +97,28 @@ namespace CEIHaryana.Industry
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-               // string script = "alert(\"No Record Found\");";
-                //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                string script = "alert(\"No Record Found\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             ds.Dispose();
         }
         protected void btnVerify_Click(object sender, EventArgs e)
         {
+            int checksuccessmessage = 0;
+            string SiteOwnerId = Session["SiteOwnerId_Sld_Indus"].ToString();
+            string SiteOwnerName = Session["OwnerName"].ToString();
+            string[] allowedExtensions = { ".jpg", ".jpeg", ".png" };
+            int maxFileSize = 2 * 1024 * 1024;
+            string filePathInfo = "";
+
+
+            string alreadyReq = CEI.GetIndustry_InsertSdlData_Check(SiteOwnerId);
+            if (alreadyReq == "1")
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('There Is Already Incomplete Active Running Service For You.')", true);
+                return;
+            }
+
             string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
             // string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in/api/project-service-logs-external_UHBVN");
             if (serverStatus != "Server is reachable.")
@@ -110,13 +126,6 @@ namespace CEIHaryana.Industry
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
                 return;
             }
-
-            int checksuccessmessage = 0;
-            string SiteOwnerId = Session["SiteOwnerId_Sld_Indus"].ToString();
-            string SiteOwnerName = Session["OwnerName"].ToString();
-            string[] allowedExtensions = { ".jpg", ".jpeg", ".png" };
-            int maxFileSize = 2 * 1024 * 1024;
-            string filePathInfo = "";
 
             if (customFile.HasFile && customFile.PostedFile != null && customFile.PostedFile.ContentLength <= maxFileSize)
             {
@@ -441,8 +450,8 @@ namespace CEIHaryana.Industry
 
                     string filePathInfo = "/Attachment/" + SiteOwnerId + "/Sld Document/" + newFileName;
                     CEI.UpdateSLD_Industry(SldId, filePathInfo, SiteOwnerId, Session["Serviceid_Sld_Indus"].ToString());
-
-                    checksuccessmessage = 1;
+                    BindGrid();
+                checksuccessmessage = 1;
 
                 try
                 {

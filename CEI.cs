@@ -5295,6 +5295,157 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ReturnedPeriodicInspections", Id);
         }
+        public string GetIndustry_InsertSdlData_Check(string _SiteOwnerID)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            string result = "0";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    using (SqlCommand cmd = new SqlCommand("Sp_InsertSdlData_Industry_Check", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@SiteOwnerID", _SiteOwnerID);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                result = reader["Result"].ToString();
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    result = $"An error occurred: {ex.Message}";
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public void LogToIndustryApiErrorDatabase_Scheduler(string requestUrl, string requestMethod, string requestHeaders, string requestContentType, string requestBody, string responseStatusCode, string responseHeaders, string responseBody, Industry_Api_Post_DataformatModel apiData)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlCommand command = new SqlCommand("sp_LogIndustryApiError_Scheduler", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+
+
+                    command.Parameters.AddWithValue("@InspectionId", apiData.InspectionId);
+                    command.Parameters.AddWithValue("@InspectionLogId", apiData.InspectionLogId);
+                    command.Parameters.AddWithValue("@HepcDataId", apiData.IncomingJsonId);
+                    command.Parameters.AddWithValue("@ActionTaken", string.IsNullOrEmpty(apiData.ActionTaken) ? (object)DBNull.Value : apiData.ActionTaken);
+                    command.Parameters.AddWithValue("@CommentByUserLogin", string.IsNullOrEmpty(apiData.CommentByUserLogin) ? (object)DBNull.Value : apiData.CommentByUserLogin);
+                    command.Parameters.AddWithValue("@CommentDate", apiData.CommentDate);
+                    command.Parameters.AddWithValue("@Comments", string.IsNullOrEmpty(apiData.Comments) ? (object)DBNull.Value : apiData.Comments);
+                    command.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(apiData.Id) ? (object)DBNull.Value : apiData.Id);
+                    command.Parameters.AddWithValue("@ProjectId", string.IsNullOrEmpty(apiData.ProjectId) ? (object)DBNull.Value : apiData.ProjectId);
+                    command.Parameters.AddWithValue("@ServiceId", string.IsNullOrEmpty(apiData.ServiceId) ? (object)DBNull.Value : apiData.ServiceId);
+
+                    // Add parameters required by the stored procedure
+                    command.Parameters.AddWithValue("@RequestUrl", requestUrl ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@RequestMethod", requestMethod ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@RequestHeaders", requestHeaders ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@RequestContentType", requestContentType ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@RequestBody", requestBody ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@ResponseStatusCode", responseStatusCode ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@ResponseHeaders", responseHeaders ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@ResponseBody", responseBody ?? (object)DBNull.Value);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+
+                }
+                catch (Exception ex)
+                {
+                    // Handle the exception as needed
+                    // You might want to log this exception to a file or another table for debugging
+                    Console.WriteLine("An error occurred while logging to the database: " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public void LogToIndustryApiSuccessDatabase_Scheduler(string requestUrl, string requestMethod, string requestHeaders, string requestContentType, string requestBody, string responseStatusCode, string responseHeaders, string responseBody, Industry_Api_Post_DataformatModel apiData)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlCommand command = new SqlCommand("sp_Industry_Api_DataSent_SuccessLog_Scheduler", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    // Add parameters for the stored procedure
+                    command.Parameters.AddWithValue("@InspectionId", apiData.InspectionId);
+                    command.Parameters.AddWithValue("@InspectionLogId", apiData.InspectionLogId);
+                    command.Parameters.AddWithValue("@HepcDataId", apiData.IncomingJsonId);
+                    command.Parameters.AddWithValue("@ActionTaken", string.IsNullOrEmpty(apiData.ActionTaken) ? (object)DBNull.Value : apiData.ActionTaken);
+                    command.Parameters.AddWithValue("@CommentByUserLogin", string.IsNullOrEmpty(apiData.CommentByUserLogin) ? (object)DBNull.Value : apiData.CommentByUserLogin);
+                    command.Parameters.AddWithValue("@CommentDate", apiData.CommentDate);
+                    command.Parameters.AddWithValue("@Comments", string.IsNullOrEmpty(apiData.Comments) ? (object)DBNull.Value : apiData.Comments);
+                    command.Parameters.AddWithValue("@Id", string.IsNullOrEmpty(apiData.Id) ? (object)DBNull.Value : apiData.Id);
+                    command.Parameters.AddWithValue("@ProjectId", string.IsNullOrEmpty(apiData.ProjectId) ? (object)DBNull.Value : apiData.ProjectId);
+                    command.Parameters.AddWithValue("@ServiceId", string.IsNullOrEmpty(apiData.ServiceId) ? (object)DBNull.Value : apiData.ServiceId);
+
+                    command.Parameters.AddWithValue("@RequestUrl", requestUrl);
+                    command.Parameters.AddWithValue("@RequestMethod", requestMethod);
+                    command.Parameters.AddWithValue("@RequestHeaders", string.IsNullOrEmpty(requestHeaders) ? (object)DBNull.Value : requestHeaders);
+                    command.Parameters.AddWithValue("@RequestContentType", string.IsNullOrEmpty(requestContentType) ? (object)DBNull.Value : requestContentType);
+                    command.Parameters.AddWithValue("@RequestBody", string.IsNullOrEmpty(requestBody) ? (object)DBNull.Value : requestBody);
+                    command.Parameters.AddWithValue("@ResponseStatusCode", string.IsNullOrEmpty(responseStatusCode) ? (object)DBNull.Value : responseStatusCode);
+                    command.Parameters.AddWithValue("@ResponseHeaders", string.IsNullOrEmpty(responseHeaders) ? (object)DBNull.Value : responseHeaders);
+                    command.Parameters.AddWithValue("@ResponseBody", string.IsNullOrEmpty(responseBody) ? (object)DBNull.Value : responseBody);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw new TokenManagerException(
+                        "An error occurred while logging to the database",
+                        requestUrl,
+                        requestMethod,
+                        requestHeaders,
+                        requestContentType,
+                        requestBody,
+                        responseStatusCode,
+                        responseHeaders,
+                        ex.Message.ToString(),
+                        apiData.PremisesType,
+                        apiData.InspectionId,
+                        apiData.InspectionLogId,
+                        apiData.IncomingJsonId,
+                        apiData.ActionTaken,
+                        apiData.CommentByUserLogin,
+                        apiData.CommentDate,
+                        apiData.Comments,
+                        apiData.Id,
+                        apiData.ProjectId,
+                        apiData.ServiceId);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }
 
