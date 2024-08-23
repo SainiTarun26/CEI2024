@@ -41,6 +41,15 @@
         }
     </script>
     <style>
+        span#LblCapacity {
+    font-weight: bolder;
+}
+        span#LblVoltage {
+    font-weight: bolder;
+}
+        LblAmount {
+    font-weight: bolder;
+}
         .submit {
             border: 1px solid #563d7c;
             border-radius: 5px;

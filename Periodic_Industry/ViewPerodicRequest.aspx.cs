@@ -18,7 +18,7 @@ namespace CEIHaryana.Periodic_Industry
             {
                 if (!IsPostBack)
                 {
-                    if (Session["SiteOwnerId"] != null && Request.Cookies["SiteOwnerId"] != null)
+                    if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                     {
                        
                         //if (Session["SiteOwnerId"].ToString() != "JVCBN5647K")

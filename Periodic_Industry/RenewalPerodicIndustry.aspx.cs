@@ -1,12 +1,8 @@
 ﻿using CEI_PRoject;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Xml.Linq;
 
 namespace CEIHaryana.Periodic_Industry
 {
@@ -20,7 +16,7 @@ namespace CEIHaryana.Periodic_Industry
                 if (!Page.IsPostBack)
                 {
                     //Session["SiteOwnerId"] = "ASASF1234I";
-                    if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
+                    if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                     {
                         // Session["SiteOwnerId"] = "JVCBN5647K";
                         //ViewCart();
