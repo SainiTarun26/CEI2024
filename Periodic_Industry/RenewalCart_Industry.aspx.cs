@@ -56,7 +56,7 @@ namespace CEIHaryana.Periodic_Industry
             {
                 string CreatedBy = Session["SiteOwnerId"].ToString();
                 DataSet FilterAddress = new DataSet();
-                FilterAddress = CEI.GetAddressToFilterCart(CreatedBy);
+                FilterAddress = CEI.GetAddressToFilterCartForIndustry(CreatedBy);
                 ddlAddress.DataSource = FilterAddress;
                 ddlAddress.DataTextField = "AddressText";
                 ddlAddress.DataValueField = "AddressText";
