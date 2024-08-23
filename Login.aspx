@@ -267,12 +267,14 @@
             transition: all .02s ease;
         }
          .marquee-wrapper {
-           width: 100%;
+          width: 100%;
     overflow: hidden;
     position: relative;
     background: #6b6bcf;
     color: white;
     padding: 5px;
+    FONT-SIZE: 18PX;
+    FONT-WEIGHT: 700;
         }
         .marquee-text {
             display: inline-block;
@@ -287,7 +289,9 @@
                 transform: translateX(-100%);
             }
         }
-
+        b {
+    text-decoration: underline !important;
+}
     </style>
 </head>
 <body style="zoom: 90% !important;">
@@ -561,7 +565,7 @@
                                                     Your UserName or Password is Invalid.
                                                 </label>
                                             </div>
-                                            <div class="signup-link">Don't have an Account?<a href="#" class="text-primary">Create</a></div>
+                                            <%--<div class="signup-link">Don't have an Account?<a href="#" class="text-primary">Create</a></div>--%>
 <%--                                            <div class="signup-link">Don't have an Account?<a href="/UserPages/Registration.aspx" class="text-primary">Create</a></div>--%>
                                             <div class="signup-link"><a href="UserPages/SiteOwnerRegistration.aspx" class="text-primary">Register as Site Owner</a></div>
                                                                                     </div>
@@ -573,15 +577,22 @@
                 </div>
             </section>
             <!-- End Hero -->
-          
+          <div class="row">
+              <div class="col-md-12">
+                  <p style="font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 0px;
+    padding: 8px;">Important Instructions for Electrical Contractors and Electrical Competency Certificate holders(Supervisors):</p>
+              </div>
+              </div>
         <div class="marquee-wrapper">
             <div class="marquee-text">
-               <span>Note:-&nbsp;</span> ( To get the user id & password, please email your valid Electrical contractor licence or Electrical Competency Certificate copy to the email id <b color="blue;font-weight: 700;">ceihelpdesk2024@gmail.com</b> from your personal email account. )
+For Competency Certificate Holder/Supervisor : Please email your valid or latest Electrical Competency Certificate to  ceihelpdesk2024@gmail.com from your personal email. <br/>
+                For Contractor : Please email your valid or latest Electrical Contractor license to ceihelpdesk2024@gmai.com from your firm/company email.    </div>
+
             </div>
         </div>
-    
-
-            <main id="main">             
+                        <main id="main">             
                 <!-- ======= About Section ======= -->
                 <section id="about" class="about section-bg" style="margin-top: -40px;">
                     <div class="row">

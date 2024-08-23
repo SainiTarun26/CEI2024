@@ -80,7 +80,7 @@ namespace CEIHaryana.Periodic_Industry
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Periodic_Industry/ViewPerodicRequest", false);
+            Response.Redirect("/Periodic_Industry/ViewPerodicRequest.aspx", false);
         }
     }
 }

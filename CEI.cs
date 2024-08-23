@@ -5291,6 +5291,10 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ReturnedInspection_PendingAssignment_AtContractor_IFPeriodic", ContractorLogin);
         }
+        public DataTable GetReturnedPeriodicInspections(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ReturnedPeriodicInspections", Id);
+        }
     }
 }
 
