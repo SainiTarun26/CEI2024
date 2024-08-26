@@ -5446,6 +5446,11 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
                 }
             }
         }
+
+        public DataSet GetDetailsToViewCartforSupervisor(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewCartForSupervisor", InspectionId);
+        }
     }
 }
 

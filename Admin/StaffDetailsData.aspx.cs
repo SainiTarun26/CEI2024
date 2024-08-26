@@ -284,7 +284,7 @@ namespace CEIHaryana.Admin
         //{
         //    try
         //    {
-        //        string searchText = txtSearch.Text.Trim(); // Assuming txtSearch is the ID of your TextBox
+        //        string searchText = txtSearch.Text.Trim(); 
         //        string Category = Request.Params["category"].ToString();
 
         //        if (!string.IsNullOrEmpty(searchText))

@@ -450,12 +450,12 @@
                                     <span class="menu-title">Returned Inspections</span>
                                 </a>
                             </li>
-                            <%-- <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="/Contractor/ReturnedInspectionForPeriodic.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Returned Inspections For Periodic</span>
                                 </a>
-                            </li>--%>
+                            </li>
                         </ul>
                     </nav>
                     <div class="main-panel">

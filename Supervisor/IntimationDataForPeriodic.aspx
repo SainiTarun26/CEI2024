@@ -188,6 +188,12 @@
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
                                         <asp:Label ID="lblInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
+                                        <asp:Label ID="lblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
+                                        <%--<asp:Label ID="lblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>
+                                         <asp:Label ID="lblInstallationName" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
+                                     <asp:Label ID="lblApplicationStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
+                                          <asp:Label ID="lblAssignedSupervisor" runat="server" Text='<%#Eval("AssignedSupervisor") %>'></asp:Label>
+                                        --%>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Inspection ID">
@@ -251,9 +257,14 @@
                                     </asp:BoundField>
                                     <asp:TemplateField HeaderText="Id" Visible="False">
                                         <ItemTemplate>
+                                            <asp:Label ID="lblId" runat="server" Text='<%#Eval("NewInspectionId") %>'></asp:Label>
+                                            <asp:Label ID="IntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
                                             <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
                                             <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>
                                             <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("NewInspectionId") %>'></asp:Label>
+                                            <asp:Label ID="lblApplicationStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
+                                            <%--<asp:Label ID="lblAssignedSupervisor" runat="server" Text='<%#Eval("AssignedSupervisor") %>'></asp:Label>--%>
+                                              <asp:Label ID="lblVoltageLevel" runat="server" Text='<%#Eval("VoltageLevel") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="View Test Reports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
@@ -265,7 +276,7 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Recreate Test Report" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="LinkButton1" runat="server" Text="Click to Create"></asp:LinkButton>
+                                            <asp:LinkButton ID="LnkToCreate" runat="server" Text="Click to Create" OnClick="LnkToCreate_Click"></asp:LinkButton>
                                         </ItemTemplate>
                                         <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
                                         <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />

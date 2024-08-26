@@ -24,13 +24,23 @@
     <!-- Template Main CSS File -->
     <link href="/assetsnew/css/style.css" rel="stylesheet" />
     <style type="text/css">
-        #footer .copyright {
-    text-align: center;
-    float: none !important;
-}
-        #footer {
-        padding-bottom:0px !important;
+        body {
+overflow-x: hidden;
         }
+
+        #header .logo img {
+    max-height: 80px;
+    margin-left: -50px;
+}
+        #footer .copyright {
+            text-align: center;
+            float: none !important;
+        }
+
+        #footer {
+            padding-bottom: 0px !important;
+        }
+
         #hero {
             height: 390px !important;
         }
@@ -262,36 +272,41 @@
             }
 
         a:hover {
-/*            text-decoration: underline;
-*/            font-weight: 700;
+            /*            text-decoration: underline;
+*/ font-weight: 700;
             transition: all .02s ease;
         }
-         .marquee-wrapper {
-          width: 100%;
-    overflow: hidden;
-    position: relative;
-    background: #6b6bcf;
-    color: white;
-    padding: 5px;
-    FONT-SIZE: 18PX;
-    FONT-WEIGHT: 700;
+
+        .marquee-wrapper {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            background: #6b6bcf;
+            color: white;
+            padding: 5px;
+            FONT-SIZE: 18PX;
+            FONT-WEIGHT: 700;
         }
+
         .marquee-text {
             display: inline-block;
             white-space: nowrap;
             animation: scroll-left 60s linear infinite;
         }
+
         @keyframes scroll-left {
             0% {
                 transform: translateX(100%);
             }
+
             100% {
                 transform: translateX(-100%);
             }
         }
+
         b {
-    text-decoration: underline !important;
-}
+            text-decoration: underline !important;
+        }
     </style>
 </head>
 <body style="zoom: 90% !important;">
@@ -304,9 +319,9 @@
                         <%-- <i class="bi bi-envelope d-flex align-items-center">
                             <a href="mailto:contact@example.com">contact@example.com</a>
                         </i>--%>
-                       <%-- <i class="bi bi-phone d-flex align-items-center ms-4">
+                        <%-- <i class="bi bi-phone d-flex align-items-center ms-4">
                             <span>+91 7696438770</span>
-                        </i> --%>       
+                        </i> --%>
                     </div>
                     <div class="social-links d-none d-md-flex align-items-center">
                         <a href="#" class="twitter">
@@ -320,7 +335,7 @@
                         </a>
                         <a href="#" class="linkedin">
                             <i class="bi bi-linkedin"></i>
-                           
+
                         </a>
                     </div>
                 </div>
@@ -464,9 +479,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li>
-                                <a class="nav-link scrollto" href="#team">Publication</a>
-                            </li>
+                           
                             <li class="dropdown">
                                 <a href="#">
                                     <span>Services</span>
@@ -490,8 +503,9 @@
                             <li>
                                 <a class="nav-link scrollto" href="#contact">Contact Us</a>
                             </li>
-                            <li>
-                                <a class="nav-link scrollto" href="#contact">Fee Schedule</a>
+                            <li style="display:flex;">
+                                <a href="UserPages/OurServices.aspx" id="alertLink" style="position: relative; z-index: 1;">User Manual</a><img src="Assets/new1.gif" id="alertGif" />
+
                             </li>
                         </ul>
                         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -566,9 +580,9 @@
                                                 </label>
                                             </div>
                                             <%--<div class="signup-link">Don't have an Account?<a href="#" class="text-primary">Create</a></div>--%>
-<%--                                            <div class="signup-link">Don't have an Account?<a href="/UserPages/Registration.aspx" class="text-primary">Create</a></div>--%>
+                                            <%--                                            <div class="signup-link">Don't have an Account?<a href="/UserPages/Registration.aspx" class="text-primary">Create</a></div>--%>
                                             <div class="signup-link"><a href="UserPages/SiteOwnerRegistration.aspx" class="text-primary">Register as Site Owner</a></div>
-                                                                                    </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -577,99 +591,100 @@
                 </div>
             </section>
             <!-- End Hero -->
-          <div class="row">
-              <div class="col-md-12">
-                  <p style="font-size: 18px;
-    font-weight: 800;
-    margin-bottom: 0px;
-    padding: 8px;">Important Instructions for Electrical Contractors and Electrical Competency Certificate holders(Supervisors):</p>
-              </div>
-              </div>
-        <div class="marquee-wrapper">
-            <div class="marquee-text">
-For Competency Certificate Holder/Supervisor : Please email your valid or latest Electrical Competency Certificate to  ceihelpdesk2024@gmail.com from your personal email. <br/>
-                For Contractor : Please email your valid or latest Electrical Contractor license to ceihelpdesk2024@gmai.com from your firm/company email.    </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p style="font-size: 18px; font-weight: 800; margin-bottom: 0px; padding: 8px;">Important Instructions for Electrical Contractors and Electrical Competency Certificate holders(Supervisors):</p>
+                </div>
+            </div>
+            <div class="marquee-wrapper">
+                <div class="marquee-text">
+                    For Competency Certificate Holder/Supervisor : Please email your valid or latest Electrical Competency Certificate to  ceihelpdesk2024@gmail.com from your personal email.
+                    <br />
+                    For Contractor : Please email your valid or latest Electrical Contractor license to ceihelpdesk2024@gmail.com from your firm/company email.   
+                </div>
 
             </div>
         </div>
-                        <main id="main">             
-                <!-- ======= About Section ======= -->
-                <section id="about" class="about section-bg" style="margin-top: -40px;">
-                    <div class="row">
-                        <div class="col-md-2" style="margin-left: 20px;">   <!--  data-aos="fade-right" -->
-                            <div class="card" style="width: 220px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-                                <div class="card-header"
-                                    style="background-color: #106eea; color: #f9f9f9; text-align: center; font-weight: 700;">
-                                    Navigation
-                                </div>
-                                <div class="card-body" style="font-size: 15px;">
-                                    <ul>
-                                         <li>
-                                            <a href="UserPages/OurServices.aspx" id="alertLink" style="position: relative; z-index: 1;">User Manual</a>&nbsp;&nbsp;&nbsp;<img src="Assets/new1.gif" id="alertGif" />
-                                       </li>
+        <main id="main">
+            <!-- ======= About Section ======= -->
+            <section id="about" class="about section-bg" style="margin-top: -40px;">
+                <div class="row">
+                    <div class="col-md-2" style="margin-left: 20px;">
+                        <!--  data-aos="fade-right" -->
+                        <div class="card" style="width: 220px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                            <div class="card-header"
+                                style="background-color: #106eea; color: #f9f9f9; text-align: center; font-weight: 700;">
+                                Navigation
+                            </div>
+                            <div class="card-body" style="font-size: 15px;">
+                                <ul>
+                                    <li>
+                                        <a href="UserPages/OurServices.aspx" id="alertLink" style="position: relative; z-index: 1;">User Manual</a>&nbsp;&nbsp;&nbsp;<img src="Assets/new1.gif" id="alertGif" />
+                                    </li>
+                                    <li>
+                                        <a href="#">Department Service Rules</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Clearances Report</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">RTI</a>
+                                        <ul>
+                                            <li>
+                                                <a href="#">RTI Acts & Rules</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">RTI Authorities</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">SUO MOTU DISCLOSURE UNDER SECTION 4 OF RTI ACT, 2005.</a>
+                                            </li>
+                                        </ul>
                                         <li>
-                                            <a href="#">Department Service Rules</a>
+                                            <a href="#">Right to Service Act</a>
                                         </li>
                                         <li>
-                                            <a href="#">Clearances Report</a>
+                                            <a href="#">List of Contractors</a>
                                         </li>
                                         <li>
-                                            <a href="#">RTI</a>
-                                            <ul>
-                                                <li>
-                                                    <a href="#">RTI Acts & Rules</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">RTI Authorities</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">SUO MOTU DISCLOSURE UNDER SECTION 4 OF RTI ACT, 2005.</a>
-                                                </li>
-                                            </ul>
-                                            <li>
-                                                <a href="#">Right to Service Act</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">List of Contractors</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Notifications</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Orders</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Acts, Rules & Regulations</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Downloads</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Frequetly Asked Questions(FAQs)</a>
-                                            </li>
-                                    </ul>
-                                </div>
+                                            <a href="#">Notifications</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Orders</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Acts, Rules & Regulations</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Downloads</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Frequetly Asked Questions(FAQs)</a>
+                                        </li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="col-md-9" style="margin-top: -15px;">
-                            <div class="container">   <!--  data-aos="fade-right" -->
-                                <div class="row" style="margin-top: 15px;">
-                                    <div class="col-lg-6">
-                                        <img src="/Assets/about_bg.png" class="img-fluid" alt="" /> <!--  data-aos="fade-right" -->
-                                        <br />
-                                        <img src="/Assets/about_bg2.png" class="img-fluid" alt="" style="margin-top: 45px;"
-                                         />
+                    </div>
+                    <div class="col-md-9" style="margin-top: -15px;">
+                        <div class="container">
+                            <!--  data-aos="fade-right" -->
+                            <div class="row" style="margin-top: 15px;">
+                                <div class="col-lg-6">
+                                    <img src="/Assets/about_bg.png" class="img-fluid" alt="" />
+                                    <!--  data-aos="fade-right" -->
+                                    <br />
+                                    <img src="/Assets/about_bg2.png" class="img-fluid" alt="" style="margin-top: 45px;" />
+                                </div>
+                                <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center"
+                                    style="margin-top: -40px;">
+                                    <div class="section-title">
+                                        <h3 style="font-size: 30px; margin-top: -20px; text-align: justify">
+                                            <span>About CEI</span>
+                                        </h3>
                                     </div>
-                                    <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center"
-                                       style="margin-top: -40px;">
-                                        <div class="section-title">
-                                            <h3 style="font-size: 30px; margin-top: -20px; text-align: justify">
-                                                <span>About CEI</span>
-                                            </h3>
-                                        </div>
-                                        <h3 style="margin-top: -20px; font-size: 22px;">Chief Electrical Inspector Department, Haryana.</h3>
-                                        <p class="fst-italic" style="text-align: justify;">
-                                            On creation of the State of Haryana in the 1966, Electrical Inspectorate Haryana started its
+                                    <h3 style="margin-top: -20px; font-size: 22px;">Chief Electrical Inspector Department, Haryana.</h3>
+                                    <p class="fst-italic" style="text-align: justify;">
+                                        On creation of the State of Haryana in the 1966, Electrical Inspectorate Haryana started its
                   functioning with Headquarters at Chandigarh.
                   The Department functions under the administrative control of the Principal Secretary to Govt.
                   Haryana, Power Department. The Department is basically a statutory and the service rendering
@@ -685,8 +700,8 @@ For Competency Certificate Holder/Supervisor : Please email your valid or latest
                   UHBVN/DHBVN/HVPN or its constituents or by other Government Departments/Organizations or to the
                   Private Sector. The department has 06 sub-centres each headed
                   by an Executive Engineer at Panipat, Gurugram I, Gurugram II, Hisar, Rohtak and Faridabad.
-                                        </p>
-                                        <!-- <ul>
+                                    </p>
+                                    <!-- <ul>
               <li>
                 <i class="bx bx-store-alt"></i>
                 <div>
@@ -702,26 +717,26 @@ For Competency Certificate Holder/Supervisor : Please email your valid or latest
                 </div>
               </li>
             </ul> -->
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <!-- End Contact Section -->
-            </main>
-            <!-- End #main -->
-            <!-- ======= Footer ======= -->
-            <footer id="footer" style="background-color: #d1e6ff !important;">
+            <!-- End Contact Section -->
+        </main>
+        <!-- End #main -->
+        <!-- ======= Footer ======= -->
+        <footer id="footer" style="background-color: #d1e6ff !important;">
 
 
-                <div class="container py-4">
-                    <div class="copyright">
-                        All Rights Reserved @ <span style="color: blue;">Chief Electrical Inspector Govt. of Haryana,
+            <div class="container py-4">
+                <div class="copyright">
+                    All Rights Reserved @ <span style="color: blue;">Chief Electrical Inspector Govt. of Haryana,
                             SCO NO 117-118, Top Floor, Sector 17-B, Chandigarh-160017. </span>
-                    </div>
-                    <%--<div class="credits">
+                </div>
+                <%--<div class="credits">
                         <!-- All the links in the footer should remain intact. -->
                         <!-- You can delete the links only if you purchased the pro version. -->
                         <!-- Licensing information: https://bootstrapmade.com/license/ -->
@@ -729,14 +744,14 @@ For Competency Certificate Holder/Supervisor : Please email your valid or latest
                         Developed by
         <a href="http://safedot.in/">Safedot E Solution Pvt. Ltd.</a>
                     </div>--%>
-                </div>
-            </footer>
-            <!-- End Footer -->
-            <div id="preloader"></div>
-            <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
-                <i class="bi bi-arrow-up-short"></i>
-            </a>
-            <!-- Vendor JS Files -->
+            </div>
+        </footer>
+        <!-- End Footer -->
+        <div id="preloader"></div>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+            <i class="bi bi-arrow-up-short"></i>
+        </a>
+        <!-- Vendor JS Files -->
 
         </div>
     </form>
