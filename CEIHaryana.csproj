@@ -1910,6 +1910,7 @@
     <Content Include="SiteOwnerPages\ExistingInspectionData.aspx" />
     <Content Include="SiteOwnerPages\ExistingInspectionRequest.aspx" />
     <Content Include="SiteOwnerPages\GenerateInspection.aspx" />
+    <Content Include="SiteOwnerPages\GenerateInspection_Industry.aspx" />
     <Content Include="SiteOwnerPages\GeneratingSet.aspx" />
     <Content Include="SiteOwnerPages\Inspection.aspx" />
     <Content Include="SiteOwnerPages\InspectionHistory.aspx" />
@@ -2663,6 +2664,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\GenerateInspection.aspx.designer.cs">
       <DependentUpon>GenerateInspection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\GenerateInspection_Industry.aspx.cs">
+      <DependentUpon>GenerateInspection_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\GenerateInspection_Industry.aspx.designer.cs">
+      <DependentUpon>GenerateInspection_Industry.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\GeneratingSet.aspx.cs">
       <DependentUpon>GeneratingSet.aspx</DependentUpon>
