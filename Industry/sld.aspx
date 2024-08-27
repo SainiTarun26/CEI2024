@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
     <!-- Vendor CSS Files -->
     <link href="/assetsnew/vendor/aos/aos.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link href="/assetsnew/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/assetsnew/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
     <link href="/assetsnew/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
@@ -39,17 +39,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM3C2OF7r13KZBS6qkPp0gM6zFEu5zwp9biEg6E" crossorigin="anonymous">
     <style>
         td {
-    padding: 12px !important;
-}
+            padding: 12px !important;
+        }
+
         th.headercolor {
-    padding: 15px !important;
-}
+            padding: 15px !important;
+        }
+
         a#GridView1_lnkDocument_0 {
-    padding: 7px 10px 7px 10px !important;
-}
+            padding: 7px 10px 7px 10px !important;
+        }
+
         a#GridView1_lnkDocument1_0 {
-    padding: 7px 10px 7px 10px !important;
-}
+            padding: 7px 10px 7px 10px !important;
+        }
+
         .container.py-4 {
             display: grid;
             place-items: center;
@@ -132,7 +136,7 @@
             padding-bottom: 8px;
             color: white;
             font-weight: 900;
-            font-size:25px;
+            font-size: 25px;
         }
 
         .form-control {
@@ -203,223 +207,60 @@
                     <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-10">
-                            
-  <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                            <div>
-                                <div class="row" style="margin-bottom: 8px;">
-                                    <div class="col-md-12">
-                                        <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Site Owner Information</h7>
+
+                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                <div>
+                                    <div class="row" style="margin-bottom: 8px;">
+                                        <div class="col-md-12">
+                                            <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Site Owner Information</h7>
+                                        </div>
                                     </div>
-                                </div>
-                              
-                                  <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView2" runat="server" Width="100%"
-                        AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowDataBound="GridView2_RowDataBound" OnRowCommand="GridView2_RowCommand"> 
-                        <PagerStyle CssClass="pagination-ys" />
-                        <Columns>
-                        
-                        
-                             <asp:TemplateField HeaderText="Id">
-                                    <ItemTemplate>
-                                       <asp:LinkButton ID="LinkButton" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("SLD_ID") %> ' CommandName="Select" Style="font-weight: bold;"><%#Eval("SLD_ID") %></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-           
-                          <asp:TemplateField HeaderText="Document Name">
-                                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                                    <ItemStyle Width="5%" />
-                                    <ItemTemplate>
-                                        Single Line Diagram
-   
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                          
-                            <asp:BoundField DataField="Status_type" HeaderText="Application Status">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                               <asp:BoundField DataField="SubmittedDate" HeaderText="Submitted Date">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                               <asp:BoundField DataField="AcceptedOrReturnDate" HeaderText="Returned Date">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                          
-                             <asp:BoundField DataField="Rejection" HeaderText="Returned Reason">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                                                    
-                        <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status_type") %>'></asp:Label>
-                                    <asp:Label ID="LblId" runat="server" Text='<%#Eval("SLD_ID") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>   
-                                
-                        </Columns>
-                        <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                        <RowStyle ForeColor="#000066" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#00547E" />
-                    </asp:GridView>
-                       
 
-
-                            <div class="card"
-                                style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important;">
-                                <div class="card-body" style="padding-bottom:0px;" id="SiteAddress" runat="server" visible="false">
-                                    <div class="wrapper">
-                                        <form class="form-signin">
-                                            <h2 class="form-signin-heading" style="text-align: center;">SLD REQUEST</h2>
-                                            <div class="row">
-                                               
-                                                <div class="col-md-6" runat="server" id="DivPancard_TanNo" visible="true">
-                                                    <label for="PanNumber">
-                                                        SiteOwner Address
-                                            <samp style="color: red">* </samp>
-                                                    </label>
-                                                    <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;height:30px;" ID="ddlSiteOwnerAdress" TabIndex="12" runat="server">
-                                                    </asp:DropDownList>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select SiteOwnerAddress" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlSiteOwnerAdress" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                                </div>
-         
-
-                                                <div class="col-md-6" id="hiddenfield" runat="server">
-                                                    <label class="form-label" for="customFile">
-                                                    <label class="form-label" for="customFile">
-                                                        SLD Upload<samp style="color: red"> * </samp>
-                                                    </label>
-                                                    <br />
-                                                    <asp:FileUpload ID="customFile" TabIndex="19" runat="server" CssClass="form-control" Visible="true"
-                                                        Style="padding-left: 10px !important; font-size: 17px; height: 30px; padding: 2px;" accept=".pdf" />
-                                                    <asp:TextBox class="form-control" ID="customFileLocation" autocomplete="off" runat="server" Style="margin-left: 18px" Visible="false"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
-                                                        ControlToValidate="customFile" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                </div>
-                                            </div>
-
-                                            <div class="row" style="margin-top: 25px;">
-                                                <div class="col-md-4"></div>
-                                                <div class="col-md-4" style="display: grid; place-items: center;">
-                                                    <%-- <button class="btn btn-primary btn-block" type="submit">Verify</button>--%>
-                                                    <asp:Button ID="btnVerify" ValidationGroup="Submit" Text="Submit" Style="padding-top: 6PX; padding-bottom: 5px; width: 33%; font-size: 21px; PADDING-LEFT: 12PX ! IMPORTANT; BORDER-RADIUS: 8PX;" runat="server" class="btn btn-primary btn-block" OnClick="btnVerify_Click" visible="false"/>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-
-
-                               
-                       
-                           
-                                   <div class="card-body" id="ReSubmit" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                                     <div class="row">
-                                       
-                                      
-                                           <div class="col-md-4" id="Div1" runat="server">
-                            <label class="form-label" for="customFile">
-                               SLD Document (2MB PDF ONLY)<samp style="color: red"> * </samp>
-                            </label>
-                            <br />
-                            <asp:FileUpload ID="FileUpload1" TabIndex="19" runat="server" CssClass="form-control"
-                                Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
-                          
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                                ControlToValidate="customFile" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                        </div>
-                                     </div>
-                                       </div>
-                          
-
-                         
-                        
-
-                                 <asp:Button type="submit" ID="btnReSubmit" TabIndex="22" ValidationGroup="Submit" Text="Re-Submit" runat="server" Visible="false" onclick="btnReSubmit_Click" class="btn btn-primary mr-2" />
-                                
-                                <div class="card-body">
-                                    <asp:GridView class="table-responsive table-bordered table table-hover table-striped" ID="GridView1" runat="server" Width="100%"
-                                        AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff" >
+                                    <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView2" runat="server" Width="100%"
+                                        AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowDataBound="GridView2_RowDataBound" OnRowCommand="GridView2_RowCommand">
                                         <PagerStyle CssClass="pagination-ys" />
                                         <Columns>
 
-                                           
-                                            <asp:BoundField DataField="SLD_ID" HeaderText="SLD Id">
-                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                                            </asp:BoundField>
 
-                                            <asp:BoundField DataField="SiteOwnerAddress" HeaderText="Address">
-                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                                            </asp:BoundField>
+                                            <asp:TemplateField HeaderText="Id">
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="LinkButton" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("SLD_ID") %> ' CommandName="Select" Style="font-weight: bold;"><%#Eval("SLD_ID") %></asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
 
-                                      
+                                            <asp:TemplateField HeaderText="Document Name">
+                                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                <ItemStyle Width="5%" />
+                                                <ItemTemplate>
+                                                    Single Line Diagram
+   
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
 
                                             <asp:BoundField DataField="Status_type" HeaderText="Application Status">
                                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                                             </asp:BoundField>
-
-
-                                          
                                             <asp:BoundField DataField="SubmittedDate" HeaderText="Submitted Date">
                                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="AcceptedOrReturnDate" HeaderText="Accepted/Returned Date">
+                                            <asp:BoundField DataField="AcceptedOrReturnDate" HeaderText="Returned Date">
                                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="Rejection" HeaderText="ReturnOrRejection Reason">
+
+                                            <asp:BoundField DataField="Rejection" HeaderText="Returned Reason">
                                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="ApprovedOrRejectedDate" HeaderText="Approved/Rejected Date">
-                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                                            </asp:BoundField>
-                                            <asp:BoundField DataField="Remarks" HeaderText="Remarks">
-                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                                            </asp:BoundField>
-                                              <asp:TemplateField HeaderText=" Attached Document" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                                                <HeaderStyle Width="5%" CssClass="headercolor" />
+
+                                            <asp:TemplateField HeaderText="Id" Visible="False">
                                                 <ItemTemplate>
-
-                                                  
-                                                    <asp:LinkButton ID="lnkDocument"
-                                                        Style="padding: 0px 5px; font-size: 18px; border-radius: 3px;"
-                                                        runat="server"
-                                                        CssClass="greenButton btn-primary"
-                                                        CommandName="Select"
-                                                        CommandArgument='<%# Bind("SLDApproved") %>'>
-                                             <i class="fa-regular fa-file-lines"></i></i>
-                                                    </asp:LinkButton>
-
-                                                    <asp:LinkButton ID="lnkDocument1"
-                                                        Style="padding: 0px 5px; font-size: 18px; border-radius: 3px;"
-                                                        runat="server"
-                                                        CssClass="greenButton btn-primary"
-                                                        CommandName="Select1"
-                                                        CommandArgument='<%# Bind("Path") %>'>
-                                           <i class="fa-regular fa-file-lines"></i></i>
-                                                    </asp:LinkButton>
-
+                                                    <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status_type") %>'></asp:Label>
+                                                    <asp:Label ID="LblId" runat="server" Text='<%#Eval("SLD_ID") %>'></asp:Label>
                                                 </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
-                                                <HeaderStyle HorizontalAlign="Left" />
                                             </asp:TemplateField>
-
-
-
 
                                         </Columns>
                                         <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -432,28 +273,192 @@
                                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                                     </asp:GridView>
-                                </div>
 
-                                 
-                            </div>
-                        </div>
-                        <div class="col-md-1"></div>
-                    </div>
-                             
-                </div>
+
+
+                                    <div class="card"
+                                        style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important;">
+                                        <div class="card-body" style="padding-bottom: 0px;" id="SiteAddress" runat="server" visible="false">
+                                            <div class="wrapper">
+                                                <form class="form-signin">
+                                                    <h2 class="form-signin-heading" style="text-align: center;">SLD REQUEST</h2>
+                                                    <div class="row">
+
+                                                        <div class="col-md-6" runat="server" id="DivPancard_TanNo" visible="true">
+                                                            <label for="PanNumber">
+                                                                SiteOwner Address
+                                            <samp style="color: red">* </samp>
+                                                            </label>
+                                                            <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important; height: 30px;" ID="ddlSiteOwnerAdress" TabIndex="12" runat="server">
+                                                            </asp:DropDownList>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select SiteOwnerAddress" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlSiteOwnerAdress" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                        </div>
+
+
+                                                        <div class="col-md-6" id="hiddenfield" runat="server">
+                                                            <label class="form-label" for="customFile">
+                                                                <label class="form-label" for="customFile">
+                                                                    SLD Upload<samp style="color: red"> * </samp>
+                                                                </label>
+                                                                <br />
+                                                                <asp:FileUpload ID="customFile" TabIndex="19" runat="server" CssClass="form-control" Visible="true"
+                                                                    Style="padding-left: 10px !important; font-size: 17px; height: 30px; padding: 2px;" accept=".pdf" />
+                                                                <asp:TextBox class="form-control" ID="customFileLocation" autocomplete="off" runat="server" Style="margin-left: 18px" Visible="false"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
+                                                                    ControlToValidate="customFile" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row" style="margin-top: 25px;">
+                                                        <div class="col-md-4"></div>
+                                                        <div class="col-md-4" style="display: grid; place-items: center;">
+                                                            <%-- <button class="btn btn-primary btn-block" type="submit">Verify</button>--%>
+                                                            <asp:Button ID="btnVerify" ValidationGroup="Submit" Text="Submit" Style="padding-top: 6PX; padding-bottom: 5px; width: 33%; font-size: 21px; padding-left: 12PX ! IMPORTANT; border-radius: 8PX;" runat="server" class="btn btn-primary btn-block" OnClick="btnVerify_Click" OnClientClick="return validate();" Visible="false" />
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+
+
+
+
+                                        <div class="card-body" id="ReSubmit" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                            <div class="row">
+
+
+                                                <div class="col-md-4" id="Div1" runat="server">
+                                                    <label class="form-label" for="customFile">
+                                                        SLD Document (2MB PDF ONLY)<samp style="color: red"> * </samp>
+                                                    </label>
+                                                    <br />
+                                                    <asp:FileUpload ID="FileUpload1" TabIndex="19" runat="server" CssClass="form-control"
+                                                        Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
+
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                                        ControlToValidate="customFile" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+                                        <asp:Button type="submit" ID="btnReSubmit" TabIndex="22" ValidationGroup="Submit" Text="Re-Submit" runat="server" Visible="false" OnClick="btnReSubmit_Click" class="btn btn-primary mr-2" />
+
+                                        <div class="card-body">
+                                            <asp:GridView class="table-responsive table-bordered table table-hover table-striped" ID="GridView1" runat="server" Width="100%"
+                                                AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
+                                                <PagerStyle CssClass="pagination-ys" />
+                                                <Columns>
+
+
+                                                    <asp:BoundField DataField="SLD_ID" HeaderText="SLD Id">
+                                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                    </asp:BoundField>
+
+                                                    <asp:BoundField DataField="SiteOwnerAddress" HeaderText="Address">
+                                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                    </asp:BoundField>
+
+
+
+                                                    <asp:BoundField DataField="Status_type" HeaderText="Application Status">
+                                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                    </asp:BoundField>
+
+
+
+                                                    <asp:BoundField DataField="SubmittedDate" HeaderText="Submitted Date">
+                                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="AcceptedOrReturnDate" HeaderText="Accepted/Returned Date">
+                                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="Rejection" HeaderText="ReturnOrRejection Reason">
+                                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="ApprovedOrRejectedDate" HeaderText="Approved/Rejected Date">
+                                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="Remarks" HeaderText="Remarks">
+                                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                    </asp:BoundField>
+                                                    <asp:TemplateField HeaderText=" Attached Document" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                                        <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                        <ItemTemplate>
+
+
+                                                            <asp:LinkButton ID="lnkDocument"
+                                                                Style="padding: 0px 5px; font-size: 18px; border-radius: 3px;"
+                                                                runat="server"
+                                                                CssClass="greenButton btn-primary"
+                                                                CommandName="Select"
+                                                                CommandArgument='<%# Bind("SLDApproved") %>'>
+                                             <i class="fa-regular fa-file-lines"></i></i>
+                                                            </asp:LinkButton>
+
+                                                            <asp:LinkButton ID="lnkDocument1"
+                                                                Style="padding: 0px 5px; font-size: 18px; border-radius: 3px;"
+                                                                runat="server"
+                                                                CssClass="greenButton btn-primary"
+                                                                CommandName="Select1"
+                                                                CommandArgument='<%# Bind("Path") %>'>
+                                           <i class="fa-regular fa-file-lines"></i></i>
+                                                            </asp:LinkButton>
+
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                                                        <HeaderStyle HorizontalAlign="Left" />
+                                                    </asp:TemplateField>
+
+
+
+
+                                                </Columns>
+                                                <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                <RowStyle ForeColor="#000066" />
+                                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                            </asp:GridView>
+                                        </div>
+
+
+                                    </div>
                                 </div>
+                                <div class="col-md-1"></div>
+                            </div>
+
+                        </div>
                     </div>
+                </div>
             </section>
             <!-- End About Section -->
         </main>
         <!-- End #main -->
         <!-- ======= Footer ======= -->
-       
+
         <!-- End Footer -->
         <div id="preloader"></div>
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
             <i class="bi bi-arrow-up-short"></i>
         </a>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Vendor JS Files -->
         <script src="/assetsnew/vendor/purecounter/purecounter_vanilla.js"></script>
         <script src="/assetsnew/vendor/aos/aos.js"></script>
@@ -482,6 +487,25 @@
         <script src="/js2/file-upload.js"></script>
         <script src="/js2/typeahead.js"></script>
         <script src="/js2/select2.js"></script>
+
+
+        <script type="text/javascript">
+            let isSubmitting = false;
+            function validate() {
+                debugger;
+
+                if (isSubmitting) {
+                    return false;
+                }
+
+                if (Page_ClientValidate()) {
+                    isSubmitting = true;
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        </script>
     </form>
 </body>
 </html>

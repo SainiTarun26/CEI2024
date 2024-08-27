@@ -21,8 +21,9 @@ namespace CEIHaryana.Supervisor
         private static string InstallationName = string.Empty;
         private static string Status = string.Empty;
         private static string AssignedSupervisor = string.Empty;
+        private static string InspectionType = string.Empty;
         private static string Id = string.Empty;
-        private static string Voltage = string.Empty; 
+        private static string Voltage = string.Empty;
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -81,7 +82,6 @@ namespace CEIHaryana.Supervisor
             {
                 GridViewRow row = (GridViewRow)lnkViewTestReport.NamingContainer;
                 Label lblInspectionId = (Label)row.FindControl("lblInspectionId");
-
                 if (lblInspectionId != null)
                 {
                     inspectionId = lblInspectionId.Text;
@@ -114,7 +114,6 @@ namespace CEIHaryana.Supervisor
                 // Log or handle the exception as needed
             }
         }
-
         protected void lnkRedirect1_Click(object sender, EventArgs e)
         {
             try
@@ -148,7 +147,6 @@ namespace CEIHaryana.Supervisor
             }
             catch (Exception ex) { }
         }
-
         protected void LnkToCreate_Click(object sender, EventArgs e)
         {
             LinkButton lnkViewTestReport = sender as LinkButton;
@@ -165,69 +163,62 @@ namespace CEIHaryana.Supervisor
                 if (IntimationId != null)
                 {
                     Intimation = IntimationId.Text;
+                    Session["Intimation"] = Intimation;
                 }
                 Label lblTestReportCount = (Label)row.FindControl("lblTestReportCount");
                 if (lblTestReportCount != null)
                 {
-
                     TestReportCount = lblTestReportCount.Text;
+                    Session["Count"] = TestReportCount;
                 }
                 Label lblInstallationName = (Label)row.FindControl("lblInstallationName");
                 if (lblInstallationName != null)
                 {
-
                     InstallationName = lblInstallationName.Text;
+                    Session["Installation"] = InstallationName;
                 }
                 Label lblApplicationStatus = (Label)row.FindControl("lblApplicationStatus");
                 if (lblApplicationStatus != null)
                 {
-
                     Status = lblApplicationStatus.Text;
+                }
+                Label lblTypeOfInspection = (Label)row.FindControl("lblTypeOfInspection");
+                if (lblTypeOfInspection != null)
+                {
+                    InspectionType = lblTypeOfInspection.Text;
+                    Session["TypeOfInspection"] = InspectionType;
+
                 }
                 Label lblVoltageLevel = (Label)row.FindControl("lblVoltageLevel");
                 if (lblVoltageLevel != null)
                 {
-
                     Voltage = lblVoltageLevel.Text;
                     Session["VoltageLevel"] = Voltage;
                 }
-
-                //Label lblAssignedSupervisor = (Label)row.FindControl("lblAssignedSupervisor");
-                //if (lblAssignedSupervisor != null)
-                //{
-                
-                //    AssignedSupervisor = lblAssignedSupervisor.Text;
-                //}
-
+                //Label lblAssignedSupervisor = (Label)row.FindControl("lblAssignedSupervisor");  
+                //if (lblAssignedSupervisor != null){  AssignedSupervisor = lblAssignedSupervisor.Text;}
             }
-
-
-            Session["Approval"] = Status.Trim();
+            //Session["Approval"] = Status.Trim();
             if (Status == "Return")
             {
-                //if (Session["SupervisorID"].ToString().ToLower() == AssignedSupervisor.ToLower())
-                //{
-                    DataSet ds = new DataSet();
-                    ds = CEI.GetData(InstallationName.Trim(), Intimation.Trim(), TestReportCount.Trim());
+                //if (Session["SupervisorID"].ToString().ToLower() == AssignedSupervisor.ToLower()){
+                DataSet ds = new DataSet();
+                ds = CEI.GetData(InstallationName.Trim(), Intimation.Trim(), TestReportCount.Trim());
 
-                    if (InstallationName.Trim() == "Line")
-                    {
-                        Response.Redirect("/Supervisor/LineTestReport.aspx", false);
-                    }
-                    else if (InstallationName.Trim() == "Substation Transformer")
-                    {
-                        Response.Redirect("/Supervisor/SubstationTestReport.aspx", false);
-                    }
-                    else if (InstallationName.Trim() == "Generating Set")
-                    {
-                        Response.Redirect("/Supervisor/GeneratingSetTestReport.aspx", false);
-                    }
-                //}
-                //else
-                //{
-                //    string script = "alert(\"You are not Authorized to Edit.\");";
-                //    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                //}
+                if (InstallationName.Trim() == "Line")
+                {
+                    Response.Redirect("/Supervisor/LineTestReport.aspx", false);
+                }
+                else if (InstallationName.Trim() == "Substation Transformer")
+                {
+                    Response.Redirect("/Supervisor/SubstationTestReport.aspx", false);
+                }
+                else if (InstallationName.Trim() == "Generating Set")
+                {
+                    Response.Redirect("/Supervisor/GeneratingSetTestReport.aspx", false);
+                }
+                //}else{ string script = "alert(\"You are not Authorized to Edit.\");";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);}
             }
         }
     }

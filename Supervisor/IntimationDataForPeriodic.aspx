@@ -265,7 +265,9 @@
                                             <asp:Label ID="lblApplicationStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
                                             <%--<asp:Label ID="lblAssignedSupervisor" runat="server" Text='<%#Eval("AssignedSupervisor") %>'></asp:Label>--%>
                                               <asp:Label ID="lblVoltageLevel" runat="server" Text='<%#Eval("VoltageLevel") %>'></asp:Label>
-                                        </ItemTemplate>
+                                            <asp:Label ID="lblTypeOfInspection" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label>
+                                       
+                                            </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="View Test Reports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                         <ItemTemplate>

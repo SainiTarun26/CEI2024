@@ -63,12 +63,23 @@ namespace CEIHaryana.Supervisor
                             //BtnBack.Visible = true;
                             GetHistoryDataById();
                         }
+                        if (Session["TypeOfInspection"]?.ToString() == "Periodic")
+                        {
+                            txtapplication.Text = Session["TypeOfInspection"].ToString().Trim();
+                            txtInstallation.Text = Session["Installation"].ToString().Trim();
+                            txtid.Text = Session["Intimation"].ToString().Trim();
+                            txtNOOfInstallation.Text = Session["Count"].ToString();
 
+                            BtnBack.Visible = true;
+                        }
+                        else 
+                        { 
                         txtapplication.Text = Session["Application"].ToString().Trim();
                         txtInstallation.Text = Session["Typs"].ToString().Trim();
                         txtid.Text = Session["Intimations"].ToString().Trim();
                         txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim() + " Out of " + Session["TotalInstallation"].ToString().Trim();
                         BtnBack.Visible = true;
+                        }
                     }
                 }
                 else
@@ -1136,7 +1147,13 @@ namespace CEIHaryana.Supervisor
         {
             if (Session["TestReportHistory"] == null)
             {
-                Response.Redirect("/Supervisor/InstallationDetails.aspx", false);
+                if (Session["TypeOfInspection"]?.ToString() == "Periodic")
+                {
+                    Response.Redirect("/Supervisor/IntimationDataForPeriodic.aspx", false);
+                }
+                else { 
+                    Response.Redirect("/Supervisor/InstallationDetails.aspx", false);
+                }
             }
             else
             {

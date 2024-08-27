@@ -77,11 +77,22 @@ namespace CEIHaryana.Supervisor
                             // BtnSubmitGeneratingSet.Visible = false;
 
                         }
-                        txtapplication.Text = Session["Application"].ToString().Trim();
-                        txtInstallation.Text = Session["Typs"].ToString().Trim();
-                        txtid.Text = Session["Intimations"].ToString().Trim();
-                        txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim() + " Out of " + Session["TotalInstallation"].ToString().Trim();
+                        if (Session["TypeOfInspection"]?.ToString() == "Periodic")
+                        {
+                            txtapplication.Text = Session["TypeOfInspection"].ToString().Trim();
+                            txtInstallation.Text = Session["Installation"].ToString().Trim();
+                            txtid.Text = Session["Intimation"].ToString().Trim();
+                            txtNOOfInstallation.Text = Session["Count"].ToString();
 
+                        }
+                        else
+                        {
+
+                            txtapplication.Text = Session["Application"].ToString().Trim();
+                            txtInstallation.Text = Session["Typs"].ToString().Trim();
+                            txtid.Text = Session["Intimations"].ToString().Trim();
+                            txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim() + " Out of " + Session["TotalInstallation"].ToString().Trim();
+                        }
                     }
                 }
                 else
@@ -468,7 +479,20 @@ namespace CEIHaryana.Supervisor
             }
             else if (Session["TestReportHistory"] == null)
             {
-                Response.Redirect("/Supervisor/InstallationDetails.aspx", false);
+                //Response.Redirect("/Supervisor/InstallationDetails.aspx", false);
+                if (Session["TypeOfInspection"]?.ToString() == "Periodic")
+                {
+                    Response.Redirect("/Supervisor/IntimationDataForPeriodic.aspx", false);
+                    //Session["TypeOfInspection"] = string.Empty;
+                    //Session["Installation"] = string.Empty;
+                    //Session["Intimation"] = string.Empty;
+                    //Session["Count"] = string.Empty;
+                }
+                else
+                {
+                    Response.Redirect("/Supervisor/InstallationDetails.aspx", false);
+                }
+
             }
             else
             {

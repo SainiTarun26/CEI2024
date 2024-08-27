@@ -22,6 +22,7 @@ namespace CEIHaryana.Industry
             if (!Page.IsPostBack)
             {
                 Industry_Sending_Pending_Error_Logs_ToHepcPortal();
+                hfTaskCompleted.Value = "true";
             }
         }
 

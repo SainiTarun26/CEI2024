@@ -670,6 +670,13 @@ namespace CEIHaryana.Periodic_Industry
             }
         }
 
+        protected void Btnback1_Click(object sender, EventArgs e)
+        {
+            GridView4.Visible = false;
+            getWorkIntimationData();
+            ViewCartCount();
+        }
+
 
         //protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
         //{

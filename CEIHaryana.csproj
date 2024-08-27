@@ -1791,6 +1791,7 @@
     <Content Include="Industry\Industry.aspx" />
     <Content Include="Industry\IndustryServices.aspx" />
     <Content Include="Industry\Industry_Scheduler_Pending_ErrorLogs.aspx" />
+    <Content Include="Industry\Industry_Scheduler_Pending_Sld_ErrorLogs.aspx" />
     <Content Include="Industry\SendJson.aspx" />
     <Content Include="Industry\SendJsonL.aspx" />
     <Content Include="Industry\sld.aspx" />
@@ -1909,7 +1910,6 @@
     <Content Include="SiteOwnerPages\ExistingInspectionData.aspx" />
     <Content Include="SiteOwnerPages\ExistingInspectionRequest.aspx" />
     <Content Include="SiteOwnerPages\GenerateInspection.aspx" />
-    <Content Include="SiteOwnerPages\GenerateInspection_Industry.aspx" />
     <Content Include="SiteOwnerPages\GeneratingSet.aspx" />
     <Content Include="SiteOwnerPages\Inspection.aspx" />
     <Content Include="SiteOwnerPages\InspectionHistory.aspx" />
@@ -2365,6 +2365,13 @@
     <Compile Include="Industry\Industry_Scheduler_Pending_ErrorLogs.aspx.designer.cs">
       <DependentUpon>Industry_Scheduler_Pending_ErrorLogs.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Industry\Industry_Scheduler_Pending_Sld_ErrorLogs.aspx.cs">
+      <DependentUpon>Industry_Scheduler_Pending_Sld_ErrorLogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry\Industry_Scheduler_Pending_Sld_ErrorLogs.aspx.designer.cs">
+      <DependentUpon>Industry_Scheduler_Pending_Sld_ErrorLogs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Industry\Industry_SiteOwner.Master.cs">
       <DependentUpon>Industry_SiteOwner.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2656,13 +2663,6 @@
     </Compile>
     <Compile Include="SiteOwnerPages\GenerateInspection.aspx.designer.cs">
       <DependentUpon>GenerateInspection.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SiteOwnerPages\GenerateInspection_Industry.aspx.cs">
-      <DependentUpon>GenerateInspection_Industry.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SiteOwnerPages\GenerateInspection_Industry.aspx.designer.cs">
-      <DependentUpon>GenerateInspection_Industry.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\GeneratingSet.aspx.cs">
       <DependentUpon>GeneratingSet.aspx</DependentUpon>

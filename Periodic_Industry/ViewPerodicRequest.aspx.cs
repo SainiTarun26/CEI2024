@@ -72,5 +72,10 @@ namespace CEIHaryana.Periodic_Industry
                 Response.Redirect("/Periodic_Industry/Print_PeriodicIndustry.aspx");
             }
         }
+
+        protected void BtnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Periodic_Industry/RenewalPerodicIndustry.aspx", false);
+        }
     }
 }

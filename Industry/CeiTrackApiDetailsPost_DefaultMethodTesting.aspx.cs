@@ -34,6 +34,7 @@ namespace CEIHaryana.Industry
                 string response = httpRequestExample.PostJsonData(url, inputObject);
                 // string response = httpRequestExample.PostJsonData(url, inputObject.Cast<SaralTrackingModal>().ToList());
             }
+            hfTaskCompleted.Value = "true";
         }
 
         private List<SaralTrackingModal> GetSaralTrackingDataFromDatabase()

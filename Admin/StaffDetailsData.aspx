@@ -179,15 +179,23 @@
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row" style="margin-bottom: -30px;">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="search" class="col-md-3 col-form-label" style="margin-top: -6px;">Search:</label>
-                                <div class="col-md-9" style="margin-left: -35px;">
-                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px"  onkeydown="return SearchOnEnter(event);"  onkeyup="Search_Gridview(this)"></asp:TextBox><br />
-                                    <%-- AutoPostBack="true" OnTextChanged="txtSearch_TextChanged" --%>
+                                <label for="search" class="col-md-1 col-form-label" style="margin-top: 3px;padding:0px;">Search:</label>
+                                <div class="col-md-6" style="margin-left: -10px;">
+                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Search by Name, licence, District" class="form-control"  Font-Size="12px"  onkeydown="return SearchOnEnter(event);" style="height: 28px;"></asp:TextBox><br />
+                                    <%--onkeyup="Search_Gridview(this)"--%>
                                 </div>
+                                
+                                  <div class="col-md-2">
+                          <asp:Button ID="btnSearch" runat="server" class="btn btn-primary" OnClick="btnSearch_Click" Text="Search" Style="padding-top: 1px; padding-bottom: 1px;"  />    
+                        </div>
+                                  <div class="col-md-2">
+                          <asp:Button ID="btnReset" runat="server" class="btn btn-primary" Text="Reset" OnClick="btnReset_Click" Style="padding-top: 1px; padding-bottom: 1px; padding-left:17px; padding-right: 17px;" />    
+                        </div>
                             </div>
                         </div>
+                      
                     </div>
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" AllowPaging="true"
                         OnRowCommand="GridView1_RowCommand" PageSize="50" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">

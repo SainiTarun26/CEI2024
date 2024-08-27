@@ -262,79 +262,48 @@ namespace CEIHaryana.Admin
             }
             string Category= Request.Params["category"].ToString();
         }
-        //public void SearchSupervisororWiremen(string searchterm,string categary)
-        //{
-        //    DataTable dt = new DataTable();
-        //    dt = cei.SearchSupervisororWiremen(searchterm, categary);
-        //    if (dt.Rows.Count > 0)
-        //    {
-        //        GridView1.DataSource = dt;
-        //        GridView1.DataBind();
-        //    }
-        //    else
-        //    {
-        //        GridView1.DataSource = null;
-        //        GridView1.DataBind();
-        //        string script = "alert(\"No Record Found\");";
-        //        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-        //    }
-        //}
+        public void SearchSupervisororWiremen(string searchterm,string categary)
+        {
+            DataTable dt = new DataTable();
+            dt = cei.SearchSupervisororWiremen(searchterm, categary);
+            if (dt.Rows.Count > 0)
+            {
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+            }
+            else
+            {
+                GridView1.DataSource = null;
+                GridView1.DataBind();
+                string script = "alert(\"No Record Found\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+        }       
 
-        //protected void txtSearch_TextChanged(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        string searchText = txtSearch.Text.Trim(); 
-        //        string Category = Request.Params["category"].ToString();
+        public void BindFullGrid()
+        {
+            category = Request.Params["category"].ToString();
 
-        //        if (!string.IsNullOrEmpty(searchText))
-        //        {
-        //            DataTable searchResult = cei.SearchContractorData(searchText, Category);
+            if (Request.Cookies["AdminID"] != null && Request.Cookies["logintype"] != null)
+            {
+                loginType = Request.Cookies["logintype"].Value;
+                ID = Request.Cookies["AdminID"].Value;
+            }
+            else
+            {
+                loginType = Convert.ToString(Session["logintype"]);
+                ID = Convert.ToString(Session["AdminID"]);
+            }
+            if (category == "Contractor" && loginType != null && ID != null)
+            {
+                getContractorData(loginType, ID);
 
-        //            if (searchResult.Rows.Count > 0)
-        //            {
-        //                GridView1.DataSource = searchResult;
-        //                GridView1.DataBind();
-        //            }
-        //            else
-        //            {
-        //                GridView1.DataSource = null;
-        //                GridView1.DataBind();
-        //                string script = "alert(\"No Record Found\");";
-        //                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-        //            }
-        //        }
-        //        else // If searchText is blank
-        //        {
-        //            if (Request.Cookies["AdminID"] != null && Request.Cookies["logintype"] != null)
-        //            {
-        //                loginType = Request.Cookies["logintype"].Value;
-        //                ID = Request.Cookies["AdminID"].Value;
-        //            }
-        //            else
-        //            {
-        //                loginType = Convert.ToString(Session["logintype"]);
-        //                ID = Convert.ToString(Session["AdminID"]);
-        //            }
-        //            if (Category == "Contractor")
-        //            {
-        //                getContractorData(loginType, ID);
-
-        //            }
-        //            else if (Category == "Supervisor" || Category == "Wireman")
-        //            {
-        //                getWiremanorSuperwiserData(category, loginType, ID);
-        //            }
-        //        }
-
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        string errorMessage = "An error occurred: " + ex.Message;
-        //    }
-
-        //}
+            }
+            else if (category == "Supervisor" || category == "Wireman" && loginType != null && ID != null)
+            {
+                getWiremanorSuperwiserData(category, loginType, ID);
+            }
+        }
         protected string WrapText(string text, int wrapAfter)
         {
             if (string.IsNullOrEmpty(text) || wrapAfter <= 0)
@@ -348,5 +317,65 @@ namespace CEIHaryana.Admin
             return text;
         }
 
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            BindFullGrid();
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string searchText = txtSearch.Text.Trim();
+                category = Request.Params["category"].ToString();
+
+                if (!string.IsNullOrEmpty(searchText))
+                {
+                    DataTable searchResult = cei.SearchContractorData(searchText, category);
+
+                    if (searchResult.Rows.Count > 0)
+                    {
+                        GridView1.DataSource = searchResult;
+                        GridView1.DataBind();
+                    }
+                    else
+                    {
+                        GridView1.DataSource = null;
+                        GridView1.DataBind();
+                        string script = "alert(\"No Record Found\");";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    }
+                }
+                else // If searchText is blank
+                {
+                    BindFullGrid();
+                    //if (Request.Cookies["AdminID"] != null && Request.Cookies["logintype"] != null)
+                    //{
+                    //    loginType = Request.Cookies["logintype"].Value;
+                    //    ID = Request.Cookies["AdminID"].Value;
+                    //}
+                    //else
+                    //{
+                    //    loginType = Convert.ToString(Session["logintype"]);
+                    //    ID = Convert.ToString(Session["AdminID"]);
+                    //}
+                    //if (category == "Contractor")
+                    //{
+                    //    getContractorData(loginType, ID);
+
+                    //}
+                    //else if (category == "Supervisor" || category == "Wireman")
+                    //{
+                    //    getWiremanorSuperwiserData(category, loginType, ID);
+                    //}
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = "An error occurred: " + ex.Message;
+            }
+        }
     }
 }

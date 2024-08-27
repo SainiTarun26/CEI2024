@@ -4,8 +4,9 @@
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
@@ -544,7 +545,7 @@
                                 Inspection Remarks<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtInspectionRemarks" runat="server" autocomplete="off" MaxLength="60" Style="margin-left: 18px" TabIndex="3"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtInspectionRemarks" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Inspection Remarks</asp:RequiredFieldValidator>
+                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtInspectionRemarks" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Inspection Remarks</asp:RequiredFieldValidator>--%>
                         </div>
                         </div>
                          </div>
@@ -618,12 +619,17 @@
              fileInputElement = document.getElementById('<%= customFile.ClientID %>');
         };
 
-
+    let isSubmitting = false;
     function validateFileUpload() {
         debugger;
 
         var transactionId = document.getElementById('<%= txttransactionId.ClientID %>').value.trim();
         var transactionDate = document.getElementById('<%= txttransactionDate.ClientID %>').value.trim();
+
+        var inspectionremarksclient = document.getElementById('<%= txtInspectionRemarks.ClientID %>').value.trim();
+
+
+
         if (transactionId === '') {
             alert('Please Enter Transaction ID.');
             return false; 
@@ -632,6 +638,11 @@
         if (transactionDate === '') {
             alert('Please Enter Transaction Date.');
             return false; 
+        }
+
+        if (inspectionremarksclient === '') {
+            alert('Please Enter Inspection Remarks');
+            return false;
         }
 
                 if (sactionElement) {
@@ -715,7 +726,18 @@
             }
         }
 
-        return Page_ClientValidate();
+        /*return Page_ClientValidate();*/
+        if (isSubmitting) {
+            return false; 
+        }
+
+        // Validate using Page_ClientValidate
+        if (Page_ClientValidate()) {
+            isSubmitting = true;
+            return true; 
+        } else {
+            return false; 
+        }
     }
 
     $(document).ready(function () {

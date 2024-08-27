@@ -4,8 +4,9 @@
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
@@ -255,23 +256,23 @@
                             Type of Inspection
                                         <samp style="color: red">* </samp>
                         </label>
-                        <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6"  onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-4">
                         <label>
                             Type of Applicant<samp style="color: red"> * </samp>
                         </label>
-                        <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" MaxLength="6"  onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-4">
                         <label>
                             Type of Installation<samp style="color: red"> * </samp>
                         </label>
-                        <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" MaxLength="6"  onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-4" runat="server">
                         <label for="Pin">Voltage Level</label>
-                        <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" MaxLength="6"  onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-4" runat="server">
                         <label for="Pin">Date</label>
@@ -390,7 +391,7 @@
                             <label>
                                 Saction Voltage(Only in KV)<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtSaction" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtSaction" MaxLength="6"  onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                            <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtSaction" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Sanction Voltage</asp:RequiredFieldValidator>--%>
                         </div>
                         <div class="col-md-6">
@@ -544,8 +545,8 @@
                                 <label for="Remarks">
                                     Inspection Remarks<samp style="color: red"> * </samp>
                                 </label>
-                                <asp:TextBox class="form-control" ID="txtInspectionRemarks" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" MaxLength="500" Style="margin-left: 18px" TabIndex="3"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtInspectionRemarks" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Inspection Remarks</asp:RequiredFieldValidator>
+                                <asp:TextBox class="form-control" ID="txtInspectionRemarks" runat="server"  autocomplete="off" MaxLength="500" Style="margin-left: 18px" TabIndex="3"></asp:TextBox>
+                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtInspectionRemarks" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Inspection Remarks</asp:RequiredFieldValidator>--%>
                             </div>
                         </div>
                     </div>
@@ -617,11 +618,17 @@
              sactionElement = document.getElementById('<%= txtSaction.ClientID %>');
              fileInputElement = document.getElementById('<%= customFile.ClientID %>');
         };
+
+        let isSubmitting = false;
+
         function validateFileUpload() {
            // debugger;
 
             var transactionId = document.getElementById('<%= txttransactionId.ClientID %>').value.trim();
-        var transactionDate = document.getElementById('<%= txttransactionDate.ClientID %>').value.trim();
+            var transactionDate = document.getElementById('<%= txttransactionDate.ClientID %>').value.trim();
+
+            var inspectionremarksclient = document.getElementById('<%= txtInspectionRemarks.ClientID %>').value.trim();
+
         if (transactionId === '') {
             alert('Please Enter Transaction ID.');
             return false;
@@ -630,6 +637,11 @@
         if (transactionDate === '') {
             alert('Please Enter Transaction Date.');
             return false;
+            }
+
+            if (inspectionremarksclient === '') {
+                alert('Please Enter Inspection Remarks');
+                return false;
             }
                 if (sactionElement) {
             var Saction = sactionElement.value.trim();
@@ -713,7 +725,18 @@
                 }
             }
 
-            return Page_ClientValidate();
+            /*return Page_ClientValidate();*/
+            if (isSubmitting) {
+                return false;
+            }
+
+            // Validate using Page_ClientValidate
+            if (Page_ClientValidate()) {
+                isSubmitting = true;
+                return true;
+            } else {
+                return false;
+            }
         }
 
         $(document).ready(function () {
