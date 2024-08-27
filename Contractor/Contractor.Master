@@ -420,10 +420,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/Contractor/TestReportForContractor.aspx">
                                     <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Approval Pending Test
+                                    <span class="menu-title">Pending Test
                                        
                                         <br />
-                                        Reports</span>
+                                        Reports for Approval</span>
                                 </a>
                             </li>
                            <%-- <li class="nav-item">
@@ -435,7 +435,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/Contractor/Approved_Test_Reports.aspx">
                                     <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Action Taken</span>
+                                    <span class="menu-title">Approved Test Reports</span>
                                 </a>
                             </li>
                             <li class="nav-item">
