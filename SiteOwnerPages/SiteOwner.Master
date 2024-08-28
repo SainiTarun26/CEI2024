@@ -333,6 +333,12 @@
                                     <span class="menu-title">Dashboard</span>
                                 </a>
                             </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="/SiteOwnerPages/InspectionHistory.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Inspection History</span>
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/SiteOwnerPages/CreateTestReports.aspx">
                                     <i class="icon-layout menu-icon"></i>
@@ -349,12 +355,12 @@
                                         Inspection</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
+<%--                            <li class="nav-item">
                                 <a class="nav-link" href="/SiteOwnerPages/InspectionHistory.aspx">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Inspection History</span>
                                 </a>
-                            </li>
+                            </li>--%>
                             <%--    <li class="nav-item">
                                 <a class="nav-link" href="/PaymentPage.aspx">
                                     <i class="icon-layout menu-icon"></i>

@@ -111,6 +111,11 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-8" style="text-align: end;">
+                            <b><span style="color: red;">*Note -</span>
+                                 <span>To take action please click on Inspection Id.</span>
+                            </b>
+                        </div>
                     </div>
                     <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" AllowPaging="true" PageSize="10" OnRowDataBound="GridView1_RowDataBound" BorderWidth="1px" BorderColor="#dbddff">
@@ -140,9 +145,9 @@
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <HeaderStyle Width="10%" CssClass="headercolor" />
-                                <ItemStyle Width="10%" />
+                                <ItemStyle Width="10%" Font-Bold="true"  />
                                 <HeaderTemplate>
-                                    Inspection ID 
+                                    Inspec ID 
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
@@ -156,30 +161,34 @@
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="TypeOfInspection" HeaderText="Type of Inspectio">
+                            <asp:BoundField DataField="TypeOfInspection" HeaderText="Inspection Type">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="ApplicantType" HeaderText="Applicant Type">
+                            <asp:BoundField DataField="ApplicantType" HeaderText="Applicant Type" Visible="false">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
+                            <asp:TemplateField HeaderText="Voltage ">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="ApplicationStatus" HeaderText="Status Of Approval">
+                                <ItemTemplate>
+                                    <div>
+                                        <%# Eval("VoltageLevel") %>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="ApplicationStatus" HeaderText="Status" >
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" Font-Bold="true" />
                             </asp:BoundField>
                             <asp:BoundField DataField="CreatedDate1" HeaderText="Created Date">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
-
                             <asp:TemplateField>
                                 <HeaderTemplate>
-                                    <asp:Label ID="lblHeader" runat="server" Text="Application form" CssClass="headercolor" />
+                                    <asp:Label ID="lblHeader" runat="server" Text="Form" CssClass="headercolor" />
                                 </HeaderTemplate>
                                 <ItemStyle Width="10%" />
                                 <ItemTemplate>
@@ -192,7 +201,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <HeaderTemplate>
-                                    <asp:Label ID="lblHeader" runat="server" Text="Approval Certificate" CssClass="headercolor" />
+                                    <asp:Label ID="lblHeader" runat="server" Text="Certificate" CssClass="headercolor" />
                                 </HeaderTemplate>
                                 <ItemStyle Width="10%" />
                                 <ItemTemplate>
@@ -203,9 +212,7 @@
                                     </div>
                                 </ItemTemplate>
                             </asp:TemplateField>
-
                             <%-- <asp:TemplateField>
-
                                 <HeaderStyle Width="10%" CssClass="headercolor" />
                                 <ItemStyle Width="10%" />
                                 <ItemTemplate>
@@ -228,7 +235,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <footer class="footer">
     </footer>
@@ -253,7 +259,6 @@
                 }
                 tblData.rows[i].style.display = styleDisplay;
             }
-
         }
         function SearchOnEnter(event) {
             if (event.keyCode === 13) {

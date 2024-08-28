@@ -281,7 +281,7 @@
                                             <%#Container.DataItemIndex+1 %>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Id">
+                                    <asp:TemplateField HeaderText="Id"  Visible="false">
                                         <HeaderStyle Width="25%" CssClass="headercolor" />
                                         <ItemStyle Width="25%" />
                                         <ItemTemplate>

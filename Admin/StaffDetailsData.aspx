@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
@@ -14,8 +14,14 @@
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
+        .fade {
+            transition: opacity 0.15s linear;
+            width: 110% !important;
+            height: 100% !important;
+        }
+
         .pagination-ys {
             /*display: inline-block;*/
             padding-left: 0;
@@ -163,7 +169,6 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
@@ -181,21 +186,19 @@
                     <div class="row" style="margin-bottom: -30px;">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="search" class="col-md-1 col-form-label" style="margin-top: 3px;padding:0px;">Search:</label>
+                                <label for="search" class="col-md-1 col-form-label" style="margin-top: 3px; padding: 0px;">Search:</label>
                                 <div class="col-md-6" style="margin-left: -10px;">
-                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Search by Name, licence, District" class="form-control"  Font-Size="12px"  onkeydown="return SearchOnEnter(event);" style="height: 28px;"></asp:TextBox><br />
+                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Search by Name, licence, District" class="form-control" Font-Size="12px" onkeydown="return SearchOnEnter(event);" Style="height: 28px;"></asp:TextBox><br />
                                     <%--onkeyup="Search_Gridview(this)"--%>
                                 </div>
-                                
-                                  <div class="col-md-2">
-                          <asp:Button ID="btnSearch" runat="server" class="btn btn-primary" OnClick="btnSearch_Click" Text="Search" Style="padding-top: 1px; padding-bottom: 1px;"  />    
-                        </div>
-                                  <div class="col-md-2">
-                          <asp:Button ID="btnReset" runat="server" class="btn btn-primary" Text="Reset" OnClick="btnReset_Click" Style="padding-top: 1px; padding-bottom: 1px; padding-left:17px; padding-right: 17px;" />    
-                        </div>
+                                <div class="col-md-2">
+                                    <asp:Button ID="btnSearch" runat="server" class="btn btn-primary" OnClick="btnSearch_Click" Text="Search" Style="padding-top: 1px; padding-bottom: 1px;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <asp:Button ID="btnReset" runat="server" class="btn btn-primary" Text="Reset" OnClick="btnReset_Click" Style="padding-top: 1px; padding-bottom: 1px; padding-left: 17px; padding-right: 17px;" />
+                                </div>
                             </div>
                         </div>
-                      
                     </div>
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" AllowPaging="true"
                         OnRowCommand="GridView1_RowCommand" PageSize="50" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
@@ -206,7 +209,6 @@
                                     <asp:Label ID="lblRowID" runat="server" Text='<%#Eval("REID") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-
                             <asp:TemplateField HeaderText="SNo">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
@@ -214,7 +216,6 @@
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField>
-
                             <asp:TemplateField HeaderText="Name">
                                 <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="25%" CssClass="text-wrap" />
@@ -222,7 +223,6 @@
                                     <asp:Label ID="lblName" runat="server" Text='<%# Eval("Name") %>' CssClass="text-wrap"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-
                             <asp:TemplateField HeaderText="State" Visible="true">
                                 <HeaderStyle Width="13%" CssClass="headercolor" />
                                 <ItemStyle Width="13%" CssClass="text-wrap" />
@@ -238,14 +238,12 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <%--<asp:BoundField DataField="LicenceNew" HeaderText="Licence No.(NEW)">
-             <HeaderStyle HorizontalAlign="right" Width="20%" CssClass="headercolor"/>
-             <ItemStyle HorizontalAlign="right" Width="20%" />
-         </asp:BoundField>
-         <asp:BoundField DataField="LicenceOld" HeaderText="Licence No.(OLD)">
-             <HeaderStyle HorizontalAlign="right" Width="20%" CssClass="headercolor"/>
-             <ItemStyle HorizontalAlign="right" Width="20%" />
-         </asp:BoundField>--%>
-                            <asp:BoundField DataField="Licence" HeaderText="Licence No.">
+                                    <HeaderStyle HorizontalAlign="right" Width="20%" CssClass="headercolor"/>
+                                    <ItemStyle HorizontalAlign="right" Width="20%" /></asp:BoundField>
+                               <asp:BoundField DataField="LicenceOld" HeaderText="Licence No.(OLD)">
+                                    <HeaderStyle HorizontalAlign="right" Width="20%" CssClass="headercolor"/>
+                                    <ItemStyle HorizontalAlign="right" Width="20%" /></asp:BoundField>--%>
+                            <asp:BoundField DataField="Licence" HeaderText="User Id">
                                 <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="right" Width="15%" />
                             </asp:BoundField>
@@ -264,14 +262,20 @@
                                     <asp:Label ID="lblContractorName" runat="server" Text='<%# Eval("ContractorSupName") %>' CssClass="text-wrap"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField>
+                            <asp:TemplateField HeaderText="Edit">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
                                 <ItemTemplate>
                                     <asp:LinkButton runat="server" ID="LinkButton4" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
                                         Text="<i class='fa fa-edit' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
-                                    <%-- <asp:LinkButton runat="server" ID="LinkButton5" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
-                     Text="<i class='fa fa-duotone fa-trash'></i>" CommandName="Drop" CommandArgument="<%# Container.DataItemIndex %>" CssClass='redButton btn-danger' />--%>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Reset Password">
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                <ItemStyle Width="5%" />
+                                <ItemTemplate>
+                                    <asp:LinkButton runat="server" ID="LnkResetButton" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" Text="<i class='fa fa-refresh' style='color:white !important;'></i>" CssClass='greenButton btn-primary'
+                                        CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" OnClientClick="$('#updatePasswordModal').modal('show'); return false;" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -285,11 +289,44 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
-
+                    <!-- Bootstrap Modal -->
+                    <div class="modal fade" id="updatePasswordModal" tabindex="-1" role="dialog" aria-labelledby="updatePasswordModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="updatePasswordModalLabel">RESET Password</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Your form or content to update the password -->
+                                    <div class="row">
+                                        <div class="col-md-12" id="UserId" runat="server">
+                                            <label>
+                                                User Id<samp style="color: red"> * </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtUserId" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtQualifications" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Other Qualification</asp:RequiredFieldValidator>--%>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" id="Div1" runat="server">
+                                            <label>Password </label>
+                                            <asp:TextBox class="form-control" ID="txtPassword" runat="server" Style="margin-left: 18px" Text="123456" ReadOnly="True"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button ID="btnUpdatePassword" runat="server" CssClass="btn btn-primary" Text="Reset Password" />
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
     <footer class="footer">
     </footer>
@@ -322,5 +359,4 @@
             }
         }
     </script>
-
 </asp:Content>

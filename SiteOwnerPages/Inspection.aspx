@@ -405,6 +405,7 @@
                         OnClick="btnSubmit_Click" />
                     <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                      <asp:Button ID="buttonSubmit" Text="Submit" Visible="false"  runat="server" ValidationGroup="Submit" OnClick="buttonSubmit_Click" class="btn btn-primary mr-2"/>
+                    <asp:Button ID="btnResubmit" Text="Re-Submit" Visible="false" runat="server" ValidationGroup="Submit" OnClick="btnResubmit_Click" class="btn btn-primary mr-2" />
                     <br />
                     <%--<asp:Label ID="lblerror" runat="server" Text="Label"></asp:Label>--%>
                 </div>

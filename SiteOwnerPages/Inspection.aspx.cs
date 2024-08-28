@@ -19,7 +19,9 @@ namespace CEIHaryana.SiteOwnerPages
         string Id = string.Empty;
         DateTime inspectionCreatedDate;
         string voltage = string.Empty;
-        string id = string.Empty;
+        string id = string.Empty; 
+        string CartId = string.Empty;
+        string ReturnedBased = string.Empty;
         private static string IType = string.Empty;
         bool Edit = false;
         protected void Page_Load(object sender, EventArgs e)
@@ -191,34 +193,25 @@ namespace CEIHaryana.SiteOwnerPages
                         txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                         txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                         txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-                        //txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                        //txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                         Session["TestReport"] = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                         txtApplicationNo.Text = ds.Tables[0].Rows[0]["InspectionReportID"].ToString();
 
                         string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
                         DateTime.TryParse(createdDate, out inspectionCreatedDate);
                         string InspectionType = ds.Tables[0].Rows[0]["IType"].ToString();
-                        //if (InspectionType == "Periodic")
-                        //{
-                        //    voltagelevel.Visible = false;
-                        //    Type.Visible = false;
-                        //}
-                        //else
-                        //{
+                        
                         voltagelevel.Visible = true;
                         Type.Visible = true;
                         txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                         txtInspectionType.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
-                        //}
+                        
                         string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                         if (Status == "Rejected")
                         {
                             Rejection.Visible = true;
                             txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                             ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
-                            //ApprovedReject.Visible = true;
-                            //ApprovalRequired.Visible = false;
+
                             ddlReview.Attributes.Add("disabled", "true");
                             txtRejected.Attributes.Add("disabled", "true");
                             btnBack.Visible = true;
@@ -252,7 +245,7 @@ namespace CEIHaryana.SiteOwnerPages
                             // If not null or empty, disable the textbox
                             txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
                             txtOwnerRemarks.Enabled = false;
-                            buttonSubmit.Enabled = false;
+                            buttonSubmit.Visible = false;
                         }
                     }
                     else if (IType == "Periodic")
@@ -263,6 +256,8 @@ namespace CEIHaryana.SiteOwnerPages
                         Session["TestReport"] = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                         txtApplicationNo.Text = ds.Tables[0].Rows[0]["InspectionReportID"].ToString();
 
+                        ReturnedBased = ds.Tables[0].Rows[0]["ReasonType"].ToString();
+                        
                         string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
                         DateTime.TryParse(createdDate, out inspectionCreatedDate);
                         string InspectionType = ds.Tables[0].Rows[0]["IType"].ToString();
@@ -294,6 +289,15 @@ namespace CEIHaryana.SiteOwnerPages
                             buttonSubmit.Visible = true;
                             Remarks.Visible = true;
                             ddlReview.Attributes.Add("disabled", "true");
+
+                            if (ReturnedBased=="1")
+                            {
+                                btnResubmit.Visible = true;
+                            }
+                            else
+                            {
+                                btnResubmit.Visible = false;
+                            }
                         }
                         string Reason = ds.Tables[0].Rows[0]["ReasonType"].ToString();
                         if (Reason == "1")
@@ -306,7 +310,7 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
                             txtOwnerRemarks.Enabled = false;
-                            buttonSubmit.Enabled = false;
+                            buttonSubmit.Visible = false;
                         }
                     }
                 }
@@ -1053,6 +1057,17 @@ namespace CEIHaryana.SiteOwnerPages
                 }
             }
             catch (Exception ex) { }
+        }
+
+        protected void btnResubmit_Click(object sender, EventArgs e)
+        {
+            ID = Session["InspectionId"].ToString();
+            DataSet ds = new DataSet();
+            ds = CEI.GetDetailsToViewCart(ID);
+
+            CartId = ds.Tables[0].Rows[0]["CartId"].ToString();
+            Session["IDCart"] = CartId;
+            Response.Redirect("/SiteOwnerPages/ProcessInspectionRenewalCart.aspx", false);
         }
     }
 }

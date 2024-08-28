@@ -365,6 +365,7 @@
                                         <li class="nav-item"><a class="nav-link" href="/Admin/AddContractorDetails.aspx">Add Contractor</a></li>
                                         <li class="nav-item"><a class="nav-link" href="/Admin/AddSupervisorDetails.aspx">Add Supervisor</a></li>
                                         <li class="nav-item"><a class="nav-link" href="/Admin/AddWiremanDetails.aspx">Add Wireman</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx">Siteowner</a></li>
                                     </ul>
                                 </div>
                             </li>
