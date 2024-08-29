@@ -5451,6 +5451,28 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewCartForSupervisor", InspectionId);
         }
+
+        public DataTable GetDataByCategary(string searchby, string Categary)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataForFetchingPassword", searchby, Categary);
+        }
+
+        public DataSet GetTestReportDataForIndustry(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReportDataForIndustry", Id);
+        }
+        public DataSet sp_InsertRemarksForContractorINPeriodic_Industry(string ID, string RemarkForContractor)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertRemarksForContractorINPeriodic_Industry", ID, RemarkForContractor);
+        }
+        public DataTable SiteOwnerInspectionDataforPeriodicIndustry(string SiteOwnerId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerInspectionHistoryForPeriodic_Industry", SiteOwnerId);
+        }
+        public DataSet ViewInspectionHistory(string SiteOwnerId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ViewInspectionHistoryForPeriodicIndustry", SiteOwnerId);
+        }
     }
 }
 

@@ -331,6 +331,9 @@
                                 <asp:Button type="submit" ID="BtnSubmit" TabIndex="23" Text="Submit" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" OnClick="BtnSubmit_Click" />
                             </div>
                         </div>
+                        <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px; margin-top: 20px; ">
+                            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+                        </div>
                     </div>
                 </div>
                 <%--</ContentTemplate></asp:UpdatePanel>--%>

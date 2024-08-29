@@ -21,6 +21,7 @@ namespace CEIHaryana.Periodic_Industry
                         // Session["SiteOwnerId"] = "JVCBN5647K";
                         //ViewCart();
                         ViewCartCount();
+                        ViewInspectionHistory();
                        // GridView4.Visible = false;
                         getWorkIntimationData();
                        
@@ -615,7 +616,15 @@ namespace CEIHaryana.Periodic_Industry
             lblcartCount.Text = ds.Tables[0].Rows[0]["TotalRecordCount"].ToString();
         }
 
-            private void ViewCart()
+        private void ViewInspectionHistory()
+        {
+            string id = Session["SiteOwnerId"].ToString();
+            DataSet ds = new DataSet();
+            ds = CEI.ViewInspectionHistory(id);
+            lblHistory.Text = ds.Tables[0].Rows[0]["TotalCount"].ToString();
+        }
+
+        private void ViewCart()
         {
             string id = Session["SiteOwnerId"].ToString();
             DataSet ds = new DataSet();
@@ -635,6 +644,7 @@ namespace CEIHaryana.Periodic_Industry
                 {
                     GridView4.DataSource = ds;
                     GridView4.DataBind();
+                    Btnback1.Visible = true;
                 }
 
                 PeriodicData.Visible = false;
@@ -675,6 +685,11 @@ namespace CEIHaryana.Periodic_Industry
             GridView4.Visible = false;
             getWorkIntimationData();
             ViewCartCount();
+        }
+
+        protected void LnkHistory_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Periodic_Industry/InspectionHistoryforIndustry.aspx", false);
         }
 
 

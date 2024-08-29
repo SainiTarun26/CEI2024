@@ -23,11 +23,33 @@ namespace CEIHaryana
         {
             string Categary = ddluserCategary.SelectedItem.ToString();
             searchby = txtsearch.Text.ToString();
-            DataTable dsVoltage = new DataTable();
+            DataTable dt = new DataTable();
+            dt = CEI.GetDataByCategary(searchby, Categary);
+            if (dt.Rows.Count > 0)
+            {
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+            }
+            else
+            {
+                GridView1.DataSource = null;
+                GridView1.DataBind();
+                string script = "alert(\"No Record Found\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }            
         }
-
         protected void btnReset_Click(object sender, EventArgs e)
         {
+            ddluserCategary.SelectedIndex = 0;
+            txtsearch.Text = "";
+            txtLiencesExpiryDate.Text = "";
+            txtContact.Text = "";
+            txtEmailId.Text = "";
+            txtOTPVerify.Text = "";
+            txtsearch.ReadOnly = false;
+            ddluserCategary.Enabled = true;
+            GridView1.DataSource = null;
+            GridView1.DataBind();
 
         }
 
@@ -52,6 +74,19 @@ namespace CEIHaryana
             {
                 gstno.Visible = false;
                 pantanno.Visible = false;
+            }
+        }
+
+        protected void btnProcess_Click(object sender, EventArgs e)
+        {
+            if (CheckBox1.Checked == true)
+            {
+                txtsearch.ReadOnly = true;
+                ddluserCategary.Enabled = false;
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('You have to check the declaration first !!!')", true);
             }
         }
     }
