@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="UploadSignature.aspx.cs" Inherits="CEIHaryana.Admin.UploadSignature" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -25,7 +26,6 @@
             }
             return true;
         }
-
         //Allow Only Aplhabet, Delete and Backspace
 
         function isAlpha(keyCode) {
@@ -41,7 +41,6 @@
             return (allow.indexOf(String.fromCharCode(k)) != -1);
         }
     </script>
-
     <script type="text/javascript">
         function alertWithRedirectdata() {
             if (confirm('Intimation Created Successfully')) {
@@ -58,7 +57,6 @@
             }
         }
     </script>
-
     <style>
         .headercolor1 {
             text-align: initial !important;
@@ -108,7 +106,7 @@
         }
 
         label {
-            font-size: 13px;
+            font-size: 14px;
         }
 
         .form-control:focus {
@@ -190,8 +188,6 @@
             font-weight: 700;
         }
 
-
-
         div#row3 {
             margin-top: -20px;
         }
@@ -210,8 +206,6 @@
             height: 35px;
             width: 67px;
         }
-
-
 
         svg#search1:hover {
             height: 22px;
@@ -288,21 +282,18 @@
                         </label>
                     </div>
                 </div>
-               <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>--%>
-                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-
-                            <div>
-                                <div class="row" style="margin-bottom: 8px;">
-                                    <div class="col-12">
-                                        <h7 class="card-title fw-semibold mb-4" style="margin-top: 5%; font-size: 18px !important;">Officers Signature Upload</h7>
-                                    </div>
-                                </div>
-                                <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
-                                      <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>
+                <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server"><ContentTemplate>--%>
+                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                    <div>
+                        <div class="row" style="margin-bottom: 8px;">
+                            <div class="col-12">
+                                <h7 class="card-title fw-semibold mb-4" style="margin-top: 5%; font-size: 18px !important;">Officers Signature Upload</h7>
+                            </div>
+                        </div>
+                        <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                <ContentTemplate>
                                     <div class="row">
-                                       
                                         <div class="col-sm-6">
                                             <label>
                                                 Division Name
@@ -312,7 +303,7 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator14" Text="Please Select any division" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDivisionName" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
-                         <div class="col-sm-6">
+                                        <div class="col-sm-6">
                                             <label>
                                                 Staff
                                                <samp style="color: red">* </samp>
@@ -321,31 +312,28 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Text="Please Select StaffName" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlstaffname" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
-                                        </div>
-                        </ContentTemplate>
-                </asp:UpdatePanel>
-                                       <div class="row">
-                                        <div class="col-md-6" style="margin-top: 15px;">
-                                            <label for="formFile" class="form-label">Upload Signature<samp style="color: red">* </samp>(.jpg ,jpeg,.png)
-                                            </label>
-                                            <asp:FileUpload class="form-control"  ID="Signature" runat="server" Style="padding: 2px;"  accept=".jpg, jpeg ,.png  " />
-                                        </div>
-
                                     </div>
-
-                                </div>
-                                <div class="row" style="margin-top: 25px; margin-bottom: -15px;">
-                                    <div class="col-4" style="margin-top: auto;"></div>
-                                    <div class="col-4" style="margin-top: auto; text-align: center;">
-                                        <%--<asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" OnClientClick="return validateCheckBoxes();" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />--%>
-                                        <asp:Button type="submit" ID="BtnSubmit" TabIndex="23" Text="Submit" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" OnClick="BtnSubmit_Click" />
-                                    </div>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                            <div class="row">
+                                <div class="col-md-12" style="margin-top: 15px;">
+                                    <label for="formFile" class="form-label">
+                                        Upload Signature<samp style="color: red">* </samp>
+                                        <samp style="color: red; font-weight: 800;"><b>(Max Dimensions 300 X 110 pixel, Image size 1 MB , Image Format .jpg ,jpeg,.png only)</b></samp>
+                                    </label>
+                                    <asp:FileUpload class="form-control" ID="Signature" runat="server" Style="padding: 2px;" accept=".jpg, jpeg ,.png  " />
                                 </div>
                             </div>
                         </div>
-                    <%--</ContentTemplate>
-                </asp:UpdatePanel>--%>
-
+                        <div class="row" style="margin-top: 25px; margin-bottom: -15px;">
+                            <div class="col-4" style="margin-top: auto;"></div>
+                            <div class="col-4" style="margin-top: auto; text-align: center;">
+                                <asp:Button type="submit" ID="BtnSubmit" TabIndex="23" Text="Submit" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" OnClick="BtnSubmit_Click" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%--</ContentTemplate></asp:UpdatePanel>--%>
                 <asp:HiddenField ID="hdnId" runat="server" />
                 <asp:HiddenField ID="hdnId2" runat="server" />
                 <div>
@@ -378,7 +366,6 @@
             }
         }
     </script>
-
     <script type="text/javascript">
         function alertWithRedirect() {
             if (confirm('User Created Successfully User Id And password will be sent Via Text Mesaage.')) {
@@ -387,5 +374,4 @@
             }
         }
     </script>
-
 </asp:Content>

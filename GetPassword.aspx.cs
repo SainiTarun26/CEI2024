@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CEI_PRoject;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,6 +11,9 @@ namespace CEIHaryana
 {
     public partial class GetPassword : System.Web.UI.Page
     {
+        CEI CEI = new CEI();
+        string searchby = string.Empty;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -16,7 +21,9 @@ namespace CEIHaryana
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-
+            string Categary = ddluserCategary.SelectedItem.ToString();
+            searchby = txtsearch.Text.ToString();
+            DataTable dsVoltage = new DataTable();
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
