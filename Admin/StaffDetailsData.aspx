@@ -243,7 +243,7 @@
                                <asp:BoundField DataField="LicenceOld" HeaderText="Licence No.(OLD)">
                                     <HeaderStyle HorizontalAlign="right" Width="20%" CssClass="headercolor"/>
                                     <ItemStyle HorizontalAlign="right" Width="20%" /></asp:BoundField>--%>
-                            <asp:BoundField DataField="Licence" HeaderText="User Id">
+                            <asp:BoundField DataField="UserId" HeaderText="User Id">
                                 <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="right" Width="15%" />
                             </asp:BoundField>
@@ -270,14 +270,14 @@
                                         Text="<i class='fa fa-edit' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Reset Password">
+                            <%--<asp:TemplateField HeaderText="Reset Password">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
                                 <ItemTemplate>
                                     <asp:LinkButton runat="server" ID="LnkResetButton" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" Text="<i class='fa fa-refresh' style='color:white !important;'></i>" CssClass='greenButton btn-primary'
                                         CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" OnClientClick="$('#updatePasswordModal').modal('show'); return false;" />
                                 </ItemTemplate>
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -290,7 +290,7 @@
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
                     <!-- Bootstrap Modal -->
-                    <div class="modal fade" id="updatePasswordModal" tabindex="-1" role="dialog" aria-labelledby="updatePasswordModalLabel" aria-hidden="true">
+                 <%--   <div class="modal fade" id="updatePasswordModal" tabindex="-1" role="dialog" aria-labelledby="updatePasswordModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -307,8 +307,7 @@
                                                 User Id<samp style="color: red"> * </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtUserId" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtQualifications" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Other Qualification</asp:RequiredFieldValidator>--%>
-                                        </div>
+                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12" id="Div1" runat="server">
@@ -323,7 +322,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
         </div>

@@ -112,9 +112,9 @@
                             </div>
                         </div>
                         <div class="col-md-8" style="text-align: end;">
-                            <b><span style="color: red;">*Note -</span>
+                          <%--  <b><span style="color: red;">*Note -</span>
                                  <span>To take action please click on Inspection Id.</span>
-                            </b>
+                            </b>--%>
                         </div>
                     </div>
                     <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%"

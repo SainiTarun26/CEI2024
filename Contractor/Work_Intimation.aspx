@@ -1283,7 +1283,7 @@
 
         if (form) {
             form.onsubmit = function () {
-                return validateTANNumber();
+                //return validateTANNumber();
             };
         }
     });

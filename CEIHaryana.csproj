@@ -1784,6 +1784,7 @@
     <Content Include="DataTableJs\bootstrap.min.js" />
     <Content Include="DataTableJs\jquery.js" />
     <Content Include="DataTableJs\jqueryDataTable.js" />
+    <Content Include="GetPassword.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Image\Image\ImageToDelete-removebg-preview.png" />
     <Content Include="Image\Image\ImageToDelete.jpeg" />
@@ -2335,6 +2336,13 @@
       <DependentUpon>Work_Intimation.aspx</DependentUpon>
     </Compile>
     <Compile Include="DBTask.cs" />
+    <Compile Include="GetPassword.aspx.cs">
+      <DependentUpon>GetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetPassword.aspx.designer.cs">
+      <DependentUpon>GetPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

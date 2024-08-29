@@ -54,6 +54,7 @@ overflow-x: hidden;
             padding: 30px !important;
             border-radius: 5px !important;
             box-shadow: 0px 15px 20px rgba(0,0,0,0.1) !important;
+            padding-bottom: 10px !important;
         }
 
             .wrapper .title-text {
@@ -580,6 +581,8 @@ overflow-x: hidden;
                                             <%--<div class="signup-link">Don't have an Account?<a href="#" class="text-primary">Create</a></div>--%>
                                             <%--                                            <div class="signup-link">Don't have an Account?<a href="/UserPages/Registration.aspx" class="text-primary">Create</a></div>--%>
                                             <div class="signup-link"><a href="UserPages/SiteOwnerRegistration.aspx" class="text-primary">Register as Site Owner</a></div>
+                                           <div class="signup-link"><a href="GetPassword.aspx" class="text-primary">Get user Id & Password</a></div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -596,9 +599,9 @@ overflow-x: hidden;
             </div>
             <div class="marquee-wrapper">
                 <div class="marquee-text">
-                    For Competency Certificate Holder/Supervisor : Please email your valid or latest Electrical Competency Certificate to  ceihelpdesk2024@gmail.com from your personal email.
+                    To get login Id & Password for Competency Certificate Holder/Supervisor : Please email your valid or latest Electrical Competency Certificate to  ceihelpdesk2024@gmail.com from your personal email.
                     <br />
-                    For Contractor : Please email your valid or latest Electrical Contractor license to ceihelpdesk2024@gmail.com from your firm/company email.   
+                   To get login Id & Password for Contractor : Please email your valid or latest Electrical Contractor license to ceihelpdesk2024@gmail.com from your firm/company email.   
                 </div>
 
             </div>
