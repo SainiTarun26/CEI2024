@@ -2,6 +2,8 @@
 using System;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
+using System.Web;
+using System.Web.Helpers;
 
 namespace CEIHaryana
 {
@@ -408,6 +410,20 @@ namespace CEIHaryana
             catch (Exception ex)
             {
             }
+        }
+
+        protected void BtnForgetPassword_Click(object sender, EventArgs e)
+        {
+            //string storedOtp = Session["ResetOTP"] as string;
+            //string storedemailid = Session["ResetOTPEmail"] as string;
+            //if (string.IsNullOrEmpty(storedOtp))
+            //{
+            //    string email = "makaslam786@gmail.com";
+            //    Session["ResetOTP"] = cei.ForgetResetPasswordOtpEmail(email);
+            //    Session["ResetOTPEmail"] = email;
+            //}
+
+            Response.Redirect("/ForgotPassword.aspx", false);
         }
     }
 }

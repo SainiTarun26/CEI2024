@@ -296,7 +296,7 @@ namespace CEIHaryana.SiteOwnerPages
             cell.Text = "Sub Total";
             cell.Font.Bold = true;
             cell.HorizontalAlign = HorizontalAlign.Left;
-            cell.ColumnSpan = 3;
+            cell.ColumnSpan = 2;
             cell.CssClass = "SubTotalRowStyle";
             row.Cells.Add(cell);
 

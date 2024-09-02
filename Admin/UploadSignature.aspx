@@ -177,6 +177,7 @@
             background-color: #9292cc;
         }
 
+
         th {
             background: #9292cc;
         }
@@ -225,9 +226,16 @@
             width: 28% !important;
         }
 
+
         th {
             width: 1%;
         }
+
+
+            th.headersizeSignature {
+                width: 40% !important;
+            }
+
 
         .input-box {
             display: flex;
@@ -331,8 +339,48 @@
                                 <asp:Button type="submit" ID="BtnSubmit" TabIndex="23" Text="Submit" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" OnClick="BtnSubmit_Click" />
                             </div>
                         </div>
-                        <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px; margin-top: 20px; ">
-                            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+                        <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px; margin-top: 20px;">
+                            <asp:GridView ID="gvImages" runat="server" AutoGenerateColumns="false" OnRowCommand="gvImages_RowCommand" OnRowDataBound="gvImages_OnRowDataBound">
+                                <Columns>
+
+                                    <asp:BoundField DataField="DivisionName" HeaderText="DivisionName">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+
+                                    <asp:BoundField DataField="Staff" HeaderText="Staff">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="StaffUserId" HeaderText="StaffUserId">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+
+                                    <asp:BoundField DataField="Designation" HeaderText="Designation">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+
+
+                                    <asp:TemplateField HeaderText="Signature" HeaderStyle-CssClass="headersizeSignature">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblSignatureStatus" runat="server" Text="Not Uploaded" Visible="false"></asp:Label>
+                                            <asp:Image ID="ImageUrl" runat="server" Visible="false" />
+                                           
+                                        </ItemTemplate>
+                                        <HeaderStyle HorizontalAlign="center" Width="40%" CssClass="headercolor headersizeSignature" />
+                                        <ItemStyle HorizontalAlign="center" Width="40%" />
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Delete Signature">
+                                        <ItemTemplate>
+                                            <asp:ImageButton ID="btnDelete" runat="server" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png"  CommandArgument=' <%#Eval("Id") %> ' CommandName="DeleteRow" Style="display: block; margin: 0 auto; height : 17px; width:15px;"  />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                </Columns>
+                            </asp:GridView>
                         </div>
                     </div>
                 </div>
@@ -346,6 +394,9 @@
     </div>
     <footer class="footer">
     </footer>
+
+
+
     <script src="/Assets/js/js/vendor.bundle.base.js"></script>
     <script src="/Assets/js/chart.js/Chart.min.js"></script>
     <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>
@@ -376,5 +427,6 @@
             } else {
             }
         }
+
     </script>
 </asp:Content>

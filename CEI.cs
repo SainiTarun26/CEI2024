@@ -3856,9 +3856,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Get_StaffName", DivisionName);
         }
-        public DataSet UploadSignature(string DivisionName, string Staff, byte[] Signature)
+        public DataSet UploadSignature(string DivisionName, string Staff, byte[] Signature, string fileExtensionFormatpara)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Upload_Signature", DivisionName, Staff, Signature);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Upload_Signature", DivisionName, Staff, Signature, fileExtensionFormatpara);
         }
         public DataSet GetReturnInspectionForContractor(string ContractorLogin)
         {
@@ -5470,6 +5470,41 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         public DataTable SiteOwnerInspectionDataforPeriodicIndustry(string SiteOwnerId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerInspectionHistoryForPeriodic_Industry", SiteOwnerId);
+        }
+        public DataSet ToRemoveUploadededSingature(int Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_RemoveUploadededSingature", Id);
+        }
+        public DataSet AuthenticateResetUser(string UserId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AuthenticateResetUser", UserId);
+        }
+
+        public DataSet UserResetPassword(string UserId, string Password)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ResetUserPassword", UserId, Password);
+        }
+        public string ForgetResetPasswordOtpByEmail(string Email)
+        {
+            //string mobilenumber = Session["Contact"].ToString();
+            Random random = new Random();
+            int otpInt = random.Next(100000, 999999);
+
+            string otp = otpInt.ToString("D6");
+            //Session["OTP"] = otp;
+
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("haryanacei@gmail.com");
+            mailMessage.To.Add(Email); mailMessage.Subject = "OTP For Reset Password";
+            string body = $"Dear Customer,\n\n" + otp + " is the OTP for Resetting Your Password, HRY.OTPs are SECRET.DO NOT share OTP with anyone.Thank you for choosing our services. If you have any questions or need further assistance, please feel free to contact our support team.\n\n Best regards,\n\n[CEI Haryana]";
+            mailMessage.Body = body;
+
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.Port = 587;
+            smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
+            smtpClient.EnableSsl = true;
+            smtpClient.Send(mailMessage);
+            return otp;
         }
     }
 }
