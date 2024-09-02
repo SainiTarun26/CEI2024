@@ -342,15 +342,10 @@
                                 <hr style="margin-top: 0px !important; margin-bottom: 15px;" />
                                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                     <div class="row">
-                                       
-
                                         <div class="col-md-4">
-
                                             <label>
                                                 User Category<samp style="color: red">* </samp>
                                             </label>
-                                             <asp:UpdatePanel ID="updatepanel1" runat="server">
-                                            <ContentTemplate>
                                             <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" OnSelectedIndexChanged="ddluserCategary_SelectedIndexChanged" Style="width: 100% !important;" ID="ddluserCategary" runat="server">
                                                 <asp:ListItem Text="--select--" Value="0" />
                                                 <asp:ListItem Text="Contractor" Value="1"></asp:ListItem>
@@ -359,10 +354,7 @@
                                                 <asp:ListItem Text="Wireman" Value="4"></asp:ListItem>
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select User Category" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddluserCategary" runat="server" InitialValue="0" Display="Dynamic" SetFocusOnError="true" ValidationGroup="SearchSubmit" ForeColor="Red" />
-                                      </ContentTemplate>
-                                        </asp:UpdatePanel>
-                                                </div>
-                                                   
+                                        </div>
                                         <div class="col-md-4">
                                             <label id="gstno" runat="server">GSTN No.<samp style="color: red">* </samp></label>
                                             <label id="pantanno" runat="server">PAN/TAN No.<samp style="color: red">* </samp></label>
@@ -375,7 +367,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <asp:GridView ID="GridView1" class="table-responsive table table-striped table-hover" AutoGenerateColumns="true" runat="server"></asp:GridView>
+                                        <asp:GridView ID="GridView1" runat="server"></asp:GridView>
                                     </div>
                                 </div>
                                 <div class="row" style="margin-bottom: 10px;">
@@ -386,8 +378,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12" style="text-align: center;">
-                                        <asp:Button  ID="btnProcess" Text="Proceed" runat="server" OnClick="btnProcess_Click" class="btn btn-primary" Style="border-radius: 10px; font-size: 15px; border-radius: 10px; padding-top: 11px; padding-bottom: 10px; margin-top: 10px; margin-bottom: 20px;"
-                                             />
+                                        <asp:Button  ID="btnProcess" Text="Proceed" runat="server" class="btn btn-primary" Style="border-radius: 10px; font-size: 15px; border-radius: 10px; padding-top: 11px; padding-bottom: 10px; margin-top: 10px; margin-bottom: 20px;"
+                                            ValidationGroup="Submit" />
                                     </div>
                                 </div>
                                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">

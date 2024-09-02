@@ -834,7 +834,7 @@
                             <asp:Label ID="LblViewHistory" runat="server" Text="(View  for Return App., Approved or Rejected Application)"></asp:Label>
                         </div>
                         </div>--%>
-                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                   <%-- <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                         <ContentTemplate>
                             <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView4" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false"
                                 BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView4_RowCommand">
@@ -885,14 +885,14 @@
                             </asp:GridView>
 
                         </ContentTemplate>
-                    </asp:UpdatePanel>
+                    </asp:UpdatePanel>--%>
 
-                    <div class="row">
+                   <%-- <div class="row">
                         <div class="col-md-12">
                             <asp:Button type="submit" ID="Btnback1" TabIndex="23" Visible="false" ValidationGroup="Cart" Text="Back" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" OnClick="Btnback1_Click" />
 
                         </div>
-                    </div>
+                    </div>--%>
                     <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-12">

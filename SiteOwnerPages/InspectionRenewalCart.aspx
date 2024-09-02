@@ -238,6 +238,7 @@
                 <div class="row">
                     <div class="col-12" style="text-align: center;">
                         <h7 class="card-title fw-semibold mb-4" id="maincard" style="text-transform: uppercase;">Inspection Renewal Cart</h7>
+                       
                     </div>
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -323,7 +324,9 @@
                                     </asp:TemplateField>                                    
                                 </Columns>
                             </asp:GridView>
+                          
                         </div>
+
                         <div class="row" style="margin-top: 25px; margin-bottom: -15px;">
                             <div class="col-4" style="margin-top: auto;">
                                 <asp:Button type="submit" ID="BtnSubmit" Text="Process" runat="server" Visible="false" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px; height: 40px;" OnClick="BtnSubmit_Click" ValidationGroup="Submit" />

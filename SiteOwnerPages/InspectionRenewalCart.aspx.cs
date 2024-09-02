@@ -90,15 +90,17 @@ namespace CEIHaryana.SiteOwnerPages
         }
         private void BindGrid()
         {
-            string[] str = txtAddressFilter.Text.Split('-');
+            string[] str = txtAddressFilter.Text.Split('|');
             string address = str[0].Trim();
             string CartID = str[1].Trim();
+           
             DataSet ds = new DataSet();
             ds = CEI.ShowDataToCart(address, CartID);
             if (ds.Tables.Count > 0)
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
+               
             }
             else
             {
@@ -354,7 +356,7 @@ namespace CEIHaryana.SiteOwnerPages
                     string StaffAssigned = string.Empty;
 
                     //string InspectionId = PrevInspectionId;
-                    string[] str = txtAddressFilter.Text.Split('-');
+                    string[] str = txtAddressFilter.Text.Split('|');
                     string address = str[0].Trim();
                     string CartID = str[1].Trim();
 

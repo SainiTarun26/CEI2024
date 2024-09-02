@@ -4829,7 +4829,7 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
 
                 //logDetails = new IndustryApiLogDetails
                 //{
-                //    Url = "https://staging.investharyana.in/api/getrefresh-token",
+                //    Url = "https://investharyana.in/api/getrefresh-token",
                 //    Method = request.Method,
                 //    RequestHeaders = requestHeaders,
                 //    ContentType = request.ContentType,
@@ -5451,23 +5451,17 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewCartForSupervisor", InspectionId);
         }
-
-        public DataTable GetDataByCategary(string searchby, string Categary)
+        public DataSet GetSuggestions()
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataForFetchingPassword", searchby, Categary);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSuggestions");
         }
-
-        public DataSet GetTestReportDataForIndustry(string Id)
+        public DataSet InsertSuggestions(string Suggestions)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReportDataForIndustry", Id);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SaveSuggestions", Suggestions);
         }
-        public DataSet sp_InsertRemarksForContractorINPeriodic_Industry(string ID, string RemarkForContractor)
+        public DataSet ViewCartDataIndustry(string SiteOwnerId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertRemarksForContractorINPeriodic_Industry", ID, RemarkForContractor);
-        }
-        public DataTable SiteOwnerInspectionDataforPeriodicIndustry(string SiteOwnerId)
-        {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerInspectionHistoryForPeriodic_Industry", SiteOwnerId);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAdressforViewCart_Industry", SiteOwnerId);
         }
         public DataSet ViewInspectionHistory(string SiteOwnerId)
         {

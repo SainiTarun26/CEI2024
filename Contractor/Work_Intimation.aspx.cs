@@ -437,7 +437,7 @@ namespace CEIHaryana.Contractor
             if (Session["File"].ToString() != "" && Session["File"].ToString() != null)
             {
                 string fileName = Session["File"].ToString();
-                string filePath = "https://uat.ceiharyana.com" + fileName;
+                string filePath = "https://ceiharyana.com" + fileName;
 
                 //if (System.IO.File.Exists(filePath))
                 //{                

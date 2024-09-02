@@ -4,9 +4,9 @@
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-   
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
@@ -219,9 +219,10 @@
         .ReturnedRowColor {
             background-color: #f9c7c7 !important;
         }
+
         input#ContentPlaceHolder1_customFile {
-    padding: 0px !important;
-}
+            padding: 0px !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -256,23 +257,23 @@
                             Type of Inspection
                                         <samp style="color: red">* </samp>
                         </label>
-                        <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6"  onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-4">
                         <label>
                             Type of Applicant<samp style="color: red"> * </samp>
                         </label>
-                        <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" MaxLength="6"  onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" MaxLength="6" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-4">
                         <label>
                             Type of Installation<samp style="color: red"> * </samp>
                         </label>
-                        <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" MaxLength="6"  onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" MaxLength="6" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-4" runat="server">
                         <label for="Pin">Voltage Level</label>
-                        <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" MaxLength="6"  onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" MaxLength="6" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-4" runat="server">
                         <label for="Pin">Date</label>
@@ -389,15 +390,40 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label>
-                                Saction Voltage(Only in KV)<samp style="color: red"> * </samp>
+                                Sanction Load(in KV)<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtSaction" MaxLength="6"  onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                           <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtSaction" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Sanction Voltage</asp:RequiredFieldValidator>--%>
+                            <asp:TextBox class="form-control" ID="txtSaction" MaxLength="6" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtSaction" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Sanction Voltage</asp:RequiredFieldValidator>--%>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="customFile">Demand Notice</label>
                             <input type="file" class="form-control" id="customFile" runat="server" />
-                          <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="customFile" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please upload Demand Notice Document</asp:RequiredFieldValidator>--%>
+                            <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="customFile" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please upload Demand Notice Document</asp:RequiredFieldValidator>--%>
+                        </div>
+                    </div>
+                </div>
+                <div id="FeesDetails" runat="server" visible="false">
+                    <h7 class="card-title fw-semibold mb-4">Fees Details</h7>
+
+                    <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                        <h7 class="card-title fw-semibold mb-4" style="font-size: 30px; color: brown">
+                            Note : Before proceeding to document checklist kindly pay your requisite fees first and then upload documents along with the treasury challan (PDF).
+
+                        </h7>
+                        <asp:GridView class="table-responsive table table-hover table-striped" CssClass="grid1" ID="GridViewPayment" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
+                            AutoGenerateColumns="true">
+
+                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                            <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" CssClass="headercolor leftalign" />
+                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                            <RowStyle ForeColor="#000066" />
+                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                        </asp:GridView>
+                        <div id="TotalPayment" runat="server" visible="false" class="row" style="margin-bottom: -30px; margin-top: 30px;">
+
+                            <div class="row" style="margin-left: 0%; margin-top: 6px;">
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -456,7 +482,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="FeesDetails" runat="server" visible="false">
+                <%-- <div id="FeesDetails" runat="server" visible="false">
                     <h7 class="card-title fw-semibold mb-4">Fees Details</h7>
 
                     <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -471,33 +497,13 @@
                             <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
                         </asp:GridView>
                         <div id="TotalPayment" runat="server" visible="false" class="row" style="margin-bottom: -30px; margin-top: 30px;">
-                            <%-- <div class="col-6">
-                        <div class="form-group row">
-                            <label for="search" class="col-sm-3 col-form-label">Total payment:</label>
-                            <div class="col-sm-8" style="margin-left: -35px;">
-                                <div class="col-sm-8">
-                                    <asp:TextBox ID="txtPayment" runat="server" ReadOnly="true" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="margin-top: 4px"></asp:TextBox><br />
-                                </div>
-                            </div>
-                        </div>
-                    </div>--%>
+                            
                             <div class="row" style="margin-left: 0%; margin-top: 6px;">
                             </div>
-                            <%--<div class="col-6" style="margin-bottom: auto;">
-                                 Paymant Mode
-               <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
-                   <asp:ListItem Text="Online" Value="0" Enabled="false"></asp:ListItem>
-                   <asp:ListItem Text="Offline" Value="1" Selected="True"></asp:ListItem>
-               </asp:RadioButtonList>
-                            <asp:RequiredFieldValidator ID="rfvRbList" runat="server" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please select a value" Display="Dynamic" />
-                        </div>
-                        <asp:Button type="submit" ID="btnOnline" ValidationGroup="Submit"  disabled="true" Text="Online Payment" runat="server" class="btn btn-primary mr-2" />                   
-                <asp:Button type="submit" ID="ChallanUpload"  Text="Offline" runat="server" class="btn btn-primary mr-2" onclick="ChallanUpload_Click" />
-                           <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtInspectionDetails" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>     
-                        </div>--%>
+                            
                         </div>
                     </div>
-                </div>
+                </div>--%>
 
                 <div id="PaymentDetails" runat="server" visible="false">
                     <h7 class="card-title fw-semibold mb-4">Payment Details</h7>
@@ -518,7 +524,7 @@
                                     Transaction Id<samp style="color: red"> * </samp>
                                 </label>
                                 <asp:TextBox ID="txttransactionId" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
-                           <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Id</asp:RequiredFieldValidator>--%>
+                                <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Id</asp:RequiredFieldValidator>--%>
                             </div>
                         </div>
                         <div class="row" style="margin-top: -40px !important;">
@@ -527,7 +533,7 @@
                                     Transaction Date<samp style="color: red"> * </samp>
                                 </label>
                                 <asp:TextBox ID="txttransactionDate" onfocus="disableFutureDates()" min='0000-01-01' onkeydown="return false;" max='9999-01-01' Type="Date" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
-                        <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Date</asp:RequiredFieldValidator>--%>
+                                <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Date</asp:RequiredFieldValidator>--%>
                             </div>
                             <div class="col-6" style="margin-top: auto; margin-bottom: auto;">
                                 Payment Mode: &nbsp;&nbsp;
@@ -545,7 +551,7 @@
                                 <label for="Remarks">
                                     Inspection Remarks<samp style="color: red"> * </samp>
                                 </label>
-                                <asp:TextBox class="form-control" ID="txtInspectionRemarks" runat="server"  autocomplete="off" MaxLength="500" Style="margin-left: 18px" TabIndex="3"></asp:TextBox>
+                                <asp:TextBox class="form-control" ID="txtInspectionRemarks" runat="server" autocomplete="off" MaxLength="500" Style="margin-left: 18px" TabIndex="3"></asp:TextBox>
                                 <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtInspectionRemarks" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Inspection Remarks</asp:RequiredFieldValidator>--%>
                             </div>
                         </div>
@@ -567,7 +573,7 @@
                         <div class="col-4"></div>
                         <div class="col-4" style="text-align: center;">
                             <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" OnClientClick="return validateFileUpload();" class="btn btn-primary mr-2"
-                                OnClick="btnSubmit_Click"  />
+                                OnClick="btnSubmit_Click" />
                             <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" Visible="false" class="btn btn-primary mr-2" />
                             <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
                         </div>
@@ -612,113 +618,113 @@
         }
     </script>
     <script type="text/javascript">
-                var sactionElement;
+        var sactionElement;
         var fileInputElement;
         window.onload = function () {
-             sactionElement = document.getElementById('<%= txtSaction.ClientID %>');
-             fileInputElement = document.getElementById('<%= customFile.ClientID %>');
+            sactionElement = document.getElementById('<%= txtSaction.ClientID %>');
+            fileInputElement = document.getElementById('<%= customFile.ClientID %>');
         };
 
         let isSubmitting = false;
 
         function validateFileUpload() {
-           // debugger;
+            // debugger;
 
             var transactionId = document.getElementById('<%= txttransactionId.ClientID %>').value.trim();
             var transactionDate = document.getElementById('<%= txttransactionDate.ClientID %>').value.trim();
 
             var inspectionremarksclient = document.getElementById('<%= txtInspectionRemarks.ClientID %>').value.trim();
 
-        if (transactionId === '') {
-            alert('Please Enter Transaction ID.');
-            return false;
-        }
+            if (transactionId === '') {
+                alert('Please Enter Transaction ID.');
+                return false;
+            }
 
-        if (transactionDate === '') {
-            alert('Please Enter Transaction Date.');
-            return false;
+            if (transactionDate === '') {
+                alert('Please Enter Transaction Date.');
+                return false;
             }
 
             if (inspectionremarksclient === '') {
                 alert('Please Enter Inspection Remarks');
                 return false;
             }
-                if (sactionElement) {
-            var Saction = sactionElement.value.trim();
-            if (fileInputElement) {
-                var fileName = fileInputElement.value.trim();
+            if (sactionElement) {
+                var Saction = sactionElement.value.trim();
+                if (fileInputElement) {
+                    var fileName = fileInputElement.value.trim();
 
-                if (Saction === '') {
-                    alert('Please Enter Saction Voltage.');
-                    return false;
-                }
-
-                if (fileName === '') {
-                    alert('Please Upload demand notice document.');
-                    return false;
-                }
-            }
-        }
-
-
-
-        //For First Inspection
-        if ($('#<%= InspectionIdClientSideCheckedRow.ClientID %>').val() == '0') {
-            // Check if any file upload control is empty
-            var fileUploads = $("input[type='file']");
-            for (var i = 0; i < fileUploads.length; i++) {
-                var reqValue = $(fileUploads[i]).siblings("#ReqClient").attr("data-req");
-
-                // Check if the hidden field value indicates that file upload is required
-                if (reqValue === "1" && fileUploads[i].value === "") {
-                    var documentName = $(fileUploads[i]).siblings("#DocumentName").attr("data-req");
-                    alert("Please upload a file for the document " + documentName);
-                    return false;
-                }
-
-                // Check if a file is selected
-                if (fileUploads[i].files.length > 0) {
-                    // Check file type
-                    var fileType = fileUploads[i].files[0].type;
-                    if (fileType !== 'application/pdf') {
-                        alert("Please Upload Pdf Files Only");
+                    if (Saction === '') {
+                        alert('Please Enter Saction Voltage.');
                         return false;
                     }
 
-                    // Check file size (in bytes)
-                    var fileSize = fileUploads[i].files[0].size;
-                    if (fileSize > 1048576) { // 1 MB = 1048576 bytes
-                        alert("Please Upload Pdf Files Less Than 1 Mb Only");
+                    if (fileName === '') {
+                        alert('Please Upload demand notice document.');
                         return false;
                     }
                 }
             }
-        }
-        //For Second And Third Inspection
-        if ($('#<%= InspectionIdClientSideCheckedRow.ClientID %>').val() != '0') {
-            // Check if any file upload control is empty
-            var fileUploads = $("input[type='file']");
-            for (var i = 0; i < fileUploads.length; i++) {
 
-                // Check if a file is selected
-                if (fileUploads[i].files.length > 0) {
-                    // Check file type
-                    var fileType = fileUploads[i].files[0].type;
-                    if (fileType !== 'application/pdf') {
-                        alert("Please Upload Pdf Files Only");
+
+
+            //For First Inspection
+            if ($('#<%= InspectionIdClientSideCheckedRow.ClientID %>').val() == '0') {
+                // Check if any file upload control is empty
+                var fileUploads = $("input[type='file']");
+                for (var i = 0; i < fileUploads.length; i++) {
+                    var reqValue = $(fileUploads[i]).siblings("#ReqClient").attr("data-req");
+
+                    // Check if the hidden field value indicates that file upload is required
+                    if (reqValue === "1" && fileUploads[i].value === "") {
+                        var documentName = $(fileUploads[i]).siblings("#DocumentName").attr("data-req");
+                        alert("Please upload a file for the document " + documentName);
                         return false;
                     }
 
-                    // Check file size (in bytes)
-                    var fileSize = fileUploads[i].files[0].size;
-                    if (fileSize > 1048576) { // 1 MB = 1048576 bytes
-                        alert("Please Upload Pdf Files Less Than 1 Mb Only");
-                        return false;
+                    // Check if a file is selected
+                    if (fileUploads[i].files.length > 0) {
+                        // Check file type
+                        var fileType = fileUploads[i].files[0].type;
+                        if (fileType !== 'application/pdf') {
+                            alert("Please Upload Pdf Files Only");
+                            return false;
+                        }
+
+                        // Check file size (in bytes)
+                        var fileSize = fileUploads[i].files[0].size;
+                        if (fileSize > 1048576) { // 1 MB = 1048576 bytes
+                            alert("Please Upload Pdf Files Less Than 1 Mb Only");
+                            return false;
+                        }
                     }
                 }
             }
-        }
-        if ($('#<%= InspectionIdCountClientSideCheckedRow.ClientID %>').val() == '2') {
+            //For Second And Third Inspection
+            if ($('#<%= InspectionIdClientSideCheckedRow.ClientID %>').val() != '0') {
+                // Check if any file upload control is empty
+                var fileUploads = $("input[type='file']");
+                for (var i = 0; i < fileUploads.length; i++) {
+
+                    // Check if a file is selected
+                    if (fileUploads[i].files.length > 0) {
+                        // Check file type
+                        var fileType = fileUploads[i].files[0].type;
+                        if (fileType !== 'application/pdf') {
+                            alert("Please Upload Pdf Files Only");
+                            return false;
+                        }
+
+                        // Check file size (in bytes)
+                        var fileSize = fileUploads[i].files[0].size;
+                        if (fileSize > 1048576) { // 1 MB = 1048576 bytes
+                            alert("Please Upload Pdf Files Less Than 1 Mb Only");
+                            return false;
+                        }
+                    }
+                }
+            }
+            if ($('#<%= InspectionIdCountClientSideCheckedRow.ClientID %>').val() == '2') {
                 // Ask for confirmation
                 if (!confirm("Please Fill Details Carefully Otherwise This Time Request Will Automatically Be Rejected If The Officer Returns It")) {
                     return false; // 
@@ -748,7 +754,7 @@
                     var idres = row.find('.inspection-id').val();
                     var idcountres = row.find('.inspection-count').val();
                     $('#<%= InspectionIdClientSideCheckedRow.ClientID %>').val(idres);
-                $('#<%= InspectionIdCountClientSideCheckedRow.ClientID %>').val(idcountres);
+                    $('#<%= InspectionIdCountClientSideCheckedRow.ClientID %>').val(idcountres);
                     console.log("InspectionId of the checked row:", idres);
                 }
             });

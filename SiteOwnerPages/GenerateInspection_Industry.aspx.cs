@@ -658,18 +658,18 @@ namespace CEIHaryana.SiteOwnerPages
 
 
                     //string actiontype = para_InspectID == 0 ? "Submit" : "ReSubmit";
-                    string actiontype =  "Submit" ;
+                    string actiontype = "Submit";
 
                     Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(SplitResultPartsArray[0]), actiontype, Session["projectid_Temp"].ToString(), Session["Serviceid_Temp"].ToString(), Session["SiteOwnerId_Industry"].ToString());
 
                     if (ApiPostformatresult.PremisesType == "Industry")
                     {
-                       // string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                        // string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
                         string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
-                       // string accessToken = "dfsfdsfsfsdf";
+                        // string accessToken = "dfsfdsfsfsdf";
 
                         logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                      "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                            "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
                                       new Industry_Inspection_StageWise_JsonDataFormat_Model
                                       {
                                           actionTaken = ApiPostformatresult.ActionTaken,
@@ -714,7 +714,7 @@ namespace CEIHaryana.SiteOwnerPages
                             ProjectId = ApiPostformatresult.ProjectId,
                             ServiceId = ApiPostformatresult.ServiceId,
                         }
-                        
+
                     );
 
                     }
@@ -756,7 +756,7 @@ namespace CEIHaryana.SiteOwnerPages
                     string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
                     // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                     // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
-                 //   ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
+                    //   ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
                 }
                 catch (IndustryApiException ex)
                 {
@@ -785,11 +785,11 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     );
 
-                  //   string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
+                    //   string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
 
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.ResponseBody.ToString() + "')", true);
-                   // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
+                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
                 }
                 catch (Exception ex)
                 {
@@ -816,12 +816,12 @@ namespace CEIHaryana.SiteOwnerPages
 
                         //Commented below to raise errors as per backend
                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please fill All details carefully')", true);
-                          ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
                     }
                 }
                 finally
                 {
-                    if(checksuccessmessage == 1)
+                    if (checksuccessmessage == 1)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                     }
@@ -921,7 +921,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     //ID = Session["InspectionId_Industry"].ToString();
 
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     // fileName = "https://localhost:44393/" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -1093,7 +1093,7 @@ namespace CEIHaryana.SiteOwnerPages
         //        projectid = "projectid",
         //        serviceid = "serviceid"
         //    };
-        //    string url = "https://staging.investharyana.in/api/project-service-logs-external_UHBVN";
+        //  string url = "https://staging.investharyana.in/api/project-service-logs-external_UHBVN";
         //    CEI.Post_Industry_Inspection_StageWise_JsonData(url, inputObject);
 
         //}

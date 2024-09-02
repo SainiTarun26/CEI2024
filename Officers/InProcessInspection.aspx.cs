@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Web;
 using System.Web.UI;
@@ -37,10 +38,12 @@ namespace CEIHaryana.Officers
                     {
                         lineNumber = 0;
                         GetData();
+                        BindSuggestions();
 
                         if (Type == "New")
                         {
                             GetTestReportData();
+                            
                         }
                         else if (Type == "Periodic")
                         {
@@ -58,6 +61,24 @@ namespace CEIHaryana.Officers
             }
         }
 
+        private void BindSuggestions()
+        {
+            try
+            {
+                DataSet dsSuggestion = new DataSet();
+                dsSuggestion = CEI.GetSuggestions();
+                ddlSuggestion.DataSource = dsSuggestion;
+                ddlSuggestion.DataTextField = "Suggestions";
+                ddlSuggestion.DataValueField = "Suggestions";
+                ddlSuggestion.DataBind();
+                ddlSuggestion.Items.Insert(0, new ListItem("Select", "0"));
+                dsSuggestion.Clear();
+            }
+            catch
+            {
+
+            }
+        }
         private void GetTestReportDataIfPeriodic()
         {
             try
@@ -680,6 +701,14 @@ namespace CEIHaryana.Officers
             }
             catch (Exception ex) { }
         }
+
+        protected void btnSugg_Click(object sender, EventArgs e)
+        {
+            CEI.InsertSuggestions(txtSugg.Text.Trim());
+            txtSugg.Text = "";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Suggestion Submitted Successfully.');", true);
+        }
+
         protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
         {
             Rejection.Visible = false;
@@ -694,6 +723,7 @@ namespace CEIHaryana.Officers
             {
                 btnPreview.Visible = true;
                 ddlSuggestions.Visible = true;
+              
                 Suggestion.Visible = true;
             }
         }

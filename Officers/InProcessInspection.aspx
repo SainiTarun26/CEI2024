@@ -16,6 +16,19 @@
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<!-- Bootstrap JavaScript Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
     <style>
         .multiselect {
             width: 100%;
@@ -172,7 +185,7 @@
 
         select#ContentPlaceHolder1_ddlSuggestion {
             display: block;
-            width: 100%;
+            width: 90%;
             padding-left: 12px;
             font-size: 1rem;
             font-weight: 400;
@@ -207,6 +220,29 @@
             transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
             height: 100px !important;
         }
+  .modal1 {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%;
+}
+.modal-dialog {
+    max-width: 800px !important;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -286,7 +322,7 @@
                         <label>Supervisor Email</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                     <%--<div class="col-md-4" id="Inspection_Type" runat="server" visible="false">
+                    <%--<div class="col-md-4" id="Inspection_Type" runat="server" visible="false">
                         <label>Inspection Type</label>
                         <asp:TextBox class="form-control" ID="TxtInspection" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>--%>
@@ -401,47 +437,47 @@
 
                     </div>
                 </div>
-                 
-            </div>
-                            <div class="card" style="margin: -11px;margin-top:15px; padding: 11px; margin-bottom: 20px;" id="DivTestReports" runat="server" visible="false">
-    <div class="col-12" style="padding: 0px;">
-        <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false">
-            <HeaderStyle BackColor="#B7E2F0" />
-            <Columns>
-                <asp:TemplateField HeaderText="SNo">
-                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                    <ItemStyle Width="5%" />
-                    <ItemTemplate>
-                        <%# Container.DataItemIndex + 1 %>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:BoundField DataField="InstallationType" HeaderText="InstallationType">
-                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                </asp:BoundField>
-                <asp:BoundField DataField="TestReportId" HeaderText="TestReportId" Visible="false">
-                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                </asp:BoundField>
-                <asp:TemplateField HeaderText="Id" Visible="False">
-                    <ItemTemplate>
-                        <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
-                        <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>
-                        <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("NewInspectionId") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                    <ItemTemplate>
-                        <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportId") %>' />
-                    </ItemTemplate>
-                    <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
-                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
 
-    </div>
-</div>
+            </div>
+            <div class="card" style="margin: -11px; margin-top: 15px; padding: 11px; margin-bottom: 20px;" id="DivTestReports" runat="server" visible="false">
+                <div class="col-12" style="padding: 0px;">
+                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false">
+                        <HeaderStyle BackColor="#B7E2F0" />
+                        <Columns>
+                            <asp:TemplateField HeaderText="SNo">
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                <ItemStyle Width="5%" />
+                                <ItemTemplate>
+                                    <%# Container.DataItemIndex + 1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="InstallationType" HeaderText="InstallationType">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="TestReportId" HeaderText="TestReportId" Visible="false">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="Id" Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
+                                    <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>
+                                    <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("NewInspectionId") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportId") %>' />
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+
+                </div>
+            </div>
             <%-- <div class="row" style="margin-bottom: 30px;">
                 <div class="col-12" style="text-align: center">
                     <asp:LinkButton ID="lnkRedirect" runat="server" AutoPostBack="true" OnClick="lnkRedirect_Click" Text="View Test Report" />
@@ -485,32 +521,71 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
                 </div>
-                <div class="col-12" id="ddlSuggestions" visible="false" runat="server" style="width: 98% !important;">
+                <div class="row" id="ddlSuggestions" visible="false" runat="server">
+                    <div class="col-8">
+                        <asp:DropDownList ID="ddlSuggestion" runat="server" style="width:100%;" AutoPostBack="true" OnSelectedIndexChanged="ddlSuggestion_SelectedIndexChanged">
+                          
+                        </asp:DropDownList>
 
-                    <label>Select Suggestion</label>
-                    <asp:DropDownList ID="ddlSuggestion" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSuggestion_SelectedIndexChanged">
-                        <asp:ListItem Text="--Select--" Value="-1"></asp:ListItem>
-                        <asp:ListItem Text="Danger Plate And Barbed wire to be provided on each pole of 11KV line." Value="1"></asp:ListItem>
-                        <asp:ListItem Text="Danger notice in hindi or english & the local langauge of the district with a sign of skull & bones be provided on electrical installations." Value="2"></asp:ListItem>
-                        <asp:ListItem Text="safty equiments,earthing arrangements should be maintained in proper working condition." Value="3"></asp:ListItem>
-                        <asp:ListItem Text="Insulating floors or mats confirming to IS 15652:2006 should be provided & maintained in proper working conditions." Value="4"></asp:ListItem>
-                        <asp:ListItem Text="Proper Earthing fencing ,if metallic,of at least 1.8-meter height be provided in front of the transformer room with gate opening outwards." Value="5"></asp:ListItem>
-                        <asp:ListItem Text="Earth mats be provided in front of all electrical panels." Value="6"></asp:ListItem>
-                    </asp:DropDownList>
-
-                </div>
-                <div class="row">
-
-                    <div class="col-12" id="Suggestion" runat="server" visible="false">
-                        <label>
-                            Suggestions<%--<samp style="color: red"> * </samp>--%>
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtSuggestion" TextMode="MultiLine" Rows="2" MaxLength="1000" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-2">
+                        <asp:Button ID="BtnAddSuggestion" Style="padding-top: 1px; padding-bottom: 1px;" Text="Add Suggestion" runat="server" class="btn btn-primary mr-2" OnClientClick="$('#modal1').modal('show'); return false;"   />
                     </div>
                 </div>
+                <div class="row" style="margin-top:20px;">
+
+                    <div class="col-12" id="Suggestion" runat="server" visible="false">
+                        
+                        <asp:TextBox class="form-control" ID="txtSuggestion" TextMode="MultiLine" Rows="2" MaxLength="1000" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    </div>
+    
+  
+
             </div>
         </div>
     </div>
+    <%--  <div id="modal1" class="modal" runat="server" visible="false">
+    <div class="modal-content">
+        <span class="close" data-modal="modal1" >&times;</span>
+        <div class="card-title">
+            Suggestion
+        </div>
+        <div>
+            <asp:TextBox class="form-control" ID="txtSugg" TextMode="MultiLine" Rows="2" MaxLength="1000" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+        </div>
+        <div>
+            <asp:Button ID="BtnSugg" Text="Submit" runat="server" CssClass="btn btn-primary mr-2" OnClick="BtnSugg_Click"/>
+        </div>
+    </div>
+</div>--%>
+
+   <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="updatePasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updatePasswordModalLabel">Suggestion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>
+                            Suggestion<samp style="color: red"> * </samp>
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtSugg" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <asp:Button ID="btnSugg" runat="server" CssClass="btn btn-primary" Text="Add Suggestion" OnClick="btnSugg_Click"/>
+               <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
     <%--   </ContentTemplate>
@@ -531,6 +606,20 @@
             }
         }
     </script>
+    <script>
+        function closeModal() {
+            $('#modal1').modal('hide');
+        }
+</script>
+   <%-- <script>
+    $(document).ready(function () {
+    // Reinitialize modal after postback if it's supposed to be open
+    var modalOpen = '<%= txtSugg.ClientID %>';
+    if (modalOpen) {
+        $('#modal1').modal('show');
+    }
+});
+    </script>--%>
     <script type="text/javascript">
         window.onload = (event) => {
             initMultiselect();
@@ -594,4 +683,9 @@
             }
         }
     </script>
+    <%--<script>
+        $(document).ready(function () {
+            $('#modal1').modal('show');
+        });
+</script>--%>
 </asp:Content>

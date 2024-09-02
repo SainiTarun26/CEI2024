@@ -110,6 +110,27 @@
         .ReturnedRowColor {
             background-color: #f9c7c7 !important;
         }
+        .button-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    height: 100%;           
+}
+
+input#BtnBack {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
     </style>
 
 </head>
@@ -329,6 +350,9 @@
                 </div>
                   
             </div>
+                 <div class="button-container">
+                     <asp:Button type="submit" ID="BtnBack" Text="Back" runat="server" OnClick="BtnBack_Click" class="btn btn-primary mr-2"   Style="padding-left: 18px; padding-right: 18px; height: 40px;"  />
+                     </div>
                        <%--<div class="row ">
                  <div class="col-sm-6 col-md-6">
     <h6 class="card-title fw-semibold mb-4">
@@ -337,7 +361,7 @@
     </h6>
 </div>
                     </div>--%>
-        </div>
+  
                  </main>
               <footer id="footer" style="background-color: #d1e6ff !important;">
 

@@ -223,7 +223,7 @@
                                     <asp:Label ID="lblName" runat="server" Text='<%# Eval("Name") %>' CssClass="text-wrap"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="State" Visible="true">
+                            <asp:TemplateField HeaderText="State" Visible="false">
                                 <HeaderStyle Width="13%" CssClass="headercolor" />
                                 <ItemStyle Width="13%" CssClass="text-wrap" />
                                 <ItemTemplate>
@@ -247,7 +247,7 @@
                                 <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="right" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="RenewalDate" HeaderText="Renewal Date">
+                            <asp:BoundField DataField="RenewalDate" HeaderText="Renewal Date" Visible="false">
                                 <HeaderStyle HorizontalAlign="Center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Center" Width="12%" />
                             </asp:BoundField>
@@ -262,6 +262,10 @@
                                     <asp:Label ID="lblContractorName" runat="server" Text='<%# Eval("ContractorSupName") %>' CssClass="text-wrap"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                             <asp:BoundField DataField="Email" HeaderText="Email Id">
+     <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
+     <ItemStyle HorizontalAlign="right" Width="15%" />
+ </asp:BoundField>
                             <asp:TemplateField HeaderText="Edit">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
@@ -270,7 +274,7 @@
                                         Text="<i class='fa fa-edit' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <%--<asp:TemplateField HeaderText="Reset Password">
+                         <%--   <asp:TemplateField HeaderText="Reset Password">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
                                 <ItemTemplate>
@@ -290,7 +294,7 @@
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
                     <!-- Bootstrap Modal -->
-                 <%--   <div class="modal fade" id="updatePasswordModal" tabindex="-1" role="dialog" aria-labelledby="updatePasswordModalLabel" aria-hidden="true">
+                   <%-- <div class="modal fade" id="updatePasswordModal" tabindex="-1" role="dialog" aria-labelledby="updatePasswordModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -300,14 +304,13 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <!-- Your form or content to update the password -->
                                     <div class="row">
                                         <div class="col-md-12" id="UserId" runat="server">
                                             <label>
                                                 User Id<samp style="color: red"> * </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtUserId" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                         </div>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12" id="Div1" runat="server">

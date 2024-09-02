@@ -604,15 +604,16 @@ namespace CEIHaryana.Periodic_Industry
 
         protected void BtnViewCart_Click(object sender, EventArgs e)
         {
-            ViewCart();
-           // GridView4.Visible = true;
+            //ViewCart();
+            // GridView4.Visible = true;
+            Response.Redirect("/Periodic_Industry/ViewCart.aspx", false);
         }
 
         private void ViewCartCount()
         {
             string id = Session["SiteOwnerId"].ToString();
             DataSet ds = new DataSet();
-            ds = CEI.ViewCartData(id);
+            ds = CEI.ViewCartDataIndustry(id);
             lblcartCount.Text = ds.Tables[0].Rows[0]["TotalRecordCount"].ToString();
         }
 
@@ -624,68 +625,68 @@ namespace CEIHaryana.Periodic_Industry
             lblHistory.Text = ds.Tables[0].Rows[0]["TotalCount"].ToString();
         }
 
-        private void ViewCart()
-        {
-            string id = Session["SiteOwnerId"].ToString();
-            DataSet ds = new DataSet();
-            ds = CEI.ViewCartData(id);
+        //private void ViewCart()
+        //{
+        //    string id = Session["SiteOwnerId"].ToString();
+        //    DataSet ds = new DataSet(); ; 
+        //    ds = CEI.ViewCartDataIndustry(id);
 
-            if (ds != null && ds.Tables[0].Rows.Count > 0)
-            {
-                lblcartCount.Text = ds.Tables[0].Rows[0]["TotalRecordCount"].ToString();
+        //    if (ds != null && ds.Tables[0].Rows.Count > 0)
+        //    {
+        //        lblcartCount.Text = ds.Tables[0].Rows[0]["TotalRecordCount"].ToString();
 
-                if (lblcartCount.Text == "0")
-                {
-                    GridView4.Visible = false;
-                    string script = "alert(\"No any item in cart\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                }
-                else
-                {
-                    GridView4.DataSource = ds;
-                    GridView4.DataBind();
-                    Btnback1.Visible = true;
-                }
+        //        if (lblcartCount.Text == "0")
+        //        {
+        //            GridView4.Visible = false;
+        //            string script = "alert(\"No any item in cart\");";
+        //            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+        //        }
+        //        else
+        //        {
+        //            GridView4.DataSource = ds;
+        //            GridView4.DataBind();
+        //            //Btnback1.Visible = true;
+        //        }
 
-                PeriodicData.Visible = false;
-                Periodic.Visible = false;
-            }
-            else
-            {
-                GridView4.DataSource = null;
-                GridView4.DataBind();
-                string script = "alert(\"No any item in cart\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
+        //        PeriodicData.Visible = false;
+        //        Periodic.Visible = false;
+        //    }
+        //    else
+        //    {
+        //        GridView4.DataSource = null;
+        //        GridView4.DataBind();
+        //        string script = "alert(\"No any item in cart\");";
+        //        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+        //    }
 
-            ds.Dispose();
-        }
+        //    ds.Dispose();
+        //}
 
-        protected void GridView4_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "Select")
-            {
+        //protected void GridView4_RowCommand(object sender, GridViewCommandEventArgs e)
+        //{
+        //    if (e.CommandName == "Select")
+        //    {
 
-                Control ctrl = e.CommandSource as Control;
-                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                Label lblAddressText = (Label)row.FindControl("lblAddressText");
-                Label lblCartId = (Label)row.FindControl("lblCartId");
-                Session["Address"] = lblAddressText.Text;
-                Session["Cart"] = lblCartId.Text;
-                Response.Redirect("/Periodic_Industry/ViewCart_Industry.aspx", false);
-            }
-            else
-            {
+        //        Control ctrl = e.CommandSource as Control;
+        //        GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+        //        Label lblAddressText = (Label)row.FindControl("lblAddressText");
+        //        Label lblCartId = (Label)row.FindControl("lblCartId");
+        //        Session["Address"] = lblAddressText.Text;
+        //        Session["Cart"] = lblCartId.Text;
+        //        Response.Redirect("/Periodic_Industry/ViewCart_Industry.aspx", false);
+        //    }
+        //    else
+        //    {
 
-            }
-        }
+        //    }
+        //}
 
-        protected void Btnback1_Click(object sender, EventArgs e)
-        {
-            GridView4.Visible = false;
-            getWorkIntimationData();
-            ViewCartCount();
-        }
+        //protected void Btnback1_Click(object sender, EventArgs e)
+        //{
+        //    GridView4.Visible = false;
+        //    getWorkIntimationData();
+        //    ViewCartCount();
+        //}
 
         protected void LnkHistory_Click(object sender, EventArgs e)
         {
