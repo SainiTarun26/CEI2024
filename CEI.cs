@@ -5467,6 +5467,10 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ViewInspectionHistoryForPeriodicIndustry", SiteOwnerId);
         }
+        public DataTable SiteOwnerInspectionDataforPeriodicIndustry(string SiteOwnerId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerInspectionHistoryForPeriodic_Industry", SiteOwnerId);
+        }
     }
 }
 
