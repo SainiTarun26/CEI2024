@@ -528,7 +528,7 @@ namespace CEIHaryana.Periodic_Industry
             DataSet ds = new DataSet();
                 if (IType == "Periodic")
                 {
-                    ds = CEI.sp_InsertRemarksForContractorINPeriodic_Industry(ID, txtOwnerRemarks.Text.Trim());
+                ds = CEI.ContractorRemarksInPeriodic(ID, txtOwnerRemarks.Text.Trim());
                 }
 
              // txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();

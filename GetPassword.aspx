@@ -378,8 +378,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12" style="text-align: center;">
-                                        <asp:Button  ID="btnProcess" Text="Proceed" runat="server" class="btn btn-primary" Style="border-radius: 10px; font-size: 15px; border-radius: 10px; padding-top: 11px; padding-bottom: 10px; margin-top: 10px; margin-bottom: 20px;"
-                                            ValidationGroup="Submit" />
+                                        <asp:Button  ID="btnProcess" Text="Proceed" runat="server" onclick="btnProcess_Click" class="btn btn-primary" Style="border-radius: 10px; font-size: 15px; border-radius: 10px; padding-top: 11px; padding-bottom: 10px; margin-top: 10px; margin-bottom: 20px;"
+                                             />
                                     </div>
                                 </div>
                                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
