@@ -35,6 +35,30 @@
           return true;
       }
 
+      function isNumberdecimalKey(evt, element) {
+          var charCode = (evt.which) ? evt.which : evt.keyCode;
+
+          // Allow only digits and one decimal point
+          if (charCode != 46 && (charCode < 48 || charCode > 57))
+              return false;
+
+          // Get the current value of the textbox
+          var value = element.value;
+
+          // Allow only one decimal point
+          if (charCode == 46 && value.indexOf('.') != -1)
+              return false;
+
+          // Ensure only two digits after the decimal point
+          if (value.indexOf('.') != -1) {
+              var decimalPart = value.split('.')[1];
+              if (decimalPart && decimalPart.length >= 2) {
+                  return false;
+              }
+          }
+
+          return true;
+      }
       //Allow Only Aplhabet, Delete and Backspace
 
       function isAlpha(keyCode) {
@@ -405,7 +429,7 @@
                             <div class="row">
                                 <div class="col-3" id="PrimaryVoltageLevel" runat="server" Visible="false">
                                     <label for="Voltage">
-                                        Primary voltage(in volte)  
+                                        Primary voltage(in Volt)  
                             <samp style="color: red">* </samp>
                                     </label>
                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="4" runat="server"  AutoPostBack="true" ID="PrimaryVoltage" selectionmode="Multiple" Style="width: 100% !important">
@@ -414,7 +438,7 @@
                               </div>
                                 <div class="col-3">
                                     <label for="Voltage">
-                                        Secondary Voltage(in volte)  
+                                        Secondary Voltage(in Volt)  
                                         <samp style="color: red">* </samp>
                                     </label>
                                     <asp:DropDownList class="form-control  select-form select2" TabIndex="4" runat="server" AutoPostBack="true" ID="ddlSecondaryVoltage" selectionmode="Multiple" Style="width: 100% !important">
@@ -434,7 +458,7 @@
                                         BDV level of oil Break down voltage  
                 <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilBDV" MaxLength="3" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="(in kv) " autocomplete="off" TabIndex="8" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilBDV" MaxLength="3" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" placeholder="(in kv) " autocomplete="off" TabIndex="8" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ForeColor="Red" ControlToValidate="txtOilBDV" runat="server" ErrorMessage="Please Enter Oil BDV" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                 </div>
                             </div>

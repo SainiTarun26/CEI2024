@@ -47,7 +47,17 @@ namespace CEIHaryana.Print_Forms
                     ID = Session["InspectionId"].ToString();
 
                 }
-                
+                else if (Session["InspectionIdforNew"] != null)
+                {
+                    ID = Session["InspectionIdforNew"].ToString();
+
+                }
+                else if (Session["InspectionIdNew"] != null)
+                {
+                    ID = Session["InspectionIdNew"].ToString();
+
+                }
+
                 DataSet ds = new DataSet();
                 ds = CEI.PrintApprovalLetter(ID);
                 lblAddress1.Text = ds.Tables[1].Rows[0]["Header1"].ToString();
