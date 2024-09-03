@@ -73,6 +73,18 @@ namespace CEIHaryana.Admin
 
                                 getWiremanorSuperwiserData(category, loginType, ID);
                             }
+                            else if (category == "SiteOwner")
+                            {
+                                var master = (MasterPage)Master;
+                                var loginTypeLabel = (Label)master.FindControl("LoginType");
+
+                                if (loginTypeLabel.Text == "Admin")
+                                {
+                                    loginTypeLabel.Text = "Admin / SiteOwner Details";
+                                }
+
+                                getSiteOwnerData();
+                            }
                         }
 
                     }
@@ -376,6 +388,29 @@ namespace CEIHaryana.Admin
             {
                 string errorMessage = "An error occurred: " + ex.Message;
             }
+        }
+
+        private void getSiteOwnerData()
+        {
+            DataTable ds = new DataTable();
+            ds = cei.GetSiteOwnerData();
+            if (ds.Rows.Count > 0)
+            {
+                GridView2.DataSource = ds;
+                GridView2.DataBind();
+            }
+            else
+            {
+                GridView2.DataSource = null;
+                GridView2.DataBind();
+                string script = "alert(\"No Record Found\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+            ds.Dispose();
+        }
+        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            getSiteOwnerData();
         }
     }
 }

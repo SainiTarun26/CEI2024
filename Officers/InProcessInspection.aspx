@@ -529,7 +529,7 @@
 
                     </div>
                     <div class="col-2">
-                        <asp:Button ID="BtnAddSuggestion" Style="padding-top: 1px; padding-bottom: 1px;" Text="Add Suggestion" runat="server" class="btn btn-primary mr-2" OnClientClick="$('#modal1').modal('show'); return false;"   />
+                        <asp:Button ID="BtnAddSuggestion" Style="padding-top: 1px; padding-bottom: 1px;" Text="Add New Comments" runat="server" class="btn btn-primary mr-2" OnClientClick="$('#modal1').modal('show'); return false;"   />
                     </div>
                 </div>
                 <div class="row" style="margin-top:20px;">

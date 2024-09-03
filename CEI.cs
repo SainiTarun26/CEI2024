@@ -5506,6 +5506,12 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             smtpClient.Send(mailMessage);
             return otp;
         }
+
+        public DataTable GetSiteOwnerData()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerData");
+        }
+
     }
 }
 
