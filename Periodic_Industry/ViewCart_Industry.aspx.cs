@@ -158,11 +158,17 @@ namespace CEIHaryana.Periodic_Industry
                     }
                     else
                     {
+                        string InspectionId = PrevInspectionId;
+                        DataSet SInsp = new DataSet();
+                        SInsp = CEI.GetDataForSingleInspection(InspectionId);
+                        string IntimationId = SInsp.Tables[0].Rows[0]["IntimationId"].ToString();
+                        string ApplicantType = SInsp.Tables[0].Rows[0]["ApplicantType"].ToString();
+                        string VoltageLevel = SInsp.Tables[0].Rows[0]["VoltageLevel"].ToString();
                         PrevInstallationType = "Multiple";
                         PrevTestReportId = "Multiple";
-                        PrevIntimationId = "MultipleIntimations";
-                        PrevVoltageLevel = "Multiple";
-                        PrevApplicantType = "Multiple";
+                        PrevIntimationId = IntimationId;
+                        PrevVoltageLevel = VoltageLevel;
+                        PrevApplicantType = ApplicantType;
                     }
 
 

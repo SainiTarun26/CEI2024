@@ -242,8 +242,8 @@ namespace CEIHaryana.Periodic_Industry
                 if (Session["SiteOwnerId"] != null)
                 {
                     string id = Session["SiteOwnerId"].ToString();
-                    string GrandTotalCapacity = Session["TotalCapacity1"].ToString();
-                    string HighestVoltage = Session["HighestVoltage1"].ToString();
+                    string GrandTotalCapacity = Session["TotalCapacity2"].ToString();
+                    string HighestVoltage = Session["HighestVoltage2"].ToString();
                     //string address = txtAddressFilter.Text;
 
                     int totalAmount = TotalAmount;
@@ -254,7 +254,8 @@ namespace CEIHaryana.Periodic_Industry
                     string StaffAssigned = string.Empty;
 
                     //string InspectionId = PrevInspectionId;
-                    string[] str = txtAddressFilter.Text.Split('-');
+                    //string[] str = txtAddressFilter.Text.Split('-');
+                    string[] str = txtAddressFilter.Text.Split('|');
                     string address = str[0].Trim();
                     string CartID = str[1].Trim();
 
@@ -309,11 +310,16 @@ namespace CEIHaryana.Periodic_Industry
                     }
                     else
                     {
+                          string InspectionId = PrevInspectionId;
+                        DataSet SInsp = new DataSet();
+                        SInsp = CEI.GetDataForSingleInspection(InspectionId);
+                        string IntimationId = SInsp.Tables[0].Rows[0]["IntimationId"].ToString();
+                        string ApplicantType = SInsp.Tables[0].Rows[0]["ApplicantType"].ToString();
                         PrevInstallationType = "Multiple";
                         PrevTestReportId = "Multiple";
-                        PrevIntimationId = "MultipleIntimations";
-                        PrevVoltageLevel = "Multiple";
-                        PrevApplicantType = "Multiple";
+                        PrevIntimationId = IntimationId;
+                        PrevVoltageLevel = HighestVoltage;
+                        PrevApplicantType = ApplicantType;
                     }
 
 
@@ -322,8 +328,8 @@ namespace CEIHaryana.Periodic_Industry
               PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, StaffAssigned, "Offline", totalAmount, 1, id);
 
                     Session["CartID"] = CartID;
-                    Session["TotalCapacity1"] = string.Empty;
-                    Session["HighestVoltage1"] = string.Empty;
+                    Session["TotalCapacity2"] = string.Empty;
+                    Session["HighestVoltage2"] = string.Empty;
 
                     Response.Redirect("/Periodic_Industry/InProcessRenewal_Industry.aspx", false);
                 }
@@ -336,7 +342,8 @@ namespace CEIHaryana.Periodic_Industry
        
         private void BindGrid()
         {
-            string[] str = txtAddressFilter.Text.Split('-');
+            //string[] str = txtAddressFilter.Text.Split('-');
+            string[] str = txtAddressFilter.Text.Split('|');
             string address = str[0].Trim();
             string CartID = str[1].Trim();
             DataSet ds = new DataSet();
