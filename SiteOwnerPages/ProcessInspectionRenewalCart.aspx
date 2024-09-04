@@ -162,6 +162,10 @@
                 </div>
             </div>
             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;">
+                <h2 style="font-size: 15px; color: brown">
+     Note : Before proceeding to document checklist kindly pay your requisite fees first and then upload documents along with the treasury challan (PDF).
+
+ </h2>
                 <div class="row">
                     <div class="col-12">
                         <table class="table table-bordered table-striped table-responsive table-hover">
@@ -175,13 +179,13 @@
                             <tbody>
                                 <tr>
                                     <td scope="row">
-                                        <asp:Label ID="LblCapacity" runat="server"></asp:Label>
+                                        <asp:Label ID="LblCapacity" Font-Bold="true" runat="server"></asp:Label>
                                     </td>
                                     <td>
-                                        <asp:Label ID="LblVoltage" runat="server"></asp:Label>
+                                        <asp:Label ID="LblVoltage" Font-Bold="true" runat="server"></asp:Label>
                                     </td>
                                     <td>
-                                        <asp:Label ID="LblAmount" runat="server"></asp:Label>
+                                        ₹ <asp:Label ID="LblAmount" Font-Bold="true" runat="server"></asp:Label>
                                     </td>
                                 </tr>
                             </tbody>

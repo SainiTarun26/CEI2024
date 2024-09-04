@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css" />
     <!-- endinject -->
     <!-- Plugin css for this page -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/vendors/select2/select2.min.css" />
     <link rel="stylesheet" href="/vendors/select2-bootstrap-theme/select2-bootstrap.min.css" />
     <!-- End plugin css for this page -->
@@ -101,12 +102,9 @@
 
 
         li#logout {
-            padding-left: 10px !important;
+            padding: 10px;
             background: #4B49AC !important;
             border-radius: 51px !important;
-            padding-right: 10px !important;
-            padding-top: 10px !important;
-            padding-bottom: 10px !important;
         }
 
         img#ProfilePhoto {
@@ -353,79 +351,113 @@
                                             <asp:TextBox class="form-control" ID="txtUserId" autocomplete="off" runat="server"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtUserId" runat="server" Display="Dynamic" ValidationGroup="SubmitVerifyUser" ForeColor="Red" />
                                         </div>
-                                    </div>
-                                    <div class="row" style="margin-top: 20px;">
-                                        <div class="col-md-12" style="text-align: center;">
-                                            <asp:Button ID="btnVerifyUser" OnClick="btnVerifyUser_Click" Text="Send OTP" runat="server" class="btn btn-primary" Style="border-radius: 10px; font-size: 15px; border-radius: 10px; padding-top: 11px; padding-bottom: 10px; margin-top: 10px; margin-bottom: 10px;"
+                                        <div class="col-md-2" style="text-align: center;">
+                                            <asp:Button ID="btnVerifyUser" OnClick="btnVerifyUser_Click" Text="Send OTP" runat="server" class="btn btn-primary" Style="font-size: 15px; border-radius: 10px; padding-top: 5px; padding-bottom: 5px; margin-top: 24px; margin-bottom: 10px; height: 30px;"
                                                 ValidationGroup="SubmitVerifyUser" />
                                             <%-- <p style="font-size: 11px; margin-top: -7px;"><b>*OTP sent to Email</b></p>--%>
-                                            <label id="lblOtpSentMessageLabel" runat="server" visible="false" style="color: red;">
-                                               
+                                        </div>
+                                        <div class="col-md-4 otp" id="DivInputOtp" runat="server" visible="false">
+                                            <label>
+                                                Enter OTP<samp style="color: red">* </samp>
                                             </label>
-                                        </div>
-                                    </div>
-                                    <div id="DivInputOtp" class="otp" runat="server" visible="false">
-                                        <div class="row" style="margin-top: 15px; margin-bottom: 15px;">
-                                            <div class="col-md-4"></div>
-                                            <div class="col-md-6">
-                                                <label>
-                                                    Enter OTP<samp style="color: red">* </samp>
-                                                </label>
-                                                <!-- Container to align TextBox and Button in a single line -->
-                                                <div class="form-group">
-                                                    <asp:TextBox class="form-control" Type="number" ID="txtOTPVerify" autocomplete="off" runat="server" />
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtOTPVerify" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitVerifyOtp" ForeColor="Red">Please enter Otp</asp:RequiredFieldValidator>
-                                                    &nbsp;&nbsp;
-                                                <asp:Button type="submit" OnClick="VerifyOtp_Click" ID="VerifyOtp" Text="Verify OTP" runat="server" class="btn btn-primary" ValidationGroup="SubmitVerifyOtp" Style="border-radius: 10px; font-size: 15px; padding: 7px 20px; margin-top: 0; margin-bottom: 0; height: 30px;" />
-                                                </div>
-                                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" Text="Enter Otp" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtOTPVerify" runat="server" Display="Dynamic" ValidationGroup="SubmitVerifyOtp" ForeColor="Red" />--%>
+                                            <!-- Container to align TextBox and Button in a single line -->
+                                            <div class="form-group">
+                                                <asp:TextBox class="form-control" Type="number" ID="txtOTPVerify" autocomplete="off" runat="server" />
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtOTPVerify" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitVerifyOtp" ForeColor="Red">Please enter Otp</asp:RequiredFieldValidator>
+                                                &nbsp;&nbsp;
                                             </div>
-                                            <div class="col-md-4"></div>
+                                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" Text="Enter Otp" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtOTPVerify" runat="server" Display="Dynamic" ValidationGroup="SubmitVerifyOtp" ForeColor="Red" />--%>
+                                        </div>
+                                        <div class="col-md-2" id="DIVverifyotp" style="margin-top: 27px;" visible="false" runat="server">
+                                            <asp:Button type="submit" OnClick="VerifyOtp_Click" ID="VerifyOtp" Text="Verify OTP" runat="server" class="btn btn-primary" ValidationGroup="SubmitVerifyOtp" Style="border-radius: 10px; font-size: 15px; padding: 7px 20px; margin-top: 0; margin-bottom: 0; height: 30px;" />
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                     <div class="row">
                                         <div class="col-md-12" style="text-align: center;">
-                                            <h3>
-                                                <%--   <b>OTP is sent to your Registered email id.
-                                                </b>--%>
+                                            <%--<asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick" Enabled="false" Interval="1000"></asp:Timer>--%>
 
-                                            </h3>
+                                            <%--    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                                <ContentTemplate>
+                                                    <asp:Label ID="lblCountdown" runat="server"></asp:Label>
+                                                    <asp:HiddenField ID="hfCountdown" runat="server" />
+                                                </ContentTemplate>
+                                              
+                                            </asp:UpdatePanel>--%>
+
+                                           <div style="display: inline-block;">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server" style="display: inline-block;">
+        <ContentTemplate>
+            <label id="lblOtpSentMessageLabel" runat="server" visible="false" style="color: red; margin-top: 20px; margin-bottom: 0px;">
+            </label>
+
+            <asp:HiddenField ID="hfCountdown" runat="server" />
+            <asp:Label ID="lblCountdown" runat="server" Text=""></asp:Label>
+            <asp:LinkButton ID="lnkResendOtp" runat="server" OnClientClick="showProgressBar();" OnClick="lnkResendOtp_Click" Enabled="false" Visible="false">Resend</asp:LinkButton>
+
+            <asp:Timer ID="Timer1" runat="server" Interval="1000" Enabled="false" OnTick="Timer1_Tick" />
+        </ContentTemplate>
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
+        </Triggers>
+    </asp:UpdatePanel>
+
+    <img id="imgProgressBar" src="Assets/capsules/progress.gif" alt="Processing..." style="display:none;height: 20px;
+    width: 20px;
+    margin-top: 6px;" runat="server" />
+</div>
+
                                         </div>
                                     </div>
                                 </div>
 
-                                <div id="InputNewPassworddiv" class="otp" runat="server" visible="false">
-
-                                    <p class="sub-title">
+                                <div id="InputNewPassworddiv" class="otp card-body" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                    <div class="row">                                       
+                                                <div class="col-md-4">
+                                                    <label>
+                                                        New Password<samp style="color: red">* </samp>
+                                                    </label>
+                                                    <asp:TextBox class="form-control" ID="txtNewPassword" TextMode="Password" autocomplete="off" runat="server"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtNewPassword" runat="server" Display="Dynamic" ValidationGroup="SubmitVerifyUser" ForeColor="Red" />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>
+                                                        Confirm Password<samp style="color: red">* </samp>
+                                                    </label>
+                                                    <asp:TextBox class="form-control" ID="txtVerifyPassword" TextMode="Password" autocomplete="off" runat="server"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtVerifyPassword" runat="server" Display="Dynamic" ValidationGroup="SubmitVerifyUser" ForeColor="Red" />
+                                                </div>
+                                                <div class="col-4" style="text-align: left; margin-top: 10px; margin-bottom: -20px;">
+                                                    <asp:Button class="btn btn-primary" ID="Button1" type="submit" runat="server" Text="Update" ValidationGroup="SubmitReset" OnClick="BtnVerify_Click" Style="font-size: 15px; border-radius: 10px; padding-top: 5px; padding-bottom: 5px; margin-top: 15px; margin-bottom: 10px; height: 30px;" />
+                                                    <%--<asp:Button class="button-79" ID="BtnReset" runat="server" Text="Reset" OnClick="BtnReset_Click"/>--%>
+                                                </div>
+                                                <%--  <p class="sub-title">
                                         New Password
                      
                                     </p>
                                     <div class="wrapper">
                                         <asp:TextBox class="field 1" ID="txtNewPassword" runat="server" TextMode="Password" MinLength="8" MaxLength="14" onkeypress="return validateAlphanumeric(event)" onkeyup="movetoNext(this,'TextBox2')"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtNewPassword" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitReset" ForeColor="Red">Please enter New Password</asp:RequiredFieldValidator>
-                                    </div>
-                                    <p class="sub-title">
+                                    </div>--%>
+                                                <%--   <p class="sub-title">
                                         Verify Password
                       
                                     </p>
                                     <div class="wrapper">
                                         <asp:TextBox class="field 1" ID="txtVerifyPassword" runat="server" TextMode="Password" MaxLength="14" onkeypress="return validateAlphanumeric(event)" onkeyup="movetoNext(this,'TextBox2')"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtVerifyPassword" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitReset" ForeColor="Red">Please enter valid  Password</asp:RequiredFieldValidator>
-                                    </div>
-                                    <div class="row">
+                                    </div>--%>
+                                                <%-- <div class="row">
                                         <div class="col-12" style="text-align: center; margin-top: 10px; margin-bottom: -20px;">
-                                            <asp:Button class="button-79" ID="BtnVerify" type="submit"  runat="server" Text="Change Password" ValidationGroup="SubmitReset" OnClick="BtnVerify_Click" />
-                                            <%--<asp:Button class="button-79" ID="BtnReset" runat="server" Text="Reset" OnClick="BtnReset_Click"/>--%>
+                                            <asp:Button class="button-79" ID="BtnVerify" type="submit" runat="server" Text="Change Password" ValidationGroup="SubmitReset" OnClick="BtnVerify_Click" />
+                                            <asp:Button class="button-79" ID="BtnReset" runat="server" Text="Reset" OnClick="BtnReset_Click"/>
+                                        </div>
+                                    </div>--%>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-1"></div>
                             </div>
                         </div>
-                        <div class="col-md-1"></div>
-                    </div>
-                </div>
             </section>
             <!-- End About Section -->
         </main>
@@ -481,6 +513,21 @@
         <script src="/js2/typeahead.js"></script>
         <script src="/js2/select2.js"></script>
     </form>
+    <script type="text/javascript">
+        function hideCountdown() {
+            var countdownLabel = document.getElementById('<%= lblCountdown.ClientID %>');
+            countdownLabel.style.display = 'none';
+        }
 
+       
+        function showProgressBar() {
+         document.getElementById('imgProgressBar').style.display = 'inline';
+        }
+
+        function hideProgressBar() {
+           
+            document.getElementById('imgProgressBar').style.display = 'none';
+        }
+</script>
 </body>
 </html>

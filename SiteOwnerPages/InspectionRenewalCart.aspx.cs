@@ -16,27 +16,18 @@ namespace CEIHaryana.SiteOwnerPages
     {
         CEI CEI = new CEI();
 
-        string strPreviousRowID = string.Empty;
-        int intSubTotalIndex = 1;
-        int dblSubTotalCapacity = 0;
-        double dblSubHighestVoltage = 0;
-        int dblGrandTotalCapacity = 0;
-        double dblHighestVoltage = 0;
-        string InstallationTypeId = string.Empty;
-        private static int TotalAmount = 0;
-        private static int CheckCase = 0;
-        int highestOfficerDesignation = 0;
-        //private static string PrevInspectionId = string.Empty;
-        //private static string PrevInstallationType = string.Empty;
-        //private static string PrevTestReportId = string.Empty;
-        //private static string PrevIntimationId = string.Empty;
-        //private static string PrevVoltageLevel = string.Empty;
-        //private static string PrevApplicantType = string.Empty;
+        //string strPreviousRowID = string.Empty;
+        int intSubTotalIndex = 1, dblSubTotalCapacity = 0, dblGrandTotalCapacity = 0, highestOfficerDesignation = 0;
+        double dblSubHighestVoltage = 0, dblHighestVoltage = 0;
+        //int dblGrandTotalCapacity = 0;
+        //double dblHighestVoltage = 0;
+        string InstallationTypeId = string.Empty, strPreviousRowID = string.Empty;
+        private static int TotalAmount = 0, CheckCase = 0;
+        //int highestOfficerDesignation = 0;
         private static string PrevInspectionId = string.Empty, PrevInstallationType = string.Empty, PrevTestReportId = string.Empty,
-                              PrevIntimationId = string.Empty, PrevVoltageLevel = string.Empty, PrevApplicantType = string.Empty;
-
-
-        private static string AssignToOfficer = string.Empty;
+                              PrevIntimationId = string.Empty, PrevVoltageLevel = string.Empty, 
+                              PrevApplicantType = string.Empty, AssignToOfficer = string.Empty;
+        //private static string AssignToOfficer = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -47,6 +38,7 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         BindAdress();
                     }
+                    Page.Session["FinalAmount"] = "0";
                 }
             }
             catch
@@ -76,12 +68,11 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                
-                    txtAddressFilter.Visible = true;
-                    txtAddressFilter.Text = ddlAddress.SelectedItem.ToString();
+                txtAddressFilter.Visible = true;
+                txtAddressFilter.Text = ddlAddress.SelectedItem.ToString();
 
-                    DivGrid.Visible = true;
-                    BindGrid();
+                DivGrid.Visible = true;
+                BindGrid();
                 BtnSubmit.Visible = true;
             }
             catch (Exception ex)
@@ -93,14 +84,13 @@ namespace CEIHaryana.SiteOwnerPages
             string[] str = txtAddressFilter.Text.Split('|');
             string address = str[0].Trim();
             string CartID = str[1].Trim();
-           
+
             DataSet ds = new DataSet();
             ds = CEI.ShowDataToCart(address, CartID);
             if (ds.Tables.Count > 0)
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
-               
             }
             else
             {
@@ -112,10 +102,8 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-
                     Label LblCount = e.Row.FindControl("LblCount") as Label;
                     Label LblInstallationName = e.Row.FindControl("LblInstallationName") as Label;
                     Label LblIntimationId = e.Row.FindControl("LblIntimationId") as Label;
@@ -125,7 +113,7 @@ namespace CEIHaryana.SiteOwnerPages
                     PrevInspectionId = InspectionId;
                     Label Lbldesignation = e.Row.FindControl("Lbldesignation") as Label;
                     string Assignedoff = Lbldesignation.Text;
-                    if (Assignedoff != null && Assignedoff !="")
+                    if (Assignedoff != null && Assignedoff != "")
                     {
                         getassignedofficer(Assignedoff);
                     }
@@ -150,10 +138,11 @@ namespace CEIHaryana.SiteOwnerPages
                         if (ds.Rows.Count > 0 && ds != null)
                         {
                             int Amount = Convert.ToInt32(ds.Rows[0]["Amount"].ToString());
-                            TotalAmount += Amount;
+                            TotalAmount = Convert.ToInt32(Session["FinalAmount"]);
+                            TotalAmount = TotalAmount + Amount;
+                            Session["FinalAmount"] = TotalAmount;
                         }
                     }
-
 
                     strPreviousRowID = DataBinder.Eval(e.Row.DataItem, "InstallationName").ToString();
 
@@ -280,7 +269,6 @@ namespace CEIHaryana.SiteOwnerPages
                         grdViewOrders.Controls[0].Controls.AddAt(e.Row.RowIndex + intSubTotalIndex, row);
                         intSubTotalIndex++;
                     }
-
                     //dblSubTotalCapacity = 0;
                     //dblSubHighestVoltage = 0;
                 }
@@ -348,7 +336,7 @@ namespace CEIHaryana.SiteOwnerPages
                     string HighestVoltage = Session["HighestVoltage"].ToString();
                     //string address = txtAddressFilter.Text;
 
-                    int totalAmount = TotalAmount;
+                    int totalAmount = Convert.ToInt32(Session["FinalAmount"]);
                     string AssignTo = AssignToOfficer;
                     //string CartId = string.Empty;
                     string Division = string.Empty;
@@ -365,8 +353,7 @@ namespace CEIHaryana.SiteOwnerPages
                     if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                     {
                         foreach (DataRow row in ds.Tables[0].Rows)
-                        {
-                            //CartId = row["CartId"].ToString();
+                        {                            
                             Division = row["Division"].ToString();
                             District = row["District"].ToString();
                         }
@@ -389,7 +376,6 @@ namespace CEIHaryana.SiteOwnerPages
                         StaffAssigned = "Admin@123";
                     }
 
-
                     int affectedRows = GetAffectedRowsCount(CartID);
 
                     if (affectedRows == 1)
@@ -411,7 +397,6 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else
                     {
-
                         string InspectionId = PrevInspectionId;
                         DataSet SInsp = new DataSet();
                         SInsp = CEI.GetDataForSingleInspection(InspectionId);
@@ -424,14 +409,13 @@ namespace CEIHaryana.SiteOwnerPages
                         PrevApplicantType = ApplicantType;
                     }
 
-
-
-                    CEI.InsertInspectinData(CartID, GrandTotalCapacity, HighestVoltage, PrevInstallationType , PrevTestReportId,
+                    CEI.InsertInspectinData(CartID, GrandTotalCapacity, HighestVoltage, PrevInstallationType, PrevTestReportId,
               PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, StaffAssigned, "Offline", totalAmount, 1, id);
 
                     Session["CartID"] = CartID;
                     Session["TotalCapacity"] = string.Empty;
                     Session["HighestVoltage"] = string.Empty;
+                    Session["FinalAmount"] = string.Empty;
 
                     Response.Redirect("/SiteOwnerPages/ProcessInspectionRenewalCart.aspx", false);
                 }

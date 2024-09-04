@@ -180,8 +180,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Attachments</u></h6>
-                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                        <div class="card-body" id="Attachments" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Attachments</u></h6>
                                 <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%"
                                     AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                                     <PagerStyle CssClass="pagination-ys" />
@@ -202,7 +202,7 @@
                                             <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                             <ItemStyle HorizontalAlign="center" Width="15%" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
+                                          <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
                                             <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                             <ItemStyle HorizontalAlign="center" Width="15%" />
                                         </asp:BoundField>
@@ -217,6 +217,7 @@
                                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                     <SortedDescendingHeaderStyle BackColor="#00547E" />
                                 </asp:GridView>
+                            </div>
                             </div>
                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Payment Details</u></h6>
                             <div id="Earthing" runat="server" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">

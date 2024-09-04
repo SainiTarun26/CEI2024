@@ -426,7 +426,7 @@
                             <label for="DateofRenewal">
                                 Date of Renewal<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onChange="validateDates1()" onkeydown="return preventEnterSubmit(event)" ID="txtDateofRenewal" min='0000-01-01' max='9999-01-01' Type="Date" TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" autocomplete="off" onChange="validateDates1()" onkeydown="return preventEnterSubmit(event)" ID="txtDateofRenewal" min='0000-01-01' max='9999-01-01' Type="Date"  TabIndex="19" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtDateofRenewal" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Renewal</asp:RequiredFieldValidator>
                              <%--<asp:CompareValidator ID="CompareValidator2" runat="server" ControlToCompare="txtDateofExpiry" ControlToValidate="txtDateofRenewal"  Operator="GreaterThan"
                                      ErrorMessage="Renewal Date must be greater than Expiry Date"

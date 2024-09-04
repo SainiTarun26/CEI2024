@@ -339,6 +339,7 @@
     <Content Include="Assets\capsules\CONTRACTOR_APPLICATION_DOCUMENT_CAPSULE.png" />
     <Content Include="Assets\capsules\documents.png" />
     <Content Include="Assets\capsules\payment.png" />
+    <Content Include="Assets\capsules\progress.jpeg" />
     <Content Include="Assets\capsules\qualification.png" />
     <Content Include="Assets\capsules\registration.png" />
     <Content Include="Assets\cei_logo.png" />

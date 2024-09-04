@@ -40,15 +40,18 @@ namespace CEIHaryana.SiteOwnerPages
             ds = CEI.GetAttachmentsDatainInspectionForm(GetAttachedDocuments);
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
+                Attachments.Visible = true;
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
             }
             else
             {
+
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-                string script = "alert(\"No Record Found\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                Attachments.Visible = false;
+                //string script = "alert(\"No Record Found\");";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             ds.Dispose();
         }
@@ -94,5 +97,7 @@ namespace CEIHaryana.SiteOwnerPages
             Session["InspectionId_Industry"] = "";
             Response.Redirect("/SiteOwnerPages/InspectionHistory_Industry.aspx", false);
         }
+
+       
     }
 }

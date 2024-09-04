@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Supervisor/Supervisor.Master" AutoEventWireup="true"  EnableEventValidation="false" CodeBehind="GeneratingSetTestReport.aspx.cs" Inherits="CEIHaryana.Supervisor.GeneratingSetTestReport" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Supervisor/Supervisor.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="GeneratingSetTestReport.aspx.cs" Inherits="CEIHaryana.Supervisor.GeneratingSetTestReport" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -35,13 +36,33 @@
             return true;
         }
 
-       
+        function isNumberdecimalKey(evt, element) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+
+            // Allow only digits and one decimal point
+            if (charCode != 46 && (charCode < 48 || charCode > 57))
+                return false;
+
+            // Get the current value of the textbox
+            var value = element.value;
+
+            // Allow only one decimal point
+            if (charCode == 46 && value.indexOf('.') != -1)
+                return false;
+
+            // Ensure only two digits after the decimal point
+            if (value.indexOf('.') != -1) {
+                var decimalPart = value.split('.')[1];
+                if (decimalPart && decimalPart.length >= 2) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         //Allow Only Aplhabet, Delete and Backspace
-
         function isAlpha(keyCode) {
-
             return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
-
         }
 
         function alphabetKey(e) {
@@ -61,7 +82,7 @@
     </script>
     <script type="text/javascript">
         function validateVoltageInput() {
-           
+
             var txtGeneratorVoltage = document.getElementById('<%=txtGeneratorVoltage.ClientID%>');
             var voltageLevel = '<%= Session["VoltageLevel"] %>';
 
@@ -335,39 +356,31 @@
                             <div class="row">
                                 <div class="col-3" id="Div8" runat="server">
                                     <label for="Name">
-                                        Applicant
-            <samp style="color: red">* </samp>
+                                        Applicant <samp style="color: red">* </samp>
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtapplication" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator34" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-
                                 </div>
                                 <div class="col-3" id="Div9" runat="server">
                                     <label for="Name">
-                                        WorkIntimation ID
-            <samp style="color: red">* </samp>
+                                        WorkIntimation ID  <samp style="color: red">* </samp>
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtid" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator75" runat="server" ControlToValidate="txtid" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-
                                 </div>
                                 <div class="col-3" id="Div10" runat="server">
                                     <label for="Name">
-                                        Type of Installation
-            <samp style="color: red">* </samp>
+                                        Type of Installation <samp style="color: red">* </samp>
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator76" runat="server" ControlToValidate="txtInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-
                                 </div>
                                 <div class="col-3" id="Div12" runat="server">
                                     <label for="Name">
-                                        No of Installations
-            <samp style="color: red">* </samp>
+                                        No of Installations<samp style="color: red">* </samp>
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtNOOfInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator77" runat="server" ControlToValidate="txtNOOfInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-
                                 </div>
                             </div>
                         </div>
@@ -377,17 +390,13 @@
                             </div>
                         </div>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-
                             <%-- add here --%>
-
-
                             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                 <ContentTemplate>
                                     <div class="row">
                                         <div class="col-2" id="Div170" runat="server">
                                             <label for="Name">
-                                                Capacity
-                                <samp style="color: red">* </samp>
+                                                Capacity  <samp style="color: red">* </samp>
                                             </label>
                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlCapacity" selectionmode="Multiple" Style="width: 100% !important">
                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -398,25 +407,22 @@
                                         </div>
                                         <div class="col-2" id="Div171" runat="server">
                                             <label for="Name">
-                                                Value
-                                <samp style="color: red">* </samp>
+                                                Value <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtCapacity"  onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" autocomplete="off"
-                                                placeholder="" TabIndex="2" MaxLength="4" runat="server"  Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" autocomplete="off"
+                                                placeholder="" TabIndex="2" MaxLength="4" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="rvfCapacity" runat="server" ForeColor="Red" ControlToValidate="txtCapacity" ValidationGroup="Submit" ErrorMessage="Please Enter Capacity"></asp:RequiredFieldValidator>
                                         </div>
                                         <div class="col-2" runat="server">
                                             <label for="Name">
-                                                Serial no. 
-                                    <samp style="color: red">* </samp>
+                                                Serial no. <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtSerialNoOfGenerator" placeholder="of Ac generator/ Alternator" MaxLength="50" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" ControlToValidate="txtSerialNoOfGenerator" ValidationGroup="Submit" ErrorMessage="Please Enter Serial No Of Generator"></asp:RequiredFieldValidator>
                                         </div>
                                         <div class="col-2" id="Div172" runat="server">
                                             <label for="Name">
-                                                Type of Generating Set
-                                                <samp style="color: red">* </samp>
+                                                Type of Generating Set <samp style="color: red">* </samp>
                                             </label>
                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlGeneratingSetType_SelectedIndexChanged" ID="ddlGeneratingSetType" selectionmode="Multiple" Style="width: 100% !important">
                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -432,7 +438,7 @@
                                                 Generator voltage level(IN VOLTS)
                                                 <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtGeneratorVoltage"  onkeydown="return preventEnterSubmit(event)" oninput="validateVoltageInput()" onkeypress="return isNumberKey(event);" MaxLength="5" placeholder=""  autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtGeneratorVoltage" onkeydown="return preventEnterSubmit(event)" oninput="validateVoltageInput()" onkeypress="return isNumberKey(event);" MaxLength="5" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ForeColor="Red" ControlToValidate="txtGeneratorVoltage" ValidationGroup="Submit" ErrorMessage="Please Enter Generator Voltage"></asp:RequiredFieldValidator>
                                         </div>
                                         <div class="col-md-4">
@@ -453,7 +459,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label for="Name">
-                                               Location<samp style="color: red">* </samp>
+                                                Location<samp style="color: red">* </samp>
                                             </label>
                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlPlantType" selectionmode="Multiple" Style="width: 100% !important">
                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -475,10 +481,8 @@
                                     </label>
                                 </div>--%>
                                     </div>
-
                                     <div id="SolarPanelGeneratingSet" runat="server" visible="false">
                                         <div class="row">
-
                                             <div class="col-2">
                                                 <label for="Name">
                                                     capacity of plant
@@ -538,8 +542,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label for="Name">
-                                                Number of Earthing:
-        <samp style="color: red">* </samp>
+                                                Number of Earthing:<samp style="color: red">* </samp>
                                             </label>
                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlGeneratingEarthing_SelectedIndexChanged" ID="ddlGeneratingEarthing" selectionmode="Multiple" Style="width: 100% !important">
                                             </asp:DropDownList>
@@ -579,7 +582,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="col-md-12">
-                                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing1" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing1" MaxLength="7" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off"   runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator45" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing1" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                                 </div>
                                                             </td>
@@ -620,7 +623,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="col-md-12">
-                                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing2" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing2" MaxLength="7" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off"  runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator46" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing2" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                                 </div>
                                                             </td>
@@ -661,7 +664,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="col-md-12">
-                                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing3" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing3" MaxLength="7" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off"  runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator47" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing3" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                                 </div>
                                                             </td>
@@ -703,7 +706,7 @@
                                                             </td>
                                                             <td>
                                                                 <div class="col-md-12" id="Div2" runat="server">
-                                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing4" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtGeneratingEarthing4" MaxLength="7" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator48" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing4" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                                 </div>
                                                             </td>
@@ -745,7 +748,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing5" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing5" MaxLength="7" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator49" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing5" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -786,7 +789,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing6" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing6" MaxLength="7" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator50" Visible="false" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing6" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -827,7 +830,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing7" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing7" MaxLength="7" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator51" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing7" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -868,7 +871,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing8" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing8" MaxLength="7" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator52" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing8" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -909,7 +912,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing9" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing9" MaxLength="7" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator53" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing9" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -950,7 +953,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing10" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing10" MaxLength="7" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator54" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing10" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -991,7 +994,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing11" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing11" MaxLength="7" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator55" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing11" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -1032,7 +1035,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing12" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing12" MaxLength="7" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator56" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing12" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -1073,7 +1076,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing13" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing13" MaxLength="7" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator57" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing13" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -1114,7 +1117,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing14" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing14" MaxLength="7" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator58" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing14" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -1155,7 +1158,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing15" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)"  placeholder="" autocomplete="off" TabIndex="2" MaxLength="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtGeneratingEarthing15" MaxLength="7" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator59" runat="server" ForeColor="Red" ControlToValidate="txtGeneratingEarthing15" ValidationGroup="Submit" ErrorMessage="Please Enter Value"></asp:RequiredFieldValidator>
                                                             </div>
                                                         </td>
@@ -1197,17 +1200,6 @@
                                     </div>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
-
-
-
-
-
-
-
-
-
-
-
                         </div>
                         <div class="row" style="margin-top: 50px;" id="Declaration" visible="false" runat="server">
                             <%--  <div class="col-2"></div>--%>
@@ -1223,21 +1215,17 @@
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
                                 <label>
-                                    Enter the OTP you received to Your Phone Number
-                                    <samp style="color: red">* </samp>
+                                    Enter the OTP you received to Your Phone Number<samp style="color: red">* </samp>
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtOTP" MaxLength="6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator74" ControlToValidate="txtOTP" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter OTP"></asp:RequiredFieldValidator>
                             </div>
                         </div>
-
                         <div class="row" style="margin-left: 1%; margin-bottom: 20px;">
                             <asp:CheckBox ID="Check" runat="server" TabIndex="24" />&nbsp;
-                         <text>
-                             I hereby declare that the information furnished in the application is correct.
+                         <text> I hereby declare that the information furnished in the application is correct.
                          </text>
                         </div>
-
                         <div class="row">
                             <div class="col-md-4">
                             </div>
@@ -1257,7 +1245,6 @@
                 </asp:UpdatePanel>
             </div>
         </div>
-
     </div>
     <footer class="footer">
     </footer>
@@ -1284,8 +1271,8 @@
     <script type="text/javascript">
         function alertWithRedirectdata() {
             /* if (confirm('Test Report Submitted Successfully')) {*/
-                alert('Test Report Submitted Successfully');
-                window.location.href = "/Supervisor/InstallationDetails.aspx";
+            alert('Test Report Submitted Successfully');
+            window.location.href = "/Supervisor/InstallationDetails.aspx";
             //} else {
             //}
         }
