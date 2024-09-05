@@ -299,7 +299,7 @@
                             <label for="CertificateOld">
                                 Certificate no (Old)<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="CertificateOld" runat="server" Style="margin-left: 18px" TabIndex="9"></asp:TextBox>
+                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="CertificateOld" runat="server" Style="margin-left: 18px" TabIndex="9" onkeypress="return validateKeyPress(event, this.id)" onblur="validateOnBlur(this.id)"></asp:TextBox>
                         </div>
                         <div class="col-md-4">
                             <label for="CertificateNew">
