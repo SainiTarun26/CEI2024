@@ -135,7 +135,7 @@
                         <div class="row" style="margin-top: 30px;">
                             <div class="col-6">
                                 <label for="FirmName">
-                                    Date of Birth<samp style="color: red"> * </samp>
+                                    Date of Birth
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtFirmName" runat="server" autocomplete="off" Style="margin-left: 18px" TabIndex="3" MaxLength="60"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFirmName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">(*)</asp:RequiredFieldValidator>
@@ -178,7 +178,7 @@
                         <div class="row" style="margin-top: 30px;">
                             <div class="col-6">
                                 <label for="FirmName">
-                                    State<samp style="color: red"> * </samp>
+                                    State
                                 </label>
                                 <asp:TextBox class="form-control" ID="TextBox1" runat="server" autocomplete="off" Style="margin-left: 18px" TabIndex="3" MaxLength="60"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtFirmName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">(*)</asp:RequiredFieldValidator>
@@ -199,7 +199,7 @@
                         <div class="row" style="margin-top: 30px;">
                             <div class="col-6">
                                 <label for="FirmName">
-                                    Pincode<samp style="color: red"> * </samp>
+                                    Pincode
                                 </label>
                                 <asp:TextBox class="form-control" ID="TextBox11" runat="server" autocomplete="off" Style="margin-left: 18px" TabIndex="3" MaxLength="60"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtFirmName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">(*)</asp:RequiredFieldValidator>
@@ -233,13 +233,13 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="LicenceOld">
-                                    Certificate no (Old)<samp style="color: red"> * </samp>
+                                    Certificate no (Old)
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtLicenceOld" autocomplete="off" TabIndex="14" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
                             <div class="col-6">
                                 <label for="LicenceNew">
-                                    Certificate No. (New)<samp style="color: red"> * </samp>
+                                    Certificate No. (New)
                                 </label>
                                 <asp:TextBox class="form-control" ID="TextBox9" autocomplete="off" TabIndex="14" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -249,7 +249,7 @@
                         <div class="row" style="margin-top: 20px;">
                             <div class="col-6">
                                 <label>
-                                    Date of Initial Issue<samp style="color: red"> * </samp>
+                                    Date of Initial Issue
                                 </label>
                                 <asp:TextBox class="form-control" ID="TextBox4" autocomplete="off" runat="server" Style="margin-left: 18px" TabIndex="15"></asp:TextBox>
 
@@ -258,7 +258,7 @@
 
                             <div class="col-6">
                                 <label for="VoltageLevelWithEffect">
-                                    Date of Renewal<samp style="color: red"> * </samp>
+                                    Date of Renewal
                                 </label>
                                 <asp:TextBox class="form-control" ID="TextBox5" autocomplete="off" TabIndex="14" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
@@ -266,7 +266,7 @@
                         <div class="row" style="margin-top: 20px;">
                             <div class="col-6">
                                 <label for="DateofIntialissue">
-                                    Date of Expiry<samp style="color: red"> * </samp>
+                                    Date of Expiry
                                 </label>
                                 <asp:TextBox class="form-control" ID="TextBox6" autocomplete="off" TabIndex="14" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
@@ -280,7 +280,7 @@
                         <div class="row" style="margin-top: 20px;">
                                  <div class="col-4">
                                 <label for="DateofExpiry">
-                                    Attached Contractor Detail's<samp style="color: red"> * </samp>
+                                    Attached Contractor Detail's
                                 </label>
                                 <asp:TextBox class="form-control" ID="TextBox8" autocomplete="off" TabIndex="14" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                      </div>

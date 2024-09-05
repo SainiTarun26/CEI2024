@@ -122,8 +122,7 @@
                     <div class="row">
                         <div class="col-md-4">
                                             <label>
-                                                Inspection Type
-                                                <samp style="color: red">* </samp>
+                                                Inspection Type                                              
                                             </label>
                                             <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" disabled="true" Style="width: 100% !important;" ID="ddlInspectionType" TabIndex="2" runat="server" >
                                                 <asp:ListItem Text="New" Value="0"></asp:ListItem>
@@ -276,8 +275,7 @@
                                     </div>
                         <div class="col-md-4">
                                                <label>
-                                                Is there any Sanction Load Issue
-                                                <samp style="color: red">* </samp>
+                                                Is there any Sanction Load Issue                                               
                                             </label>
                                           
                             <asp:RadioButtonList ID="RadioButtonList2"   runat="server" RepeatDirection="Horizontal" TabIndex="25">
@@ -288,8 +286,7 @@
                                          </div>
                          <div class="col-md-4">
                                             <label>
-                                                Total Capacity to be installed
-                                                <samp style="color: red">* </samp>
+                                                Total Capacity to be installed                                               
                                             </label>
                                          
                                              <asp:TextBox class="form-control" ID="txtCapacity" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>

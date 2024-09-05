@@ -427,7 +427,7 @@
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtVerifyPassword" runat="server" Display="Dynamic" ValidationGroup="SubmitVerifyUser" ForeColor="Red" />
                                                 </div>
                                                 <div class="col-4" style="text-align: left; margin-top: 10px; margin-bottom: -20px;">
-                                                    <asp:Button class="btn btn-primary" ID="Button1" type="submit" runat="server" Text="Update" ValidationGroup="SubmitReset" OnClick="BtnVerify_Click" Style="font-size: 15px; border-radius: 10px; padding-top: 5px; padding-bottom: 5px; margin-top: 15px; margin-bottom: 10px; height: 30px;" />
+                                                    <asp:Button class="btn btn-primary" ID="Button1" type="submit" runat="server" Text="Update" ValidationGroup="SubmitVerifyUser" OnClick="BtnVerify_Click" Style="font-size: 15px; border-radius: 10px; padding-top: 5px; padding-bottom: 5px; margin-top: 15px; margin-bottom: 10px; height: 30px;" />
                                                     <%--<asp:Button class="button-79" ID="BtnReset" runat="server" Text="Reset" OnClick="BtnReset_Click"/>--%>
                                                 </div>
                                                 <%--  <p class="sub-title">

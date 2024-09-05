@@ -281,14 +281,14 @@
                             <label for="CertificateNew">
                                 Ceritifcate No.(New)<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtCertificateNew" runat="server" MaxLength="20" Style="margin-left: 18px" TabIndex="10"></asp:TextBox>
+                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtCertificateNew" runat="server" onkeypress="return validateKeyPress(event, this.id)" onblur="validateOnBlur(this.id)" MaxLength="20" Style="margin-left: 18px" TabIndex="10"></asp:TextBox>
                             <asp:CustomValidator ID="CustomValidator1" runat="server" ClientValidationFunction="validateBothEmpty" ErrorMessage="Required Add Atleast one" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"></asp:CustomValidator>
                         </div>
                         <div class="col-md-4">
                             <label for="DateofIntialissue">
                                 Date of Initial Issue<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" onfocus="disableFutureDates()" ID="txtDateInitialIssue" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" Style="margin-left: 18px" TabIndex="11"></asp:TextBox>
+                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" onfocus="disableFutureDates()" ID="txtDateInitialIssue" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" onkeypress="return validateKeyPress(event, this.id)" onblur="validateOnBlur(this.id)" Style="margin-left: 18px" TabIndex="11"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtDateInitialIssue" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Initial issue</asp:RequiredFieldValidator>
                             <%--<asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtDateExpiry" ControlToValidate="txtDateInitialIssue" Operator="LessThan"
                               Display  ="Dynamic" ForeColor="Red" />--%>
@@ -397,6 +397,60 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        function validateKeyPress(event, inputId) {
+            var inputField = document.getElementById(inputId);
+            var currentValue = inputField.value;
+            var char = String.fromCharCode(event.which);
+
+            var validCharPattern = /^[a-zA-Z0-9\-\/\_\s]+$/;
+            if (!validCharPattern.test(char)) {
+                event.preventDefault();
+                return false;
+            }
+
+            if ((char === '-' || char === '_' || char === '/') && currentValue.length === 0) {
+                event.preventDefault();
+                return false;
+            }
+
+
+            var specialChars = ['-', '_', '/'];
+            var lastChar = currentValue.charAt(currentValue.length - 1);
+            var secondLastChar = currentValue.charAt(currentValue.length - 2);
+
+            if (specialChars.includes(char) && specialChars.includes(lastChar)) {
+                event.preventDefault();
+                return false;
+            }
+
+            return true;
+        }
+
+        function validateOnBlur(inputId) {
+            var inputField = document.getElementById(inputId);
+            var currentValue = inputField.value;
+
+            if (inputId === '<%= txtCertifacateOld.ClientID %>' && currentValue.length > 0 && currentValue.length < 4) {
+            alert("Licence Old must be at least 4 characters long.");
+            setTimeout(function() { inputField.focus(); }, 0);
+            return false;
+        }
+
+        if (inputId === '<%= txtCertificateNew.ClientID %>' && currentValue.length > 0 && currentValue.length < 4) {
+                alert("Licence New must be exactly 4 characters long.");
+                setTimeout(function () { inputField.focus(); }, 0);
+                return false;
+            }
+        }
+
+        function preventEnterSubmit(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                return false;
+            }
+        }
+     </script>
 
     <script type="text/javascript">
         function validateForm() {

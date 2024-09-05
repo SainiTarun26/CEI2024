@@ -266,11 +266,11 @@ namespace CEI_PRoject.Admin
                     }
                     if (txtCertificateNew.Text.Trim() != "" && txtCertificateNew.Text.Trim() != "NA")
                     {
-                        UserId = txtCertificateNew.Text.Trim();
+                        UserId = "W" + " " + "-" + " " + txtCertificateNew.Text.Trim();
                     }
                     else
                     {
-                        UserId = txtCertifacateOld.Text.Trim();
+                        UserId = "W" + " " + "-" + " " + txtCertifacateOld.Text.Trim();
                     }
                     if (btnSubmit.Text.Trim() == "Submit")
                     {
@@ -295,13 +295,13 @@ namespace CEI_PRoject.Admin
                             UserId = str[0];
                             if (str[1] == "New")
                             {
-                                if (UserId == txtCertificateNew.Text)
+                                if (UserId == "W" + " " + "-" + " " + txtCertificateNew.Text)
                                 {
                                     NewUserID = "";
                                 }
                                 else
                                 {
-                                    NewUserID = txtCertificateNew.Text;
+                                    NewUserID = "W" + " " + "-" + " " + txtCertificateNew.Text;
                                 }
                             }
                             else
@@ -312,13 +312,13 @@ namespace CEI_PRoject.Admin
                                 }
                                 else
                                 {
-                                    if (UserId == txtCertifacateOld.Text)
+                                    if (UserId == "W" + " " + "-" + " " + txtCertifacateOld.Text)
                                     {
                                         NewUserID = "";
                                     }
                                     else
                                     {
-                                        NewUserID = txtCertifacateOld.Text;
+                                        NewUserID = "W" + " " + "-" + " " + txtCertifacateOld.Text;
                                     }
                                 }
                             }

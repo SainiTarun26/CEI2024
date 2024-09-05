@@ -114,7 +114,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="Name">
-                                    Name of Owner (Authorised Person)<samp style="color: red"> * </samp>
+                                    Name of Owner (Authorised Person)
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtName" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                     MaxLength="30" Style="margin-left: 18px;">
@@ -133,7 +133,7 @@
                         <div class="row" style="margin-top: 30px;">
                             <div class="col-6">
                                 <label for="FirmName">
-                                    Firm's Name<samp style="color: red"> * </samp>
+                                    Firm's Name
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtFirmName" runat="server" autocomplete="off" Style="margin-left: 18px" TabIndex="3" MaxLength="60"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFirmName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">(*)</asp:RequiredFieldValidator>
@@ -177,14 +177,14 @@
                         <div class="row" style="margin-top: 15px;">
                             <div class="col-8">
                                 <label for="RegisteredOffice">
-                                    Address<samp style="color: red"> * </samp>
+                                    Address
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtRegisteredOffice" autocomplete="off" runat="server" TabIndex="7" Style="margin-left: 18px"></asp:TextBox>
                             </div>
                             <div class="col-4">
                                 <label>
                                     State/UT 
-                                    <samp style="color: red">* </samp>
+                                   
                                 </label>
                                 <asp:TextBox class="form-control" runat="server" autocomplete="off" Style="margin-left: 18px" TabIndex="6" onkeyup="return ValidateEmail();"></asp:TextBox>
                             </div>
@@ -193,14 +193,14 @@
                             <div class="col-4">
                                 <label>
                                     District
-                                    <samp style="color: red">* </samp>
+                                   
                                 </label>
                                 <asp:TextBox class="form-control" ID="TextBox2" autocomplete="off" runat="server" TabIndex="7" Style="margin-left: 18px"></asp:TextBox>
                             </div>
                             <div class="col-4">
                                 <label for="PinCode">
                                     PinCode
-                                    <samp style="color: red">* </samp>
+                                
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtPinCode" runat="server" autocomplete="off" MaxLength="6" onkeyup="ValidatePincode();" onkeypress="return isNumberKey(event);" Style="margin-left: 18px" TabIndex="10"></asp:TextBox>
                                 <span id="lblPinError" style="color: red"></span>
@@ -213,13 +213,13 @@
                         <div class="row">
                             <div class="col-8">
                                 <label for="BranchOffice">
-                                    Address<samp style="color: red"> * </samp>
+                                    Address
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtBranchOffice" autocomplete="off" TabIndex="11" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
                             <div class="col-4">
                                 <label>
-                                    State/UT<samp style="color: red"> * </samp>
+                                    State/UT
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtState1" autocomplete="off" runat="server"></asp:TextBox>
                             </div>
@@ -227,16 +227,16 @@
                         <div class="row" style="margin-top: 20px;">
                             <div class="col-4">
                                 <label>
-                                    District<samp style="color: red"> * </samp>
+                                    District
                                 </label>
                                 <asp:TextBox class="form-control" ID="TextBox3" autocomplete="off" runat="server" ReadOnly="true"></asp:TextBox>
                             </div>
                             <div class="col-4">
                                 <label for="PinCode">
-                                    PinCode<samp style="color: red"> * </samp>
+                                    PinCode
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtPinCode1" autocomplete="off" runat="server" MaxLength="6" onkeyup="ValidatePincode1();" onkeypress="return isNumberKey(event);" Style="margin-left: 18px" TabIndex="13"></asp:TextBox>
-                                <span id="lblPin2Error" style="color: red"></span>
+                              
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtPinCode1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">(*)</asp:RequiredFieldValidator>
                                 <%--<asp:TextBox class="form-control" ID="txtPinCode1" runat="server" MaxLength="6" onkeypress="return isNumberKey(event);" Style="margin-left: 18px" TabIndex="6"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPinCode"  ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red" >(*)</asp:RequiredFieldValidator>--%>
@@ -249,13 +249,13 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="LicenceOld">
-                                    Licence no (Old)<samp style="color: red"> * </samp>
+                                    Licence no (Old)
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtLicenceOld" autocomplete="off" TabIndex="14" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
                             <div class="col-6">
                                 <label for="LicenceNew">
-                                    Licence No. (New)<samp style="color: red"> * </samp>
+                                    Licence No. (New)
                                 </label>
                                 <asp:TextBox class="form-control" ID="TextBox1" autocomplete="off" TabIndex="14" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -264,7 +264,7 @@
                         <div class="row" style="margin-top: 20px;">
                             <div class="col-6">
                                 <label>
-                                    Current Authorised Voltage Level<samp style="color: red"> * </samp>
+                                    Current Authorised Voltage Level
                                 </label>
                                 <asp:TextBox class="form-control" ID="TextBox4" autocomplete="off" runat="server" Style="margin-left: 18px" TabIndex="15"></asp:TextBox>
                             </div>
@@ -278,19 +278,19 @@
                         <div class="row" style="margin-top: 20px;">
                             <div class="col-4">
                                 <label for="DateofIntialissue">
-                                    Date of Initial Issue<samp style="color: red"> * </samp>
+                                    Date of Initial Issue
                                 </label>
                                 <asp:TextBox class="form-control" ID="TextBox6" autocomplete="off" TabIndex="14" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
                             <div class="col-4">
                                 <label for="DateofRenewal">
-                                    Date of Renewal<samp style="color: red"> * </samp>
+                                    Date of Renewal
                                 </label>
                                 <asp:TextBox class="form-control" ID="TextBox7" autocomplete="off" TabIndex="14" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
                             <div class="col-4">
                                 <label for="DateofExpiry">
-                                    Date of Expiry<samp style="color: red"> * </samp>
+                                    Date of Expiry
                                 </label>
                                 <asp:TextBox class="form-control" ID="TextBox8" autocomplete="off" TabIndex="14" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>

@@ -2210,13 +2210,13 @@
                                 <div class="row">
                                     <div class="col-4">
                                         <label for="Voltage">
-                                            Primary voltage(in volte)  
+                                            Primary voltage(in Volt)  
                                         </label>
                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtPrimaryVoltage" ReadOnly="true" MaxLength="10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                     <div class="col-4">
                                         <label for="Voltage">
-                                            Secondary Voltage(in volte)  
+                                            Secondary Voltage(in Volt)  
                                         </label>
                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSecondryVoltage" ReadOnly="true" onKeyPress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
@@ -2238,20 +2238,20 @@
                                     <div class="row" style="margin-top: -15px;">
                                         <div class="col-4" id="Div124" runat="server">
                                             <label for="Voltage" style="margin-top: 30px;">
-                                                HT side Insulation Resistance— HV/Earth
+                                                HT side Insulation Resistance— HV/Earth(in Mohms)
                                             </label>
                                             <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" onKeyPress="return isNumberKey(event);" ID="txtHTsideInsulation" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                         <div class="col-4" style="margin-top: -20px;">
                                             <label style="margin-bottom: 0px; font-size: 1rem !important; font-weight: 600;">LT side Insulation Resistance</label>
                                             <label for="Voltage" style="margin-top: -15px;">
-                                                LT side Insulation Resistance—LV/Earth
+                                                LT side Insulation Resistance—LV/Earth(in Mohms)
                                             </label>
                                             <asp:TextBox class="form-control" AutoPostBack="true" onKeyPress="return isNumberKey(event);" ID="txtLTSideInsulation" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                         <div class="col-4" style="margin-top: -20px;">
                                             <label for="Voltage" style="margin-top: 50px;">
-                                                Insulation Resistance between HT LT Side 
+                                                Insulation Resistance between HT LT Side(in Mohms)
                                             </label>
                                             <asp:TextBox class="form-control" AutoPostBack="true" onKeyPress="return isNumberKey(event);" ID="txtLowestValue" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
@@ -2265,7 +2265,7 @@
                                         </div>
                                         <div class="col-4">
                                             <label>
-                                                Type of HT (Primary Side/ Switch)<samp style="color: red"> * </samp>
+                                                Type of HT (Primary Switch)
                                             </label>
                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtHTType" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlBreaker" selectionmode="Multiple" Visible="false" Style="width: 100% !important">
@@ -2665,7 +2665,7 @@
                         </div>
                         <div class="card" style="background: #fcfcfc; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 20px; padding: 15px;">
                             <div class="card-title">
-                                Work Intimation Created Details (<asp:Label ID="lblIntimationId" runat="server" />)
+                                Work Intimation Details (<asp:Label ID="lblIntimationId" runat="server" />)
                             </div>
                             <div class="row">
                                 <%-- <div class="col-4" id="CreatedDate" visible="false" runat="server">
@@ -2692,7 +2692,7 @@
                             <ContentTemplate>
                                 <div class="card" style="background: #fcfcfc; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 20px; padding: 15px;">
                                     <div class="card-title">
-                                        Test Report Prepared Details (<asp:Label ID="lblReportNo" runat="server" />)
+                                        Test Report Details (<asp:Label ID="lblReportNo" runat="server" />)
                                     </div>
                                     <div class="row">
                                         <%-- id="Contractor" runat="server" style="border-radius: 20px;" visible="false"--%>
@@ -2743,17 +2743,17 @@
                                     </div>
                                 </div>
                                    <div class="card" id="ApprovalCard" style="background: #fcfcfc; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 30px; padding: 20px; padding-top: 1px;" runat="server" visible="false">
-       <div class="card-title">Test Report Approval Details</div>
+       <div class="card-title">Test Report Final Submission Details</div>
        <div class="row" style="padding-bottom: 20px;">
            <div class="col-4" id="Div9" runat="server">
                <label>
-                   Test Report Approval Date
+                   Test Report Submission Date
                </label>
                <asp:TextBox class="form-control" ID="txtApprovalDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
            </div>
            <div class="col-4" id="Div10" runat="server">
                <label for="Name">
-                   Test Report Approved By
+                   Test Report Submitted By
                </label>
                <asp:TextBox class="form-control" ID="txtApprovedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
            </div>

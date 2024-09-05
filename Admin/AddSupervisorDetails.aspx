@@ -305,7 +305,7 @@
                             <label for="CertificateNew">
                                 Certificate No. (New)<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="CertificateNew" runat="server" Style="margin-left: 18px" TabIndex="10"></asp:TextBox>
+                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="CertificateNew" runat="server" onkeypress="return validateKeyPress(event, this.id)" onblur="validateOnBlur(this.id)" Style="margin-left: 18px" TabIndex="10"></asp:TextBox>
                             <asp:CustomValidator ID="CustomValidator1" runat="server" ClientValidationFunction="validateBothEmpty" ErrorMessage="Required Add Atleast one certificate" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"></asp:CustomValidator>
 
                         </div>
@@ -472,10 +472,66 @@
                 args.IsValid = true;
             }
         }
+
     </script>
+
     <script type="text/javascript">
-        function validateForm() {
-            debugger;
+        function validateKeyPress(event, inputId) {
+            var inputField = document.getElementById(inputId);
+            var currentValue = inputField.value;
+            var char = String.fromCharCode(event.which);
+
+            var validCharPattern = /^[a-zA-Z0-9\-\/\_\s]+$/;
+            if (!validCharPattern.test(char)) {
+                event.preventDefault();
+                return false;
+            }
+
+            if ((char === '-' || char === '_' || char === '/') && currentValue.length === 0) {
+                event.preventDefault();
+                return false;
+            }
+
+
+            var specialChars = ['-', '_', '/'];
+            var lastChar = currentValue.charAt(currentValue.length - 1);
+            var secondLastChar = currentValue.charAt(currentValue.length - 2);
+
+            if (specialChars.includes(char) && specialChars.includes(lastChar)) {
+                event.preventDefault();
+                return false;
+            }
+
+            return true;
+        }
+
+        function validateOnBlur(inputId) {
+            var inputField = document.getElementById(inputId);
+            var currentValue = inputField.value;
+
+            if (inputId === '<%= CertificateOld.ClientID %>' && currentValue.length > 0 && currentValue.length < 4) {
+            alert("Licence Old must be at least 4 characters long.");
+            setTimeout(function() { inputField.focus(); }, 0);
+            return false;
+        }
+
+        if (inputId === '<%= CertificateNew.ClientID %>' && currentValue.length > 0 && currentValue.length < 4) {
+                alert("Licence New must be exactly 4 characters long.");
+                setTimeout(function () { inputField.focus(); }, 0);
+                return false;
+            }
+        }
+
+        function preventEnterSubmit(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                return false;
+            }
+        }
+     </script>
+
+    <script type="text/javascript">
+        function validateForm() {           
             var emptyFields = [];
 
             var CertifacateOld = document.getElementById('<%= CertificateOld.ClientID %>').value
