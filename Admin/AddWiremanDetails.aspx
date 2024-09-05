@@ -275,7 +275,7 @@
                             <label for="CertificateOld">
                                 Certificate no (Old)<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtCertifacateOld" runat="server" MaxLength="20" Style="margin-left: 18px" TabIndex="9"></asp:TextBox>
+                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtCertifacateOld" runat="server" MaxLength="20" Style="margin-left: 18px"  TabIndex="9" onkeypress="return validateKeyPress(event, this.id)" onblur="validateOnBlur(this.id)"></asp:TextBox>
                         </div>
                         <div class="col-md-4">
                             <label for="CertificateNew">
@@ -288,7 +288,7 @@
                             <label for="DateofIntialissue">
                                 Date of Initial Issue<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" onfocus="disableFutureDates()" ID="txtDateInitialIssue" min='0000-01-01' max='9999-01-01' Type="Date" runat="server" onkeypress="return validateKeyPress(event, this.id)" onblur="validateOnBlur(this.id)" Style="margin-left: 18px" TabIndex="11"></asp:TextBox>
+                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" onfocus="disableFutureDates()" ID="txtDateInitialIssue" min='0000-01-01' max='9999-01-01' Type="Date" runat="server"  Style="margin-left: 18px" TabIndex="11"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtDateInitialIssue" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Initial issue</asp:RequiredFieldValidator>
                             <%--<asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtDateExpiry" ControlToValidate="txtDateInitialIssue" Operator="LessThan"
                               Display  ="Dynamic" ForeColor="Red" />--%>
