@@ -54,21 +54,27 @@
         SubmitBy1 {
             margin-top: 1px !important;
         }
-div#Div13 {
-    margin-top: 1px !important;
-}
-div#Div12 {
-    margin-top: 1px !important;
-}
-div#CreatedDate {
-    margin-top: 1px !important;
-}
-div#Div10 {
-    margin-top: 1px !important;
-}
-div#SubmitBy1 {
-    margin-top: 1px !important;
-}
+
+        div#Div13 {
+            margin-top: 1px !important;
+        }
+
+        div#Div12 {
+            margin-top: 1px !important;
+        }
+
+        div#CreatedDate {
+            margin-top: 1px !important;
+        }
+
+        div#Div10 {
+            margin-top: 1px !important;
+        }
+
+        div#SubmitBy1 {
+            margin-top: 1px !important;
+        }
+
         .page1 {
             box-sizing: border-box;
             min-height: 100vh;
@@ -156,6 +162,10 @@ div#SubmitBy1 {
         div#SubmitDate {
             margin-top: 0px;
         }
+
+        input {
+            background: white !important;
+        }
     </style>
     <script>
 
@@ -186,14 +196,14 @@ div#SubmitBy1 {
                 <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
                     <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
                         <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
-                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
+                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50; background: blue !important;" OnClientClick="printDiv('printableDiv');" />
                     </div>
                     <div class="card-body">
                         <div id="printableDiv">
                             <div class="page1">
                                 <div class="row" style="margin-bottom: 15PX;">
                                     <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                                        <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Work Completion and Test Report Details</h6>
+                                        <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Work Completion and Test Report</h6>
                                         <div class="row">
                                             <div class="col-3" style="margin-top: 0px;"></div>
                                             <div class="col-6" style="margin-top: 0px; padding-left: 0px; text-align: center;">
@@ -206,19 +216,16 @@ div#SubmitBy1 {
                                     </div>
                                 </div>
                                 <br />
-                                <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Work Intimation Details</u></h6>
+                                <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Details</u></h6>
                                 <div id="IntimationData" runat="server" visible="true">
                                     <div class="row">
                                         <div class="col-6">
-
                                             <label for="Name">
                                                 Electrical Installation For
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtInstallation" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
                                         </div>
                                         <div class="col-6">
-
                                             <div id="agency" runat="server" visible="false">
                                                 <label for="agency">Name of Organization</label>
                                                 <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" ReadOnly="true" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -229,9 +236,7 @@ div#SubmitBy1 {
                                                 </label>
                                                 <asp:TextBox class="form-control" ID="txtName" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
-
                                         </div>
-
                                         <div class="col-4" id="individual5">
                                             <label for="Name">
                                                 Contact Details 
@@ -251,14 +256,9 @@ div#SubmitBy1 {
                                                 </label>
                                                 <asp:TextBox class="form-control" ID="txtVoltagelevel" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
-
                                         </div>
-
                                     </div>
                                     <div class="row">
-
-
-
                                         <div class="col-4" id="individual10">
                                             <label for="Name">
                                                 Work Start Date
@@ -274,21 +274,20 @@ div#SubmitBy1 {
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row" style="margin-top: 35px;">
                                         <div class="col-12">
                                             <div id="individual11" runat="server">
                                                 <label for="Name">
-                                                    Address
+                                                    Address of Site
                                                 </label>
                                                 <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card" id="inspection-card" style="background: #fcfcfc; margin-top: 5%;">
+                                <div class="card" id="inspection-card" style="margin-top: 5%;">
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Test Report Details</u></h6>
-                                    <div class="card" id="inspection-card-child1" style="background: #fcfcfc;">
+                                    <div class="card" id="inspection-card-child1">
                                         <div>
                                             <div class="row">
                                                 <div class="col-4">
@@ -300,29 +299,24 @@ div#SubmitBy1 {
                                                 <div class="col-2" id="divOtherVoltages" runat="server" visible="false" style="margin-top: 5%;">
                                                     <label for="Voltage">
                                                         Other Voltage 
-                                                 
                                                     </label>
                                                     <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="txtVotalgeType" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-2" id="OtherVoltage" runat="server" visible="false" style="margin-top: 5%;">
                                                     <label for="Voltage">
                                                         Other Voltage 
-                                                 
                                                     </label>
                                                     <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="TxtOthervoltage" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
                                                 </div>
                                                 <div class="col-4" id="Div1" runat="server">
                                                     <label for="Name">
                                                         Length of Line (in KM)
-                                              
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtLineLength" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4">
                                                     <label>
                                                         Line Type
-                                              
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtLineType" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
@@ -333,14 +327,12 @@ div#SubmitBy1 {
                                                 <div class="col-4">
                                                     <label>
                                                         No of Circuit
-                                                    
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtCircuit" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4">
                                                     <label>
                                                         Conductor Type
-                                                      
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtConductorType" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
@@ -353,48 +345,42 @@ div#SubmitBy1 {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card" id="inspection-card-child2" style="background: #fcfcfc;">
+                                    <div class="card" id="inspection-card-child2">
                                         <div id="OverheadBare" visible="false" runat="server">
                                             <div class="row">
                                                 <div class="col-4" id="Div2" runat="server">
                                                     <label for="Name">
-                                                        Size of Conductor( IN SQ.MM)
-                                                   
+                                                        Size of Conductor (in mm sq.)
                                                     </label>
                                                     <asp:TextBox class="form-control" ReadOnly="true" ID="txtConductorSize" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div3" runat="server">
                                                     <label for="Name">
-                                                        Size of Ground Wire( IN SQ.MM)	
-                     
+                                                        Size of Ground Wire (in mm sq.)	
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtGroundWireSize" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="2" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div4" runat="server">
                                                     <label for="Name">
                                                         Number of Railway Crossing
-                        
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtRailwayCrossingNo" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="2" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div5" runat="server">
                                                     <label for="Name">
                                                         Number of Road Crossing
-                        
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtRoadCrossingNo" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="2" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div6" runat="server">
                                                     <label for="Name">
                                                         Number of River/Canal Crossing
-                       
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtRiverCanalCrossing" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="2" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div7" runat="server">
                                                     <label for="Name">
-                                                        Number of Power Line Crossing:	
-                      
+                                                        Number of Power Line Crossing	
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtPowerLineCrossing" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="2" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
@@ -411,36 +397,31 @@ div#SubmitBy1 {
                                                 </div>
                                                 <div class="col-4" id="Div11" runat="server">
                                                     <label for="Name">
-                                                        Size of cable: (in MM sq.)
-                      
+                                                        Size of cable (in mm sq.)
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtCableSize1" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div19" runat="server">
                                                     <label for="Name">
                                                         Number of Railway Crossing
-                       
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtRailwayCrossingNmbr" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div20" runat="server">
                                                     <label for="Name">
                                                         Number of Road Crossing
-                        
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtRoadCrossingNmbr" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div21" runat="server">
                                                     <label for="Name">
                                                         Number of River/Canal Crossing
-                        
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtRiverCanalCrossingNmber" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div22" runat="server">
                                                     <label for="Name">
-                                                        Number of Power Line Crossing:	
-                        
+                                                        Number of Power Line Crossing	
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtPowerLineCrossingNmbr" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
@@ -451,73 +432,66 @@ div#SubmitBy1 {
                                                 <div class="col-4">
                                                     <label>
                                                         Type of Cable
-                        
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtCableType" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="OtherCable" runat="server" visible="false">
                                                     <label>
-                                                        Type of Cable(Other)
+                                                        Type of Cable (Other)
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtOtherCable" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4">
                                                     <label>
-                                                        Size of Cable: In(MM Sq.)
+                                                        Size of Cable (in mm sq.)
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtCableSize" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4">
                                                     <label>
                                                         Cable Laid in
-                        
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtCableLaid" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card" id="inspection-card-child3" style="background: #fcfcfc;">
+                                    <div class="card" id="inspection-card-child3">
                                         <div id="Insulation440vAbove" runat="server" visible="false">
                                             <div class="row">
                                                 <div class="col-4">
                                                     <label>
-                                                        Red Phase – Earth Wire (in Mohm)
+                                                        Red Phase – Earth Wire (in Mohms)
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtRedEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div32" runat="server">
                                                     <label for="Name">
-                                                        Yellow Phase – Earth Wire (in Mohm)	
-                        
+                                                        Yellow Phase – Earth Wire (in Mohms)	
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtYellowEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div33" runat="server">
                                                     <label for="Name">
-                                                        Blue Phase – Earth Wire (in Mohm)	
-                
+                                                        Blue Phase – Earth Wire (in Mohms)	
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtBlueEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div34" runat="server">
                                                     <label for="Name">
-                                                        Red Phase – Yellow Phase(in Mohm)
-               
+                                                        Red Phase – Yellow Phase (in Mohms)
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtRedYellowPhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div35" runat="server">
                                                     <label for="Name">
-                                                        Blue Phase – Yellow Phase(in Mohm)
-                
+                                                        Blue Phase – Yellow Phase (in Mohms)
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtBlueYellowPhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div36" runat="server">
                                                     <label for="Name">
-                                                        Red Phase – Blue Phase(in Mohm)
-                
+                                                        Red Phase – Blue Phase(in Mohms)
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtRedBluePhase" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
@@ -527,21 +501,19 @@ div#SubmitBy1 {
                                             <div class="row">
                                                 <div class="col-4">
                                                     <label>
-                                                        Phase wire - Neutral wire (in Mohm)
+                                                        Phase wire - Neutral wire (in Mohms)
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtNeutralWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div37" runat="server">
                                                     <label for="Name">
-                                                        Phase wire - Earth (in Mohm)
-                       
+                                                        Phase wire - Earth (in Mohms)
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtEarthWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div39" runat="server">
                                                     <label for="Name">
-                                                        Neutral wire - Earth (in Mohm)
-             
+                                                        Neutral wire - Earth (in Mohms)
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtNeutralWireEarth" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
@@ -551,42 +523,37 @@ div#SubmitBy1 {
                                             <div class="row">
                                                 <div class="col-4">
                                                     <label>
-                                                        Red Phase – Earth Wire (in Mohm)
+                                                        Red Phase – Earth Wire (in Mohms)
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtRedWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div38" runat="server">
                                                     <label for="Name">
-                                                        Yellow Phase – Earth Wire (in Mohm)	
-    
+                                                        Yellow Phase – Earth Wire (in Mohms)	
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div40" runat="server">
                                                     <label for="Name">
-                                                        Blue Phase – Earth Wire (in Mohm)	
-                                                    
+                                                        Blue Phase – Earth Wire (in Mohms)	
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtBlueWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div41" runat="server">
                                                     <label for="Name">
-                                                        Red Phase – Yellow Phase(in Mohm)
-                                                   
+                                                        Red Phase – Yellow Phase (in Mohms)
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtRedYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div42" runat="server">
                                                     <label for="Name">
-                                                        Blue Phase – Yellow Phase(in Mohm)
-                                                    
+                                                        Blue Phase – Yellow Phase (in Mohms)
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtBlueYellowWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div43" runat="server">
                                                     <label for="Name">
-                                                        Red Phase – Blue Phase(in Mohm)
-                                                    
+                                                        Red Phase – Blue Phase (in Mohms)
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtRedBlueWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
@@ -596,21 +563,19 @@ div#SubmitBy1 {
                                             <div class="row">
                                                 <div class="col-4">
                                                     <label>
-                                                        Phase wire - Neutral wire (in Mohm)
+                                                        Phase wire - Neutral wire (in Mohms)
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtNeutralPhaseWire" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div44" runat="server">
                                                     <label for="Name">
-                                                        Phase wire - Earth (in Mohm)
-                        
+                                                        Phase wire - Earth (in Mohms)
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtPhaseWireEarth" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4" id="Div45" runat="server">
                                                     <label for="Name">
-                                                        Neutral wire - Earth (in Mohm)
-                                                   
+                                                        Neutral wire - Earth (in Mohms)
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtNeutralWireEarthUnderground" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
@@ -620,20 +585,19 @@ div#SubmitBy1 {
                                 </div>
                             </div>
                             <div class="page2" style="page-break-before: always;">
-                                <div class="card" id="earthing-card" style="background: #fcfcfc; margin-top: 5%;">
+                                <div class="card" id="earthing-card" style="margin-top: 5%;">
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Earthing Details</u></h6>
                                     <div id="Earthing" runat="server" visible="true">
                                         <div class="card">
                                             <div class="col-4">
                                                 <label>
-                                                    Number of Earthing:
-                                               
+                                                    Number of Earthing                                            
                                                 </label>
                                                 <asp:TextBox class="form-control" ID="txtEarthing" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                             <div class="table-responsive pt-3" id="LineEarthingdiv" runat="server" visible="true" style="margin-left: 0px;">
                                                 <table class="table table-bordered table-striped" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;">
-                                                    <thead class="table-dark">
+                                                    <thead class="table" style="background: #9292cc;">
                                                         <tr>
                                                             <th>S.No.
                                                             </th>
@@ -762,7 +726,6 @@ div#SubmitBy1 {
                                                             <td>
                                                                 <div class="col-12">
                                                                     <asp:TextBox class="form-control" ID="txtEarthingType9" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -777,7 +740,6 @@ div#SubmitBy1 {
                                                             <td>
                                                                 <div class="col-12">
                                                                     <asp:TextBox class="form-control" ID="txtEarthingType10" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -792,7 +754,6 @@ div#SubmitBy1 {
                                                             <td>
                                                                 <div class="col-12">
                                                                     <asp:TextBox class="form-control" ID="txtEarthingType11" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -807,7 +768,6 @@ div#SubmitBy1 {
                                                             <td>
                                                                 <div class="col-12">
                                                                     <asp:TextBox class="form-control" ID="txtEarthingType12" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -822,7 +782,6 @@ div#SubmitBy1 {
                                                             <td>
                                                                 <div class="col-12">
                                                                     <asp:TextBox class="form-control" ID="txtEarthingType13" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -852,7 +811,6 @@ div#SubmitBy1 {
                                                             <td>
                                                                 <div class="col-12">
                                                                     <asp:TextBox class="form-control" ID="txtEarthingType15" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -867,37 +825,18 @@ div#SubmitBy1 {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card" style="background: #fcfcfc; margin-top: 5%;">
+                                <div class="card" style="margin-top: 5%;">
                                     <div class="row">
-
-                                        <%--   <div class="col-6" id="CreatedDate" visible="false" runat="server">
-                                            <label>
-                                                TestReport Created Date
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtCreatedDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        </div>--%>
                                         <div class="col-6" id="Div8" runat="server">
                                             <label>
                                                 Installation Type
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtinstalltype" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
-                                        <%--<div class="col-4" id="SubmitDate" visible="false" runat="server">
-                                            <label>
-                                                Work Intimation Submitted Date
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtSubmitteddate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        </div>--%>
-                                        <%-- <div class="col-4" id="SubmitBy" visible="false" runat="server">
-                                            <label>
-                                                Work Intimation Submitted By
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtSubmittedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        </div>--%>
                                     </div>
                                 </div>
-                                <div class="card-title" style="margin-top: 5%;font-weight: 700; margin-bottom: 0px !important;">
-                                    Work Intimation Created Details (<asp:Label ID="lblIntimationId" runat="server" />)
+                                <div class="card-title" style="margin-top: 5%; font-weight: 700; margin-bottom: 0px !important;">
+                                    Work Intimation Details (<asp:Label ID="lblIntimationId" runat="server" />)
                                 </div>
                                 <div class="row">
                                     <div class="col-4" id="SubmitDate1">
@@ -913,8 +852,8 @@ div#SubmitBy1 {
                                         <asp:TextBox class="form-control" ID="txtSubmittedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                 </div>
-                                <div class="card-title" style="margin-top: 5%;font-weight: 700; margin-bottom: 0px !important;">
-                                    Test Report Prepared Details (<asp:Label ID="lblReportNo" runat="server" />)
+                                <div class="card-title" style="margin-top: 5%; font-weight: 700; margin-bottom: 0px !important;">
+                                    Test Report Details (<asp:Label ID="lblReportNo" runat="server" />)
                                 </div>
                                 <div id="Div9" runat="server">
                                     <div class="row" style="padding-bottom: 20px;">
@@ -933,18 +872,17 @@ div#SubmitBy1 {
                                     </div>
                                 </div>
                                 <br />
-
-                                <div class="card-title" id="ApprovalTitle" visible="false" runat="server" style="margin-top: 2%;font-weight: 700; margin-bottom: 0px !important;">Test Report Approval Details</div>
+                                <div class="card-title" id="ApprovalTitle" visible="false" runat="server" style="margin-top: 2%; font-weight: 700; margin-bottom: 0px !important;">Test Report Final Submission Details</div>
                                 <div class="row" id="DivApproval" style="padding-bottom: 20px;" visible="false" runat="server">
                                     <div class="col-4" id="Div12" runat="server">
                                         <label>
-                                            Test Report Approval Date
+                                            Test Report Submission Date
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtApprovalDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                     <div class="col-4" id="Div13" runat="server">
                                         <label for="Name">
-                                            Test Report Approved By
+                                            Test Report Submitted By
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtApprovedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>

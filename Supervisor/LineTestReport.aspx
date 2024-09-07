@@ -43,6 +43,30 @@
             }
         }
 
+        //function isNumberdecimalKey(evt, element) {
+        //    var charCode = (evt.which) ? evt.which : evt.keyCode;
+
+        //    // Allow only digits and one decimal point
+        //    if (charCode != 46 && (charCode < 48 || charCode > 57))
+        //        return false;
+
+        //    // Get the current value of the textbox
+        //    var value = element.value;
+
+        //    // Allow only one decimal point
+        //    if (charCode == 46 && value.indexOf('.') != -1)
+        //        return false;
+
+        //    // Ensure only two digits after the decimal point
+        //    if (value.indexOf('.') != -1) {
+        //        var decimalPart = value.split('.')[1];
+        //        if (decimalPart && decimalPart.length >= 2) {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
+
         function isNumberdecimalKey(evt, element) {
             var charCode = (evt.which) ? evt.which : evt.keyCode;
 
@@ -57,15 +81,20 @@
             if (charCode == 46 && value.indexOf('.') != -1)
                 return false;
 
-            // Ensure only two digits after the decimal point
+            // Ensure only 1 digit before the decimal point
+            if (value.indexOf('.') === -1 && value.length >= 1 && charCode != 46)
+                return false;
+
+            // Ensure only 5 digits after the decimal point
             if (value.indexOf('.') != -1) {
                 var decimalPart = value.split('.')[1];
-                if (decimalPart && decimalPart.length >= 2) {
+                if (decimalPart && decimalPart.length >= 5) {
                     return false;
                 }
             }
             return true;
         }
+
 
         //Allow Only Aplhabet, Delete and Backspace
         function isAlpha(keyCode) {
@@ -686,7 +715,7 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label>
-                                            Number of Earthing:<samp style="color: red">* </samp>
+                                            Number of Earthing<samp style="color: red">* </samp>
                                         </label>
                                         <asp:DropDownList class="form-control  select-form select2" TabIndex="12" runat="server" AutoPostBack="true" ID="ddlNoOfEarthing" selectionmode="Multiple" Style="width: 100% !important" OnSelectedIndexChanged="ddlNoOfEarthing_SelectedIndexChanged">
                                         </asp:DropDownList>

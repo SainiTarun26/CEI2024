@@ -308,7 +308,7 @@
                                     </thead>
                                     <tbody>
                                         <div id="installationType1" runat="server" visible="False">
-                                            <tr>
+                                            <tr id="trinstallationType1" runat="server" visible="true">
                                                 <td>
                                                     <div class="col-md-12">
                                                         <asp:TextBox class="form-control" ID="txtinstallationType1" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -323,7 +323,7 @@
                                             </tr>
                                         </div>
                                         <div id="installationType2" runat="server" visible="False">
-                                            <tr>
+                                            <tr id="trinstallationType2" runat="server" visible="true">
                                                 <td>
                                                     <div class="col-md-12">
                                                         <asp:TextBox class="form-control" ID="txtinstallationType2" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -338,7 +338,7 @@
                                             </tr>
                                         </div>
                                         <div id="installationType3" runat="server" visible="False">
-                                            <tr>
+                                            <tr  id="trinstallationType3" runat="server" visible="true">
                                                 <td>
                                                     <div class="col-md-12">
                                                         <asp:TextBox class="form-control" ID="txtinstallationType3" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px;"></asp:TextBox>

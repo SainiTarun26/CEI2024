@@ -66,7 +66,6 @@ namespace CEIHaryana.Contractor
             {
                 Response.Redirect("/Login.aspx");
             }
-
         }
         protected void GetDetails()
         {
@@ -176,6 +175,26 @@ namespace CEIHaryana.Contractor
                     RadioButtonList2.Enabled = false;
                     txtCapacity.Text = ds.Tables[0].Rows[0]["TotalCapacity"].ToString();
                     //String dp_ID24 = ds.Tables[0].Rows[0]["SanctionLoad"].ToString();
+
+
+                    if (string.IsNullOrEmpty(dp_Id9))
+                    {
+                        trinstallationType1.Visible = false;
+                    }
+
+
+                    if (string.IsNullOrEmpty(dp_Id11))
+                    {
+                        trinstallationType2.Visible = false;
+                    }
+
+
+                    if (string.IsNullOrEmpty(dp_Id13))
+                    {
+                        trinstallationType3.Visible = false;
+                    }
+
+
                     if (dp_Id8 != "")
                     {
                         Installation.Visible = true;

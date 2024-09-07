@@ -321,6 +321,15 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl SolarPanelGeneratingSet;
 
         /// <summary>
+        /// unitofplant control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl unitofplant;
+
+        /// <summary>
         /// txtPlantCapacityType control.
         /// </summary>
         /// <remarks>
@@ -328,6 +337,15 @@ namespace CEIHaryana.TestReportModal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPlantCapacityType;
+
+        /// <summary>
+        /// capacityofplant control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl capacityofplant;
 
         /// <summary>
         /// txtPlantCapacity control.

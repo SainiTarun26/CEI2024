@@ -104,8 +104,16 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else
                     {
-                        GridView2.DataSource = null;
-                        GridView2.DataBind();
+                        dsDetails = CEI.GetDocumentforPeriodic(IdCart);
+
+                        if (dsDetails != null && dsDetails.Tables[0].Rows.Count > 0)
+                        {
+                            AddFixedRows(dsDetails);
+                            GridView1.DataSource = dsDetails;
+                            GridView1.DataBind();
+                        }
+                        //GridView2.DataSource = null;
+                        //GridView2.DataBind();
                     }
                 }
             }

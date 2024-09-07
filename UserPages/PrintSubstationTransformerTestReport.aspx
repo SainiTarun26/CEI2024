@@ -151,6 +151,9 @@
                 display: none !important;
             }
         }
+        input {
+    background: white !important;
+}
     </style>
     <script>
 
@@ -176,16 +179,16 @@
                 <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
                     <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
                         <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
-                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
+                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50; background:blue !important;" OnClientClick="printDiv('printableDiv');" />
                     </div>
                     <div class="card-body">
                         <div id="printableDiv">
                             <div class="page1">
                                 <div class="row" style="margin-bottom: 15PX;">
                                     <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                                        <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Work Completion and Test Report Details</h6>
+                                        <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Work Completion and Test Report</h6>
                                         <div class="row">
-                                            <div class="col-12" style="margin-top: 0px; padding-left: 0px; text-align">
+                                            <div class="col-12" style="margin-top: 0px; padding-left: 0px;">
                                                 <asp:TextBox class="form-control" ID="txtTestReportId" runat="server" ReadOnly="true" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                                     MaxLength="30" Style="margin-left: 18px; text-align: center;">
                                                 </asp:TextBox>
@@ -194,7 +197,7 @@
                                     </div>
                                 </div>
                                 <br />
-                                <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Work Intimation Details</u></h6>
+                                <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Details</u></h6>
                                 <div id="IntimationData" runat="server" visible="true">
                                     <div class="row">
                                         <div class="col-4">
@@ -259,15 +262,15 @@
                                     <div cass="row" style="margin-top: 5%;">
                                         <div class="col-12" id="individual10" style="padding-left: 0px;">
                                             <label for="Name">
-                                                Address 
+                                                Address of Site
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card" id="inspection-card" style="background: #fcfcfc; margin-top: 5%;">
+                                <div class="card" id="inspection-card" style="margin-top: 5%;">
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Test Report Details</u></h6>
-                                    <div class="card" id="inspection-card-child1" style="background: #fcfcfc;">
+                                    <div class="card" id="inspection-card-child1">
                                         <div class="row">
                                             <div class="col-4" id="Div121" runat="server">
                                                 <label>
@@ -277,7 +280,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <label>
-                                                    Capacity of transformer
+                                                    Unit of transformer
                                                 </label>
                                                 <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="txtTransformerCapacityType" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
@@ -298,19 +301,19 @@
                                             <div class="row">
                                                 <div class="col-4">
                                                     <label>
-                                                        Primary voltage(in kva)
+                                                        Primary voltage (IN VOLTS)  
                                                     </label>
                                                     <asp:TextBox class="form-control" AutoPostBack="true" ID="txtPrimaryVoltage" ReadOnly="true" MaxLength="10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div class="col-4">
                                                     <label>
-                                                        Secondary Voltage(in volte)  
+                                                        Secondary Voltage (IN VOLTS)  
                                                     </label>
                                                     <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSecondryVoltage" ReadOnly="true" onKeyPress="return isNumberKey(event);" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
                                                 <div id="Capacity" class="col-4" runat="server" visible="false">
                                                     <label>
-                                                        Capacity of oil(in liters)
+                                                        Capacity of oil (in liters)
                                                     </label>
                                                     <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOilCapacity" ReadOnly="true" MaxLength="10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
@@ -326,19 +329,19 @@
                                                 <div class="row" style="margin-top: -15px;">
                                                     <div class="col-4" id="Div124" runat="server">
                                                         <label for="Voltage" style="margin-top: 30px;">
-                                                            HT side Insulation Resistance— HV/Earth
+                                                            HT side Insulation Resistance— HV/Earth (in Mohms)
                                                         </label>
                                                         <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" onKeyPress="return isNumberKey(event);" ID="txtHTsideInsulation" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" style="margin-top: auto;">
                                                         <label for="Voltage">
-                                                            LT side Insulation Resistance—LV/Earth
+                                                            LT side Insulation Resistance—LV/Earth (in Mohms)
                                                         </label>
                                                         <asp:TextBox class="form-control" AutoPostBack="true" onKeyPress="return isNumberKey(event);" ID="txtLTSideInsulation" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                     <div class="col-4" style="margin-top: auto;">
                                                         <label for="Voltage">
-                                                            Insulation Resistance between HT LT Side 
+                                                            Insulation Resistance between HT/LT Side (in Mohms)
                                                         </label>
                                                         <asp:TextBox class="form-control" AutoPostBack="true" onKeyPress="return isNumberKey(event);" ID="txtLowestValue" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
@@ -352,7 +355,7 @@
                                                     </div>
                                                     <div class="col-4">
                                                         <label>
-                                                            Type of HT (Primary Side/ Switch)
+                                                            Type of HT (Primary Switch)
                                                         </label>
                                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtHTType" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                         <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlBreaker" selectionmode="Multiple" Visible="false" Style="width: 100% !important">
@@ -410,7 +413,7 @@
                                 </div>
                             </div>
                             <div class="page2">
-                                <div class="card" id="earthing-card" style="background: #fcfcfc; margin-top: 1%;">
+                                <div class="card" id="earthing-card" style="margin-top: 1%;">
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Earthing Details</u></h6>
                                     <div id="Earthing" runat="server" visible="true">
                                         <div class="card">
@@ -422,7 +425,7 @@
                                             </div>
                                             <div class="table-responsive pt-3" id="SubstationEarthingDiv" runat="server" visible="false" style="margin-left: 0px;">
                                                 <table id="earthingcard" class="table table-bordered table-striped" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;">
-                                                    <thead class="table-dark">
+                                                    <thead class="table"  style="background-color: #9292cc;">
                                                         <tr>
                                                             <th>S.No.
                                                             </th>
@@ -806,7 +809,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card" style="background: #fcfcfc;">
+                                <div class="card">
                                     <div class="row">
                                       <%--  <div class="col-6" id="CreatedDate" visible="false" runat="server">
                                             <label>
@@ -835,7 +838,7 @@
                                     </div>
                                 </div>
                                 <div class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;margin-top:3%;">
-                                    Work Intimation Created Details (<asp:Label ID="lblIntimationId" runat="server" />)
+                                    Work Intimation Details (<asp:Label ID="lblIntimationId" runat="server" />)
                                 </div>
                                 <div class="row">
                                     <div class="col-4" id="SubmitDate">
@@ -852,7 +855,7 @@
                                     </div>
                                 </div>
                                 <div class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;margin-top:3%;">
-                                    Test Report Prepared Details (<asp:Label ID="lblReportNo" runat="server" />)
+                                    Test Report Details (<asp:Label ID="lblReportNo" runat="server" />)
                                 </div>
                                 <div id="Div9" runat="server">
                                     <div class="row" style="padding-bottom: 20px;">
@@ -871,18 +874,18 @@
                                     </div>
                                 </div>
                                 <div class="card-title fw-semibold mb-4" id="ApprovalTitle" visible="false" runat="server" style="font-weight: 700; margin-bottom: 0px !important;margin-top:2%;">
-                                    Test Report Approval Details
+                                    Test Report Final Submission Details
                                 </div>
                                 <div class="row" style="padding-bottom: 20px;" id="DivApproval" visible="false" runat="server">
                                     <div class="col-4" id="Div12" runat="server">
                                         <label>
-                                            Test Report Approval Date
+                                            Test Report Submission Date
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtApprovalDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                     <div class="col-4" id="Div13" runat="server">
                                         <label for="Name">
-                                            Test Report Approved By
+                                            Test Report Submitted By
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtApprovedBy" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>

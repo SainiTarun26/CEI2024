@@ -301,7 +301,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12" style="text-align: center;">
-                        <h7 class="card-title fw-semibold mb-4" id="maincard">DETAIL OF INSTALLATIONS
+                        <h7 class="card-title fw-semibold mb-4" id="maincard">DETAIL OF EXISTING (ALREADY CONNECTED INSTALLATIONS)
                         </h7>
                     </div>
                 </div>
@@ -322,7 +322,7 @@
                      
   <div class="col-md-4">
       <label>
-        Do You Have Latest CEI Inspection Report?
+        Do You Have Latest CEI Existing installation Report?
           <samp style="color: red">* </samp>
       </label>
 
@@ -615,7 +615,7 @@
                                          <div class="row">
                                         <div class="col-md-4">
                                             <label>
-                                                Is there any Sanction Load Issue
+                                                Is there any Sanction Load Issued
                                                 <samp style="color: red">* </samp>
                                             </label>
 
@@ -636,7 +636,7 @@
 </div>
                                          <div class="col-md-4" runat="server">
                                             <label for="Email">
-                                                Total Capacity installed in KV
+                                                Total Capacity installed in KVA
                                                     <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtCapacity" TabIndex="9" onkeydown="return preventEnterSubmit(event)" maxlenght="10" onkeyup="return ValidateEmail();" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
