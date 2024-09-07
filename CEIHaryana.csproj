@@ -1919,6 +1919,7 @@
     <Content Include="SiteOwnerPages\GenerateInspection.aspx" />
     <Content Include="SiteOwnerPages\GenerateInspection_Industry.aspx" />
     <Content Include="SiteOwnerPages\GeneratingSet.aspx" />
+    <Content Include="SiteOwnerPages\GeneratingsetPeriodic.aspx" />
     <Content Include="SiteOwnerPages\Inspection.aspx" />
     <Content Include="SiteOwnerPages\InspectionHistory.aspx" />
     <Content Include="SiteOwnerPages\InspectionHistory_Industry.aspx" />
@@ -1938,6 +1939,7 @@
     <Content Include="SiteOwnerPages\SLDReturn.aspx" />
     <Content Include="SiteOwnerPages\SldUpload.aspx" />
     <Content Include="SiteOwnerPages\SubstationHistory.aspx" />
+    <Content Include="SiteOwnerPages\SubstationTransformerPeriodic.aspx" />
     <Content Include="SiteOwnerPages\TestReportData.aspx" />
     <Content Include="Supervisor\GeneratingSetTestReport.aspx" />
     <Content Include="Supervisor\InstallationDetails.aspx" />
@@ -2729,6 +2731,13 @@
     <Compile Include="SiteOwnerPages\GeneratingSet.aspx.designer.cs">
       <DependentUpon>GeneratingSet.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SiteOwnerPages\GeneratingsetPeriodic.aspx.cs">
+      <DependentUpon>GeneratingsetPeriodic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\GeneratingsetPeriodic.aspx.designer.cs">
+      <DependentUpon>GeneratingsetPeriodic.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteOwnerPages\Inspection.aspx.cs">
       <DependentUpon>Inspection.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2868,6 +2877,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\SubstationHistory.aspx.designer.cs">
       <DependentUpon>SubstationHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\SubstationTransformerPeriodic.aspx.cs">
+      <DependentUpon>SubstationTransformerPeriodic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\SubstationTransformerPeriodic.aspx.designer.cs">
+      <DependentUpon>SubstationTransformerPeriodic.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\TestReportData.aspx.cs">
       <DependentUpon>TestReportData.aspx</DependentUpon>
