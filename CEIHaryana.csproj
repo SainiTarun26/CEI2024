@@ -1913,6 +1913,7 @@
     <Content Include="SiteOwnerPages\CreateInspectionReport.aspx" />
     <Content Include="SiteOwnerPages\CreateTestReports.aspx" />
     <Content Include="SiteOwnerPages\CreateTestReports_Industry.aspx" />
+    <Content Include="SiteOwnerPages\DetailsOfInstallations.aspx" />
     <Content Include="SiteOwnerPages\ExistingInspectionData.aspx" />
     <Content Include="SiteOwnerPages\ExistingInspectionRequest.aspx" />
     <Content Include="SiteOwnerPages\GenerateInspection.aspx" />
@@ -1931,6 +1932,7 @@
     <Content Include="SiteOwnerPages\PeriodicRenewal.aspx" />
     <Content Include="SiteOwnerPages\PeroidicInspection.aspx" />
     <Content Include="SiteOwnerPages\ProcessInspectionRenewalCart.aspx" />
+    <Content Include="SiteOwnerPages\RatingOfInstallations.aspx" />
     <Content Include="SiteOwnerPages\SiteOwnerDashboard.aspx" />
     <Content Include="SiteOwnerPages\SldHistory.aspx" />
     <Content Include="SiteOwnerPages\SLDReturn.aspx" />
@@ -2685,6 +2687,13 @@
     <Compile Include="SiteOwnerPages\CreateTestReports_Industry.aspx.designer.cs">
       <DependentUpon>CreateTestReports_Industry.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SiteOwnerPages\DetailsOfInstallations.aspx.cs">
+      <DependentUpon>DetailsOfInstallations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\DetailsOfInstallations.aspx.designer.cs">
+      <DependentUpon>DetailsOfInstallations.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteOwnerPages\ExistingInspectionData.aspx.cs">
       <DependentUpon>ExistingInspectionData.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2810,6 +2819,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\ProcessInspectionRenewalCart.aspx.designer.cs">
       <DependentUpon>ProcessInspectionRenewalCart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\RatingOfInstallations.aspx.cs">
+      <DependentUpon>RatingOfInstallations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\RatingOfInstallations.aspx.designer.cs">
+      <DependentUpon>RatingOfInstallations.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\SiteOwner.Master.cs">
       <DependentUpon>SiteOwner.Master</DependentUpon>

@@ -369,8 +369,7 @@
                                     <div class="row">
                                         <asp:GridView ID="GridView1" runat="server"></asp:GridView>
                                     </div>
-                                </div>
-                                <div class="row" style="margin-bottom: 10px;">
+                                      <div class="row" style="margin-bottom: 10px;">
                                     <div class="col-md-12">
                                         <asp:CheckBox ID="CheckBox1" runat="server" />
                                         &nbsp; Certified that the above shown/said Licence number & Firm name belongs to me. The access to those data is entirely my responsibility.
@@ -382,6 +381,8 @@
                                              />
                                     </div>
                                 </div>
+                                </div>
+                              
                                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                     <div class="row">
                                         <div class="col-md-4">

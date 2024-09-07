@@ -296,7 +296,7 @@ namespace CEI_PRoject.Admin
                             {
                                 //NewUserID = CertificateNew.Text;
                                 if (CertificateNew.Text != null && CertificateNew.Text != "")
-                                    NewUserID = "S" + " " + "-" + " " + CertificateNew.Text;
+                                    NewUserID = "S-" + CertificateNew.Text;
                                 else
                                     NewUserID = "S" + " " + "-" + " " + CertificateOld.Text;
                             }
