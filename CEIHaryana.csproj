@@ -1940,6 +1940,7 @@
     <Content Include="SiteOwnerPages\SldUpload.aspx" />
     <Content Include="SiteOwnerPages\SubstationHistory.aspx" />
     <Content Include="SiteOwnerPages\SubstationTransformerPeriodic.aspx" />
+    <Content Include="SiteOwnerPages\TestReport.aspx" />
     <Content Include="SiteOwnerPages\TestReportData.aspx" />
     <Content Include="Supervisor\GeneratingSetTestReport.aspx" />
     <Content Include="Supervisor\InstallationDetails.aspx" />
@@ -2884,6 +2885,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\SubstationTransformerPeriodic.aspx.designer.cs">
       <DependentUpon>SubstationTransformerPeriodic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\TestReport.aspx.cs">
+      <DependentUpon>TestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\TestReport.aspx.designer.cs">
+      <DependentUpon>TestReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\TestReportData.aspx.cs">
       <DependentUpon>TestReportData.aspx</DependentUpon>
