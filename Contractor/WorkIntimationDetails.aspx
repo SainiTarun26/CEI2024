@@ -210,12 +210,13 @@
                             </label>
                             <asp:TextBox class="form-control" ID="txtTanNo" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
-                        <div class="col-md-4" id="UserId" runat="server" visible="false">
+                        <%--<div class="col-md-4" id="UserId" runat="server" visible="false">
                             <label for="PanNumber">
                                 UserId of Site Owner                                        
                             </label>
                             <asp:TextBox class="form-control" ID="TxtUserId" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        </div>
+                        </div>--%>
+
                         <div class="col-md-4">
                             <label>
                                 Applicant Type        

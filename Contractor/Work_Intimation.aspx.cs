@@ -538,27 +538,27 @@ namespace CEIHaryana.Contractor
                     {
                         Pan_TanNumber = txtTanNumber.Text.Trim();
                     }
-                    else if (PowerUtility.Visible)
-                    {
-                        if (string.IsNullOrEmpty(txtUserId.Text.Trim()))
-                        {
-                            string email = txtEmail.Text.Trim();
-                            if (email.Contains("@"))
-                            {
-                                Pan_TanNumber = email.Split('@')[0];
-                            }
-                        }
-                        else
-                        {
-                            Pan_TanNumber = txtUserId.Text.Trim();
-                        }
-                    }
+                    //else if (PowerUtility.Visible)
+                    //{
+                    //    if (string.IsNullOrEmpty(txtUserId.Text.Trim()))
+                    //    {
+                    //        string email = txtEmail.Text.Trim();
+                    //        if (email.Contains("@"))
+                    //        {
+                    //            Pan_TanNumber = email.Split('@')[0];
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        Pan_TanNumber = txtUserId.Text.Trim();
+                    //    }
+                    //}
 
                     
-                    if (string.IsNullOrEmpty(Pan_TanNumber))
-                    {
-                        throw new Exception("Pan/Tan Number cannot be empty.");
-                    }
+                    //if (string.IsNullOrEmpty(Pan_TanNumber))
+                    //{
+                    //    throw new Exception("Pan/Tan Number cannot be empty.");
+                    //}
 
                     DataSet ds1 = CEI.checkPanNumber(Pan_TanNumber);
                     if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)

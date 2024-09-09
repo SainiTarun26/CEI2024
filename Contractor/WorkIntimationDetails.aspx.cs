@@ -127,7 +127,7 @@ namespace CEIHaryana.Contractor
                         txtPAN.Text = PanTanNumber;
                         InstallationFor.Visible= true;
                         PowerUtility.Visible = false;
-                        UserId.Visible = false;
+                       // UserId.Visible = false;
                     }
                     else if (ApplicantType == "Other Department/Organization")
                     {
@@ -136,13 +136,13 @@ namespace CEIHaryana.Contractor
                         txtTanNo.Text = PanTanNumber;
                         InstallationFor.Visible= true;
                         PowerUtility.Visible = false;
-                        UserId.Visible = false;
+                        //UserId.Visible = false;
                     }
                     else if (ApplicantType == "Power Utility")
                     {
                         string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
-                        TxtUserId.Text = PanTanNumber;
-                        UserId.Visible = true;
+                        // TxtUserId.Text = PanTanNumber;
+                        // UserId.Visible = true;
                         PowerUtility.Visible= true;
                         InstallationFor.Visible = false;
 

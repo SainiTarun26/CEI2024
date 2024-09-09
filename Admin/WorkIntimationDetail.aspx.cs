@@ -125,6 +125,16 @@ namespace CEIHaryana.Admin
                         TanNo.Visible = true;
                         txtTanNo.Text = PanTanNumber;
                     }
+                    else if (ApplicantType == "Power Utility")
+                    {
+                        PowerUtility.Visible = true;
+                        TxtPowerUtility.Text = ds.Tables[0].Rows[0]["PowerUtility"].ToString().Trim();
+                        TxtWing.Text = ds.Tables[0].Rows[0]["PowerUtilityWing"].ToString().Trim();
+                        TxtZone.Text = ds.Tables[0].Rows[0]["ZoneName"].ToString().Trim();
+                        TxtCircle.Text = ds.Tables[0].Rows[0]["CircleName"].ToString().Trim();
+                        TxtDivision.Text = ds.Tables[0].Rows[0]["DivisionName"].ToString().Trim();
+                        TxtSubDivision.Text = ds.Tables[0].Rows[0]["SubDivisionName"].ToString().Trim();
+                    }
 
                     string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
                     txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("dd-MM-yyyy");
