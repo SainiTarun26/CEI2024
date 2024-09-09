@@ -266,11 +266,11 @@ namespace CEI_PRoject.Admin
                     }
                     if (txtCertificateNew.Text.Trim() != "" && txtCertificateNew.Text.Trim() != "NA")
                     {
-                        UserId = "W" + " " + "-" + " " + txtCertificateNew.Text.Trim();
+                        UserId = "W-" + txtCertificateNew.Text.Trim();
                     }
                     else
                     {
-                        UserId = "W" + " " + "-" + " " + txtCertifacateOld.Text.Trim();
+                        UserId =  txtCertifacateOld.Text.Trim();
                     }
                     if (btnSubmit.Text.Trim() == "Submit")
                     {
@@ -295,30 +295,30 @@ namespace CEI_PRoject.Admin
                             UserId = str[0];
                             if (str[1] == "New")
                             {
-                                if (UserId == "W" + " " + "-" + " " + txtCertificateNew.Text)
+                                if (UserId == "W-"  + txtCertificateNew.Text)
                                 {
                                     NewUserID = "";
                                 }
                                 else
                                 {
-                                    NewUserID = "W" + " " + "-" + " " + txtCertificateNew.Text;
+                                    NewUserID = "W-" +  txtCertificateNew.Text;
                                 }
                             }
                             else
                             {
                                 if (txtCertificateNew.Text.Length > 0)
                                 {
-                                    NewUserID = txtCertificateNew.Text;
+                                    NewUserID = "W-" + txtCertificateNew.Text;
                                 }
                                 else
                                 {
-                                    if (UserId == "W" + " " + "-" + " " + txtCertifacateOld.Text)
+                                    if (UserId == txtCertifacateOld.Text)
                                     {
                                         NewUserID = "";
                                     }
                                     else
                                     {
-                                        NewUserID = "W" + " " + "-" + " " + txtCertifacateOld.Text;
+                                        NewUserID =  txtCertifacateOld.Text;
                                     }
                                 }
                             }

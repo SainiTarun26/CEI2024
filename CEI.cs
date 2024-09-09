@@ -356,47 +356,47 @@ namespace CEI_PRoject
             cmd.Parameters.AddWithValue("@Email", string.IsNullOrEmpty(Email) ? DBNull.Value : (object)Email);
             cmd.Parameters.AddWithValue("@CertificateOld", string.IsNullOrEmpty(CertificateOld) ? DBNull.Value : (object)CertificateOld);
             cmd.Parameters.AddWithValue("@CertificateNew", string.IsNullOrEmpty(CertificateNew) ? DBNull.Value : (object)CertificateNew);
-            //cmd.Parameters.AddWithValue("@DateofIntialissue", DateofIntialissue);
-            DateTime initialIssueDate;
-            if (DateTime.TryParse(DateofIntialissue, out initialIssueDate) && initialIssueDate != DateTime.MinValue)
-            {
-                cmd.Parameters.AddWithValue("@DateofIntialissue", initialIssueDate);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@DateofIntialissue", DBNull.Value);
-            }
-            //cmd.Parameters.AddWithValue("@DateofExpiry", DateofExpiry);
-            DateTime expiryDate;
-            if (DateTime.TryParse(DateofExpiry, out expiryDate) && expiryDate != DateTime.MinValue)
-            {
-                cmd.Parameters.AddWithValue("@DateofExpiry", expiryDate);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@DateofExpiry", DBNull.Value);
-            }
-            //cmd.Parameters.AddWithValue("@DateofRenewal", DateofRenewal);
-            DateTime renewalDate;
-            if (DateTime.TryParse(DateofRenewal, out renewalDate) && renewalDate != DateTime.MinValue)
-            {
-                cmd.Parameters.AddWithValue("@DateofRenewal", renewalDate);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@DateofRenewal", DBNull.Value);
-            }
+            cmd.Parameters.AddWithValue("@DateofIntialissue", DateofIntialissue);
+            //DateTime initialIssueDate;
+            //if (DateTime.TryParse(DateofIntialissue, out initialIssueDate) && initialIssueDate != DateTime.MinValue)
+            //{
+            //    cmd.Parameters.AddWithValue("@DateofIntialissue", initialIssueDate);
+            //}
+            //else
+            //{
+            //    cmd.Parameters.AddWithValue("@DateofIntialissue", DBNull.Value);
+            //}
+            cmd.Parameters.AddWithValue("@DateofExpiry", DateofExpiry);
+            //DateTime expiryDate;
+            //if (DateTime.TryParse(DateofExpiry, out expiryDate) && expiryDate != DateTime.MinValue)
+            //{
+            //    cmd.Parameters.AddWithValue("@DateofExpiry", expiryDate);
+            //}
+            //else
+            //{
+            //    cmd.Parameters.AddWithValue("@DateofExpiry", DBNull.Value);
+            //}
+            cmd.Parameters.AddWithValue("@DateofRenewal", DateofRenewal);
+            //DateTime renewalDate;
+            //if (DateTime.TryParse(DateofRenewal, out renewalDate) && renewalDate != DateTime.MinValue)
+            //{
+            //    cmd.Parameters.AddWithValue("@DateofRenewal", renewalDate);
+            //}
+            //else
+            //{
+            //    cmd.Parameters.AddWithValue("@DateofRenewal", DBNull.Value);
+            //}
             cmd.Parameters.AddWithValue("@votagelevel", votagelevel == "Select" ? DBNull.Value : (object)votagelevel);
-            //cmd.Parameters.AddWithValue("@voltageWithEffect", voltageWithEffect);
-            DateTime voltageWithEffectDate;
-            if (DateTime.TryParse(voltageWithEffect, out voltageWithEffectDate) && voltageWithEffectDate != DateTime.MinValue)
-            {
-                cmd.Parameters.AddWithValue("@voltageWithEffect", voltageWithEffectDate);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@voltageWithEffect", DBNull.Value);
-            }
+            cmd.Parameters.AddWithValue("@voltageWithEffect", voltageWithEffect);
+            //DateTime voltageWithEffectDate;
+            //if (DateTime.TryParse(voltageWithEffect, out voltageWithEffectDate) && voltageWithEffectDate != DateTime.MinValue)
+            //{
+            //    cmd.Parameters.AddWithValue("@voltageWithEffect", voltageWithEffectDate);
+            //}
+            //else
+            //{
+            //    cmd.Parameters.AddWithValue("@voltageWithEffect", DBNull.Value);
+            //}
             cmd.Parameters.AddWithValue("@AnyContractor", AnyContractor == "Select" ? DBNull.Value : (object)AnyContractor);
             cmd.Parameters.AddWithValue("@AttachedContractorld", string.IsNullOrEmpty(AttachedContractorld) ? DBNull.Value : (object)AttachedContractorld);
             cmd.Parameters.AddWithValue("@Category", "Supervisor");
@@ -5512,6 +5512,44 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         public DataTable GetSiteOwnerData()
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerData");
+        }
+
+        public DataTable GetDataByCategary(string searchby, string Categary)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataForFetchingPassword", searchby, Categary);
+        }
+
+        public void ResetMessagethroughEmail(string Email, string Subject, string Message)
+        {
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("haryanacei@gmail.com");
+            mailMessage.To.Add(Email);
+            mailMessage.Subject = Subject;
+            string body = $"Dear Customer,\n\n {Message}";
+            mailMessage.Body = body;
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.Port = 587;
+            smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
+            smtpClient.EnableSsl = true;
+            smtpClient.Send(mailMessage);
+        }
+
+        public int UpdateDetailsByFetchingPassword(string UserId, string Contact, string Email)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString());
+            SqlCommand cmd = new SqlCommand("Sp_UpdateContractorContact");
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.Parameters.AddWithValue("@UserId", UserId);
+            cmd.Parameters.AddWithValue("@Contact", Contact);
+            cmd.Parameters.AddWithValue("@Email", Email);
+            int K = cmd.ExecuteNonQuery();
+            return K;
         }
 
     }

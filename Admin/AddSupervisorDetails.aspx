@@ -299,14 +299,14 @@
                             <label for="CertificateOld">
                                 Certificate no (Old)<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="CertificateOld" runat="server" Style="margin-left: 18px" TabIndex="9" onkeypress="return validateKeyPress(event, this.id)" onblur="validateOnBlur(this.id)"></asp:TextBox>
+                            <asp:TextBox class="form-control" autocomplete="off" MaxLength="20" onkeydown="return preventEnterSubmit(event)" ID="CertificateOld" runat="server" Style="margin-left: 18px" TabIndex="9" onkeypress="return validateKeyPress(event, this.id)" onblur="validateOnBlur(this.id)"></asp:TextBox>
                         </div>
                         <div class="col-md-4">
                             <label for="CertificateNew">
                                 Certificate No. (New)<samp style="color: red"> * </samp>
                             </label>
-                            <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="CertificateNew" runat="server" onkeypress="return validateKeyPress(event, this.id)" onblur="validateOnBlur(this.id)" Style="margin-left: 18px" TabIndex="10"></asp:TextBox>
-                            <asp:CustomValidator ID="CustomValidator1" runat="server" ClientValidationFunction="validateBothEmpty" ErrorMessage="Required Add Atleast one certificate" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"></asp:CustomValidator>
+                            <asp:TextBox class="form-control" autocomplete="off" MaxLength="20" onkeydown="return preventEnterSubmit(event)" ID="CertificateNew" runat="server" onkeypress="return validateKeyPress(event, this.id)" onblur="validateOnBlur(this.id)" Style="margin-left: 18px" TabIndex="10"></asp:TextBox>
+                            <asp:CustomValidator ID="CustomValidator1" runat="server" ClientValidationFunction="validateBothEmpty" ErrorMessage="Please provide either old Certificate No or New Certificate No" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"></asp:CustomValidator>
 
                         </div>
                         <div class="col-md-4">
@@ -487,7 +487,7 @@
                 return false;
             }
 
-            if ((char === '-' || char === '_' || char === '/') && currentValue.length === 0) {
+            if ((char === '-' || char === '_' || char === '/'  || char === ' ') && currentValue.length === 0) {
                 event.preventDefault();
                 return false;
             }
@@ -510,13 +510,13 @@
             var currentValue = inputField.value;
 
             if (inputId === '<%= CertificateOld.ClientID %>' && currentValue.length > 0 && currentValue.length < 4) {
-            alert("Licence Old must be at least 4 characters long.");
+            alert("Old Certificate must be more than  4 characters long.");
             setTimeout(function() { inputField.focus(); }, 0);
             return false;
         }
 
         if (inputId === '<%= CertificateNew.ClientID %>' && currentValue.length > 0 && currentValue.length < 4) {
-                alert("Licence New must be exactly 4 characters long.");
+                alert("New Certificate must be more than 4 characters long.");
                 setTimeout(function () { inputField.focus(); }, 0);
                 return false;
             }
@@ -528,7 +528,7 @@
                 return false;
             }
         }
-     </script>
+    </script>
 
     <script type="text/javascript">
         function validateForm() {           

@@ -382,7 +382,7 @@
                                 Licence No. (New)<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" MaxLength="20" onkeydown="return preventEnterSubmit(event)" ID="txtLicenceNew" autocomplete="off" runat="server" onkeypress="return validateKeyPress(event, this.id)" onblur="validateOnBlur(this.id)" Style="margin-left: 18px" TabIndex="15"></asp:TextBox>
-                         <asp:CustomValidator ID="cvBothEmpty" runat="server" ClientValidationFunction="validateBothEmpty" ErrorMessage=" Add Atleast one License" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"></asp:CustomValidator>                            
+                         <asp:CustomValidator ID="cvBothEmpty" runat="server" ClientValidationFunction="validateBothEmpty" ErrorMessage="Please provide either Old License No or new License No" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"></asp:CustomValidator>                            
                         </div>
 
                         <div class="col-md-4">
@@ -503,7 +503,7 @@
                 return false;
             }
 
-            if ((char === '-' || char === '_' || char === '/') && currentValue.length === 0) {
+            if ((char === '-' || char === '_' || char === '/' || char === ' ') && currentValue.length === 0) {
                 event.preventDefault();
                 return false;
             }
@@ -526,13 +526,13 @@
             var currentValue = inputField.value;
 
             if (inputId === '<%= txtLicenceOld.ClientID %>' && currentValue.length > 0 && currentValue.length < 4) {
-            alert("Licence Old must be at least 4 characters long.");
+            alert("Licence Old must be more than 4 characters long.");
             setTimeout(function() { inputField.focus(); }, 0);
             return false;
         }
 
         if (inputId === '<%= txtLicenceNew.ClientID %>' && currentValue.length > 0 && currentValue.length < 4) {
-                alert("Licence New must be exactly 4 characters long.");
+                alert("Licence New must be more than 4 characters long.");
                 setTimeout(function () { inputField.focus(); }, 0);
                 return false;
             }
@@ -544,7 +544,7 @@
                 return false;
             }
         }
-     </script>
+    </script>
     <script>
         function preventEnterSubmit(event) {
             if (event.keyCode === 13) {

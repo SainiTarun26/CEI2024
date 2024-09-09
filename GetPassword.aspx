@@ -37,18 +37,14 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
-        input#OTPVerify {
-            width: 50% !important;
-        }
 
-            input#OTPVerify:hover {
-                width: 50% !important;
-            }
+       input#txtOTPVerify:hover{
+           width:45% !important;
+       }
 
-        input#OTPVerifyfocus {
-            width: 50% !important;
-        }
-
+        input#txtOTPVerify:focus{
+           width:45% !important;
+       }
         select {
             width: 90% !important;
         }
@@ -114,20 +110,7 @@
             width: 100px;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0
         }
-
-
-        input.form-control:hover {
-            height: 1px;
-            width: 100% !important;
-            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        }
-
-        input.form-control:focus {
-            height: 1px;
-            width: 100% !important;
-            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-            background: #f3f3f3;
-        }
+     
 
         input.form-control {
             height: 1px;
@@ -137,13 +120,13 @@
 
             input.form-control:hover {
                 height: 1px;
-                width: 90%;
+                width: 100%;
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             }
 
             input.form-control:focus {
                 height: 1px;
-                width: 90%;
+                width: 100%;
                 box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
                 background: #f3f3f3;
             }
@@ -159,6 +142,12 @@
         img {
             margin-top: 10px;
             margin-bottom: 9px;
+        }
+
+        th {
+            width: 1%;
+            background: #9292cc !important;
+            color: white !important;
         }
     </style>
 
@@ -340,64 +329,92 @@
                                     </div>
                                 </div>
                                 <hr style="margin-top: 0px !important; margin-bottom: 15px;" />
+                                <asp:UpdatePanel ID="updatePanel1" runat="server">
+                                    <ContentTemplate>
+
+                                   
+                                <div id="CardSearchDetails" runat="server">
                                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                     <div class="row">
+
+
                                         <div class="col-md-4">
+
                                             <label>
                                                 User Category<samp style="color: red">* </samp>
                                             </label>
+                                            <%-- <asp:UpdatePanel ID="updatepanel1" runat="server">
+                                            <ContentTemplate>--%>
                                             <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" OnSelectedIndexChanged="ddluserCategary_SelectedIndexChanged" Style="width: 100% !important;" ID="ddluserCategary" runat="server">
                                                 <asp:ListItem Text="--select--" Value="0" />
                                                 <asp:ListItem Text="Contractor" Value="1"></asp:ListItem>
-                                                <asp:ListItem Text="Supervisor" Value="2"></asp:ListItem>
+                                               <%-- <asp:ListItem Text="Supervisor" Value="2"></asp:ListItem>
                                                 <asp:ListItem Text="Siteowner" Value="3"></asp:ListItem>
-                                                <asp:ListItem Text="Wireman" Value="4"></asp:ListItem>
+                                                <asp:ListItem Text="Wireman" Value="4"></asp:ListItem>--%>
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select User Category" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddluserCategary" runat="server" InitialValue="0" Display="Dynamic" SetFocusOnError="true" ValidationGroup="SearchSubmit" ForeColor="Red" />
+                                            <%-- </ContentTemplate>
+                                        </asp:UpdatePanel>--%>
                                         </div>
+
                                         <div class="col-md-4">
-                                            <label id="gstno" runat="server">GSTN No.<samp style="color: red">* </samp></label>
-                                            <label id="pantanno" runat="server">PAN/TAN No.<samp style="color: red">* </samp></label>
+                                            <label id="gstno" runat="server">GSTN No.<samp style="color: red">* </samp>
+                                            </label>
+                                            <%--<label id="pantanno" runat="server">PAN/TAN No.<samp style="color: red">* </samp>
+                                            </label>--%>
                                             <asp:TextBox class="form-control" ID="txtsearch" autocomplete="off" runat="server"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtsearch" runat="server"  Display="Dynamic" ValidationGroup="SearchSubmit" SetFocusOnError="true" ForeColor="Red" />
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtsearch" runat="server" Display="Dynamic" ValidationGroup="SearchSubmit" SetFocusOnError="true" ForeColor="Red" />
                                         </div>
                                         <div class="col-md-4" style="margin-top: auto;">
-                                            <asp:Button  ID="btnSearch" Text="Search" runat="server" class="btn btn-primary mr-2" OnClick="btnSearch_Click"  Style="padding-left: 10px; padding-right: 10px; height: 30px; border-radius: 10px;" ValidationGroup="SearchSubmit" />
-                                            <asp:Button  ID="btnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" OnClick="btnReset_Click" Style="padding-left: 10px; padding-right: 10px; height: 30px; border-radius: 10px;"  />
+                                            <asp:Button ID="btnSearch" Text="Search" runat="server" class="btn btn-primary mr-2" OnClick="btnSearch_Click" Style="padding-left: 10px; padding-right: 10px; height: 30px; border-radius: 10px;" ValidationGroup="SearchSubmit" />
+                                            <asp:Button ID="btnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" OnClick="btnReset_Click" Style="padding-left: 10px; padding-right: 10px; height: 30px; border-radius: 10px;" />
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+                                    <div class="row" style="margin-top: 20px;">
+                                        <asp:GridView ID="GridView1" class="table-responsive table table-striped table-hover table-bordered" AutoGenerateColumns="false" runat="server">
+                                            <Columns>
+                                                <asp:BoundField DataField="Name" HeaderText="Name">
+                                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor textalignleft colwidth" />
+                                                    <ItemStyle HorizontalAlign="center" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Licence" HeaderText="Licence">
+                                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor textalignleft colwidth" />
+                                                    <ItemStyle HorizontalAlign="center" />
+                                                </asp:BoundField>
+                                                 </Columns>
+                                </asp:GridView>
                                     </div>
-                                      <div class="row" style="margin-bottom: 10px;">
+                                </div>
+                               
+                                <div class="row" style="margin-bottom: 10px;">
                                     <div class="col-md-12">
                                         <asp:CheckBox ID="CheckBox1" runat="server" />
                                         &nbsp; Certified that the above shown/said Licence number & Firm name belongs to me. The access to those data is entirely my responsibility.
                                     </div>
                                 </div>
+                                 
                                 <div class="row">
                                     <div class="col-md-12" style="text-align: center;">
-                                        <asp:Button  ID="btnProcess" Text="Proceed" runat="server" onclick="btnProcess_Click" class="btn btn-primary" Style="border-radius: 10px; font-size: 15px; border-radius: 10px; padding-top: 11px; padding-bottom: 10px; margin-top: 10px; margin-bottom: 20px;"
-                                             />
+                                        <asp:Button ID="btnProcess" Text="Proceed" runat="server" OnClick="btnProcess_Click" class="btn btn-primary" Style="border-radius: 10px; font-size: 15px; border-radius: 10px; padding-top: 11px; padding-bottom: 10px; margin-top: 10px; margin-bottom: 20px;"
+                                            ValidationGroup="SearchSubmit" />
                                     </div>
                                 </div>
-                                </div>
-                              
-                                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                   </div>
+                                <div class="card-body" id="CardPersnalDetail" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label>
                                                 Licence Expiry Date<samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" Type="date" ID="txtLiencesExpiryDate" autocomplete="off" runat="server"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtLiencesExpiryDate" runat="server"  Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtLiencesExpiryDate" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
                                         <div class="col-md-4">
                                             <label>
                                                 Contact No.<samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" Type="phone" ID="txtContact" autocomplete="off" runat="server"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtContact" runat="server"  Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                            <asp:TextBox class="form-control" Type="phone" ID="txtContact" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" MaxLength="10" autocomplete="off" runat="server"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtContact" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
                                         <div class="col-md-4">
                                             <label>
@@ -405,16 +422,27 @@
                                             </label>
                                             <asp:TextBox class="form-control" Type="email" ID="txtEmailId" autocomplete="off" runat="server"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtEmailId" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                                ControlToValidate="txtEmailId"
+                                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                                ErrorMessage="Enter a Valid Email"
+                                                CssClass="error-message"
+                                                ForeColor="Red"
+                                                Display="Dynamic">
+                                            </asp:RegularExpressionValidator>
                                         </div>
                                     </div>
                                     <div class="row" style="margin-top: 20px;">
                                         <div class="col-md-12" style="text-align: center;">
-                                            <asp:Button ID="btnOtp" Text="Send OTP" runat="server" class="btn btn-primary" Style="border-radius: 10px; font-size: 15px; border-radius: 10px; padding-top: 11px; padding-bottom: 10px; margin-top: 10px; margin-bottom: 10px;"
-                                                ValidationGroup="Submit"  />
-                                            <p style="font-size: 11px; margin-top: -7px;"><b>*OTP sent to Email</b></p>
+                                            <asp:Button ID="btnOtp" Text="Send OTP" runat="server" class="btn btn-primary" OnClick="btnOtp_Click" Style="border-radius: 10px; font-size: 15px; border-radius: 10px; padding-top: 11px; padding-bottom: 10px; margin-top: 10px; margin-bottom: 10px;"
+                                                ValidationGroup="Submit" />
+                                            <div id="LblText" runat="server" visible="false" class="row-cols-1">
+                                                  <p style="font-size: 11px; margin-top: -7px;"><b>*OTP sent to Email</b></p>
+                                            </div>
+                                          
                                         </div>
                                     </div>
-                                    <div class="row" style="margin-top: 15px; margin-bottom: 15px;">
+                                    <div id="OtpCart" runat="server" visible="false" class="row" style="margin-top: 15px; margin-bottom: 15px;">
                                         <div class="col-md-4"></div>
                                         <div class="col-md-6">
                                             <label>
@@ -422,16 +450,17 @@
                                             </label>
                                             <!-- Container to align TextBox and Button in a single line -->
                                             <div class="form-group form-inline">
-                                                <asp:TextBox class="form-control" Type="number" ID="txtOTPVerify" autocomplete="off" runat="server" />
+                                                <asp:TextBox  maxlength="6" ID="txtOTPVerify" Class="form-control"  onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" />
                                                 &nbsp;&nbsp;
-        <asp:Button type="submit" ID="Button6" Text="Verify OTP" runat="server" class="btn btn-primary" Style="border-radius: 10px; font-size: 15px; padding: 7px 20px; margin-top: 0; margin-bottom: 0; height: 30px;" />
+                                                  <asp:RequiredFieldValidator ID="RequiredFieldValidator6" Text="Required" ErrorMessage="RequiredFieldValidator"  ControlToValidate="txtOTPVerify" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                <asp:Button type="submit" ID="btnVerifyotp" Text="Verify OTP" runat="server" class="btn btn-primary" OnClick="btnVerifyotp_Click" Style="border-radius: 10px; font-size: 15px; padding: 7px 20px; margin-top: 0; margin-bottom: 0; height: 30px;" ValidationGroup="Submit" />
                                             </div>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" Text="Enter Otp" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtOTPVerify" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                                         </div>
                                         <div class="col-md-4"></div>
                                     </div>
                                 </div>
-                                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                <div id="CreditionalCard" runat="server" visible="false" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                     <div class="row">
                                         <div class="col-md-12" style="text-align: center;">
                                             <h3>
@@ -440,11 +469,20 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                         </ContentTemplate>
+                                </asp:UpdatePanel>
+                                <asp:HiddenField ID="Email" runat="server" />
+                                <asp:HiddenField ID="Licence" runat="server" />
+                                <asp:HiddenField ID="Contact" runat="server" />
+                                <asp:HiddenField ID="ExpiryDate" runat="server" />
+                                <asp:HiddenField ID="Password" runat="server" />
+
                             </div>
                         </div>
                         <div class="col-md-1"></div>
                     </div>
-                </div>
+                
             </section>
             <!-- End About Section -->
         </main>
@@ -499,6 +537,31 @@
         <script src="/js2/file-upload.js"></script>
         <script src="/js2/typeahead.js"></script>
         <script src="/js2/select2.js"></script>
+         <script type="text/javascript">
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+        function preventZero(event) {
+            var key = event.keyCode || event.charCode;
+            var textboxValue = event.target.value;
+            if (key === 48 && textboxValue.length === 0) { // Check if the pressed key is '0'
+                event.preventDefault();
+                return false;
+            }
+            return true;
+        }
+        //Allow Only Aplhabet, Delete and Backspace
+        function alphabetKey(e) {
+            var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
+            var k;
+            k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+            return (allow.indexOf(String.fromCharCode(k)) != -1);
+        }
+         </script>
     </form>
 
 </body>
