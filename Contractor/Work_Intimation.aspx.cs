@@ -527,43 +527,47 @@ namespace CEIHaryana.Contractor
                     string Pan_TanNumber = "";
                     bool panExists = false;
 
-                    
+
                     Debug.WriteLine("Before checking visibility and setting Pan_TanNumber");
-
-                    if (DivPancard_TanNo.Visible && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
+                    if (DivPancard_TanNo.Visible || DivOtherDepartment.Visible)
                     {
-                        Pan_TanNumber = txtPAN.Text.Trim();
-                    }
-                    else if (DivOtherDepartment.Visible && !string.IsNullOrEmpty(txtTanNumber.Text.Trim()))
-                    {
-                        Pan_TanNumber = txtTanNumber.Text.Trim();
-                    }
-                    //else if (PowerUtility.Visible)
-                    //{
-                    //    if (string.IsNullOrEmpty(txtUserId.Text.Trim()))
-                    //    {
-                    //        string email = txtEmail.Text.Trim();
-                    //        if (email.Contains("@"))
-                    //        {
-                    //            Pan_TanNumber = email.Split('@')[0];
-                    //        }
-                    //    }
-                    //    else
-                    //    {
-                    //        Pan_TanNumber = txtUserId.Text.Trim();
-                    //    }
-                    //}
+                      
+                        if (DivPancard_TanNo.Visible && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
+                        {
+                            Pan_TanNumber = txtPAN.Text.Trim();
+                        }
+                        else if (DivOtherDepartment.Visible && !string.IsNullOrEmpty(txtTanNumber.Text.Trim()))
+                        {
+                            Pan_TanNumber = txtTanNumber.Text.Trim();
+                        }
+                        //else if (PowerUtility.Visible)
+                        //{
+                        //    if (string.IsNullOrEmpty(txtUserId.Text.Trim()))
+                        //    {
+                        //        string email = txtEmail.Text.Trim();
+                        //        if (email.Contains("@"))
+                        //        {
+                        //            Pan_TanNumber = email.Split('@')[0];
+                        //        }
+                        //    }
+                        //    else
+                        //    {
+                        //        Pan_TanNumber = txtUserId.Text.Trim();
+                        //    }
+                        //}
 
-                    
-                    //if (string.IsNullOrEmpty(Pan_TanNumber))
-                    //{
-                    //    throw new Exception("Pan/Tan Number cannot be empty.");
-                    //}
 
-                    DataSet ds1 = CEI.checkPanNumber(Pan_TanNumber);
-                    if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
-                    {
-                        panExists = true;
+                        if (string.IsNullOrEmpty(Pan_TanNumber))
+                        {
+                            throw new Exception("Pan/Tan Number cannot be empty.");
+                        }
+
+                        DataSet ds1 = CEI.checkPanNumber(Pan_TanNumber);
+                        if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+                        {
+                            panExists = true;
+                        }
+
                     }
 
                     transaction = connection.BeginTransaction();
@@ -710,7 +714,7 @@ namespace CEIHaryana.Contractor
                             }
                         }
 
-                        if (ddlPremises.SelectedItem.Text != "Industry")
+                        if (ddlPremises.SelectedItem.Text != "Industry" && PowerUtility.Visible!= true)
                         {
                             if (!panExists)
                             {
@@ -1370,9 +1374,14 @@ namespace CEIHaryana.Contractor
             txtPhone.Text = ds.Tables[0].Rows[0]["Mobile"].ToString();
             txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
             //txtUserId.Text = ds.Tables[0].Rows[0]["UserId"].ToString();
-            txtName.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();
-            txtagency.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();
-
+            if (individual.Visible == true)
+            {
+                txtName.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();
+            }
+            else
+            {
+                txtagency.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();
+            }
         }
     }
 }
