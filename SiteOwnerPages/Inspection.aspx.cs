@@ -297,6 +297,8 @@ namespace CEIHaryana.SiteOwnerPages
                             else
                             {
                                 btnResubmit.Visible = false;
+                               
+
                             }
                         }
                         string Reason = ds.Tables[0].Rows[0]["ReasonType"].ToString();

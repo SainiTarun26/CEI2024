@@ -25,6 +25,7 @@ namespace CEIHaryana.SiteOwnerPages
         List<(string InspectionId, string CartId, string Installtypes, string DocumentId, string DocSaveName, string FileName, string FilePath)> uploadedFiles = new List<(string, string, string, string, string, string, string)>();
         private static string IdCart, Voltage, Capacity, TestRportId, IntimationId, InstallationType, VoltageLevel, ApplicantType, District, Division, AssignTo, PaymentMode, Amount, NewInspectionId, type, inspectionCountRes, inspectionIdRes;
         int para_InspectID = 0;
+        string CartID = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,7 +36,14 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     if (Session["SiteOwnerId"] != null && Request.Cookies["SiteOwnerId"] != null)
                     {
-                        string CartID = Session["CartID"].ToString();
+                        if (!string.IsNullOrEmpty(Convert.ToString(Session["IDCart"])))
+                        {
+                             CartID = Convert.ToString(Session["IDCart"]);
+                        }
+                        else
+                        {
+                             CartID = Convert.ToString(Session["CartID"]);
+                        }                       
                         DataSet ds = new DataSet();
                         ds = CEI.GetPeriodicType(CartID);
                         type = ds.Tables[0].Rows[0]["InspectionStatus"].ToString();
@@ -62,7 +70,15 @@ namespace CEIHaryana.SiteOwnerPages
             try
             {
                 string IdLogin = Session["SiteOwnerId"].ToString();
-                string CartID = Session["CartID"].ToString();
+                string CartID = string.Empty;
+                if (!string.IsNullOrEmpty(Convert.ToString(Session["IDCart"])))
+                {
+                    CartID = Convert.ToString(Session["IDCart"]);
+                }
+                else
+                {
+                    CartID = Convert.ToString(Session["CartID"]);
+                }
                 DataSet ds = new DataSet();
                 ds = CEI.GetPeriodicdataAfterCart(CartID);
                 if (ds != null && ds.Tables[0].Rows.Count > 0)

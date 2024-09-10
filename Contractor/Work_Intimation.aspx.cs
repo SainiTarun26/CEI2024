@@ -388,7 +388,6 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-
                 DataSet dsPremises = new DataSet();
                 dsPremises = CEI.GetddlPremises();
                 ddlPremises.DataSource = dsPremises;

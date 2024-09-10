@@ -115,31 +115,37 @@ namespace CEIHaryana.Contractor
                 ddlPremises.SelectedIndex = ddlPremises.Items.IndexOf(ddlPremises.Items.FindByText(dp_Id1));
                 //ddlPremises.SelectedValue = dp_Id1;
                 string PanTanNumber = ds.Tables[0].Rows[0]["PanNumber"].ToString();
-                if (dp_Id24 == "Private/Personal Installation")
-                {
-                    DivPancard_TanNo.Visible = true;
-                    txtPAN.Text = PanTanNumber;
-                    PowerUtility.Visible = false;
-                    InstallationFor.Visible = true;
-                    UserId.Visible = false;
-                }
-                else if (dp_Id24 == "Other Department/Organization")
-                {
-                    DivOtherDepartment.Visible = true;
-                    txtTanNumber.Text = PanTanNumber;
-                    PowerUtility.Visible = false;
-                    InstallationFor.Visible = true;
-                    UserId.Visible = false;
-                }
-                else if (dp_Id24 == "Power Utility")
-                {
-                    UserId.Visible = true;
-                    TxtUserId.Text = PanTanNumber;
-                    PowerUtility.Visible = true;
-                    InstallationFor.Visible= false;
-                    txtEmail.Enabled = false;
+                //if (dp_Id24 == "Private/Personal Installation")
+                //{
+                //    DivPancard_TanNo.Visible = true;
+                //    txtPAN.Text = PanTanNumber;
+                //    PowerUtility.Visible = false;
+                //    ddlApplicantType.Enabled = false;
+                //    InstallationFor.Visible = true;
+                //}
+                //else if (dp_Id24 == "Other Department/Organization")
+                //{
+                //    DivOtherDepartment.Visible = true;
+                //    txtTanNumber.Text = PanTanNumber;
+                //    ddlApplicantType.Enabled = false;
+                //    PowerUtility.Visible = false;
+                //    InstallationFor.Visible = true;
+                //    //UserId.Visible = false;
+                //}
+                //else if (dp_Id24 == "Power Utility")
+                //{
+                //    PowerUtility.Visible = true;
+                //    InstallationFor.Visible = false;
+                //    //txtEmail.Enabled = false;
+                //    ddlApplicantType.Enabled = false;
+                //    //ddlPowerUtility.Enabled = false;
+                //    //DdlWing.Enabled = false;
+                //    //DdlZone.Enabled = false;
+                //    //DdlCircle.Enabled = false;
+                //    //DdlDivision.Enabled = false;
+                //    //DdlSubDivision.Enabled = false;
 
-                }
+                //}
               
                 string dp_PowerUtility = ds.Tables[0].Rows[0]["PowerUtility"].ToString();
                 ddlPowerUtility.SelectedIndex = ddlPowerUtility.Items.IndexOf(ddlPowerUtility.Items.FindByText(dp_PowerUtility));
@@ -149,11 +155,11 @@ namespace CEIHaryana.Contractor
 
 
                 DdlWing.SelectedIndex = DdlWing.Items.IndexOf(DdlWing.Items.FindByText(dp_wing));
-
+                DdlZoneBind();
                 string dp_Id16 = ds.Tables[0].Rows[0]["ZoneName"].ToString();
                 DdlZone.SelectedIndex = DdlZone.Items.IndexOf(DdlZone.Items.FindByText(dp_Id16));
 
-             
+                DdlCircleBind();
                 string dp_Id17 = ds.Tables[0].Rows[0]["CircleName"].ToString();
                 DdlCircle.SelectedIndex = DdlCircle.Items.IndexOf(DdlCircle.Items.FindByText(dp_Id17));
 
@@ -166,6 +172,37 @@ namespace CEIHaryana.Contractor
                 string dp_Id19 = ds.Tables[0].Rows[0]["SubDivisionName"].ToString();
                 DdlSubDivision.SelectedIndex = DdlSubDivision.Items.IndexOf(DdlSubDivision.Items.FindByText(dp_Id19));
 
+                if (dp_Id24 == "Private/Personal Installation")
+                {
+                    DivPancard_TanNo.Visible = true;
+                    txtPAN.Text = PanTanNumber;
+                    PowerUtility.Visible = false;
+                    ddlApplicantType.Enabled = false;
+                    InstallationFor.Visible = true;
+                }
+                else if (dp_Id24 == "Other Department/Organization")
+                {
+                    DivOtherDepartment.Visible = true;
+                    txtTanNumber.Text = PanTanNumber;
+                    ddlApplicantType.Enabled = false;
+                    PowerUtility.Visible = false;
+                    InstallationFor.Visible = true;
+                    //UserId.Visible = false;
+                }
+                else if (dp_Id24 == "Power Utility")
+                {
+                    PowerUtility.Visible = true;
+                    InstallationFor.Visible = false;
+                    //txtEmail.Enabled = false;
+                    ddlApplicantType.Enabled = false;
+                    //ddlPowerUtility.Enabled = false;
+                    //DdlWing.Enabled = false;
+                    //DdlZone.Enabled = false;
+                    //DdlCircle.Enabled = false;
+                    //DdlDivision.Enabled = false;
+                    //DdlSubDivision.Enabled = false;
+
+                }
                 Page.Session["OldUserID"] = PanTanNumber;
 
               
@@ -1334,6 +1371,24 @@ namespace CEIHaryana.Contractor
         protected void DdlDivision_SelectedIndexChanged(object sender, EventArgs e)
         {
             DdlSubDivisionBind();
+        }
+
+        protected void DdlSubDivision_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = DdlSubDivision.SelectedValue.ToString();
+            DataSet ds = new DataSet();
+            ds = CEI.GetSubDivisionEmail(id);
+            txtPhone.Text = ds.Tables[0].Rows[0]["Mobile"].ToString();
+            txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+            //txtUserId.Text = ds.Tables[0].Rows[0]["UserId"].ToString();
+            if (individual.Visible == true)
+            {
+                txtName.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();
+            }
+            else
+            {
+                txtagency.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();
+            }
         }
     }
 }
