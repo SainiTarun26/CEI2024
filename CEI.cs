@@ -5551,7 +5551,75 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             int K = cmd.ExecuteNonQuery();
             return K;
         }
+        #region Insert Intimtion Data By Siteowner
+        public DataSet GetWorkIntimationDataAtSiteOwner(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationDataBySiteOwner", Id);
+        }
 
+        public void IntimationDataInsertionBySiteowner(string SiteOwnerId, string ApplicantType, string ApplicantTypeCode, string ContractorType, string PowerUtility, string PowerUtilityWing, string ZoneName,
+                                          string CircleName, string DivisionName, string SubDivisionName, string NameOfOwner, string NameOfAgency, string ContactNo,
+                                          string Address, string District, string Pincode, string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber,
+                                          string TypeOfInstallation2, string NumberOfInstallation2, string TypeOfInstallation3, string NumberOfInstallation3,
+                                          string Email, string Createdby, string SanctionLoad, string InspectionType, string TotalCapacity, string SanctionLoadValue, string SiteOwnerPassword)
+        {
+            // Fetch the actual connection string from web.config
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("sp_WorkIntimationRegistrationBySiteOwner", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                //cmd.Parameters.AddWithValue("@Id", Id);
+                cmd.Parameters.AddWithValue("@SiteOwnerId", SiteOwnerId);
+                cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
+                cmd.Parameters.AddWithValue("@ApplicantTypeCode", ApplicantTypeCode);
+
+                cmd.Parameters.AddWithValue("@ContractorType", ContractorType);
+                cmd.Parameters.AddWithValue("@PowerUtility", PowerUtility);
+                cmd.Parameters.AddWithValue("@PowerUtilityWing", PowerUtilityWing);
+                cmd.Parameters.AddWithValue("@ZoneName", ZoneName);
+                cmd.Parameters.AddWithValue("@CircleName", CircleName);
+                cmd.Parameters.AddWithValue("@DivisionName", DivisionName);
+                cmd.Parameters.AddWithValue("@SubDivisionName", SubDivisionName);
+                cmd.Parameters.AddWithValue("@NameOfOwner", NameOfOwner);
+                cmd.Parameters.AddWithValue("@NameOfAgency", NameOfAgency);
+
+                cmd.Parameters.AddWithValue("@ContactNo", ContactNo);
+                cmd.Parameters.AddWithValue("@Address", Address);
+                cmd.Parameters.AddWithValue("@District", District);
+                cmd.Parameters.AddWithValue("@Pincode", Pincode);
+                cmd.Parameters.AddWithValue("@PremisesType", PremisesType);
+                cmd.Parameters.AddWithValue("@OtherPremises", OtherPremises);
+
+                cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
+                cmd.Parameters.AddWithValue("@PANNumber", PANNumber);
+
+                cmd.Parameters.AddWithValue("@TypeOfInstallation2", String.IsNullOrEmpty(TypeOfInstallation2) ? DBNull.Value : (object)TypeOfInstallation2);
+                cmd.Parameters.AddWithValue("@NumberOfInstallation2", String.IsNullOrEmpty(NumberOfInstallation2) ? DBNull.Value : (object)NumberOfInstallation2);
+                cmd.Parameters.AddWithValue("@TypeOfInstallation3", String.IsNullOrEmpty(TypeOfInstallation3) ? DBNull.Value : (object)TypeOfInstallation3);
+                cmd.Parameters.AddWithValue("@NumberOfInstallation3", String.IsNullOrEmpty(NumberOfInstallation3) ? DBNull.Value : (object)NumberOfInstallation3);
+                cmd.Parameters.AddWithValue("@Email", Email);
+
+                cmd.Parameters.AddWithValue("@Createdby", Createdby);
+                cmd.Parameters.AddWithValue("@SanctionLoad", SanctionLoad);
+                cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
+                cmd.Parameters.AddWithValue("@TotalCapacity", TotalCapacity);
+                cmd.Parameters.AddWithValue("@SanctionLoadValue", SanctionLoadValue);
+                cmd.Parameters.AddWithValue("@SiteOwnerPassword", SiteOwnerPassword);
+
+                SqlParameter outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
+                outputParam.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(outputParam);
+                cmd.ExecuteNonQuery();
+
+                string registrationId = outputParam.Value.ToString();
+                conn.Close();
+            }
+        }
+        #endregion
     }
 }
 
