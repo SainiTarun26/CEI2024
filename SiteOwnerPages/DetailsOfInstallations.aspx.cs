@@ -248,8 +248,9 @@ namespace CEIHaryana.SiteOwnerPages
                 try
                 {
                     connection.Open();
-                    string Pan_TanNumber = "";
+                    transaction = connection.BeginTransaction();
 
+                    string Pan_TanNumber = "";
                     if (DivPancard_TanNo.Visible && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
                     {
                         Pan_TanNumber = txtPAN.Text.Trim();
@@ -274,30 +275,53 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     }
 
-
+                    // Pan/TanNumber validation
                     if (string.IsNullOrEmpty(Pan_TanNumber))
                     {
                         throw new Exception("Pan/Tan Number cannot be empty.");
                     }
-                    transaction = connection.BeginTransaction();
 
+                    // Insert data
                     CEI.IntimationDataInsertionBySiteowner(
-                           Id,
-                           txtApplicantType.Text.Trim(), ApplicantCode, txtElecticalInstallation.Text.Trim(), txtUtilityName.Text.Trim(), txtWing.Text.Trim(),
-                           txtZone.Text.Trim(), txtCircle.Text.Trim(), txtDivision.Text.Trim(), txtSubDivision.Text.Trim(), txtName.Text.Trim(), txtagency.Text.Trim(),
-                           txtPhone.Text.Trim(), txtAddress.Text.Trim(), ddlDistrict.SelectedItem?.ToString(), txtPin.Text.Trim(), ddlPremises.SelectedItem?.ToString(),
-                           txtOtherPremises.Text.Trim(), ddlVoltageLevel.SelectedItem?.ToString(), Pan_TanNumber,
-                           txtinstallationType2.Text.Trim(), txtinstallationNo2.Text.Trim(), txtinstallationType3.Text.Trim(), txtinstallationNo3.Text.Trim(),
-
-                           txtEmail.Text.Trim(), Id,
-                           RadioButtonList2.SelectedValue.ToString(), "Existing", txtCapacity.Text.Trim(), txtSanctionLoad.Text.Trim(), Password
-                           , transaction);
+                        Id,
+                        txtApplicantType.Text.Trim(),
+                        ApplicantCode,
+                        txtElecticalInstallation.Text.Trim(),
+                        txtUtilityName.Text.Trim(),
+                        txtWing.Text.Trim(),
+                        txtZone.Text.Trim(),
+                        txtCircle.Text.Trim(),
+                        txtDivision.Text.Trim(),
+                        txtSubDivision.Text.Trim(),
+                        txtName.Text.Trim(),
+                        txtagency.Text.Trim(),
+                        txtPhone.Text.Trim(),
+                        txtAddress.Text.Trim(),
+                        ddlDistrict.SelectedItem?.ToString(),
+                        txtPin.Text.Trim(),
+                        ddlPremises.SelectedItem?.ToString(),
+                        txtOtherPremises.Text.Trim(),
+                        ddlVoltageLevel.SelectedItem?.ToString(),
+                        Pan_TanNumber,
+                        txtinstallationType2.Text.Trim(),
+                        txtinstallationNo2.Text.Trim(),
+                        txtinstallationType3.Text.Trim(),
+                        txtinstallationNo3.Text.Trim(),
+                        txtEmail.Text.Trim(),
+                        Id,
+                        RadioButtonList2.SelectedValue.ToString(),
+                        "Existing",
+                        txtCapacity.Text.Trim(),
+                        txtSanctionLoad.Text.Trim(),
+                        Password,
+                        transaction
+                    );
 
                     TypeOfInspection = "Existing";
                     string projectId = CEI.projectId();
+
                     if (!string.IsNullOrEmpty(projectId))
                     {
-
                         TextBox[] typeTextBoxes = { txtinstallationType2, txtinstallationType3 };
                         TextBox[] noTextBoxes = { txtinstallationNo2, txtinstallationNo3 };
 
@@ -310,18 +334,24 @@ namespace CEIHaryana.SiteOwnerPages
                             {
                                 for (int j = 0; j < installationNo; j++)
                                 {
-                                    CEI.AddInstallationsCreatedbySiteOwner(projectId, installationType, installationNo, Id, TypeOfInspection,transaction);
+                                    CEI.AddInstallationsCreatedbySiteOwner(projectId, installationType, installationNo, Id, TypeOfInspection, transaction);
                                 }
                             }
                         }
                     }
-
+                    transaction.Commit();
                     Reset();
                 }
-                catch (Exception ex) { }
+                catch (Exception ex)
+                {
+                    // Rollback transaction in case of an error
+                    if (transaction != null)
+                    {
+                        transaction.Rollback();
+                    }
+                }
             }
         }
-
         private void Reset()
         {
             txtAddress.Text = "";
