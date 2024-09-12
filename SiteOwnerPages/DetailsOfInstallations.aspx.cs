@@ -4,7 +4,9 @@ using CEIHaryana.Contractor;
 using Org.BouncyCastle.Asn1.Cmp;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
@@ -240,77 +242,84 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            try
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
             {
-                string Pan_TanNumber = "";
+                SqlTransaction transaction = null;
+                try
+                {
+                    connection.Open();
+                    string Pan_TanNumber = "";
 
-                if (DivPancard_TanNo.Visible && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
-                {
-                    Pan_TanNumber = txtPAN.Text.Trim();
-                }
-                else if (DivOtherDepartment.Visible && !string.IsNullOrEmpty(txtTanNumber.Text.Trim()))
-                {
-                    Pan_TanNumber = txtTanNumber.Text.Trim();
-                }
-                else if (PowerUtility.Visible)
-                {
-                    if (string.IsNullOrEmpty(txtUserId.Text.Trim()))
+                    if (DivPancard_TanNo.Visible && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
                     {
-                        string email = txtEmail.Text.Trim();
-                        if (email.Contains("@"))
+                        Pan_TanNumber = txtPAN.Text.Trim();
+                    }
+                    else if (DivOtherDepartment.Visible && !string.IsNullOrEmpty(txtTanNumber.Text.Trim()))
+                    {
+                        Pan_TanNumber = txtTanNumber.Text.Trim();
+                    }
+                    else if (PowerUtility.Visible)
+                    {
+                        if (string.IsNullOrEmpty(txtUserId.Text.Trim()))
                         {
-                            Pan_TanNumber = email.Split('@')[0];
+                            string email = txtEmail.Text.Trim();
+                            if (email.Contains("@"))
+                            {
+                                Pan_TanNumber = email.Split('@')[0];
+                            }
+                        }
+                        else
+                        {
+                            Pan_TanNumber = txtUserId.Text.Trim();
                         }
                     }
-                    else
+
+
+                    if (string.IsNullOrEmpty(Pan_TanNumber))
                     {
-                        Pan_TanNumber = txtUserId.Text.Trim();
+                        throw new Exception("Pan/Tan Number cannot be empty.");
                     }
-                }
+                    transaction = connection.BeginTransaction();
 
+                    CEI.IntimationDataInsertionBySiteowner(
+                           Id,
+                           txtApplicantType.Text.Trim(), ApplicantCode, txtElecticalInstallation.Text.Trim(), txtUtilityName.Text.Trim(), txtWing.Text.Trim(),
+                           txtZone.Text.Trim(), txtCircle.Text.Trim(), txtDivision.Text.Trim(), txtSubDivision.Text.Trim(), txtName.Text.Trim(), txtagency.Text.Trim(),
+                           txtPhone.Text.Trim(), txtAddress.Text.Trim(), ddlDistrict.SelectedItem?.ToString(), txtPin.Text.Trim(), ddlPremises.SelectedItem?.ToString(),
+                           txtOtherPremises.Text.Trim(), ddlVoltageLevel.SelectedItem?.ToString(), Pan_TanNumber,
+                           txtinstallationType2.Text.Trim(), txtinstallationNo2.Text.Trim(), txtinstallationType3.Text.Trim(), txtinstallationNo3.Text.Trim(),
 
-                if (string.IsNullOrEmpty(Pan_TanNumber))
-                {
-                    throw new Exception("Pan/Tan Number cannot be empty.");
-                }
-                CEI.IntimationDataInsertionBySiteowner(
-                       Id,
-                       txtApplicantType.Text.Trim(), ApplicantCode, txtElecticalInstallation.Text.Trim(), txtUtilityName.Text.Trim(), txtWing.Text.Trim(),
-                       txtZone.Text.Trim(), txtCircle.Text.Trim(), txtDivision.Text.Trim(), txtSubDivision.Text.Trim(), txtName.Text.Trim(), txtagency.Text.Trim(),
-                       txtPhone.Text.Trim(), txtAddress.Text.Trim(), ddlDistrict.SelectedItem?.ToString(), txtPin.Text.Trim(), ddlPremises.SelectedItem?.ToString(),
-                       txtOtherPremises.Text.Trim(), ddlVoltageLevel.SelectedItem?.ToString(), Pan_TanNumber,
-                       txtinstallationType2.Text.Trim(), txtinstallationNo2.Text.Trim(), txtinstallationType3.Text.Trim(), txtinstallationNo3.Text.Trim(),
+                           txtEmail.Text.Trim(), Id,
+                           RadioButtonList2.SelectedValue.ToString(), "Existing", txtCapacity.Text.Trim(), txtSanctionLoad.Text.Trim(), Password
+                           , transaction);
 
-                       txtEmail.Text.Trim(), Id,
-                       RadioButtonList2.SelectedValue.ToString(), "Existing", txtCapacity.Text.Trim(), txtSanctionLoad.Text.Trim(), Password
-                       );
-
-                TypeOfInspection = "Existing";
-                string projectId = CEI.projectId();
-                if (!string.IsNullOrEmpty(projectId))
-                {
-
-                    TextBox[] typeTextBoxes = { txtinstallationType2, txtinstallationType3 };
-                    TextBox[] noTextBoxes = { txtinstallationNo2, txtinstallationNo3 };
-
-                    for (int i = 0; i < typeTextBoxes.Length; i++)
+                    TypeOfInspection = "Existing";
+                    string projectId = CEI.projectId();
+                    if (!string.IsNullOrEmpty(projectId))
                     {
-                        string installationType = typeTextBoxes[i].Text;
-                        string installationNoText = noTextBoxes[i].Text;
 
-                        if (int.TryParse(installationNoText, out int installationNo) && installationNo > 0)
+                        TextBox[] typeTextBoxes = { txtinstallationType2, txtinstallationType3 };
+                        TextBox[] noTextBoxes = { txtinstallationNo2, txtinstallationNo3 };
+
+                        for (int i = 0; i < typeTextBoxes.Length; i++)
                         {
-                            for (int j = 0; j < installationNo; j++)
+                            string installationType = typeTextBoxes[i].Text;
+                            string installationNoText = noTextBoxes[i].Text;
+
+                            if (int.TryParse(installationNoText, out int installationNo) && installationNo > 0)
                             {
-                                CEI.AddInstallationsCreatedbySiteOwner(projectId, installationType, installationNo, Id, TypeOfInspection);
+                                for (int j = 0; j < installationNo; j++)
+                                {
+                                    CEI.AddInstallationsCreatedbySiteOwner(projectId, installationType, installationNo, Id, TypeOfInspection,transaction);
+                                }
                             }
                         }
                     }
-                }
 
-                Reset();
+                    Reset();
+                }
+                catch (Exception ex) { }
             }
-            catch (Exception ex) { }
         }
 
         private void Reset()

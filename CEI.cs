@@ -5561,7 +5561,7 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
                                           string CircleName, string DivisionName, string SubDivisionName, string NameOfOwner, string NameOfAgency, string ContactNo,
                                           string Address, string District, string Pincode, string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber,
                                           string TypeOfInstallation2, string NumberOfInstallation2, string TypeOfInstallation3, string NumberOfInstallation3,
-                                          string Email, string Createdby, string SanctionLoad, string InspectionType, string TotalCapacity, string SanctionLoadValue, string SiteOwnerPassword)
+                                          string Email, string Createdby, string SanctionLoad, string InspectionType, string TotalCapacity, string SanctionLoadValue, string SiteOwnerPassword,SqlTransaction transaction)
         {
             // Fetch the actual connection string from web.config
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
@@ -5569,7 +5569,7 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("sp_WorkIntimationRegistrationBySiteOwner", conn);
+                SqlCommand cmd = new SqlCommand("sp_WorkIntimationRegistrationBySiteOwner", transaction.Connection, transaction);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 //cmd.Parameters.AddWithValue("@Id", Id);
@@ -5621,14 +5621,14 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             }
         }
 
-        public void AddInstallationsCreatedbySiteOwner(string IntimationId, string Typeofinstallation, int Noofinstallation, string CreatedBy, string TypeOfInspection)
+        public void AddInstallationsCreatedbySiteOwner(string IntimationId, string Typeofinstallation, int Noofinstallation, string CreatedBy, string TypeOfInspection,SqlTransaction transaction)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("sp_InstallationsCountCreatedbySiteOwner", conn);
+                SqlCommand cmd = new SqlCommand("sp_InstallationsCountCreatedbySiteOwner", transaction.Connection, transaction);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
                 cmd.Parameters.AddWithValue("@Typeofinstallation", Typeofinstallation);
@@ -5658,6 +5658,27 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             int Ad = cmd.ExecuteNonQuery();
             con.Close();
             return Ad;
+        }
+
+        //Created On 11-Sept-2024
+        public DataTable GetTransferReport()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTransferReport");
+        }
+
+        public DataTable GetTransferSearchReport(DateTime? DateFrom, DateTime? DateTo, string TransferTo, string Status, string InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTransferSearchReport",
+                DateFrom ?? (object)DBNull.Value,
+                DateTo ?? (object)DBNull.Value,
+                string.IsNullOrEmpty(TransferTo) ? DBNull.Value : (object)TransferTo,
+                string.IsNullOrEmpty(Status) ? DBNull.Value : (object)Status,
+                string.IsNullOrEmpty(InspectionId) ? DBNull.Value : (object)InspectionId);
+        }
+        //Created on 12-Sept-2024
+        public DataSet DdlToTransferStaff()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetStaffForTransfer");
         }
     }
 }
