@@ -21,6 +21,7 @@ namespace CEIHaryana.SiteOwnerPages
         CEI CEI = new CEI();
         private static string Id, ApplicantType, ApplicantCode, Password, EInstallationType;
         string SiteOwnerID = string.Empty;
+        string TypeOfInspection = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -136,6 +137,44 @@ namespace CEIHaryana.SiteOwnerPages
             catch (Exception ex) { }
         }
 
+        protected void imgDelete2_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                string valueToAddBack = txtinstallationType2.Text;
+
+                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                {
+                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                    ddlWorkDetail.Items.Add(newItem);
+                }
+                installationType2.Visible = false;
+                txtinstallationType2.Text = string.Empty;
+                txtinstallationNo2.Text = string.Empty;
+            }
+            catch(Exception ex)
+            {
+                // Handle exceptions appropriately
+            }
+        }
+
+        protected void imgDelete3_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                string valueToAddBack = txtinstallationType3.Text;
+                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                {
+                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                    ddlWorkDetail.Items.Add(newItem);
+                }
+                installationType3.Visible = false;
+                txtinstallationType3.Text = string.Empty;
+                txtinstallationNo3.Text = string.Empty;
+            }
+            catch(Exception ex) { }
+        }
+
         private void GetDetails()
         {
             Id = Session["SiteOwnerId"].ToString();
@@ -146,6 +185,7 @@ namespace CEIHaryana.SiteOwnerPages
                 txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 ApplicantType = txtApplicantType.Text;
                 ApplicantCode = ds.Tables[0].Rows[0]["ApplicantTypeCode"].ToString();
+
                 txtPAN.Text = ds.Tables[0].Rows[0]["PANNumber"].ToString();
                 txtElecticalInstallation.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 EInstallationType = txtElecticalInstallation.Text;
@@ -242,10 +282,51 @@ namespace CEIHaryana.SiteOwnerPages
                        txtinstallationType2.Text.Trim(), txtinstallationNo2.Text.Trim(), txtinstallationType3.Text.Trim(), txtinstallationNo3.Text.Trim(),
 
                        txtEmail.Text.Trim(), Id,
-                       RadioButtonList2.SelectedValue.ToString(), "Periodic", txtCapacity.Text.Trim(), txtSanctionLoad.Text.Trim(), Password
+                       RadioButtonList2.SelectedValue.ToString(), "Existing", txtCapacity.Text.Trim(), txtSanctionLoad.Text.Trim(), Password
                        );
+
+                TypeOfInspection = "Existing";
+                string projectId = CEI.projectId();
+                if (!string.IsNullOrEmpty(projectId))
+                {
+
+                    TextBox[] typeTextBoxes = { txtinstallationType2, txtinstallationType3 };
+                    TextBox[] noTextBoxes = { txtinstallationNo2, txtinstallationNo3 };
+
+                    for (int i = 0; i < typeTextBoxes.Length; i++)
+                    {
+                        string installationType = typeTextBoxes[i].Text;
+                        string installationNoText = noTextBoxes[i].Text;
+
+                        if (int.TryParse(installationNoText, out int installationNo) && installationNo > 0)
+                        {
+                            for (int j = 0; j < installationNo; j++)
+                            {
+                                CEI.AddInstallationsCreatedbySiteOwner(projectId, installationType, installationNo, Id, TypeOfInspection);
+                            }
+                        }
+                    }
+                }
+
+                Reset();
             }
             catch (Exception ex) { }
+        }
+
+        private void Reset()
+        {
+            txtAddress.Text = "";
+            ddlDistrict.SelectedValue = "0";
+            txtPin.Text = "";
+            ddlPremises.SelectedValue = "0";
+            txtOtherPremises.Text = "";
+            ddlVoltageLevel.SelectedValue = "0";
+            RadioButtonList2.ClearSelection();
+            txtSanctionLoad.Text = "";
+            txtCapacity.Text = "";
+            txtinstallationNo2.Text = "";
+            txtinstallationNo3.Text = "";
+            divSanctionLoad.Visible = false;
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)

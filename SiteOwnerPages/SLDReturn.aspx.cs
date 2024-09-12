@@ -51,7 +51,8 @@ namespace CEIHaryana.SiteOwnerPages
                             Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerId + "/Sld Document/"));
                         }
 
-                        string ext = Path.GetExtension(customFile.FileName);
+                        //string ext = Path.GetExtension(customFile.FileName);
+                        string ext = ".pdf";
                         string path = "/Attachment/" + SiteOwnerId + "/Sld Document/";
                         string fileName = "Sld Document" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
                         string filePathInfo2 = Server.MapPath("~/Attachment/" + SiteOwnerId + "/Sld Document/" + fileName);

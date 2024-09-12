@@ -262,10 +262,10 @@
                                     <asp:Label ID="lblContractorName" runat="server" Text='<%# Eval("ContractorSupName") %>' CssClass="text-wrap"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                             <asp:BoundField DataField="Email" HeaderText="Email Id">
-     <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
-     <ItemStyle HorizontalAlign="right" Width="15%" />
- </asp:BoundField>
+                            <asp:BoundField DataField="Email" HeaderText="Email Id">
+                                <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="right" Width="15%" />
+                            </asp:BoundField>
                             <asp:TemplateField HeaderText="Edit">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
@@ -274,14 +274,15 @@
                                         Text="<i class='fa fa-edit' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                         <%--   <asp:TemplateField HeaderText="Reset Password">
+                            <asp:TemplateField HeaderText="Reset Password">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
                                 <ItemTemplate>
                                     <asp:LinkButton runat="server" ID="LnkResetButton" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" Text="<i class='fa fa-refresh' style='color:white !important;'></i>" CssClass='greenButton btn-primary'
-                                        CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" OnClientClick="$('#updatePasswordModal').modal('show'); return false;" />
+                                        CommandName="Reset" CommandArgument='<%# Eval("UserId") %>' OnClientClick='<%# "showUpdatePasswordModal(\"" + Eval("UserId") + "\", \"" + Eval("Email") + "\"); return false;" %>' />
+                                    <%--OnClientClick="$('#updatePasswordModal').modal('show'); return false;"--%> <%--OnClientClick='<%# "showUpdatePasswordModal(" + Eval("UserId") + "); return false;" %>'--%>
                                 </ItemTemplate>
-                            </asp:TemplateField>--%>
+                            </asp:TemplateField>
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -293,11 +294,11 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
-                      <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView2" runat="server" Width="100%" AutoGenerateColumns="false" AllowPaging="true"
-                       PageSize="50" OnPageIndexChanging="GridView2_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
+                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView2" runat="server" Width="100%" AutoGenerateColumns="false" AllowPaging="true"
+                        PageSize="50" OnPageIndexChanging="GridView2_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
-                             <asp:TemplateField HeaderText="SNo">
+                            <asp:TemplateField HeaderText="SNo">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
                                 <ItemTemplate>
@@ -311,7 +312,7 @@
                                     <asp:Label ID="lblName" runat="server" Text='<%# Eval("OwnerName") %>' CssClass="text-wrap"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                           
+
                             <asp:TemplateField HeaderText="District" Visible="true">
                                 <HeaderStyle Width="10%" CssClass="headercolor" />
                                 <ItemStyle Width="10%" CssClass="text-wrap" />
@@ -329,20 +330,20 @@
                                 <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="right" Width="15%" />
                             </asp:BoundField>
-                     
-                             <asp:BoundField DataField="Email" HeaderText="Email Id">
-                          <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
-                          <ItemStyle HorizontalAlign="right" Width="15%" />
-                   </asp:BoundField>
-                           
-                            <asp:TemplateField HeaderText="Reset">
+
+                            <asp:BoundField DataField="Email" HeaderText="Email Id">
+                                <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="right" Width="15%" />
+                            </asp:BoundField>
+
+                           <%-- <asp:TemplateField HeaderText="Reset">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
                                 <ItemTemplate>
                                     <asp:LinkButton runat="server" ID="LnkResetButton" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" Text="<i class='fa fa-refresh' style='color:white !important;'></i>" CssClass='greenButton btn-primary'
                                         CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" OnClientClick="$('#updatePasswordModal').modal('show'); return false;" />
                                 </ItemTemplate>
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -380,8 +381,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <asp:HiddenField runat="server" ID="hdnEmailId" />
                                 <div class="modal-footer">
-                                    <asp:Button ID="btnUpdatePassword" runat="server" CssClass="btn btn-primary" Text="Reset Password" />
+                                    <asp:Button ID="btnUpdatePassword" runat="server" OnClick="btnUpdatePassword_Click" CssClass="btn btn-primary" Text="Reset Password" />
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
@@ -421,5 +423,18 @@
                 Search_Gridview(document.getElementById('txtSearch'));
             }
         }
+
+        function showUpdatePasswordModal(userId, Email) {
+            // Set the UserId in the modal's input field
+            // $('#updatePasswordModal #txtUserId').val(userId); 
+            var email = '<%= hdnEmailId.ClientID %>';
+            $('#' + email).val(Email);
+             var txtUserIdClientID = '<%= txtUserId.ClientID %>';
+             $('#' + txtUserIdClientID).val(userId); // Set value using ClientID
+             // $('#txtUserId').value(userId);(userId);
+             // Show the modal
+             $('#updatePasswordModal').modal('show');
+         }
+
     </script>
 </asp:Content>

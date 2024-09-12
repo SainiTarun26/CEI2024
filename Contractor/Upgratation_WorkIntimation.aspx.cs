@@ -1019,7 +1019,8 @@ namespace CEIHaryana.Contractor
                                 if (!string.IsNullOrEmpty(fileName))
                                 {
 
-                                    string ext = Path.GetExtension(fileName);
+                                    //  string ext = Path.GetExtension(fileName);
+                                    string ext = ".pdf";
                                     string directoryPath = Server.MapPath("~/Attachment/" + ContractorID + "/Copy of Work Order/");
 
                                     if (!Directory.Exists(directoryPath))

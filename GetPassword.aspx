@@ -362,7 +362,7 @@
                                             </label>
                                             <%--<label id="pantanno" runat="server">PAN/TAN No.<samp style="color: red">* </samp>
                                             </label>--%>
-                                            <asp:TextBox class="form-control" ID="txtsearch" autocomplete="off" runat="server"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtsearch" MaxLength="15" autocomplete="off" runat="server"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtsearch" runat="server" Display="Dynamic" ValidationGroup="SearchSubmit" SetFocusOnError="true" ForeColor="Red" />
                                         </div>
                                         <div class="col-md-4" style="margin-top: auto;">

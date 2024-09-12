@@ -305,7 +305,8 @@ namespace CEIHaryana.SiteOwnerPages
                                         Directory.CreateDirectory(directoryPath);
                                     }
 
-                                    string ext = Path.GetExtension(fileUpload.PostedFile.FileName).ToLower();
+                                    // string ext = Path.GetExtension(fileUpload.PostedFile.FileName).ToLower();
+                                    string ext = ".pdf";
                                     string fileName = $"{DocSaveName}{ext}";
                                     string filePath = Path.Combine(directoryPath, fileName);
                                     fileUpload.PostedFile.SaveAs(filePath);

@@ -580,8 +580,9 @@ namespace CEIHaryana.SiteOwnerPages
                             string ext = fileUpload.PostedFile.FileName.Split('.')[1];
                             string path = "";
                             path = "/Attachment/" + CreatedBy + "/" + intimationids + "/" + InstallTypes + "/" + InstallTypeCount + "/";
-                            //string fileName = DocSaveName + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                            string fileName = DocSaveName + "." + ext;
+                            //string fileName = DocSaveName + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;                          
+                            //string fileName = DocSaveName + "." + ext;
+                            string fileName = DocSaveName + ".pdf";
 
                             string filePathInfo2 = "";
 

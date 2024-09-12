@@ -20,7 +20,10 @@ namespace CEIHaryana
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                btnProcess.Enabled = false;
+            }
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -45,6 +48,7 @@ namespace CEIHaryana
                 }
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
+                btnProcess.Enabled = true;
             }
             else
             {
@@ -101,7 +105,7 @@ namespace CEIHaryana
 
         protected void btnProcess_Click(object sender, EventArgs e)
         {
-            if (CheckBox1.Checked == true)
+            if (CheckBox1.Checked == true && GridView1.Visible == true)
             {
                 txtsearch.ReadOnly = true;
                 ddluserCategary.Enabled = false;

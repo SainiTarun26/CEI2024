@@ -612,7 +612,8 @@ namespace CEIHaryana.Contractor
                                     Directory.CreateDirectory(directoryPath);
                                 }
 
-                                string ext = Path.GetExtension(customFile.FileName);
+                                //string ext = Path.GetExtension(customFile.FileName);
+                                string ext = ".pdf";
                                 string fileName = "Copy of Work Order" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
                                 string filePathInfo2 = Path.Combine(directoryPath, fileName);
                                 customFile.SaveAs(filePathInfo2);

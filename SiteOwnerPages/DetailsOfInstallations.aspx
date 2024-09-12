@@ -325,7 +325,7 @@
                                 Do You Have Latest CEI Existing installation Report?
                                 <samp style="color: red">* </samp>
                             </label>
-                            <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                            <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" runat="server" RepeatDirection="Horizontal">
                                 <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="0" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
                             </asp:RadioButtonList>
@@ -349,13 +349,13 @@
                                                 Applicant Type
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtApplicantType" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                           </div>
+                                        </div>
                                         <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="true">
                                             <label for="PanNumber">
                                                 PAN Card
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtPAN" ReadOnly="true" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                          </div>
+                                        </div>
                                         <div class="col-md-4" runat="server" id="DivOtherDepartment" visible="false">
                                             <label for="TanNumber">
                                                 TAN Number
@@ -370,19 +370,19 @@
                                                 Electrical Installation For
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtElecticalInstallation" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
+                                        </div>
                                         <div class="col-md-4" id="NameUtility" runat="server" visible="false">
                                             <label>
                                                 Name Of Power Utility
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtUtilityName" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                           </div>
+                                        </div>
                                         <div class="col-md-4" id="Wing" runat="server" visible="false">
                                             <label>
                                                 Wing
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtWing" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row" runat="server" id="PowerUtility" visible="false">
                                         <div class="col-md-4">
@@ -390,24 +390,25 @@
                                                 Zone
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtZone" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
+                                        </div>
                                         <div class="col-md-4">
                                             <label>
                                                 Circle
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtCircle" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                           </div>
+                                        </div>
                                         <div class="col-md-4">
                                             <label>
                                                 Division
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtDivision" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
+                                        </div>
                                         <div class="col-md-4">
                                             <label>
-                                                Sub-Division </label>
+                                                Sub-Division
+                                            </label>
                                             <asp:TextBox class="form-control" ID="txtSubDivision" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                           </div>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4" runat="server" id="UserId" visible="false">
@@ -425,7 +426,7 @@
                                             <div class="input-box">
                                                 <asp:TextBox class="form-control" ID="txtName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px; box-shadow: none !important;"></asp:TextBox>
                                             </div>
-                                            </div>
+                                        </div>
                                         <div class="col-md-4" id="agency" visible="false" runat="server">
                                             <label for="agency">
                                                 Name of Firm/ Org./ Company/ Department
@@ -435,7 +436,7 @@
                                                 <span class="prefix">M/s.</span>
                                                 <asp:TextBox class="form-control" ID="txtagency" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
                                             </div>
-                                           </div>
+                                        </div>
                                         <div class="col-md-8">
                                             <label for="Address">
                                                 Address of Site(Preferred As Per Demand Notice of Utility or Electricity Bill)
@@ -459,8 +460,10 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator25" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
                                         <div class="col-md-4" runat="server">
-                                            <label for="Pin">PinCode</label>
+                                            <label for="Pin">PinCode<samp style="color: red">* </samp></label>
                                             <asp:TextBox class="form-control" ID="txtPin" TabIndex="7" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPin" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Pincode</asp:RequiredFieldValidator>
+
                                             <span id="lblPinError" style="color: red"></span>
                                         </div>
                                     </div>
@@ -470,13 +473,13 @@
                                                 Contact Number (Site Owner)<samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtPhone" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
+                                        </div>
                                         <div class="col-md-4" runat="server">
                                             <label for="Email">
                                                 Email<samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtEmail" autocomplete="off" ReadOnly="true" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                           </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -519,7 +522,7 @@
                                                 Is there any Sanction Load Issued<samp style="color: red">* </samp>
                                             </label>
 
-                                            <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                                            <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" runat="server" RepeatDirection="Horizontal">
                                                 <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
                                                 <asp:ListItem Text="No" Value="0" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
                                             </asp:RadioButtonList>
@@ -557,7 +560,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                                                                              <div id="installationType2" runat="server">
+                                                        <div id="installationType2" runat="server">
                                                             <tr>
                                                                 <td>
                                                                     <div class="col-md-12">
@@ -571,7 +574,7 @@
                                                                     </div>
                                                                 </td>
                                                                 <td style="text-align: center !important;">
-                                                                    <asp:ImageButton ID="imgDelete2" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30" runat="server" />
+                                                                    <asp:ImageButton ID="imgDelete2" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" OnClick="imgDelete2_Click" Height="30" Width="30" runat="server" />
                                                                 </td>
                                                             </tr>
                                                         </div>
@@ -584,12 +587,12 @@
                                                                 </td>
                                                                 <td>
                                                                     <div style="margin-left: 15px !important; margin-right: 15px !important;">
-                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo3" TabIndex="15" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="Max no. of Installations is 25." MaxLength="2" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo3" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="Max no. of Installations is 25." MaxLength="2" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtinstallationNo3" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                                     </div>
                                                                 </td>
                                                                 <td style="text-align: center !important;">
-                                                                    <asp:ImageButton ID="imgDelete3" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30" runat="server" /></td>
+                                                                    <asp:ImageButton ID="imgDelete3" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" OnClick="imgDelete3_Click" Height="30" Width="30" runat="server" /></td>
                                                             </tr>
                                                         </div>
                                                     </tbody>
@@ -620,9 +623,9 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: center;">
-                        <asp:Button type="submit" ID="btnSubmit" Visible="false" ValidationGroup="Submit" Text="Submit" runat="server" OnClick="btnSubmit_Click" OnClientClick="this.disabled=true;this.value='Processing...';" UseSubmitBehavior="false" class="btn btn-primary mr-2" />
+                        <asp:Button type="submit" ID="btnSubmit" Visible="false" ValidationGroup="Submit" Text="Submit" runat="server" OnClick="btnSubmit_Click" UseSubmitBehavior="false" class="btn btn-primary mr-2" />
                         <asp:Button type="submit" ID="btnReset" Visible="false" Text="Reset" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
-                        <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
+                        <%--   <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />--%>
                     </div>
                     <div class="col-md-4"></div>
                 </div>
@@ -647,17 +650,6 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
-  <%--  <script type="text/javascript">
-        function FileName() {
-            var fileInput = document.getElementById('customFile');
-            var selectedFileName = document.getElementById('customFileLocation');
-
-            if (fileInput.files.length > 0) {
-                // Update the TextBox value with the selected file name
-                selectedFileName.value = fileInput.files[0].name;
-            }
-        }
-    </script>--%>
     <script type="text/javascript">
         function ValidatePincode() {
             var Pin1 = document.getElementById("<%=txtPin.ClientID %>");
@@ -709,22 +701,6 @@
             }
         }
     </script>
-   <%-- <script type="text/javascript">
-        function SelectAllCheckboxes(headerCheckbox) {
-            var checkboxes = document.querySelectorAll('[id*=CheckBox1]');
-            for (var i = 0; i < checkboxes.length; i++) {
-                checkboxes[i].checked = headerCheckbox.checked;
-            }
-        }
-    </script>--%>
-   <%-- <script>
-        $('.select2').select2();
-    </script>--%>
-  <%--  <script>
-        $(".chosen-select").chosen({
-            no_results_text: "Oops, nothing found!"
-        })
-    </script>--%>
     <script type="text/javascript">
         function validateForm() {
             var emptyFields = [];
@@ -733,34 +709,15 @@
             var Address = document.getElementById('<%= txtAddress.ClientID %>').value;
             var Premises = document.getElementById('<%= ddlPremises.ClientID %>');
             var VoltageLevel = document.getElementById('<%= ddlVoltageLevel.ClientID %>');
-
-            //if (worktype.selectedIndex === 0) {
-            //    emptyFields.push('work type');
-            //}
             if (txtPhone.trim() === '') {
                 emptyFields.push('Contact No.');
             }
             if (Address.trim() === '') {
                 emptyFields.push('Address.');
             }
-            //if (Premises.selectedIndex === 0) {
-            //    emptyFields.push('Select Premises');
-            //}
             if (VoltageLevel.selectedIndex === 0) {
                 emptyFields.push('VoltageLevel.');
             }
-            //if (WorkDetail.selectedIndex === 0) {
-            //    emptyFields.push('Work Details.');
-            //}
-            //if (StartDate.trim() === '') {
-            //    emptyFields.push('PleaStartDate.');
-            //}
-            //if (CompletitionDate.trim() === '') {
-            //    emptyFields.push('CompletitionDate.');
-            //}
-            //if (AnyWork.selectedIndex === 0) {
-            //    emptyFields.push('Any work issued ?');
-            //}
             if (emptyFields.length > 0) {
                 var message = 'Please enter values for the following fields:\n\n';
                 message += emptyFields.join('\n');
@@ -772,8 +729,6 @@
             }
         }
     </script>
-
-
     <script type="text/javascript">
         function isvalidphoneno() {
 
@@ -796,54 +751,6 @@
             }
         }
     </script>
-    <%--<script type="text/javascript">
-        function showHide() {
-            let experience = document.getElementById(
-                'experience');
-            if (experience.value == 1) {
-                document.getElementById('hidden-field').style.display = 'block';
-            } else {
-                document.getElementById('hidden-field').style.display = 'none';
-            }
-            if (experience.value == 1) {
-                document.getElementById('hidden-field1').style.display = 'block';
-            } else {
-                document.getElementById('hidden-field1').style.display = 'none';
-            }
-        }
-    </script>
-    <script type="text/javascript">
-        function showHide1() {
-            let experience = document.getElementById('ddlworktype');
-            if (experience.value == 1) {
-                document.getElementById('individual').style.display = 'block';
-            } else {
-                document.getElementById('individual').style.display = 'none';
-            }
-            if (experience.value == 1) {
-                document.getElementById('Agency').style.display = 'block';
-            } else {
-                document.getElementById('Agency').style.display = 'none';
-            }
-        }
-    </script>--%>
-
-
-   <%-- <script type="text/javascript">
-        function allowAlphabets(event) {
-            var keyCode = event.which || event.keyCode;
-
-            // Allow only alphabetical keys
-            if ((keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122)) {
-                return true;
-            } else {
-                event.preventDefault();
-                return false;
-            }
-        }
-    </script>--%>
-
-
     <script type="text/javascript">
         function restrictInput(event) {
             var keyCode = event.which || event.keyCode;
@@ -862,85 +769,10 @@
                 event.preventDefault();
                 return false;
             }
-
             return true;
         }
     </script>
-
-   <%--  <script type="text/javascript">
-        function validateCheckBoxes() {
-            var gridView = document.getElementById('<%= GridView1.ClientID %>');
-            var checkBoxes = gridView.getElementsByTagName("input");
-            var checkBoxChecked = false;
-
-            for (var i = 0; i < checkBoxes.length; i++) {
-                if (checkBoxes[i].type === "checkbox" && checkBoxes[i].checked) {
-                    checkBoxChecked = true;
-                    break;
-                }
-            }
-            if (!checkBoxChecked) {
-                alert("Please select at least one checkbox.");
-                return false;
-            } else {
-                // If at least one checkbox is selected, submit the form
-                return true;
-            }
-        }
-    </script>--%>
-   <%-- <script type="text/javascript">
-        function alertWithRedirect() {
-            if (confirm('User Created Successfully User Id And password will be sent Via Text Mesaage.')) {
-                window.location.href = "/Contractor/Work_Intimation.aspx";
-            } else {
-            }
-        }
-    </script>--%>
-   <%--<script>
-        function validateTANNumber() {
-            var tanNumber = document.getElementById('<%= txtTanNumber.ClientID %>').value.toUpperCase();
-            var regex = /^[A-Z]{4}\d{5}[A-Z]$/;
-            var isValid = regex.test(tanNumber);
-
-            if (!isValid) {
-                alert("Enter a valid TAN number.");
-                return false;
-            }
-            return true;
-        }
-
-        function convertToUpperCase(event) {
-            var textBox = event.target;
-            textBox.value = textBox.value.toUpperCase();
-        }
-
-
-        document.addEventListener('DOMContentLoaded', function () {
-            var form = document.getElementById('<%= this.Page.Form.ClientID %>');
-
-            if (form) {
-                form.onsubmit = function () {
-                    //return validateTANNumber();
-                };
-            }
-        });
-    </script>--%>
     <script type="text/javascript">
-        //function validateInput(event) {
-        //    var textBox = event.target;
-        //    var keyCode = event.keyCode || event.which;
-        //    if ((keyCode >= 65 && keyCode <= 90) ||
-        //        (keyCode >= 48 && keyCode <= 57) ||
-        //        keyCode === 8) {
-        //        return true;
-        //    } else if (keyCode >= 97 && keyCode <= 122) {
-        //        textBox.value += String.fromCharCode(keyCode - 32);
-        //        return false;
-        //    } else {
-        //        return false;
-        //    }
-        //}
-
         function preventEnterSubmit(e) {
             if (e.keyCode === 13) {
                 e.preventDefault();

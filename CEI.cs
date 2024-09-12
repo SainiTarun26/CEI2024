@@ -5577,40 +5577,41 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
                 cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
                 cmd.Parameters.AddWithValue("@ApplicantTypeCode", ApplicantTypeCode);
 
-                cmd.Parameters.AddWithValue("@ContractorType", ContractorType);
-                cmd.Parameters.AddWithValue("@PowerUtility", PowerUtility);
-                cmd.Parameters.AddWithValue("@PowerUtilityWing", PowerUtilityWing);
-                cmd.Parameters.AddWithValue("@ZoneName", ZoneName);
-                cmd.Parameters.AddWithValue("@CircleName", CircleName);
-                cmd.Parameters.AddWithValue("@DivisionName", DivisionName);
-                cmd.Parameters.AddWithValue("@SubDivisionName", SubDivisionName);
-                cmd.Parameters.AddWithValue("@NameOfOwner", NameOfOwner);
-                cmd.Parameters.AddWithValue("@NameOfAgency", NameOfAgency);
+                cmd.Parameters.AddWithValue("@ContractorType", String.IsNullOrEmpty(ContractorType) ? DBNull.Value : (object)ContractorType);
+                cmd.Parameters.AddWithValue("@PowerUtility", String.IsNullOrEmpty(PowerUtility) ? DBNull.Value : (object)PowerUtility);
+                cmd.Parameters.AddWithValue("@PowerUtilityWing", String.IsNullOrEmpty(PowerUtilityWing) ? DBNull.Value : (object)PowerUtilityWing);
+                cmd.Parameters.AddWithValue("@ZoneName", String.IsNullOrEmpty(ZoneName) ? DBNull.Value : (object)ZoneName);
+                cmd.Parameters.AddWithValue("@CircleName", String.IsNullOrEmpty(CircleName) ? DBNull.Value : (object)CircleName);
+                cmd.Parameters.AddWithValue("@DivisionName", String.IsNullOrEmpty(DivisionName) ? DBNull.Value : (object)DivisionName);
+                cmd.Parameters.AddWithValue("@SubDivisionName", String.IsNullOrEmpty(SubDivisionName) ? DBNull.Value : (object)SubDivisionName);
+                cmd.Parameters.AddWithValue("@NameOfOwner", String.IsNullOrEmpty(NameOfOwner) ? DBNull.Value : (object)NameOfOwner);
+                cmd.Parameters.AddWithValue("@NameOfAgency", String.IsNullOrEmpty(NameOfAgency) ? DBNull.Value : (object)NameOfAgency);
 
-                cmd.Parameters.AddWithValue("@ContactNo", ContactNo);
-                cmd.Parameters.AddWithValue("@Address", Address);
-                cmd.Parameters.AddWithValue("@District", District);
-                cmd.Parameters.AddWithValue("@Pincode", Pincode);
+                cmd.Parameters.AddWithValue("@ContactNo", String.IsNullOrEmpty(ContactNo) ? DBNull.Value : (object)ContactNo);
+                cmd.Parameters.AddWithValue("@Address", String.IsNullOrEmpty(Address) ? DBNull.Value : (object)Address);
+                cmd.Parameters.AddWithValue("@District", District == "Select" ? DBNull.Value : (object)District);
+                cmd.Parameters.AddWithValue("@Pincode", String.IsNullOrEmpty(Pincode) ? DBNull.Value : (object)Pincode);
                 cmd.Parameters.AddWithValue("@PremisesType", PremisesType);
-                cmd.Parameters.AddWithValue("@OtherPremises", OtherPremises);
+                cmd.Parameters.AddWithValue("@OtherPremises", String.IsNullOrEmpty(OtherPremises) ? DBNull.Value : (object)OtherPremises);
 
                 cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
-                cmd.Parameters.AddWithValue("@PANNumber", PANNumber);
+                cmd.Parameters.AddWithValue("@PANNumber", String.IsNullOrEmpty(PANNumber) ? DBNull.Value : (object)PANNumber);
 
                 cmd.Parameters.AddWithValue("@TypeOfInstallation2", String.IsNullOrEmpty(TypeOfInstallation2) ? DBNull.Value : (object)TypeOfInstallation2);
                 cmd.Parameters.AddWithValue("@NumberOfInstallation2", String.IsNullOrEmpty(NumberOfInstallation2) ? DBNull.Value : (object)NumberOfInstallation2);
                 cmd.Parameters.AddWithValue("@TypeOfInstallation3", String.IsNullOrEmpty(TypeOfInstallation3) ? DBNull.Value : (object)TypeOfInstallation3);
                 cmd.Parameters.AddWithValue("@NumberOfInstallation3", String.IsNullOrEmpty(NumberOfInstallation3) ? DBNull.Value : (object)NumberOfInstallation3);
-                cmd.Parameters.AddWithValue("@Email", Email);
+                cmd.Parameters.AddWithValue("@Email", String.IsNullOrEmpty(Email) ? DBNull.Value : (object)Email);
 
-                cmd.Parameters.AddWithValue("@Createdby", Createdby);
-                cmd.Parameters.AddWithValue("@SanctionLoad", SanctionLoad);
-                cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
-                cmd.Parameters.AddWithValue("@TotalCapacity", TotalCapacity);
-                cmd.Parameters.AddWithValue("@SanctionLoadValue", SanctionLoadValue);
-                cmd.Parameters.AddWithValue("@SiteOwnerPassword", SiteOwnerPassword);
+                cmd.Parameters.AddWithValue("@Createdby", String.IsNullOrEmpty(Createdby) ? DBNull.Value : (object)Createdby);
+                cmd.Parameters.AddWithValue("@SanctionLoad", String.IsNullOrEmpty(SanctionLoad) ? DBNull.Value : (object)SanctionLoad);
+                cmd.Parameters.AddWithValue("@InspectionType", String.IsNullOrEmpty(InspectionType) ? DBNull.Value : (object)InspectionType);
+                cmd.Parameters.AddWithValue("@TotalCapacity", String.IsNullOrEmpty(TotalCapacity) ? DBNull.Value : (object)TotalCapacity);
+                cmd.Parameters.AddWithValue("@SanctionLoadValue", String.IsNullOrEmpty(SanctionLoadValue) ? DBNull.Value : (object)SanctionLoadValue);
+                cmd.Parameters.AddWithValue("@SiteOwnerPassword", String.IsNullOrEmpty(SiteOwnerPassword) ? DBNull.Value : (object)SiteOwnerPassword);
 
-                SqlParameter outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
+                //SqlParameter outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
+                outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
                 outputParam.Direction = ParameterDirection.Output;
                 cmd.Parameters.Add(outputParam);
                 cmd.ExecuteNonQuery();
@@ -5619,7 +5620,45 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
                 conn.Close();
             }
         }
+
+        public void AddInstallationsCreatedbySiteOwner(string IntimationId, string Typeofinstallation, int Noofinstallation, string CreatedBy, string TypeOfInspection)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("sp_InstallationsCountCreatedbySiteOwner", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
+                cmd.Parameters.AddWithValue("@Typeofinstallation", Typeofinstallation);
+                cmd.Parameters.AddWithValue("@Noofinstallation", Noofinstallation);
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                cmd.Parameters.AddWithValue("@InspectionType", TypeOfInspection);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         #endregion
+
+        public int ResetPasswordByAdmin(string UserId, string Password)
+        {
+            SqlCommand cmd = new SqlCommand("sp_updatePassword");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@UserId", UserId);
+            cmd.Parameters.AddWithValue("@Password", Password);
+            int Ad = cmd.ExecuteNonQuery();
+            con.Close();
+            return Ad;
+        }
     }
 }
 

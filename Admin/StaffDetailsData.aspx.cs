@@ -412,5 +412,46 @@ namespace CEIHaryana.Admin
         {
             getSiteOwnerData();
         }
+
+        protected void btnUpdatePassword_Click(object sender, EventArgs e)
+        {
+            string UserId = txtUserId.Text.Trim();
+            string password = txtPassword.Text.Trim();
+            string Email = hdnEmailId.Value;
+            try
+            {
+                if (!string.IsNullOrEmpty(UserId) && !string.IsNullOrEmpty(Email))
+                {
+                    int Ad = cei.ResetPasswordByAdmin(UserId, password);
+                    if (Ad > 0)
+                    {
+                        string Subject = "Password Reset Successfully";
+                        string Message = "your password has been reset and your new password is 123456 . Now you can set your password which you want.";
+                        cei.ResetMessagethroughEmail(Email, Message, Subject);
+                        hdnEmailId.Value = null;
+                        string successScript = "alert('Password Reset successfully.')";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", successScript, true);
+                    }
+                    else
+                    {
+                        string successScript = "alert('Password Not Reset .')";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", successScript, true);
+                    }
+                }
+                else
+                {
+                    //string successScript = "alert('Password Not Reset .')";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(),"Script", "alert('UserId or Email is Not Found')", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
+
+
+
+        }
     }
 }

@@ -36,7 +36,7 @@ namespace CEIHaryana.SiteOwnerPages
         // string Count = string.Empty;
         private static string PremisesType, ApplicantTypeCode, id, Category, InstallationTypeId, Count, PaymentMode,
             ApplicantType, InstallationType, AssigDesignation, InspectionType, PlantLocation;
-        private static int TotalAmount;
+        //private static int TotalAmount;
         string LoginId = string.Empty;
         //string id = string.Empty;
         List<(string Installtypes, string DocumentID, string DocSaveName, string FileName, string FilePath)> uploadedFiles = new List<(string, string, string, string, string)>();
@@ -49,6 +49,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
                     {
+                        Page.Session["Amount"] = "";
                         getWorkIntimationData();
                         Session["PreviousPage"] = Request.Url.ToString();
                         Grd_Document.RowDataBound += Grd_Document_RowDataBound;
@@ -391,6 +392,8 @@ namespace CEIHaryana.SiteOwnerPages
                     string FeesLeft = string.Empty;
                     string transcationId = string.Empty;
                     string TranscationDate = string.Empty;
+                    int TotalAmount = Convert.ToInt32(Session["Amount"]);
+                    Session["Amount"] = "";
                     //string SactionLoad = string.Empty;
                     int maxFileSize = 1048576;
 
@@ -478,7 +481,7 @@ namespace CEIHaryana.SiteOwnerPages
                             string fileExtension = Path.GetExtension(fileName).ToLower();
                             if (fileExtension == ".pdf" || fileExtension == ".doc" || fileExtension == ".docx")
                             {
-                                FileName = "DemandNotice_" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + fileExtension;
+                                FileName = "DemandNotice_" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
                                 string folderPath = Server.MapPath("~/DemandNotices/");
                                 if (!Directory.Exists(folderPath))
                                 {
@@ -565,7 +568,8 @@ namespace CEIHaryana.SiteOwnerPages
                             string path = "";
                             path = "/Attachment/" + CreatedBy + "/" + intimationids + "/" + InstallTypes + "/" + InstallTypeCount + "/";
                             //string fileName = DocSaveName + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
-                            string fileName = DocSaveName + "." + ext;
+                            //string fileName = DocSaveName + "." + ext;
+                            string fileName = DocSaveName + ".pdf";
 
                             string filePathInfo2 = "";
 
@@ -704,7 +708,10 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     GridViewPayment.DataSource = ds;
                     GridViewPayment.DataBind();
-                    TotalAmount = Convert.ToInt32(GridViewPayment.Rows[0].Cells[2].Text);
+                    //TotalAmount = Convert.ToInt32(GridViewPayment.Rows[0].Cells[2].Text);
+
+                    int Amount = Convert.ToInt32(GridViewPayment.Rows[0].Cells[2].Text);
+                    Session["Amount"] = Amount.ToString();
                     //txtPayment.Text = Convert.ToString(TotalAmount);
                 }
                 else
