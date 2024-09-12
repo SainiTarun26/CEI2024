@@ -206,6 +206,7 @@ namespace CEI_PRoject.Admin
             }
             else
             {
+                ddlContractorDetails.SelectedIndex = 0;
                 rowContractorDetails.Visible = false;
             }
         }

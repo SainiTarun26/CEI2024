@@ -339,6 +339,7 @@ namespace CEIHaryana.SiteOwnerPages
                             }
                         }
                     }
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Workintimation submitted Successfully !!!')", true);
                     transaction.Commit();
                     Reset();
                 }
