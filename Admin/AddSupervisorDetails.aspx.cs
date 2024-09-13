@@ -378,7 +378,10 @@ namespace CEI_PRoject.Admin
             }
             else
             {
-                ddlContractorDetails.SelectedIndex = 0;
+                if (ddlContractorDetails.Items.Count > 0)
+                {
+                    ddlContractorDetails.SelectedIndex = 0;
+                }
                 rowContractorDetails.Visible = false;
             }
         }
