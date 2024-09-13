@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="TransferRequestReport.aspx.cs" Inherits="CEIHaryana.Admin.TransferRequestReport" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -22,11 +22,12 @@
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
     <style>
         select#ContentPlaceHolder1_ddlTransferStaff {
-    width: 90%;
-    height: 30px !important;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    padding-left:10px;
-}
+            width: 90%;
+            height: 30px !important;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            padding-left: 10px;
+        }
+
         select#ContentPlaceHolder1_ddlStatusWise {
             width: 90%;
         }
@@ -141,10 +142,11 @@
         th {
             width: 1%;
         }
+
         input#ContentPlaceHolder1_btnSearch {
-    height: 35px;
-    padding: 3px 15px 5px 15px !important;
-}
+            height: 35px;
+            padding: 3px 15px 5px 15px !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -174,30 +176,28 @@
                         <div class="col-md-4">
                             <label>
                                 Date From
-                                                <samp style="color: red">* </samp>
+                                              
                             </label>
                             <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtDateFrom" placeholder="dd/mm/yyyy" runat="server" TabIndex="6" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true"> </asp:TextBox>
                         </div>
                         <div class="col-md-4">
                             <label>
                                 Date To
-                          <samp style="color: red">* </samp>
                             </label>
                             <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtDateTo" placeholder="dd/mm/yyyy" runat="server" TabIndex="6" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true"> </asp:TextBox>
                         </div>
                         <div class="col-md-4">
                             <label>
                                 Transfer To
-                         <samp style="color: red">* </samp>
                             </label>
-                          <%--  <asp:TextBox class="form-control" autocomplete="off" ID="txtTransfer" runat="server" TabIndex="6" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true"> </asp:TextBox>--%>
-                         <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-     ID="ddlTransferStaff" runat="server" TabIndex="4"></asp:DropDownList>
+                            <%--  <asp:TextBox class="form-control" autocomplete="off" ID="txtTransfer" runat="server" TabIndex="6" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true"> </asp:TextBox>--%>
+                            <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                ID="ddlTransferStaff" runat="server" TabIndex="4">
+                            </asp:DropDownList>
                         </div>
                         <div class="col-md-4">
                             <label>
                                 Status Wise
-                    <samp style="color: red">* </samp>
                             </label>
                             <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
                                 ID="ddlStatusWise" runat="server" TabIndex="4">
@@ -212,120 +212,125 @@
                         </div>
                         <div class="col-md-4">
                             <label>
-                               Inspection Id
-                    <samp style="color: red">* </samp>
+                                Inspection Id
                             </label>
                             <asp:TextBox class="form-control" autocomplete="off" ID="txtInspection" runat="server" TabIndex="6" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true"> </asp:TextBox>
                         </div>
-                            <div class="col-md-4" style="margin-top:auto;">
-               <asp:Button type="button" ValidationGroup="Submit" AutoPostback="true" ID="btnSearch" Text="Search" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnSearch_Click"
-             />
+                        <div class="col-md-4" style="margin-top: auto;">
+                            <asp:Button type="button" ValidationGroup="Submit" AutoPostback="true" ID="btnSearch" Text="Search" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnSearch_Click" />
                             &nbsp;&nbsp;&nbsp;
-               <asp:Button type="button" ValidationGroup="Submit" AutoPostback="true" ID="btnRefresh" Text="Refresh" runat="server" class="btn btn-primary" Style="padding: 2px 15px 6px 15px; border-radius: 5px;" OnClick="btnRefresh_Click"
-             />
-                            </div>
+               <asp:Button type="button" ValidationGroup="Submit" AutoPostback="true" ID="btnRefresh" Text="Refresh" runat="server" class="btn btn-primary" Style="padding: 2px 15px 6px 15px; border-radius: 5px;" OnClick="btnRefresh_Click" />
+                        </div>
                     </div>
                 </div>
-          
-                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                            <div>
-                                <div class="row" style="margin-bottom: 8px;">
-                                    <div class="col-md-12">
-                                        <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Details</h7>
-                                    </div>
-                                </div>
-                                <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 
-                                    <asp:GridView ID="GridView1" class="table-responsive table table-striped table-hover" runat="server"
-    Width="100%" AutoGenerateColumns="false" AllowPaging="true" PageSize="20" OnRowCommand="GridView1_RowCommand" BorderWidth="1px"  BorderColor="#dbddff" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowDataBound="GridView1_RowDataBound">
-    <PagerStyle CssClass="pagination-ys" />
-    <Columns>
-      
-        <asp:TemplateField HeaderText="Id" Visible="False">
-    <ItemTemplate>
-        <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
-        <asp:Label ID="lblType" runat="server" Text='<%#Eval("Type") %>'></asp:Label>
-        <asp:Label ID="lblApplicationStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
-    </ItemTemplate>
-</asp:TemplateField>
-        <asp:BoundField DataField="Id" HeaderText="Inspection ID" >
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor"/>
-            <ItemStyle HorizontalAlign="center" Width="15%" />
-        </asp:BoundField>
-        <asp:BoundField DataField="Name" HeaderText="SiteOwner Name">
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" />
-        </asp:BoundField>
-        <asp:BoundField DataField="FirmName" HeaderText="Contractor FirmName">
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" />
-        </asp:BoundField>
-        <asp:BoundField DataField="TypeOfInstallations" HeaderText="Type of Installation">
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" />
-        </asp:BoundField>
-        <asp:BoundField DataField="Type" HeaderText="Type(New/Periodic)">
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" />
-        </asp:BoundField>
-        <asp:BoundField DataField="Capacity" HeaderText="Capacity">
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" />
-        </asp:BoundField>
-        <asp:BoundField DataField="CreatedDate" HeaderText="Applied Date">
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" />
-        </asp:BoundField>
-        <asp:BoundField DataField="TransferDate" HeaderText="Transferred Date">
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" />
-        </asp:BoundField>
-        <asp:BoundField DataField="AssignTo" HeaderText="Assign To">
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" />
-        </asp:BoundField>
-        <asp:BoundField DataField="Transfer" HeaderText="Transfer to">
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" />
-        </asp:BoundField>
-        <asp:BoundField DataField="ApplicationStatus" HeaderText="Current Status">
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" />
-        </asp:BoundField>
-        <asp:BoundField DataField="PendingInDays" HeaderText="Pending in days">
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" />
-        </asp:BoundField>
-       <%-- <asp:BoundField DataField="AssignedStaff" HeaderText="Approval report">
+                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                    <div>
+                        <div class="row" style="margin-bottom: 8px;">
+                            <div class="col-md-12">
+                                <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Details</h7>
+                            </div>
+                        </div>
+                        <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+
+                            <asp:GridView ID="GridView1" class="table-responsive table table-striped table-hover" runat="server"
+                                Width="100%" AutoGenerateColumns="false" AllowPaging="true" PageSize="20" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowDataBound="GridView1_RowDataBound">
+                                <PagerStyle CssClass="pagination-ys" />
+                                <Columns>
+
+                                    <asp:TemplateField HeaderText="Id" Visible="False">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                                            <asp:Label ID="lblType" runat="server" Text='<%#Eval("Type") %>'></asp:Label>
+                                            <asp:Label ID="lblApplicationStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="SNO">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblSNO" runat="server" Text='<%# Container.DataItemIndex + 1 %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="Id" HeaderText="Inspection ID">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="OwnerName" HeaderText="SiteOwner Name">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="FirmName" HeaderText="Contractor FirmName">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                    <%--<asp:BoundField DataField="TypeOfInstallations" HeaderText="Type of Installation">
             <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
             <ItemStyle HorizontalAlign="center" Width="15%" />
         </asp:BoundField>--%>
-          <asp:TemplateField>
-      <HeaderStyle Width="10%" CssClass="headercolor" />
-      <ItemStyle Width="10%" />
-      <ItemTemplate>
-      <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server" Visible="false"
-              Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
-      </asp:LinkButton>
-      </ItemTemplate>
-  </asp:TemplateField>
-    </Columns>
-</asp:GridView>
+                                    <asp:BoundField DataField="Type" HeaderText="Type(New/Periodic)">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                    <%--<asp:BoundField DataField="Capacity" HeaderText="Capacity">
+            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="center" Width="15%" />
+        </asp:BoundField>--%>
+                                    <asp:BoundField DataField="CreatedDate" HeaderText="Applied Date">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
 
-                                    <%-- add gridview here --%>
+                                    <asp:BoundField DataField="AssignTo" HeaderText="Assign To">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Transfer" HeaderText="Transfer to">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="TransferDate" HeaderText="Transferred Date">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="ApplicationStatus" HeaderText="Current Status">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                    <asp:TemplateField HeaderText="Pending in days<br/>(From TransferDate)">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblPendingInDays" runat="server" Text='<%# Eval("Pendency In Days") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:TemplateField>
 
+                                    <%-- <asp:BoundField DataField="AssignedStaff" HeaderText="Approval report">
+            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="center" Width="15%" />
+        </asp:BoundField>--%>
+                                    <%--<asp:TemplateField>
+                                        <HeaderStyle Width="10%" CssClass="headercolor" />
+                                        <ItemStyle Width="10%" />
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server" Visible="false"
+                                                Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
+                                            </asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>--%>
+                                </Columns>
+                            </asp:GridView>
 
-                                </div>
-                                 <div class="row">
-     <div class="col-md-4"></div>
-     <div class="col-md-4" style="text-align: center;">
-         <asp:LinkButton ID="LinkButton2" class="btn btn-primary" runat="server" OnClick="LinkButton2_Click" Style="margin-top: 10px; margin-bottom: 10px;">Download in Excel</asp:LinkButton>
-     </div>
-     <div class="col-md-4"></div>
- </div>
+                            <%-- add gridview here --%>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4" style="text-align: center;">
+                                <asp:LinkButton ID="LinkButton2" class="btn btn-primary" runat="server" OnClick="LinkButton2_Click" Style="margin-top: 10px; margin-bottom: 10px;">Download in Excel</asp:LinkButton>
                             </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
 
-                          <%--  <div class="row" style="margin-top: -10px;">
+                    <%--  <div class="row" style="margin-top: -10px;">
                                 <div class="col-md-4" id="InstallationType" runat="server" >
                                     <label>
                                         Select Installation Type
@@ -337,7 +342,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlWorkDetail" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                 </div>
                             </div>--%>
-                        </div>
+                </div>
                 <asp:HiddenField ID="hdnId" runat="server" />
                 <asp:HiddenField ID="hdnId2" runat="server" />
                 <div>

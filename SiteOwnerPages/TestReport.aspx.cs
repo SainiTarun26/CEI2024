@@ -62,5 +62,91 @@ namespace CEIHaryana.SiteOwnerPages
             }
             ds.Dispose();
         }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
+                {
+                    if (e.CommandName == "Select")
+                    {
+                        Control ctrl = e.CommandSource as Control;
+                        GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                        Label lblhistory = (Label)row.FindControl("lblhistory");
+                        Label lblStatus = (Label)row.FindControl("lblStatus");
+                        Label lblReportType = (Label)row.FindControl("lblReportType");
+                        Label lblAssignedSupervisor = (Label)row.FindControl("lblAssignedSupervisor");
+                        Label lblInitialSupervisor = (Label)row.FindControl("lblInitialSupervisor");
+
+
+
+                        Session["Approval"] = lblStatus.Text.Trim();
+
+                        if (Session["Approval"].ToString() != null)
+                        {
+                            Session["Typs"] = "";
+                            Session["TypeOf"] = "";
+                            Session["Application"] = "";
+                            Session["ApplicationForTestReport"] = "";
+                            Session["Intimations"] = "";
+                            Session["NoOfInstallations"] = "";
+                            Session["NoOfInstallation"] = "";
+                            Session["TotalInstallation"] = "";
+                            Session["IHID"] = "";
+                            Session["IHIDs"] = "";
+                            Session["LineId"] = "";
+                            Session["ValueId"] = "";
+                            Session["SubStationID"] = "";
+                            Session["GeneratingSetId"] = "";
+                        }
+
+
+                    
+                            Label lblTyps = (Label)row.FindControl("lblTyps");
+                            Session["Typs"] = lblTyps.Text.Trim();
+                            Session["TypeOf"] = lblTyps.Text.Trim();                          ///////////////
+                            Label lblApllication = (Label)row.FindControl("lblApllication");
+                            Session["Application"] = lblApllication.Text.Trim();
+                            Session["ApplicationForTestReport"] = lblApllication.Text.Trim(); /////////
+                            Label lblIntimations = (Label)row.FindControl("lblIntimations");
+                            Session["Intimations"] = lblIntimations.Text.Trim();
+                            Label lblNoOfInstallations = (Label)row.FindControl("lblNoOfInstallations");
+                            Session["NoOfInstallations"] = lblNoOfInstallations.Text.Trim();
+                            Session["NoOfInstallation"] = lblNoOfInstallations.Text.Trim();
+                            Label lblTotalInstallation = (Label)row.FindControl("lblTotalInstallation");
+                            Session["TotalInstallation"] = lblNoOfInstallations.Text.Trim();
+                            Label lblID = (Label)row.FindControl("lblID");
+                            Session["IHID"] = lblID.Text.Trim();
+                            Session["IHIDs"] = lblID.Text.Trim();                           //////////////
+                            Label lblVoltageLevel = (Label)row.FindControl("lblVoltageLevel");
+                            Session["VoltageLevel"] = lblVoltageLevel.Text.Trim();
+                            DataSet ds = new DataSet();
+                            //ds = CEI.GetData(lblTyps.Text.Trim(), lblIntimations.Text.Trim(), lblNoOfInstallations.Text.Trim());
+                           
+                            if (lblTyps.Text.Trim() == "Substation Transformer")
+                            {
+ 
+                                Response.Redirect("/SiteOwnerPages/SubstationTransformerPeriodic.aspx", false);
+                            }
+                            else if (lblTyps.Text.Trim() == "Generating Set")
+                            {
+                                Response.Redirect("/SiteOwnerPages/generatingsetPeriodic.aspx", false);
+                            }
+                       
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+                    //logout
+                }
+            }
+            catch (Exception)
+            { }
+        }
     }
 }
