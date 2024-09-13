@@ -200,7 +200,7 @@ namespace CEI_PRoject.Admin
         protected void ddlAttachedContractor_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlAttachedContractor.SelectedValue == "Yes")
-            {
+            { 
                 rowContractorDetails.Visible = true;
                 GetContractorDetails();
             }
