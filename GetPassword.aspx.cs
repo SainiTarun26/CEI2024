@@ -74,7 +74,7 @@ namespace CEIHaryana
             GridView1.DataSource = null;
             GridView1.DataBind();
             btnProcess.Enabled = false;
-            btnSearch.Enabled = false;
+            btnSearch.Enabled = true;
             LblText.Visible = false;
 
         }
@@ -127,7 +127,7 @@ namespace CEIHaryana
                 if (EnterExpiryDate == ExpiryDatte)
                 {
                     string Email = txtEmailId.Text.Trim();
-                    //otp = CEI.ValidateOTPthroughEmail(Email);
+                    otp = CEI.ValidateOTPthroughEmail(Email);
                     OtpCart.Visible = true;
                     LblText.Visible = true;
 

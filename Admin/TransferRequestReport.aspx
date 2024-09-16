@@ -295,9 +295,9 @@
                                         <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="center" Width="15%" />
                                     </asp:BoundField>
-                                    <asp:TemplateField HeaderText="Pending in days<br/>(From TransferDate)">
+                                    <asp:TemplateField HeaderText="Pending in days">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblPendingInDays" runat="server" Text='<%# Eval("Pendency In Days") %>'></asp:Label>
+                                            <asp:Label ID="lblPendingInDays" runat="server" Text='<%# Eval("PendingInDays") %>'></asp:Label>
                                         </ItemTemplate>
                                         <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="center" Width="15%" />
@@ -307,7 +307,7 @@
             <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
             <ItemStyle HorizontalAlign="center" Width="15%" />
         </asp:BoundField>--%>
-                                    <%--<asp:TemplateField>
+                                    <asp:TemplateField>
                                         <HeaderStyle Width="10%" CssClass="headercolor" />
                                         <ItemStyle Width="10%" />
                                         <ItemTemplate>
@@ -315,7 +315,7 @@
                                                 Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
                                             </asp:LinkButton>
                                         </ItemTemplate>
-                                    </asp:TemplateField>--%>
+                                    </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
 

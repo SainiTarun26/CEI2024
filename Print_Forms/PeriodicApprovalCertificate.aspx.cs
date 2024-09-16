@@ -74,7 +74,7 @@ namespace CEIHaryana.Print_Forms
                
                 lblVoltage.Text = ds.Tables[2].Rows[0]["InstallationDetails"].ToString();
                 Year.Text = ds.Tables[1].Rows[0]["ApprovedYear"].ToString();
-              
+                myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])ds.Tables[1].Rows[0]["Signature"]);
                 lblstamp1.Text = ds.Tables[1].Rows[0]["Stamp1"].ToString();
                 lblstamp2.Text = ds.Tables[1].Rows[0]["Stamp2"].ToString();
                 lblstamp3.Text = ds.Tables[1].Rows[0]["Stamp3"].ToString();

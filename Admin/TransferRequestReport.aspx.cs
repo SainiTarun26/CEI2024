@@ -12,8 +12,8 @@ using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.Admin
 {
-    public partial class TransferRequestReport : System.Web.UI.Page
-    {
+	public partial class TransferRequestReport : System.Web.UI.Page
+	{
         CEI CEI = new CEI();
         string InspectionId;
         string Status;
@@ -21,7 +21,7 @@ namespace CEIHaryana.Admin
         DateTime? DateFrom = null;
         string Transfer;
         protected void Page_Load(object sender, EventArgs e)
-        {
+		{
             try
             {
                 if (!IsPostBack)
@@ -30,14 +30,14 @@ namespace CEIHaryana.Admin
                     {
                         BindGrid();
                         BindDropDownToAssign();
-                    }
-                    else
-                    {
-
-                    }
-
+                }
+                else
+                {
 
                 }
+
+
+            }
             }
             catch
             {
@@ -96,8 +96,7 @@ namespace CEIHaryana.Admin
 
                 BindGridAfterSearch();
             }
-            catch
-            {
+            catch { 
             }
 
 
@@ -118,14 +117,14 @@ namespace CEIHaryana.Admin
             if (e.CommandName == "Print")
             {
                 Control ctrl = e.CommandSource as Control;
-                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                Label lblID = (Label)row.FindControl("lblID");
-                Label lblType = (Label)row.FindControl("lblType");
-                Session["Type"] = lblType.Text;
-                Label lblApplicationStatus = (Label)row.FindControl("lblApplicationStatus");
-                Session["lblApplicationStatus"] = lblType.Text;
-                string id = lblID.Text;
-                Session["InspectionId"] = id;
+            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+            Label lblID = (Label)row.FindControl("lblID");
+            Label lblType = (Label)row.FindControl("lblType");
+            Session["Type"] = lblType.Text;
+            Label lblApplicationStatus = (Label)row.FindControl("lblApplicationStatus");
+            Session["lblApplicationStatus"] = lblType.Text;
+            string id = lblID.Text;
+            Session["InspectionId"] = id;
 
                 if (lblApplicationStatus.Text == "Approved")
                 {
@@ -226,14 +225,13 @@ namespace CEIHaryana.Admin
                         Dictionary<string, string> columnHeadersMapping = new Dictionary<string, string>
                 {
                     {"Id", "Inspection ID"},
-                    {"Name", "SiteOwner Name"},
+                    {"OwnerName", "SiteOwner Name"},
                     {"FirmName", "Contractor FirmName"},
-                    {"TypeOfInstallations", "Type of Installation"},
                     {"Type", "Type(New/Periodic)"},
-                    {"Capacity", "Capacity"},
                     {"CreatedDate", "Applied Date"},
+                    {"AssignTo", "Assign To"},
+                    {"Transfer", "Transfer To"},
                     {"TransferDate", "TransferDate"},
-                    {"Transfer", "Transfer to"},
                     {"ApplicationStatus", "Current Status"},
                     {"PendingInDays", "PendingInDays"}
                 };
@@ -303,35 +301,31 @@ namespace CEIHaryana.Admin
             // Check if the row is a data row (not a header or footer row)
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                Label lblPendingInDays = (Label)e.Row.FindControl("lblPendingInDays");
-
                 // Find the LinkButton in the current row
                 LinkButton linkButton = (LinkButton)e.Row.FindControl("LinkButton1");
 
+               
+                    // Use DataBinder.Eval to safely extract the "ApplicationStatus" field from the DataItem
+                    object statusObj = DataBinder.Eval(e.Row.DataItem, "ApplicationStatus");
 
-                // Use DataBinder.Eval to safely extract the "ApplicationStatus" field from the DataItem
-                object statusObj = DataBinder.Eval(e.Row.DataItem, "ApplicationStatus");
-
-                // Ensure that the status object is not null
-                if (statusObj != null)
-                {
-                    string status = statusObj.ToString();
-
-                    // Check the status and apply the logic
-                    if (status == "Approved")
+                    // Ensure that the status object is not null
+                    if (statusObj != null)
                     {
-                        //linkButton.Visible = true;
-                        lblPendingInDays.Visible = false;
+                        string status = statusObj.ToString();
+
+                        // Check the status and apply the logic
+                        if (status == "Approved")
+                        {
+                            linkButton.Visible = true;
 
                     }
-                    else
-                    {
-                        //linkButton.Visible = false;
-                        lblPendingInDays.Visible = true;
+                        else
+                        {
+                            linkButton.Visible = false;
 
                     }
-                }
-
+                    }
+                
             }
         }
         private void BindGridAfterSearch()
@@ -390,6 +384,6 @@ namespace CEIHaryana.Admin
             }
             catch { }
         }
-
+       
     }
 }

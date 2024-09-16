@@ -136,7 +136,7 @@
         }
     </script>--%>
 
-    <script>
+   <%-- <script>
         // Detect when the print dialog is closed (whether by printing or canceling)
         window.onafterprint = function () {
             // Delay execution to ensure the print dialog is fully closed
@@ -148,7 +148,7 @@
                 }
             }, 100);
         };
-    </script>
+    </script>--%>
 
 </head>
 <body onload="printDiv('printableDiv')">
@@ -298,24 +298,24 @@
                                 </div>
                             </div>
                             <br />
-                            <div class="row">
-                                <div class="col-12" style="text-align: end;">
+                            <div class="row" style="padding-right:5px !important;">
+                                <div class="col-12" style="text-align: end;padding-left:10px;">
                                     <%-- <img src="../Assets/Line_Through_Name-removebg-preview.png" width="300" height="90" style="position: fixed; bottom: 140px; margin-left: -300px;" />--%>
 
-                                    <asp:Image ID="myImage" runat="server" ImageUrl="../Assets/Add%20a%20heading%20(1).png" Width="300" Height="90" Style="position: fixed; bottom: 120px; margin-left: -300px;" />
+                                   <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-8">
-                                </div>
-                                <div class="col-4">
-                                    <p style="text-align: center; font-weight: bold; position: fixed; bottom: 10PX; margin-left: 30px;">
-                                        <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
-                                        <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
-                                        <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />
-                                    </p>
-                                </div>
-                            </div>
+                           <div class="row">
+    <div class="col-7">
+    </div>
+    <div class="col-5" style="margin-left:65%;">
+        <p style="text-align: center; font-weight: bold; bottom: 10PX;">
+            <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
+            <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
+            <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />
+        </p>
+    </div>
+</div>
 
                         </div>
                     </div>
