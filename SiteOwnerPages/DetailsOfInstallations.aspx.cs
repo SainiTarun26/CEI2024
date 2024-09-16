@@ -154,7 +154,7 @@ namespace CEIHaryana.SiteOwnerPages
                 txtinstallationType2.Text = string.Empty;
                 txtinstallationNo2.Text = string.Empty;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 // Handle exceptions appropriately
             }
@@ -174,7 +174,7 @@ namespace CEIHaryana.SiteOwnerPages
                 txtinstallationType3.Text = string.Empty;
                 txtinstallationNo3.Text = string.Empty;
             }
-            catch(Exception ex) { }
+            catch (Exception ex) { }
         }
 
         private void GetDetails()
@@ -339,9 +339,10 @@ namespace CEIHaryana.SiteOwnerPages
                             }
                         }
                     }
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Workintimation submitted Successfully !!!')", true);
+                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Details of Installation Submitted Successfully !!!')", true);
                     transaction.Commit();
                     Reset();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert","alert('Details of Installation Submitted Successfully !!!'); window.location='RatingOfInstallations.aspx';", true);
                 }
                 catch (Exception ex)
                 {

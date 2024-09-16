@@ -136,7 +136,7 @@
         }
     </script>--%>
 
-   <%-- <script>
+    <script>
         // Detect when the print dialog is closed (whether by printing or canceling)
         window.onafterprint = function () {
             // Delay execution to ensure the print dialog is fully closed
@@ -148,7 +148,7 @@
                 }
             }, 100);
         };
-    </script>--%>
+    </script>
 
 </head>
 <body onload="printDiv('printableDiv')">

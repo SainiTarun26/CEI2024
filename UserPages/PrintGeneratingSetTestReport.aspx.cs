@@ -149,9 +149,31 @@ namespace CEIHaryana.UserPages
                 txtVoltagelevel.Text = dp_Id3;
 
                 string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
-                txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
+                //txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
+
+                if (!string.IsNullOrWhiteSpace(dp_Id4))
+                {
+                    txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
+
+                }
+                else
+                {
+                    txtStartDate.Text = string.Empty;
+                }
+
                 string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
-                txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("dd-MM-yyyy");
+                //txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("dd-MM-yyyy");
+
+                if (!string.IsNullOrWhiteSpace(dp_Id5))
+                {
+                    txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("dd-MM-yyyy");
+
+                }
+                else
+                {
+                    txtCompletitionDate.Text = string.Empty;
+                }
+
                 txtCapacityType.Text = ds.Tables[0].Rows[0]["GeneratingSetCapacityType"].ToString();
                 txtCapacity.Text = ds.Tables[0].Rows[0]["GeneratingSetCapacity"].ToString();
                 txtSerialNoOfGenerator.Text = ds.Tables[0].Rows[0]["SerialNumbrOfAcGenerator"].ToString();

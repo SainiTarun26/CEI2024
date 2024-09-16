@@ -427,7 +427,7 @@ namespace CEIHaryana.Admin
                     {
                         string Subject = "Password Reset Successfully";
                         string Message = "your password has been reset and your new password is 123456 . Now you can set your password which you want.";
-                        cei.ResetMessagethroughEmail(Email, Message, Subject);
+                        cei.ResetMessagethroughEmail(Email, Subject, Message);
                         hdnEmailId.Value = null;
                         string successScript = "alert('Password Reset successfully.')";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", successScript, true);

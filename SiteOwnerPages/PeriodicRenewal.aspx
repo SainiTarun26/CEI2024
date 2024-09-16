@@ -366,7 +366,11 @@
                             <asp:Button type="submit" ID="btnSearch" TabIndex="23" Text="Search" runat="server" ValidationGroup="Submit" OnClick="btnSearch_Click" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px; height: 34px; padding-top: 2px;" />
                         </div>
                     </div>
+                    <div style="text-align: center;">
+                        <asp:LinkButton ID="LinkButton1" OnClick="LinkButton1_Click" runat="server">link to apply new intimation for existing Inspection</asp:LinkButton>
+                    </div>
                     <div>
+
                         <div class="card" id="grid" runat="server" visible="false" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
                             <asp:GridView class="table-responsive table table-striped" ID="GridView1" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" runat="server" DataKeyNames="Id" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
                                 AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
@@ -448,12 +452,12 @@
 
                                             <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
                                             <asp:Label ID="LblDivision" runat="server" Text='<%#Eval("Division") %>'></asp:Label>
-                                            <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label> 
-                                            <asp:Label ID="LblCount" runat="server" Text='<%#Eval("number") %>'></asp:Label> 
-                                            <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label> 
-                                            <asp:Label ID="LblCompleteAdress" runat="server" Text='<%#Eval("CompleteAdress") %>'></asp:Label> 
-                                             <asp:Label ID="LblOwnerName" runat="server" Text='<%#Eval("SiteOwnerName") %>'></asp:Label> 
-                                              <asp:Label ID="LblADRESSDistrict" runat="server" Text='<%#Eval("AdressWithoutDistrict") %>'></asp:Label> 
+                                            <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label>
+                                            <asp:Label ID="LblCount" runat="server" Text='<%#Eval("number") %>'></asp:Label>
+                                            <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
+                                            <asp:Label ID="LblCompleteAdress" runat="server" Text='<%#Eval("CompleteAdress") %>'></asp:Label>
+                                            <asp:Label ID="LblOwnerName" runat="server" Text='<%#Eval("SiteOwnerName") %>'></asp:Label>
+                                            <asp:Label ID="LblADRESSDistrict" runat="server" Text='<%#Eval("AdressWithoutDistrict") %>'></asp:Label>
                                             <%--<asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>--%>
                                         </ItemTemplate>
                                     </asp:TemplateField>
@@ -476,7 +480,7 @@
                             <div class="col-4" style="margin-top: auto;">
                                 <%--<asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" OnClientClick="return validateCheckBoxes();" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />--%>
                                 <%--<asp:Button type="submit" ID="BtnProcess" TabIndex="23" Text="Process" runat="server" OnClick="BtnProcess_Click"  class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />--%>
-                                <asp:Button type="submit" ID="BtnCart" visible="false" Text="Add To Cart" runat="server" OnClick="BtnCart_Click" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
+                                <asp:Button type="submit" ID="BtnCart" Visible="false" Text="Add To Cart" runat="server" OnClick="BtnCart_Click" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
                             </div>
                         </div>
                     </div>

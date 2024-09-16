@@ -178,9 +178,32 @@ namespace CEIHaryana.TestReportModal
                 string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
                 txtVoltagelevel.Text = dp_Id3;
                 string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
-                txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
+
+
+                if (!string.IsNullOrWhiteSpace(dp_Id4))
+                {
+                    txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
+
+                }
+                else
+                {
+                    txtStartDate.Text = string.Empty;
+                }
+
+               
+
                 string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
-                txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("dd-MM-yyyy");
+                //txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("dd-MM-yyyy");
+                if (!string.IsNullOrWhiteSpace(dp_Id5))
+                {
+                    txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("dd-MM-yyyy");
+
+                }
+                else
+                {
+                    txtCompletitionDate.Text = string.Empty;
+                }
+
                 txtTransformerSerialNumber.Text = ds.Tables[0].Rows[0]["TransformerSerialNumber"].ToString();
                 txtTransformerCapacityType.Text = ds.Tables[0].Rows[0]["TransformerCapacityType"].ToString();
                 txtTransformerType.Text = ds.Tables[0].Rows[0]["TranformerType"].ToString();
