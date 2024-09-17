@@ -93,28 +93,31 @@ namespace CEIHaryana.SiteOwnerPages
         {
             grid.Visible = true;
             GridViewBind();
-            BtnCart.Visible = true;
+            //BtnCart.Visible = true;
         }
 
         public void GridViewBind()
         {
             string id = Session["SiteOwnerId"].ToString();
             string Adress = ddlAdress.SelectedItem.Text;
-            int numberOfDays = int.Parse(ddlNoOfDays.SelectedValue);
-            string InstallationType = ddlInstallationType.SelectedValue;
+            //int numberOfDays = int.Parse(ddlNoOfDays.SelectedValue);
+            //string InstallationType = ddlInstallationType.SelectedValue;
             //Session["IntimationId"+ ] = ddlAdress.SelectedValue;
             DataSet ds = new DataSet();
-            ds = CEI.GetPeriodicDetails(Adress, id, numberOfDays, InstallationType);
+            ds = CEI.GetPeriodicDetails(Adress, id);
             if (ds.Tables[0].Rows.Count > 0 && ds != null)
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
+                BtnCart.Visible = true;
             }
             else
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-
+                BtnCart.Visible = false;
+                string script = "alert(\"No Record Found\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }
 
@@ -443,16 +446,16 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
-        protected void ddlNoOfDays_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int numberOfDays = int.Parse(ddlNoOfDays.SelectedValue);
+        //protected void ddlNoOfDays_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    //int numberOfDays = int.Parse(ddlNoOfDays.SelectedValue);
 
-        }
+        //}
 
-        protected void ddlInstallationType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string InstallationType = ddlInstallationType.SelectedValue;
-        }
+        //protected void ddlInstallationType_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    string InstallationType = ddlInstallationType.SelectedValue;
+        //}
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             Response.Redirect("DetailsOfInstallations.aspx", false);

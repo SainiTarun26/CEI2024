@@ -339,7 +339,7 @@
                                     
                                 </asp:DropDownList>
                             </div>--%>
-                        <div class="col-md-3">
+                       <%-- <div class="col-md-3">
                             <label>
                                 Number Of Delay Days
                             </label>
@@ -360,7 +360,7 @@
                                 <asp:ListItem Text="Substation Transformer" Value="Substation Transformer"></asp:ListItem>
                                 <asp:ListItem Text="Generating Set" Value="Generating Set"></asp:ListItem>
                             </asp:DropDownList>
-                        </div>
+                        </div>--%>
                         <div class="col-1" style="margin-top: auto; padding-left: 0px;">
 
                             <asp:Button type="submit" ID="btnSearch" TabIndex="23" Text="Search" runat="server" ValidationGroup="Submit" OnClick="btnSearch_Click" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px; height: 34px; padding-top: 2px;" />
