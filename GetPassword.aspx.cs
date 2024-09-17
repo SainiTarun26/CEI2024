@@ -76,6 +76,11 @@ namespace CEIHaryana
             btnProcess.Enabled = false;
             btnSearch.Enabled = true;
             LblText.Visible = false;
+            CreditionalCard.Visible = false;
+            OtpCart.Visible = false;
+            LblText.Visible = false;
+            //CardPersnalDetail.Visible = false;
+            //CardSearchDetails.Visible = false;
 
         }
 
@@ -161,6 +166,11 @@ namespace CEIHaryana
                 CreditionalCard.Visible = true;
                 CardPersnalDetail.Visible = false;
                 CardSearchDetails.Visible = false;
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Otp not Match')", true);
+                    return;
                 }
             }
             catch (Exception ex)
