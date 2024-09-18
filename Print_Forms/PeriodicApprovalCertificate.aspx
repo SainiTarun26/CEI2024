@@ -257,11 +257,11 @@
                                          <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
                                              <HeaderStyle BackColor="#B7E2F0" />
                                              <Columns>
-                                                 <asp:BoundField DataField="InstallationName" HeaderText="Installation Name">
+                                                 <asp:BoundField DataField="InstallationType" HeaderText="Installation Name">
                                                      <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                      <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                  </asp:BoundField>
-                                                 <asp:BoundField DataField="Voltage" HeaderText="Voltage">
+                                                 <asp:BoundField DataField="Voltage" HeaderText="Voltage" Visible="false">
                                                      <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                      <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                  </asp:BoundField>

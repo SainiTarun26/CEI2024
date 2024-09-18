@@ -1057,7 +1057,7 @@ namespace CEIHaryana.Supervisor
                 {
                     if (Session["OTP"].ToString() == txtOTP.Text.Trim())
                     {
-                        //  BtnSubmitGeneratingSet.Attributes.Remove("disabled");
+                        //BtnSubmitGeneratingSet.Attributes.Remove("disabled");
                         btnVerify.Attributes.Add("disabled", "true");
                     }
                     else
@@ -1078,14 +1078,25 @@ namespace CEIHaryana.Supervisor
 
         protected void ddlCapacity_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlCapacity.SelectedValue == "3" || ddlCapacity.SelectedValue =="4")
+            ddlGeneratingSetType.Items.Clear();
+
+
+            ddlGeneratingSetType.Items.Add(new ListItem("Select", "0"));
+
+
+            if (ddlCapacity.SelectedValue == "3" || ddlCapacity.SelectedValue == "4")
             {
+                ddlGeneratingSetType.Items.Add(new ListItem("Solar Panel", "3"));
                 ddlGeneratingSetType.SelectedValue = "3";
+                ddlGeneratingSetType.SelectedValue = "0";
             }
             else
             {
+
+                ddlGeneratingSetType.Items.Add(new ListItem("Diesel Engine", "1"));
+                ddlGeneratingSetType.Items.Add(new ListItem("Gas Engine", "2"));
+                ddlGeneratingSetType.Items.Add(new ListItem("Bio Fuel", "4"));
                 ddlGeneratingSetType.SelectedValue = "0";
-               
             }
 
         }
