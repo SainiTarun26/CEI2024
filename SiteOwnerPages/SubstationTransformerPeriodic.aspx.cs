@@ -161,14 +161,21 @@ namespace CEIHaryana.SiteOwnerPages
                 SecondaryVoltage = ddlSecondaryVoltage.SelectedValue.ToString().Trim();
                 _SecondaryVoltage = SecondaryVoltage.Substring(0, SecondaryVoltage.Length - 6);
 
-                CEI.InsertSubstationData_Existing_HavingPreviousReport(IdUpdate, count, IntimationId, txtTransformerSerialNumber.Text, ddltransformerCapacity.SelectedItem.ToString(), txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(),
+                int returnresult = CEI.InsertSubstationData_Existing_HavingPreviousReport(IdUpdate, count, IntimationId, txtTransformerSerialNumber.Text, ddltransformerCapacity.SelectedItem.ToString(), txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(),
                     _PrimaryVoltage, _SecondaryVoltage, txtMake.Text.ToString(), CreatedBy);
                 CEI.UpdateInstallations(installationNo, IntimationId);
 
                 Reset();
-                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-               // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report Created Successfully')", true);
-                
+
+                if (returnresult == 0)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectNextProcessExistingPage();", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataRatingofinstallationPage();", true);
+                }
+
             }
             catch (Exception ex)
             {

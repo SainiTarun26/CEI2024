@@ -1,7 +1,9 @@
-﻿using CEI_PRoject;
+﻿using AjaxControlToolkit.HtmlEditor.ToolbarButtons;
+using CEI_PRoject;
 using CEIHaryana.Contractor;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -10,12 +12,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.SiteOwnerPages
 {
     public partial class PeriodicRenewal : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+        private static string Id, ApplicantType, ApplicantCode, Password, EInstallationType;
+        string SiteOwnerID = string.Empty;
+        string TypeOfInspection = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -25,8 +31,7 @@ namespace CEIHaryana.SiteOwnerPages
                     if (Session["SiteOwnerId"] != null && Request.Cookies["SiteOwnerId"] != null)
                     {
                         BindAdress();
-                        //grid.Visible = false;
-                        //BindInstallationType();
+                        getWorkIntimationDataForListOfExisting();
                     }
                 }
             }
@@ -34,8 +39,40 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 Response.Redirect("/login.aspx");
             }
-
         }
+
+        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (RadioButtonList1.SelectedValue == "1")
+                {
+                    DivDetails.Visible = true;
+                    btnSubmitInstallation.Visible = true;
+                    btnBack.Visible = true;
+                    DivExistingInspectionRequest.Visible = false;
+                    DivPeriodicRenewal.Visible = false;
+                    GetDetails();
+                    BindDistrict();
+                    ddlLoadBindPremises();
+                    ddlLoadBindVoltage();
+                }
+                else if (RadioButtonList1.SelectedValue == "0")
+                {
+                    divToShowLabel.Visible = true;
+                }
+                else 
+                { 
+                    DivDetails.Visible = false;
+                    btnSubmitInstallation.Visible = false;
+                    //DivExistingInspectionRequest.Visible = true;
+                    //DivPeriodicRenewal.Visible = true;
+                }
+            }
+            catch (Exception ex) { }
+        }
+
+        #region PeriodicRenewal
         private void BindAdress()
         {
             try
@@ -52,11 +89,8 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch
             {
-
             }
         }
-
-
         //private void BindInstallationType()
         //{
         //    try
@@ -72,10 +106,8 @@ namespace CEIHaryana.SiteOwnerPages
         //    }
         //    catch
         //    {
-
         //    }
         //}
-
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             try
@@ -83,19 +115,14 @@ namespace CEIHaryana.SiteOwnerPages
                 GridView1.PageIndex = e.NewPageIndex;
                 GridViewBind();
             }
-            catch
-            {
-
-            }
+            catch { }
         }
-
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             grid.Visible = true;
             GridViewBind();
             //BtnCart.Visible = true;
         }
-
         public void GridViewBind()
         {
             string id = Session["SiteOwnerId"].ToString();
@@ -120,31 +147,22 @@ namespace CEIHaryana.SiteOwnerPages
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }
-
-
         //protected void BtnProcess_Click(object sender, EventArgs e)
         //{
         //    List<string> selectedInspectionIdsList = new List<string>();
-
         //    foreach (GridViewRow row in GridView1.Rows)
         //    {
         //        CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
         //        if (chk != null && chk.Checked)
         //        {
-
         //            int inspectionId = Convert.ToInt32(GridView1.DataKeys[row.RowIndex].Value);
         //            selectedInspectionIdsList.Add(inspectionId.ToString());
-
         //        }
         //    }
-
         //    if (selectedInspectionIdsList.Count > 0)
         //    {
-
         //        string selectedInspectionIdsString = string.Join(",", selectedInspectionIdsList);
-
         //         Session["SelectedInspectionId"] = selectedInspectionIdsString;
-
         //        Response.Redirect("InspectionRenewal.aspx", true);
         //    }
         //    else
@@ -152,18 +170,14 @@ namespace CEIHaryana.SiteOwnerPages
         //        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please Tick Atleast One Declaration');", true);
         //    }
         //}
-
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
             Label LblInstallationName = (Label)row.FindControl("LblInstallationName");
             string installationtype = LblInstallationName.Text;
-
             //Label lblInstallationType = (Label)row.FindControl("LblInstallationType");
             //string installationtype = lblInstallationType.Text;
             string testReportId = e.CommandArgument.ToString();
-
-
 
             if (installationtype == "Line")
             {
@@ -180,9 +194,7 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["GeneratingSetId"] = testReportId;
                 Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
             }
-
         }
-
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
@@ -195,10 +207,8 @@ namespace CEIHaryana.SiteOwnerPages
 
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    
-                    Label LblIntimationId= e.Row.FindControl("LblIntimationId") as Label;
+                    Label LblIntimationId = e.Row.FindControl("LblIntimationId") as Label;
                     Label LblInstallationType = e.Row.FindControl("LblInstallationType") as Label;
-
                     Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
                     Label lblVoltage = (Label)e.Row.FindControl("LblVoltage");
                     Label LblInspectionDate = (Label)e.Row.FindControl("LblInspectionDate");
@@ -220,7 +230,6 @@ namespace CEIHaryana.SiteOwnerPages
                                 if (currentDate >= Year)
                                 {
                                     remainingDays = (Year - currentDate).Days;
-
                                 }
                                 if (currentDate <= Year)
                                 {
@@ -244,7 +253,6 @@ namespace CEIHaryana.SiteOwnerPages
                                 if (currentDate >= Year)
                                 {
                                     remainingDays = (Year - currentDate).Days;
-
                                 }
                                 if (currentDate <= Year)
                                 {
@@ -282,7 +290,6 @@ namespace CEIHaryana.SiteOwnerPages
                                     e.Row.Visible = false;
                                 }
                             }
-
                         }
 
                         if (installationtype == "Generating Set")
@@ -294,7 +301,6 @@ namespace CEIHaryana.SiteOwnerPages
                             if (currentDate >= Year)
                             {
                                 remainingDays = (Year - currentDate).Days;
-
                             }
                             if (currentDate <= Year)
                             {
@@ -308,7 +314,6 @@ namespace CEIHaryana.SiteOwnerPages
                             {
                                 e.Row.Visible = false;
                             }
-
                         }
                         if (installationtype == "Substation Transformer")
                         {
@@ -333,9 +338,7 @@ namespace CEIHaryana.SiteOwnerPages
                             {
                                 e.Row.Visible = false;
                             }
-
                         }
-
                         int dueDateColumnIndex = 8;
                         e.Row.Cells[dueDateColumnIndex].Text = Year.ToShortDateString();
                         SetRemainingDaysColumn(e.Row, remainingDays);
@@ -363,16 +366,13 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                 }
             }
-
             catch (Exception ex)
             { }
         }
         private void SetRemainingDaysColumn(GridViewRow row, int remainingDays)
         {
-
             row.Cells[9].Text = remainingDays.ToString();
         }
-
         protected void BtnCart_Click(object sender, EventArgs e)
         {
             try
@@ -397,7 +397,6 @@ namespace CEIHaryana.SiteOwnerPages
                             string TestReportId = LblTestReportId.Text;
                             Label LblinspectionDate = (Label)row.FindControl("LblinspectionDate");
                             string inspectionDate = LblinspectionDate.Text;
-
                             Label LblinspectionDueDate = (Label)row.FindControl("LblinspectionDueDate");
                             string inspectionDueDate = LblinspectionDueDate.Text;
                             Label LblNumberofdays = (Label)row.FindControl("LblNumberofdays");
@@ -406,20 +405,16 @@ namespace CEIHaryana.SiteOwnerPages
                             string Voltage = LblVoltage.Text;
                             Label LblCapacity = (Label)row.FindControl("LblCapacity");
                             string Capacity = LblCapacity.Text;
-
                             Label LblAddress = (Label)row.FindControl("LblAddress");
                             string Address = LblAddress.Text;
-
                             Label LblCompleteAdress = (Label)row.FindControl("LblCompleteAdress");
                             string CompleteAddress = LblCompleteAdress.Text;
                             Label LblADRESSDistrict = (Label)row.FindControl("LblADRESSDistrict");
                             string AddressDistrict = LblADRESSDistrict.Text;
                             Label LblOwnerName = (Label)row.FindControl("LblOwnerName");
                             string OwnerName = LblOwnerName.Text;
-
                             Label LblInstallationName = (Label)row.FindControl("LblInstallationName");
                             string InstallationName = LblInstallationName.Text;
-
                             Label LblDivision = (Label)row.FindControl("LblDivision");
                             string Division = LblDivision.Text;
                             Label LblDistrict = (Label)row.FindControl("LblDistrict");
@@ -445,20 +440,393 @@ namespace CEIHaryana.SiteOwnerPages
             {
             }
         }
-
         //protected void ddlNoOfDays_SelectedIndexChanged(object sender, EventArgs e)
         //{
         //    //int numberOfDays = int.Parse(ddlNoOfDays.SelectedValue);
-
         //}
-
         //protected void ddlInstallationType_SelectedIndexChanged(object sender, EventArgs e)
         //{
         //    string InstallationType = ddlInstallationType.SelectedValue;
         //}
-        protected void LinkButton1_Click(object sender, EventArgs e)
+        //protected void LinkButton1_Click(object sender, EventArgs e)
+        //{
+        //    Response.Redirect("DetailsOfInstallations.aspx", false);
+        //}
+        protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("DetailsOfInstallations.aspx", false);
+            Response.Redirect("PeriodicRenewal.aspx", false);
+        }
+        #endregion
+
+        #region List Of Existing Installation
+        private void getWorkIntimationDataForListOfExisting()
+        {
+            string Id = Session["SiteOwnerId"].ToString();
+
+            DataSet ds = new DataSet();
+            ds = CEI.ExistingInspectionData(Id);
+            if (ds.Tables.Count > 0)
+            {
+                GridView2.DataSource = ds;
+                GridView2.DataBind();
+            }
+            else
+            {
+                GridView2.DataSource = null;
+                GridView2.DataBind();
+                string script = "alert(\"No Record Found\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+            ds.Dispose();
+        }
+        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName == "Select")
+                {
+                    Control ctrl = e.CommandSource as Control;
+                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                    Label lblID = (Label)row.FindControl("lblID");
+                    Session["id"] = lblID.Text;
+                    Response.Redirect("/SiteOwnerPages/ExistingInspectionData.aspx", false);
+                }
+                else
+                {
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            getWorkIntimationDataForListOfExisting();
+        }
+
+        #endregion
+
+        #region Details Of Installation
+        private void ddlLoadBindVoltage()
+        {
+            try
+            {
+                DataSet dsVoltage = new DataSet();
+                dsVoltage = CEI.GetddlVoltageLevel();
+                ddlVoltageLevel.DataSource = dsVoltage;
+                ddlVoltageLevel.DataTextField = "Voltagelevel";
+                ddlVoltageLevel.DataValueField = "VoltageID";
+                ddlVoltageLevel.DataBind();
+                ddlVoltageLevel.Items.Insert(0, new ListItem("Select", "0"));
+                dsVoltage.Clear();
+            }
+            catch (Exception ex) { }
+        }
+        private void ddlLoadBindPremises()
+        {
+            try
+            {
+                DataSet dsPremises = new DataSet();
+                dsPremises = CEI.GetddlPremises();
+                ddlPremises.DataSource = dsPremises;
+                ddlPremises.DataTextField = "Premises";
+                ddlPremises.DataValueField = "ID";
+                ddlPremises.DataBind();
+                ddlPremises.Items.Insert(0, new ListItem("Select", "0"));
+                dsPremises.Clear();
+            }
+            catch (Exception ex) { }
+        }
+        private void BindDistrict()
+        {
+            try
+            {
+                DataSet dsDistrict = new DataSet();
+                dsDistrict = CEI.GetddlDistrict();
+                ddlDistrict.DataSource = dsDistrict;
+                ddlDistrict.DataTextField = "AreaCovered";
+                ddlDistrict.DataValueField = "Id";
+                ddlDistrict.DataBind();
+                ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
+                dsDistrict.Clear();
+            }
+            catch (Exception ex) { }
+        }
+        private void GetDetails()
+        {
+            Id = Session["SiteOwnerId"].ToString();
+            DataSet ds = new DataSet();
+            ds = CEI.GetWorkIntimationDataAtSiteOwner(Id);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                ApplicantType = txtApplicantType.Text;
+                ApplicantCode = ds.Tables[0].Rows[0]["ApplicantTypeCode"].ToString();
+
+                txtPAN.Text = ds.Tables[0].Rows[0]["PANNumber"].ToString();
+                txtElecticalInstallation.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                EInstallationType = txtElecticalInstallation.Text;
+
+                if (EInstallationType == "Individual Person")
+                {
+                    individual.Visible = true;
+                }
+                else if (EInstallationType == "Firm/Organization/Company/Department")
+                {
+                    agency.Visible = true;
+                }
+
+                txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+                txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+                if (ApplicantType == "Private/Personal Installation")
+                {
+                    PowerUtility.Visible = false;
+                    UserId.Visible = false;
+                    string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
+                    DivPancard_TanNo.Visible = true;
+                    txtPAN.Text = PanTanNumber;
+                }
+                else if (ApplicantType == "Other Department/Organization")
+                {
+                    string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
+                    DivOtherDepartment.Visible = true;
+                    txtTanNumber.Text = PanTanNumber;
+                    PowerUtility.Visible = false;
+                    UserId.Visible = false;
+                }
+                else if (ApplicantType == "Power Utility")
+                {
+                    string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
+                    txtUserId.Text = PanTanNumber;
+                    UserId.Visible = true;
+                    NameUtility.Visible = true;
+                    Wing.Visible = true;
+                    PowerUtility.Visible = true;
+                }
+                txtUtilityName.Text = ds.Tables[0].Rows[0]["PowerUtility"].ToString();
+                txtWing.Text = ds.Tables[0].Rows[0]["PowerUtilityWing"].ToString();
+                txtZone.Text = ds.Tables[0].Rows[0]["ZoneName"].ToString();
+                txtCircle.Text = ds.Tables[0].Rows[0]["CircleName"].ToString();
+                txtDivision.Text = ds.Tables[0].Rows[0]["DivisionName"].ToString();
+                txtSubDivision.Text = ds.Tables[0].Rows[0]["SubDivisionName"].ToString();
+                Password = ds.Tables[0].Rows[0]["SiteOwnerPassword"].ToString();
+                txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+                txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+            }
+        }
+        protected void ddlPremises_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ddlPremises.SelectedValue == "11")
+                {
+                    OtherPremises.Visible = true;
+                }
+                else
+                {
+                    OtherPremises.Visible = false;
+                }
+            }
+            catch (Exception ex) { }
+        }
+        protected void btnSubmitInstallation_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                SqlTransaction transaction = null;
+                try
+                {
+                    connection.Open();
+                    transaction = connection.BeginTransaction();
+
+                    string Pan_TanNumber = "";
+                    if (DivPancard_TanNo.Visible && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
+                    {
+                        Pan_TanNumber = txtPAN.Text.Trim();
+                    }
+                    else if (DivOtherDepartment.Visible && !string.IsNullOrEmpty(txtTanNumber.Text.Trim()))
+                    {
+                        Pan_TanNumber = txtTanNumber.Text.Trim();
+                    }
+                    else if (PowerUtility.Visible)
+                    {
+                        if (string.IsNullOrEmpty(txtUserId.Text.Trim()))
+                        {
+                            string email = txtEmail.Text.Trim();
+                            if (email.Contains("@"))
+                            {
+                                Pan_TanNumber = email.Split('@')[0];
+                            }
+                        }
+                        else
+                        {
+                            Pan_TanNumber = txtUserId.Text.Trim();
+                        }
+                    }
+
+                    // Pan/TanNumber validation
+                    if (string.IsNullOrEmpty(Pan_TanNumber))
+                    {
+                        throw new Exception("Pan/Tan Number cannot be empty.");
+                    }
+
+                    // Insert data
+                    CEI.IntimationDataInsertionBySiteowner(
+                        Id,
+                        txtApplicantType.Text.Trim(),
+                        ApplicantCode,
+                        txtElecticalInstallation.Text.Trim(),
+                        txtUtilityName.Text.Trim(),
+                        txtWing.Text.Trim(),
+                        txtZone.Text.Trim(),
+                        txtCircle.Text.Trim(),
+                        txtDivision.Text.Trim(),
+                        txtSubDivision.Text.Trim(),
+                        txtName.Text.Trim(),
+                        txtagency.Text.Trim(),
+                        txtPhone.Text.Trim(),
+                        txtAddress.Text.Trim(),
+                        ddlDistrict.SelectedItem?.ToString(),
+                        txtPin.Text.Trim(),
+                        ddlPremises.SelectedItem?.ToString(),
+                        txtOtherPremises.Text.Trim(),
+                        ddlVoltageLevel.SelectedItem?.ToString(),
+                        Pan_TanNumber,
+                        txtinstallationType2.Text.Trim(),
+                        txtinstallationNo2.Text.Trim(),
+                        txtinstallationType3.Text.Trim(),
+                        txtinstallationNo3.Text.Trim(),
+                        txtEmail.Text.Trim(),
+                        Id,
+                        RadioButtonList2.SelectedValue.ToString(),
+                        "Existing",
+                        txtCapacity.Text.Trim(),
+                        txtSanctionLoad.Text.Trim(),
+                        Password,
+                        transaction
+                    );
+
+                    TypeOfInspection = "Existing";
+                    string projectId = CEI.projectId();
+
+                    if (!string.IsNullOrEmpty(projectId))
+                    {
+                        TextBox[] typeTextBoxes = { txtinstallationType2, txtinstallationType3 };
+                        TextBox[] noTextBoxes = { txtinstallationNo2, txtinstallationNo3 };
+
+                        for (int i = 0; i < typeTextBoxes.Length; i++)
+                        {
+                            string installationType = typeTextBoxes[i].Text;
+                            string installationNoText = noTextBoxes[i].Text;
+
+                            if (int.TryParse(installationNoText, out int installationNo) && installationNo > 0)
+                            {
+                                for (int j = 0; j < installationNo; j++)
+                                {
+                                    CEI.AddInstallationsCreatedbySiteOwner(projectId, installationType, installationNo, Id, TypeOfInspection, transaction);
+                                }
+                            }
+                        }
+                    }
+                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Details of Installation Submitted Successfully !!!')", true);
+                    transaction.Commit();
+                    Reset();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Details of Installation Submitted Successfully !!!'); window.location='RatingOfInstallations.aspx';", true);
+                }
+                catch (Exception ex)
+                {
+                    // Rollback transaction in case of an error
+                    if (transaction != null)
+                    {
+                        transaction.Rollback();
+                    }
+                }
+            }
+        }
+        private void Reset()
+        {
+            txtAddress.Text = "";
+            ddlDistrict.SelectedValue = "0";
+            txtPin.Text = "";
+            ddlPremises.SelectedValue = "0";
+            txtOtherPremises.Text = "";
+            ddlVoltageLevel.SelectedValue = "0";
+            RadioButtonList2.ClearSelection();
+            txtSanctionLoad.Text = "";
+            txtCapacity.Text = "";
+            txtinstallationNo2.Text = "";
+            txtinstallationNo3.Text = "";
+            divSanctionLoad.Visible = false;
+        }              
+        protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (RadioButtonList2.SelectedValue == "1")
+                {
+                    divSanctionLoad.Visible = true;
+                }
+                else
+                {
+                    divSanctionLoad.Visible = false;
+                }
+            }
+            catch (Exception ex) { }
+        }
+        protected void imgDelete2_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                string valueToAddBack = txtinstallationType2.Text;
+
+                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                {
+                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                    ddlWorkDetail.Items.Add(newItem);
+                }
+                installationType2.Visible = false;
+                txtinstallationType2.Text = string.Empty;
+                txtinstallationNo2.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions appropriately
+            }
+        }
+        protected void imgDelete3_Click(object sender, ImageClickEventArgs e)
+        {
+
+            try
+            {
+                string valueToAddBack = txtinstallationType3.Text;
+                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                {
+                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                    ddlWorkDetail.Items.Add(newItem);
+                }
+                installationType3.Visible = false;
+                txtinstallationType3.Text = string.Empty;
+                txtinstallationNo3.Text = string.Empty;
+            }
+            catch (Exception ex) { }
+        }
+        protected void ddlVoltageLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                installationType2.Visible = true;
+                if (ddlVoltageLevel.SelectedValue == "650V")
+                {
+                    installationType2.Visible = false;
+                }
+                else
+                {
+                    installationType2.Visible = true;
+                }
+            }
+            catch (Exception ex) { }
         }
     }
+    #endregion
 }

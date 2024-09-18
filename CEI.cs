@@ -5680,7 +5680,7 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToGetAssignedOfficer", CartId);
         }
 
-        public void InsertGeneratingSetData_Existing_HavingPreviousReport(string IdUpdate, string Count, string IntimationId, string GeneratingSetCapacityType, string GeneratingSetCapacity, string SerialNumbrOfAcGenerator, string GeneratingSetType, string GeneratorVoltageLevel, string TypeOfPlant, string MakeType, string CreatedBy)
+        public int InsertGeneratingSetData_Existing_HavingPreviousReport(string IdUpdate, string Count, string IntimationId, string GeneratingSetCapacityType, string GeneratingSetCapacity, string SerialNumbrOfAcGenerator, string GeneratingSetType, string GeneratorVoltageLevel, string TypeOfPlant, string MakeType, string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertGeneratingSetData_Existing_HavingPreviousReport");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -5704,13 +5704,21 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             cmd.Parameters.AddWithValue("@TypeOfPlant", TypeOfPlant == "Select" ? DBNull.Value : (object)TypeOfPlant);
             cmd.Parameters.AddWithValue("@MakeType", MakeType);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            SqlParameter returnStatusParam = new SqlParameter("@ReturnStatus", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+            cmd.Parameters.Add(returnStatusParam);
             cmd.ExecuteNonQuery();
             con.Close();
+
+            Int32 returnStatus = (Int32)returnStatusParam.Value;
+
+            return returnStatus;
         }
 
-
-        public void InsertSubstationData_Existing_HavingPreviousReport(string IdUpdate, string Count, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
-    string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedBy)
+        public int InsertSubstationData_Existing_HavingPreviousReport(string IdUpdate, string Count, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
+     string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertSubstationTransformerData_Existing_HavingPreviousReport");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -5734,8 +5742,17 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             cmd.Parameters.AddWithValue("@SecondoryVoltage", SecondoryVoltage == "Select" ? null : SecondoryVoltage);
             cmd.Parameters.AddWithValue("@MakeType", MakeType);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            SqlParameter returnStatusParam = new SqlParameter("@ReturnStatus", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+            cmd.Parameters.Add(returnStatusParam);
             cmd.ExecuteNonQuery();
             con.Close();
+
+            Int32 returnStatus = (Int32)returnStatusParam.Value;
+
+            return returnStatus;
         }
     }
 }

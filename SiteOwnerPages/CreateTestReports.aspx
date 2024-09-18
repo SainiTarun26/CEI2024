@@ -89,9 +89,10 @@
         table#ContentPlaceHolder1_GridView1 {
             margin-top: -6px !important;
         }
+
         .ReturnedRowColor {
-     background-color: #f9c7c7 !important;
-}
+            background-color: #f9c7c7 !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -101,9 +102,9 @@
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
                 <div class="row ">
-                    <div class="col-sm-4 col-md-4">
-                        <h6 class="card-title fw-semibold mb-4">
-                            <asp:Label ID="lblData" runat="server"></asp:Label>REQUEST FOR INSPECTION TO CEI DEPARTMENT</h6>
+                    <div class="col-sm-4 col-md-12">
+                        <h6 class="card-title fw-semibold mb-12">
+                            <asp:Label ID="lblData" runat="server"></asp:Label>LIST OF NEW INSTALLATIONS(Work Completion And Test Report Issued By Authorised Electrical Contractor)</h6>
                     </div>
                     <%--  <div class="col-sm-6 col-md-6"></div>
                     <div class="col-sm-2 col-md-2">

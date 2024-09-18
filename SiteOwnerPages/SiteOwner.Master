@@ -341,17 +341,22 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/SiteOwnerPages/CreateTestReports.aspx">
                                     <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Raise Request For
+                                    <%-- <span class="menu-title">Raise Request For
                                         <br />
-                                        Inspection</span>
+                                        Inspection</span>--%>
+                                    <span class="menu-title">For New Installation</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/SiteOwnerPages/ExistingInspectionRequest.aspx">
                                     <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Existing  Request For
+                                    <%-- <span class="menu-title">Existing  Request For
                                         <br />
-                                        Inspection</span>
+                                        Inspection</span>--%>
+                                    <span class="menu-title">Existing Installations<br />
+                                        /Periodic Inspection<br />
+                                        (Recently tested by<br />
+                                        Contractor)</span>
                                 </a>
                             </li>
                             <%--                            <li class="nav-item">
@@ -366,12 +371,12 @@
                                     <span class="menu-title">Payment History</span>
                                 </a>
                             </li>--%>
-                            <li class="nav-item">
+                           <%-- <li class="nav-item">
                                 <a class="nav-link" href="/SiteOwnerPages/PendingPayment.aspx">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Pending Payments</span>
                                 </a>
-                            </li>
+                            </li>--%>
                             <%--     <li class="nav-item">
                                 <a class="nav-link" href="/SiteOwnerPages/PeroidicInspection.aspx">
                                     <i class="icon-layout menu-icon"></i>
@@ -382,20 +387,22 @@
                                 <a class="nav-link" href="/SiteOwnerPages/PeriodicRenewal.aspx">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Periodic Renewal</span>
+                                    <%--  <span class="menu-title">Existing Installation<br />(From Last CEI<br /> Inspection)</span>--%>
                                 </a>
                             </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="/SiteOwnerPages/InspectionRenewalCart.aspx">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Periodic Renewal Cart</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <%--<li class="nav-item">
                                 <a class="nav-link" href="/SiteOwnerPages/DetailsOfInstallations.aspx">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Details Of Installations</span>
                                 </a>
-                            </li>
+                            </li>--%>
                             <li class="nav-item">
                                 <a class="nav-link" href="/SiteOwnerPages/RatingOfInstallations.aspx">
                                     <i class="icon-layout menu-icon"></i>

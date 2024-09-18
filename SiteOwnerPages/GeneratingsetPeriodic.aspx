@@ -44,18 +44,18 @@
     </script>
 
     <script type="text/javascript">
-        function alertWithRedirectdata() {
+        function alertWithRedirectdataRatingofinstallationPage() {
 
-            alert('TestReport Created Successfully');
-            window.location.href = "/SiteOwnerPages/RatingOfInstallations.aspx";
+            alert('Rating Of Installation of Generating Set Created Successfully');
+            window.location.href = "/SiteOwnerPages/TestReport.aspx";
 
         }
     </script>
     <script type="text/javascript">
-        function alertWithRedirectUpdation() {
+        function alertWithRedirectNextProcessExistingPage() {
 
-            alert('Intimation Updated Successfully');
-            window.location.href = "/Contractor/PreviousProjects.aspx";
+            alert('Rating Of Installation of Generating Set Created Successfully');
+            window.location.href = "/SiteOwnerPages/PeriodicRenewal.aspx";
 
         }
     </script>
@@ -341,28 +341,28 @@
     <div class="row">
         <div class="col-3" id="Div8" runat="server">
             <label for="Name">
-                Applicant<samp style="color: red">* </samp>
+                Applicant
             </label>
             <asp:TextBox class="form-control" ID="txtapplication" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
         </div>
         <div class="col-3" id="Div9" runat="server">
             <label for="Name">
-                WorkIntimation ID<samp style="color: red">* </samp>
+                WorkIntimation ID
             </label>
             <asp:TextBox class="form-control" ID="txtid" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator102" runat="server" ControlToValidate="txtid" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
         </div>
         <div class="col-3" id="Div10" runat="server">
             <label for="Name">
-                Type of Installation<samp style="color: red">* </samp>
+                Type of Installation
             </label>
             <asp:TextBox class="form-control" ID="txtInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator103" runat="server" ControlToValidate="txtInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
         </div>
         <div class="col-3" id="Div12" runat="server">
             <label for="Name">
-                No of Installations<samp style="color: red">* </samp>
+                No of Installations
             </label>
             <asp:TextBox class="form-control" ID="txtNOOfInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator104" runat="server" ControlToValidate="txtNOOfInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
@@ -374,7 +374,7 @@
                     <div class="row">
                         <div class="col-md-3" id="Div170" runat="server" style="margin-top: -15px;">
                             <label for="Name">
-                                Unit Of Capacity
+                                Unit Of Capacity<samp style="color: red">* </samp>
                             </label>
                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" ID="ddlCapacity" selectionmode="Multiple" Style="width: 100% !important">
                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -385,7 +385,7 @@
                         </div>
                         <div class="col-md-3" id="Div171" runat="server" style="margin-top: -15px;">
                             <label for="Name">
-                                Value
+                                Value<samp style="color: red">* </samp>
                             </label>
                             <asp:TextBox class="form-control" ReadOnly="false" ID="txtCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rvfCapacity" runat="server" ForeColor="Red" ControlToValidate="txtCapacity" ValidationGroup="Submit" ErrorMessage="Please Enter Capacity"></asp:RequiredFieldValidator>
@@ -393,15 +393,15 @@
                         </div>
                         <div class="col-md-3" runat="server" style="margin-top: -15px;">
                             <label for="Name">
-                                Serial no. 
+                                Serial no. <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" ReadOnly="false" ID="txtSerialNoOfGenerator" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="of Ac generator/ Alternator" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ReadOnly="false" ID="txtSerialNoOfGenerator" onkeydown="return preventEnterSubmit(event)"  placeholder="of Ac generator/ Alternator" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" ControlToValidate="txtSerialNoOfGenerator" ValidationGroup="Submit" ErrorMessage="Please Enter Serial No Of Generator"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="col-md-3" id="Div1" runat="server" style="margin-top: -15px;">
                             <label for="Name">
-                                Make
+                                Make<samp style="color: red">* </samp>
                             </label>
                             <asp:TextBox class="form-control" ReadOnly="false" ID="txtMake" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ForeColor="Red" ControlToValidate="txtMake" ValidationGroup="Submit" ErrorMessage="Please Enter Make"></asp:RequiredFieldValidator>
@@ -423,7 +423,7 @@
                         </div>--%>
                         <div class="col-md-3" id="Div172" runat="server" style="margin-top: 15px;">
                             <label for="Name">
-                                Type of Generating Set
+                                Type of Generating Set<samp style="color: red">* </samp>
                             </label>
                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingSetType_SelectedIndexChanged" ID="ddlGeneratingSetType" selectionmode="Multiple" Style="width: 100% !important">
                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -436,7 +436,7 @@
                         </div>
                         <div class="col-md-3" style="margin-top: 15px;">
                             <label for="Name">
-                                Generator voltage level(VOLTS)
+                                Generator voltage level(VOLTS)<samp style="color: red">* </samp>
                             </label>
                             <asp:TextBox class="form-control" ReadOnly="false" ID="txtGeneratorVoltage" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ForeColor="Red" ControlToValidate="txtGeneratorVoltage" ValidationGroup="Submit" ErrorMessage="Please Enter Generator Voltage"></asp:RequiredFieldValidator>
@@ -455,7 +455,7 @@
                                    </div>--%>
                         <div class="col-4" style="margin-top: 15px;">
                             <label for="Name">
-                                Location
+                                Location<samp style="color: red">* </samp>
                             </label>
                             <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" ID="ddlPlantType" selectionmode="Multiple" Style="width: 100% !important">
                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -633,14 +633,6 @@
             }
         }
     </script>--%>
-    <script type="text/javascript">
-        function alertWithRedirect() {
-            if (confirm('User Created Successfully User Id And password will be sent Via Text Mesaage.')) {
-                window.location.href = "/Contractor/Work_Intimation.aspx";
-            } else {
-            }
-        }
-    </script>
 
     <script type="text/javascript">
         let isCheck = false;

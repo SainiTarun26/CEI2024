@@ -19,7 +19,7 @@
         function alertWithRedirectdata() {
 
                 alert('Inspection Created Successfully');
-            window.location.href = "/SiteOwnerPages/ExistingInspectionRequest.aspx";
+            window.location.href = "/SiteOwnerPages/PeriodicRenewal.aspx";
             
         }
     </script>

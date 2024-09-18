@@ -64,16 +64,23 @@ namespace CEIHaryana.SiteOwnerPages
                 //string count = "1";
 
 
-                CEI.InsertGeneratingSetData_Existing_HavingPreviousReport(Id_Update, count, IntimationId,
+               int returnresult =  CEI.InsertGeneratingSetData_Existing_HavingPreviousReport(Id_Update, count, IntimationId,
                     ddlCapacity.SelectedItem.ToString(), txtCapacity.Text, txtSerialNoOfGenerator.Text, ddlGeneratingSetType.SelectedItem.ToString(),
                  txtGeneratorVoltage.Text, ddlPlantType.SelectedItem.ToString(),txtMake.Text.ToString(), CreatedBy);
 
                
                 CEI.UpdateInstallations(installationNo, IntimationId);
                 Reset();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-              // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report Created Successfully')", true);
-                
+
+
+                if (returnresult == 0) 
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectNextProcessExistingPage();", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataRatingofinstallationPage();", true);
+                }
 
             }
             catch (Exception ex)

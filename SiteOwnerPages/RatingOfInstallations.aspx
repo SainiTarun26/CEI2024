@@ -191,7 +191,7 @@
                                     </ItemTemplate>
                             </asp:TemplateField>
                                 
-                                <asp:TemplateField HeaderText="WorkIntimation">
+                                <asp:TemplateField HeaderText="Declared Installation Id">
                                     <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="25%" />
                                     <ItemTemplate>
