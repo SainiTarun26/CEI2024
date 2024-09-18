@@ -1076,5 +1076,18 @@ namespace CEIHaryana.Supervisor
 
         }
 
+        protected void ddlCapacity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlCapacity.SelectedValue == "3" || ddlCapacity.SelectedValue =="4")
+            {
+                ddlGeneratingSetType.SelectedValue = "3";
+            }
+            else
+            {
+                ddlGeneratingSetType.SelectedValue = "0";
+               
+            }
+
+        }
     }
 }

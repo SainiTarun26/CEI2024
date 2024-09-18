@@ -427,10 +427,12 @@
                                             <label for="Name">
                                                 Unit of Generator  <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlCapacity" selectionmode="Multiple" Style="width: 100% !important">
+                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlCapacity" selectionmode="Multiple" Style="width: 100% !important" OnSelectedIndexChanged="ddlCapacity_SelectedIndexChanged">
                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                 <asp:ListItem Text="KVA" Value="1"></asp:ListItem>
                                                 <asp:ListItem Text="MVA" Value="2"></asp:ListItem>
+                                                <asp:ListItem Text="KWp" Value="3"></asp:ListItem>
+                                                <asp:ListItem Text="MWp" Value="4"></asp:ListItem>
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ForeColor="Red" ControlToValidate="ddlCapacity" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Capacity "></asp:RequiredFieldValidator>
                                         </div>
