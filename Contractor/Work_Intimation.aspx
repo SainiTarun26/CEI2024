@@ -293,6 +293,10 @@
             .input-box:focus-within {
                 border-color: #777;
             }
+            input#ContentPlaceHolder1_txtEmail {
+    width: 100%;
+    margin-left: 0px !important;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
