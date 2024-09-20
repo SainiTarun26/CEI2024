@@ -33,7 +33,6 @@
         function isAlpha(keyCode) {
 
             return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
-
         }
 
         function alphabetKey(e) {
@@ -43,7 +42,6 @@
             return (allow.indexOf(String.fromCharCode(k)) != -1);
         }
     </script>
-
     <script type="text/javascript">
         function alertWithRedirectdata() {
 
@@ -52,9 +50,6 @@
 
         }
     </script>
-
-
-
     <style>
         .table td, .jsgrid .jsgrid-table td {
             font-size: 0.875rem;
@@ -192,8 +187,6 @@
             font-weight: 700;
         }
 
-
-
         div#row3 {
             margin-top: -20px;
         }
@@ -212,8 +205,6 @@
             height: 35px;
             width: 67px;
         }
-
-
 
         svg#search1:hover {
             height: 22px;
@@ -267,8 +258,6 @@
             font-weight: bold !important;
         }
 
-
-
         .input-box .prefix {
             font-weight: 300;
             font-size: 14px;
@@ -305,343 +294,192 @@
                             </h6>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h7 class="card-title fw-semibold mb-4" id="maincard">
-                                Provide Existing Installation Detail generated Offline
-                            </h7>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4" style="text-align: center;">
-                            <label id="Label1" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                Data Updated Successfully !!!.
-                            </label>
-                            <label id="Label2" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                Data Saved Successfully !!!.
-                            </label>
-                        </div>
-                    </div>
-                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 10px 0px 10px 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label>
-                                    Do You Have Latest CEI Existing installation Report?
-                                    <samp style="color: red">* </samp>
-                                </label>
-                                <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
-                                    <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="No" Value="0" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
-                                </asp:RadioButtonList>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="RadioButtonList2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select any Sanction Load</asp:RequiredFieldValidator>
-                            </div>
-                            <div class="col-md-8" id="divToShowLabel" Visible="false" runat="server" style="margin-top: auto; margin-bottom: auto; text-align: center; font-weight: 700; font-size: 17px; color: red;">
-                                <span>Note:- Contact to Contractor for Further Information.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>
-                            <div class="card-body" id="DivDetails" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                                <div>
-                                    <div class="row" style="margin-bottom: 8px;">
-                                        <div class="col-md-12">
-                                            <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Site Owner Information</h7>
-                                        </div>
-                                    </div>
-                                    <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label>
-                                                    Applicant Type
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtApplicantType" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="true">
-                                                <label for="PanNumber">
-                                                    PAN Card
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtPAN" ReadOnly="true" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-4" runat="server" id="DivOtherDepartment" visible="false">
-                                                <label for="TanNumber">
-                                                    TAN Number
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtTanNumber" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                <asp:RegularExpressionValidator ID="revTANNumber" runat="server" ControlToValidate="txtTanNumber" ValidationExpression="[A-Za-z]{4}[0-9]{5}[A-Za-z]" ValidationGroup="Submit"
-                                                    ErrorMessage="Enter a valid TAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtTanNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>
-                                                    Electrical Installation For
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtElecticalInstallation" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-4" id="NameUtility" runat="server" visible="false">
-                                                <label>
-                                                    Name Of Power Utility
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtUtilityName" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-4" id="Wing" runat="server" visible="false">
-                                                <label>
-                                                    Wing
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtWing" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                        <div class="row" runat="server" id="PowerUtility" visible="false">
-                                            <div class="col-md-4">
-                                                <label>
-                                                    Zone
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtZone" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>
-                                                    Circle
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtCircle" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>
-                                                    Division
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtDivision" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>
-                                                    Sub-Division
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtSubDivision" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4" runat="server" id="UserId" visible="false">
-                                                <label for="UserId">
-                                                    UserId
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtUserId" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                        <div class="row" id="row2">
-                                            <div class="col-md-4" id="individual" visible="false" runat="server">
-                                                <label for="Name">
-                                                    Name of Owner/ Consumer 
-                                                </label>
-                                                <div class="input-box">
-                                                    <asp:TextBox class="form-control" ID="txtName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px; box-shadow: none !important;"></asp:TextBox>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4" id="agency" visible="false" runat="server">
-                                                <label for="agency">
-                                                    Name of Firm/ Org./ Company/ Department
-                                                    <samp style="color: red">* </samp>
-                                                </label>
-                                                <div class="input-box">
-                                                    <span class="prefix">M/s.</span>
-                                                    <asp:TextBox class="form-control" ID="txtagency" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <label for="Address">
-                                                    Address of Site(Preferred As Per Demand Notice of Utility or Electricity Bill)
-                                                    <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Address</asp:RequiredFieldValidator>
-                                            </div>
-                                        </div>
-                                        <div class="row" id="row3">
-                                            <div class="col-md-4" runat="server">
-                                                <label for="Pin">State</label>
-                                                <asp:TextBox class="form-control" ID="txtState" MaxLength="6" Text="Haryana" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>
-                                                    District<samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDistrict" TabIndex="6" selectionmode="Multiple" Style="width: 100% !important">
-                                                </asp:DropDownList>
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator25" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                            </div>
-                                            <div class="col-md-4" runat="server">
-                                                <label for="Pin">
-                                                    PinCode<samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtPin" TabIndex="7" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPin" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Pincode</asp:RequiredFieldValidator>
-
-                                                <span id="lblPinError" style="color: red"></span>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label for="Phone">
-                                                    Contact Number (Site Owner)<samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtPhone" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-4" runat="server">
-                                                <label for="Email">
-                                                    Email<samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtEmail" autocomplete="off" ReadOnly="true" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div id="DivPeriodicRenewal" visible="true" runat="server">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h7 class="card-title fw-semibold mb-4" id="maincard1">Initiate Peiodic Renewal for Existing Installation</h7>
                                 </div>
-                                <div style="margin-top: 15px;">
-                                    <div class="row" style="margin-top: 25px; margin-bottom: 8px;">
-                                        <div class="col-md-12">
-                                            <h7 class="card-title fw-semibold mb-4" style="margin-top: 5%; font-size: 18px !important;">Application Details</h7>
-                                        </div>
-                                    </div>
-                                    <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label>
-                                                    Type of Premises<samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlPremises" OnSelectedIndexChanged="ddlPremises_SelectedIndexChanged" selectionmode="Multiple" Style="width: 100% !important">
-                                                </asp:DropDownList>
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator14" Text="Please Select Premises Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPremises" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                            </div>
-                                            <div class="col-md-4" id="OtherPremises" runat="server" visible="false">
-                                                <label for="OtherPremises">
-                                                    Other Premises<samp style="color: red"> * </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtOtherPremises" TabIndex="11" MaxLength="40" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtOtherPremises" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Other Premises</asp:RequiredFieldValidator>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>
-                                                    Highest Voltage Level of Installation
-                                                    <samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" AutoPostBack="true" ID="ddlVoltageLevel" OnSelectedIndexChanged="ddlVoltageLevel_SelectedIndexChanged" runat="server">
-                                                </asp:DropDownList>
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label>
-                                                    Is there any Sanction Load Issued
-                                                </label>
-                                                <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" RepeatDirection="Horizontal">
-                                                    <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
-                                                    <asp:ListItem Text="No" Value="0" Selected="True" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
-                                                </asp:RadioButtonList>
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="RadioButtonList2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select any Sanction Load</asp:RequiredFieldValidator>
-                                            </div>
-                                            <div class="col-md-4" id="divSanctionLoad" visible="false" runat="server">
-                                                <label for="Email">
-                                                    Input Your Sanction Load
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtSanctionLoad" onkeydown="return preventEnterSubmit(event)" maxlenght="10" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtCapacity" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Total Capacity</asp:RequiredFieldValidator>--%>
-                                            </div>
-                                            <div class="col-md-4" runat="server">
-                                                <label for="Email">
-                                                    Total Capacity installed in KVA<samp style="color: red">* </samp>
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtCapacity" onkeydown="return preventEnterSubmit(event)" maxlenght="10" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                <span id="lblCap" style="color: red"></span>
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtCapacity" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Total Capacity</asp:RequiredFieldValidator>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="table-responsive pt-3" id="Installation" runat="server">
-                                                    <table class="table table-bordered table-striped">
-                                                        <thead class="table-dark">
-                                                            <tr>
-                                                                <th style="width: 70%;">Installation Type
-                                                                </th>
-                                                                <th style="width: 20%;">No of Installations
-                                                                </th>
-                                                                <th style="width: 10%;"></th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <div id="installationType2" runat="server">
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="col-md-12">
-                                                                            <asp:TextBox class="form-control" ID="txtinstallationType2" Text="Substation Transformer" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="col-md-12">
-                                                                            <asp:TextBox class="form-control" ID="txtinstallationNo2" TabIndex="14" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="Max no. of Installations is 25." MaxLength="2" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtinstallationNo2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td style="text-align: center !important;">
-                                                                        <asp:ImageButton ID="imgDelete2" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" OnClick="imgDelete2_Click" Height="30" Width="30" runat="server" />
-                                                                    </td>
-                                                                </tr>
-                                                            </div>
-                                                            <div id="installationType3" runat="server">
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="col-md-12">
-                                                                            <asp:TextBox class="form-control" ID="txtinstallationType3" Text="Generating Set" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div style="margin-left: 15px !important; margin-right: 15px !important;">
-                                                                            <asp:TextBox class="form-control" ID="txtinstallationNo3" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="Max no. of Installations is 25." MaxLength="2" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtinstallationNo3" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td style="text-align: center !important;">
-                                                                        <asp:ImageButton ID="imgDelete3" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" OnClick="imgDelete3_Click" Height="30" Width="30" runat="server" /></td>
-                                                                </tr>
-                                                            </div>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4"></div>
+                                <div class="col-sm-4" style="text-align: center;">
+                                    <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                                        Data Updated Successfully !!!.
+                                    </label>
+                                    <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                                        Data Saved Successfully !!!.
+                                    </label>
                                 </div>
-                                <div class="row" style="margin-top: -10px;">
-                                    <div class="col-md-4" id="InstallationType" runat="server" visible="false">
+                            </div>
+                            <%--  <asp:UpdatePanel ID="UpdatePanel1" runat="server">--%>
+                            <%-- <contenttemplate>--%>
+                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                <div class="row" style="margin-bottom: 20px;">
+                                    <div class="col-md-12">
                                         <label>
-                                            Select Installation Type<samp style="color: red">* </samp>
+                                            Select Site Address of Different Installations<samp style="color: red">* </samp>
                                         </label>
-                                        <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlWorkDetail" runat="server">
+                                        <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlAdress" OnSelectedIndexChanged="ddlAdress_SelectedIndexChanged" runat="server">
                                         </asp:DropDownList>
-                                        <asp:TextBox class="form-control" ID="WorkDetail" autocomplete="off" onkeydown="return preventEnterSubmit(event)" Visible="false" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />--%>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select any adress" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAdress" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                    </div>
+                                    <%-- <div class="col-md-3">
+                        <label>
+                            Intimation Wise
+                        </label>
+                        <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlIntimation" TabIndex="2" runat="server">
+                        </asp:DropDownList>
+                    </div>
+                        <div class="col-md-4">
+                        <label> 
+                            Installation Wise
+                        </label>
+                        <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlInstallationType" TabIndex="2" runat="server">
+                        </asp:DropDownList>
+                    </div>
+                        <div class="col-md-3">
+                    <label>
+                        Number Of Delay Days
+                    </label>
+                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlNoOfDays" OnSelectedIndexChanged="ddlNoOfDays_SelectedIndexChanged" TabIndex="2" runat="server">
+                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                        <asp:ListItem Text="less than 30 days" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="less than 30 days and greater than 15" Value="2"></asp:ListItem>
+                        <asp:ListItem Text="less than 15 and Expiry" Value="3"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="col-md-3">
+                    <label>
+                        Installation Type
+                    </label>
+                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlInstallationType" OnSelectedIndexChanged="ddlInstallationType_SelectedIndexChanged" TabIndex="2" runat="server">
+                        <asp:ListItem Text="Select" Value="Select"></asp:ListItem>
+                        <asp:ListItem Text="Line" Value="Line"></asp:ListItem>
+                        <asp:ListItem Text="Substation Transformer" Value="Substation Transformer"></asp:ListItem>
+                        <asp:ListItem Text="Generating Set" Value="Generating Set"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>--%>
+                                    <%-- <div class="col-1" style="margin-top: auto; padding-left: 0px;">
+                                        <asp:Button type="submit" ID="btnSearch" TabIndex="23" Text="Search" runat="server" ValidationGroup="Submit" OnClick="btnSearch_Click" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px; height: 34px; padding-top: 2px;" />
+                                    </div>--%>
+                                </div>
+                                <%--<div style="text-align: center;">
+                    <asp:LinkButton ID="LinkButton1" OnClick="LinkButton1_Click" runat="server">link to apply new intimation for existing Inspection</asp:LinkButton>
+                </div>--%>
+                                <div>
+                                    <div class="card" id="grid" runat="server" visible="false" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
+                                        <asp:GridView class="table-responsive table table-striped" ID="GridView1" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" runat="server" DataKeyNames="Id" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
+                                            AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                                            <PagerStyle CssClass="pagination-ys" />
+                                            <Columns>
+                                                <asp:TemplateField ItemStyle-HorizontalAlign="left" ItemStyle-VerticalAlign="Middle">
+                                                    <HeaderTemplate>
+                                                        <asp:CheckBox ID="chkSelectAll" runat="server" Style="text-align: left !important;" />
+                                                    </HeaderTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:CheckBox ID="CheckBox1" runat="server" HorizontalAlign="center" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="SNo">
+                                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                    <ItemStyle Width="5%" />
+                                                    <ItemTemplate>
+                                                        <%#Container.DataItemIndex+1 %>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="IntimationId" HeaderText="Intimation Id">
+                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Id" HeaderText="Inspection Id">
+                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="TypeOf" HeaderText="Installation Type">
+                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Capacity" HeaderText="Capacity">
+                                                    <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                </asp:BoundField>
+                                                <asp:TemplateField HeaderText="TestReportId">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="lnkTestReportId" runat="server" Text='<%# Eval("TestRportId") %>' CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>'></asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
+                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="InspectionDate" HeaderText="Inspection Date">
+                                                    <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="InspectionDueDate" HeaderText="Due Date">
+                                                    <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Numberofdays" HeaderText="Remaining days">
+                                                    <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Voltage" HeaderText="Voltage">
+                                                    <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="center" Width="12%" />
+                                                </asp:BoundField>
+                                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("TypeOf") %>'></asp:Label>
+                                                        <asp:Label ID="LblTestReportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
+                                                        <asp:Label ID="LblInspectionDate" runat="server" Text='<%#Eval("InspectionDate") %>'></asp:Label>
+                                                        <asp:Label ID="LblInspectionDueDate" runat="server" Text='<%#Eval("InspectionDueDate") %>'></asp:Label>
+                                                        <asp:Label ID="LblNumberofdays" runat="server" Text='<%#Eval("Numberofdays") %>'></asp:Label>
+                                                        <asp:Label ID="LblVoltage" runat="server" Text='<%#Eval("Voltage") %>'></asp:Label>
+                                                        <asp:Label ID="LblCapacity" runat="server" Text='<%#Eval("Capacity") %>'></asp:Label>
+                                                        <asp:Label ID="LblAddress" runat="server" Text='<%#Eval("Address") %>'></asp:Label>
+                                                        <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                                                        <asp:Label ID="LblDivision" runat="server" Text='<%#Eval("Division") %>'></asp:Label>
+                                                        <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label>
+                                                        <asp:Label ID="LblCount" runat="server" Text='<%#Eval("number") %>'></asp:Label>
+                                                        <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
+                                                        <asp:Label ID="LblCompleteAdress" runat="server" Text='<%#Eval("CompleteAdress") %>'></asp:Label>
+                                                        <asp:Label ID="LblOwnerName" runat="server" Text='<%#Eval("SiteOwnerName") %>'></asp:Label>
+                                                        <asp:Label ID="LblADRESSDistrict" runat="server" Text='<%#Eval("AdressWithoutDistrict") %>'></asp:Label>
+                                                        <%--<asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>--%>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                            <RowStyle ForeColor="#000066" />
+                                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                            <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                        </asp:GridView>
+                                    </div>
+                                    <div class="row" style="margin-top: 25px; margin-bottom: -15px;">
+                                        <div class="col-4" style="margin-top: auto;">
+                                            <%--<asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" OnClientClick="return validateCheckBoxes();" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />--%>
+                                            <%--<asp:Button type="submit" ID="BtnProcess" TabIndex="23" Text="Process" runat="server" OnClick="BtnProcess_Click"  class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />--%>
+                                            <asp:Button type="submit" ID="BtnCart" Visible="false" Text="Add To Cart" runat="server" OnClick="BtnCart_Click" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </ContentTemplate>
-                        <Triggers>
-                            <%-- <asp:AsyncPostBackTrigger ControlID="ddlworktype" EventName="SelectedIndexChanged" />--%>
-                        </Triggers>
-                    </asp:UpdatePanel>
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4" style="text-align: center;">
-                             <asp:Button type="submit" ID="btnBack" Visible="false" OnClick="btnBack_Click" Text="Back" runat="server" class="btn btn-primary mr-2" />
-                            <asp:Button type="submit" ID="btnSubmitInstallation" Visible="false" ValidationGroup="Submit" OnClick="btnSubmitInstallation_Click" Text="Submit" runat="server" UseSubmitBehavior="false" class="btn btn-primary mr-2" />
+                            <asp:HiddenField ID="hdnId" runat="server" />
+                            <asp:HiddenField ID="hdnId2" runat="server" />
+                            <div>
+                            </div>
                         </div>
-                        <div class="col-md-4"></div>
-                    </div>
-                    <asp:HiddenField ID="HiddenField1" runat="server" />
-                    <asp:HiddenField ID="HiddenField2" runat="server" />
-                    <div>
                     </div>
                 </div>
             </div>
-            <div id="DivExistingInspectionRequest" visible="true" runat="server">
+            <div id="DivExistingInspectionRequest" visible="true" runat="server" style="padding-left: 20px; padding-right: 20px;">
                 <div class="card-body" style="padding-top: 0px !important;">
                     <div class="row">
                         <div class="col-md-12">
@@ -707,201 +545,334 @@
                     </div>
                 </div>
             </div>
-            <div id="DivPeriodicRenewal" visible="true" runat="server">
-                <div class="card-body">
+            <div id="DivCreateIntimation" visible="true" runat="server" style="padding-left: 40px; padding-right: 40px;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h7 class="card-title fw-semibold mb-4" id="maincard">
+                            Provide Existing Installation Detail generated Offline
+                        </h7>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4" style="text-align: center;">
+                        <label id="Label1" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                            Data Updated Successfully !!!.
+                        </label>
+                        <label id="Label2" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                            Data Saved Successfully !!!.
+                        </label>
+                    </div>
+                </div>
+                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 10px 0px 10px 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row">
-                        <div class="col-12">
-                            <h7 class="card-title fw-semibold mb-4" id="maincard1">Initiate Peiodic Renewal for Existing Installation</h7>
+                        <div class="col-md-4">
+                            <label>
+                                Do You Have Latest CEI Existing installation Report?<samp style="color: red">* </samp>
+                            </label>
+                            <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+                                <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="No" Value="0" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
+                            </asp:RadioButtonList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="RadioButtonList2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select any Sanction Load</asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-md-8" id="divToShowLabel" visible="false" runat="server" style="margin-top: auto; margin-bottom: auto; text-align: center; font-weight: 700; font-size: 17px; color: red;">
+                            <span>Note:- Please test your existing installation from any authorized 'A' class electrical Contractor of Haryana.</span>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-sm-4" style="text-align: center;">
-                            <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                Data Updated Successfully !!!.
-                            </label>
-                            <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                Data Saved Successfully !!!.
-                            </label>
-                        </div>
-                    </div>
-                    <%--  <asp:UpdatePanel ID="UpdatePanel1" runat="server">--%>
-                    <%-- <contenttemplate>--%>
-                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                        <div class="row" style="margin-bottom: 20px;">
-                            <div class="col-md-10">
-                                <label>
-                                    Select Site Address of Different Installations
-        <samp style="color: red">* </samp>
-                                </label>
-                                <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlAdress" TabIndex="2" runat="server">
-                                </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select any adress" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAdress" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                </div>
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <div class="card-body" id="DivDetails" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                            <div>
+                                <div class="row" style="margin-bottom: 8px;">
+                                    <div class="col-md-12">
+                                        <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Site Owner Information</h7>
+                                    </div>
+                                </div>
+                                <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>
+                                                Applicant Type
+                                            </label>
+                                             <asp:TextBox class="form-control" ID="txtApplicantType" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                          </div>
+                                        <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="true">
+                                            <label for="PanNumber">
+                                                PAN Card
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtPAN" ReadOnly="true" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-4" runat="server" id="DivOtherDepartment" visible="false">
+                                            <label for="TanNumber">
+                                                TAN Number
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtTanNumber" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RegularExpressionValidator ID="revTANNumber" runat="server" ControlToValidate="txtTanNumber" ValidationExpression="[A-Za-z]{4}[0-9]{5}[A-Za-z]" ValidationGroup="Submit"
+                                                ErrorMessage="Enter a valid TAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtTanNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                Electrical Installation For
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtElecticalInstallation" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-4" id="NameUtility" runat="server" visible="false">
+                                            <label>
+                                                Name Of Power Utility
+                                            </label>
+                                          <asp:TextBox class="form-control" ID="txtUtilityName" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-4" id="Wing" runat="server" visible="false">
+                                            <label>
+                                                Wing
+                                            </label>
+                                             <asp:TextBox class="form-control" ID="txtWing" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                       </div>
+                                    </div>
+                                    <div class="row" runat="server" id="PowerUtility" visible="false">
+                                        <div class="col-md-4">
+                                            <label>
+                                                Zone
+                                            </label>
+                                             <asp:TextBox class="form-control" ID="txtZone" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                         </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                Circle<samp style="color: red">* </samp>
+                                            </label>
+                                              <asp:TextBox class="form-control" ID="txtCircle" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                          </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                Division
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtDivision" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                           </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                Sub-Division
+                                            </label>
+                                             <asp:TextBox class="form-control" ID="txtSubDivision" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                          </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4" runat="server" id="UserId" visible="false">
+                                            <label for="UserId">
+                                                UserId
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtUserId" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="row2">
+                                        <div class="col-md-4" id="individual" visible="false" runat="server">
+                                            <label for="Name">
+                                                Name of Owner/ Consumer 
+                                            </label>
+                                            <div class="input-box">
+                                                <asp:TextBox class="form-control" ID="txtName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px; box-shadow: none !important;"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" id="agency" visible="false" runat="server">
+                                            <label for="agency">
+                                                Name of Firm/ Org./ Company/ Department<samp style="color: red">* </samp>
+                                            </label>
+                                            <div class="input-box">
+                                                <span class="prefix">M/s.</span>
+                                                <asp:TextBox class="form-control" ID="txtagency" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <label for="Address">
+                                                Address of Site(Preferred As Per Demand Notice of Utility or Electricity Bill)<samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Address</asp:RequiredFieldValidator>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="row3">
+                                        <div class="col-md-4" runat="server">
+                                            <label for="Pin">State</label>
+                                            <asp:TextBox class="form-control" ID="txtState" MaxLength="6" Text="Haryana" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                District<samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDistrict" TabIndex="6" selectionmode="Multiple" Style="width: 100% !important">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator25" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
+                                        <div class="col-md-4" runat="server">
+                                            <label for="Pin">
+                                                PinCode<samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtPin" TabIndex="7" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPin" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Pincode</asp:RequiredFieldValidator>
+                                            <span id="lblPinError" style="color: red"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="Phone">
+                                                Contact Number (Site Owner)<samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" onkeyup="return isvalidphoneno();" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtPhone" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-md-4" runat="server">
+                                            <label for="Email">
+                                                Email<samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtEmail" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtEmail" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Email Id</asp:RequiredFieldValidator>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <%-- <div class="col-md-3">
-                                <label>
-                                    Intimation Wise
-                                </label>
-                                <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlIntimation" TabIndex="2" runat="server">
-                                    
-                                </asp:DropDownList>
-                            </div>--%>
-                            <%--<div class="col-md-4">
-                                <label> 
-                                    Installation Wise
-                                </label>
-                                <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlInstallationType" TabIndex="2" runat="server">
-                                    
-                                </asp:DropDownList>
-                            </div>--%>
-                            <%-- <div class="col-md-3">
-                            <label>
-                                Number Of Delay Days
-                            </label>
-                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlNoOfDays" OnSelectedIndexChanged="ddlNoOfDays_SelectedIndexChanged" TabIndex="2" runat="server">
-                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                <asp:ListItem Text="less than 30 days" Value="1"></asp:ListItem>
-                                <asp:ListItem Text="less than 30 days and greater than 15" Value="2"></asp:ListItem>
-                                <asp:ListItem Text="less than 15 and Expiry" Value="3"></asp:ListItem>
-                            </asp:DropDownList>
-                        </div>
-                        <div class="col-md-3">
-                            <label>
-                                Installation Type
-                            </label>
-                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlInstallationType" OnSelectedIndexChanged="ddlInstallationType_SelectedIndexChanged" TabIndex="2" runat="server">
-                                <asp:ListItem Text="Select" Value="Select"></asp:ListItem>
-                                <asp:ListItem Text="Line" Value="Line"></asp:ListItem>
-                                <asp:ListItem Text="Substation Transformer" Value="Substation Transformer"></asp:ListItem>
-                                <asp:ListItem Text="Generating Set" Value="Generating Set"></asp:ListItem>
-                            </asp:DropDownList>
-                        </div>--%>
-                            <div class="col-1" style="margin-top: auto; padding-left: 0px;">
-
-                                <asp:Button type="submit" ID="btnSearch" TabIndex="23" Text="Search" runat="server" ValidationGroup="Submit" OnClick="btnSearch_Click" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px; height: 34px; padding-top: 2px;" />
+                            <div style="margin-top: 15px;">
+                                <div class="row" style="margin-top: 25px; margin-bottom: 8px;">
+                                    <div class="col-md-12">
+                                        <h7 class="card-title fw-semibold mb-4" style="margin-top: 5%; font-size: 18px !important;">Application Details</h7>
+                                    </div>
+                                </div>
+                                <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>
+                                                Type of Premises<samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlPremises" OnSelectedIndexChanged="ddlPremises_SelectedIndexChanged" selectionmode="Multiple" Style="width: 100% !important">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator14" Text="Please Select Premises Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPremises" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
+                                        <div class="col-md-4" id="OtherPremises" runat="server" visible="false">
+                                            <label for="OtherPremises">
+                                                Other Premises<samp style="color: red"> * </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtOtherPremises" TabIndex="11" MaxLength="40" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtOtherPremises" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Other Premises</asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                Highest Voltage Level of Installation
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" AutoPostBack="true" ID="ddlVoltageLevel" OnSelectedIndexChanged="ddlVoltageLevel_SelectedIndexChanged" runat="server">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>
+                                                Is there any Sanction Load Issued
+                                            </label>
+                                            <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" RepeatDirection="Horizontal">
+                                                <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
+                                                <asp:ListItem Text="No" Value="0" Selected="True" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
+                                            </asp:RadioButtonList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="RadioButtonList2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select any Sanction Load</asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-md-4" id="divSanctionLoad" visible="false" runat="server">
+                                            <label for="Email">
+                                                Input Your Sanction Load
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtSanctionLoad" onkeydown="return preventEnterSubmit(event)" maxlenght="10" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtCapacity" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Total Capacity</asp:RequiredFieldValidator>--%>
+                                        </div>
+                                        <div class="col-md-4" runat="server">
+                                            <label for="Email">
+                                                Total Capacity installed in KVA<samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtCapacity" onkeydown="return preventEnterSubmit(event)" maxlenght="10" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <span id="lblCap" style="color: red"></span>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtCapacity" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Total Capacity</asp:RequiredFieldValidator>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="table-responsive pt-3" id="Installation" runat="server">
+                                                <table class="table table-bordered table-striped">
+                                                    <thead class="table-dark">
+                                                        <tr>
+                                                            <th style="width: 70%;">Installation Type
+                                                            </th>
+                                                            <th style="width: 20%;">No of Installations
+                                                            </th>
+                                                            <th style="width: 10%;"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <div id="installationType2" runat="server">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="col-md-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationType2" Text="Substation Transformer" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-md-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo2" TabIndex="14" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="Max no. of Installations is 25." MaxLength="2" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtinstallationNo2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
+                                                                    </div>
+                                                                </td>
+                                                                <td style="text-align: center !important;">
+                                                                    <asp:ImageButton ID="imgDelete2" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" OnClick="imgDelete2_Click" Height="30" Width="30" runat="server" />
+                                                                </td>
+                                                            </tr>
+                                                        </div>
+                                                        <div id="installationType3" runat="server">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="col-md-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationType3" Text="Generating Set" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div style="margin-left: 15px !important; margin-right: 15px !important;">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo3" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="Max no. of Installations is 25." MaxLength="2" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtinstallationNo3" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
+                                                                    </div>
+                                                                </td>
+                                                                <td style="text-align: center !important;">
+                                                                    <asp:ImageButton ID="imgDelete3" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" OnClick="imgDelete3_Click" Height="30" Width="30" runat="server" /></td>
+                                                            </tr>
+                                                        </div>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <%--   <div style="text-align: center;">
-                            <asp:LinkButton ID="LinkButton1" OnClick="LinkButton1_Click" runat="server">link to apply new intimation for existing Inspection</asp:LinkButton>
-                        </div>--%>
-                        <div>
-
-                            <div class="card" id="grid" runat="server" visible="false" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
-                                <asp:GridView class="table-responsive table table-striped" ID="GridView1" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" runat="server" DataKeyNames="Id" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
-                                    AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
-                                    <PagerStyle CssClass="pagination-ys" />
-                                    <Columns>
-                                        <asp:TemplateField ItemStyle-HorizontalAlign="left" ItemStyle-VerticalAlign="Middle">
-                                            <HeaderTemplate>
-                                                <asp:CheckBox ID="chkSelectAll" runat="server" Style="text-align: left !important;" />
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <asp:CheckBox ID="CheckBox1" runat="server" HorizontalAlign="center" />
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="SNo">
-                                            <HeaderStyle Width="5%" CssClass="headercolor" />
-                                            <ItemStyle Width="5%" />
-                                            <ItemTemplate>
-                                                <%#Container.DataItemIndex+1 %>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-
-                                        <asp:BoundField DataField="IntimationId" HeaderText="Intimation Id">
-                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                        </asp:BoundField>
-                                        <asp:BoundField DataField="Id" HeaderText="Inspection Id">
-                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                        </asp:BoundField>
-
-
-                                        <asp:BoundField DataField="TypeOf" HeaderText="Installation Type">
-                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                        </asp:BoundField>
-                                        <%-- <asp:BoundField DataField="number" HeaderText="Number of Line">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor leftalign" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="leftalign" />
-                            </asp:BoundField>--%>
-                                        <asp:TemplateField HeaderText="TestReportId">
-                                            <ItemTemplate>
-                                                <asp:LinkButton ID="lnkTestReportId" runat="server" Text='<%# Eval("TestRportId") %>' CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>'></asp:LinkButton>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
-                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                        </asp:BoundField>
-                                        <asp:BoundField DataField="InspectionDate" HeaderText="Inspection Date">
-                                            <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center" Width="12%" />
-                                        </asp:BoundField>
-                                        <asp:BoundField DataField="InspectionDueDate" HeaderText="Due Date">
-                                            <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center" Width="12%" />
-                                        </asp:BoundField>
-                                        <asp:BoundField DataField="Numberofdays" HeaderText="Remaining days">
-                                            <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center" Width="12%" />
-                                        </asp:BoundField>
-                                        <asp:BoundField DataField="Voltage" HeaderText="Voltage">
-                                            <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center" Width="12%" />
-                                        </asp:BoundField>
-                                        <asp:BoundField DataField="Capacity" HeaderText="Capacity">
-                                            <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center" Width="12%" />
-                                        </asp:BoundField>
-                                        <asp:TemplateField HeaderText="Id" Visible="False">
-                                            <ItemTemplate>
-                                                <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("TypeOf") %>'></asp:Label>
-                                                <asp:Label ID="LblTestReportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
-                                                <asp:Label ID="LblInspectionDate" runat="server" Text='<%#Eval("InspectionDate") %>'></asp:Label>
-                                                <asp:Label ID="LblInspectionDueDate" runat="server" Text='<%#Eval("InspectionDueDate") %>'></asp:Label>
-                                                <asp:Label ID="LblNumberofdays" runat="server" Text='<%#Eval("Numberofdays") %>'></asp:Label>
-                                                <asp:Label ID="LblVoltage" runat="server" Text='<%#Eval("Voltage") %>'></asp:Label>
-                                                <asp:Label ID="LblCapacity" runat="server" Text='<%#Eval("Capacity") %>'></asp:Label>
-                                                <asp:Label ID="LblAddress" runat="server" Text='<%#Eval("Address") %>'></asp:Label>
-
-                                                <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
-                                                <asp:Label ID="LblDivision" runat="server" Text='<%#Eval("Division") %>'></asp:Label>
-                                                <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label>
-                                                <asp:Label ID="LblCount" runat="server" Text='<%#Eval("number") %>'></asp:Label>
-                                                <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
-                                                <asp:Label ID="LblCompleteAdress" runat="server" Text='<%#Eval("CompleteAdress") %>'></asp:Label>
-                                                <asp:Label ID="LblOwnerName" runat="server" Text='<%#Eval("SiteOwnerName") %>'></asp:Label>
-                                                <asp:Label ID="LblADRESSDistrict" runat="server" Text='<%#Eval("AdressWithoutDistrict") %>'></asp:Label>
-                                                <%--<asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>--%>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                    </Columns>
-                                    <FooterStyle BackColor="White" ForeColor="#000066" />
-                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                    <RowStyle ForeColor="#000066" />
-                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                </asp:GridView>
-                            </div>
-                            <div class="row" style="margin-top: 25px; margin-bottom: -15px;">
-                                <div class="col-4" style="margin-top: auto;">
-                                    <%--<asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" OnClientClick="return validateCheckBoxes();" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />--%>
-                                    <%--<asp:Button type="submit" ID="BtnProcess" TabIndex="23" Text="Process" runat="server" OnClick="BtnProcess_Click"  class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />--%>
-                                    <asp:Button type="submit" ID="BtnCart" Visible="false" Text="Add To Cart" runat="server" OnClick="BtnCart_Click" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
+                            <div class="row" style="margin-top: -10px;">
+                                <div class="col-md-4" id="InstallationType" runat="server" visible="false">
+                                    <label>
+                                        Select Installation Type<samp style="color: red">* </samp>
+                                    </label>
+                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlWorkDetail" runat="server">
+                                    </asp:DropDownList>
+                                    <asp:TextBox class="form-control" ID="WorkDetail" autocomplete="off" onkeydown="return preventEnterSubmit(event)" Visible="false" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />--%>
                                 </div>
                             </div>
                         </div>
+                    </ContentTemplate>
+                  </asp:UpdatePanel>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4" style="text-align: center;">
+                        <asp:Button type="submit" ID="btnBack" Visible="false" OnClick="btnBack_Click" Text="Back" runat="server" class="btn btn-primary mr-2" />
+                         <asp:Button type="submit" ID="btnReset" Visible="false" OnClick="btnReset_Click" Text="Reset" runat="server" class="btn btn-primary mr-2" />
+                        <asp:Button type="submit" ID="btnSubmitInstallation" Visible="false" ValidationGroup="Submit" OnClick="btnSubmitInstallation_Click" Text="Submit" runat="server" UseSubmitBehavior="false" class="btn btn-primary mr-2" />
                     </div>
-                    <asp:HiddenField ID="hdnId" runat="server" />
-                    <asp:HiddenField ID="hdnId2" runat="server" />
-                    <div>
-                    </div>
+                    <div class="col-md-4"></div>
                 </div>
+                <asp:HiddenField ID="HiddenField1" runat="server" />
+                <asp:HiddenField ID="HiddenField2" runat="server" />
             </div>
         </div>
     </div>
@@ -935,6 +906,50 @@
             if (confirm('User Created Successfully User Id And password will be sent Via Text Mesaage.')) {
                 window.location.href = "/Contractor/Work_Intimation.aspx";
             } else {
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function ValidateEmail() {
+
+            var email1 = document.getElementById("<%=txtEmail.ClientID %>");
+            email = email1.value;
+            var lblError = document.getElementById("lblError");
+            lblError.innerHTML = "";
+            var expr = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+            if (email == "") {
+                // lblError.innerHTML = "Please Enter Email" + "\n";
+                return false;
+            }
+            else if (expr.test(email)) {
+                lblError.innerHTML = "";
+                return true;
+            }
+            else {
+                lblError.innerHTML = "Invalid email address.ex:abc@xyz.com" + "\n";
+                return false;
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function isvalidphoneno() {
+
+            var Phone1 = document.getElementById("<%=txtPhone.ClientID %>");
+            phoneNo = Phone1.value;
+            var lblErrorContect = document.getElementById("lblErrorContect");
+            lblErrorContect.innerHTML = "";
+            var expr = /^[6-9]\d{9}$/;
+            if (phoneNo == "") {
+                lblErrorContect.innerHTML = "Please Enter Contact Number" + "\n";
+                return false;
+            }
+            else if (expr.test(phoneNo)) {
+                lblErrorContect.innerHTML = "";
+                return true;
+            }
+            else {
+                lblErrorContect.innerHTML = "Invalid Contact Number" + "\n";
+                return false;
             }
         }
     </script>

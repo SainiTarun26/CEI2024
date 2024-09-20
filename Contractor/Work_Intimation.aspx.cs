@@ -24,6 +24,7 @@ namespace CEIHaryana.Contractor
         string REID = string.Empty;
         string TypeOfInspection = string.Empty;
         //List<string> SelectedSupervisor = new List<string>();
+        private static string UserID;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -329,12 +330,12 @@ namespace CEIHaryana.Contractor
                         agency.Visible = true;
                         individual.Visible = false;
                         txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
-                        
+                        txtagency.ReadOnly = true;
                     }
                     else if (contractorType == "Individual Person")
                     {
                         txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
-                        
+                        txtName.ReadOnly = true;
                     }                    
                 }
                 else
@@ -343,8 +344,8 @@ namespace CEIHaryana.Contractor
                     ddlworktype.Enabled = true;
                     txtagency.Text = "";
                     txtName.Text = ""; 
-                    txtagency.Enabled = true;
-                    txtName.Enabled = true;
+                    txtagency.ReadOnly = false;
+                    txtName.ReadOnly = false;
                     //Page.ClientScript.RegisterStartupScript(GetType(), "panNotFound", "alert('PAN card not found in the database.');", true);
                 }
 
@@ -364,14 +365,12 @@ namespace CEIHaryana.Contractor
                     individual.Visible = true;
                     agency.Visible = false;
                     txtagency.Text = "";
-                    txtagency.Enabled = true;
                 }
                 else if (ddlworktype.SelectedValue == "2")
                 {
                     individual.Visible = false;
                     agency.Visible = true;
                     txtName.Text = "";
-                    txtName.Enabled = true;
                 }
                 else
                 {
@@ -457,8 +456,10 @@ namespace CEIHaryana.Contractor
             try
             {
 
+                UserID = Session["ContractorID"].ToString();
                 DataSet dsVoltage = new DataSet();
-                dsVoltage = CEI.GetddlVoltageLevel();
+                //dsVoltage = CEI.GetddlVoltageLevel();
+                dsVoltage = CEI.GetddlVoltageLevelForContractorIntimation(UserID);
                 ddlVoltageLevel.DataSource = dsVoltage;
                 ddlVoltageLevel.DataTextField = "Voltagelevel";
                 ddlVoltageLevel.DataValueField = "VoltageID";
@@ -527,7 +528,7 @@ namespace CEIHaryana.Contractor
                     connection.Open();
                     string Pan_TanNumber = "";
                     bool panExists = false;
-                    string SiteOwnerId = "";
+
 
                     Debug.WriteLine("Before checking visibility and setting Pan_TanNumber");
                     if (DivPancard_TanNo.Visible || DivOtherDepartment.Visible)
@@ -536,14 +537,26 @@ namespace CEIHaryana.Contractor
                         if (DivPancard_TanNo.Visible && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
                         {
                             Pan_TanNumber = txtPAN.Text.Trim();
-                            SiteOwnerId = txtPAN.Text.Trim();
                         }
                         else if (DivOtherDepartment.Visible && !string.IsNullOrEmpty(txtTanNumber.Text.Trim()))
                         {
                             Pan_TanNumber = txtTanNumber.Text.Trim();
-                            SiteOwnerId = txtTanNumber.Text.Trim();
                         }
-                        
+                        //else if (PowerUtility.Visible)
+                        //{
+                        //    if (string.IsNullOrEmpty(txtUserId.Text.Trim()))
+                        //    {
+                        //        string email = txtEmail.Text.Trim();
+                        //        if (email.Contains("@"))
+                        //        {
+                        //            Pan_TanNumber = email.Split('@')[0];
+                        //        }
+                        //    }
+                        //    else
+                        //    {
+                        //        Pan_TanNumber = txtUserId.Text.Trim();
+                        //    }
+                        //}
 
 
                         if (string.IsNullOrEmpty(Pan_TanNumber))
@@ -557,22 +570,6 @@ namespace CEIHaryana.Contractor
                             panExists = true;
                         }
 
-                    }
-                    else if (PowerUtility.Visible)
-                    {
-                        //if (string.IsNullOrEmpty(txtUserId.Text.Trim()))
-                        //{
-                        //    string email = txtEmail.Text.Trim();
-                        //    if (email.Contains("@"))
-                        //    {
-                        //        Pan_TanNumber = email.Split('@')[0];//txtUserId
-                        //    }
-                        //}
-                        SiteOwnerId = Session["UserId"].ToString();
-                        //else
-                        //{
-                        //    Pan_TanNumber = txtUserId.Text.Trim();
-                        //}
                     }
 
                     transaction = connection.BeginTransaction();
@@ -667,7 +664,8 @@ namespace CEIHaryana.Contractor
                         txtPin.Text,
                         ddlPremises.SelectedItem?.ToString(),
                         txtOtherPremises.Text,
-                        ddlVoltageLevel.SelectedItem?.ToString(),
+                        //ddlVoltageLevel.SelectedItem?.ToString(),
+                        ddlVoltageLevel.SelectedValue.ToString(),
                         Pan_TanNumber,
                         txtinstallationType1.Text,
                         txtinstallationNo1.Text,
@@ -686,7 +684,6 @@ namespace CEIHaryana.Contractor
                         RadioButtonList2.SelectedValue.ToString(),
                         ddlInspectionType.SelectedValue.ToString(),
                         txtCapacity.Text.Trim(),
-                        SiteOwnerId,
                         transaction);
 
                     TypeOfInspection = ddlInspectionType.SelectedValue.ToString();
@@ -953,10 +950,6 @@ namespace CEIHaryana.Contractor
                 PowerUtility.Visible = false;
                 NameUtility.Visible = false;
                 Wing.Visible = false;
-                txtagency.Enabled = true;
-                txtName.Enabled = true;
-
-
             }
             else if (ddlApplicantType.SelectedValue == "AT002")
             {
@@ -968,10 +961,6 @@ namespace CEIHaryana.Contractor
                 //DivPoweUtilityWing.Visible = true;
                 txtTanNumber.Text = "";
                 txtPAN.Text = "";
-                
-
-                //txtagency.ReadOnly = false;
-                //txtagency.ReadOnly = false;
             }
             else if (ddlApplicantType.SelectedValue == "AT003")
             {
@@ -981,8 +970,6 @@ namespace CEIHaryana.Contractor
                 Wing.Visible = false;
                 DivOtherDepartment.Visible = true;
                 txtPAN.Text = "";
-                txtagency.Enabled = true;
-                txtName.Enabled = true;
             }
             ddlPoweUtility.SelectedValue = "0";
             DdlWing.SelectedValue = "0";
@@ -990,11 +977,7 @@ namespace CEIHaryana.Contractor
             DdlCircle.SelectedValue = "0";
             DdlDivision.SelectedValue = "0";
             DdlSubDivision.SelectedValue = "0";
-            txtEmail.Text = "";
-            txtagency.Text = "";
-            txtName.Text = "";
-          
-          
+
         }
         private void ddlPoweUtilityBind()
         {
@@ -1394,18 +1377,15 @@ namespace CEIHaryana.Contractor
             ds = CEI.GetSubDivisionEmail(id);
             txtPhone.Text = ds.Tables[0].Rows[0]["Mobile"].ToString();
             txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
-            Session["UserId"] = ds.Tables[0].Rows[0]["UserId"].ToString();
+            //txtUserId.Text = ds.Tables[0].Rows[0]["UserId"].ToString();
             if (individual.Visible == true)
             {
                 txtName.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();
-                txtName.Enabled = false;
             }
             else
             {
                 txtagency.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();
-                txtagency.Enabled = false;
             }
-           
         }
     }
 }

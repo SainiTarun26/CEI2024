@@ -62,7 +62,7 @@
     <script type="text/javascript">
         function validatePAN() {
             var panTextBox = document.getElementById('<%= txtPAN.ClientID %>');
-           var panValidator = document.getElementById('<%= revPAN.ClientID %>');
+            var panValidator = document.getElementById('<%= revPAN.ClientID %>');
 
             var panValue = panTextBox.value.toUpperCase(); // Convert to uppercase here
 
@@ -293,10 +293,6 @@
             .input-box:focus-within {
                 border-color: #777;
             }
-            input#ContentPlaceHolder1_txtEmail {
-    width: 100%;
-    margin-left: 0px !important;
-}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -346,7 +342,7 @@
                                     </div>
                                 </div>
                                 <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-                                   
+
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label>
@@ -363,7 +359,7 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlApplicantType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
-                                       
+
                                         <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="false">
                                             <label for="PanNumber">
                                                 PAN Card
@@ -385,7 +381,7 @@
                                                 ErrorMessage="Enter a valid TAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtTanNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                         </div>
-                                         <div class="col-md-4">
+                                        <div class="col-md-4">
                                             <label>
                                                 Electrical Installation For<samp style="color: red"> * </samp>
                                             </label>
@@ -396,7 +392,7 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="Please Select Work Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlworktype" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
-                                              <div class="col-md-4" id="NameUtility" runat="server" visible="false">
+                                        <div class="col-md-4" id="NameUtility" runat="server" visible="false">
                                             <label>
                                                 Name Of Power Utility
                                                 <samp style="color: red">* </samp>
@@ -416,7 +412,7 @@
                                         </div>
                                     </div>
                                     <div class="row" runat="server" id="PowerUtility" visible="false">
-                                  
+
                                         <div class="col-md-4">
                                             <label>
                                                 Zone
@@ -454,15 +450,15 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator29" Text="Please Select Sub-Division" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlSubDivision" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
                                     </div>
-                                      
+
                                     <div class="row">
-                                          <div class="col-md-4" runat="server" id="UserId" visible="false">
+                                        <div class="col-md-4" runat="server" id="UserId" visible="false">
                                             <label for="UserId">
                                                 UserId
                                             <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtUserId" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" OnTextChanged="txtPAN_TextChanged" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            
+
                                         </div>
 
 
@@ -504,8 +500,6 @@
                                                 </svg>
                                             </span>
                                         </div>--%>
-
-                                        
                                     </div>
                                     <div class="row" id="row2">
                                         <div class="col-md-4" id="individual" runat="server">
@@ -616,8 +610,8 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
-                                        </div>
-                                         <div class="row">
+                                    </div>
+                                    <div class="row">
                                         <div class="col-md-4">
                                             <label>
                                                 Is there any Sanction Load Issue
@@ -630,7 +624,7 @@
                                             </asp:RadioButtonList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="RadioButtonList2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select any Sanction Load</asp:RequiredFieldValidator>
                                         </div>
-                                         <div class="col-md-4" runat="server">
+                                        <div class="col-md-4" runat="server">
                                             <label for="Email">
                                                 Total Capacity to be installed in KVA (Capacity of Substation Transformer & Generating Set)
                                                     <samp style="color: red">* </samp>
@@ -663,10 +657,10 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="col-md-12">
-                                                                       
+
                                                                         <asp:TextBox class="form-control" ID="txtinstallationNo1" TabIndex="13" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="Max no. of Installations is 25." MaxLength="2" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtinstallationNo1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
-                                                                       <%--  <p style="color:red; margin-bottom: 0px; margin-top: -12px; font-weight: 600;
+                                                                        <%--  <p style="color:red; margin-bottom: 0px; margin-top: -12px; font-weight: 600;
     font-size: 12px;">Max no. of Installations is only 25.</p>--%>
                                                                     </div>
                                                                 </td>
@@ -822,12 +816,12 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </ContentTemplate>
-                     <Triggers>
-               <asp:AsyncPostBackTrigger ControlID="ddlworktype" EventName="SelectedIndexChanged" />
-        
-    </Triggers>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="ddlworktype" EventName="SelectedIndexChanged" />
+
+                    </Triggers>
                 </asp:UpdatePanel>
                 <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Work/Testing Schedule</h7>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -914,6 +908,10 @@
                                                     <ItemStyle HorizontalAlign="center" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="Name" HeaderText="Name">
+                                                    <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
+                                                    <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
                                                     <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
                                                     <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
                                                 </asp:BoundField>
@@ -1223,7 +1221,7 @@
             }
         }
     </script>
-   <%-- <script type="text/javascript">
+    <%-- <script type="text/javascript">
         function restrictInput(event) {
             var allowedKeys = [49, 50, 51, 52, 53]; // ASCII codes for 1, 2, 3, 4, 5
             var keyCode = event.which || event.keyCode;
@@ -1311,12 +1309,12 @@
         document.addEventListener('DOMContentLoaded', function () {
             var form = document.getElementById('<%= this.Page.Form.ClientID %>');
 
-        if (form) {
-            form.onsubmit = function () {
-                //return validateTANNumber();
-            };
-        }
-    });
+            if (form) {
+                form.onsubmit = function () {
+                    //return validateTANNumber();
+                };
+            }
+        });
     </script>
     <script type="text/javascript">
         function validateInput(event) {

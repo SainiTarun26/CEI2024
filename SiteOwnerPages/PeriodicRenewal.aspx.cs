@@ -12,6 +12,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Media;
+using System.Xml.Linq;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.SiteOwnerPages
@@ -50,6 +52,7 @@ namespace CEIHaryana.SiteOwnerPages
                     DivDetails.Visible = true;
                     btnSubmitInstallation.Visible = true;
                     btnBack.Visible = true;
+                    btnReset.Visible = true;
                     DivExistingInspectionRequest.Visible = false;
                     DivPeriodicRenewal.Visible = false;
                     GetDetails();
@@ -61,8 +64,8 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     divToShowLabel.Visible = true;
                 }
-                else 
-                { 
+                else
+                {
                     DivDetails.Visible = false;
                     btnSubmitInstallation.Visible = false;
                     //DivExistingInspectionRequest.Visible = true;
@@ -117,12 +120,12 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch { }
         }
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            grid.Visible = true;
-            GridViewBind();
-            //BtnCart.Visible = true;
-        }
+        //////protected void btnSearch_Click(object sender, EventArgs e)
+        //////{
+        //////    grid.Visible = true;
+        //////    GridViewBind();
+        //////    //BtnCart.Visible = true;
+        //////}
         public void GridViewBind()
         {
             string id = Session["SiteOwnerId"].ToString();
@@ -456,6 +459,11 @@ namespace CEIHaryana.SiteOwnerPages
         {
             Response.Redirect("PeriodicRenewal.aspx", false);
         }
+        protected void ddlAdress_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            grid.Visible = true;
+            GridViewBind();
+        }
         #endregion
 
         #region List Of Existing Installation
@@ -579,6 +587,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                 txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                 txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+               
                 if (ApplicantType == "Private/Personal Installation")
                 {
                     PowerUtility.Visible = false;
@@ -611,8 +620,8 @@ namespace CEIHaryana.SiteOwnerPages
                 txtDivision.Text = ds.Tables[0].Rows[0]["DivisionName"].ToString();
                 txtSubDivision.Text = ds.Tables[0].Rows[0]["SubDivisionName"].ToString();
                 Password = ds.Tables[0].Rows[0]["SiteOwnerPassword"].ToString();
-                txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
-                txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+                //////txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+                //////txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
             }
         }
         protected void ddlPremises_SelectedIndexChanged(object sender, EventArgs e)
@@ -664,8 +673,6 @@ namespace CEIHaryana.SiteOwnerPages
                             Pan_TanNumber = txtUserId.Text.Trim();
                         }
                     }
-
-                    // Pan/TanNumber validation
                     if (string.IsNullOrEmpty(Pan_TanNumber))
                     {
                         throw new Exception("Pan/Tan Number cannot be empty.");
@@ -675,8 +682,16 @@ namespace CEIHaryana.SiteOwnerPages
                     CEI.IntimationDataInsertionBySiteowner(
                         Id,
                         txtApplicantType.Text.Trim(),
+                        /*ddlApplicantType.SelectedItem?.ToString(),*/////------------------------------------
                         ApplicantCode,
+                        //ddlApplicantType.SelectedValue?.ToString(),
                         txtElecticalInstallation.Text.Trim(),
+                        //ddlPoweUtility.SelectedItem?.ToString(),
+                        //DdlWing.SelectedItem?.ToString(),
+                        //DdlZone.SelectedItem?.ToString(),
+                        //DdlCircle.SelectedItem?.ToString(),
+                        //DdlDivision.SelectedItem?.ToString(), 
+                        //DdlSubDivision.SelectedItem?.ToString(),
                         txtUtilityName.Text.Trim(),
                         txtWing.Text.Trim(),
                         txtZone.Text.Trim(),
@@ -749,7 +764,6 @@ namespace CEIHaryana.SiteOwnerPages
             txtAddress.Text = "";
             ddlDistrict.SelectedValue = "0";
             txtPin.Text = "";
-            ddlPremises.SelectedValue = "0";
             txtOtherPremises.Text = "";
             ddlVoltageLevel.SelectedValue = "0";
             RadioButtonList2.ClearSelection();
@@ -758,7 +772,11 @@ namespace CEIHaryana.SiteOwnerPages
             txtinstallationNo2.Text = "";
             txtinstallationNo3.Text = "";
             divSanctionLoad.Visible = false;
-        }              
+        }
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -828,5 +846,7 @@ namespace CEIHaryana.SiteOwnerPages
             catch (Exception ex) { }
         }
     }
+
+
     #endregion
 }

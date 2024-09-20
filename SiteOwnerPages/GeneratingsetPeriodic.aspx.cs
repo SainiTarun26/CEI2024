@@ -101,5 +101,30 @@ namespace CEIHaryana.SiteOwnerPages
             txtMake.Text = ""; 
             ddlPlantType.SelectedValue = "0"; 
         }
+
+        protected void ddlCapacity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlGeneratingSetType.Items.Clear();
+
+
+            ddlGeneratingSetType.Items.Add(new ListItem("Select", "0"));
+
+
+            if (ddlCapacity.SelectedValue == "3" || ddlCapacity.SelectedValue == "4")
+            {
+                ddlGeneratingSetType.Items.Add(new ListItem("Solar Panel", "3"));
+                ddlGeneratingSetType.SelectedValue = "3";
+                ddlGeneratingSetType.SelectedValue = "0";
+            }
+            else
+            {
+
+                ddlGeneratingSetType.Items.Add(new ListItem("Diesel Engine", "1"));
+                ddlGeneratingSetType.Items.Add(new ListItem("Gas Engine", "2"));
+                ddlGeneratingSetType.Items.Add(new ListItem("Bio Fuel", "4"));
+                ddlGeneratingSetType.SelectedValue = "0";
+            }
+
+        }
     }
 }
