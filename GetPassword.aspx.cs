@@ -37,8 +37,9 @@ namespace CEIHaryana
                 
                 Contact.Value = dt.Rows[0]["ContactNo"].ToString();
                 Email.Value= dt.Rows[0]["Email"].ToString();
-                Password.Value = dt.Rows[0]["Password"].ToString();
-               // UserId = dt.Rows[0]["Licence"].ToString();
+                // Password.Value = dt.Rows[0]["Password"].ToString();
+                 Session["Password"]= dt.Rows[0]["Password"].ToString();
+                // UserId = dt.Rows[0]["Licence"].ToString();
 
                 if (Categary != "Siteowner")
                 {
@@ -155,9 +156,9 @@ namespace CEIHaryana
         {
             try
             {
-                if (txtOTPVerify.Text == otp)
+                if (txtOTPVerify.Text == otp && Convert.ToString(Session["Amount"]) != null)
                 {
-                string password = Password.Value.ToString();
+                string password = Convert.ToString(Session["Password"]);  //Password.Value.ToString();
                 string Email = txtEmailId.Text.Trim();
                 string Subject = "Password Revieved";
                 string Message = $"Your Password is :{password}";
@@ -166,6 +167,7 @@ namespace CEIHaryana
                 CreditionalCard.Visible = true;
                 CardPersnalDetail.Visible = false;
                 CardSearchDetails.Visible = false;
+                Session["Password"] ="";
                 }
                 else
                 {

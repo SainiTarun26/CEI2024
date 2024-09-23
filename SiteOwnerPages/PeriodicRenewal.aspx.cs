@@ -473,17 +473,19 @@ namespace CEIHaryana.SiteOwnerPages
 
             DataSet ds = new DataSet();
             ds = CEI.ExistingInspectionData(Id);
-            if (ds.Tables.Count > 0)
+
+            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 GridView2.DataSource = ds;
                 GridView2.DataBind();
             }
             else
             {
+                DivExistingInspectionRequest.Visible = false;
                 GridView2.DataSource = null;
                 GridView2.DataBind();
-                string script = "alert(\"No Record Found\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                //string script = "alert(\"No Record Found\");";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             ds.Dispose();
         }
@@ -521,7 +523,8 @@ namespace CEIHaryana.SiteOwnerPages
             try
             {
                 DataSet dsVoltage = new DataSet();
-                dsVoltage = CEI.GetddlVoltageLevel();
+                //dsVoltage = CEI.GetddlVoltageLevel();
+                dsVoltage = CEI.GetVoltageLevelForSiteownerIntimation(); 
                 ddlVoltageLevel.DataSource = dsVoltage;
                 ddlVoltageLevel.DataTextField = "Voltagelevel";
                 ddlVoltageLevel.DataValueField = "VoltageID";
@@ -620,8 +623,8 @@ namespace CEIHaryana.SiteOwnerPages
                 txtDivision.Text = ds.Tables[0].Rows[0]["DivisionName"].ToString();
                 txtSubDivision.Text = ds.Tables[0].Rows[0]["SubDivisionName"].ToString();
                 Password = ds.Tables[0].Rows[0]["SiteOwnerPassword"].ToString();
-                //////txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
-                //////txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+                txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+                txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
             }
         }
         protected void ddlPremises_SelectedIndexChanged(object sender, EventArgs e)
@@ -682,16 +685,16 @@ namespace CEIHaryana.SiteOwnerPages
                     CEI.IntimationDataInsertionBySiteowner(
                         Id,
                         txtApplicantType.Text.Trim(),
-                        /*ddlApplicantType.SelectedItem?.ToString(),*/////------------------------------------
+                        /*ddlApplicantType.SelectedItem.ToString(),*/////------------------------------------
                         ApplicantCode,
-                        //ddlApplicantType.SelectedValue?.ToString(),
+                        //ddlApplicantType.SelectedValue.ToString(),
                         txtElecticalInstallation.Text.Trim(),
-                        //ddlPoweUtility.SelectedItem?.ToString(),
-                        //DdlWing.SelectedItem?.ToString(),
-                        //DdlZone.SelectedItem?.ToString(),
-                        //DdlCircle.SelectedItem?.ToString(),
-                        //DdlDivision.SelectedItem?.ToString(), 
-                        //DdlSubDivision.SelectedItem?.ToString(),
+                        //ddlPoweUtility.SelectedItem.ToString(),
+                        //DdlWing.SelectedItem.ToString(),
+                        //DdlZone.SelectedItem.ToString(),
+                        //DdlCircle.SelectedItem.ToString(),
+                        //DdlDivision.SelectedItem.ToString(), 
+                        //DdlSubDivision.SelectedItem.ToString(),
                         txtUtilityName.Text.Trim(),
                         txtWing.Text.Trim(),
                         txtZone.Text.Trim(),
@@ -702,11 +705,11 @@ namespace CEIHaryana.SiteOwnerPages
                         txtagency.Text.Trim(),
                         txtPhone.Text.Trim(),
                         txtAddress.Text.Trim(),
-                        ddlDistrict.SelectedItem?.ToString(),
+                        ddlDistrict.SelectedItem.ToString(),
                         txtPin.Text.Trim(),
-                        ddlPremises.SelectedItem?.ToString(),
+                        ddlPremises.SelectedItem.ToString(),
                         txtOtherPremises.Text.Trim(),
-                        ddlVoltageLevel.SelectedItem?.ToString(),
+                        ddlVoltageLevel.SelectedValue.ToString(),
                         Pan_TanNumber,
                         txtinstallationType2.Text.Trim(),
                         txtinstallationNo2.Text.Trim(),

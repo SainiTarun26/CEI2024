@@ -5759,6 +5759,11 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetVoltageLevelForContractorIntimation", ID);
         }
+
+        public DataSet GetVoltageLevelForSiteownerIntimation()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetVoltageLevelForSiteownerIntimation");
+        }
     }
 }
 

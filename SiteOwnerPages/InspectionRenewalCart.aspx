@@ -229,6 +229,9 @@
         input, optgroup, select, textarea {
             height: 20px;
         }
+        label {
+    font-size: 0.875rem;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -242,9 +245,9 @@
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row" style="margin-bottom: 20px;">
-                        <div class="col-md-4">
+                        <div class="col-md-11">
                             <label>
-                                Address Wise<samp style="color: red">* </samp>
+                               Select Site Address of Different Installations<samp style="color: red">* </samp>
                             </label>
                             <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlAddress" OnSelectedIndexChanged="ddlAddress_SelectedIndexChanged" runat="server"></asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Address" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAddress" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />

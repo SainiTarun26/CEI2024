@@ -278,8 +278,11 @@
         }
 
         h7#maincard {
-            font-size: 19px !important;
+            font-size: 18px !important;
         }
+        label {
+    font-size: 0.875rem;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -290,7 +293,7 @@
                 <div class="card-body" style="padding-bottom: 0px !important;">
                     <div class="row">
                         <div class="col-md-12" style="text-align: center;">
-                            <h6 class="card-title fw-semibold mb-4" id="maincard">Periodic Renewal
+                            <h6 class="card-title fw-semibold mb-4" id="maincard" style="font-size:22px;">Periodic Renewal
                             </h6>
                         </div>
                     </div>
@@ -298,7 +301,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
-                                    <h7 class="card-title fw-semibold mb-4" id="maincard1">Initiate Peiodic Renewal for Existing Installation</h7>
+                                    <h7 class="card-title fw-semibold mb-4" id="maincard1" style="font-size: 18px !important;">Initiate Peiodic Renewal for Existing Installation</h7>
                                 </div>
                             </div>
                             <div class="row">
@@ -413,10 +416,10 @@
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="InspectionDate" HeaderText="Inspection Date">
+                                              <%--  <asp:BoundField DataField="InspectionDate" HeaderText="Inspection Date">
                                                     <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="center" Width="12%" />
-                                                </asp:BoundField>
+                                                </asp:BoundField>--%>
                                                 <asp:BoundField DataField="InspectionDueDate" HeaderText="Due Date">
                                                     <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="center" Width="12%" />
@@ -719,14 +722,14 @@
                                             <label for="Phone">
                                                 Contact Number (Site Owner)<samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" onkeyup="return isvalidphoneno();" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeyup="return isvalidphoneno();" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtPhone" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
                                         </div>
                                         <div class="col-md-4" runat="server">
                                             <label for="Email">
                                                 Email<samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtEmail" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtEmail" onkeydown="return preventEnterSubmit(event)" ReadOnly="true" onkeyup="return ValidateEmail();" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtEmail" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Email Id</asp:RequiredFieldValidator>
                                         </div>
                                     </div>
