@@ -24,7 +24,8 @@ namespace CEIHaryana.Contractor
         string REID = string.Empty;
         string TypeOfInspection = string.Empty;
         //List<string> SelectedSupervisor = new List<string>();
-        private static string UserID;
+        private static string UserID, selectedVoltageLevel;
+        private static int Voltage;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -467,7 +468,7 @@ namespace CEIHaryana.Contractor
                 ddlVoltageLevel.Items.Insert(0, new ListItem("Select", "0"));
                 dsVoltage.Clear();
             }
-            catch
+            catch(Exception ex)
             {
             }
 
@@ -516,8 +517,6 @@ namespace CEIHaryana.Contractor
             {
             }
         }
-       
-
         protected void Submit_Click(object sender, EventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
@@ -649,20 +648,20 @@ namespace CEIHaryana.Contractor
                         UpdationId,
                         ContractorID,
                         ddlApplicantType.SelectedValue,
-                        ddlPoweUtility.SelectedItem?.ToString(),
-                        DdlWing.SelectedItem?.ToString(),
-                        DdlZone.SelectedItem?.ToString(),
-                        DdlCircle.SelectedItem?.ToString(),
-                        DdlDivision.SelectedItem?.ToString(),
-                        DdlSubDivision.SelectedItem?.ToString(),
-                        ddlworktype.SelectedItem?.ToString(),
+                        ddlPoweUtility.SelectedItem.ToString(),
+                        DdlWing.SelectedItem.ToString(),
+                        DdlZone.SelectedItem.ToString(),
+                        DdlCircle.SelectedItem.ToString(),
+                        DdlDivision.SelectedItem.ToString(),
+                        DdlSubDivision.SelectedItem.ToString(),
+                        ddlworktype.SelectedItem.ToString(),
                         txtName.Text,
                         txtagency.Text,
                         txtPhone.Text,
                         txtAddress.Text,
-                        ddlDistrict.SelectedItem?.ToString(),
+                        ddlDistrict.SelectedItem.ToString(),
                         txtPin.Text,
-                        ddlPremises.SelectedItem?.ToString(),
+                        ddlPremises.SelectedItem.ToString(),
                         txtOtherPremises.Text,
                         //ddlVoltageLevel.SelectedItem?.ToString(),
                         ddlVoltageLevel.SelectedValue.ToString(),
@@ -676,10 +675,10 @@ namespace CEIHaryana.Contractor
                         txtEmail.Text,
                         txtStartDate.Text,
                         txtCompletitionDate.Text,
-                        ddlAnyWork.SelectedItem?.ToString(),
+                        ddlAnyWork.SelectedItem.ToString(),
                         filePathInfo,
                         txtCompletionDateAPWO.Text,
-                        ddlApplicantType.SelectedItem?.ToString(),
+                        ddlApplicantType.SelectedItem.ToString(),
                         ContractorID,
                         RadioButtonList2.SelectedValue.ToString(),
                         ddlInspectionType.SelectedValue.ToString(),
@@ -790,8 +789,61 @@ namespace CEIHaryana.Contractor
                     CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
                     chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
                 }
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                   
+                        selectedVoltageLevel = ddlVoltageLevel.SelectedItem.ToString();
+                       
+                        if (selectedVoltageLevel == "Upto 650V")
+                        {
+                            Voltage = 650;
+                        }
+                        else if (selectedVoltageLevel == "Upto 11KV")
+                        {
+                            Voltage = 11000;
+                        }
+                        else if (selectedVoltageLevel == "Upto 33KV")
+                        {
+                            Voltage = 33000;
+                        }
+                        else if (selectedVoltageLevel == "Upto 66KV")
+                        {
+                            Voltage = 66000;
+                        }
+                        else if (selectedVoltageLevel == "Upto 132KV")
+                        {
+                            Voltage = 132000;
+                        }
+                        else if (selectedVoltageLevel == "Upto 220KV")
+                        {
+                            Voltage = 220000;
+                        }
+
+                        else if (selectedVoltageLevel == "EHT Level")
+                        {
+                            Voltage = 500000;
+                        }
+                        Label lblVoltage = (Label)e.Row.FindControl("lblVoltage");
+                        CheckBox checkBox = (CheckBox)e.Row.FindControl("CheckBox1");
+
+                        if (lblVoltage != null && checkBox != null)
+                        {
+                            int rowVoltage = Convert.ToInt32(lblVoltage.Text);
+
+                            if (rowVoltage >= Voltage)
+                            {
+                                checkBox.Enabled = true;
+                            }
+                            else
+                            {
+                                checkBox.Enabled = false;
+                            }
+                        }
+
+                    }
+               
             }
-            catch { }
+            catch(Exception ex) { }
         }
         protected void ddlAnyWork_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -983,7 +1035,6 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-
                 DataSet dsUtility = new DataSet();
                 dsUtility = CEI.GetUtilityName();
                 ddlPoweUtility.DataSource = dsUtility;
@@ -992,12 +1043,10 @@ namespace CEIHaryana.Contractor
                 ddlPoweUtility.DataBind();
                 ddlPoweUtility.Items.Insert(0, new ListItem("Select", "0"));
                 dsUtility.Clear();
-               
             }
             catch
             {
             }
-
         }
         private void DdlWingBind()
         {
@@ -1018,9 +1067,7 @@ namespace CEIHaryana.Contractor
             }
 
         }
-
-       
-         private void DdlZoneBind()
+        private void DdlZoneBind()
         {
             try
             {
@@ -1077,7 +1124,6 @@ namespace CEIHaryana.Contractor
             }
 
         }
-
         private void DdlSubDivisionBind()
         {
             try
@@ -1282,6 +1328,7 @@ namespace CEIHaryana.Contractor
                 {
                     installationType2.Visible = true;
                 }
+                GetGridData();
             }
             catch (Exception ex)
             {
@@ -1342,34 +1389,27 @@ namespace CEIHaryana.Contractor
                 Page.ClientScript.RegisterStartupScript(GetType(), "error", $"alert('An error occurred: {ex.Message}');", true);
             }
         }
-
         protected void ddlPoweUtility_SelectedIndexChanged(object sender, EventArgs e)
         {
             DdlWingBind();
         }
-
-
         protected void DdlWing_SelectedIndexChanged(object sender, EventArgs e)
         {
             DdlZoneBind();
         }
-
         protected void DdlZone_SelectedIndexChanged(object sender, EventArgs e)
         {
             DdlCircleBind();
 
         }
-
         protected void DdlCircle_SelectedIndexChanged(object sender, EventArgs e)
         {
             DdlDivisionBind();
         }
-
         protected void DdlDivision_SelectedIndexChanged(object sender, EventArgs e)
         {
             DdlSubDivisionBind();
         }
-
         protected void DdlSubDivision_SelectedIndexChanged(object sender, EventArgs e)
         {
             string id = DdlSubDivision.SelectedValue.ToString();

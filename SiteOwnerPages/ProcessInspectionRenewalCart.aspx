@@ -158,7 +158,7 @@
             <div class="row ">
                 <div class="col-sm-4 col-md-4">
                     <h6 class="card-title fw-semibold mb-4">
-                        <asp:Label ID="lblData" runat="server"></asp:Label>Periodic Renewal Cart</h6>
+                        <asp:Label ID="lblData" runat="server"></asp:Label>Submit Periodic Inspection</h6>
                 </div>
             </div>
             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;">

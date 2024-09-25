@@ -915,6 +915,11 @@
                                                     <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
                                                     <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
                                                 </asp:BoundField>
+                                                <asp:TemplateField HeaderText="Voltage" Visible="false">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblVoltage" runat="server" Text='<%#Eval("Voltage") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                                 <asp:BoundField DataField="LicenseNo" HeaderText="Competency Certificate Number">
                                                     <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
                                                     <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
@@ -937,7 +942,7 @@
                                         <div class="row" id="Helpline" runat="server" visible="false">
                                             <h4>HELPLINE:</h4>
                                             <span style="margin-right: 12px;"></span>
-                                            <asp:LinkButton ID="LinkButton1" runat="server" AutoPostBack="false">cei_goh@yahoo.com</asp:LinkButton>
+                                            <asp:LinkButton ID="LinkButton1" runat="server" AutoPostBack="false">ceihelpdesk2024@gmail.com</asp:LinkButton>
                                             <span style="margin-right: 12px;"></span>
                                             <h5>7696438770</h5>
                                         </div>
@@ -1256,7 +1261,7 @@
 
             return true;
         }
-</script>
+    </script>
 
     <%-- <script type="text/javascript">
         function validateCheckBoxes() {

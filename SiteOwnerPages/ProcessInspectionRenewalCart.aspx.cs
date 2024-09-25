@@ -590,7 +590,9 @@ namespace CEIHaryana.SiteOwnerPages
                         }
 
                         Session["CartID"] = string.Empty;
-                        Response.Redirect("/SiteOwnerPages/InspectionRenewalCart.aspx", false);
+                        // Response.Redirect("/SiteOwnerPages/InspectionRenewalCart.aspx", false);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Submitted Successfully !!!'); window.location='/SiteOwnerPages/InspectionHistory.aspx';", true);
+                        
                     }
                     else
                     {
