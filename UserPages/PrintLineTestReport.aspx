@@ -108,7 +108,7 @@
         .col-4 {
             top: 0px;
             left: 0px;
-            margin-top: 5%;
+            margin-top: 2%;
         }
 
         .col-3 {

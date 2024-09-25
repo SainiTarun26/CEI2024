@@ -33,6 +33,24 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.Button btnPrint;
 
         /// <summary>
+        /// lbltestReportId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbltestReportId;
+
+        /// <summary>
+        /// lblWorkIntimationId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblWorkIntimationId;
+
+        /// <summary>
         /// divtrasformer control.
         /// </summary>
         /// <remarks>

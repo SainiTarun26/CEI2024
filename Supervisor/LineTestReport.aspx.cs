@@ -1,10 +1,13 @@
 ﻿using CEI_PRoject;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace CEIHaryana.Supervisor
@@ -21,6 +24,8 @@ namespace CEIHaryana.Supervisor
         string currentSessionName = string.Empty;
         string IdUpdate = string.Empty;
         string LineId = string.Empty;
+        List<(string IntimationId, string RowNumber, string EarthingType, string Valueinohms)> EarthingData = new List<(string, string, string, string)>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -72,13 +77,13 @@ namespace CEIHaryana.Supervisor
 
                             BtnBack.Visible = true;
                         }
-                        else 
-                        { 
-                        txtapplication.Text = Session["Application"].ToString().Trim();
-                        txtInstallation.Text = Session["Typs"].ToString().Trim();
-                        txtid.Text = Session["Intimations"].ToString().Trim();
-                        txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim() + " Out of " + Session["TotalInstallation"].ToString().Trim();
-                        BtnBack.Visible = true;
+                        else
+                        {
+                            txtapplication.Text = Session["Application"].ToString().Trim();
+                            txtInstallation.Text = Session["Typs"].ToString().Trim();
+                            txtid.Text = Session["Intimations"].ToString().Trim();
+                            txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim() + " Out of " + Session["TotalInstallation"].ToString().Trim();
+                            BtnBack.Visible = true;
                         }
                     }
                 }
@@ -744,6 +749,41 @@ namespace CEIHaryana.Supervisor
             Earthingtype13.Visible = false;
             Earthingtype14.Visible = false;
             Earthingtype15.Visible = false;
+            Earthingtype16.Visible = false;
+            Earthingtype17.Visible = false;
+            Earthingtype18.Visible = false;
+            Earthingtype19.Visible = false;
+            Earthingtype20.Visible = false;
+            Earthingtype21.Visible = false;
+            Earthingtype22.Visible = false;
+            Earthingtype23.Visible = false;
+            Earthingtype24.Visible = false;
+            Earthingtype25.Visible = false;
+            Earthingtype26.Visible = false;
+            Earthingtype27.Visible = false;
+            Earthingtype28.Visible = false;
+            Earthingtype29.Visible = false;
+            Earthingtype30.Visible = false;
+            Earthingtype31.Visible = false;
+            Earthingtype32.Visible = false;
+            Earthingtype33.Visible = false;
+            Earthingtype34.Visible = false;
+            Earthingtype35.Visible = false;
+            Earthingtype36.Visible = false;
+            Earthingtype37.Visible = false;
+            Earthingtype38.Visible = false;
+            Earthingtype39.Visible = false;
+            Earthingtype40.Visible = false;
+            Earthingtype41.Visible = false;
+            Earthingtype42.Visible = false;
+            Earthingtype43.Visible = false;
+            Earthingtype45.Visible = false;
+            Earthingtype46.Visible = false;
+            Earthingtype47.Visible = false;
+            Earthingtype48.Visible = false;
+            Earthingtype49.Visible = false;
+            Earthingtype50.Visible = false;
+
             if (ddlNoOfEarthing.SelectedValue.Trim() == "1")
             {
                 Earthingtype1.Visible = true;
@@ -923,8 +963,1268 @@ namespace CEIHaryana.Supervisor
                 Earthingtype15.Visible = true;
 
             }
-        
-    }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "16")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "17")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "18")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "19")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "20")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "21")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "22")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "23")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "24")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "25")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "26")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "27")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "28")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "29")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "30")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "31")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "32")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "33")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "34")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+                Earthingtype34.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "35")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+                Earthingtype34.Visible = true;
+                Earthingtype35.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "36")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+                Earthingtype34.Visible = true;
+                Earthingtype35.Visible = true;
+                Earthingtype36.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "37")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+                Earthingtype34.Visible = true;
+                Earthingtype35.Visible = true;
+                Earthingtype36.Visible = true;
+                Earthingtype37.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "38")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+                Earthingtype34.Visible = true;
+                Earthingtype35.Visible = true;
+                Earthingtype36.Visible = true;
+                Earthingtype37.Visible = true;
+                Earthingtype38.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "39")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+                Earthingtype34.Visible = true;
+                Earthingtype35.Visible = true;
+                Earthingtype36.Visible = true;
+                Earthingtype37.Visible = true;
+                Earthingtype38.Visible = true;
+                Earthingtype39.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "40")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+                Earthingtype34.Visible = true;
+                Earthingtype35.Visible = true;
+                Earthingtype36.Visible = true;
+                Earthingtype37.Visible = true;
+                Earthingtype38.Visible = true;
+                Earthingtype39.Visible = true;
+                Earthingtype40.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "41")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+                Earthingtype34.Visible = true;
+                Earthingtype35.Visible = true;
+                Earthingtype36.Visible = true;
+                Earthingtype37.Visible = true;
+                Earthingtype38.Visible = true;
+                Earthingtype39.Visible = true;
+                Earthingtype40.Visible = true;
+                Earthingtype41.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "42")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+                Earthingtype34.Visible = true;
+                Earthingtype35.Visible = true;
+                Earthingtype36.Visible = true;
+                Earthingtype37.Visible = true;
+                Earthingtype38.Visible = true;
+                Earthingtype39.Visible = true;
+                Earthingtype40.Visible = true;
+                Earthingtype41.Visible = true;
+                Earthingtype42.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "43")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+                Earthingtype34.Visible = true;
+                Earthingtype35.Visible = true;
+                Earthingtype36.Visible = true;
+                Earthingtype37.Visible = true;
+                Earthingtype38.Visible = true;
+                Earthingtype39.Visible = true;
+                Earthingtype40.Visible = true;
+                Earthingtype41.Visible = true;
+                Earthingtype42.Visible = true;
+                Earthingtype43.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "44")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+                Earthingtype34.Visible = true;
+                Earthingtype35.Visible = true;
+                Earthingtype36.Visible = true;
+                Earthingtype37.Visible = true;
+                Earthingtype38.Visible = true;
+                Earthingtype39.Visible = true;
+                Earthingtype40.Visible = true;
+                Earthingtype41.Visible = true;
+                Earthingtype42.Visible = true;
+                Earthingtype43.Visible = true;
+                Earthingtype44.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "45")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+                Earthingtype34.Visible = true;
+                Earthingtype35.Visible = true;
+                Earthingtype36.Visible = true;
+                Earthingtype37.Visible = true;
+                Earthingtype38.Visible = true;
+                Earthingtype39.Visible = true;
+                Earthingtype40.Visible = true;
+                Earthingtype41.Visible = true;
+                Earthingtype42.Visible = true;
+                Earthingtype43.Visible = true;
+                Earthingtype44.Visible = true;
+                Earthingtype45.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "46")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+                Earthingtype34.Visible = true;
+                Earthingtype35.Visible = true;
+                Earthingtype36.Visible = true;
+                Earthingtype37.Visible = true;
+                Earthingtype38.Visible = true;
+                Earthingtype39.Visible = true;
+                Earthingtype40.Visible = true;
+                Earthingtype41.Visible = true;
+                Earthingtype42.Visible = true;
+                Earthingtype43.Visible = true;
+                Earthingtype44.Visible = true;
+                Earthingtype45.Visible = true;
+                Earthingtype46.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "47")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+                Earthingtype34.Visible = true;
+                Earthingtype35.Visible = true;
+                Earthingtype36.Visible = true;
+                Earthingtype37.Visible = true;
+                Earthingtype38.Visible = true;
+                Earthingtype39.Visible = true;
+                Earthingtype40.Visible = true;
+                Earthingtype41.Visible = true;
+                Earthingtype42.Visible = true;
+                Earthingtype43.Visible = true;
+                Earthingtype44.Visible = true;
+                Earthingtype45.Visible = true;
+                Earthingtype46.Visible = true;
+                Earthingtype47.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "48")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+                Earthingtype34.Visible = true;
+                Earthingtype35.Visible = true;
+                Earthingtype36.Visible = true;
+                Earthingtype37.Visible = true;
+                Earthingtype38.Visible = true;
+                Earthingtype39.Visible = true;
+                Earthingtype40.Visible = true;
+                Earthingtype41.Visible = true;
+                Earthingtype42.Visible = true;
+                Earthingtype43.Visible = true;
+                Earthingtype44.Visible = true;
+                Earthingtype45.Visible = true;
+                Earthingtype46.Visible = true;
+                Earthingtype47.Visible = true;
+                Earthingtype48.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "49")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+                Earthingtype34.Visible = true;
+                Earthingtype35.Visible = true;
+                Earthingtype36.Visible = true;
+                Earthingtype37.Visible = true;
+                Earthingtype38.Visible = true;
+                Earthingtype39.Visible = true;
+                Earthingtype40.Visible = true;
+                Earthingtype41.Visible = true;
+                Earthingtype42.Visible = true;
+                Earthingtype43.Visible = true;
+                Earthingtype44.Visible = true;
+                Earthingtype45.Visible = true;
+                Earthingtype46.Visible = true;
+                Earthingtype47.Visible = true;
+                Earthingtype48.Visible = true;
+                Earthingtype49.Visible = true;
+            }
+            else if (ddlNoOfEarthing.SelectedValue.Trim() == "50")
+            {
+                Earthingtype1.Visible = true;
+                Earthingtype2.Visible = true;
+                Earthingtype3.Visible = true;
+                Earthingtype4.Visible = true;
+                Earthingtype5.Visible = true;
+                Earthingtype6.Visible = true;
+                Earthingtype7.Visible = true;
+                Earthingtype8.Visible = true;
+                Earthingtype9.Visible = true;
+                Earthingtype10.Visible = true;
+                Earthingtype11.Visible = true;
+                Earthingtype12.Visible = true;
+                Earthingtype13.Visible = true;
+                Earthingtype14.Visible = true;
+                Earthingtype15.Visible = true;
+                Earthingtype16.Visible = true;
+                Earthingtype17.Visible = true;
+                Earthingtype18.Visible = true;
+                Earthingtype19.Visible = true;
+                Earthingtype20.Visible = true;
+                Earthingtype21.Visible = true;
+                Earthingtype22.Visible = true;
+                Earthingtype23.Visible = true;
+                Earthingtype24.Visible = true;
+                Earthingtype25.Visible = true;
+                Earthingtype26.Visible = true;
+                Earthingtype27.Visible = true;
+                Earthingtype28.Visible = true;
+                Earthingtype29.Visible = true;
+                Earthingtype30.Visible = true;
+                Earthingtype31.Visible = true;
+                Earthingtype32.Visible = true;
+                Earthingtype33.Visible = true;
+                Earthingtype34.Visible = true;
+                Earthingtype35.Visible = true;
+                Earthingtype36.Visible = true;
+                Earthingtype37.Visible = true;
+                Earthingtype38.Visible = true;
+                Earthingtype39.Visible = true;
+                Earthingtype40.Visible = true;
+                Earthingtype41.Visible = true;
+                Earthingtype42.Visible = true;
+                Earthingtype43.Visible = true;
+                Earthingtype44.Visible = true;
+                Earthingtype45.Visible = true;
+                Earthingtype46.Visible = true;
+                Earthingtype47.Visible = true;
+                Earthingtype48.Visible = true;
+                Earthingtype49.Visible = true;
+                Earthingtype50.Visible = true;
+            }
+        }
         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (CheckBox1.Checked == false)
@@ -938,79 +2238,181 @@ namespace CEIHaryana.Supervisor
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-
-            try
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
             {
-
-                //if (btnSubmit.Text.Trim() == "Update")
-                //{
-                //    IdUpdate = Session["Id"].ToString();
-                //}
-
-                if (Declaration.Visible == true && CheckBox1.Checked == false)
+                SqlTransaction transaction = null;
+                try
                 {
-                    labelVerification.Visible = true;
-                }
-                else
-                {
-                    if (Check.Checked == true)
+                    connection.Open();
+                    transaction = connection.BeginTransaction();
+
+                    //if (btnSubmit.Text.Trim() == "Update")
+                    //{
+                    //    IdUpdate = Session["Id"].ToString();
+                    //}
+
+                    if (Declaration.Visible == true && CheckBox1.Checked == false)
                     {
-
-                        //string GeneratedLineId = string.Empty;
-                        //if (Convert.ToString(Session["GeneratedLineId"]) == null || Convert.ToString(Session["GeneratedLineId"]) == "")
-                        //{
-                        //    GeneratedLineId = CEI.GenerateUniqueID();
-                        //    Session["GeneratedLineId"] = LineId;
-                        //}
-                        //else
-                        //{
-                        //    GeneratedLineId = Session["GeneratedLineId"].ToString();
-                        //}
-                        //string TestReportId = Session["TestReportId"].ToString();
-                        string IntimationId = Session["id"].ToString();
-                        string CreatedBy = Session["SupervisorID"].ToString();
-                        string installationNo = Session["IHID"].ToString();
-                        string count = Session["NoOfInstallations"].ToString();
-                        CEI.InsertLineData(LineId, count, IntimationId, ddlLineVoltage.SelectedItem.ToString(), ddlOtherVoltage.SelectedItem.ToString(), TxtOthervoltage.Text, txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
-                       ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
-                      txtGroundWireSize.Text, txtRailwayCrossingNo.Text, txtRoadCrossingNo.Text, txtRiverCanalCrossing.Text, txtPowerLineCrossing.Text,
-                       ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), txtearthingValue1.Text, ddlEarthingtype2.SelectedItem.ToString(),
-                       txtEarthingValue2.Text, ddlEarthingtype3.SelectedItem.ToString(), txtEarthingValue3.Text, ddlEarthingtype4.SelectedItem.ToString(),
-                      txtEarthingValue4.Text, ddlEarthingtype5.SelectedItem.ToString(), txtEarthingValue5.Text, ddlEarthingtype6.SelectedItem.ToString(),
-                     txtEarthingValue6.Text, ddlEarthingtype7.SelectedItem.ToString(), txtEarthingValue7.Text, ddlEarthingtype8.SelectedItem.ToString(),
-                     txtEarthingValue8.Text, ddlEarthingtype9.SelectedItem.ToString(), txtEarthingValue9.Text, ddlEarthingtype10.SelectedItem.ToString(),
-                     txtEarthingValue10.Text, ddlEarthingtype11.SelectedItem.ToString(), txtEarthingValue11.Text, ddlEarthingtype12.SelectedItem.ToString(),
-                     txtEarthingValue12.Text, ddlEarthingtype13.SelectedItem.ToString(), txtEarthingValue13.Text, ddlEarthingtype14.SelectedItem.ToString(),
-                     txtEarthingValue14.Text, ddlEarthingtype15.SelectedItem.ToString(), txtEarthingValue15.Text, txtPoleTowerNo.Text, txtCableSize1.Text,
-                     txtRailwayCrossingNmbr.Text, txtRoadCrossingNmbr.Text, txtRiverCanalCrossingNmber.Text, txtPowerLineCrossingNmbr.Text, txtRedEarthWire.Text,
-                     txtYellowEarthWire.Text, txtBlueEarthWire.Text, txtRedYellowPhase.Text, txtRedBluePhase.Text, txtBlueYellowPhase.Text, txtNeutralWire.Text,
-                   txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtOtherCable.Text, txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(),
-                   txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text, txtRedBlueWire.Text, txtBlueYellowWire.Text,
-                   txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text, CreatedBy);
-
-                        CEI.UpdateInstallations(installationNo, IntimationId);
-                       // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
-
-                        //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                        //Response.Redirect("/Supervisor/InstallationDetails.aspx", false);
-
+                        labelVerification.Visible = true;
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('You have to check the declaration first !!!')", true);
+                        if (Check.Checked == true)
+                        {
+
+                            //string GeneratedLineId = string.Empty;
+                            //if (Convert.ToString(Session["GeneratedLineId"]) == null || Convert.ToString(Session["GeneratedLineId"]) == "")
+                            //{
+                            //    GeneratedLineId = CEI.GenerateUniqueID();
+                            //    Session["GeneratedLineId"] = LineId;
+                            //}
+                            //else
+                            //{
+                            //    GeneratedLineId = Session["GeneratedLineId"].ToString();
+                            //}
+                            //string TestReportId = Session["TestReportId"].ToString();
+                            string IntimationId = Session["id"].ToString();
+                            string CreatedBy = Session["SupervisorID"].ToString();
+                            string installationNo = Session["IHID"].ToString();
+                            string count = Session["NoOfInstallations"].ToString();
+
+                            CEI.InsertLineData(LineId, count, IntimationId, ddlLineVoltage.SelectedItem.ToString(), ddlOtherVoltage.SelectedItem.ToString(), TxtOthervoltage.Text, txtLineLength.Text, ddlLineType.SelectedItem.ToString(),
+                           ddlNmbrOfCircuit.SelectedItem.ToString(), ddlConductorType.SelectedItem.ToString(), txtPoleTower.Text, txtConductorSize.Text,
+                          txtGroundWireSize.Text, txtRailwayCrossingNo.Text, txtRoadCrossingNo.Text, txtRiverCanalCrossing.Text, txtPowerLineCrossing.Text,
+                           ddlNoOfEarthing.SelectedItem.ToString(),
+                         //  ddlEarthingtype1.SelectedItem.ToString(), txtearthingValue1.Text, ddlEarthingtype2.SelectedItem.ToString(),
+                         //  txtEarthingValue2.Text, ddlEarthingtype3.SelectedItem.ToString(), txtEarthingValue3.Text, ddlEarthingtype4.SelectedItem.ToString(),
+                         // txtEarthingValue4.Text, ddlEarthingtype5.SelectedItem.ToString(), txtEarthingValue5.Text, ddlEarthingtype6.SelectedItem.ToString(),
+                         //txtEarthingValue6.Text, ddlEarthingtype7.SelectedItem.ToString(), txtEarthingValue7.Text, ddlEarthingtype8.SelectedItem.ToString(),
+                         //txtEarthingValue8.Text, ddlEarthingtype9.SelectedItem.ToString(), txtEarthingValue9.Text, ddlEarthingtype10.SelectedItem.ToString(),
+                         //txtEarthingValue10.Text, ddlEarthingtype11.SelectedItem.ToString(), txtEarthingValue11.Text, ddlEarthingtype12.SelectedItem.ToString(),
+                         //txtEarthingValue12.Text, ddlEarthingtype13.SelectedItem.ToString(), txtEarthingValue13.Text, ddlEarthingtype14.SelectedItem.ToString(),
+                         //txtEarthingValue14.Text, ddlEarthingtype15.SelectedItem.ToString(), txtEarthingValue15.Text, 
+                         txtPoleTowerNo.Text, txtCableSize1.Text,
+                         txtRailwayCrossingNmbr.Text, txtRoadCrossingNmbr.Text, txtRiverCanalCrossingNmber.Text, txtPowerLineCrossingNmbr.Text, txtRedEarthWire.Text,
+                         txtYellowEarthWire.Text, txtBlueEarthWire.Text, txtRedYellowPhase.Text, txtRedBluePhase.Text, txtBlueYellowPhase.Text, txtNeutralWire.Text,
+                       txtEarthWire.Text, txtNeutralWireEarth.Text, ddlCableType.SelectedItem.ToString(), txtOtherCable.Text, txtCableSize.Text, ddlCableLaid.SelectedItem.ToString(),
+                       txtRedWire.Text, txtYellowWire.Text, txtBlueWire.Text, txtRedYellowWire.Text, txtRedBlueWire.Text, txtBlueYellowWire.Text,
+                       txtNeutralPhaseWire.Text, txtPhaseWireEarth.Text, txtNeutralWireEarthUnderground.Text, CreatedBy, transaction);
+
+                            CEI.UpdateInstallations(installationNo, IntimationId, transaction);
+
+                            //int maxEarthingCount;
+                            // if (int.TryParse(ddlNoOfEarthing.SelectedItem.Value, out maxEarthingCount))
+                            // {
+
+                            //     foreach (HtmlTableRow row in tbl.Rows)
+                            //     {
+
+                            //         for (int i = 1; i <= maxEarthingCount; i++)
+                            //         {
+                            //             DropDownList ddlEarthingType = (DropDownList)row.FindControl("ddlEarthingtype" + i);
+                            //             TextBox txtEarthingValue = (TextBox)row.FindControl("txtearthingValue" + i);
+
+                            //             if (ddlEarthingType != null && txtEarthingValue != null)
+                            //             {
+                            //                 string earthingType = ddlEarthingType.SelectedValue;
+                            //                 string earthingValue = txtEarthingValue.Text;
+
+
+                            //                 if (earthingType != "0" && !string.IsNullOrEmpty(earthingValue))
+                            //                 {
+
+                            //                     EarthingData.Add((IntimationId, i.ToString(), earthingType, earthingValue));
+                            //                 }
+                            //             }
+                            //         }
+
+                            //     }
+
+                            // }
+                            int maxEarthingCount;
+                            if (int.TryParse(ddlNoOfEarthing.SelectedItem.Value, out maxEarthingCount))
+                            {
+                                bool shouldBreak = false;
+
+                                foreach (HtmlTableRow row in tbl.Rows)
+                                {
+                                    if (shouldBreak) break;
+
+                                    for (int i = 1; i <= maxEarthingCount; i++)
+                                    {
+                                        DropDownList ddlEarthingType = (DropDownList)row.FindControl("ddlEarthingtype" + i);
+                                        TextBox txtEarthingValue = (TextBox)row.FindControl("txtearthingValue" + i);
+
+                                        if (ddlEarthingType != null && txtEarthingValue != null)
+                                        {
+                                            string earthingType = ddlEarthingType.SelectedItem.ToString();
+                                            string earthingValue = txtEarthingValue.Text;
+
+                                            if (earthingType != "0" && !string.IsNullOrEmpty(earthingValue))
+                                            {
+                                                EarthingData.Add((IntimationId, i.ToString(), earthingType, earthingValue));
+                                            }
+                                        }
+
+
+                                        if (i == maxEarthingCount)
+                                        {
+                                            shouldBreak = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+
+                            //string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+                            //using (SqlConnection connection = new SqlConnection(connectionString))
+                            //{
+                            //    connection.Open();
+
+                            foreach (var file in EarthingData)
+                            {
+                                string query = "sp_InsertEarthingData";
+
+                                using (SqlCommand command = new SqlCommand(query, connection, transaction))
+                                {
+                                    command.CommandType = CommandType.StoredProcedure;
+                                    command.Parameters.AddWithValue("@IntimationId", file.IntimationId);
+                                    command.Parameters.AddWithValue("@RowNumber", file.RowNumber);
+                                    command.Parameters.AddWithValue("@EarthingType", file.EarthingType);
+                                    command.Parameters.AddWithValue("@Valueinohms", file.Valueinohms);
+                                    command.ExecuteNonQuery();
+                                }
+                                //}
+                            }
+                            transaction.Commit();
+
+                            //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                            //Response.Redirect("/Supervisor/InstallationDetails.aspx", false);
+
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('You have to check the declaration first !!!')", true);
+                        }
+                    }
+
+
+
+                }
+                //catch (Exception ex)
+                //{
+
+                //    DataSaved.Visible = false;
+                //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+                //    return;
+                //}
+                catch (Exception ex)
+                {
+                    // Rollback transaction in case of an error
+                    if (transaction != null)
+                    {
+                        transaction.Rollback();
                     }
                 }
-
-
-
-            }
-            catch (Exception ex)
-            {
-
-                DataSaved.Visible = false;
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
-                return;
             }
         }
 
@@ -1151,7 +2553,8 @@ namespace CEIHaryana.Supervisor
                 {
                     Response.Redirect("/Supervisor/IntimationDataForPeriodic.aspx", false);
                 }
-                else { 
+                else
+                {
                     Response.Redirect("/Supervisor/InstallationDetails.aspx", false);
                 }
             }

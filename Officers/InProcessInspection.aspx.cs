@@ -706,6 +706,7 @@ namespace CEIHaryana.Officers
         {
             CEI.InsertSuggestions(txtSugg.Text.Trim());
             txtSugg.Text = "";
+            BindSuggestions();
             ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Suggestion Submitted Successfully.');", true);
         }
 

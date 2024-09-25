@@ -17,6 +17,19 @@
     <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" />
     <style type="text/css">
+        table#GridView1{
+            margin-left: 1%;
+    width: 98% !important;
+        }
+        table#GridView1{
+            margin-top: 20px;
+             
+        }
+        th.headercolor.textalignCenter {
+    WIDTH: 1%;
+    color:white !important;
+    font-size:20px;
+}
         div#IntimationData {
             background: #ffffff !important;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
@@ -24,10 +37,12 @@
             margin-right: -25px !important;
             margin-top: 20px !important;
             padding: 15px !important;
+            padding-left: 25px !important;
+    padding-right: 40px !important;
         }
 
         .card .card-title {
-            font-size: 22px !important;
+            font-size: 23px !important;
             font-weight: 700;
             margin-bottom: -5px;
         }
@@ -49,7 +64,7 @@
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             border: 8px solid #CED4DA;
             border-top: 0;
-            padding: 2rem 1rem;
+            padding: 2rem 3rem;
             text-align: justify;
             border-bottom-left-radius: 15px;
             border-bottom-right-radius: 15px;
@@ -80,31 +95,32 @@
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             margin-left: 0px !important;
             height: 30px;
-            font-size: 12px !important;
+            font-size: 14px !important;
             padding: 0px 5px !important;
+            padding-top:1px !important;
         }
 
         select.form-control {
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             margin-left: 0px !important;
             height: 30px !important;
-            font-size: 12px !important;
+            font-size: 14px !important;
             padding: 0px 5px !important;
         }
 
         label {
-            font-size: 13px;
+            font-size: 15px;
             margin-top: 15px;
         }
 
         .form-control:focus {
             border: 2px solid #80bdff;
-            font-size: 12px !important;
+            font-size: 14px !important;
         }
 
         select.form-control:focus {
             border: 2px solid #80bdff;
-            font-size: 12px !important;
+            font-size: 14px !important;
         }
 
         .select2-container .select2-selection--single .form-control {
@@ -1984,6 +2000,8 @@
             margin-right: -25px;
             margin-top: 20px;
             padding: 15px;
+            padding-left:25px!important;
+            padding-right:25px!important;
         }
 
         div#inspection-card-child1 {
@@ -2016,6 +2034,8 @@
             margin-right: -25px;
             margin-top: 20px;
             padding: 15px;
+            padding-left:25px!important;
+            padding-right:25px!important;
         }
 
         div#SubmitDetails {
@@ -2030,6 +2050,17 @@
             margin: 5px 0px 10px 20px;
             width: 97%;
         }
+        input#txtTestReportId {
+    font-size: 25px !important;
+    font-weight: 700;
+    text-align: initial;
+    border-bottom: 0px solid !important;
+    text-align: center;
+    border: 0px solid blue;
+    background: white;
+    box-shadow: none;
+    margin-top: 5px;
+}
     </style>
     <script type="text/javascript">
         function alertWithRedirectdata() {
@@ -2067,6 +2098,17 @@
                             <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
                                 Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="openNewWindow(); return false;" />
                         </div>
+                             <div class="row" style="margin-bottom: 15PX;">
+    <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
+        <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Work Completion and Test Report (Line)</h6>
+         <div class="row" style="font-size:18px; font-weight:600;">      
+            <div class="col-12" style="margin-top: 0px; padding-left: 0px; text-align: center;">                
+              TestReportId: (<asp:Label ID="lbltestReportId" runat="server" />) &nbsp;&nbsp;&nbsp;&nbsp;  WorkIntimation Id: (<asp:Label ID="lblWorkIntimationId" runat="server" />)
+            </div>
+          
+        </div>
+    </div>
+</div>
                         <div class="card-body" style="padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; margin-top: -46px;">
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
@@ -2450,7 +2492,7 @@
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtEarthing" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
-                                                <div class="table-responsive pt-3" id="LineEarthingdiv" runat="server" visible="true">
+                                                <%--<div class="table-responsive pt-3" id="LineEarthingdiv" runat="server" visible="true">
                                                     <table class="table table-bordered table-striped" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;">
                                                         <thead class="table" style="background: #9292cc;">
                                                             <tr>
@@ -2657,11 +2699,40 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                </div>
+                                                </div>--%>
+
+        <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%"   AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+    <Columns>
+        
+        <asp:BoundField DataField="RowNumber" HeaderText="Sr No.">
+            <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
+            <ItemStyle HorizontalAlign="center" />
+        </asp:BoundField>                               
+     
+        <asp:BoundField DataField="EarthingType" HeaderText="Earthing Type">
+            <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
+            <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
+        </asp:BoundField>
+        <asp:BoundField DataField="Valueinohms" HeaderText="Value in(ohms)">
+            <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
+            <ItemStyle HorizontalAlign="center" />
+        </asp:BoundField>
+        
+    </Columns>
+    <FooterStyle BackColor="White" ForeColor="#000066" />
+    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+    <RowStyle ForeColor="#000066" />
+    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+    <SortedDescendingHeaderStyle BackColor="#00547E" />
+</asp:GridView>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card" style="background: #fcfcfc; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 30px; padding: 20px; padding-top: 1px;">
+                                    <div class="card" style="background: #fcfcfc; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 30px; padding: 20px; padding-top: 1px;padding-left:25px!important; padding-right:25px!important;">
                                         <div class="card-title">
                                             Work Intimation Details (<asp:Label ID="lblIntimationId" runat="server" />)
                                         </div>
@@ -2686,7 +2757,7 @@
                                     </div>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
-                            <div class="card" style="background: #fcfcfc; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 30px; padding: 20px; padding-top: 1px;">
+                            <div class="card" style="background: #fcfcfc; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 30px; padding: 20px; padding-top: 1px;padding-left:25px!important; padding-right:25px!important;">
                                 <div class="card-title">
                                     Test Report Details (<asp:Label ID="lblReportNo" runat="server" />)
                                 </div>

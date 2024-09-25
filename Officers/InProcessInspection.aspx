@@ -523,6 +523,9 @@
                 </div>
                 <div class="row" id="ddlSuggestions" visible="false" runat="server">
                     <div class="col-8">
+                          <label>
+                   Suggestions
+                         </label>
                         <asp:DropDownList ID="ddlSuggestion" runat="server" style="width:100%;" AutoPostBack="true" OnSelectedIndexChanged="ddlSuggestion_SelectedIndexChanged">
                           
                         </asp:DropDownList>

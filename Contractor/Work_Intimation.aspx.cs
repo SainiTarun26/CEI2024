@@ -47,7 +47,7 @@ namespace CEIHaryana.Contractor
                         worktypevisiblity();
                         ddlLoadBindVoltage();
                         BindDistrict();
-                        
+
 
                         BindListBoxInstallationType();
                         hiddenfield.Visible = false;
@@ -337,14 +337,14 @@ namespace CEIHaryana.Contractor
                     {
                         txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                         txtName.ReadOnly = true;
-                    }                    
+                    }
                 }
                 else
                 {
                     ddlworktype.SelectedValue = "0";
                     ddlworktype.Enabled = true;
                     txtagency.Text = "";
-                    txtName.Text = ""; 
+                    txtName.Text = "";
                     txtagency.ReadOnly = false;
                     txtName.ReadOnly = false;
                     //Page.ClientScript.RegisterStartupScript(GetType(), "panNotFound", "alert('PAN card not found in the database.');", true);
@@ -468,7 +468,7 @@ namespace CEIHaryana.Contractor
                 ddlVoltageLevel.Items.Insert(0, new ListItem("Select", "0"));
                 dsVoltage.Clear();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
             }
 
@@ -513,7 +513,7 @@ namespace CEIHaryana.Contractor
                 hiddenfield1.Visible = false;
                 txtEmail.Text = "";
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
             }
         }
@@ -532,7 +532,7 @@ namespace CEIHaryana.Contractor
                     Debug.WriteLine("Before checking visibility and setting Pan_TanNumber");
                     if (DivPancard_TanNo.Visible || DivOtherDepartment.Visible)
                     {
-                      
+
                         if (DivPancard_TanNo.Visible && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
                         {
                             Pan_TanNumber = txtPAN.Text.Trim();
@@ -645,45 +645,44 @@ namespace CEIHaryana.Contractor
                     //Debug.WriteLine($"ContractorID: {ContractorID}, ApplicantTypeCode: {ddlApplicantType.SelectedValue}, PowerUtility: {ddlPoweUtility.SelectedItem?.ToString()}");
 
                     CEI.IntimationDataInsertion(
-                        UpdationId,
-                        ContractorID,
-                        ddlApplicantType.SelectedValue,
-                        ddlPoweUtility.SelectedItem.ToString(),
-                        DdlWing.SelectedItem.ToString(),
-                        DdlZone.SelectedItem.ToString(),
-                        DdlCircle.SelectedItem.ToString(),
-                        DdlDivision.SelectedItem.ToString(),
-                        DdlSubDivision.SelectedItem.ToString(),
-                        ddlworktype.SelectedItem.ToString(),
-                        txtName.Text,
-                        txtagency.Text,
-                        txtPhone.Text,
-                        txtAddress.Text,
-                        ddlDistrict.SelectedItem.ToString(),
-                        txtPin.Text,
-                        ddlPremises.SelectedItem.ToString(),
-                        txtOtherPremises.Text,
-                        //ddlVoltageLevel.SelectedItem?.ToString(),
-                        ddlVoltageLevel.SelectedValue.ToString(),
-                        Pan_TanNumber,
-                        txtinstallationType1.Text,
-                        txtinstallationNo1.Text,
-                        txtinstallationType2.Text,
-                        txtinstallationNo2.Text,
-                        txtinstallationType3.Text,
-                        txtinstallationNo3.Text,
-                        txtEmail.Text,
-                        txtStartDate.Text,
-                        txtCompletitionDate.Text,
-                        ddlAnyWork.SelectedItem.ToString(),
-                        filePathInfo,
-                        txtCompletionDateAPWO.Text,
-                        ddlApplicantType.SelectedItem.ToString(),
-                        ContractorID,
-                        RadioButtonList2.SelectedValue.ToString(),
-                        ddlInspectionType.SelectedValue.ToString(),
-                        txtCapacity.Text.Trim(),
-                        transaction);
+                      UpdationId,
+                     ContractorID,
+                     ddlApplicantType.SelectedValue,
+                     ddlPoweUtility.SelectedItem?.ToString(),
+                     DdlWing.SelectedItem?.ToString(),
+                     DdlZone.SelectedItem?.ToString(),
+                     DdlCircle.SelectedItem?.ToString(),
+                     DdlDivision.SelectedItem?.ToString(),
+                     DdlSubDivision.SelectedItem?.ToString(),
+                     ddlworktype.SelectedItem?.ToString(),
+                     txtName.Text,
+                     txtagency.Text,
+                     txtPhone.Text,
+                     txtAddress.Text,
+                     ddlDistrict.SelectedItem?.ToString(),
+                     txtPin.Text,
+                     ddlPremises.SelectedItem?.ToString(),
+                     txtOtherPremises.Text,
+                     ddlVoltageLevel.SelectedItem?.ToString(),
+                     Pan_TanNumber,
+                     txtinstallationType1.Text,
+                     txtinstallationNo1.Text,
+                     txtinstallationType2.Text,
+                     txtinstallationNo2.Text,
+                     txtinstallationType3.Text,
+                     txtinstallationNo3.Text,
+                     txtEmail.Text,
+                     txtStartDate.Text,
+                     txtCompletitionDate.Text,
+                     ddlAnyWork.SelectedItem?.ToString(),
+                     filePathInfo,
+                     txtCompletionDateAPWO.Text,
+                     ddlApplicantType.SelectedItem?.ToString(),
+                     ContractorID,
+                     RadioButtonList2.SelectedValue.ToString(),
+                     ddlInspectionType.SelectedValue.ToString(),
+                     txtCapacity.Text.Trim(),
+                     transaction);
 
                     TypeOfInspection = ddlInspectionType.SelectedValue.ToString();
                     //Debug.WriteLine("After IntimationDataInsertion");
@@ -717,7 +716,7 @@ namespace CEIHaryana.Contractor
                             }
                         }
 
-                        if (ddlPremises.SelectedItem.Text != "Industry" && PowerUtility.Visible!= true)
+                        if (ddlPremises.SelectedItem.Text != "Industry" && PowerUtility.Visible != true)
                         {
                             if (!panExists)
                             {
@@ -773,7 +772,7 @@ namespace CEIHaryana.Contractor
                 else
                 {
                     Helpline.Visible = true;
-                    btnSubmit.Enabled = false;  
+                    btnSubmit.Enabled = false;
                     statement.Visible = true;
 
                 }
@@ -791,59 +790,59 @@ namespace CEIHaryana.Contractor
                 }
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                   
-                        selectedVoltageLevel = ddlVoltageLevel.SelectedItem.ToString();
-                       
-                        if (selectedVoltageLevel == "Upto 650V")
-                        {
-                            Voltage = 650;
-                        }
-                        else if (selectedVoltageLevel == "Upto 11KV")
-                        {
-                            Voltage = 11000;
-                        }
-                        else if (selectedVoltageLevel == "Upto 33KV")
-                        {
-                            Voltage = 33000;
-                        }
-                        else if (selectedVoltageLevel == "Upto 66KV")
-                        {
-                            Voltage = 66000;
-                        }
-                        else if (selectedVoltageLevel == "Upto 132KV")
-                        {
-                            Voltage = 132000;
-                        }
-                        else if (selectedVoltageLevel == "Upto 220KV")
-                        {
-                            Voltage = 220000;
-                        }
 
-                        else if (selectedVoltageLevel == "EHT Level")
-                        {
-                            Voltage = 500000;
-                        }
-                        Label lblVoltage = (Label)e.Row.FindControl("lblVoltage");
-                        CheckBox checkBox = (CheckBox)e.Row.FindControl("CheckBox1");
+                    selectedVoltageLevel = ddlVoltageLevel.SelectedItem.ToString();
 
-                        if (lblVoltage != null && checkBox != null)
-                        {
-                            int rowVoltage = Convert.ToInt32(lblVoltage.Text);
-
-                            if (rowVoltage >= Voltage)
-                            {
-                                checkBox.Enabled = true;
-                            }
-                            else
-                            {
-                                checkBox.Enabled = false;
-                            }
-                        }
-
+                    if (selectedVoltageLevel == "Upto 650V")
+                    {
+                        Voltage = 650;
                     }
-               
+                    else if (selectedVoltageLevel == "Upto 11KV")
+                    {
+                        Voltage = 11000;
+                    }
+                    else if (selectedVoltageLevel == "Upto 33KV")
+                    {
+                        Voltage = 33000;
+                    }
+                    else if (selectedVoltageLevel == "Upto 66KV")
+                    {
+                        Voltage = 66000;
+                    }
+                    else if (selectedVoltageLevel == "Upto 132KV")
+                    {
+                        Voltage = 132000;
+                    }
+                    else if (selectedVoltageLevel == "Upto 220KV")
+                    {
+                        Voltage = 220000;
+                    }
+
+                    else if (selectedVoltageLevel == "EHT Level")
+                    {
+                        Voltage = 500000;
+                    }
+                    Label lblVoltage = (Label)e.Row.FindControl("lblVoltage");
+                    CheckBox checkBox = (CheckBox)e.Row.FindControl("CheckBox1");
+
+                    if (lblVoltage != null && checkBox != null)
+                    {
+                        int rowVoltage = Convert.ToInt32(lblVoltage.Text);
+
+                        if (rowVoltage >= Voltage)
+                        {
+                            checkBox.Enabled = true;
+                        }
+                        else
+                        {
+                            checkBox.Enabled = false;
+                        }
+                    }
+
+                }
+
             }
-            catch(Exception ex) { }
+            catch (Exception ex) { }
         }
         protected void ddlAnyWork_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1005,8 +1004,8 @@ namespace CEIHaryana.Contractor
             }
             else if (ddlApplicantType.SelectedValue == "AT002")
             {
-                NameUtility.Visible= true;
-                Wing.Visible= true;
+                NameUtility.Visible = true;
+                Wing.Visible = true;
                 PowerUtility.Visible = true;
                 //ElectricalInstallation.Visible= false;
                 ddlPoweUtilityBind();
@@ -1334,7 +1333,7 @@ namespace CEIHaryana.Contractor
             {
                 //
             }
-        }        
+        }
         protected void txtTanNumber_TextChanged(object sender, EventArgs e)
         {
             try
@@ -1362,14 +1361,14 @@ namespace CEIHaryana.Contractor
                         individual.Visible = false;
                         txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                         txtagency.ReadOnly = true;
-                        
+
                     }
                     else if (contractorType == "Individual Person")
-                    {                        
+                    {
                         txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                         txtName.ReadOnly = true;
-                       
-                    }                   
+
+                    }
                 }
                 else
                 {

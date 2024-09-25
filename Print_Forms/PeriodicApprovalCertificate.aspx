@@ -16,7 +16,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
     <link href="ScriptCalendar/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
@@ -88,6 +88,7 @@
         p {
             font-size: 20px;
             text-align: justify;
+            margin-left:5%;
         }
 
         li {
@@ -117,12 +118,16 @@
             vertical-align: middle;
             border-style: none;
         }
+        table#Gridview1{
+            margin-left:8%;
+            width:92%;
+        }
     </style>
 
     <script type="text/javascript">
 
         $(document).ready(function () {
-          
+
             window.print();
         });
 
@@ -221,12 +226,12 @@
                                         <asp:TextBox ID="TxtMemo" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
-                                <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
+                               <%-- <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
                                     <div style="white-space: nowrap;">
                                         <asp:Label ID="label2" runat="server" Text="Dated:" Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="TxtMemoDate" runat="server" Style="width: 100%;"></asp:TextBox>
                                     </div>
-                                </div>
+                                </div>--%>
                             </div>
 
                             <br />
@@ -236,54 +241,61 @@
                                 </div>
                                 <div class="col-10" style="text-align: justify;">
 
-                                    <span style="font-weight: bold; font-size: 22px; border: none !important;">Annual Inspection of installation comprising of
-                                        <asp:Label ID="lblVoltage" runat="server"></asp:Label>
-                                        under Rule Central Electricity Authority (Measures relating to
-                                        Safety and Electric supply) Regulations, 2023 for the year
-                                        <asp:Label ID="Year" runat="server"></asp:Label>
+                                    <span style="font-weight: bold; font-size: 22px; border: none !important;">Annual Inspection of following installation
+                                    <%--    <asp:Label ID="lblVoltage" runat="server"></asp:Label>--%>
+                                        under Central Electricity Authority (Measures relating to
+                                        Safety and Electric supply) Regulations, 2023.
+                                      <%--  <asp:Label ID="Year" runat="server"></asp:Label>--%>
                                     </span>
                                 </div>
                             </div>
-                            <br />
+                       
 
                             <br />
                             <div class="row">
                                 <div class="col-12">
                                     <p>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     The Subject cited installation was inspected by this Department and the same was found generally compiling eith the relevant provisions pf CEa (Measures Relating to Safety and Electric Supply) 
-                                        Regulations, 2023. However the firm is required to keep all the pparameters i.e Oil Test Result. IR Values, Tan Delta, Earth Resistance of T/F or D.g sets with in the safe linits. An index of all test result as per schedule V of the CEa Regulations, shall be recorded by Authorised person and same be shown during the annual inspection.
-                                        List of Installations are cited below:
-                                      
-                                         <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
-                                             <HeaderStyle BackColor="#B7E2F0" />
-                                             <Columns>
-                                                 <asp:BoundField DataField="InstallationType" HeaderText="Installation Name">
-                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                 </asp:BoundField>
-                                                 <asp:BoundField DataField="Voltage" HeaderText="Voltage" Visible="false">
-                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                 </asp:BoundField>
-                                                   <asp:BoundField DataField="Capacity" HeaderText="Capacity">
-                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                 </asp:BoundField>
+                                        <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                                            <HeaderStyle BackColor="#B7E2F0" />
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="SNo">
+                                              <HeaderStyle Width="5%" CssClass="headercolor" />
+                                        <ItemStyle Width="5%" />
+                                        <ItemTemplate>
+                                         <%#Container.DataItemIndex+1 %>
+                                     </ItemTemplate>
+                                </asp:TemplateField>
+                                                <asp:BoundField DataField="InstallationType" HeaderText="Installation Name">
+                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Voltage" HeaderText="Voltage" Visible="false">
+                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="Capacity" HeaderText="Capacity">
+                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                </asp:BoundField>
 
-                                             </Columns>
-                                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
-                                         </asp:GridView>
+                                            </Columns>
+                                            <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
+                                        </asp:GridView>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>     The above mentioned installation/s was/were inspected by this Department and the same was/were found generally compiling with the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) 
+                                        Regulations, 2023. However it is advised that:-</p>
+                                        <div style="display: grid; grid-template-rows: auto auto; font-size: 20px; margin-left: 80px;">
+     <span id="suggestion1" runat="server"></span>
+     <span id="suggestion2" runat="server"></span>
+     <span id="suggestion3" runat="server"></span>
+     <span id="suggestion4" runat="server" style="margin-bottom: 15px !important;"></span>
+ </div>
+
                                         <p>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consistent complicance of the relevant provisions of CEa Regulations, 2010 be ensured in the installation at your end and the electrical installation be maintained and
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consistent complicance of the relevant provisions of CEA Regulations, 2010 be ensured in the installation/s at your end and the electrical installation/s be maintained and
                                             operated in a condition free from danger and as recommended by the Manufacturer or by the relevant code of practice of the Bureau of Indian Standards.
                                         <br />
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You are further advised to install the smart meter to read the energy generated and send the monthly statement of the units generated from your DG Sets to this Department. 
-                                             <%--<div style="display: grid; grid-template-rows: auto auto; font-size: 20px; margin-left: 80px;">
-                                                 <span id="Span1" runat="server"></span>
-                                                 <span id="Span2" runat="server"></span>
-                                                 <span id="Span3" runat="server"></span>
-                                                 <span id="Span4" runat="server" style="margin-bottom: 15px !important;"></span>
-                                             </div>--%>
+
+
                                             <br />
                                             <%-- <div style="display:flex;">
                                             <span style="font-weight: bold; font-size: 22px; border: none !important;">Note:-</span>&nbsp;
@@ -298,24 +310,24 @@
                                 </div>
                             </div>
                             <br />
-                            <div class="row" style="padding-right:5px !important;">
-                                <div class="col-12" style="text-align: end;padding-left:10px;">
+                            <div class="row" style="padding-right: 5px !important;">
+                                <div class="col-12" style="text-align: end; padding-left: 10px;">
                                     <%-- <img src="../Assets/Line_Through_Name-removebg-preview.png" width="300" height="90" style="position: fixed; bottom: 140px; margin-left: -300px;" />--%>
 
-                                   <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
+                                    <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
                                 </div>
                             </div>
-                           <div class="row">
-    <div class="col-7">
-    </div>
-    <div class="col-5" style="margin-left:65%;">
-        <p style="text-align: center; font-weight: bold; bottom: 10PX;">
-            <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
-            <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
-            <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />
-        </p>
-    </div>
-</div>
+                            <div class="row">
+                                <div class="col-7">
+                                </div>
+                                <div class="col-5" style="margin-left: 65%;">
+                                    <p style="text-align: center; font-weight: bold; bottom: 10PX;">
+                                        <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
+                                        <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
+                                        <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />
+                                    </p>
+                                </div>
+                            </div>
 
                         </div>
                     </div>

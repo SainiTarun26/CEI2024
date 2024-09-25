@@ -228,7 +228,8 @@ namespace CEIHaryana.TestReportModal
                 //TextReason.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
 
                 //txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to showing new testreportid
-
+                lbltestReportId.Text = ds.Tables[0].Rows[0]["GSTestReportId"].ToString();
+                lblWorkIntimationId.Text = ds.Tables[0].Rows[0]["WorkIntimationId"].ToString();
                 lblIntimationId.Text = ds.Tables[0].Rows[0]["WorkIntimationId"].ToString();
                 lblReportNo.Text = ds.Tables[0].Rows[0]["GSTestReportId"].ToString();
                 //txtReportNo.Text = ds.Tables[0].Rows[0]["GeneratingSetId"].ToString();
