@@ -128,5 +128,14 @@ namespace CEIHaryana.Admin
                 }
             }
         }
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            GridBind();
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            GridBind();
+        }
     }
 }

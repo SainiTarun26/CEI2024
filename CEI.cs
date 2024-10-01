@@ -5793,6 +5793,81 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             //con.Close();
 
         }
+
+        //30Sept
+
+        public DataTable SearchSiteOwnerData(string searchText, string category)
+        {
+            DataTable result = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("sp_GetSearchSiteOwnerData", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@SearchText", searchText);
+                command.Parameters.AddWithValue("@category", category);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(result);
+            }
+
+            return result;
+        }
+
+        public static DataTable Grddtl(string searchText, DataSet ds, string rt)
+        {
+            DataTable orgTb = ds.Tables[0];
+            List<Dictionary<string, object>> ftrrc;
+            var records = (from DataRow row in orgTb.Rows
+                           select orgTb.Columns.Cast<DataColumn>()
+                           .ToDictionary(column => column.ColumnName, column => row[column])).ToList();
+            if (rt == "id")
+            {
+                ftrrc = records
+                    .Where(record => record.Values.Any(value => value.ToString().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0))
+                    .OrderByDescending(record => (int)record["InspectionId"])
+                    .ToList();
+            }
+            else if (rt == "Dt")
+            {
+                ftrrc = records
+                    .Where(record => record.Values.Any(value => value.ToString().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0))
+                    .OrderByDescending(record =>
+                    {
+                        if (record.TryGetValue("CreatedDateTime", out var createdDateTimeValue) &&
+                            createdDateTimeValue is DateTime dateTimeValue)
+                        {
+                            return dateTimeValue;
+                        }
+                        return DateTime.MinValue;
+                    })
+                    .ToList();
+            }
+            else
+            {
+                ftrrc = records
+                .Where(record => record.Values.Any(value => value.ToString().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0))
+                .ToList();
+            }
+
+            DataTable ftrtbs = orgTb.Clone();
+            foreach (var record in ftrrc)
+            {
+                DataRow newRow = ftrtbs.NewRow();
+                foreach (var column in orgTb.Columns.Cast<DataColumn>())
+                {
+                    newRow[column.ColumnName] = record[column.ColumnName];
+                }
+                ftrtbs.Rows.Add(newRow);
+            }
+
+            return ftrtbs;
+        }
+        public DataSet InspectionHistoryForAdminDataSearch(string LoginId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionHistoryForAdmin", LoginId);
+        }
     }
 }
 

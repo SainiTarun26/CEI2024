@@ -33,13 +33,25 @@ namespace CEIHaryana.Admin
         {
             try
             {
+                string searchText = txtSearch.Text.Trim();
                 string LoginId = Session["AdminID"].ToString();
-                DataTable ds = new DataTable();
-                ds = CEI.InspectionHistoryForAdminData(LoginId);
-                if (ds.Rows.Count > 0)
+                DataSet ds = new DataSet();
+                ds = CEI.InspectionHistoryForAdminDataSearch(LoginId);
+                if (ds.Tables.Count > 0)
                 {
-                    GridView1.DataSource = ds;
-                    GridView1.DataBind();
+                    DataTable ftrtbs = CEI.Grddtl(searchText, ds, "id1");
+                    if (ftrtbs.Rows.Count > 0)
+                    {
+                        GridView1.DataSource = ftrtbs;
+                        GridView1.DataBind();
+                    }
+                    else
+                    {
+                        GridView1.DataSource = null;
+                        GridView1.DataBind();
+                        string script = "alert(\"No Record Found\");";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    }
                 }
                 else
                 {
@@ -141,6 +153,16 @@ namespace CEIHaryana.Admin
             {
 
             }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            BindGrid();
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            BindGrid();
         }
     }
 }

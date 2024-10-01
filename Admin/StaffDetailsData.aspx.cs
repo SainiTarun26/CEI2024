@@ -315,6 +315,10 @@ namespace CEIHaryana.Admin
             {
                 getWiremanorSuperwiserData(category, loginType, ID);
             }
+            else if (category == "SiteOwner" && loginType != null && ID != null)
+            {
+                getSiteOwnerData();
+            }
         }
         protected string WrapText(string text, int wrapAfter)
         {
@@ -338,24 +342,51 @@ namespace CEIHaryana.Admin
         {
             try
             {
+                DataTable searchResult;
                 string searchText = txtSearch.Text.Trim();
                 category = Request.Params["category"].ToString();
 
                 if (!string.IsNullOrEmpty(searchText))
                 {
-                    DataTable searchResult = cei.SearchContractorData(searchText, category);
-
-                    if (searchResult.Rows.Count > 0)
+                    if(category != "SiteOwner")
                     {
-                        GridView1.DataSource = searchResult;
-                        GridView1.DataBind();
+                         searchResult = cei.SearchContractorData(searchText, category);
                     }
                     else
                     {
-                        GridView1.DataSource = null;
-                        GridView1.DataBind();
-                        string script = "alert(\"No Record Found\");";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                         searchResult = cei.SearchSiteOwnerData(searchText, category);
+                    }
+
+                    if (category != "SiteOwner")
+                    {
+                        if (searchResult.Rows.Count > 0)
+                        {
+                            GridView1.DataSource = searchResult;
+                            GridView1.DataBind();
+                        }
+                        else
+                        {
+                            GridView1.DataSource = null;
+                            GridView1.DataBind();
+                            string script = "alert(\"No Record Found\");";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                        }
+                    }
+                    else
+                    {
+                        if (searchResult.Rows.Count > 0)
+                        {
+                            GridView2.DataSource = searchResult;
+                            GridView2.DataBind();
+                        }
+                        else
+                        {
+                            GridView2.DataSource = null;
+                            GridView2.DataBind();
+                            string script = "alert(\"No Record Found\");";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                        }
+
                     }
                 }
                 else // If searchText is blank
@@ -410,6 +441,7 @@ namespace CEIHaryana.Admin
         }
         protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            GridView2.PageIndex = e.NewPageIndex;
             getSiteOwnerData();
         }
 

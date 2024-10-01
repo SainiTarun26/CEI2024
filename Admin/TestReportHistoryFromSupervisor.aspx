@@ -230,17 +230,24 @@
                     <div class="col-sm-6 col-md-6"></div>
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                    <asp:Panel ID="pnlSearch" runat="server" DefaultButton="btnSearch">
                     <div class="row" style="margin-bottom: -30px;">
-                        <div class="col-4">
+                        <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
-                                <div class="col-sm-9" style="margin-left: -35px;">
-                                    <asp:TextBox ID="txtSearch" runat="server" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)" PlaceHolder="Auto Search" class="form-control" Font-Size="12px"></asp:TextBox><br />
-                                    <asp:TextBox ID="txtapproval" runat="server" Visible="false" class="form-control" Font-Size="12px"></asp:TextBox><br />
+                                <label for="search" class="col-md-1 col-form-label" style="margin-top: 3px; padding: 0px;">Search:</label>
+                                <div class="col-md-6" style="margin-left: -10px;">
+                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Search by Name, licence, District" class="form-control" Font-Size="12px" Style="height: 28px;"></asp:TextBox><br />
+                                </div>
+                                <div class="col-md-2">
+                                    <asp:Button ID="btnSearch" runat="server" class="btn btn-primary" OnClick="btnSearch_Click" Text="Search" Style="padding-top: 1px; padding-bottom: 1px;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <asp:Button ID="btnReset" runat="server" class="btn btn-primary" Text="Reset" OnClick="btnReset_Click" Style="padding-top: 1px; padding-bottom: 1px; padding-left: 17px; padding-right: 17px;" />
                                 </div>
                             </div>
                         </div>
                     </div>
+                        </asp:Panel>
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" OnRowDataBound="GridView1_RowDataBound" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                         <PagerStyle CssClass="pagination-ys" />
@@ -321,7 +328,7 @@
                             <asp:TemplateField HeaderText="Remarks">
                                 <ItemTemplate>
                                     <span><%# Eval("Remarks") %> </span>
-                                    <asp:HyperLink visible="false" ID="linkReadMore" CssClass="ellipsis" runat="server" data-modal="modal1"  
+                                    <asp:HyperLink Visible="false" ID="linkReadMore" CssClass="ellipsis" runat="server" data-modal="modal1"
                                         onclick='<%# "showFullText(\"" + Eval("Remarks") + "\"); return false;" %>'>Read more</asp:HyperLink>
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -375,12 +382,12 @@
                 tblData.rows[i].style.display = styleDisplay;
             }
         }
-        function SearchOnEnter(event) {
-            if (event.keyCode === 13) {
-                event.preventDefault(); // Prevent default form submission
-                Search_Gridview(document.getElementById('txtSearch'));
-            }
-        }
+        //function SearchOnEnter(event) {
+        //    if (event.keyCode === 13) {
+        //        event.preventDefault(); // Prevent default form submission
+        //        Search_Gridview(document.getElementById('txtSearch'));
+        //    }
+        //}
     </script>
     <script>
         function preventEnterSubmit(event) {
@@ -432,11 +439,11 @@
         });
     </script>
     <script type="text/javascript">
-    function showFullText(fullText) {
-        // Display the modal
-        document.getElementById("modal1").style.display = "block";
-        // Set the full text in the label
-        document.getElementById('<%= lblRemarks.ClientID %>').innerText = fullText;
-    }
-</script>
+        function showFullText(fullText) {
+            // Display the modal
+            document.getElementById("modal1").style.display = "block";
+            // Set the full text in the label
+            document.getElementById('<%= lblRemarks.ClientID %>').innerText = fullText;
+        }
+    </script>
 </asp:Content>

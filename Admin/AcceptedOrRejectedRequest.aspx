@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="AcceptedOrRejectedRequest.aspx.cs" Inherits="CEIHaryana.Admin.AcceptedOrRejectedRequest" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -98,20 +99,25 @@
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
-                <div class="row" style="margin-bottom: -30px;">
-                    <div class="col-4">
-                        <div class="form-group row">
-                            <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
-                            <div class="col-sm-9" style="margin-left: -35px;">
-                                <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)" Font-Size="12px"></asp:TextBox><br />
+                <asp:Panel ID="pnlSearch" runat="server" DefaultButton="btnSearch">
+                    <div class="row" style="margin-bottom: -30px;">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="search" class="col-md-1 col-form-label" style="margin-top: 3px; padding: 0px;">Search:</label>
+                                <div class="col-md-6" style="margin-left: -10px;">
+                                     <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control"  Font-Size="12px"></asp:TextBox><br />
+                                </div>
+                                <div class="col-md-2">
+                                    <asp:Button ID="btnSearch" runat="server" class="btn btn-primary" OnClick="btnSearch_Click" Text="Search" Style="padding-top: 1px; padding-bottom: 1px;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <asp:Button ID="btnReset" runat="server" class="btn btn-primary" Text="Reset" OnClick="btnReset_Click" Style="padding-top: 1px; padding-bottom: 1px; padding-left: 17px; padding-right: 17px;" />
+                                </div>
                             </div>
-                            <%--<asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
-                                <asp:ListItem Text="Approved" Value="0"></asp:ListItem>
-                                <asp:ListItem Text="Rejected" Value="1"></asp:ListItem>
-                            </asp:RadioButtonList>--%>
                         </div>
                     </div>
-                </div>
+                </asp:Panel>
+
                 <div class="row ">
                     <div class="col-sm-4 col-md-4">
                         <h6 class="card-title fw-semibold mb-4">
@@ -126,7 +132,7 @@
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
-                                     <asp:Label ID="LblInspectionType" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label>
+                                    <asp:Label ID="LblInspectionType" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Id" Visible="False">
@@ -142,16 +148,16 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
-                                    <HeaderStyle Width="35%" CssClass="headercolor"/>
-                                    <ItemStyle Width="35%" />
-                                    <HeaderTemplate>
-                                       Inspection Id
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                           <%-- <asp:TemplateField>
+                                <HeaderStyle Width="35%" CssClass="headercolor" />
+                                <ItemStyle Width="35%" />
+                                <HeaderTemplate>
+                                    Inspection Id
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <%-- <asp:TemplateField>
                                 <HeaderStyle Width="35%" CssClass="headercolor" />
                                 <ItemStyle Width="35%" />
                                 <HeaderTemplate>
@@ -161,7 +167,7 @@
                                     <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>--%>
-                             <%-- <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
+                            <%-- <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="28%" />
                             </asp:BoundField>--%>
@@ -193,9 +199,9 @@
                                 <HeaderStyle Width="10%" CssClass="headercolor" />
                                 <ItemStyle Width="10%" />
                                 <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server" Visible="false"
+                                    <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server" Visible="false"
                                         Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
-                                </asp:LinkButton>
+                                    </asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -244,5 +250,5 @@
                 Search_Gridview(document.getElementById('txtSearch'));
             }
         }
-</script>
+    </script>
 </asp:Content>

@@ -739,7 +739,7 @@ namespace CEIHaryana.Supervisor
             Earthingtype3.Visible = false;
             Earthingtype4.Visible = false;
             Earthingtype5.Visible = false;
-            Earthingtype6.Visible = false;
+            Earthingtype6.Visible = false;  
             Earthingtype7.Visible = false;
             Earthingtype8.Visible = false;
             Earthingtype9.Visible = false;
@@ -777,6 +777,7 @@ namespace CEIHaryana.Supervisor
             Earthingtype41.Visible = false;
             Earthingtype42.Visible = false;
             Earthingtype43.Visible = false;
+            Earthingtype44.Visible = false;
             Earthingtype45.Visible = false;
             Earthingtype46.Visible = false;
             Earthingtype47.Visible = false;
