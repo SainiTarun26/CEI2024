@@ -225,8 +225,10 @@
     <Content Include="Admin\AdminDashboard.aspx" />
     <Content Include="Admin\AdminMaster.aspx" />
     <Content Include="Admin\AllTestReports.aspx" />
+    <Content Include="Admin\CircleMaster.aspx" />
     <Content Include="Admin\Consolidated_Report.aspx" />
     <Content Include="Admin\DistrictData.aspx" />
+    <Content Include="Admin\Division.aspx" />
     <Content Include="Admin\InProcessRequest.aspx" />
     <Content Include="Admin\InspectionDetails.aspx" />
     <Content Include="Admin\IntimationForHistory.aspx" />
@@ -239,15 +241,19 @@
     <Content Include="Admin\SldApproval.aspx" />
     <Content Include="Admin\SldApprovalRequest.aspx" />
     <Content Include="Admin\StaffDetailsData.aspx" />
+    <Content Include="Admin\SubDivisionMaster.aspx" />
     <Content Include="Admin\TestHistoryReport.aspx" />
     <Content Include="Admin\TestReportHistoryFromSupervisor.aspx" />
     <Content Include="Admin\TotalRequestInspectionForAdmin.aspx" />
     <Content Include="Admin\TransferRequestReport.aspx" />
     <Content Include="Admin\UploadSignature.aspx" />
+    <Content Include="Admin\UtilityMaster.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
+    <Content Include="Admin\WingMaster.aspx" />
     <Content Include="Admin\WorkIntimationDetail.aspx" />
     <Content Include="Admin\ActionInprocessInspection.aspx" />
     <Content Include="Admin\ActionInspectioHistrory.aspx" />
+    <Content Include="Admin\ZoneMaster.aspx" />
     <Content Include="Application.aspx" />
     <Content Include="applicationtable.aspx" />
     <Content Include="assetsnew\css\style.css" />
@@ -2064,6 +2070,13 @@
     <Compile Include="Admin\AllTestReports.aspx.designer.cs">
       <DependentUpon>AllTestReports.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\CircleMaster.aspx.cs">
+      <DependentUpon>CircleMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CircleMaster.aspx.designer.cs">
+      <DependentUpon>CircleMaster.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Consolidated_Report.aspx.cs">
       <DependentUpon>Consolidated_Report.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2077,6 +2090,13 @@
     </Compile>
     <Compile Include="Admin\DistrictData.aspx.designer.cs">
       <DependentUpon>DistrictData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Division.aspx.cs">
+      <DependentUpon>Division.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Division.aspx.designer.cs">
+      <DependentUpon>Division.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\InProcessRequest.aspx.cs">
       <DependentUpon>InProcessRequest.aspx</DependentUpon>
@@ -2162,6 +2182,13 @@
     <Compile Include="Admin\StaffDetailsData.aspx.designer.cs">
       <DependentUpon>StaffDetailsData.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\SubDivisionMaster.aspx.cs">
+      <DependentUpon>SubDivisionMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SubDivisionMaster.aspx.designer.cs">
+      <DependentUpon>SubDivisionMaster.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\TestHistoryReport.aspx.cs">
       <DependentUpon>TestHistoryReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2197,12 +2224,26 @@
     <Compile Include="Admin\UploadSignature.aspx.designer.cs">
       <DependentUpon>UploadSignature.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\UtilityMaster.aspx.cs">
+      <DependentUpon>UtilityMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UtilityMaster.aspx.designer.cs">
+      <DependentUpon>UtilityMaster.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WingMaster.aspx.cs">
+      <DependentUpon>WingMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WingMaster.aspx.designer.cs">
+      <DependentUpon>WingMaster.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\WorkIntimationDetail.aspx.cs">
       <DependentUpon>WorkIntimationDetail.aspx</DependentUpon>
@@ -2224,6 +2265,13 @@
     </Compile>
     <Compile Include="Admin\ActionInspectioHistrory.aspx.designer.cs">
       <DependentUpon>ActionInspectioHistrory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ZoneMaster.aspx.cs">
+      <DependentUpon>ZoneMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ZoneMaster.aspx.designer.cs">
+      <DependentUpon>ZoneMaster.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application.aspx.cs">
       <DependentUpon>Application.aspx</DependentUpon>

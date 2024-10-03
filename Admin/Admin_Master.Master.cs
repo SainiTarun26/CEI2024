@@ -15,6 +15,26 @@ namespace CEI_PRoject.ADMIN
                     {
 
                         lblName.Text = Request.Cookies["AdminID"].Value;
+                        if (lblName.Text == "Admin@123")
+                        {
+
+                            utilityMasterTab.Visible = true;
+                            WingMasterTab.Visible = true;
+                            ZoneMasterTab.Visible = true;
+                            CircleMasterTab.Visible = true;
+                            DivisionMasterTab.Visible = true;
+                            SubDivisionMasterTab.Visible = true;
+                        }
+                        else
+                        {
+
+                            utilityMasterTab.Visible = false;
+                            WingMasterTab.Visible = false;
+                            ZoneMasterTab.Visible = false;
+                            CircleMasterTab.Visible = false;
+                            DivisionMasterTab.Visible = false;
+                            SubDivisionMasterTab.Visible = false;
+                        }
                     }
                     else
                     {

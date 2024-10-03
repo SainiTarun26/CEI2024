@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using CEIHaryana.Contractor;
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,7 @@ namespace CEIHaryana.SiteOwnerPages
                         getWorkIntimationData();
                         Session["PreviousPage"] = Request.Url.ToString();
                         Grd_Document.RowDataBound += Grd_Document_RowDataBound;
+                        //customFile.Visible = true;
                     }
                 }
             }
@@ -150,10 +152,32 @@ namespace CEIHaryana.SiteOwnerPages
                     Label lblDesignation = (Label)row.FindControl("lblDesignation");
                     Label lblTypeOfPlant = (Label)row.FindControl("LblTypeofPlant");
                     Label LblSactionLoad = (Label)row.FindControl("LblSactionLoad");
+                    Label lblReportType = (Label)row.FindControl("lblReportType");
                     if (LblSactionLoad.Text == "1")
                     {
                         SactionVoltage.Visible = true;
+                       
+           
                     }
+                    if(lblReportType.Text == "Returned")
+                    {
+                        lnkFile.Visible = true;
+                        customFileLocation.Visible = false;
+                        customFile.Visible = false;
+                        txtSaction.ReadOnly = true;
+
+                    }
+                    else
+                    {
+                        lnkFile.Visible = false;
+                        customFile.Visible = true;
+                        customFileLocation.Visible = false;
+                        txtSaction.ReadOnly = false;
+                        txtSaction.Text = "";
+                    }
+
+               
+                   
 
 
                     CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
@@ -231,7 +255,7 @@ namespace CEIHaryana.SiteOwnerPages
                         PaymentDetails.Visible = true;
                         btnSubmit.Visible = true;
                         btnReset.Visible = true;
-
+                        //lnkFile.Visible = true;
                         GetDocumentUploadData(ApplicantTypeCode, Category, InspectionType, AssigDesignation, PlantLocation, inspectionIdRes);
                         PaymentGridViewBind();
                         GetOtherDetails_ForReturnedInspection(inspectionIdRes);
@@ -353,6 +377,29 @@ namespace CEIHaryana.SiteOwnerPages
             }
             return null;
         }
+
+        protected void lnkFile_Click(object sender, EventArgs e)
+        {
+            string fileName = Session["File"].ToString();
+            string folderPath = Server.MapPath(fileName);
+            string filePath = Path.Combine(folderPath);
+
+            if (System.IO.File.Exists(filePath))
+            {
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
+            }
+            else
+            {
+                string errorMessage = "An error occurred: " + "Loading failed Please try Again later";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+
+            }
+            Session["File"] = "";
+
+        }
+
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
 
@@ -482,15 +529,16 @@ namespace CEIHaryana.SiteOwnerPages
                             if (fileExtension == ".pdf" || fileExtension == ".doc" || fileExtension == ".docx")
                             {
                                 FileName = "DemandNotice_" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                                string folderPath = Server.MapPath("~/DemandNotices/");
+                                string folderPath = Server.MapPath("~/Attachment/"+ CreatedBy +"~/DemandNotices/");
                                 if (!Directory.Exists(folderPath))
                                 {
                                     Directory.CreateDirectory(folderPath);
                                 }
                                 filePath = Path.Combine(folderPath, FileName);
                                 postedFile.SaveAs(filePath);
-                                DemandNotice = "~/DemandNotices/" + FileName;
+                                DemandNotice = "/Attachment/" + CreatedBy + "~/DemandNotices/" + FileName;
                             }
+                            //"~/Attachment/" + ContractorID + "/Copy of Work Order/"
                             else
                             {
                                 ScriptManager.RegisterStartupScript(this, GetType(), "FileFormatError", "alert('File Format Not Supported. Only PDF, DOC, DOCX files are allowed.');", true);
@@ -809,6 +857,7 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             headerRow.Cells[columnIndex].Visible = false;
                         }
+                        customFile.Visible = true;
                     }
                 }
 
@@ -823,6 +872,7 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         // Disable the LinkButton
                         lnkDocumemtPath1.Enabled = false;
+                        customFile.Visible = false;
                     }
                 }
             }
@@ -881,6 +931,9 @@ namespace CEIHaryana.SiteOwnerPages
                     if (reader.Read())
                     {
                         txttransactionId.Text = reader["TransactionId"].ToString();
+                        txtSaction.Text = reader["SactionVoltage"].ToString();
+                        customFileLocation.Text = reader["DemandDocument"].ToString();
+                        Session["File"] = customFileLocation.Text;
                     }
                     reader.Close();
                 }

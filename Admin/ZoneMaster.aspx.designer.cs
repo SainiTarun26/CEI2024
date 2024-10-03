@@ -7,137 +7,137 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CEI_PRoject.ADMIN
+namespace CEIHaryana.Admin
 {
 
 
-    public partial class Admin_Master
+    public partial class ZoneMaster
     {
 
         /// <summary>
-        /// head control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
-        /// form1 control.
+        /// DataUpdated control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DataUpdated;
 
         /// <summary>
-        /// lblName control.
+        /// DataSaved control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DataSaved;
 
         /// <summary>
-        /// BtnChangePassword control.
+        /// ddlUtility control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnChangePassword;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUtility;
 
         /// <summary>
-        /// btnLogout control.
+        /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogout;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
-        /// utilityMasterTab control.
+        /// ddlWingName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl utilityMasterTab;
+        protected global::System.Web.UI.WebControls.DropDownList ddlWingName;
 
         /// <summary>
-        /// WingMasterTab control.
+        /// RequiredFieldValidator2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl WingMasterTab;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
-        /// ZoneMasterTab control.
+        /// txtZoneName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ZoneMasterTab;
+        protected global::System.Web.UI.WebControls.TextBox txtZoneName;
 
         /// <summary>
-        /// CircleMasterTab control.
+        /// RequiredFieldValidator8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CircleMasterTab;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
 
         /// <summary>
-        /// DivisionMasterTab control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivisionMasterTab;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
 
         /// <summary>
-        /// SubDivisionMasterTab control.
+        /// hdnId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SubDivisionMasterTab;
+        protected global::System.Web.UI.WebControls.HiddenField hdnId;
 
         /// <summary>
-        /// LoginType control.
+        /// hdnId2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LoginType;
+        protected global::System.Web.UI.WebControls.HiddenField hdnId2;
 
         /// <summary>
-        /// PersonDetails control.
+        /// Zone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PersonDetails;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Zone;
 
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

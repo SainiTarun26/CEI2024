@@ -5868,6 +5868,117 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionHistoryForAdmin", LoginId);
         }
+
+        #region PowerUtility
+        public void InsertInSubDivisionMaster(string SubDivisionName, string Email, string PhoneNo, string UtilityId, string WingId, string ZoneId, string CircleId, string DivisionId, string UserId)
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertSubDivisionInMaster");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@SubDivision", SubDivisionName);
+            cmd.Parameters.AddWithValue("@Email", Email);
+            cmd.Parameters.AddWithValue("@Mobile", PhoneNo);
+            cmd.Parameters.AddWithValue("@UtilityId", UtilityId);
+            cmd.Parameters.AddWithValue("@WingId", WingId);
+            cmd.Parameters.AddWithValue("@ZoneId", ZoneId);
+            cmd.Parameters.AddWithValue("@CircleId", CircleId);
+            cmd.Parameters.AddWithValue("@DivisionId", DivisionId);
+            cmd.Parameters.AddWithValue("@UserId", UserId);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        public DataSet checkEmail(string Email)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getEmailFromSubDivision", Email);
+        }
+        public DataSet InsertInUtilityMaster(string UtilityName)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertUtilityName", UtilityName);
+        }
+        public DataSet checkUtilityName(string UtilityName)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckUtilityName", UtilityName);
+        }
+
+        public DataSet checkWingName(string WingName)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckWingName", WingName);
+        }
+        public DataSet InsertInWingMaster(string WingName, string UtilityId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertInWingMaster", WingName, UtilityId);
+        }
+        public DataSet checkZoneName(string ZoneName)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckZoneName", ZoneName);
+        }
+        public DataSet InsertInZoneMaster(string ZoneName, string UtilityId, string WingId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertInZoneMaster", ZoneName, UtilityId, WingId);
+        }
+
+        public DataSet checkCircleName(string CircleName)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckCircleName", CircleName);
+        }
+        public DataSet InsertInCircleMaster(string CircleName, string UtilityId, string WingId, string ZoneId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertInCircleMaster", CircleName, UtilityId, WingId, ZoneId);
+        }
+        public DataSet checkDivisionName(string DivisionName)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckDivisionName", DivisionName);
+        }
+
+        public DataSet GetUtilityMaster()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPowerUtilityData");
+        }
+        public DataSet GetWingMaster(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetWingData", Id);
+        }
+        public DataSet GetZoneMaster(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetZoneData", Id);
+        }
+        public DataSet GetCircleMaster(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetCircleData", Id);
+        }
+        public DataSet GetDivisionMaster(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDivisionMasterData", Id);
+        }
+        public void InsertInDivisionMaster(string DivisionName, string UtilityId, string WingId, string ZoneId, string CircleId)
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertDivisionInMaster");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@DivisionName", DivisionName);
+            cmd.Parameters.AddWithValue("@UtilityId", UtilityId);
+            cmd.Parameters.AddWithValue("@WingId", WingId);
+            cmd.Parameters.AddWithValue("@ZoneId", ZoneId);
+            cmd.Parameters.AddWithValue("@CircleId", CircleId);
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        #endregion
     }
 }
 

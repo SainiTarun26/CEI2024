@@ -316,6 +316,7 @@
                                     <asp:Label ID="lblDesignation" runat="server" Text='<%#Eval("Designation") %>'></asp:Label>
                                     <asp:Label ID="LblTypeofPlant" runat="server" Text='<%#Eval("TypeOfPlant") %>'></asp:Label>
                                     <asp:Label ID="LblSactionLoad" runat="server" Text='<%#Eval("SanctionLoad") %>'></asp:Label>
+                                      <asp:Label ID="lblReportType" runat="server" Text='<%#Eval("ReportType") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="SNo">
@@ -397,7 +398,9 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="customFile">Demand Notice</label>
-                            <input type="file" class="form-control" id="customFile" runat="server" />
+                            <input type="file" class="form-control" id="customFile" runat="server" Visible="false"/>
+                              <br/><asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" Visible="false" OnClick="lnkFile_Click" Text="Open Document" />
+  <asp:TextBox class="form-control" ID="customFileLocation" autocomplete="off" runat="server" Style="margin-left: 18px" Visible="false"></asp:TextBox>
                             <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="customFile" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please upload Demand Notice Document</asp:RequiredFieldValidator>--%>
                         </div>
                     </div>

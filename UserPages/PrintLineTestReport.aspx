@@ -47,6 +47,17 @@
     </script>
 
     <style>
+        th.headercolor.textalignCenter {
+    width: 1%;
+}
+            table#GridView1{
+        margin-left: 1%;
+       width: 100% !important;
+    }
+    table#GridView1{
+        margin-top: 20px;
+         
+    }
         div#SubmitDate1 {
             margin-top: 1px;
         }
@@ -159,6 +170,7 @@
             border-bottom: 0px solid !important;
         }
 
+         
         div#SubmitDate {
             margin-top: 0px;
         }
@@ -595,7 +607,7 @@
                                                 </label>
                                                 <asp:TextBox class="form-control" ID="txtEarthing" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
-                                            <div class="table-responsive pt-3" id="LineEarthingdiv" runat="server" visible="true" style="margin-left: 0px;">
+                                          <%--  <div class="table-responsive pt-3" id="LineEarthingdiv" runat="server" visible="true" style="margin-left: 0px;">
                                                 <table class="table table-bordered table-striped" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;">
                                                     <thead class="table" style="background: #9292cc;">
                                                         <tr>
@@ -819,9 +831,53 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
+                                                          <tr id="Tr1" runat="server" style="display: none">
+      <td>15
+      </td>
+      <td>
+          <div class="col-12">
+              <asp:TextBox class="form-control" ID="TextBox1" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+          </div>
+      </td>
+      <td>
+          <div class="col-12">
+              <asp:TextBox class="form-control" ID="TextBox2" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+          </div>
+      </td>
+  </tr>
+
                                                     </tbody>
                                                 </table>
-                                            </div>
+                                            </div>--%>
+
+       <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%"   AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+    <Columns>
+        
+        <asp:BoundField DataField="RowNumber" HeaderText="Sr No." >
+            <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
+            <ItemStyle HorizontalAlign="center" />
+        </asp:BoundField>                               
+     
+        <asp:BoundField DataField="EarthingType" HeaderText="Earthing Type">
+            <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter"/>
+            <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
+        </asp:BoundField>
+        <asp:BoundField DataField="Valueinohms" HeaderText="Value in(ohms)">
+            <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
+            <ItemStyle HorizontalAlign="center" />
+        </asp:BoundField>
+        
+    </Columns>
+    <FooterStyle BackColor="White" ForeColor="#000066" />
+    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+    <RowStyle ForeColor="#000066" />
+    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+    <SortedDescendingHeaderStyle BackColor="#00547E" />
+</asp:GridView>
                                         </div>
                                     </div>
                                 </div>
@@ -888,6 +944,7 @@
                                     </div>
                                 </div>
                             </div>
+                                   
                         </div>
                         <div class="row">
                             <div class="col-4"></div>
