@@ -44,13 +44,25 @@ namespace CEIHaryana.Admin
         {
             try
             {
+                string searchText = txtSearch.Text.Trim();
                 LoginId = Convert.ToString(Session["AdminId"]);
                 DataSet ds = new DataSet();
                 ds = CEI.AcceptedOrRejectedRequestInspectionForAdmin(LoginId);
                 if (ds.Tables.Count > 0)
                 {
-                    GridView1.DataSource = ds;
-                    GridView1.DataBind();
+                    DataTable ftrtbs = CEI.Grddtl(searchText, ds, "id");
+                    if (ftrtbs.Rows.Count > 0)
+                    {
+                        GridView1.DataSource = ftrtbs;
+                        GridView1.DataBind();
+                    }
+                    else
+                    {
+                        GridView1.DataSource = null;
+                        GridView1.DataBind();
+                        string script = "alert(\"No Record Found\");";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    }
                 }
                 else
                 {

@@ -5979,6 +5979,37 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             con.Close();
         }
         #endregion
+
+        #region search
+        public DataSet WorkIntimationDataforAdminds()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationProjectsforAdmin");
+        }
+
+        public DataSet SiteOwnerDashbordCapsuleSearch(string LoginId, string ApplicationStatus, string searchText)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SiteownerDashbordInspections_searchText", LoginId, ApplicationStatus, searchText);
+        }
+
+        public DataTable SiteOwnerInspectionData(string SiteOwnerId, string searchText = null)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerInspectionHistory", SiteOwnerId, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+
+        public DataSet TestReportData(string PANNumber, string searchText = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationsForSiteOwner", PANNumber, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+
+        public DataTable WorkIntimationDataforSiteOwner(string Id, string searchText = null)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationsDetailsForSiteOwner", Id, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+        public DataTable SldHistory(string SiteOwnerId, string searchText = null)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ApproveSdlHistory", SiteOwnerId, String.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+        #endregion
     }
 }
 

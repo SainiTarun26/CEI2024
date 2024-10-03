@@ -27,12 +27,24 @@ namespace CEIHaryana.Admin
 
         private void getWorkIntimationData()
         {
-            DataTable ds = new DataTable();
-            ds = cei.WorkIntimationDataforAdmin();
-            if (ds.Rows.Count > 0)
+            string searchText = txtSearch.Text.Trim();
+            DataSet ds = new DataSet();
+            ds = cei.WorkIntimationDataforAdminds();
+            if (ds.Tables.Count > 0)
             {
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
+                DataTable ftrtbs = CEI.Grddtl(searchText, ds, "ids");
+                if (ftrtbs.Rows.Count > 0)
+                {
+                    GridView1.DataSource = ftrtbs;
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
             }
             else
             {
@@ -71,6 +83,16 @@ namespace CEIHaryana.Admin
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
+            getWorkIntimationData();
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            getWorkIntimationData();
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
             getWorkIntimationData();
         }
     }

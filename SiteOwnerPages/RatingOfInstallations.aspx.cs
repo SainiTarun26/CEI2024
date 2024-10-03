@@ -42,11 +42,11 @@ namespace CEIHaryana.SiteOwnerPages
             }
 
         }
-        private void getWorkIntimationData()
+        private void getWorkIntimationData(string searchText = null)
         {
             DataTable ds = new DataTable();
             string Id = Session["SiteOwnerId"].ToString();
-            ds = cei.WorkIntimationDataforSiteOwner(Id);
+            ds = cei.WorkIntimationDataforSiteOwner(Id, searchText);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -83,6 +83,25 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
-        
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text.Trim();
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                getWorkIntimationData(searchText);
+            }
+            else
+            {
+                getWorkIntimationData();
+            }
+
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            getWorkIntimationData();
+        }
+
+
     }
 }

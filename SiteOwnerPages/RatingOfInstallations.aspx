@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="RatingOfInstallations.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.RatingOfInstallations" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -147,7 +148,7 @@
         }
 
         .ReturnedRowColor {
-             background-color: #f9c7c7 !important;
+            background-color: #f9c7c7 !important;
         }
     </style>
 </asp:Content>
@@ -162,7 +163,7 @@
                     </div>
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                    <div class="row" style="margin-bottom: -30px;">
+                    <%--<div class="row" style="margin-bottom: -30px;">
                         <div class="col-12">
                             <div class="form-group row" style="margin-bottom: 0px !important;">
                                 <label for="search" class="col-sm-2 col-form-label" style="margin-top: -6px;">Search:</label>
@@ -171,9 +172,27 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
+                    <asp:Panel ID="pnlSearch" runat="server" DefaultButton="btnSearch">
+                        <div class="row" style="margin-bottom: -30px;">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="search" class="col-md-1 col-form-label" style="margin-top: 3px; padding: 0px;">Search:</label>
+                                    <div class="col-md-6" style="margin-left: -10px;">
+                                        <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px"></asp:TextBox><br />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <asp:Button ID="btnSearch" runat="server" class="btn btn-primary" OnClick="btnSearch_Click" Text="Search" Style="padding-top: 1px; padding-bottom: 1px;" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <asp:Button ID="btnReset" runat="server" class="btn btn-primary" Text="Reset" OnClick="btnReset_Click" Style="padding-top: 1px; padding-bottom: 1px; padding-left: 17px; padding-right: 17px;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </asp:Panel>
                     <div style="margin-top: 3%">
-                        <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false"  OnRowCommand="GridView1_RowCommand" 
+                        <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
                             AllowPaging="true" PageSize="20" BorderWidth="1px" BorderColor="#dbddff">
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
@@ -185,18 +204,18 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
-                                 <ItemTemplate>
-                                 <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
 
                                     </ItemTemplate>
-                            </asp:TemplateField>
-                                
+                                </asp:TemplateField>
+
                                 <asp:TemplateField HeaderText="Declared Installation Id">
                                     <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="25%" />
                                     <ItemTemplate>
                                         <%--  <asp:LinkButton ID="LinkButton4" runat="server" CommandName="Select"><%#Eval("Id") %></asp:LinkButton> --%>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true"  CommandArgument=' <%#Eval("Name") %> ' CommandName="Select"><%#Eval("Name") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("Name") %> ' CommandName="Select"><%#Eval("Name") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
