@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Supervisor/Supervisor.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="TestReportHistory.aspx.cs" Inherits="CEIHaryana.Supervisor.TestReportHistory" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
@@ -15,9 +16,9 @@
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
 
-     <!-- jQuery Modal -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -25,9 +26,10 @@
             margin-bottom: 8px;
         }
 
-          a.close-modal {
-     width: 0px !important;
- }
+        a.close-modal {
+            width: 0px !important;
+        }
+
         .jquery-modal.blocker.current {
             width: 100%;
             background-color: rgba(0, 0, 0, 0);
@@ -236,49 +238,51 @@
         .headercolor {
             background-color: #9292cc;
         }
+
         .ReturnedRowColor {
             background-color: #f9c7c7 !important;
         }
+
         .card-body {
-     margin-bottom: 11px !important;
-     margin-top: 5px !important;
- }
+            margin-bottom: 11px !important;
+            margin-top: 5px !important;
+        }
 
- .modal {
-     display: none; /* Hidden by default */
-     position: fixed; /* Stay in place */
-     z-index: 1; /* Sit on top */
-     left: 0;
-     top: 0;
-     width: 100%;
-     height: 100%;
-     overflow: auto; /* Enable scroll if needed */
-     background-color: rgb(0,0,0); /* Fallback color */
-     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
- }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
 
- .modal-content {
-     background-color: #fefefe;
-     margin: 5% auto; /* 15% from the top and centered */
-     padding: 20px;
-     border: 1px solid #888;
-     width: 100%; /* Could be more or less, depending on screen size */
- }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 100%; /* Could be more or less, depending on screen size */
+        }
 
- .close {
-     color: #aaa;
-     float: right;
-     font-size: 28px;
-     font-weight: bold;
-     margin-left: 98%;
- }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            margin-left: 98%;
+        }
 
-     .close:hover,
-     .close:focus {
-         color: black;
-         text-decoration: none;
-         cursor: pointer;
-     }
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
 
         .card .card-title {
             font-size: 1.4rem !important;
@@ -301,7 +305,7 @@
                     <div class="col-sm-6 col-md-6"></div>
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                    <div class="row" style="margin-bottom: -30px;">
+                    <%--          <div class="row" style="margin-bottom: -30px;">
                         <div class="col-md-4">
                             <div class="form-group row">
                                 <label for="search" class="col-md-3 col-form-label" style="margin-top: -6px;">Search:</label>
@@ -312,11 +316,31 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
+
+                    <asp:Panel ID="pnlSearch" runat="server" DefaultButton="btnSearch">
+                        <div class="row" style="margin-bottom: -30px;">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="search" class="col-md-1 col-form-label" style="margin-top: 3px; padding: 0px;">Search:</label>
+                                    <div class="col-md-6" style="margin-left: -10px;">
+                                        <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px"></asp:TextBox><br />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <asp:Button ID="btnSearch" runat="server" class="btn btn-primary" OnClick="btnSearch_Click" Text="Search" Style="padding-top: 1px; padding-bottom: 1px;" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <asp:Button ID="btnReset" runat="server" class="btn btn-primary" Text="Reset" OnClick="btnReset_Click" Style="padding-top: 1px; padding-bottom: 1px; padding-left: 17px; padding-right: 17px;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </asp:Panel>
+
                     <asp:GridView class="table-responsive table table-striped table-hover" OnRowDataBound="GridView1_RowDataBound" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                         <PagerStyle CssClass="pagination-ys" />
-                         <Columns>
+                        <Columns>
                             <asp:TemplateField HeaderText="SNo">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
@@ -337,14 +361,14 @@
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblTestReportId" runat="server" Text='<%#Eval("Intimations") %>'></asp:Label>
-                                     <asp:Label ID="lblTypeOf" runat="server" Text='<%#Eval("Typs") %>'></asp:Label>
+                                    <asp:Label ID="lblTypeOf" runat="server" Text='<%#Eval("Typs") %>'></asp:Label>
                                     <asp:Label ID="lblIntimations" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
                                     <asp:Label ID="lblVoltage" runat="server" Text='<%#Eval("Voltagelevel") %>'></asp:Label>
                                     <asp:Label ID="lblInstallationLine" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
                                     <%--<asp:Label ID="lblIHID" runat="server" Text='<%#Eval("IHID") %>'></asp:Label>--%>
                                     <asp:Label ID="lblApplicationForTestReport" runat="server" Text='<%#Eval("Apllication") %>'></asp:Label>
 
-                                     <asp:Label ID="lblOffRemarks" runat="server" Text='<%#Eval("OfficerRemarks") %>'></asp:Label>
+                                    <asp:Label ID="lblOffRemarks" runat="server" Text='<%#Eval("OfficerRemarks") %>'></asp:Label>
                                     <asp:Label ID="lblSORemarks" runat="server" Text='<%#Eval("SiteOwnerRemarks") %>'></asp:Label>
                                     <asp:Label ID="lblContRemarks" runat="server" Text='<%#Eval("ContractorRemarksForSuprvisor") %>'></asp:Label>
 
@@ -393,7 +417,7 @@
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>
-                          <%--  <asp:BoundField DataField="ContractorRemarksForSuprvisor" HeaderText="Remarks">
+                            <%--  <asp:BoundField DataField="ContractorRemarksForSuprvisor" HeaderText="Remarks">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>--%>
@@ -401,7 +425,7 @@
                                 <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="13%" />
                             </asp:BoundField>--%>
-                              <asp:TemplateField HeaderText="Remarks">
+                            <asp:TemplateField HeaderText="Remarks">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkReadMore" runat="server" data-modal="modal1" OnClick="lnkReadMore_Click">Read more</asp:LinkButton>
                                 </ItemTemplate>
@@ -419,35 +443,35 @@
                     </asp:GridView>
                 </div>
                 <div id="modal1" class="modal">
-      <div class="modal-content">
-          <span class="close" data-modal="modal1">&times;</span>
-          <div id="OffRemarks" visible="false" runat="server">
-              <div class="card-title">
-                  Officer Remarks
-              </div>
-              <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                  <asp:Label ID="lblModalOffRemarks" runat="server"></asp:Label>
-              </div>
-          </div>
-          <div id="SORemarks" visible="false" runat="server">
-              <div class="card-title">
-                  SiteOwner Remarks
-              </div>
-              <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                  <asp:Label ID="lblModalSORemarks" runat="server"></asp:Label>
-              </div>
-          </div>
-          <div id="ContRemarks" visible="false" runat="server">
-              <div class="card-title">
-                  Contractor Remarks
-              </div>
-              <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                  <asp:Label ID="lblModalContRemarks" runat="server"></asp:Label>
-              </div>
-          </div>
-      </div>
+                    <div class="modal-content">
+                        <span class="close" data-modal="modal1">&times;</span>
+                        <div id="OffRemarks" visible="false" runat="server">
+                            <div class="card-title">
+                                Officer Remarks
+                            </div>
+                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                <asp:Label ID="lblModalOffRemarks" runat="server"></asp:Label>
+                            </div>
+                        </div>
+                        <div id="SORemarks" visible="false" runat="server">
+                            <div class="card-title">
+                                SiteOwner Remarks
+                            </div>
+                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                <asp:Label ID="lblModalSORemarks" runat="server"></asp:Label>
+                            </div>
+                        </div>
+                        <div id="ContRemarks" visible="false" runat="server">
+                            <div class="card-title">
+                                Contractor Remarks
+                            </div>
+                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                <asp:Label ID="lblModalContRemarks" runat="server"></asp:Label>
+                            </div>
+                        </div>
+                    </div>
 
-  </div>
+                </div>
             </div>
         </div>
 
@@ -457,15 +481,15 @@
     <script>
         new DataTable('#example');
     </script>
-     <script>
-         function showModal() {
-             $('#ex1').modal('show');
-         }
-         function CloseModalAndRedirect() {
-             $('#ex1').modal('hide');
-             window.location.href = "TestReportForm.aspx";
-         }
-     </script>
+    <script>
+        function showModal() {
+            $('#ex1').modal('show');
+        }
+        function CloseModalAndRedirect() {
+            $('#ex1').modal('hide');
+            window.location.href = "TestReportForm.aspx";
+        }
+    </script>
     <script type="text/javascript">
         function Search_Gridview(strKey) {
             var strData = strKey.value.toLowerCase().split(" ");
@@ -495,26 +519,26 @@
     </script>
 
 
-        <script>
-            function preventEnterSubmit(event) {
-                if (event.keyCode === 13) {
-                    event.preventDefault(); // Prevent form submission
-                    return false;
-                }
+    <script>
+        function preventEnterSubmit(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); // Prevent form submission
+                return false;
             }
-        </script>
-     <script>
-         // Get all close elements
-         const closeElements = document.querySelectorAll('.close');
-         // Add click event listener to each close element
-         closeElements.forEach(close => {
-             close.addEventListener('click', () => {
-                 const modalId = close.getAttribute('data-modal');
-                 const modal = document.getElementById(modalId);
-                 if (modal) {
-                     modal.style.display = 'none';
-                 }
-             });
-         });
-     </script>
+        }
+    </script>
+    <script>
+        // Get all close elements
+        const closeElements = document.querySelectorAll('.close');
+        // Add click event listener to each close element
+        closeElements.forEach(close => {
+            close.addEventListener('click', () => {
+                const modalId = close.getAttribute('data-modal');
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </asp:Content>

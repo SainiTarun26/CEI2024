@@ -931,6 +931,7 @@ namespace CEIHaryana.SiteOwnerPages
                     if (reader.Read())
                     {
                         txttransactionId.Text = reader["TransactionId"].ToString();
+                        txttransactionDate.Text = reader["TransctionDate"].ToString();
                         txtSaction.Text = reader["SactionVoltage"].ToString();
                         customFileLocation.Text = reader["DemandDocument"].ToString();
                         Session["File"] = customFileLocation.Text;

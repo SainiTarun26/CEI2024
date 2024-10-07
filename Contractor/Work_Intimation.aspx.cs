@@ -663,7 +663,7 @@ namespace CEIHaryana.Contractor
                      txtPin.Text,
                      ddlPremises.SelectedItem?.ToString(),
                      txtOtherPremises.Text,
-                     ddlVoltageLevel.SelectedItem?.ToString(),
+                     ddlVoltageLevel.SelectedValue?.ToString(),
                      Pan_TanNumber,
                      txtinstallationType1.Text,
                      txtinstallationNo1.Text,

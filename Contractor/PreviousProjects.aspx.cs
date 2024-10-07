@@ -36,12 +36,12 @@ namespace CEIHaryana.Contractor
                 Response.Redirect("/Login.aspx");
             }
         }
-        private void getWorkIntimationData()
+        private void getWorkIntimationData(string searchText = null)
         {
             string LoginID = string.Empty;
             LoginID = Session["ContractorID"].ToString();
             DataTable ds = new DataTable();
-            ds = cei.WorkIntimationData(LoginID);
+            ds = cei.WorkIntimationData(LoginID, searchText);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -102,6 +102,25 @@ namespace CEIHaryana.Contractor
             {
                 
             }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text.Trim();
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                getWorkIntimationData(searchText);
+            }
+            else
+            {
+                getWorkIntimationData();
+            }
+
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            getWorkIntimationData();
         }
     }
 }

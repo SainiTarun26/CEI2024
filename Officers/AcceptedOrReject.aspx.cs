@@ -34,14 +34,14 @@ namespace CEIHaryana.Officers
             }
 
         }
-        public void GridBind()
+        public void GridBind(string searchText = null)
         {
             try
             {
                 string LoginID = string.Empty;
                 LoginID = Session["StaffID"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.AcceptOrReject(LoginID);
+                ds = CEI.AcceptOrReject(LoginID, searchText);
                 if (ds != null && ds.Tables.Count > 0)
                 {
                     GridView1.DataSource = ds;
@@ -137,6 +137,24 @@ namespace CEIHaryana.Officers
                     linkButton.Visible = false;
                 }
             }
+        }
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text.Trim();
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                GridBind(searchText);
+            }
+            else
+            {
+                GridBind();
+            }
+
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            GridBind();
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Contractor/Contractor.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Approved_Test_Reports.aspx.cs" Inherits="CEIHaryana.Contractor.Approved_Test_Reports" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"> <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -163,7 +165,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class="content-wrapper">
+    <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
                 <div class="row ">
@@ -184,7 +186,7 @@
                     <div class="col-sm-6 col-md-6"></div>
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                    <div class="row" style="margin-bottom: -30px;">
+                    <%--     <div class="row" style="margin-bottom: -30px;">
                         <div class="col-md-4">
                             <div class="form-group row">
                                 <label for="search" class="col-md-3 col-form-label" style="margin-top: -6px;">Search:</label>
@@ -194,7 +196,27 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
+
+                    <asp:Panel ID="pnlSearch" runat="server" DefaultButton="btnSearch">
+                        <div class="row" style="margin-bottom: -30px;">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="search" class="col-md-1 col-form-label" style="margin-top: 3px; padding: 0px;">Search:</label>
+                                    <div class="col-md-6" style="margin-left: -10px;">
+                                        <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px"></asp:TextBox><br />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <asp:Button ID="btnSearch" runat="server" class="btn btn-primary" OnClick="btnSearch_Click" Text="Search" Style="padding-top: 1px; padding-bottom: 1px;" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <asp:Button ID="btnReset" runat="server" class="btn btn-primary" Text="Reset" OnClick="btnReset_Click" Style="padding-top: 1px; padding-bottom: 1px; padding-left: 17px; padding-right: 17px;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </asp:Panel>
+
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                         <PagerStyle CssClass="pagination-ys" />
@@ -211,7 +233,7 @@
                                     <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("Approval") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                           <%-- <asp:TemplateField HeaderText="Id" Visible="False">
+                            <%-- <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="LblReasionforRejection" runat="server" Text='<%#Eval("ReasonForRejection") %>'></asp:Label>
                                 </ItemTemplate>
@@ -230,9 +252,9 @@
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <HeaderStyle Width="34%" CssClass="headercolor leftalign" />
-                                <ItemStyle Width="34%" cssclass="leftalign" />
+                                <ItemStyle Width="34%" CssClass="leftalign" />
                                 <HeaderTemplate>
-                                  <%--  Test Report Application--%>
+                                    <%--  Test Report Application--%>
                                     Intimation Id
                                 </HeaderTemplate>
                                 <ItemTemplate>
@@ -246,12 +268,12 @@
                             <asp:BoundField DataField="TypeOf" HeaderText="Installation Type">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor leftalign" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="leftalign" />
-                            </asp:BoundField>                           
+                            </asp:BoundField>
                             <asp:BoundField DataField="Voltagelevel" HeaderText="Voltagelevel">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                              <asp:BoundField DataField="Approveddate" HeaderText="Approved Date">
+                            <asp:BoundField DataField="Approveddate" HeaderText="Approved Date">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>

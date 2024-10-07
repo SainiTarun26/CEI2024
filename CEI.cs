@@ -2119,9 +2119,13 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetWiremanorSuperwiserData", searchterm, category);
         }
-        public DataTable WorkIntimationData(string LoginID)
+        //public DataTable WorkIntimationData(string LoginID)
+        //{
+        //    return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationProjects", LoginID);
+        //}
+        public DataTable WorkIntimationData(string LoginID, string searchText = null)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationProjects", LoginID);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationProjects", LoginID, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
         // public DataSet LineDataWithId(int ID) gurmeet
         public DataSet LineDataWithId(string ID)
@@ -2188,9 +2192,13 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationProjectsforAdmin");
         }
-        public DataTable WorkIntimationDataforSupervisor(string Id)
+        //public DataTable WorkIntimationDataforSupervisor(string Id)
+        //{
+        //    return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationsForSupervisor", Id);
+        //}
+        public DataTable WorkIntimationDataforSupervisor(string Id, string searchText = null)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationsForSupervisor", Id);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationsForSupervisor", Id, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
         public int SetDataInStaffAssined(string REID, string projectId, string AssignBy, SqlTransaction transaction)
         {
@@ -2345,18 +2353,27 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SupervisorNotificationData");
         }
 
-        public DataSet GetSuppervisorTestReportHistory(string LoginId)
+        //public DataSet GetSuppervisorTestReportHistory(string LoginId)
+        //{
+        //    return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportHistoryForSupervisor", LoginId);
+        //    // return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportInstallationsHistory ", LoginId);
+        //}
+        public DataSet GetSuppervisorTestReportHistory(string LoginId, string searchText = null)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportHistoryForSupervisor", LoginId);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportHistoryForSupervisor", LoginId, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
             // return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportInstallationsHistory ", LoginId);
         }
         public DataTable TestReportDataForAdmin()
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TestReportHistoryAdmin");
         }
-        public DataSet TestReportContractorHistory(string LoginId, string Type)
+        //public DataSet TestReportContractorHistory(string LoginId, string Type)
+        //{
+        //    return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ReportsHistory", LoginId, Type);
+        //}
+        public DataSet TestReportContractorHistory(string LoginId, string Type, string searchText = null)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ReportsHistory", LoginId, Type);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ReportsHistory", LoginId, Type, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
         public DataSet AllInspectionHistory()
         {
@@ -3450,17 +3467,29 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInProcessRequest", Id);
         }
-        public DataSet NewRequestRecieved(string Id)
+        //public DataSet NewRequestRecieved(string Id)
+        //{
+        //    return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceived", Id);
+        //}
+        //public DataSet AcceptOrReject(string Id)
+        //{
+        //    return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectInspection", Id);
+        //}
+        public DataSet NewRequestRecieved(string Id, string searchText = null)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceived", Id);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceived", Id, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
-        public DataSet AcceptOrReject(string Id)
+        public DataSet AcceptOrReject(string Id, string searchText = null)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectInspection", Id);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectInspection", Id, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
-        public DataSet TotalRequest(string Id)
+        //public DataSet TotalRequest(string Id)
+        //{
+        //    return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestOfInspection", Id);
+        //}
+        public DataSet TotalRequest(string Id, string searchText = null)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestOfInspection", Id);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestOfInspection", Id, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
         #endregion
         #region forAdmin        
@@ -5298,9 +5327,13 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ReturnedInspection_PendingAssignment_AtContractor_IFPeriodic", ContractorLogin);
         }
-        public DataTable GetReturnedPeriodicInspections(string Id)
+        //public DataTable GetReturnedPeriodicInspections(string Id)
+        //{
+        //    return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ReturnedPeriodicInspections", Id);
+        //}
+        public DataTable GetReturnedPeriodicInspections(string Id, string searchText = null)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ReturnedPeriodicInspections", Id);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ReturnedPeriodicInspections", Id, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
         public string GetIndustry_InsertSdlData_Check(string _SiteOwnerID)
         {
@@ -5723,7 +5756,9 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         }
 
         public int InsertSubstationData_Existing_HavingPreviousReport(string IdUpdate, string Count, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
-     string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedBy)
+ string PrimaryVoltage, string SecondoryVoltage, string MakeType,
+ string LastInspectionDate, string ApplicantType, string VoltageLevel, string District, string Division, string Inspectiontype,
+ string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertSubstationTransformerData_Existing_HavingPreviousReport");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -5746,6 +5781,15 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             cmd.Parameters.AddWithValue("@PrimaryVoltage", PrimaryVoltage == "Select" ? null : PrimaryVoltage);
             cmd.Parameters.AddWithValue("@SecondoryVoltage", SecondoryVoltage == "Select" ? null : SecondoryVoltage);
             cmd.Parameters.AddWithValue("@MakeType", MakeType);
+
+            cmd.Parameters.AddWithValue("@LastInspectionDate", String.IsNullOrEmpty(LastInspectionDate) ? null : LastInspectionDate);
+
+            cmd.Parameters.AddWithValue("@ApplicantType", String.IsNullOrEmpty(ApplicantType) ? null : ApplicantType);
+            cmd.Parameters.AddWithValue("@VoltageLevel", String.IsNullOrEmpty(VoltageLevel) ? null : VoltageLevel);
+            cmd.Parameters.AddWithValue("@District", String.IsNullOrEmpty(District) ? null : District);
+            cmd.Parameters.AddWithValue("@Division", String.IsNullOrEmpty(Division) ? null : Division);
+            cmd.Parameters.AddWithValue("@Inspectiontype", String.IsNullOrEmpty(Inspectiontype) ? null : Inspectiontype);
+
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             SqlParameter returnStatusParam = new SqlParameter("@ReturnStatus", SqlDbType.Int)
             {
@@ -6010,6 +6054,11 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ApproveSdlHistory", SiteOwnerId, String.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
         #endregion
+        //7 oct
+        public DataSet GetIntimationDetails(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationDetails", Id);
+        }
     }
 }
 

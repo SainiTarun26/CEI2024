@@ -54,11 +54,11 @@ namespace CEIHaryana.Supervisor
             }
         }
 
-        private void GetReturnedInspectionData()
+        private void GetReturnedInspectionData(string searchText = null)
         {
             DataTable ds = new DataTable();
             string Id = Session["SupervisorID"].ToString();
-            ds = CEI.GetReturnedPeriodicInspections(Id);
+            ds = CEI.GetReturnedPeriodicInspections(Id, searchText);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -220,6 +220,25 @@ namespace CEIHaryana.Supervisor
                 //}else{ string script = "alert(\"You are not Authorized to Edit.\");";
                 //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);}
             }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text.Trim();
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                GetReturnedInspectionData(searchText);
+            }
+            else
+            {
+                GetReturnedInspectionData();
+            }
+
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            GetReturnedInspectionData();
         }
     }
 }

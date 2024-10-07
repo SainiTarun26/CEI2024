@@ -33,7 +33,7 @@ namespace CEIHaryana.SiteOwnerPages
                     if (Session["SiteOwnerId"] != null && Request.Cookies["SiteOwnerId"] != null)
                     {
                         BindAdress();
-                        getWorkIntimationDataForListOfExisting();
+                        //getWorkIntimationDataForListOfExisting();
                     }
                 }
             }
@@ -53,7 +53,7 @@ namespace CEIHaryana.SiteOwnerPages
                     btnSubmitInstallation.Visible = true;
                     btnBack.Visible = true;
                     btnReset.Visible = true;
-                    DivExistingInspectionRequest.Visible = false;
+                    //DivExistingInspectionRequest.Visible = false;
                     DivPeriodicRenewal.Visible = false;
                     GetDetails();
                     BindDistrict();
@@ -467,53 +467,53 @@ namespace CEIHaryana.SiteOwnerPages
         #endregion
 
         #region List Of Existing Installation
-        private void getWorkIntimationDataForListOfExisting()
-        {
-            string Id = Session["SiteOwnerId"].ToString();
+        //private void getWorkIntimationDataForListOfExisting()
+        //{
+        //    string Id = Session["SiteOwnerId"].ToString();
 
-            DataSet ds = new DataSet();
-            ds = CEI.ExistingInspectionData(Id);
+        //    DataSet ds = new DataSet();
+        //    ds = CEI.ExistingInspectionData(Id);
 
-            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                GridView2.DataSource = ds;
-                GridView2.DataBind();
-            }
-            else
-            {
-                DivExistingInspectionRequest.Visible = false;
-                GridView2.DataSource = null;
-                GridView2.DataBind();
-                //string script = "alert(\"No Record Found\");";
-                //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
-            ds.Dispose();
-        }
-        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            try
-            {
-                if (e.CommandName == "Select")
-                {
-                    Control ctrl = e.CommandSource as Control;
-                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                    Label lblID = (Label)row.FindControl("lblID");
-                    Session["id"] = lblID.Text;
-                    Response.Redirect("/SiteOwnerPages/ExistingInspectionData.aspx", false);
-                }
-                else
-                {
-                }
-            }
-            catch (Exception)
-            {
-            }
-        }
-        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridView1.PageIndex = e.NewPageIndex;
-            getWorkIntimationDataForListOfExisting();
-        }
+        //    if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+        //    {
+        //        GridView2.DataSource = ds;
+        //        GridView2.DataBind();
+        //    }
+        //    else
+        //    {
+        //        DivExistingInspectionRequest.Visible = false;
+        //        GridView2.DataSource = null;
+        //        GridView2.DataBind();
+        //        //string script = "alert(\"No Record Found\");";
+        //        //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+        //    }
+        //    ds.Dispose();
+        //}
+        //protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (e.CommandName == "Select")
+        //        {
+        //            Control ctrl = e.CommandSource as Control;
+        //            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+        //            Label lblID = (Label)row.FindControl("lblID");
+        //            Session["id"] = lblID.Text;
+        //            Response.Redirect("/SiteOwnerPages/ExistingInspectionData.aspx", false);
+        //        }
+        //        else
+        //        {
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //    }
+        //}
+        //protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        //{
+        //    GridView1.PageIndex = e.NewPageIndex;
+        //    getWorkIntimationDataForListOfExisting();
+        //}
 
         #endregion
 

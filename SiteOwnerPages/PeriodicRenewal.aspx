@@ -482,7 +482,7 @@
                     </div>
                 </div>
             </div>
-            <div id="DivExistingInspectionRequest" visible="true" runat="server" style="padding-left: 20px; padding-right: 20px;">
+     <%--       <div id="DivExistingInspectionRequest" visible="true" runat="server" style="padding-left: 20px; padding-right: 20px;">
                 <div class="card-body" style="padding-top: 0px !important;">
                     <div class="row">
                         <div class="col-md-12">
@@ -547,7 +547,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div>--%>
             <div id="DivCreateIntimation" visible="true" runat="server" style="padding-left: 40px; padding-right: 40px;">
                 <div class="row">
                     <div class="col-md-12">
@@ -743,6 +743,15 @@
                                 </div>
                                 <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                                     <div class="row">
+                                         <div class="col-md-4">
+                                            <label>
+                                                Highest Voltage Level of Installation
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" AutoPostBack="true" ID="ddlVoltageLevel" OnSelectedIndexChanged="ddlVoltageLevel_SelectedIndexChanged" runat="server">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
                                         <div class="col-md-4">
                                             <label>
                                                 Type of Premises<samp style="color: red">* </samp>
@@ -757,16 +766,7 @@
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtOtherPremises" TabIndex="11" MaxLength="40" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtOtherPremises" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Other Premises</asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>
-                                                Highest Voltage Level of Installation
-                                                <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" AutoPostBack="true" ID="ddlVoltageLevel" OnSelectedIndexChanged="ddlVoltageLevel_SelectedIndexChanged" runat="server">
-                                            </asp:DropDownList>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                        </div>
+                                        </div>                                       
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
@@ -779,14 +779,7 @@
                                             </asp:RadioButtonList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="RadioButtonList2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select any Sanction Load</asp:RequiredFieldValidator>
                                         </div>
-                                        <div class="col-md-4" id="divSanctionLoad" visible="false" runat="server">
-                                            <label for="Email">
-                                                Input Your Sanction Load
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtSanctionLoad" onkeydown="return preventEnterSubmit(event)" maxlenght="10" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtCapacity" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Total Capacity</asp:RequiredFieldValidator>--%>
-                                        </div>
-                                        <div class="col-md-4" runat="server">
+                                         <div class="col-md-4" runat="server">
                                             <label for="Email">
                                                 Total Capacity installed in KVA<samp style="color: red">* </samp>
                                             </label>
@@ -794,6 +787,13 @@
                                             <span id="lblCap" style="color: red"></span>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtCapacity" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Total Capacity</asp:RequiredFieldValidator>
                                         </div>
+                                        <div class="col-md-4" id="divSanctionLoad" visible="false" runat="server">
+                                            <label for="Email">
+                                                Input Your Sanction Load
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtSanctionLoad" onkeydown="return preventEnterSubmit(event)" maxlenght="10" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtCapacity" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Total Capacity</asp:RequiredFieldValidator>--%>
+                                        </div>                                       
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">

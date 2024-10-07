@@ -585,6 +585,15 @@
                                 </div>
                                 <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                                     <div class="row">
+                                         <div class="col-md-4">
+                                            <label>
+                                                Highest Voltage Level of Installation
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" OnSelectedIndexChanged="ddlVoltageLevel_SelectedIndexChanged" AutoPostBack="true" ID="ddlVoltageLevel" TabIndex="12" runat="server">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
                                         <div class="col-md-4">
                                             <label>
                                                 Type of Premises
@@ -601,15 +610,7 @@
                                             <asp:TextBox class="form-control" ID="txtOtherPremises" TabIndex="11" MaxLength="40" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtOtherPremises" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Other Premises</asp:RequiredFieldValidator>
                                         </div>
-                                        <div class="col-md-4">
-                                            <label>
-                                                Highest Voltage Level of Installation
-                                                <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" OnSelectedIndexChanged="ddlVoltageLevel_SelectedIndexChanged" AutoPostBack="true" ID="ddlVoltageLevel" TabIndex="12" runat="server">
-                                            </asp:DropDownList>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                        </div>
+                                       
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
