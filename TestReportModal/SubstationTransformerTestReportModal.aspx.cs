@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using CEIHaryana.Contractor;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -209,7 +210,7 @@ namespace CEIHaryana.TestReportModal
                 txtTransformerType.Text = ds.Tables[0].Rows[0]["TranformerType"].ToString();
                 //TextStatus.Text = ds.Tables[0].Rows[0]["ApprovedOrRejectFromContractor"].ToString();
                 //TextReject.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
-                DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
+                DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["SubmittedDate"]);
                 txtCreatedDate.Text = createdDate.ToString("dd-MM-yyyy");
                 if (txtTransformerType.Text.Trim() == "Oil")
                 {
@@ -577,10 +578,13 @@ namespace CEIHaryana.TestReportModal
                 //txtReportNo.Text = ds.Tables[0].Rows[0]["SubStationId"].ToString(); 
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
 
+                Session["InspectionType"] = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                 txtApprovalDate.Text = ds.Tables[0].Rows[0]["ApprovalDate"].ToString();
                 txtApprovedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();
-
-
+                txtTestReportCount.Text = ds.Tables[0].Rows[0]["Count"].ToString();
+                txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                txtDivision.Text = ds.Tables[0].Rows[0]["Area"].ToString();
+                txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
             }
             catch
             {
@@ -610,10 +614,19 @@ namespace CEIHaryana.TestReportModal
             }
             else
             {
+                string InspectionType = Session["InspectionType"].ToString();
                 string id = Session["IntimationId"].ToString();
                 string Counts = Session["Counts"].ToString();
+                string ContractorId = Session["ContractorID"].ToString();
                 //CEI.UpdateSubstationData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
+                if (InspectionType == "Existing")
+                {
+                    CEI.InsertExistingInspectionData(lbltestReportId.Text, lblIntimationId.Text, txtTestReportCount.Text, txtApplicantType.Text, "Substation Transformer", txtVoltagelevel.Text.Trim(),
+                       txtDistrict.Text, txtDivision.Text, TxtPremises.Text, ContractorId);
+
+                }
                 CEI.UpdateSubstationData(id, Counts);
+                Session["InspectionType"] = "";
                 // Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
                 string script = "alert('Test Report Approved  Successfully'); window.location='/Contractor/Approved_Test_Reports.aspx';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", script, true);

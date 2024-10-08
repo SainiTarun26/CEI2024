@@ -837,7 +837,7 @@ namespace CEIHaryana.SiteOwnerPages
             try
             {
                 installationType2.Visible = true;
-                if (ddlVoltageLevel.SelectedValue == "650V")
+                if (ddlVoltageLevel.SelectedValue == "upto 650 V")
                 {
                     installationType2.Visible = false;
                 }

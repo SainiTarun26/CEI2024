@@ -171,15 +171,15 @@ namespace CEI_PRoject
         #endregion
         #region Insert Intimtion Data
         public void IntimationDataInsertion(string Id, string ContractorId, string ApplicantTypeCode, string PowerUtility, string PowerUtilityWing, string ZoneName,
-         string CircleName, string DivisionName, string SubDivisionName,
-         string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
-         string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
-         string TypeOfInstallation3, string NumberOfInstallation3,
-         //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
-         //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
-         string Email, string WorkStartDate, string CompletionDate,
-         string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy, string SanctionLoad, string InspectionType, string TotalCapacity,
-         SqlTransaction transaction)
+   string CircleName, string DivisionName, string SubDivisionName,
+   string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
+   string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
+   string TypeOfInstallation3, string NumberOfInstallation3,
+   //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
+   //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
+   string Email, string WorkStartDate, string CompletionDate,
+   string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy, string SanctionLoad, string InspectionType, string TotalCapacity, string UserId,
+   SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_WorkIntimationRegistration", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -239,6 +239,7 @@ namespace CEI_PRoject
             cmd.Parameters.AddWithValue("@SanctionLoad", SanctionLoad);
             cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
             cmd.Parameters.AddWithValue("@TotalCapacity", TotalCapacity);
+            cmd.Parameters.AddWithValue("@UserId", UserId);
             outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
             outputParam.Direction = ParameterDirection.Output;
             cmd.Parameters.Add(outputParam);
@@ -5718,7 +5719,11 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToGetAssignedOfficer", CartId);
         }
 
-        public int InsertGeneratingSetData_Existing_HavingPreviousReport(string IdUpdate, string Count, string IntimationId, string GeneratingSetCapacityType, string GeneratingSetCapacity, string SerialNumbrOfAcGenerator, string GeneratingSetType, string GeneratorVoltageLevel, string TypeOfPlant, string MakeType, string CreatedBy)
+        public int InsertGeneratingSetData_Existing_HavingPreviousReport(string IdUpdate, string Count, string IntimationId, string GeneratingSetCapacityType,
+             string GeneratingSetCapacity, string SerialNumbrOfAcGenerator, string GeneratingSetType, string GeneratorVoltageLevel, string TypeOfPlant,
+             string MakeType,
+              string LastInspectionDate, string ApplicantType, string VoltageLevel, string District, string Division, string Inspectiontype,
+             string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertGeneratingSetData_Existing_HavingPreviousReport");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -5741,6 +5746,14 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             cmd.Parameters.AddWithValue("@GeneratorVoltageLevel", string.IsNullOrEmpty(GeneratorVoltageLevel) ? DBNull.Value : (object)GeneratorVoltageLevel);
             cmd.Parameters.AddWithValue("@TypeOfPlant", TypeOfPlant == "Select" ? DBNull.Value : (object)TypeOfPlant);
             cmd.Parameters.AddWithValue("@MakeType", MakeType);
+
+            cmd.Parameters.AddWithValue("@LastInspectionDate", String.IsNullOrEmpty(LastInspectionDate) ? null : LastInspectionDate);
+            cmd.Parameters.AddWithValue("@ApplicantType", String.IsNullOrEmpty(ApplicantType) ? null : ApplicantType);
+            cmd.Parameters.AddWithValue("@VoltageLevel", String.IsNullOrEmpty(VoltageLevel) ? null : VoltageLevel);
+            cmd.Parameters.AddWithValue("@District", String.IsNullOrEmpty(District) ? null : District);
+            cmd.Parameters.AddWithValue("@Division", String.IsNullOrEmpty(Division) ? null : Division);
+            cmd.Parameters.AddWithValue("@Inspectiontype", String.IsNullOrEmpty(Inspectiontype) ? null : Inspectiontype);
+
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             SqlParameter returnStatusParam = new SqlParameter("@ReturnStatus", SqlDbType.Int)
             {
@@ -5756,9 +5769,9 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         }
 
         public int InsertSubstationData_Existing_HavingPreviousReport(string IdUpdate, string Count, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
- string PrimaryVoltage, string SecondoryVoltage, string MakeType,
- string LastInspectionDate, string ApplicantType, string VoltageLevel, string District, string Division, string Inspectiontype,
- string CreatedBy)
+string PrimaryVoltage, string SecondoryVoltage, string MakeType,
+string LastInspectionDate, string ApplicantType, string VoltageLevel, string District, string Division, string Inspectiontype,
+string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertSubstationTransformerData_Existing_HavingPreviousReport");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -5803,7 +5816,6 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
 
             return returnStatus;
         }
-
         public DataSet GetddlVoltageLevelForContractorIntimation(string ID)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetVoltageLevelForContractorIntimation", ID);
@@ -6058,6 +6070,41 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         public DataSet GetIntimationDetails(string Id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationDetails", Id);
+        }
+        public void InsertExistingInspectionData(string TestReportId, string IntimationId, string TestReportCount, string ApplicantType, string InstallationType, string VoltageLevel,
+        string District, string Division, string InspectionType, string CreatedBy
+        //string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, string PreviousInspection
+         )
+        {
+            SqlConnection con = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            string sqlProc = "sp_InsertExistingInspection";
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = sqlProc;
+            cmd.Connection = con;
+            cmd.Parameters.AddWithValue("@TestRportId", TestReportId);
+            cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
+            cmd.Parameters.AddWithValue("@TestReportCount", TestReportCount);
+            cmd.Parameters.AddWithValue("@ApplicantType", String.IsNullOrEmpty(ApplicantType) ? DBNull.Value : (object)ApplicantType);
+            cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+            cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
+            cmd.Parameters.AddWithValue("@District", District);
+            cmd.Parameters.AddWithValue("@Division", Division);
+            cmd.Parameters.AddWithValue("@Inspectiontype", InspectionType);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+
+            //cmd.Parameters.AddWithValue("@ApprovedDate", String.IsNullOrEmpty(ApprovedDate) ? DBNull.Value : (object)ApprovedDate);
+            //cmd.Parameters.AddWithValue("@ApproximateYears", ApproximateYears);
+            //cmd.Parameters.AddWithValue("@InspectionNewOrExist", InspectionNewOrExist);
+            //cmd.Parameters.AddWithValue("@PreviousInspectionDate", PreviousInspection);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
         }
     }
 }

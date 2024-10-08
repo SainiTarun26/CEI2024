@@ -931,7 +931,11 @@ namespace CEIHaryana.SiteOwnerPages
                     if (reader.Read())
                     {
                         txttransactionId.Text = reader["TransactionId"].ToString();
-                        txttransactionDate.Text = reader["TransctionDate"].ToString();
+                        if (reader["TransctionDate"] != DBNull.Value)
+                        {
+                            txttransactionDate.Text = Convert.ToDateTime(reader["TransctionDate"]).ToString("yyyy-MM-dd");
+                        }
+                        txtInspectionRemarks.Text = reader["InspectionRemarks"].ToString();
                         txtSaction.Text = reader["SactionVoltage"].ToString();
                         customFileLocation.Text = reader["DemandDocument"].ToString();
                         Session["File"] = customFileLocation.Text;

@@ -1,6 +1,8 @@
 ﻿
 using CEI_PRoject;
+using CEIHaryana.Admin;
 using CEIHaryana.Contractor;
+using CEIHaryana.SiteOwnerPages;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -200,7 +202,7 @@ namespace CEIHaryana.TestReportModal
                 txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
                 string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
                 txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("dd-MM-yyyy");
-                txtLineVoltage.Text = ds.Tables[0].Rows[0]["LineVoltage"].ToString();
+                txtLineVoltage.Text = ds.Tables[0].Rows[0]["Voltage"].ToString();
                 DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
                 txtCreatedDate.Text = createdDate.ToString("dd-MM-yyyy");
                 //TextStatus.Text = ds.Tables[0].Rows[0]["RejectOrApprovedFronContractor"].ToString();
@@ -214,6 +216,7 @@ namespace CEIHaryana.TestReportModal
                 TxtOthervoltage.Text = ds.Tables[0].Rows[0]["OtherVoltage"].ToString();
                 txtLineLength.Text = ds.Tables[0].Rows[0]["LineLength"].ToString();
                 txtLineType.Text = ds.Tables[0].Rows[0]["LineType"].ToString();
+                Session["InspectionType"] = ds.Tables[0].Rows[0]["InspectionType"].ToString();
 
                 if (txtVotalgeType.Text == "V")
                 {
@@ -406,6 +409,10 @@ namespace CEIHaryana.TestReportModal
                 txtRiverCanalCrossing.Text = ds.Tables[0].Rows[0]["NmbrofRiverCanalCrossing"].ToString();
                 txtPowerLineCrossing.Text = ds.Tables[0].Rows[0]["NmbrofPowerLineCrossing"].ToString();
                 txtEarthing.Text = ds.Tables[0].Rows[0]["NmbrofEarthing"].ToString();
+                txtTestReportCount.Text = ds.Tables[0].Rows[0]["Count"].ToString();
+                txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                txtDivision.Text = ds.Tables[0].Rows[0]["Area"].ToString();
                 //if (txtEarthing.Text == "1")
                 //{
                 //    Earthingtype1.Visible = true;
@@ -682,10 +689,20 @@ namespace CEIHaryana.TestReportModal
             }
             else
             {
+                string InspectionType = Session["InspectionType"].ToString();
                 string id = Session["IntimationId"].ToString();
                 string Counts = Session["Counts"].ToString();
+                string ContractorId = Session["ContractorID"].ToString();
                 //CEI.UpdateLineData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
+                //CEI.UpdateLineData(id, Counts);
+                if (InspectionType == "Existing")
+                {
+                    CEI.InsertExistingInspectionData(lbltestReportId.Text, lblIntimationId.Text, txtTestReportCount.Text, txtApplicantType.Text,"Line", txtVoltagelevel.Text.Trim(),
+                       txtDistrict.Text, txtDivision.Text, TxtPremises.Text, ContractorId);
+
+                }
                 CEI.UpdateLineData(id, Counts);
+                Session["InspectionType"] = "";
                 string script = "alert('Test Report Approved  Successfully'); window.location='/Contractor/Approved_Test_Reports.aspx';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", script, true);
                 // Response.Redirect("/Contractor/Approved_Test_Reports.aspx");

@@ -55,6 +55,33 @@ namespace CEIHaryana.SiteOwnerPages
                 ds.Dispose();
             }
         }
+        public void GridBindSearch(string searchText)
+        {
+            if (Request.QueryString["parameter"].ToString() != null && Request.QueryString["parameter"].ToString() != "")
+            {
+                ApplicationStatus = Request.QueryString["parameter"].ToString();
+                if (ApplicationStatus == "Approved")
+                {
+                    GridView1.Columns[8].Visible = true;
+                }
+                LoginId = Session["SiteOwnerId"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.SiteOwnerDashbordCapsuleSearch(LoginId, ApplicationStatus, searchText);
+                if (ds.Tables.Count > 0 && ds != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                ds.Dispose();
+            }
+        }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -92,6 +119,24 @@ namespace CEIHaryana.SiteOwnerPages
                 }
 
             }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text.Trim();
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                GridBindSearch(searchText);
+            }
+            else
+            {
+                GridBind();
+            }
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            GridBind();
         }
 
     }

@@ -36,7 +36,7 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 Response.Redirect("/Login.aspx");
             }

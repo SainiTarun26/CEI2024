@@ -527,6 +527,7 @@ namespace CEIHaryana.Contractor
                     connection.Open();
                     string Pan_TanNumber = "";
                     bool panExists = false;
+                    string UserId = "";
 
 
                     Debug.WriteLine("Before checking visibility and setting Pan_TanNumber");
@@ -536,10 +537,12 @@ namespace CEIHaryana.Contractor
                         if (DivPancard_TanNo.Visible && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
                         {
                             Pan_TanNumber = txtPAN.Text.Trim();
+                            UserId = txtPAN.Text.Trim();
                         }
                         else if (DivOtherDepartment.Visible && !string.IsNullOrEmpty(txtTanNumber.Text.Trim()))
                         {
                             Pan_TanNumber = txtTanNumber.Text.Trim();
+                            UserId = txtTanNumber.Text.Trim();
                         }
                         //else if (PowerUtility.Visible)
                         //{
@@ -569,6 +572,11 @@ namespace CEIHaryana.Contractor
                             panExists = true;
                         }
 
+                    }
+                    else if (PowerUtility.Visible)
+                    {
+
+                        UserId = Session["UserId"].ToString();
                     }
 
                     transaction = connection.BeginTransaction();
@@ -682,6 +690,7 @@ namespace CEIHaryana.Contractor
                      RadioButtonList2.SelectedValue.ToString(),
                      ddlInspectionType.SelectedValue.ToString(),
                      txtCapacity.Text.Trim(),
+                     UserId,
                      transaction);
 
                     TypeOfInspection = ddlInspectionType.SelectedValue.ToString();
@@ -1319,7 +1328,7 @@ namespace CEIHaryana.Contractor
             try
             {
                 installationType2.Visible = true;
-                if (ddlVoltageLevel.SelectedValue == "650V")
+                if (ddlVoltageLevel.SelectedValue == "upto 650 V")
                 {
                     installationType2.Visible = false;
                 }
@@ -1417,13 +1426,16 @@ namespace CEIHaryana.Contractor
             txtPhone.Text = ds.Tables[0].Rows[0]["Mobile"].ToString();
             txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
             //txtUserId.Text = ds.Tables[0].Rows[0]["UserId"].ToString();
+            Session["UserId"] = ds.Tables[0].Rows[0]["UserId"].ToString();
             if (individual.Visible == true)
             {
                 txtName.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();
+                txtName.Enabled = false;
             }
             else
             {
                 txtagency.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();
+                txtagency.Enabled = false;
             }
         }
     }

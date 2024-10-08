@@ -410,25 +410,11 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ForeColor="Red" ControlToValidate="txtMake" ValidationGroup="Submit" ErrorMessage="Please Enter Make"></asp:RequiredFieldValidator>
                         </div>
 
-
-                        <%--                        <div class="col-md-3" id="Div1" runat="server" style="margin-top: -15px;">
-                            <label for="Name">
-                                Make
-                            </label>
-                 
-                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlGeneratingSetType_SelectedIndexChanged" ID="ddlGeneratingSetType" selectionmode="Multiple" Style="width: 100% !important">
-                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                <asp:ListItem Text="Diesel Engine" Value="1"></asp:ListItem>
-                                <asp:ListItem Text="Gas Engine" Value="2"></asp:ListItem>
-                                <asp:ListItem Text="Solar Panel" Value="3"></asp:ListItem>
-                                <asp:ListItem Text="Bio Fuel" Value="4"></asp:ListItem>
-                            </asp:DropDownList>
-                        </div>--%>
                         <div class="col-md-3" id="Div172" runat="server" style="margin-top: 15px;">
                             <label for="Name">
                                 Type of Generating Set<samp style="color: red">* </samp>
                             </label>
-                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" OnSelectedIndexChanged="ddlGeneratingSetType_SelectedIndexChanged" ID="ddlGeneratingSetType" selectionmode="Multiple" Style="width: 100% !important">
+                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" ID="ddlGeneratingSetType" selectionmode="Multiple" Style="width: 100% !important">
                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                 <asp:ListItem Text="Diesel Engine" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="Gas Engine" Value="2"></asp:ListItem>
@@ -449,8 +435,8 @@
                                            Current capacity of main breaker( IN AMPS)
                                        </label>
                                        <asp:TextBox class="form-control" ReadOnly="false" ID="txtCurrentCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   </div>--%>
-                        <%--   <div class="col-4">
+                                   </div> 
+                            <div class="col-4">
                                        <label for="Name">
                                            Breaking capacity of main breaker (IN KA)
                                        </label>
@@ -479,8 +465,8 @@
                            Status
                             <samp style="color: red">* </samp>
                           </label>
-    <asp:TextBox class="form-control" ReadOnly="false" ID="Textstatus" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-</div>--%>
+                           <asp:TextBox class="form-control" ReadOnly="false" ID="Textstatus" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                              </div>--%>
                     </div>
 
                 </div>

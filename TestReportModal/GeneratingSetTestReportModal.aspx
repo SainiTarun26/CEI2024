@@ -2069,6 +2069,12 @@
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtName" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
+                                                            <div class="col-6" runat="server" visible="false">
+                                         <label for="Name">
+                                     TestReportCount
+                                           </label>
+             <asp:TextBox class="form-control" ReadOnly="true" ID="txtTestReportCount" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+      </div>
                                     </div>
                                     <div class="row row-modal">
                                         <%--  <div class="col-6" id="individual9" runat="server">
@@ -2083,6 +2089,12 @@
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
+                                       <div class="col-6" runat="server" visible="false">
+                                   <label for="Name">
+                           Applicant Type
+                                      </label>
+           <asp:TextBox class="form-control" ReadOnly="true" ID="txtApplicantType" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                  </div>
                                         <div class="col-6" id="individual5" runat="server">
                                             <label for="Name">
                                                 Contact Details 
@@ -2117,6 +2129,18 @@
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtCompletitionDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
+                                            <div class="col-6" id="Div8" runat="server" visible="false">
+                                            <label for="Name">
+                                              District
+                                        </label>
+    <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                         </div>
+                                 <div class="col-6" id="Div3" runat="server" visible="false">
+                                        <label for="Name">
+                                          Division
+                                    </label>
+<asp:TextBox class="form-control" ID="txtDivision" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                     </div>
                                         <%-- <div class="col-6" id="Div1" runat="server">
                                             <label for="Name">
                                                 Tentative Work Completition Date
