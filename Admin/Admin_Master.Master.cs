@@ -15,7 +15,7 @@ namespace CEI_PRoject.ADMIN
                     {
 
                         lblName.Text = Request.Cookies["AdminID"].Value;
-                        if (lblName.Text == "Admin@123")
+                        if (string.Equals(lblName.Text, "Admin@123", StringComparison.OrdinalIgnoreCase))
                         {
 
                             utilityMasterTab.Visible = true;
