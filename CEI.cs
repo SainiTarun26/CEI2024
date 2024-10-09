@@ -178,7 +178,7 @@ namespace CEI_PRoject
    //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
    //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
    string Email, string WorkStartDate, string CompletionDate,
-   string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy, string SanctionLoad, string InspectionType, string TotalCapacity, string UserId,
+   string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy, string SanctionLoad, string InspectionType, string TotalCapacity,
    SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_WorkIntimationRegistration", transaction.Connection, transaction);
@@ -239,7 +239,7 @@ namespace CEI_PRoject
             cmd.Parameters.AddWithValue("@SanctionLoad", SanctionLoad);
             cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
             cmd.Parameters.AddWithValue("@TotalCapacity", TotalCapacity);
-            cmd.Parameters.AddWithValue("@UserId", UserId);
+            //cmd.Parameters.AddWithValue("@UserId", UserId);
             outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
             outputParam.Direction = ParameterDirection.Output;
             cmd.Parameters.Add(outputParam);
