@@ -453,7 +453,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/Contractor/ReturnedInspectionForPeriodic.aspx">
                                     <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Returned Inspections For Periodic</span>
+                                    <span class="menu-title">Returned Inspections <br/> For Periodic</span>
                                 </a>
                             </li>
                         </ul>

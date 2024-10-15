@@ -827,14 +827,14 @@
                 <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Work/Testing Schedule</h7>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="margin-bottom: 0px;">
                             <label for="StartDate">
                                 Tentative Work Start Date<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtStartDate" TabIndex="16" onkeydown="return preventEnterSubmit(event)" onfocus="disableFutureDates()" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtStartDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Work Start Date</asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="margin-bottom: 0px;">
                             <label for="CompletitionDate">
                                 Tentative Work Completition Date<samp style="color: red"> * </samp>
                             </label>
@@ -843,7 +843,7 @@
                             <%--<asp:CompareValidator ID="cmpDate" runat="server" ControlToCompare="txtStartDate" ControlToValidate="txtCompletitionDate" Operator="GreaterThanEqual"
                                 ErrorMessage="Tentative Completion Date must be greater than Start Date" Display="Dynamic" ForeColor="Red" />--%>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="margin-bottom: 0px;">
                             <label>
                                 Work/Testing order issued by Dept./Owner<samp style="color: red"> * </samp>
                             </label>

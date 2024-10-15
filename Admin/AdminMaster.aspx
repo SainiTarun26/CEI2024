@@ -803,12 +803,9 @@ text-decoration: underline;
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" style="margin-top: -10px !important;">
-                                <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); margin-left: 35px; border-radius: 10px;">
-
-                                    <div class="col-md-12">
+                            <div class="row" style="margin-top: -10px !important;padding-left:3%;">
+                                    <div class="col-md-8">
                                         <h2 class="title-1 m-b-25">Division Wise Report</h2>
-
                                         <div>
                                             <div id="printableDiv">
                                                 <asp:GridView CssClass="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
@@ -948,10 +945,8 @@ text-decoration: underline;
                                         </div>
 
                                     </div>
-                                </div>
-                                <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); background: #604db8; width: 27%; border-radius: 10px; margin-left: 35px;">
-                                    <div class="col-lg-10">
-                                        <h2 class="title-1 m-b-25" style="color: white;">Officers Pendency</h2>
+                                    <div class="col-md-3">
+                                        <h2 class="title-1 m-b-25" style="color: black;">Officers Pendency</h2>
                                         <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); margin-left: 0px; margin-right: -50px;">
                                             <div class="au-card-inner">
                                                 <div class="table-responsive" id="officers_table">
