@@ -59,7 +59,7 @@
 
         }
     </script>
-    g
+    
     <style>
         .headercolor1 {
             text-align: initial !important;
@@ -669,4 +669,10 @@
             return true;
         }
     </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('<%= txtLastInspectionIssueDate.ClientID %>').setAttribute('max', today);
+        };
+</script>
 </asp:Content>
