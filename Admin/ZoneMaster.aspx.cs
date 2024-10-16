@@ -88,7 +88,7 @@ namespace CEIHaryana.Admin
             {
                 CEI.InsertInZoneMaster(txtZoneName.Text.Trim(),ddlUtility.SelectedValue,ddlWingName.SelectedValue);
                 Reset();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Utility Name Submitted Successfully !!!');  window.location='AdminMaster.aspx';", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Zone Name Submitted Successfully !!!');  window.location='AdminMaster.aspx';", true);
             }
         }
         protected void Reset()

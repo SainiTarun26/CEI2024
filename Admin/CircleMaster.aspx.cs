@@ -125,7 +125,7 @@ namespace CEIHaryana.Admin
             if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
             {
 
-                string script = $"alert('Zone Name  {CircleName}  already exists.');";
+                string script = $"alert('Circle Name  {CircleName}  already exists.');";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
 
             }
