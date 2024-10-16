@@ -529,16 +529,15 @@ namespace CEIHaryana.SiteOwnerPages
                             if (fileExtension == ".pdf" || fileExtension == ".doc" || fileExtension == ".docx")
                             {
                                 FileName = "DemandNotice_" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                                string folderPath = Server.MapPath("~/Attachment/"+ CreatedBy +"~/DemandNotices/");
+                                string folderPath = Server.MapPath("~/DemandNotices/");
                                 if (!Directory.Exists(folderPath))
                                 {
                                     Directory.CreateDirectory(folderPath);
                                 }
                                 filePath = Path.Combine(folderPath, FileName);
                                 postedFile.SaveAs(filePath);
-                                DemandNotice = "/Attachment/" + CreatedBy + "~/DemandNotices/" + FileName;
+                                DemandNotice = "~/DemandNotices/" + FileName;
                             }
-                            //"~/Attachment/" + ContractorID + "/Copy of Work Order/"
                             else
                             {
                                 ScriptManager.RegisterStartupScript(this, GetType(), "FileFormatError", "alert('File Format Not Supported. Only PDF, DOC, DOCX files are allowed.');", true);

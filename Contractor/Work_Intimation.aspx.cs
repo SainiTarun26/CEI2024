@@ -1419,14 +1419,17 @@ namespace CEIHaryana.Contractor
             ds = CEI.GetSubDivisionEmail(id);
             txtPhone.Text = ds.Tables[0].Rows[0]["Mobile"].ToString();
             txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
-            //txtUserId.Text = ds.Tables[0].Rows[0]["UserId"].ToString();            
+            //txtUserId.Text = ds.Tables[0].Rows[0]["UserId"].ToString();
+            Session["UserId"] = ds.Tables[0].Rows[0]["UserId"].ToString();
             if (individual.Visible == true)
             {
                 txtName.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();
+                txtName.Enabled = false;
             }
             else
             {
                 txtagency.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();
+                txtagency.Enabled = false;
             }
         }
     }
