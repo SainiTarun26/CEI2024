@@ -526,7 +526,7 @@ namespace CEIHaryana.Contractor
                 {
                     connection.Open();
                     string Pan_TanNumber = "";
-                    bool panExists = false;                   
+                    bool panExists = false;
 
 
                     Debug.WriteLine("Before checking visibility and setting Pan_TanNumber");
@@ -556,9 +556,7 @@ namespace CEIHaryana.Contractor
                         //    {
                         //        Pan_TanNumber = txtUserId.Text.Trim();
                         //    }
-                        //}
-                    }
-
+                        //}                    
                         if (string.IsNullOrEmpty(Pan_TanNumber))
                         {
                             throw new Exception("Pan/Tan Number cannot be empty.");
@@ -569,6 +567,12 @@ namespace CEIHaryana.Contractor
                         {
                             panExists = true;
                         }
+                    }
+                    else if (PowerUtility.Visible)
+                    {
+
+                        Pan_TanNumber = Session["UserId"].ToString();
+                    }
 
                     transaction = connection.BeginTransaction();
 
@@ -680,7 +684,7 @@ namespace CEIHaryana.Contractor
                      ContractorID,
                      RadioButtonList2.SelectedValue.ToString(),
                      ddlInspectionType.SelectedValue.ToString(),
-                     txtCapacity.Text.Trim(),                    
+                     txtCapacity.Text.Trim(),
                      transaction);
 
                     TypeOfInspection = ddlInspectionType.SelectedValue.ToString();
@@ -1418,11 +1422,11 @@ namespace CEIHaryana.Contractor
             //txtUserId.Text = ds.Tables[0].Rows[0]["UserId"].ToString();            
             if (individual.Visible == true)
             {
-                txtName.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();                
+                txtName.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();
             }
             else
             {
-                txtagency.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();                
+                txtagency.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();
             }
         }
     }

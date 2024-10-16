@@ -3983,9 +3983,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         //          }
         //      }
 
-        public void InsertInspectionRenewalData(string IntimationId, int InspectionId, string InstallationType, string InstallationName,
- string TestReportId, string TestReportCount, string InspectionDate, string InspectionDueDate, string DelayedDays, string Voltage, string Capacity, string Address, string CompleteAdress,
- string AdressDistrict, string OwnerName, string District, string Division, string CreatedBy, string Status)
+        public void InsertInspectionRenewalData(string IntimationId, string InspectionId, string InstallationType, string InstallationName,
+string TestReportId, string TestReportCount, string InspectionDate, string InspectionDueDate,/* string DelayedDays,*/ string Voltage, string Capacity, string Address, string CompleteAdress,
+string AdressDistrict, string OwnerName, string District, string Division, string CreatedBy, string Status)
         {
             try
             {
@@ -3998,12 +3998,12 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                         cmd.Parameters.AddWithValue("@InspectionId", InspectionId);
                         cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
                         cmd.Parameters.AddWithValue("@InstallationName", InstallationName);
-
                         cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
                         cmd.Parameters.AddWithValue("@TestReportCount", TestReportCount);
-                        cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
-                        cmd.Parameters.AddWithValue("@InspectionDueDate", InspectionDueDate);
-                        cmd.Parameters.AddWithValue("@DelayedDays", DelayedDays);
+                        cmd.Parameters.AddWithValue("@InspectionDate", String.IsNullOrEmpty(InspectionDate) ? DBNull.Value : (object)InspectionDate);
+                        cmd.Parameters.AddWithValue("@InspectionDueDate", String.IsNullOrEmpty(InspectionDueDate) ? DBNull.Value : (object)InspectionDueDate);
+                        //cmd.Parameters.AddWithValue("@InspectionDueDate", InspectionDueDate);
+                        //cmd.Parameters.AddWithValue("@DelayedDays", DelayedDays);
                         cmd.Parameters.AddWithValue("@Voltage", Voltage);
                         if (string.IsNullOrWhiteSpace(Capacity))
                         {

@@ -202,170 +202,362 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
+                bool showCheckbox = false;
                 if (e.Row.RowType == DataControlRowType.Header)
                 {
+
                     CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
                     chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
+
+
+                   
                 }
 
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
+                    Label lblInspectionId = e.Row.FindControl("lblInspectionId") as Label;
                     Label LblIntimationId = e.Row.FindControl("LblIntimationId") as Label;
                     Label LblInstallationType = e.Row.FindControl("LblInstallationType") as Label;
                     Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
                     Label lblVoltage = (Label)e.Row.FindControl("LblVoltage");
                     Label LblInspectionDate = (Label)e.Row.FindControl("LblInspectionDate");
-                    DateTime inspectionDate = DateTime.Parse(LblInspectionDate.Text);
-                    int remainingDays = 0;
-                    string installationtype = LblInstallationName.Text;
-                    int voltage;
-                    DateTime Year = DateTime.MinValue;
-                    if (int.TryParse(lblVoltage.Text, out voltage))
+                    if (LblInspectionDate != null && !string.IsNullOrEmpty(LblInspectionDate.Text))
                     {
-                        if (installationtype == "Line")
+                        DateTime inspectionDate;
+                        if (DateTime.TryParse(LblInspectionDate.Text, out inspectionDate))
                         {
-                            if (voltage >= 0 && voltage <= 250)
-                            {
-                                Year = inspectionDate.AddYears(5);
-                                DateTime alertDate = Year.AddDays(-30);
-                                DateTime currentDate = DateTime.Now;
-                                remainingDays = (Year - alertDate).Days;
-                                if (currentDate >= Year)
-                                {
-                                    remainingDays = (Year - currentDate).Days;
-                                }
-                                if (currentDate <= Year)
-                                {
-                                    remainingDays = (Year - currentDate).Days;
-                                }
-                                if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
-                                {
-                                    e.Row.Visible = true;
-                                }
-                                else
-                                {
-                                    e.Row.Visible = false;
-                                }
-                            }
-                            if (voltage >= 250 && voltage <= 650)
-                            {
-                                Year = inspectionDate.AddYears(3);
-                                DateTime alertDate = Year.AddDays(-30);
-                                DateTime currentDate = DateTime.Now;
-                                remainingDays = (Year - alertDate).Days;
-                                if (currentDate >= Year)
-                                {
-                                    remainingDays = (Year - currentDate).Days;
-                                }
-                                if (currentDate <= Year)
-                                {
-                                    remainingDays = (Year - currentDate).Days;
-                                }
-                                if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
-                                {
-                                    e.Row.Visible = true;
-                                }
-                                else
-                                {
-                                    e.Row.Visible = false;
-                                }
-                            }
-                            if (voltage > 650)
-                            {
-                                Year = inspectionDate.AddYears(1);
-                                DateTime alertDate = Year.AddDays(-30);
-                                DateTime currentDate = DateTime.Now;
-                                remainingDays = (Year - alertDate).Days;
-                                if (currentDate >= Year)
-                                {
-                                    remainingDays = (Year - currentDate).Days;
-                                }
-                                if (currentDate <= Year)
-                                {
-                                    remainingDays = (Year - currentDate).Days;
-                                }
-                                if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
-                                {
-                                    e.Row.Visible = true;
-                                }
-                                else
-                                {
-                                    e.Row.Visible = false;
-                                }
-                            }
-                        }
+                            int remainingDays = 0;
+                            string installationtype = LblInstallationName.Text;
+                            int voltage;
+                            DateTime Year = DateTime.MinValue;
 
-                        if (installationtype == "Generating Set")
-                        {
-                            Year = inspectionDate.AddYears(3);
-                            DateTime alertDate = Year.AddDays(-30);
-                            DateTime currentDate = DateTime.Now;
-                            remainingDays = (Year - alertDate).Days;
-                            if (currentDate >= Year)
+                            if (int.TryParse(lblVoltage.Text, out voltage))
                             {
-                                remainingDays = (Year - currentDate).Days;
-                            }
-                            if (currentDate <= Year)
-                            {
-                                remainingDays = (Year - currentDate).Days;
-                            }
-                            if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
-                            {
-                                e.Row.Visible = true;
-                            }
-                            else
-                            {
-                                e.Row.Visible = false;
-                            }
-                        }
-                        if (installationtype == "Substation Transformer")
-                        {
-                            Year = inspectionDate.AddYears(1);
-                            DateTime alertDate = Year.AddDays(-30);
-                            DateTime currentDate = DateTime.Now;
-                            remainingDays = (Year - alertDate).Days;
-                            if (currentDate >= Year)
-                            {
-                                remainingDays = (Year - currentDate).Days;
+                                if (installationtype == "Line")
+                                {
+                                    if (voltage >= 0 && voltage <= 250)
+                                    {
+                                        Year = inspectionDate.AddYears(5);
+                                        DateTime alertDate = Year.AddDays(-30);
+                                        DateTime currentDate = DateTime.Now;
+                                        remainingDays = (Year - alertDate).Days;
+                                        if (currentDate >= Year)
+                                        {
+                                            remainingDays = (Year - currentDate).Days;
+                                        }
+                                        if (currentDate <= Year)
+                                        {
+                                            remainingDays = (Year - currentDate).Days;
+                                        }
+                                        if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
+                                        {
+                                            e.Row.Visible = true;
+                                        }
+                                        else
+                                        {
+                                            e.Row.Visible = true;
+                                        }
+                                    }
+                                    if (voltage >= 250 && voltage <= 650)
+                                    {
+                                        Year = inspectionDate.AddYears(3);
+                                        DateTime alertDate = Year.AddDays(-30);
+                                        DateTime currentDate = DateTime.Now;
+                                        remainingDays = (Year - alertDate).Days;
+                                        if (currentDate >= Year)
+                                        {
+                                            remainingDays = (Year - currentDate).Days;
+                                        }
+                                        if (currentDate <= Year)
+                                        {
+                                            remainingDays = (Year - currentDate).Days;
+                                        }
+                                        if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
+                                        {
+                                            e.Row.Visible = true;
+                                        }
+                                        else
+                                        {
+                                            e.Row.Visible = true;
+                                        }
+                                    }
+                                    if (voltage > 650)
+                                    {
+                                        Year = inspectionDate.AddYears(1);
+                                        DateTime alertDate = Year.AddDays(-30);
+                                        DateTime currentDate = DateTime.Now;
+                                        remainingDays = (Year - alertDate).Days;
+                                        if (currentDate >= Year)
+                                        {
+                                            remainingDays = (Year - currentDate).Days;
+                                        }
+                                        if (currentDate <= Year)
+                                        {
+                                            remainingDays = (Year - currentDate).Days;
+                                        }
+                                        if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
+                                        {
+                                            e.Row.Visible = true;
+                                        }
+                                        else
+                                        {
+                                            e.Row.Visible = true;
+                                        }
+                                    }
+                                }
 
+                                if (installationtype == "Generating Set")
+                                {
+                                    Year = inspectionDate.AddYears(3);
+                                    DateTime alertDate = Year.AddDays(-30);
+                                    DateTime currentDate = DateTime.Now;
+                                    remainingDays = (Year - alertDate).Days;
+                                    if (currentDate >= Year)
+                                    {
+                                        remainingDays = (Year - currentDate).Days;
+                                    }
+                                    if (currentDate <= Year)
+                                    {
+                                        remainingDays = (Year - currentDate).Days;
+                                    }
+                                    if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
+                                    {
+                                        e.Row.Visible = true;
+                                    }
+                                    else
+                                    {
+                                        e.Row.Visible = true;
+                                    }
+                                }
+                                if (installationtype == "Substation Transformer")
+                                {
+                                    Year = inspectionDate.AddYears(1);
+                                    DateTime alertDate = Year.AddDays(-30);
+                                    DateTime currentDate = DateTime.Now;
+                                    remainingDays = (Year - alertDate).Days;
+                                    if (currentDate >= Year)
+                                    {
+                                        remainingDays = (Year - currentDate).Days;
+
+                                    }
+                                    if (currentDate <= Year)
+                                    {
+                                        remainingDays = (Year - currentDate).Days;
+                                    }
+                                    if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
+                                    {
+                                        e.Row.Visible = true;
+                                    }
+                                    else
+                                    {
+                                        e.Row.Visible = true;
+                                    }
+                                }
+                                int dueDateColumnIndex = 10;
+                                e.Row.Cells[dueDateColumnIndex].Text = Year.ToShortDateString();
+                                SetRemainingDaysColumn(e.Row, remainingDays);
                             }
-                            if (currentDate <= Year)
+
+
+                            int numberofdaysColumnIndex = 11;
+                            TableCell numberofdaysCell = e.Row.Cells[numberofdaysColumnIndex];
+
+                            int numberofdays;
+                            if (int.TryParse(numberofdaysCell.Text, out numberofdays))
                             {
-                                remainingDays = (Year - currentDate).Days;
+                                if (numberofdays < 0)
+                                {
+                                    e.Row.Cells[numberofdaysColumnIndex].CssClass = "OrangeBackground";
+                                    e.Row.Cells[numberofdaysColumnIndex].Text = "Yes"; 
+                                    showCheckbox = true;
+                                }
+                                else
+                                {
+                                    e.Row.Cells[11].Text = "No";
+                                    showCheckbox = false;
+                                }
+                                //if (numberofdays == 0 || (numberofdays > 0 && numberofdays <= 15))
+                                //{
+                                //    e.Row.Cells[11].CssClass = "GreenBackground";
+                                //}
+                                //else if (numberofdays < 0)
+                                //{
+                                //    e.Row.Cells[11].CssClass = "OrangeBackground";
+                                //}
+                                //else if (numberofdays < 30 && numberofdays > 15)
+                                //{
+                                //    e.Row.Cells[11].CssClass = "YellowBackground";
+                                //}
                             }
-                            if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
+                            int checkboxColumnIndex = 0;
+                            TableCell checkboxCell = e.Row.Cells[checkboxColumnIndex];
+                            checkboxCell.Controls.Clear();
+                            if (showCheckbox)
                             {
-                                e.Row.Visible = true;
-                            }
-                            else
-                            {
-                                e.Row.Visible = false;
+                                checkboxCell.Controls.Add(new CheckBox());
                             }
                         }
-                        int dueDateColumnIndex = 8;
-                        e.Row.Cells[dueDateColumnIndex].Text = Year.ToShortDateString();
-                        SetRemainingDaysColumn(e.Row, remainingDays);
+                       
                     }
 
+                    //DateTime inspectionDate = DateTime.Parse(LblInspectionDate.Text);
+                    //int remainingDays = 0;
+                    //string installationtype = LblInstallationName.Text;
+                    //int voltage;
+                    //DateTime Year = DateTime.MinValue;
 
-                    int numberofdaysColumnIndex = 9;
-                    TableCell numberofdaysCell = e.Row.Cells[numberofdaysColumnIndex];
+                    //if (int.TryParse(lblVoltage.Text, out voltage))
+                    //{
+                    //    if (installationtype == "Line")
+                    //    {
+                    //        if (voltage >= 0 && voltage <= 250)
+                    //        {
+                    //            Year = inspectionDate.AddYears(5);
+                    //            DateTime alertDate = Year.AddDays(-30);
+                    //            DateTime currentDate = DateTime.Now;
+                    //            remainingDays = (Year - alertDate).Days;
+                    //            if (currentDate >= Year)
+                    //            {
+                    //                remainingDays = (Year - currentDate).Days;
+                    //            }
+                    //            if (currentDate <= Year)
+                    //            {
+                    //                remainingDays = (Year - currentDate).Days;
+                    //            }
+                    //            if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
+                    //            {
+                    //                e.Row.Visible = true;
+                    //            }
+                    //            else
+                    //            {
+                    //                e.Row.Visible = false;
+                    //            }
+                    //        }
+                    //        if (voltage >= 250 && voltage <= 650)
+                    //        {
+                    //            Year = inspectionDate.AddYears(3);
+                    //            DateTime alertDate = Year.AddDays(-30);
+                    //            DateTime currentDate = DateTime.Now;
+                    //            remainingDays = (Year - alertDate).Days;
+                    //            if (currentDate >= Year)
+                    //            {
+                    //                remainingDays = (Year - currentDate).Days;
+                    //            }
+                    //            if (currentDate <= Year)
+                    //            {
+                    //                remainingDays = (Year - currentDate).Days;
+                    //            }
+                    //            if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
+                    //            {
+                    //                e.Row.Visible = true;
+                    //            }
+                    //            else
+                    //            {
+                    //                e.Row.Visible = false;
+                    //            }
+                    //        }
+                    //        if (voltage > 650)
+                    //        {
+                    //            Year = inspectionDate.AddYears(1);
+                    //            DateTime alertDate = Year.AddDays(-30);
+                    //            DateTime currentDate = DateTime.Now;
+                    //            remainingDays = (Year - alertDate).Days;
+                    //            if (currentDate >= Year)
+                    //            {
+                    //                remainingDays = (Year - currentDate).Days;
+                    //            }
+                    //            if (currentDate <= Year)
+                    //            {
+                    //                remainingDays = (Year - currentDate).Days;
+                    //            }
+                    //            if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
+                    //            {
+                    //                e.Row.Visible = true;
+                    //            }
+                    //            else
+                    //            {
+                    //                e.Row.Visible = false;
+                    //            }
+                    //        }
+                    //    }
 
-                    int numberofdays;
-                    if (int.TryParse(numberofdaysCell.Text, out numberofdays))
+                    //    if (installationtype == "Generating Set")
+                    //    {
+                    //        Year = inspectionDate.AddYears(3);
+                    //        DateTime alertDate = Year.AddDays(-30);
+                    //        DateTime currentDate = DateTime.Now;
+                    //        remainingDays = (Year - alertDate).Days;
+                    //        if (currentDate >= Year)
+                    //        {
+                    //            remainingDays = (Year - currentDate).Days;
+                    //        }
+                    //        if (currentDate <= Year)
+                    //        {
+                    //            remainingDays = (Year - currentDate).Days;
+                    //        }
+                    //        if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
+                    //        {
+                    //            e.Row.Visible = true;
+                    //        }
+                    //        else
+                    //        {
+                    //            e.Row.Visible = false;
+                    //        }
+                    //    }
+                    //    if (installationtype == "Substation Transformer")
+                    //    {
+                    //        Year = inspectionDate.AddYears(1);
+                    //        DateTime alertDate = Year.AddDays(-30);
+                    //        DateTime currentDate = DateTime.Now;
+                    //        remainingDays = (Year - alertDate).Days;
+                    //        if (currentDate >= Year)
+                    //        {
+                    //            remainingDays = (Year - currentDate).Days;
+
+                    //        }
+                    //        if (currentDate <= Year)
+                    //        {
+                    //            remainingDays = (Year - currentDate).Days;
+                    //        }
+                    //        if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
+                    //        {
+                    //            e.Row.Visible = true;
+                    //        }
+                    //        else
+                    //        {
+                    //            e.Row.Visible = false;
+                    //        }
+                    //    }
+                    //    int dueDateColumnIndex = 10;
+                    //    e.Row.Cells[dueDateColumnIndex].Text = Year.ToShortDateString();
+                    //    SetRemainingDaysColumn(e.Row, remainingDays);
+                    //}
+
+
+                    //int numberofdaysColumnIndex = 11;
+                    //TableCell numberofdaysCell = e.Row.Cells[numberofdaysColumnIndex];
+
+                    //int numberofdays;
+                    //if (int.TryParse(numberofdaysCell.Text, out numberofdays))
+                    //{
+                    //    if (numberofdays == 0 || (numberofdays > 0 && numberofdays <= 15))
+                    //    {
+                    //        e.Row.Cells[11].CssClass = "GreenBackground";
+                    //    }
+                    //    else if (numberofdays < 0)
+                    //    {
+                    //        e.Row.Cells[11].CssClass = "OrangeBackground";
+                    //    }
+                    //    else if (numberofdays < 30 && numberofdays > 15)
+                    //    {
+                    //        e.Row.Cells[11].CssClass = "YellowBackground";
+                    //    }
+                    //}
+                    else
                     {
-                        if (numberofdays == 0 || (numberofdays > 0 && numberofdays <= 15))
-                        {
-                            e.Row.Cells[9].CssClass = "GreenBackground";
-                        }
-                        else if (numberofdays < 0)
-                        {
-                            e.Row.Cells[9].CssClass = "OrangeBackground";
-                        }
-                        else if (numberofdays < 30 && numberofdays > 15)
-                        {
-                            e.Row.Cells[9].CssClass = "YellowBackground";
-                        }
+                        e.Row.Cells[11].CssClass = "OrangeBackground";
+                        e.Row.Cells[11].Text = "Yes";
+
                     }
                 }
             }
@@ -374,7 +566,8 @@ namespace CEIHaryana.SiteOwnerPages
         }
         private void SetRemainingDaysColumn(GridViewRow row, int remainingDays)
         {
-            row.Cells[9].Text = remainingDays.ToString();
+            row.Cells[11].Text = remainingDays.ToString();
+           
         }
         protected void BtnCart_Click(object sender, EventArgs e)
         {
@@ -391,9 +584,11 @@ namespace CEIHaryana.SiteOwnerPages
                         if (chk != null && chk.Checked)
                         {
                             atLeastOneChecked = true;
-
-                            string IntimationId = row.Cells[2].Text;
-                            int InspectionId = Convert.ToInt32(row.Cells[3].Text);
+                            Label LblIntimationId = (Label)row.FindControl("LblIntimationId") as Label;
+                            string IntimationId = LblIntimationId.Text;
+                            Label lblInspectionId = (Label)row.FindControl("lblInspectionId") as Label;
+                            string InspectionId = lblInspectionId.Text;
+                            //int InspectionId = Convert.ToInt32(row.Cells[3].Text);
                             Label LblInstallationType = (Label)row.FindControl("LblInstallationType");
                             string InstallationType = LblInstallationType.Text;
                             Label LblTestReportId = (Label)row.FindControl("LblTestReportId");
@@ -402,8 +597,8 @@ namespace CEIHaryana.SiteOwnerPages
                             string inspectionDate = LblinspectionDate.Text;
                             Label LblinspectionDueDate = (Label)row.FindControl("LblinspectionDueDate");
                             string inspectionDueDate = LblinspectionDueDate.Text;
-                            Label LblNumberofdays = (Label)row.FindControl("LblNumberofdays");
-                            string DelayedDays = LblNumberofdays.Text;
+                            //Label LblNumberofdays = (Label)row.FindControl("LblNumberofdays");
+                            //string DelayedDays = LblNumberofdays.Text;
                             Label LblVoltage = (Label)row.FindControl("LblVoltage");
                             string Voltage = LblVoltage.Text;
                             Label LblCapacity = (Label)row.FindControl("LblCapacity");
@@ -427,7 +622,7 @@ namespace CEIHaryana.SiteOwnerPages
 
 
                             CEI.InsertInspectionRenewalData(IntimationId, InspectionId, InstallationType, InstallationName, TestReportId, Count, inspectionDate,
-                                 inspectionDueDate, DelayedDays, Voltage, Capacity, Address, CompleteAddress, AddressDistrict, OwnerName, District, Division, id, "1");
+                                 inspectionDueDate, /*DelayedDays*/ Voltage, Capacity, Address, CompleteAddress, AddressDistrict, OwnerName, District, Division, id, "1");
 
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                         }

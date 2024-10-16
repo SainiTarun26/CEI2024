@@ -53,7 +53,7 @@ namespace CEIHaryana.Admin
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            string WingName = txtWingName.Text;
+            string WingName = txtWingName.Text.Trim();
 
             DataSet ds1 = CEI.checkWingName(WingName);
             if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)

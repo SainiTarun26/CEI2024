@@ -326,7 +326,7 @@
                                <asp:BoundField DataField="LicenceOld" HeaderText="Licence No.(OLD)">
                                     <HeaderStyle HorizontalAlign="right" Width="20%" CssClass="headercolor"/>
                                     <ItemStyle HorizontalAlign="right" Width="20%" /></asp:BoundField>--%>
-                            <asp:BoundField DataField="PANNumber" HeaderText="User Id">
+                            <asp:BoundField DataField="UserId" HeaderText="User Id">
                                 <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="right" Width="15%" />
                             </asp:BoundField>
@@ -335,15 +335,17 @@
                                 <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="right" Width="15%" />
                             </asp:BoundField>
+                    
 
-                           <%-- <asp:TemplateField HeaderText="Reset">
-                                <HeaderStyle Width="5%" CssClass="headercolor" />
-                                <ItemStyle Width="5%" />
-                                <ItemTemplate>
-                                    <asp:LinkButton runat="server" ID="LnkResetButton" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" Text="<i class='fa fa-refresh' style='color:white !important;'></i>" CssClass='greenButton btn-primary'
-                                        CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" OnClientClick="$('#updatePasswordModal').modal('show'); return false;" />
-                                </ItemTemplate>
-                            </asp:TemplateField>--%>
+                          <asp:TemplateField HeaderText="Reset Password">
+       <HeaderStyle Width="5%" CssClass="headercolor" />
+        <ItemStyle Width="5%" />
+       <ItemTemplate>
+         <asp:LinkButton runat="server" ID="LnkResetButton" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" Text="<i class='fa fa-refresh' style='color:white !important;'></i>" CssClass='greenButton btn-primary'
+             CommandName="Reset" CommandArgument='<%# Eval("UserId") %>' OnClientClick='<%# "showUpdatePasswordModal(\"" + Eval("UserId") + "\", \"" + Eval("Email") + "\"); return false;" %>' />
+         <%--OnClientClick="$('#updatePasswordModal').modal('show'); return false;"--%> <%--OnClientClick='<%# "showUpdatePasswordModal(" + Eval("UserId") + "); return false;" %>'--%>
+         </ItemTemplate>
+      </asp:TemplateField>
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -425,6 +427,7 @@
         }
 
         function showUpdatePasswordModal(userId, Email) {
+            debugger;
             // Set the UserId in the modal's input field
             // $('#updatePasswordModal #txtUserId').val(userId); 
             var email = '<%= hdnEmailId.ClientID %>';

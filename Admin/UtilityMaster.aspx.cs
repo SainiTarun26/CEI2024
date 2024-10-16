@@ -34,8 +34,8 @@ namespace CEIHaryana.Admin
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
-        {
-            string UtilityName= txtUtilityName.Text;
+        {            
+            string UtilityName = txtUtilityName.Text.Trim();
 
             DataSet ds1 = CEI.checkUtilityName(UtilityName);
             if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)

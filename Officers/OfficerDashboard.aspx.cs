@@ -21,11 +21,14 @@ namespace CEIHaryana.Officers
             {
                 if (!IsPostBack)
                 {
-                    //GridViewDivisionBind();
-                    BindBarChart();
-                    BindDoughnutChart();
-                    OfficersGridBind();
-                    GetDataforOfficer();
+                    if (Convert.ToString(Session["StaffID"]) != null && Convert.ToString(Session["StaffID"]) != "")
+                    {
+                        //GridViewDivisionBind();
+                        BindBarChart();
+                        BindDoughnutChart();
+                        OfficersGridBind();
+                        GetDataforOfficer();
+                    }
                 }
             }
             catch (Exception ex)
