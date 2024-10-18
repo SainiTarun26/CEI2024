@@ -4228,9 +4228,9 @@ string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, strin
             }
         }
 
-        public DataSet ToGetStaffIdforPeriodic(string Division, string Staff)
+        public DataSet ToGetStaffIdforPeriodic(string Division, string Staff, string District)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetStaffIdforPeriodic", Division, Staff);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetStaffIdforPeriodic", Division, Staff, District);
         }
 
         public DataSet GetDataForSingleInspection(string Id)

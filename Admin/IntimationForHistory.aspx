@@ -430,7 +430,7 @@
                     <br />
                     <br />
                     <label>
-                        Division 
+                        Area Covered 
                         <samp style="color: red">* </samp>
                     </label>
                     <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDivisions" Style="width: 100% !important;" OnSelectedIndexChanged="ddlDivisions_SelectedIndexChanged">

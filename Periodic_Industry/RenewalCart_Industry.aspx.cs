@@ -273,7 +273,8 @@ namespace CEIHaryana.Periodic_Industry
                     if (AssignTo != "Admin@123")
                     {
                         DataSet dsp = new DataSet();
-                        dsp = CEI.ToGetStaffIdforPeriodic(Division, AssignTo);
+                        //dsp = CEI.ToGetStaffIdforPeriodic(Division, AssignTo);  comment by gurmeet 15oct, becz change this method inspectionrenewalCart.aspx.cs fetching details from Tbl_ceiAreaCovered
+                        dsp = CEI.ToGetStaffIdforPeriodic(Division, AssignTo, District);
                         if (dsp.Tables.Count > 0 && dsp.Tables[0].Rows.Count > 0)
                         {
                             StaffAssigned = dsp.Tables[0].Rows[0]["StaffUserId"].ToString();

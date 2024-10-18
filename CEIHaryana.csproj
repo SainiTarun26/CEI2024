@@ -3557,6 +3557,16 @@
     <Content Include="UserManual\USERmanualContractor.pdf" />
     <Content Include="UserManual\USERmanualSiteowner.pdf" />
     <Content Include="UserManual\USERmanualSupervisor.pdf" />
+    <Content Include="UserManual\Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf" />
+    <Content Include="UserManual\cancellation-order.pdf" />
+    <Content Include="UserManual\Fees-for-New-Installation-Inspection.pdf" />
+    <Content Include="UserManual\Fees-For-Periodical-Inspection.pdf" />
+    <Content Include="UserManual\Fees-for-various-certificates-Licences.pdf" />
+    <Content Include="UserManual\form_split.pdf" />
+    <Content Include="UserManual\Haryana-Electrical-Contractor-Licence-Certificate-of.pdf" />
+    <Content Include="UserManual\Mendate Regarding Electrical Installations.pdf" />
+    <Content Include="UserManual\Orderof22authorisedCharteredElectricalSafetyEngineersdated28.11.2016.pdf" />
+    <Content Include="UserManual\OrderofauthorisedCharteredElectricalSafetyEngineers.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -370,6 +370,7 @@
             <div class="row1">
                 <div class="col-4" style="text-align: center;">
                     <asp:HiddenField ID="HF_para_InspectID" runat="server" />
+                    <asp:HiddenField ID="HF_Cart" runat="server" />
                 </div>
             </div>
         </div>

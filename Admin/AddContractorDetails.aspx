@@ -237,7 +237,7 @@
                                 MaxLength="30" Style="margin-left: 18px; text-transform: uppercase">
                             </asp:TextBox>
                             <asp:RegularExpressionValidator ID="regexValidatorGST" runat="server" ControlToValidate="txtGST"
-                                ValidationExpression="^(06|04)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$" ValidationGroup="Submit"
+                                ValidationExpression="^(06|04|07)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$" ValidationGroup="Submit"
                                 ErrorMessage="GST is incorrect. Only Haryana's GST is valid" ForeColor="Red" Display="Dynamic">
                             </asp:RegularExpressionValidator>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtGST" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter GST</asp:RequiredFieldValidator>
