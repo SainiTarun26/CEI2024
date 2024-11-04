@@ -238,6 +238,7 @@
     <Content Include="Admin\RequestPendingDays.aspx" />
     <Content Include="Admin\SldApproval.aspx" />
     <Content Include="Admin\SldApprovalRequest.aspx" />
+    <Content Include="Admin\SLDHistory.aspx" />
     <Content Include="Admin\StaffDetailsData.aspx" />
     <Content Include="Admin\TestHistoryReport.aspx" />
     <Content Include="Admin\TestReportHistoryFromSupervisor.aspx" />
@@ -2175,6 +2176,13 @@
     <Compile Include="Admin\SldApprovalRequest.aspx.designer.cs">
       <DependentUpon>SldApprovalRequest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\SLDHistory.aspx.cs">
+      <DependentUpon>SLDHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SLDHistory.aspx.designer.cs">
+      <DependentUpon>SLDHistory.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\StaffDetailsData.aspx.cs">
       <DependentUpon>StaffDetailsData.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2523,6 +2531,12 @@
     </Compile>
     <Compile Include="Industry_Master\NewInspectionDetails.aspx.designer.cs">
       <DependentUpon>NewInspectionDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\NewInstallation.Master.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\NewInstallation.Master.designer.cs">
+      <DependentUpon>NewInstallation.Master.cs</DependentUpon>
     </Compile>
     <Compile Include="Industry_Master\NewInstallationStatus.aspx.cs">
       <DependentUpon>NewInstallationStatus.aspx</DependentUpon>
