@@ -1,9 +1,9 @@
 ﻿using CEI_PRoject;
-using CEIHaryana.Contractor;
 using CEIHaryana.SiteOwnerPages;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -137,7 +137,24 @@ namespace CEIHaryana.TestReportModal
 
             }
         }
-
+        private void GetDocumentUploadData()
+        {
+            DataTable ds = new DataTable();
+            ds = CEI.GetDocumentlistforContractor(3);
+            if (ds.Rows.Count > 0)
+            {
+                Grd_Document.DataSource = ds;
+                Grd_Document.DataBind();
+            }
+            else
+            {
+                Grd_Document.DataSource = null;
+                Grd_Document.DataBind();
+                string script = "alert(\"No Record Found for document \");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+            ds.Dispose();
+        }
         public void GetDetailswithId()
         {
             try
@@ -186,6 +203,8 @@ namespace CEIHaryana.TestReportModal
                     agency.Visible = false;
                 }
 
+                Session["GSInspectionType"] = ds.Tables[0].Rows[0]["InspectionType"].ToString();
+                
                 txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                 txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                 txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
@@ -193,7 +212,8 @@ namespace CEIHaryana.TestReportModal
                 string dp_Id1 = ds.Tables[0].Rows[0]["Permises"].ToString();
                 TxtPremises.Text = dp_Id1;
                 // string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
-                string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
+                //string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
+                string dp_Id3 = ds.Tables[0].Rows[0]["LevelVoltage"].ToString().Trim();
                 txtVoltagelevel.Text = dp_Id3;
 
                 string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
@@ -204,10 +224,10 @@ namespace CEIHaryana.TestReportModal
                 }
                 else
                 {
-                    txtStartDate.Text = string.Empty; 
+                    txtStartDate.Text = string.Empty;
                 }
 
-             
+
                 string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
                 //txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("dd-MM-yyyy");
 
@@ -229,8 +249,7 @@ namespace CEIHaryana.TestReportModal
                 //TextReason.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
 
                 //txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to showing new testreportid
-                lbltestReportId.Text = ds.Tables[0].Rows[0]["GSTestReportId"].ToString();
-                lblWorkIntimationId.Text = ds.Tables[0].Rows[0]["WorkIntimationId"].ToString();
+
                 lblIntimationId.Text = ds.Tables[0].Rows[0]["WorkIntimationId"].ToString();
                 lblReportNo.Text = ds.Tables[0].Rows[0]["GSTestReportId"].ToString();
                 //txtReportNo.Text = ds.Tables[0].Rows[0]["GeneratingSetId"].ToString();
@@ -238,7 +257,7 @@ namespace CEIHaryana.TestReportModal
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
                 txtSubmitteddate.Text = ds.Tables[0].Rows[0]["SubmittedDate"].ToString();       ///////////////
                 txtSubmittedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();         //////////////
-                DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["SubmittedDate"]);
+                DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
                 txtCreatedDate.Text = createdDate.ToString("dd-MM-yyyy");
                 if (txtGeneratingSetType.Text.Trim() == "Solar Panel")
                 {
@@ -260,6 +279,8 @@ namespace CEIHaryana.TestReportModal
                 txtLTACCapacity.Text = ds.Tables[0].Rows[0]["LTACBreakerCapacity"].ToString();
                 txtLowestInsulationAC.Text = ds.Tables[0].Rows[0]["ACCablesLowestInsulation"].ToString();
                 txtEarthing.Text = ds.Tables[0].Rows[0]["NumberOfEarthing"].ToString();
+                lbltestReportId.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                Session["TestReportIds"] = lbltestReportId.Text.Trim();
                 GeneratingEarthing.Visible = true;
 
 
@@ -559,13 +580,10 @@ namespace CEIHaryana.TestReportModal
                 // txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
 
-                Session["InspectionType"] = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+
                 txtApprovalDate.Text = ds.Tables[0].Rows[0]["ApprovalDate"].ToString();
                 txtApprovedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();
-                txtTestReportCount.Text = ds.Tables[0].Rows[0]["Count"].ToString();
-                txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
-                txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
-                txtDivision.Text = ds.Tables[0].Rows[0]["Area"].ToString();
+
 
             }
             catch (Exception ex)
@@ -575,28 +593,120 @@ namespace CEIHaryana.TestReportModal
         }
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
-            if (BtnSubmitGeneratingSet.Text.Trim() == "Back")
+            try
             {
-                Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
-            }
-            else
-            {
-                string InspectionType = Session["InspectionType"].ToString();
+                string InstallationInvoice = string.Empty;
+                string ManufacturingReport = string.Empty;
                 string id = Session["IntimationId"].ToString();
                 string Counts = Session["Counts"].ToString();
                 string ContractorId = Session["ContractorID"].ToString();
-                // CEI.UpdateGeneratingSetData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
-                if (InspectionType == "Existing")
+                string TestReportIds = Session["TestReportIds"].ToString();
+                if (BtnSubmitGeneratingSet.Text.Trim() == "Back")
                 {
-                    CEI.InsertExistingInspectionData(lbltestReportId.Text, lblIntimationId.Text, txtTestReportCount.Text, txtApplicantType.Text, "Generating Set", txtVoltagelevel.Text.Trim(),
-                       txtDistrict.Text, txtDivision.Text, TxtPremises.Text, ContractorId);
-
+                    Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
                 }
-                CEI.UpdateGeneratingSetData(id, Counts);
-                Session["InspectionType"] = "";
-                string script = "alert('Test Report Approved Successfully'); window.location='/Contractor/Approved_Test_Reports.aspx';";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", script, true);
-                //Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
+                else
+                {
+                    if (Session["GSInspectionType"] != null && Session["GSInspectionType"].ToString() != "Existing")
+                    {
+                        bool isValid = true;
+                        int rowIndex = 0;
+                        // Iterate through each row in the GridView
+                        foreach (GridViewRow row in Grd_Document.Rows)
+                        {
+                            rowIndex++;
+
+                            // Find FileUpload control within the row
+                            FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
+
+                            if (fileUpload != null && fileUpload.HasFile)
+                            {
+                                // File size validation (less than or equal to 1MB)
+                                if (fileUpload.PostedFile.ContentLength > 1048576) // 1MB = 1048576 bytes
+                                {
+                                    isValid = false;
+                                    string script = "alert('File size must be less than or equal to 1MB.');";
+                                    ScriptManager.RegisterStartupScript(this, GetType(), "FileSizeExceeded", script, true);
+                                    break;
+                                }
+
+                                // File type validation (only PDF allowed)
+                                string fileExtension = Path.GetExtension(fileUpload.FileName).ToLower();
+                                if (fileExtension != ".pdf")
+                                {
+                                    isValid = false;
+                                    string script = "alert('Only PDF files are allowed.');";
+                                    ScriptManager.RegisterStartupScript(this, GetType(), "InvalidFileType", script, true);
+                                    break;
+                                }
+
+                                // Save the file based on the row index
+                                string filename = Path.GetFileName(fileUpload.FileName);
+                                string folderPath = string.Empty;
+                                string fullFilePath = string.Empty;
+
+                                if (rowIndex == 1)
+                                {
+                                    // Save InstallationInvoice
+                                    string InstallationInvoiceFileName = "InstallationInvoice_" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
+                                    folderPath = Server.MapPath("~/Attachment/" + id + TestReportIds + "/InstallationInvoice/");
+                                    if (!Directory.Exists(folderPath))
+                                    {
+                                        Directory.CreateDirectory(folderPath);
+                                    }
+                                    fullFilePath = Path.Combine(folderPath, InstallationInvoiceFileName);
+                                    fileUpload.SaveAs(fullFilePath);
+                                    InstallationInvoice = "/Attachment/" + id + TestReportIds + "/InstallationInvoice/" + InstallationInvoiceFileName;
+                                }
+                                else if (rowIndex == 2)
+                                {
+                                    // Save ManufacturingReport
+                                    string ManufacturingReportFileName = "ManufacturingReport_" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
+                                    folderPath = Server.MapPath("~/Attachment/" + id + TestReportIds + "/ManufacturingReport/");
+                                    if (!Directory.Exists(folderPath))
+                                    {
+                                        Directory.CreateDirectory(folderPath);
+                                    }
+                                    fullFilePath = Path.Combine(folderPath, ManufacturingReportFileName);
+                                    fileUpload.SaveAs(fullFilePath);
+                                    ManufacturingReport = "/Attachment/" + id + TestReportIds + "/ManufacturingReport/" + ManufacturingReportFileName;
+                                }
+                            }
+                            else
+                            {
+                                isValid = false;
+                                string script = "alert('Please upload the required document.');";
+                                ScriptManager.RegisterStartupScript(this, GetType(), "FileUploadMissing", script, true);
+                                break;
+                            }
+                        }
+
+                        if (isValid && rowIndex == 2) // Ensure two files have been uploaded
+                        {
+                            CEI.UpdateGeneratingSetData(id, Counts, InstallationInvoice, ManufacturingReport);
+                            Session["InspectionType"] = "";
+
+                            string script = "alert('Test Report Approved Successfully'); window.location='/Contractor/Approved_Test_Reports.aspx';";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", script, true);
+                        }
+                        else if (rowIndex < 2)
+                        {
+                            string script = "alert('Please upload documents for both rows.');";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "IncompleteUpload", script, true);
+                        }
+                    }
+                    else
+                    {
+                        CEI.UpdateGeneratingSetDataifExisting(id, Counts);
+                        string script = "alert('Test Report Approved Successfully'); window.location='/Contractor/Approved_Test_Reports.aspx';";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", script, true);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string script = $"alert('An error occurred: {ex.Message}');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "Error", script, true);
             }
         }
 
@@ -675,6 +785,10 @@ namespace CEIHaryana.TestReportModal
                         {
                             Contractor2.Visible = true;
                             Contractor3.Visible = false;
+                            if (Session["GSInspectionType"] != null && Session["GSInspectionType"].ToString() != "Existing")
+                            {                            
+                            GetDocumentUploadData();
+                            }
                         }
                         else
                         {

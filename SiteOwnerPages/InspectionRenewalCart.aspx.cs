@@ -379,8 +379,7 @@ namespace CEIHaryana.SiteOwnerPages
 
 
                     DataSet dsp = new DataSet();
-                    //dsp = CEI.ToGetStaffIdforPeriodic(Division, StaffAssigned);
-                    dsp = CEI.ToGetStaffIdforPeriodic(Division, StaffAssigned, District);
+                    dsp = CEI.ToGetStaffIdforPeriodic(Division, StaffAssigned,District);
                     if (dsp.Tables.Count > 0 && dsp.Tables[0].Rows.Count > 0)
                     {
                         Assigned = dsp.Tables[0].Rows[0]["StaffUserId"].ToString();

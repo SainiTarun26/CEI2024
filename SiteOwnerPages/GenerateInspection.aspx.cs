@@ -1,5 +1,4 @@
 ﻿using CEI_PRoject;
-using CEIHaryana.Contractor;
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
@@ -31,17 +30,22 @@ namespace CEIHaryana.SiteOwnerPages
 
         int inspectionCountRes = 0;
         int inspectionIdRes = 0;
+        string InstallationId = string.Empty;
+        protected decimal totalAmount = 0;
+        int intSubTotalIndex = 1, dblSubTotalCapacity = 0, dblGrandTotalCapacity = 0, highestOfficerDesignation = 0;
+        decimal dblSubTotalAmount = 0, dblGrandTotalAmount = 0;
+        double dblSubHighestVoltage = 0, dblHighestVoltage = 0;
 
-
+        string strPreviousRowID = string.Empty;
 
         // string Count = string.Empty;
         private static string PremisesType, ApplicantTypeCode, id, Category, InstallationTypeId, Count, PaymentMode,
             ApplicantType, InstallationType, AssigDesignation, InspectionType, PlantLocation;
         //private static int TotalAmount;
-        string LoginId = string.Empty;
+        string LoginId, PlantLocationRoofTop, PlantLocationGroundMounted = string.Empty;
         //string id = string.Empty;
         List<(string Installtypes, string DocumentID, string DocSaveName, string FileName, string FilePath)> uploadedFiles = new List<(string, string, string, string, string)>();
-
+        string TestReportId = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -50,15 +54,16 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
                     {
-                        Page.Session["Amount"] = "";
+                        Session["Amount"] = "";
                         getWorkIntimationData();
                         Session["PreviousPage"] = Request.Url.ToString();
                         Grd_Document.RowDataBound += Grd_Document_RowDataBound;
+
                         //customFile.Visible = true;
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 Response.Redirect("/login.aspx");
             }
@@ -77,10 +82,23 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     int reportTypeColumnIndex = 7;
                     TableCell reportTypeCell = e.Row.Cells[reportTypeColumnIndex];
+                    Label lblTypeOf = (Label)e.Row.FindControl("lblCategory");
+                    LinkButton linkButton = (LinkButton)e.Row.FindControl("LnkInovoice");
+                    LinkButton LinkButton3 = (LinkButton)e.Row.FindControl("lnkReport");
 
                     if (reportTypeCell.Text == "Returned")
                     {
                         e.Row.CssClass = "ReturnedRowColor";
+                    }
+                    if (lblTypeOf.Text.Trim() == "Line")
+                    {
+                        linkButton.Visible = false;
+                        LinkButton3.Visible = false;
+                    }
+                    else
+                    {
+                        linkButton.Visible = true;
+                        LinkButton3.Visible = true;
                     }
 
                 }
@@ -90,7 +108,6 @@ namespace CEIHaryana.SiteOwnerPages
 
             }
         }
-
         private void getWorkIntimationData()
         {
             id = Session["id"].ToString();
@@ -111,31 +128,57 @@ namespace CEIHaryana.SiteOwnerPages
             }
             ds.Dispose();
         }
-        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridView1.PageIndex = e.NewPageIndex;
-            getWorkIntimationData();
-        }
-
+        //////protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        //////{
+        //////    GridView1.PageIndex = e.NewPageIndex;
+        //////    getWorkIntimationData();
+        //////}
         protected void chkSelect_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
+                List<string> selectedTypes = new List<string>();
+                Dictionary<string, int> categoryCounts = new Dictionary<string, int>();
+
                 foreach (GridViewRow rows in GridView1.Rows)
                 {
-                    if (rows.RowType == DataControlRowType.DataRow)
+                    // Find the CheckBox in the current row
+                    CheckBox chk = (CheckBox)rows.FindControl("CheckBox1");
+
+                    // Check if the CheckBox is selected
+                    if (chk != null && chk.Checked)
                     {
-                        CheckBox chk = rows.FindControl("CheckBox1") as CheckBox;
+                        // Find the label that holds the 'Typs' value (lblCategory)
+                        Label lblTyps = (Label)rows.FindControl("lblCategory");
 
-                        if (chk != null && chk.ClientID == ((CheckBox)sender).ClientID)
+                        string type = lblTyps.Text;
+                        if (!selectedTypes.Contains(type))
                         {
+                            selectedTypes.Add(type);
+                        }
 
+                        if (categoryCounts.ContainsKey(type))
+                        {
+                            categoryCounts[type]++;
                         }
                         else
                         {
-                            chk.Checked = false;
+                            categoryCounts[type] = 1;
                         }
                     }
+                }
+                InstallationId = string.Join(",", selectedTypes);
+                DataTable ds = new DataTable();
+                ds = CEI.GetApplicantCode(InstallationId);
+                if (ds.Rows.Count > 0)
+                {
+                    InstallationId = ds.Rows[0]["Id"].ToString();
+                    Session["InstallationId"] = InstallationId;
+                }
+                else
+                {
+                    InstallationId = Session["InstallationId"].ToString();
+
                 }
                 GridViewRow row = ((Control)sender).NamingContainer as GridViewRow;
 
@@ -153,19 +196,19 @@ namespace CEIHaryana.SiteOwnerPages
                     Label lblTypeOfPlant = (Label)row.FindControl("LblTypeofPlant");
                     Label LblSactionLoad = (Label)row.FindControl("LblSactionLoad");
                     Label lblReportType = (Label)row.FindControl("lblReportType");
+                    Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
+                    Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
+                    TestReportId = lblTestReportId.Text;
                     if (LblSactionLoad.Text == "1")
                     {
                         SactionVoltage.Visible = true;
-                       
-           
                     }
-                    if(lblReportType.Text == "Returned")
+                    if (lblReportType.Text == "Returned")
                     {
                         lnkFile.Visible = true;
                         customFileLocation.Visible = false;
                         customFile.Visible = false;
                         txtSaction.ReadOnly = true;
-
                     }
                     else
                     {
@@ -176,19 +219,12 @@ namespace CEIHaryana.SiteOwnerPages
                         txtSaction.Text = "";
                     }
 
-               
-                   
-
-
                     CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
 
                     DropDownList ddlDocumentFor = Documents.FindControl("ddlDocumentFor") as DropDownList;
 
                     inspectionCountRes = Convert.ToInt32(((HtmlInputHidden)row.FindControl("InspectionCount")).Value.Replace("\r\n", ""));
                     inspectionIdRes = Convert.ToInt32(((HtmlInputHidden)row.FindControl("InspectionId")).Value.Replace("\r\n", ""));
-
-
-
                     if (ddlDocumentFor != null)
                     {
                         ddlDocumentFor.Items.Clear();
@@ -215,55 +251,151 @@ namespace CEIHaryana.SiteOwnerPages
                         if (checkedCount > 1)
                         {
                             ddlDocumentFor.Items.Add(new ListItem("Select All", "1"));
+                            UploadDocuments.Visible = true;
+                        }
+                        else
+                        {
+                            UploadDocuments.Visible = false;
+                            TestReportId = null;
                         }
                     }
+                    string CreatedBy = Session["SiteOwnerId"].ToString();
+                    TotalPayment.Visible = true;
+                    ChallanDetail.Visible = true;
 
-                    if (chk.Checked)
+                    // txtInspectionDetails.Text = Session["SiteOwnerId"].ToString() + "-" + lblCategory.Text + "-" + lblVoltageLevel.Text;
+                    Session["SelectedCategory"] = lblCategory.Text;
+                    Session["SelectedApplicant"] = lblApplicant.Text;
+                    Session["SelectedVoltageLevel"] = lblVoltageLevel.Text;
+                    Session["SelectedDivision"] = lblDivision.Text;
+                    Session["SelectedDistrict"] = lblDistrict.Text;
+                    Session["SelectedNoOfInstallations"] = lblNoOfInstallations.Text;
+                    PremisesType = lblPremises.Text;
+                    ApplicantTypeCode = lblApplicantTypeCode.Text;
+                    Category = lblCategory.Text;
+                    Count = lblNoOfInstallations.Text;
+                    if (Session["Duplicacy"].ToString().Trim() == "0")
                     {
-                        TotalPayment.Visible = true;
-                        ChallanDetail.Visible = true;
-
-                        txtInspectionDetails.Text = Session["SiteOwnerId"].ToString() + "-" + lblCategory.Text + "-" + lblVoltageLevel.Text;
-                        Session["SelectedCategory"] = lblCategory.Text;
-                        Session["SelectedApplicant"] = lblApplicant.Text;
-                        Session["SelectedVoltageLevel"] = lblVoltageLevel.Text;
-                        Session["SelectedDivision"] = lblDivision.Text;
-                        Session["SelectedDistrict"] = lblDistrict.Text;
-                        Session["SelectedNoOfInstallations"] = lblNoOfInstallations.Text;
-                        PremisesType = lblPremises.Text;
-                        ApplicantTypeCode = lblApplicantTypeCode.Text;
-                        Category = lblCategory.Text;
-                        Count = lblNoOfInstallations.Text;
-
-                        //ApplicantType = lblApplicant.Text;
-                        //if (ApplicantType == "Private/Personal Installation")
-                        //{
-                        //    ApplicantType = "Private And Personal";
-                        //}
-                        //if (ApplicantType == "Other Department/Organization") 
-                        //{
-                        //    ApplicantType = "Other Department";
-                        //} 
-
-                        InspectionType = "New";
-                        AssigDesignation = lblDesignation.Text;
-                        PlantLocation = lblTypeOfPlant.Text;
-
-                        UploadDocuments.Visible = true;
-                        //SactionVoltage.Visible= true;
-                        FeesDetails.Visible = true;
-                        PaymentDetails.Visible = true;
-                        btnSubmit.Visible = true;
-                        btnReset.Visible = true;
-                        //lnkFile.Visible = true;
-                        GetDocumentUploadData(ApplicantTypeCode, Category, InspectionType, AssigDesignation, PlantLocation, inspectionIdRes);
-                        PaymentGridViewBind();
-                        GetOtherDetails_ForReturnedInspection(inspectionIdRes);
+                        CEI.DeleteduplicateHistory(lblIntimationId.Text, CreatedBy);
+                        Session["Duplicacy"] = "1";
                     }
                     else
                     {
+                    }
+                    //ApplicantType = lblApplicant.Text;
+                    //if (ApplicantType == "Private/Personal Installation")
+                    //{
+                    //    ApplicantType = "Private And Personal";
+                    //}
+                    //if (ApplicantType == "Other Department/Organization") 
+                    //{
+                    //    ApplicantType = "Other Department";
+                    //} 
+
+                    InspectionType = "New";
+                    AssigDesignation = lblDesignation.Text;
+                    if (Session["InstallationId"].ToString() == "1" || Session["InstallationId"].ToString() == "2" || Session["InstallationId"].ToString() == "5")
+                    {
+                        PlantLocation = null;
+                        //// Session["PlantLocation"] = "";
+                    }
+                    else
+                    {
+                        if (lblCategory.Text == "Generating Set")
+                        {
+                            if (lblTypeOfPlant != null)
+                            {
+                                string plantType = lblTypeOfPlant.Text;
+
+                                if (plantType == "Roof Top")
+                                {
+                                    PlantLocationRoofTop = plantType;
+                                }
+                                else if (plantType == "Ground Mounted")
+                                {
+                                    PlantLocationGroundMounted = plantType;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            ////  Session["PlantLocation"] = "";
+                        }
+                    }
+
+                    //if (Convert.ToString(Session["PlantLocation"]) != null && Session["PlantLocation"].ToString() != "")
+                    //{
+                    //    PlantLocation = Session["PlantLocation"].ToString();
+                    //}
+                    //else
+                    //{
+                    //    PlantLocation = null;
+                    //}
+                    UploadDocuments.Visible = true;
+                    //SactionVoltage.Visible= true;
+                    FeesDetails.Visible = true;
+                    PaymentDetails.Visible = true;
+                    btnSubmit.Visible = true;
+                    btnReset.Visible = true;
+                    //lnkFile.Visible = true;
+                    GetDocumentUploadData(ApplicantTypeCode, int.Parse(InstallationId), InspectionType, PlantLocationRoofTop, PlantLocationGroundMounted, inspectionIdRes);
+                    Session["InstallationTypeID"] = int.Parse(InstallationId);
+
+                    DataTable dt = new DataTable();
+                    dt = CEI.GetApplicantCode(lblCategory.Text);
+                    if (dt.Rows.Count > 0)
+                    {
+                        InstallationId = dt.Rows[0]["Id"].ToString();
+
 
                     }
+                    else
+                    {
+                    }
+                    DataTable dsa = new DataTable();
+                    dsa = CEI.Payment(id, Count, InstallationId, "New");
+                    int Amount = 0;
+                    if (dsa.Rows.Count > 0)
+                    {
+                        Amount = Convert.ToInt32(dsa.Rows[0]["Amount"].ToString());
+                    }
+                    else
+                    {
+                    }
+                    //if (chk.Checked == true)
+                    //{
+                    if (chk.Checked)
+                    {
+                        CEI.InsertPaymentHistory(id, int.Parse(lblNoOfInstallations.Text), int.Parse(InstallationId),
+                            //lblVoltageLevel.Text,
+                            Amount, CreatedBy);
+                    }
+                    //}
+                    else
+                    {
+                        CEI.DeletePaymentHistory(id, int.Parse(lblNoOfInstallations.Text), int.Parse(InstallationId), CreatedBy);
+                    }
+
+                    PaymentGridViewBind(id);
+
+                    GetOtherDetails_ForReturnedInspection(inspectionIdRes);
+                    //    else
+                    //    {
+                    //    Session["SelectedCategory"] = lblCategory.Text;
+                    //    DataTable dt = new DataTable();
+                    //    dt = CEI.GetApplicantCode(lblCategory.Text);
+                    //    if (dt.Rows.Count > 0)
+                    //    {
+                    //        InstallationId = dt.Rows[0]["Id"].ToString();
+                    //    }
+                    //    else
+                    //    {
+                    //    }
+                    //    ApplicantTypeCode = lblApplicantTypeCode.Text;
+                    //    CEI.DeletePaymentHistory(id, int.Parse(Count), int.Parse(InstallationId), CreatedBy);
+                    //    PaymentGridViewBind(id);
+                    //    GetDocumentUploadData(ApplicantTypeCode, int.Parse(InstallationId), InspectionType, PlantLocation, inspectionIdRes);
+                    //}
                 }
             }
             catch (Exception ex)
@@ -271,7 +403,213 @@ namespace CEIHaryana.SiteOwnerPages
                 //Handle the exception appropriately
             }
         }
+        protected void GridViewPayment_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    Label LblCount = e.Row.FindControl("LblCount") as Label;
+                    Label LblInstallationName = e.Row.FindControl("LblInstallationName") as Label;
+                    Label LblIntimationId = e.Row.FindControl("LblIntimationId") as Label;
+                    // Label LblInspectionId = e.Row.FindControl("LblInspectionId") as Label;
+                    //string InspectionId = LblInspectionId.Text;
 
+                    // PrevInspectionId = InspectionId;
+                    //Label Lbldesignation = e.Row.FindControl("Lbldesignation") as Label;                    
+                    if (LblCount.Text != null && LblInstallationName.Text != null && LblIntimationId != null)
+                    {
+                        if (LblInstallationName.Text == "Line")
+                        {
+                            InstallationTypeId = "1";
+                        }
+                        else if (LblInstallationName.Text == "Substation Transformer")
+                        {
+                            InstallationTypeId = "2";
+                        }
+                        else if (LblInstallationName.Text == "Generating Set")
+                        {
+                            InstallationTypeId = "3";
+                        }
+                        //string InspectionType = "Periodic";
+                        //DataTable ds = new DataTable();
+                        //ds = CEI.Payment(LblIntimationId.Text, LblCount.Text, InstallationTypeId, InspectionType);
+                        //if (ds.Rows.Count > 0 && ds != null)
+                        //{
+                        //    int Amount = Convert.ToInt32(ds.Rows[0]["Amount"].ToString());
+                        //    TotalAmount = Convert.ToInt32(Session["FinalAmount"]);
+                        //    TotalAmount = TotalAmount + Amount;
+                        //    Session["FinalAmount"] = TotalAmount;
+                        //}
+                    }
+
+                    strPreviousRowID = DataBinder.Eval(e.Row.DataItem, "installationType").ToString();
+
+                    // Check and parse Capacity
+                    object capacityObj = DataBinder.Eval(e.Row.DataItem, "Capacity");
+                    int dblCapacity = 0;
+                    if (capacityObj != null && int.TryParse(capacityObj.ToString(), out dblCapacity))
+                    {
+                        dblSubTotalCapacity += dblCapacity;
+                        dblGrandTotalCapacity += dblCapacity;
+                    }
+
+                    // Check and parse Voltage
+                    object voltageObj = DataBinder.Eval(e.Row.DataItem, "voltage");
+                    double dblVoltage = 0;
+                    if (voltageObj != null && double.TryParse(voltageObj.ToString(), out dblVoltage))
+                    {
+                        // Update the highest voltage for the subtotal 
+                        dblSubHighestVoltage = Math.Max(dblSubHighestVoltage, dblVoltage);
+                        dblHighestVoltage = Math.Max(dblHighestVoltage, dblVoltage);
+                    }
+
+
+                    // Check and parse Total Amount 
+                    object amountObj = DataBinder.Eval(e.Row.DataItem, "Amount");
+                    //decimal dblAmount = 0;
+                    if (amountObj != null && decimal.TryParse(amountObj.ToString(), out decimal dblAmount))
+                    {
+                        dblSubTotalAmount += dblAmount;
+                        dblGrandTotalAmount += dblAmount;
+                    }
+                }
+                else if (e.Row.RowType == DataControlRowType.Footer)
+                {
+                    Label lblTotalCapacity = (Label)e.Row.FindControl("lblTotalCapacity");
+                    Label lblMaxVoltage = (Label)e.Row.FindControl("lblMaxVoltage");
+
+                    Label lblMaxAmount = (Label)e.Row.FindControl("lblMaxAmount");
+
+                    lblTotalCapacity.Text = "Total Capacity: " + dblGrandTotalCapacity.ToString("N0") + "KVA";
+                    lblMaxVoltage.Text = "Max Voltage: " + dblHighestVoltage.ToString("N0");
+
+                    lblMaxAmount.Text = "Total Amount: " + dblGrandTotalAmount.ToString("N0");
+
+                    Session["TotalCapacity"] = dblGrandTotalCapacity;
+                    Session["HighestVoltage"] = dblHighestVoltage;
+                    Session["Amount"] = dblGrandTotalAmount;
+                }
+            }
+            catch (Exception ex) { }
+            #region old 
+            // Check if the row is a data row
+            //if (e.Row.RowType == DataControlRowType.DataRow)
+            //{
+            //    // Get the value of the 'Amount' column and add it to the total
+            //    decimal amount = Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "Amount"));
+            //    totalAmount += amount;
+            //    if (amount != 0.00m)
+            //    {
+            //        Session["TotalAmount"] = amount;
+            //    }
+            //    else
+            //    {
+            //    }
+            //}
+            //else
+            //{
+            //}
+            // Check if the row is the footer row
+            //if (e.Row.RowType == DataControlRowType.Footer)
+            //{
+            //    // Add the 'Total' label and total amount in the footer
+            //    e.Row.Cells[2].Text = "<b>Total</b>";  // Assuming the 'Amount' column is the 3rd column
+            //    e.Row.Cells[3].Text = $"<b>{totalAmount:C}</b>"; // Format as currency
+            //    e.Row.Cells[3].HorizontalAlign = HorizontalAlign.Center;
+            //}
+            #endregion
+        }
+        protected void GridViewPayment_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                bool IsSubTotalRowNeedToAdd = false;
+                if ((strPreviousRowID != string.Empty) && (DataBinder.Eval(e.Row.DataItem, "installationType") != null))
+                    if (strPreviousRowID != DataBinder.Eval(e.Row.DataItem, "installationType").ToString())
+                        IsSubTotalRowNeedToAdd = true;
+                if ((strPreviousRowID != string.Empty) && (DataBinder.Eval(e.Row.DataItem, "installationType") == null))
+                {
+                    IsSubTotalRowNeedToAdd = true;
+                    intSubTotalIndex = 0;
+                }
+                if ((strPreviousRowID == string.Empty) && (DataBinder.Eval(e.Row.DataItem, "installationType") != null))
+                {
+                    GridView grdViewOrders = (GridView)sender;
+                    GridViewRow row = new GridViewRow(0, 0, DataControlRowType.DataRow, DataControlRowState.Insert);
+                    TableCell cell = new TableCell();
+                    cell.Text = "Installation Name: " + DataBinder.Eval(e.Row.DataItem, "installationType").ToString();
+                    cell.Font.Bold = true;
+                    cell.ColumnSpan = 6;
+                    row.Cells.Add(cell);
+                    grdViewOrders.Controls[0].Controls.AddAt(e.Row.RowIndex + intSubTotalIndex, row);
+                    intSubTotalIndex++;
+                }
+                if (IsSubTotalRowNeedToAdd)
+                {
+                    AddSubTotalRow((GridView)sender, e.Row.RowIndex + intSubTotalIndex);
+                    intSubTotalIndex++;
+
+                    if (DataBinder.Eval(e.Row.DataItem, "installationType") != null)
+                    {
+                        GridView grdViewOrders = (GridView)sender;
+                        GridViewRow row = new GridViewRow(0, 0, DataControlRowType.DataRow, DataControlRowState.Insert);
+                        TableCell cell = new TableCell();
+                        cell.Text = "Installation Name: " + DataBinder.Eval(e.Row.DataItem, "installationType").ToString();
+                        cell.Font.Bold = true;
+                        cell.ColumnSpan = 6;
+                        row.Cells.Add(cell);
+                        grdViewOrders.Controls[0].Controls.AddAt(e.Row.RowIndex + intSubTotalIndex, row);
+                        intSubTotalIndex++;
+                    }
+                }
+            }
+            catch (Exception ex) { }
+        }
+        private void AddSubTotalRow(GridView gridView, int rowIndex)
+        {
+            GridViewRow row = new GridViewRow(0, 0, DataControlRowType.DataRow, DataControlRowState.Insert);
+
+            // Create a cell for the subtotal label
+            TableCell cell = new TableCell();
+            cell.Text = "Sub Total";
+            cell.Font.Bold = true;
+            cell.HorizontalAlign = HorizontalAlign.Left;
+            cell.ColumnSpan = 2;
+            cell.CssClass = "SubTotalRowStyle";
+            row.Cells.Add(cell);
+
+            // Create a cell for the subtotal capacity
+            cell = new TableCell();
+            cell.Text = string.Format("{0:0}", dblSubTotalCapacity);
+            cell.Font.Bold = true;
+            cell.HorizontalAlign = HorizontalAlign.Left;
+            cell.CssClass = "SubTotalRowStyle";
+            row.Cells.Add(cell);
+
+            // Create a cell for the highest voltage in the group
+            cell = new TableCell();
+            cell.Text = string.Format("{0:0}", dblSubHighestVoltage);
+            cell.Font.Bold = true;
+            cell.HorizontalAlign = HorizontalAlign.Left;
+            cell.CssClass = "SubTotalRowStyle";
+            row.Cells.Add(cell);
+
+            // Create a cell for the Amount in the group
+            cell = new TableCell();
+            cell.Text = string.Format("{0:0}", dblSubTotalAmount);
+            cell.Font.Bold = true;
+            cell.HorizontalAlign = HorizontalAlign.Left;
+            cell.CssClass = "SubTotalRowStyle";
+            row.Cells.Add(cell);
+
+            // Add the subtotal row to the grid
+            gridView.Controls[0].Controls.AddAt(rowIndex, row);
+
+            dblSubTotalCapacity = 0;
+            dblSubHighestVoltage = 0;
+            dblSubTotalAmount = 0;
+        }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
@@ -310,16 +648,20 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     }
                 }
-                else
+                else if (e.CommandName == "View")
                 {
-
+                    string fileName = "";
+                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://localhost:44393" + e.CommandArgument.ToString();
+                    //lblerror.Text = fileName;
+                    string script = $@"<script>window.open('{fileName}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                 }
             }
             catch (Exception)
             {
             }
         }
-
         #region visibilty
         // protected void Visibility()
         //{
@@ -377,7 +719,6 @@ namespace CEIHaryana.SiteOwnerPages
             }
             return null;
         }
-
         protected void lnkFile_Click(object sender, EventArgs e)
         {
             string fileName = Session["File"].ToString();
@@ -388,21 +729,18 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-
             }
             else
             {
                 string errorMessage = "An error occurred: " + "Loading failed Please try Again later";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
-
             }
             Session["File"] = "";
-
         }
-
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
 
+            string CreatedBy = Session["SiteOwnerId"].ToString();
             //string script = "<script type=\"text/javascript\">window.onload = function() { printDiv('printableDiv'); }</script>";
             //ClientScript.RegisterStartupScript(this.GetType(), "print", script);
             //Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "MyFunction()", true);
@@ -421,17 +759,30 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 if (atLeastOneInspectionChecked)
                 {
-                    string lblCategory = Session["SelectedCategory"].ToString().Trim();
+                    string lblCategory = string.Empty;
+                    if (Session["InstallationId"].ToString() != "1" || Session["InstallationId"].ToString() != "2" || Session["InstallationId"].ToString() != "3")
+                    {
+                        lblCategory = "Multiple";
+                    }
+                    else
+                    {
+                        lblCategory = Session["SelectedCategory"].ToString().Trim();
+
+                    }
+
+                    IntimationId = Session["id"].ToString();
+                    DataTable dta = new DataTable();
+                    dta = CEI.GetMaxValues(CreatedBy, IntimationId);
+                    string lblNoOfInstallations = dta.Rows[0]["count"].ToString();
                     string lblApplicant = Session["SelectedApplicant"].ToString().Trim();
                     string lblVoltageLevel = Session["SelectedVoltageLevel"].ToString().Trim();
                     string lblDivision = Session["SelectedDivision"].ToString().Trim();
                     string lblDistrict = Session["SelectedDistrict"].ToString().Trim();
-                    string lblNoOfInstallations = Session["SelectedNoOfInstallations"].ToString().Trim();
+                    //string lblNoOfInstallations = Session["SelectedNoOfInstallations"].ToString().Trim();
                     string District = lblDistrict.Trim();
                     string Assign = string.Empty;
                     string To = lblDivision.Trim();
                     string input = lblVoltageLevel.Trim();
-                    string CreatedBy = Session["SiteOwnerId"].ToString();
                     string FileName = string.Empty;
                     string ChallanAttachment = string.Empty;
                     string DemandNotice = string.Empty;
@@ -439,61 +790,25 @@ namespace CEIHaryana.SiteOwnerPages
                     string FeesLeft = string.Empty;
                     string transcationId = string.Empty;
                     string TranscationDate = string.Empty;
-                    int TotalAmount = Convert.ToInt32(Session["Amount"]);
-                    Session["Amount"] = "";
+                    decimal TotalAmount = Convert.ToDecimal(Session["Amount"]);
+
+                    int TotalCapacity = Convert.ToInt32(Session["TotalCapacity"]);
+                    int MaxVoltage = Convert.ToInt32(Session["HighestVoltage"]);
+
+                    //decimal TotalAmount = decimal.Parse(amount);
+
+                    string StaffAssignedCount = string.Empty;
+                    string StaffAssigned = string.Empty;
+                    string Assigned = string.Empty;
+                    string InstallationTypeID = string.Empty;
+
                     //string SactionLoad = string.Empty;
                     int maxFileSize = 1048576;
 
-                    IntimationId = Session["id"].ToString();
                     Count = lblNoOfInstallations.Trim();
-                    DataSet ds = new DataSet();
-                    ds = CEI.GetData(lblCategory.Trim(), IntimationId, Count);
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        if (lblCategory.Trim() == "Line")
-                        {
-                            id = ds.Tables[0].Rows[0]["TestReportId"].ToString();
-                            LineLength = ds.Tables[0].Rows[0]["LineLength"].ToString();
-                        }
-                        else
-                        {
-                            id = ds.Tables[0].Rows[0]["TestReportId"].ToString();
-                        }
-                    }
 
                     if (ChallanDetail.Visible == true)
                     {
-                        //if (FileUpload14.HasFile && FileUpload14.PostedFile.ContentLength <= 500 * 1024)
-                        //{
-                        //    string ext = Path.GetExtension(FileUpload14.PostedFile.FileName).ToLower();
-
-                        //    if (ext == ".pdf") // Check if the file extension is PDF
-                        //    {
-                        //        FileName = "ChallanReport" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
-                        //        if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/ChallanReport/")))
-                        //        {
-                        //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/ChallanReport/"));
-                        //        }
-                        //        string path = "/Attachment/" + CreatedBy + "/ChallanReport/";
-                        //        string filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/ChallanReport/" + FileName);
-
-                        //        FileUpload14.SaveAs(filePathInfo2);
-                        //        ChallanAttachment = path + FileName;
-                        //    }
-                        //    else
-                        //    {
-                        //        string alert = "alert('File Format Not Supported. Only PDF files are allowed.');";
-                        //        ScriptManager.RegisterStartupScript(this, GetType(), "JScript", alert, true);
-                        //        return;
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    string alert = "alert('File exceeds maximum size limit (500 KB) or no file uploaded.');";
-                        //    ScriptManager.RegisterStartupScript(this, GetType(), "JScript", alert, true);
-                        //    return;
-                        //}
-
                         if (txttransactionId.Text != "")
                         {
                             transcationId = txttransactionId.Text.Trim();
@@ -514,9 +829,9 @@ namespace CEIHaryana.SiteOwnerPages
                     double kW = 0.0;
                     if (double.TryParse(txtSaction.Text.Trim(), out kW))
                     {
-                        
+
                         double powerFactor = 0.9;
-                         kVA = kW / powerFactor;
+                        kVA = kW / powerFactor;
                     }
                     string filePath = string.Empty;
                     HttpPostedFile postedFile = customFile.PostedFile;
@@ -550,13 +865,42 @@ namespace CEIHaryana.SiteOwnerPages
                             return;
                         }
                     }
+                    DataSet ds = new DataSet();
+                    ds = CEI.GetStaffAssignedforNewInspection(IntimationId);
 
+                    if (ds.Tables.Count > 0 && ds != null)
+                    {
+                        StaffAssignedCount = ds.Tables[0].Rows[0]["AssignedCount"].ToString();
+                    }
 
+                    if (StaffAssignedCount == "1")
+                    {
+                        StaffAssigned = "JE";
+                    }
+                    else if (StaffAssignedCount == "2")
+                    {
+                        StaffAssigned = "AE";
+                    }
 
-                        InsertFilesIntoDatabase(CreatedBy, txtContact.Text, id, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
-                    LineLength, Count, District, To, PaymentMode, txtDate.Text, txtInspectionRemarks.Text.Trim(), CreatedBy, TotalAmount, transcationId, TranscationDate, ChallanAttachment, Convert.ToInt32(InspectionIdClientSideCheckedRow.Value)
-                    , kVA.ToString(), DemandNotice);
+                    else if (StaffAssignedCount == "3")
+                    {
+                        StaffAssigned = "XEN";
+                    }
+                    else if (StaffAssignedCount == "4")
+                    {
+                        StaffAssigned = "CEI";
+                    }
 
+                    DataSet dsp = new DataSet();
+                    dsp = CEI.ToGetStaffIdforPeriodic(lblDivision, StaffAssigned, District);
+                    if (dsp.Tables.Count > 0 && dsp.Tables[0].Rows.Count > 0)
+                    {
+                        Assigned = dsp.Tables[0].Rows[0]["StaffUserId"].ToString();
+                    }
+                    InstallationTypeID = Session["InstallationTypeID"].ToString();
+                    InsertFilesIntoDatabase(InstallationTypeID, CreatedBy, txtContact.Text, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
+                District, To, PaymentMode, txtDate.Text, txtInspectionRemarks.Text.Trim(), CreatedBy, TotalAmount, Assigned, transcationId, TranscationDate, ChallanAttachment, Convert.ToInt32(InspectionIdClientSideCheckedRow.Value)
+                , kVA.ToString(), DemandNotice, TotalCapacity, MaxVoltage);
                     //Session["PrintInspectionID"] = id.ToString();
                 }
                 else
@@ -569,8 +913,9 @@ namespace CEIHaryana.SiteOwnerPages
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
                 return;
             }
-        }
 
+
+        }
         public void UploadCheckListDocInCollection(string Category, string CreatedByy, string intimationids, string InstallTypes, string InstallTypeCount)
         {
             foreach (GridViewRow row in Grd_Document.Rows)
@@ -642,10 +987,11 @@ namespace CEIHaryana.SiteOwnerPages
 
         }
 
-        public void InsertFilesIntoDatabase(string para_CreatedBy, string para_txtContact, string para_id, string para_ApplicantTypeCode, string para_IntimationId, string para_PremisesType, string para_lblApplicant, string para_lblCategory, string para_lblVoltageLevel,
-                  string para_LineLength, string para_Count, string para_District, string para_To, string para_PaymentMode, string para_txtDate, string para_txtInspectionRemarks, string para_CreatedByy, int para_TotalAmount, string para_transcationId, string para_TranscationDate, string para_ChallanAttachment, int para_InspectID, string para_kVA
-            ,string para_DemandNotice)
+        public void InsertFilesIntoDatabase(string InstallationTypeID, string para_CreatedBy, string para_txtContact, string para_ApplicantTypeCode, string para_IntimationId, string para_PremisesType, string para_lblApplicant, string para_lblCategory, string para_lblVoltageLevel,
+             string para_District, string para_To, string para_PaymentMode, string para_txtDate, string para_txtInspectionRemarks, string para_CreatedByy, decimal para_TotalAmount, string para_Assigned, string para_transcationId, string para_TranscationDate, string para_ChallanAttachment, int para_InspectID, string para_kVA
+            , string para_DemandNotice, int TotalCapacity, int MaxVoltage)
         {
+            bool isInsertSuccessful = true;
             // Insert the uploaded files into the database
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -654,16 +1000,16 @@ namespace CEIHaryana.SiteOwnerPages
                 SqlTransaction transaction = connection.BeginTransaction();
                 try
                 {
-                    CEI.InsertInspectionDataNewCode(para_txtContact, para_id, para_ApplicantTypeCode, para_IntimationId, para_PremisesType, para_lblApplicant, para_lblCategory, para_lblVoltageLevel,
-                    para_LineLength, para_Count, para_District, para_To, para_PaymentMode, para_txtDate, para_txtInspectionRemarks, para_CreatedByy, para_TotalAmount, para_transcationId, para_TranscationDate, para_ChallanAttachment, para_InspectID, para_kVA, para_DemandNotice, transaction);
+                    Session["Duplicacy"] = "2";
+                    CEI.InsertInspectionDataNewCode(InstallationTypeID, para_txtContact, para_ApplicantTypeCode, para_IntimationId, para_PremisesType, para_lblApplicant, para_lblCategory, para_lblVoltageLevel,
+                    para_District, para_To, para_PaymentMode, para_txtDate, para_txtInspectionRemarks, para_CreatedByy, para_TotalAmount, para_Assigned, para_transcationId, para_TranscationDate, para_ChallanAttachment, para_InspectID, para_kVA, para_DemandNotice, TotalCapacity, MaxVoltage, transaction);
 
                     string generatedIdCombinedDetails = CEI.InspectionId();
                     string[] SplitResultPartsArray = generatedIdCombinedDetails.Split('|');
                     Session["PendingPaymentId"] = SplitResultPartsArray[0];
                     string firstValue = SplitResultPartsArray[0]; // Extract the first value
                     Session["PrintInspectionID"] = firstValue;
-                    UploadCheckListDocInCollection(SplitResultPartsArray[2], para_CreatedByy, SplitResultPartsArray[1], SplitResultPartsArray[2], SplitResultPartsArray[3]);
-
+                    UploadCheckListDocInCollection("MultipleInstallationType", para_CreatedByy, SplitResultPartsArray[1], "MultipleInstallationType", InstallationTypeID);
 
                     foreach (var file in uploadedFiles)
                     {
@@ -684,15 +1030,16 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     }
                     transaction.Commit();
+                    //string totalAmount = Session["TotalAmount"].ToString();
+                    // CEI.UpdatePaymentHistory(para_CreatedBy, para_IntimationId, decimal.Parse(totalAmount));
                     // Session["PrintInspectionID"] = id.ToString();
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Request Submitted Successfully')", true);
-
                     //Response.Redirect("/SiteOwnerPages/InspectionRequestPrint.aspx", false);
-
                 }
                 catch (Exception ex)
                 {
+                    isInsertSuccessful = false;
                     if (ex.Message == "Please Upload Pdf Files Only")
                     {
                         transaction.Rollback();
@@ -708,7 +1055,6 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         transaction.Rollback();
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
-
                     }
                     else
                     {
@@ -722,44 +1068,46 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     connection.Close();
                 }
+                try
+                {
+                    if (isInsertSuccessful == true)
+                    {
+                        foreach (GridViewRow rows in GridView1.Rows)
+                        {
+                            CheckBox chk = (CheckBox)rows.FindControl("CheckBox1");
 
+                            if (chk != null && chk.Checked)
+                            {
+                                Label lblIntimationId = (Label)rows.FindControl("lblIntimationId");
+                                Label lblCategorys = (Label)rows.FindControl("lblCategory");
+                                Label lblNoOfInstallation = (Label)rows.FindControl("lblNoOfInstallations");
+                                CEI.UpdateInstallationHistory(lblCategorys.Text, lblIntimationId.Text, para_CreatedBy, int.Parse(lblNoOfInstallation.Text));
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                    return;
+                }
             }
-
         }
-
         protected void ddlDocumentFor_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-
-        protected void PaymentGridViewBind()
+        protected void PaymentGridViewBind(string id)
         {
             try
             {
-                if (Category == "Line")
-                {
-                    InstallationTypeId = "1";
-                }
-                else if (Category == "Substation Transformer")
-                {
-                    InstallationTypeId = "2";
-                }
-                else if (Category == "Generating Set")
-                {
-                    InstallationTypeId = "3";
-                }
-                string InspectionType="New";
+                string CreatedBy = Session["SiteOwnerId"].ToString();
                 DataTable ds = new DataTable();
-                ds = CEI.Payment(id, Count, InstallationTypeId, InspectionType);
+                ds = CEI.GetPaymentHistory(CreatedBy, id);
                 if (ds.Rows.Count > 0 && ds != null)
                 {
                     GridViewPayment.DataSource = ds;
                     GridViewPayment.DataBind();
-                    //TotalAmount = Convert.ToInt32(GridViewPayment.Rows[0].Cells[2].Text);
-
-                    int Amount = Convert.ToInt32(GridViewPayment.Rows[0].Cells[2].Text);
-                    Session["Amount"] = Amount.ToString();
-                    //txtPayment.Text = Convert.ToString(TotalAmount);
                 }
                 else
                 {
@@ -772,10 +1120,50 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch (Exception ex)
             {
-                //
             }
         }
-
+        //protected void PaymentGridViewBind()
+        //{
+        //    try
+        //    {
+        //        if (Category == "Line")
+        //        {
+        //            InstallationTypeId = "1";
+        //        }
+        //        else if (Category == "Substation Transformer")
+        //        {
+        //            InstallationTypeId = "2";
+        //        }
+        //        else if (Category == "Generating Set")
+        //        {
+        //            InstallationTypeId = "3";
+        //        }
+        //        string InspectionType="New";
+        //        DataTable ds = new DataTable();
+        //        ds = CEI.Payment(id, Count, InstallationTypeId, InspectionType);
+        //        if (ds.Rows.Count > 0 && ds != null)
+        //        {
+        //            GridViewPayment.DataSource = ds;
+        //            GridViewPayment.DataBind();
+        //            //TotalAmount = Convert.ToInt32(GridViewPayment.Rows[0].Cells[2].Text);
+        //            int Amount = Convert.ToInt32(GridViewPayment.Rows[0].Cells[2].Text);                    
+        //            Session["Amount"] = Amount.ToString();
+        //            //txtPayment.Text = Convert.ToString(TotalAmount);
+        //        }
+        //        else
+        //        {
+        //            GridViewPayment.DataSource = null;
+        //            GridViewPayment.DataBind();
+        //            string script = "alert(\"Please Fill the Form first for knowing Payment \");";
+        //            ScriptManager.RegisterStartupScript(this, GetType(), "serverscript", script, true);
+        //        }
+        //        ds.Dispose();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //
+        //    }
+        //}
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
         {
             ChallanDetail.Visible = true;
@@ -788,11 +1176,10 @@ namespace CEIHaryana.SiteOwnerPages
                 ChallanDetail.Visible = true;
             }
         }
-
-        private void GetDocumentUploadData(string ApplicantType, string Category, string InspectionType, string AssigDesignation, string PlantLocation, int inspectionIdPrm)
+        private void GetDocumentUploadData(string ApplicantType, int InstallationTypeID, string InspectionType, string PlantLocationRoofTop, string PlantLocationGroundMounted, int inspectionIdPrm)
         {
             DataTable ds = new DataTable();
-            ds = CEI.GetDocumentlist(ApplicantType, Category, InspectionType, AssigDesignation, PlantLocation, inspectionIdPrm);
+            ds = CEI.GetDocumentlistfornewInspection(ApplicantType, InstallationTypeID, InspectionType, PlantLocationRoofTop, PlantLocationGroundMounted, inspectionIdPrm);
             if (ds.Rows.Count > 0)
             {
                 Grd_Document.DataSource = ds;
@@ -828,7 +1215,6 @@ namespace CEIHaryana.SiteOwnerPages
                 // lblerror.Text = ex.Message.ToString()+"---"+ fileName;
             }
         }
-
         protected void Grd_Document_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -876,7 +1262,6 @@ namespace CEIHaryana.SiteOwnerPages
                 }
             }
         }
-
         //protected void Grd_Document_RowDataBound(object sender, GridViewRowEventArgs e)
         //{
         //    if (e.Row.RowType == DataControlRowType.DataRow)
@@ -918,11 +1303,11 @@ namespace CEIHaryana.SiteOwnerPages
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             string query = "Sp_GetOtherDetails_ForReturnedInspection";
-                         
+
             using (SqlConnection connection = new SqlConnection(connectionString))
-            {   
+            {
                 using (SqlCommand command = new SqlCommand(query, connection))
-                {   
+                {
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@InspectionId", inspectionIdPrm);
                     connection.Open();

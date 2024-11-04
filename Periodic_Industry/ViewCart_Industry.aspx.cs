@@ -121,7 +121,7 @@ namespace CEIHaryana.Periodic_Industry
                     if (AssignTo != "Admin@123")
                     {
                         DataSet dsp = new DataSet();
-                        //dsp = CEI.ToGetStaffIdforPeriodic(Division, AssignTo);  comment by gurmeet 15oct2024, becz change this method inspectionrenewalCart.aspx.cs fetching details from Tbl_ceiAreaCovered
+                        //dsp = CEI.ToGetStaffIdforPeriodic(Division, AssignTo);   comment by gurmeet 15oct2024, becz change this method inspectionrenewalCart.aspx.cs fetching details from Tbl_ceiAreaCovered
                         dsp = CEI.ToGetStaffIdforPeriodic(Division, AssignTo, District);
                         if (dsp.Tables.Count > 0 && dsp.Tables[0].Rows.Count > 0)
                         {
@@ -159,17 +159,11 @@ namespace CEIHaryana.Periodic_Industry
                     }
                     else
                     {
-                        string InspectionId = PrevInspectionId;
-                        DataSet SInsp = new DataSet();
-                        SInsp = CEI.GetDataForSingleInspection(InspectionId);
-                        string IntimationId = SInsp.Tables[0].Rows[0]["IntimationId"].ToString();
-                        string ApplicantType = SInsp.Tables[0].Rows[0]["ApplicantType"].ToString();
-                        string VoltageLevel = SInsp.Tables[0].Rows[0]["VoltageLevel"].ToString();
                         PrevInstallationType = "Multiple";
                         PrevTestReportId = "Multiple";
-                        PrevIntimationId = IntimationId;
-                        PrevVoltageLevel = VoltageLevel;
-                        PrevApplicantType = ApplicantType;
+                        PrevIntimationId = "MultipleIntimations";
+                        PrevVoltageLevel = "Multiple";
+                        PrevApplicantType = "Multiple";
                     }
 
 

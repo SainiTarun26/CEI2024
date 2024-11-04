@@ -32,12 +32,12 @@ namespace CEIHaryana.Supervisor
                 Response.Redirect("/Login.aspx");
             }
         }
-        public void GridViewBind(string searchText = null)
+        public void GridViewBind()
         {
             string LoginId = string.Empty;
             LoginId = Session["SupervisorID"].ToString();
             DataSet ds = new DataSet();
-            ds = cei.GetSuppervisorTestReportHistory(LoginId, searchText);
+            ds = cei.GetSuppervisorTestReportHistory(LoginId);
             if (ds.Tables.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -246,25 +246,6 @@ namespace CEIHaryana.Supervisor
                 }
             }
             ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModal", "$('#modal1').modal('show');", true);
-        }
-
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            string searchText = txtSearch.Text.Trim();
-            if (!string.IsNullOrEmpty(searchText))
-            {
-                GridViewBind(searchText);
-            }
-            else
-            {
-                GridViewBind();
-            }
-
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
-            GridViewBind();
         }
     }
 }

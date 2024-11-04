@@ -39,7 +39,7 @@ namespace CEIHaryana.Supervisor
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Response.Redirect("/login.aspx");
             }
@@ -88,7 +88,7 @@ namespace CEIHaryana.Supervisor
                         Label lblAssignedSupervisor = (Label)row.FindControl("lblAssignedSupervisor");
                         Label lblInitialSupervisor = (Label)row.FindControl("lblInitialSupervisor");
 
-                        
+
 
                         Session["Approval"] = lblStatus.Text.Trim();
 
@@ -167,6 +167,11 @@ namespace CEIHaryana.Supervisor
                                     //}
                                     Response.Redirect("/Supervisor/GeneratingSetTestReport.aspx", false);
                                 }
+                                else if (lblTyps.Text.Trim() == "Lift" || lblTyps.Text.Trim() == "Escalator")
+                                {
+
+                                    Response.Redirect("/Supervisor/LiftTestReport.aspx", false);
+                                }
                             }
                             else
                             {
@@ -175,7 +180,7 @@ namespace CEIHaryana.Supervisor
                             }
                         }
                         //If The TestReport Is Assigned To New Supervisor Then That One Should Not Be Able to Work On Other TestReports In That Intimation
-                        else if (lblInitialSupervisor.Text.Trim().ToLower() == "no") 
+                        else if (lblInitialSupervisor.Text.Trim().ToLower() == "no")
                         {
                             string script = "alert(\"You are not Authorised to Edit This.\");";
                             ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
@@ -228,6 +233,15 @@ namespace CEIHaryana.Supervisor
                                 //    Session["ValueId"] = "True";
                                 //}
                                 Response.Redirect("/Supervisor/GeneratingSetTestReport.aspx", false);
+                            }
+                            else if (lblTyps.Text.Trim() == "Lift" || lblTyps.Text.Trim() == "Escalator")
+                            {
+                                //if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                                //{
+                                //    Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                                //    Session["ValueId"] = "True";
+                                //}
+                                Response.Redirect("/Supervisor/LiftTestReport.aspx", false);
                             }
                         }
 

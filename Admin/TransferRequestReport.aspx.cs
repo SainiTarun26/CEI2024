@@ -131,7 +131,7 @@ namespace CEIHaryana.Admin
                     if (lblType.Text == "New")
                     {
                         Session["InProcessInspectionId"] = id;
-                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                        Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
                     }
                     else
                     {

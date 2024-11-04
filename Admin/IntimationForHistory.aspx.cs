@@ -102,8 +102,8 @@ namespace CEIHaryana.Admin
             DataSet ds = new DataSet();
             ds = CEI.GetDivisionData(District);
             ddlDivisions.DataSource = ds;
-            ddlDivisions.DataTextField = "HeadOffice";
-            ddlDivisions.DataValueField = "HeadOffice";
+            ddlDivisions.DataTextField = "District";
+            ddlDivisions.DataValueField = "District";
             ddlDivisions.DataBind();
             ddlDivisions.Items.Insert(0, new ListItem("Select", "0"));
             ds.Clear();

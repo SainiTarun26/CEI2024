@@ -41,11 +41,11 @@ namespace CEIHaryana.Supervisor
                 Response.Redirect("/Login.aspx");
             }
         }
-        private void getWorkIntimationData(string searchText = null)
+        private void getWorkIntimationData()
         {
             DataTable ds = new DataTable();
             string Id = Session["SupervisorID"].ToString();
-            ds = cei.WorkIntimationDataforSupervisor(Id, searchText);
+            ds = cei.WorkIntimationDataforSupervisor(Id);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -178,26 +178,5 @@ namespace CEIHaryana.Supervisor
 
             }
         }
-
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            string searchText = txtSearch.Text.Trim();
-            if (!string.IsNullOrEmpty(searchText))
-            {
-                getWorkIntimationData(searchText);
-            }
-            else
-            {
-                getWorkIntimationData();
-            }
-
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
-            getWorkIntimationData();
-        }
-
-
     }
 }

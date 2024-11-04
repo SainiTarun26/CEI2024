@@ -33,24 +33,6 @@ namespace CEIHaryana
         protected global::System.Web.UI.ScriptManager ScriptManager2;
 
         /// <summary>
-        /// updatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updatePanel1;
-
-        /// <summary>
-        /// CardSearchDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CardSearchDetails;
-
-        /// <summary>
         /// ddluserCategary control.
         /// </summary>
         /// <remarks>
@@ -76,6 +58,15 @@ namespace CEIHaryana
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl gstno;
+
+        /// <summary>
+        /// pantanno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pantanno;
 
         /// <summary>
         /// txtsearch control.
@@ -141,15 +132,6 @@ namespace CEIHaryana
         protected global::System.Web.UI.WebControls.Button btnProcess;
 
         /// <summary>
-        /// CardPersnalDetail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CardPersnalDetail;
-
-        /// <summary>
         /// txtLiencesExpiryDate control.
         /// </summary>
         /// <remarks>
@@ -204,15 +186,6 @@ namespace CEIHaryana
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
 
         /// <summary>
-        /// RegularExpressionValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
-
-        /// <summary>
         /// btnOtp control.
         /// </summary>
         /// <remarks>
@@ -220,24 +193,6 @@ namespace CEIHaryana
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnOtp;
-
-        /// <summary>
-        /// LblText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblText;
-
-        /// <summary>
-        /// OtpCart control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl OtpCart;
 
         /// <summary>
         /// txtOTPVerify control.
@@ -249,75 +204,21 @@ namespace CEIHaryana
         protected global::System.Web.UI.WebControls.TextBox txtOTPVerify;
 
         /// <summary>
-        /// RequiredFieldValidator6 control.
+        /// Button6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
+        protected global::System.Web.UI.WebControls.Button Button6;
 
         /// <summary>
-        /// btnVerifyotp control.
+        /// RequiredFieldValidator5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVerifyotp;
-
-        /// <summary>
-        /// CreditionalCard control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CreditionalCard;
-
-        /// <summary>
-        /// Email control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField Email;
-
-        /// <summary>
-        /// Licence control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField Licence;
-
-        /// <summary>
-        /// Contact control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField Contact;
-
-        /// <summary>
-        /// ExpiryDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField ExpiryDate;
-
-        /// <summary>
-        /// Password control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField Password;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
     }
 }

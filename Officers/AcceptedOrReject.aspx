@@ -93,25 +93,6 @@
         td {
             text-align: center;
         }
-                                input#ContentPlaceHolder1_txtSearch {
-    font-size: 12px;
-    height: 28px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-}
-        input#ContentPlaceHolder1_btnSearch {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-    height: 28px;
-    border-radius: 5px;
-}
-        input#ContentPlaceHolder1_btnReset{
-            color: #fff;
-background-color: #007bff;
-border-color: #007bff;
-height: 28px;
-border-radius: 5px;
-        }
     </style>
 
 </asp:Content>
@@ -119,7 +100,7 @@ border-radius: 5px;
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
-                <%--<div class="row" style="margin-bottom: -30px;">
+                <div class="row" style="margin-bottom: -30px;">
                     <div class="col-4">
                         <div class="form-group row">
                             <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
@@ -128,25 +109,7 @@ border-radius: 5px;
                             </div>
                         </div>
                     </div>
-                </div>--%>
-                                                        <asp:Panel ID="pnlSearch" runat="server" DefaultButton="btnSearch" Style="margin-left:2%;">
-    <div class="row" style="margin-bottom: -30px;">
-        <div class="col-md-6">
-            <div class="form-group row">
-                <label for="search" class="col-md-2 col-form-label" style="margin-top: 4px; padding: 0px;">Search:</label>
-                <div class="col-md-6" style="margin-left: -45px;">
-                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px"></asp:TextBox><br />
                 </div>
-                <div class="col-md-2">
-                    <asp:Button ID="btnSearch" runat="server" class="btn btn-primary" OnClick="btnSearch_Click" Text="Search" Style="padding-top: 1px; padding-bottom: 1px;" />
-                </div> &nbsp; &nbsp;
-                <div class="col-md-2">
-                    <asp:Button ID="btnReset" runat="server" class="btn btn-primary" Text="Reset" OnClick="btnReset_Click" Style="padding-top: 1px; padding-bottom: 1px; padding-left: 17px; padding-right: 17px;" />
-                </div>
-            </div>
-        </div>
-    </div>
-</asp:Panel>
                 <div class="row ">
                     <div class="col-sm-4 col-md-4">
                         <h6 class="card-title fw-semibold mb-4">

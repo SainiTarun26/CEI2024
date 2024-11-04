@@ -1,7 +1,5 @@
-﻿using CEI_PRoject;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,77 +9,18 @@ namespace CEIHaryana
 {
     public partial class GetPassword : System.Web.UI.Page
     {
-        CEI CEI = new CEI();
-        string searchby = string.Empty;
-        private static DateTime ExpiryDatte;
-        private static string otp = string.Empty;
-        //private static string UserId = string.Empty;
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                btnProcess.Enabled = false;
-            }
+
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            string Categary = ddluserCategary.SelectedItem.ToString();
-            searchby = txtsearch.Text.ToString();
-            DataTable dt = new DataTable();
-            dt = CEI.GetDataByCategary(searchby, Categary);
-            if (dt.Rows.Count > 0)
-            {
-                
-                Contact.Value = dt.Rows[0]["ContactNo"].ToString();
-                Email.Value= dt.Rows[0]["Email"].ToString();
-                // Password.Value = dt.Rows[0]["Password"].ToString();
-                 Session["Password"]= dt.Rows[0]["Password"].ToString();
-                // UserId = dt.Rows[0]["Licence"].ToString();
 
-                if (Categary != "Siteowner")
-                {
-                    Licence.Value = dt.Rows[0]["Licence"].ToString();
-                    ExpiryDate.Value= dt.Rows[0]["ExpiryDate"].ToString();
-                    ExpiryDatte = DateTime.Parse(dt.Rows[0]["ExpiryDate"].ToString());
-                }
-                GridView1.DataSource = dt;
-                GridView1.DataBind();
-                btnProcess.Enabled = true;
-            }
-            else
-            {
-                GridView1.DataSource = null;
-                GridView1.DataBind();
-                string script = "alert(\"No Record Found\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }            
         }
+
         protected void btnReset_Click(object sender, EventArgs e)
         {
-            ddluserCategary.SelectedIndex = 0;
-            txtsearch.Text = "";
-            txtLiencesExpiryDate.Text = "";
-            txtContact.Text = "";
-            txtEmailId.Text = "";
-            txtOTPVerify.Text = "";
-            txtsearch.ReadOnly = false;
-            ddluserCategary.Enabled = true;
-            CheckBox1.Checked = false;
-            CardPersnalDetail.Visible = false;
-            CreditionalCard.Visible = false;
-            GridView1.DataSource = null;
-            GridView1.DataBind();
-            btnProcess.Enabled = false;
-            btnSearch.Enabled = true;
-            LblText.Visible = false;
-            CreditionalCard.Visible = false;
-            OtpCart.Visible = false;
-            LblText.Visible = false;
-            //CardPersnalDetail.Visible = false;
-            //CardSearchDetails.Visible = false;
 
         }
 
@@ -90,97 +29,23 @@ namespace CEIHaryana
             if (ddluserCategary.SelectedValue =="1")
             {
                 gstno.Visible = true;
-               // pantanno.Visible = false;
+                pantanno.Visible = false;
             }
-            //else if (ddluserCategary.SelectedValue == "2")
-            //{
-            //    gstno.Visible = false;
-            //    pantanno.Visible = false;
-            //}
-            //else if (ddluserCategary.SelectedValue == "3")
-            //{
-            //    gstno.Visible = false;
-            //    pantanno.Visible = true;
-            //}
-            //else if (ddluserCategary.SelectedValue == "4")
-            //{
-            //    gstno.Visible = false;
-            //    pantanno.Visible = false;
-            //}
-        }
-
-        protected void btnProcess_Click(object sender, EventArgs e)
-        {
-            if (CheckBox1.Checked == true && GridView1.Visible == true)
+            else if (ddluserCategary.SelectedValue == "2")
             {
-                txtsearch.ReadOnly = true;
-                ddluserCategary.Enabled = false;
-                CardPersnalDetail.Visible = true;
-                btnProcess.Enabled = false;
-                btnSearch.Enabled = false;
+                gstno.Visible = false;
+                pantanno.Visible = false;
             }
-            else
+            else if (ddluserCategary.SelectedValue == "3")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('You have to check the declaration first !!!')", true);
+                gstno.Visible = false;
+                pantanno.Visible = true;
             }
-        }
-
-        protected void btnOtp_Click(object sender, EventArgs e)
-        {
-            try
+            else if (ddluserCategary.SelectedValue == "4")
             {
-                DateTime EnterExpiryDate = DateTime.Parse(txtLiencesExpiryDate.Text);
-                if (EnterExpiryDate == ExpiryDatte)
-                {
-                    string Email = txtEmailId.Text.Trim();
-                    otp = CEI.ValidateOTPthroughEmail(Email);
-                    OtpCart.Visible = true;
-                    LblText.Visible = true;
-
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Expiry Date Not Match !!!')", true);
-                }
+                gstno.Visible = false;
+                pantanno.Visible = false;
             }
-            catch (Exception ex)
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
-                return;
-            }
-           
-
-        }
-
-        protected void btnVerifyotp_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (txtOTPVerify.Text == otp && Convert.ToString(Session["Amount"]) != null)
-                {
-                string password = Convert.ToString(Session["Password"]);  //Password.Value.ToString();
-                string Email = txtEmailId.Text.Trim();
-                string Subject = "Password Revieved";
-                string Message = $"Your Password is :{password}";
-                CEI.ResetMessagethroughEmail(Email, Subject, Message);
-                CEI.UpdateDetailsByFetchingPassword(Licence.Value, txtContact.Text.Trim(),txtEmailId.Text.Trim());
-                CreditionalCard.Visible = true;
-                CardPersnalDetail.Visible = false;
-                CardSearchDetails.Visible = false;
-                Session["Password"] ="";
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Otp not Match')", true);
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
-                return;
-            }
-           
         }
     }
 }

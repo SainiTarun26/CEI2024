@@ -114,6 +114,24 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.HiddenField hdnId2;
 
         /// <summary>
+        /// DivExistingInspectionRequest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivExistingInspectionRequest;
+
+        /// <summary>
+        /// GridView2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView2;
+
+        /// <summary>
         /// DivCreateIntimation control.
         /// </summary>
         /// <remarks>
@@ -492,24 +510,6 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator24;
 
         /// <summary>
-        /// ddlVoltageLevel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlVoltageLevel;
-
-        /// <summary>
-        /// RequiredFieldValidator15 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator15;
-
-        /// <summary>
         /// ddlPremises control.
         /// </summary>
         /// <remarks>
@@ -555,22 +555,22 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
 
         /// <summary>
-        /// txtCapacity control.
+        /// ddlVoltageLevel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCapacity;
+        protected global::System.Web.UI.WebControls.DropDownList ddlVoltageLevel;
 
         /// <summary>
-        /// RequiredFieldValidator21 control.
+        /// RequiredFieldValidator15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator21;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator15;
 
         /// <summary>
         /// RadioButtonList2 control.
@@ -607,6 +607,24 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSanctionLoad;
+
+        /// <summary>
+        /// txtCapacity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCapacity;
+
+        /// <summary>
+        /// RequiredFieldValidator21 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator21;
 
         /// <summary>
         /// Installation control.

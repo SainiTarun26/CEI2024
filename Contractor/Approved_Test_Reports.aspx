@@ -1,7 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Contractor/Contractor.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Approved_Test_Reports.aspx.cs" Inherits="CEIHaryana.Contractor.Approved_Test_Reports" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"> <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -162,29 +160,10 @@
             font-size: 1rem !important;
             margin-bottom: 3px !important;
         }
-                        input#ContentPlaceHolder1_txtSearch {
-    font-size: 12px;
-    height: 28px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-}
-        input#ContentPlaceHolder1_btnSearch {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-    height: 28px;
-    border-radius: 5px;
-}
-        input#ContentPlaceHolder1_btnReset{
-            color: #fff;
-background-color: #007bff;
-border-color: #007bff;
-height: 28px;
-border-radius: 5px;
-        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="content-wrapper">
+     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
                 <div class="row ">
@@ -205,7 +184,7 @@ border-radius: 5px;
                     <div class="col-sm-6 col-md-6"></div>
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                    <%--     <div class="row" style="margin-bottom: -30px;">
+                    <div class="row" style="margin-bottom: -30px;">
                         <div class="col-md-4">
                             <div class="form-group row">
                                 <label for="search" class="col-md-3 col-form-label" style="margin-top: -6px;">Search:</label>
@@ -215,28 +194,8 @@ border-radius: 5px;
                                 </div>
                             </div>
                         </div>
-                    </div>--%>
-
-                                        <asp:Panel ID="pnlSearch" runat="server" DefaultButton="btnSearch" Style="margin-left:2%;">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group row">
-                <label for="search" class="col-md-2 col-form-label" style="margin-top: 4px; padding: 0px;">Search:</label>
-                <div class="col-md-6" style="margin-left: -45px;">
-                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px"></asp:TextBox><br />
-                </div>
-                <div class="col-md-2">
-                    <asp:Button ID="btnSearch" runat="server" class="btn btn-primary" OnClick="btnSearch_Click" Text="Search" Style="padding-top: 1px; padding-bottom: 1px;" />
-                </div> &nbsp; &nbsp;
-                <div class="col-md-2">
-                    <asp:Button ID="btnReset" runat="server" class="btn btn-primary" Text="Reset" OnClick="btnReset_Click" Style="padding-top: 1px; padding-bottom: 1px; padding-left: 17px; padding-right: 17px;" />
-                </div>
-            </div>
-        </div>
-    </div>
-</asp:Panel>
-
-                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
+                    </div>
+                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnRowDataBound="GridView1_RowDataBound" OnPageIndexChanging="GridView1_PageIndexChanging"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
@@ -252,7 +211,7 @@ border-radius: 5px;
                                     <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("Approval") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <%-- <asp:TemplateField HeaderText="Id" Visible="False">
+                           <%-- <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="LblReasionforRejection" runat="server" Text='<%#Eval("ReasonForRejection") %>'></asp:Label>
                                 </ItemTemplate>
@@ -271,9 +230,9 @@ border-radius: 5px;
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <HeaderStyle Width="34%" CssClass="headercolor leftalign" />
-                                <ItemStyle Width="34%" CssClass="leftalign" />
+                                <ItemStyle Width="34%" cssclass="leftalign" />
                                 <HeaderTemplate>
-                                    <%--  Test Report Application--%>
+                                  <%--  Test Report Application--%>
                                     Intimation Id
                                 </HeaderTemplate>
                                 <ItemTemplate>
@@ -287,12 +246,38 @@ border-radius: 5px;
                             <asp:BoundField DataField="TypeOf" HeaderText="Installation Type">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor leftalign" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="leftalign" />
-                            </asp:BoundField>
+                            </asp:BoundField>                           
                             <asp:BoundField DataField="Voltagelevel" HeaderText="Voltagelevel">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Approveddate" HeaderText="Approved Date">
+                             <asp:TemplateField>
+            <HeaderStyle Width="5%" CssClass="headercolor" />
+            <ItemStyle Width="5%" />
+            <HeaderTemplate>
+              Installation Invoice
+            </HeaderTemplate>
+            <ItemTemplate>
+                <%--<asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("DocumentPath") %> ' CommandName="Select"><%#Eval("DocumentPath") %>  Text="Click here to view document"</asp:LinkButton>--%>
+                <asp:LinkButton ID="LnkInovoice" runat="server" AutoPostBack="true" CommandArgument='<%#Eval("invoice") %>' CommandName="View">
+                   View Document
+                </asp:LinkButton>
+            </ItemTemplate>
+        </asp:TemplateField>
+        <asp:TemplateField>
+            <HeaderStyle Width="5%" CssClass="headercolor" />
+            <ItemStyle Width="5%" />
+            <HeaderTemplate>
+                Manufacturing Test Report
+            </HeaderTemplate>
+            <ItemTemplate>
+                <%--<asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("DocumentPath") %> ' CommandName="Select"><%#Eval("DocumentPath") %>  Text="Click here to view document"</asp:LinkButton>--%>
+                <asp:LinkButton ID="lnkReport" runat="server" AutoPostBack="true" CommandArgument='<%#Eval("report") %>' CommandName="View">
+                   View Documents
+                </asp:LinkButton>
+            </ItemTemplate>
+        </asp:TemplateField>
+                              <asp:BoundField DataField="Approveddate" HeaderText="Approved Date">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>

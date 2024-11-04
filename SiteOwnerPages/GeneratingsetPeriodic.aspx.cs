@@ -1,9 +1,7 @@
 ﻿using CEI_PRoject;
-using CEIHaryana.Admin;
 using iText.Forms.Form.Element;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Web;
@@ -24,7 +22,6 @@ namespace CEIHaryana.SiteOwnerPages
         string type = string.Empty;
         string Generaterset_Id = string.Empty;
         string Id_Update = string.Empty;
-        private static string  ApplicantType, VoltageLevel, District, Division, Inspectiontype;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -48,8 +45,10 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
-        //protected void ddlGeneratingSetType_SelectedIndexChanged(object sender, EventArgs e)
-        //{}
+        protected void ddlGeneratingSetType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             try
@@ -63,22 +62,11 @@ namespace CEIHaryana.SiteOwnerPages
                 //string CreatedBy = "ABCDE5555N";
                 //string installationNo = "1377";
                 //string count = "1";
-                DataSet ds = new DataSet();
-                ds = CEI.GetIntimationDetails(IntimationId);
-
-                ApplicantType = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
-                VoltageLevel = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                District = ds.Tables[0].Rows[0]["District"].ToString();
-                Division = ds.Tables[0].Rows[0]["Division"].ToString();
-                Inspectiontype = ds.Tables[0].Rows[0]["PremisesType"].ToString();
 
 
-
-                int returnresult =  CEI.InsertGeneratingSetData_Existing_HavingPreviousReport(Id_Update, count, IntimationId,
+               int returnresult =  CEI.InsertGeneratingSetData_Existing_HavingPreviousReport(Id_Update, count, IntimationId,
                     ddlCapacity.SelectedItem.ToString(), txtCapacity.Text, txtSerialNoOfGenerator.Text, ddlGeneratingSetType.SelectedItem.ToString(),
-                 txtGeneratorVoltage.Text, ddlPlantType.SelectedItem.ToString(),txtMake.Text.ToString(),
-                 txtLastInspectionIssueDate.Text.ToString(), ApplicantType, VoltageLevel, District, Division, Inspectiontype,
-                 CreatedBy);
+                 txtGeneratorVoltage.Text, ddlPlantType.SelectedItem.ToString(),txtMake.Text.ToString(), CreatedBy);
 
                
                 CEI.UpdateInstallations(installationNo, IntimationId);

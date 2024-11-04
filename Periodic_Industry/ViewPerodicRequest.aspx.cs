@@ -20,28 +20,18 @@ namespace CEIHaryana.Periodic_Industry
                 {
                     if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                     {
-
+                       
                         //if (Session["SiteOwnerId"].ToString() != "JVCBN5647K")
                         //{
                         //    //Session["SiteOwnerId"] = "JVCBN5647K";
                         //}
-                        string CartID = null;
-                        if (Session["CartIdNew"] != null)
-                        {
-                            CartID = Session["CartIdNew"].ToString();
-                            BindGrid();
-                        }
-                        else if (Session["CartID"] != null)
-                        {
-                            CartID = Session["CartID"].ToString();
-                            BindGrid();
-                        }
 
-                        //if (Session["CartID"] != null)
-                        //{
-                        //    string CartID = Session["CartID"].ToString();
-                        //    BindGrid(); 
-                        //}
+                      
+                        if (Session["CartID"] != null)
+                        {
+                            string CartID = Session["CartID"].ToString();
+                            BindGrid(); 
+                        }
                      
                     }
                 }
@@ -54,25 +44,13 @@ namespace CEIHaryana.Periodic_Industry
         public void BindGrid()
         {
 
-            //string CartID = Session["CartID"].ToString();
-            string CartID = null;
-            if (Session["CartIdNew"] != null)
-            {
-                CartID = Session["CartIdNew"].ToString();
-               
-            }
-            else if (Session["CartID"] != null)
-            {
-                CartID = Session["CartID"].ToString();
-              
-            }
+            string CartID = Session["CartID"].ToString();
             DataSet ds = new DataSet();
             ds = CEI.ViewInspection(CartID);
             if (ds.Tables.Count > 0)
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
-             
             }
             else
             {
@@ -81,7 +59,6 @@ namespace CEIHaryana.Periodic_Industry
                 string script = "alert(\"No Record Found\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
-            Session["CartID"] = string.Empty;
             ds.Dispose();
         }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)

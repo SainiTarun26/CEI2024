@@ -34,14 +34,14 @@ namespace CEIHaryana.Officers
             }
 
         }
-        public void GridBind(string searchText = null)
+        public void GridBind()
         {
             try
             {
                 string LoginID = string.Empty;
                 LoginID = Session["StaffID"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.AcceptOrReject(LoginID, searchText);
+                ds = CEI.AcceptOrReject(LoginID);
                 if (ds != null && ds.Tables.Count > 0)
                 {
                     GridView1.DataSource = ds;
@@ -87,7 +87,7 @@ namespace CEIHaryana.Officers
                         if (LblInspectionType.Text == "New")
                         {
                             Session["InProcessInspectionId"] = id;
-                            Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                            Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
                         }
                         else
                         {
@@ -137,24 +137,6 @@ namespace CEIHaryana.Officers
                     linkButton.Visible = false;
                 }
             }
-        }
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            string searchText = txtSearch.Text.Trim();
-            if (!string.IsNullOrEmpty(searchText))
-            {
-                GridBind(searchText);
-            }
-            else
-            {
-                GridBind();
-            }
-
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
-            GridBind();
         }
     }
 }

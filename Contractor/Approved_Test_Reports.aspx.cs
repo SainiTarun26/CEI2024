@@ -37,12 +37,12 @@ namespace CEIHaryana.Contractor
             }
         }
 
-        private void GridViewBind(string searchText = null)
+        private void GridViewBind()
         {
             string LoginId = string.Empty;
             LoginId = Session["ContractorID"].ToString();
             DataSet ds = new DataSet();
-            ds = cei.TestReportContractorHistory(LoginId, "Not Pending", searchText);
+            ds = cei.TestReportContractorHistory(LoginId, "Not Pending");
             if (ds.Tables.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -100,11 +100,40 @@ namespace CEIHaryana.Contractor
                         Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                         Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                     }
-
+                }
+                else if (e.CommandName == "View")
+                {
+                    string fileName = "";
+                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://localhost:44393" + e.CommandArgument.ToString();
+                    //lblerror.Text = fileName;
+                    string script = $@"<script>window.open('{fileName}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                 }
             }
             catch (Exception ex)
             { }
+        }
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+
+                Label lblTypeOf = (Label)e.Row.FindControl("lblTypeOf");
+                LinkButton linkButton = (LinkButton)e.Row.FindControl("LnkInovoice");
+                LinkButton LinkButton3 = (LinkButton)e.Row.FindControl("lnkReport");
+
+                if (lblTypeOf.Text.Trim() == "Line")
+                {
+                    linkButton.Visible = false;
+                    LinkButton3.Visible = false;
+                }
+                else
+                {
+                    linkButton.Visible = true;
+                    LinkButton3.Visible = true;
+                }
+            }
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -118,24 +147,6 @@ namespace CEIHaryana.Contractor
             {
 
             }
-        }
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            string searchText = txtSearch.Text.Trim();
-            if (!string.IsNullOrEmpty(searchText))
-            {
-                GridViewBind(searchText);
-            }
-            else
-            {
-                GridViewBind();
-            }
-
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
-            GridViewBind();
         }
     }
 }

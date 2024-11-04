@@ -23,13 +23,14 @@
     <link href="/assetsnew/css/style.css" rel="stylesheet" />
     <style type="text/css">
         body {
-overflow-x: hidden;
+            overflow-x: hidden;
         }
 
         #header .logo img {
-    max-height: 80px;
-    margin-left: -50px;
-}
+            max-height: 80px;
+            margin-left: -50px;
+        }
+
         #footer .copyright {
             text-align: center;
             float: none !important;
@@ -421,10 +422,8 @@ overflow-x: hidden;
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="#">Procedure/ Condition
-                  <br>
-                                            for Various Licences/ Certificates
-                                        </a>
+                                        <a href="UserManual/Haryana-Electrical-Contractor-Licence-Certificate-of.pdf" target="_blank">Electrical Licensing Rules-2021
+</a>
                                     </li>
                                     <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
@@ -435,14 +434,15 @@ overflow-x: hidden;
                   <li><a href="#">Deep Drop Down 5</a></li>
                 </ul>
               </li> -->
-                                    <li>
+                                    <%--<li>
                                         <a href="#">Electrical Supervisor Competency
                   <br>
                                             Certificate(Excemption)
                                         </a>
-                                    </li>
+                                    </li>--%>
                                     <li>
-                                        <a href="#">Forms(Licence)</a>
+                                        <a href="UserManual/form_split.pdf" target="_blank">Forms & Fees
+</a>
                                     </li>
                                 </ul>
                             </li>
@@ -478,7 +478,7 @@ overflow-x: hidden;
                                     </li>
                                 </ul>
                             </li>
-                           
+
                             <li class="dropdown">
                                 <a href="#">
                                     <span>Services</span>
@@ -488,23 +488,48 @@ overflow-x: hidden;
                                     <li>
                                         <a href="#">Our Services</a>
                                     </li>
-                                    <!-- <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li> -->
                                 </ul>
                             </li>
-                            <li>
-                                <a class="nav-link scrollto" href="#contact">Contact Us</a>
-                            </li>
-                            <li style="display:flex;">
-                                <a href="UserPages/OurServices.aspx" id="alertLink" style="position: relative; z-index: 1;">User Manual</a><img src="Assets/new1.gif" id="alertGif" />
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Orders</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="UserManual/Mendate%20Regarding%20Electrical%20Installations.pdf" target="_blank">Mendate Regarding ELectrical Installations</a>
+                                    </li>
 
+                                    <li>
+                                        <a href="UserManual/Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf"  target="_blank">Authorisation of Chartered<br />
+                                            Electrical Safety Engineer(CESE) (New)</a>
+
+                                    </li>
+                                    <li>
+                                        <a href="UserManual/cancellation-order.pdf" target="_blank">cancellation order</a>
+                                    </li>
+                                    <li class="dropdown"><a href="#"><span>Fees Details</span> <i class="bi bi-chevron-right"></i></a>
+                                        <ul>
+                                            <li><a href="UserManual/Fees-for-New-Installation-Inspection.pdf" target="_blank">Fees for New Installation Inspection</a></li>
+                                            <li><a href="UserManual/Fees-For-Periodical-Inspection.pdf" target="_blank">Fees For Periodical Inspection</a></li>
+
+                                            <li><a href="UserManual/Fees-for-various-certificates-Licences.pdf" target="_blank">Fees for various certificates & Licences</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="UserManual/Orderof22authorisedCharteredElectricalSafetyEngineersdated28.11.2016.pdf" target="_blank">Order of 22 authorised Chartered<br />
+                                            Electrical Safety Engineers dated 28.11.2016
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="UserManual/OrderofauthorisedCharteredElectricalSafetyEngineers.pdf" target="_blank">Order of 209 authorised Chartered<br>
+                                            Electrical Safety Engineers dated 18.03.2016</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="display: flex;">
+                                <a href="UserPages/OurServices.aspx" id="alertLink" style="position: relative; z-index: 1;">User Manual</a><img src="Assets/new1.gif" id="alertGif" />
                             </li>
                         </ul>
                         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -557,8 +582,7 @@ overflow-x: hidden;
                                             </div>
                                             <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
                                                 <div class="col-md-5">
-                                               <%--     <div class="pass-link" style="text-align: initial; font-size: 13px; margin-top: 6px;"><a href="#">Forgot password?</a></div>--%>
-                                                    <asp:Button class="pass-link" OnClick="BtnForgetPassword_Click" ID="BtnForgetPassword" runat="server" Text="Forgot password?" style="text-align: initial; font-size: 13px; margin-top: 6px;"></asp:Button>
+                                                    <div class="pass-link" style="text-align: initial; font-size: 13px; margin-top: 6px;"><a href="#">Forgot password?</a></div>
                                                 </div>
                                                 <div class="col-md-7">
                                                     <div>
@@ -582,8 +606,7 @@ overflow-x: hidden;
                                             <%--<div class="signup-link">Don't have an Account?<a href="#" class="text-primary">Create</a></div>--%>
                                             <%--                                            <div class="signup-link">Don't have an Account?<a href="/UserPages/Registration.aspx" class="text-primary">Create</a></div>--%>
                                             <div class="signup-link"><a href="UserPages/SiteOwnerRegistration.aspx" class="text-primary">Register as Site Owner</a></div>
-                                           <div class="signup-link"><a href="GetPassword.aspx" class="text-primary">Get user Id & Password</a></div>
-
+                                            <%--  <div class="signup-link"><a href="GetPassword.aspx" class="text-primary">Get user Id & Password</a></div>--%>
                                         </div>
                                     </div>
                                 </div>
@@ -600,9 +623,9 @@ overflow-x: hidden;
             </div>
             <div class="marquee-wrapper">
                 <div class="marquee-text">
-                    To get login Id & Password for Competency Certificate Holder/Supervisor : Please email your valid or latest Electrical Competency Certificate to  ceihelpdesk2024@gmail.com from your personal email.
+                    For Competency Certificate Holder/Supervisor : Please email your valid or latest Electrical Competency Certificate to  ceihelpdesk2024@gmail.com from your personal email.
                     <br />
-                   To get login Id & Password for Contractor : Please email your valid or latest Electrical Contractor license to ceihelpdesk2024@gmail.com from your firm/company email.   
+                    For Contractor : Please email your valid or latest Electrical Contractor license to ceihelpdesk2024@gmail.com from your firm/company email.   
                 </div>
 
             </div>

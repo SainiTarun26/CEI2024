@@ -122,7 +122,8 @@
                     <div class="row">
                         <div class="col-md-4">
                                             <label>
-                                                Inspection Type                                              
+                                                Inspection Type
+                                                <samp style="color: red">* </samp>
                                             </label>
                                             <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" disabled="true" Style="width: 100% !important;" ID="ddlInspectionType" TabIndex="2" runat="server" >
                                                 <asp:ListItem Text="New" Value="0"></asp:ListItem>
@@ -210,13 +211,12 @@
                             </label>
                             <asp:TextBox class="form-control" ID="txtTanNo" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
-                        <%--<div class="col-md-4" id="UserId" runat="server" visible="false">
+                        <div class="col-md-4" id="UserId" runat="server" visible="false">
                             <label for="PanNumber">
                                 UserId of Site Owner                                        
                             </label>
                             <asp:TextBox class="form-control" ID="TxtUserId" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        </div>--%>
-
+                        </div>
                         <div class="col-md-4">
                             <label>
                                 Applicant Type        
@@ -276,7 +276,8 @@
                                     </div>
                         <div class="col-md-4">
                                                <label>
-                                                Is there any Sanction Load Issue                                               
+                                                Is there any Sanction Load Issue
+                                                <samp style="color: red">* </samp>
                                             </label>
                                           
                             <asp:RadioButtonList ID="RadioButtonList2"   runat="server" RepeatDirection="Horizontal" TabIndex="25">
@@ -287,7 +288,8 @@
                                          </div>
                          <div class="col-md-4">
                                             <label>
-                                                Total Capacity to be installed                                               
+                                                Total Capacity to be installed
+                                                <samp style="color: red">* </samp>
                                             </label>
                                          
                                              <asp:TextBox class="form-control" ID="txtCapacity" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -309,7 +311,7 @@
                                     </thead>
                                     <tbody>
                                         <div id="installationType1" runat="server" visible="False">
-                                            <tr id="trinstallationType1" runat="server" visible="true">
+                                            <tr>
                                                 <td>
                                                     <div class="col-md-12">
                                                         <asp:TextBox class="form-control" ID="txtinstallationType1" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -324,7 +326,7 @@
                                             </tr>
                                         </div>
                                         <div id="installationType2" runat="server" visible="False">
-                                            <tr id="trinstallationType2" runat="server" visible="true">
+                                            <tr>
                                                 <td>
                                                     <div class="col-md-12">
                                                         <asp:TextBox class="form-control" ID="txtinstallationType2" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -339,7 +341,7 @@
                                             </tr>
                                         </div>
                                         <div id="installationType3" runat="server" visible="False">
-                                            <tr  id="trinstallationType3" runat="server" visible="true">
+                                            <tr>
                                                 <td>
                                                     <div class="col-md-12">
                                                         <asp:TextBox class="form-control" ID="txtinstallationType3" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px;"></asp:TextBox>

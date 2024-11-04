@@ -1,0 +1,202 @@
+ public DataSet checkInspection(string PanNumber)
+ {
+     return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckInspection", PanNumber);
+ }
+ 
+ -------------
+ 
+    public DataSet TestReportData_Industry(string PANNumber, string District, string searchText = null)
+   {
+       return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationsForSiteOwner_Industry", PANNumber, District, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+   }
+   
+   -------------------------
+    public DataTable GetApplicantCodeIndustry(string Installations)
+ {
+     return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallationTypeId_Industry", Installations);
+ }
+ -------------------------------
+ 
+ public DataTable DeleteduplicateHistoryIndustry(string IntimationId, string CreatedBy)
+{
+    return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckDuplicacy_Industry", IntimationId, CreatedBy);
+}
+--------------------------
+
+ public DataTable Payment_Industry(string intimationId, string count, string installationtypeId, string InspectionType)
+ {
+     DataTable result = new DataTable();
+
+     using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+     {
+         connection.Open();
+         SqlCommand command = new SqlCommand("Sp_Calculate_InspectionPayment_Amount_Industry", connection);
+         command.CommandType = CommandType.StoredProcedure;
+         command.Parameters.AddWithValue("@IntimationId", intimationId);
+         command.Parameters.AddWithValue("@Count", count);
+         command.Parameters.AddWithValue("@InspectionType", InspectionType);
+         command.Parameters.AddWithValue("@InstallationTypeID", installationtypeId);
+
+         SqlDataAdapter adapter = new SqlDataAdapter(command);
+         adapter.Fill(result);
+     }
+
+     return result;
+ }
+
+--------------------
+
+   public DataTable InsertPaymentHistoryIndustry(string IntimationId, int count, int InstallationTypeId, decimal Amount, string CreatedBy)
+   {
+       return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PaymentHistory_Industrty", IntimationId, count, InstallationTypeId, Amount, CreatedBy);
+   }
+   ------------------
+   
+      public DataTable DeletePaymentHistoryIndustry(string IntimationId, int count, int InstallationTypeId, string CreatedBy)
+   {
+       return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DeletePaymentHistory_Industry", IntimationId, count, InstallationTypeId, CreatedBy);
+   }
+   ------------------
+   
+    public DataTable GetMaxValuesIndustry(string CreatedBy, string IntimationId)
+ {
+     return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_MaxValues_Industry", CreatedBy, IntimationId);
+ }
+ -------------------------------
+ 
+   public DataSet GetStaffAssignedforNewInspectionIndustry(string IntimationId)
+  {
+      return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToGetAssignedOfficerinNew_Industry", IntimationId);
+  }
+  ------------------------
+   public DataSet ToGetStaffIdforPeriodicIndustry(string Division, string Staff, string District)
+ {
+     return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetStaffIdforPeriodic_Industry", Division, Staff, District);
+ }
+ ----------------------
+ 
+  public DataSet SiteOwnerInstallations_Industry(string IntimationId)
+ {
+     return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallationForSiteOwner_Industry", IntimationId);
+ }
+ ---------------------------
+ 
+ 
+         public void InsertInspectionDataNewCodeIndustry(string InstallationTypeID, string ContactNo, string ApplicantTypeCode, string IntimationId, string Inspectiontype, string ApplicantType, string InstallationType,
+string VoltageLevel, string District, string Division, string PaymentMode, string DateOfSubmission, string InspectionRemarks, string CreatedBy,
+decimal TotalAmount, string para_Assigned, string transcationId, string TranscationDate, string ChallanAttachment, int InspectID, string KVA, string DemandNotice, int TotalCapacity, int MaxVoltage, SqlTransaction transaction
+)
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertInspectionData_NewCodeForMultiple_Industry", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@InstallationTypeID ", InstallationTypeID);
+
+            cmd.Parameters.AddWithValue("@ContactNo ", String.IsNullOrEmpty(ContactNo) ? DBNull.Value : (object)ContactNo);
+
+            //cmd.Parameters.AddWithValue("@TestRportId ", TestRportId);
+
+            cmd.Parameters.AddWithValue("@ApplicantTypeCode ", ApplicantTypeCode);
+            cmd.Parameters.AddWithValue("@IntimationId ", IntimationId);
+            cmd.Parameters.AddWithValue("@Inspectiontype ", Inspectiontype);
+            cmd.Parameters.AddWithValue("@ApplicantType ", ApplicantType);
+            cmd.Parameters.AddWithValue("@InstallationType ", InstallationType);
+            cmd.Parameters.AddWithValue("@VoltageLevel ", VoltageLevel);
+
+            //cmd.Parameters.AddWithValue("@LineLength ", String.IsNullOrEmpty(LineLength) ? DBNull.Value : (object)LineLength);
+            //cmd.Parameters.AddWithValue("@TestReportCount ", TestReportCount);
+
+            cmd.Parameters.AddWithValue("@District ", District);
+            cmd.Parameters.AddWithValue("@Division ", Division);
+            cmd.Parameters.AddWithValue("@PaymentMode ", PaymentMode);//
+            DateTime SubmitionDate;
+            if (DateTime.TryParse(DateOfSubmission, out SubmitionDate) && SubmitionDate != DateTime.MinValue)
+            {
+                cmd.Parameters.AddWithValue("@DateOfSubmission", SubmitionDate);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@DateOfSubmission", DBNull.Value);
+            }
+            cmd.Parameters.AddWithValue("@InspectionRemarks ", InspectionRemarks);
+            cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
+            cmd.Parameters.AddWithValue("@TransactionId ", transcationId);
+            cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
+            cmd.Parameters.AddWithValue("@AssignTo", para_Assigned);
+            cmd.Parameters.AddWithValue("@TransctionDate", TranscationDate);
+            cmd.Parameters.AddWithValue("@ChallanAttachment", null);
+            cmd.Parameters.AddWithValue("@InspectID", InspectID);
+            cmd.Parameters.AddWithValue("@SactionVoltage", KVA);
+            cmd.Parameters.AddWithValue("@DemandDocument", DemandNotice);
+            cmd.Parameters.AddWithValue("@TotalCapacity", TotalCapacity);
+            cmd.Parameters.AddWithValue("@MaxVoltage", MaxVoltage);
+            //outputParam = new SqlParameter("@GeneratedId", SqlDbType.NVarChar, 50);
+            outputParam = new SqlParameter("@GeneratedCombinedIdDetails", SqlDbType.NVarChar, 500);
+            outputParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParam);
+            cmd.ExecuteNonQuery();
+        }
+
+------------------------
+
+   public DataSet UpdateInstallationHistoryIndustry(string InstallationType, string IntimationId, string CreatedBy, int TestReportCount)
+   {
+       return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateInstallationHistoryForIndustry", InstallationType, IntimationId, CreatedBy, TestReportCount);
+   }
+   -------------------------
+   
+    public DataTable GetPaymentHistoryIndustry(string CreatedBy, string IntimationId)
+ {
+     return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPaymentHistory_Industry", CreatedBy, IntimationId);
+ }
+ -----------------------------
+ 
+  public DataTable GetDocumentlistfornewInspectionIndustry(string ApplicantType, int InstallationTypeID, string InspectionType, string PlantLocationRoofTop, string PlantLocationGroundMounted, int inspectionIdPrm)
+ {
+     return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDocumentsForNewMultipleInspection_Industry", ApplicantType, InstallationTypeID, InspectionType, PlantLocationRoofTop, PlantLocationGroundMounted, inspectionIdPrm);
+ }
+ 
+ ---------------------------
+ 
+ 
+  public DataSet GetAttachmentsDatainInspectionForm(string InspectionId)
+ {
+     return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAttachmentsinInspectionForm", InspectionId);
+ }
+ ----------------------------------
+ 
+  public DataSet DetailstoPrintFormInspectionDetails(int ID)
+ {
+     return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDetailsforPrintForm", ID);
+ }
+ ---------------------
+ 
+  public DataSet SiteOwnerInstallationsHistory_Industry(string IntimationId, string InspectionId)
+ {
+     return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallationHistoryForSiteOwner_Industry", IntimationId, InspectionId);
+ }
+ ------------------
+ 
+ 
+    public DataSet InspectionDataForIndustry(string Id)
+   {
+       return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionData_Industry", Id);
+   }
+   --------------------------
+      public DataSet GetDetailsToViewCart(string InspectionId)
+   {
+       return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewCart", InspectionId);
+   }
+   ---------------------------
+   
+    public DataSet ViewDocuments_Industry(string InspectionId)
+ {
+     return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDocuments_Industry", InspectionId);
+ }
+ ---------------------
+   public DataSet GetTestReport(string Id)
+  {
+      return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReport", Id);
+  }
+  -------------------
+  
+  

@@ -66,6 +66,7 @@ namespace CEIHaryana.Contractor
             {
                 Response.Redirect("/Login.aspx");
             }
+
         }
         protected void GetDetails()
         {
@@ -127,7 +128,7 @@ namespace CEIHaryana.Contractor
                         txtPAN.Text = PanTanNumber;
                         InstallationFor.Visible= true;
                         PowerUtility.Visible = false;
-                       // UserId.Visible = false;
+                        UserId.Visible = false;
                     }
                     else if (ApplicantType == "Other Department/Organization")
                     {
@@ -136,13 +137,13 @@ namespace CEIHaryana.Contractor
                         txtTanNo.Text = PanTanNumber;
                         InstallationFor.Visible= true;
                         PowerUtility.Visible = false;
-                        //UserId.Visible = false;
+                        UserId.Visible = false;
                     }
                     else if (ApplicantType == "Power Utility")
                     {
                         string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
-                        // TxtUserId.Text = PanTanNumber;
-                        // UserId.Visible = true;
+                        TxtUserId.Text = PanTanNumber;
+                        UserId.Visible = true;
                         PowerUtility.Visible= true;
                         InstallationFor.Visible = false;
 
@@ -175,26 +176,6 @@ namespace CEIHaryana.Contractor
                     RadioButtonList2.Enabled = false;
                     txtCapacity.Text = ds.Tables[0].Rows[0]["TotalCapacity"].ToString();
                     //String dp_ID24 = ds.Tables[0].Rows[0]["SanctionLoad"].ToString();
-
-
-                    if (string.IsNullOrEmpty(dp_Id9))
-                    {
-                        trinstallationType1.Visible = false;
-                    }
-
-
-                    if (string.IsNullOrEmpty(dp_Id11))
-                    {
-                        trinstallationType2.Visible = false;
-                    }
-
-
-                    if (string.IsNullOrEmpty(dp_Id13))
-                    {
-                        trinstallationType3.Visible = false;
-                    }
-
-
                     if (dp_Id8 != "")
                     {
                         Installation.Visible = true;

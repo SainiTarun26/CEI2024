@@ -33,15 +33,6 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.Label lblData;
 
         /// <summary>
-        /// pnlSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlSearch;
-
-        /// <summary>
         /// txtSearch control.
         /// </summary>
         /// <remarks>
@@ -51,22 +42,13 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
 
         /// <summary>
-        /// btnSearch control.
+        /// txtapproval control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
-
-        /// <summary>
-        /// btnReset control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReset;
+        protected global::System.Web.UI.WebControls.TextBox txtapproval;
 
         /// <summary>
         /// GridView1 control.

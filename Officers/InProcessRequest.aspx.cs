@@ -37,35 +37,15 @@ namespace CEIHaryana.Officers
         }
         public void GridBind()
         {
-            string searchText = txtSearch.Text.Trim();
+
             string LoginID = string.Empty;
             LoginID = Session["StaffID"].ToString();
             DataSet ds = new DataSet();
             ds = CEI.InProcessRequest(LoginID);
 
-            if (ds.Tables.Count > 0)
-            {
-                DataTable ftrtbs = CEI.Grddtl(searchText, ds, "id");
-                if (ftrtbs.Rows.Count > 0)
-                {
-                    GridView1.DataSource = ftrtbs;
-                    GridView1.DataBind();
-                }
-                else
-                {
-                    GridView1.DataSource = null;
-                    GridView1.DataBind();
-                    string script = "alert(\"No Record Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                }
-            }
-            else
-            {
-                GridView1.DataSource = null;
-                GridView1.DataBind();
-                string script = "alert(\"No Record Found\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
+            GridView1.DataSource = ds;
+            GridView1.DataBind();
+
             ds.Dispose();
         }
 
@@ -97,16 +77,6 @@ namespace CEIHaryana.Officers
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
 
-        }
-
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-                GridBind();
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
-            GridBind();
         }
     }
 }

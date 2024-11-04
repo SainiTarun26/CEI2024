@@ -297,8 +297,6 @@ namespace CEIHaryana.SiteOwnerPages
                             else
                             {
                                 btnResubmit.Visible = false;
-                               
-
                             }
                         }
                         string Reason = ds.Tables[0].Rows[0]["ReasonType"].ToString();
@@ -951,7 +949,7 @@ namespace CEIHaryana.SiteOwnerPages
                     ID = Session["InspectionId"].ToString();
                     if (e.CommandName == "Select")
                     {
-                        fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                         //lblerror.Text = fileName;
                         string script = $@"<script>window.open('{fileName}','_blank');</script>";
                         ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);

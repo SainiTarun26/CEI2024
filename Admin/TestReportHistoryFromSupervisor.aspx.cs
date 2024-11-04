@@ -31,25 +31,12 @@ namespace CEIHaryana.Admin
         {
             try
             {
-                string searchText = txtSearch.Text.Trim();
                 DataSet ds = new DataSet();
                 ds = cei.GetTestReportHistoryFromSupervisor();
                 if (ds.Tables.Count > 0)
                 {
-                    DataTable ftrtbs = CEI.Grddtl(searchText, ds, "Dt");
-                    if (ftrtbs.Rows.Count > 0)
-                    {
-                        GridView1.DataSource = ftrtbs;
-                        GridView1.DataBind();
-                    }
-                    else
-                    {
-                        GridView1.DataSource = null;
-                        GridView1.DataBind();
-                        string script = "alert(\"No Record Found\");";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                    }
-
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
                 }
                 else
                 {
@@ -61,6 +48,7 @@ namespace CEIHaryana.Admin
             }
             catch { }
         }
+
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             try
@@ -184,16 +172,6 @@ namespace CEIHaryana.Admin
                     linkReadMore.Visible = true;
                 }
             }
-        }
-
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            GridViewBind();
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
-            GridViewBind();
         }
     }
 }

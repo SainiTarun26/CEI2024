@@ -297,7 +297,7 @@
                                     </asp:BoundField>
                                     <asp:TemplateField HeaderText="Pending in days<br/>(From TransferDate)">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblPendingInDays" runat="server" Text='<%# Eval("Pendency In Days") %>'></asp:Label>
+                                            <asp:Label ID="lblPendingInDays" runat="server" Text='<%# Eval("PendingInDays") %>'></asp:Label>
                                         </ItemTemplate>
                                         <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="center" Width="15%" />

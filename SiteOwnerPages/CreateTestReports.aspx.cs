@@ -24,7 +24,7 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 Response.Redirect("/login.aspx");
             }
@@ -53,12 +53,12 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch { }
         }
-        private void getWorkIntimationData(string searchText = null)
+        private void getWorkIntimationData()
         {
             string Id = Session["SiteOwnerId"].ToString();
 
             DataSet ds = new DataSet();
-            ds = CEI.TestReportData(Id, searchText);
+            ds = CEI.TestReportData(Id);
             if (ds.Tables.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -91,6 +91,8 @@ namespace CEIHaryana.SiteOwnerPages
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
                     Session["id"] = lblID.Text;
+                    Session["Duplicacy"] = "0";
+                    Session["TotalAmount"] = "0";
                     Response.Redirect("/SiteOwnerPages/GenerateInspection.aspx", false);
                 }
                 else
@@ -100,25 +102,6 @@ namespace CEIHaryana.SiteOwnerPages
             catch (Exception)
             { 
             }
-        }
-
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            string searchText = txtSearch.Text.Trim();
-            if (!string.IsNullOrEmpty(searchText))
-            {
-                getWorkIntimationData(searchText);
-            }
-            else
-            {
-                getWorkIntimationData();
-            }
-
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
-            getWorkIntimationData();
         }
     }
 }

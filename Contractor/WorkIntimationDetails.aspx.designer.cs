@@ -240,6 +240,24 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.TextBox txtTanNo;
 
         /// <summary>
+        /// UserId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UserId;
+
+        /// <summary>
+        /// TxtUserId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtUserId;
+
+        /// <summary>
         /// txtApplicant control.
         /// </summary>
         /// <remarks>
@@ -357,15 +375,6 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl installationType1;
 
         /// <summary>
-        /// trinstallationType1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow trinstallationType1;
-
-        /// <summary>
         /// txtinstallationType1 control.
         /// </summary>
         /// <remarks>
@@ -402,15 +411,6 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl installationType2;
 
         /// <summary>
-        /// trinstallationType2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow trinstallationType2;
-
-        /// <summary>
         /// txtinstallationType2 control.
         /// </summary>
         /// <remarks>
@@ -445,15 +445,6 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl installationType3;
-
-        /// <summary>
-        /// trinstallationType3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow trinstallationType3;
 
         /// <summary>
         /// txtinstallationType3 control.

@@ -330,6 +330,24 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.GridView GridView2;
 
         /// <summary>
+        /// DivViewTRinMultipleCaseNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivViewTRinMultipleCaseNew;
+
+        /// <summary>
+        /// Grid_MultipleInspectionTR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView Grid_MultipleInspectionTR;
+
+        /// <summary>
         /// txtTestReportId control.
         /// </summary>
         /// <remarks>
@@ -373,6 +391,15 @@ namespace CEIHaryana.Officers
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlReasonType;
+
+        /// <summary>
+        /// ddlRejectionReasonType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlRejectionReasonType;
 
         /// <summary>
         /// txtRejected control.

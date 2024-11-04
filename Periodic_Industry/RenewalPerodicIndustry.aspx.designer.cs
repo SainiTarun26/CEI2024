@@ -33,24 +33,6 @@ namespace CEIHaryana.Periodic_Industry
         protected global::System.Web.UI.ScriptManager ScriptManager2;
 
         /// <summary>
-        /// LnkHistory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LnkHistory;
-
-        /// <summary>
-        /// lblHistory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHistory;
-
-        /// <summary>
         /// CartBtn control.
         /// </summary>
         /// <remarks>
@@ -67,6 +49,33 @@ namespace CEIHaryana.Periodic_Industry
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblcartCount;
+
+        /// <summary>
+        /// UpdatePanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+
+        /// <summary>
+        /// GridView4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView4;
+
+        /// <summary>
+        /// Btnback1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Btnback1;
 
         /// <summary>
         /// UpdatePanel1 control.

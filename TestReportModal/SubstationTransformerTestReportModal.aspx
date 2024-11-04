@@ -2093,17 +2093,6 @@
                     <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
                         <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
                             Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="openNewWindow(); return false;" />
-                    </div> 
-                    <div class="row" style="margin-bottom: 15PX;">
-                        <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                            <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Work Completion and Test Report (Line)</h6>
-                             <div class="row" style="font-size:18px; font-weight:600;">      
-                                <div class="col-12" style="margin-top: 0px; padding-left: 0px; text-align: center;">                
-                                  TestReportId: (<asp:Label ID="lbltestReportId" runat="server" />) &nbsp;&nbsp;&nbsp;&nbsp;  WorkIntimation Id: (<asp:Label ID="lblWorkIntimationId" runat="server" />)
-                                </div>
-                              
-                            </div>
-                        </div>
                     </div>
                     <div class="card-body" id="divtrasformer" runat="server" style="margin-top: -30px;">
                         <div class="row">
@@ -2137,12 +2126,6 @@
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtName" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
-                                     <div class="col-6" runat="server" visible="false">
-                                   <label for="Name">
-                               TestReportCount
-                                     </label>
-       <asp:TextBox class="form-control" ReadOnly="true" ID="txtTestReportCount" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-</div>
                                 </div>
                                 <div class="row row-modal">
                                     <%--  <div class="col-6" id="individual9" runat="server">
@@ -2157,12 +2140,6 @@
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
-                                    <div class="col-6" runat="server" visible="false">
-                        <label for="Name">
-                  Applicant Type
-                           </label>
-      <asp:TextBox class="form-control" ReadOnly="true" ID="txtApplicantType" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-       </div>
                                     <div class="col-6" id="individual5" runat="server">
                                         <label for="Name">
                                             Contact Details 
@@ -2197,18 +2174,6 @@
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtCompletitionDate" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
-                                    <div class="col-6" id="Div8" runat="server" visible="false">
-                                        <label for="Name">
-                                          District
-                                    </label>
-<asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                     </div>
-                            <div class="col-6" id="Div3" runat="server" visible="false">
-                                        <label for="Name">
-                                          Division
-                                    </label>
-<asp:TextBox class="form-control" ID="txtDivision" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                     </div>
                                 </div>
                             </div>
                         </div>
@@ -2794,6 +2759,49 @@
            </div>
        </div>
    </div>
+    <asp:Label ID="lbltestReportId" runat="server" Visible="false" />
+                                
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                                                                                    <div class="row" style="margin-top:25px !important;">
+<div class="col-12">
+    <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" runat="server" AutoGenerateColumns="false">
+        <%-- <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document"  OnRowCommand="Grd_Document_RowCommand"  runat="server" AutoGenerateColumns="false">--%>
+        <PagerStyle CssClass="pagination-ys" />
+        <Columns>
+            <asp:TemplateField HeaderText="SNo">
+                <HeaderStyle Width="5%" CssClass="headercolor" />
+                <ItemStyle Width="5%" />
+                <ItemTemplate>
+                    <%#Container.DataItemIndex+1 %>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <%--  <asp:BoundField DataField="DocumentID" HeaderText="DocumentID" />--%>
+            <asp:BoundField DataField="DocumentName" HeaderText="DocumentName">
+                <HeaderStyle HorizontalAlign="Left" Width="75%" CssClass="headercolor leftalign" />
+                <ItemStyle HorizontalAlign="Left" Width="75%" />
+            </asp:BoundField>
+
+            <asp:TemplateField HeaderText="File Upload (1MB PDF Only)">
+                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
+                <ItemTemplate>
+                    <asp:FileUpload ID="FileUpload1" runat="server"  />
+                    <%--<span id="asterisk" class='<%# "asterisk-" + Eval("Req") %>'>*</span>--%>
+                </ItemTemplate>
+            </asp:TemplateField>
+
+        </Columns>
+        <FooterStyle BackColor="White" ForeColor="#000066" />
+        <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+        <RowStyle ForeColor="#000066" />
+        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#00547E" />
+    </asp:GridView>
+</div>
                                 <div class="row" style="margin-top:30px;" >
                                     <div class="col-4"></div>
                                    <%-- id="Contractor3" runat="server" visible="false"--%>
@@ -2824,9 +2832,7 @@
                                     <%-- <div class="col-6" id="Div81" runat="server" visible="true">
                                         <asp:Button ID="btnOpenWindow" runat="server" Text="Print" class="btn btn-primary mr-2" OnClientClick="openNewWindow(); return false;" />
                                     </div>--%>
-                                </div>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
+                                </div>                            
                     </div>
                     <%--  <div class="card" id="earthing-card" style="background: #fcfcfc; margin-left: 0px; margin-right: 0px; margin-top: -50px;">
                         <div class="row">

@@ -27,24 +27,12 @@ namespace CEIHaryana.Periodic_Industry
                 {
                     if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                     {
-                        string CartID = null;
-                        if (Session["CartIdNew"] != null)
-                        {
-                           CartID = Session["CartIdNew"].ToString();
-
-                        }
-                        else if (Session["CartID"] != null)
-                        {
-                           CartID = Session["CartID"].ToString();
-                        }
                         //Session["SiteOwnerId"] = "JVCBN5647K";
-                        //string CardID = Session["CartIdNew"].ToString();
-                        //string CartID = Session["CartID"].ToString();
+                        string CartID = Session["CartID"].ToString();
                         DataSet ds = new DataSet();
                         ds = CEI.GetPeriodicType(CartID);
                         type = ds.Tables[0].Rows[0]["InspectionStatus"].ToString();
                         NewInspectionId = ds.Tables[0].Rows[0]["NewInspectionId"].ToString();
-                        //string ID = Session["InspectionIdforNew"].ToString();
                         if (type != "Returned" && type != null)
                         {
                             getInspectionData();
@@ -178,17 +166,7 @@ namespace CEIHaryana.Periodic_Industry
                         }
 
                         //Session["CartID"] = string.Empty;
-                        //string CartID = Session["CartID"].ToString();
-                        string CartID = null;
-                        if (Session["CartIdNew"] != null)
-                        {
-                            CartID = Session["CartIdNew"].ToString();
-
-                        }
-                        else if (Session["CartID"] != null)
-                        {
-                            CartID = Session["CartID"].ToString();
-                        }
+                        string CartID = Session["CartID"].ToString();
                         Response.Redirect("/Periodic_Industry/ViewPerodicRequest.aspx", false);
                     }
                     else
@@ -211,7 +189,7 @@ namespace CEIHaryana.Periodic_Industry
                 if (e.CommandName == "Select")
                 {
 
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -231,16 +209,7 @@ namespace CEIHaryana.Periodic_Industry
             try
             {
                 string IdLogin = Session["SiteOwnerId"].ToString();
-                string CartID = null;
-                if (Session["CartIdNew"] != null)
-                {
-                    CartID = Session["CartIdNew"].ToString();
-
-                }
-                else if (Session["CartID"] != null)
-                {
-                    CartID = Session["CartID"].ToString();
-                }
+                string CartID = Session["CartID"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.GetPeriodicdataAfterCart(CartID);
                 if (ds != null && ds.Tables[0].Rows.Count > 0)
@@ -317,16 +286,7 @@ namespace CEIHaryana.Periodic_Industry
             try
             {
                 string IdLogin = Session["SiteOwnerId"].ToString();
-                string CartID = null;
-                if (Session["CartIdNew"] != null)
-                {
-                    CartID = Session["CartIdNew"].ToString();
-
-                }
-                else if (Session["CartID"] != null)
-                {
-                    CartID = Session["CartID"].ToString();
-                }
+                string CartID = Session["CartID"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.GetPeriodicdataAfterCart(CartID);
                 if (ds != null && ds.Tables[0].Rows.Count > 0)

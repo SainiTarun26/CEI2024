@@ -175,7 +175,6 @@ var myDoughnutChart = new Chart(ctx, {{
             }
         }
 
-
         private void GridViewBind()
         {
             DataSet ds = new DataSet();

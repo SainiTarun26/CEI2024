@@ -171,9 +171,14 @@ namespace CEIHaryana.Industry
 
                         Session["projectid_Temp"] = null;
 
+                        Session["district_Temp"] = null;
+
+
                         Session["SiteOwnerId_Temp"] = inputObject.pannumber;
                         Session["Serviceid_Temp"] = inputObject.serviceid;
                         txtPAN.Text = inputObject.pannumber;
+                        Session["district_Temp"] = inputObject.project_site_district;
+
                         //txtPAN.Text = "abcde1234t";
                         //txtPAN.Text = "ABCDE1234G";
 
@@ -190,13 +195,17 @@ namespace CEIHaryana.Industry
                         //new
                         if (Session["Serviceid_Temp"].ToString() == "c1406da9-263f-4399-b20f-387a71caa5de")
                         {
-                            
+                            Session["SiteOwnerId_Industry"] = inputObject.pannumber;
+                            Session["district_Temp"] = inputObject.project_site_district;
+                            Response.Redirect("/Industry_Master/ForNewInstallation.aspx", false);
+
                         }
                         //Periodic
                         else if (Session["Serviceid_Temp"].ToString() == "ec289b0f-e803-4bce-9dc2-d1d5ce93ba5a")
                         {
-                            Session["SiteOwnerId"] = inputObject.pannumber;
-                            Response.Redirect("/Periodic_Industry/RenewalPerodicIndustry.aspx", false);
+                            Session["SiteOwnerId_Industry"] = inputObject.pannumber;
+                            Session["district_Temp"] = inputObject.project_site_district;
+                            Response.Redirect("/Industry_Master/Periodic_Renewal.aspx", false);
                         }
                         //sld 
                         else if (Session["Serviceid_Temp"].ToString() == "930e4959-d5a0-4624-9995-8c5e3e9cadce")
@@ -204,7 +213,8 @@ namespace CEIHaryana.Industry
                             Session["SiteOwnerId_Sld_Indus"] = inputObject.pannumber;
                             Session["Serviceid_Sld_Indus"] = inputObject.serviceid;
                             Session["projectid_Sld_Indus"] = inputObject.projectid;
-                            Response.Redirect("/Industry/Sld.aspx", false);
+                            Session["district_Temp"] = inputObject.project_site_district;
+                            Response.Redirect("/Industry/SLD_request.aspx", false);
                         }
                         else
                         {

@@ -225,10 +225,8 @@
     <Content Include="Admin\AdminDashboard.aspx" />
     <Content Include="Admin\AdminMaster.aspx" />
     <Content Include="Admin\AllTestReports.aspx" />
-    <Content Include="Admin\CircleMaster.aspx" />
     <Content Include="Admin\Consolidated_Report.aspx" />
     <Content Include="Admin\DistrictData.aspx" />
-    <Content Include="Admin\Division.aspx" />
     <Content Include="Admin\InProcessRequest.aspx" />
     <Content Include="Admin\InspectionDetails.aspx" />
     <Content Include="Admin\IntimationForHistory.aspx" />
@@ -241,19 +239,15 @@
     <Content Include="Admin\SldApproval.aspx" />
     <Content Include="Admin\SldApprovalRequest.aspx" />
     <Content Include="Admin\StaffDetailsData.aspx" />
-    <Content Include="Admin\SubDivisionMaster.aspx" />
     <Content Include="Admin\TestHistoryReport.aspx" />
     <Content Include="Admin\TestReportHistoryFromSupervisor.aspx" />
     <Content Include="Admin\TotalRequestInspectionForAdmin.aspx" />
     <Content Include="Admin\TransferRequestReport.aspx" />
     <Content Include="Admin\UploadSignature.aspx" />
-    <Content Include="Admin\UtilityMaster.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
-    <Content Include="Admin\WingMaster.aspx" />
     <Content Include="Admin\WorkIntimationDetail.aspx" />
     <Content Include="Admin\ActionInprocessInspection.aspx" />
     <Content Include="Admin\ActionInspectioHistrory.aspx" />
-    <Content Include="Admin\ZoneMaster.aspx" />
     <Content Include="Application.aspx" />
     <Content Include="applicationtable.aspx" />
     <Content Include="assetsnew\css\style.css" />
@@ -346,7 +340,6 @@
     <Content Include="Assets\capsules\CONTRACTOR_APPLICATION_DOCUMENT_CAPSULE.png" />
     <Content Include="Assets\capsules\documents.png" />
     <Content Include="Assets\capsules\payment.png" />
-    <Content Include="Assets\capsules\progress.jpeg" />
     <Content Include="Assets\capsules\qualification.png" />
     <Content Include="Assets\capsules\registration.png" />
     <Content Include="Assets\cei_logo.png" />
@@ -1569,6 +1562,7 @@
     <Content Include="Contractor\Attach_DeAttach_Staff.aspx" />
     <Content Include="Contractor\ContractorRenewal.aspx" />
     <Content Include="Contractor\GeneratingSetHistory.aspx" />
+    <Content Include="Contractor\LiftWork_Intimation.aspx" />
     <Content Include="Contractor\PreviousProjects.aspx" />
     <Content Include="Contractor\ReturnedInspection.aspx" />
     <Content Include="Contractor\ReturnedInspectionForPeriodic.aspx" />
@@ -1792,7 +1786,6 @@
     <Content Include="DataTableJs\bootstrap.min.js" />
     <Content Include="DataTableJs\jquery.js" />
     <Content Include="DataTableJs\jqueryDataTable.js" />
-    <Content Include="ForgotPassword.aspx" />
     <Content Include="GetPassword.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Image\Image\ImageToDelete-removebg-preview.png" />
@@ -1806,6 +1799,29 @@
     <Content Include="Industry\SendJsonL.aspx" />
     <Content Include="Industry\sld.aspx" />
     <Content Include="Industry\WebForm2.aspx" />
+    <Content Include="Industry_Master\ExistingInspectionData_Industry.aspx" />
+    <Content Include="Industry_Master\ForNewInstallation.aspx" />
+    <Content Include="Industry_Master\GenerateNewInspection.aspx" />
+    <Content Include="Industry_Master\GeneratingsetPeriodic_Industry.aspx" />
+    <Content Include="Industry_Master\InspectionHistory_Industry.aspx" />
+    <Content Include="Industry_Master\InspectionRenewalCart_Industry.aspx" />
+    <Content Include="Industry_Master\InspectionRequestPrint_Industry.aspx" />
+    <Content Include="Industry_Master\Inspection_Industry.aspx" />
+    <Content Include="Industry_Master\new inspectionIndustry cei.txt" />
+    <Content Include="Industry_Master\NewInspectionDetails.aspx" />
+    <Content Include="Industry_Master\NewInstallationStatus.aspx" />
+    <Content Include="Industry_Master\PeriodicRenewal_Industry.aspx" />
+    <Content Include="Industry_Master\Periodic_Installation_Rating.aspx" />
+    <Content Include="Industry_Master\Periodic_Renewal.aspx" />
+    <Content Include="Industry_Master\Periodic_Renewal_Cart.aspx" />
+    <Content Include="Industry_Master\Periodic_Status.aspx" />
+    <Content Include="Industry_Master\ProcessInspectionRenewalCart_Industries.aspx" />
+    <Content Include="Industry_Master\RatingOfInstallations_Industry.aspx" />
+    <Content Include="Industry_Master\SLDReturn.aspx" />
+    <Content Include="Industry_Master\SLD_request.aspx" />
+    <Content Include="Industry_Master\SLD_Status.aspx" />
+    <Content Include="Industry_Master\SubstationTransformerPeriodic_Industry.aspx" />
+    <Content Include="Industry_Master\TestReport_Industries.aspx" />
     <Content Include="js2\ace.js" />
     <Content Include="js2\alerts.js" />
     <Content Include="js2\avgrund.js" />
@@ -1898,15 +1914,13 @@
     <Content Include="OTPVerification.aspx" />
     <Content Include="PaymentPage.aspx" />
     <Content Include="Periodic_Industry\InProcessRenewal_Industry.aspx" />
-    <Content Include="Periodic_Industry\InspectionHistoryforIndustry.aspx" />
-    <Content Include="Periodic_Industry\InspectionPeriodic.aspx" />
     <Content Include="Periodic_Industry\Print_PeriodicIndustry.aspx" />
     <Content Include="Periodic_Industry\RenewalCart_Industry.aspx" />
     <Content Include="Periodic_Industry\RenewalPerodicIndustry.aspx" />
-    <Content Include="Periodic_Industry\ViewCart.aspx" />
     <Content Include="Periodic_Industry\ViewCart_Industry.aspx" />
     <Content Include="Periodic_Industry\ViewPerodicRequest.aspx" />
     <Content Include="Print_Forms\InspectionRequestPrint.aspx" />
+    <Content Include="Print_Forms\NewInspectionApprovalCertificate.aspx" />
     <Content Include="Print_Forms\PeriodicApprovalCertificate.aspx" />
     <Content Include="Print_Forms\PrintCertificate1.aspx" />
     <Content Include="Print_Forms\PrintCertificate1_Industry.aspx" />
@@ -1920,7 +1934,6 @@
     <Content Include="SiteOwnerPages\CreateInspectionReport.aspx" />
     <Content Include="SiteOwnerPages\CreateTestReports.aspx" />
     <Content Include="SiteOwnerPages\CreateTestReports_Industry.aspx" />
-    <Content Include="SiteOwnerPages\DetailsOfInstallations.aspx" />
     <Content Include="SiteOwnerPages\ExistingInspectionData.aspx" />
     <Content Include="SiteOwnerPages\ExistingInspectionRequest.aspx" />
     <Content Include="SiteOwnerPages\GenerateInspection.aspx" />
@@ -1953,6 +1966,7 @@
     <Content Include="Supervisor\InstallationDetails.aspx" />
     <Content Include="Supervisor\IntimationData.aspx" />
     <Content Include="Supervisor\IntimationDataForPeriodic.aspx" />
+    <Content Include="Supervisor\LiftTestReport.aspx" />
     <Content Include="Supervisor\LineTestReport.aspx" />
     <Content Include="Supervisor\PrintRenewalCertificateSupervisor.aspx" />
     <Content Include="Supervisor\RenewalCertificateSupervisor.aspx" />
@@ -2070,13 +2084,6 @@
     <Compile Include="Admin\AllTestReports.aspx.designer.cs">
       <DependentUpon>AllTestReports.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\CircleMaster.aspx.cs">
-      <DependentUpon>CircleMaster.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CircleMaster.aspx.designer.cs">
-      <DependentUpon>CircleMaster.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\Consolidated_Report.aspx.cs">
       <DependentUpon>Consolidated_Report.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2090,13 +2097,6 @@
     </Compile>
     <Compile Include="Admin\DistrictData.aspx.designer.cs">
       <DependentUpon>DistrictData.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Division.aspx.cs">
-      <DependentUpon>Division.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Division.aspx.designer.cs">
-      <DependentUpon>Division.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\InProcessRequest.aspx.cs">
       <DependentUpon>InProcessRequest.aspx</DependentUpon>
@@ -2182,13 +2182,6 @@
     <Compile Include="Admin\StaffDetailsData.aspx.designer.cs">
       <DependentUpon>StaffDetailsData.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\SubDivisionMaster.aspx.cs">
-      <DependentUpon>SubDivisionMaster.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\SubDivisionMaster.aspx.designer.cs">
-      <DependentUpon>SubDivisionMaster.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\TestHistoryReport.aspx.cs">
       <DependentUpon>TestHistoryReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2224,26 +2217,12 @@
     <Compile Include="Admin\UploadSignature.aspx.designer.cs">
       <DependentUpon>UploadSignature.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\UtilityMaster.aspx.cs">
-      <DependentUpon>UtilityMaster.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\UtilityMaster.aspx.designer.cs">
-      <DependentUpon>UtilityMaster.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\WingMaster.aspx.cs">
-      <DependentUpon>WingMaster.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\WingMaster.aspx.designer.cs">
-      <DependentUpon>WingMaster.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\WorkIntimationDetail.aspx.cs">
       <DependentUpon>WorkIntimationDetail.aspx</DependentUpon>
@@ -2265,13 +2244,6 @@
     </Compile>
     <Compile Include="Admin\ActionInspectioHistrory.aspx.designer.cs">
       <DependentUpon>ActionInspectioHistrory.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\ZoneMaster.aspx.cs">
-      <DependentUpon>ZoneMaster.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\ZoneMaster.aspx.designer.cs">
-      <DependentUpon>ZoneMaster.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application.aspx.cs">
       <DependentUpon>Application.aspx</DependentUpon>
@@ -2330,6 +2302,13 @@
     </Compile>
     <Compile Include="Contractor\GeneratingSetHistory.aspx.designer.cs">
       <DependentUpon>GeneratingSetHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contractor\LiftWork_Intimation.aspx.cs">
+      <DependentUpon>LiftWork_Intimation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contractor\LiftWork_Intimation.aspx.designer.cs">
+      <DependentUpon>LiftWork_Intimation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contractor\PreviousProjects.aspx.cs">
       <DependentUpon>PreviousProjects.aspx</DependentUpon>
@@ -2402,13 +2381,6 @@
       <DependentUpon>Work_Intimation.aspx</DependentUpon>
     </Compile>
     <Compile Include="DBTask.cs" />
-    <Compile Include="ForgotPassword.aspx.cs">
-      <DependentUpon>ForgotPassword.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ForgotPassword.aspx.designer.cs">
-      <DependentUpon>ForgotPassword.aspx</DependentUpon>
-    </Compile>
     <Compile Include="GetPassword.aspx.cs">
       <DependentUpon>GetPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2488,6 +2460,167 @@
     </Compile>
     <Compile Include="Industry\WebForm2.aspx.designer.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\ExistingInspectionData_Industry.aspx.cs">
+      <DependentUpon>ExistingInspectionData_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\ExistingInspectionData_Industry.aspx.designer.cs">
+      <DependentUpon>ExistingInspectionData_Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\ForNewInstallation.aspx.cs">
+      <DependentUpon>ForNewInstallation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\ForNewInstallation.aspx.designer.cs">
+      <DependentUpon>ForNewInstallation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\GenerateNewInspection.aspx.cs">
+      <DependentUpon>GenerateNewInspection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\GenerateNewInspection.aspx.designer.cs">
+      <DependentUpon>GenerateNewInspection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\GeneratingsetPeriodic_Industry.aspx.cs">
+      <DependentUpon>GeneratingsetPeriodic_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\GeneratingsetPeriodic_Industry.aspx.designer.cs">
+      <DependentUpon>GeneratingsetPeriodic_Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\InspectionHistory_Industry.aspx.cs">
+      <DependentUpon>InspectionHistory_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\InspectionHistory_Industry.aspx.designer.cs">
+      <DependentUpon>InspectionHistory_Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\InspectionRenewalCart_Industry.aspx.cs">
+      <DependentUpon>InspectionRenewalCart_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\InspectionRenewalCart_Industry.aspx.designer.cs">
+      <DependentUpon>InspectionRenewalCart_Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\InspectionRequestPrint_Industry.aspx.cs">
+      <DependentUpon>InspectionRequestPrint_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\InspectionRequestPrint_Industry.aspx.designer.cs">
+      <DependentUpon>InspectionRequestPrint_Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\Inspection_Industry.aspx.cs">
+      <DependentUpon>Inspection_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\Inspection_Industry.aspx.designer.cs">
+      <DependentUpon>Inspection_Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\NewInspectionDetails.aspx.cs">
+      <DependentUpon>NewInspectionDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\NewInspectionDetails.aspx.designer.cs">
+      <DependentUpon>NewInspectionDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\NewInstallationStatus.aspx.cs">
+      <DependentUpon>NewInstallationStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\NewInstallationStatus.aspx.designer.cs">
+      <DependentUpon>NewInstallationStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\PeriodicInspection.Master.cs">
+      <DependentUpon>PeriodicInspection.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\PeriodicInspection.Master.designer.cs">
+      <DependentUpon>PeriodicInspection.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\PeriodicRenewal_Industry.aspx.cs">
+      <DependentUpon>PeriodicRenewal_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\PeriodicRenewal_Industry.aspx.designer.cs">
+      <DependentUpon>PeriodicRenewal_Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\Periodic_Installation_Rating.aspx.cs">
+      <DependentUpon>Periodic_Installation_Rating.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\Periodic_Installation_Rating.aspx.designer.cs">
+      <DependentUpon>Periodic_Installation_Rating.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\Periodic_Renewal.aspx.cs">
+      <DependentUpon>Periodic_Renewal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\Periodic_Renewal.aspx.designer.cs">
+      <DependentUpon>Periodic_Renewal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\Periodic_Renewal_Cart.aspx.cs">
+      <DependentUpon>Periodic_Renewal_Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\Periodic_Renewal_Cart.aspx.designer.cs">
+      <DependentUpon>Periodic_Renewal_Cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\Periodic_Status.aspx.cs">
+      <DependentUpon>Periodic_Status.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\Periodic_Status.aspx.designer.cs">
+      <DependentUpon>Periodic_Status.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\ProcessInspectionRenewalCart_Industries.aspx.cs">
+      <DependentUpon>ProcessInspectionRenewalCart_Industries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\ProcessInspectionRenewalCart_Industries.aspx.designer.cs">
+      <DependentUpon>ProcessInspectionRenewalCart_Industries.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\RatingOfInstallations_Industry.aspx.cs">
+      <DependentUpon>RatingOfInstallations_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\RatingOfInstallations_Industry.aspx.designer.cs">
+      <DependentUpon>RatingOfInstallations_Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\SLDReturn.aspx.cs">
+      <DependentUpon>SLDReturn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\SLDReturn.aspx.designer.cs">
+      <DependentUpon>SLDReturn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\SLD_request.aspx.cs">
+      <DependentUpon>SLD_request.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\SLD_request.aspx.designer.cs">
+      <DependentUpon>SLD_request.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\SLD_Status.aspx.cs">
+      <DependentUpon>SLD_Status.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\SLD_Status.aspx.designer.cs">
+      <DependentUpon>SLD_Status.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\SubstationTransformerPeriodic_Industry.aspx.cs">
+      <DependentUpon>SubstationTransformerPeriodic_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\SubstationTransformerPeriodic_Industry.aspx.designer.cs">
+      <DependentUpon>SubstationTransformerPeriodic_Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\TestReport_Industries.aspx.cs">
+      <DependentUpon>TestReport_Industries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\TestReport_Industries.aspx.designer.cs">
+      <DependentUpon>TestReport_Industries.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -2612,20 +2745,6 @@
     <Compile Include="Periodic_Industry\InProcessRenewal_Industry.aspx.designer.cs">
       <DependentUpon>InProcessRenewal_Industry.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Periodic_Industry\InspectionHistoryforIndustry.aspx.cs">
-      <DependentUpon>InspectionHistoryforIndustry.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Periodic_Industry\InspectionHistoryforIndustry.aspx.designer.cs">
-      <DependentUpon>InspectionHistoryforIndustry.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Periodic_Industry\InspectionPeriodic.aspx.cs">
-      <DependentUpon>InspectionPeriodic.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Periodic_Industry\InspectionPeriodic.aspx.designer.cs">
-      <DependentUpon>InspectionPeriodic.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Periodic_Industry\Print_PeriodicIndustry.aspx.cs">
       <DependentUpon>Print_PeriodicIndustry.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2647,13 +2766,6 @@
     <Compile Include="Periodic_Industry\RenewalPerodicIndustry.aspx.designer.cs">
       <DependentUpon>RenewalPerodicIndustry.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Periodic_Industry\ViewCart.aspx.cs">
-      <DependentUpon>ViewCart.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Periodic_Industry\ViewCart.aspx.designer.cs">
-      <DependentUpon>ViewCart.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Periodic_Industry\ViewCart_Industry.aspx.cs">
       <DependentUpon>ViewCart_Industry.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2674,6 +2786,13 @@
     </Compile>
     <Compile Include="Print_Forms\InspectionRequestPrint.aspx.designer.cs">
       <DependentUpon>InspectionRequestPrint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print_Forms\NewInspectionApprovalCertificate.aspx.cs">
+      <DependentUpon>NewInspectionApprovalCertificate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print_Forms\NewInspectionApprovalCertificate.aspx.designer.cs">
+      <DependentUpon>NewInspectionApprovalCertificate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print_Forms\PeriodicApprovalCertificate.aspx.cs">
       <DependentUpon>PeriodicApprovalCertificate.aspx</DependentUpon>
@@ -2745,13 +2864,6 @@
     </Compile>
     <Compile Include="SiteOwnerPages\CreateTestReports_Industry.aspx.designer.cs">
       <DependentUpon>CreateTestReports_Industry.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SiteOwnerPages\DetailsOfInstallations.aspx.cs">
-      <DependentUpon>DetailsOfInstallations.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SiteOwnerPages\DetailsOfInstallations.aspx.designer.cs">
-      <DependentUpon>DetailsOfInstallations.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\ExistingInspectionData.aspx.cs">
       <DependentUpon>ExistingInspectionData.aspx</DependentUpon>
@@ -2983,6 +3095,13 @@
     </Compile>
     <Compile Include="Supervisor\IntimationDataForPeriodic.aspx.designer.cs">
       <DependentUpon>IntimationDataForPeriodic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\LiftTestReport.aspx.cs">
+      <DependentUpon>LiftTestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\LiftTestReport.aspx.designer.cs">
+      <DependentUpon>LiftTestReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Supervisor\LineTestReport.aspx.cs">
       <DependentUpon>LineTestReport.aspx</DependentUpon>
@@ -3549,6 +3668,7 @@
     <Content Include="Dashboard_Css\vendor\slick\slick.less" />
     <Content Include="Dashboard_Css\vendor\slick\slick.scss" />
     <Content Include="Industry\Industry_SiteOwner.Master" />
+    <Content Include="Industry_Master\PeriodicInspection.Master" />
     <None Include="packages.config" />
     <Content Include="Supervisor\Supervisor.Master" />
     <Content Include="TestReport\TestReport.Master" />
@@ -3557,16 +3677,16 @@
     <Content Include="UserManual\USERmanualContractor.pdf" />
     <Content Include="UserManual\USERmanualSiteowner.pdf" />
     <Content Include="UserManual\USERmanualSupervisor.pdf" />
-    <Content Include="UserManual\Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf" />
+    <Content Include="UserManual\Haryana-Electrical-Contractor-Licence-Certificate-of.pdf" />
+    <Content Include="UserManual\form_split.pdf" />
+    <Content Include="UserManual\Mendate Regarding Electrical Installations.pdf" />
     <Content Include="UserManual\cancellation-order.pdf" />
     <Content Include="UserManual\Fees-for-New-Installation-Inspection.pdf" />
     <Content Include="UserManual\Fees-For-Periodical-Inspection.pdf" />
     <Content Include="UserManual\Fees-for-various-certificates-Licences.pdf" />
-    <Content Include="UserManual\form_split.pdf" />
-    <Content Include="UserManual\Haryana-Electrical-Contractor-Licence-Certificate-of.pdf" />
-    <Content Include="UserManual\Mendate Regarding Electrical Installations.pdf" />
     <Content Include="UserManual\Orderof22authorisedCharteredElectricalSafetyEngineersdated28.11.2016.pdf" />
     <Content Include="UserManual\OrderofauthorisedCharteredElectricalSafetyEngineers.pdf" />
+    <Content Include="UserManual\Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

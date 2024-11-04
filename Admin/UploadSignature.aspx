@@ -58,6 +58,11 @@
         }
     </script>
     <style>
+         img {
+    height: 60px !important;
+    width: 150px !important;
+    max-width: 126% !important;
+}
         .headercolor1 {
             text-align: initial !important;
         }
@@ -175,6 +180,8 @@
 
         .headercolor {
             background-color: #9292cc;
+            color: white;
+            text-align: center !important;
         }
 
 
@@ -222,20 +229,9 @@
             padding: 9px !important;
         }
 
-        th.headercolor {
-            width: 28% !important;
-        }
-
-
-        th {
-            width: 1%;
-        }
-
-
-            th.headersizeSignature {
-                width: 40% !important;
-            }
-
+        table{
+          width:100%;
+      }        
 
         .input-box {
             display: flex;
@@ -267,6 +263,18 @@
             .input-box:focus-within {
                 border-color: #777;
             }
+            th.headercolor1 {
+    width:15%;
+}
+            th.headercolor3 {
+    width: 12%;
+}
+            th.headercolor4 {
+    width: 20%;
+}
+            th.headersizeSignature {
+    width: 17%;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -344,40 +352,54 @@
                                 <Columns>
 
                                     <asp:BoundField DataField="DivisionName" HeaderText="DivisionName">
-                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor1 headercolor" />
+                                        <ItemStyle HorizontalAlign="center" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Staff" HeaderText="User Id">
+                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor2 headercolor" />
+                                        <ItemStyle HorizontalAlign="center" />
+                                    </asp:BoundField>
+                                    
+                                    <asp:BoundField DataField="Staff" HeaderText="User Name">
+                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor2 headercolor" />
+                                        <ItemStyle HorizontalAlign="center" />
                                     </asp:BoundField>
 
-                                    <asp:BoundField DataField="Staff" HeaderText="Staff">
-                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center" Width="15%" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="StaffUserId" HeaderText="StaffUserId">
-                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    <asp:BoundField DataField="StaffUserId" HeaderText="Staff Id">
+                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor3 headercolor" />
+                                        <ItemStyle HorizontalAlign="center" />
                                     </asp:BoundField>
 
                                     <asp:BoundField DataField="Designation" HeaderText="Designation">
-                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor4 headercolor" />
+                                        <ItemStyle HorizontalAlign="center" />
                                     </asp:BoundField>
 
 
-                                    <asp:TemplateField HeaderText="Signature" HeaderStyle-CssClass="headersizeSignature">
+                                    <asp:TemplateField HeaderText="Signature" HeaderStyle-CssClass="headersizeSignature headercolor">
                                         <ItemTemplate>
                                             <asp:Label ID="lblSignatureStatus" runat="server" Text="Not Uploaded" Visible="false"></asp:Label>
                                             <asp:Image ID="ImageUrl" runat="server" Visible="false" />
                                            
                                         </ItemTemplate>
-                                        <HeaderStyle HorizontalAlign="center" Width="40%" CssClass="headercolor headersizeSignature" />
-                                        <ItemStyle HorizontalAlign="center" Width="40%" />
+                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor headersizeSignature" />
+                                        <ItemStyle HorizontalAlign="center"/>
                                     </asp:TemplateField>
 
-                                    <asp:TemplateField HeaderText="Delete Signature">
-                                        <ItemTemplate>
-                                            <asp:ImageButton ID="btnDelete" runat="server" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png"  CommandArgument=' <%#Eval("Id") %> ' CommandName="DeleteRow" Style="display: block; margin: 0 auto; height : 17px; width:15px;"  />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
+                                 <asp:TemplateField HeaderText=" ">
+    <HeaderStyle ForeColor="White" HorizontalAlign="Center" />
+    <ItemTemplate>
+        <asp:ImageButton 
+            ID="btnDelete" 
+            runat="server" 
+            ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" 
+            CommandArgument='<%# Eval("Id") %>' 
+            CommandName="DeleteRow" 
+            CssClass="delete-button" 
+            Style="display: block; margin: 0 auto; height: 30px; width: 30px;" />
+    </ItemTemplate>
+</asp:TemplateField>
+
 
                                 </Columns>
                             </asp:GridView>

@@ -59,7 +59,7 @@
 
         }
     </script>
-    
+    g
     <style>
         .headercolor1 {
             text-align: initial !important;
@@ -274,7 +274,7 @@
             margin-left: 0px !important;
             height: 30px;
             font-size: 13px;
-            background: #f9f9f9;
+            background:#f9f9f9;
         }
 
         input#ContentPlaceHolder1_txtid {
@@ -284,7 +284,7 @@
             margin-left: 0px !important;
             height: 30px;
             font-size: 13px;
-            background: #f9f9f9;
+            background:#f9f9f9;
         }
 
         input#ContentPlaceHolder1_txtInstallation {
@@ -294,7 +294,7 @@
             margin-left: 0px !important;
             height: 30px;
             font-size: 13px;
-            background: #f9f9f9;
+            background:#f9f9f9;
         }
 
         input#ContentPlaceHolder1_txtNOOfInstallation {
@@ -304,7 +304,7 @@
             margin-left: 0px !important;
             height: 30px;
             font-size: 13px;
-            background: #f9f9f9;
+            background:#f9f9f9;
         }
     </style>
 </asp:Content>
@@ -331,46 +331,46 @@
                         </label>
                     </div>
                 </div>
-                <div class="row" style="margin-top: 10px;">
-                    <div class="col-md-12" style="text-align: left;">
-                        <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">Intimation/Installation Details</h7>
-                    </div>
-                </div>
-                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; background: #d4d7ec; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 5px;">
-
-                    <div class="row">
-                        <div class="col-3" id="Div8" runat="server">
-                            <label for="Name">
-                                Applicant
-                            </label>
-                            <asp:TextBox class="form-control" ID="txtapplication" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-                        </div>
-                        <div class="col-3" id="Div9" runat="server">
-                            <label for="Name">
-                                WorkIntimation ID
-                            </label>
-                            <asp:TextBox class="form-control" ID="txtid" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator102" runat="server" ControlToValidate="txtid" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-                        </div>
-                        <div class="col-3" id="Div10" runat="server">
-                            <label for="Name">
-                                Type of Installation
-                            </label>
-                            <asp:TextBox class="form-control" ID="txtInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator103" runat="server" ControlToValidate="txtInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-                        </div>
-                        <div class="col-3" id="Div12" runat="server">
-                            <label for="Name">
-                                No of Installations
-                            </label>
-                            <asp:TextBox class="form-control" ID="txtNOOfInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator104" runat="server" ControlToValidate="txtNOOfInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-                        </div>
-                    </div>
-                </div>
+                  <div class="row" style="margin-top: 10px;">
+      <div class="col-md-12" style="text-align: left;">
+          <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">Intimation/Installation Details</h7>
+      </div>
+  </div>
+                                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; background: #d4d7ec; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 5px;">
+   
+    <div class="row">
+        <div class="col-3" id="Div8" runat="server">
+            <label for="Name">
+                Applicant
+            </label>
+            <asp:TextBox class="form-control" ID="txtapplication" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+        </div>
+        <div class="col-3" id="Div9" runat="server">
+            <label for="Name">
+                WorkIntimation ID
+            </label>
+            <asp:TextBox class="form-control" ID="txtid" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator102" runat="server" ControlToValidate="txtid" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+        </div>
+        <div class="col-3" id="Div10" runat="server">
+            <label for="Name">
+                Type of Installation
+            </label>
+            <asp:TextBox class="form-control" ID="txtInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator103" runat="server" ControlToValidate="txtInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+        </div>
+        <div class="col-3" id="Div12" runat="server">
+            <label for="Name">
+                No of Installations
+            </label>
+            <asp:TextBox class="form-control" ID="txtNOOfInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator104" runat="server" ControlToValidate="txtNOOfInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+        </div>
+    </div>
+</div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px 25px 25px 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-
+                    
                     <div class="row">
                         <div class="col-md-3" id="Div170" runat="server" style="margin-top: -15px;">
                             <label for="Name">
@@ -395,10 +395,9 @@
                         </div>
                         <div class="col-md-3" runat="server" style="margin-top: -15px;">
                             <label for="Name">
-                                Serial no.
-                                <samp style="color: red">* </samp>
+                                Serial no. <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" ReadOnly="false" ID="txtSerialNoOfGenerator" onkeydown="return preventEnterSubmit(event)" placeholder="of Ac generator/ Alternator" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ReadOnly="false" ID="txtSerialNoOfGenerator" onkeydown="return preventEnterSubmit(event)"  placeholder="of Ac generator/ Alternator" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" ControlToValidate="txtSerialNoOfGenerator" ValidationGroup="Submit" ErrorMessage="Please Enter Serial No Of Generator"></asp:RequiredFieldValidator>
                         </div>
 
@@ -410,11 +409,25 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ForeColor="Red" ControlToValidate="txtMake" ValidationGroup="Submit" ErrorMessage="Please Enter Make"></asp:RequiredFieldValidator>
                         </div>
 
+
+                        <%--                        <div class="col-md-3" id="Div1" runat="server" style="margin-top: -15px;">
+                            <label for="Name">
+                                Make
+                            </label>
+                 
+                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlGeneratingSetType_SelectedIndexChanged" ID="ddlGeneratingSetType" selectionmode="Multiple" Style="width: 100% !important">
+                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="Diesel Engine" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="Gas Engine" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="Solar Panel" Value="3"></asp:ListItem>
+                                <asp:ListItem Text="Bio Fuel" Value="4"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>--%>
                         <div class="col-md-3" id="Div172" runat="server" style="margin-top: 15px;">
                             <label for="Name">
                                 Type of Generating Set<samp style="color: red">* </samp>
                             </label>
-                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" ID="ddlGeneratingSetType" selectionmode="Multiple" Style="width: 100% !important">
+                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server"  OnSelectedIndexChanged="ddlGeneratingSetType_SelectedIndexChanged" ID="ddlGeneratingSetType" selectionmode="Multiple" Style="width: 100% !important">
                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                 <asp:ListItem Text="Diesel Engine" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="Gas Engine" Value="2"></asp:ListItem>
@@ -435,14 +448,14 @@
                                            Current capacity of main breaker( IN AMPS)
                                        </label>
                                        <asp:TextBox class="form-control" ReadOnly="false" ID="txtCurrentCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   </div> 
-                            <div class="col-4">
+                                   </div>--%>
+                        <%--   <div class="col-4">
                                        <label for="Name">
                                            Breaking capacity of main breaker (IN KA)
                                        </label>
                                        <asp:TextBox class="form-control" ReadOnly="false" ID="txtBreakingCapacity" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                    </div>--%>
-                        <div class="col-3" style="margin-top: 15px;">
+                        <div class="col-4" style="margin-top: 15px;">
                             <label for="Name">
                                 Location<samp style="color: red">* </samp>
                             </label>
@@ -453,20 +466,13 @@
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" ControlToValidate="ddlPlantType" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Plant Type"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-3" id="Div5" runat="server" style="margin-top: 15px;">
-                            <label for="Name">
-                                last inspection issue date<samp style="color: red">* </samp>
-                            </label>
-                            <asp:TextBox class="form-control" type="date" ReadOnly="false" ID="txtLastInspectionIssueDate" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ForeColor="Red" ControlToValidate="txtLastInspectionIssueDate" ValidationGroup="Submit" ErrorMessage="Please Select last inspection issue date"></asp:RequiredFieldValidator>
-                        </div>
                         <%--  <div class="col-4">
                              <label for="Name">
                            Status
                             <samp style="color: red">* </samp>
                           </label>
-                           <asp:TextBox class="form-control" ReadOnly="false" ID="Textstatus" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                              </div>--%>
+    <asp:TextBox class="form-control" ReadOnly="false" ID="Textstatus" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+</div>--%>
                     </div>
 
                 </div>
@@ -669,10 +675,4 @@
             return true;
         }
     </script>
-    <script type="text/javascript">
-        window.onload = function () {
-            var today = new Date().toISOString().split('T')[0];
-            document.getElementById('<%= txtLastInspectionIssueDate.ClientID %>').setAttribute('max', today);
-        };
-</script>
 </asp:Content>

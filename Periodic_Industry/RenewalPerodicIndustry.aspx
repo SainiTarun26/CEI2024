@@ -623,14 +623,9 @@
             color: #212529 !important;
         }
 
-        /*.flex-container {
+        .flex-container {
             display: flex;
             justify-content: flex-end;
-            height: 30px;
-        }*/
-         .flex-container {
-            display: flex;
-            justify-content: space-between;
             height: 30px;
         }
     </style>
@@ -804,19 +799,7 @@
                             <img src="/Assets/capsules/registration.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
                         </div>
                     </div>--%>
-                   <div class="flex-container" style="margin-bottom: 25px;">
-                        <asp:LinkButton ID="LnkHistory" runat="server" CssClass="btn btn-primary" OnClick="LnkHistory_Click"
-                            Style="position: relative; display: inline-block; height: 45px !important;padding-top: 14px;
-    padding-left: 12px;">
-                            <!-- Shopping Cart Icon -->
-                            <%-- <i class="fa fa-shopping-cart" style="font-size: 24px;"></i>--%>
-                            <!-- Label for the Number -->
-                            <asp:Label ID="lblHistory" runat="server"
-                                Style="position: absolute; top: 5px; left: 90px; background-color: red; color: white; border-radius: 50%; padding: 0px 5px; font-size: 12px;">
-                            </asp:Label>
-                            &nbsp;&nbsp; 
-        <span>Inspection History</span>
-                        </asp:LinkButton>
+                    <div class="flex-container" style="margin-bottom: 25px;">
                         <asp:LinkButton ID="CartBtn" runat="server" CssClass="btn btn-primary" OnClick="BtnViewCart_Click"
                             Style="position: relative; display: inline-block; height: 45px !important; padding-top: 6px;">
                             <!-- Shopping Cart Icon -->
@@ -829,12 +812,7 @@
         <span>View Cart</span>
                         </asp:LinkButton>
                     </div>
-                  <%--  <div class="row">
-                        <div class="col-md-6">
-                            <asp:Label ID="LblViewHistory" runat="server" Text="(View  for Return App., Approved or Rejected Application)"></asp:Label>
-                        </div>
-                        </div>--%>
-                   <%-- <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                         <ContentTemplate>
                             <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView4" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false"
                                 BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView4_RowCommand">
@@ -885,14 +863,14 @@
                             </asp:GridView>
 
                         </ContentTemplate>
-                    </asp:UpdatePanel>--%>
+                    </asp:UpdatePanel>
 
-                   <%-- <div class="row">
+                    <div class="row">
                         <div class="col-md-12">
                             <asp:Button type="submit" ID="Btnback1" TabIndex="23" Visible="false" ValidationGroup="Cart" Text="Back" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" OnClick="Btnback1_Click" />
 
                         </div>
-                    </div>--%>
+                    </div>
                     <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-12">

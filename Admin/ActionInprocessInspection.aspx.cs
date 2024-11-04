@@ -645,7 +645,7 @@ namespace CEIHaryana.Admin
 
                             if (InspectionType == "New")
                             {
-                                Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                                Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
                             }
                             else
                             {

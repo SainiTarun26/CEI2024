@@ -123,7 +123,7 @@
                         </div>
                     </div>
                     <table class="table table-responsive">
-                        <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="25" OnRowDataBound="GridView1_RowDataBound"
+                        <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="10" OnRowDataBound="GridView1_RowDataBound"
                             AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>

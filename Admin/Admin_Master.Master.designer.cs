@@ -60,60 +60,6 @@ namespace CEI_PRoject.ADMIN
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
-        /// utilityMasterTab control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl utilityMasterTab;
-
-        /// <summary>
-        /// WingMasterTab control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl WingMasterTab;
-
-        /// <summary>
-        /// ZoneMasterTab control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ZoneMasterTab;
-
-        /// <summary>
-        /// CircleMasterTab control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CircleMasterTab;
-
-        /// <summary>
-        /// DivisionMasterTab control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivisionMasterTab;
-
-        /// <summary>
-        /// SubDivisionMasterTab control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SubDivisionMasterTab;
-
-        /// <summary>
         /// LoginType control.
         /// </summary>
         /// <remarks>

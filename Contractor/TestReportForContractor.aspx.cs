@@ -36,12 +36,12 @@ namespace CEIHaryana.Contractor
             }
         }
 
-        private void GridViewBind(string searchText = null)
+        private void GridViewBind()
         {
             string LoginId = string.Empty;
             LoginId = Session["ContractorID"].ToString();
             DataSet ds = new DataSet();
-            ds = cei.TestReportContractorHistory(LoginId, "Pending", searchText);
+            ds = cei.TestReportContractorHistory(LoginId, "Pending");
             if (ds.Tables.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -119,24 +119,6 @@ namespace CEIHaryana.Contractor
             {
 
             }
-        }
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            string searchText = txtSearch.Text.Trim();
-            if (!string.IsNullOrEmpty(searchText))
-            {
-                GridViewBind(searchText);
-            }
-            else
-            {
-                GridViewBind();
-            }
-
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
-            GridViewBind();
         }
     }
 }
