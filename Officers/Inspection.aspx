@@ -558,8 +558,7 @@
                                 <asp:ListItem Value="1" Text="Based On Documents"></asp:ListItem>
                             </asp:DropDownList>
                             <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" Visible="false" ID="ddlRejectionReasonType" TabIndex="8" runat="server">
-                                <asp:ListItem Value="0" Text="Based On TestReport"></asp:ListItem>
-                                <asp:ListItem Value="1" Text="Based On Documents"></asp:ListItem>
+                                <asp:ListItem Value="0" Text="Incorrect Data in WorkIntimation"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                         <div class="col-md-6">

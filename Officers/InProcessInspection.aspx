@@ -561,12 +561,13 @@
                         <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                   <div class="col-md-4" id="RejectionBasis" runat="server" visible="false">
+                   </div>
+                <div class="col-md-4" id="RejectionBasis" runat="server" visible="false">
        <label>
            Rejection Based On<samp style="color: red"> * </samp>
        </label>
        <asp:TextBox class="form-control" ID="txtRejectionBasis" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-        </div>
+       
                 </div>
                 <div class="col-md-4" id="InspectionDate" runat="server">
                     <label for="StartDate">
