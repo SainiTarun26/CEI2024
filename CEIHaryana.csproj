@@ -1808,7 +1808,6 @@
     <Content Include="Industry_Master\InspectionRenewalCart_Industry.aspx" />
     <Content Include="Industry_Master\InspectionRequestPrint_Industry.aspx" />
     <Content Include="Industry_Master\Inspection_Industry.aspx" />
-    <Content Include="Industry_Master\new inspectionIndustry cei.txt" />
     <Content Include="Industry_Master\NewInspectionDetails.aspx" />
     <Content Include="Industry_Master\NewInstallationStatus.aspx" />
     <Content Include="Industry_Master\PeriodicRenewal_Industry.aspx" />
@@ -2534,9 +2533,10 @@
     </Compile>
     <Compile Include="Industry_Master\NewInstallation.Master.cs">
       <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>NewInstallation.Master</DependentUpon>
     </Compile>
     <Compile Include="Industry_Master\NewInstallation.Master.designer.cs">
-      <DependentUpon>NewInstallation.Master.cs</DependentUpon>
+      <DependentUpon>NewInstallation.Master</DependentUpon>
     </Compile>
     <Compile Include="Industry_Master\NewInstallationStatus.aspx.cs">
       <DependentUpon>NewInstallationStatus.aspx</DependentUpon>
@@ -3683,6 +3683,7 @@
     <Content Include="Dashboard_Css\vendor\slick\slick.scss" />
     <Content Include="Industry\Industry_SiteOwner.Master" />
     <Content Include="Industry_Master\PeriodicInspection.Master" />
+    <Content Include="Industry_Master\NewInstallation.Master" />
     <None Include="packages.config" />
     <Content Include="Supervisor\Supervisor.Master" />
     <Content Include="TestReport\TestReport.Master" />
