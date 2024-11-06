@@ -1922,6 +1922,7 @@
     <Content Include="Print_Forms\InspectionRequestPrint.aspx" />
     <Content Include="Print_Forms\NewInspectionApprovalCertificate.aspx" />
     <Content Include="Print_Forms\PeriodicApprovalCertificate.aspx" />
+    <Content Include="Print_Forms\PeriodicApprovalCertificate_Industry.aspx" />
     <Content Include="Print_Forms\PrintCertificate1.aspx" />
     <Content Include="Print_Forms\PrintCertificate1_Industry.aspx" />
     <Content Include="Print_Forms\PrintCertificate2.aspx" />
@@ -2814,6 +2815,13 @@
     </Compile>
     <Compile Include="Print_Forms\PeriodicApprovalCertificate.aspx.designer.cs">
       <DependentUpon>PeriodicApprovalCertificate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print_Forms\PeriodicApprovalCertificate_Industry.aspx.cs">
+      <DependentUpon>PeriodicApprovalCertificate_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print_Forms\PeriodicApprovalCertificate_Industry.aspx.designer.cs">
+      <DependentUpon>PeriodicApprovalCertificate_Industry.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print_Forms\PrintCertificate1.aspx.cs">
       <DependentUpon>PrintCertificate1.aspx</DependentUpon>

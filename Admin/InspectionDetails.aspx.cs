@@ -144,16 +144,11 @@ namespace CEIHaryana.Admin
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
-
-       
-
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Admin/AdminMaster.aspx");
         }
-
         
-
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string fileName = "";
@@ -262,9 +257,6 @@ namespace CEIHaryana.Admin
                 e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
             }
         }
-
-      
-
         protected void GridBindDocument()
         {
             try
