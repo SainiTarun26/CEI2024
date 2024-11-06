@@ -26,12 +26,12 @@ namespace CEIHaryana.Industry_Master
             }
 
         }
-        public void BindGrid()
+        public void BindGrid(string searchText = null)
         {
             string LoginID = string.Empty;
             LoginID = Session["SiteOwnerId_Sld_Indus"].ToString();
             DataTable ds = new DataTable();
-            ds = CEI.SiteOwnerInspectionData(LoginID);
+            ds = CEI.SiteOwnerInspectionDataStatus(LoginID);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -157,7 +157,7 @@ namespace CEIHaryana.Industry_Master
             string searchText = txtSearch.Text.Trim();
             if (!string.IsNullOrEmpty(searchText))
             {
-                BindGrid();
+                BindGrid(searchText);
             }
             else
             {

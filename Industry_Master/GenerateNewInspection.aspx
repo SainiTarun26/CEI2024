@@ -693,7 +693,7 @@
         function alertWithRedirectdata() {
             /*if (confirm('Inspection Request Submit Successfully, and forword to concern officer')) {*/
             alert('Inspection Request Submitted Successfully, forwarding to concerned officer.');
-            window.location.href = "/Industry_Master/InspectionRequestPrint_Industry.aspx";
+            window.location.href = "/Industry_Master/ForNewInspectionRequestPrintForm.aspx";
             //} else {
             //}
         }

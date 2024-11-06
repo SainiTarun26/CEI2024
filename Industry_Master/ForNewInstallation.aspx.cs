@@ -18,39 +18,39 @@ namespace CEIHaryana.Industry_Master
             {
                 if (!Page.IsPostBack)
                 {
-                    if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != string.Empty  && Convert.ToString(Session["district_Temp"]) != null && Convert.ToString(Session["district_Temp"]) != string.Empty)
+                    //if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != string.Empty  && Convert.ToString(Session["Hisar"]) != null && Convert.ToString(Session["Hisar"]) != string.Empty)
 
                     {
-                        //Session["SiteOwnerId"] = "ABCDG1234G";
-                        //Session["district_Temp"] = "Kaithal";
+                        Session["SiteOwnerId_Sld_Indus"] = "ABCDG1234G";
+                        Session["district_Temp"] = "Hisar";
                         string District = Session["district_Temp"].ToString();
                         string PanNumber = Session["SiteOwnerId_Sld_Indus"].ToString();
                         bool panExists = false;
 
-                        DataSet ds1 = CEI.checkInspection(PanNumber);
-                        if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
-                        {
-                            panExists = true;
-                            string statusType = ds1.Tables[0].Rows[0]["ApplicationStatus"].ToString();
-                            string ReasonType = ds1.Tables[0].Rows[0]["ReasonType"].ToString();
-                            if (statusType == "Returned" && ReasonType == "1")
-                            {
-                                getWorkIntimationData();
-                            }
-                            else
-                            {
-                                Response.Redirect("/Industry_Master/NewInstallationStatus.aspx", false);
-                            }
+                        //DataSet ds1 = CEI.checkInspection(PanNumber);
+                        //if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+                        //{
+                        //    panExists = true;
+                        //    string statusType = ds1.Tables[0].Rows[0]["ApplicationStatus"].ToString();
+                        //    string ReasonType = ds1.Tables[0].Rows[0]["ReasonType"].ToString();
+                        //    if (statusType == "Returned" && ReasonType == "1")
+                        //    {
+                        //        getWorkIntimationData();
+                        //    }
+                        //    else
+                        //    {
+                        //        Response.Redirect("/Industry_Master/NewInstallationStatus.aspx", false);
+                        //    }
 
 
 
-                        }
-                        else
-                        {
-                            getWorkIntimationData();
-                        }
+                        //}
+                        //else
+                        //{
+                        //    getWorkIntimationData();
+                        //}
 
-                       // getWorkIntimationData();
+                       getWorkIntimationData();
                     }
                 }
             }

@@ -205,7 +205,7 @@ namespace CEIHaryana.Industry
                         {
                             Session["SiteOwnerId_Industry"] = inputObject.pannumber;
                             Session["district_Temp"] = inputObject.project_site_district;
-                            Response.Redirect("/Industry_Master/Periodic_Renewal.aspx", false);
+                            Response.Redirect("/Industry_Master/PeriodicRenewal_Industry.aspx", false);
                         }
                         //sld 
                         else if (Session["Serviceid_Temp"].ToString() == "930e4959-d5a0-4624-9995-8c5e3e9cadce")

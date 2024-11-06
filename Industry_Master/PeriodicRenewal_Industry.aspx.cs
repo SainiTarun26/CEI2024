@@ -32,10 +32,11 @@ namespace CEIHaryana.Industry_Master
                 {
                     if (Session["SiteOwnerId_Industry"] != null || Request.Cookies["SiteOwnerId_Industry"] != null)
                     {
-                        //if (CheckInspectionStatus())
-                        //{
-                        //    Response.Redirect("Industry_Master/InspectionHistory_Industry.aspx");
-                        //}
+                        if (CheckInspectionStatus())
+                        {
+                            Response.Redirect("InspectionHistory_Industry.aspx", false);
+                            return;
+                        }
                         BindAdress();
                         getWorkIntimationDataForListOfExisting();
                     }
@@ -550,6 +551,15 @@ namespace CEIHaryana.Industry_Master
                 ddlPremises.DataBind();
                 ddlPremises.Items.Insert(0, new ListItem("Select", "0"));
                 dsPremises.Clear();
+                string dp_Id241 = "Industry";
+                ListItem selectedItem = ddlPremises.Items.FindByText(dp_Id241);
+
+                if (selectedItem != null)
+                {
+                    ddlPremises.SelectedIndex = ddlPremises.Items.IndexOf(selectedItem);
+                }
+                //ddlPremises.Attributes.Add("disabled", "disabled");
+                ddlPremises.Enabled = false;
             }
             catch (Exception ex) { }
         }
@@ -565,13 +575,14 @@ namespace CEIHaryana.Industry_Master
                 ddlDistrict.DataBind();
                 ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
                 dsDistrict.Clear();
-                //string dp_Id24 = "Jind";
-                //ListItem selectedItem = ddlDistrict.Items.FindByText(dp_Id24);
+                string dp_Id24 = Session["district_Temp"].ToString();
+                ListItem selectedItem = ddlDistrict.Items.FindByText(dp_Id24);
 
-                //if (selectedItem != null)
-                //{
-                //    ddlDistrict.SelectedIndex = ddlDistrict.Items.IndexOf(selectedItem);
-                //}
+                if (selectedItem != null)
+                {
+                    ddlDistrict.SelectedIndex = ddlDistrict.Items.IndexOf(selectedItem);
+                }
+                ddlDistrict.Enabled = false;
                 //ddlDistrict.Attributes.Add("disabled", "disabled");
 
             }
@@ -871,7 +882,7 @@ namespace CEIHaryana.Industry_Master
                 panNumber = Session["SiteOwnerId_Industry"].ToString();
             }
 
-            string connectionString = ConfigurationManager.ConnectionStrings["YourConnectionString"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_CheckAlreadyApplied_PeriodicInspection_Industries", conn))
