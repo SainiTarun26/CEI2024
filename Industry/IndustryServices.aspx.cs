@@ -195,7 +195,7 @@ namespace CEIHaryana.Industry
                         //new
                         if (Session["Serviceid_Temp"].ToString() == "c1406da9-263f-4399-b20f-387a71caa5de")
                         {
-                            Session["SiteOwnerId_Industry"] = inputObject.pannumber;
+                            Session["SiteOwnerId_Sld_Indus"] = inputObject.pannumber;
                             Session["district_Temp"] = inputObject.project_site_district;
                             Response.Redirect("/Industry_Master/ForNewInstallation.aspx", false);
 
