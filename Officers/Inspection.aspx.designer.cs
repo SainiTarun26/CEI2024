@@ -312,6 +312,15 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
+        /// Div1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+
+        /// <summary>
         /// DivViewCart control.
         /// </summary>
         /// <remarks>
@@ -402,6 +411,15 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.DropDownList ddlRejectionReasonType;
 
         /// <summary>
+        /// RejectionReason control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl RejectionReason;
+
+        /// <summary>
         /// txtRejected control.
         /// </summary>
         /// <remarks>
@@ -418,6 +436,60 @@ namespace CEIHaryana.Officers
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator60;
+
+        /// <summary>
+        /// DIV_ChecklistDocuments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DIV_ChecklistDocuments;
+
+        /// <summary>
+        /// Check_ChecklistDocuments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Check_ChecklistDocuments;
+
+        /// <summary>
+        /// grd_ChecklistDocumemnts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grd_ChecklistDocumemnts;
+
+        /// <summary>
+        /// DIV_TRDocuments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DIV_TRDocuments;
+
+        /// <summary>
+        /// Check_TRDocuments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Check_TRDocuments;
+
+        /// <summary>
+        /// Grid_TRDocuments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView Grid_TRDocuments;
 
         /// <summary>
         /// btnSubmit control.

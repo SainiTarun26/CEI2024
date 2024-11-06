@@ -18,11 +18,10 @@ namespace CEIHaryana.Industry_Master
             {
                 if (!Page.IsPostBack)
                 {
-                    if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != string.Empty  && Convert.ToString(Session["Hisar"]) != null && Convert.ToString(Session["Hisar"]) != string.Empty)
-
+                    if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != string.Empty && Convert.ToString(Session["district_Temp"]) != null && Convert.ToString(Session["district_Temp"]) != string.Empty)
                     {
-                        Session["SiteOwnerId_Sld_Indus"] = "ABCDG1234G";
-                        Session["district_Temp"] = "Hisar";
+                        //Session["SiteOwnerId_Sld_Indus"] = "ABCDG1234G";
+                        //Session["district_Temp"] = "Hisar";
                         string District = Session["district_Temp"].ToString();
                         string PanNumber = Session["SiteOwnerId_Sld_Indus"].ToString();
                         bool panExists = false;

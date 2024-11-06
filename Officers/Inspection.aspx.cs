@@ -284,6 +284,7 @@ namespace CEIHaryana.Officers
                 if (RadioButtonList2.SelectedValue == "0")
                 {
                     Rejection.Visible = false;
+                    RejectionReason.Visible = false;
 
                 }
                 else
@@ -291,6 +292,7 @@ namespace CEIHaryana.Officers
                     if (RadioButtonList2.SelectedValue == "1")
                     {
                         Rejection.Visible = true;
+                        RejectionReason.Visible = false;
                         ddlReasonType.Visible = true;
                         ddlRejectionReasonType.Visible = false;
                     }
@@ -298,6 +300,7 @@ namespace CEIHaryana.Officers
                     {
 
                         Rejection.Visible = true;
+                        RejectionReason.Visible = true;
                         ddlReasonType.Visible = false;
                         ddlRejectionReasonType.Visible = true;
                     }
@@ -814,6 +817,102 @@ namespace CEIHaryana.Officers
                 ds.Dispose();
             }
             catch (Exception ex) { }
+        }
+
+        protected void ddlReasonType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //if (ddlReasonType.SelectedValue == "0")
+            //{}else
+            if (ddlReasonType.SelectedValue == "1")
+            {
+                DIV_ChecklistDocuments.Visible = true;
+                Check_ChecklistDocuments.Visible = true;
+
+                GridChecklistDocuments();
+
+                DIV_TRDocuments.Visible = false;
+                Check_TRDocuments.Visible = false;
+            }
+            else if (ddlReasonType.SelectedValue == "2")
+            {
+                DIV_TRDocuments.Visible = true;
+                Check_TRDocuments.Visible = true;
+
+                GridTRDocuments();
+
+                DIV_ChecklistDocuments.Visible = false;
+                Check_ChecklistDocuments.Visible = false;
+            }
+            else if (ddlReasonType.SelectedValue == "3")
+            {
+                DIV_ChecklistDocuments.Visible = true;
+                Check_ChecklistDocuments.Visible = true;
+                DIV_TRDocuments.Visible = true;
+                Check_TRDocuments.Visible = true;
+
+                GridChecklistDocuments();
+                GridTRDocuments();
+            }
+            else
+            {
+                DIV_ChecklistDocuments.Visible = false;
+                Check_ChecklistDocuments.Visible = false;
+                DIV_TRDocuments.Visible = false;
+                Check_TRDocuments.Visible = false;
+            }
+        }
+
+        private void GridTRDocuments()
+        {
+            try
+            {
+                string ID = Session["InspectionId"].ToString();
+                DataSet dsVC = CEI.GetDetailsToViewTRinMultipleCaseNew(ID);
+
+                if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
+                {
+                    Grid_TRDocuments.DataSource = dsVC;
+                    Grid_TRDocuments.DataBind();
+                }
+                else
+                {
+                    Grid_TRDocuments.DataSource = null;
+                    Grid_TRDocuments.DataBind();
+                    string script = "alert('No Record Found');";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception as needed
+            }
+        }
+
+        private void GridChecklistDocuments()
+        {
+
+            try
+            {
+                ID = Session["InspectionId"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.ViewDocuments(ID);
+                if (ds.Tables.Count > 0)
+                {
+                    grd_ChecklistDocumemnts.DataSource = ds;
+                    grd_ChecklistDocumemnts.DataBind();
+                }
+                else
+                {
+                    grd_ChecklistDocumemnts.DataSource = null;
+                    grd_ChecklistDocumemnts.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                ds.Dispose();
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
 }

@@ -9,8 +9,8 @@ using System.Web.UI.WebControls;
 
 namespace CEIHaryana.Industry_Master
 {
-    public partial class ForNewInspectionRequestPrintForm : System.Web.UI.Page
-    {
+	public partial class ForNewInspectionRequestPrintForm : System.Web.UI.Page
+	{
         CEI CEI = new CEI();
         private static int Inspection;
         protected void Page_Load(object sender, EventArgs e)

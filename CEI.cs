@@ -7112,6 +7112,11 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionRejection", ID, StaffId, RejctionReasonType, ReasonForRejection);
         }
+        // 06-11-2024 Neeraj
+        public DataTable SiteOwnerInspectionDataStatus(string SiteOwnerId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerInspectionStatus_Industry", SiteOwnerId);
+        }
     }
 }
 

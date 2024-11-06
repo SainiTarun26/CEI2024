@@ -1,94 +1,94 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Industry_Master/NewInstallation.Master" AutoEventWireup="true" CodeBehind="ForNewInspectionRequestPrintForm.aspx.cs" Inherits="CEIHaryana.Industry_Master.ForNewInspectionRequestPrintForm" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
- <link rel="stylesheet" href="/css2/style.css" />
- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- <!------ Include the above in your HEAD tag ---------->
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
- <link href="ScriptCalendar/jquery-ui.css" rel="stylesheet" type="text/css" />
- <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
- <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
- <style>
-     body {
-         box-sizing: border-box;
-         min-height: 100vh;
-         margin: 0px;
-         border: solid 1px black;
-         PADDING: 10PX;
-     }
+        <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+<link rel="stylesheet" href="/css2/style.css" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<link href="ScriptCalendar/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
+<style>
+    body {
+        box-sizing: border-box;
+        min-height: 100vh;
+        margin: 0px;
+        border: solid 1px black;
+        PADDING: 10PX;
+    }
 
-     input#txtInstallationType {
-         font-size: 25px !important;
-         font-weight: 700;
-     }
+    input#txtInstallationType {
+        font-size: 25px !important;
+        font-weight: 700;
+    }
 
-     input#txtTestReportId {
-         font-size: 25px !important;
-         font-weight: 700;
-         text-align: initial;
-         border-bottom: 0px solid !important;
-     }
+    input#txtTestReportId {
+        font-size: 25px !important;
+        font-weight: 700;
+        text-align: initial;
+        border-bottom: 0px solid !important;
+    }
 
-     .col-4 {
-         top: 0px;
-         left: 0px;
-     }
+    .col-4 {
+        top: 0px;
+        left: 0px;
+    }
 
-     .form-control {
-         margin-left: 0px !important;
-         font-size: 16px !important;
-         height: 30px;
-         border-bottom: 1px solid !important;
-         border: 0px solid black;
-         border-radius: 0px;
-         margin-top: 5px;
-         border-style: dashed !important;
-     }
+    .form-control {
+        margin-left: 0px !important;
+        font-size: 16px !important;
+        height: 30px;
+        border-bottom: 1px solid !important;
+        border: 0px solid black;
+        border-radius: 0px;
+        margin-top: 5px;
+        border-style: dashed !important;
+    }
 
-     label {
-         font-size: 18px;
-         margin-top: 5px;
-         font-weight: 600;
-     }
+    label {
+        font-size: 18px;
+        margin-top: 5px;
+        font-weight: 600;
+    }
 
-     .card .card-title {
-         color: #010101;
-         margin-bottom: 1.2rem;
-         text-transform: capitalize;
-         font-size: 20px;
-         font-weight: 600;
-     }
+    .card .card-title {
+        color: #010101;
+        margin-bottom: 1.2rem;
+        text-transform: capitalize;
+        font-size: 20px;
+        font-weight: 600;
+    }
 
-     u {
-         font-size: 22px;
-     }
+    u {
+        font-size: 22px;
+    }
 
-     input#txtInstallationType {
-         border-bottom: 0px solid !important;
-     }
- </style>
- <script>
-     function
-         printDiv(printableDiv) {
-         var printContents = document.getElementById(printableDiv).innerHTML;
-         var originalContents = document.body.innerHTML;
+    input#txtInstallationType {
+        border-bottom: 0px solid !important;
+    }
+</style>
+<script>
+    function
+        printDiv(printableDiv) {
+        var printContents = document.getElementById(printableDiv).innerHTML;
+        var originalContents = document.body.innerHTML;
 
-         document.body.innerHTML = printContents;
+        document.body.innerHTML = printContents;
 
-         window.print();
+        window.print();
 
-         document.body.innerHTML = originalContents;
-     }
- </script>
+        document.body.innerHTML = originalContents;
+    }
+</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      <div class="content-wrapper">
+          <div class="content-wrapper">
                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                           <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
                     <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">

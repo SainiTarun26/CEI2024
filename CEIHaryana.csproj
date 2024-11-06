@@ -1801,6 +1801,7 @@
     <Content Include="Industry\sld.aspx" />
     <Content Include="Industry\WebForm2.aspx" />
     <Content Include="Industry_Master\ExistingInspectionData_Industry.aspx" />
+    <Content Include="Industry_Master\ForNewInspectionRequestPrintForm.aspx" />
     <Content Include="Industry_Master\ForNewInstallation.aspx" />
     <Content Include="Industry_Master\GenerateNewInspection.aspx" />
     <Content Include="Industry_Master\GeneratingsetPeriodic_Industry.aspx" />
@@ -1910,6 +1911,7 @@
     <Content Include="Officers\InstallationIntimationDetails.aspx" />
     <Content Include="Officers\NewApplications.aspx" />
     <Content Include="Officers\OfficerDashboard.aspx" />
+    <Content Include="Officers\ReturnedInspections.aspx" />
     <Content Include="Officers\TotalRequest.aspx" />
     <Content Include="OTPVerification.aspx" />
     <Content Include="PaymentPage.aspx" />
@@ -1955,6 +1957,8 @@
     <Content Include="SiteOwnerPages\PeroidicInspection.aspx" />
     <Content Include="SiteOwnerPages\ProcessInspectionRenewalCart.aspx" />
     <Content Include="SiteOwnerPages\RatingOfInstallations.aspx" />
+    <Content Include="SiteOwnerPages\ReapplyReturnINspection.aspx" />
+    <Content Include="SiteOwnerPages\ReturnInspections.aspx" />
     <Content Include="SiteOwnerPages\SiteOwnerDashboard.aspx" />
     <Content Include="SiteOwnerPages\SldHistory.aspx" />
     <Content Include="SiteOwnerPages\SLDReturn.aspx" />
@@ -2476,6 +2480,13 @@
     <Compile Include="Industry_Master\ExistingInspectionData_Industry.aspx.designer.cs">
       <DependentUpon>ExistingInspectionData_Industry.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Industry_Master\ForNewInspectionRequestPrintForm.aspx.cs">
+      <DependentUpon>ForNewInspectionRequestPrintForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\ForNewInspectionRequestPrintForm.aspx.designer.cs">
+      <DependentUpon>ForNewInspectionRequestPrintForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Industry_Master\ForNewInstallation.aspx.cs">
       <DependentUpon>ForNewInstallation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2601,6 +2612,13 @@
     </Compile>
     <Compile Include="Industry_Master\RatingOfInstallations_Industry.aspx.designer.cs">
       <DependentUpon>RatingOfInstallations_Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\SLD.Master.cs">
+      <DependentUpon>SLD.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\SLD.Master.designer.cs">
+      <DependentUpon>SLD.Master</DependentUpon>
     </Compile>
     <Compile Include="Industry_Master\SLDReturn.aspx.cs">
       <DependentUpon>SLDReturn.aspx</DependentUpon>
@@ -2731,6 +2749,13 @@
     </Compile>
     <Compile Include="Officers\Officers.Master.designer.cs">
       <DependentUpon>Officers.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\ReturnedInspections.aspx.cs">
+      <DependentUpon>ReturnedInspections.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\ReturnedInspections.aspx.designer.cs">
+      <DependentUpon>ReturnedInspections.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\TotalRequest.aspx.cs">
       <DependentUpon>TotalRequest.aspx</DependentUpon>
@@ -3026,6 +3051,20 @@
     </Compile>
     <Compile Include="SiteOwnerPages\RatingOfInstallations.aspx.designer.cs">
       <DependentUpon>RatingOfInstallations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ReapplyReturnINspection.aspx.cs">
+      <DependentUpon>ReapplyReturnINspection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ReapplyReturnINspection.aspx.designer.cs">
+      <DependentUpon>ReapplyReturnINspection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ReturnInspections.aspx.cs">
+      <DependentUpon>ReturnInspections.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ReturnInspections.aspx.designer.cs">
+      <DependentUpon>ReturnInspections.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\SiteOwner.Master.cs">
       <DependentUpon>SiteOwner.Master</DependentUpon>
@@ -3692,6 +3731,7 @@
     <Content Include="Industry\Industry_SiteOwner.Master" />
     <Content Include="Industry_Master\PeriodicInspection.Master" />
     <Content Include="Industry_Master\NewInstallation.Master" />
+    <Content Include="Industry_Master\SLD.Master" />
     <None Include="packages.config" />
     <Content Include="Supervisor\Supervisor.Master" />
     <Content Include="TestReport\TestReport.Master" />

@@ -722,7 +722,8 @@
                                 </div>
                             </div>
                             <div class="row" style="margin-top: -10px !important;">
-                                <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); margin-left: 35px; border-radius: 10px;">
+                                <div class="col-md-8">
+                                <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); margin-left: 19px; border-radius: 10px;">
                                     <div class="col-md-12">
                                         <h2 class="title-1 m-b-25">Division Wise Report</h2>
                                         <div>
@@ -862,7 +863,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); background: #604db8; width: 24%; border-radius: 10px; margin-left: 10px;">
+                                    </div>
+                                <div class="col-md-4">
+                                <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); background: #604db8; width: 94%; border-radius: 10px; margin-left: 10px;">
                                     <div class="col-md-10">
                                         <h2 class="title-1 m-b-25" style="color: white;">Officers Pendency</h2>
                                         <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); margin-left: 0px; margin-right: -50px;">
@@ -896,6 +899,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                    </div>
                             </div>
                         </div>
                     </ContentTemplate>
