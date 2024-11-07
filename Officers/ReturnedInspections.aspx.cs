@@ -24,8 +24,8 @@ namespace CEIHaryana.Officers
             {
                 if (!IsPostBack)
                 {
-                    GetTestReportData();
-                   GetData();
+                   // GetTestReportData();
+                   //GetData();
                 }
             }
             catch
