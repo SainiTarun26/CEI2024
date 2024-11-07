@@ -1798,7 +1798,6 @@
     <Content Include="Image\Image\ImageToDelete-removebg-preview.png" />
     <Content Include="Image\Image\ImageToDelete.jpeg" />
     <Content Include="Industry\CeiTrackApiDetailsPost_DefaultMethodTesting.aspx" />
-    <Content Include="Industry\GenerateInspection_Industry.aspx" />
     <Content Include="Industry\Industry.aspx" />
     <Content Include="Industry\IndustryServices.aspx" />
     <Content Include="Industry\Industry_Scheduler_Pending_ErrorLogs.aspx" />
@@ -2458,13 +2457,6 @@
     </Compile>
     <Compile Include="Industry\CeiTrackApiDetailsPost_DefaultMethodTesting.aspx.designer.cs">
       <DependentUpon>CeiTrackApiDetailsPost_DefaultMethodTesting.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Industry\GenerateInspection_Industry.aspx.cs">
-      <DependentUpon>GenerateInspection_Industry.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Industry\GenerateInspection_Industry.aspx.designer.cs">
-      <DependentUpon>GenerateInspection_Industry.aspx</DependentUpon>
     </Compile>
     <Compile Include="Industry\Industry.aspx.cs">
       <DependentUpon>Industry.aspx</DependentUpon>
