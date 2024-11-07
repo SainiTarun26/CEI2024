@@ -29,6 +29,7 @@ namespace CEIHaryana.Admin
                     if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
                     {
                         GridBind();
+                        BindDropDownForDivision();
                     }
                     else
                     {
@@ -46,8 +47,9 @@ namespace CEIHaryana.Admin
             try
             {
                 LoginId = Convert.ToString(Session["AdminId"]);
+                string id = ddldivision.SelectedValue.ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.TotalRequestInspectionForAdmin(LoginId);
+                ds = CEI.TotalRequestInspectionForAdmin(LoginId, id);
                 if (ds.Tables.Count > 0)
                 {
                     GridView1.DataSource = ds;
@@ -68,6 +70,25 @@ namespace CEIHaryana.Admin
                 //throw;
             }
 
+        }
+
+        private void BindDropDownForDivision()
+        {
+            try
+            {
+                DataSet dsDivision = new DataSet();
+                dsDivision = CEI.DdlForDivision();
+                ddldivision.DataSource = dsDivision;
+                ddldivision.DataTextField = "HeadOffice";
+                ddldivision.DataValueField = "HeadOffice";
+                ddldivision.DataBind();
+                ddldivision.Items.Insert(0, new ListItem("Select", "0"));
+                dsDivision.Clear();
+            }
+            catch (Exception ex)
+            {
+                //msg.Text = ex.Message;
+            }
         }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -96,5 +117,24 @@ namespace CEIHaryana.Admin
             }
             catch { }
         }
+
+        protected void ddldivision_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = ddldivision.SelectedValue.ToString();
+            GridBind();
+        }
+        //public void divisionWise()
+        //{
+        //    try
+        //    {
+        //        string id = ddldivision.SelectedValue.ToString();
+        //        LoginId = Convert.ToString(Session["AdminId"]);
+        //        DataSet ds = new DataSet();
+        //        ds = CEI.TotalRequestAcc_Division(LoginId, id);
+
+        //    }
+        //    catch (Exception ex)
+        //    { }
+        //}
     }
 }

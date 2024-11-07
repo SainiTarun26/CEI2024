@@ -225,10 +225,10 @@
                                     <HeaderStyle Width="34%" CssClass="headercolor" />
                                     <ItemStyle Width="34%" />
                                     <HeaderTemplate>
-                                        Application Request
+                                        Inspection Id
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument=' <%#Eval("ApplicationForTestReport") %> ' CommandName="Select"><%#Eval("ApplicationForTestReport") %></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="DateOfSubmission" HeaderText="Date Of Application">

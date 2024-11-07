@@ -20,6 +20,7 @@ namespace CEIHaryana.Admin
                 if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
                 {
                     GridBind();
+                    BindDropDownForDivision();
                 }
                 else
                 {
@@ -32,8 +33,9 @@ namespace CEIHaryana.Admin
             try
             {
                 LoginId = Convert.ToString(Session["AdminId"]);
+                string id = ddldivision.SelectedValue.ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.InProcessRequestInspectionForAdmin(LoginId);
+                ds = CEI.InProcessRequestInspectionForAdmin(LoginId, id);
                 if (ds.Tables.Count > 0)
                 {
                     GridView1.DataSource = ds;
@@ -55,6 +57,24 @@ namespace CEIHaryana.Admin
             }
 
         }
+        private void BindDropDownForDivision()
+        {
+            try
+            {
+                DataSet dsDivision = new DataSet();
+                dsDivision = CEI.DdlForDivision();
+                ddldivision.DataSource = dsDivision;
+                ddldivision.DataTextField = "HeadOffice";
+                ddldivision.DataValueField = "HeadOffice";
+                ddldivision.DataBind();
+                ddldivision.Items.Insert(0, new ListItem("Select", "0"));
+                dsDivision.Clear();
+            }
+            catch (Exception ex)
+            {
+                //msg.Text = ex.Message;
+            }
+        }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Select")
@@ -71,7 +91,7 @@ namespace CEIHaryana.Admin
                     Response.Redirect("/Admin/InspectionDetails.aspx", false);
                 }
             }
-        }       
+        }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -81,6 +101,12 @@ namespace CEIHaryana.Admin
                 GridBind();
             }
             catch { }
+        }
+
+        protected void ddldivision_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = ddldivision.SelectedValue.ToString();
+            GridBind();
         }
     }
 }

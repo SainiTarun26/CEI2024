@@ -14,84 +14,98 @@
  <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
  <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <style>
-             .headercolor{
-    background-color: #9292cc;
+     <style>
+        .headercolor {
+            background-color: #9292cc;
+        }
+
+        .col-4 {
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            margin-left: 0px !important;
+            height: 30px;
+            padding-top: 1px;
+        }
+
+        select.form-control {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            margin-left: 0px !important;
+            height: 25px;
+        }
+
+        label {
+            font-size: 13px;
+        }
+
+        .form-control:focus {
+            border: 2px solid #80bdff;
+        }
+
+        select.form-control:focus {
+            border: 2px solid #80bdff;
+        }
+
+        .select2-container .select2-selection--single {
+            height: 30px !important;
+        }
+
+        .select2-container--default .select2-selection--single {
+            border: 1px solid #ccc !important;
+            border-radius: 0px !important;
+        }
+
+        span.select2-selection.select2-selection--single {
+            padding: 0px 0px 0px 5px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            margin-left: 0px !important;
+            height: 30px;
+            border-radius: 5px !important;
+        }
+
+            span.select2-selection.select2-selection--single:focus {
+                border: 2px solid #80bdff;
+            }
+
+        .card .card-title {
+            font-size: 1.4rem !important;
+        }
+
+        .btn-primary:hover {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        }
+
+        button.btn.btn-primary.mr-2 {
+            padding: 10px 25px 10px 25px;
+            font-size: 18px;
+        }
+
+        h6.card-title.fw-semibold.mb-4 {
+            margin-bottom: 10px !important;
+        }
+
+        input.form-control.form-control-sm {
+            margin-left: 7px !important;
+        }
+
+        td {
+            text-align: center;
+        }
+        th.textjustify {
+    text-align: justify;
 }
-     .col-4 {
-         margin-bottom: 8px;
-     }
-
-     .form-control {
-         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-         margin-left: 0px !important;
-         height: 25px;
-     }
-
-     select.form-control {
-         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-         margin-left: 0px !important;
-         height: 25px;
-     }
-
-     label {
-         font-size: 13px;
-     }
-
-     .form-control:focus {
-         border: 2px solid #80bdff;
-     }
-
-     select.form-control:focus {
-         border: 2px solid #80bdff;
-     }
-
-     .select2-container .select2-selection--single {
-         height: 30px !important;
-     }
-
-     .select2-container--default .select2-selection--single {
-         border: 1px solid #ccc !important;
-         border-radius: 0px !important;
-     }
-
-     span.select2-selection.select2-selection--single {
-         padding: 0px 0px 0px 5px;
-         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-         margin-left: 0px !important;
-         height: 30px;
-         border-radius: 5px !important;
-     }
-
-         span.select2-selection.select2-selection--single:focus {
-             border: 2px solid #80bdff;
-         }
-
-     .card .card-title {
-         font-size: 1.4rem !important;
-     }
-
-     .btn-primary:hover {
-         box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-     }
-
-     button.btn.btn-primary.mr-2 {
-         padding: 10px 25px 10px 25px;
-         font-size: 18px;
-     }
-
-     h6.card-title.fw-semibold.mb-4 {
-         margin-bottom: 10px !important;
-     }
-
-     input.form-control.form-control-sm {
-         margin-left: 7px !important;
-     }
-
-     td {
-         text-align: center;
-     }
- </style>
+        td.owner-name {
+    text-align: justify;
+}
+        select#ContentPlaceHolder1_ddldivision {
+    padding: 0px 0px 3px 5px;
+}
+        .form-group label{
+            font-size:16px !important;
+        }
+    </style>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -107,14 +121,26 @@
               
              </div>
              <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                <div class="col-4">
-     <div class="form-group row">
-         <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
-         <div class="col-sm-9" style="margin-left: -35px;">
-             <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control"  Font-Size="12px" onkeydown="return SearchOnEnter(event);"  onkeyup="Search_Gridview(this)" ></asp:TextBox><br />
-          </div>
-     </div>
- </div>
+                                  <div class="row" style="margin-bottom:-30px;">
+    <div class="col-4">
+        <div class="form-group row">
+            <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
+            <div class="col-sm-9" style="margin-left: -35px;">
+                <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="15px" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
+            </div>
+        </div>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="form-group row">
+            <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Division:</label>
+            <div class="col-sm-9">
+                <asp:DropDownList ID="ddldivision" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddldivision_SelectedIndexChanged" class="form-control  select-form select2" Style="width: 100% !important; height: 25px;">
+                </asp:DropDownList>
+            </div>
+        </div>
+    </div>
+</div>
                 <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
                             AutoGenerateColumns="false" onrowcommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" AllowPaging="true" PageSize="20"  BorderWidth="1px" BorderColor="#dbddff" >
                              <Columns>
@@ -152,16 +178,22 @@
                                     <ItemStyle HorizontalAlign="center" Width="28%" />
                                 </asp:BoundField>--%>
                               
-                                <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
-                                    <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor"/>
+                                <asp:TemplateField HeaderText="Owner Name">
+    <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
+    <ItemStyle HorizontalAlign="center" Width="28%" />
+    <ItemTemplate>
+        <asp:Label ID="lblOwnerName" runat="server" Text='<%# Eval("OwnerName") %>' CssClass="break-text-10"></asp:Label>
+    </ItemTemplate>
+</asp:TemplateField>
 
-                                    <ItemStyle HorizontalAlign="center" Width="28%" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="ContractorName" HeaderText="Contractor Name">
-                                    <HeaderStyle HorizontalAlign="center" Width="32%" CssClass="headercolor"/>
+                                <asp:TemplateField HeaderText="Contractor Name">
+    <HeaderStyle HorizontalAlign="center" Width="32%" CssClass="headercolor" />
+    <ItemStyle HorizontalAlign="center" Width="32%" />
+    <ItemTemplate>
+        <asp:Label ID="lblContractorName" runat="server" Text='<%# Eval("ContractorName") %>' CssClass="break-text-10"></asp:Label>
+    </ItemTemplate>
+</asp:TemplateField>
 
-                                    <ItemStyle HorizontalAlign="center" Width="32%" />
-                                </asp:BoundField> 
                                 <asp:BoundField DataField="ApplicantFor" HeaderText="Applicant Type">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                      
@@ -232,4 +264,56 @@
         }
     }
 </script>
+     <script type="text/javascript">
+         document.addEventListener("DOMContentLoaded", function () {
+             const elements = document.querySelectorAll('.break-text-10');
+
+             elements.forEach(function (element) {
+                 let text = element.innerText;
+                 let formattedText = '';
+                 let currentIndex = 0;
+
+                 while (currentIndex < text.length) {
+                     // Take a chunk of up to 20 characters
+                     let chunk = text.slice(currentIndex, currentIndex + 20);
+
+                     if (chunk.length < 20) {
+                         // If the chunk is less than 20 characters, add it without breaking
+                         formattedText += chunk;
+                         break; // Exit the loop as we've processed the remaining text
+                     }
+
+                     // For chunks of 20 or more characters, try to break at the last whitespace
+                     let breakIndex = chunk.lastIndexOf(" ");
+                     if (breakIndex !== -1) {
+                         // If there's a whitespace, break at that space
+                         formattedText += chunk.slice(0, breakIndex) + '<br>';
+                         currentIndex += breakIndex + 1; // Move past the space
+                     } else {
+                         // Otherwise, break at the 20-character limit
+                         formattedText += chunk + '<br>';
+                         currentIndex += 20;
+                     }
+                 }
+
+                 element.innerHTML = formattedText.trim(); // Remove any trailing <br>
+             });
+         });
+     </script>
+
+ <script type="text/javascript">
+     document.addEventListener("DOMContentLoaded", function () {
+         // Select all elements with the 'break-space' class within GridView1
+         var elements = document.querySelectorAll("#<%= GridView1.ClientID %> .break-space");
+
+         elements.forEach(function (element) {
+             var text = element.innerText;
+             // Split the text by whitespace and join with line breaks
+             var newText = text.split(' ').join('\n');
+             element.innerText = newText;
+         });
+     });
+ </script>
+
+
 </asp:Content>

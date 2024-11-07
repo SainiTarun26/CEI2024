@@ -19,7 +19,7 @@ namespace CEIHaryana.Industry_Master
             {
                 if (!Page.IsPostBack)
                 {
-                    if (Session["SiteOwnerId_Sld_Indus"] != null || Request.Cookies["SiteOwnerId_Sld_Indus"] != null)
+                    if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != string.Empty)
                     {
                         GetDetailstoPrint();
                         BindAttachmentGrid();

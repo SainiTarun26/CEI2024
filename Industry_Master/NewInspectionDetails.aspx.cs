@@ -142,7 +142,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                //
+                Response.Redirect("/login.aspx");
             }
 
         }

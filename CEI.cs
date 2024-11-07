@@ -7117,6 +7117,188 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerInspectionStatus_Industry", SiteOwnerId);
         }
+
+        #region powerUtility
+        public DataSet checkUtilityName(string UtilityName)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckUtilityName", UtilityName);
+        }
+        public DataSet InsertInUtilityMaster(string UtilityName)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertUtilityName", UtilityName);
+        }
+        public DataSet GetUtilityMaster()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPowerUtilityData");
+        }
+        public DataSet checkWingName(string WingName)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckWingName", WingName);
+        }
+        public DataSet InsertInWingMaster(string WingName, string UtilityId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertInWingMaster", WingName, UtilityId);
+        }
+        public DataSet GetWingMaster(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetWingData", Id);
+        }
+        public DataSet checkZoneName(string ZoneName)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckZoneName", ZoneName);
+        }
+        public DataSet InsertInZoneMaster(string ZoneName, string UtilityId, string WingId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertInZoneMaster", ZoneName, UtilityId, WingId);
+        }
+        public DataSet GetZoneMaster(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetZoneData", Id);
+        }
+        public DataSet checkCircleName(string CircleName)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckCircleName", CircleName);
+        }
+        public DataSet InsertInCircleMaster(string CircleName, string UtilityId, string WingId, string ZoneId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertInCircleMaster", CircleName, UtilityId, WingId, ZoneId);
+        }
+        public DataSet GetCircleMaster(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetCircleData", Id);
+        }
+        public DataSet checkDivisionName(string DivisionName)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckDivisionName", DivisionName);
+        }
+        public void InsertInDivisionMaster(string DivisionName, string UtilityId, string WingId, string ZoneId, string CircleId)
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertDivisionInMaster");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@DivisionName", DivisionName);
+            cmd.Parameters.AddWithValue("@UtilityId", UtilityId);
+            cmd.Parameters.AddWithValue("@WingId", WingId);
+            cmd.Parameters.AddWithValue("@ZoneId", ZoneId);
+            cmd.Parameters.AddWithValue("@CircleId", CircleId);
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        public DataSet GetDivisionMaster(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDivisionMasterData", Id);
+        }
+        public DataSet checkEmail(string Email)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getEmailFromSubDivision", Email);
+        }
+        public void InsertInSubDivisionMaster(string SubDivisionName, string Email, string PhoneNo, string UtilityId, string WingId, string ZoneId, string CircleId, string DivisionId, string UserId)
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertSubDivisionInMaster");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@SubDivision", SubDivisionName);
+            cmd.Parameters.AddWithValue("@Email", Email);
+            cmd.Parameters.AddWithValue("@Mobile", PhoneNo);
+            cmd.Parameters.AddWithValue("@UtilityId", UtilityId);
+            cmd.Parameters.AddWithValue("@WingId", WingId);
+            cmd.Parameters.AddWithValue("@ZoneId", ZoneId);
+            cmd.Parameters.AddWithValue("@CircleId", CircleId);
+            cmd.Parameters.AddWithValue("@DivisionId", DivisionId);
+            cmd.Parameters.AddWithValue("@UserId", UserId);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        public DataSet DdlForDivision()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDivisionName");
+        }
+
+        #endregion
+
+        public DataSet TotalRequestInspectionForAdmin(string LoginId, string Division = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division);
+        }
+        public DataSet NeWRequestInspectionForAdmin(string LoginId, string Division = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceivedForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division);
+        }
+        public DataSet InProcessRequestInspectionForAdmin(string LoginId, string Division = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetProcessRequestForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division);
+        }
+        public DataSet AcceptedOrRejectedRequestInspectionForAdmin(string LoginId, string Division = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectInspectionForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division);
+        }
+
+        public int ResetPasswordByAdmin(string UserId, string Password)
+        {
+            SqlCommand cmd = new SqlCommand("sp_updatePassword");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@UserId", UserId);
+            cmd.Parameters.AddWithValue("@Password", Password);
+            int Ad = cmd.ExecuteNonQuery();
+            con.Close();
+            return Ad;
+        }
+        public void ResetMessagethroughEmail(string Email, string Subject, string Message)
+        {
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("haryanacei@gmail.com");
+            mailMessage.To.Add(Email);
+            mailMessage.Subject = Subject;
+            string body = $"Dear Customer,\n\n {Message}";
+            mailMessage.Body = body;
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.Port = 587;
+            smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
+            smtpClient.EnableSsl = true;
+            smtpClient.Send(mailMessage);
+        }
+        public DataTable SearchSiteOwnerData(string searchText, string category)
+        {
+            DataTable result = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("sp_GetSearchSiteOwnerData", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@SearchText", searchText);
+                command.Parameters.AddWithValue("@category", category);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(result);
+            }
+
+            return result;
+        }
     }
 }
 

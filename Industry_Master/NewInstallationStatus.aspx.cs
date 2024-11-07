@@ -18,11 +18,16 @@ namespace CEIHaryana.Industry_Master
             {
                 if (!Page.IsPostBack)
                 {
-                    BindGrid();
+                    if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != string.Empty)
+                    {
+                        BindGrid();
+                    }
+                        
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                Response.Redirect("/login.aspx");
             }
 
         }

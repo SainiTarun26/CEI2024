@@ -73,6 +73,18 @@ namespace CEIHaryana.Admin
 
                                 getWiremanorSuperwiserData(category, loginType, ID);
                             }
+                            else if (category == "SiteOwner")
+                            {
+                                var master = (MasterPage)Master;
+                                var loginTypeLabel = (Label)master.FindControl("LoginType");
+
+                                if (loginTypeLabel.Text == "Admin")
+                                {
+                                    loginTypeLabel.Text = "Admin / SiteOwner Details";
+                                }
+
+                                getSiteOwnerData();
+                            }
                         }
 
                     }
@@ -99,7 +111,7 @@ namespace CEIHaryana.Admin
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
-                GridView1.Columns[8].Visible=false;
+                GridView1.Columns[8].Visible = false;
             }
             else
             {
@@ -260,9 +272,9 @@ namespace CEIHaryana.Admin
             {
                 Response.Redirect("AddWiremanDetails.aspx");
             }
-            string Category= Request.Params["category"].ToString();
+            string Category = Request.Params["category"].ToString();
         }
-        public void SearchSupervisororWiremen(string searchterm,string categary)
+        public void SearchSupervisororWiremen(string searchterm, string categary)
         {
             DataTable dt = new DataTable();
             dt = cei.SearchSupervisororWiremen(searchterm, categary);
@@ -278,7 +290,7 @@ namespace CEIHaryana.Admin
                 string script = "alert(\"No Record Found\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
-        }       
+        }
 
         public void BindFullGrid()
         {
@@ -303,6 +315,10 @@ namespace CEIHaryana.Admin
             {
                 getWiremanorSuperwiserData(category, loginType, ID);
             }
+            else if (category == "SiteOwner" && loginType != null && ID != null)
+            {
+                getSiteOwnerData();
+            }
         }
         protected string WrapText(string text, int wrapAfter)
         {
@@ -326,24 +342,51 @@ namespace CEIHaryana.Admin
         {
             try
             {
+                DataTable searchResult;
                 string searchText = txtSearch.Text.Trim();
                 category = Request.Params["category"].ToString();
 
                 if (!string.IsNullOrEmpty(searchText))
                 {
-                    DataTable searchResult = cei.SearchContractorData(searchText, category);
-
-                    if (searchResult.Rows.Count > 0)
+                    if (category != "SiteOwner")
                     {
-                        GridView1.DataSource = searchResult;
-                        GridView1.DataBind();
+                        searchResult = cei.SearchContractorData(searchText, category);
                     }
                     else
                     {
-                        GridView1.DataSource = null;
-                        GridView1.DataBind();
-                        string script = "alert(\"No Record Found\");";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                        searchResult = cei.SearchSiteOwnerData(searchText, category);
+                    }
+
+                    if (category != "SiteOwner")
+                    {
+                        if (searchResult.Rows.Count > 0)
+                        {
+                            GridView1.DataSource = searchResult;
+                            GridView1.DataBind();
+                        }
+                        else
+                        {
+                            GridView1.DataSource = null;
+                            GridView1.DataBind();
+                            string script = "alert(\"No Record Found\");";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                        }
+                    }
+                    else
+                    {
+                        if (searchResult.Rows.Count > 0)
+                        {
+                            GridView2.DataSource = searchResult;
+                            GridView2.DataBind();
+                        }
+                        else
+                        {
+                            GridView2.DataSource = null;
+                            GridView2.DataBind();
+                            string script = "alert(\"No Record Found\");";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                        }
+
                     }
                 }
                 else // If searchText is blank
@@ -376,6 +419,71 @@ namespace CEIHaryana.Admin
             {
                 string errorMessage = "An error occurred: " + ex.Message;
             }
+        }
+
+        private void getSiteOwnerData()
+        {
+            DataTable ds = new DataTable();
+            ds = cei.GetSiteOwnerData();
+            if (ds.Rows.Count > 0)
+            {
+                GridView2.DataSource = ds;
+                GridView2.DataBind();
+            }
+            else
+            {
+                GridView2.DataSource = null;
+                GridView2.DataBind();
+                string script = "alert(\"No Record Found\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+            ds.Dispose();
+        }
+        protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView2.PageIndex = e.NewPageIndex;
+            getSiteOwnerData();
+        }
+
+        protected void btnUpdatePassword_Click(object sender, EventArgs e)
+        {
+            string UserId = txtUserId.Text.Trim();
+            string password = txtPassword.Text.Trim();
+            string Email = hdnEmailId.Value;
+            try
+            {
+                if (!string.IsNullOrEmpty(UserId) && !string.IsNullOrEmpty(Email))
+                {
+                    int Ad = cei.ResetPasswordByAdmin(UserId, password);
+                    if (Ad > 0)
+                    {
+                        string Subject = "Password Reset Successfully";
+                        string Message = "your password has been reset and your new password is 123456 . Now you can set your password which you want.";
+                        cei.ResetMessagethroughEmail(Email, Subject, Message);
+                        hdnEmailId.Value = null;
+                        string successScript = "alert('Password Reset successfully.')";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", successScript, true);
+                    }
+                    else
+                    {
+                        string successScript = "alert('Password Not Reset .')";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", successScript, true);
+                    }
+                }
+                else
+                {
+                    //string successScript = "alert('Password Not Reset .')";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Script", "alert('UserId or Email is Not Found')", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
+
+
+
         }
     }
 }

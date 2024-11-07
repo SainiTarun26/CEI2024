@@ -607,7 +607,7 @@ namespace CEIHaryana.Industry_Master
                 if (atLeastOneInspectionChecked)
                 {
                     string lblCategory = string.Empty;
-                    if (Session["InstallationId"].ToString() != "1" || Session["InstallationId"].ToString() != "2" || Session["InstallationId"].ToString() != "3")
+                    if (Session["InstallationId"].ToString() != "1" && Session["InstallationId"].ToString() != "2" && Session["InstallationId"].ToString() != "3")
                     {
                         lblCategory = "Multiple";
                     }

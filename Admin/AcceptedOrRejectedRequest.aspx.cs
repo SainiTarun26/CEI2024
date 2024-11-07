@@ -29,6 +29,7 @@ namespace CEIHaryana.Admin
                     if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
                     {
                         GridBind();
+                        BindDropDownForDivision();
                     }
                     else
                     { }
@@ -45,8 +46,9 @@ namespace CEIHaryana.Admin
             try
             {
                 LoginId = Convert.ToString(Session["AdminId"]);
+                string id = ddldivision.SelectedValue.ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.AcceptedOrRejectedRequestInspectionForAdmin(LoginId);
+                ds = CEI.AcceptedOrRejectedRequestInspectionForAdmin(LoginId, id);
                 if (ds.Tables.Count > 0)
                 {
                     GridView1.DataSource = ds;
@@ -64,6 +66,24 @@ namespace CEIHaryana.Admin
             catch (Exception ex)
             {
                 //throw;
+            }
+        }
+        private void BindDropDownForDivision()
+        {
+            try
+            {
+                DataSet dsDivision = new DataSet();
+                dsDivision = CEI.DdlForDivision();
+                ddldivision.DataSource = dsDivision;
+                ddldivision.DataTextField = "HeadOffice";
+                ddldivision.DataValueField = "HeadOffice";
+                ddldivision.DataBind();
+                ddldivision.Items.Insert(0, new ListItem("Select", "0"));
+                dsDivision.Clear();
+            }
+            catch (Exception ex)
+            {
+                //msg.Text = ex.Message;
             }
         }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -88,7 +108,7 @@ namespace CEIHaryana.Admin
                     if (LblInspectionType.Text == "New")
                     {
                         Session["InProcessInspectionId"] = id;
-                        Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
+                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
                     }
                     else
                     {
@@ -127,6 +147,12 @@ namespace CEIHaryana.Admin
                     linkButton.Visible = false;
                 }
             }
+        }
+
+        protected void ddldivision_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = ddldivision.SelectedValue.ToString();
+            GridBind();
         }
     }
 }

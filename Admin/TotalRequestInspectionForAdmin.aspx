@@ -27,7 +27,8 @@
         .form-control {
             box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             margin-left: 0px !important;
-            height: 25px;
+            height: 30px;
+            padding-top: 1px;
         }
 
         select.form-control {
@@ -93,6 +94,18 @@
         td {
             text-align: center;
         }
+        th.textjustify {
+    text-align: justify;
+}
+        td.owner-name {
+    text-align: justify;
+}
+        select#ContentPlaceHolder1_ddldivision {
+    padding: 0px 0px 3px 5px;
+}
+        .form-group label{
+            font-size:16px !important;
+        }
     </style>
 
 </asp:Content>
@@ -100,7 +113,7 @@
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
-                <div class="row ">
+                <div class="row">
                     <div class="col-sm-4 col-md-4">
                         <h6 class="card-title fw-semibold mb-4">
                             <asp:Label ID="lblData" runat="server"></asp:Label></h6>
@@ -109,16 +122,26 @@
 
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-
-                    <div class="col-4">
-                        <div class="form-group row">
-                            <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
-                            <div class="col-sm-9" style="margin-left: -35px;">
-                                <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
-                            </div>
-                        </div>
-                    </div>
-
+                     <div class="row" style="margin-bottom:-30px;">
+     <div class="col-4">
+         <div class="form-group row">
+             <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
+             <div class="col-sm-9" style="margin-left: -35px;">
+                 <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="15px" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
+             </div>
+         </div>
+     </div>
+     <div class="col-4"></div>
+     <div class="col-4">
+         <div class="form-group row">
+             <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Division:</label>
+             <div class="col-sm-9">
+                 <asp:DropDownList ID="ddldivision" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddldivision_SelectedIndexChanged" class="form-control  select-form select2" Style="width: 100% !important; height: 25px;">
+                 </asp:DropDownList>
+             </div>
+         </div>
+     </div>
+ </div>
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                         <Columns>
@@ -162,21 +185,27 @@
                                 <ItemStyle HorizontalAlign="center" Width="28%" />
                             </asp:BoundField>--%>
 
-                            <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
-                                <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
-
-                                <ItemStyle HorizontalAlign="center" Width="28%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="ContractorName" HeaderText="Contractor Name">
-                                <HeaderStyle HorizontalAlign="center" Width="32%" CssClass="headercolor" />
-
-                                <ItemStyle HorizontalAlign="center" Width="32%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="ApplicantFor" HeaderText="Applicant Type">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="Owner Name">
+    <HeaderStyle Width="35%" CssClass="headercolor textjustify" />
+    <ItemStyle Width="35%" CssClass="owner-name" />
+    <ItemTemplate>
+        <asp:Label ID="lblOwnerName" runat="server" Text='<%# Eval("OwnerName") %>' CssClass="break-text"></asp:Label>
+    </ItemTemplate>
+</asp:TemplateField>
+                           <asp:TemplateField HeaderText="Contractor Name">
+    <HeaderStyle Width="32%" CssClass="headercolor textjustify" />
+    <ItemStyle Width="35%" CssClass="owner-name" />
+    <ItemTemplate>
+        <asp:Label ID="lblContractorName" runat="server" Text='<%# Eval("ContractorName") %>' CssClass="break-text"></asp:Label>
+    </ItemTemplate>
+</asp:TemplateField>
+                            <asp:TemplateField HeaderText="Applicant Type">
+    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+    <ItemStyle HorizontalAlign="center" Width="15%" />
+    <ItemTemplate>
+        <asp:Label ID="lblApplicantType" runat="server" Text='<%# Eval("ApplicantFor") %>' CssClass="break-text-10"></asp:Label>
+    </ItemTemplate>
+</asp:TemplateField>
                             <asp:BoundField DataField="Installationfor" HeaderText="Intallation Type">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
 
@@ -241,5 +270,74 @@
                Search_Gridview(document.getElementById('txtSearch'));
            }
        }
-</script>
+   </script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll('.break-text');
+
+            elements.forEach(function (element) {
+                let text = element.innerText;
+                let formattedText = '';
+                let currentIndex = 0;
+
+                while (currentIndex < text.length) {
+                    // Take a chunk of up to 20 characters
+                    let chunk = text.slice(currentIndex, currentIndex + 20);
+
+                    if (chunk.length < 20) {
+                        // If the chunk is less than 20 characters, add it without breaking
+                        formattedText += chunk;
+                        break; // Exit the loop as we've processed the remaining text
+                    }
+
+                    // For chunks of 20 or more characters, try to break at the last whitespace
+                    let breakIndex = chunk.lastIndexOf(" ");
+                    if (breakIndex !== -1) {
+                        // If there's a whitespace, break at that space
+                        formattedText += chunk.slice(0, breakIndex) + '<br>';
+                        currentIndex += breakIndex + 1; // Move past the space
+                    } else {
+                        // Otherwise, break at the 20-character limit
+                        formattedText += chunk + '<br>';
+                        currentIndex += 20;
+                    }
+                }
+
+                element.innerHTML = formattedText.trim(); // Remove any trailing <br>
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll('.break-text-10');
+
+            elements.forEach(function (element) {
+                let text = element.innerText;
+                let formattedText = '';
+                let currentIndex = 0;
+
+                while (currentIndex < text.length) {
+                    // Get a 30-character substring
+                    let chunk = text.slice(currentIndex, currentIndex + 30);
+
+                    // Find the nearest whitespace in this chunk
+                    let breakIndex = chunk.lastIndexOf(" ");
+
+                    // If a whitespace is found, break at that whitespace
+                    if (breakIndex !== -1) {
+                        formattedText += chunk.slice(0, breakIndex) + '<br>';
+                        currentIndex += breakIndex + 1; // Move past the whitespace
+                    } else {
+                        // If no whitespace is found, break at the 30-character limit
+                        formattedText += chunk + '<br>';
+                        currentIndex += 30;
+                    }
+                }
+
+                // Apply the formatted text with <br> to the element's innerHTML
+                element.innerHTML = formattedText.trim(); // Remove any trailing <br>
+            });
+        });
+    </script>
+
 </asp:Content>
