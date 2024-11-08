@@ -65,7 +65,7 @@ namespace CEIHaryana.Industry_Master
                     throw new Exception("Please Upload Pdf Files 2 Mb Only");
                 }
                 CEI.UpdateSLD(SldId, filePathInfo, SiteOwnerId);
-                string script = $"alert('SLD Document Re submitted successfully.'); window.location='SiteOwnerDashboard.aspx';";
+                string script = $"alert('SLD Document Re submitted successfully.'); window.location='SLD_Status.aspx';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
             }
             catch (Exception ex)
