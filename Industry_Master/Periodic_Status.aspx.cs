@@ -89,7 +89,7 @@ namespace CEIHaryana.Industry_Master
                     if (LblInspectionType.Text == "New")
                     {
 
-                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                        Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
                     }
                     else
                     {

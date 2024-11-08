@@ -214,7 +214,7 @@ namespace CEIHaryana.Industry
                             Session["Serviceid_Sld_Indus"] = inputObject.serviceid;
                             Session["projectid_Sld_Indus"] = inputObject.projectid;
                             Session["district_Temp"] = inputObject.project_site_district;
-                            Response.Redirect("/Industry/SLD_request.aspx", false);
+                            Response.Redirect("/Industry_Master/SLD_request.aspx", false);
                         }
                         else
                         {

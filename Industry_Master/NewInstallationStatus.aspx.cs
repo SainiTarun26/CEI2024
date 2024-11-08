@@ -90,14 +90,14 @@ namespace CEIHaryana.Industry_Master
                 }
                 else if (e.CommandName == "Print")
                 {
-                    Response.Redirect("/Industry_Master/InspectionRequestPrint_Industry.aspx");
+                    Response.Redirect("/Industry_Master/ForNewInspectionRequestPrintForm.aspx");
                 }
                 else if (e.CommandName == "Print1")
                 {
                     if (LblInspectionType.Text == "New")
                     {
 
-                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                        Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
                     }
                     else
                     {
