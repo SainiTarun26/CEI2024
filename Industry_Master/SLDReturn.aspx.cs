@@ -69,7 +69,7 @@ namespace CEIHaryana.Industry_Master
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
             }
             catch (Exception ex)
-            {
+            { 
                 string errorMessage = ex.Message;
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
             }
