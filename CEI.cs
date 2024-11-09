@@ -7383,6 +7383,36 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetReturnedTestReport", Id);
         }
+        public int UploadSldDocument_Industries(string SiteOwnerID, string Path, string Createdby, string SiteOwnerAddress, string OwnerName, string UserType, string District, string serviceid)
+        {
+            // Prepare the output parameter
+            SqlParameter outputParam = new SqlParameter("@InsertedSLD_ID", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+
+            // Execute the stored procedure and pass the output parameter
+            DBTask.ExecuteNonQuery(
+                ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+                CommandType.StoredProcedure,
+                "Sp_InsertSdlData_Industries",
+                new SqlParameter("@SiteOwnerID", SiteOwnerID),
+                new SqlParameter("@Path", Path),
+                new SqlParameter("@Createdby", Createdby),
+                new SqlParameter("@SiteOwnerAddress", SiteOwnerAddress),
+                new SqlParameter("@OwnerName", OwnerName),
+                new SqlParameter("@UserType", UserType),
+                new SqlParameter("@District", District),
+                new SqlParameter("@ServiceId", serviceid),
+                outputParam  // Include the output parameter
+            );
+
+            // Retrieve the output parameter value
+            int insertedSLD_ID = (int)outputParam.Value;
+
+            // Return the inserted SLD_ID
+            return insertedSLD_ID;
+        }
     }
 }
 

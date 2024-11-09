@@ -174,6 +174,10 @@ namespace CEIHaryana.Industry
                         Session["district_Temp"] = null;
 
 
+                        Session["Serviceid_New_Temp"] = null;
+
+                        Session["projectid_New_Temp"] = null;
+
                         Session["SiteOwnerId_Temp"] = inputObject.pannumber;
                         Session["Serviceid_Temp"] = inputObject.serviceid;
                         txtPAN.Text = inputObject.pannumber;
@@ -197,6 +201,10 @@ namespace CEIHaryana.Industry
                         {
                             Session["SiteOwnerId_Sld_Indus"] = inputObject.pannumber;
                             Session["district_Temp"] = inputObject.project_site_district;
+
+                            Session["Serviceid_New_Temp"] = inputObject.serviceid;
+                            Session["projectid_New_Temp"] = inputObject.projectid;
+
                             Response.Redirect("/Industry_Master/ForNewInstallation.aspx", false);
 
                         }
@@ -214,7 +222,7 @@ namespace CEIHaryana.Industry
                             Session["Serviceid_Sld_Indus"] = inputObject.serviceid;
                             Session["projectid_Sld_Indus"] = inputObject.projectid;
                             Session["district_Temp"] = inputObject.project_site_district;
-                            Response.Redirect("/Industry_Master/SLD_request.aspx", false);
+                            Response.Redirect("/Industry/SLD_request.aspx", false);
                         }
                         else
                         {
