@@ -148,10 +148,21 @@ namespace CEIHaryana.SiteOwnerPages
                         UploadInstallaionInvoice.Visible = true;
                         UploadManufacturingReport.Visible = true;
                     }
+                    var returnedReason = DataBinder.Eval(e.Row.DataItem, "ReturnedReason") as string;
+
+                    var fileUploadInstallaionInvoice = e.Row.FindControl("FileUploadInstallaionInvoice") as FileUpload;
+                    var fileUploadManufacturingReport = e.Row.FindControl("FileUploadManufacturingReport") as FileUpload;
+
+                    if (fileUploadInstallaionInvoice != null && fileUploadManufacturingReport != null)
+                    {
+                        fileUploadInstallaionInvoice.Visible = !string.IsNullOrEmpty(returnedReason);
+                        fileUploadManufacturingReport.Visible = !string.IsNullOrEmpty(returnedReason);
+                    }
                 }
+
             }
             catch (Exception ex)
-            {}
+            { }
         }
         protected void btnBack_Click(object sender, EventArgs e)
         {
@@ -238,6 +249,21 @@ namespace CEIHaryana.SiteOwnerPages
                
             }
             catch (Exception ex) { }
+        }
+
+        protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                var returnedReason = DataBinder.Eval(e.Row.DataItem, "ReturnedReason") as string;
+
+                var fileUpload = e.Row.FindControl("FileUpload1") as FileUpload;
+
+                if (fileUpload != null)
+                {
+                    fileUpload.Visible = !string.IsNullOrEmpty(returnedReason);
+                }
+            }
         }
     }
 }
