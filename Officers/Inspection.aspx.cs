@@ -407,7 +407,7 @@ namespace CEIHaryana.Officers
 
                     if (RadioButtonList2.SelectedValue != "" && RadioButtonList2.SelectedValue != null)
                     {
-                        //AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" : "Return";
+                        AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" : "Return";
                         Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
 
                         string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
@@ -740,7 +740,8 @@ namespace CEIHaryana.Officers
                                     {
                                         if (ddlReasonType.SelectedItem.Value != null ) 
                                         {
-                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Inspection Returned to Site Owner');", true);
+                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Inspection Returned to Site Owner'); window.location='NewApplications.aspx'", true);
+                                            
                                         }
                                         //if (ddlReasonType.SelectedItem.Value == "1") //Based On Documents Returned 
                                         //{
