@@ -26,29 +26,32 @@ namespace CEIHaryana.Industry_Master
                    
                     bool distExist = false;
 
-                    DataSet ds1 = CEI.checkDistrict(ownerId,District);
+                    DataSet ds1 = CEI.checkDistrict(ownerId, District);
                     if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
                     {
                         distExist = true;
                         string statusType = ds1.Tables[0].Rows[0]["Status_type"].ToString();
-                        if(statusType == "Returned")
+                        if (statusType == "Returned")
                         {
                             BindGrid();
+                            //BindAdress();
+                        }
+                        if (statusType == "Approved" || statusType == "Rejected")
+                        {
                             BindAdress();
                         }
+
                         else
                         {
                             Response.Redirect("SLD_Status.aspx");
                         }
-                        
+
                     }
                     else
                     {
-                        BindGrid();
+
                         BindAdress();
                     }
-                    //BindGrid();
-                    //BindAdress();
                 }
                 else
                 {

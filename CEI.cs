@@ -6355,7 +6355,7 @@ string CreatedBy, string TotalCapacity, string MaxVoltage, int InspectID)
 
         public DataSet checkDistrict(string PanNumber, string District)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckDistrictSld", PanNumber, District);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckDistrictSld_Industy", PanNumber, District);
         }
 
         public DataSet GetOwnerAdressForIndustry(string PANNumber, string District)
