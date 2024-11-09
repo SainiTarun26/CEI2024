@@ -63,6 +63,10 @@ namespace CEIHaryana.Industry_Master
             {
                 ID = Session["PrintInspectionID"].ToString();
             }
+            else if (Session["InspId"] != null && !string.IsNullOrEmpty(Session["InspId"].ToString()))
+            {
+                ID = Session["InspId"].ToString();
+            }
 
             if (!string.IsNullOrEmpty(ID))
             {

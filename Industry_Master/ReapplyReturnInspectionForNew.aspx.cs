@@ -1,24 +1,22 @@
-﻿using System;
+﻿using CEI_PRoject;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using CEI_PRoject;
-using Pipelines.Sockets.Unofficial.Arenas;
 
-namespace CEIHaryana.SiteOwnerPages
+namespace CEIHaryana.Industry_Master
 {
-    public partial class ReapplyReturnINspection : System.Web.UI.Page
+    public partial class ReapplyReturnInspectionForNew : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-        string InspectionID, ReturnType;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                if (Session["InspectionId"] != null && !string.IsNullOrEmpty(Session["InspectionId"].ToString()))
+                if (Session["InspId"] != null && !string.IsNullOrEmpty(Session["InspId"].ToString()))
                 {
                     GetInspectionDetails();
                     GridToViewTRinMultipleCaseNew();
@@ -28,14 +26,15 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch (Exception ex)
             { }
+
         }
         private void GetInspectionDetails()
         {
             try
             {
-                InspectionID = Session["InspectionId"].ToString();
+                ID = Session["InspId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.GetInspectionReport(InspectionID);
+                ds = CEI.GetInspectionReport_Industry(ID);
 
                 txtInspectionId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
                 txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
@@ -47,21 +46,6 @@ namespace CEIHaryana.SiteOwnerPages
 
                 txttransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                 txttransactionDate.Text = ds.Tables[0].Rows[0]["TransctionDate"].ToString();
-                ReturnType = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
-
-                Session["ReturnType"] = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
-
-                if (ReturnType != null && ReturnType == "1")
-                {
-                    Grid_MultipleInspectionTR.Columns[6].Visible = false; 
-                    Grid_MultipleInspectionTR.Columns[7].Visible = false; 
-                    Grid_MultipleInspectionTR.Columns[8].Visible = false;
-                }
-                else if (ReturnType != null && ReturnType == "2")
-                {
-                    grd_Documemnts.Columns[3].Visible = false; 
-                    grd_Documemnts.Columns[4].Visible = false;
-                }
 
             }
             catch (Exception ex)
@@ -71,8 +55,8 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                InspectionID = Session["InspectionId"].ToString();
-                DataSet dsVC = CEI.GetDetailsToViewTRinMultipleCaseNew(InspectionID);
+                string ID = Session["InspId"].ToString();
+                DataSet dsVC = CEI.GetDetailsToViewTRinMultipleCaseNew_Industry(ID);
 
                 if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                 {
@@ -94,9 +78,9 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                InspectionID = Session["InspectionId"].ToString();
+                ID = Session["InspId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.ViewDocuments(InspectionID);
+                ds = CEI.ViewDocuments_ForNewIndustry(ID);
                 if (ds.Tables.Count > 0)
                 {
                     grd_Documemnts.DataSource = ds;
@@ -118,9 +102,9 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                InspectionID = Session["InspectionId"].ToString();
+                ID = Session["InspId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.GetInspectionReport(InspectionID);
+                ds = CEI.GetInspectionReport_Industry(ID);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {
@@ -138,6 +122,7 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch { }
         }
+
         protected void Grid_MultipleInspectionTR_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
@@ -174,18 +159,18 @@ namespace CEIHaryana.SiteOwnerPages
                         fileUploadInstallaionInvoice.Visible = !string.IsNullOrEmpty(returnedReason);
                         fileUploadManufacturingReport.Visible = !string.IsNullOrEmpty(returnedReason);
                     }
-
-                    
                 }
 
             }
             catch (Exception ex)
             { }
         }
+
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Officers/ReturnInspections.aspx", false);
+            Response.Redirect("/Industry_Master/NewInstallationStatus.aspx", false);
         }
+
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             {
@@ -203,6 +188,7 @@ namespace CEIHaryana.SiteOwnerPages
                 { }
             }
         }
+
         protected void Grid_MultipleInspectionTR_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string Count = string.Empty;
@@ -219,7 +205,7 @@ namespace CEIHaryana.SiteOwnerPages
                 IntimationId = LblIntimationId.Text.Trim();
 
                 DataSet ds = new DataSet();
-                ds = CEI.GetData(LblInstallationName.Text.Trim(), IntimationId, Count);
+                ds = CEI.GetData_Industry(LblInstallationName.Text.Trim(), IntimationId, Count);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     if (LblInstallationName.Text.Trim() == "Line")
@@ -260,144 +246,13 @@ namespace CEIHaryana.SiteOwnerPages
 
         }
 
-        protected void btnSubmit_Click(object sender, EventArgs e)
+        protected void btnReSubmit_Click(object sender, EventArgs e)
         {
             try
             {
-                if (Convert.ToString(Session["InspectionId"]) != null && Convert.ToString(Session["InspectionId"]) != "")
-                {
-                    InspectionID = Session["InspectionId"].ToString();
 
-                    if (INgridfileuploadValidation()) //check validation for document
-                    {
-                        CEI.UpdateReturnedInspectionReport(InspectionID);
-                    }
-                    else
-                    {
-                        Response.Write("<script>alert('Please upload all required documents for rows with a Returned Reason.');</script>");
-                    }
-
-                }
             }
             catch (Exception ex) { }
-        }
-
-        //private void INgrd_DocumemntscheckfileuploadValidation()
-        //{
-        //    foreach (GridViewRow row in grd_Documemnts.Rows)
-        //    {
-        //        string returnedReason = (row.FindControl("ReturnedReason") as Label)?.Text;
-        //        FileUpload fileUploadControl = row.FindControl("FileUpload1") as FileUpload;
-
-        //        if (!string.IsNullOrEmpty(returnedReason) && (fileUploadControl == null || !fileUploadControl.HasFile))
-        //        {
-        //            Response.Write("<script>alert('Please upload a file for rows with a Returned Reason.');</script>");
-        //            return;
-        //        }
-        //    }
-        //}
-
-        //private void INGrid_MultipleInspectionTRTocheckfileuploadValidation()
-        //{
-        //    foreach (GridViewRow row in Grid_MultipleInspectionTR.Rows)
-        //    {
-        //        string returnedReason = (row.FindControl("ReturnedReason") as Label)?.Text;
-        //        FileUpload fileUploadInvoice = row.FindControl("FileUploadInstallaionInvoice") as FileUpload;
-        //        FileUpload fileUploadReport = row.FindControl("FileUploadManufacturingReport") as FileUpload;
-
-        //        if (!string.IsNullOrEmpty(returnedReason) &&
-        //            ((fileUploadInvoice == null || !fileUploadInvoice.HasFile) ||
-        //             (fileUploadReport == null || !fileUploadReport.HasFile)))
-        //        {
-
-        //            Response.Write("<script>alert('Please upload all required documents for rows with a Returned Reason.');</script>");
-        //            return;
-        //        }
-        //    }
-        //}
-
-        private bool INgridfileuploadValidation()
-        {
-            int flag = 0;
-            if (Session["ReturnType"] != null && Session["ReturnType"] == "1")
-            {
-                foreach (GridViewRow row in grd_Documemnts.Rows)
-                {
-                    string returnedReason = (row.FindControl("ReturnedReason") as Label)?.Text;
-                    FileUpload fileUploadControl = row.FindControl("FileUpload1") as FileUpload;
-
-                    if (!string.IsNullOrEmpty(returnedReason) && (fileUploadControl == null || !fileUploadControl.HasFile))
-                    {
-                        flag = 1;
-                        break;
-                    }
-                }
-            }
-            else
-            if (Convert.ToString(Session["ReturnType"]) != null && Convert.ToString(Session["ReturnType"]) == "2")
-            {
-                foreach (GridViewRow row in Grid_MultipleInspectionTR.Rows)
-                {
-                    string returnedReason = (row.FindControl("ReturnedReason") as Label)?.Text;
-                    FileUpload fileUploadInvoice = row.FindControl("FileUploadInstallaionInvoice") as FileUpload;
-                    FileUpload fileUploadReport = row.FindControl("FileUploadManufacturingReport") as FileUpload;
-
-                    if (!string.IsNullOrEmpty(returnedReason) &&
-                        ((fileUploadInvoice == null || !fileUploadInvoice.HasFile) ||
-                         (fileUploadReport == null || !fileUploadReport.HasFile)))
-                    {
-                        flag = 1;
-                        break;
-                    }
-                }
-            }
-            else
-            if (Session["ReturnType"] != null && Session["ReturnType"] == "3")
-            {
-                foreach (GridViewRow row in Grid_MultipleInspectionTR.Rows)
-                {
-                    string returnedReason = (row.FindControl("ReturnedReason") as Label)?.Text;
-                    FileUpload fileUploadInvoice = row.FindControl("FileUploadInstallaionInvoice") as FileUpload;
-                    FileUpload fileUploadReport = row.FindControl("FileUploadManufacturingReport") as FileUpload;
-
-                    if (!string.IsNullOrEmpty(returnedReason) &&
-                        ((fileUploadInvoice == null || !fileUploadInvoice.HasFile) ||
-                         (fileUploadReport == null || !fileUploadReport.HasFile)))
-                    {
-
-                        flag = 1;
-                        break;
-                    }
-                }
-                foreach (GridViewRow row in Grid_MultipleInspectionTR.Rows)
-                {
-                    string returnedReason = (row.FindControl("ReturnedReason") as Label)?.Text;
-                    FileUpload fileUploadInvoice = row.FindControl("FileUploadInstallaionInvoice") as FileUpload;
-                    FileUpload fileUploadReport = row.FindControl("FileUploadManufacturingReport") as FileUpload;
-
-                    if (!string.IsNullOrEmpty(returnedReason) &&
-                        ((fileUploadInvoice == null || !fileUploadInvoice.HasFile) ||
-                         (fileUploadReport == null || !fileUploadReport.HasFile)))
-                    {
-
-                        flag = 1;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                flag = 1;
-            }
-
-            if (flag == 1)
-            {
-                return false;
-            }
-            else 
-            {
-                return true;
-            }
         }
 
         protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)

@@ -1824,6 +1824,7 @@
     <Content Include="Industry_Master\Periodic_Status.aspx" />
     <Content Include="Industry_Master\ProcessInspectionRenewalCart_Industries.aspx" />
     <Content Include="Industry_Master\RatingOfInstallations_Industry.aspx" />
+    <Content Include="Industry_Master\ReapplyReturnInspectionForNew.aspx" />
     <Content Include="Industry_Master\SLDReturn.aspx" />
     <Content Include="Industry_Master\SLD_request.aspx" />
     <Content Include="Industry_Master\SLD_Status.aspx" />
@@ -2660,6 +2661,13 @@
     </Compile>
     <Compile Include="Industry_Master\RatingOfInstallations_Industry.aspx.designer.cs">
       <DependentUpon>RatingOfInstallations_Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\ReapplyReturnInspectionForNew.aspx.cs">
+      <DependentUpon>ReapplyReturnInspectionForNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\ReapplyReturnInspectionForNew.aspx.designer.cs">
+      <DependentUpon>ReapplyReturnInspectionForNew.aspx</DependentUpon>
     </Compile>
     <Compile Include="Industry_Master\SLD.Master.cs">
       <DependentUpon>SLD.Master</DependentUpon>

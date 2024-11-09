@@ -86,7 +86,15 @@ namespace CEIHaryana.Industry_Master
                 }
                 if (e.CommandName == "Select")
                 {
-                    Response.Redirect("/Industry_Master/NewInspectionDetails.aspx");
+                    if (lblApproval.Text.Trim() == "Returned")
+                    {
+                        Response.Redirect("/Industry_Master/ReapplyReturnInspectionForNew.aspx");
+
+                    }
+                    else
+                    {
+                        Response.Redirect("/Industry_Master/NewInspectionDetails.aspx");
+                    }
                 }
                 else if (e.CommandName == "Print")
                 {

@@ -460,7 +460,7 @@ namespace CEIHaryana.Officers
 
                                                     if (LabelRowId != null && !string.IsNullOrEmpty(txt_RemarksforOwnerDoc.Text))
                                                     {
-                                                        CEI.updateReturnRemarksOnBasesOnChecklistDocuments(ID, StaffId, LabelRowId.Text, txt_RemarksforOwnerDoc.Text);
+                                                        CEI.updateReturnRemarksOnBasesOnChecklistDocuments(ID, StaffId, LabelRowId.Text, txt_RemarksforOwnerDoc.Text, ddlReasonType.SelectedItem.Value);
                                                     }
                                                 }
                                             }
@@ -485,7 +485,7 @@ namespace CEIHaryana.Officers
 
                                                     if (Labelid != null && !string.IsNullOrEmpty(txtRemarks.Text))
                                                     {
-                                                        CEI.updateReturnRemarksOnBasesOfTrDocuments(ID, StaffId, LblIntimationId.Text, Labelid.Text, txtRemarks.Text);
+                                                        CEI.updateReturnRemarksOnBasesOfTrDocuments(ID, StaffId, LblIntimationId.Text, Labelid.Text, txtRemarks.Text, ddlReasonType.SelectedItem.Value);
                                                     }
                                                 }
                                             }
@@ -557,7 +557,7 @@ namespace CEIHaryana.Officers
 
                                                         if (LabelRowId != null && !string.IsNullOrEmpty(txt_RemarksforOwnerDoc.Text))
                                                         {
-                                                            CEI.updateReturnRemarksOnBasesOnChecklistDocuments(ID, StaffId, LabelRowId.Text, txt_RemarksforOwnerDoc.Text);
+                                                            CEI.updateReturnRemarksOnBasesOnChecklistDocuments(ID, StaffId, LabelRowId.Text, txt_RemarksforOwnerDoc.Text, ddlReasonType.SelectedItem.Value);
                                                         }
                                                     }
                                                 }
@@ -574,7 +574,7 @@ namespace CEIHaryana.Officers
 
                                                         if (Labelid != null && !string.IsNullOrEmpty(txtRemarks.Text))
                                                         {
-                                                            CEI.updateReturnRemarksOnBasesOfTrDocuments(ID, StaffId, LblIntimationId.Text, Labelid.Text, txtRemarks.Text);
+                                                            CEI.updateReturnRemarksOnBasesOfTrDocuments(ID, StaffId, LblIntimationId.Text, Labelid.Text, txtRemarks.Text, ddlReasonType.SelectedItem.Value);
                                                         }
                                                     }
                                                 }

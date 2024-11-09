@@ -7301,7 +7301,7 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
         }
 
         public void updateReturnRemarksOnBasesOfTrDocuments(string ID, string StaffId, string IntimationId, string Rowid,
-                                     string ReasonForReturn)
+                               string ReasonForReturn, string ReturnedBasedOnDocumentValue)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -7318,6 +7318,7 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
                         cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
                         cmd.Parameters.AddWithValue("@Rowid", Rowid);
                         cmd.Parameters.AddWithValue("@ReasonForReturn ", ReasonForReturn);
+                        cmd.Parameters.AddWithValue("@ReturnedBasedOnDocumentValue ", ReturnedBasedOnDocumentValue);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -7338,7 +7339,7 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
         }
 
         public void updateReturnRemarksOnBasesOnChecklistDocuments(string ID, string StaffId, string Rowid,
-                                            string ReasonForReturn)
+                                     string ReasonForReturn, string ReturnedBasedOnDocumentValue)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -7353,6 +7354,8 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
                         cmd.Parameters.AddWithValue("@StaffId", StaffId);
                         cmd.Parameters.AddWithValue("@Rowid", Rowid);
                         cmd.Parameters.AddWithValue("@ReasonForReturn ", ReasonForReturn);
+
+                        cmd.Parameters.AddWithValue("@ReturnedBasedOnDocumentValue ", ReturnedBasedOnDocumentValue);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -7412,6 +7415,30 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
 
             // Return the inserted SLD_ID
             return insertedSLD_ID;
+        }
+        public DataSet GetInspectionReport_Industry(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionReport_Industry", Id);
+        }
+
+       public DataSet GetDetailsToViewTRinMultipleCaseNew_Industry(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewMultipleInspectionTR_Industry", InspectionId);
+        }
+
+       public DataSet ViewDocuments_ForNewIndustry(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDocuments_ForNewIndustry", InspectionId);
+        }
+
+
+        //public DataSet GetData_Industry(string Inspectiontype, string IntimationId, string Count)
+        //{
+        //    return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataForInspection_Industry", Inspectiontype, IntimationId, Count);
+        //}
+        public DataSet UpdateReturnedInspectionReport(string Id) ///Resubmit Returned inspection
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateReturnedInspectionReport", Id);
         }
     }
 }
