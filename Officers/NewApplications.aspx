@@ -162,6 +162,11 @@
                                     <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            
+                            <asp:BoundField DataField="RequestStatus" HeaderText="Status">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="TypeOfInspection" HeaderText="Inspection Type">
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="28%" />
@@ -183,10 +188,6 @@
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="RequestDate" HeaderText="Request Date">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="RequestStatus" HeaderText="Status">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>

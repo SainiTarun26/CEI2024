@@ -71,7 +71,15 @@ namespace CEIHaryana.Officers
                 Session["InspectionId"] = id;
                 if (e.CommandName == "Select")
                 {
-                    Response.Redirect("/Officers/Inspection.aspx", false);
+                    if (lblApproval.Text.Trim() =="New")
+                    {
+
+                        Response.Redirect("/Officers/Inspection.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("/Officers/ReturnedInspections.aspx", false);
+                    }
                 }
             }
         }

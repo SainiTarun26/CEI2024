@@ -221,12 +221,17 @@ namespace CEIHaryana.Officers
                         ApprovalRequired.Visible = false;
                         btnSubmit.Visible = false;
                         RejectionBasis.Visible = false;
-
-                        // Rejection.Visible = true;
-                        //txtRejected.Text = ds.Tables[0].Rows[0]["ReturnRemarks"].ToString();
+                        
                         ddlReview.Attributes.Add("disabled", "true");
-                        //txtRejected.Attributes.Add("disabled", "true");
-                        //txtRejected.ReadOnly = true;
+
+                        divTestReportAttachment.Visible = false;
+
+                        
+
+                        //Grid_MultipleInspectionTR.Columns[8].Visible = true;
+
+                        //grd_Documemnts.Columns[3].Visible = true;
+
 
                     }
                 }

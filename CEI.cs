@@ -7299,6 +7299,90 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
 
             return result;
         }
+
+        public void updateReturnRemarksOnBasesOfTrDocuments(string ID, string StaffId, string IntimationId, string Rowid,
+                                     string ReasonForReturn)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    using (SqlCommand cmd = new SqlCommand("sp_InspectionReturnRemarksOnBasesOfTrDocuments", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ID", ID);
+                        cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                        cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
+                        cmd.Parameters.AddWithValue("@Rowid", Rowid);
+                        cmd.Parameters.AddWithValue("@ReasonForReturn ", ReasonForReturn);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+
+        }
+
+        public DataTable InspectionAccepted(string ID, string StaffId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionAccepted", ID, StaffId);
+        }
+
+        public void updateReturnRemarksOnBasesOnChecklistDocuments(string ID, string StaffId, string Rowid,
+                                            string ReasonForReturn)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand("sp_InspectionReturnRemarksOnBasesOfChecklistDocuments", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ID", ID);
+                        cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                        cmd.Parameters.AddWithValue("@Rowid", Rowid);
+                        cmd.Parameters.AddWithValue("@ReasonForReturn ", ReasonForReturn);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                { }
+            }
+
+        }
+        //return inspection 9 nov 2024
+        public DataSet SelectRemarksDocumentsattachedinTR(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GiveRemarksDocumentsattachedinTR", InspectionId);
+        }
+        public DataTable SiteOwnerReturnedInspection(string SiteOwnerId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerReturnedInspection", SiteOwnerId);
+        }
+
+        public DataSet GetInspectionReport(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionReport", Id);
+        }
+        public DataSet ViewReturnDocuments(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetOfficersReturnDocumentHistory", InspectionId);
+        }
+        public DataSet GetReturnedTestReport(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetReturnedTestReport", Id);
+        }
     }
 }
 
