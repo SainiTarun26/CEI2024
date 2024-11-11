@@ -630,8 +630,9 @@ namespace CEIHaryana.Industry_Master
                             {
 
                                 // string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
-                                Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(generatedIdCombinedDetails), "Submit");
-
+                                //commented on 10 nov 2024 aslam 
+                                //Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(generatedIdCombinedDetails), "Submit");
+                                Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(generatedIdCombinedDetails), "Submit", Session["projectid_pd_Indus"].ToString(), Session["Serviceid_pd_Indus"].ToString(), Session["SiteOwnerId_Industry"].ToString());
                                 if (ApiPostformatresult.PremisesType == "Industry")
                                 {
                                     // string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);

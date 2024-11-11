@@ -1958,6 +1958,8 @@
     <Content Include="SiteOwnerPages\InspectionRequestPrint_Industry.aspx" />
     <Content Include="SiteOwnerPages\InspectionsDetails.aspx" />
     <Content Include="SiteOwnerPages\Inspection_Industry.aspx" />
+    <Content Include="SiteOwnerPages\LiftDetails.aspx" />
+    <Content Include="SiteOwnerPages\LiftSiteDetails.aspx" />
     <Content Include="SiteOwnerPages\PaymentPage.aspx" />
     <Content Include="SiteOwnerPages\PendingPayment.aspx" />
     <Content Include="SiteOwnerPages\PeriodicRenewal.aspx" />
@@ -3065,6 +3067,20 @@
     </Compile>
     <Compile Include="SiteOwnerPages\Inspection_Industry.aspx.designer.cs">
       <DependentUpon>Inspection_Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\LiftDetails.aspx.cs">
+      <DependentUpon>LiftDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\LiftDetails.aspx.designer.cs">
+      <DependentUpon>LiftDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\LiftSiteDetails.aspx.cs">
+      <DependentUpon>LiftSiteDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\LiftSiteDetails.aspx.designer.cs">
+      <DependentUpon>LiftSiteDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\PaymentPage.aspx.cs">
       <DependentUpon>PaymentPage.aspx</DependentUpon>

@@ -192,6 +192,12 @@ namespace CEIHaryana.Industry
                         Session["projectid_Sld_Indus"] = null;
 
 
+                        Session["SiteOwnerId_Industry"] = null;
+                        Session["Serviceid_pd_Indus"] = null;
+                        Session["projectid_pd_Indus"] = null;
+
+
+
 
                         Session["projectid_Temp"] = inputObject.projectid;
 
@@ -213,6 +219,8 @@ namespace CEIHaryana.Industry
                         {
                             Session["SiteOwnerId_Industry"] = inputObject.pannumber;
                             Session["district_Temp"] = inputObject.project_site_district;
+                            Session["Serviceid_pd_Indus"] = inputObject.serviceid;
+                            Session["projectid_pd_Indus"] = inputObject.projectid;
                             Response.Redirect("/Industry_Master/PeriodicRenewal_Industry.aspx", false);
                         }
                         //sld 

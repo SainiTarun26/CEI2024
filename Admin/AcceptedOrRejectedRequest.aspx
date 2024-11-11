@@ -100,6 +100,15 @@
     margin-left: 0px !important;
     height: 30px !important;
 }
+        th.textjustify {
+    text-align: justify;
+}
+        td.textjustify {
+    text-align: justify;
+}
+        td.owner-name {
+    text-align: justify;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -180,30 +189,30 @@
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="28%" />
                             </asp:BoundField>--%>
-                           <asp:TemplateField HeaderText="Owner&#60;br /&#62;Name">
-    <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
-    <ItemStyle HorizontalAlign="center" Width="28%" />
+                           <asp:TemplateField HeaderText="Owner Name">
+    <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor textjustify" />
+    <ItemStyle HorizontalAlign="center" Width="28%"  CssClass="textjustify" />
     <ItemTemplate>
         <asp:Label ID="lblOwnerName" runat="server" Text='<%# Eval("OwnerName") %>' CssClass="break-text-10"></asp:Label>
     </ItemTemplate>
 </asp:TemplateField>
 
 
-                            <asp:TemplateField HeaderText="Contractor&#60;br /&#62;Name">
-    <HeaderStyle HorizontalAlign="center" Width="32%" CssClass="headercolor" />
-    <ItemStyle HorizontalAlign="center" Width="32%" />
+                            <asp:TemplateField HeaderText="Contractor Name">
+    <HeaderStyle HorizontalAlign="center" Width="32%" CssClass="headercolor textjustify" />
+    <ItemStyle HorizontalAlign="center" Width="32%" cssclass="textjustify"/>
     <ItemTemplate>
         <asp:Label ID="lblContractorName" runat="server" Text='<%# Eval("ContractorName") %>' CssClass="break-text-10"></asp:Label>
     </ItemTemplate>
 </asp:TemplateField>
 
-                            <asp:TemplateField HeaderText="Applicant&#60;br /&#62;Type">
+                          <%--  <asp:TemplateField HeaderText="Applicant&#60;br /&#62;Type">
     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
     <ItemStyle HorizontalAlign="center" Width="15%" />
     <ItemTemplate>
         <asp:Label ID="lblApplicantFor" runat="server" Text='<%# Eval("ApplicantFor") %>' CssClass="break-space"></asp:Label>
     </ItemTemplate>
-</asp:TemplateField>
+</asp:TemplateField>--%>
 
                            <asp:TemplateField HeaderText="Installation&#60;br /&#62;Type">
     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
@@ -289,9 +298,9 @@
 
                 while (currentIndex < text.length) {
                     // Take a chunk of up to 20 characters
-                    let chunk = text.slice(currentIndex, currentIndex + 20);
+                    let chunk = text.slice(currentIndex, currentIndex + 35);
 
-                    if (chunk.length < 20) {
+                    if (chunk.length < 35) {
                         // If the chunk is less than 20 characters, add it without breaking
                         formattedText += chunk;
                         break; // Exit the loop as we've processed the remaining text
@@ -306,7 +315,7 @@
                     } else {
                         // Otherwise, break at the 20-character limit
                         formattedText += chunk + '<br>';
-                        currentIndex += 20;
+                        currentIndex += 35;
                     }
                 }
 

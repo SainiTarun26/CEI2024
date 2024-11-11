@@ -7429,16 +7429,17 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
        public DataSet ViewDocuments_ForNewIndustry(string InspectionId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDocuments_ForNewIndustry", InspectionId);
-        }
-
-
-        //public DataSet GetData_Industry(string Inspectiontype, string IntimationId, string Count)
-        //{
-        //    return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataForInspection_Industry", Inspectiontype, IntimationId, Count);
-        //}
+        }       
         public DataSet UpdateReturnedInspectionReport(string Id) ///Resubmit Returned inspection
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateReturnedInspectionReport", Id);
+        }
+        //**
+        public DataSet GetSubDivisionMaster(string UtilityId = null, string WingId = null, string ZoneId = null, string CircleId = null, string DivisionId = null, string searchText = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSubDivisionMasterData", string.IsNullOrEmpty(UtilityId) ? (object)DBNull.Value : UtilityId,
+              string.IsNullOrEmpty(WingId) ? (object)DBNull.Value : WingId, string.IsNullOrEmpty(ZoneId) ? (object)DBNull.Value : ZoneId,
+              string.IsNullOrEmpty(CircleId) ? (object)DBNull.Value : CircleId, string.IsNullOrEmpty(DivisionId) ? (object)DBNull.Value : DivisionId, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
     }
 }

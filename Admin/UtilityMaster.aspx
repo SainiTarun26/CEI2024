@@ -311,7 +311,7 @@ table#GridView1{
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtUtilityName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Utility Name</asp:RequiredFieldValidator>
                             <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator26" Text="Please Select Utility name" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtUtilityName" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />--%>
                         </div>
-                        <div class="col-md-6" style="margin-top: 33px;">
+                        <div class="col-md-6" style="margin-top: 3%;">
                             <asp:Button type="submit" ID="btnSubmit" Style="height: 30px; padding-top: 1px;" TabIndex="22" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
 
                         </div>

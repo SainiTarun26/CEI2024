@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Media;
 
 namespace CEIHaryana.Admin
 {
@@ -21,7 +22,7 @@ namespace CEIHaryana.Admin
                 {
                     ddlPoweUtilityBind();
 
-
+                    GridBind();
 
                 }
             }
@@ -110,7 +111,7 @@ namespace CEIHaryana.Admin
             try
             {
                 string id = ddlCircle.SelectedValue.ToString();
-              
+
                 DataSet dsDivision = new DataSet();
                 dsDivision = CEI.GetDivisionName(id);
                 ddlDivision.DataSource = dsDivision;
@@ -119,7 +120,7 @@ namespace CEIHaryana.Admin
                 ddlDivision.DataBind();
                 ddlDivision.Items.Insert(0, new ListItem("Select", "0"));
                 dsDivision.Clear();
-                
+
             }
             catch
             {
@@ -129,47 +130,67 @@ namespace CEIHaryana.Admin
 
         protected void ddlUtility_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string UtilityId = ddlUtility.SelectedValue.ToString();
+           
             DdlWingBind();
+            GridBind();
+            
+
         }
 
         protected void ddlWing_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string WingId = ddlWing.SelectedValue.ToString();
+          if(ddlWing.SelectedValue == "0")
+            {
+                ddlWing.SelectedValue = "0";
+            }
             DdlZoneBind();
+            GridBind();
+           
 
         }
 
         protected void ddlZone_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string ZoneId = ddlZone.SelectedValue.ToString();
+            if(ddlZone.SelectedValue == "0")
+            {
+                ddlZone.SelectedValue = "0";
+            }
             DdlCircleBind();
+            GridBind();
+            
         }
 
-       
+
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-           
+
             string email = txtEmail.Text.Trim();
             if (email.Contains("@"))
             {
                 UserId = email.Split('@')[0];
             }
-          
+
             DataSet ds1 = CEI.checkEmail(email);
             if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
             {
-                
+
                 string script = $"alert('User with Email ID  {email}  already exists.');";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
 
             }
             else
             {
-               
+
 
                 CEI.InsertInSubDivisionMaster(txtSubDivision.Text.Trim(), txtEmail.Text.Trim(), txtPhone.Text.Trim(),
                     ddlUtility.SelectedValue, ddlWing.SelectedValue, ddlZone.SelectedValue, ddlCircle.SelectedValue, ddlDivision.SelectedValue, UserId);
                 Reset();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Sub-Division name Submitted Successfully !!!');  window.location='AdminMaster.aspx';", true);
+               ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Sub-Division name Submitted Successfully !!!');", true);
+                GridBind();
             }
         }
         protected void Reset()
@@ -194,12 +215,62 @@ namespace CEIHaryana.Admin
 
         protected void ddlCircle_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string CircleId = ddlCircle.SelectedValue.ToString();
+            if (ddlCircle.SelectedValue == "0")
+            {
+                ddlCircle.SelectedValue = "0";
+            }
             DdlDivisionBind();
-        }
+            GridBind();
+           }
 
         protected void ddlDivision_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string DivisionId = ddlDivision.SelectedValue.ToString();
+            if (ddlDivision.SelectedValue == "0")
+            {
+                ddlDivision.SelectedValue = "0";
+            }
             Session["DivisionId"] = ddlDivision.SelectedValue.ToString();
+            GridBind();
+}
+
+        private void GridBind()
+        {
+            try
+            {
+                string UtilityId = ddlUtility.SelectedValue.ToString();
+                string WingId = ddlWing.SelectedValue.ToString();
+                string ZoneId = ddlZone.SelectedValue.ToString();
+                string CircleId = ddlCircle.SelectedValue.ToString();
+                string DivisionId = ddlDivision.SelectedValue.ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.GetSubDivisionMaster(UtilityId, WingId, ZoneId, CircleId, DivisionId, txtSearch.Text);
+                if (ds.Tables.Count > 0)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                ds.Dispose();
+            }
+            catch (Exception ex)
+            {
+                //throw;
+            }
         }
+
+       
     }
+
+
+      
+    
 }

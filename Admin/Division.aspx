@@ -254,25 +254,27 @@
                 return (allow.indexOf(String.fromCharCode(k)) != -1);
             }
         </script>
-      <script type="text/javascript">
-          function validateAlphanumeric(event) {
-              var charCode = (event.which) ? event.which : event.keyCode;
-              // Allow alphabets (A-Z, a-z), all special characters, and control keys
-              if ((charCode >= 65 && charCode <= 90) || // Uppercase (A-Z)
-                  (charCode >= 97 && charCode <= 122) || // Lowercase (a-z)
-                  (charCode == 8 || charCode == 37 || charCode == 39 || charCode == 46) || // Backspace, Arrow keys, Delete
-                  (charCode >= 33 && charCode <= 47) || // Special characters like ! " # $ % & ' ( ) * + , - . /
-                  (charCode >= 58 && charCode <= 64) || // Special characters like : ; < = > ? @
-                  (charCode >= 91 && charCode <= 96) || // Special characters like [ \ ] ^ _
-                  (charCode >= 123 && charCode <= 126)) // Special characters like { | } ~
-              {
-                  return true;
-              } else {
-                  event.preventDefault();
-                  return false;
-              }
-          }
-      </script>
+    <script type="text/javascript">
+        function validateAlphanumeric(event) {
+            var charCode = (event.which) ? event.which : event.keyCode;
+
+            // Allow alphabets (A-Z, a-z), space, all special characters, and control keys
+            if ((charCode >= 65 && charCode <= 90) || // Uppercase (A-Z)
+                (charCode >= 97 && charCode <= 122) || // Lowercase (a-z)
+                (charCode == 32) || // Space
+                (charCode == 8 || charCode == 37 || charCode == 39 || charCode == 46) || // Backspace, Arrow keys, Delete
+                (charCode >= 33 && charCode <= 47) || // Special characters like ! " # $ % & ' ( ) * + , - . /
+                (charCode >= 58 && charCode <= 64) || // Special characters like : ; < = > ? @
+                (charCode >= 91 && charCode <= 96) || // Special characters like [ \ ] ^ _
+                (charCode >= 123 && charCode <= 126)) // Special characters like { | } ~
+            {
+                return true;
+            } else {
+                event.preventDefault();
+                return false;
+            }
+        }
+</script>
     <script type="text/javascript">
         function preventEnterSubmit(e) {
 
@@ -354,7 +356,7 @@
                             <label for="Division">
                                 Division Name<samp style="color: red"> * </samp>
                             </label>
-                      <asp:TextBox class="form-control" ID="txtDivisionName"  onkeydown="return preventEnterSubmit(event)" onKeyPress="return alphabetKey(event);" TabIndex="8" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                      <asp:TextBox class="form-control" ID="txtDivisionName"  onkeydown="return preventEnterSubmit(event)" onKeyPress="return validateAlphanumeric(event);" TabIndex="8" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                            
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtDivisionName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Division Name</asp:RequiredFieldValidator>
                         </div>

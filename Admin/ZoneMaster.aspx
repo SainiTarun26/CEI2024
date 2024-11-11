@@ -269,9 +269,11 @@
     <script type="text/javascript">
         function validateAlphanumeric(event) {
             var charCode = (event.which) ? event.which : event.keyCode;
-            // Allow alphabets (A-Z, a-z), all special characters, and control keys
+
+            // Allow alphabets (A-Z, a-z), space, all special characters, and control keys
             if ((charCode >= 65 && charCode <= 90) || // Uppercase (A-Z)
                 (charCode >= 97 && charCode <= 122) || // Lowercase (a-z)
+                (charCode == 32) || // Space
                 (charCode == 8 || charCode == 37 || charCode == 39 || charCode == 46) || // Backspace, Arrow keys, Delete
                 (charCode >= 33 && charCode <= 47) || // Special characters like ! " # $ % & ' ( ) * + , - . /
                 (charCode >= 58 && charCode <= 64) || // Special characters like : ; < = > ? @
@@ -284,7 +286,7 @@
                 return false;
             }
         }
-    </script>
+</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
@@ -334,7 +336,7 @@
                                 Zone Name
              <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtZoneName" onkeydown="return preventEnterSubmit(event)" onKeyPress="return alphabetKey(event);" TabIndex="8" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtZoneName" onkeydown="return preventEnterSubmit(event)" onKeyPress="return validateAlphanumeric(event);" TabIndex="8" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                              <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtZoneName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Zone Name</asp:RequiredFieldValidator>
                         </div>

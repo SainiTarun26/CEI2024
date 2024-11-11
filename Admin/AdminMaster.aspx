@@ -68,13 +68,13 @@
         .overview-box .text span {
             font-size: 15px !important;
             color: rgba(255, 255, 255, 0.6);
-            MARGIN-LEFT: 60PX;
+            MARGIN-LEFT: 81PX;
             FONT-WEIGHT: 400;
             COLOR: WHITE;
         }
 
         .col-md-6 {
-            max-width: 47% !important;
+            max-width: 49% !important;
         }
 
         .content-wrapper {
@@ -405,7 +405,7 @@
 }
    
      div#officers_table {
-    height: 300px;
+    height: 335px;
 }
     <%-- ::-webkit-scrollbar {
     display: none;
@@ -536,11 +536,11 @@
         }
 
         span#APPROVED {
-            MARGIN-LEFT: 8%;
+             MARGIN-LEFT: 9%;
         }
 
         span#PROCESS {
-            margin-left: 68%;
+            margin-left: 69%;
         }
 
         span#INITIATED {
@@ -665,7 +665,29 @@ letter-spacing: 2px;
               font-weight: 600;
 text-decoration: underline;
           }
-
+.overview-box .text {
+    font-weight: 300;
+    display: inline-block;
+    text-align: end;
+}
+          p {
+    font-weight: 600;
+}
+          input#ContentPlaceHolder1_TotalRequestRecieved {
+    padding-top: 20px;
+}
+          input#ContentPlaceHolder1_txtApprovalAndReject {
+    margin-bottom: 8px;
+}
+          input#ContentPlaceHolder1_In_process {
+    margin-bottom: 8px;
+}
+          input#ContentPlaceHolder1_Initiated {
+    margin-bottom: 8px;
+}
+          div#firstcapsule {
+    padding-bottom: 0px;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -695,13 +717,13 @@ text-decoration: underline;
                                                 <div class="icon">
                                                     <i class="bi bi-file-earmark-plus"></i>
                                                 </div>
-                                                <div class="text">
+                                                <div class="text" id="firstcapsule">
                                                     <h2>
                                                         <asp:TextBox class="form-control" ID="TotalRequestRecieved" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" ReadOnly="true"></asp:TextBox>
-
+                                                        <br/> <p>All Requests Recieved</p>
                                                     </h2>
 
-                                                    <span>All Requests Recieved</span>
+                                                   
                                                 </div>
                                             </div>
                                                  </a>
@@ -721,9 +743,11 @@ text-decoration: underline;
                                                 </div>
                                                 <div class="text">
                                                     <h2>
-                                                        <asp:TextBox class="form-control" ID="txtApprovalAndReject" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" ReadOnly="true"></asp:TextBox></h2>
+                                                        <asp:TextBox class="form-control" ID="txtApprovalAndReject" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" ReadOnly="true"></asp:TextBox>
+                                                        <p id="APPROVED">Approved/Rejected/Returned</p>
+                                                    </h2>
 
-                                                    <span id="APPROVED">Approved/Rejected/Returned</span>
+                                                    
                                                 </div>
                                             </div>
                                                  </a>
@@ -744,10 +768,10 @@ text-decoration: underline;
                                                 <div class="text">
                                                     <h2>
                                                         <asp:TextBox class="form-control" ID="In_process" runat="server" onkeydown="return preventEnterSubmit(event)"
-                                                            autocomplete="off" ReadOnly="true"></asp:TextBox></h2>
+                                                            autocomplete="off" ReadOnly="true"></asp:TextBox>
 
-                                                    <span id="PROCESS">In Process</span>
-
+                                                    <p id="PROCESS">In Process</p>
+</h2>
                                                 </div>
                                             </div>
                                                 </a>
@@ -767,10 +791,10 @@ text-decoration: underline;
                                                 </div>
                                                 <div class="text">
                                                     <h2>
-                                                        <asp:TextBox class="form-control" ID="Initiated" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" ReadOnly="true"></asp:TextBox></h2>
+                                                        <asp:TextBox class="form-control" ID="Initiated" runat="server" onkeydown="return preventEnterSubmit(event)" autocomplete="off" ReadOnly="true"></asp:TextBox>
 
-                                                    <span id="INITIATED">New Application</span>
-
+                                                    <p id="INITIATED">New Application</p>
+                                                    </h2>
                                                 </div>
                                             </div>
                                                  </a>
@@ -804,7 +828,8 @@ text-decoration: underline;
                                 </div>
                             </div>
                             <div class="row" style="margin-top: -10px !important;">
-                                <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); margin-left: 35px; border-radius: 10px;">
+                               <div class="col-md-8">
+                                <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); margin-left: 15px; border-radius: 10px;">
 
                                     <div class="col-md-12">
                                         <h2 class="title-1 m-b-25">Division Wise Report</h2>
@@ -914,7 +939,7 @@ text-decoration: underline;
                                                             <HeaderStyle Width="25%" CssClass="headercolor" />
                                                             <ItemStyle Width="25%" />
                                                             <ItemTemplate>
-                                                                <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("MoreThan45Days") %> ' CommandName="SelectMoreThan45Days"><%#Eval("MoreThan45Days") %></asp:LinkButton>
+                                                                <asp:LinkButton ID="LinkButton5" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("MoreThan45Days") %> ' CommandName="SelectMoreThan45Days"><%#Eval("MoreThan45Days") %></asp:LinkButton>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
                                                     </Columns>
@@ -949,7 +974,9 @@ text-decoration: underline;
 
                                     </div>
                                 </div>
-                                <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); background: #604db8; width: 27%; border-radius: 10px; margin-left: 35px;">
+                                   </div>
+                                <div class="col-md-4">
+                                <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); background: #604db8; border-radius: 10px;width:94%;">
                                     <div class="col-lg-10">
                                         <h2 class="title-1 m-b-25" style="color: white;">Officers Pendency</h2>
                                         <div class="card" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); margin-left: 0px; margin-right: -50px;">
@@ -986,6 +1013,8 @@ text-decoration: underline;
                                         </div>
                                     </div>
                                 </div>
+                                    </div>
+                                </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
@@ -1013,16 +1042,16 @@ text-decoration: underline;
 
     <script>
 
-      function printDiv(printableDiv) {
-          var printContents = document.getElementById(printableDiv).innerHTML;
-          var originalContents = document.body.innerHTML;
+        function printDiv(printableDiv) {
+            var printContents = document.getElementById(printableDiv).innerHTML;
+            var originalContents = document.body.innerHTML;
 
-          document.body.innerHTML = printContents;
+            document.body.innerHTML = printContents;
 
-          window.print();
+            window.print();
 
-          document.body.innerHTML = originalContents;
-      }
+            document.body.innerHTML = originalContents;
+        }
     </script>
     <script>
 
