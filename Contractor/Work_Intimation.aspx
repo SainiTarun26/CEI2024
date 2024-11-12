@@ -630,7 +630,7 @@
                                                 <samp style="color: red">* </samp>
                                             </label>
 
-                                            <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25"  OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged">
+                                            <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25" >
                                                 <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
                                                 <asp:ListItem Text="No" Value="0" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
                                             </asp:RadioButtonList>

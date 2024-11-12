@@ -39,7 +39,7 @@ namespace CEIHaryana.Admin
                     }
 
                     GetDetailsWithId();
-                    GetTestReportData();
+                   
                 }
             }
             catch (Exception ex)
@@ -53,8 +53,8 @@ namespace CEIHaryana.Admin
             DataSet ds = new DataSet();
             ds = CEI.GetDivisionData(District);
             ddlDivisions.DataSource = ds;
-            ddlDivisions.DataTextField = "HeadOffice";
-            ddlDivisions.DataValueField = "HeadOffice";
+            ddlDivisions.DataTextField = "District";
+            ddlDivisions.DataValueField = "District";
             ddlDivisions.DataBind();
             ddlDivisions.Items.Insert(0, new ListItem("Select", "0"));
             ds.Clear();
@@ -66,8 +66,18 @@ namespace CEIHaryana.Admin
                 ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.InspectionData(ID);
-                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
+                    lbltype.Text = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
+                    if (lbltype.Text == "Periodic")
+                    {                        
+                        Grd_PeriodTestReport(ID);
+                        GetTestReportDataIfPeriodic(ID);
+                    }
+                    else if (lbltype.Text == "New")
+                    {
+                        GetTestReportData(ID);
+                    }
                     txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
                     txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                     txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
@@ -144,11 +154,16 @@ namespace CEIHaryana.Admin
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
+
+       
+
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Admin/AdminMaster.aspx");
         }
+
         
+
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string fileName = "";
@@ -220,7 +235,7 @@ namespace CEIHaryana.Admin
         {
             LinkButton lnkRedirect = (LinkButton)sender;
             string AdminTestReportId = lnkRedirect.CommandArgument;
-            //Session["InspectionTestReportIdForAdmin"] = AdminTestReportId;
+            Session["InspectionTestReportId"] = "";            
             if (txtWorkType.Text.Trim() == "Line")
             {
                 Session["LineID"] = AdminTestReportId;
@@ -257,6 +272,9 @@ namespace CEIHaryana.Admin
                 e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
             }
         }
+
+      
+
         protected void GridBindDocument()
         {
             try
@@ -284,33 +302,116 @@ namespace CEIHaryana.Admin
                 //throw;
             }
         }
-        private void GetTestReportData()
+
+        private void GetTestReportData(string InspectionId)
         {
             try
-            {
-                ID = Session["InspectionId"].ToString();
+            {               
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReport(ID);
+                ds = CEI.GetTestReport(InspectionId);
                 string TestRportId = string.Empty;
-                if (ds != null && ds.Tables.Count > 0)
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     //TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
 
                     GridView2.DataSource = ds;
-                    GridView2.DataBind();
+                    GridView2.DataBind();                   
                 }
                 else
                 {
+                    TestReport_Card.Visible = false;
                     GridView2.DataSource = null;
                     GridView2.DataBind();
-                    string script = "alert(\"No Record Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    //string script = "alert(\"No Record Found\");";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 //Session["TestRportId"] = TestRportId;
 
                 ds.Dispose();
             }
             catch { }
+        }
+
+        // add below code by gurmeet 8Nov2024 to visible testreport gridview in case of periodic/multiple
+        private void Grd_PeriodTestReport(string InspectionId)
+        {
+            try
+            {
+                
+                DataSet dsVC = CEI.GetDetailsToViewCart(InspectionId);
+
+                if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
+                {
+                    PeriodTestReport_CardId.Visible = true;
+                    Grd_PeriodicTestReport.DataSource = dsVC;
+                    Grd_PeriodicTestReport.DataBind();
+
+                }
+                else
+                {
+                    Grd_PeriodicTestReport.DataSource = null;
+                    Grd_PeriodicTestReport.DataBind();
+                    string script = "alert('No Record Found');";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception as needed
+            }
+        }
+        protected void lnkRedirect1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton btn = (LinkButton)(sender);
+
+                GridViewRow row = (GridViewRow)btn.NamingContainer;
+                Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
+                string installationName = lblInstallationName.Text.Trim();
+
+                Session["InspectionTestReportId"] = btn.CommandArgument;
+
+                if (installationName == "Line")
+                {
+                    Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
+                }
+                else if (installationName == "Substation Transformer")
+                {
+                    Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+                }
+                else if (installationName == "Generating Set")
+                {
+                    Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+                }
+            }
+            catch (Exception ex) { }
+        }
+        private void GetTestReportDataIfPeriodic(string InspectionId)
+        {
+            try
+            {               
+                DataSet ds = new DataSet();
+                ds = CEI.GetTestReportDataIfPeriodic(InspectionId);
+                string TestRportId = string.Empty;
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+
+                    GridView2.DataSource = ds;
+                    GridView2.DataBind();
+                    GridView2.Columns[3].Visible = false;
+                }
+                else
+                {
+                    GridView2.DataSource = null;
+                    GridView2.DataBind();
+                    TestReport_Card.Visible = false;
+                    //string script = "alert(\"No Record Found\");";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                ds.Dispose();
+            }
+            catch (Exception ex) { }
         }
     }
 }
