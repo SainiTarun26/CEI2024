@@ -18,7 +18,7 @@ namespace CEIHaryana.SiteOwnerPages
     public partial class ReapplyReturnINspection : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-        string InspectionID, ReturnType;
+        string InspectionID, ReturnType, SiteOwnerID;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -273,7 +273,7 @@ namespace CEIHaryana.SiteOwnerPages
                 if (Convert.ToString(Session["InspectionId"]) != null && Convert.ToString(Session["InspectionId"]) != "" && Session["SiteOwnerId"] != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                 {
                     InspectionID = Session["InspectionId"].ToString();
-                    string SiteOwnerID = Session["SiteOwnerId"].ToString();
+                    SiteOwnerID = Session["SiteOwnerId"].ToString();
 
                     if (INgridfileuploadValidation()) //check validation for document
                     {
@@ -286,7 +286,7 @@ namespace CEIHaryana.SiteOwnerPages
                                 connection.Open();
                                 transaction = connection.BeginTransaction();
 
-                                CEI.UpdateReturnedInspectionReport(InspectionID, transaction);
+                                CEI.UpdateReturnedInspectionReport(InspectionID, SiteOwnerID, transaction);
                                 if (Convert.ToString(Session["ReturnType"]) == "1") //Update Checklist Documents
                                 {
 

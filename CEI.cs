@@ -7430,12 +7430,13 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDocuments_ForNewIndustry", InspectionId);
         }
-        public void UpdateReturnedInspectionReport(string InspectionID, SqlTransaction transaction)
+        public void UpdateReturnedInspectionReport(string InspectionID, string StaffId, SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_UpdateReturnedInspectionReport", transaction.Connection, transaction);
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@InspectionID ", InspectionID);
+            cmd.Parameters.AddWithValue("@StaffId ", StaffId);
             cmd.ExecuteNonQuery();
         }
         public void InsertReturnedInspectionTestReportAttachments(string id, string InspectionID, string installaionInvoice,
