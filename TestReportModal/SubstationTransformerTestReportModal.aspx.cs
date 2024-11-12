@@ -686,27 +686,27 @@ namespace CEIHaryana.TestReportModal
                                 {
                                     // Save to InstallationInvoice in first iteration
                                     string InstallationInvoiceFileName = "InstallationInvoice_" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                                    folderPath = Server.MapPath("~/Attachment/" + "Contractor" + id + TestReportIds + "/InstallationInvoice/");
+                                    folderPath = Server.MapPath("~/Attachment/" + "Contractor" + "SubstationTransformer" + TestReportIds + "/InstallationInvoice/");
                                     if (!Directory.Exists(folderPath))
                                     {
                                         Directory.CreateDirectory(folderPath);
                                     }
                                     fullFilePath = Path.Combine(folderPath, InstallationInvoiceFileName);
                                     fileUpload.SaveAs(fullFilePath);
-                                    InstallationInvoice = "/Attachment/" + "Contractor" + id + TestReportIds + "/InstallationInvoice/" + InstallationInvoiceFileName;
+                                    InstallationInvoice = "/Attachment/" + "Contractor" + "SubstationTransformer" + TestReportIds + "/InstallationInvoice/" + InstallationInvoiceFileName;
                                 }
                                 else if (rowIndex == 2)
                                 {
                                     // Save to ManufacturingReport in second iteration
                                     string ManufacturingReportFileName = "ManufacturingReport_" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                                    folderPath = Server.MapPath("~/Attachment/" + "Contractor" + id + TestReportIds + "/ManufacturingReport/");
+                                    folderPath = Server.MapPath("~/Attachment/" + "Contractor" + "SubstationTransformer" + TestReportIds + "/ManufacturingReport/");
                                     if (!Directory.Exists(folderPath))
                                     {
                                         Directory.CreateDirectory(folderPath);
                                     }
                                     fullFilePath = Path.Combine(folderPath, ManufacturingReportFileName);
                                     fileUpload.SaveAs(fullFilePath);
-                                    ManufacturingReport = "/Attachment/" + "Contractor" + id + TestReportIds + "/ManufacturingReport/" + ManufacturingReportFileName;
+                                    ManufacturingReport = "/Attachment/" + "Contractor" + "SubstationTransformer" + TestReportIds + "/ManufacturingReport/" + ManufacturingReportFileName;
                                 }
                             }
                             else

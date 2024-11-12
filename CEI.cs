@@ -7495,6 +7495,11 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
               string.IsNullOrEmpty(WingId) ? (object)DBNull.Value : WingId, string.IsNullOrEmpty(ZoneId) ? (object)DBNull.Value : ZoneId,
               string.IsNullOrEmpty(CircleId) ? (object)DBNull.Value : CircleId, string.IsNullOrEmpty(DivisionId) ? (object)DBNull.Value : DivisionId, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
+        //CreatedByNavneet 12-11-2024
+        public DataTable InstallationComponentsforSiteOwner(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetReturnComponentsForOfficer", Id);
+        }
     }
 }
 

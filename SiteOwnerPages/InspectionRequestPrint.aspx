@@ -128,7 +128,7 @@
                                     <asp:TextBox class="form-control" ID="txtReqNumber" runat="server" autocomplete="off" ReadOnly="true" Style="margin-left: 18px; border-bottom: 0px solid black !important;"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" id="TRNumber" runat="server" visible="false">
     <div class="col-6" style="text-align: end; padding-right: 0px;">
         <label for="Name">Test Report No.    : </label>
     </div>

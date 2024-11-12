@@ -375,7 +375,7 @@
            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                <div class="row">
                    <div class="col-md-12">
-                        <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                        <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" OnRowDataBound="grd_Documemnts_RowDataBound" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
                             <HeaderStyle BackColor="#B7E2F0" />
                             <Columns>
                                 <asp:TemplateField HeaderText="SNo">
@@ -403,12 +403,12 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Previous Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LnkDocumemtPath2" runat="server" CommandArgument='<%# Bind("PreviousDocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
+                                        <asp:LinkButton ID="LnkDocumemtPath2" runat="server" Text='<%# Bind("PreviousDocumentPath") %>' CommandArgument='<%# Bind("PreviousDocumentPath") %>' CommandName="Select"></asp:LinkButton>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="DocumentRemarks" HeaderText="Documents Remarks">
+                                <asp:BoundField DataField="DocumentRemarks" HeaderText="Remarks">
     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
     <ItemStyle HorizontalAlign="Left" Width="15%" />
 </asp:BoundField>
@@ -499,9 +499,23 @@
                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                            </asp:TemplateField>
+                           <asp:TemplateField HeaderText="Previous Installaion Invoice" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                               <ItemTemplate>
+                                   <asp:LinkButton ID="lnkPreviousInstallaionInvoice" runat="server" Text='<%# Eval("PrevinstallaionInvoice") %>' CommandName="ViewInvoice" CommandArgument='<%# Eval("PrevinstallaionInvoice") %>' />
+                               </ItemTemplate>
+                               <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                               <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                           </asp:TemplateField>
                            <asp:TemplateField HeaderText="Installaion Invoice" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                <ItemTemplate>
                                    <asp:LinkButton ID="lnkInstallaionInvoice" runat="server" Text="View Document" CommandName="ViewInvoice" CommandArgument='<%# Eval("installaionInvoice") %>' />
+                               </ItemTemplate>
+                               <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                               <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                           </asp:TemplateField>
+                           <asp:TemplateField HeaderText="Previous Manufacturing Report" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                               <ItemTemplate>
+                                   <asp:LinkButton ID="lnkPreviosManufacturingReport" runat="server" Text='<%# Eval("PrevManufacturingReport") %>' CommandName="View" CommandArgument='<%# Eval("PrevManufacturingReport") %>' />
                                </ItemTemplate>
                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
@@ -513,6 +527,10 @@
                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                            </asp:TemplateField>
+                           <asp:BoundField DataField="Remarks" HeaderText="Remarks">
+                               <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                               <ItemStyle HorizontalAlign="Left" Width="15%" />
+                           </asp:BoundField>
                        </Columns>
                    </asp:GridView>
                </div>

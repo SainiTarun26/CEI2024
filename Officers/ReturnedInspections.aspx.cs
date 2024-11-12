@@ -116,12 +116,32 @@ namespace CEIHaryana.Officers
                     // txtInspectionRemark.Text = ds.Tables[0].Rows[0]["InspectionRemarks"].ToString();
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                     //count = Convert.ToInt32(ds.Tables[0].Rows[0]["TestReportCount"].ToString());           //Added     
-                    IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
-
+                    IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();        //Added     
+                    string ReturnValu= ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
                     GridBindDocument();
+                      DivViewTRinMultipleCaseNew.Visible = true;
+                    if (Type == "New")
+                    {
+                        GridToViewMultipleCaseNew();
+                        if (ReturnValu =="1")
+                        {
 
-                    DivViewTRinMultipleCaseNew.Visible = true;
-                    GridToViewTRinMultipleCaseNew();
+                            Grid_MultipleInspectionTR.Columns[5].Visible = false;
+                            Grid_MultipleInspectionTR.Columns[7].Visible = false;
+                            Grid_MultipleInspectionTR.Columns[9].Visible = false;
+                        }
+                        else
+                        {
+
+                            Grid_MultipleInspectionTR.Columns[5].Visible = true;
+                            Grid_MultipleInspectionTR.Columns[7].Visible = true;
+                            Grid_MultipleInspectionTR.Columns[9].Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        GridToViewTRinMultipleCaseNew();
+                    }
 
                     string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
 
@@ -234,6 +254,31 @@ namespace CEIHaryana.Officers
                 DataSet dsVC = CEI.GetDetailsToViewTRinMultipleCaseNew(ID);
 
                 if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
+                {
+                    Grid_MultipleInspectionTR.DataSource = dsVC;
+                    Grid_MultipleInspectionTR.DataBind();
+                }
+                else
+                {
+                    Grid_MultipleInspectionTR.DataSource = null;
+                    Grid_MultipleInspectionTR.DataBind();
+                    string script = "alert('No Record Found');";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception as needed
+            }
+        }
+        private void GridToViewMultipleCaseNew()
+        {
+            try
+            {
+                string ID = Session["InspectionId"].ToString();
+                DataTable dsVC = CEI.InstallationComponentsforSiteOwner(ID);
+
+                if (dsVC != null && dsVC.Rows.Count > 0)
                 {
                     Grid_MultipleInspectionTR.DataSource = dsVC;
                     Grid_MultipleInspectionTR.DataBind();
@@ -775,7 +820,7 @@ namespace CEIHaryana.Officers
                 string ID = Session["InspectionId"].ToString();
                 DataSet dsVC = CEI.GetDetailsToViewCart(ID);
 
-                if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
+                 if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                 {
                     GridView2.DataSource = dsVC;
                     GridView2.DataBind();
@@ -917,6 +962,8 @@ namespace CEIHaryana.Officers
                     Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
                     LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallaionInvoice");
                     LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
+                    LinkButton lnkPreviousInstallaionInvoice = (LinkButton)e.Row.FindControl("lnkPreviousInstallaionInvoice");
+                    LinkButton lnkPreviosManufacturingReport = (LinkButton)e.Row.FindControl("lnkPreviosManufacturingReport");
                     if (LblInstallationName.Text.Trim() == "Line")
                     {
                         linkButtonInvoice.Visible = false;
@@ -926,6 +973,55 @@ namespace CEIHaryana.Officers
                     {
                         linkButtonInvoice.Visible = true;
                         LinkButtonReport.Visible = true;
+                    }
+                    if (lnkPreviosManufacturingReport.Text.Trim()==""|| lnkPreviosManufacturingReport == null)
+                    {
+                        lnkPreviosManufacturingReport.Visible = false;
+
+                    }
+                    else
+                    {
+                        lnkPreviosManufacturingReport.Visible = true;
+                        lnkPreviosManufacturingReport.Text = "View Document";
+                    }
+                    if (lnkPreviousInstallaionInvoice.Text.Trim()==""|| lnkPreviousInstallaionInvoice == null)
+                    {
+                        lnkPreviousInstallaionInvoice.Visible = false;
+
+                    }
+                    else
+                    {
+                        lnkPreviousInstallaionInvoice.Visible = true;
+                        lnkPreviousInstallaionInvoice.Text = "View Document";
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+
+                    //Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
+                    //LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallaionInvoice");
+                    LinkButton LnkDocumemtPath2 = (LinkButton)e.Row.FindControl("LnkDocumemtPath2");
+                    
+                    if (LnkDocumemtPath2.Text.Trim() == "" || LnkDocumemtPath2 == null)
+                    {
+                        LnkDocumemtPath2.Visible = false;
+                    }
+                    else
+                    {
+                        LnkDocumemtPath2.Visible = true;
+                        LnkDocumemtPath2.Text = "Click here to view document";
+                        
                     }
                 }
             }
