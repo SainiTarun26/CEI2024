@@ -182,4 +182,3 @@
         new DataTable('#example');
     </script>
 </asp:Content>
-ent>
