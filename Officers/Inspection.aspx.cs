@@ -386,7 +386,7 @@ namespace CEIHaryana.Officers
 
                     foreach (GridViewRow row in grd_ChecklistDocumemnts.Rows)
                     {
-                        CheckBox chkSelect = (CheckBox)row.FindControl("chk_Select");
+                        CheckBox chkSelect = (CheckBox)row.FindControl("chk_SelectDoc");
                         TextBox txtRemarks = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
 
                         if (chkSelect != null && chkSelect.Checked && (txtRemarks == null || string.IsNullOrWhiteSpace(txtRemarks.Text)))

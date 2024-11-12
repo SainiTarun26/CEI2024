@@ -160,6 +160,12 @@
             font-size: 1rem !important;
             margin-bottom: 3px !important;
         }
+        th.textalignleft {
+    text-align: left;
+}
+        td.textalignleft {
+    text-align: left;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -240,13 +246,23 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="NameofSiteOwner" HeaderText="SiteOwner">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="TypeOf" HeaderText="Installation Type">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor leftalign" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="leftalign" />
-                            </asp:BoundField>                           
+    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor textalignleft" />
+    <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="break-text-site-owner textalignleft" />
+</asp:BoundField>
+
+                            <asp:TemplateField HeaderText="">
+    <HeaderTemplate>
+        Installation<br />Type
+    </HeaderTemplate>
+    <ItemTemplate>
+        <%# Eval("TypeOf") %>
+    </ItemTemplate>
+    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor leftalign" />
+    <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="leftalign break-after-space" />
+</asp:TemplateField>
+
+
+                         
                             <asp:BoundField DataField="Voltagelevel" HeaderText="Voltagelevel">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -255,7 +271,7 @@
             <HeaderStyle Width="5%" CssClass="headercolor" />
             <ItemStyle Width="5%" />
             <HeaderTemplate>
-              Installation Invoice
+              Installation <br/> Invoice
             </HeaderTemplate>
             <ItemTemplate>
                 <%--<asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("DocumentPath") %> ' CommandName="Select"><%#Eval("DocumentPath") %>  Text="Click here to view document"</asp:LinkButton>--%>
@@ -268,7 +284,7 @@
             <HeaderStyle Width="5%" CssClass="headercolor" />
             <ItemStyle Width="5%" />
             <HeaderTemplate>
-                Manufacturing Test Report
+                Manufacturing<br/>Test Report
             </HeaderTemplate>
             <ItemTemplate>
                 <%--<asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("DocumentPath") %> ' CommandName="Select"><%#Eval("DocumentPath") %>  Text="Click here to view document"</asp:LinkButton>--%>
@@ -277,10 +293,17 @@
                 </asp:LinkButton>
             </ItemTemplate>
         </asp:TemplateField>
-                              <asp:BoundField DataField="Approveddate" HeaderText="Approved Date">
-                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="12%" />
-                            </asp:BoundField>
+                              <asp:TemplateField HeaderText="">
+    <HeaderTemplate>
+        <div class="headercolor" style="text-align:center; width:100%;">Approved<br />Date</div>
+    </HeaderTemplate>
+    <ItemTemplate>
+        <%# Eval("Approveddate") %>
+    </ItemTemplate>
+    <HeaderStyle HorizontalAlign="center" Width="12%" cssclass="headercolor"/>
+    <ItemStyle HorizontalAlign="center" Width="12%" />
+</asp:TemplateField>
+
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -335,4 +358,52 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll('.break-text-site-owner');
+
+            elements.forEach(function (element) {
+                let text = element.innerText;
+                let formattedText = '';
+                let currentIndex = 0;
+
+                while (currentIndex < text.length) {
+                    // Take a chunk of up to 20 characters
+                    let chunk = text.slice(currentIndex, currentIndex + 20);
+
+                    if (chunk.length < 20) {
+                        // If the chunk is less than 20 characters, add it without breaking
+                        formattedText += chunk;
+                        break; // Exit the loop as we've processed the remaining text
+                    }
+
+                    // For chunks of 20 or more characters, try to break at the last whitespace
+                    let breakIndex = chunk.lastIndexOf(" ");
+                    if (breakIndex !== -1) {
+                        // If there's a whitespace, break at that space
+                        formattedText += chunk.slice(0, breakIndex) + '<br>';
+                        currentIndex += breakIndex + 1; // Move past the space
+                    } else {
+                        // Otherwise, break at the 20-character limit
+                        formattedText += chunk + '<br>';
+                        currentIndex += 20;
+                    }
+                }
+
+                element.innerHTML = formattedText.trim(); // Remove any trailing <br>
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Select all cells with the "break-after-space" class
+            var cells = document.querySelectorAll(".break-after-space");
+
+            cells.forEach(function (cell) {
+                // Insert line break at each whitespace
+                cell.innerHTML = cell.innerText.replace(/\s+/g, "<br>");
+            });
+        });
+    </script>
+
 </asp:Content>

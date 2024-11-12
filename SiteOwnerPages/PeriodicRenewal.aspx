@@ -293,7 +293,7 @@
                 <div class="card-body" style="padding-bottom: 0px !important;">
                     <div class="row">
                         <div class="col-md-12" style="text-align: center;">
-                            <h6 class="card-title fw-semibold mb-4" id="maincard" style="font-size:22px;">Periodic Renewal
+                            <h6 class="card-title fw-semibold mb-4" id="maincard" style="font-size: 22px;">Periodic Renewal
                             </h6>
                         </div>
                     </div>
@@ -416,7 +416,7 @@
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>
-                                              <%--  <asp:BoundField DataField="InspectionDate" HeaderText="Inspection Date">
+                                                <%--  <asp:BoundField DataField="InspectionDate" HeaderText="Inspection Date">
                                                     <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="center" Width="12%" />
                                                 </asp:BoundField>--%>
@@ -599,8 +599,8 @@
                                             <label>
                                                 Applicant Type
                                             </label>
-                                             <asp:TextBox class="form-control" ID="txtApplicantType" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                          </div>
+                                            <asp:TextBox class="form-control" ID="txtApplicantType" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
                                         <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="false">
                                             <label for="PanNumber">
                                                 PAN Card
@@ -611,7 +611,7 @@
                                             <label for="TanNumber">
                                                 TAN Number
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtTanNumber"  ReadOnly="true" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtTanNumber" ReadOnly="true" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RegularExpressionValidator ID="revTANNumber" runat="server" ControlToValidate="txtTanNumber" ValidationExpression="[A-Za-z]{4}[0-9]{5}[A-Za-z]" ValidationGroup="Submit"
                                                 ErrorMessage="Enter a valid TAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtTanNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
@@ -626,40 +626,41 @@
                                             <label>
                                                 Name Of Power Utility
                                             </label>
-                                          <asp:TextBox class="form-control" ID="txtUtilityName" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtUtilityName" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
+
+                                    </div>
+                                    <div class="row" runat="server" id="PowerUtility" visible="false">
                                         <div class="col-md-4" id="Wing" runat="server" visible="false">
                                             <label>
                                                 Wing
                                             </label>
-                                             <asp:TextBox class="form-control" ID="txtWing" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                       </div>
-                                    </div>
-                                    <div class="row" runat="server" id="PowerUtility" visible="false">
+                                            <asp:TextBox class="form-control" ID="txtWing" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
                                         <div class="col-md-4">
                                             <label>
                                                 Zone
                                             </label>
-                                             <asp:TextBox class="form-control" ID="txtZone" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                         </div>
+                                            <asp:TextBox class="form-control" ID="txtZone" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
                                         <div class="col-md-4">
                                             <label>
                                                 Circle<samp style="color: red">* </samp>
                                             </label>
-                                              <asp:TextBox class="form-control" ID="txtCircle" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                          </div>
+                                            <asp:TextBox class="form-control" ID="txtCircle" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
                                         <div class="col-md-4">
                                             <label>
                                                 Division
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtDivision" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                           </div>
+                                        </div>
                                         <div class="col-md-4">
                                             <label>
                                                 Sub-Division
                                             </label>
-                                             <asp:TextBox class="form-control" ID="txtSubDivision" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                          </div>
+                                            <asp:TextBox class="form-control" ID="txtSubDivision" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4" runat="server" id="UserId" visible="false">
@@ -669,7 +670,7 @@
                                             <asp:TextBox class="form-control" ID="txtUserId" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                     </div>
-                                    <div class="row" id="row2">
+                                    <div class="row" id="row2" style="margin-top:15px !important;">
                                         <div class="col-md-4" id="individual" visible="false" runat="server">
                                             <label for="Name">
                                                 Name of Owner/ Consumer 
@@ -745,6 +746,15 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label>
+                                                Highest Voltage Level of Installation
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" AutoPostBack="true" ID="ddlVoltageLevel" OnSelectedIndexChanged="ddlVoltageLevel_SelectedIndexChanged" runat="server">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>
                                                 Type of Premises<samp style="color: red">* </samp>
                                             </label>
                                             <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlPremises" OnSelectedIndexChanged="ddlPremises_SelectedIndexChanged" selectionmode="Multiple" Style="width: 100% !important">
@@ -758,17 +768,17 @@
                                             <asp:TextBox class="form-control" ID="txtOtherPremises" TabIndex="11" MaxLength="40" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtOtherPremises" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Other Premises</asp:RequiredFieldValidator>
                                         </div>
-                                        <div class="col-md-4">
-                                            <label>
-                                                Highest Voltage Level of Installation
-                                                <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" AutoPostBack="true" ID="ddlVoltageLevel" OnSelectedIndexChanged="ddlVoltageLevel_SelectedIndexChanged" runat="server">
-                                            </asp:DropDownList>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                        </div>
+                                        
                                     </div>
                                     <div class="row">
+                                        <div class="col-md-4" runat="server">
+                                            <label for="Email">
+                                                Total Capacity installed in KVA<samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtCapacity" onkeydown="return preventEnterSubmit(event)" maxlenght="10" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <span id="lblCap" style="color: red"></span>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtCapacity" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Total Capacity</asp:RequiredFieldValidator>
+                                        </div>
                                         <div class="col-md-4">
                                             <label>
                                                 Is there any Sanction Load Issued
@@ -786,14 +796,7 @@
                                             <asp:TextBox class="form-control" ID="txtSanctionLoad" onkeydown="return preventEnterSubmit(event)" maxlenght="10" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtCapacity" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Total Capacity</asp:RequiredFieldValidator>--%>
                                         </div>
-                                        <div class="col-md-4" runat="server">
-                                            <label for="Email">
-                                                Total Capacity installed in KVA<samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtCapacity" onkeydown="return preventEnterSubmit(event)" maxlenght="10" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <span id="lblCap" style="color: red"></span>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtCapacity" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Total Capacity</asp:RequiredFieldValidator>
-                                        </div>
+                                        
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -864,12 +867,12 @@
                             </div>
                         </div>
                     </ContentTemplate>
-                  </asp:UpdatePanel>
+                </asp:UpdatePanel>
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: center;">
                         <asp:Button type="submit" ID="btnBack" Visible="false" OnClick="btnBack_Click" Text="Back" runat="server" class="btn btn-primary mr-2" />
-                         <asp:Button type="submit" ID="btnReset" Visible="false" OnClick="btnReset_Click" Text="Reset" runat="server" class="btn btn-primary mr-2" />
+                        <asp:Button type="submit" ID="btnReset" Visible="false" OnClick="btnReset_Click" Text="Reset" runat="server" class="btn btn-primary mr-2" />
                         <asp:Button type="submit" ID="btnSubmitInstallation" Visible="false" ValidationGroup="Submit" OnClick="btnSubmitInstallation_Click" Text="Submit" runat="server" UseSubmitBehavior="false" class="btn btn-primary mr-2" />
                     </div>
                     <div class="col-md-4"></div>

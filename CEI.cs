@@ -7429,10 +7429,64 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
        public DataSet ViewDocuments_ForNewIndustry(string InspectionId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDocuments_ForNewIndustry", InspectionId);
-        }       
-        public DataSet UpdateReturnedInspectionReport(string Id) ///Resubmit Returned inspection
+        }
+        public void UpdateReturnedInspectionReport(string InspectionID, SqlTransaction transaction)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateReturnedInspectionReport", Id);
+            SqlCommand cmd = new SqlCommand("sp_UpdateReturnedInspectionReport", transaction.Connection, transaction);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@InspectionID ", InspectionID);
+            cmd.ExecuteNonQuery();
+        }
+        public void InsertReturnedInspectionTestReportAttachments(string id, string InspectionID, string installaionInvoice,
+                            string ManufacturingReport, string InstallationType, string CreatedBy, SqlTransaction transaction)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertReturnedInspectionTestReportAttachments", transaction.Connection, transaction))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@InspectionID", InspectionID);
+                    cmd.Parameters.AddWithValue("@installaionInvoice", installaionInvoice);
+                    cmd.Parameters.AddWithValue("@ManufacturingReport", ManufacturingReport);
+                    cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+                    cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Consider logging the exception or handling it as needed.
+                throw;
+            }
+        }
+        public void UploadDocumentforReturnedInspection(string InspectionId, string InstallationType, string DocumentID,
+                                   string DocSaveName, string FileName, string FilePath, string CreatedBy, SqlTransaction transaction)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_InsertInspectionAttachments", transaction.Connection, transaction))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@InspectionId", InspectionId);
+                        cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+                        cmd.Parameters.AddWithValue("@DocumentID", DocumentID);
+                        cmd.Parameters.AddWithValue("@DocSaveName", DocSaveName);
+                        cmd.Parameters.AddWithValue("@FileName", FileName);
+                        cmd.Parameters.AddWithValue("@FilePath", FilePath);
+                        cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
         }
         //**
         public DataSet GetSubDivisionMaster(string UtilityId = null, string WingId = null, string ZoneId = null, string CircleId = null, string DivisionId = null, string searchText = null)

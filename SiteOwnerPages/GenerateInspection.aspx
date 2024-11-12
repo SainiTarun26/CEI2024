@@ -355,10 +355,10 @@
                                 <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
                             </asp:BoundField>
                             <asp:TemplateField>
-                                <HeaderStyle Width="5%" CssClass="headercolor" />
-                                <ItemStyle Width="5%" />
+                                <HeaderStyle HorizontalAlign="Center" Width="5%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Center" Width="5%" />
                                 <HeaderTemplate>
-                                    Installation Invoice
+                                    Installation<br/>Invoice
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <%--<asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("DocumentPath") %> ' CommandName="Select"><%#Eval("DocumentPath") %>  Text="Click here to view document"</asp:LinkButton>--%>
@@ -371,7 +371,7 @@
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
                                 <HeaderTemplate>
-                                    Manufacturing Test Report
+                                    Manufacturing<br/>Test Report
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <%--<asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("DocumentPath") %> ' CommandName="Select"><%#Eval("DocumentPath") %>  Text="Click here to view document"</asp:LinkButton>--%>

@@ -401,18 +401,18 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator19" Text="Please Select Power Utility Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPoweUtility" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
-                                        <div class="col-md-4" id="Wing" runat="server" visible="false">
-                                            <label>
-                                                Wing
-                                                <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="DdlWing" TabIndex="2" runat="server" OnSelectedIndexChanged="DdlWing_SelectedIndexChanged">
-                                            </asp:DropDownList>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator23" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlWing" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                        </div>
+                                        
                                     </div>
                                     <div class="row" runat="server" id="PowerUtility" visible="false">
-                                  
+                                  <div class="col-md-4" id="Wing" runat="server" visible="false">
+    <label>
+        Wing
+        <samp style="color: red">* </samp>
+    </label>
+    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="DdlWing" TabIndex="2" runat="server" OnSelectedIndexChanged="DdlWing_SelectedIndexChanged">
+    </asp:DropDownList>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator23" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlWing" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+</div>
                                         <div class="col-md-4">
                                             <label>
                                                 Zone
@@ -589,22 +589,6 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label>
-                                                Type of Premises
-                                                <samp style="color: red">* </samp>
-                                            </label>
-                                            <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlPremises" TabIndex="10" selectionmode="Multiple" OnSelectedIndexChanged="ddlPremises_SelectedIndexChanged" Style="width: 100% !important">
-                                            </asp:DropDownList>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator14" Text="Please Select Premises Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPremises" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                        </div>
-                                        <div class="col-md-4" id="OtherPremises" runat="server">
-                                            <label for="OtherPremises">
-                                                Other Premises<samp style="color: red"> * </samp>
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtOtherPremises" TabIndex="11" MaxLength="40" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtOtherPremises" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Other Premises</asp:RequiredFieldValidator>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>
                                                 Highest Voltage Level of Installation
                                                 <samp style="color: red">* </samp>
                                             </label>
@@ -612,21 +596,26 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator15" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
-                                        </div>
-                                         <div class="row">
                                         <div class="col-md-4">
                                             <label>
-                                                Is there any Sanction Load Issue
+                                                Type of Premises
                                                 <samp style="color: red">* </samp>
                                             </label>
-
-                                            <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
-                                                <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
-                                                <asp:ListItem Text="No" Value="0" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
-                                            </asp:RadioButtonList>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="RadioButtonList2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select any Sanction Load</asp:RequiredFieldValidator>
+                                            <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlPremises" TabIndex="10" selectionmode="Multiple" OnSelectedIndexChanged="ddlPremises_SelectedIndexChanged" Style="width: 100% !important">
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator14" Text="Please Select Premises Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPremises" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
-                                         <div class="col-md-4" runat="server">
+                                        <div class="col-md-4" id="OtherPremises" runat="server" style="margin-bottom:0px !important;">
+                                            <label for="OtherPremises">
+                                                Other Premises<samp style="color: red"> * </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtOtherPremises" TabIndex="11" MaxLength="40" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtOtherPremises" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Other Premises</asp:RequiredFieldValidator>
+                                        </div>
+                                        
+                                        </div>
+                                         <div class="row">
+                                             <div class="col-md-4" runat="server">
                                             <label for="Email">
                                                 Total Capacity to be installed in KVA (Capacity of Substation Transformer & Generating Set)
                                                     <samp style="color: red">* </samp>
@@ -635,6 +624,25 @@
                                             <span id="lblCap" style="color: red"></span>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="txtCapacity" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Total Capacity</asp:RequiredFieldValidator>
                                         </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                Is there any Sanction Load Issue
+                                                <samp style="color: red">* </samp>
+                                            </label>
+
+                                            <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25"  OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged">
+                                                <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
+                                                <asp:ListItem Text="No" Value="0" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
+                                            </asp:RadioButtonList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="RadioButtonList2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select any Sanction Load</asp:RequiredFieldValidator>
+                                        </div>
+                                        <%--<div class="col-md-4" id="divSanctionLoad" visible="true" runat="server">
+                                            <label for="Email">
+                                                Input Your Sanction Load
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtSanctionLoad" onkeydown="return preventEnterSubmit(event)" maxlenght="10" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtCapacity" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Total Capacity</asp:RequiredFieldValidator>
+                                        </div>--%>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
