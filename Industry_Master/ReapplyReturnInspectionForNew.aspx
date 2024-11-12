@@ -287,6 +287,7 @@
                             <label for="Pin">Total Amount</label>
                             <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" runat="server" autocomplete="off" Style="margin-left: 18px"></asp:TextBox>
                         </div>
+                       
                     </div>
                 </div>
                 <div id="PaymentDetails" runat="server" visible="true">
@@ -400,6 +401,21 @@
                                             <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                             <ItemStyle HorizontalAlign="Left" Width="15%" />
                                         </asp:BoundField>
+                                         <asp:TemplateField HeaderText="Id" Visible="False">
+                                            <ItemTemplate>
+                                                <asp:Label ID="LabelRowId" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Id" Visible="False">
+                                            <ItemTemplate>
+                                                <asp:Label ID="LblInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
+                                                <asp:Label ID="LblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                                                <asp:Label ID="LblDocumentID" runat="server" Text='<%#Eval("DocumentID") %>'></asp:Label>
+                                                <asp:Label ID="LblDocumentName" runat="server" Text='<%#Eval("DocumentName") %>'></asp:Label>
+                                                <asp:Label ID="LblFileName" runat="server" Text='<%#Eval("FileName") %>'></asp:Label>
+                                                <asp:Label ID="LblReturnedReason" runat="server" Text='<%#Eval("ReturnedReason") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Old Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                             <ItemTemplate>
                                                 <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select">View Document </asp:LinkButton>
@@ -440,10 +456,16 @@
                                         </asp:BoundField>
                                         <asp:TemplateField HeaderText="Id" Visible="False">
                                             <ItemTemplate>
+                                                 <asp:Label ID="LblRowid" runat="server" Text='<%#Eval("id") %>'></asp:Label>
                                                 <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("Typeofinstallation") %>'></asp:Label>
                                                 <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("Count") %>'></asp:Label>
-                                                <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
+                                                <asp:Label ID="LblInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
+                                                <asp:Label ID="LblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
                                                 <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
+                                                  <asp:Label ID="LblinstallaionInvoicePath" runat="server" Text='<%#Eval("installaionInvoice") %>'></asp:Label>
+                                                <asp:Label ID="LblManufacturingReportPath" runat="server" Text='<%#Eval("ManufacturingReport ") %>'></asp:Label>
+                                                <asp:Label ID="LblReturnedReason" runat="server" Text='<%#Eval("ReturnedReason ") %>'></asp:Label>
+                                            
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="View Test Report" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">

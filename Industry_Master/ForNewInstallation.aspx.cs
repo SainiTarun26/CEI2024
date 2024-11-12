@@ -32,7 +32,7 @@ namespace CEIHaryana.Industry_Master
                             panExists = true;
                             string statusType = ds1.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                             string ReasonType = ds1.Tables[0].Rows[0]["ReasonType"].ToString();
-                            if (statusType == "Returned" && ReasonType == "1")
+                            if (statusType == "Returned")
                             {
                                 getWorkIntimationData();
                             }

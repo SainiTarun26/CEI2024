@@ -199,16 +199,15 @@
         <asp:Label ID="lblContractorName" runat="server" Text='<%# Eval("ContractorName") %>' CssClass="break-text"></asp:Label>
     </ItemTemplate>
 </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Applicant Type">
+                            <%--<asp:TemplateField HeaderText="Applicant Type">
     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
     <ItemStyle HorizontalAlign="center" Width="15%" />
     <ItemTemplate>
         <asp:Label ID="lblApplicantType" runat="server" Text='<%# Eval("ApplicantFor") %>' CssClass="break-text-10"></asp:Label>
     </ItemTemplate>
-</asp:TemplateField>
+</asp:TemplateField>--%>
                             <asp:BoundField DataField="Installationfor" HeaderText="Intallation Type">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="RequestDate" HeaderText="Request Date">
@@ -282,9 +281,9 @@
 
                 while (currentIndex < text.length) {
                     // Take a chunk of up to 20 characters
-                    let chunk = text.slice(currentIndex, currentIndex + 20);
+                    let chunk = text.slice(currentIndex, currentIndex + 30);
 
-                    if (chunk.length < 20) {
+                    if (chunk.length < 30) {
                         // If the chunk is less than 20 characters, add it without breaking
                         formattedText += chunk;
                         break; // Exit the loop as we've processed the remaining text
@@ -299,7 +298,7 @@
                     } else {
                         // Otherwise, break at the 20-character limit
                         formattedText += chunk + '<br>';
-                        currentIndex += 20;
+                        currentIndex += 30;
                     }
                 }
 
@@ -318,7 +317,7 @@
 
                 while (currentIndex < text.length) {
                     // Get a 30-character substring
-                    let chunk = text.slice(currentIndex, currentIndex + 30);
+                    let chunk = text.slice(currentIndex, currentIndex + 25);
 
                     // Find the nearest whitespace in this chunk
                     let breakIndex = chunk.lastIndexOf(" ");
@@ -330,7 +329,7 @@
                     } else {
                         // If no whitespace is found, break at the 30-character limit
                         formattedText += chunk + '<br>';
-                        currentIndex += 30;
+                        currentIndex += 25;
                     }
                 }
 
@@ -339,5 +338,6 @@
             });
         });
     </script>
+
 
 </asp:Content>

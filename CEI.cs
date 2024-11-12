@@ -7500,6 +7500,64 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetReturnComponentsForOfficer", Id);
         }
+        public void UploadDocumentforReturnedInspection_Industry(string InspectionId, string InstallationType, string DocumentID,
+                           string DocSaveName, string FileName, string FilePath, string CreatedBy, SqlTransaction transaction)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_InsertInspectionAttachments_Industry", transaction.Connection, transaction))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@InspectionId", InspectionId);
+                        cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+                        cmd.Parameters.AddWithValue("@DocumentID", DocumentID);
+                        cmd.Parameters.AddWithValue("@DocSaveName", DocSaveName);
+                        cmd.Parameters.AddWithValue("@FileName", FileName);
+                        cmd.Parameters.AddWithValue("@FilePath", FilePath);
+                        cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
+        }
+        public void InsertReturnedInspectionTestReportAttachments_Industry(string id, string InspectionID, string installaionInvoice,
+                          string ManufacturingReport, string InstallationType, string CreatedBy, SqlTransaction transaction)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertReturnedInspectionTestReportAttachments_Industry", transaction.Connection, transaction))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@InspectionID", InspectionID);
+                    cmd.Parameters.AddWithValue("@installaionInvoice", installaionInvoice);
+                    cmd.Parameters.AddWithValue("@ManufacturingReport", ManufacturingReport);
+                    cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+                    cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Consider logging the exception or handling it as needed.
+                throw;
+            }
+        }
+        public void UpdateReturnedInspectionReportIndustry(string InspectionID, SqlTransaction transaction)
+        {
+            SqlCommand cmd = new SqlCommand("sp_UpdateReturnedInspectionReport_Industry", transaction.Connection, transaction);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@InspectionID ", InspectionID);
+            cmd.ExecuteNonQuery();
+        }
     }
 }
 
