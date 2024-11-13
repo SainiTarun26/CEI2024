@@ -502,6 +502,7 @@ namespace CEIHaryana.Industry_Master
                                  SiteOwnerID = Session["SiteOwnerId_Sld_Indus"].ToString();
                                 string InspectionId = Session["InspId"].ToString();
                                 string ActionStatus = Session["ApplicationStatus"].ToString();
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Inspection Request Re-Submitted Successfully, forwarding to concerned officer..');", true);
                                 Response.Redirect("/Industry_Master/NewInstallationStatus.aspx", false);
                             }
                         }

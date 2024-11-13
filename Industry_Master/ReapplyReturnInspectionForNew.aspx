@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Industry_Master/NewInstallation.Master" AutoEventWireup="true" CodeBehind="ReapplyReturnInspectionForNew.aspx.cs" Inherits="CEIHaryana.Industry_Master.ReapplyReturnInspectionForNew" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -287,7 +288,7 @@
                             <label for="Pin">Total Amount</label>
                             <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" runat="server" autocomplete="off" Style="margin-left: 18px"></asp:TextBox>
                         </div>
-                       
+
                     </div>
                 </div>
                 <div id="PaymentDetails" runat="server" visible="true">
@@ -311,12 +312,13 @@
                             <div class="col-4 d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                                 <label style="margin-bottom: 10px; margin-left: -50PX;">
                                     Payment Mode
+                               
                                 </label>
-                                <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
-                                    <asp:ListItem Text="Online" Value="0" Enabled="true"></asp:ListItem>
+                                <asp:RadioButtonList ID="RadioButtonList2" runat="server" RepeatDirection="Horizontal" readonly="true" TabIndex="25">
+                                    <asp:ListItem Text="Online" Value="0" Enabled="false"></asp:ListItem>
                                     <asp:ListItem Text="Offline" Value="1" Selected="True"></asp:ListItem>
                                 </asp:RadioButtonList>
-                                <asp:RequiredFieldValidator ID="rfvRbList" runat="server" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please select a value" Display="Dynamic" />
+
                             </div>
 
 
@@ -401,7 +403,7 @@
                                             <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                             <ItemStyle HorizontalAlign="Left" Width="15%" />
                                         </asp:BoundField>
-                                         <asp:TemplateField HeaderText="Id" Visible="False">
+                                        <asp:TemplateField HeaderText="Id" Visible="False">
                                             <ItemTemplate>
                                                 <asp:Label ID="LabelRowId" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
                                             </ItemTemplate>
@@ -435,7 +437,7 @@
                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                         <div class="row">
                             <div class="col-12">
-                                <asp:GridView ID="Grid_MultipleInspectionTR" CssClass="table table-bordered table-striped table-responsive" 
+                                <asp:GridView ID="Grid_MultipleInspectionTR" CssClass="table table-bordered table-striped table-responsive"
                                     OnRowDataBound="Grid_MultipleInspectionTR_RowDataBound" OnRowCommand="Grid_MultipleInspectionTR_RowCommand" runat="server" AutoGenerateColumns="false">
                                     <HeaderStyle BackColor="#B7E2F0" />
                                     <Columns>
@@ -456,16 +458,16 @@
                                         </asp:BoundField>
                                         <asp:TemplateField HeaderText="Id" Visible="False">
                                             <ItemTemplate>
-                                                 <asp:Label ID="LblRowid" runat="server" Text='<%#Eval("id") %>'></asp:Label>
+                                                <asp:Label ID="LblRowid" runat="server" Text='<%#Eval("id") %>'></asp:Label>
                                                 <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("Typeofinstallation") %>'></asp:Label>
                                                 <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("Count") %>'></asp:Label>
                                                 <asp:Label ID="LblInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
                                                 <asp:Label ID="LblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
                                                 <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
-                                                  <asp:Label ID="LblinstallaionInvoicePath" runat="server" Text='<%#Eval("installaionInvoice") %>'></asp:Label>
+                                                <asp:Label ID="LblinstallaionInvoicePath" runat="server" Text='<%#Eval("installaionInvoice") %>'></asp:Label>
                                                 <asp:Label ID="LblManufacturingReportPath" runat="server" Text='<%#Eval("ManufacturingReport ") %>'></asp:Label>
                                                 <asp:Label ID="LblReturnedReason" runat="server" Text='<%#Eval("ReturnedReason ") %>'></asp:Label>
-                                            
+
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="View Test Report" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
@@ -514,7 +516,7 @@
                 <div>
                     <div class="row">
                         <div class="col-4" style="text-align: center;">
-                            <asp:Button ID="btnReSubmit" Text="Re-Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnReSubmit_Click"/>
+                            <asp:Button ID="btnReSubmit" Text="Re-Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnReSubmit_Click" />
                             <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="true" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                         </div>
                     </div>

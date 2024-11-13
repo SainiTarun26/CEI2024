@@ -278,6 +278,8 @@ namespace CEIHaryana.Contractor
                     btnUpdate2.Visible = false;
                     btnUpdate3.Visible = false;
                     btnUpdate4.Visible = false;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Test Report is already created.');", true);
+                    return;
 
                 }
                 else

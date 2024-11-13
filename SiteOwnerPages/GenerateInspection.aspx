@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
-   <%-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <%-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>--%>
 
@@ -358,7 +358,8 @@
                                 <HeaderStyle HorizontalAlign="Center" Width="5%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Center" Width="5%" />
                                 <HeaderTemplate>
-                                    Installation<br/>Invoice
+                                    Installation<br />
+                                    Invoice
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <%--<asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("DocumentPath") %> ' CommandName="Select"><%#Eval("DocumentPath") %>  Text="Click here to view document"</asp:LinkButton>--%>
@@ -371,7 +372,8 @@
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
                                 <HeaderTemplate>
-                                    Manufacturing<br/>Test Report
+                                    Manufacturing<br />
+                                    Test Report
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <%--<asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("DocumentPath") %> ' CommandName="Select"><%#Eval("DocumentPath") %>  Text="Click here to view document"</asp:LinkButton>--%>
@@ -418,15 +420,20 @@
                                 Sanction Load(in KV)<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtSaction" MaxLength="6" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtSaction" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Sanction Voltage</asp:RequiredFieldValidator>--%>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtSaction" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Sanction Voltage</asp:RequiredFieldValidator>
+                            <br />
+                            <asp:RegularExpressionValidator ID="regexValidator" runat="server" ControlToValidate="txtSaction"
+                                ValidationExpression="^\d{1,10}$" ForeColor="Red" ErrorMessage="Please enter valid numeric Sanction Voltage">
+                                            
+</asp:RegularExpressionValidator>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="customFile">Demand Notice</label>
+                            <label class="form-label" for="customFile">Demand Notice (Sanction Load)<samp style="color: red"> * </samp></label>
                             <input type="file" class="form-control" id="customFile" runat="server" visible="false" />
                             <br />
                             <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" Visible="false" OnClick="lnkFile_Click" Text="Open Document" />
                             <asp:TextBox class="form-control" ID="customFileLocation" autocomplete="off" runat="server" Style="margin-left: 18px" Visible="false"></asp:TextBox>
-                            <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="customFile" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please upload Demand Notice Document</asp:RequiredFieldValidator>--%>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="customFile" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please upload Demand Notice Document for Sanction Load</asp:RequiredFieldValidator>
                         </div>
                     </div>
                 </div>

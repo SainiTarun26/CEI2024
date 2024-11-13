@@ -159,15 +159,6 @@ namespace CEIHaryana.Industry_Master
         protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList2;
 
         /// <summary>
-        /// rfvRbList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvRbList;
-
-        /// <summary>
         /// GridView2 control.
         /// </summary>
         /// <remarks>
