@@ -7322,25 +7322,25 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
             return result;
         }
 
-        public void updateReturnRemarksOnBasesOfTrDocuments(string ID, string StaffId, string IntimationId, string Rowid,
-                               string ReasonForReturn, string ReturnedBasedOnDocumentValue)
+        public void updateReturnRemarksOnBasesOfTrDocuments(string ID, string IntimationId, string Rowid,
+                             string ReasonForReturn, SqlTransaction transaction)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
-                    connection.Open();
-
-                    using (SqlCommand cmd = new SqlCommand("sp_InspectionReturnRemarksOnBasesOfTrDocuments", connection))
+                    //connection.Open();
+                    using (SqlCommand cmd = new SqlCommand("sp_InspectionReturnRemarksOnBasesOfTrDocuments", transaction.Connection, transaction))
+                    //using (SqlCommand cmd = new SqlCommand("sp_InspectionReturnRemarksOnBasesOfTrDocuments", connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@ID", ID);
-                        cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                        // cmd.Parameters.AddWithValue("@StaffId", StaffId);
                         cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
                         cmd.Parameters.AddWithValue("@Rowid", Rowid);
                         cmd.Parameters.AddWithValue("@ReasonForReturn ", ReasonForReturn);
-                        cmd.Parameters.AddWithValue("@ReturnedBasedOnDocumentValue ", ReturnedBasedOnDocumentValue);
+                        //cmd.Parameters.AddWithValue("@ReturnedBasedOnDocumentValue ", ReturnedBasedOnDocumentValue);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -7360,24 +7360,24 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionAccepted", ID, StaffId);
         }
 
-        public void updateReturnRemarksOnBasesOnChecklistDocuments(string ID, string StaffId, string Rowid,
-                                     string ReasonForReturn, string ReturnedBasedOnDocumentValue)
+        public void updateReturnRemarksOnBasesOnChecklistDocuments(string ID, string Rowid, string ReasonForReturn, SqlTransaction transaction)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
-                    connection.Open();
-                    using (SqlCommand cmd = new SqlCommand("sp_InspectionReturnRemarksOnBasesOfChecklistDocuments", connection))
+                    //connection.Open();
+                    using (SqlCommand cmd = new SqlCommand("sp_InspectionReturnRemarksOnBasesOfChecklistDocuments", transaction.Connection, transaction))
+                    //using (SqlCommand cmd = new SqlCommand("sp_InspectionReturnRemarksOnBasesOfChecklistDocuments", connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@ID", ID);
-                        cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                        //cmd.Parameters.AddWithValue("@StaffId", StaffId);
                         cmd.Parameters.AddWithValue("@Rowid", Rowid);
                         cmd.Parameters.AddWithValue("@ReasonForReturn ", ReasonForReturn);
 
-                        cmd.Parameters.AddWithValue("@ReturnedBasedOnDocumentValue ", ReturnedBasedOnDocumentValue);
+                        //cmd.Parameters.AddWithValue("@ReturnedBasedOnDocumentValue ", ReturnedBasedOnDocumentValue);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -7624,6 +7624,16 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
         public DataSet GetEmails(string Id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetEmails", Id);
+        }
+        public void UpdateStatusOfReturnedInspection(string ID, string StaffId, string ReturnedBasedOnDocumentValue, SqlTransaction transaction)
+        {
+            SqlCommand cmd = new SqlCommand("sp_UpdateStatusOfReturnedInspection", transaction.Connection, transaction);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID ", ID);
+            cmd.Parameters.AddWithValue("@StaffId ", StaffId);
+            cmd.Parameters.AddWithValue("@ReturnedBasedOnDocumentValue ", ReturnedBasedOnDocumentValue);
+            cmd.ExecuteNonQuery();
         }
     }
 }
