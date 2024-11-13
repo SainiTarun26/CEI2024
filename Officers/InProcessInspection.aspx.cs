@@ -644,7 +644,7 @@ namespace CEIHaryana.Officers
 
                             if (InspectionType == "New")
                             {
-                                Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
+                                Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
                             }
                             else
                             {
