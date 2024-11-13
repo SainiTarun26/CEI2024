@@ -518,7 +518,7 @@
 
                             <asp:TemplateField HeaderText="View Test Reports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lnkRedirectTR" runat="server" Text="View Test Report" CommandName="Select" CommandArgument='<%# Eval("TestReportId") %>' />
+                                    <asp:LinkButton ID="lnkRedirectTR" runat="server" Text="View Test Report" CommandName="Select" OnClick="lnkRedirectTR_Click1" CommandArgument='<%# Eval("TestReportId") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
