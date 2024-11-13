@@ -530,7 +530,7 @@
                     <h7 class="card-title fw-semibold mb-4">Document Checklist</h7>
 
                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-
+                        <h7 class="card-title" style="color: #a52a2a; margin-bottom: 5px;">Note: Size of all the Attachments should not be more than 10mb.</h7>
                         <div class="row">
                             <div class="col-12">
                                 <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" OnRowDataBound="Grd_Document_RowDataBound" OnRowCommand="Grd_Document_RowCommand" runat="server" AutoGenerateColumns="false">

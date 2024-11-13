@@ -181,7 +181,7 @@
         }
 
         th.headercolor {
-            width: 28% !important;
+            width: 1% !important;
         }
 
 
