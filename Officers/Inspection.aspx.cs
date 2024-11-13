@@ -25,6 +25,8 @@ namespace CEIHaryana.Officers
         private static string IntimationId, AcceptorReturn, Reason, StaffId;
         string Type = string.Empty;
         string InstallType = string.Empty;
+        string ToEmail = string.Empty;
+        string CCemail = string.Empty;
         IndustryApiLogDetails logDetails = new IndustryApiLogDetails();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -80,7 +82,19 @@ namespace CEIHaryana.Officers
             try
             {
                 ID = Session["InspectionId"].ToString();
-
+                DataSet dsa = new DataSet();
+                dsa = CEI.GetEmails(ID);
+                ToEmail = dsa.Tables[0].Rows[0]["ToEmail"].ToString();
+                CCemail = dsa.Tables[0].Rows[0]["CCemail"].ToString();
+                Session["ToEmail"] = ToEmail.Trim();
+                if (CCemail.Trim() != null && CCemail.Trim() != "")
+                {
+                    Session["CCemail"] = CCemail.Trim();
+                }
+                else
+                {
+                    Session["CCemail"] = "";
+                }
                 DataSet ds = new DataSet();
                 ds = CEI.InspectionData(ID);
                 Type = ds.Tables[0].Rows[0]["IType"].ToString();
@@ -109,7 +123,8 @@ namespace CEIHaryana.Officers
                     txtSiteOwnerContact.Text = ds.Tables[0].Rows[0]["SiteownerContactNumber"].ToString();
                     txtContractorName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
                     txtContractorPhoneNo.Text = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
-
+                    string Email = ds.Tables[0].Rows[0]["Email"].ToString();
+                    Session["SiteOwnerEmail"] = Email.Trim();
                     txtContractorEmail.Text = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
                     txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
                     txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();
@@ -431,7 +446,11 @@ namespace CEIHaryana.Officers
                             if (RadioButtonList2.SelectedValue == "2")
                             {
                                 CEI.UpdateInspectionRejection(ID, StaffId, ddlRejectionReasonType.SelectedItem.ToString(), Reason);
-
+                                CCemail = Session["CCemail"].ToString();
+                                ToEmail = Session["ToEmail"].ToString();
+                                string subject = "Inspection Application Rejected";
+                                string Message = "Your inspection application (ID: '" + ID + "') has been rejected as response on the mentioned application is not received from beyond 15 working days. We regret any inconvenience this may cause.     \n\n    \n\nThank you for your understanding.    \n\n    \n\nBest regards,     \n\n[CEIHaryana]'";
+                                CEI.RejectMessagethroughEmail(ToEmail, CCemail, subject, Message);
                                 checksuccessmessage = 1;
                             }
                             else
