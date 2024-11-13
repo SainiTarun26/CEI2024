@@ -81,20 +81,7 @@ namespace CEIHaryana.Officers
             {
                 ID = Session["InspectionId"].ToString();
 
-                DataSet dsa = new DataSet();
-                dsa = CEI.GetEmails(ID);
-                txtInspectionReportID.Text = dsa.Tables[0].Rows[0]["Id"].ToString();
-                txtPremises.Text = dsa.Tables[0].Rows[0]["Inspectiontype"].ToString();
-                 ToEmail = dsa.Tables[0].Rows[0]["ToEmail"].ToString();
-                 CCemail = dsa.Tables[0].Rows[0]["CCemail"].ToString();
-                Session["ToEmail"] = ToEmail.Trim();
-                if (CCemail.Trim() != null && CCemail.Trim()!="") {
-                    Session["CCemail"] = CCemail.Trim();
-                }
-                else
-                {
-                    Session["CCemail"] = "";
-                }
+               
                 DataSet ds = new DataSet();
                 ds = CEI.InspectionData(ID);
                 Type = ds.Tables[0].Rows[0]["IType"].ToString();
@@ -267,6 +254,23 @@ namespace CEIHaryana.Officers
                         btnBack.Visible = true;
                         btnSubmit.Visible = false;
                     }
+                }
+                ID = Session["InspectionId"].ToString();
+
+                DataSet dsa = new DataSet();
+                dsa = CEI.GetEmails(ID);
+                txtInspectionReportID.Text = dsa.Tables[0].Rows[0]["Id"].ToString();
+                txtPremises.Text = dsa.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                ToEmail = dsa.Tables[0].Rows[0]["ToEmail"].ToString();
+                CCemail = dsa.Tables[0].Rows[0]["CCemail"].ToString();
+                Session["ToEmail"] = ToEmail.Trim();
+                if (CCemail.Trim() != null && CCemail.Trim() != "")
+                {
+                    Session["CCemail"] = CCemail.Trim();
+                }
+                else
+                {
+                    Session["CCemail"] = "";
                 }
             }
             catch (Exception ex)
