@@ -43,8 +43,8 @@ namespace CEIHaryana.Industry
             }";
 
 
-            //  string url = "https://ceiharyana.com/Industry/Industry.aspx"; // Replace with your actual URL
-            string url = "https://localhost:44393/Industry/Industry.aspx"; // Replace with your actual URL
+             string url = "https://ceiharyana.com/Industry/Industry.aspx"; // Replace with your actual URL
+            //string url = "https://localhost:44393/Industry/Industry.aspx"; // Replace with your actual URL
 
             PostJsonData(url, jsonData);
         }
