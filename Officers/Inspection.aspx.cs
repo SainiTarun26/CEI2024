@@ -82,19 +82,19 @@ namespace CEIHaryana.Officers
             try
             {
                 ID = Session["InspectionId"].ToString();
-                DataSet dsa = new DataSet();
-                dsa = CEI.GetEmails(ID);
-                ToEmail = dsa.Tables[0].Rows[0]["ToEmail"].ToString();
-                CCemail = dsa.Tables[0].Rows[0]["CCemail"].ToString();
-                Session["ToEmail"] = ToEmail.Trim();
-                if (CCemail.Trim() != null && CCemail.Trim() != "")
-                {
-                    Session["CCemail"] = CCemail.Trim();
-                }
-                else
-                {
-                    Session["CCemail"] = "";
-                }
+                //DataSet dsa = new DataSet();
+                //dsa = CEI.GetEmails(ID);
+                //ToEmail = dsa.Tables[0].Rows[0]["ToEmail"].ToString();
+                //CCemail = dsa.Tables[0].Rows[0]["CCemail"].ToString();
+                //Session["ToEmail"] = ToEmail.Trim();
+                //if (CCemail.Trim() != null && CCemail.Trim() != "")
+                //{
+                //    Session["CCemail"] = CCemail.Trim();
+                //}
+                //else
+                //{
+                //    Session["CCemail"] = "";
+                //}
                 DataSet ds = new DataSet();
                 ds = CEI.InspectionData(ID);
                 Type = ds.Tables[0].Rows[0]["IType"].ToString();
@@ -123,8 +123,6 @@ namespace CEIHaryana.Officers
                     txtSiteOwnerContact.Text = ds.Tables[0].Rows[0]["SiteownerContactNumber"].ToString();
                     txtContractorName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
                     txtContractorPhoneNo.Text = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
-                    string Email = ds.Tables[0].Rows[0]["Email"].ToString();
-                    Session["SiteOwnerEmail"] = Email.Trim();
                     txtContractorEmail.Text = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
                     txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
                     txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();
@@ -335,8 +333,9 @@ namespace CEIHaryana.Officers
             {
                 if (e.CommandName == "Select")
                 {
-                    //ID = Session["InspectionId"].ToString();                   
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    //ID = Session["InspectionId"].ToString();                 
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                 }
@@ -432,7 +431,7 @@ namespace CEIHaryana.Officers
                             string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
                             if (reqType == "Industry")
                             {
-                                string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
+                                string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
                                 // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
                                 if (serverStatus != "Server is reachable.")
                                 {
@@ -446,11 +445,11 @@ namespace CEIHaryana.Officers
                             if (RadioButtonList2.SelectedValue == "2")
                             {
                                 CEI.UpdateInspectionRejection(ID, StaffId, ddlRejectionReasonType.SelectedItem.ToString(), Reason);
-                                CCemail = Session["CCemail"].ToString();
-                                ToEmail = Session["ToEmail"].ToString();
-                                string subject = "Inspection Application Rejected";
-                                string Message = "Your inspection application (ID: '" + ID + "') has been rejected as response on the mentioned application is not received from beyond 15 working days. We regret any inconvenience this may cause.     \n\n    \n\nThank you for your understanding.    \n\n    \n\nBest regards,     \n\n[CEIHaryana]'";
-                                CEI.RejectMessagethroughEmail(ToEmail, CCemail, subject, Message);
+                                //CCemail = Session["CCemail"].ToString();
+                                //ToEmail = Session["ToEmail"].ToString();
+                                //string subject = "Inspection Application Rejected";
+                                //string Message = "Your inspection application (ID: '" + ID + "') has been rejected as response on the mentioned application is not received from beyond 15 working days. We regret any inconvenience this may cause.     \n\n    \n\nThank you for your understanding.    \n\n    \n\nBest regards,     \n\n[CEIHaryana]'";
+                                //CEI.RejectMessagethroughEmail(ToEmail, CCemail, subject, Message);
                                 checksuccessmessage = 1;
                             }
                             else
@@ -625,7 +624,7 @@ namespace CEIHaryana.Officers
                                 // string accessToken = "dfsfdsfsfsdf";
 
                                 logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                              "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                              "https://investharyana.in/api/project-service-logs-external_UHBVN",
                                               new Industry_Inspection_StageWise_JsonDataFormat_Model
                                               {
                                                   actionTaken = ApiPostformatresult.ActionTaken,
@@ -909,8 +908,8 @@ namespace CEIHaryana.Officers
             else if (e.CommandName == "View")
             {
                 string fileName = "";
-                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 //lblerror.Text = fileName;
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -918,7 +917,8 @@ namespace CEIHaryana.Officers
             else if (e.CommandName == "ViewInvoice")
             {
                 string fileName = "";
-                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
