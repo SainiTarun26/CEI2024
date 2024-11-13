@@ -117,7 +117,7 @@ namespace CEIHaryana.Admin
             if (e.CommandName == "Print")
             {
                 Control ctrl = e.CommandSource as Control;
-            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow; 
             Label lblID = (Label)row.FindControl("lblID");
             Label lblType = (Label)row.FindControl("lblType");
             Session["Type"] = lblType.Text;
