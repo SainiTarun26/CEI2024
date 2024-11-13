@@ -311,12 +311,13 @@
                             <div class="col-4 d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
                                 <label style="margin-bottom: 10px; margin-left: -50PX;">
                                     Payment Mode
+                               
                                 </label>
-                                <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
-                                    <asp:ListItem Text="Online" Value="0" Enabled="true"></asp:ListItem>
+                                <asp:RadioButtonList ID="RadioButtonList2" runat="server" RepeatDirection="Horizontal" readonly="true" TabIndex="25">
+                                    <asp:ListItem Text="Online" Value="0" Enabled="false"></asp:ListItem>
                                     <asp:ListItem Text="Offline" Value="1" Selected="True"></asp:ListItem>
                                 </asp:RadioButtonList>
-                                <asp:RequiredFieldValidator ID="rfvRbList" runat="server" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please select a value" Display="Dynamic" />
+
                             </div>
 
 
@@ -465,7 +466,7 @@
                                                 <asp:Label ID="LblinstallaionInvoicePath" runat="server" Text='<%#Eval("installaionInvoice") %>'></asp:Label>
                                                 <asp:Label ID="LblManufacturingReportPath" runat="server" Text='<%#Eval("ManufacturingReport ") %>'></asp:Label>
                                                 <asp:Label ID="LblReturnedReason" runat="server" Text='<%#Eval("ReturnedReason ") %>'></asp:Label>
-                                            
+
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="View Test Report" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
