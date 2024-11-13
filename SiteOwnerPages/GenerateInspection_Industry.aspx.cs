@@ -365,7 +365,7 @@ namespace CEIHaryana.SiteOwnerPages
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
 
-            string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
+            string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
             // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
             if (serverStatus != "Server is reachable.")
             {
@@ -670,7 +670,7 @@ namespace CEIHaryana.SiteOwnerPages
                        // string accessToken = "dfsfdsfsfsdf";
 
                         logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                      "https://investharyana.in/api/project-service-logs-external_UHBVN",
+                                      "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
                                       new Industry_Inspection_StageWise_JsonDataFormat_Model
                                       {
                                           actionTaken = ApiPostformatresult.ActionTaken,
@@ -922,8 +922,8 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     //ID = Session["InspectionId_Industry"].ToString();
 
-                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    // fileName = "https://localhost:44393/" + e.CommandArgument.ToString();
+                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 

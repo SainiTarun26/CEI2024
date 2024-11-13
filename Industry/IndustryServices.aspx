@@ -264,17 +264,17 @@
                  <script type="text/javascript">
                      function alertWithRedirectdata1() {
                          alert('Pan Card Or Service Id Not Found.');
-                         window.location.href = 'https://investharyana.in/#/';
+                         window.location.href = 'https://staging.staging.investharyana.in/#/';
                      }
 
                      function alertWithRedirectdata2() {
                          alert('TestReportId Not Found.');
-                         window.location.href = 'https://investharyana.in/#/';
+                         window.location.href = 'https://staging.staging.investharyana.in/#/';
                      }
 
                      function alertWithRedirectdata_InvalidServiceId() {
                          alert('Invalid Serviceid selected..');
-                         window.location.href = 'https://investharyana.in/#/';
+                         window.location.href = 'https://staging.staging.investharyana.in/#/';
                      }
 
                  </script>

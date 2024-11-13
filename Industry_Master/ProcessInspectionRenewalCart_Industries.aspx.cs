@@ -461,7 +461,7 @@ namespace CEIHaryana.Industry_Master
                 if (e.CommandName == "Select")
                 {
 
-                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -640,7 +640,7 @@ namespace CEIHaryana.Industry_Master
                                     // string accessToken = "dfsfdsfsfsdf";
 
                                     logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                                  "https://investharyana.in/api/project-service-logs-external_UHBVN",
+                                                  "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
                                                   new Industry_Inspection_StageWise_JsonDataFormat_Model
                                                   {
                                                       actionTaken = ApiPostformatresult.ActionTaken,

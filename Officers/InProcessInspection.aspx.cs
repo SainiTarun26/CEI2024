@@ -365,8 +365,8 @@ namespace CEIHaryana.Officers
                 if (e.CommandName == "Select")
                 {
                     //ID = Session["InspectionId"].ToString();
-                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -425,7 +425,7 @@ namespace CEIHaryana.Officers
                             string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
                             if (reqType == "Industry")
                             {
-                                string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
+                                string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
                                 // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
                                 if (serverStatus != "Server is reachable.")
                                 {
@@ -446,7 +446,7 @@ namespace CEIHaryana.Officers
                                 string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
 
                                 logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                    "https://investharyana.in/api/project-service-logs-external_UHBVN",
+                                    "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
                                     new Industry_Inspection_StageWise_JsonDataFormat_Model
                                     {
                                         actionTaken = ApiPostformatresult.ActionTaken,
@@ -894,8 +894,8 @@ namespace CEIHaryana.Officers
             else if (e.CommandName == "View")
             {
                 string fileName = "";
-                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 //lblerror.Text = fileName;
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -903,8 +903,8 @@ namespace CEIHaryana.Officers
             else if (e.CommandName == "ViewInvoice")
             {
                 string fileName = "";
-                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }

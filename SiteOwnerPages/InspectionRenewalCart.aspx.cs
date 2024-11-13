@@ -427,8 +427,8 @@ namespace CEIHaryana.SiteOwnerPages
                     Session["HighestVoltage"] = string.Empty;
                     Session["FinalAmount"] = string.Empty;
 
-                    //Response.Redirect("/SiteOwnerPages/ProcessInspectionRenewalCart.aspx", false);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Cart Submitted Successfully !!!'); window.location='/SiteOwnerPages/ProcessInspectionRenewalCart.aspx';", true);
+                    Response.Redirect("/SiteOwnerPages/ProcessInspectionRenewalCart.aspx", false);
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Cart Submitted Successfully !!!'); window.location='/SiteOwnerPages/ProcessInspectionRenewalCart.aspx';", true);
                 }
             }
             catch (Exception ex)

@@ -88,7 +88,7 @@ namespace CEIHaryana.Industry
                     //string accessToken = "dfsfdsfsfsdf";
 
                     logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                  "https://investharyana.in/api/project-service-logs-external_UHBVN",
+                                  "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
                                   new Industry_Inspection_StageWise_JsonDataFormat_Model
                                   {
                                       actionTaken = ApiPostformatresult.ActionTaken,
