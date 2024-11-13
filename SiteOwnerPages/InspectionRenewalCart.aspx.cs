@@ -412,7 +412,7 @@ namespace CEIHaryana.SiteOwnerPages
                         SInsp = CEI.GetDataForSingleInspection(InspectionId);
                         string IntimationId = SInsp.Tables[0].Rows[0]["IntimationId"].ToString();
                         string ApplicantType = SInsp.Tables[0].Rows[0]["ApplicantType"].ToString();
-                        PrevInstallationType = "Multiple";
+                        PrevInstallationType = "Multiple"; 
                         PrevTestReportId = "Multiple";
                         PrevIntimationId = IntimationId;
                         PrevVoltageLevel = HighestVoltage;
