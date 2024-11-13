@@ -90,7 +90,7 @@ namespace CEIHaryana.SiteOwnerPages
                     if (LblInspectionType.Text == "New")
                     {
 
-                        Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
+                        Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
                     }
                     else
                     {
@@ -128,11 +128,11 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     e.Row.CssClass = "ReturnedRowColor";
                 }
-                else
-                {
+                //else
+                //{
 
-                    linkButton.Visible = false;
-                }
+                //    linkButton.Visible = false;
+                //}
             }
         }
 

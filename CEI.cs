@@ -5651,7 +5651,11 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallationDetails", Id);
         }
-        public int InsertGeneratingSetData_Existing_HavingPreviousReport(string IdUpdate, string Count, string IntimationId, string GeneratingSetCapacityType, string GeneratingSetCapacity, string SerialNumbrOfAcGenerator, string GeneratingSetType, string GeneratorVoltageLevel, string TypeOfPlant, string MakeType, string CreatedBy)
+        public int InsertGeneratingSetData_Existing_HavingPreviousReport(string IdUpdate, string Count, string IntimationId, string GeneratingSetCapacityType,
+            string GeneratingSetCapacity, string SerialNumbrOfAcGenerator, string GeneratingSetType, string GeneratorVoltageLevel, string TypeOfPlant,
+            string MakeType,
+             string LastInspectionDate, string ApplicantType, string VoltageLevel, string District, string Division, string Inspectiontype,
+            string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertGeneratingSetData_Existing_HavingPreviousReport");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -5674,6 +5678,14 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             cmd.Parameters.AddWithValue("@GeneratorVoltageLevel", string.IsNullOrEmpty(GeneratorVoltageLevel) ? DBNull.Value : (object)GeneratorVoltageLevel);
             cmd.Parameters.AddWithValue("@TypeOfPlant", TypeOfPlant == "Select" ? DBNull.Value : (object)TypeOfPlant);
             cmd.Parameters.AddWithValue("@MakeType", MakeType);
+
+            cmd.Parameters.AddWithValue("@LastInspectionDate", String.IsNullOrEmpty(LastInspectionDate) ? null : LastInspectionDate);
+            cmd.Parameters.AddWithValue("@ApplicantType", String.IsNullOrEmpty(ApplicantType) ? null : ApplicantType);
+            cmd.Parameters.AddWithValue("@VoltageLevel", String.IsNullOrEmpty(VoltageLevel) ? null : VoltageLevel);
+            cmd.Parameters.AddWithValue("@District", String.IsNullOrEmpty(District) ? null : District);
+            cmd.Parameters.AddWithValue("@Division", String.IsNullOrEmpty(Division) ? null : Division);
+            cmd.Parameters.AddWithValue("@Inspectiontype", String.IsNullOrEmpty(Inspectiontype) ? null : Inspectiontype);
+
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             SqlParameter returnStatusParam = new SqlParameter("@ReturnStatus", SqlDbType.Int)
             {
@@ -5687,9 +5699,10 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
 
             return returnStatus;
         }
-
         public int InsertSubstationData_Existing_HavingPreviousReport(string IdUpdate, string Count, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
-     string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedBy)
+ string PrimaryVoltage, string SecondoryVoltage, string MakeType,
+ string LastInspectionDate, string ApplicantType, string VoltageLevel, string District, string Division, string Inspectiontype,
+ string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertSubstationTransformerData_Existing_HavingPreviousReport");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -5712,6 +5725,15 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             cmd.Parameters.AddWithValue("@PrimaryVoltage", PrimaryVoltage == "Select" ? null : PrimaryVoltage);
             cmd.Parameters.AddWithValue("@SecondoryVoltage", SecondoryVoltage == "Select" ? null : SecondoryVoltage);
             cmd.Parameters.AddWithValue("@MakeType", MakeType);
+
+            cmd.Parameters.AddWithValue("@LastInspectionDate", String.IsNullOrEmpty(LastInspectionDate) ? null : LastInspectionDate);
+
+            cmd.Parameters.AddWithValue("@ApplicantType", String.IsNullOrEmpty(ApplicantType) ? null : ApplicantType);
+            cmd.Parameters.AddWithValue("@VoltageLevel", String.IsNullOrEmpty(VoltageLevel) ? null : VoltageLevel);
+            cmd.Parameters.AddWithValue("@District", String.IsNullOrEmpty(District) ? null : District);
+            cmd.Parameters.AddWithValue("@Division", String.IsNullOrEmpty(Division) ? null : Division);
+            cmd.Parameters.AddWithValue("@Inspectiontype", String.IsNullOrEmpty(Inspectiontype) ? null : Inspectiontype);
+
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             SqlParameter returnStatusParam = new SqlParameter("@ReturnStatus", SqlDbType.Int)
             {
@@ -7551,13 +7573,19 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
                 throw;
             }
         }
-        public void UpdateReturnedInspectionReportIndustry(string InspectionID, SqlTransaction transaction)
+        public void UpdateReturnedInspectionReportIndustry(string InspectionID, string StaffId, SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_UpdateReturnedInspectionReport_Industry", transaction.Connection, transaction);
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@InspectionID ", InspectionID);
+            cmd.Parameters.AddWithValue("@StaffId ", StaffId);
             cmd.ExecuteNonQuery();
+        }
+        //Periodic inspection date in testreport
+        public DataSet GetIntimationDetails(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationDetails", Id);
         }
     }
 }

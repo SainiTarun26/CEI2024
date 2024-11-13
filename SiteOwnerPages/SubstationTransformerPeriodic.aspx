@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="SubstationTransformerPeriodic.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.SubstationTransformerPeriodic" %>
+﻿    <%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="SubstationTransformerPeriodic.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.SubstationTransformerPeriodic" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
@@ -420,7 +420,8 @@
                         </div>
                         <div class="col-3" runat="server" style="margin-top: 15px;">
                             <label for="Name">
-                                Serial no. <samp style="color: red">* </samp>
+                                Serial no.
+                                 <samp style="color: red">* </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtTransformerSerialNumber" MaxLength="20" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="1" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rvftransformerSerialnumber" ForeColor="Red" ControlToValidate="txtTransformerSerialNumber" runat="server" ErrorMessage="Please Enter Serial Number" ValidationGroup="Submit"></asp:RequiredFieldValidator>
@@ -431,6 +432,13 @@
                             </label>
                             <asp:TextBox class="form-control" ReadOnly="false" ID="txtMake" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ForeColor="Red" ControlToValidate="txtMake" ValidationGroup="Submit" ErrorMessage="Please Enter Make"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-3" id="Div5" runat="server" style="margin-top: 15px;">
+                            <label for="Name">
+                                last inspection issue date<samp style="color: red">* </samp>
+                            </label>
+                            <asp:TextBox class="form-control" type="date" ReadOnly="false" ID="txtLastInspectionIssueDate" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ForeColor="Red" ControlToValidate="txtLastInspectionIssueDate" ValidationGroup="Submit" ErrorMessage="Please Select last inspection issue date"></asp:RequiredFieldValidator>
                         </div>
 
                         <%--  <div class="col-4">
@@ -663,5 +671,11 @@
             }
             return true;
         }
-    </script>
+        </script>
+         <script type="text/javascript">
+        window.onload = function () {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('<%= txtLastInspectionIssueDate.ClientID %>').setAttribute('max', today);
+        };
+         </script>
 </asp:Content>

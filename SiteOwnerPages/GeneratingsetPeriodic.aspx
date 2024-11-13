@@ -59,7 +59,7 @@
 
         }
     </script>
-    g
+    
     <style>
         .headercolor1 {
             text-align: initial !important;
@@ -395,7 +395,8 @@
                         </div>
                         <div class="col-md-3" runat="server" style="margin-top: -15px;">
                             <label for="Name">
-                                Serial no. <samp style="color: red">* </samp>
+                                Serial no. 
+                                <samp style="color: red">* </samp>
                             </label>
                             <asp:TextBox class="form-control" ReadOnly="false" ID="txtSerialNoOfGenerator" onkeydown="return preventEnterSubmit(event)"  placeholder="of Ac generator/ Alternator" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" ControlToValidate="txtSerialNoOfGenerator" ValidationGroup="Submit" ErrorMessage="Please Enter Serial No Of Generator"></asp:RequiredFieldValidator>
@@ -465,6 +466,13 @@
                                 <asp:ListItem Text="Roof Top" Value="2"></asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" ControlToValidate="ddlPlantType" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Plant Type"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-3" id="Div5" runat="server" style="margin-top: 15px;">
+                            <label for="Name">
+                                last inspection issue date<samp style="color: red">* </samp>
+                            </label>
+                            <asp:TextBox class="form-control" type="date" ReadOnly="false" ID="txtLastInspectionIssueDate" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ForeColor="Red" ControlToValidate="txtLastInspectionIssueDate" ValidationGroup="Submit" ErrorMessage="Please Select last inspection issue date"></asp:RequiredFieldValidator>
                         </div>
                         <%--  <div class="col-4">
                              <label for="Name">
@@ -674,5 +682,11 @@
             }
             return true;
         }
+    </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('<%= txtLastInspectionIssueDate.ClientID %>').setAttribute('max', today);
+        };
     </script>
 </asp:Content>

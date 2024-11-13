@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using CEIHaryana.Admin;
 using iText.Forms.Form.Element;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace CEIHaryana.SiteOwnerPages
         string currentSessionName = string.Empty;
         string Type = string.Empty;
         string SubStationID = string.Empty;
-        private static string _PrimaryVoltage, _SecondaryVoltage;
+        private static string _PrimaryVoltage, _SecondaryVoltage, ApplicantType, VoltageLevel, District, Division, Inspectiontype;
 
         string IdUpdate = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
@@ -39,7 +40,7 @@ namespace CEIHaryana.SiteOwnerPages
                     txtInstallation.Text = Session["Installation"].ToString().Trim();
                     txtid.Text = Session["Intimation"].ToString().Trim();
                     txtNOOfInstallation.Text = Session["Count"].ToString();
-                 
+
                 }
                 else
                 {
@@ -47,7 +48,7 @@ namespace CEIHaryana.SiteOwnerPages
                     txtInstallation.Text = Session["Typs"].ToString().Trim();
                     txtid.Text = Session["Intimations"].ToString().Trim();
                     txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim() + " Out of " + Session["TotalInstallation"].ToString().Trim();
-                    
+
                 }
 
             }
@@ -141,7 +142,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-          
+
                 string IntimationId = Session["intimationid"].ToString();
                 string CreatedBy = Session["SiteOwnerId"].ToString();
                 string installationNo = Session["IHID"].ToString();
@@ -153,6 +154,14 @@ namespace CEIHaryana.SiteOwnerPages
                 //string installationNo = "1376";
                 //string count = "1";
 
+                DataSet ds = new DataSet();
+                ds = CEI.GetIntimationDetails(IntimationId);
+
+                ApplicantType = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                VoltageLevel = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                District = ds.Tables[0].Rows[0]["District"].ToString();
+                Division = ds.Tables[0].Rows[0]["Division"].ToString();
+                Inspectiontype = ds.Tables[0].Rows[0]["PremisesType"].ToString();
 
                 string Primaryvoltage, SecondaryVoltage;
                 Primaryvoltage = PrimaryVoltage.SelectedItem.ToString().Trim();
@@ -162,7 +171,10 @@ namespace CEIHaryana.SiteOwnerPages
                 _SecondaryVoltage = SecondaryVoltage.Substring(0, SecondaryVoltage.Length - 6);
 
                 int returnresult = CEI.InsertSubstationData_Existing_HavingPreviousReport(IdUpdate, count, IntimationId, txtTransformerSerialNumber.Text, ddltransformerCapacity.SelectedItem.ToString(), txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(),
-                    _PrimaryVoltage, _SecondaryVoltage, txtMake.Text.ToString(), CreatedBy);
+                    _PrimaryVoltage, _SecondaryVoltage, txtMake.Text.ToString(),
+                    txtLastInspectionIssueDate.Text.ToString(), ApplicantType, VoltageLevel, District, Division,
+                    Inspectiontype,
+                    CreatedBy);
                 CEI.UpdateInstallations(installationNo, IntimationId);
 
                 Reset();
