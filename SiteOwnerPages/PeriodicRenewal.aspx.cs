@@ -172,7 +172,7 @@ namespace CEIHaryana.SiteOwnerPages
         //    {
         //        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please Tick Atleast One Declaration');", true);
         //    }
-        //}
+        //} 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
