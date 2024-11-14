@@ -161,7 +161,7 @@
                                         <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status") %>'></asp:Label>
                                         <asp:Label ID="lblAssignedSupervisor" runat="server" Text='<%#Eval("AssignedSupervisor") %>'></asp:Label>
                                         <asp:Label ID="lblInitialSupervisor" runat="server" Text='<%#Eval("InitialSupervisor") %>'></asp:Label>
-
+                                        <asp:Label ID="lblApplicant" runat="server" Text='<%#Eval("ApplicantType") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
 

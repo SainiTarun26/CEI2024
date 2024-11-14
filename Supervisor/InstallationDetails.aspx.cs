@@ -108,6 +108,7 @@ namespace CEIHaryana.Supervisor
                             Session["ValueId"] = "";
                             Session["SubStationID"] = "";
                             Session["GeneratingSetId"] = "";
+                            Session["ApplicantType"] = "";
                         }
 
                         if (lblhistory.Text.Trim() == "Generated" && lblStatus.Text.Trim() != "Reject")
@@ -138,6 +139,8 @@ namespace CEIHaryana.Supervisor
                                 Session["IHIDs"] = lblID.Text.Trim();                           //////////////
                                 Label lblVoltageLevel = (Label)row.FindControl("lblVoltageLevel");
                                 Session["VoltageLevel"] = lblVoltageLevel.Text.Trim();
+                                //Label lblApplicantType = (Label)row.FindControl("ApplicantType");
+                                //Session["ApplicantType"] = lblApplicantType.Text.Trim();
                                 DataSet ds = new DataSet();
                                 ds = CEI.GetData(lblTyps.Text.Trim(), lblIntimations.Text.Trim(), lblNoOfInstallations.Text.Trim());
                                 if (lblTyps.Text.Trim() == "Line")
@@ -166,11 +169,6 @@ namespace CEIHaryana.Supervisor
                                     //    Session["ValueId"] = "True";
                                     //}
                                     Response.Redirect("/Supervisor/GeneratingSetTestReport.aspx", false);
-                                }
-                                else if (lblTyps.Text.Trim() == "Lift" || lblTyps.Text.Trim() == "Escalator")
-                                {
-
-                                    Response.Redirect("/Supervisor/LiftTestReport.aspx", false);
                                 }
                             }
                             else
@@ -205,6 +203,8 @@ namespace CEIHaryana.Supervisor
                             Session["IHIDs"] = lblID.Text.Trim();                           //////////////
                             Label lblVoltageLevel = (Label)row.FindControl("lblVoltageLevel");
                             Session["VoltageLevel"] = lblVoltageLevel.Text.Trim();
+                            Label lblApplicant = (Label)row.FindControl("lblApplicant");
+                            Session["ApplicantType"] = lblApplicant.Text.Trim();
                             DataSet ds = new DataSet();
                             ds = CEI.GetData(lblTyps.Text.Trim(), lblIntimations.Text.Trim(), lblNoOfInstallations.Text.Trim());
                             if (lblTyps.Text.Trim() == "Line")
@@ -233,15 +233,6 @@ namespace CEIHaryana.Supervisor
                                 //    Session["ValueId"] = "True";
                                 //}
                                 Response.Redirect("/Supervisor/GeneratingSetTestReport.aspx", false);
-                            }
-                            else if (lblTyps.Text.Trim() == "Lift" || lblTyps.Text.Trim() == "Escalator")
-                            {
-                                //if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-                                //{
-                                //    Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
-                                //    Session["ValueId"] = "True";
-                                //}
-                                Response.Redirect("/Supervisor/LiftTestReport.aspx", false);
                             }
                         }
 
