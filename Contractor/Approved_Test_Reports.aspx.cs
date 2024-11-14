@@ -131,7 +131,7 @@ namespace CEIHaryana.Contractor
                 else
                 {
                     linkButton.Visible = true;
-                    LinkButton3.Visible = true;
+                    LinkButton3.Visible = true; 
                 }
 
             }
