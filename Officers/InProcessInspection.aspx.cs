@@ -211,7 +211,15 @@ namespace CEIHaryana.Officers
                         ddlReview.Attributes.Add("disabled", "true");
                         txtRejected.Attributes.Add("disabled", "true");
                         txtRejectionBasis.Attributes.Add("disabled", "true");
-                        RejectionBasis.Visible = true;
+                        if (txtRejectionBasis.Text == "" || txtRejectionBasis.Text == null)
+                        {
+                            RejectionBasis.Visible = false;
+
+                        }
+                        else
+                        {
+                            RejectionBasis.Visible = true;
+                        }
                         btnBack.Visible = true;
                         btnSubmit.Visible = false;
                     }
@@ -221,12 +229,12 @@ namespace CEIHaryana.Officers
                         ApprovalRequired.Visible = false;
                         btnSubmit.Visible = false;
                         RejectionBasis.Visible = false;
-                        
+
                         ddlReview.Attributes.Add("disabled", "true");
 
                         divTestReportAttachment.Visible = false;
 
-                        
+
 
                         //Grid_MultipleInspectionTR.Columns[8].Visible = true;
 
@@ -908,6 +916,7 @@ namespace CEIHaryana.Officers
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
+            GetData();
 
 
         }

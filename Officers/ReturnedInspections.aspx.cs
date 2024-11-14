@@ -82,7 +82,7 @@ namespace CEIHaryana.Officers
             {
                 ID = Session["InspectionId"].ToString();
 
-               
+
                 DataSet ds = new DataSet();
                 ds = CEI.InspectionData(ID);
                 Type = ds.Tables[0].Rows[0]["IType"].ToString();
@@ -121,35 +121,34 @@ namespace CEIHaryana.Officers
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                     //count = Convert.ToInt32(ds.Tables[0].Rows[0]["TestReportCount"].ToString());           //Added     
                     IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();        //Added     
-                    string ReturnValu= ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
+                    string ReturnValu = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
                     GridBindDocument();
-                    ReturnValu = "2";
-                    if (ReturnValu == "2")
-                    {
-                        grd_Documemnts.Columns[3].Visible = false;
-                        grd_Documemnts.Columns[4].Visible = false;
-                    }
-                    else
-                        
-                    {
-
-                        grd_Documemnts.Columns[3].Visible = false;
-                        grd_Documemnts.Columns[4].Visible = false;
-                    }
-                        DivViewTRinMultipleCaseNew.Visible = true;
+                    DivViewTRinMultipleCaseNew.Visible = true;
                     if (Type == "New")
                     {
                         GridToViewMultipleCaseNew();
-                        if (ReturnValu =="1")
+                        if (ReturnValu == "1")
                         {
-
+                            grd_Documemnts.Columns[3].Visible = true;
+                            grd_Documemnts.Columns[4].Visible = true;
                             Grid_MultipleInspectionTR.Columns[5].Visible = false;
                             Grid_MultipleInspectionTR.Columns[7].Visible = false;
                             Grid_MultipleInspectionTR.Columns[9].Visible = false;
                         }
+                        else if (ReturnValu == "3")
+                        {
+
+                            grd_Documemnts.Columns[3].Visible = true;
+                            grd_Documemnts.Columns[4].Visible = true;
+                            Grid_MultipleInspectionTR.Columns[5].Visible = true;
+                            Grid_MultipleInspectionTR.Columns[7].Visible = true;
+                            Grid_MultipleInspectionTR.Columns[9].Visible = true;
+                        }
                         else
                         {
 
+                            grd_Documemnts.Columns[3].Visible = false;
+                            grd_Documemnts.Columns[4].Visible = false;
                             Grid_MultipleInspectionTR.Columns[5].Visible = true;
                             Grid_MultipleInspectionTR.Columns[7].Visible = true;
                             Grid_MultipleInspectionTR.Columns[9].Visible = true;
@@ -165,14 +164,14 @@ namespace CEIHaryana.Officers
                     if (Status.Trim() == "InProcess")
                     {
                         RadioButtonList2.SelectedIndex = RadioButtonList2.Items.IndexOf(RadioButtonList2.Items.FindByValue("0"));
-                       RadioButtonList2.Enabled = false;
+                        RadioButtonList2.Enabled = false;
                         btnBack.Visible = true;
                         btnSubmit.Visible = false;
                     }
                     else if (Status.Trim() == "Return")
                     {
                         RadioButtonList2.SelectedIndex = RadioButtonList2.Items.IndexOf(RadioButtonList2.Items.FindByValue("1"));
-                     
+
                         Rejection.Visible = true;
                         txtRejected.Text = ds.Tables[0].Rows[0]["ReturnRemarks"].ToString();
 
@@ -1019,17 +1018,7 @@ namespace CEIHaryana.Officers
                     LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
                     LinkButton lnkPreviousInstallaionInvoice = (LinkButton)e.Row.FindControl("lnkPreviousInstallaionInvoice");
                     LinkButton lnkPreviosManufacturingReport = (LinkButton)e.Row.FindControl("lnkPreviosManufacturingReport");
-                    if (LblInstallationName.Text.Trim() == "Line")
-                    {
-                        linkButtonInvoice.Visible = false;
-                        LinkButtonReport.Visible = false;
-                    }
-                    else
-                    {
-                        linkButtonInvoice.Visible = true;
-                        LinkButtonReport.Visible = true;
-                    }
-                    if (lnkPreviosManufacturingReport.Text.Trim()==""|| lnkPreviosManufacturingReport == null)
+                    if (lnkPreviosManufacturingReport.Text.Trim() == "" || lnkPreviosManufacturingReport == null)
                     {
                         lnkPreviosManufacturingReport.Visible = false;
 
@@ -1039,7 +1028,7 @@ namespace CEIHaryana.Officers
                         lnkPreviosManufacturingReport.Visible = true;
                         lnkPreviosManufacturingReport.Text = "View Document";
                     }
-                    if (lnkPreviousInstallaionInvoice.Text.Trim()==""|| lnkPreviousInstallaionInvoice == null)
+                    if (lnkPreviousInstallaionInvoice.Text.Trim() == "" || lnkPreviousInstallaionInvoice == null)
                     {
                         lnkPreviousInstallaionInvoice.Visible = false;
 
@@ -1049,6 +1038,22 @@ namespace CEIHaryana.Officers
                         lnkPreviousInstallaionInvoice.Visible = true;
                         lnkPreviousInstallaionInvoice.Text = "View Document";
                     }
+                    if (LblInstallationName.Text.Trim() == "Line")
+                    {
+
+                        lnkPreviousInstallaionInvoice.Visible = false;
+                        lnkPreviosManufacturingReport.Visible = false;
+                        linkButtonInvoice.Visible = false;
+                        LinkButtonReport.Visible = false;
+                    }
+                    else
+                    {
+                        lnkPreviousInstallaionInvoice.Visible = true;
+                        lnkPreviosManufacturingReport.Visible = true;
+                        linkButtonInvoice.Visible = true;
+                        LinkButtonReport.Visible = true;
+                    }
+
 
                 }
             }
@@ -1237,6 +1242,35 @@ namespace CEIHaryana.Officers
             }
             catch (Exception ex)
             { }
+        }
+        protected void chk_SelectDoc_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chkBox = (CheckBox)sender;
+            GridViewRow row = (GridViewRow)chkBox.NamingContainer;
+            TextBox txtRemarks = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
+
+            // Enable or disable the TextBox based on checkbox checked state
+            txtRemarks.Enabled = chkBox.Checked;
+
+            if (!chkBox.Checked)
+            {
+                txtRemarks.Text = string.Empty;
+            }
+        }
+
+        protected void chk_Select_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chkBox = (CheckBox)sender;
+            GridViewRow row = (GridViewRow)chkBox.NamingContainer;
+            TextBox txtRemarks1 = (TextBox)row.FindControl("txt_Remarks");
+
+            // Enable or disable the TextBox based on checkbox checked state
+            txtRemarks1.Enabled = chkBox.Checked;
+
+            if (!chkBox.Checked)
+            {
+                txtRemarks1.Text = string.Empty;
+            }
         }
     }
 }

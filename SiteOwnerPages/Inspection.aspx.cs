@@ -222,8 +222,8 @@ namespace CEIHaryana.SiteOwnerPages
                             ApprovalRequired.Visible = false;
                             btnSubmit.Visible = false;
 
-                            buttonSubmit.Visible = true;
-                            Remarks.Visible = true;
+                            //buttonSubmit.Visible = true;
+                            //Remarks.Visible = true;
 
                             //Rejection.Visible = true;
                             //txtRejected.Text = ds.Tables[0].Rows[0]["ReturnRemarks"].ToString();
@@ -234,19 +234,19 @@ namespace CEIHaryana.SiteOwnerPages
                             //txtRejected.Attributes.Add("disabled", "true");
                         }
                         string Reason = ds.Tables[0].Rows[0]["ReasonType"].ToString();
-                        if (Reason == "1")
-                        {
-                            buttonSubmit.Visible = false;
-                            Remarks.Visible = false;
+                        //if (Reason == "1")
+                        //{
+                        //    buttonSubmit.Visible = false;
+                        //    Remarks.Visible = false;
 
-                        }
-                        if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["RemarkForContractor"].ToString()))
-                        {
-                            // If not null or empty, disable the textbox
-                            txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
-                            txtOwnerRemarks.Enabled = false;
-                            buttonSubmit.Visible = false;
-                        }
+                        //}
+                        //if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["RemarkForContractor"].ToString()))
+                        //{
+                        //    // If not null or empty, disable the textbox
+                        //    txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
+                        //    txtOwnerRemarks.Enabled = false;
+                        //    buttonSubmit.Visible = false;
+                        //}
                     }
                     else if (IType == "Periodic")
                     {
@@ -286,8 +286,8 @@ namespace CEIHaryana.SiteOwnerPages
                             ApprovalRequired.Visible = false;
                             btnSubmit.Visible = false;
 
-                            buttonSubmit.Visible = true;
-                            Remarks.Visible = true;
+                            //buttonSubmit.Visible = true;
+                            //Remarks.Visible = true;
                             ddlReview.Attributes.Add("disabled", "true");
 
                             if (ReturnedBased=="1")
@@ -300,18 +300,18 @@ namespace CEIHaryana.SiteOwnerPages
                             }
                         }
                         string Reason = ds.Tables[0].Rows[0]["ReasonType"].ToString();
-                        if (Reason == "1")
-                        {
-                            buttonSubmit.Visible = false;
-                            Remarks.Visible = false;
+                        //if (Reason == "1")
+                        //{
+                        //    buttonSubmit.Visible = false;
+                        //    Remarks.Visible = false;
 
-                        }
-                        if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["RemarkForContractor"].ToString()))
-                        {
-                            txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
-                            txtOwnerRemarks.Enabled = false;
-                            buttonSubmit.Visible = false;
-                        }
+                        //}
+                        //if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["RemarkForContractor"].ToString()))
+                        //{
+                        //    txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
+                        //    txtOwnerRemarks.Enabled = false;
+                        //    buttonSubmit.Visible = false;
+                        //}
                     }
                 }
             }
@@ -1015,14 +1015,14 @@ namespace CEIHaryana.SiteOwnerPages
             string TestReportId = Session["TestReport"].ToString();
             ID = Session["InspectionId"].ToString();
             DataSet ds = new DataSet();
-            if (IType == "New")
-            {
-                ds = CEI.ContractorRemarks(ID, TestReportId, txtOwnerRemarks.Text.Trim());
-            }
-            else if (IType == "Periodic")
-            {
-                ds = CEI.ContractorRemarksInPeriodic(ID, txtOwnerRemarks.Text.Trim());
-            }
+            ////if (IType == "New")
+            ////{
+            ////    ds = CEI.ContractorRemarks(ID, TestReportId, txtOwnerRemarks.Text.Trim());
+            ////}
+            ////else if (IType == "Periodic")
+            ////{
+            ////    ds = CEI.ContractorRemarksInPeriodic(ID, txtOwnerRemarks.Text.Trim());
+            ////}
             //txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata1();", true);
         }

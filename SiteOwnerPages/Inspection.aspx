@@ -382,13 +382,13 @@
  </div>
 
 
-             <div class="row" id="Remarks" runat="server" visible="false">
+            <%-- <div class="row" id="Remarks" runat="server" visible="false">
                 <div class="col-12">
                     <label>Remarks For Contractor<samp style="color: red">* </samp></label>
                     <asp:TextBox class="form-control" ID="txtOwnerRemarks" autocomplete="off" TabIndex="7" runat="server" Style="width:100%;"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtOwnerRemarks" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                 </div>
-                </div>
+                </div>--%>
 
              <div class="row" id="Reason" runat="server" visible="false">
                 <div class="col-12">
@@ -404,7 +404,7 @@
                     <asp:Button ID="btnSubmit" Text="Submit" Visible="false" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2"
                         OnClick="btnSubmit_Click" />
                     <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
-                     <asp:Button ID="buttonSubmit" Text="Submit" Visible="false"  runat="server" ValidationGroup="Submit" OnClick="buttonSubmit_Click" class="btn btn-primary mr-2"/>
+                   <%--  <asp:Button ID="buttonSubmit" Text="Submit" Visible="false"  runat="server" ValidationGroup="Submit" OnClick="buttonSubmit_Click" class="btn btn-primary mr-2"/>--%>
                     <asp:Button ID="btnResubmit" Text="Re-Submit" Visible="false" runat="server" ValidationGroup="Submit" OnClick="btnResubmit_Click" class="btn btn-primary mr-2" />
                     <br />
                     <%--<asp:Label ID="lblerror" runat="server" Text="Label"></asp:Label>--%>

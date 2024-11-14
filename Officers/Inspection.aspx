@@ -575,7 +575,7 @@
                                         <asp:TemplateField HeaderStyle-BackColor="#9292cc" HeaderStyle-ForeColor="white">
                                             <ItemStyle HorizontalAlign="Center" />
                                             <ItemTemplate>
-                                                <asp:CheckBox ID="chk_SelectDoc" runat="server" />
+                                                <asp:CheckBox ID="chk_SelectDoc" runat="server" AutoPostBack="true" OnCheckedChanged="chk_SelectDoc_CheckedChanged" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="SNo">
@@ -601,7 +601,7 @@
                                         </asp:BoundField>
                                         <asp:TemplateField HeaderText="Remarks" HeaderStyle-BackColor="#9292cc" HeaderStyle-ForeColor="white">
                                             <ItemTemplate>
-                                                <asp:TextBox ID="txt_RemarksforOwnerDoc" runat="server" CssClass="form-control" MaxLength="100" />
+                                                <asp:TextBox ID="txt_RemarksforOwnerDoc" runat="server" CssClass="form-control" Enabled="false" MaxLength="100" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
@@ -623,7 +623,7 @@
                                     <asp:TemplateField HeaderStyle-BackColor="#9292cc" HeaderStyle-ForeColor="white">
                                         <ItemStyle HorizontalAlign="Center" />
                                         <ItemTemplate>
-                                            <asp:CheckBox ID="chk_Select" runat="server" />
+                                            <asp:CheckBox ID="chk_Select" runat="server" AutoPostBack="true" OnCheckedChanged="chk_Select_CheckedChanged" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="SNo">
@@ -654,7 +654,7 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Remarks" HeaderStyle-BackColor="#9292cc" HeaderStyle-ForeColor="white">
                                         <ItemTemplate>
-                                            <asp:TextBox ID="txt_Remarks" runat="server" CssClass="form-control" Placeholder="Mention the Document Name"  MaxLength="100"  />
+                                            <asp:TextBox ID="txt_Remarks" runat="server" CssClass="form-control" Placeholder="Mention the Document Name" Enabled="false" MaxLength="100"  />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>

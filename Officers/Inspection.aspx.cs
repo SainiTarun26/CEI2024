@@ -1108,5 +1108,35 @@ namespace CEIHaryana.Officers
             catch (Exception ex)
             { }
         }
+
+        protected void chk_SelectDoc_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chkBox = (CheckBox)sender;
+            GridViewRow row = (GridViewRow)chkBox.NamingContainer;
+            TextBox txtRemarks = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
+
+            // Enable or disable the TextBox based on checkbox checked state
+            txtRemarks.Enabled = chkBox.Checked;
+
+            if (!chkBox.Checked)
+            {
+                txtRemarks.Text = string.Empty;
+            }
+        }
+
+        protected void chk_Select_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chkBox = (CheckBox)sender;
+            GridViewRow row = (GridViewRow)chkBox.NamingContainer;
+            TextBox txtRemarks1 = (TextBox)row.FindControl("txt_Remarks");
+
+            // Enable or disable the TextBox based on checkbox checked state
+            txtRemarks1.Enabled = chkBox.Checked;
+
+            if (!chkBox.Checked)
+            {
+                txtRemarks1.Text = string.Empty;
+            }
+        }
     }
 }
