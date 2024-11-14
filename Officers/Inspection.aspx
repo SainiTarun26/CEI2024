@@ -532,7 +532,7 @@
             <asp:UpdatePanel ID="Updatepanel1" runat="server">
                 <ContentTemplate>
                     <div class="row" style="margin-left: 0px;">
-                        <p style="margin-top: auto; margin-bottom: auto;">Action Required</p>
+                        <p style="margin-top: auto; margin-bottom: auto;">Action Required<samp style="color: red"> * </samp></p>
                         <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                             <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
                             <asp:ListItem Text="No(Return)" Value="1" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
@@ -542,7 +542,7 @@
                     <div class="row">
                         <div class="col-md-6" id="Rejection" runat="server" visible="false">
                             <label>
-                                Reason Type :
+                                Reason Type<samp style="color: red"> * </samp> :
                             </label>
                             <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlReasonType" OnSelectedIndexChanged="ddlReasonType_SelectedIndexChanged" AutoPostBack="true" runat="server">
                                 <%-- <asp:ListItem Value="0" Text="Based On TestReport"></asp:ListItem>--%>
@@ -551,6 +551,7 @@
                                 <asp:ListItem Value="2" Text="Test Report Documents"></asp:ListItem>
                                 <asp:ListItem Value="3" Text="Both (Checklist & TestReport Documents)"></asp:ListItem>
                             </asp:DropDownList>
+                            <asp:RequiredFieldValidator  ID="rfvReasonType"  ControlToValidate="ddlReasonType" InitialValue="0"  ErrorMessage="Please select a Reason Type."  ForeColor="Red"  runat="server" />
                             <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" Visible="false" ID="ddlRejectionReasonType" TabIndex="8" runat="server">
                                 <asp:ListItem Value="0" Text="Incorrect Data in WorkIntimation"></asp:ListItem>
                             </asp:DropDownList>
@@ -667,9 +668,19 @@
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4" style="text-align: center;">
-                <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
+                <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClientClick="return validateReasonType();" OnClick="btnSubmit_Click" />
                 <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        function validateReasonType() {
+            var ddlReasonType = document.getElementById('<%= ddlReasonType.ClientID %>');
+            if (ddlReasonType.value === "0") {
+                alert("Please select a Reason Type.");
+                return false;
+            }
+            return true;
+        }
+</script>
 </asp:Content>

@@ -25,6 +25,7 @@ namespace CEIHaryana.Officers
         string ToEmail = string.Empty;
         string CCemail = string.Empty;
         IndustryApiLogDetails logDetails = new IndustryApiLogDetails();
+        private bool allRowsContainLine = true;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -37,6 +38,7 @@ namespace CEIHaryana.Officers
                     {
                         GridBindDocument();
                         GetTestReportData();
+                        ViewState["AllRowsAreLine"] = true;
                     }
                     else if (Type == "Periodic")
                     {
@@ -853,7 +855,7 @@ namespace CEIHaryana.Officers
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please select the yes or no');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please select the Action Required for Inspection');", true);
                     }
                 }
                 else
@@ -1052,9 +1054,28 @@ namespace CEIHaryana.Officers
                         lnkPreviosManufacturingReport.Visible = true;
                         linkButtonInvoice.Visible = true;
                         LinkButtonReport.Visible = true;
+                        ViewState["AllRowsAreLine"] = false;
                     }
 
 
+                }
+                else if (e.Row.RowType == DataControlRowType.Footer)
+                {
+                    if (ViewState["AllRowsAreLine"] == null || (bool)ViewState["AllRowsAreLine"] == true)
+                    {
+                        ddlReasonType.Items.Clear();
+                        ddlReasonType.Items.Add(new ListItem("Select", "0"));
+                        ddlReasonType.Items.Add(new ListItem("Checklist Documents", "1"));
+                    }
+                    else
+                    {
+                        // Restore original items
+                        ddlReasonType.Items.Clear();
+                        ddlReasonType.Items.Add(new ListItem("Select", "0"));
+                        ddlReasonType.Items.Add(new ListItem("Checklist Documents", "1"));
+                        ddlReasonType.Items.Add(new ListItem("Test Report Documents", "2"));
+                        ddlReasonType.Items.Add(new ListItem("Both (Checklist & TestReport Documents)", "3"));
+                    }
                 }
             }
             catch (Exception ex)
