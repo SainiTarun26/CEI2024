@@ -376,6 +376,11 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         StaffAssigned = "CEI";
                     }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('your details or component are wrong')", true);
+                        return;
+                    }
 
 
                     DataSet dsp = new DataSet();
