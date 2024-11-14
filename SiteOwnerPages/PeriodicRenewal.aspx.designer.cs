@@ -114,24 +114,6 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.HiddenField hdnId2;
 
         /// <summary>
-        /// DivExistingInspectionRequest control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivExistingInspectionRequest;
-
-        /// <summary>
-        /// GridView2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
-
-        /// <summary>
         /// DivCreateIntimation control.
         /// </summary>
         /// <remarks>
@@ -294,15 +276,6 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.TextBox txtUtilityName;
 
         /// <summary>
-        /// PowerUtility control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PowerUtility;
-
-        /// <summary>
         /// Wing control.
         /// </summary>
         /// <remarks>
@@ -319,6 +292,15 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtWing;
+
+        /// <summary>
+        /// PowerUtility control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PowerUtility;
 
         /// <summary>
         /// txtZone control.

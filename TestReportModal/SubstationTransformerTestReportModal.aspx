@@ -2094,6 +2094,17 @@
                         <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
                             Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="openNewWindow(); return false;" />
                     </div>
+                    <div class="row" style="margin-bottom: 15PX;">
+                        <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
+                            <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Work Completion and Test Report (Line)</h6>
+                             <div class="row" style="font-size:18px; font-weight:600;">      
+                                <div class="col-12" style="margin-top: 0px; padding-left: 0px; text-align: center;">                
+                                  TestReportId: (<asp:Label ID="lbltestReportId" runat="server" />) &nbsp;&nbsp;&nbsp;&nbsp;  WorkIntimation Id: (<asp:Label ID="lblWorkIntimationId" runat="server" />)
+                                </div>
+                              
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-body" id="divtrasformer" runat="server" style="margin-top: -30px;">
                         <div class="row">
                             <div class="col-md-4"></div>
@@ -2126,6 +2137,12 @@
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtName" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
+                                    <div class="col-6" runat="server" visible="false">
+                                        <label for="Name">
+                                    TestReportCount
+                                          </label>
+            <asp:TextBox class="form-control" ReadOnly="true" ID="txtTestReportCount" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+     </div>
                                 </div>
                                 <div class="row row-modal">
                                     <%--  <div class="col-6" id="individual9" runat="server">
@@ -2140,6 +2157,12 @@
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
+                                    <div class="col-6" runat="server" visible="false">
+                                        <label for="Name">
+                                  Applicant Type
+                                           </label>
+                      <asp:TextBox class="form-control" ReadOnly="true" ID="txtApplicantType" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                       </div>
                                     <div class="col-6" id="individual5" runat="server">
                                         <label for="Name">
                                             Contact Details 
@@ -2174,6 +2197,18 @@
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtCompletitionDate" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
+                                    <div class="col-6" id="Div8" runat="server" visible="false">
+                                        <label for="Name">
+                                          District
+                                    </label>
+<asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                     </div>
+                            <div class="col-6" id="Div3" runat="server" visible="false">
+                                        <label for="Name">
+                                          Division
+                                    </label>
+<asp:TextBox class="form-control" ID="txtDivision" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                     </div>
                                 </div>
                             </div>
                         </div>
@@ -2759,7 +2794,7 @@
            </div>
        </div>
    </div>
-    <asp:Label ID="lbltestReportId" runat="server" Visible="false" />
+    <asp:Label ID="Label1" runat="server" Visible="false" />
                                 
                             </ContentTemplate>
                         </asp:UpdatePanel>

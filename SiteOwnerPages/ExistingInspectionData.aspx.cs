@@ -137,8 +137,8 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     formattedInspectionDate = inspectionDate.ToString("yyyy-MM-dd"); 
                 }
-                CEI.InsertExistingInspectionData(TestReportId, id, NoofInstallation, Applicant, Category, VoltageLevel,
-                       District, Division, Permises, siteOwnerId, formattedInspectionDate, ddlInspectionType.SelectedValue, InspectionType, rblInspection.SelectedValue);
+                //CEI.InsertExistingInspectionData(TestReportId, id, NoofInstallation, Applicant, Category, VoltageLevel,
+                 //      District, Division, Permises, siteOwnerId, formattedInspectionDate, ddlInspectionType.SelectedValue, InspectionType, rblInspection.SelectedValue);
 
 
 

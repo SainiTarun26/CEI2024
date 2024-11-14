@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using CEIHaryana.Contractor;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -184,7 +185,6 @@ namespace CEIHaryana.TestReportModal
                     individual.Visible = true;
                     agency.Visible = false;
                 }
-
                 Session["InspectionType"] = ds.Tables[0].Rows[0]["InspectionType"].ToString();
 
                 txtSubmitteddate.Text = ds.Tables[0].Rows[0]["SubmittedDate"].ToString();
@@ -231,7 +231,7 @@ namespace CEIHaryana.TestReportModal
                 txtTransformerType.Text = ds.Tables[0].Rows[0]["TranformerType"].ToString();
                 //TextStatus.Text = ds.Tables[0].Rows[0]["ApprovedOrRejectFromContractor"].ToString();
                 //TextReject.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
-                DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
+                DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["SubmittedDate"]);
                 txtCreatedDate.Text = createdDate.ToString("dd-MM-yyyy");
                 if (txtTransformerType.Text.Trim() == "Oil")
                 {
@@ -281,6 +281,7 @@ namespace CEIHaryana.TestReportModal
                 txtLightningArrestor.Text = ds.Tables[0].Rows[0]["LightningArrestorLocationOther"].ToString();
                 lbltestReportId.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                 Session["TestReportIds"] = lbltestReportId.Text.Trim();
+
                 txtEarthing.Text = ds.Tables[0].Rows[0]["NumberOfEarthing"].ToString();
                 SubstationEarthingDiv.Visible = true;
                 if (txtEarthing.Text.Trim() == "4")
@@ -593,15 +594,20 @@ namespace CEIHaryana.TestReportModal
                 Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
                 //txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to showing new testreportid
 
+                lbltestReportId.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                lblWorkIntimationId.Text = ds.Tables[0].Rows[0]["WorkIntimationId"].ToString();
                 lblIntimationId.Text = ds.Tables[0].Rows[0]["WorkIntimationId"].ToString();
                 lblReportNo.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                 //txtReportNo.Text = ds.Tables[0].Rows[0]["SubStationId"].ToString(); 
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
 
+                Session["InspectionType"] = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                 txtApprovalDate.Text = ds.Tables[0].Rows[0]["ApprovalDate"].ToString();
                 txtApprovedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();
-
-
+                txtTestReportCount.Text = ds.Tables[0].Rows[0]["Count"].ToString();
+                txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                txtDivision.Text = ds.Tables[0].Rows[0]["Area"].ToString();
+                txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
             }
             catch
             {
@@ -627,21 +633,28 @@ namespace CEIHaryana.TestReportModal
         {
             try
             {
-                string Filename = string.Empty;
-                string InstallationInvoice = string.Empty;
-                string ManufacturingReport = string.Empty;
-                string filePath = string.Empty;
-                string id = Session["IntimationId"].ToString();
-                string Counts = Session["Counts"].ToString();
-                string ContractorId = Session["ContractorID"].ToString();
-                string TestReportIds = Session["TestReportIds"].ToString();
-
                 if (BtnSubmit.Text.Trim() == "Back")
                 {
                     Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
                 }
                 else
                 {
+                    string InspectionType = Session["InspectionType"].ToString();
+                    string Filename = string.Empty;
+                    string InstallationInvoice = string.Empty;
+                    string ManufacturingReport = string.Empty;
+                    string filePath = string.Empty;
+                    string id = Session["IntimationId"].ToString();
+                    string Counts = Session["Counts"].ToString();
+                    string ContractorId = Session["ContractorID"].ToString();
+                    string TestReportIds = Session["TestReportIds"].ToString();
+                    //CEI.UpdateSubstationData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
+                    if (InspectionType == "Existing")
+                    {
+                        CEI.InsertExistingInspectionData(lbltestReportId.Text, lblIntimationId.Text, txtTestReportCount.Text, txtApplicantType.Text, "Substation Transformer", txtVoltagelevel.Text.Trim(),
+                           txtDistrict.Text, txtDivision.Text, TxtPremises.Text, ContractorId);
+
+                    }
                     if (Session["InspectionType"] != null && Session["InspectionType"].ToString() != "Existing")
                     {
                         bool isValid = true;
@@ -732,7 +745,7 @@ namespace CEIHaryana.TestReportModal
                             ScriptManager.RegisterStartupScript(this, GetType(), "IncompleteUpload", script, true);
                         }
                     }
-                    else 
+                    else
                     {
                         CEI.UpdateSubstationDataifExisting(id, Counts);
                         string script = "alert('Test Report Approved  Successfully'); window.location='/Contractor/Approved_Test_Reports.aspx';";
@@ -747,23 +760,6 @@ namespace CEIHaryana.TestReportModal
                 ScriptManager.RegisterStartupScript(this, GetType(), "Error", script, true);
             }
         }
-        //protected void BtnSubmit_Click(object sender, EventArgs e)
-        //{
-        //    if (BtnSubmit.Text.Trim() == "Back")
-        //    {
-        //        Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
-        //    }
-        //    else
-        //    {
-        //        string id = Session["IntimationId"].ToString();
-        //        string Counts = Session["Counts"].ToString();
-        //        //CEI.UpdateSubstationData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
-        //        CEI.UpdateSubstationData(id, Counts);
-        //        // Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
-        //        string script = "alert('Test Report Approved  Successfully'); window.location='/Contractor/Approved_Test_Reports.aspx';";
-        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", script, true);
-        //    }
-        //}
         protected void btnBack_Click(object sender, EventArgs e)
         {
             if (Session["AdminID"] != null)
@@ -841,7 +837,7 @@ namespace CEIHaryana.TestReportModal
                             {
                                 GetDocumentUploadData();
                             }
-                           
+
                             //Contractor3.Visible = false;
                         }
                         else

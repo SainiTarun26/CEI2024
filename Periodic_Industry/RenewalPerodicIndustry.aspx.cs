@@ -215,8 +215,8 @@ namespace CEIHaryana.Periodic_Industry
                 {
                     formattedInspectionDate = inspectionDate.ToString("yyyy-MM-dd");
                 }
-                CEI.InsertExistingInspectionData(TestReportId, id, NoofInstallation, Applicant, Category, VoltageLevel,
-                       District, Division, Permises, siteOwnerId, formattedInspectionDate, ddlInspectionType.SelectedValue, InspectionType, rblInspection.SelectedValue);
+                //CEI.InsertExistingInspectionData(TestReportId, id, NoofInstallation, Applicant, Category, VoltageLevel,
+                 //      District, Division, Permises, siteOwnerId, formattedInspectionDate, ddlInspectionType.SelectedValue, InspectionType, rblInspection.SelectedValue);
 
                 PeriodicData.Visible = true;
                 Renewal.Visible = false;
@@ -572,8 +572,8 @@ namespace CEIHaryana.Periodic_Industry
                             string Count = lblCount.Text;
 
 
-                            CEI.InsertInspectionRenewalData(IntimationId, InspectionId, InstallationType, InstallationName, TestReportId, Count, inspectionDate,
-                                 inspectionDueDate, DelayedDays, Voltage, Capacity, Address, CompleteAddress, AddressDistrict, OwnerName, District, Division, id, "1");
+                           // CEI.InsertInspectionRenewalData(IntimationId, InspectionId, InstallationType, InstallationName, TestReportId, Count, inspectionDate,
+                             //    inspectionDueDate, DelayedDays, Voltage, Capacity, Address, CompleteAddress, AddressDistrict, OwnerName, District, Division, id, "1");
 
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                         }

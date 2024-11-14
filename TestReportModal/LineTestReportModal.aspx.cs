@@ -1,6 +1,8 @@
 ﻿
 using CEI_PRoject;
+using CEIHaryana.Admin;
 using CEIHaryana.Contractor;
+using CEIHaryana.SiteOwnerPages;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -401,6 +403,10 @@ namespace CEIHaryana.TestReportModal
                 txtRiverCanalCrossing.Text = ds.Tables[0].Rows[0]["NmbrofRiverCanalCrossing"].ToString();
                 txtPowerLineCrossing.Text = ds.Tables[0].Rows[0]["NmbrofPowerLineCrossing"].ToString();
                 txtEarthing.Text = ds.Tables[0].Rows[0]["NmbrofEarthing"].ToString();
+                txtTestReportCount.Text = ds.Tables[0].Rows[0]["Count"].ToString();
+                txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                txtDivision.Text = ds.Tables[0].Rows[0]["Area"].ToString();
                 if (txtEarthing.Text == "1")
                 {
                     Earthingtype1.Visible = true;
@@ -635,7 +641,8 @@ namespace CEIHaryana.TestReportModal
 
                 txtApprovalDate.Text = ds.Tables[0].Rows[0]["Approvaldate"].ToString();
                 txtApprovedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();
-
+                lbltestReportId.Text = ds.Tables[0].Rows[0]["LineId"].ToString();
+                lblWorkIntimationId.Text = ds.Tables[0].Rows[0]["IntimationId"].ToString();
                 //txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 Session["Contact"] = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
                 Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
@@ -658,10 +665,19 @@ namespace CEIHaryana.TestReportModal
             }
             else
             {
+                string InspectionType = Session["InspectionType"].ToString();
                 string id = Session["IntimationId"].ToString();
                 string Counts = Session["Counts"].ToString();
+                string ContractorId = Session["ContractorID"].ToString();
                 //CEI.UpdateLineData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
+                if (InspectionType == "Existing")
+                {
+                    CEI.InsertExistingInspectionData(lbltestReportId.Text, lblIntimationId.Text, txtTestReportCount.Text, txtApplicantType.Text, "Line", txtVoltagelevel.Text.Trim(),
+                       txtDistrict.Text, txtDivision.Text, TxtPremises.Text, ContractorId);
+
+                }
                 CEI.UpdateLineData(id, Counts);
+                Session["InspectionType"] = "";
                 string script = "alert('Test Report Approved  Successfully'); window.location='/Contractor/Approved_Test_Reports.aspx';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", script, true);
                 // Response.Redirect("/Contractor/Approved_Test_Reports.aspx");

@@ -1984,6 +1984,8 @@
             margin-right: -25px;
             margin-top: 20px;
             padding: 15px;
+            padding-left:25px!important;
+            padding-right:25px!important;
         }
 
         div#inspection-card-child1 {
@@ -2016,6 +2018,8 @@
             margin-right: -25px;
             margin-top: 20px;
             padding: 15px;
+            padding-left:25px!important;
+            padding-right:25px!important;
         }
 
         div#SubmitDetails {
@@ -2029,6 +2033,17 @@
         div#LineEarthingdiv {
             margin: 5px 0px 10px 20px;
             width: 97%;
+        }
+        input#txtTestReportId {
+    font-size: 25px !important;
+    font-weight: 700;
+    text-align: initial;
+    border-bottom: 0px solid !important;
+    text-align: center;
+    border: 0px solid blue;
+    background: white;
+    box-shadow: none;
+    margin-top: 5px;
         }
     </style>
     <script type="text/javascript">
@@ -2047,13 +2062,13 @@
 
     </script>
     <script>
-         function preventEnterSubmit(event) {
-             if (event.keyCode === 13) {
-                 event.preventDefault(); // Prevent form submission
-                 return false;
-             }
+        function preventEnterSubmit(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); // Prevent form submission
+                return false;
+            }
 
-         }
+        }
     </script>
 </head>
 <body>
@@ -2066,6 +2081,17 @@
                         <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
                             <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
                                 Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="openNewWindow(); return false;" />
+                            </div>
+                            <div class="row" style="margin-bottom: 15PX;">
+   <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
+       <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Work Completion and Test Report (Line)</h6>
+        <div class="row" style="font-size:18px; font-weight:600;">      
+           <div class="col-12" style="margin-top: 0px; padding-left: 0px; text-align: center;">                
+             TestReportId: (<asp:Label ID="lbltestReportId" runat="server" />) &nbsp;&nbsp;&nbsp;&nbsp;  WorkIntimation Id: (<asp:Label ID="lblWorkIntimationId" runat="server" />)
+           </div>
+         
+       </div>
+   </div>
                         </div>
                         <div class="card-body" style="padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; margin-top: -46px;">
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -2090,6 +2116,19 @@
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtName" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
+                                                <div class="col-6" runat="server" visible="false">
+                                          <label for="Name">
+                                     TestReportCount
+                                          </label>
+                            <asp:TextBox class="form-control" ReadOnly="true" ID="txtTestReportCount" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                  </div>
+                                          </div>
+                                                              <div class="col-6" runat="server" visible="false">
+                                                    <label for="Name">
+                                            Applicant Type
+                                                       </label>
+                 <asp:TextBox class="form-control" ReadOnly="true" ID="txtApplicantType" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                </div>
                                             </div>
                                             <div class="row row-modal">
                                                 <%--  <div class="col-6" id="individual9" runat="server">
@@ -2104,6 +2143,18 @@
                                                     </label>
                                                     <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 </div>
+                                                <div class="col-6" id="Div8" runat="server" visible="false">
+                                                    <label for="Name">
+                                                      District
+                                                </label>
+            <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                 </div>
+                                         <div class="col-6" id="Div12" runat="server" visible="false">
+                                                <label for="Name">
+                                                  Division
+                                            </label>
+        <asp:TextBox class="form-control" ID="txtDivision" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                             </div>
                                                 <div class="col-6" id="individual5" runat="server">
                                                     <label for="Name">
                                                         Contact Details 

@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using CEIHaryana.Contractor;
 using CEIHaryana.SiteOwnerPages;
 using System;
 using System.Collections.Generic;
@@ -204,7 +205,7 @@ namespace CEIHaryana.TestReportModal
                 }
 
                 Session["GSInspectionType"] = ds.Tables[0].Rows[0]["InspectionType"].ToString();
-                
+
                 txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                 txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                 txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
@@ -249,15 +250,16 @@ namespace CEIHaryana.TestReportModal
                 //TextReason.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
 
                 //txtReportNo.Text = ds.Tables[0].Rows[0]["ID"].ToString(); gurmeet to showing new testreportid
-
+                lbltestReportId.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                lblWorkIntimationId.Text = ds.Tables[0].Rows[0]["WorkIntimationId"].ToString();
                 lblIntimationId.Text = ds.Tables[0].Rows[0]["WorkIntimationId"].ToString();
-                lblReportNo.Text = ds.Tables[0].Rows[0]["GSTestReportId"].ToString();
+                lblReportNo.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                 //txtReportNo.Text = ds.Tables[0].Rows[0]["GeneratingSetId"].ToString();
 
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
                 txtSubmitteddate.Text = ds.Tables[0].Rows[0]["SubmittedDate"].ToString();       ///////////////
                 txtSubmittedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();         //////////////
-                DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
+                DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["SubmittedDate"]);
                 txtCreatedDate.Text = createdDate.ToString("dd-MM-yyyy");
                 if (txtGeneratingSetType.Text.Trim() == "Solar Panel")
                 {
@@ -580,10 +582,13 @@ namespace CEIHaryana.TestReportModal
                 // txtRejection.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 Session["Email"] = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
 
-
+                Session["InspectionType"] = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                 txtApprovalDate.Text = ds.Tables[0].Rows[0]["ApprovalDate"].ToString();
                 txtApprovedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();
-
+                txtTestReportCount.Text = ds.Tables[0].Rows[0]["Count"].ToString();
+                txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                txtDivision.Text = ds.Tables[0].Rows[0]["Area"].ToString();
 
             }
             catch (Exception ex)
@@ -595,18 +600,25 @@ namespace CEIHaryana.TestReportModal
         {
             try
             {
-                string InstallationInvoice = string.Empty;
-                string ManufacturingReport = string.Empty;
-                string id = Session["IntimationId"].ToString();
-                string Counts = Session["Counts"].ToString();
-                string ContractorId = Session["ContractorID"].ToString();
-                string TestReportIds = Session["TestReportIds"].ToString();
                 if (BtnSubmitGeneratingSet.Text.Trim() == "Back")
                 {
                     Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
                 }
                 else
                 {
+                    string InspectionType = Session["InspectionType"].ToString();
+                    string InstallationInvoice = string.Empty;
+                    string ManufacturingReport = string.Empty;
+                    string id = Session["IntimationId"].ToString();
+                    string Counts = Session["Counts"].ToString();
+                    string ContractorId = Session["ContractorID"].ToString();
+                    string TestReportIds = Session["TestReportIds"].ToString();
+                    // CEI.UpdateGeneratingSetData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
+                    if (InspectionType == "Existing")
+                    {
+                        CEI.InsertExistingInspectionData(lbltestReportId.Text, lblIntimationId.Text, txtTestReportCount.Text, txtApplicantType.Text, "Generating Set", txtVoltagelevel.Text.Trim(),
+                           txtDistrict.Text, txtDivision.Text, TxtPremises.Text, ContractorId);
+                    }
                     if (Session["GSInspectionType"] != null && Session["GSInspectionType"].ToString() != "Existing")
                     {
                         bool isValid = true;
@@ -786,8 +798,8 @@ namespace CEIHaryana.TestReportModal
                             Contractor2.Visible = true;
                             Contractor3.Visible = false;
                             if (Session["GSInspectionType"] != null && Session["GSInspectionType"].ToString() != "Existing")
-                            {                            
-                            GetDocumentUploadData();
+                            {
+                                GetDocumentUploadData();
                             }
                         }
                         else

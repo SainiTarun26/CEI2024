@@ -4000,8 +4000,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         //          }
         //      }
 
-        public void InsertInspectionRenewalData(string IntimationId, int InspectionId, string InstallationType, string InstallationName,
- string TestReportId, string TestReportCount, string InspectionDate, string InspectionDueDate, string DelayedDays, string Voltage, string Capacity, string Address, string CompleteAdress,
+        public void InsertInspectionRenewalData(string IntimationId, string InspectionId, string InstallationType, string InstallationName,
+ string TestReportId, string TestReportCount, string InspectionDate, string InspectionDueDate, /*string DelayedDays,*/ string Voltage, string Capacity, string Address, string CompleteAdress,
  string AdressDistrict, string OwnerName, string District, string Division, string CreatedBy, string Status)
         {
             try
@@ -4020,7 +4020,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                         cmd.Parameters.AddWithValue("@TestReportCount", TestReportCount);
                         cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
                         cmd.Parameters.AddWithValue("@InspectionDueDate", InspectionDueDate);
-                        cmd.Parameters.AddWithValue("@DelayedDays", DelayedDays);
+                        //cmd.Parameters.AddWithValue("@DelayedDays", DelayedDays);
                         cmd.Parameters.AddWithValue("@Voltage", Voltage);
                         if (string.IsNullOrWhiteSpace(Capacity))
                         {
@@ -4101,8 +4101,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
 
         public void InsertExistingInspectionData(string TestReportId, string IntimationId, string TestReportCount, string ApplicantType, string InstallationType, string VoltageLevel,
-string District, string Division, string InspectionType, string CreatedBy,
-string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, string PreviousInspection)
+       string District, string Division, string InspectionType, string CreatedBy
+        //string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, string PreviousInspection
+        )
         {
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -4126,10 +4127,10 @@ string ApprovedDate, string ApproximateYears, string InspectionNewOrExist, strin
             cmd.Parameters.AddWithValue("@Inspectiontype", InspectionType);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
 
-            cmd.Parameters.AddWithValue("@ApprovedDate", String.IsNullOrEmpty(ApprovedDate) ? DBNull.Value : (object)ApprovedDate);
-            cmd.Parameters.AddWithValue("@ApproximateYears", ApproximateYears);
-            cmd.Parameters.AddWithValue("@InspectionNewOrExist", InspectionNewOrExist);
-            cmd.Parameters.AddWithValue("@PreviousInspectionDate", PreviousInspection);
+            //cmd.Parameters.AddWithValue("@ApprovedDate", String.IsNullOrEmpty(ApprovedDate) ? DBNull.Value : (object)ApprovedDate);
+            //cmd.Parameters.AddWithValue("@ApproximateYears", ApproximateYears);
+            //cmd.Parameters.AddWithValue("@InspectionNewOrExist", InspectionNewOrExist);
+            //cmd.Parameters.AddWithValue("@PreviousInspectionDate", PreviousInspection);
             cmd.ExecuteNonQuery();
             con.Close();
 
