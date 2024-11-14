@@ -76,6 +76,8 @@ namespace CEIHaryana.Officers
                     Label lblID = (Label)row.FindControl("lblID");
                     Label LblInspectionType = (Label)row.FindControl("LblInspectionType");
                     string id = lblID.Text;
+                    Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
+                    string InstallationType = lblInstallationType.Text.Trim();
                     Session["InProcessInspectionId"] = id;
 
                     if (e.CommandName == "Select")
@@ -86,8 +88,15 @@ namespace CEIHaryana.Officers
                     {
                         if (LblInspectionType.Text == "New")
                         {
-                            Session["InProcessInspectionId"] = id;
-                            Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                            Session["InProcessInspectionId"] = id; 
+                            if (InstallationType == "Multiple")
+                            {
+                                Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                            }
+                            else
+                            {
+                                Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                            }
                         }
                         else
                         {

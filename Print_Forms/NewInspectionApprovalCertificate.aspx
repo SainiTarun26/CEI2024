@@ -88,7 +88,7 @@
         p {
             font-size: 20px;
             text-align: justify;
-            margin-left:5%;
+            margin-left: 5%;
         }
 
         li {
@@ -118,9 +118,10 @@
             vertical-align: middle;
             border-style: none;
         }
-        table#Gridview1{
-            margin-left:8%;
-            width:92%;
+
+        table#Gridview1 {
+            margin-left: 8%;
+            width: 92%;
         }
     </style>
 
@@ -226,7 +227,7 @@
                                         <asp:TextBox ID="TxtMemo" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
-                               <%-- <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
+                                <%-- <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
                                     <div style="white-space: nowrap;">
                                         <asp:Label ID="label2" runat="server" Text="Dated:" Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="TxtMemoDate" runat="server" Style="width: 100%;"></asp:TextBox>
@@ -249,7 +250,7 @@
                                     </span>
                                 </div>
                             </div>
-                       
+
 
                             <br />
                             <div class="row">
@@ -259,17 +260,17 @@
                                             <HeaderStyle BackColor="#B7E2F0" />
                                             <Columns>
                                                 <asp:TemplateField HeaderText="SNo">
-                                              <HeaderStyle Width="5%" CssClass="headercolor" />
-                                        <ItemStyle Width="5%" />
-                                        <ItemTemplate>
-                                         <%#Container.DataItemIndex+1 %>
-                                     </ItemTemplate>
-                                </asp:TemplateField>
+                                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                    <ItemStyle Width="5%" />
+                                                    <ItemTemplate>
+                                                        <%#Container.DataItemIndex+1 %>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                                 <asp:BoundField DataField="InstallationName" HeaderText="InstallationName">
-                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                               </asp:BoundField>
-                                               <%-- <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
+                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                </asp:BoundField>
+                                                <%-- <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>--%>
@@ -277,61 +278,67 @@
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>
-                                                
+                                                <asp:BoundField DataField="Capacity" HeaderText="Capacity">
+                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                </asp:BoundField>
+
 
                                             </Columns>
                                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                                         </asp:GridView>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>     The above mentioned installation/s was/were inspected by this Department and the same was/were found generally compiling with the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) 
-                                        Regulations, 2023. However it is advised that:-</p>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>
+                                            The above mentioned installation/s was/were inspected by this Department and the same was/were found generally compiling with the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) 
+                                        Regulations, 2023. However it is advised that:-
+                                        </p>
                                         <div style="display: grid; grid-template-rows: auto auto; font-size: 20px; margin-left: 80px;">
-     <span id="suggestion1" runat="server"></span>
-     <span id="suggestion2" runat="server"></span>
-     <span id="suggestion3" runat="server"></span>
-     <span id="suggestion4" runat="server" style="margin-bottom: 15px !important;"></span>
- </div>
+                                            <span id="suggestion1" runat="server"></span>
+                                            <span id="suggestion2" runat="server"></span>
+                                            <span id="suggestion3" runat="server"></span>
+                                            <span id="suggestion4" runat="server" style="margin-bottom: 15px !important;"></span>
+                                        </div>
 
                                     </p>
                                 </div>
                             </div>
                             <br />
                             <div class="LastPara">
-                                        <p>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consistent complicance of the relevant provisions of CEA Regulations, 2010 be ensured in the installation/s at your end and the electrical installation/s be maintained and
+                                <p>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consistent complicance of the relevant provisions of CEA Regulations, 2010 be ensured in the installation/s at your end and the electrical installation/s be maintained and
                                             operated in a condition free from danger and as recommended by the Manufacturer or by the relevant code of practice of the Bureau of Indian Standards.
                                         <br />
 
 
-                                            <br />
-                                            <%-- <div style="display:flex;">
+                                    <br />
+                                    <%-- <div style="display:flex;">
                                             <span style="font-weight: bold; font-size: 22px; border: none !important;">Note:-</span>&nbsp;
                                             <p>Further the firm is not absolved of its responsibility to run the D.G sets as per
                                             running hour restricted in the general classification regarding use the D.g sets in NCR as per latest Directions N0.77 issued on dated
                                             <asp:Label ID="NoteDate" runat="server" Text="date"></asp:Label></p></div>--%>
 
-                                            <%--  <p>For Next Inspection shall due in--%>
-                                            <%--  <asp:Label ID="NextInspection" runat="server" Text="date"></asp:Label></p>--%>
-                                        </p>
-   
-                            <div class="row" style="padding-right: 5px !important;">
-                                <div class="col-12" style="text-align: end; padding-left: 10px;">
-                                    <%-- <img src="../Assets/Line_Through_Name-removebg-preview.png" width="300" height="90" style="position: fixed; bottom: 140px; margin-left: -300px;" />--%>
+                                    <%--  <p>For Next Inspection shall due in--%>
+                                    <%--  <asp:Label ID="NextInspection" runat="server" Text="date"></asp:Label></p>--%>
+                                </p>
 
-                                    <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
+                                <div class="row" style="padding-right: 5px !important;">
+                                    <div class="col-12" style="text-align: end; padding-left: 10px;">
+                                        <%-- <img src="../Assets/Line_Through_Name-removebg-preview.png" width="300" height="90" style="position: fixed; bottom: 140px; margin-left: -300px;" />--%>
+
+                                        <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7">
+                                    </div>
+                                    <div class="col-5" style="margin-left: 65%;">
+                                        <p style="text-align: center; font-weight: bold; bottom: 10PX;">
+                                            <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
+                                            <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
+                                            <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-7">
-                                </div>
-                                <div class="col-5" style="margin-left: 65%;">
-                                    <p style="text-align: center; font-weight: bold; bottom: 10PX;">
-                                        <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
-                                        <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
-                                        <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />
-                                    </p>
-                                </div>
-                            </div>
-                                 </div>
                         </div>
                     </div>
                 </div>

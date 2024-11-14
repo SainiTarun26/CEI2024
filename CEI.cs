@@ -7635,6 +7635,10 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
             cmd.Parameters.AddWithValue("@ReturnedBasedOnDocumentValue ", ReturnedBasedOnDocumentValue);
             cmd.ExecuteNonQuery();
         }
+        public DataSet getInstallationsForPeriodic(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getInstallationTypeLetterFor_Periodic", Id);
+        }
     }
 }
 

@@ -123,7 +123,7 @@ namespace CEIHaryana.Print_Forms
                 }
                 //ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.getInstallations(ID);
+                ds = CEI.getInstallationsForPeriodic(ID);
                 if (ds.Tables.Count > 0)
                 {
                     Gridview1.DataSource = ds;
