@@ -301,25 +301,30 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else
                     {
-                        if (lblCategory.Text == "Generating Set")
+                        foreach (GridViewRow rows in GridView1.Rows)
                         {
-                            if (lblTypeOfPlant != null)
+                            CheckBox chk1 = (CheckBox)rows.FindControl("CheckBox1");
+                            if (chk1 != null && chk1.Checked)
                             {
-                                string plantType = lblTypeOfPlant.Text;
+                                Label lblTyps1 = (Label)rows.FindControl("lblCategory");
+                                if (lblTyps1.Text == "Generating Set")
+                                {
+                                    Label lblTypeOfPlant1 = (Label)rows.FindControl("LblTypeofPlant");
+                                    if (lblTypeOfPlant1 != null)
+                                    {
+                                        string plantType = lblTypeOfPlant1.Text;
 
-                                if (plantType == "Roof Top")
-                                {
-                                    PlantLocationRoofTop = plantType;
-                                }
-                                else if (plantType == "Ground Mounted")
-                                {
-                                    PlantLocationGroundMounted = plantType;
+                                        if (plantType == "Roof Top")
+                                        {
+                                            PlantLocationRoofTop = plantType;
+                                        }
+                                        else if (plantType == "Ground Mounted")
+                                        {
+                                            PlantLocationGroundMounted = plantType;
+                                        }
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            ////  Session["PlantLocation"] = "";
                         }
                     }
 
