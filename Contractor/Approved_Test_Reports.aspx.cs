@@ -120,10 +120,10 @@ namespace CEIHaryana.Contractor
             {
 
                 Label lblTypeOf = (Label)e.Row.FindControl("lblTypeOf");
+                Label lblInspectionType = (Label)e.Row.FindControl("lblInspectionType");
                 LinkButton linkButton = (LinkButton)e.Row.FindControl("LnkInovoice");
                 LinkButton LinkButton3 = (LinkButton)e.Row.FindControl("lnkReport");
-
-                if (lblTypeOf.Text.Trim() == "Line")
+                if (lblInspectionType.Text.Trim() != "New" || lblTypeOf.Text.Trim() == "Line")
                 {
                     linkButton.Visible = false;
                     LinkButton3.Visible = false;
@@ -133,6 +133,7 @@ namespace CEIHaryana.Contractor
                     linkButton.Visible = true;
                     LinkButton3.Visible = true;
                 }
+
             }
         }
 

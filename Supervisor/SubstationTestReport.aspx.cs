@@ -86,6 +86,15 @@ namespace CEIHaryana.Supervisor
                             txtInstallation.Text = Session["Installation"].ToString().Trim();
                             txtid.Text = Session["Intimation"].ToString().Trim();
                             txtNOOfInstallation.Text = Session["Count"].ToString();
+                            txtApplicantType.Text = Session["ApplicantType"].ToString().Trim();
+                            if (txtApplicantType.Text == "Power Utility")
+                            {
+                                SubstationName.Visible = true;
+                            }
+                            else
+                            {
+                                SubstationName.Visible = false;
+                            }
                             BtnBack.Visible = true;
 
                         }
@@ -96,6 +105,15 @@ namespace CEIHaryana.Supervisor
                             txtInstallation.Text = Session["Typs"].ToString().Trim();
                             txtid.Text = Session["Intimations"].ToString().Trim();
                             txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim() + " Out of " + Session["TotalInstallation"].ToString().Trim();
+                            txtApplicantType.Text = Session["ApplicantType"].ToString().Trim();
+                            if (txtApplicantType.Text == "Power Utility")
+                            {
+                                SubstationName.Visible = true;
+                            }
+                            else
+                            {
+                                SubstationName.Visible = false;
+                            }
                             BtnBack.Visible = true;
                         }
                     }
@@ -1114,15 +1132,15 @@ namespace CEIHaryana.Supervisor
                         string count = Session["NoOfInstallations"].ToString();
                         //Modiefied this for storing only voltage(11000) digit
                         string Primaryvoltage, SecondaryVoltage;
-                         Primaryvoltage = PrimaryVoltage.SelectedItem.ToString().Trim();
+                        Primaryvoltage = PrimaryVoltage.SelectedItem.ToString().Trim();
                         _PrimaryVoltage = Primaryvoltage.Substring(0, Primaryvoltage.Length - 6);
-                        
-                         SecondaryVoltage = ddlSecondaryVoltage.SelectedValue.ToString().Trim();
-                        _SecondaryVoltage = SecondaryVoltage.Substring(0, SecondaryVoltage.Length - 6);                      
+
+                        SecondaryVoltage = ddlSecondaryVoltage.SelectedValue.ToString().Trim();
+                        _SecondaryVoltage = SecondaryVoltage.Substring(0, SecondaryVoltage.Length - 6);
                         //
 
                         CEI.InsertSubstationData(IdUpdate, count, TestReportId, IntimationId, txtTransformerSerialNumber.Text, ddltransformerCapacity.SelectedItem.ToString(), txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(),
-                          _PrimaryVoltage,_SecondaryVoltage, txtOilCapacity.Text, txtOilBDV.Text, txtHTsideInsulation.Text, txtLTSideInsulation.Text,
+                          _PrimaryVoltage, _SecondaryVoltage, txtOilCapacity.Text, txtOilBDV.Text, txtHTsideInsulation.Text, txtLTSideInsulation.Text,
                            txtLowestValue.Text, ddlLghtningArrestor.SelectedItem.ToString(), txtLightningArrestor.Text, ddlHTType.SelectedItem.ToString(), ddlEarthingsubstation.SelectedItem.ToString(),
                            ddlSubstationEarthing1.SelectedItem.ToString(), txtSubstationEarthing1.Text, ddlUsedFor1.SelectedItem.ToString(), txtOtherEarthing1.Text, ddlSubstationEarthing2.SelectedItem.ToString(),
                            txtSubstationEarthing2.Text, ddlUsedFor2.SelectedItem.ToString(), txtOtherEarthing2.Text, ddlSubstationEarthing3.SelectedItem.ToString(), txtSubstationEarthing3.Text, ddlUsedFor3.SelectedItem.ToString(), txtOtherEarthing3.Text,
@@ -1139,7 +1157,7 @@ namespace CEIHaryana.Supervisor
                            ddlUsedFor18.SelectedItem.ToString(), txtOtherEarthing18.Text, ddlSubstationEarthing19.SelectedItem.ToString(),
                            txtSubstationEarthing19.Text, ddlUsedFor19.SelectedItem.ToString(), txtOtherEarthing19.Text, ddlSubstationEarthing20.SelectedItem.ToString(),
                            txtSubstationEarthing20.Text, ddlUsedFor20.SelectedItem.ToString(), txtOtherEarthing20.Text, txtBreakerCapacity.Text, ddlLTProtection.SelectedItem.ToString(), txtIndividualCapacity.Text,
-                           txtLTBreakerCapacity.Text, txtLoadBreakingCapacity.Text, txtSealLevelPlinth.Text, CreatedBy);
+                           txtLTBreakerCapacity.Text, txtLoadBreakingCapacity.Text, txtSealLevelPlinth.Text, CreatedBy, txtSubstationName.Text.Trim());
                         CEI.UpdateInstallations(installationNo, IntimationId);
                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
 
@@ -1151,7 +1169,7 @@ namespace CEIHaryana.Supervisor
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('You have to check the declaration first !!!')", true);
                     }
-                } 
+                }
             }
             catch (Exception ex)
             {

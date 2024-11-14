@@ -387,7 +387,7 @@
                                     <label for="Name">
                                         Applicant <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtapplication" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" maxlenght="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtapplication" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator34" runat="server" ControlToValidate="txtapplication" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-3" id="Div9" runat="server">
@@ -411,6 +411,13 @@
                                     <asp:TextBox class="form-control" ID="txtNOOfInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator77" runat="server" ControlToValidate="txtNOOfInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
                                 </div>
+                                <div class="col-3" id="Div5" runat="server" visible="false">
+                                    <label for="Name">
+                               Applicant Type <samp style="color: red">* </samp>
+                                      </label>
+                                     <asp:TextBox class="form-control" ID="txtApplicantType" Enabled="false"  onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+                   <asp:RequiredFieldValidator ID="RequiredFieldValidator82" runat="server" ControlToValidate="txtApplicantType" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+</div>
                             </div>
                         </div>
                         <div class="row" style="margin-top: 10px;">
@@ -579,6 +586,16 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingEarthing" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select No Of Earthing"></asp:RequiredFieldValidator>
                                             <label id="Limit" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                                                Minimum Limit is 4     
+                                            </label>
+                                        </div>
+                                        <div class="col-md-4" id="GeneratingName" runat="server" visible="false">
+                                            <label for="Name">
+                                                Generating Set Name<samp style="color: red">* </samp>
+                                            </label>
+                                                      <asp:TextBox class="form-control" ID="txtGenaratingName" onkeydown="return preventEnterSubmit(event)"  MaxLength="100"  autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator81" runat="server" ForeColor="Red" ControlToValidate="txtGenaratingName" ValidationGroup="Submit" ErrorMessage="Please Enter Generater set name"></asp:RequiredFieldValidator>
+                                            <label id="Label1" runat="server" visible="false" style="color: red; font-size: 1.125rem">
                                                 Minimum Limit is 4     
                                             </label>
                                         </div>

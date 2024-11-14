@@ -83,6 +83,15 @@ namespace CEIHaryana.Supervisor
                             txtInstallation.Text = Session["Installation"].ToString().Trim();
                             txtid.Text = Session["Intimation"].ToString().Trim();
                             txtNOOfInstallation.Text = Session["Count"].ToString();
+                            txtApplicantType.Text = Session["ApplicantType"].ToString().Trim();
+                            if (txtApplicantType.Text == "Power Utility")
+                            {
+                                GeneratingName.Visible = true;
+                            }
+                            else
+                            {
+                                GeneratingName.Visible = false;
+                            }
 
                         }
                         else
@@ -92,6 +101,15 @@ namespace CEIHaryana.Supervisor
                             txtInstallation.Text = Session["Typs"].ToString().Trim();
                             txtid.Text = Session["Intimations"].ToString().Trim();
                             txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim() + " Out of " + Session["TotalInstallation"].ToString().Trim();
+                            txtApplicantType.Text = Session["ApplicantType"].ToString().Trim();
+                            if (txtApplicantType.Text == "Power Utility")
+                            {
+                                GeneratingName.Visible = true;
+                            }
+                            else
+                            {
+                                GeneratingName.Visible = false;
+                            }
                         }
                     }
                 }
@@ -717,7 +735,7 @@ namespace CEIHaryana.Supervisor
               ddlGeneratingEarthing8.SelectedItem.ToString(), txtGeneratingEarthing8.Text, ddlGeneratingEarthingUsed8.SelectedItem.ToString(), txtOtherEarthing8.Text, ddlGeneratingEarthing9.SelectedItem.ToString(), txtGeneratingEarthing9.Text, ddlGeneratingEarthingUsed9.SelectedItem.ToString(), txtOtherEarthing9.Text,
                ddlGeneratingEarthing10.SelectedItem.ToString(), txtGeneratingEarthing10.Text, ddlGeneratingEarthingUsed10.SelectedItem.ToString(), txtOtherEarthing10.Text, ddlGeneratingEarthing11.SelectedItem.ToString(), txtGeneratingEarthing11.Text, ddlGeneratingEarthingUsed11.SelectedItem.ToString(), txtOtherEarthing11.Text,
                 ddlGeneratingEarthing12.SelectedItem.ToString(), txtGeneratingEarthing12.Text, ddlGeneratingEarthingUsed12.SelectedItem.ToString(), txtOtherEarthing12.Text, ddlGeneratingEarthing13.SelectedItem.ToString(), txtGeneratingEarthing13.Text, ddlGeneratingEarthingUsed13.SelectedItem.ToString(), txtOtherEarthing13.Text,
-               ddlGeneratingEarthing14.SelectedItem.ToString(), txtGeneratingEarthing14.Text, ddlGeneratingEarthingUsed14.SelectedItem.ToString(), txtOtherEarthing14.Text, ddlGeneratingEarthing15.SelectedItem.ToString(), txtGeneratingEarthing15.Text, ddlGeneratingEarthingUsed15.SelectedItem.ToString(), txtOtherEarthing15.Text, CreatedBy);
+               ddlGeneratingEarthing14.SelectedItem.ToString(), txtGeneratingEarthing14.Text, ddlGeneratingEarthingUsed14.SelectedItem.ToString(), txtOtherEarthing14.Text, ddlGeneratingEarthing15.SelectedItem.ToString(), txtGeneratingEarthing15.Text, ddlGeneratingEarthingUsed15.SelectedItem.ToString(), txtOtherEarthing15.Text, CreatedBy, txtGenaratingName.Text.Trim());
 
                         CEI.UpdateInstallations(installationNo, IntimationId);
                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);

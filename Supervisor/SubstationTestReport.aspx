@@ -19,46 +19,46 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
     <script type="text/javascript">
-      function isNumberKey(evt) {
-          var charCode = (evt.which) ? evt.which : event.keyCode
-          if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-              return false;
-          }
-          return true;
-      }
-      function preventZero(event) {
-          var key = event.keyCode || event.charCode;
-          var textboxValue = event.target.value;
-          if (key === 48 && textboxValue.length === 0) { // Check if the pressed key is '0'
-              event.preventDefault();
-              return false;
-          }
-          return true;
-      }
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+        function preventZero(event) {
+            var key = event.keyCode || event.charCode;
+            var textboxValue = event.target.value;
+            if (key === 48 && textboxValue.length === 0) { // Check if the pressed key is '0'
+                event.preventDefault();
+                return false;
+            }
+            return true;
+        }
 
-      function isNumberdecimalforBDV(evt, element) {
-          var charCode = (evt.which) ? evt.which : evt.keyCode;
+        function isNumberdecimalforBDV(evt, element) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
 
-          // Allow only digits and one decimal point
-          if (charCode != 46 && (charCode < 48 || charCode > 57))
-              return false;
+            // Allow only digits and one decimal point
+            if (charCode != 46 && (charCode < 48 || charCode > 57))
+                return false;
 
-          // Get the current value of the textbox
-          var value = element.value;
+            // Get the current value of the textbox
+            var value = element.value;
 
-          // Allow only one decimal point
-          if (charCode == 46 && value.indexOf('.') != -1)
-              return false;
+            // Allow only one decimal point
+            if (charCode == 46 && value.indexOf('.') != -1)
+                return false;
 
-          // Ensure only two digits after the decimal point
-          if (value.indexOf('.') != -1) {
-              var decimalPart = value.split('.')[1];
-              if (decimalPart && decimalPart.length >= 2) {
-                  return false;
-              }
-          }
+            // Ensure only two digits after the decimal point
+            if (value.indexOf('.') != -1) {
+                var decimalPart = value.split('.')[1];
+                if (decimalPart && decimalPart.length >= 2) {
+                    return false;
+                }
+            }
 
-          return true;
+            return true;
         }
 
         function isNumberdecimalKey(evt, element) {
@@ -91,28 +91,28 @@
 
 
 
-      //Allow Only Aplhabet, Delete and Backspace
+        //Allow Only Aplhabet, Delete and Backspace
 
-      function isAlpha(keyCode) {
+        function isAlpha(keyCode) {
 
-          return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
+            return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
 
-      }
+        }
 
-      function alphabetKey(e) {
-          var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
-          var k;
-          k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
-          return (allow.indexOf(String.fromCharCode(k)) != -1);
-      }
+        function alphabetKey(e) {
+            var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
+            var k;
+            k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+            return (allow.indexOf(String.fromCharCode(k)) != -1);
+        }
     </script>
     <script type="text/javascript">
-      function alertWithRedirectdata() {
-          if (confirm('Intimation Created Successfully')) {
-              window.location.href = "/Contractor/Work_Intimation.aspx";
-          } else {
-          }
-      }
+        function alertWithRedirectdata() {
+            if (confirm('Intimation Created Successfully')) {
+                window.location.href = "/Contractor/Work_Intimation.aspx";
+            } else {
+            }
+        }
     </script>
     <style>
       input#ContentPlaceHolder1_txtapplication {
@@ -381,6 +381,13 @@
                                     <asp:TextBox class="form-control" ID="txtNOOfInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator104" runat="server" ControlToValidate="txtNOOfInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
                                 </div>
+                                <div class="col-3" id="Div5" runat="server" visible="false">
+                                    <label for="Name">
+                               Applicant Type <samp style="color: red">* </samp>
+                                      </label>
+                                     <asp:TextBox class="form-control" ID="txtApplicantType" Enabled="false"  onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+                   <asp:RequiredFieldValidator ID="RequiredFieldValidator106" runat="server" ControlToValidate="txtApplicantType" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+</div>
                             </div>
                         </div>
                         <div class="row" style="margin-top: 10px;">
@@ -635,6 +642,7 @@
                             </div>
                         </div>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 0px;">
+                            <div class="row">
                             <div class="col-3">
                                 <label for="Name">
                                     Number of Earthing <samp style="color: red">* </samp>
@@ -642,6 +650,15 @@
                                 <asp:DropDownList class="form-control  select-form select2" TabIndex="14" runat="server" OnSelectedIndexChanged="ddlEarthingsubstation_SelectedIndexChanged" AutoPostBack="true" ID="ddlEarthingsubstation" selectionmode="Multiple" Style="width: 100% !important">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator13" ForeColor="Red" ControlToValidate="ddlEarthingsubstation" runat="server" ErrorMessage="Please Select Earthing No" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="col-md-3" id="SubstationName" runat="server" visible="false">
+    <label>
+        Substation Name
+                        <samp style="color: red">* </samp>
+    </label>
+    <asp:TextBox class="form-control" ID="txtSubstationName" onkeydown="return preventEnterSubmit(event)" MaxLength="100" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator105" ControlToValidate="txtSubstationName" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Substation Name"></asp:RequiredFieldValidator>
+</div>
                             </div>
                             <div class="table-responsive pt-3" id="SubstationEarthingDiv" runat="server" visible="false">
                                 <table class="table table-bordered table-striped">
@@ -1523,20 +1540,20 @@
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
     <script type="text/javascript">
-     function alertWithRedirect() {
-         if (confirm('Test report has been submitted and is under review by the Contractor for final submission')) {
-             window.location.href = "/Supervisor/IntimationData.aspx";
-         } else {
-         }
-     }
+        function alertWithRedirect() {
+            if (confirm('Test report has been submitted and is under review by the Contractor for final submission')) {
+                window.location.href = "/Supervisor/IntimationData.aspx";
+            } else {
+            }
+        }
     </script>
     <script type="text/javascript">
-         function alertWithRedirectdata() {
-             /*if (confirm('Test Report Submitted Successfully')) {*/
-                 alert('Test Report Submitted Successfully');
-                 window.location.href = "/Supervisor/InstallationDetails.aspx";
-             //} else {
-             //}
-         }
+        function alertWithRedirectdata() {
+            /*if (confirm('Test Report Submitted Successfully')) {*/
+            alert('Test Report Submitted Successfully');
+            window.location.href = "/Supervisor/InstallationDetails.aspx";
+            //} else {
+            //}
+        }
     </script>
 </asp:Content>
