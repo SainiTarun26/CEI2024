@@ -2215,6 +2215,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public DataSet InspectionData(string Id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionData", Id);
+        } 
+        public DataSet GetInspectionData(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReportHistoryForSiteOwner", Id);
         }
         public DataTable SiteOwnerLineData(string PanId)
         {
@@ -7673,6 +7677,11 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
         public DataSet GetEarthingData(string TestReportId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetEarthingData", TestReportId);
+        }
+
+        public DataSet GetSiteOwnerTestReport(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerTestReport", Id);
         }
     }
 }

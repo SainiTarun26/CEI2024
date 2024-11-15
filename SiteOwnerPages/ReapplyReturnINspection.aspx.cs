@@ -162,11 +162,7 @@ namespace CEIHaryana.SiteOwnerPages
                         LinkButtonReport.Visible = false;
                         UploadInstallaionInvoice.Visible = false;
                         UploadManufacturingReport.Visible = false;
-                        Grid_MultipleInspectionTR.Columns[5].Visible = false;
-                        Grid_MultipleInspectionTR.Columns[6].Visible = false;
-                        Grid_MultipleInspectionTR.Columns[7].Visible = false;
-                        Grid_MultipleInspectionTR.Columns[8].Visible = false;
-                        Grid_MultipleInspectionTR.Columns[9].Visible = false;
+                      
                     }
                     else
                     {
@@ -174,11 +170,7 @@ namespace CEIHaryana.SiteOwnerPages
                         LinkButtonReport.Visible = true;
                         UploadInstallaionInvoice.Visible = true;
                         UploadManufacturingReport.Visible = true;
-                        Grid_MultipleInspectionTR.Columns[5].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[6].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[7].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[8].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[9].Visible = true;
+                      
                     }
                     var returnedReason = DataBinder.Eval(e.Row.DataItem, "ReturnedReason") as string;
 

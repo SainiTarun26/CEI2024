@@ -59,11 +59,20 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["Approval"] = lblApproval.Text.Trim();
                 Label lblType = (Label)row.FindControl("lblType");
                 Label LblInspectionType = (Label)row.FindControl("LblInspectionType");
-                //Label LblAssignTo = (Label)row.FindControl("LblAssignTo");
+                Label lblTypeOfInspection = (Label)row.FindControl("lblTypeOfInspection");
 
                 if (e.CommandName == "Select")
                 {
-                    Response.Redirect("/SiteOwnerPages/ReapplyReturnINspection.aspx", false);
+                    if (lblTypeOfInspection.Text.Trim() == "New")
+                    {
+
+                        Response.Redirect("/SiteOwnerPages/ReapplyReturnINspection.aspx", false);
+                    }
+                    else if (lblTypeOfInspection.Text.Trim() == "Periodic")
+                    {
+                        Response.Redirect("/SiteOwnerPages/InspectionRenewalCart.aspx", false);
+                    }
+
                 }
             }
         }

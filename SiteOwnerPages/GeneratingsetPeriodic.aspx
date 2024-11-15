@@ -428,7 +428,7 @@
                             <label for="Name">
                                 Type of Generating Set<samp style="color: red">* </samp>
                             </label>
-                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server"  OnSelectedIndexChanged="ddlGeneratingSetType_SelectedIndexChanged" ID="ddlGeneratingSetType" selectionmode="Multiple" Style="width: 100% !important">
+                            <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" ID="ddlGeneratingSetType" selectionmode="Multiple" Style="width: 100% !important">
                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                 <asp:ListItem Text="Diesel Engine" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="Gas Engine" Value="2"></asp:ListItem>

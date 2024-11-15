@@ -1918,6 +1918,7 @@
     <Content Include="Officers\InstallationIntimationDetails.aspx" />
     <Content Include="Officers\NewApplications.aspx" />
     <Content Include="Officers\OfficerDashboard.aspx" />
+    <Content Include="Officers\PeriodicInspection.aspx" />
     <Content Include="Officers\ReturnedInspections.aspx" />
     <Content Include="Officers\TotalRequest.aspx" />
     <Content Include="OTPVerification.aspx" />
@@ -2807,6 +2808,13 @@
     </Compile>
     <Compile Include="Officers\Officers.Master.designer.cs">
       <DependentUpon>Officers.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\PeriodicInspection.aspx.cs">
+      <DependentUpon>PeriodicInspection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\PeriodicInspection.aspx.designer.cs">
+      <DependentUpon>PeriodicInspection.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\ReturnedInspections.aspx.cs">
       <DependentUpon>ReturnedInspections.aspx</DependentUpon>

@@ -263,21 +263,28 @@ namespace CEIHaryana.Officers
                 }
                 ID = Session["InspectionId"].ToString();
 
-                //DataSet dsa = new DataSet();
-                //dsa = CEI.GetEmails(ID);
-                //txtInspectionReportID.Text = dsa.Tables[0].Rows[0]["Id"].ToString();
-                //txtPremises.Text = dsa.Tables[0].Rows[0]["Inspectiontype"].ToString();
-                //ToEmail = dsa.Tables[0].Rows[0]["ToEmail"].ToString();
-                //CCemail = dsa.Tables[0].Rows[0]["CCemail"].ToString();
-                //Session["ToEmail"] = ToEmail.Trim();
-                //if (CCemail.Trim() != null && CCemail.Trim() != "")
-                //{
-                //    Session["CCemail"] = CCemail.Trim();
-                //}
-                //else
-                //{
-                //    Session["CCemail"] = "";
-                //}
+                DataSet dsa = new DataSet();
+                dsa = CEI.GetEmails(ID);
+                try
+                {
+                    ToEmail = dsa.Tables[0].Rows[0]["ToEmail"].ToString();
+                    CCemail = dsa.Tables[0].Rows[0]["CCemail"].ToString();
+                    Session["ToEmail"] = ToEmail.Trim();
+                    if (CCemail.Trim() != null && CCemail.Trim() != "")
+                    {
+                        Session["CCemail"] = CCemail.Trim();
+                    }
+                    else
+                    {
+                        Session["CCemail"] = "";
+                    }
+                }
+                catch
+                {
+                    Session["ToEmail"] = "";
+
+                    Session["CCemail"] = "";
+                }
             }
             catch (Exception ex)
             {
@@ -516,7 +523,17 @@ namespace CEIHaryana.Officers
                             if (RadioButtonList2.SelectedValue == "2")
                             {
                                 CEI.UpdateInspectionRejection(ID, StaffId, ddlRejectionReasonType.SelectedItem.ToString(), Reason);
+                                CCemail = Session["CCemail"].ToString();
+                                ToEmail = Session["ToEmail"].ToString();
+                                if (ToEmail.Trim()!=""&& ToEmail!= null) {
+                                    string subject = "Inspection Application Rejected";
+                                    string Message = "Your inspection application (ID: '" + ID + "') has been rejected as response on the mentioned application is not received from beyond 15 working days. We regret any inconvenience this may cause.     \n\nThank you for your understanding.     \n\nBest regards,     \n\n[CEIHaryana]'";
+                                    CEI.RejectMessagethroughEmail(ToEmail, CCemail, subject, Message);
+                                }
+                                else
+                                {
 
+                                }
                                 checksuccessmessage = 1;
                             }
                             else
@@ -526,6 +543,18 @@ namespace CEIHaryana.Officers
                                     if (RadioButtonList2.SelectedValue == "0")
                                     {
                                         CEI.InspectionAccepted(ID, StaffId);
+                                        CCemail = Session["CCemail"].ToString();
+                                        ToEmail = Session["ToEmail"].ToString();
+                                        if (ToEmail.Trim() != "" && ToEmail != null)
+                                        {
+                                            string subject = "Inspection Application Accepted";
+                                            string Message = "We are pleased to inform you that your inspection application (ID: '" + ID + "') has been Accepted by the officer . Please login to your Portal with your credentials to check return remarks     \n\n    \n\nShould you have any questions or need assistance, feel free to reach out.     \n\nBest regards,     \n\n[CEIHaryana]'";
+                                            CEI.RejectMessagethroughEmail(ToEmail, CCemail, subject, Message);
+                                        }
+                                        else
+                                        {
+
+                                        }
                                     }
                                     else if (RadioButtonList2.SelectedValue == "1")
                                     {
@@ -537,7 +566,18 @@ namespace CEIHaryana.Officers
                                                 connection.Open();
                                                 transaction = connection.BeginTransaction();
                                                 CEI.UpdateStatusOfReturnedInspection(ID, StaffId, ddlReasonType.SelectedItem.Value, transaction);
+                                                CCemail = Session["CCemail"].ToString();
+                                                ToEmail = Session["ToEmail"].ToString();
+                                                if (ToEmail.Trim() != "" && ToEmail != null)
+                                                {
+                                                    string subject = "Inspection Application Returned";
+                                                    string Message = "Your inspection application (ID: '" + ID + "') has been Returned by the officer . Please login to your Portal with your credentials to check return remarks    \n\nKindly revert within 15 days Otherwise Your Inspection request will be auto rejecteed.\n\nBest regards,     \n\n[CEIHaryana]'";
+                                                    CEI.RejectMessagethroughEmail(ToEmail, CCemail, subject, Message);
+                                                }
+                                                else
+                                                {
 
+                                                }
                                                 if (ddlReasonType.SelectedItem.Value == "1") // Checklist Documents
                                                 {
                                                     bool AtLeastOneChecked = false;

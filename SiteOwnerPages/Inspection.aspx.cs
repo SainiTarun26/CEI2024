@@ -186,8 +186,9 @@ namespace CEIHaryana.SiteOwnerPages
                     DataSet ds = new DataSet();
                     ds = CEI.InspectionData(ID);
 
-                    IType = ds.Tables[0].Rows[0]["IType"].ToString();
+                    //IType = "Periodic";
 
+                    IType = ds.Tables[0].Rows[0]["IType"].ToString();
                     if (IType == "New")
                     {
                         txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
@@ -262,7 +263,8 @@ namespace CEIHaryana.SiteOwnerPages
                         DateTime.TryParse(createdDate, out inspectionCreatedDate);
                         string InspectionType = ds.Tables[0].Rows[0]["IType"].ToString();
 
-                        voltagelevel.Visible = false;
+                        voltagelevel.Visible = true;
+                        txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                         Type.Visible = false;
                         GridView2.Columns[3].Visible = false;
                         GridView2.Columns[5].Visible = false;
@@ -349,19 +351,20 @@ namespace CEIHaryana.SiteOwnerPages
         protected void lnkRedirect_Click(object sender, EventArgs e)
         {
             LinkButton lnkRedirect = (LinkButton)sender;
+            Label lblInstallationfor = (Label)lnkRedirect.Parent.FindControl("lblInstallationfor");
             string testReportId = lnkRedirect.CommandArgument;
             //Session["InspectionTestReportId"] = testReportId;
-            if (txtWorkType.Text.Trim() == "Line")
+            if (lblInstallationfor.Text.Trim() == "Line")
             {
                 Session["LineID"] = testReportId;
                 Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
             }
-            else if (txtWorkType.Text.Trim() == "Substation Transformer")
+            else if (lblInstallationfor.Text.Trim() == "Substation Transformer")
             {
                 Session["SubStationID"] = testReportId;
                 Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
             }
-            else if (txtWorkType.Text.Trim() == "Generating Set")
+            else if (lblInstallationfor.Text.Trim() == "Generating Set")
             {
                 Session["GeneratingSetId"] = testReportId;
                 Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
@@ -972,8 +975,10 @@ namespace CEIHaryana.SiteOwnerPages
             try
             {
                 ID = Session["InspectionId"].ToString();
+                string SiteOwnerId = Session["SiteOwnerId"].ToString();
+                
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReport(ID);
+                ds = CEI.GetSiteOwnerTestReport(SiteOwnerId);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {

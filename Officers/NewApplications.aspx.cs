@@ -66,19 +66,31 @@ namespace CEIHaryana.Officers
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblID = (Label)row.FindControl("lblID");
                 string id = lblID.Text;
+
+                Label lblInspectionType = (Label)row.FindControl("lblInspectionType");
+
+
                 Label lblApproval = (Label)row.FindControl("lblApproval");
                 Session["Approval"] = lblApproval.Text.Trim();
                 Session["InspectionId"] = id;
                 if (e.CommandName == "Select")
                 {
-                    if (lblApproval.Text.Trim() =="New")
+                    if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "New")
                     {
 
                         Response.Redirect("/Officers/Inspection.aspx", false);
                     }
-                    else
+                    else if (lblApproval.Text.Trim() == "ReSubmit" && lblInspectionType.Text.Trim() == "New")
                     {
                         Response.Redirect("/Officers/ReturnedInspections.aspx", false);
+                    }
+                    else if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "Periodic")
+                    {
+                        Response.Redirect("/Officers/PeriodicInspection.aspx", false);
+                    }
+                    else if (lblApproval.Text.Trim() == "ReSubmit" && lblInspectionType.Text.Trim() == "Periodic")
+                    {
+                        Response.Redirect("/Officers/PeriodicInspection.aspx", false);
                     }
                 }
             }

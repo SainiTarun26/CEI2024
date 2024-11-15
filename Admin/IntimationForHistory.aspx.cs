@@ -21,7 +21,7 @@ namespace CEIHaryana.Admin
         string Type = string.Empty;
 
         private static int count;
-        private static string IntimationId, AcceptorReturn, Reason, StaffId;     
+        private static string IntimationId, AcceptorReturn, Reason, StaffId;
         string InstallType = string.Empty;
         IndustryApiLogDetails logDetails = new IndustryApiLogDetails();
         protected void Page_Load(object sender, EventArgs e)
@@ -50,7 +50,7 @@ namespace CEIHaryana.Admin
                         txtWorkType.Text = "Multiple";
                         Id = Session["PeriodicMultiple"].ToString();
                     }
-                   
+
 
                     GetDetailsWithId();
                     if (Type == "New")
@@ -68,7 +68,7 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-                Response.Redirect("/Login.aspx",false);
+                Response.Redirect("/Login.aspx", false);
             }
         }
 
@@ -150,9 +150,15 @@ namespace CEIHaryana.Admin
                         txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                         txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
 
-                        count = Convert.ToInt32(ds.Tables[0].Rows[0]["TestReportCount"].ToString());           //Added     
+                        // count = Convert.ToInt32(ds.Tables[0].Rows[0]["TestReportCount"].ToString());           //Added     
                         IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
 
+
+                        DivTRinMultipleCaseNew.Visible = true;
+
+
+
+                        GetGridNewInspectionMultiple();
                         GridBindDocument();
                         BindDivisions(txtDistrict.Text.Trim());
                         string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
@@ -286,6 +292,29 @@ namespace CEIHaryana.Admin
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
+        }
+
+        private void GetGridNewInspectionMultiple()
+        {
+            try
+            {
+                string ID = Session["InspectionId"].ToString();
+                DataSet dsVC = CEI.GetDetailsToViewTRinMultipleCaseNew(ID);
+                if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
+                {
+                    Grid_MultipleInspectionTR.DataSource = dsVC;
+                    Grid_MultipleInspectionTR.DataBind();
+                }
+                else
+                {
+                    Grid_MultipleInspectionTR.DataSource = null;
+                    Grid_MultipleInspectionTR.DataBind();
+                    string script = "alert('No Record Found');";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+            }
+            catch (Exception ex)
+            { }
         }
 
         //protected void btnSubmit_Click(object sender, EventArgs e)
@@ -613,7 +642,7 @@ namespace CEIHaryana.Admin
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Admin/IntimationHistoryForAdmin.aspx",false);
+            Response.Redirect("/Admin/IntimationHistoryForAdmin.aspx", false);
             Session["InspectionId"] = "";
         }
 
@@ -657,18 +686,27 @@ namespace CEIHaryana.Admin
                                     ds = CEI.GetTypeOfInspection(ID);
                                     InstallType = ds.Tables[0].Rows[0]["TypeOfInspection"].ToString();
 
-                                    if (InstallType == "New")
+                                    if (RdbtnAccptReturn.SelectedValue == "2")
+                                    {
+                                        CEI.UpdateInspectionRejection(ID, StaffId, ddlRejectionReasonType.SelectedItem.ToString(), Reason);
+
+                                        checksuccessmessage = 1;
+                                    }
+                                    else
                                     {
 
-                                        CEI.updateInspectionCEI(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value);
-                                    }
+                                        if (InstallType == "New")
+                                        {
 
-                                    else if (InstallType == "Periodic")
-                                    {
-                                        CEI.updateInspectionPeriodic(ID, StaffId, IntimationId, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value);
-                                    }
-                                    checksuccessmessage = 1;
+                                            CEI.updateInspectionCEI(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value);
+                                        }
 
+                                        else if (InstallType == "Periodic")
+                                        {
+                                            CEI.updateInspectionPeriodic(ID, StaffId, IntimationId, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value);
+                                        }
+                                        checksuccessmessage = 1;
+                                    }
                                     string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
                                     Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype);
 
@@ -809,13 +847,20 @@ namespace CEIHaryana.Admin
                                         }
                                         else
                                         {
-                                            if (ddlReasonType.SelectedItem.Value == "0") //Based On Test Report Returned
+                                            if (RdbtnAccptReturn.SelectedValue == "2")
                                             {
-                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
+                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Inspection Rejected Successfully'); window.location='IntimationHistoryForAdmin.aspx'", true);
                                             }
-                                            if (ddlReasonType.SelectedItem.Value == "1") //Based On Documents Returned 
+                                            else
                                             {
-                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
+                                                if (ddlReasonType.SelectedItem.Value == "0") //Based On Test Report Returned
+                                                {
+                                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
+                                                }
+                                                if (ddlReasonType.SelectedItem.Value == "1") //Based On Documents Returned 
+                                                {
+                                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
+                                                }
                                             }
                                         }
                                     }
@@ -973,7 +1018,16 @@ namespace CEIHaryana.Admin
                 Return.Visible = true;
                 btnUpdate.Visible = true;
             }
-
+            else if (RdbtnAccptReturn.SelectedValue == "2")
+            {
+                DivRejectionReasonType.Visible = true;
+                DivReason.Visible = true;
+            }
+            else
+            {
+                DivRejectionReasonType.Visible = false;
+                DivReason.Visible = false;
+            }
         }
 
         protected void RadioButtonAction_SelectedIndexChanged(object sender, EventArgs e)
@@ -1013,7 +1067,7 @@ namespace CEIHaryana.Admin
                 {
                     grd_Documemnts.DataSource = null;
                     grd_Documemnts.DataBind();
-                   // string script = "alert(\"No Record Found for document\");";
+                    // string script = "alert(\"No Record Found for document\");";
                     //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 ds.Dispose();
@@ -1044,7 +1098,7 @@ namespace CEIHaryana.Admin
                     //string script = "alert(\"No Record Found\");";
                     //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
-              
+
                 ds.Dispose();
             }
             catch (Exception ex) { }
@@ -1056,17 +1110,141 @@ namespace CEIHaryana.Admin
 
             if (txtWorkType.Text.Trim() == "Line")
             {
-                Response.Redirect("/TestReportModal/LineTestReportModal.aspx",false);
+                Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
             }
             else if (txtWorkType.Text.Trim() == "Substation Transformer")
             {
-                Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx",false);
+                Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
             }
             else if (txtWorkType.Text.Trim() == "Generating Set")
             {
-                Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx",false);
+                Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
             }
 
+        }
+        protected void Grid_MultipleInspectionTR_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            string Count = string.Empty;
+            string IntimationId = string.Empty;
+            if (e.CommandName == "Select")
+            {
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                Label LblInstallationName = (Label)row.FindControl("LblInstallationName");
+                Label LblTestReportCount = (Label)row.FindControl("LblTestReportCount");
+                //IntimationId = Session["id"].ToString();
+                Count = LblTestReportCount.Text.Trim();
+                Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
+                IntimationId = LblIntimationId.Text.Trim();
+                DataSet ds = new DataSet();
+                ds = CEI.GetData(LblInstallationName.Text.Trim(), IntimationId, Count);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    if (LblInstallationName.Text.Trim() == "Line")
+                    {
+                        Session["LineID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                        Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
+                    }
+                    else if (LblInstallationName.Text.Trim() == "Substation Transformer")
+                    {
+                        Session["SubStationID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                        Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+                    }
+                    else if (LblInstallationName.Text.Trim() == "Generating Set")
+                    {
+                        Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                        Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+                    }
+                }
+            }
+            else if (e.CommandName == "View")
+            {
+                string fileName = "";
+                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                //lblerror.Text = fileName;
+                string script = $@"<script>window.open('{fileName}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else if (e.CommandName == "ViewInvoice")
+            {
+                string fileName = "";
+                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                string script = $@"<script>window.open('{fileName}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+        }
+        protected void Grid_MultipleInspectionTR_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
+                    LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallaionInvoice");
+                    LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
+                    if (LblInstallationName.Text.Trim() == "Line")
+                    {
+                        Grid_MultipleInspectionTR.Columns[5].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[6].Visible = false;
+                        linkButtonInvoice.Visible = false;
+                        LinkButtonReport.Visible = false;
+                    }
+                    else
+                    {
+                        Grid_MultipleInspectionTR.Columns[5].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                        linkButtonInvoice.Visible = true;
+                        LinkButtonReport.Visible = true;
+                        ViewState["AllRowsAreLine"] = false;
+                    }
+                }
+                else if (e.Row.RowType == DataControlRowType.Footer)
+                {
+                    if (ViewState["AllRowsAreLine"] == null || (bool)ViewState["AllRowsAreLine"] == true)
+                    {
+                        ddlReasonType.Items.Clear();
+                        ddlReasonType.Items.Add(new ListItem("Select", "0"));
+                        ddlReasonType.Items.Add(new ListItem("Checklist Documents", "1"));
+                    }
+                    else
+                    {
+                        // Restore original items
+                        ddlReasonType.Items.Clear();
+                        ddlReasonType.Items.Add(new ListItem("Select", "0"));
+                        ddlReasonType.Items.Add(new ListItem("Checklist Documents", "1"));
+                        ddlReasonType.Items.Add(new ListItem("Test Report Documents", "2"));
+                        ddlReasonType.Items.Add(new ListItem("Both (Checklist & TestReport Documents)", "3"));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        protected void lnkRedirectTRr_Click1(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton btn = (LinkButton)(sender);
+                GridViewRow row = (GridViewRow)btn.NamingContainer;
+                Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
+                string installationName = lblInstallationName.Text.Trim();
+                Session["InspectionTestReportId"] = btn.CommandArgument;
+                if (installationName == "Line")
+                {
+                    Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
+                }
+                else if (installationName == "Substation Transformer")
+                {
+                    Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+                }
+                else if (installationName == "Generating Set")
+                {
+                    Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+                }
+            }
+            catch (Exception ex) { }
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -1086,6 +1264,7 @@ namespace CEIHaryana.Admin
                 //e.Row.Cells[2].BackColor = System.Drawing.Color.Blue;
                 e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
             }
+        
         }
     }
 }
