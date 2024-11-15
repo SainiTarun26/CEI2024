@@ -192,7 +192,7 @@ namespace CEIHaryana.SiteOwnerPages
         }
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Officers/ReturnInspections.aspx", false);
+            Response.Redirect("~/SiteOwnerPages/ReturnInspections.aspx", false);
         }
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
         {

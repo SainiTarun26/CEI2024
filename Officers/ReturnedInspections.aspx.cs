@@ -527,7 +527,7 @@ namespace CEIHaryana.Officers
                                 ToEmail = Session["ToEmail"].ToString();
                                 if (ToEmail.Trim()!=""&& ToEmail!= null) {
                                     string subject = "Inspection Application Rejected";
-                                    string Message = "Your inspection application (ID: '" + ID + "') has been rejected as response on the mentioned application is not received from beyond 15 working days. We regret any inconvenience this may cause.     \n\nThank you for your understanding.     \n\nBest regards,     \n\n[CEIHaryana]'";
+                                    string Message = "Your inspection application (ID: '" + ID + "') has been rejected by the officer. We regret any inconvenience this may cause.Please login to your Portal with your credentials to check remarks     \n\nThank you for your understanding.     \n\nBest regards,     \n\n[CEIHaryana]'";
                                     CEI.RejectMessagethroughEmail(ToEmail, CCemail, subject, Message);
                                 }
                                 else
