@@ -72,7 +72,7 @@ namespace CEIHaryana.Print_Forms
                 txtApplicationNo.Text = ds.Tables[0].Rows[0]["ReferenceNo"].ToString();
                 txtCreatedDate.Text = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
                 TxtMemo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
-                //TxtMemoDate.Text = ds.Tables[1].Rows[0]["ApprovedDate"].ToString();
+                txtMemoDate.Text = ds.Tables[0].Rows[0]["ApprovedDate"].ToString();
                 string[] str = ds.Tables[0].Rows[0]["Suggestion"].ToString().Split('\n');
                 suggestion1.Visible = false;
                 suggestion2.Visible = false;
@@ -98,6 +98,7 @@ namespace CEIHaryana.Print_Forms
                     suggestion4.InnerText = str[3];
                     suggestion4.Visible = true;
                 }
+                LblMonth.Text = ds.Tables[0].Rows[0]["FinalMonth"].ToString();
                 // lblVoltage.Text = ds.Tables[2].Rows[0]["InstallationDetails"].ToString();
                 // Year.Text = ds.Tables[1].Rows[0]["ApprovedYear"].ToString();
                 myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])ds.Tables[0].Rows[0]["Signature"]);

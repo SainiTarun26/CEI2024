@@ -269,7 +269,7 @@
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="Voltage" HeaderText="Voltage" Visible="false">
+                                                <asp:BoundField DataField="Voltage" HeaderText="Voltage" >
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>

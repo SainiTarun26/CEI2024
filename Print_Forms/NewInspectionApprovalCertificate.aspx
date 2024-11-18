@@ -21,6 +21,18 @@
     <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
     <style>
+        /*@media print {
+        #lowerdiv {
+            page-break-before: always;
+            page-break-inside: avoid;
+        }
+    }*/
+        @media print {
+    #lowerdiv {
+        page-break-inside: avoid; /* Avoid breaking within the div */
+        margin-top: auto;        /* Let it flow naturally unless it exceeds */
+    }
+}
         .row {
             padding-left: 25px !important;
             padding-right: 25px !important;
@@ -100,7 +112,7 @@
         }
 
         textarea {
-            font-weight: bold;
+            /*font-weight: bold;*/
             font-size: 22px;
             border: none !important;
         }
@@ -196,24 +208,24 @@
                                 </div>
                                 <div class="col-2">
                                     <br />
-                                    <asp:TextBox ID="TxtName" runat="server" Columns="70"></asp:TextBox>
-                                    <asp:TextBox ID="TextAdress" TextMode="MultiLine" Rows="2" runat="server" Columns="70"></asp:TextBox>
-                                    <asp:TextBox ID="TextLocation" runat="server" Columns="70"></asp:TextBox>
+                                    <asp:TextBox ID="TxtName" runat="server" Columns="70" Style="font-weight:700;"></asp:TextBox>
+                                    <asp:TextBox ID="TextAdress" runat="server" Columns="70" Style="font-weight:700;"></asp:TextBox>
+                                    <asp:TextBox ID="TextLocation" runat="server" Columns="70" Style="font-weight:700;"></asp:TextBox>
                                 </div>
                             </div>
-                            <br />
+                           <br/>
                             <div class="row">
                                 <div class="col-1">
                                 </div>
-                                <div class="col-7">
+                                <div class="col-3">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="ApplicationNo" runat="server" Text="Application No." Style="font-size: 20px;"></asp:Label>
+                                        <asp:Label ID="ApplicationNo" runat="server" Text="Reference your application no. :" Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="txtApplicationNo" runat="server"></asp:TextBox>
                                     </div>
-                                </div>
+                                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label4" runat="server" Text="Dated:" Style="font-size: 20px;"></asp:Label>
+                                        <asp:Label ID="label4" runat="server" Text="Dated:" Style="font-size: 20px; font-weight:400;"></asp:Label>
                                         <asp:TextBox ID="txtCreatedDate" runat="server" Style="width: 100%;"></asp:TextBox>
                                     </div>
                                 </div>
@@ -221,28 +233,28 @@
                             <div class="row">
                                 <div class="col-1">
                                 </div>
-                                <div class="col-7">
+                                <div class="col-3">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label" runat="server" Text="Memo No. H.T.I /" Style="font-size: 20px;"></asp:Label>
+                                        <asp:Label ID="label" runat="server" Text="Memo No. :" Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="TxtMemo" runat="server"></asp:TextBox>
                                     </div>
-                                </div>
-                                <%-- <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
+                                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label2" runat="server" Text="Dated:" Style="font-size: 20px;"></asp:Label>
-                                        <asp:TextBox ID="TxtMemoDate" runat="server" Style="width: 100%;"></asp:TextBox>
+                                        <asp:Label ID="label2" runat="server" Text="Dated:" Style="font-size: 20px; font-weight:400;"></asp:Label>
+                                        <asp:TextBox ID="txtMemoDate" runat="server" Style="width: 100%;"></asp:TextBox>
                                     </div>
-                                </div>--%>
+                                </div>
                             </div>
 
-                            <br />
+                           
                             <div class="row">
                                 <div class="col-1">
                                     <p>Sub:-</p>
                                 </div>
                                 <div class="col-10" style="text-align: justify;">
 
-                                    <span style="font-weight: bold; font-size: 22px; border: none !important;">Annual Inspection of following installation
+                                    <span style="font-weight: bold; font-size: 22px; border: none !important;">Inspection of the following installation/s
                                     <%--    <asp:Label ID="lblVoltage" runat="server"></asp:Label>--%>
                                         under Central Electricity Authority (Measures relating to
                                         Safety and Electric supply) Regulations, 2023.
@@ -259,14 +271,14 @@
                                         <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
                                             <HeaderStyle BackColor="#B7E2F0" />
                                             <Columns>
-                                                <asp:TemplateField HeaderText="SNo">
+                                                <asp:TemplateField HeaderText="S.No.">
                                                     <HeaderStyle Width="5%" CssClass="headercolor" />
                                                     <ItemStyle Width="5%" />
                                                     <ItemTemplate>
                                                         <%#Container.DataItemIndex+1 %>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:BoundField DataField="InstallationName" HeaderText="InstallationName">
+                                                <asp:BoundField DataField="InstallationName" HeaderText="Installation Type">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>
@@ -288,8 +300,8 @@
                                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                                         </asp:GridView>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>
-                                            The above mentioned installation/s was/were inspected by this Department and the same was/were found generally compiling with the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) 
-                                        Regulations, 2023. However it is advised that:-
+                                            The above mentioned installation/s was/were inspected by this Department and the same was/were found generally complying with the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) 
+                                        Regulations, 2023. However, it is advised that:-
                                         </p>
                                         <div style="display: grid; grid-template-rows: auto auto; font-size: 20px; margin-left: 80px;">
                                             <span id="suggestion1" runat="server"></span>
@@ -301,43 +313,41 @@
                                     </p>
                                 </div>
                             </div>
-                            <br />
+                           
                             <div class="LastPara">
                                 <p>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consistent complicance of the relevant provisions of CEA Regulations, 2010 be ensured in the installation/s at your end and the electrical installation/s be maintained and
-                                            operated in a condition free from danger and as recommended by the Manufacturer or by the relevant code of practice of the Bureau of Indian Standards.
-                                        <br />
+                                    <%--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--%>
+                                            Approval for energization of the subject cited installation/s is/are hereby accorded subject to consistent
+compliance of the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) Regualtions,
+ 2023 may be ensured in these installations at your end. Please note that it shall be the responsibility of the owner 
+of the electrical installations to maintain and operate the installations in a condition free from danger and as recommended
+by the manufacturer or by the relevant code of practice of the bureau of Indian Standards.
+<br />
+                                    </p>
+                                
+                                <div id="lowerdiv" style="margin-top:20px;">
+    <p>
+        Your next inspection shall fall due in the month of
+        <asp:Label ID="LblMonth" runat="server" ></asp:Label>
+        every year. You are therefore requested to deposit inspection fees as per schedule under the Head of A/c "0043--Taxes and Duties on Electricity Fees payable and apply online to this office one month before the due date."
+    </p>
+    <div class="row" style="padding-right: 5px !important;">
+        <div class="col-12" style="text-align: end; padding-left: 10px;">
+            <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-7"></div>
+        <div class="col-5" style="margin-left: 65%;">
+            <p style="text-align: center; font-weight: bold; bottom: 10PX;">
+                <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
+                <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
+                <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />
+            </p>
+        </div>
+    </div>
+</div>
 
-
-                                    <br />
-                                    <%-- <div style="display:flex;">
-                                            <span style="font-weight: bold; font-size: 22px; border: none !important;">Note:-</span>&nbsp;
-                                            <p>Further the firm is not absolved of its responsibility to run the D.G sets as per
-                                            running hour restricted in the general classification regarding use the D.g sets in NCR as per latest Directions N0.77 issued on dated
-                                            <asp:Label ID="NoteDate" runat="server" Text="date"></asp:Label></p></div>--%>
-
-                                    <%--  <p>For Next Inspection shall due in--%>
-                                    <%--  <asp:Label ID="NextInspection" runat="server" Text="date"></asp:Label></p>--%>
-                                </p>
-
-                                <div class="row" style="padding-right: 5px !important;">
-                                    <div class="col-12" style="text-align: end; padding-left: 10px;">
-                                        <%-- <img src="../Assets/Line_Through_Name-removebg-preview.png" width="300" height="90" style="position: fixed; bottom: 140px; margin-left: -300px;" />--%>
-
-                                        <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-7">
-                                    </div>
-                                    <div class="col-5" style="margin-left: 65%;">
-                                        <p style="text-align: center; font-weight: bold; bottom: 10PX;">
-                                            <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
-                                            <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
-                                            <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />
-                                        </p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
