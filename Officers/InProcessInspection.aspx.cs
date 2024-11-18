@@ -138,6 +138,7 @@ namespace CEIHaryana.Officers
                     txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
+                    Session["InstallationType"] = txtWorkType.Text;
                     if (txtWorkType.Text == "Line")
                     {
                         Capacity.Visible = false;
@@ -620,6 +621,7 @@ namespace CEIHaryana.Officers
                     {
                         ID = Session["InProcessInspectionId"].ToString();
                         string InspectionType = Session["InspectionType"].ToString();
+                        string InstallationType = Session["InstallationType"].ToString();
 
 
                         SqlCommand cmd = new SqlCommand("Sp_insertTempInspection");
@@ -651,8 +653,15 @@ namespace CEIHaryana.Officers
                             btnPreview.Visible = false;
 
                             if (InspectionType == "New")
-                            {
-                                Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                            {                                
+                                    if (InstallationType == "Multiple")
+                                    {
+                                        Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                                    }
+                                    else
+                                    {
+                                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                                    }                               
                             }
                             else
                             {

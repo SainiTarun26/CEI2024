@@ -109,6 +109,9 @@
         td.owner-name {
     text-align: justify;
 }
+        th{
+            background: #9292cc;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -231,6 +234,17 @@
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
+                             <asp:TemplateField HeaderText="">
+    <HeaderTemplate>
+        <div class="headercolor" style="text-align:center; width:100%;">Inspection<br />Type</div>
+    </HeaderTemplate>
+    <ItemTemplate>
+        <%# Eval("TypeOfInspection") %>
+    </ItemTemplate>
+    <HeaderStyle HorizontalAlign="center" Width="15%" />
+    <ItemStyle HorizontalAlign="center" Width="15%" />
+</asp:TemplateField>
+
                             <asp:TemplateField>
                                 <HeaderStyle Width="10%" CssClass="headercolor" />
                                 <ItemStyle Width="10%" />

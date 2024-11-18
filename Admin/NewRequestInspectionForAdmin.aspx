@@ -177,7 +177,7 @@
     <HeaderStyle Width="35%" CssClass="headercolor" />
     <ItemStyle Width="35%" />
     <HeaderTemplate>
-        Inspection Id
+        Inspection<br/>Id
     </HeaderTemplate>
     <ItemTemplate>
         <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument='<%# Eval("InspectionId") %>' CommandName="Select">
@@ -225,6 +225,16 @@
     <ItemStyle HorizontalAlign="center" Width="15%" />
     <ItemTemplate>
         <asp:Label ID="lblInstallationFor" runat="server" Text='<%# Eval("Installationfor") %>' CssClass="break-space"></asp:Label>
+    </ItemTemplate>
+</asp:TemplateField>
+                                                                 <asp:TemplateField>
+    <HeaderTemplate>
+        Inspection<br>Type
+    </HeaderTemplate>
+    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+    <ItemStyle HorizontalAlign="center" Width="15%" />
+    <ItemTemplate>
+        <asp:Label ID="lblInstallationFor" runat="server" Text='<%# Eval("TypeOfInspection") %>' CssClass="break-space"></asp:Label>
     </ItemTemplate>
 </asp:TemplateField>
 

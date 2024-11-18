@@ -106,6 +106,9 @@
         .form-group label{
             font-size:16px !important;
         }
+        th {
+    background: #9292cc;
+}
     </style>
 
 </asp:Content>
@@ -172,7 +175,7 @@
                                     <HeaderStyle Width="35%" CssClass="headercolor"/>
                                     <ItemStyle Width="35%" />
                                     <HeaderTemplate>
-                                       Inspection Id
+                                       Inspection <br/> Id
                                     </HeaderTemplate>
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
@@ -217,9 +220,19 @@
                             </asp:BoundField>
                             <asp:BoundField DataField="RequestStatus" HeaderText="Status">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
+                            <asp:TemplateField HeaderText="">
+    <HeaderTemplate>
+        <div class="headercolor" style="text-align:center; width:100%;">Inspection<br />Type</div>
+    </HeaderTemplate>
+    <ItemTemplate>
+        <%# Eval("TypeOfInspection") %>
+    </ItemTemplate>
+    <HeaderStyle HorizontalAlign="center" Width="15%" />
+    <ItemStyle HorizontalAlign="center" Width="15%" />
+</asp:TemplateField>
+
 
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />

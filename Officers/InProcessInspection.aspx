@@ -241,6 +241,10 @@
             border: 1px solid #888;
             width: 80%;
         }
+        input#ContentPlaceHolder1_BtnAddSuggestion {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -589,7 +593,7 @@
                     <div class="col-6">
 
 
-                        <asp:DropDownList ID="ddlSuggestion" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSuggestion_SelectedIndexChanged">
+                        <asp:DropDownList ID="ddlSuggestion" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSuggestion_SelectedIndexChanged" style="width:100%;">
                         </asp:DropDownList>
 
                     </div>
@@ -597,7 +601,7 @@
                         <asp:Button ID="BtnAddSuggestion" Text="Add Suggestion" runat="server" class="btn btn-primary mr-2" OnClientClick="$('#modal1').modal('show'); return false;" />
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="margin-top:25px;">
 
                     <div class="col-12" id="Suggestion" runat="server" visible="false">
 

@@ -109,6 +109,9 @@
         .form-group label{
             font-size:16px !important;
         }
+                th {
+    background: #9292cc;
+}
  </style>
 
 </asp:Content>
@@ -166,15 +169,18 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                                  <asp:TemplateField>
-                                    <HeaderStyle Width="35%" CssClass="headercolor"/>
-                                    <ItemStyle Width="35%" />
-                                    <HeaderTemplate>
-                                       Inspection Id
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
+    <HeaderStyle Width="35%" CssClass="headercolor" />
+    <ItemStyle Width="35%" />
+    <HeaderTemplate>
+        Inspection<br />Id
+    </HeaderTemplate>
+    <ItemTemplate>
+        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument='<%# Eval("InspectionId") %>' CommandName="Select">
+            <%# Eval("InspectionId") %>
+        </asp:LinkButton>
+    </ItemTemplate>
+</asp:TemplateField>
+
                               <%-- <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
                                     <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor"/>
 
@@ -203,10 +209,19 @@
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>--%>
                                 <asp:BoundField DataField="Installationfor" HeaderText="Intallation Type">
-                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                     
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />                                     
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
+                                                              <asp:TemplateField HeaderText="">
+    <HeaderTemplate>
+        <div class="headercolor" style="text-align:center; width:100%;">Inspection<br />Type</div>
+    </HeaderTemplate>
+    <ItemTemplate>
+        <%# Eval("TypeOfInspection") %>
+    </ItemTemplate>
+    <HeaderStyle HorizontalAlign="center" Width="15%" />
+    <ItemStyle HorizontalAlign="center" Width="15%" />
+</asp:TemplateField>
                                 <asp:BoundField DataField="RequestDate" HeaderText="Request Date">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                      
@@ -222,11 +237,17 @@
      
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                              </asp:BoundField>
-                             <asp:BoundField DataField="PendingDays" HeaderText="Pending Days">
-                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-      
-                        <ItemStyle HorizontalAlign="center" Width="15%" />
-                </asp:BoundField>
+                             <asp:TemplateField HeaderText="">
+    <HeaderTemplate>
+        <div class="headercolor" style="text-align:center; width:100%;">Pending<br />Days</div>
+    </HeaderTemplate>
+    <ItemTemplate>
+        <%# Eval("PendingDays") %>
+    </ItemTemplate>
+    <HeaderStyle HorizontalAlign="center" Width="15%" />
+    <ItemStyle HorizontalAlign="center" Width="15%" />
+</asp:TemplateField>
+
                             </Columns>  
                             <FooterStyle BackColor="White" ForeColor="#000066" />
                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
