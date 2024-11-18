@@ -232,14 +232,20 @@
                                      
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
-                               <asp:BoundField DataField="AssignTo" HeaderText="Pending With">
-                               <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-     
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                             </asp:BoundField>
+                               <asp:TemplateField SortExpression="AssignTo">
+    <HeaderTemplate>
+        Assigned <br /> to
+    </HeaderTemplate>
+    <ItemTemplate>
+        <%# Eval("AssignTo") %>
+    </ItemTemplate>
+    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+    <ItemStyle HorizontalAlign="center" Width="15%" />
+</asp:TemplateField>
+    
                              <asp:TemplateField HeaderText="">
     <HeaderTemplate>
-        <div class="headercolor" style="text-align:center; width:100%;">Pending<br />Days</div>
+        <div class="headercolor" style="text-align:center; width:100%;">Assigned<br>Days</div>
     </HeaderTemplate>
     <ItemTemplate>
         <%# Eval("PendingDays") %>

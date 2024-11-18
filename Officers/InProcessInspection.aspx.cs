@@ -163,11 +163,52 @@ namespace CEIHaryana.Officers
                     txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                     string SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
                     Session["InspectionType"] = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
+                    string ReturnValu = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
                     GridBindDocument();
 
 
                     DivViewTRinMultipleCaseNew.Visible = true;
-                    GridToViewTRinMultipleCaseNew();
+                    GridToViewMultipleCaseNew();
+                    if (ReturnValu == "1")
+                    {
+                        grd_Documemnts.Columns[3].Visible = true;
+                        grd_Documemnts.Columns[4].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[5].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[7].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[9].Visible = false;
+                    }
+                    else if (ReturnValu == "3")
+                    {
+
+                        grd_Documemnts.Columns[3].Visible = true;
+                        grd_Documemnts.Columns[4].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[5].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[7].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[8].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[9].Visible = true;
+                    }
+                    else if (ReturnValu == "2")
+                    {
+
+                        grd_Documemnts.Columns[3].Visible = false;
+                        grd_Documemnts.Columns[4].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[5].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[7].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[8].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[9].Visible = true;
+                    }
+                    else
+                    {
+                        grd_Documemnts.Columns[3].Visible = true;
+                        grd_Documemnts.Columns[4].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[5].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[7].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[8].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[9].Visible = false;
+                    }
 
                     string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
 
@@ -215,11 +256,13 @@ namespace CEIHaryana.Officers
                         if (txtRejectionBasis.Text == "" || txtRejectionBasis.Text == null)
                         {
                             RejectionBasis.Visible = false;
+                            Rejection.Visible = false;
 
                         }
                         else
                         {
                             RejectionBasis.Visible = true;
+                            Rejection.Visible = true;
                         }
                         btnBack.Visible = true;
                         btnSubmit.Visible = false;
@@ -653,15 +696,15 @@ namespace CEIHaryana.Officers
                             btnPreview.Visible = false;
 
                             if (InspectionType == "New")
-                            {                                
-                                    if (InstallationType == "Multiple")
-                                    {
-                                        Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
-                                    }
-                                    else
-                                    {
-                                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
-                                    }                               
+                            {
+                                if (InstallationType == "Multiple")
+                                {
+                                    Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                                }
+                                else
+                                {
+                                    Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                                }
                             }
                             else
                             {
@@ -757,13 +800,68 @@ namespace CEIHaryana.Officers
                 Suggestion.Visible = true;
             }
         }
+
+        protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+
+                    //Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
+                    //LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallaionInvoice");
+                    LinkButton LnkDocumemtPath2 = (LinkButton)e.Row.FindControl("LnkDocumemtPath2");
+
+                    if (LnkDocumemtPath2.Text.Trim() == "" || LnkDocumemtPath2 == null)
+                    {
+                        LnkDocumemtPath2.Visible = false;
+                    }
+                    else
+                    {
+                        LnkDocumemtPath2.Visible = true;
+                        LnkDocumemtPath2.Text = "Click here to view document";
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void GridToViewMultipleCaseNew()
+        {
+            try
+            {
+                string ID = Session["InProcessInspectionId"].ToString();
+                DataTable dsVC = CEI.InstallationComponentsforSiteOwner(ID);
+
+                if (dsVC != null && dsVC.Rows.Count > 0)
+                {
+                    Grid_MultipleInspectionTR.DataSource = dsVC;
+                    Grid_MultipleInspectionTR.DataBind();
+                }
+                else
+                {
+                    Grid_MultipleInspectionTR.DataSource = null;
+                    Grid_MultipleInspectionTR.DataBind();
+                    string script = "alert('No Record Found');";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception as needed
+            }
+        }
         protected void GridBindDocument()
         {
             try
             {
                 ID = Session["InProcessInspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.ViewDocuments(ID);
+                ds = CEI.ViewReturnDocuments(ID);
                 if (ds.Tables.Count > 0)
                 {
                     grd_Documemnts.DataSource = ds;
@@ -794,16 +892,49 @@ namespace CEIHaryana.Officers
                     Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
                     LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallaionInvoice");
                     LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
+                    LinkButton lnkPreviousInstallaionInvoice = (LinkButton)e.Row.FindControl("lnkPreviousInstallaionInvoice");
+                    LinkButton lnkPreviosManufacturingReport = (LinkButton)e.Row.FindControl("lnkPreviosManufacturingReport");
+                    if (lnkPreviosManufacturingReport.Text.Trim() == "" || lnkPreviosManufacturingReport == null)
+                    {
+                        lnkPreviosManufacturingReport.Visible = false;
+
+                    }
+                    else
+                    {
+                        lnkPreviosManufacturingReport.Visible = true;
+                        lnkPreviosManufacturingReport.Text = "View Document";
+                    }
+                    if (lnkPreviousInstallaionInvoice.Text.Trim() == "" || lnkPreviousInstallaionInvoice == null)
+                    {
+                        lnkPreviousInstallaionInvoice.Visible = false;
+
+                    }
+                    else
+                    {
+                        lnkPreviousInstallaionInvoice.Visible = true;
+                        lnkPreviousInstallaionInvoice.Text = "View Document";
+                    }
                     if (LblInstallationName.Text.Trim() == "Line")
                     {
+                        lnkPreviousInstallaionInvoice.Visible = false;
+                        lnkPreviosManufacturingReport.Visible = false;
                         linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = false;
                     }
                     else
                     {
+                        lnkPreviousInstallaionInvoice.Visible = true;
+                        lnkPreviosManufacturingReport.Visible = true;
                         linkButtonInvoice.Visible = true;
                         LinkButtonReport.Visible = true;
+                        ViewState["AllRowsAreLine"] = false;
                     }
+
+
+                }
+                else
+                {
+
                 }
             }
             catch (Exception ex)

@@ -234,7 +234,7 @@
     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
     <ItemStyle HorizontalAlign="center" Width="15%" />
     <ItemTemplate>
-        <asp:Label ID="lblInstallationFor" runat="server" Text='<%# Eval("TypeOfInspection") %>' CssClass="break-space"></asp:Label>
+        <asp:Label ID="lblInspectionType" runat="server" Text='<%# Eval("TypeOfInspection") %>' CssClass="break-space"></asp:Label>
     </ItemTemplate>
 </asp:TemplateField>
 
