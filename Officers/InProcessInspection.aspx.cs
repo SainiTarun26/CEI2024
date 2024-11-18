@@ -289,6 +289,7 @@ namespace CEIHaryana.Officers
                 }
                 else if (Type == "Periodic")
                 {
+                    grd_Documemnts.Columns[4].Visible = false;
                     txtInspectionReportID.Text = ds.Tables[0].Rows[0]["Id"].ToString();
                     InspectionType.Visible = false;
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
