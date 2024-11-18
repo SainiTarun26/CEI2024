@@ -100,7 +100,7 @@
         p {
             font-size: 20px;
             text-align: justify;
-            margin-left: 5%;
+            margin-left: 8%;
         }
 
         li {
@@ -154,7 +154,7 @@
         }
     </script>--%>
 
-    <script>
+    <%--<script>
         // Detect when the print dialog is closed (whether by printing or canceling)
         window.onafterprint = function () {
             // Delay execution to ensure the print dialog is fully closed
@@ -166,7 +166,7 @@
                 }
             }, 100);
         };
-    </script>
+    </script>--%>
 
 </head>
 <body onload="printDiv('printableDiv')">
@@ -235,7 +235,7 @@
                                 </div>
                                 <div class="col-3">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label" runat="server" Text="Memo No. :" Style="font-size: 20px;"></asp:Label>
+                                        <asp:Label ID="label" runat="server" Text="Memo No. H.T.I / :" Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="TxtMemo" runat="server"></asp:TextBox>
                                     </div>
                                 </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -315,7 +315,7 @@
                             </div>
                            
                             <div class="LastPara">
-                                <p>
+                                <p style="margin-left:10%;">
                                     <%--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--%>
                                             Approval for energization of the subject cited installation/s is/are hereby accorded subject to consistent
 compliance of the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) Regualtions,
@@ -326,7 +326,7 @@ by the manufacturer or by the relevant code of practice of the bureau of Indian 
                                     </p>
                                 
                                 <div id="lowerdiv" style="margin-top:20px;">
-    <p>
+    <p style="margin-left:10%;">
         Your next inspection shall fall due in the month of
         <asp:Label ID="LblMonth" runat="server" ></asp:Label>
         every year. You are therefore requested to deposit inspection fees as per schedule under the Head of A/c "0043--Taxes and Duties on Electricity Fees payable and apply online to this office one month before the due date."

@@ -222,8 +222,8 @@
                                 </div>
                                 <div class="col-7">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label" runat="server" Text="Memo No. H.T.I /" Style="font-size: 20px;"></asp:Label>
-                                        <asp:TextBox ID="TxtMemo" runat="server"></asp:TextBox>
+                                        <asp:Label ID="label" runat="server" Text="Memo No. :" Style="font-size: 20px;"></asp:Label>
+                                        <asp:TextBox ID="TxtMemo" runat="server" Style="width:100%;"></asp:TextBox>
                                     </div>
                                 </div>
                                <%-- <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
