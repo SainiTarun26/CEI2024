@@ -2096,7 +2096,7 @@
                     </div>
                     <div class="row" style="margin-bottom: 15PX;">
                         <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                            <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Work Completion and Test Report (Line)</h6>
+                            <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Work Completion and Test Report (Substation Transformer)</h6>
                              <div class="row" style="font-size:18px; font-weight:600;">      
                                 <div class="col-12" style="margin-top: 0px; padding-left: 0px; text-align: center;">                
                                   TestReportId: (<asp:Label ID="lbltestReportId" runat="server" />) &nbsp;&nbsp;&nbsp;&nbsp;  WorkIntimation Id: (<asp:Label ID="lblWorkIntimationId" runat="server" />)

@@ -656,8 +656,8 @@ namespace CEIHaryana.SiteOwnerPages
                 else if (e.CommandName == "View")
                 {
                     string fileName = "";
-                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     //lblerror.Text = fileName;
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -894,6 +894,11 @@ namespace CEIHaryana.SiteOwnerPages
                     else if (StaffAssignedCount == "4")
                     {
                         StaffAssigned = "CEI";
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Proper Mapping in DOP Not Found')", true);
+                        return;
                     }
 
                     DataSet dsp = new DataSet();
@@ -1208,8 +1213,8 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     //ID = Session["InspectionId"].ToString();
 
-                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                     //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 

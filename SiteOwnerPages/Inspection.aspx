@@ -275,7 +275,7 @@
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>--%>
 
-                            <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                            <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" Visible="false">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkRedirect" runat="server" Text="View Test Report" OnClick="lnkRedirect_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>' />
                                 </ItemTemplate>
@@ -310,6 +310,67 @@
 
                 </div>
             </div>
+
+             <div class="row" id="Div1" runat="server" visible="False">
+     <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
+         Test Reports & Documents Attached in Test Reports
+     </div>
+ </div>
+
+             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivViewTRinMultipleCaseNew" runat="server" visible="false">
+     <div class="col-12" style="padding: 0px;">
+         <asp:GridView ID="Grid_MultipleInspectionTR" CssClass="table table-bordered table-striped table-responsive" OnRowDataBound="Grid_MultipleInspectionTR_RowDataBound" OnRowCommand="Grid_MultipleInspectionTR_RowCommand" runat="server" AutoGenerateColumns="false">
+             <HeaderStyle BackColor="#B7E2F0" />
+             <Columns>
+                 <asp:TemplateField HeaderText="SNo">
+                     <HeaderStyle Width="5%" CssClass="headercolor" />
+                     <ItemStyle Width="5%" />
+                     <ItemTemplate>
+                         <%# Container.DataItemIndex + 1 %>
+                     </ItemTemplate>
+                 </asp:TemplateField>
+                 <asp:BoundField DataField="InstallationType" HeaderText="InstallationType">
+                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                     <ItemStyle HorizontalAlign="Left" Width="15%" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="TestReportId" HeaderText="TestReportId" Visible="false">
+                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                     <ItemStyle HorizontalAlign="Left" Width="15%" />
+                 </asp:BoundField>
+                 <asp:TemplateField HeaderText="Id" Visible="False">
+                     <ItemTemplate>
+                         <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("Typeofinstallation") %>'></asp:Label>
+                         <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("Count") %>'></asp:Label>
+                         <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
+                         <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
+                     </ItemTemplate>
+                 </asp:TemplateField>
+                 <asp:TemplateField HeaderText="View Test Report" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                     <ItemTemplate>
+                         <asp:LinkButton ID="lnkRedirectTR" runat="server" Text="View Test Report" OnClick="lnkRedirectTR_Click1" CommandName="Select" CommandArgument='<%# Eval("TestReportId") %>' />
+                     </ItemTemplate>
+                     <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                 </asp:TemplateField>
+                 <asp:TemplateField HeaderText="Installaion Invoice" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                     <ItemTemplate>
+                         <asp:LinkButton ID="lnkInstallaionInvoice" runat="server" Text="View Document" CommandName="ViewInvoice" CommandArgument='<%# Eval("installaionInvoice") %>' />
+                     </ItemTemplate>
+                     <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                 </asp:TemplateField>
+                 <asp:TemplateField HeaderText="Manufacturing Report" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                     <ItemTemplate>
+                         <asp:LinkButton ID="lnkManufacturingReport" runat="server" Text="View Document" CommandName="View" CommandArgument='<%# Eval("ManufacturingReport") %>' />
+                     </ItemTemplate>
+                     <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                 </asp:TemplateField>
+             </Columns>
+         </asp:GridView>
+     </div>
+ </div>
+
             <div class="row">
                 <div class="col-4">
                     <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
