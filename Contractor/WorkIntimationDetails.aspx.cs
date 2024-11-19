@@ -143,7 +143,7 @@ namespace CEIHaryana.Contractor
                     {
                         string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
                         TxtUserId.Text = PanTanNumber;
-                        UserId.Visible = true;
+                        UserId.Visible = false;
                         PowerUtility.Visible= true;
                         InstallationFor.Visible = false;
 

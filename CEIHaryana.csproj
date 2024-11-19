@@ -238,6 +238,7 @@
     <Content Include="Admin\RegistrationDetailsAll.aspx" />
     <Content Include="Admin\RegistrationDetailsSelected.aspx" />
     <Content Include="Admin\RequestPendingDays.aspx" />
+    <Content Include="Admin\ReturnedIntimationForHistory.aspx" />
     <Content Include="Admin\SldApproval.aspx" />
     <Content Include="Admin\SldApprovalRequest.aspx" />
     <Content Include="Admin\SLDHistory.aspx" />
@@ -2189,6 +2190,13 @@
     </Compile>
     <Compile Include="Admin\RequestPendingDays.aspx.designer.cs">
       <DependentUpon>RequestPendingDays.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ReturnedIntimationForHistory.aspx.cs">
+      <DependentUpon>ReturnedIntimationForHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ReturnedIntimationForHistory.aspx.designer.cs">
+      <DependentUpon>ReturnedIntimationForHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\SldApproval.aspx.cs">
       <DependentUpon>SldApproval.aspx</DependentUpon>
