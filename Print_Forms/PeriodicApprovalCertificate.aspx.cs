@@ -70,7 +70,7 @@ namespace CEIHaryana.Print_Forms
                 txtApplicationNo.Text = ds.Tables[1].Rows[0]["ReferenceNo"].ToString();
                 txtCreatedDate.Text = ds.Tables[1].Rows[0]["CreatedDate"].ToString();
                 TxtMemo.Text = ds.Tables[1].Rows[0]["MemoNo"].ToString();
-                //TxtMemoDate.Text = ds.Tables[1].Rows[0]["ApprovedDate"].ToString();
+                txtMemoDate.Text = ds.Tables[1].Rows[0]["ApprovedDate"].ToString();
                 string[] str = ds.Tables[1].Rows[0]["Suggestion"].ToString().Split('\n');
                 suggestion1.Visible = false;
                 suggestion2.Visible = false;

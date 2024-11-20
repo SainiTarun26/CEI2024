@@ -142,7 +142,7 @@
         }
     </script>--%>
 
-    <%--<script>
+    <script>
         // Detect when the print dialog is closed (whether by printing or canceling)
         window.onafterprint = function () {
             // Delay execution to ensure the print dialog is fully closed
@@ -154,7 +154,7 @@
                 }
             }, 100);
         };
-    </script>--%>
+    </script>
 </head>
 <body onload="printDiv('printableDiv')">
     <form id="form1" runat="server">
@@ -195,24 +195,24 @@
                                 </div>
                                 <div class="col-2">
                                     <br />
-                                    <asp:TextBox ID="TxtName" runat="server" Columns="70" Style="font-weight:700;"></asp:TextBox>
-                                    <asp:TextBox ID="TextAdress" runat="server" Columns="70" Style="font-weight:700;"></asp:TextBox>
-                                    <asp:TextBox ID="TextLocation" runat="server" Columns="70" Style="font-weight:700;"></asp:TextBox>
+                                    <asp:TextBox ID="TxtName" runat="server" Columns="70" Style="font-weight: 700;"></asp:TextBox>
+                                    <asp:TextBox ID="TextAdress" runat="server" Columns="70" Style="font-weight: 700;"></asp:TextBox>
+                                    <asp:TextBox ID="TextLocation" runat="server" Columns="70" Style="font-weight: 700;"></asp:TextBox>
                                 </div>
                             </div>
                             <br />
                             <div class="row">
                                 <div class="col-1">
                                 </div>
-                                <div class="col-2">
+                                <div class="col-4">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="ApplicationNo" runat="server" Text="Application No." Style="font-size: 20px;font-weight:400;"></asp:Label>
+                                        <asp:Label ID="ApplicationNo" runat="server" Text="Application No." Style="font-size: 20px; font-weight: 400;"></asp:Label>
                                         <asp:TextBox ID="txtApplicationNo" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label4" runat="server" Text="Dated:" Style="font-size: 20px;font-weight:400;"></asp:Label>
+                                        <asp:Label ID="label4" runat="server" Text="Dated:" Style="font-size: 20px; font-weight: 400;"></asp:Label>
                                         <asp:TextBox ID="txtCreatedDate" runat="server" Style="width: 100%;"></asp:TextBox>
                                     </div>
                                 </div>
@@ -220,18 +220,18 @@
                             <div class="row">
                                 <div class="col-1">
                                 </div>
-                                <div class="col-7">
+                                <div class="col-4">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label" runat="server" Text="Memo No. :" Style="font-size: 20px;"></asp:Label>
+                                        <asp:Label ID="label" runat="server" Text="Memo No. H.T.I / :" Style="font-size: 20px; font-weight: 400;"></asp:Label>
                                         <asp:TextBox ID="TxtMemo" runat="server" Style="width: 100%;"></asp:TextBox>
                                     </div>
                                 </div>
-                                <%-- <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
+                                 <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label2" runat="server" Text="Dated:" Style="font-size: 20px;"></asp:Label>
-                                        <asp:TextBox ID="TxtMemoDate" runat="server" Style="width: 100%;"></asp:TextBox>
+                                        <asp:Label ID="label2" runat="server" Text="Dated:" Style="font-size: 20px; font-weight: 400;"></asp:Label>
+                                        <asp:TextBox ID="txtMemoDate" runat="server" Style="width: 100%;"></asp:TextBox>
                                     </div>
-                                </div>--%>
+                                </div>
                             </div>
 
 
@@ -241,7 +241,8 @@
                                 </div>
                                 <div class="col-10" style="text-align: justify;">
 
-                                    <span style="font-weight: bold; font-size: 22px; border: none !important;">Periodic Inspection of following installation
+                                    <span style="font-weight: bold; font-size: 22px; border: none !important;">
+                                        Periodical Inspection of the following installation/s
                                     <%--    <asp:Label ID="lblVoltage" runat="server"></asp:Label>--%>
                                         under Central Electricity Authority (Measures relating to
                                         Safety and Electric supply) Regulations, 2023.
@@ -258,21 +259,21 @@
                                         <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
                                             <HeaderStyle BackColor="#B7E2F0" />
                                             <Columns>
-                                                <asp:TemplateField HeaderText="SNo">
+                                                <asp:TemplateField HeaderText="S.No.">
                                                     <HeaderStyle Width="5%" CssClass="headercolor" />
                                                     <ItemStyle Width="5%" />
                                                     <ItemTemplate>
                                                         <%#Container.DataItemIndex+1 %>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:BoundField DataField="InstallationType" HeaderText="Installation Name">
+                                                <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="Voltage" HeaderText="Voltage">
+                                               <%-- <asp:BoundField DataField="Voltage" HeaderText="Voltage">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                </asp:BoundField>
+                                                </asp:BoundField>--%>
                                                 <asp:BoundField DataField="Capacity" HeaderText="Capacity">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -283,7 +284,7 @@
                                         </asp:GridView>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <p style="margin-left: 8%;">
-                                            The above mentioned installation/s was/were inspected by this Department and the same was/were found generally compiling with the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) 
+                                            The above mentioned installation/s was/were inspected by this Department and the same was/were found generally Complying with the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) 
                                         Regulations, 2023. However it is advised that:-
                                         </p>
                                         <div style="display: grid; grid-template-rows: auto auto; font-size: 20px; margin-left: 80px;">
@@ -294,8 +295,10 @@
                                         </div>
 
                                         <p style="margin-left: 8%;">
-                                            Consistent complicance of the relevant provisions of CEA Regulations, 2023 be ensured in the installation/s at your end and the electrical installation/s be maintained and
-                                            operated in a condition free from danger and as recommended by the Manufacturer or by the relevant code of practice of the Bureau of Indian Standards.
+                                            Consistent compliance of the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) Regualtions,
+ 2023 may be ensured in these installations at your end. Please note that it shall be the responsibility of the owner 
+of the electrical installations to maintain and operate the installations in a condition free from danger and as recommended
+by the manufacturer or by the relevant code of practice of the bureau of Indian Standards.
                                         <br />
 
 

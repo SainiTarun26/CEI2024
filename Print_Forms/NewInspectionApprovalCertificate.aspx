@@ -217,7 +217,7 @@
                             <div class="row">
                                 <div class="col-1">
                                 </div>
-                                <div class="col-3">
+                                <div class="col-4">
                                     <div style="white-space: nowrap;">
                                         <asp:Label ID="ApplicationNo" runat="server" Text="Reference your application no. :" Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="txtApplicationNo" runat="server"></asp:TextBox>
@@ -233,7 +233,7 @@
                             <div class="row">
                                 <div class="col-1">
                                 </div>
-                                <div class="col-3">
+                                <div class="col-4">
                                     <div style="white-space: nowrap;">
                                         <asp:Label ID="label" runat="server" Text="Memo No. H.T.I / :" Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="TxtMemo" runat="server"></asp:TextBox>
@@ -286,10 +286,10 @@
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>--%>
-                                                <asp:BoundField DataField="Voltage" HeaderText="Voltage">
+                                               <%-- <asp:BoundField DataField="Voltage" HeaderText="Voltage">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                </asp:BoundField>
+                                                </asp:BoundField>--%>
                                                 <asp:BoundField DataField="Capacity" HeaderText="Capacity">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -326,7 +326,7 @@ by the manufacturer or by the relevant code of practice of the bureau of Indian 
                                     </p>
                                 
                                 <div id="lowerdiv" style="margin-top:20px;">
-    <p style="margin-left:10%; margin-top:15px;">
+    <p style="margin-left:10%;">
         Your next inspection shall fall due in the month of
         <asp:Label ID="LblMonth" runat="server" ></asp:Label>
         every year. You are therefore requested to deposit inspection fees as per schedule under the Head of A/c "0043--Taxes and Duties on Electricity Fees payable and apply online to this office one month before the due date."

@@ -30,16 +30,19 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (!Page.IsPostBack)
                 {
-                    if (Session["SiteOwnerId"] != null && Request.Cookies["SiteOwnerId"] != null)
+                    if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                     {
                         BindAdress();
-                        //getWorkIntimationDataForListOfExisting();
+                    }
+                    else
+                    {
+                        Response.Redirect("/login.aspx", false);
                     }
                 }
             }
             catch
             {
-                Response.Redirect("/login.aspx");
+                Response.Redirect("/login.aspx", false);
             }
         }
 
@@ -80,15 +83,22 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                string id = Session["SiteOwnerId"].ToString();
-                DataSet dsAdress = new DataSet();
-                dsAdress = CEI.GetSiteOwnerAdress(id);
-                ddlAdress.DataSource = dsAdress;
-                ddlAdress.DataTextField = "siteownerAdress";
-                ddlAdress.DataValueField = "siteownerAdress";
-                ddlAdress.DataBind();
-                ddlAdress.Items.Insert(0, new ListItem("Select", "0"));
-                dsAdress.Clear();
+                if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
+                {
+                    string id = Session["SiteOwnerId"].ToString();
+                    DataSet dsAdress = new DataSet();
+                    dsAdress = CEI.GetSiteOwnerAdress(id);
+                    ddlAdress.DataSource = dsAdress;
+                    ddlAdress.DataTextField = "siteownerAdress";
+                    ddlAdress.DataValueField = "siteownerAdress";
+                    ddlAdress.DataBind();
+                    ddlAdress.Items.Insert(0, new ListItem("Select", "0"));
+                    dsAdress.Clear();
+                }
+                else
+                {
+                    Response.Redirect("/login.aspx", false);
+                }
             }
             catch
             {
@@ -128,26 +138,33 @@ namespace CEIHaryana.SiteOwnerPages
         //////}
         public void GridViewBind()
         {
-            string id = Session["SiteOwnerId"].ToString();
-            string Adress = ddlAdress.SelectedItem.Text;
-            //int numberOfDays = int.Parse(ddlNoOfDays.SelectedValue);
-            //string InstallationType = ddlInstallationType.SelectedValue;
-            //Session["IntimationId"+ ] = ddlAdress.SelectedValue;
-            DataSet ds = new DataSet();
-            ds = CEI.GetPeriodicDetails(Adress, id);
-            if (ds.Tables[0].Rows.Count > 0 && ds != null)
+            if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
             {
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
-                BtnCart.Visible = true;
+                string id = Session["SiteOwnerId"].ToString();
+                string Adress = ddlAdress.SelectedItem.Text;
+                //int numberOfDays = int.Parse(ddlNoOfDays.SelectedValue);
+                //string InstallationType = ddlInstallationType.SelectedValue;
+                //Session["IntimationId"+ ] = ddlAdress.SelectedValue;
+                DataSet ds = new DataSet();
+                ds = CEI.GetPeriodicDetails(Adress, id);
+                if (ds.Tables[0].Rows.Count > 0 && ds != null)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                    BtnCart.Visible = true;
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                    BtnCart.Visible = false;
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
             }
             else
             {
-                GridView1.DataSource = null;
-                GridView1.DataBind();
-                BtnCart.Visible = false;
-                string script = "alert(\"No Record Found\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                Response.Redirect("/login.aspx", false);
             }
         }
         //protected void BtnProcess_Click(object sender, EventArgs e)
@@ -568,7 +585,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                if (Session["SiteOwnerId"] != null)
+                if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                 {
                     string id = Session["SiteOwnerId"].ToString();
                     bool atLeastOneChecked = false;
