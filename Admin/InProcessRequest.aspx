@@ -208,10 +208,10 @@
                                      
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>--%>
-                                <asp:BoundField DataField="Installationfor" HeaderText="Intallation Type">
+                               <%-- <asp:BoundField DataField="Installationfor" HeaderText="Intallation Type">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />                                     
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
                                                               <asp:TemplateField HeaderText="">
     <HeaderTemplate>
         <div class="headercolor" style="text-align:center; width:100%;">Inspection<br />Type</div>
@@ -227,11 +227,11 @@
                                      
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
-                                 <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
+                                <%-- <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
                                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                      
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
                                <asp:TemplateField SortExpression="AssignTo">
     <HeaderTemplate>
         Assigned <br /> to

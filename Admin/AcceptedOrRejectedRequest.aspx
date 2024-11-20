@@ -11,6 +11,8 @@
     <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -217,7 +219,7 @@
     </ItemTemplate>
 </asp:TemplateField>--%>
 
-                           <asp:TemplateField HeaderText="Installation&#60;br /&#62;Type">
+                           <asp:TemplateField HeaderText="Installation&#60;br /&#62;Type" Visible ="false">
     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
     <ItemStyle HorizontalAlign="center" Width="15%" />
     <ItemTemplate>

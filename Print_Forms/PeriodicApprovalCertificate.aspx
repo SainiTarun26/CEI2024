@@ -88,7 +88,7 @@
         p {
             font-size: 20px;
             text-align: justify;
-            margin-left:5%;
+            margin-left: 5%;
         }
 
         li {
@@ -118,9 +118,10 @@
             vertical-align: middle;
             border-style: none;
         }
-        table#Gridview1{
-            margin-left:8%;
-            width:92%;
+
+        table#Gridview1 {
+            margin-left: 8%;
+            width: 92%;
         }
     </style>
 
@@ -141,7 +142,7 @@
         }
     </script>--%>
 
-    <script>
+    <%--<script>
         // Detect when the print dialog is closed (whether by printing or canceling)
         window.onafterprint = function () {
             // Delay execution to ensure the print dialog is fully closed
@@ -153,8 +154,7 @@
                 }
             }, 100);
         };
-    </script>
-
+    </script>--%>
 </head>
 <body onload="printDiv('printableDiv')">
     <form id="form1" runat="server">
@@ -195,24 +195,24 @@
                                 </div>
                                 <div class="col-2">
                                     <br />
-                                    <asp:TextBox ID="TxtName" runat="server" Columns="70"></asp:TextBox>
-                                    <asp:TextBox ID="TextAdress" TextMode="MultiLine" Rows="2" runat="server" Columns="70"></asp:TextBox>
-                                    <asp:TextBox ID="TextLocation" runat="server" Columns="70"></asp:TextBox>
+                                    <asp:TextBox ID="TxtName" runat="server" Columns="70" Style="font-weight:700;"></asp:TextBox>
+                                    <asp:TextBox ID="TextAdress" runat="server" Columns="70" Style="font-weight:700;"></asp:TextBox>
+                                    <asp:TextBox ID="TextLocation" runat="server" Columns="70" Style="font-weight:700;"></asp:TextBox>
                                 </div>
                             </div>
                             <br />
                             <div class="row">
                                 <div class="col-1">
                                 </div>
-                                <div class="col-7">
+                                <div class="col-2">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="ApplicationNo" runat="server" Text="Application No." Style="font-size: 20px;"></asp:Label>
+                                        <asp:Label ID="ApplicationNo" runat="server" Text="Application No." Style="font-size: 20px;font-weight:400;"></asp:Label>
                                         <asp:TextBox ID="txtApplicationNo" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label4" runat="server" Text="Dated:" Style="font-size: 20px;"></asp:Label>
+                                        <asp:Label ID="label4" runat="server" Text="Dated:" Style="font-size: 20px;font-weight:400;"></asp:Label>
                                         <asp:TextBox ID="txtCreatedDate" runat="server" Style="width: 100%;"></asp:TextBox>
                                     </div>
                                 </div>
@@ -223,10 +223,10 @@
                                 <div class="col-7">
                                     <div style="white-space: nowrap;">
                                         <asp:Label ID="label" runat="server" Text="Memo No. :" Style="font-size: 20px;"></asp:Label>
-                                        <asp:TextBox ID="TxtMemo" runat="server" Style="width:100%;"></asp:TextBox>
+                                        <asp:TextBox ID="TxtMemo" runat="server" Style="width: 100%;"></asp:TextBox>
                                     </div>
                                 </div>
-                               <%-- <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
+                                <%-- <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
                                     <div style="white-space: nowrap;">
                                         <asp:Label ID="label2" runat="server" Text="Dated:" Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="TxtMemoDate" runat="server" Style="width: 100%;"></asp:TextBox>
@@ -234,14 +234,14 @@
                                 </div>--%>
                             </div>
 
-                            <br />
+
                             <div class="row">
                                 <div class="col-1">
                                     <p>Sub:-</p>
                                 </div>
                                 <div class="col-10" style="text-align: justify;">
 
-                                    <span style="font-weight: bold; font-size: 22px; border: none !important;">Annual Inspection of following installation
+                                    <span style="font-weight: bold; font-size: 22px; border: none !important;">Periodic Inspection of following installation
                                     <%--    <asp:Label ID="lblVoltage" runat="server"></asp:Label>--%>
                                         under Central Electricity Authority (Measures relating to
                                         Safety and Electric supply) Regulations, 2023.
@@ -249,7 +249,7 @@
                                     </span>
                                 </div>
                             </div>
-                       
+
 
                             <br />
                             <div class="row">
@@ -259,17 +259,17 @@
                                             <HeaderStyle BackColor="#B7E2F0" />
                                             <Columns>
                                                 <asp:TemplateField HeaderText="SNo">
-                                              <HeaderStyle Width="5%" CssClass="headercolor" />
-                                        <ItemStyle Width="5%" />
-                                        <ItemTemplate>
-                                         <%#Container.DataItemIndex+1 %>
-                                     </ItemTemplate>
-                                </asp:TemplateField>
+                                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                    <ItemStyle Width="5%" />
+                                                    <ItemTemplate>
+                                                        <%#Container.DataItemIndex+1 %>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                                 <asp:BoundField DataField="InstallationType" HeaderText="Installation Name">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="Voltage" HeaderText="Voltage" >
+                                                <asp:BoundField DataField="Voltage" HeaderText="Voltage">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>
@@ -281,17 +281,20 @@
                                             </Columns>
                                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                                         </asp:GridView>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>     The above mentioned installation/s was/were inspected by this Department and the same was/were found generally compiling with the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) 
-                                        Regulations, 2023. However it is advised that:-</p>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <p style="margin-left: 8%;">
+                                            The above mentioned installation/s was/were inspected by this Department and the same was/were found generally compiling with the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) 
+                                        Regulations, 2023. However it is advised that:-
+                                        </p>
                                         <div style="display: grid; grid-template-rows: auto auto; font-size: 20px; margin-left: 80px;">
-     <span id="suggestion1" runat="server"></span>
-     <span id="suggestion2" runat="server"></span>
-     <span id="suggestion3" runat="server"></span>
-     <span id="suggestion4" runat="server" style="margin-bottom: 15px !important;"></span>
- </div>
+                                            <span id="suggestion1" runat="server"></span>
+                                            <span id="suggestion2" runat="server"></span>
+                                            <span id="suggestion3" runat="server"></span>
+                                            <span id="suggestion4" runat="server" style="margin-bottom: 15px !important;"></span>
+                                        </div>
 
-                                        <p>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consistent complicance of the relevant provisions of CEA Regulations, 2010 be ensured in the installation/s at your end and the electrical installation/s be maintained and
+                                        <p style="margin-left: 8%;">
+                                            Consistent complicance of the relevant provisions of CEA Regulations, 2023 be ensured in the installation/s at your end and the electrical installation/s be maintained and
                                             operated in a condition free from danger and as recommended by the Manufacturer or by the relevant code of practice of the Bureau of Indian Standards.
                                         <br />
 

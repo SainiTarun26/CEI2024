@@ -266,7 +266,7 @@ namespace CEIHaryana.SiteOwnerPages
                         switch (DocName)
                         {
                             case "Previous Inspection Report":
-                                DocumentId = "19";
+                                DocumentId = "9";
                                 break;
                             case "Tresury Challan":
                                 DocumentId = "17";
@@ -339,7 +339,7 @@ namespace CEIHaryana.SiteOwnerPages
                         switch (DocName2)
                         {
                             case "Previous Inspection Report":
-                                DocumentId = "19";
+                                DocumentId = "9";
                                 break;
                             case "Tresury Challan":
                                 DocumentId = "17";

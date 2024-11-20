@@ -897,7 +897,7 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Proper Mapping in DOP Not Found')", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Process has been upgraded kindly create new workIntimation to Process further')", true);
                         return;
                     }
 

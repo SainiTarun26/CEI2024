@@ -209,10 +209,10 @@
         <asp:Label ID="lblApplicantType" runat="server" Text='<%# Eval("ApplicantFor") %>' CssClass="break-text-10"></asp:Label>
     </ItemTemplate>
 </asp:TemplateField>--%>
-                            <asp:BoundField DataField="Installationfor" HeaderText="Intallation Type">
+                           <%-- <asp:BoundField DataField="Installationfor" HeaderText="Intallation Type">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
+                            </asp:BoundField>--%>
                             <asp:BoundField DataField="RequestDate" HeaderText="Request Date">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
 
