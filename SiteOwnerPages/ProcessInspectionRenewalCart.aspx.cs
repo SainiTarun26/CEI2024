@@ -38,19 +38,19 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         if (!string.IsNullOrEmpty(Convert.ToString(Session["IDCart"])))
                         {
-                             CartID = Convert.ToString(Session["IDCart"]);
+                            CartID = Convert.ToString(Session["IDCart"]);
                         }
                         else
                         {
-                             CartID = Convert.ToString(Session["CartID"]);
-                        }                       
+                            CartID = Convert.ToString(Session["CartID"]);
+                        }
                         DataSet ds = new DataSet();
                         ds = CEI.GetPeriodicType(CartID);
                         type = ds.Tables[0].Rows[0]["InspectionStatus"].ToString();
                         NewInspectionId = ds.Tables[0].Rows[0]["NewInspectionId"].ToString();
                         if (type != "Returned" && type != null)
-                        { 
-                          getInspectionData();
+                        {
+                            getInspectionData();
                         }
                         else
                         {
@@ -103,15 +103,21 @@ namespace CEIHaryana.SiteOwnerPages
                     PaymentMode = ds.Tables[0].Rows[0]["PaymentMode"].ToString();
                     GetOtherDetails_ForReturnedInspection(NewInspectionId);
 
-                    para_InspectID = Convert.ToInt32( ds.Tables[0].Rows[0]["InspectionCount"].ToString());
+                    para_InspectID = Convert.ToInt32(ds.Tables[0].Rows[0]["InspectionCount"].ToString());
                     HF_para_InspectID.Value = para_InspectID.ToString();
 
                     //inspectionCountRes = ds.Tables[0].Rows[0]["InspectionCount"].ToString();
                     //inspectionIdRes = ds.Tables[0].Rows[0]["InspectionId"].ToString();
 
+                    int ServiceType = 0;
+                    if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Rows[0]["ServiceType"] != DBNull.Value)
+                    {
+                        ServiceType = Convert.ToInt32(ds.Tables[0].Rows[0]["ServiceType"]);
+                        Session["ServiceType"] = ServiceType;
+                    }
 
                     DataSet dsDetails = CEI.GetDocumentsforPeriodicIfExist(NewInspectionId);
-                   
+
                     if (dsDetails != null && dsDetails.Tables[0].Rows.Count > 0)
                     {
                         //AddFixedRows(dsDetails);
@@ -144,23 +150,23 @@ namespace CEIHaryana.SiteOwnerPages
             try
             {
                 string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-            string query = "Sp_GetOtherDetails_ForReturnedInspection";
+                string query = "Sp_GetOtherDetails_ForReturnedInspection";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@InspectionId", NewInspectionId);
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.Read())
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        txtTransactionId.Text = reader["TransactionId"].ToString();
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@InspectionId", NewInspectionId);
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            txtTransactionId.Text = reader["TransactionId"].ToString();
+                        }
+                        reader.Close();
                     }
-                    reader.Close();
                 }
-            }
             }
             catch (Exception ex)
             {
@@ -199,6 +205,14 @@ namespace CEIHaryana.SiteOwnerPages
                     //TypeOfInspection = ds.Tables[0].Rows[0]["InstallationType"].ToString();
 
 
+                    int ServiceType = 0;
+                    if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Rows[0]["ServiceType"] != DBNull.Value)
+                    {
+                        ServiceType = Convert.ToInt32(ds.Tables[0].Rows[0]["ServiceType"]);
+                        Session["ServiceType"] = ServiceType;
+                    }
+
+
                     DataSet dsDetails = CEI.GetDocumentforPeriodic(IdCart);
 
                     //NewInspectionId = dsDetails.Tables[0].Rows[0]["NewInspectionId"].ToString();
@@ -215,7 +229,7 @@ namespace CEIHaryana.SiteOwnerPages
                         GridView1.DataBind();
                     }
                 }
-            
+
                 else
                 {
                     GridView1.DataSource = null;
@@ -399,8 +413,8 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                 }
             }
-            catch (Exception ex) 
-            
+            catch (Exception ex)
+
             {
                 Response.Write(ex.Message);
             }
@@ -504,7 +518,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                     if (isValid)
                     {
-                        
+
                         using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
                         {
                             SqlTransaction transaction = null;
@@ -534,7 +548,7 @@ namespace CEIHaryana.SiteOwnerPages
                                 CEI.InsertPeriodicInspectionData("Periodic", IdCart, IntimationId, ApplicantType,
                                                 InstallationType, VoltageLevel, District, Division, AssignTo,
                                                    PaymentMode, Amount, transcationId, TranscationDate,
-                                                  para_CreatedByy, Capacity, Voltage, NewPara, transaction);
+                                                  para_CreatedByy, Capacity, Voltage, NewPara, Convert.ToInt32(Session["ServiceType"]), transaction);
 
                                 UploadCheckListDocInCollection(para_CreatedByy, NewPara);
                                 string generatedIdCombinedDetails = CEI.InspectionId();
@@ -606,7 +620,7 @@ namespace CEIHaryana.SiteOwnerPages
                                 Session["CartID"] = string.Empty;
                                 //Response.Redirect("/SiteOwnerPages/InspectionRenewalCart.aspx", false);
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Submitted Successfully !!!'); window.location='/SiteOwnerPages/InspectionHistory.aspx';", true);
-
+                                Session["ServiceType"] = string.Empty;
                             }
                             catch (Exception ex)
                             {
@@ -627,7 +641,7 @@ namespace CEIHaryana.SiteOwnerPages
                         Response.Write("<script>alert('Please select a file to upload.');</script>");
                     }
 
-                    
+
                 }
             }
             catch (Exception ex)

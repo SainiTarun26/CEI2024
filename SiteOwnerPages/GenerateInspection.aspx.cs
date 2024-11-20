@@ -27,7 +27,7 @@ namespace CEIHaryana.SiteOwnerPages
         string fileExtension3 = string.Empty;
         string fileExtension4 = string.Empty;
         string IntimationId = string.Empty;
-
+        int ServiceType = 0;
         int inspectionCountRes = 0;
         int inspectionIdRes = 0;
         string InstallationId = string.Empty;
@@ -881,19 +881,23 @@ namespace CEIHaryana.SiteOwnerPages
                     if (StaffAssignedCount == "1")
                     {
                         StaffAssigned = "JE";
+                        ServiceType = 2;
                     }
                     else if (StaffAssignedCount == "2")
                     {
                         StaffAssigned = "AE";
+                        ServiceType = 3;
                     }
 
                     else if (StaffAssignedCount == "3")
                     {
                         StaffAssigned = "XEN";
+                        ServiceType = 4;
                     }
                     else if (StaffAssignedCount == "4")
                     {
                         StaffAssigned = "CEI";
+                        ServiceType = 1;
                     }
                     else
                     {
@@ -910,7 +914,7 @@ namespace CEIHaryana.SiteOwnerPages
                     InstallationTypeID = Session["InstallationTypeID"].ToString();
                     InsertFilesIntoDatabase(InstallationTypeID, CreatedBy, txtContact.Text, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
                 District, To, PaymentMode, txtDate.Text, txtInspectionRemarks.Text.Trim(), CreatedBy, TotalAmount, Assigned, transcationId, TranscationDate, ChallanAttachment, Convert.ToInt32(InspectionIdClientSideCheckedRow.Value)
-                , kVA.ToString(), DemandNotice, TotalCapacity, MaxVoltage);
+                , kVA.ToString(), DemandNotice, TotalCapacity, MaxVoltage, ServiceType);
                     //Session["PrintInspectionID"] = id.ToString();
                 }
                 else
@@ -999,7 +1003,7 @@ namespace CEIHaryana.SiteOwnerPages
 
         public void InsertFilesIntoDatabase(string InstallationTypeID, string para_CreatedBy, string para_txtContact, string para_ApplicantTypeCode, string para_IntimationId, string para_PremisesType, string para_lblApplicant, string para_lblCategory, string para_lblVoltageLevel,
              string para_District, string para_To, string para_PaymentMode, string para_txtDate, string para_txtInspectionRemarks, string para_CreatedByy, decimal para_TotalAmount, string para_Assigned, string para_transcationId, string para_TranscationDate, string para_ChallanAttachment, int para_InspectID, string para_kVA
-            , string para_DemandNotice, int TotalCapacity, int MaxVoltage)
+            , string para_DemandNotice, int TotalCapacity, int MaxVoltage, int ServiceType)
         {
             bool isInsertSuccessful = true;
             // Insert the uploaded files into the database
@@ -1012,7 +1016,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     Session["Duplicacy"] = "2";
                     CEI.InsertInspectionDataNewCode(InstallationTypeID, para_txtContact, para_ApplicantTypeCode, para_IntimationId, para_PremisesType, para_lblApplicant, para_lblCategory, para_lblVoltageLevel,
-                    para_District, para_To, para_PaymentMode, para_txtDate, para_txtInspectionRemarks, para_CreatedByy, para_TotalAmount, para_Assigned, para_transcationId, para_TranscationDate, para_ChallanAttachment, para_InspectID, para_kVA, para_DemandNotice, TotalCapacity, MaxVoltage, transaction);
+                    para_District, para_To, para_PaymentMode, para_txtDate, para_txtInspectionRemarks, para_CreatedByy, para_TotalAmount, para_Assigned, para_transcationId, para_TranscationDate, para_ChallanAttachment, para_InspectID, para_kVA, para_DemandNotice, TotalCapacity, MaxVoltage, ServiceType, transaction);
 
                     string generatedIdCombinedDetails = CEI.InspectionId();
                     string[] SplitResultPartsArray = generatedIdCombinedDetails.Split('|');
@@ -1214,7 +1218,7 @@ namespace CEIHaryana.SiteOwnerPages
                     //ID = Session["InspectionId"].ToString();
 
                     fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                     //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 

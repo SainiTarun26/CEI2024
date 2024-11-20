@@ -168,8 +168,8 @@ namespace CEIHaryana.Periodic_Industry
 
 
 
-                    CEI.InsertInspectinData(Cart, GrandTotalCapacity, HighestVoltage, PrevInstallationType, PrevTestReportId,
-              PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, StaffAssigned, "Offline", totalAmount, 1, id);
+            //        CEI.InsertInspectinData(Cart, GrandTotalCapacity, HighestVoltage, PrevInstallationType, PrevTestReportId,
+            //  PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, StaffAssigned, "Offline", totalAmount, 1, id);
 
                     Session["CartID"] = Cart;
                     Session["TotalCapacity2"] = string.Empty;

@@ -24,9 +24,9 @@ namespace CEIHaryana.SiteOwnerPages
         string InstallationTypeId = string.Empty, strPreviousRowID = string.Empty;
         private static int TotalAmount = 0, CheckCase = 0;
         private static string PrevInspectionId = string.Empty, PrevInstallationType = string.Empty, PrevTestReportId = string.Empty,
-                              PrevIntimationId = string.Empty, PrevVoltageLevel = string.Empty, 
+                              PrevIntimationId = string.Empty, PrevVoltageLevel = string.Empty,
                               PrevApplicantType = string.Empty, AssignToOfficer = string.Empty;
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -329,7 +329,7 @@ namespace CEIHaryana.SiteOwnerPages
                     string id = Session["SiteOwnerId"].ToString();
                     string GrandTotalCapacity = Session["TotalCapacity"].ToString();
                     string HighestVoltage = Session["HighestVoltage"].ToString();
-                    
+
                     int totalAmount = Convert.ToInt32(Session["FinalAmount"]);
                     string AssignTo = AssignToOfficer;
                     string Division = string.Empty;
@@ -337,7 +337,7 @@ namespace CEIHaryana.SiteOwnerPages
                     string StaffAssignedCount = string.Empty;
                     string StaffAssigned = string.Empty;
                     string Assigned = string.Empty;
-
+                    int ServiceType = 0;
                     string[] str = txtAddressFilter.Text.Split('|');
                     string address = str[0].Trim();
                     string CartID = str[1].Trim();
@@ -347,7 +347,7 @@ namespace CEIHaryana.SiteOwnerPages
                     if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                     {
                         foreach (DataRow row in ds.Tables[0].Rows)
-                        {                            
+                        {
                             Division = row["Division"].ToString();
                             District = row["District"].ToString();
                         }
@@ -359,22 +359,26 @@ namespace CEIHaryana.SiteOwnerPages
                         StaffAssignedCount = ds.Tables[0].Rows[0]["AssignedCount"].ToString();
                     }
 
-                    if (StaffAssignedCount=="1")
+                    if (StaffAssignedCount == "1")
                     {
                         StaffAssigned = "JE";
+                        ServiceType = 2;
                     }
-                    else if(StaffAssignedCount == "2")
+                    else if (StaffAssignedCount == "2")
                     {
                         StaffAssigned = "AE";
+                        ServiceType = 3;
                     }
 
                     else if (StaffAssignedCount == "3")
                     {
                         StaffAssigned = "XEN";
+                        ServiceType = 4;
                     }
                     else if (StaffAssignedCount == "4")
                     {
                         StaffAssigned = "CEI";
+                        ServiceType = 5;
                     }
                     else
                     {
@@ -384,12 +388,12 @@ namespace CEIHaryana.SiteOwnerPages
 
 
                     DataSet dsp = new DataSet();
-                    dsp = CEI.ToGetStaffIdforPeriodic(Division, StaffAssigned,District);
+                    dsp = CEI.ToGetStaffIdforPeriodic(Division, StaffAssigned, District);
                     if (dsp.Tables.Count > 0 && dsp.Tables[0].Rows.Count > 0)
                     {
                         Assigned = dsp.Tables[0].Rows[0]["StaffUserId"].ToString();
                     }
-                    
+
 
                     int affectedRows = GetAffectedRowsCount(CartID);
 
@@ -417,7 +421,7 @@ namespace CEIHaryana.SiteOwnerPages
                         SInsp = CEI.GetDataForSingleInspection(InspectionId);
                         string IntimationId = SInsp.Tables[0].Rows[0]["IntimationId"].ToString();
                         string ApplicantType = SInsp.Tables[0].Rows[0]["ApplicantType"].ToString();
-                        PrevInstallationType = "Multiple"; 
+                        PrevInstallationType = "Multiple";
                         PrevTestReportId = "Multiple";
                         PrevIntimationId = IntimationId;
                         PrevVoltageLevel = HighestVoltage;
@@ -425,7 +429,7 @@ namespace CEIHaryana.SiteOwnerPages
                     }
 
                     CEI.InsertInspectinData(CartID, GrandTotalCapacity, HighestVoltage, PrevInstallationType, PrevTestReportId,
-              PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, Assigned, "Offline", totalAmount, 1, id);
+              PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, Assigned, "Offline", totalAmount, 1, id, ServiceType);
 
                     Session["CartID"] = CartID;
                     Session["TotalCapacity"] = string.Empty;

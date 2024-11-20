@@ -3628,9 +3628,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         #region Insert Inspection Data NewCode
 
         public void InsertInspectionDataNewCode(string InstallationTypeID, string ContactNo, string ApplicantTypeCode, string IntimationId, string Inspectiontype, string ApplicantType, string InstallationType,
-  string VoltageLevel, string District, string Division, string PaymentMode, string DateOfSubmission, string InspectionRemarks, string CreatedBy,
-  decimal TotalAmount, string para_Assigned, string transcationId, string TranscationDate, string ChallanAttachment, int InspectID, string KVA, string DemandNotice, int TotalCapacity, int MaxVoltage, SqlTransaction transaction
-  )
+    string VoltageLevel, string District, string Division, string PaymentMode, string DateOfSubmission, string InspectionRemarks, string CreatedBy,
+    decimal TotalAmount, string para_Assigned, string transcationId, string TranscationDate, string ChallanAttachment, int InspectID, string KVA, string DemandNotice, int TotalCapacity, int MaxVoltage,
+    int ServiceType, SqlTransaction transaction
+    )
         {
             SqlCommand cmd = new SqlCommand("sp_InsertInspectionData_NewCodeForMultiple", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -3674,6 +3675,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@DemandDocument", DemandNotice);
             cmd.Parameters.AddWithValue("@TotalCapacity", TotalCapacity);
             cmd.Parameters.AddWithValue("@MaxVoltage", MaxVoltage);
+            cmd.Parameters.AddWithValue("@ServiceType", ServiceType);
             //outputParam = new SqlParameter("@GeneratedId", SqlDbType.NVarChar, 50);
             outputParam = new SqlParameter("@GeneratedCombinedIdDetails", SqlDbType.NVarChar, 500);
             outputParam.Direction = ParameterDirection.Output;
@@ -4186,7 +4188,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
 
         public void InsertInspectinData(string CartId, string TotalCapacity, string MaxVoltage, string InstallationType, string TestRportId,
-        string IntimationId, string VoltageLevel, string ApplicantType, string District, string Division, string AssignTo, string PaymentMode, int TotalAmount, int status, string CreatedBy)
+ string IntimationId, string VoltageLevel, string ApplicantType, string District, string Division, string AssignTo,
+ string PaymentMode, int TotalAmount, int status, string CreatedBy, int ServiceType)
         {
             try
             {
@@ -4212,6 +4215,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                         cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
                         cmd.Parameters.AddWithValue("@status", status);
                         cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                        cmd.Parameters.AddWithValue("@ServiceType", ServiceType);
                         //cmd.Parameters.AddWithValue("@Status", Status);
                         con.Open();
                         cmd.ExecuteNonQuery();
@@ -4240,9 +4244,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
 
         public string InsertPeriodicInspectionData(string TypeOfInspection, string CartId, string IntimationId, string ApplicantType,
-        string InstallationType, string VoltageLevel, string District, string Division,
- string AssignTo, string PaymentMode, string TotalAmount, string TransactionId, string TransctionDate,
- string CreatedBy, string TotalCapacity, string MaxVoltage, int InspectID, SqlTransaction transaction)
+          string InstallationType, string VoltageLevel, string District, string Division,
+   string AssignTo, string PaymentMode, string TotalAmount, string TransactionId, string TransctionDate,
+   string CreatedBy, string TotalCapacity, string MaxVoltage, int InspectID, int ServiceType, SqlTransaction transaction)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
             {
@@ -4267,6 +4271,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                     cmd.Parameters.AddWithValue("@MaxVoltage", MaxVoltage);
 
                     cmd.Parameters.AddWithValue("@InspectID", InspectID);
+                    cmd.Parameters.AddWithValue("@ServiceType", ServiceType);
+
                     outputParam = new SqlParameter("@Ret_InspectionID", SqlDbType.NVarChar, 500);
                     outputParam.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(outputParam);
