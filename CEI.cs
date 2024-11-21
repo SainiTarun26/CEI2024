@@ -6540,11 +6540,11 @@ string CreatedBy, string TotalCapacity, string MaxVoltage, int InspectID)
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallationForSiteOwner_Industry", IntimationId);
         }
 
- 
- 
-         public void InsertInspectionDataNewCodeIndustry(string InstallationTypeID, string ContactNo, string ApplicantTypeCode, string IntimationId, string Inspectiontype, string ApplicantType, string InstallationType,
-         string VoltageLevel, string District, string Division, string PaymentMode, string DateOfSubmission, string InspectionRemarks, string CreatedBy,
-         decimal TotalAmount, string para_Assigned, string transcationId, string TranscationDate, string ChallanAttachment, int InspectID, string KVA, string DemandNotice, int TotalCapacity, int MaxVoltage, SqlTransaction transaction
+
+
+        public void InsertInspectionDataNewCodeIndustry(string InstallationTypeID, string ContactNo, string ApplicantTypeCode, string IntimationId, string Inspectiontype, string ApplicantType, string InstallationType,
+        string VoltageLevel, string District, string Division, string PaymentMode, string DateOfSubmission, string InspectionRemarks, string CreatedBy,
+        decimal TotalAmount, string para_Assigned, string transcationId, string TranscationDate, string ChallanAttachment, int InspectID, string KVA, string DemandNotice, int TotalCapacity, int MaxVoltage, int ServiceType, SqlTransaction transaction
 )
         {
             SqlCommand cmd = new SqlCommand("sp_InsertInspectionData_NewCodeForMultiple_Industry", transaction.Connection, transaction);
@@ -6589,6 +6589,7 @@ string CreatedBy, string TotalCapacity, string MaxVoltage, int InspectID)
             cmd.Parameters.AddWithValue("@DemandDocument", DemandNotice);
             cmd.Parameters.AddWithValue("@TotalCapacity", TotalCapacity);
             cmd.Parameters.AddWithValue("@MaxVoltage", MaxVoltage);
+            cmd.Parameters.AddWithValue("@ServiceType", ServiceType);
             //outputParam = new SqlParameter("@GeneratedId", SqlDbType.NVarChar, 50);
             outputParam = new SqlParameter("@GeneratedCombinedIdDetails", SqlDbType.NVarChar, 500);
             outputParam.Direction = ParameterDirection.Output;
