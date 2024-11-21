@@ -87,8 +87,8 @@ namespace CEI_PRoject
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = sqlProc;
             cmd.Connection = con;
-            cmd.Parameters.Add("@userid", SqlDbType.VarChar, 20).Value = UserName;
-            cmd.Parameters.Add("@pwd", SqlDbType.VarChar, 20).Value = Password;
+            cmd.Parameters.Add("@userid", SqlDbType.VarChar, 40).Value = UserName;
+            cmd.Parameters.Add("@pwd", SqlDbType.VarChar, 40).Value = Password;
             cmd.Parameters.Add(new SqlParameter("@ret", SqlDbType.NVarChar, 50));
             cmd.Parameters["@ret"].Direction = ParameterDirection.ReturnValue;
             outputParam = new SqlParameter("@Status", SqlDbType.Int);

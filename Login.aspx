@@ -565,7 +565,7 @@
                                     <div>
                                         <div action="#" class="login">
                                             <div class="field">
-                                                <asp:TextBox ID="txtUserID" class="form-control form-control-lg" runat="server" autocomplete="off" placeholder="Enter your User Id" TabIndex="1"
+                                                <asp:TextBox ID="txtUserID" class="form-control form-control-lg" runat="server" autocomplete="off" MaxLength="40" placeholder="Enter your User Id" TabIndex="1"
                                                     Style="font-size: 13px; border-color: white; border: #d9dee3 1px solid; margin-bottom: 10px;"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
                                                     ControlToValidate="txtUserID" Display="Dynamic"
@@ -573,7 +573,7 @@
                                                     SetFocusOnError="True" ValidationGroup="Submit">*</asp:RequiredFieldValidator>
                                             </div>
                                             <div class="field">
-                                                <asp:TextBox ID="txtPassword" runat="server" class="form-control form-control-lg" autocomplete="off" TextMode="Password"
+                                                <asp:TextBox ID="txtPassword" runat="server" class="form-control form-control-lg" autocomplete="off"  MaxLength="40" TextMode="Password"
                                                     placeholder="Enter Your Password" TabIndex="2" Style="font-size: 13px; border-color: white; border: #d9dee3 1px solid;"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                                                     ControlToValidate="txtPassword" Display="Dynamic"

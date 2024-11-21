@@ -445,7 +445,7 @@
                                         Sub Division
                                 <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtSubDivision" onkeydown="return preventEnterSubmit(event)" onKeyPress="return validateAlphanumeric(event);" TabIndex="8" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtSubDivision" onkeydown="return preventEnterSubmit(event)" MaxLength="100" TabIndex="8" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtSubDivision" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Division Name</asp:RequiredFieldValidator>
                                 </div>
