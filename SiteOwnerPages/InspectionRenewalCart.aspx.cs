@@ -33,11 +33,15 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (!Page.IsPostBack)
                 {
-                    if (Session["SiteOwnerId"] != null && Request.Cookies["SiteOwnerId"] != null)
+                    if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                     {
+                        Page.Session["FinalAmount"] = "0";
                         BindAdress();
                     }
-                    Page.Session["FinalAmount"] = "0";
+                    else
+                    {
+                        Response.Redirect("/login.aspx");
+                    }
                 }
             }
             catch
@@ -49,15 +53,18 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                string CreatedBy = Session["SiteOwnerId"].ToString();
-                DataSet FilterAddress = new DataSet();
-                FilterAddress = CEI.GetAddressToFilterCart(CreatedBy);
-                ddlAddress.DataSource = FilterAddress;
-                ddlAddress.DataTextField = "AddressText";
-                ddlAddress.DataValueField = "AddressText";
-                ddlAddress.DataBind();
-                ddlAddress.Items.Insert(0, new ListItem("Select", "0"));
-                FilterAddress.Clear();
+                if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
+                {
+                    string CreatedBy = Session["SiteOwnerId"].ToString();
+                    DataSet FilterAddress = new DataSet();
+                    FilterAddress = CEI.GetAddressToFilterCart(CreatedBy);
+                    ddlAddress.DataSource = FilterAddress;
+                    ddlAddress.DataTextField = "AddressText";
+                    ddlAddress.DataValueField = "AddressText";
+                    ddlAddress.DataBind();
+                    ddlAddress.Items.Insert(0, new ListItem("Select", "0"));
+                    FilterAddress.Clear();
+                }
             }
             catch (Exception ex)
             {
@@ -80,21 +87,28 @@ namespace CEIHaryana.SiteOwnerPages
         }
         private void BindGrid()
         {
-            string[] str = txtAddressFilter.Text.Split('|');
-            string address = str[0].Trim();
-            string CartID = str[1].Trim();
-
-            DataSet ds = new DataSet();
-            ds = CEI.ShowDataToCart(address, CartID);
-            if (ds.Tables.Count > 0)
+            if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
             {
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
+                string CreatedBy = Session["SiteOwnerId"].ToString();
+                string[] str = txtAddressFilter.Text.Split('|');
+                string address = str[0].Trim();
+                string CartID = str[1].Trim();
+
+                DataSet ds = new DataSet();
+                ds = CEI.ShowDataToCart(address, CartID, CreatedBy);
+                if (ds.Tables.Count > 0)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                }
             }
             else
             {
-                GridView1.DataSource = null;
-                GridView1.DataBind();
             }
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -324,8 +338,9 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                if (Session["SiteOwnerId"] != null)
+                if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                 {
+                   
                     string id = Session["SiteOwnerId"].ToString();
                     string GrandTotalCapacity = Session["TotalCapacity"].ToString();
                     string HighestVoltage = Session["HighestVoltage"].ToString();

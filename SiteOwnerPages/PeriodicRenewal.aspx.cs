@@ -219,7 +219,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                bool showCheckbox = false;
+                //bool showCheckbox = false;
                 if (e.Row.RowType == DataControlRowType.Header)
                 {
                     CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
@@ -381,12 +381,12 @@ namespace CEIHaryana.SiteOwnerPages
                                 {
                                     e.Row.Cells[numberofdaysColumnIndex].CssClass = "OrangeBackground";
                                     e.Row.Cells[numberofdaysColumnIndex].Text = "Yes";
-                                    showCheckbox = true;
+                                    //showCheckbox = true;
                                 }
                                 else
                                 {
                                     e.Row.Cells[11].Text = "No";
-                                    showCheckbox = false;
+                                    //showCheckbox = false;
                                 }
                                 //if (numberofdays == 0 || (numberofdays > 0 && numberofdays <= 15))
                                 //{
@@ -401,13 +401,13 @@ namespace CEIHaryana.SiteOwnerPages
                                 //    e.Row.Cells[11].CssClass = "YellowBackground";
                                 //}
                             }
-                            int checkboxColumnIndex = 0;
-                            TableCell checkboxCell = e.Row.Cells[checkboxColumnIndex];
-                            checkboxCell.Controls.Clear();
-                            if (showCheckbox)
-                            {
-                                checkboxCell.Controls.Add(new CheckBox());
-                            }
+                            //int checkboxColumnIndex = 0;
+                            //TableCell checkboxCell = e.Row.Cells[checkboxColumnIndex];
+                            //checkboxCell.Controls.Clear();
+                            //if (showCheckbox)
+                            //{
+                            //    checkboxCell.Controls.Add(new CheckBox());
+                            //}
                         }
 
                     }

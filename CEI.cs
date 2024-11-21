@@ -4096,9 +4096,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAdressTofilterCart");
         }
-        public DataSet ShowDataToCart(string address, string CartID)
+        public DataSet ShowDataToCart(string address, string CartID, string CreatedBy)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_GetCartData", address, CartID);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_GetCartData", address, CartID, CreatedBy);
         }
         public DataSet ToRemoveDataCart(int InspectionId)
         {
@@ -4286,6 +4286,32 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             }
         }
 
+        public string InsertPeriodicInspectionDataNew(string TypeOfInspection, string CartId, string TransactionId, string TransctionDate,
+        string CreatedBy, int InspectID, SqlTransaction transaction)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertPeriodicInspectionDataNew", transaction.Connection, transaction))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@TypeOfInspection", TypeOfInspection);
+                    cmd.Parameters.AddWithValue("@CartId", CartId);
+                    cmd.Parameters.AddWithValue("@TransactionId ", TransactionId);
+                    cmd.Parameters.AddWithValue("@TransactionDate", TransctionDate);
+                    cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
+                    cmd.Parameters.AddWithValue("@InspectID", InspectID);
+                    outputParam = new SqlParameter("@Ret_InspectionID", SqlDbType.NVarChar, 500);
+                    outputParam.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(outputParam);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    string RetVal = cmd.Parameters["@Ret_InspectionID"].Value.ToString();
+                    cmd.Parameters.Clear();
+                    return RetVal;
+                }
+
+            }
+        }
         public DataSet ToGetStaffIdforPeriodic(string Division, string Staff, string District)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetStaffIdforPeriodic", Division, Staff, District);
