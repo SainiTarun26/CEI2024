@@ -75,8 +75,9 @@ namespace CEIHaryana.Industry_Master
             try
             {
                 string id = Session["SiteOwnerId_Industry"].ToString();
+                string District = Session["district_Temp"].ToString();
                 DataSet dsAdress = new DataSet();
-                dsAdress = CEI.GetSiteOwnerAdress_Industries(id);
+                dsAdress = CEI.GetSiteOwnerAdress_Industries(id, District);
                 ddlAdress.DataSource = dsAdress;
                 ddlAdress.DataTextField = "siteownerAdress";
                 ddlAdress.DataValueField = "siteownerAdress";
