@@ -316,7 +316,17 @@ namespace CEIHaryana.SiteOwnerPages
                                 {
                                     string FileName = Path.GetFileName(fileUpload.PostedFile.FileName);
 
-                                    string directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/{InstallTypes}/");
+                                    //string directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/{InstallTypes}/");
+                                    string directoryPath;
+                                    if (DocName == "Treasury Challan" || DocName == "Other Document")
+                                    {
+                                        directoryPath = Server.MapPath($"~/Attachment/SiteOwner/{CreatedBy}/");
+                                    }
+                                    else
+                                    {
+                                        directoryPath = Server.MapPath($"~/Attachment/SiteOwner/{CreatedBy}/{InstallTypes}/");
+                                    }
+
                                     if (!Directory.Exists(directoryPath))
                                     {
                                         Directory.CreateDirectory(directoryPath);
@@ -329,7 +339,17 @@ namespace CEIHaryana.SiteOwnerPages
                                     string filePath = Path.Combine(directoryPath, fileName);
                                     fileUpload.PostedFile.SaveAs(filePath);
 
-                                    string virtualPath = $"/Attachment/{CreatedBy}/{InstallTypes}/{fileName}";
+                                    //string virtualPath = $"/Attachment/{CreatedBy}/{InstallTypes}/{fileName}";
+                                    string virtualPath;
+                                    if (DocName == "Treasury Challan" || DocName == "Other Document")
+                                    {
+                                        virtualPath = $"/Attachment/SiteOwner/{CreatedBy}/{fileName}";
+                                    }
+                                    else
+                                    {
+                                        virtualPath = $"/Attachment/SiteOwner/{CreatedBy}/{InstallTypes}/{fileName}";
+                                    }
+
                                     uploadedFiles.Add((InspectionId, CartID, Categary, DocumentId, DocName, fileName, virtualPath));
                                 }
                                 else
@@ -387,7 +407,17 @@ namespace CEIHaryana.SiteOwnerPages
                                 {
                                     string FileName = Path.GetFileName(fileUpload2.PostedFile.FileName);
 
-                                    string directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/{InstallTypes}/");
+                                    //string directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/{InstallTypes}/");
+                                    string directoryPath;
+                                    if (DocName2 == "Treasury Challan" || DocName2 == "Other Document")
+                                    {
+                                        directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/");
+                                    }
+                                    else
+                                    {
+                                        directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/{InstallTypes}/");
+                                    }
+
                                     if (!Directory.Exists(directoryPath))
                                     {
                                         Directory.CreateDirectory(directoryPath);
@@ -400,7 +430,17 @@ namespace CEIHaryana.SiteOwnerPages
                                     string filePath2 = Path.Combine(directoryPath, fileName2);
                                     fileUpload2.PostedFile.SaveAs(filePath2);
 
-                                    string virtualPath = $"/Attachment/{CreatedBy}/{InstallTypes}/{fileName2}";
+                                    //string virtualPath = $"/Attachment/{CreatedBy}/{InstallTypes}/{fileName2}";
+                                    string virtualPath;
+                                    if (DocName2 == "Treasury Challan" || DocName2 == "Other Document")
+                                    {
+                                        virtualPath = $"/Attachment/SiteOwner/{CreatedBy}/{fileName2}";
+                                    }
+                                    else
+                                    {
+                                        virtualPath = $"/Attachment/SiteOwner/{CreatedBy}/{InstallTypes}/{fileName2}";
+                                    }
+
                                     uploadedFiles.Add((InspectionId, CartID, Categary, DocumentId, DocName2, fileName2, virtualPath));
                                 }
                                 else
@@ -528,7 +568,7 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     }
 
-                    if (isValid1==true && isValid2 == true)
+                    if (isValid1 == true && isValid2 == true)
                     {
                         using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
                         {
