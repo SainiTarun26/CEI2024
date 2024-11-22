@@ -196,8 +196,8 @@ namespace CEIHaryana.Admin
                 if (e.CommandName == "Select")
                 {
                     ID = Session["InspectionId"].ToString();
-                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                   // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                   // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -505,8 +505,8 @@ namespace CEIHaryana.Admin
             else if (e.CommandName == "View")
             {
                 string fileName = "";
-                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 //lblerror.Text = fileName;
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -514,8 +514,8 @@ namespace CEIHaryana.Admin
             else if (e.CommandName == "ViewInvoice")
             {
                 string fileName = "";
-                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+               // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }

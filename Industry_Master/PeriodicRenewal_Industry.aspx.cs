@@ -30,17 +30,17 @@ namespace CEIHaryana.Industry_Master
             {
                 if (!Page.IsPostBack)
                 {
-                    //Session["SiteOwnerId_Industry"] = "BDJPB4957Q";
-                    //Session["district_Temp"] = "Ambala";
+                    //Session["SiteOwnerId_Industry"] = "ABCDE5555Q";
+                    //Session["district_Temp"] = "Sirsa";
                     //Session["Serviceid_pd_Indus"] = "ec289b0f-e803-4bce-9dc2-d1d5ce93ba5a";
                     //Session["projectid_pd_Indus"] = "1";
                     if (Session["SiteOwnerId_Industry"] != null || Request.Cookies["SiteOwnerId_Industry"] != null)
                     {
-                        //if (CheckInspectionStatus())
-                        //{
-                        //    Response.Redirect("InspectionHistory_Industry.aspx", false);
-                        //    return;
-                        //}
+                        if (CheckInspectionStatus())
+                        {
+                            Response.Redirect("InspectionHistory_Industry.aspx", false);
+                            return;
+                        }
                         BindAdress();
                         //getWorkIntimationDataForListOfExisting();
                     }

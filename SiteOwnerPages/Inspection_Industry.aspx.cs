@@ -829,7 +829,7 @@ namespace CEIHaryana.SiteOwnerPages
                     ID = Session["InspectionId_Industry"].ToString();
                     if (e.CommandName == "Select")
                     {
-                        fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                         //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                         //lblerror.Text = fileName;
                         string script = $@"<script>window.open('{fileName}','_blank');</script>";

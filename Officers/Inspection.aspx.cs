@@ -351,8 +351,8 @@ namespace CEIHaryana.Officers
                 if (e.CommandName == "Select")
                 {
                     //ID = Session["InspectionId"].ToString();
-                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                 }
@@ -438,7 +438,10 @@ namespace CEIHaryana.Officers
 
                     if (RadioButtonList2.SelectedValue != "" && RadioButtonList2.SelectedValue != null)
                     {
-                        AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" : "Return";
+                        // AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" : "Return";
+                        AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" :
+                                         RadioButtonList2.SelectedValue == "1" ? "Return" :
+                                         RadioButtonList2.SelectedValue == "2" ? "Rejected" : "";
                         Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
 
                         string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
@@ -501,7 +504,7 @@ namespace CEIHaryana.Officers
                                     {
                                         SqlTransaction transaction = null;
                                         try
-                                        {                                             
+                                        {
                                             using (SqlConnection connection = new SqlConnection(connectionString))
                                             {
                                                 connection.Open();
@@ -534,7 +537,7 @@ namespace CEIHaryana.Officers
 
                                                             if (LabelRowId != null && !string.IsNullOrEmpty(txt_RemarksforOwnerDoc.Text))
                                                             {
-                                                                CEI.updateReturnRemarksOnBasesOnChecklistDocuments(ID, LabelRowId.Text, txt_RemarksforOwnerDoc.Text, transaction);                                                                
+                                                                CEI.updateReturnRemarksOnBasesOnChecklistDocuments(ID, LabelRowId.Text, txt_RemarksforOwnerDoc.Text, transaction);
                                                             }
                                                         }
                                                     }
@@ -658,7 +661,7 @@ namespace CEIHaryana.Officers
                                                                 if (Labelid != null && !string.IsNullOrEmpty(txtRemarks.Text))
                                                                 {
                                                                     //CEI.updateReturnRemarksOnBasesOfTrDocuments(ID, StaffId, LblIntimationId.Text, Labelid.Text, txtRemarks.Text, ddlReasonType.SelectedItem.Value);
-                                                                    CEI.updateReturnRemarksOnBasesOfTrDocuments(ID, LblIntimationId.Text, Labelid.Text, txtRemarks.Text, transaction);                                                                    
+                                                                    CEI.updateReturnRemarksOnBasesOfTrDocuments(ID, LblIntimationId.Text, Labelid.Text, txtRemarks.Text, transaction);
                                                                 }
                                                             }
                                                         }
@@ -682,7 +685,10 @@ namespace CEIHaryana.Officers
                                 checksuccessmessage = 1;
                             }
 
-                            string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
+                            //string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
+                            string actiontype = AcceptorReturn == "Accepted" ? "InProgress" :
+                                                AcceptorReturn == "Return" ? "Return" :
+                                                AcceptorReturn == "Rejected" ? "Rejected" : "";
                             Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype);
 
                             if (ApiPostformatresult.PremisesType == "Industry")
@@ -976,8 +982,8 @@ namespace CEIHaryana.Officers
             else if (e.CommandName == "View")
             {
                 string fileName = "";
-                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+               // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 //lblerror.Text = fileName;
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -985,8 +991,8 @@ namespace CEIHaryana.Officers
             else if (e.CommandName == "ViewInvoice")
             {
                 string fileName = "";
-                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+               // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }

@@ -202,7 +202,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     if (e.CommandName == "Select")
                     {
-                        fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                         //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                         //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                         string script = $@"<script>window.open('{fileName}','_blank');</script>";
@@ -255,7 +255,7 @@ namespace CEIHaryana.SiteOwnerPages
             else if (e.CommandName == "View")
             {
                 string fileName = "";
-                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -264,7 +264,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 string fileName = "";
                 //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }

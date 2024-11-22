@@ -61,7 +61,7 @@ namespace CEIHaryana.Industry_Master
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Response.Redirect("/login.aspx");
             }
@@ -675,8 +675,8 @@ namespace CEIHaryana.Industry_Master
             {
                 if (e.CommandName == "Select")
                 {
-                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -696,12 +696,12 @@ namespace CEIHaryana.Industry_Master
             int NewPara = 0;
             try
             {
-              
+
                 if (Convert.ToString(Session["SiteOwnerId_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
                 {
                     bool isValid1 = true;
                     bool isValid2 = true;
-                    string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
+                    string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
                     if (serverStatus != "Server is reachable.")
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
@@ -768,7 +768,7 @@ namespace CEIHaryana.Industry_Master
                                 transaction = connection.BeginTransaction();
                                 CEI.InsertPeriodicInspectionData_Industries("Periodic", CartID, transcationId, TranscationDate,
                                                    para_CreatedByy, NewPara, transaction);
-                               
+
                                 //IntimationId, ApplicantType,
                                 //            InstallationType, VoltageLevel, District, Division, AssignTo,
                                 //               PaymentMode, Amount, Capacity, Voltage,

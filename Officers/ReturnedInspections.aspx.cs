@@ -14,8 +14,8 @@ using System.Web.UI.WebControls;
 
 namespace CEIHaryana.Officers
 {
-	public partial class ReturnedInspections : System.Web.UI.Page
-	{
+    public partial class ReturnedInspections : System.Web.UI.Page
+    {
 
         CEI CEI = new CEI();
         private static int count;
@@ -141,7 +141,7 @@ namespace CEIHaryana.Officers
                         {
 
                             grd_Documemnts.Columns[3].Visible = true;
-                            grd_Documemnts.Columns[4].Visible = true; 
+                            grd_Documemnts.Columns[4].Visible = true;
                             Grid_MultipleInspectionTR.Columns[5].Visible = true;
                             Grid_MultipleInspectionTR.Columns[6].Visible = true;
                             Grid_MultipleInspectionTR.Columns[7].Visible = true;
@@ -411,8 +411,8 @@ namespace CEIHaryana.Officers
                 if (e.CommandName == "Select")
                 {
                     //ID = Session["InspectionId"].ToString();                   
-                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                   // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                 }
@@ -498,7 +498,10 @@ namespace CEIHaryana.Officers
 
                     if (RadioButtonList2.SelectedValue != "" && RadioButtonList2.SelectedValue != null)
                     {
-                        AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" : "Return";
+                        //AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" : "Return";
+                        AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" :
+                                         RadioButtonList2.SelectedValue == "1" ? "Return" :
+                                         RadioButtonList2.SelectedValue == "2" ? "Rejected" : "";
                         Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
 
                         string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
@@ -525,7 +528,8 @@ namespace CEIHaryana.Officers
                                 CEI.UpdateInspectionRejection(ID, StaffId, ddlRejectionReasonType.SelectedItem.ToString(), Reason);
                                 CCemail = Session["CCemail"].ToString();
                                 ToEmail = Session["ToEmail"].ToString();
-                                if (ToEmail.Trim()!=""&& ToEmail!= null) {
+                                if (ToEmail.Trim() != "" && ToEmail != null)
+                                {
                                     string subject = "Inspection Application Rejected";
                                     string Message = "Your inspection application (ID: '" + ID + "') has been rejected by the officer. We regret any inconvenience this may cause.Please login to your Portal with your credentials to check remarks     \n\nThank you for your understanding.     \n\nBest regards,     \n\n[CEIHaryana]'";
                                     CEI.RejectMessagethroughEmail(ToEmail, CCemail, subject, Message);
@@ -741,7 +745,10 @@ namespace CEIHaryana.Officers
                                 checksuccessmessage = 1;
                             }
 
-                            string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
+                            //string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
+                            string actiontype = AcceptorReturn == "Accepted" ? "InProgress" :
+                                                AcceptorReturn == "Return" ? "Return" :
+                                                AcceptorReturn == "Rejected" ? "Rejected" : "";
                             Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype);
 
                             if (ApiPostformatresult.PremisesType == "Industry")
@@ -919,7 +926,7 @@ namespace CEIHaryana.Officers
                 string ID = Session["InspectionId"].ToString();
                 DataSet dsVC = CEI.GetDetailsToViewCart(ID);
 
-                 if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
+                if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                 {
                     GridView2.DataSource = dsVC;
                     GridView2.DataBind();
@@ -1035,8 +1042,8 @@ namespace CEIHaryana.Officers
             else if (e.CommandName == "View")
             {
                 string fileName = "";
-                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 //lblerror.Text = fileName;
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -1044,8 +1051,8 @@ namespace CEIHaryana.Officers
             else if (e.CommandName == "ViewInvoice")
             {
                 string fileName = "";
-                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
@@ -1137,7 +1144,7 @@ namespace CEIHaryana.Officers
                     //Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
                     //LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallaionInvoice");
                     LinkButton LnkDocumemtPath2 = (LinkButton)e.Row.FindControl("LnkDocumemtPath2");
-                    
+
                     if (LnkDocumemtPath2.Text.Trim() == "" || LnkDocumemtPath2 == null)
                     {
                         LnkDocumemtPath2.Visible = false;
@@ -1146,7 +1153,7 @@ namespace CEIHaryana.Officers
                     {
                         LnkDocumemtPath2.Visible = true;
                         LnkDocumemtPath2.Text = "Click here to view document";
-                        
+
                     }
                 }
             }

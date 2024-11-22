@@ -201,7 +201,8 @@ namespace CEIHaryana.Officers
             {
                 if (e.CommandName == "Select")
                 {
-                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                 }
@@ -246,7 +247,7 @@ namespace CEIHaryana.Officers
                             string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
                             if (reqType == "Industry")
                             {
-                                string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
+                                string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
                                 if (serverStatus != "Server is reachable.")
                                 {
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
@@ -270,14 +271,17 @@ namespace CEIHaryana.Officers
                                 }
                                 checksuccessmessage = 1;
                             }
-                            string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
+                            //string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
+                            string actiontype = AcceptorReturn == "Accepted" ? "InProgress" :
+                                                AcceptorReturn == "Return" ? "Return" :
+                                                AcceptorReturn == "Rejected" ? "Rejected" : "";
                             Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype);
 
                             if (ApiPostformatresult.PremisesType == "Industry")
                             {
                                 string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
                                 logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                               "https://investharyana.in/api/project-service-logs-external_UHBVN",
+                                               "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
                                                new Industry_Inspection_StageWise_JsonDataFormat_Model
                                                {
                                                    actionTaken = ApiPostformatresult.ActionTaken,
