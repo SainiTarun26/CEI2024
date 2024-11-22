@@ -20,7 +20,10 @@ namespace CEIHaryana.Industry_Master
             {
                 if (!Page.IsPostBack)
                 {
-                    BindGrid();
+                    if (Session["SiteOwnerId_Industry"] != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
+                    {
+                        BindGrid();
+                    }
                 }
             }
             catch
@@ -53,6 +56,7 @@ namespace CEIHaryana.Industry_Master
 
             if (e.CommandName == "Select" || e.CommandName == "Print" || e.CommandName == "Print1")
             {
+              string  LoginID = Session["SiteOwnerId_Industry"].ToString();
                 Session["LineID_Industry"] = "";
                 Session["SubStationID_Industry"] = "";
                 Session["GeneratingSetId_Industry"] = "";
@@ -129,11 +133,11 @@ namespace CEIHaryana.Industry_Master
                 {
                     e.Row.CssClass = "ReturnedRowColor";
                 }
-                else
-                {
+                //else
+                //{
 
-                    linkButton.Visible = false;
-                }
+                //    linkButton.Visible = false;
+                //}
             }
         }
 

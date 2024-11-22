@@ -30,58 +30,78 @@ namespace CEIHaryana.Industry_Master
             {
                 if (!IsPostBack)
                 {
-                    if (Session["LineID_Industry"] != null && Convert.ToString(Session["LineID_Industry"]) != "")
+                    if (Session["SiteOwnerId_Industry"] != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
                     {
-                        id = Session["LineID_Industry"].ToString();
-
-                    }
-                    else if (Session["SubStationID_Industry"] != null && Convert.ToString(Session["SubStationID_Industry"]) != "")
-                    {
-                        id = Session["SubStationID_Industry"].ToString();
-                    }
-                    else if (Session["GeneratingSetId_Industry"] != null && Convert.ToString(Session["GeneratingSetId_Industry"]) != "")
-                    {
-                        id = Session["GeneratingSetId_Industry"].ToString();
-                    }
-
-                    GetDetailsWithId();
-                    GridBind();
-
-                    if (IType == "New")
-                    {
-                        GetTestReportData();
-                    }
-                    else if (IType == "Periodic")
-                    {
-                        GetTestReportDataIfPeriodic();
-                    }
-
-                    //GetTestReportData();
-
-                    Session["PreviousPage_Industry"] = "";
-                    if (Convert.ToString(Session["Type_Industry"]) != null && Convert.ToString(Session["Type_Industry"]) != "")
-                    {
-                        if (Convert.ToString(Session["Type_Industry"]) == "Line" || Convert.ToString(Session["Type_Industry"]) == "Generating Set")
+                        if (Session["LineID_Industry"] != null && Convert.ToString(Session["LineID_Industry"]) != "")
                         {
-                            string voltage = txtVoltage.Text;
-                            string voltagePart = voltage.Substring(0, voltage.Length - 2);
-                            int.TryParse(voltagePart, out int voltageLevel);
+                            id = Session["LineID_Industry"].ToString();
 
-                            if (voltageLevel <= 415)
+                        }
+                        else if (Session["SubStationID_Industry"] != null && Convert.ToString(Session["SubStationID_Industry"]) != "")
+                        {
+                            id = Session["SubStationID_Industry"].ToString();
+                        }
+                        else if (Session["GeneratingSetId_Industry"] != null && Convert.ToString(Session["GeneratingSetId_Industry"]) != "")
+                        {
+                            id = Session["GeneratingSetId_Industry"].ToString();
+                        }
+
+                        GetDetailsWithId();
+                        GridBind();
+
+                        if (IType == "New")
+                        {
+                            GetTestReportData();
+                        }
+                        else if (IType == "Periodic")
+                        {
+                            GetTestReportDataIfPeriodic();
+                        }
+
+                        //GetTestReportData();
+
+                        Session["PreviousPage_Industry"] = "";
+                        if (Convert.ToString(Session["Type_Industry"]) != null && Convert.ToString(Session["Type_Industry"]) != "")
+                        {
+                            if (Convert.ToString(Session["Type_Industry"]) == "Line" || Convert.ToString(Session["Type_Industry"]) == "Generating Set")
                             {
-                                if (DateTime.Now.Subtract(inspectionCreatedDate).TotalDays >= 1095)
+                                string voltage = txtVoltage.Text;
+                                string voltagePart = voltage.Substring(0, voltage.Length - 2);
+                                int.TryParse(voltagePart, out int voltageLevel);
+
+                                if (voltageLevel <= 415)
                                 {
-                                    string script = "alert(\" Now You Can edit this inspection because your 3 years time period is complete for update\");";
-                                    ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                                    btnSubmit.Visible = true;
-                                    Edit = true;
-                                    //RejectedColumn.Visible = true;
+                                    if (DateTime.Now.Subtract(inspectionCreatedDate).TotalDays >= 1095)
+                                    {
+                                        string script = "alert(\" Now You Can edit this inspection because your 3 years time period is complete for update\");";
+                                        ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                                        btnSubmit.Visible = true;
+                                        Edit = true;
+                                        //RejectedColumn.Visible = true;
+                                    }
+                                    else
+                                    {
+                                        string script = "alert(\"You Can't edit this inspection before 3 years\");";
+                                        ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                                        btnSubmit.Visible = false;
+                                    }
                                 }
                                 else
                                 {
-                                    string script = "alert(\"You Can't edit this inspection before 3 years\");";
-                                    ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                                    btnSubmit.Visible = false;
+                                    if (DateTime.Now.Subtract(inspectionCreatedDate).TotalDays >= 365)
+                                    {
+                                        string script = "alert(\"Now You Can edit this inspection because your annual time period is completed\");";
+                                        ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                                        btnSubmit.Visible = true;
+                                        Edit = true;
+                                        //RejectedColumn.Visible = true;
+                                    }
+                                    else
+                                    {
+                                        string script = "alert(\"You Can't edit this inspection before 1 year\");";
+                                        ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                                        btnSubmit.Visible = false;
+                                    }
                                 }
                             }
                             else
@@ -92,11 +112,11 @@ namespace CEIHaryana.Industry_Master
                                     ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
                                     btnSubmit.Visible = true;
                                     Edit = true;
-                                    //RejectedColumn.Visible = true;
+
                                 }
                                 else
                                 {
-                                    string script = "alert(\"You Can't edit this inspection before 1 year\");";
+                                    string script = "alert(\"You Can't edit inspection before 1 year\");";
                                     ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
                                     btnSubmit.Visible = false;
                                 }
@@ -104,40 +124,27 @@ namespace CEIHaryana.Industry_Master
                         }
                         else
                         {
-                            if (DateTime.Now.Subtract(inspectionCreatedDate).TotalDays >= 365)
+                            if (Session["LineID_Industry"] != null && Convert.ToString(Session["LineID_Industry"]) != "")
                             {
-                                string script = "alert(\"Now You Can edit this inspection because your annual time period is completed\");";
-                                ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                                btnSubmit.Visible = true;
-                                Edit = true;
+                                txtWorkType.Text = "Line";
 
                             }
-                            else
+                            else if (Session["SubStationID_Industry"] != null && Convert.ToString(Session["SubStationID_Industry"]) != "")
                             {
-                                string script = "alert(\"You Can't edit inspection before 1 year\");";
-                                ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                                btnSubmit.Visible = false;
+
+                                txtWorkType.Text = "Substation Transformer";
+
+                            }
+                            else if (Session["GeneratingSetId_Industry"] != null && Convert.ToString(Session["GeneratingSetId_Industry"]) != "")
+                            {
+                                txtWorkType.Text = "Generating Set";
+
                             }
                         }
                     }
                     else
                     {
-                        if (Session["LineID_Industry"] != null && Convert.ToString(Session["LineID_Industry"]) != "")
-                        {
-                            txtWorkType.Text = "Line";
-
-                        }
-                        else if (Session["SubStationID_Industry"] != null && Convert.ToString(Session["SubStationID_Industry"]) != "")
-                        {
-
-                            txtWorkType.Text = "Substation Transformer";
-
-                        }
-                        else if (Session["GeneratingSetId_Industry"] != null && Convert.ToString(Session["GeneratingSetId_Industry"]) != "")
-                        {
-                            txtWorkType.Text = "Generating Set";
-
-                        }
+                        Response.Redirect("/login.aspx");
                     }
 
                     // Visibilty();
@@ -353,6 +360,7 @@ namespace CEIHaryana.Industry_Master
             LinkButton lnkRedirect = (LinkButton)sender;
             string testReportId = lnkRedirect.CommandArgument;
             //Session["InspectionTestReportId"] = testReportId;
+            string LoginID = Session["SiteOwnerId_Industry"].ToString();
             if (txtWorkType.Text.Trim() == "Line")
             {
                 Session["LineID_Industry"] = testReportId;
@@ -1039,7 +1047,7 @@ namespace CEIHaryana.Industry_Master
                 string installationName = lblInstallationName.Text.Trim();
                 LinkButton lnkRedirect1 = (LinkButton)sender;
                 string testReportId = lnkRedirect1.CommandArgument;
-
+                string LoginID = Session["SiteOwnerId_Industry"].ToString();
                 Session["InspectionTestReportId_Industry"] = btn.CommandArgument;
 
                 if (installationName == "Line")

@@ -36,7 +36,7 @@ namespace CEIHaryana.Industry_Master
             {
                 if (!Page.IsPostBack)
                 {
-                    if (Session["SiteOwnerId_Industry"] != null || Request.Cookies["SiteOwnerId_Industry"] != null)
+                    if (Session["SiteOwnerId_Industry"] != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
                     {
                         if (!string.IsNullOrEmpty(Convert.ToString(Session["IDCart_Industry"])))
                         {
@@ -71,66 +71,74 @@ namespace CEIHaryana.Industry_Master
         {
             try
             {
-                string IdLogin = Session["SiteOwnerId_Industry"].ToString();
-                string CartID = string.Empty;
-                if (!string.IsNullOrEmpty(Convert.ToString(Session["IDCart_Industry"])))
+                if (Convert.ToString(Session["SiteOwnerId_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
                 {
-                    CartID = Convert.ToString(Session["IDCart_Industry"]);
-                }
-                else
-                {
-                    CartID = Convert.ToString(Session["CartID_Industry"]);
-                }
-                DataSet ds = new DataSet();
-                ds = CEI.GetPeriodicdataAfterCart_Industries(CartID);
-                if (ds != null && ds.Tables[0].Rows.Count > 0)
-                {
-                    Capacity = ds.Tables[0].Rows[0]["TotalCapacity"].ToString();
-                    Voltage = ds.Tables[0].Rows[0]["MaxVoltage"].ToString();
-                    Amount = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                    LblAmount.Text = Amount;
-                    LblVoltage.Text = Voltage;
-                    LblCapacity.Text = Capacity;
-                    IdCart = ds.Tables[0].Rows[0]["CartId"].ToString();
-
-                    TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-                    IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
-                    VoltageLevel = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                    ApplicantType = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
-                    InstallationType = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-
-                    District = ds.Tables[0].Rows[0]["District"].ToString();
-                    Division = ds.Tables[0].Rows[0]["Division"].ToString();
-                    AssignTo = ds.Tables[0].Rows[0]["ExistingAssignTo"].ToString();
-                    PaymentMode = ds.Tables[0].Rows[0]["PaymentMode"].ToString();
-                    GetOtherDetails_ForReturnedInspection(NewInspectionId);
-
-                    para_InspectID = Convert.ToInt32(ds.Tables[0].Rows[0]["InspectionCount"].ToString());
-                    HF_para_InspectID.Value = para_InspectID.ToString();
-
-                    //inspectionCountRes = ds.Tables[0].Rows[0]["InspectionCount"].ToString();
-                    //inspectionIdRes = ds.Tables[0].Rows[0]["InspectionId"].ToString();
-
-                    DataSet dsDetails = CEI.GetDocumentsforPeriodicIfExist(NewInspectionId);
-
-                    if (dsDetails != null && dsDetails.Tables[0].Rows.Count > 0)
+                    string IdLogin = Session["SiteOwnerId_Industry"].ToString();
+                    string CartID = string.Empty;
+                    if (!string.IsNullOrEmpty(Convert.ToString(Session["IDCart_Industry"])))
                     {
-                        //AddFixedRows(dsDetails);
-                        GridView2.DataSource = dsDetails;
-                        GridView2.DataBind();
+                        CartID = Convert.ToString(Session["IDCart_Industry"]);
                     }
                     else
                     {
-                        dsDetails = CEI.GetDocumentforPeriodic_Industries(IdCart);
+                        CartID = Convert.ToString(Session["CartID_Industry"]);
+                    }
+                    DataSet ds = new DataSet();
+                    ds = CEI.GetPeriodicdataAfterCart_Industries(CartID);
+                    if (ds != null && ds.Tables[0].Rows.Count > 0)
+                    {
+                        Capacity = ds.Tables[0].Rows[0]["TotalCapacity"].ToString();
+                        Voltage = ds.Tables[0].Rows[0]["MaxVoltage"].ToString();
+                        Amount = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                        LblAmount.Text = Amount;
+                        LblVoltage.Text = Voltage;
+                        LblCapacity.Text = Capacity;
+                        IdCart = ds.Tables[0].Rows[0]["CartId"].ToString();
+
+                        TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                        IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
+                        VoltageLevel = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                        ApplicantType = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                        InstallationType = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+
+                        District = ds.Tables[0].Rows[0]["District"].ToString();
+                        Division = ds.Tables[0].Rows[0]["Division"].ToString();
+                        AssignTo = ds.Tables[0].Rows[0]["ExistingAssignTo"].ToString();
+                        PaymentMode = ds.Tables[0].Rows[0]["PaymentMode"].ToString();
+                        GetOtherDetails_ForReturnedInspection(NewInspectionId);
+
+                        para_InspectID = Convert.ToInt32(ds.Tables[0].Rows[0]["InspectionCount"].ToString());
+                        HF_para_InspectID.Value = para_InspectID.ToString();
+
+                        //inspectionCountRes = ds.Tables[0].Rows[0]["InspectionCount"].ToString();
+                        //inspectionIdRes = ds.Tables[0].Rows[0]["InspectionId"].ToString();
+                        int ServiceType = 0;
+                        if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Rows[0]["ServiceType"] != DBNull.Value)
+                        {
+                            ServiceType = Convert.ToInt32(ds.Tables[0].Rows[0]["ServiceType"]);
+                            Session["ServiceType"] = ServiceType;
+                        }
+                        DataSet dsDetails = CEI.GetDocumentsforPeriodicIfExist(NewInspectionId);
 
                         if (dsDetails != null && dsDetails.Tables[0].Rows.Count > 0)
                         {
-                            AddFixedRows(dsDetails);
-                            GridView1.DataSource = dsDetails;
-                            GridView1.DataBind();
+                            //AddFixedRows(dsDetails);
+                            GridView2.DataSource = dsDetails;
+                            GridView2.DataBind();
                         }
-                        //GridView2.DataSource = null;
-                        //GridView2.DataBind();
+                        else
+                        {
+                            dsDetails = CEI.GetDocumentforPeriodic_Industries(IdCart);
+
+                            if (dsDetails != null && dsDetails.Tables[0].Rows.Count > 0)
+                            {
+                                AddFixedRows(dsDetails);
+                                GridView1.DataSource = dsDetails;
+                                GridView1.DataBind();
+                            }
+                            //GridView2.DataSource = null;
+                            //GridView2.DataBind();
+                        }
                     }
                 }
             }
@@ -173,54 +181,62 @@ namespace CEIHaryana.Industry_Master
         {
             try
             {
-                string IdLogin = Session["SiteOwnerId_Industry"].ToString();
-                string CartID = Session["CartID_Industry"].ToString();
-                DataSet ds = new DataSet();
-                ds = CEI.GetPeriodicdataAfterCart_Industries(CartID);
-                if (ds != null && ds.Tables[0].Rows.Count > 0)
+                if (Convert.ToString(Session["SiteOwnerId_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
                 {
-                    Capacity = ds.Tables[0].Rows[0]["TotalCapacity"].ToString();
-                    Voltage = ds.Tables[0].Rows[0]["MaxVoltage"].ToString();
-                    Amount = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                    LblAmount.Text = Amount;
-                    LblVoltage.Text = Voltage;
-                    LblCapacity.Text = Capacity;
-                    IdCart = ds.Tables[0].Rows[0]["CartId"].ToString();
-
-                    TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-                    IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
-                    VoltageLevel = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                    ApplicantType = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
-                    InstallationType = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-
-                    District = ds.Tables[0].Rows[0]["District"].ToString();
-                    Division = ds.Tables[0].Rows[0]["Division"].ToString();
-                    AssignTo = ds.Tables[0].Rows[0]["AssignTo"].ToString();
-                    PaymentMode = ds.Tables[0].Rows[0]["PaymentMode"].ToString();
-                    //TypeOfInspection = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-
-
-                    DataSet dsDetails = CEI.GetDocumentforPeriodic(IdCart);
-
-                    //NewInspectionId = dsDetails.Tables[0].Rows[0]["NewInspectionId"].ToString();
-                    //if (NewInspectionId != null)
-                    if (dsDetails != null && dsDetails.Tables[0].Rows.Count > 0)
+                    string IdLogin = Session["SiteOwnerId_Industry"].ToString();
+                    string CartID = Session["CartID_Industry"].ToString();
+                    DataSet ds = new DataSet();
+                    ds = CEI.GetPeriodicdataAfterCart_Industries(CartID);
+                    if (ds != null && ds.Tables[0].Rows.Count > 0)
                     {
-                        AddFixedRows(dsDetails);
-                        GridView1.DataSource = dsDetails;
-                        GridView1.DataBind();
+                        Capacity = ds.Tables[0].Rows[0]["TotalCapacity"].ToString();
+                        Voltage = ds.Tables[0].Rows[0]["MaxVoltage"].ToString();
+                        Amount = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                        LblAmount.Text = Amount;
+                        LblVoltage.Text = Voltage;
+                        LblCapacity.Text = Capacity;
+                        IdCart = ds.Tables[0].Rows[0]["CartId"].ToString();
+
+                        TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                        IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
+                        VoltageLevel = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                        ApplicantType = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                        InstallationType = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+
+                        District = ds.Tables[0].Rows[0]["District"].ToString();
+                        Division = ds.Tables[0].Rows[0]["Division"].ToString();
+                        AssignTo = ds.Tables[0].Rows[0]["AssignTo"].ToString();
+                        PaymentMode = ds.Tables[0].Rows[0]["PaymentMode"].ToString();
+                        //TypeOfInspection = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                        int ServiceType = 0;
+                        if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Rows[0]["ServiceType"] != DBNull.Value)
+                        {
+                            ServiceType = Convert.ToInt32(ds.Tables[0].Rows[0]["ServiceType"]);
+                            Session["ServiceType"] = ServiceType;
+                        }
+
+                        DataSet dsDetails = CEI.GetDocumentforPeriodic(IdCart);
+
+                        //NewInspectionId = dsDetails.Tables[0].Rows[0]["NewInspectionId"].ToString();
+                        //if (NewInspectionId != null)
+                        if (dsDetails != null && dsDetails.Tables[0].Rows.Count > 0)
+                        {
+                            AddFixedRows(dsDetails);
+                            GridView1.DataSource = dsDetails;
+                            GridView1.DataBind();
+                        }
+                        else
+                        {
+                            GridView1.DataSource = null;
+                            GridView1.DataBind();
+                        }
                     }
+
                     else
                     {
                         GridView1.DataSource = null;
                         GridView1.DataBind();
                     }
-                }
-
-                else
-                {
-                    GridView1.DataSource = null;
-                    GridView1.DataBind();
                 }
             }
             catch (Exception ex)
@@ -250,7 +266,168 @@ namespace CEIHaryana.Industry_Master
                 Response.Write(ex.Message);
             }
         }
-        public void UploadCheckListDocInCollection(string CreatedByy, int check_para)
+        //public void UploadCheckListDocInCollection(string CreatedByy, int check_para, string CartID)
+        //{
+        //    try
+        //    {
+        //        if (check_para == 0)
+        //        {
+        //            foreach (GridViewRow row in GridView1.Rows)
+        //            {
+        //                FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
+        //                Label lblDocumentName = (Label)row.FindControl("lblDocumentName");
+        //                string DocSaveName = lblDocumentName.Text;
+        //                string DocName = lblDocumentName.Text;
+
+        //                string DocumentId = string.Empty;
+        //                switch (DocName)
+        //                {
+        //                    case "Previous Inspection Report":
+        //                        DocumentId = "9";
+        //                        break;
+        //                    case "Treasury Challan":
+        //                        DocumentId = "17";
+        //                        break;
+        //                    case "Other Document":
+        //                        DocumentId = "14";
+        //                        break;
+        //                    default:
+        //                        DocumentId = string.Empty;
+        //                        break;
+        //                }
+
+        //                string TypeOfInspection = string.Empty;
+        //                string CartId = IdCart;
+
+        //                Label LblInstallationType = (Label)row.FindControl("LblInstallationType");
+        //                string InstallTypes = LblInstallationType.Text;
+
+        //                Label LblCategory = (Label)row.FindControl("LblCategory");
+        //                string Categary = LblInstallationType.Text;
+        //                Label LblInspectionId = (Label)row.FindControl("LblInspectionId");
+        //                string InspectionId = LblInspectionId.Text;
+
+        //                if (fileUpload.HasFile)
+        //                {
+        //                    string CreatedBy = CreatedByy;
+        //                    if (Path.GetExtension(fileUpload.FileName).ToLower() == ".pdf")
+        //                    {
+        //                        if (fileUpload.PostedFile.ContentLength <= 1048576)
+        //                        {
+        //                            string FileName = Path.GetFileName(fileUpload.PostedFile.FileName);
+        //                            string directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/{InstallTypes}/");
+        //                            if (!Directory.Exists(directoryPath))
+        //                            {
+        //                                Directory.CreateDirectory(directoryPath);
+        //                            }
+
+        //                            string ext = Path.GetExtension(fileUpload.PostedFile.FileName).ToLower();
+        //                            string ext = ".pdf";
+        //                            string fileName = $"{DocSaveName}{ext}";
+        //                            string filePath = Path.Combine(directoryPath, fileName);
+        //                            fileUpload.PostedFile.SaveAs(filePath);
+
+        //                            string virtualPath = $"/Attachment/{CreatedBy}/{InstallTypes}/{fileName}";
+        //                            uploadedFiles.Add((InspectionId, CartId, Categary, DocumentId, DocName, fileName, virtualPath));
+        //                            string fileName = DocSaveName + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+        //                            string filePath = Path.Combine(directoryPath, fileName);
+        //                            fileUpload.PostedFile.SaveAs(filePath);
+
+        //                            string virtualPath = $"/Attachment/{CreatedBy}/{InstallTypes}/{fileName}";
+        //                            uploadedFiles.Add((InspectionId, CartID, Categary, DocumentId, DocName, fileName, virtualPath));
+        //                        }
+        //                        else
+        //                        {
+        //                            throw new Exception("Please Upload Pdf Files Less Than 1 MB Only");
+        //                        }
+        //                    }
+        //                    else
+        //                    {
+        //                        throw new Exception("Please Upload Pdf Files Only");
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            foreach (GridViewRow row in GridView2.Rows)
+        //            {
+        //                FileUpload fileUpload2 = (FileUpload)row.FindControl("FileUpload2");
+        //                Label lblDocumentName2 = (Label)row.FindControl("lblDocumentName2");
+        //                string DocSaveName2 = lblDocumentName2.Text;
+        //                string DocName2 = lblDocumentName2.Text;
+
+        //                string DocumentId = string.Empty;
+        //                switch (DocName2)
+        //                {
+        //                    case "Previous Inspection Report":
+        //                        DocumentId = "9";
+        //                        break;
+        //                    case "Treasury Challan":
+        //                        DocumentId = "17";
+        //                        break;
+        //                    case "Other Document":
+        //                        DocumentId = "14";
+        //                        break;
+        //                    default:
+        //                        DocumentId = string.Empty;
+        //                        break;
+        //                }
+
+        //                string TypeOfInspection = string.Empty;
+        //                string CartId = IdCart;
+
+        //                Label LblInstallationType = (Label)row.FindControl("LblInstallationType2");
+        //                string InstallTypes = LblInstallationType.Text;
+
+        //                Label LblCategory = (Label)row.FindControl("LblCategory2");
+        //                string Categary = LblInstallationType.Text;
+        //                Label LblInspectionId = (Label)row.FindControl("LblInspectionId2");
+        //                string InspectionId = LblInspectionId.Text;
+
+        //                if (fileUpload2.HasFile)
+        //                {
+        //                    string CreatedBy = CreatedByy;
+        //                    if (Path.GetExtension(fileUpload2.FileName).ToLower() == ".pdf")
+        //                    {
+        //                        if (fileUpload2.PostedFile.ContentLength <= 1048576)
+        //                        {
+        //                            string FileName = Path.GetFileName(fileUpload2.PostedFile.FileName);
+
+        //                            string directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/{InstallTypes}/");
+        //                            if (!Directory.Exists(directoryPath))
+        //                            {
+        //                                Directory.CreateDirectory(directoryPath);
+        //                            }
+
+        //                            string fileName2 = DocSaveName2 + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+
+        //                            string filePath2 = Path.Combine(directoryPath, fileName2);
+        //                            fileUpload2.PostedFile.SaveAs(filePath2);
+
+        //                            string virtualPath = $"/Attachment/{CreatedBy}/{InstallTypes}/{fileName2}";
+        //                            uploadedFiles.Add((InspectionId, CartID, Categary, DocumentId, DocName2, fileName2, virtualPath));
+        //                        }
+        //                        else
+        //                        {
+        //                            throw new Exception("Please Upload Pdf Files Less Than 1 MB Only");
+        //                        }
+        //                    }
+        //                    else
+        //                    {
+        //                        throw new Exception("Please Upload Pdf Files Only");
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+
+        //    {
+        //        Response.Write(ex.Message);
+        //    }
+        //}
+        public void UploadCheckListDocInCollection(string CreatedByy, int check_para, string CartID)
         {
             try
             {
@@ -267,9 +444,9 @@ namespace CEIHaryana.Industry_Master
                         switch (DocName)
                         {
                             case "Previous Inspection Report":
-                                DocumentId = "19";
+                                DocumentId = "9";
                                 break;
-                            case "Tresury Challan":
+                            case "Treasury Challan":
                                 DocumentId = "17";
                                 break;
                             case "Other Document":
@@ -279,9 +456,6 @@ namespace CEIHaryana.Industry_Master
                                 DocumentId = string.Empty;
                                 break;
                         }
-
-                        //string TypeOfInspection= string.Empty;
-                        string CartId = IdCart;
 
                         Label LblInstallationType = (Label)row.FindControl("LblInstallationType");
                         string InstallTypes = LblInstallationType.Text;
@@ -299,20 +473,42 @@ namespace CEIHaryana.Industry_Master
                                 if (fileUpload.PostedFile.ContentLength <= 1048576)
                                 {
                                     string FileName = Path.GetFileName(fileUpload.PostedFile.FileName);
-                                    string directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/{InstallTypes}/");
+
+                                    //string directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/{InstallTypes}/");
+                                    string directoryPath;
+                                    if (DocName == "Treasury Challan" || DocName == "Other Document")
+                                    {
+                                        directoryPath = Server.MapPath($"~/Attachment/SiteOwner/{CreatedBy}/");
+                                    }
+                                    else
+                                    {
+                                        directoryPath = Server.MapPath($"~/Attachment/SiteOwner/{CreatedBy}/{InstallTypes}/");
+                                    }
+
                                     if (!Directory.Exists(directoryPath))
                                     {
                                         Directory.CreateDirectory(directoryPath);
                                     }
 
                                     // string ext = Path.GetExtension(fileUpload.PostedFile.FileName).ToLower();
-                                    string ext = ".pdf";
-                                    string fileName = $"{DocSaveName}{ext}";
+                                    //string ext = ".pdf";
+                                    //string fileName = $"{DocSaveName}{ext}";
+                                    string fileName = DocSaveName + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
                                     string filePath = Path.Combine(directoryPath, fileName);
                                     fileUpload.PostedFile.SaveAs(filePath);
 
-                                    string virtualPath = $"/Attachment/{CreatedBy}/{InstallTypes}/{fileName}";
-                                    uploadedFiles.Add((InspectionId, CartId, Categary, DocumentId, DocName, fileName, virtualPath));
+                                    //string virtualPath = $"/Attachment/{CreatedBy}/{InstallTypes}/{fileName}";
+                                    string virtualPath;
+                                    if (DocName == "Treasury Challan" || DocName == "Other Document")
+                                    {
+                                        virtualPath = $"/Attachment/SiteOwner/{CreatedBy}/{fileName}";
+                                    }
+                                    else
+                                    {
+                                        virtualPath = $"/Attachment/SiteOwner/{CreatedBy}/{InstallTypes}/{fileName}";
+                                    }
+
+                                    uploadedFiles.Add((InspectionId, CartID, Categary, DocumentId, DocName, fileName, virtualPath));
                                 }
                                 else
                                 {
@@ -339,9 +535,9 @@ namespace CEIHaryana.Industry_Master
                         switch (DocName2)
                         {
                             case "Previous Inspection Report":
-                                DocumentId = "19";
+                                DocumentId = "9";
                                 break;
-                            case "Tresury Challan":
+                            case "Treasury Challan":
                                 DocumentId = "17";
                                 break;
                             case "Other Document":
@@ -351,9 +547,6 @@ namespace CEIHaryana.Industry_Master
                                 DocumentId = string.Empty;
                                 break;
                         }
-
-                        //string TypeOfInspection= string.Empty;
-                        string CartId = IdCart;
 
                         Label LblInstallationType = (Label)row.FindControl("LblInstallationType2");
                         string InstallTypes = LblInstallationType.Text;
@@ -372,19 +565,41 @@ namespace CEIHaryana.Industry_Master
                                 {
                                     string FileName = Path.GetFileName(fileUpload2.PostedFile.FileName);
 
-                                    string directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/{InstallTypes}/");
+                                    //string directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/{InstallTypes}/");
+                                    string directoryPath;
+                                    if (DocName2 == "Treasury Challan" || DocName2 == "Other Document")
+                                    {
+                                        directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/");
+                                    }
+                                    else
+                                    {
+                                        directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/{InstallTypes}/");
+                                    }
+
                                     if (!Directory.Exists(directoryPath))
                                     {
                                         Directory.CreateDirectory(directoryPath);
                                     }
 
-                                    string ext = Path.GetExtension(fileUpload2.PostedFile.FileName).ToLower();
-                                    string fileName2 = $"{DocSaveName2}{ext}";
+                                    //string ext = Path.GetExtension(fileUpload2.PostedFile.FileName).ToLower();
+                                    //string fileName2 = $"{DocSaveName2}{ext}";
+                                    string fileName2 = DocSaveName2 + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+
                                     string filePath2 = Path.Combine(directoryPath, fileName2);
                                     fileUpload2.PostedFile.SaveAs(filePath2);
 
-                                    string virtualPath = $"/Attachment/{CreatedBy}/{InstallTypes}/{fileName2}";
-                                    uploadedFiles.Add((InspectionId, CartId, Categary, DocumentId, DocName2, fileName2, virtualPath));
+                                    //string virtualPath = $"/Attachment/{CreatedBy}/{InstallTypes}/{fileName2}";
+                                    string virtualPath;
+                                    if (DocName2 == "Treasury Challan" || DocName2 == "Other Document")
+                                    {
+                                        virtualPath = $"/Attachment/SiteOwner/{CreatedBy}/{fileName2}";
+                                    }
+                                    else
+                                    {
+                                        virtualPath = $"/Attachment/SiteOwner/{CreatedBy}/{InstallTypes}/{fileName2}";
+                                    }
+
+                                    uploadedFiles.Add((InspectionId, CartID, Categary, DocumentId, DocName2, fileName2, virtualPath));
                                 }
                                 else
                                 {
@@ -481,8 +696,11 @@ namespace CEIHaryana.Industry_Master
             int NewPara = 0;
             try
             {
-                if (Session["SiteOwnerId_Industry"] != null)
+              
+                if (Convert.ToString(Session["SiteOwnerId_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
                 {
+                    bool isValid1 = true;
+                    bool isValid2 = true;
                     string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
                     if (serverStatus != "Server is reachable.")
                     {
@@ -495,20 +713,31 @@ namespace CEIHaryana.Industry_Master
                         NewPara = Convert.ToInt32(HF_para_InspectID.Value);
                     }
 
-                    bool isValid = true;
+                    if (!string.IsNullOrEmpty(Convert.ToString(Session["IDCart_Industry"])))
+                    {
+                        CartID = Convert.ToString(Session["IDCart_Industry"]);
+                    }
+                    else
+                    {
+                        CartID = Convert.ToString(Session["CartID_Industry"]);
+                    }
+                    if (CartID == null || CartID == "")
+                    {
+                        isValid1 = false;
+                    }
                     foreach (GridViewRow row in GridView1.Rows)
                     {
                         FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
                         if (fileUpload != null && !fileUpload.HasFile)
                         {
-                            isValid = false;
+                            isValid2 = false;
                             // Add any additional logic here (e.g., display error message)
                             break;
                         }
                     }
 
 
-                    if (isValid)
+                    if (isValid1 == true && isValid2 == true)
                     {
 
                         using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
@@ -537,12 +766,15 @@ namespace CEIHaryana.Industry_Master
 
                                 //string NewInspID = 
                                 transaction = connection.BeginTransaction();
-                                CEI.InsertPeriodicInspectionData_Industries("Periodic", IdCart, IntimationId, ApplicantType,
-                                                InstallationType, VoltageLevel, District, Division, AssignTo,
-                                                   PaymentMode, Amount, transcationId, TranscationDate,
-                                                   para_CreatedByy, Capacity, Voltage, NewPara, transaction);
+                                CEI.InsertPeriodicInspectionData_Industries("Periodic", CartID, transcationId, TranscationDate,
+                                                   para_CreatedByy, NewPara, transaction);
+                               
+                                //IntimationId, ApplicantType,
+                                //            InstallationType, VoltageLevel, District, Division, AssignTo,
+                                //               PaymentMode, Amount, Capacity, Voltage,
 
-                                UploadCheckListDocInCollection(para_CreatedByy, NewPara);
+
+                                UploadCheckListDocInCollection(para_CreatedByy, NewPara, CartID);
                                 generatedIdCombinedDetails = CEI.InspectionId();
                                 if (uploadedFiles != null && uploadedFiles.Count > 0)
                                 {
@@ -611,6 +843,8 @@ namespace CEIHaryana.Industry_Master
                                 transaction.Commit();
                                 Session["CartID_Industry"] = string.Empty;
                                 checksuccessmessage = 1;
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Submitted Successfully !!!'); window.location='/Industry_Master/InspectionHistory_Industry.aspx';", true);
+                                Session["ServiceType"] = string.Empty;
                                 // Response.Redirect("/SiteOwnerPages/InspectionRenewalCart.aspx", false);
                                 // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Submitted Successfully !!!'); window.location='/Industry_Master/InspectionHistory_Industry.aspx';", true);
                             }

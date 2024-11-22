@@ -433,6 +433,13 @@
                             <asp:TextBox class="form-control" ReadOnly="false" ID="txtMake" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ForeColor="Red" ControlToValidate="txtMake" ValidationGroup="Submit" ErrorMessage="Please Enter Make"></asp:RequiredFieldValidator>
                         </div>
+                          <div class="col-3" id="Div17" runat="server" style="margin-top: 15px;">
+                      <label for="Name">
+                        last inspection issue date<samp style="color: red">* </samp>
+                          </label>
+                 <asp:TextBox class="form-control" type="date"  ID="txtLastInspectionIssueDate" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                   <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ForeColor="Red" ControlToValidate="txtLastInspectionIssueDate" ValidationGroup="Submit" ErrorMessage="Please Select last inspection issue date"></asp:RequiredFieldValidator>
+                    </div>
 
                         <%--  <div class="col-4">
                                        <label for="Name">
@@ -664,4 +671,11 @@
             return true;
         }
     </script>
+   
+         <script type="text/javascript">
+             window.onload = function () {
+                 var today = new Date().toISOString().split('T')[0];
+                 document.getElementById('<%= txtLastInspectionIssueDate.ClientID %>').setAttribute('max', today);
+             };
+         </script>
 </asp:Content>

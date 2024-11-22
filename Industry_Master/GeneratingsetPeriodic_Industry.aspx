@@ -453,6 +453,13 @@
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" ControlToValidate="ddlPlantType" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Plant Type"></asp:RequiredFieldValidator>
                         </div>
+                         <div class="col-3" id="Div5" runat="server" style="margin-top: 15px;">
+                      <label for="Name">
+                             last inspection issue date<samp style="color: red">* </samp>
+                       </label>
+                      <asp:TextBox class="form-control" type="date" ReadOnly="false" ID="txtLastInspectionIssueDate" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                          <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ForeColor="Red" ControlToValidate="txtLastInspectionIssueDate" ValidationGroup="Submit" ErrorMessage="Please Select last inspection issue date"></asp:RequiredFieldValidator>
+                  </div>
                         <%--  <div class="col-4">
                              <label for="Name">
                            Status
@@ -661,5 +668,11 @@
             }
             return true;
         }
+    </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('<%= txtLastInspectionIssueDate.ClientID %>').setAttribute('max', today);
+        };
     </script>
 </asp:Content>

@@ -222,16 +222,16 @@
                                 </div>
                                 <div class="col-7">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label" runat="server" Text="Memo No. H.T.I /" Style="font-size: 20px;"></asp:Label>
+                                        <asp:Label ID="label" runat="server" Text="Memo No. H.T.I / :" Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="TxtMemo" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
-                               <%-- <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
-                                    <div style="white-space: nowrap;">
-                                        <asp:Label ID="label2" runat="server" Text="Dated:" Style="font-size: 20px;"></asp:Label>
-                                        <asp:TextBox ID="TxtMemoDate" runat="server" Style="width: 100%;"></asp:TextBox>
-                                    </div>
-                                </div>--%>
+                              <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
+    <div style="white-space: nowrap;">
+        <asp:Label ID="label2" runat="server" Text="Dated:" Style="font-size: 20px; font-weight: 400;"></asp:Label>
+        <asp:TextBox ID="txtMemoDate" runat="server" Style="width: 100%;"></asp:TextBox>
+    </div>
+</div>
                             </div>
 
                             <br />
@@ -269,10 +269,10 @@
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="Voltage" HeaderText="Voltage" Visible="false">
+                                               <%-- <asp:BoundField DataField="Voltage" HeaderText="Voltage" Visible="false">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                </asp:BoundField>
+                                                </asp:BoundField>--%>
                                                 <asp:BoundField DataField="Capacity" HeaderText="Capacity">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />

@@ -26,6 +26,8 @@ namespace CEIHaryana.Industry_Master
         private static string PrevInspectionId = string.Empty, PrevInstallationType = string.Empty, PrevTestReportId = string.Empty,
                               PrevIntimationId = string.Empty, PrevVoltageLevel = string.Empty,
                               PrevApplicantType = string.Empty, AssignToOfficer = string.Empty;
+        
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,11 +35,16 @@ namespace CEIHaryana.Industry_Master
             {
                 if (!Page.IsPostBack)
                 {
-                    if (Session["SiteOwnerId_Industry"] != null || Request.Cookies["SiteOwnerId_Industry"] != null)
+                    if (Convert.ToString(Session["SiteOwnerId_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
+                       
                     {
+                        Page.Session["FinalAmount_Industry"] = "0";
                         BindAdress();
                     }
-                    Page.Session["FinalAmount_Industry"] = "0";
+                    else
+                    {
+                        Response.Redirect("/login.aspx");
+                    }
                 }
             }
             catch
@@ -49,15 +56,18 @@ namespace CEIHaryana.Industry_Master
         {
             try
             {
-                string CreatedBy = Session["SiteOwnerId_Industry"].ToString();
-                DataSet FilterAddress = new DataSet();
-                FilterAddress = CEI.GetAddressToFilterCart_Industries(CreatedBy);
-                ddlAddress.DataSource = FilterAddress;
-                ddlAddress.DataTextField = "AddressText";
-                ddlAddress.DataValueField = "AddressText";
-                ddlAddress.DataBind();
-                ddlAddress.Items.Insert(0, new ListItem("Select", "0"));
-                FilterAddress.Clear();
+                if (Convert.ToString(Session["SiteOwnerId_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
+                {
+                    string CreatedBy = Session["SiteOwnerId_Industry"].ToString();
+                    DataSet FilterAddress = new DataSet();
+                    FilterAddress = CEI.GetAddressToFilterCart_Industries(CreatedBy);
+                    ddlAddress.DataSource = FilterAddress;
+                    ddlAddress.DataTextField = "AddressText";
+                    ddlAddress.DataValueField = "AddressText";
+                    ddlAddress.DataBind();
+                    ddlAddress.Items.Insert(0, new ListItem("Select", "0"));
+                    FilterAddress.Clear();
+                }
             }
             catch (Exception ex)
             {
@@ -80,22 +90,30 @@ namespace CEIHaryana.Industry_Master
         }
         private void BindGrid()
         {
-            string[] str = txtAddressFilter.Text.Split('|');
-            string address = str[0].Trim();
-            string CartID = str[1].Trim();
-
-            DataSet ds = new DataSet();
-            ds = CEI.ShowDataToCart_Industries(address, CartID);
-            if (ds.Tables.Count > 0)
+            if (Convert.ToString(Session["SiteOwnerId_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
             {
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
+                string CreatedBy = Session["SiteOwnerId_Industry"].ToString();
+                string[] str = txtAddressFilter.Text.Split('|');
+                string address = str[0].Trim();
+                string CartID = str[1].Trim();
+
+                DataSet ds = new DataSet();
+                ds = CEI.ShowDataToCart_Industries(address, CartID, CreatedBy);
+                if (ds.Tables.Count > 0)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                }
             }
             else
             {
-                GridView1.DataSource = null;
-                GridView1.DataBind();
             }
+
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -324,7 +342,7 @@ namespace CEIHaryana.Industry_Master
         {
             try
             {
-                if (Session["SiteOwnerId_Industry"] != null)
+                if (Session["SiteOwnerId_Industry"] != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
                 {
                     string id = Session["SiteOwnerId_Industry"].ToString();
                     string GrandTotalCapacity = Session["TotalCapacity_Industry"].ToString();
@@ -337,6 +355,7 @@ namespace CEIHaryana.Industry_Master
                     string StaffAssignedCount = string.Empty;
                     string StaffAssigned = string.Empty;
                     string Assigned = string.Empty;
+                    int ServiceType = 0;
 
                     string[] str = txtAddressFilter.Text.Split('|');
                     string address = str[0].Trim();
@@ -362,19 +381,28 @@ namespace CEIHaryana.Industry_Master
                     if (StaffAssignedCount == "1")
                     {
                         StaffAssigned = "JE";
+                        ServiceType = 2;
                     }
                     else if (StaffAssignedCount == "2")
                     {
                         StaffAssigned = "AE";
+                        ServiceType = 3;
                     }
 
                     else if (StaffAssignedCount == "3")
                     {
                         StaffAssigned = "XEN";
+                        ServiceType = 4;
                     }
                     else if (StaffAssignedCount == "4")
                     {
                         StaffAssigned = "CEI";
+                        ServiceType = 5;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('your details or component are wrong')", true);
+                        return;
                     }
 
 
@@ -420,15 +448,15 @@ namespace CEIHaryana.Industry_Master
                     }
 
                     CEI.InsertInspectinData_Industries(CartID, GrandTotalCapacity, HighestVoltage, PrevInstallationType, PrevTestReportId,
-              PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, Assigned, "Offline", totalAmount, 1, id);
+              PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, Assigned, "Offline", totalAmount, 1, id, ServiceType);
 
                     Session["CartID_Industry"] = CartID;
                     Session["TotalCapacity_Industry"] = string.Empty;
                     Session["HighestVoltage_Industry"] = string.Empty;
                     Session["FinalAmount_Industry"] = string.Empty;
 
-                    //Response.Redirect("/SiteOwnerPages/ProcessInspectionRenewalCart.aspx", false);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Cart Submitted Successfully !!!'); window.location='/Industry_Master/ProcessInspectionRenewalCart_Industries.aspx';", true);
+                    Response.Redirect("/Industry_Master/ProcessInspectionRenewalCart_Industries.aspx", false);
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Cart Submitted Successfully !!!'); window.location='/Industry_Master/ProcessInspectionRenewalCart_Industries.aspx';", true);
                 }
             }
             catch (Exception ex)

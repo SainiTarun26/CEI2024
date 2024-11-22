@@ -60,20 +60,6 @@ namespace CEIHaryana.TestReportModal
                         }
 
                     }
-                    else if (Session["SiteOwnerId"] != null && Session["SiteOwnerId"].ToString() != "")
-                    {
-                        ID = Session["GeneratingSetId"].ToString();
-                        GetDetailswithId();
-
-                        SiteOwner.Visible = false;
-                        SiteOwner2.Visible = true;
-                        IntimationData.Visible = true;
-                        ApprovalCard.Visible = true;
-                        // CreatedDate.Visible = true; //Added
-                        // SubmitDate.Visible = true;
-                        // SubmitBy.Visible = true;
-
-                    }
                     else if (Session["SiteOwnerId_Industry"] != null && Session["SiteOwnerId_Industry"].ToString() != "")
                     {
                         if (Request.UrlReferrer != null)
@@ -93,6 +79,21 @@ namespace CEIHaryana.TestReportModal
                         // SubmitBy.Visible = true;
 
                     }
+                    else if (Session["SiteOwnerId"] != null && Session["SiteOwnerId"].ToString() != "")
+                    {
+                        ID = Session["GeneratingSetId"].ToString();
+                        GetDetailswithId();
+
+                        SiteOwner.Visible = false;
+                        SiteOwner2.Visible = true;
+                        IntimationData.Visible = true;
+                        ApprovalCard.Visible = true;
+                        // CreatedDate.Visible = true; //Added
+                        // SubmitDate.Visible = true;
+                        // SubmitBy.Visible = true;
+
+                    }
+                    
                     else if (Session["InspectionTestReportId"] != null && Session["InspectionTestReportId"].ToString() != "")
                     {
                         ID = Session["InspectionTestReportId"].ToString();
