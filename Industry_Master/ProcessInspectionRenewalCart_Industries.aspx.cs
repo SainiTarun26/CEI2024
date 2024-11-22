@@ -837,7 +837,9 @@ namespace CEIHaryana.Industry_Master
                                 }
                                 else
                                 {
-                                    throw new Exception("Please Upload Pdf Files");
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please Upload Pdf Files.');", true);
+                                    return;
+                                    //throw new Exception("Please Upload Pdf Files");
                                 }
 
                                 transaction.Commit();
