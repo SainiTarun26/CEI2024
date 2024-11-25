@@ -31,10 +31,10 @@ namespace CEIHaryana.Industry_Master
                 if (!Page.IsPostBack)
                 {
                     //Session["SiteOwnerId_Industry"] = "BDJPB4957Q";
-                    Session["SiteOwnerId_Industry"] = "1123";
-                    Session["district_Temp"] = "Ambala";
-                    Session["Serviceid_pd_Indus"] = "ec289b0f-e803-4bce-9dc2-d1d5ce93ba5a";
-                    Session["projectid_pd_Indus"] = "1";
+                    //Session["SiteOwnerId_Industry"] = "1123";
+                    //Session["district_Temp"] = "Ambala";
+                    //Session["Serviceid_pd_Indus"] = "ec289b0f-e803-4bce-9dc2-d1d5ce93ba5a";
+                    //Session["projectid_pd_Indus"] = "1";
                     if (Session["SiteOwnerId_Industry"] != null || Request.Cookies["SiteOwnerId_Industry"] != null)
                     {
                         //if (CheckInspectionStatus())
