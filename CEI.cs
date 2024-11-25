@@ -6787,7 +6787,10 @@ string AdressDistrict, string OwnerName, string District, string Division, strin
             { }
         }
 
-
+        public DataSet GetPeriodicRenualDataAtSiteOwner_Industries(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataForPeriodicRenewal_Industry", Id);
+        }
         public DataSet SiteOwnerExistingInstallations_Industries(string IntimationId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallationforExistingInspection_Industries", IntimationId);

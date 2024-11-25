@@ -11,7 +11,21 @@ namespace CEIHaryana.Industry_Master
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                lblName.Text = Session["SiteOwnerId_Industry"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("/Login.aspx");
+            }
+        }
 
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Cookies["SiteOwnerId_Industry"].Expires = DateTime.Now.AddDays(-1);
+            Response.Redirect("/Login.aspx");
         }
     }
 }

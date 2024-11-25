@@ -12,8 +12,8 @@ using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.Admin
 {
-	public partial class TransferRequestReport : System.Web.UI.Page
-	{
+    public partial class TransferRequestReport : System.Web.UI.Page
+    {
         CEI CEI = new CEI();
         string InspectionId;
         string Status;
@@ -21,7 +21,7 @@ namespace CEIHaryana.Admin
         DateTime? DateFrom = null;
         string Transfer;
         protected void Page_Load(object sender, EventArgs e)
-		{
+        {
             try
             {
                 if (!IsPostBack)
@@ -30,22 +30,14 @@ namespace CEIHaryana.Admin
                     {
                         BindGrid();
                         BindDropDownToAssign();
+                    }
+                    else
+                    {
+                    }
                 }
-                else
-                {
-
-                }
-
-
             }
-            }
-            catch
-            {
-
-            }
-
+            catch (Exception ex) { }
         }
-
         private void BindDropDownToAssign()
         {
             try
@@ -60,15 +52,12 @@ namespace CEIHaryana.Admin
                 dsAssign.Clear();
             }
             catch (Exception ex)
-            {
-                //msg.Text = ex.Message;
-            }
+            { }
         }
         private void BindGrid()
         {
             try
             {
-
                 DataTable ds = new DataTable();
                 ds = CEI.GetTransferReport();
                 if (ds.Rows.Count > 0)
@@ -84,24 +73,17 @@ namespace CEIHaryana.Admin
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 ds.Dispose();
-
             }
-            catch { }
+            catch (Exception ex) { }
         }
-
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             try
             {
-
                 BindGridAfterSearch();
             }
-            catch { 
-            }
-
-
+            catch (Exception ex) { }
         }
-
         protected void btnRefresh_Click(object sender, EventArgs e)
         {
             txtInspection.Text = "";
@@ -116,15 +98,15 @@ namespace CEIHaryana.Admin
         {
             if (e.CommandName == "Print")
             {
-            Control ctrl = e.CommandSource as Control;
-            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow; 
-            Label lblID = (Label)row.FindControl("lblID"); 
-            Label lblType = (Label)row.FindControl("lblType");
-            Session["Type"] = lblType.Text;
-            Label lblApplicationStatus = (Label)row.FindControl("lblApplicationStatus");
-            Session["lblApplicationStatus"] = lblType.Text;
-            string id = lblID.Text;
-            Session["InspectionId"] = id;
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                Label lblID = (Label)row.FindControl("lblID");
+                Label lblType = (Label)row.FindControl("lblType");
+                Session["Type"] = lblType.Text;
+                Label lblApplicationStatus = (Label)row.FindControl("lblApplicationStatus");
+                Session["lblApplicationStatus"] = lblType.Text;
+                string id = lblID.Text;
+                Session["InspectionId"] = id;
 
                 if (lblApplicationStatus.Text == "Approved")
                 {
@@ -143,16 +125,23 @@ namespace CEIHaryana.Admin
                 {
                     string script = "alert(\"This Record is not Approved. You can only Download Approved Reports\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-
+                }
+            }
+            else if (e.CommandName == "Select")
+            {
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                Label lblID = (Label)row.FindControl("lblID");
+                string id = lblID.Text;
+                Session["InspectionId"] = id;
+                if (e.CommandName == "Select")
+                {
+                    Response.Redirect("/Admin/InspectionDetails.aspx", false);
                 }
             }
             else
-            {
-
-            }
-
+            { }
         }
-
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
@@ -167,7 +156,6 @@ namespace CEIHaryana.Admin
                 BindGrid();
             }
         }
-
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
             try
@@ -295,7 +283,6 @@ namespace CEIHaryana.Admin
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }
-
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             // Check if the row is a data row (not a header or footer row)
@@ -304,35 +291,34 @@ namespace CEIHaryana.Admin
                 // Find the LinkButton in the current row
                 LinkButton linkButton = (LinkButton)e.Row.FindControl("LinkButton1");
 
-               
-                    // Use DataBinder.Eval to safely extract the "ApplicationStatus" field from the DataItem
-                    object statusObj = DataBinder.Eval(e.Row.DataItem, "ApplicationStatus");
 
-                    // Ensure that the status object is not null
-                    if (statusObj != null)
+                // Use DataBinder.Eval to safely extract the "ApplicationStatus" field from the DataItem
+                object statusObj = DataBinder.Eval(e.Row.DataItem, "ApplicationStatus");
+
+                // Ensure that the status object is not null
+                if (statusObj != null)
+                {
+                    string status = statusObj.ToString();
+
+                    // Check the status and apply the logic
+                    if (status == "Approved")
                     {
-                        string status = statusObj.ToString();
-
-                        // Check the status and apply the logic
-                        if (status == "Approved")
-                        {
-                            linkButton.Visible = true;
+                        linkButton.Visible = true;
 
                     }
-                        else
-                        {
-                            linkButton.Visible = false;
+                    else
+                    {
+                        linkButton.Visible = false;
 
                     }
-                    }
-                
+                }
+
             }
         }
         private void BindGridAfterSearch()
         {
             try
             {
-
                 if (string.IsNullOrEmpty(txtInspection.Text.Trim()))
                 {
                     InspectionId = null;
@@ -340,7 +326,6 @@ namespace CEIHaryana.Admin
                 else
                 {
                     InspectionId = txtInspection.Text.Trim();
-
                 }
 
                 Transfer = ddlTransferStaff.SelectedValue == "0" ? "" : ddlTransferStaff.SelectedItem.ToString();
@@ -364,9 +349,7 @@ namespace CEIHaryana.Admin
                     }
                 }
 
-
                 DataTable ds = CEI.GetTransferSearchReport(DateFrom, DateTo, Transfer, Status, InspectionId);
-
                 if (ds.Rows.Count > 0)
                 {
                     GridView1.DataSource = ds;
@@ -380,10 +363,8 @@ namespace CEIHaryana.Admin
                     string script = "alert(\"No Record Found\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
-
             }
-            catch { }
+            catch (Exception ex) { }
         }
-       
     }
 }

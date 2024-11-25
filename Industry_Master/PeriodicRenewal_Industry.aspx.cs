@@ -30,17 +30,18 @@ namespace CEIHaryana.Industry_Master
             {
                 if (!Page.IsPostBack)
                 {
-                    //Session["SiteOwnerId_Industry"] = "ABCDE5555Q";
-                    //Session["district_Temp"] = "Sirsa";
-                    //Session["Serviceid_pd_Indus"] = "ec289b0f-e803-4bce-9dc2-d1d5ce93ba5a";
-                    //Session["projectid_pd_Indus"] = "1";
+                    //Session["SiteOwnerId_Industry"] = "BDJPB4957Q";
+                    Session["SiteOwnerId_Industry"] = "1123";
+                    Session["district_Temp"] = "Ambala";
+                    Session["Serviceid_pd_Indus"] = "ec289b0f-e803-4bce-9dc2-d1d5ce93ba5a";
+                    Session["projectid_pd_Indus"] = "1";
                     if (Session["SiteOwnerId_Industry"] != null || Request.Cookies["SiteOwnerId_Industry"] != null)
                     {
-                        if (CheckInspectionStatus())
-                        {
-                            Response.Redirect("InspectionHistory_Industry.aspx", false);
-                            return;
-                        }
+                        //if (CheckInspectionStatus())
+                        //{
+                        //    Response.Redirect("InspectionHistory_Industry.aspx", false);
+                        //    return;
+                        //}
                         BindAdress();
                         //getWorkIntimationDataForListOfExisting();
                     }
@@ -68,6 +69,8 @@ namespace CEIHaryana.Industry_Master
                     BindDistrict();
                     ddlLoadBindPremises();
                     ddlLoadBindVoltage();
+
+                    BindListBoxInstallationType(); ;
                 }
                 else if (RadioButtonList1.SelectedValue == "0")
                 {
@@ -75,6 +78,7 @@ namespace CEIHaryana.Industry_Master
                 }
                 else
                 {
+
                     DivDetails.Visible = false;
                     btnSubmitInstallation.Visible = false;
                     //DivExistingInspectionRequest.Visible = true;
@@ -104,7 +108,7 @@ namespace CEIHaryana.Industry_Master
             {
             }
         }
-      
+
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             try
@@ -114,7 +118,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch { }
         }
-        
+
         public void GridViewBind()
         {
             string id = Session["SiteOwnerId_Industry"].ToString();
@@ -128,7 +132,7 @@ namespace CEIHaryana.Industry_Master
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
-                    BtnCart.Visible = true;
+                BtnCart.Visible = true;
             }
             else
             {
@@ -139,7 +143,7 @@ namespace CEIHaryana.Industry_Master
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }
-      
+
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string LoginID = Session["SiteOwnerId_Industry"].ToString();
@@ -359,9 +363,9 @@ namespace CEIHaryana.Industry_Master
                             //if (showCheckbox)
                             //{
                             //    checkboxCell.Controls.Add(new CheckBox());
-                                
+
                             //}
-                            
+
                         }
 
                     }
@@ -371,7 +375,7 @@ namespace CEIHaryana.Industry_Master
                     {
                         e.Row.Cells[11].CssClass = "OrangeBackground";
                         e.Row.Cells[11].Text = "Yes";
-                        
+
                     }
                 }
             }
@@ -595,9 +599,10 @@ namespace CEIHaryana.Industry_Master
         {
             Id = Session["SiteOwnerId_Industry"].ToString();
             DataSet ds = new DataSet();
-            ds = CEI.GetWorkIntimationDataAtSiteOwner_Industries(Id);
+            ds = CEI.GetPeriodicRenualDataAtSiteOwner_Industries(Id);
             if (ds.Tables[0].Rows.Count > 0)
             {
+                Session["TestReportGenerated"] = ds.Tables[0].Rows[0]["TestReportGenerated"].ToString();
                 txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 ApplicantType = txtApplicantType.Text;
                 ApplicantCode = ds.Tables[0].Rows[0]["ApplicantTypeCode"].ToString();
@@ -641,7 +646,10 @@ namespace CEIHaryana.Industry_Master
                     UserId.Visible = true;
                     NameUtility.Visible = true;
                     Wing.Visible = true;
+                    DivPancard_TanNo.Visible = true;
+                    txtPAN.Text = Session["SiteOwnerId_Industry"].ToString();
                     PowerUtility.Visible = true;
+                    InstallationFor.Visible = false;
                 }
                 txtUtilityName.Text = ds.Tables[0].Rows[0]["PowerUtility"].ToString();
                 txtWing.Text = ds.Tables[0].Rows[0]["PowerUtilityWing"].ToString();
@@ -653,6 +661,324 @@ namespace CEIHaryana.Industry_Master
                 txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                 txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
             }
+            else
+            {
+                Session["TestReportGenerated"] = "";
+                txtCircle.Visible = false;
+                DdlCircle.Visible = true;
+                txtSubDivision.Visible = false;
+                ddlworktype.Visible = true;
+                txtElecticalInstallation.Visible = false;
+                DdlSubDivision.Visible = true;
+                txtDivision.Visible = false;
+                DdlDivision.Visible = true;
+                txtApplicantType.Visible = false;
+                ddlApplicantType.Visible = true;
+                txtZone.Visible = false;
+                DdlZone.Visible = true;
+                txtWing.Visible = false;
+                DdlWing.Visible = true;
+                txtUtilityName.Visible = false;
+                ddlPoweUtility.Visible = true;
+                txtPAN.Text = Session["SiteOwnerId_Industry"].ToString();
+                txtPhone.ReadOnly = false;
+                txtTanNumber.Text = Session["SiteOwnerId_Industry"].ToString();
+                txtEmail.ReadOnly = false;
+                ddlPremises.Enabled = true;
+                txtName.ReadOnly = false;
+                txtagency.ReadOnly = false;
+            }
+        }
+        protected void worktypevisiblity()
+        {
+            try
+            {
+                if (ddlworktype.SelectedValue == "1")
+                {
+                    individual.Visible = true;
+                    agency.Visible = false;
+                    txtagency.Text = "";
+                }
+                else if (ddlworktype.SelectedValue == "2")
+                {
+                    individual.Visible = false;
+                    agency.Visible = true;
+                    txtName.Text = "";
+                }
+                else
+                {
+                    individual.Visible = true;
+                    agency.Visible = false;
+                }
+            }
+            catch { }
+
+        }
+        protected void ddlworktype_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            worktypevisiblity();
+        }
+        protected void DdlSubDivision_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = DdlSubDivision.SelectedValue.ToString();
+            DataSet ds = new DataSet();
+            ds = CEI.GetSubDivisionEmail(id);
+            txtPhone.Text = ds.Tables[0].Rows[0]["Mobile"].ToString();
+            txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+            txtUserId.Text = ds.Tables[0].Rows[0]["UserId"].ToString();
+            txtName.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();
+
+        }
+        protected void DdlDivision_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DdlSubDivisionBind();
+        }
+        private void DdlSubDivisionBind()
+        {
+            try
+            {
+                string id = DdlDivision.SelectedValue.ToString();
+                DataSet dsSubDivision = new DataSet();
+                dsSubDivision = CEI.GetSubDivisionName(id);
+                DdlSubDivision.DataSource = dsSubDivision;
+                DdlSubDivision.DataTextField = "SubDivision";
+                DdlSubDivision.DataValueField = "Id";
+                DdlSubDivision.DataBind();
+                DdlSubDivision.Items.Insert(0, new ListItem("Select", "0"));
+                dsSubDivision.Clear();
+            }
+            catch
+            {
+            }
+
+        }
+        private void DdlDivisionBind()
+        {
+            try
+            {
+                string id = DdlCircle.SelectedValue.ToString();
+                DataSet dsDivision = new DataSet();
+                dsDivision = CEI.GetDivisionName(id);
+                DdlDivision.DataSource = dsDivision;
+                DdlDivision.DataTextField = "DivisionName";
+                DdlDivision.DataValueField = "Id";
+                DdlDivision.DataBind();
+                DdlDivision.Items.Insert(0, new ListItem("Select", "0"));
+                dsDivision.Clear();
+            }
+            catch
+            {
+            }
+
+        }
+        protected void DdlCircle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DdlDivisionBind();
+        }
+        private void DdlCircleBind()
+        {
+            try
+            {
+                string Id = DdlZone.SelectedValue.ToString();
+                DataSet dsCircle = new DataSet();
+                dsCircle = CEI.GetCirclesName(Id);
+                DdlCircle.DataSource = dsCircle;
+                DdlCircle.DataTextField = "CircleName";
+                DdlCircle.DataValueField = "Id";
+                DdlCircle.DataBind();
+                DdlCircle.Items.Insert(0, new ListItem("Select", "0"));
+                dsCircle.Clear();
+            }
+            catch
+            {
+            }
+
+        }
+        protected void DdlZone_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DdlCircleBind();
+
+        }
+        private void DdlWingBind()
+        {
+            try
+            {
+                string Id = ddlPoweUtility.SelectedValue.ToString();
+                DataSet dsWing = new DataSet();
+                dsWing = CEI.GetWingName(Id);
+                DdlWing.DataSource = dsWing;
+                DdlWing.DataTextField = "WingName";
+                DdlWing.DataValueField = "Id";
+                DdlWing.DataBind();
+                DdlWing.Items.Insert(0, new ListItem("Select", "0"));
+                dsWing.Clear();
+            }
+            catch
+            {
+            }
+
+        }
+        protected void DdlWing_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DdlZoneBind();
+        }
+        private void DdlZoneBind()
+        {
+            try
+            {
+                string Id = DdlWing.SelectedValue.ToString();
+                DataSet dsZone = new DataSet();
+                dsZone = CEI.GetZoneName(Id);
+                DdlZone.DataSource = dsZone;
+                DdlZone.DataTextField = "ZoneName";
+                DdlZone.DataValueField = "Id";
+                DdlZone.DataBind();
+                DdlZone.Items.Insert(0, new ListItem("Select", "0"));
+                dsZone.Clear();
+            }
+            catch
+            {
+            }
+
+        }
+        private void ddlPoweUtilityBind()
+        {
+            try
+            {
+
+                DataSet dsUtility = new DataSet();
+                dsUtility = CEI.GetUtilityName();
+                ddlPoweUtility.DataSource = dsUtility;
+                ddlPoweUtility.DataTextField = "UtilityName";
+                ddlPoweUtility.DataValueField = "Id";
+                ddlPoweUtility.DataBind();
+                ddlPoweUtility.Items.Insert(0, new ListItem("Select", "0"));
+                dsUtility.Clear();
+
+            }
+            catch
+            {
+            }
+
+        }
+        protected void ddlPoweUtility_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DdlWingBind();
+        }
+        private void BindListBoxInstallationType()
+        {
+            DataSet dsWorkDetail = new DataSet();
+            dsWorkDetail = CEI.GetddlInstallationType();
+            ddlWorkDetail.DataSource = dsWorkDetail;
+            ddlWorkDetail.DataTextField = "InstallationType";
+            ddlWorkDetail.DataValueField = "Id";
+            ddlWorkDetail.DataBind();
+            ddlWorkDetail.Items.Insert(0, new ListItem("Select", "0"));
+            dsWorkDetail.Clear();
+        }
+        protected void ddlWorkDetail_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DivOtherDepartment.Visible = false;
+            DivPancard_TanNo.Visible = false;
+            //ElectricalInstallation.Visible = true;
+            //DivPoweUtility.Visible = false;
+            //DivPoweUtilityWing.Visible = false;
+            string Value = ddlWorkDetail.SelectedItem.ToString();
+            if (ddlWorkDetail.SelectedValue != "0")
+            {
+                Installation.Visible = true;
+
+                if (string.IsNullOrEmpty(txtinstallationType2.Text))
+                {
+                    installationType2.Visible = true;
+                    txtinstallationType2.Text = Value;
+                }
+                else if (string.IsNullOrEmpty(txtinstallationType3.Text))
+                {
+                    installationType3.Visible = true;
+                    txtinstallationType3.Text = Value;
+                }
+                //else if (string.IsNullOrEmpty(txtinstallationType4.Text))
+                //{
+                //    installationType4.Visible = true;
+                //    txtinstallationType4.Text = Value;
+                //}
+                //else if (string.IsNullOrEmpty(txtinstallationType5.Text))
+                //{
+                //    installationType5.Visible = true;
+                //    txtinstallationType5.Text = Value;
+                //}
+                //else if (string.IsNullOrEmpty(txtinstallationType6.Text))
+                //{
+
+                //    installationType6.Visible = true;
+                //    txtinstallationType6.Text = Value;
+                //}
+                //else if (string.IsNullOrEmpty(txtinstallationType7.Text))
+                //{
+                //    installationType7.Visible = true;
+                //    txtinstallationType7.Text = Value;
+                //}
+                //else if (string.IsNullOrEmpty(txtinstallationType8.Text))
+                //{
+                //    installationType8.Visible = true;
+                //    txtinstallationType8.Text = Value;
+                //}
+                if (ddlWorkDetail.SelectedValue != "0")
+                {
+                    try
+                    {
+                        string selectedValue = ddlWorkDetail.SelectedValue;
+                        ListItem itemToRemove = ddlWorkDetail.Items.FindByValue(selectedValue);
+                        if (itemToRemove != null)
+                        {
+                            ddlWorkDetail.Items.Remove(itemToRemove);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                    }
+                    ddlWorkDetail.SelectedValue = "0";
+                }
+
+
+            }
+            if (ddlApplicantType.SelectedValue == "AT001")
+            {
+                //ElectricalInstallation.Visible = true;
+                DivPancard_TanNo.Visible = true;
+                txtTanNumber.Text = "";
+                PowerUtility.Visible = false;
+                NameUtility.Visible = false;
+                Wing.Visible = false;
+            }
+            else if (ddlApplicantType.SelectedValue == "AT002")
+            {
+                NameUtility.Visible = true;
+                Wing.Visible = true;
+                PowerUtility.Visible = true;
+                //ElectricalInstallation.Visible= false;
+                ddlPoweUtilityBind();
+                //DivPoweUtilityWing.Visible = true;
+                txtTanNumber.Text = "";
+                txtPAN.Text = "";
+            }
+            else if (ddlApplicantType.SelectedValue == "AT003")
+            {
+                //ElectricalInstallation.Visible = true;
+                PowerUtility.Visible = false;
+                NameUtility.Visible = false;
+                Wing.Visible = false;
+                DivOtherDepartment.Visible = true;
+                txtPAN.Text = "";
+            }
+            ddlPoweUtility.SelectedValue = "0";
+            DdlWing.SelectedValue = "0";
+            DdlZone.SelectedValue = "0";
+            DdlCircle.SelectedValue = "0";
+            DdlDivision.SelectedValue = "0";
+            DdlSubDivision.SelectedValue = "0";
+
         }
         protected void ddlPremises_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -680,6 +1006,14 @@ namespace CEIHaryana.Industry_Master
                     transaction = connection.BeginTransaction();
 
                     string Pan_TanNumber = "";
+                    string PowerUtilityname = "";
+                    string PowerUtilitywing = "";
+                    string ZoneName = "";
+                    string CircleName = "";
+                    string DivisionName = "";
+                    string SubdivisionName = "";
+                    string applicantType = "";
+
                     if (DivPancard_TanNo.Visible && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
                     {
                         Pan_TanNumber = txtPAN.Text.Trim();
@@ -707,11 +1041,49 @@ namespace CEIHaryana.Industry_Master
                     {
                         throw new Exception("Pan/Tan Number cannot be empty.");
                     }
+                    if (NameUtility.Visible == true && ddlPoweUtility.Visible == true)
+                    {
+                        PowerUtilityname = ddlPoweUtility.SelectedItem.ToString();
+                        PowerUtilitywing = DdlWing.SelectedItem.ToString();
+                    }
+                    else
+                    {
+                        PowerUtilityname = txtUtilityName.Text.Trim();
+                        PowerUtilitywing = txtWing.Text.Trim();
 
+                    }
+                    if (PowerUtility.Visible == true && DdlZone.Visible == true)
+                    {
+                        ZoneName = DdlZone.SelectedItem.ToString();
+                        CircleName = DdlCircle.SelectedItem.ToString();
+                        DivisionName = DdlDivision.SelectedItem.ToString();
+                        SubdivisionName = DdlSubDivision.SelectedItem.ToString();
+                    }
+                    else
+                    {
+                        CircleName = txtCircle.Text.Trim();
+                        ZoneName = txtZone.Text.Trim();
+                        DivisionName = txtDivision.Text.Trim();
+                        SubdivisionName = txtSubDivision.Text.Trim();
+
+                    }
+                    if (ddlApplicantType.Visible == true)
+                    {
+                        ApplicantCode = ddlApplicantType.SelectedValue;
+                        applicantType = ddlApplicantType.SelectedItem.ToString();
+                    }
+                    else
+                    {
+                        applicantType = txtApplicantType.Text.Trim();
+                    }
+                    Id = Session["SiteOwnerId_Industry"].ToString();
+                    string TestReportGenerated = "";
+                    TestReportGenerated = Session["TestReportGenerated"].ToString();
+                    // if (TestReportGenerated != "" || TestReportGenerated!= null) {
                     // Insert data
                     CEI.IntimationDataInsertionBySiteowner_Industries(
                         Id,
-                        txtApplicantType.Text.Trim(),
+                        applicantType,
                         /*ddlApplicantType.SelectedItem.ToString(),*/////------------------------------------
                         ApplicantCode,
                         //ddlApplicantType.SelectedValue.ToString(),
@@ -722,12 +1094,12 @@ namespace CEIHaryana.Industry_Master
                         //DdlCircle.SelectedItem.ToString(),
                         //DdlDivision.SelectedItem.ToString(), 
                         //DdlSubDivision.SelectedItem.ToString(),
-                        txtUtilityName.Text.Trim(),
-                        txtWing.Text.Trim(),
-                        txtZone.Text.Trim(),
-                        txtCircle.Text.Trim(),
-                        txtDivision.Text.Trim(),
-                        txtSubDivision.Text.Trim(),
+                        PowerUtilityname,
+                        PowerUtilitywing,
+                        ZoneName,
+                        CircleName,
+                        DivisionName,
+                        SubdivisionName,
                         txtName.Text.Trim(),
                         txtagency.Text.Trim(),
                         txtPhone.Text.Trim(),
@@ -775,9 +1147,16 @@ namespace CEIHaryana.Industry_Master
                         }
                     }
                     // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Details of Installation Submitted Successfully !!!')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Details of Installation Submitted Successfully !!!'); window.location='RatingOfInstallations_Industry.aspx';", true);
+
+                    //}
+                    //else 
+                    //{
+                    //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please Fill Previous Test Reports First !!!'); window.location='RatingOfInstallations_Industry.aspx';", true);
+
+                    //}
                     transaction.Commit();
                     Reset();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Details of Installation Submitted Successfully !!!'); window.location='RatingOfInstallations_Industry.aspx';", true);
                 }
                 catch (Exception ex)
                 {

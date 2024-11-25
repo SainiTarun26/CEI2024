@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Industry_Master/PeriodicInspection.Master" AutoEventWireup="true" CodeBehind="PeriodicRenewal_Industry.aspx.cs" Inherits="CEIHaryana.Industry_Master.PeriodicRenewal_Industry" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -316,8 +317,8 @@
                                     </label>
                                 </div>
                             </div>
-                            <%--  <asp:UpdatePanel ID="UpdatePanel1" runat="server">--%>
-                            <%-- <contenttemplate>--%>
+                          <%--    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                           <contenttemplate>--%>
                             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                 <div class="row" style="margin-bottom: 20px;">
                                     <div class="col-md-12">
@@ -523,8 +524,9 @@
                         </div>
                     </div>
                 </div>
-                <%--   <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>--%>
+                <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
+                 <asp:UpdatePanel ID="UpdatePanel" runat="server">
+                    <ContentTemplate>
                 <div class="card-body" id="DivDetails" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div>
                         <div class="row" style="margin-bottom: 8px;">
@@ -539,6 +541,14 @@
                                         Applicant Type
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtApplicantType" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Visible="false" Style="width: 100% !important;" ID="ddlApplicantType" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
+                                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                        <asp:ListItem Text="Private/Personal Installation" Value="AT001"></asp:ListItem>
+                                        <asp:ListItem Text="Power Utility" Value="AT002"></asp:ListItem>
+                                        <asp:ListItem Text="Other Department/Organization" Value="AT003"></asp:ListItem>
+
+
+                                    </asp:DropDownList>
                                 </div>
                                 <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="false">
                                     <label for="PanNumber">
@@ -555,10 +565,15 @@
                                         ErrorMessage="Enter a valid TAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtTanNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" id="InstallationFor" runat="server">
                                     <label>
                                         Electrical Installation For
                                     </label>
+                                    <asp:DropDownList ID="ddlworktype" TabIndex="3" runat="server" AutoPostBack="true" Visible="false" EnableViewState="true" class="form-control  select-form select2" OnSelectedIndexChanged="ddlworktype_SelectedIndexChanged" Style="width: 100% !important;">
+                                        <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                        <asp:ListItem Value="1" Text="Individual Person"></asp:ListItem>
+                                        <asp:ListItem Value="2" Text="Firm/Organization/Company/Department"></asp:ListItem>
+                                    </asp:DropDownList>
                                     <asp:TextBox class="form-control" ID="txtElecticalInstallation" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div class="col-md-4" id="NameUtility" runat="server" visible="false">
@@ -566,12 +581,16 @@
                                         Name Of Power Utility
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtUtilityName" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Visible="false" Style="width: 100% !important;" ID="ddlPoweUtility" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlPoweUtility_SelectedIndexChanged">
+                                    </asp:DropDownList>
                                 </div>
                                 <div class="col-md-4" id="Wing" runat="server" visible="false">
                                     <label>
                                         Wing
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtWing" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="DdlWing" Visible="false" TabIndex="2" runat="server" OnSelectedIndexChanged="DdlWing_SelectedIndexChanged">
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                             <div class="row" runat="server" id="PowerUtility" visible="false">
@@ -580,24 +599,32 @@
                                         Zone
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtZone" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="DdlZone" Visible="false" TabIndex="2" runat="server" OnSelectedIndexChanged="DdlZone_SelectedIndexChanged">
+                                    </asp:DropDownList>
                                 </div>
                                 <div class="col-md-4">
                                     <label>
                                         Circle<samp style="color: red">* </samp>
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtCircle" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="DdlCircle" Visible="false" TabIndex="2" runat="server" OnSelectedIndexChanged="DdlCircle_SelectedIndexChanged">
+                                    </asp:DropDownList>
                                 </div>
                                 <div class="col-md-4">
                                     <label>
                                         Division
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtDivision" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" Visible="false" ID="DdlDivision" TabIndex="2" runat="server" OnSelectedIndexChanged="DdlDivision_SelectedIndexChanged">
+                                    </asp:DropDownList>
                                 </div>
                                 <div class="col-md-4">
                                     <label>
                                         Sub-Division
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtSubDivision" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" Visible="false" ID="DdlSubDivision" TabIndex="2" runat="server" OnSelectedIndexChanged="DdlSubDivision_SelectedIndexChanged">
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                             <div class="row">
@@ -724,10 +751,10 @@
                                     <asp:TextBox class="form-control" ID="txtCapacity" onkeydown="return preventEnterSubmit(event)" maxlenght="10" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <span id="lblCap" style="color: red"></span>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtCapacity" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Total Capacity</asp:RequiredFieldValidator>
-                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtCapacity"
-                                ValidationExpression="^\d{1,10}$" ForeColor="Red" ErrorMessage="Please enter valid Capacity">
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtCapacity"
+                                        ValidationExpression="^\d{1,10}$" ForeColor="Red" ErrorMessage="Please enter valid Capacity">
                                             
-                                </asp:RegularExpressionValidator>
+                                    </asp:RegularExpressionValidator>
                                 </div>
                                 <div class="col-md-4">
                                     <label>
@@ -823,8 +850,8 @@
                         </div>
                     </div>
                 </div>
-                <%--</ContentTemplate>
-                  </asp:UpdatePanel>--%>
+                </ContentTemplate>
+                  </asp:UpdatePanel>
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: center;">
@@ -925,5 +952,4 @@
         }
     </script>
 </asp:Content>
-
 

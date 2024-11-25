@@ -250,10 +250,22 @@
                                             <asp:Label ID="lblSNO" runat="server" Text='<%# Container.DataItemIndex + 1 %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:BoundField DataField="Id" HeaderText="Inspection ID">
+                                  <%--  <asp:BoundField DataField="Id" HeaderText="Inspection ID">
                                         <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="center" Width="15%" />
-                                    </asp:BoundField>
+                                    </asp:BoundField>--%>
+
+                                    <asp:TemplateField>
+         <HeaderStyle Width="35%" CssClass="headercolor"/>
+         <ItemStyle Width="35%" />
+         <HeaderTemplate>
+           Inspection ID
+         </HeaderTemplate>
+         <ItemTemplate>
+             <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
+         </ItemTemplate>
+     </asp:TemplateField>
+
                                     <asp:BoundField DataField="OwnerName" HeaderText="SiteOwner Name">
                                         <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="center" Width="15%" />

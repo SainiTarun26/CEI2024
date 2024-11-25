@@ -159,6 +159,24 @@ namespace CEIHaryana.Industry_Master
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divToShowLabel;
 
         /// <summary>
+        /// ScriptManager2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager2;
+
+        /// <summary>
+        /// UpdatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel;
+
+        /// <summary>
         /// DivDetails control.
         /// </summary>
         /// <remarks>
@@ -175,6 +193,15 @@ namespace CEIHaryana.Industry_Master
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtApplicantType;
+
+        /// <summary>
+        /// ddlApplicantType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlApplicantType;
 
         /// <summary>
         /// DivPancard_TanNo control.
@@ -231,6 +258,24 @@ namespace CEIHaryana.Industry_Master
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator20;
 
         /// <summary>
+        /// InstallationFor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl InstallationFor;
+
+        /// <summary>
+        /// ddlworktype control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlworktype;
+
+        /// <summary>
         /// txtElecticalInstallation control.
         /// </summary>
         /// <remarks>
@@ -258,6 +303,15 @@ namespace CEIHaryana.Industry_Master
         protected global::System.Web.UI.WebControls.TextBox txtUtilityName;
 
         /// <summary>
+        /// ddlPoweUtility control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPoweUtility;
+
+        /// <summary>
         /// Wing control.
         /// </summary>
         /// <remarks>
@@ -274,6 +328,15 @@ namespace CEIHaryana.Industry_Master
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtWing;
+
+        /// <summary>
+        /// DdlWing control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlWing;
 
         /// <summary>
         /// PowerUtility control.
@@ -294,6 +357,15 @@ namespace CEIHaryana.Industry_Master
         protected global::System.Web.UI.WebControls.TextBox txtZone;
 
         /// <summary>
+        /// DdlZone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlZone;
+
+        /// <summary>
         /// txtCircle control.
         /// </summary>
         /// <remarks>
@@ -301,6 +373,15 @@ namespace CEIHaryana.Industry_Master
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCircle;
+
+        /// <summary>
+        /// DdlCircle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlCircle;
 
         /// <summary>
         /// txtDivision control.
@@ -312,6 +393,15 @@ namespace CEIHaryana.Industry_Master
         protected global::System.Web.UI.WebControls.TextBox txtDivision;
 
         /// <summary>
+        /// DdlDivision control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlDivision;
+
+        /// <summary>
         /// txtSubDivision control.
         /// </summary>
         /// <remarks>
@@ -319,6 +409,15 @@ namespace CEIHaryana.Industry_Master
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSubDivision;
+
+        /// <summary>
+        /// DdlSubDivision control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlSubDivision;
 
         /// <summary>
         /// UserId control.
