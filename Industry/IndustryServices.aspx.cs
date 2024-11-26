@@ -210,7 +210,7 @@ namespace CEIHaryana.Industry
 
                         var userSession = new Cei_IndustryServices_Redirection_IncomingJson_Model
                         {
-                            uname = Request.Params["uname"],
+                            uname = Request.Params["investorname"],
                             businessentity = Request.Params["businessentity"],
                             useremail = Request.Params["useremail"],
                             address = Request.Params["address"],

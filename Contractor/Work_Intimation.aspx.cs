@@ -439,8 +439,7 @@ namespace CEIHaryana.Contractor
             if (Session["File"].ToString() != "" && Session["File"].ToString() != null)
             {
                 string fileName = Session["File"].ToString();
-                //string filePath = "https://ceiharyana.com" + fileName;
-                string filePath = "https://uat.ceiharyana.com" + fileName;
+                string filePath = "https://ceiharyana.com" + fileName;
 
                 //if (System.IO.File.Exists(filePath))
                 //{                
@@ -1007,7 +1006,7 @@ namespace CEIHaryana.Contractor
                 NameUtility.Visible = false;
                 Wing.Visible = false;
             }
-            else if (ddlApplicantType.SelectedValue == "AT002")
+            else if (ddlApplicantType.SelectedValue == "AT002") //Power Utility
             {
                 NameUtility.Visible = true;
                 Wing.Visible = true;
@@ -1017,8 +1016,23 @@ namespace CEIHaryana.Contractor
                 //DivPoweUtilityWing.Visible = true;
                 txtTanNumber.Text = "";
                 txtPAN.Text = "";
+                ListItem checklistItem1 = ddlworktype.Items.FindByValue("1");
+                if (checklistItem1 != null)
+                {
+                    checklistItem1.Enabled = false;
+                }
+
+                foreach (ListItem item in ddlPremises.Items)
+                {
+                    if (item.Value == "4")
+                    {
+                        item.Attributes.Add("style", "display:none");
+                        break; 
+                    }
+                }
+
             }
-            else if (ddlApplicantType.SelectedValue == "AT003")
+            else if (ddlApplicantType.SelectedValue == "AT003") //Other Department/Organization
             {
                 //ElectricalInstallation.Visible = true;
                 PowerUtility.Visible = false;
@@ -1026,6 +1040,11 @@ namespace CEIHaryana.Contractor
                 Wing.Visible = false;
                 DivOtherDepartment.Visible = true;
                 txtPAN.Text = "";
+                ListItem checklistItem1 = ddlworktype.Items.FindByValue("1");
+                if (checklistItem1 != null)
+                {
+                    checklistItem1.Enabled = false;
+                }
             }
             ddlPoweUtility.SelectedValue = "0";
             DdlWing.SelectedValue = "0";

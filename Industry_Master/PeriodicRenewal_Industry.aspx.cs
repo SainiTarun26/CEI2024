@@ -51,11 +51,11 @@ namespace CEIHaryana.Industry_Master
                     //Session["UserSessionData"] = userSession;
                     if (Session["SiteOwnerId_Industry"] != null || Request.Cookies["SiteOwnerId_Industry"] != null)
                     {
-                        //if (CheckInspectionStatus())
-                        //{
-                        //    Response.Redirect("InspectionHistory_Industry.aspx", false);
-                        //    return;
-                        //}
+                        if (CheckInspectionStatus())
+                        {
+                            Response.Redirect("InspectionHistory_Industry.aspx", false);
+                            return;
+                        }
                         BindAdress();
                         //getWorkIntimationDataForListOfExisting();
                     }

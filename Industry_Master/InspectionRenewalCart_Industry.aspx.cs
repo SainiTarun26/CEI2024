@@ -3,7 +3,9 @@ using CEIHaryana.Officers;
 using Org.BouncyCastle.Utilities.Collections;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
@@ -38,6 +40,12 @@ namespace CEIHaryana.Industry_Master
                     if (Convert.ToString(Session["SiteOwnerId_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
                        
                     {
+                        if (CheckInspectionStatus())
+                        {
+                            Response.Redirect("InspectionHistory_Industry.aspx", false);
+                            return;
+                        }
+
                         Page.Session["FinalAmount_Industry"] = "0";
                         BindAdress();
                     }
@@ -470,6 +478,31 @@ namespace CEIHaryana.Industry_Master
             count = CEI.GetAffectedRowsCountByCartId_Industries(cartId);
 
             return count;
+        }
+
+        private bool CheckInspectionStatus()
+        {
+            string panNumber = null;
+
+            if (Session["SiteOwnerId_Industry"] != null)
+            {
+                panNumber = Session["SiteOwnerId_Industry"].ToString();
+            }
+
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_CheckAlreadyApplied_PeriodicInspection_Industries", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@PANNumber", panNumber);
+
+                    conn.Open();
+
+                    int result = Convert.ToInt32(cmd.ExecuteScalar());
+                    return result == 1;
+                }
+            }
         }
     }
 }
