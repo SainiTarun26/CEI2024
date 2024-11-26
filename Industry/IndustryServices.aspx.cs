@@ -156,6 +156,8 @@ namespace CEIHaryana.Industry
                     projectlevel = Request.Params["projectlevel"],
                     requestType = Request.Params["requestType"],
                     cafType = Request.Params["cafType"]
+
+
                 };
                 try
                 {
@@ -197,11 +199,25 @@ namespace CEIHaryana.Industry
                         Session["projectid_pd_Indus"] = null;
 
 
+                        //Session["SiteOwner_Uname"] = null;
+                        Session["SiteOwner_mobile"] = null;
+                        Session["SiteOwner_useremail"] = null;
+                        Session["SiteOwner_address"] = null;
+                        Session["UserSessionData"] = null;
 
 
                         Session["projectid_Temp"] = inputObject.projectid;
 
+                        var userSession = new Cei_IndustryServices_Redirection_IncomingJson_Model
+                        {
+                            uname = Request.Params["uname"],
+                            businessentity = Request.Params["businessentity"],
+                            useremail = Request.Params["useremail"],
+                            address = Request.Params["address"],
+                            mobile = Request.Params["mobile"],
+                        };
 
+                        Session["UserSessionData"] = userSession;
                         //new
                         if (Session["Serviceid_Temp"].ToString() == "c1406da9-263f-4399-b20f-387a71caa5de")
                         {
@@ -221,6 +237,11 @@ namespace CEIHaryana.Industry
                             Session["district_Temp"] = inputObject.project_site_district;
                             Session["Serviceid_pd_Indus"] = inputObject.serviceid;
                             Session["projectid_pd_Indus"] = inputObject.projectid;
+
+                           // Session["SiteOwner_Uname"] = inputObject.uname;
+                            Session["SiteOwner_mobile"] = inputObject.mobile;
+                            Session["SiteOwner_useremail"] = inputObject.useremail;
+                            Session["SiteOwner_address"] = inputObject.address;
                             Response.Redirect("/Industry_Master/PeriodicRenewal_Industry.aspx", false);
                         }
                         //sld 
@@ -249,6 +270,8 @@ namespace CEIHaryana.Industry
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
                     return;
                 }
+
+               
             }
         }
 

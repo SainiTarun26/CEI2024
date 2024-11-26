@@ -66,11 +66,17 @@ namespace CEIHaryana.UserPages
             //    txtTanNumber.Text = "";
             //    txtPAN.Text = "";
             //}
-            else if (ddlApplicantType.SelectedValue == "AT003")
+            else if (ddlApplicantType.SelectedValue == "AT003") //Other Department/Organization
             {
                 LblTanNumber.Visible = true;
                 txtPANTan.Visible = true;
                 txtPANTan.Text = "";
+
+                ListItem checklistItem1 = ddlworktype.Items.FindByValue("1");
+                if (checklistItem1 != null)
+                {
+                    checklistItem1.Enabled = false;
+                }
             }
         }
 
