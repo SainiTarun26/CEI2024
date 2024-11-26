@@ -297,8 +297,8 @@ namespace CEIHaryana.TestReportModal
                         Insulation220vAbove.Visible = false;
                         Insulation440vAbove.Visible = true;
                     }
-                    else if (txtLineVoltage.Text.Trim() == "11kV" || txtLineVoltage.Text.Trim() == "33kV" || txtLineVoltage.Text.Trim() == "66kV" ||
-                        txtLineVoltage.Text.Trim() == "132kV" || txtLineVoltage.Text.Trim() == "220kV")
+                    else if (txtLineVoltage.Text.Trim() == "11KV" || txtLineVoltage.Text.Trim() == "33KV" || txtLineVoltage.Text.Trim() == "66KV" ||
+                        txtLineVoltage.Text.Trim() == "132KV" || txtLineVoltage.Text.Trim() == "220KV")
                     {
                         Insulation220vAbove.Visible = false;
                         Insulation440vAbove.Visible = true;
@@ -356,8 +356,8 @@ namespace CEIHaryana.TestReportModal
                         Insulation220vAbove.Visible = false;
                         Insulation440vAbove.Visible = true;
                     }
-                    else if (txtLineVoltage.Text.Trim() == "11kV" || txtLineVoltage.Text.Trim() == "66kV" ||
-                     txtLineVoltage.Text.Trim() == "132kV" || txtLineVoltage.Text.Trim() == "220kV")
+                    else if (txtLineVoltage.Text.Trim() == "11KV" || txtLineVoltage.Text.Trim() == "66KV" ||
+                     txtLineVoltage.Text.Trim() == "132KV" || txtLineVoltage.Text.Trim() == "220KV")
                     {
                         Insulation220vAbove.Visible = false;
                         Insulation440vAbove.Visible = true;

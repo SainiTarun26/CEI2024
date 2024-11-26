@@ -54,6 +54,11 @@ namespace CEIHaryana.UserPages
                 LblPanNumber.Visible = true;
                 txtPANTan.Visible = true;
                 txtPANTan.Text = "";
+                ListItem checklistItem1 = ddlworktype.Items.FindByValue("1");
+                if (checklistItem1 != null)
+                {
+                    checklistItem1.Enabled = true;
+                }
             }
             //else if (ddlApplicantType.SelectedValue == "AT002")
             //{
