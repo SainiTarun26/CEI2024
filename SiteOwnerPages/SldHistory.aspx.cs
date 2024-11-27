@@ -31,12 +31,12 @@ namespace CEIHaryana.SiteOwnerPages
 
         }
 
-        public void BindGrid()
+        public void BindGrid(string searchText = null)
         {
             string LoginID = string.Empty;
             LoginID = Session["SiteOwnerId"].ToString();
             DataTable ds = new DataTable();
-            ds = CEI.SldHistory(LoginID);
+            ds = CEI.SldHistory(LoginID, searchText);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -70,6 +70,15 @@ namespace CEIHaryana.SiteOwnerPages
                 string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
+            if (e.CommandName == "Print")
+            {
+                string fileName = e.CommandArgument.ToString();
+                string folderPath = Server.MapPath(fileName);
+                string filePath = Path.Combine(folderPath);
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -78,9 +87,10 @@ namespace CEIHaryana.SiteOwnerPages
             {
                
                 string status = DataBinder.Eval(e.Row.DataItem, "Status_type").ToString();
-  
+                string RequestLetter = DataBinder.Eval(e.Row.DataItem, "RequestLetter").ToString();
                 LinkButton lnkDocumemtPath = (LinkButton)e.Row.FindControl("LnkDocumemtPath");
                 LinkButton linkButton1 = (LinkButton)e.Row.FindControl("LinkButton1");
+                LinkButton LnkDocumemtPath2 = (LinkButton)e.Row.FindControl("LnkDocumemtPath2");
 
                 if (status == "Approved" || status == "Rejected")
                 {
@@ -93,6 +103,14 @@ namespace CEIHaryana.SiteOwnerPages
                  
                     linkButton1.Visible = true;
                     lnkDocumemtPath.Visible = false;
+                }
+                if (RequestLetter != null && RequestLetter != "")
+                {
+                    LnkDocumemtPath2.Visible = true;
+                }
+                else
+                {
+                    LnkDocumemtPath2.Visible = false;
                 }
             }
         }

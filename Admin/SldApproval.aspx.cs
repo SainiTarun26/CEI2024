@@ -92,6 +92,15 @@ namespace CEIHaryana.Admin
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
 
+            if (e.CommandName == "Print")
+            {
+                string fileName = e.CommandArgument.ToString();
+                string folderPath = Server.MapPath(fileName);
+                string filePath = Path.Combine(folderPath);
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+
         }
 
         protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -100,11 +109,19 @@ namespace CEIHaryana.Admin
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-
-
+                string RequestLetter = DataBinder.Eval(e.Row.DataItem, "RequestLetter").ToString();
+                LinkButton Lnkbtn = (LinkButton)e.Row.FindControl("Lnkbtn");
                 CheckBox chkSelect = (CheckBox)e.Row.FindControl("chkSelect");
                 chkSelect.CheckedChanged += chkSelect_CheckedChanged;
                 chkSelect.Attributes.Add("onclick", "SelectCheckbox(this);");
+                if (RequestLetter != null && RequestLetter != "")
+                {
+                    Lnkbtn.Visible = true;
+                }
+                else
+                {
+                    Lnkbtn.Visible = false;
+                }
             }
 
         }

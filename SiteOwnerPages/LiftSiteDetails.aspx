@@ -700,7 +700,7 @@
                                                                     </div>
                                                                 </td>
                                                                 <td style="text-align: center !important;">
-                                                                    <asp:ImageButton ID="imgDelete1" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30"
+                                                                    <asp:ImageButton ID="imgDelete1" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30"  OnClick="imgDelete1_Click" Width="30"
                                                                         runat="server" />
                                                                 </td>
                                                             </tr>
@@ -719,7 +719,7 @@
                                                                     </div>
                                                                 </td>
                                                                 <td style="text-align: center !important;">
-                                                                    <asp:ImageButton ID="imgDelete2" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30" runat="server" />
+                                                                    <asp:ImageButton ID="imgDelete2" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30" runat="server" OnClick="imgDelete2_Click" />
                                                                 </td>
                                                             </tr>
                                                         </div>

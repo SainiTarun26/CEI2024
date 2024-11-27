@@ -2,7 +2,9 @@
 using CEIHaryana.Model.Industry;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -16,10 +18,15 @@ namespace CEIHaryana.Industry_Master
         CEI CEI = new CEI();
         Industry_Api_Post_DataformatModel ApiPostformatresult = new Industry_Api_Post_DataformatModel();
         IndustryApiLogDetails logDetails = new IndustryApiLogDetails();
+        int newSLD_ID;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
+                //Session["SiteOwnerId_Sld_Indus"] = "BDJPB4957Q";
+                //Session["district_Temp"] = "Ambala";
+                //Session["Serviceid_Sld_Indus"] = "930e4959-d5a0-4624-9995-8c5e3e9cadce";
+                //Session["projectid_Sld_Indus"] = "332b5554-b740-4948-9670-22ce40ecba6c";
 
                 if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != string.Empty && Convert.ToString(Session["district_Temp"]) != null && Convert.ToString(Session["district_Temp"]) != string.Empty)
                 {
@@ -43,21 +50,25 @@ namespace CEIHaryana.Industry_Master
                         {
                             BindAdress();
                         }
-
                         else
                         {
                             Response.Redirect("SLD_Status.aspx");
                         }
 
+                       
+
                     }
                     else
                     {
+                        //Response.Redirect("SLD_Status.aspx");
 
-                        BindAdress();
+                        //BindAdress();
                     }
+                  //  BindAdress();
                 }
                 else
                 {
+                    Response.Redirect("SLD_Status.aspx");
 
                 }
             }
@@ -171,43 +182,78 @@ namespace CEIHaryana.Industry_Master
             string[] allowedExtensions = { ".jpg", ".jpeg", ".png" };
             int maxFileSize = 2 * 1024 * 1024;
             string filePathInfo = "";
+            string filePathInfo1 = "";
 
-            if (CustomFile.HasFile && CustomFile.PostedFile != null && CustomFile.PostedFile.ContentLength <= maxFileSize)
+            
+
+            if (CustomFile.HasFile && CustomFile.PostedFile != null && CustomFile.PostedFile.ContentLength <= maxFileSize && File.HasFile && File.PostedFile != null && File.PostedFile.ContentLength <= maxFileSize)
             {
-                try
-                {
-                    string FilName = string.Empty;
-                    FilName = Path.GetFileName(CustomFile.PostedFile.FileName);
-
-
-                    if (!Directory.Exists(Server.MapPath("~/Attachment/" + SiteOwnerId + "/Sld Document/")))
+               
+                    try
                     {
-                        Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerId + "/Sld Document/"));
+                       
+
+                        string FilName = string.Empty;
+
+                        FilName = Path.GetFileName(CustomFile.PostedFile.FileName);
+
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + SiteOwnerId + "/Sld Document/")))
+                        {
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerId + "/Sld Document/"));
+                        }
+
+                        string ext = Path.GetExtension(CustomFile.FileName);
+                        string path = "/Attachment/" + SiteOwnerId + "/Sld Document/";
+                        string fileName = "Sld Document" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
+                        string filePathInfo2 = Server.MapPath("~/Attachment/" + SiteOwnerId + "/Sld Document/" + fileName);
+                        //customFile.SaveAs(filePathInfo2);
+                        filePathInfo = path + fileName;
+
+                        //====================
+                        string FilName1 = string.Empty;
+                        FilName1 = Path.GetFileName(File.PostedFile.FileName);
+
+                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + SiteOwnerId + "/RequestLetter/")))
+                        {
+                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerId + "/RequestLetter/"));
+                        }
+
+                        string ex = Path.GetExtension(File.FileName);
+                        string path1 = "/Attachment/" + SiteOwnerId + "/RequestLetter/";
+                        string fileName1 = "RequestLetter" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
+                        string filePathInfo3 = Server.MapPath("~/Attachment/" + SiteOwnerId + "/RequestLetter/" + fileName1);
+                        //File.SaveAs(filePathInfo3);
+                        filePathInfo1 = path1 + fileName1;
+
+                         newSLD_ID = CEI.UploadSldDocument_Industries(SiteOwnerId, filePathInfo, filePathInfo1 ,SiteOwnerId, ddlSiteOwnerAddress.SelectedItem.ToString(), SiteOwnerName, "Industry", ddlSiteOwnerAddress.SelectedValue.Trim(), Session["Serviceid_Sld_Indus"].ToString());
+                  
+                   
+                    // for making document folder
+
+                        filePathInfo2 = Server.MapPath("~/Attachment/" + SiteOwnerId + "/Sld Document/" + fileName);
+                        filePathInfo3 = Server.MapPath("~/Attachment/" + SiteOwnerId + "/RequestLetter/" + fileName1);
+                        CustomFile.SaveAs(filePathInfo2);
+                        File.SaveAs(filePathInfo3);
+                        string script = $"alert('SLD Document submitted successfully.'); window.location='SLD_Status.aspx';";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                        
+                    
+                   
+
+                }
+                    catch (Exception ex)
+                    {
+                       string errorMessage = ex.Message.Replace("'", "\\'");
+                        ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
+                        return;
                     }
-
-                    string ext = Path.GetExtension(CustomFile.FileName);
-                    string path = "/Attachment/" + SiteOwnerId + "/Sld Document/";
-                    string fileName = "Sld Document" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
-                    string filePathInfo2 = Server.MapPath("~/Attachment/" + SiteOwnerId + "/Sld Document/" + fileName);
-                    CustomFile.SaveAs(filePathInfo2);
-                    filePathInfo = path + fileName;
-
-                }
-                catch (Exception ex)
-                {
-                    //throw new Exception("Please Upload Pdf Files 1 Mb Only");
-                }
+                    
+                
             }
             else
             {
                 throw new Exception("Please Upload Pdf Files 2 Mb Only");
             }
-            //CEI.UploadSldDocument(SiteOwnerId, filePathInfo, SiteOwnerId, ddlSiteOwnerAddress.SelectedItem.ToString(), SiteOwnerName, "Industry", ddlSiteOwnerAddress.SelectedValue.Trim());
-            int newSLD_ID = CEI.UploadSldDocument_Industries(SiteOwnerId, filePathInfo, SiteOwnerId, ddlSiteOwnerAddress.SelectedItem.ToString(), SiteOwnerName, "Industry", ddlSiteOwnerAddress.SelectedValue.Trim(), Session["Serviceid_Sld_Indus"].ToString());
-            //string script = $"alert('SLD Document submitted successfully.'); window.location='SiteOwnerDashboard.aspx';";
-            // ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
-
-
 
             checksuccessmessage = 1;
 

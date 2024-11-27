@@ -87,6 +87,7 @@
         .ReturnedRowColor {
      background-color: #f9c7c7 !important;
 }
+     
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -130,7 +131,7 @@
                            
                        <asp:BoundField DataField="SiteOwnerAddress" HeaderText="Address">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" CssClass="break-text-10"/>
                             </asp:BoundField>
                            
                           <%--  <asp:TemplateField HeaderText="Document Name">
@@ -142,7 +143,7 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>--%>
                           
-                            <asp:BoundField DataField="Status_type" HeaderText="Application Status">
+                            <asp:BoundField DataField="Status_type" HeaderText="Status">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
@@ -151,12 +152,21 @@
                               <asp:TemplateField HeaderText=" Attached Document" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                     <HeaderStyle Width="5%" CssClass="headercolor" />
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("SLDApproved") %>' CommandName="Select">Click here to view document </asp:LinkButton>
-                                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Bind("Path") %>' CommandName="Select1">Click here to view document </asp:LinkButton>
+                                        <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("SLDApproved") %>' CommandName="Select">view document </asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Bind("Path") %>' CommandName="Select1">view document </asp:LinkButton>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Left" />
                                 </asp:TemplateField>
+                             <asp:TemplateField HeaderText=" Request Letter" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                      <ItemTemplate>
+                            <asp:LinkButton ID="LnkDocumemtPath2" runat="server" CommandArgument='<%# Bind("RequestLetter") %>' CommandName="Print">view document </asp:LinkButton>
+                                
+                             </ItemTemplate>
+                              <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                         <HeaderStyle HorizontalAlign="Left" />
+                                         </asp:TemplateField>
                              <asp:BoundField DataField="SubmittedDate" HeaderText="Submitted Date">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
@@ -229,4 +239,40 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll('.break-text-10');
+
+            elements.forEach(function (element) {
+                let text = element.innerText;
+                let formattedText = '';
+                let currentIndex = 0;
+
+                while (currentIndex < text.length) {
+                    // Take a chunk of up to 20 characters
+                    let chunk = text.slice(currentIndex, currentIndex + 35);
+
+                    if (chunk.length < 35) {
+                        // If the chunk is less than 20 characters, add it without breaking
+                        formattedText += chunk;
+                        break; // Exit the loop as we've processed the remaining text
+                    }
+
+                    // For chunks of 20 or more characters, try to break at the last whitespace
+                    let breakIndex = chunk.lastIndexOf(" ");
+                    if (breakIndex !== -1) {
+                        // If there's a whitespace, break at that space
+                        formattedText += chunk.slice(0, breakIndex) + '<br>';
+                        currentIndex += breakIndex + 1; // Move past the space
+                    } else {
+                        // Otherwise, break at the 20-character limit
+                        formattedText += chunk + '<br>';
+                        currentIndex += 35;
+                    }
+                }
+
+                element.innerHTML = formattedText.trim(); // Remove any trailing <br>
+            });
+        });
+</script>
 </asp:Content>

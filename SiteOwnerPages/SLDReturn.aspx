@@ -310,6 +310,18 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
                                 ControlToValidate="customFile" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
+
+                       <div class="col-md-4" id="Div1" runat="server">
+                              <label class="form-label" for="customFile">
+                               Request Letter mentionaly Details of Installations<samp style="color: red"> * </samp>
+                                     </label>
+                                     <br />
+                             <asp:FileUpload ID="File" TabIndex="19" runat="server" CssClass="form-control"
+                            Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
+
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                             ControlToValidate="File" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                 </div>
                                      </div>
                                        </div>
                             </div>

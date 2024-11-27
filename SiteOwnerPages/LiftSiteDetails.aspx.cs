@@ -477,6 +477,45 @@ namespace CEIHaryana.SiteOwnerPages
 
             }
         }
+        protected void imgDelete1_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                string valueToAddBack = txtinstallationType1.Text;
+                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                {
+                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                    ddlWorkDetail.Items.Add(newItem);
+                }
+                installationType1.Visible = false;
+                txtinstallationType1.Text = string.Empty;
+                txtinstallationNo1.Text = string.Empty;
+            }
+            catch
+            {
+                // Handle exceptions appropriately
+            }
+        }
+        protected void imgDelete2_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                string valueToAddBack = txtinstallationType2.Text;
+
+                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                {
+                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                    ddlWorkDetail.Items.Add(newItem);
+                }
+                installationType2.Visible = false;
+                txtinstallationType2.Text = string.Empty;
+                txtinstallationNo2.Text = string.Empty;
+            }
+            catch
+            {
+                // Handle exceptions appropriately
+            }
+        }
         protected void Reset()
         {
             try

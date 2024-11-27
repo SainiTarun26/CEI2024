@@ -35,7 +35,7 @@ namespace CEIHaryana.Industry_Master
             string LoginID = string.Empty;
             LoginID = Session["SiteOwnerId_Sld_Indus"].ToString();
             DataTable ds = new DataTable();
-            ds = CEI.SldHistory(LoginID, searchText);
+            ds = CEI.SldHistory_Industry(LoginID, searchText);
             if (ds.Rows.Count > 0)
             {
                 GridView.DataSource = ds;
@@ -89,6 +89,14 @@ namespace CEIHaryana.Industry_Master
                 string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
+            if (e.CommandName == "Print")
+            {
+                string fileName = e.CommandArgument.ToString();
+                string folderPath = Server.MapPath(fileName);
+                string filePath = Path.Combine(folderPath);
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
         }
 
         protected void GridView_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -97,9 +105,10 @@ namespace CEIHaryana.Industry_Master
             {
 
                 string status = DataBinder.Eval(e.Row.DataItem, "Status_type").ToString();
-
+                string RequestLetter = DataBinder.Eval(e.Row.DataItem, "RequestLetter").ToString();
                 LinkButton lnkDocumemtPath = (LinkButton)e.Row.FindControl("LnkDocumemtPath");
                 LinkButton linkButton1 = (LinkButton)e.Row.FindControl("LinkButton1");
+                LinkButton Lnkbtn = (LinkButton)e.Row.FindControl("Lnkbtn");
 
                 if (status == "Approved" || status == "Rejected")
                 {
@@ -112,6 +121,14 @@ namespace CEIHaryana.Industry_Master
 
                     linkButton1.Visible = true;
                     lnkDocumemtPath.Visible = false;
+                }
+                if (RequestLetter != null && RequestLetter != "")
+                {
+                    Lnkbtn.Visible = true;
+                }
+                else
+                {
+                    Lnkbtn.Visible = false;
                 }
             }
         }

@@ -69,6 +69,14 @@ namespace CEIHaryana.Admin
                 string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
+            if (e.CommandName == "Print")
+            {
+                string fileName = e.CommandArgument.ToString();
+                string folderPath = Server.MapPath(fileName);
+                string filePath = Path.Combine(folderPath);
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
 
         }
 
@@ -81,7 +89,8 @@ namespace CEIHaryana.Admin
 
                 LinkButton lnkDocumemtPath = (LinkButton)e.Row.FindControl("LnkDocumemtPath");
                 LinkButton linkButton1 = (LinkButton)e.Row.FindControl("LinkButton1");
-
+                string RequestLetter = DataBinder.Eval(e.Row.DataItem, "RequestLetter").ToString();
+                LinkButton Lnkbtn = (LinkButton)e.Row.FindControl("Lnkbtn");
                 if (status == "Approved" || status == "Rejected")
                 {
                     linkButton1.Visible = false;
@@ -93,6 +102,14 @@ namespace CEIHaryana.Admin
 
                     linkButton1.Visible = true;
                     lnkDocumemtPath.Visible = false;
+                }
+                if (RequestLetter != null && RequestLetter != "")
+                {
+                    Lnkbtn.Visible = true;
+                }
+                else
+                {
+                    Lnkbtn.Visible = false;
                 }
             }
 

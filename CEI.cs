@@ -2323,8 +2323,6 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckCertificateupdated", CertificateOld, CertificateNew, Id);
         }
 
-
-
         public DataSet SearchingOnGeneraterSet(string searchterm, string LoginId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SearchingGeneraterSet", searchterm, LoginId);
@@ -4465,10 +4463,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SdlReturnHistory", SiteOwnerId);
         }
 
-        public DataSet UploadSldDocument(string SiteOwnerID, string Path, string Createdby, string SiteOwnerAddress, string OwnerName, string UserType)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_InsertSdlData", SiteOwnerID, Path, Createdby, SiteOwnerAddress, OwnerName, UserType);
-        }
+        //public DataSet UploadSldDocument(string SiteOwnerID, string Path, string Createdby, string SiteOwnerAddress, string OwnerName, string UserType)
+        //{
+        //    return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_InsertSdlData", SiteOwnerID, Path, Createdby, SiteOwnerAddress, OwnerName, UserType);
+        //}
 
         public void SldApprovedByAdmin(string SLD_ID, string Status_type, string ActionTaken, string SLDApproved, string Remarks, string Rejection)
         {
@@ -7860,6 +7858,94 @@ string SupervisorName, string SupervisorLicenseNumber, string SupervisorLicenseE
 
         //////
 
+
+        ////Neeraj
+        public int UpdateSLD_Industry(string Id, string path, string RequestLetter, string SiteOwnerId, SqlTransaction transaction)
+        {
+            SqlCommand cmd = new SqlCommand("Sp_UpdateSdlData_Industry", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", Id);
+            cmd.Parameters.AddWithValue("@Path", path);
+            cmd.Parameters.AddWithValue("@RequestLetter", RequestLetter);
+            cmd.Parameters.AddWithValue("@SiteOwnerId", SiteOwnerId);
+
+            int x = cmd.ExecuteNonQuery();
+            return x;
+            //return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_UpdateSdlData", Id, path, RequestLetter, SiteOwnerId, transaction);
+
+        }
+
+        public DataTable SldHistory_Industry(string SiteOwnerId, string searchText = null)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ApproveSdlHistory_Industry", SiteOwnerId, String.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+
+        public int UploadSldDocument_Industries(string SiteOwnerID, string Path, string RequestLetter, string Createdby, string SiteOwnerAddress, string OwnerName, string UserType, string District, string serviceid)
+        {
+            // Prepare the output parameter
+            SqlParameter outputParam = new SqlParameter("@InsertedSLD_ID", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+
+            // Execute the stored procedure and pass the output parameter
+            DBTask.ExecuteNonQuery(
+                ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+                CommandType.StoredProcedure,
+                "Sp_InsertSdlData_Industries",
+                new SqlParameter("@SiteOwnerID", SiteOwnerID),
+                new SqlParameter("@Path", Path),
+                new SqlParameter("@RequestLetter", RequestLetter),
+                new SqlParameter("@Createdby", Createdby),
+                new SqlParameter("@SiteOwnerAddress", SiteOwnerAddress),
+                new SqlParameter("@OwnerName", OwnerName),
+                new SqlParameter("@UserType", UserType),
+                new SqlParameter("@District", District),
+                new SqlParameter("@ServiceId", serviceid),
+                outputParam  // Include the output parameter
+            );
+
+            // Retrieve the output parameter value
+            int insertedSLD_ID = (int)outputParam.Value;
+
+            // Return the inserted SLD_ID
+            return insertedSLD_ID;
+        }
+        public int UpdateSLD(string Id, string path, string RequestLetter, string SiteOwnerId, SqlTransaction transaction)
+        {
+            SqlCommand cmd = new SqlCommand("Sp_UpdateSdlData", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", Id);
+            cmd.Parameters.AddWithValue("@Path", path);
+            cmd.Parameters.AddWithValue("@RequestLetter", RequestLetter);
+            cmd.Parameters.AddWithValue("@SiteOwnerId", SiteOwnerId);
+
+            int x = cmd.ExecuteNonQuery();
+            return x;
+            //return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_UpdateSdlData", Id, path, RequestLetter, SiteOwnerId, transaction);
+
+        }
+
+        public int UploadSldDocument(string SiteOwnerID, string Path, string RequestLetter, string Createdby, string SiteOwnerAddress, string OwnerName, string UserType, SqlTransaction transaction  )
+        {
+            SqlCommand cmd = new SqlCommand("Sp_InsertSdlData", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@SiteOwnerID ", SiteOwnerID);
+            cmd.Parameters.AddWithValue("@Path ", Path);
+            cmd.Parameters.AddWithValue("@RequestLetter ", RequestLetter);
+            cmd.Parameters.AddWithValue("@Createdby ", Createdby);
+            cmd.Parameters.AddWithValue("@SiteOwnerAddress ", SiteOwnerAddress);
+            cmd.Parameters.AddWithValue("@OwnerName ", OwnerName);
+            cmd.Parameters.AddWithValue("@UserType ", UserType);
+            int x = cmd.ExecuteNonQuery();
+            return x;
+            //con.Close();
+
+        }
+
+
+
+        /////
     }
 }
 

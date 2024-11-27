@@ -353,7 +353,7 @@
                             </asp:BoundField>
                                  <asp:BoundField DataField="SiteOwnerAddress" HeaderText="Owner Address">
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="28%" />
+                                <ItemStyle HorizontalAlign="center" Width="28%"  CssClass="break-text-10" />
                             </asp:BoundField>
                                  <asp:BoundField DataField="SubmittedDate" HeaderText="Received Date">
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
@@ -371,11 +371,19 @@
                                 <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                     <HeaderStyle Width="5%" CssClass="headercolor" />
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("Path") %>' CommandName="Select">Click here to view document </asp:LinkButton>
+                                        <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("Path") %>' CommandName="Select">view document </asp:LinkButton>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Left" />
                                 </asp:TemplateField>
+                                   <asp:TemplateField HeaderText="Request Letter" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                   <HeaderStyle Width="5%" CssClass="headercolor" />
+                                  <ItemTemplate>
+                                  <asp:LinkButton ID="Lnkbtn" runat="server" CommandArgument='<%# Bind("RequestLetter") %>' CommandName="Print">view document </asp:LinkButton>
+                                </ItemTemplate>
+                           <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                           <HeaderStyle HorizontalAlign="Left" />
+                    </asp:TemplateField>
                             </Columns>
                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                         </asp:GridView>
@@ -451,8 +459,7 @@
             </div>
         </div>
     </div>
-    </div>
-    <footer class="footer">
+        <footer class="footer">
     </footer>
     <script src="/Assets/js/js/vendor.bundle.base.js"></script>
     <script src="/Assets/js/chart.js/Chart.min.js"></script>
@@ -647,5 +654,40 @@
             return true;
         }
     </script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll('.break-text-10');
 
+            elements.forEach(function (element) {
+                let text = element.innerText;
+                let formattedText = '';
+                let currentIndex = 0;
+
+                while (currentIndex < text.length) {
+                    // Take a chunk of up to 20 characters
+                    let chunk = text.slice(currentIndex, currentIndex + 30);
+
+                    if (chunk.length < 30) {
+                        // If the chunk is less than 20 characters, add it without breaking
+                        formattedText += chunk;
+                        break; // Exit the loop as we've processed the remaining text
+                    }
+
+                    // For chunks of 20 or more characters, try to break at the last whitespace
+                    let breakIndex = chunk.lastIndexOf(" ");
+                    if (breakIndex !== -1) {
+                        // If there's a whitespace, break at that space
+                        formattedText += chunk.slice(0, breakIndex) + '<br>';
+                        currentIndex += breakIndex + 1; // Move past the space
+                    } else {
+                        // Otherwise, break at the 20-character limit
+                        formattedText += chunk + '<br>';
+                        currentIndex += 30;
+                    }
+                }
+
+                element.innerHTML = formattedText.trim(); // Remove any trailing <br>
+            });
+        });
+</script>
 </asp:Content>

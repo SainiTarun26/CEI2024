@@ -36,6 +36,10 @@ namespace CEIHaryana.Industry_Master
                             {
                                 getWorkIntimationData();
                             }
+                            if(statusType == "Approved" || statusType == "Rejected")
+                            {
+                                getWorkIntimationData();
+                            }
                             else
                             {
                                 Response.Redirect("/Industry_Master/NewInstallationStatus.aspx", false);

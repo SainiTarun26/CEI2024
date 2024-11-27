@@ -612,89 +612,90 @@ namespace CEIHaryana.Industry_Master
         private void GetDetails()
         {
             Id = Session["SiteOwnerId_Industry"].ToString();
-            DataSet ds = new DataSet();
-            ds = CEI.GetPeriodicRenualDataAtSiteOwner_Industries(Id);
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                Session["TestReportGenerated"] = ds.Tables[0].Rows[0]["TestReportGenerated"].ToString();
+            //DataSet ds = new DataSet();
+            //ds = CEI.GetPeriodicRenualDataAtSiteOwner_Industries(Id);
+            //if (ds.Tables[0].Rows.Count > 0)
+            //{
+            //    Session["TestReportGenerated"] = ds.Tables[0].Rows[0]["TestReportGenerated"].ToString();
                
-                ApplicantCode = ds.Tables[0].Rows[0]["ApplicantTypeCode"].ToString();
+            //    ApplicantCode = ds.Tables[0].Rows[0]["ApplicantTypeCode"].ToString();
 
-                txtPAN.Text = ds.Tables[0].Rows[0]["PANNumber"].ToString();
-                txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
-               txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
-                txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
-                txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
-                txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+            //    txtPAN.Text = ds.Tables[0].Rows[0]["PANNumber"].ToString();
+            //    txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+            //   txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+            //    txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+            //    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+            //    txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
                
 
-                if (ApplicantType == "Private/Personal Installation")
-                {
-                    //PowerUtility.Visible = false;
-                    UserId.Visible = false;
-                    string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
-                    DivPancard_TanNo.Visible = true;
-                    txtPAN.Text = PanTanNumber;
-                }
-                else if (ApplicantType == "Other Department/Organization")
-                {
-                    string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
-                    DivOtherDepartment.Visible = true;
-                    txtTanNumber.Text = PanTanNumber;
-                   // PowerUtility.Visible = false;
-                    UserId.Visible = false;
-                }
-                else if (ApplicantType == "Power Utility")
-                {
-                    string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
-                    txtUserId.Text = PanTanNumber;
-                    UserId.Visible = true;
-                    //NameUtility.Visible = true;
-                    //Wing.Visible = true;
-                    DivPancard_TanNo.Visible = true;
-                    txtPAN.Text = Session["SiteOwnerId_Industry"].ToString();
-                   // PowerUtility.Visible = true;
-                    //InstallationFor.Visible = false;
-                }
-                //txtUtilityName.Text = ds.Tables[0].Rows[0]["PowerUtility"].ToString();
-                //txtWing.Text = ds.Tables[0].Rows[0]["PowerUtilityWing"].ToString();
-                //txtZone.Text = ds.Tables[0].Rows[0]["ZoneName"].ToString();
-                //txtCircle.Text = ds.Tables[0].Rows[0]["CircleName"].ToString();
-                //txtDivision.Text = ds.Tables[0].Rows[0]["DivisionName"].ToString();
-                //txtSubDivision.Text = ds.Tables[0].Rows[0]["SubDivisionName"].ToString();
-                Password = ds.Tables[0].Rows[0]["SiteOwnerPassword"].ToString();
-                txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
-                txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
-            }
-            else
+            //    if (ApplicantType == "Private/Personal Installation")
+            //    {
+            //        //PowerUtility.Visible = false;
+            //        UserId.Visible = false;
+            //        string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
+            //        DivPancard_TanNo.Visible = true;
+            //        txtPAN.Text = PanTanNumber;
+            //    }
+            //    else if (ApplicantType == "Other Department/Organization")
+            //    {
+            //        string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
+            //        DivOtherDepartment.Visible = true;
+            //        txtTanNumber.Text = PanTanNumber;
+            //       // PowerUtility.Visible = false;
+            //        UserId.Visible = false;
+            //    }
+            //    else if (ApplicantType == "Power Utility")
+            //    {
+            //        string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
+            //        txtUserId.Text = PanTanNumber;
+            //        UserId.Visible = true;
+            //        //NameUtility.Visible = true;
+            //        //Wing.Visible = true;
+            //        DivPancard_TanNo.Visible = true;
+            //        txtPAN.Text = Session["SiteOwnerId_Industry"].ToString();
+            //       // PowerUtility.Visible = true;
+            //        //InstallationFor.Visible = false;
+            //    }
+            //    //txtUtilityName.Text = ds.Tables[0].Rows[0]["PowerUtility"].ToString();
+            //    //txtWing.Text = ds.Tables[0].Rows[0]["PowerUtilityWing"].ToString();
+            //    //txtZone.Text = ds.Tables[0].Rows[0]["ZoneName"].ToString();
+            //    //txtCircle.Text = ds.Tables[0].Rows[0]["CircleName"].ToString();
+            //    //txtDivision.Text = ds.Tables[0].Rows[0]["DivisionName"].ToString();
+            //    //txtSubDivision.Text = ds.Tables[0].Rows[0]["SubDivisionName"].ToString();
+            //    Password = ds.Tables[0].Rows[0]["SiteOwnerPassword"].ToString();
+            //    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+            //    txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+            //}
+            //else
+            //{
+               // Session["TestReportGenerated"] = "";
+            //    //txtCircle.Visible = false;
+            //    //DdlCircle.Visible = true;
+            //    //txtSubDivision.Visible = false;
+            //    //DdlSubDivision.Visible = true;
+            //    //txtDivision.Visible = false;
+            //    //DdlDivision.Visible = true;
+            //    // ddlApplicantType.Visible = true;
+            //    //txtZone.Visible = false;
+            //    //DdlZone.Visible = true;
+            //    //txtWing.Visible = false;
+            //    //DdlWing.Visible = true;
+            //    //txtUtilityName.Visible = false;
+            //    //ddlPoweUtility.Visible = true;
+               
+            //}
+            if (Session["UserSessionData"] is Cei_IndustryServices_Redirection_IncomingJson_Model userSession)
             {
-                Session["TestReportGenerated"] = "";
-                //txtCircle.Visible = false;
-                //DdlCircle.Visible = true;
-                //txtSubDivision.Visible = false;
-                //DdlSubDivision.Visible = true;
-                //txtDivision.Visible = false;
-                //DdlDivision.Visible = true;
-                // ddlApplicantType.Visible = true;
-                //txtZone.Visible = false;
-                //DdlZone.Visible = true;
-                //txtWing.Visible = false;
-                //DdlWing.Visible = true;
-                //txtUtilityName.Visible = false;
-                //ddlPoweUtility.Visible = true;
-                if (Session["UserSessionData"] is Cei_IndustryServices_Redirection_IncomingJson_Model userSession)
-                {
-                    // Populate textboxes with session data
-                    txtName.Text = userSession.uname;
-                    txtagency.Text = userSession.businessentity;
-                    txtAddress.Text = userSession.address;
-                    txtEmail.Text = userSession.useremail;
-                    txtPhone.Text = userSession.mobile;
-                }
-                txtPAN.Text = Session["SiteOwnerId_Industry"].ToString();
-                txtTanNumber.Text = Session["SiteOwnerId_Industry"].ToString();
+                // Populate textboxes with session data
+                txtName.Text = userSession.uname;
+                txtagency.Text = userSession.businessentity;
+                txtAddress.Text = userSession.address;
+                txtEmail.Text = userSession.useremail;
+                txtPhone.Text = userSession.mobile;
             }
-           
+            txtPAN.Text = Session["SiteOwnerId_Industry"].ToString();
+            txtTanNumber.Text = Session["SiteOwnerId_Industry"].ToString();
+
         }
          
        
@@ -855,8 +856,8 @@ namespace CEIHaryana.Industry_Master
                     }
                     
                     Id = Session["SiteOwnerId_Industry"].ToString();
-                    string TestReportGenerated = "";
-                    TestReportGenerated = Session["TestReportGenerated"].ToString();
+                    //string TestReportGenerated = "";
+                   // TestReportGenerated = Session["TestReportGenerated"].ToString();
                     // if (TestReportGenerated != "" || TestReportGenerated!= null) {
                     // Insert data
                     CEI.IntimationDataInsertionBySiteowner_Industries(

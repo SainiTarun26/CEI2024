@@ -371,7 +371,7 @@
                            
                                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;" id="Document" runat="server" visible="True">
                                      <div class="row">
-                                          <div class="col-md-6">
+                                          <div class="col-md-4">
                                             <label>
                                                 SiteAddress
                                                 <samp style="color: red">* </samp>
@@ -380,7 +380,7 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Please Select SiteOwnerAddress" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlSiteOwnerAddress" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
-                                           <div class="col-md-6" id="hiddenfield1" runat="server">
+                                           <div class="col-md-4" id="hiddenfield1" runat="server">
                             <label class="form-label" for="CustomFile">
                                SLD Document (2MB PDF ONLY)<samp style="color: red"> * </samp>
                             </label>
@@ -391,6 +391,17 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
                                 ControlToValidate="CustomFile" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
+                                          <div class="col-md-4" id="Div1" runat="server">
+                       <label class="form-label" for="customFile">
+                          Request Letter mentionaly Details of Installations<samp style="color: red"> * </samp>
+                                    </label>
+                         <br />
+                       <asp:FileUpload ID="File" TabIndex="19" runat="server" CssClass="form-control"
+                       Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
+
+                   <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                      ControlToValidate="File" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                  </div>
                                      </div>
                                        </div>
                             </div>
