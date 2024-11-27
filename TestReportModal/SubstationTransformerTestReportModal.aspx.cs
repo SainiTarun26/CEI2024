@@ -51,6 +51,22 @@ namespace CEIHaryana.TestReportModal
                             }
                         }
                     }
+                    else if (Session["SiteOwnerId_Sld_Indus"] != null && Session["SiteOwnerId_Sld_Indus"].ToString() != "")
+                    {
+                        if (Request.UrlReferrer != null)
+                        {
+                            Session["PreviousPage_Industry"] = Request.UrlReferrer.ToString();
+                        }
+                        ID = Session["SubStationID"].ToString();
+                        GetDetailswithId();
+                        SiteOwner.Visible = false;
+                        SiteOwner2.Visible = true;
+                        IntimationData.Visible = true;
+                        ApprovalCard.Visible = true;
+                        //CreatedDate.Visible = true; //Added
+                        //SubmitDate.Visible = true;
+                        //SubmitBy.Visible = true;
+                    }
                     else if (Session["SiteOwnerId_Industry"] != null && Session["SiteOwnerId_Industry"].ToString() != "")
                     {
                         if (Request.UrlReferrer != null)

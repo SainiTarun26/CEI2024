@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="LiftSiteDetails.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.LiftSiteDetails" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -18,7 +19,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
     <script type="text/javascript">
-        function isNumberKey(evt) {x
+        function isNumberKey(evt) {
+            x
             var charCode = (evt.which) ? evt.which : event.keyCode
             if (charCode > 31 && (charCode < 48 || charCode > 57)) {
                 return false;
@@ -41,12 +43,111 @@
             return (allow.indexOf(String.fromCharCode(k)) != -1);
         }
     </script>
+    <script type="text/javascript">
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
 
+        function preventZero(event) {
+            var key = event.keyCode || event.charCode;
+            var textboxValue = event.target.value;
+            if (key === 48 && textboxValue.length === 0) { // Check if the pressed key is '0'
+                event.preventDefault();
+                return false;
+            }
+            return true;
+        }
+
+        function preventZeroo(textBox) {
+            if (textBox.value === "0") {
+                textBox.value = ""; // Clear the textbox if '0' is entered
+            }
+        }
+
+        //function isNumberdecimalKey(evt, element) {
+        //    var charCode = (evt.which) ? evt.which : evt.keyCode;
+
+        //    // Allow only digits and one decimal point
+        //    if (charCode != 46 && (charCode < 48 || charCode > 57))
+        //        return false;
+
+        //    // Get the current value of the textbox
+        //    var value = element.value;
+
+        //    // Allow only one decimal point
+        //    if (charCode == 46 && value.indexOf('.') != -1)
+        //        return false;
+
+        //    // Ensure only two digits after the decimal point
+        //    if (value.indexOf('.') != -1) {
+        //        var decimalPart = value.split('.')[1];
+        //        if (decimalPart && decimalPart.length >= 2) {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
+
+        function isNumberdecimalKey(evt, element) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+
+            // Allow only digits and one decimal point
+            if (charCode != 46 && (charCode < 48 || charCode > 57))
+                return false;
+
+            // Get the current value of the textbox
+            var value = element.value;
+
+            // Allow only one decimal point
+            if (charCode == 46 && value.indexOf('.') != -1)
+                return false;
+
+            // Ensure only 5 digits before the decimal point
+            var integerPart = value.split('.')[0];
+            if (value.indexOf('.') === -1 && integerPart.length >= 5 && charCode != 46)
+                return false;
+
+            // Ensure only 2 digits after the decimal point
+            if (value.indexOf('.') != -1) {
+                var decimalPart = value.split('.')[1];
+                if (decimalPart && decimalPart.length >= 2) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+
+
+        //Allow Only Aplhabet, Delete and Backspace
+        function isAlpha(keyCode) {
+            return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
+        }
+
+        function alphabetKey(e) {
+            var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
+            var k;
+            k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+            return (allow.indexOf(String.fromCharCode(k)) != -1);
+        }
+    </script>
+<script type="text/javascript">
+    function alertWithRedirectdata() {
+        if (confirm('Lift Details Successfully')) {
+            window.location.href = "/SiteOwnerPages/LiftSiteDetails.aspx";
+        } else {
+        }
+    }
+</script>
     <script type="text/javascript">
         function alertWithRedirectdata() {
 
-            alert('Intimation Created Successfully');
-            window.location.href = "/Contractor/Work_Intimation.aspx";
+            alert('SiteDetails Created Successfully');
+            window.location.href = "/SiteOwnerPages/LiftSiteDetails.aspx";
 
         }
     </script>
@@ -315,7 +416,7 @@
                         </label>
                     </div>
                 </div>
-                
+
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -326,76 +427,76 @@
                                     </div>
                                 </div>
                                 <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-                                   
+
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label>
                                                 Applicant Type
-                                                <samp style="color: red">* </samp>
+            <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlApplicantType" TabIndex="2" runat="server">
+                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlApplicantType" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged" TabIndex="2" runat="server">
                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                 <asp:ListItem Text="Private/Personal Installation" Value="AT001"></asp:ListItem>
-                                                <asp:ListItem Text="Other Department/Organization" Value="AT002"></asp:ListItem>
+                                                <asp:ListItem Text="Other Department/Organization" Value="AT003"></asp:ListItem>
 
 
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlApplicantType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
-                                       
-                                        <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="true">
+
+                                        <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="false">
                                             <label for="PanNumber">
                                                 PAN Card
-                                            <samp style="color: red">* </samp>
+        <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtPAN" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtPAN" TabIndex="1" ReadOnly="true" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPAN" ValidationExpression="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ValidationGroup="Submit"
                                                 ErrorMessage="Enter a valid PAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                         </div>
 
-                                        <div class="col-md-4" runat="server" id="DivOtherDepartment" visible="true">
+                                        <div class="col-md-4" runat="server" id="DivOtherDepartment" visible="false">
                                             <label for="TanNumber">
                                                 TAN Number
-                                            <samp style="color: red">* </samp>
+        <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtTanNumber" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtTanNumber" ReadOnly="true" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RegularExpressionValidator ID="revTANNumber" runat="server" ControlToValidate="txtTanNumber" ValidationExpression="[A-Za-z]{4}[0-9]{5}[A-Za-z]" ValidationGroup="Submit"
                                                 ErrorMessage="Enter a valid TAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtTanNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                         </div>
-                                         <div class="col-md-4">
+                                        <div class="col-md-4">
                                             <label>
                                                 Electrical Installation For<samp style="color: red"> * </samp>
                                             </label>
-                                            <asp:DropDownList ID="ddlworktype" TabIndex="3" runat="server" AutoPostBack="true" EnableViewState="true" class="form-control  select-form select2" Style="width: 100% !important;">
+                                            <asp:DropDownList ID="ddlworktype" TabIndex="3" OnSelectedIndexChanged="ddlworktype_SelectedIndexChanged" runat="server" AutoPostBack="true" EnableViewState="true" class="form-control  select-form select2" Style="width: 100% !important;">
                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                 <asp:ListItem Value="1" Text="Individual Person"></asp:ListItem>
                                                 <asp:ListItem Value="2" Text="Firm/Organization/Company/Department"></asp:ListItem>
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="Please Select Work Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlworktype" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
-                                              <div class="col-md-4" id="NameUtility" runat="server" visible="false">
+                                        <div class="col-md-4" id="NameUtility" runat="server" visible="false">
                                             <label>
                                                 Name Of Power Utility
-                                                <samp style="color: red">* </samp>
+            <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlPoweUtility" TabIndex="2" runat="server">
+                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlPoweUtility" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlPoweUtility_SelectedIndexChanged">
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator19" Text="Please Select Power Utility Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPoweUtility" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
                                         <div class="col-md-4" id="Wing" runat="server" visible="false">
                                             <label>
                                                 Wing
-                                                <samp style="color: red">* </samp>
+            <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="DdlWing" TabIndex="2" runat="server">
+                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="DdlWing" TabIndex="2" runat="server" OnSelectedIndexChanged="DdlWing_SelectedIndexChanged">
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator23" Text="Please Select Applicant Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlWing" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
                                     </div>
                                     <div class="row" runat="server" id="PowerUtility" visible="false">
-                                  
+
                                         <div class="col-md-4">
                                             <label>
                                                 Zone
@@ -433,15 +534,15 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator29" Text="Please Select Sub-Division" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlSubDivision" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
                                     </div>
-                                      
+
                                     <div class="row">
-                                          <div class="col-md-4" runat="server" id="UserId" visible="false">
+                                        <div class="col-md-4" runat="server" id="UserId" visible="false">
                                             <label for="UserId">
                                                 UserId
                                             <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtUserId" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            
+
                                         </div>
 
 
@@ -483,27 +584,25 @@
                                                 </svg>
                                             </span>
                                         </div>--%>
-
-                                        
                                     </div>
                                     <div class="row" id="row2">
                                         <div class="col-md-4" id="individual" runat="server">
                                             <label for="Name">
                                                 Name of Owner/ Consumer<samp style="color: red"> * </samp>
                                             </label>
-                                            <div class="input-box" style="padding-left:0px !important;">
-                                                <asp:TextBox class="form-control" ID="txtName" TabIndex="4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return alphabetKey(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px; box-shadow: none !important;"></asp:TextBox>
+                                            <div class="input-box" style="padding-left: 0px !important;">
+                                                <asp:TextBox class="form-control" ID="txtName" TabIndex="4" MaxLength="50" onkeydown="return preventEnterSubmit(event)" onKeyPress="return alphabetKey(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px; box-shadow: none !important;"></asp:TextBox>
                                             </div>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
                                         </div>
-                                        <div class="col-md-4" id="agency" runat="server">
+                                        <div class="col-md-4" id="agency" runat="server" visible="false">
                                             <label for="agency">
                                                 Name of Firm/ Org./ Company/ Department
                                             <samp style="color: red">* </samp>
                                             </label>
                                             <div class="input-box">
                                                 <span class="prefix">M/s.</span>
-                                                <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtagency" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
                                                 <%-- <asp:TextBox class="form-control" ID="txtagency" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
                                             </div>
                                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtagency"
@@ -569,7 +668,7 @@
                                     </div>
                                 </div>
                                 <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-                                 
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="table-responsive pt-3" id="Installation" runat="server">
@@ -593,10 +692,10 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="col-md-12">
-                                                                       
+
                                                                         <asp:TextBox class="form-control" ID="txtinstallationNo1" TabIndex="13" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="Max no. of Installations is 25." MaxLength="2" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtinstallationNo1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
-                                                                       <%--  <p style="color:red; margin-bottom: 0px; margin-top: -12px; font-weight: 600;
+                                                                        <%--  <p style="color:red; margin-bottom: 0px; margin-top: -12px; font-weight: 600;
                                                                                 font-size: 12px;">Max no. of Installations is only 25.</p>--%>
                                                                     </div>
                                                                 </td>
@@ -728,24 +827,24 @@
                                         Select Installation Type
                                         <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlWorkDetail" runat="server" >
+                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlWorkDetail" runat="server">
                                     </asp:DropDownList>
                                     <asp:TextBox class="form-control" ID="WorkDetail" autocomplete="off" onkeydown="return preventEnterSubmit(event)" Visible="false" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Please Select Voltage Level" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                 </div>
                             </div>
                         </div>
-                        
+
                     </ContentTemplate>
-                     <Triggers>
-               <asp:AsyncPostBackTrigger ControlID="ddlworktype" EventName="SelectedIndexChanged" />
-        
-    </Triggers>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="ddlworktype" EventName="SelectedIndexChanged" />
+
+                    </Triggers>
                 </asp:UpdatePanel>
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: center;">
-                        <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Submit" runat="server"  class="btn btn-primary mr-2"/>
+                        <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2"  OnClientClick="return ValidateEmail();" OnClick="Submit_Click" />
                         <%--OnClientClick="this.disabled=true;this.value='Processing...';" UseSubmitBehavior="false"--%>
                         <%--<asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" OnClientClick="return validateCheckBoxes();" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />--%>
                         <asp:Button type="submit" ID="btnReset" TabIndex="23" Text="Reset" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
@@ -835,8 +934,14 @@
                 return false;
             }
         }
+        function preventEnterSubmit(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                return false;
+            }
+            return true;
     </script>
-    
+
     <script>
         $('.select2').select2();
     </script>
@@ -845,7 +950,7 @@
             no_results_text: "Oops, nothing found!"
         })
     </script>
-    
+
     <script type="text/javascript">
         function isvalidphoneno() {
 
@@ -949,7 +1054,7 @@
 
             return true;
         }
-</script>
+    </script>
 
     <%-- <script type="text/javascript">
         function validateCheckBoxes() {
@@ -1002,12 +1107,12 @@
         document.addEventListener('DOMContentLoaded', function () {
             var form = document.getElementById('<%= this.Page.Form.ClientID %>');
 
-        if (form) {
-            form.onsubmit = function () {
-                //return validateTANNumber();
-            };
-        }
-    });
+            if (form) {
+                form.onsubmit = function () {
+                    //return validateTANNumber();
+                };
+            }
+        });
     </script>
     <script type="text/javascript">
         function validateInput(event) {
@@ -1035,5 +1140,5 @@
             }
             return true;
         }
-    </script>   
+    </script>
 </asp:Content>

@@ -7796,6 +7796,70 @@ string IntimationId, string VoltageLevel, string ApplicantType, string District,
             }
         }
 
+        //Creted By Navneet for lift 
+
+        public DataSet GetSupervisorData()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetSupervisorDetails");
+        }
+
+        public int InsertNewLiftData(string count, string IntimationId, string NameandAddressofLocalAgent, string NameofLocalAgent
+, string AddressofLocalAgent, string ContactNoofLocalAgent, string DateofErection, string TypeofLiftErected, string ContractSpeedofLiftMtrPrSec
+, decimal ContractLoadofLiftInKg, string MaxPersonCapacitywithLiftOperator, decimal WeightofLiftCarwithContractLoadInKg, decimal WeightofCounterWeightInkg
+, decimal DepthofPitInmm, decimal TravelDistanceofLiftInMtr, decimal NoofFloorsServedInMtr, decimal TotalHeadRoomInmm, string TypeOfControl, decimal NoofSuspensionRopes,
+string DescrptionofSuspensionRopes, decimal SizeofSusspensionRopesInmm, decimal WeightofBeamInkg, decimal SizeofBeamInmm, string MakeMainBreaker,
+string TypeMainBreaker, string PolesMainBreaker, string CurrentRatingInAmps, string BreakingCapacityInKA, string MakeRCCBMainBreaker,
+string PolesRCCBMainBreaker, string CurrentRCCBRatingInAmps, string FaultRCCBCurrentRating, string LoadMakeMainBreaker
+, string LoadTypeMainBreaker, string LoadPolesMainBreaker, string LoadCurrentRatingInAmps, string LoadBreakingCapacityInKA,
+string LoadMakeRCCBMainBreaker, string LoadPolesRCCBMainBreaker
+, string LoadRCCBCurrentRatingInAmps, string LoadRCCBFaultCurrentRating, string ForWholeInstallation, string NeutralandPhaseohms, string EarthandPhasemohms, string RedPhaseYellowPhaseInMohms, string RedPhaseBluePhaseInMohms
+, string YellowPhaseBluePhaseInMohms, string RedPhaseEarthWireInMohms, string YellowPhaseEarthWireInMohms, string BluePhaseEarthWirenMohms, string NumberofEarthing
+, string EarthingType1, decimal Valueinohms1, string EarthingType2, decimal Valueinohms2, string EarthingType3, decimal Valueinohms3, string EarthingType4,
+decimal Valueinohms4, string EarthingType5
+, decimal Valueinohms5, string EarthingType6, decimal Valueinohms6, string EarthingType7, decimal Valueinohms7, string EarthingType8, decimal Valueinohms8,
+string EarthingType9, decimal Valueinohms9
+, string EarthingType10, decimal Valueinohms10, string CreatedBy, string ContractorName, string ContractorLicenseNumber, string ContractorLicenseExpiryDate,
+string SupervisorName, string SupervisorLicenseNumber, string SupervisorLicenseExpiryDate)
+        {
+            return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+                "sp_InsertLiftTestReportdata", count, IntimationId, NameandAddressofLocalAgent, NameofLocalAgent
+, AddressofLocalAgent, ContactNoofLocalAgent, DateofErection, TypeofLiftErected, ContractSpeedofLiftMtrPrSec
+, ContractLoadofLiftInKg, MaxPersonCapacitywithLiftOperator, WeightofLiftCarwithContractLoadInKg, WeightofCounterWeightInkg
+, DepthofPitInmm, TravelDistanceofLiftInMtr, NoofFloorsServedInMtr, TotalHeadRoomInmm, TypeOfControl, NoofSuspensionRopes, DescrptionofSuspensionRopes
+, SizeofSusspensionRopesInmm, WeightofBeamInkg, SizeofBeamInmm, MakeMainBreaker, TypeMainBreaker, PolesMainBreaker, CurrentRatingInAmps
+, BreakingCapacityInKA, MakeRCCBMainBreaker, PolesRCCBMainBreaker, CurrentRCCBRatingInAmps, FaultRCCBCurrentRating, LoadMakeMainBreaker
+, LoadTypeMainBreaker, LoadPolesMainBreaker, LoadCurrentRatingInAmps, LoadBreakingCapacityInKA, LoadMakeRCCBMainBreaker, LoadPolesRCCBMainBreaker
+, LoadRCCBCurrentRatingInAmps, LoadRCCBFaultCurrentRating, ForWholeInstallation, NeutralandPhaseohms, EarthandPhasemohms, RedPhaseYellowPhaseInMohms, RedPhaseBluePhaseInMohms
+, YellowPhaseBluePhaseInMohms, RedPhaseEarthWireInMohms, YellowPhaseEarthWireInMohms, BluePhaseEarthWirenMohms, NumberofEarthing
+, EarthingType1, Valueinohms1, EarthingType2, Valueinohms2, EarthingType3, Valueinohms3, EarthingType4, Valueinohms4, EarthingType5
+, Valueinohms5, EarthingType6, Valueinohms6, EarthingType7, Valueinohms7, EarthingType8, Valueinohms8, EarthingType9, Valueinohms9
+, EarthingType10, Valueinohms10, CreatedBy, ContractorName, ContractorLicenseNumber, ContractorLicenseExpiryDate, SupervisorName, SupervisorLicenseNumber, SupervisorLicenseExpiryDate);
+        }
+
+        public DataTable UpdateLiftTestReportHistory(string ID, string count, string CreatedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_LiftTestReportApproval", ID, count, CreatedBy);
+        }
+
+
+        public DataSet GetSupervisorandContractor(string Person, string LicenseNo)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSuperVisorAndContractorDetails", Person, LicenseNo);
+        }
+
+
+        public DataTable GetInstllationsforSitOwner(string IntimationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallationsForSiteOwner", IntimationId);
+
+        }
+        public DataSet IntimationDataforSiteOwner(string UserId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLiftIntimationsForSiteOwner", UserId);
+        }
+
+        //////
+
     }
 }
 

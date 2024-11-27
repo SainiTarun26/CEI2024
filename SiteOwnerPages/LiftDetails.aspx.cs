@@ -1,8 +1,10 @@
 ﻿using CEI_PRoject;
+using CEI_PRoject.Admin;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -19,13 +21,13 @@ namespace CEIHaryana.SiteOwnerPages
                 if (!IsPostBack)
                 {
                     ddlEarthing();
-                    Session["SiteOwnerId"] = "1234";
-                    //txtapplication.Text = Session["Application"].ToString().Trim();
-                    //txtInstallation.Text = Session["Typs"].ToString().Trim();
-                    //txtid.Text = Session["Intimations"].ToString().Trim();
-                    //txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim() + " Out of " + Session["TotalInstallation"].ToString().Trim();
-                    //BtnBack.Visible = true;
-
+                    txtapplication.Text = Session["Application"].ToString().Trim();
+                    txtInstallation.Text = Session["Typs"].ToString().Trim();
+                    txtid.Text = Session["Intimations"].ToString().Trim();
+                    txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim() + " Out of " + Session["TotalInstallation"].ToString().Trim();
+                    BtnBack.Visible = true;
+                    GetContractorDetails();
+                        GetSupervisorDetails();
                 }
             }
             catch
@@ -34,7 +36,32 @@ namespace CEIHaryana.SiteOwnerPages
             }
 
         }
+        private void GetContractorDetails()
+        {
 
+            DataSet dsContractor = new DataSet();
+            dsContractor = CEI.GetContractorData();
+            ddlContName.DataSource = dsContractor;
+            ddlContName.DataTextField = "ContractorData";
+            ddlContName.DataValueField = "LicenseValue";
+            ddlContName.DataBind();
+            ddlContName.Items.Insert(0, new ListItem("Select", "0"));
+            dsContractor.Clear();
+
+        }
+        private void GetSupervisorDetails()
+        {
+
+            DataSet dsSupervisor= new DataSet();
+            dsSupervisor = CEI.GetSupervisorData();
+            ddlLicenseNo.DataSource = dsSupervisor;
+            ddlLicenseNo.DataTextField = "SupervisorData";
+            ddlLicenseNo.DataValueField = "LicenseValue";
+            ddlLicenseNo.DataBind();
+            ddlLicenseNo.Items.Insert(0, new ListItem("Select", "0"));
+            dsSupervisor.Clear();
+
+        }
         private void ddlEarthing()
         {
             try
@@ -110,7 +137,7 @@ namespace CEIHaryana.SiteOwnerPages
             try
             {
                 string IntimationId = Session["id"].ToString();
-                string CreatedBy = Session["SupervisorID"].ToString();
+                string CreatedBy = Session["SiteOwnerId"].ToString();
                 string count = Session["NoOfInstallations"].ToString();
                 string installationNo = Session["IHID"].ToString();
 
@@ -119,34 +146,41 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     return decimal.TryParse(input, out decimal result) ? result : defaultValue;
                 }
+                if (Session["Expired"].ToString()=="False") {
+                    CEI.InsertNewLiftData(
+                        count, IntimationId, RadioButtonList2.SelectedItem.Text, TxtAgentName.Text, txtAgentAddress.Text,
+                        txtAgentPhone.Text, txtErectionDate.Text, ddlLiftErected.SelectedItem.ToString(), txtLiftSpeedContract.Text,
+                        ParseOrDefault(txtLiftLoad.Text), txtMaxPersonCapacity.Text, ParseOrDefault(txtWeight.Text), ParseOrDefault(txtCounterWeight.Text),
+                        ParseOrDefault(txtPitDepth.Text), ParseOrDefault(txtTravelDistance.Text), ParseOrDefault(txtFloorsServed.Text),
+                        ParseOrDefault(txtTotalHeadRoom.Text), txtTypeofControll.Text, ParseOrDefault(txtNoofSuspension.Text), txtDescriptionOfSuspension.Text,
+                        ParseOrDefault(txtSizeOfSuspension.Text), ParseOrDefault(txtBeamWeight.Text), ParseOrDefault(txtBeamSize.Text),
+                        txtMakeMainBreaker.Text, txtTypeMainBreaker.Text, ddlPoleMainBreaker.SelectedItem.ToString(), txtratingMainBreaker.Text,
+                        txtCapacityMainBreaker.Text, txtMakeRCCBMainBreaker.Text, ddlPolesRCCBMainBreaker.SelectedItem.ToString(),
+                        txtRatingRCCBMainBreaker.Text, txtfaultratingRCCBMainBreaker.Text, txtMakeLoadBreaker.Text, txtTypeLoadBreaker.Text,
+                        ddlPolesLoadBreaker.SelectedItem.ToString(), txtRatingLoadBreaker.Text, txtCapacityLoadBreaker.Text, txtMakeRCCBLoadBreaker.Text,
+                        ddlpolesRCCBLoadBreaker.SelectedItem.ToString(), txtRatingRCCBLoadBreaker.Text, txtFaultCurrentRCCBLoadBreaker.Text,
+                        txtwholeInstallation.Text, txtNeutralPhase.Text, txtEarthPhase.Text, txtRedYellow.Text, txtRedBlue.Text, txtYellowBlue.Text, txtRedEarth.Text, txtYellowEarth.Text,
+                        txtBlueEarth.Text, ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), ParseOrDefault(txtearthingValue1.Text),
+                        ddlEarthingtype2.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue2.Text), ddlEarthingtype3.SelectedItem.ToString(),
+                        ParseOrDefault(txtEarthingValue3.Text), ddlEarthingtype4.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue4.Text),
+                        ddlEarthingtype5.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue5.Text), ddlEarthingtype6.SelectedItem.ToString(),
+                        ParseOrDefault(txtEarthingValue6.Text), ddlEarthingtype7.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue7.Text),
+                        ddlEarthingtype8.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue8.Text), ddlEarthingtype9.SelectedItem.ToString(),
+                        ParseOrDefault(txtEarthingValue9.Text), ddlEarthingtype10.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue10.Text),
+                        CreatedBy, ddlContName.SelectedItem.ToString(), txtContName.Text, txtContExp.Text, ddlLicenseNo.SelectedItem.ToString(),
+                        txtSupLicenseNo.Text, txtSupExpiryDate.Text
+                    );
+                    CEI.UpdateLiftTestReportHistory(IntimationId, count, CreatedBy);
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
 
-                CEI.InsertNewLiftData(
-                    count, IntimationId, RadioButtonList2.SelectedItem.Text, TxtAgentName.Text, txtAgentAddress.Text,
-                    txtAgentPhone.Text, txtErectionDate.Text, ddlLiftErected.SelectedItem.ToString(), txtLiftSpeedContract.Text,
-                    ParseOrDefault(txtLiftLoad.Text), txtMaxPersonCapacity.Text, ParseOrDefault(txtWeight.Text), ParseOrDefault(txtCounterWeight.Text),
-                    ParseOrDefault(txtPitDepth.Text), ParseOrDefault(txtTravelDistance.Text), ParseOrDefault(txtFloorsServed.Text),
-                    ParseOrDefault(txtTotalHeadRoom.Text), ParseOrDefault(txtNoofSuspension.Text), txtDescriptionOfSuspension.Text,
-                    ParseOrDefault(txtSizeOfSuspension.Text), ParseOrDefault(txtBeamWeight.Text), ParseOrDefault(txtBeamSize.Text),
-                    txtMakeMainBreaker.Text, txtTypeMainBreaker.Text, ddlPoleMainBreaker.SelectedItem.ToString(), txtratingMainBreaker.Text,
-                    txtCapacityMainBreaker.Text, txtMakeRCCBMainBreaker.Text, ddlPolesRCCBMainBreaker.SelectedItem.ToString(),
-                    txtRatingRCCBMainBreaker.Text, txtfaultratingRCCBMainBreaker.Text, txtMakeLoadBreaker.Text, txtTypeLoadBreaker.Text,
-                    ddlPolesLoadBreaker.SelectedItem.ToString(), txtRatingLoadBreaker.Text, txtCapacityLoadBreaker.Text, txtMakeRCCBLoadBreaker.Text,
-                    ddlpolesRCCBLoadBreaker.SelectedItem.ToString(), txtRatingRCCBLoadBreaker.Text, txtFaultCurrentRCCBLoadBreaker.Text,
-                    txtwholeInstallation.Text, txtRedYellow.Text, txtRedBlue.Text, txtYellowBlue.Text, txtRedEarth.Text, txtYellowEarth.Text,
-                    txtBlueEarth.Text, ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), ParseOrDefault(txtearthingValue1.Text),
-                    ddlEarthingtype2.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue2.Text), ddlEarthingtype3.SelectedItem.ToString(),
-                    ParseOrDefault(txtEarthingValue3.Text), ddlEarthingtype4.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue4.Text),
-                    ddlEarthingtype5.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue5.Text), ddlEarthingtype6.SelectedItem.ToString(),
-                    ParseOrDefault(txtEarthingValue6.Text), ddlEarthingtype7.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue7.Text),
-                    ddlEarthingtype8.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue8.Text), ddlEarthingtype9.SelectedItem.ToString(),
-                    ParseOrDefault(txtEarthingValue9.Text), ddlEarthingtype10.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue10.Text),
-                    CreatedBy
-                );
-                CEI.UpdateInstallations(installationNo, IntimationId);
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
+                    //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Sorry Your License Is Expired Please Contact Admin For saving This Information');", true);
 
-                //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                }
             }
             catch (Exception ex)
             {
@@ -158,6 +192,92 @@ namespace CEIHaryana.SiteOwnerPages
         protected void BtnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("InstallationDetails.aspx", false);
+        }
+
+
+
+        protected void ddlContName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataSet dt = new DataSet();
+            dt = CEI.GetSupervisorandContractor("Contractor", ddlContName.SelectedValue.ToString());
+            if (dt.Tables.Count > 0)
+            {
+                //txtContName.Text = dt.Tables[0].Rows[0]["Name"].ToString();
+                txtContExp.Text = dt.Tables[0].Rows[0]["ExpiryDate"].ToString();
+                txtContName.Text = dt.Tables[0].Rows[0]["Name"].ToString();
+                if (DateTime.TryParse(txtContExp.Text, out DateTime expiryDate)) // Parse the expiry date
+                {
+                    Session["Expired"] = "true";
+                    txtContExp.Text = expiryDate.ToString("yyyy-MM-dd"); // Set formatted date to TextBox
+
+                    if (expiryDate <= DateTime.Now) // Compare with the current date
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Your License Is Expired Please Contact Admin');", true);
+                    }
+                    else
+                    {
+                        Session["Expired"] = "False";
+                    }
+
+                }            
+
+
+            }
+            else
+            {
+
+            }
+        }
+          
+
+        
+
+        protected void ddlLicenseNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataSet dt = new DataSet();
+            dt = CEI.GetSupervisorandContractor("Supervisor", ddlLicenseNo.SelectedValue.ToString());
+            if (dt.Tables[0].Rows.Count > 0)
+            {
+                //txtSupName.Text = dt.Tables[0].Rows[0]["Name"].ToString();
+                txtSupExpiryDate.Text = dt.Tables[0].Rows[0]["DateofExpiry"].ToString();
+                txtSupLicenseNo.Text = dt.Tables[0].Rows[0]["Name"].ToString();
+                if (DateTime.TryParse(txtSupExpiryDate.Text, out DateTime expiryDate)) // Parse the expiry date
+                {
+                    Session["Expired"] = "true";
+                    txtSupExpiryDate.Text = expiryDate.ToString("yyyy-MM-dd"); // Set formatted date to TextBox
+
+                    if (expiryDate <= DateTime.Now) // Compare with the current date
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Your License Is Expired Please Contact Admin');", true);
+                    }
+                    else
+                    {
+                        Session["Expired"] = "False";
+                    }
+
+                }
+               
+            }
+            else
+            {
+
+            }
+        }
+
+        protected void ddlPoleMainBreaker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlPoleMainBreaker.SelectedValue =="1")
+            {
+                InDPO.Visible = true;
+                TPN1.Visible = false;
+                TPN2.Visible = false;
+            }
+            else
+            {
+                InDPO.Visible = false;
+                TPN1.Visible = true;
+                TPN2.Visible = true;
+            }
         }
     }
 }
