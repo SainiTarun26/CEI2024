@@ -87,7 +87,7 @@
             return true;
         }
     </script>
-    <style>
+       <style>
         .headercolor1 {
             text-align: initial !important;
         }
@@ -184,6 +184,7 @@
         select.form-control.select-form.select2 {
             height: 30px !important;
             padding: 2px 0px 5px 10px;
+            margin-bottom: 6px;
         }
 
         ul.chosen-choices {
@@ -293,6 +294,15 @@
             .input-box:focus-within {
                 border-color: #777;
             }
+            select#ContentPlaceHolder1_ddlVoltageLevel {
+    margin-bottom: 10px;
+}
+            div#ContentPlaceHolder1_DivOtherDepartment {
+    margin-bottom: 0px !important;
+}
+            div#ContentPlaceHolder1_DivPancard_TanNo {
+    margin-bottom: 0px;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
