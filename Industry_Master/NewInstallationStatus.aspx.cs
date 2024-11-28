@@ -157,11 +157,11 @@ namespace CEIHaryana.Industry_Master
                 }
 
 
-                else
-                {
+                //else
+                //{
 
-                    linkButton.Visible = false;
-                }
+                //    linkButton.Visible = false;
+                //}
             }
         }
 

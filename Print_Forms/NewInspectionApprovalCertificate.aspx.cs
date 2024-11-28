@@ -28,6 +28,10 @@ namespace CEIHaryana.Print_Forms
                 {
                     GetData();
                 }
+                else if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != string.Empty)
+                {
+                    GetData();
+                }
 
 
             }
@@ -57,7 +61,10 @@ namespace CEIHaryana.Print_Forms
                     ID = Session["InspectionIdNew"].ToString();
 
                 }
-
+                else if (Session["InspId"] != null)
+                {
+                    ID = Session["InspId"].ToString();
+                }
                 DataSet ds = new DataSet();
                 ds = CEI.PrintSubstrationTransformer(ID);
                 lblAddress1.Text = ds.Tables[0].Rows[0]["Header1"].ToString();

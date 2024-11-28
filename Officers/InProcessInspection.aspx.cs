@@ -294,6 +294,7 @@ namespace CEIHaryana.Officers
                     InspectionType.Visible = false;
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
+                    Session["InstallationType"] = txtWorkType.Text;
                     if (txtWorkType.Text == "Line")
                     {
                         Capacity.Visible = false;
