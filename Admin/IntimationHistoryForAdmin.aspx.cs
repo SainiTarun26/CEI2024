@@ -24,8 +24,9 @@ namespace CEIHaryana.Admin
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -50,7 +51,10 @@ namespace CEIHaryana.Admin
                 }
                 ds.Dispose();
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -73,8 +77,10 @@ namespace CEIHaryana.Admin
                     string installationType = lblInstallationType.Text.Trim();
                     Label lblTestRportId = (Label)row.FindControl("lblTestRportId");
                     string TestRportId = lblTestRportId.Text.Trim();
-                    //if (installationType != "Multiple")
-                    //{
+                    Label lblRequestStatus = (Label)row.FindControl("lblRequestStatus");
+                    Label lblTypeOfInspection = (Label)row.FindControl("lblTypeOfInspection");
+
+
                     if (installationType.Trim() == "Line")
                     {
                         Session["LineID"] = installationType;
@@ -93,41 +99,29 @@ namespace CEIHaryana.Admin
                     }
                     if (e.CommandName == "Select")
                     {
-                        Response.Redirect("/Admin/IntimationForHistory.aspx", false);
+                        if (lblRequestStatus != null && lblRequestStatus.Text == "ReSubmit" && lblTypeOfInspection.Text == "New")
+                        {
+                            Response.Redirect("/Admin/ReturnedIntimationForHistory.aspx", false);
+                        }
+                        else if (lblRequestStatus != null && lblRequestStatus.Text == "ReSubmit" && lblTypeOfInspection.Text == "Periodic")
+                        {
+                            Response.Redirect("/Admin/PeriodicReturnedIntimationForHistory.aspx", false);
+                        }
+                        else //if (lblRequestStatus != null && lblRequestStatus.Text == "New")
+                        {
+                            Response.Redirect("/Admin/IntimationForHistory.aspx", false);
+                        }
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"No Record Found for this test report\");", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"No Record Found\");", true);
                     }
-                    //}
-                    //else
-                    //{
-                    //    Session["PeriodicMultiple"] = installationType;
-                    //    if (e.CommandName == "Select")
-                    //    {
-                    //        Response.Redirect("/Admin/MultiplePeriodicInspectionDetail.aspx", false);
-                    //    }
-                    //    else
-                    //    {
-                    //        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"No Record Found for this test report\");", true);
-                    //    }
-                    //}
-
-                    //if (e.CommandName == "Select")
-                    //{
-                    //    Response.Redirect("/Admin/IntimationForHistory.aspx",false);
-                    //}
-                    //else
-                    //{
-                    //    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"No Record Found for this test report\");", true);
-                    //}
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -139,7 +133,7 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
         }
     }

@@ -27,7 +27,8 @@ namespace CEIHaryana.Industry_Master
                 //Session["district_Temp"] = "Ambala";
                 //Session["Serviceid_Sld_Indus"] = "930e4959-d5a0-4624-9995-8c5e3e9cadce";
                 //Session["projectid_Sld_Indus"] = "332b5554-b740-4948-9670-22ce40ecba6c";
-
+                try
+                {               
                 if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != string.Empty && Convert.ToString(Session["district_Temp"]) != null && Convert.ToString(Session["district_Temp"]) != string.Empty)
                 {
                     //Session["SiteOwnerId_Sld_Indus"] = "ABCDG1234G";
@@ -60,7 +61,7 @@ namespace CEIHaryana.Industry_Master
                     }
                     else
                     {
-                        //Response.Redirect("SLD_Status.aspx");
+                        Response.Redirect("SLD_Status.aspx");
 
                         BindAdress();
                     }
@@ -68,8 +69,14 @@ namespace CEIHaryana.Industry_Master
                 }
                 else
                 {
-                    Response.Redirect("SLD_Status.aspx");
-
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata_InvalidSession();", true);
+                        //Response.Redirect("SLD_Status.aspx");
+                }
+                }
+                catch (Exception ex)
+                {
+                    string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
                 }
             }
 

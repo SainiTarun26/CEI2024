@@ -79,6 +79,7 @@
 
         .headercolor {
             background-color: #9292cc;
+            color:white !important;
         }
 
         .form-group {
@@ -91,9 +92,9 @@
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
                 <div class="row ">
-                    <div class="col-md-4 col-md-4">
+                    <div class="col-md-12">
                         <h6 class="card-title fw-semibold mb-4">
-                            <asp:Label ID="lblData" runat="server"></asp:Label>INSPECTION HISTORY (New INSPECTIONS)</h6>
+                            <asp:Label ID="lblData" runat="server"></asp:Label>INSPECTION REQUEST</h6>
                     </div>
                     <div class="col-md-6 col-md-6"></div>
                 </div>
@@ -132,6 +133,8 @@
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
+                                     <asp:Label ID="lblRequestStatus" runat="server" Text='<%#Eval("RequestStatus") %>'></asp:Label>
+                                     <asp:Label ID="lblTypeOfInspection" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Id" Visible="False">
@@ -161,7 +164,7 @@
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
+                            <asp:BoundField DataField="RequestStatus" HeaderText="Status">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>

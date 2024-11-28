@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="ActionInspectioHistrory.aspx.cs" Inherits="CEIHaryana.Admin.XenInspectioHistrory" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -115,10 +116,8 @@
                             <asp:Label ID="lblData" runat="server"></asp:Label></h6>
                     </div>
                     <div class="col-sm-6 col-md-6"></div>
-
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging"
                         AutoGenerateColumns="false" AllowPaging="true" PageSize="20" BorderWidth="1px" BorderColor="#dbddff">
                         <Columns>
@@ -144,52 +143,47 @@
                                     <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
-
                             <%--  <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
                                     <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor"/>
-
                                     <ItemStyle HorizontalAlign="center" Width="28%" />
-                                </asp:BoundField>--%>
-
+                                  </asp:BoundField>--%>
+                            <asp:BoundField DataField="Type_of_Inspection" HeaderText="Intallation Type">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
-
                                 <ItemStyle HorizontalAlign="center" Width="28%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="ContractorName" HeaderText="Contractor Name">
                                 <HeaderStyle HorizontalAlign="center" Width="32%" CssClass="headercolor" />
-
                                 <ItemStyle HorizontalAlign="center" Width="32%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="ApplicantFor" HeaderText="Applicant Type">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Installationfor" HeaderText="Intallation Type">
+                            <asp:BoundField DataField="Installationfor" HeaderText="Intallation Type" Visible="false">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="RequestDate" HeaderText="Request Date">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
+                            <asp:BoundField DataField="ApplicationStatus" HeaderText="Status" Visible="false">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
-                            <asp:TemplateField>
+                            <%--<asp:TemplateField>
                                 <HeaderStyle Width="10%" CssClass="headercolor" />
                                 <ItemStyle Width="10%" />
                                 <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server" Visible="false"
+                                    <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server" Visible="false"
                                         Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
-                                </asp:LinkButton>
+                                    </asp:LinkButton>
                                 </ItemTemplate>
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -201,11 +195,9 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
-
                 </div>
             </div>
         </div>
-
     </div>
     <footer class="footer">
     </footer>

@@ -18,15 +18,24 @@ namespace CEIHaryana.Industry_Master
         {
             if (!Page.IsPostBack)
             {
+                try
+                {
+                    if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != string.Empty)
+                    {
 
-                if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != string.Empty)
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata_InvalidSession();", true);
+                    }
+                }
+                catch (Exception ex)
                 {
 
+                    string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
                 }
-                else
-                {
-
-                }
+               
             }
 
         }

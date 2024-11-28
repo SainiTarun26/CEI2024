@@ -7946,6 +7946,12 @@ string SupervisorName, string SupervisorLicenseNumber, string SupervisorLicenseE
 
 
         /////
+        ///
+
+        public DataSet ViewReturnDocumentsForPeriodic(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetOfficersReturnDocumentHistoryForPeriodic", InspectionId);
+        }
     }
 }
 

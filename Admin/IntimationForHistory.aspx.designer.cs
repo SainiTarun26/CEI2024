@@ -303,15 +303,6 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonAction;
 
         /// <summary>
-        /// rvfRadioButtonList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rvfRadioButtonList;
-
-        /// <summary>
         /// TransferButton control.
         /// </summary>
         /// <remarks>
@@ -366,6 +357,15 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.DropDownList ddlToAssign;
 
         /// <summary>
+        /// RequiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+
+        /// <summary>
         /// Action control.
         /// </summary>
         /// <remarks>
@@ -382,15 +382,6 @@ namespace CEIHaryana.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList RdbtnAccptReturn;
-
-        /// <summary>
-        /// RequiredFieldValidator3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
 
         /// <summary>
         /// Return control.
@@ -411,13 +402,76 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.DropDownList ddlReasonType;
 
         /// <summary>
-        /// RequiredFieldValidator4 control.
+        /// rfvReasonType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvReasonType;
+
+        /// <summary>
+        /// DdlReturnInPeriodic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlReturnInPeriodic;
+
+        /// <summary>
+        /// DIV_ChecklistDocuments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DIV_ChecklistDocuments;
+
+        /// <summary>
+        /// Check_ChecklistDocuments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Check_ChecklistDocuments;
+
+        /// <summary>
+        /// grd_ChecklistDocumemnts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grd_ChecklistDocumemnts;
+
+        /// <summary>
+        /// DIV_TRDocuments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DIV_TRDocuments;
+
+        /// <summary>
+        /// Check_TRDocuments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Check_TRDocuments;
+
+        /// <summary>
+        /// Grid_TRDocuments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView Grid_TRDocuments;
 
         /// <summary>
         /// DivRejectionReasonType control.

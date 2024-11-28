@@ -294,6 +294,24 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.GridView GridView2;
 
         /// <summary>
+        /// DivTRinMultipleCaseNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivTRinMultipleCaseNew;
+
+        /// <summary>
+        /// Grid_MultipleInspectionTR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView Grid_MultipleInspectionTR;
+
+        /// <summary>
         /// txtTestReportId control.
         /// </summary>
         /// <remarks>
