@@ -39,13 +39,14 @@ namespace CEIHaryana.Industry_Master
                     }
                     else
                     {
-                        Response.Redirect("/Login.aspx");
+                       
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                Response.Redirect("/Login.aspx");
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
 
         }

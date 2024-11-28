@@ -428,6 +428,12 @@ border-radius: 5px;
             }
         }
     </script>
+     <script>
+         function alertWithRedirectdata_InvalidSession() {
+             alert('Your Session Expired..');
+             window.location.href = 'https://staging.investharyana.in/#/';
+         }
+     </script>
     <%--  <script>
   function openPopup() {
     // Check if the popupDiv is already visible

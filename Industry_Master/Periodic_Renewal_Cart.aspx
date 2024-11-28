@@ -353,4 +353,10 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
+     <script>
+         function alertWithRedirectdata_InvalidSession() {
+             alert('Your Session Expired..');
+             window.location.href = 'https://staging.investharyana.in/#/';
+         }
+     </script>
 </asp:Content>

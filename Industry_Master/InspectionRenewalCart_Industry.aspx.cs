@@ -51,13 +51,14 @@ namespace CEIHaryana.Industry_Master
                     }
                     else
                     {
-                        Response.Redirect("/login.aspx");
+                        //Response.Redirect("/login.aspx");
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                Response.Redirect("/login.aspx");
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
         }
         private void BindAdress()
@@ -79,6 +80,8 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
         }
         protected void ddlAddress_SelectedIndexChanged(object sender, EventArgs e)
@@ -94,6 +97,8 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
         }
         private void BindGrid()
@@ -344,7 +349,11 @@ namespace CEIHaryana.Industry_Master
                     BindGrid();
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex) 
+            {
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
+            }
         }
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
@@ -469,6 +478,8 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
         }
 

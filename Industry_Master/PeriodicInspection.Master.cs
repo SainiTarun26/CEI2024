@@ -17,7 +17,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata_InvalidSession();", true);
             }
         }
 

@@ -46,7 +46,7 @@ namespace CEIHaryana.Industry_Master
                             BindGrid();
                             //BindAdress();
                         }
-                        if (statusType == "Approved" || statusType == "Rejected")
+                        else if (statusType == "Approved" || statusType == "Rejected")
                         {
                             BindAdress();
                         }

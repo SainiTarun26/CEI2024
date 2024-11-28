@@ -20,8 +20,8 @@ namespace CEIHaryana.Industry_Master
                 {
                     if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != string.Empty && Convert.ToString(Session["district_Temp"]) != null && Convert.ToString(Session["district_Temp"]) != string.Empty)
                     {
-                        //Session["SiteOwnerId_Sld_Indus"] = "ABCDG1234G";
-                        //Session["district_Temp"] = "Hisar";
+                        Session["SiteOwnerId_Sld_Indus"] = "ABCDG1234G";
+                        Session["district_Temp"] = "Hisar";
                         string District = Session["district_Temp"].ToString();
                         string PanNumber = Session["SiteOwnerId_Sld_Indus"].ToString();
                         bool panExists = false;
@@ -55,11 +55,17 @@ namespace CEIHaryana.Industry_Master
 
                         // getWorkIntimationData();
                     }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata_InvalidSession();", true);
+                    }
                 }
             }
             catch(Exception ex)
             {
-                Response.Redirect("/login.aspx",false);
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
+                //Response.Redirect("/login.aspx",false);
             }
 
         }

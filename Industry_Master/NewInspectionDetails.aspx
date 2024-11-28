@@ -234,7 +234,7 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>--%>
-                            <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                            <asp:TemplateField HeaderText="View TestReports" Visible="false" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkRedirect" runat="server" Text="View Test Report" OnClick="lnkRedirect_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>' />
                                 </ItemTemplate>
@@ -271,7 +271,7 @@
             </div>
              <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                 <asp:GridView class="table-responsive table table-hover table-striped" Autopostback="true" ID="GridView4" runat="server" Width="100%" AllowPaging="true" PageSize="10"
-                    AutoGenerateColumns="false" OnPageIndexChanging="GridView4_PageIndexChanging"  OnRowCommand="GridView4_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
+                    AutoGenerateColumns="false" OnPageIndexChanging="GridView4_PageIndexChanging" onRowDataBound="GridView4_RowDataBound"  OnRowCommand="GridView4_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                     <PagerStyle CssClass="pagination-ys" />
                     <Columns>
                         <asp:TemplateField HeaderText="Id" Visible="False">
@@ -502,5 +502,10 @@ View Documents
         </div>
     </div>
 
-
+    <script>
+        function alertWithRedirectdata_InvalidSession() {
+            alert('Your Session Expired..');
+            window.location.href = 'https://staging.investharyana.in/#/';
+        }
+     </script>
 </asp:Content>

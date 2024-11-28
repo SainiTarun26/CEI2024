@@ -24,10 +24,16 @@ namespace CEIHaryana.Industry_Master
                     {
                         BindGrid();
                     }
+                    else
+                    {
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata_InvalidSession();", true);
+                    }
                 }
             }
-            catch
+            catch(Exception ex)
             {
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
         }
 

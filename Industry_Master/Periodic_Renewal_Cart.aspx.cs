@@ -32,12 +32,14 @@ namespace CEIHaryana.Industry_Master
                     {
                         BindAdress();
                     }
+                    
                     Page.Session["FinalAmount_Industry"] = "0";
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                Response.Redirect("/login.aspx");
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
         }
         private void BindAdress()

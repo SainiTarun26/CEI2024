@@ -142,7 +142,9 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                Response.Redirect("/login.aspx");
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
+               // Response.Redirect("/login.aspx");
             }
 
         }
@@ -581,7 +583,8 @@ namespace CEIHaryana.Industry_Master
             {
                 // lblerror.Text = ex.Message.ToString()+"---"+ fileName;
             }
-        }
+        } 
+        
         private void GetTestReportData()
         {
             try
@@ -737,6 +740,28 @@ namespace CEIHaryana.Industry_Master
             catch (Exception ex)
             {
                 // lblerror.Text = ex.Message.ToString()+"---"+ fileName;
+            }
+        }
+
+        protected void GridView4_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label lblCategory = e.Row.FindControl("lblCategory") as Label;
+                LinkButton LnkInvoice = e.Row.FindControl("LnkInovoice") as LinkButton;
+                LinkButton lnkReport = e.Row.FindControl("lnkReport") as LinkButton;
+                if (lblCategory.Text == "Line")
+                {
+                    LnkInvoice.Visible = false;
+                    lnkReport.Visible = false;
+
+                }
+                else
+                {
+                    LnkInvoice.Visible = true;
+                    lnkReport.Visible = true;
+
+                }
             }
         }
     }

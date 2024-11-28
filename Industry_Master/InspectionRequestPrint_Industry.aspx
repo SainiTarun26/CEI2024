@@ -91,6 +91,12 @@
             document.body.innerHTML = originalContents;
         }
     </script>
+     <script>
+         function alertWithRedirectdata_InvalidSession() {
+             alert('Your Session Expired..');
+             window.location.href = 'https://staging.investharyana.in/#/';
+         }
+     </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -263,6 +269,7 @@
         <footer class="footer">
         </footer>
     </form>
+   
 </body>
 </html>
 

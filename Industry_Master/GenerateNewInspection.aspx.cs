@@ -55,11 +55,16 @@ namespace CEIHaryana.Industry_Master
 
                         //customFile.Visible = true;
                     }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata_InvalidSession();", true);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                Response.Redirect("/login.aspx");
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
 
         }
@@ -130,7 +135,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                // lblerror.Text = ex.Message.ToString()+"---"+ fileName;
+               
             }
         }
 
@@ -414,7 +419,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                //Handle the exception appropriately
+               
             }
         }
 
@@ -506,7 +511,10 @@ namespace CEIHaryana.Industry_Master
                     Session["Amount"] = dblGrandTotalAmount;
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex) 
+            {
+               
+            }
             #region old 
             // Check if the row is a data row
             //if (e.Row.RowType == DataControlRowType.DataRow)
@@ -580,7 +588,10 @@ namespace CEIHaryana.Industry_Master
                     }
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex) 
+            {
+               
+            }
         }
 
         protected void ddlDocumentFor_SelectedIndexChanged(object sender, EventArgs e)
@@ -832,7 +843,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-
+               
             }
         }
 
@@ -884,8 +895,9 @@ namespace CEIHaryana.Industry_Master
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+               
             }
 
         }
