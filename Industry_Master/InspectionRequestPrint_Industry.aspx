@@ -1,6 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="InspectionRequestPrint_Industry.aspx.cs" Inherits="CEIHaryana.Industry_Master.InspectionRequestPrint_Industry" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="InspectionRequestPrint_Industry.aspx.cs" Inherits="CEIHaryana.Industry_Master.InspectionRequestPrint_Industry2" %>
 
 <!DOCTYPE html>
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -272,4 +273,3 @@
    
 </body>
 </html>
-

@@ -1,5 +1,4 @@
 ﻿using CEI_PRoject;
-using CEIHaryana.Officers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,9 +6,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 namespace CEIHaryana.Industry_Master
 {
-    public partial class InspectionRequestPrint_Industry : System.Web.UI.Page
+    public partial class InspectionRequestPrint_Industry2 : System.Web.UI.Page
     {
         CEI CEI = new CEI();
         private static int Inspection;

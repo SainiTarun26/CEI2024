@@ -11,7 +11,7 @@ namespace CEIHaryana.Industry_Master
 {
 
 
-    public partial class InspectionRequestPrint_Industry
+    public partial class InspectionRequestPrint_Industry2
     {
 
         /// <summary>
