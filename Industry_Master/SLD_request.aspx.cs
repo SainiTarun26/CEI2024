@@ -62,7 +62,7 @@ namespace CEIHaryana.Industry_Master
                     {
                         //Response.Redirect("SLD_Status.aspx");
 
-                        //BindAdress();
+                        BindAdress();
                     }
                   //  BindAdress();
                 }

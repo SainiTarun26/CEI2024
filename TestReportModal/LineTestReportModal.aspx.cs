@@ -399,27 +399,29 @@ namespace CEIHaryana.TestReportModal
                 ////txtReportNo.Text = ds.Tables[0].Rows[0]["LineIdOther"].ToString();
                 lblIntimationId.Text = ds.Tables[0].Rows[0]["IntimationId"].ToString();
                 lblReportNo.Text = ds.Tables[0].Rows[0]["LineId"].ToString();
-
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
+                txtPoleTowerNo.Text = ds.Tables[0].Rows[0]["NoofPoleTowerForOverheadCable"].ToString();
                 if (txtConductorType.Text.Trim() == "Bare")
                 {
 
                     OverheadBare.Visible = true;
                     OverheadCable.Visible = false;
-
+                    txtPoleTowerNo.Text = ds.Tables[0].Rows[0]["NumberofPoleTower"].ToString();
+                    txtPoleTower.Text = ds.Tables[0].Rows[0]["NumberofPoleTower"].ToString();
                 }
                 else if (txtConductorType.Text.Trim() == "Cable")
                 {
 
                     OverheadCable.Visible = true;
                     OverheadBare.Visible = false;
+                    txtPoleTowerNo.Text = ds.Tables[0].Rows[0]["NoofPoleTowerForOverheadCable"].ToString();
+                    txtPoleTower.Text = ds.Tables[0].Rows[0]["NoofPoleTowerForOverheadCable"].ToString();
                 }
                 else
                 {
                     OverheadBare.Visible = false;
                     OverheadCable.Visible = false;
                 }
-                txtPoleTower.Text = ds.Tables[0].Rows[0]["NumberofPoleTower"].ToString();
                 txtConductorSize.Text = ds.Tables[0].Rows[0]["ConductorSize"].ToString();
                 txtGroundWireSize.Text = ds.Tables[0].Rows[0]["GroundWireSize"].ToString();
                 txtRailwayCrossingNo.Text = ds.Tables[0].Rows[0]["NmbrofRailwayCrossing"].ToString();
@@ -637,7 +639,6 @@ namespace CEIHaryana.TestReportModal
                 //txtEarthingValue14.Text = ds.Tables[0].Rows[0]["Valueinohms14"].ToString();
                 //txtEarthingType15.Text = ds.Tables[0].Rows[0]["EarthingType15"].ToString();
                 //txtEarthingValue15.Text = ds.Tables[0].Rows[0]["Valueinohms15"].ToString();
-                txtPoleTowerNo.Text = ds.Tables[0].Rows[0]["NoofPoleTowerForOverheadCable"].ToString();
                 txtCableSize1.Text = ds.Tables[0].Rows[0]["CableSize"].ToString();
                 txtRailwayCrossingNmbr.Text = ds.Tables[0].Rows[0]["RailwayCrossingNoForOC"].ToString();
                 txtRoadCrossingNmbr.Text = ds.Tables[0].Rows[0]["RoadCrossingNoForOC"].ToString();

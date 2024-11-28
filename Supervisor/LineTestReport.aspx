@@ -466,9 +466,10 @@
                                         <label>
                                             Number of Pole/Tower<samp style="color: red"> * </samp>
                                         </label>
-                                        <asp:TextBox class="form-control" ID="txtPoleTower" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="6" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="txtPoleTower" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" autocomplete="off" TabIndex="6" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtPoleTower" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number of Pole/Tower</asp:RequiredFieldValidator>
-                                    </div>
+                                   
+                                        </div>
                                     <div class="col-md-3" id="Div2" runat="server">
                                         <label for="Name">
                                             Size of Conductor( IN SQ.MM)<samp style="color: red">* </samp>

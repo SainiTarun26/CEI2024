@@ -31,9 +31,9 @@ namespace CEIHaryana.Industry_Master
             {
                 if (!Page.IsPostBack)
                 {
-                    //Session["SiteOwnerId_Industry"] = "BDJPB4957Q";
-                    //Session["SiteOwnerId_Industry"] = "1123";
-                    //Session["district_Temp"] = "Ambala";
+                    //Session["SiteOwnerId_Industry"] = "BDJPN3456U";
+                    ////Session["SiteOwnerId_Industry"] = "1123";
+                    //Session["district_Temp"] = "Panchkula";
                     //Session["SiteOwner_mobile"] = "9876543210";
                     //Session["SiteOwner_useremail"] = "navneet10a28@gmail.com";
                     //Session["SiteOwner_address"] = "Ambala";
