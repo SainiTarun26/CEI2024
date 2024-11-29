@@ -38,8 +38,9 @@ namespace CEIHaryana.Industry_Master
 
         // string Count = string.Empty;
         private static string PremisesType, ApplicantTypeCode, id, Category, InstallationTypeId, Count, PaymentMode,
-            ApplicantType, InstallationType, AssigDesignation, InspectionType, PlantLocation;
-
+          ApplicantType, InstallationType, AssigDesignation, InspectionType, PlantLocation;
+       
+        // string LoginId, PlantLocationRoofTop, PlantLocationGroundMounted = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -320,25 +321,30 @@ namespace CEIHaryana.Industry_Master
                     }
                     else
                     {
-                        if (lblCategory.Text == "Generating Set")
+                        foreach (GridViewRow rows in GridView1.Rows)
                         {
-                            if (lblTypeOfPlant != null)
+                            CheckBox chk1 = (CheckBox)rows.FindControl("CheckBox1");
+                            if (chk1 != null && chk1.Checked)
                             {
-                                string plantType = lblTypeOfPlant.Text;
+                                Label lblTyps1 = (Label)rows.FindControl("lblCategory");
+                                if (lblTyps1.Text == "Generating Set")
+                                {
+                                    Label lblTypeOfPlant1 = (Label)rows.FindControl("LblTypeofPlant");
+                                    if (lblTypeOfPlant1 != null)
+                                    {
+                                        string plantType = lblTypeOfPlant1.Text;
 
-                                if (plantType == "Roof Top")
-                                {
-                                    PlantLocationRoofTop = plantType;
-                                }
-                                else if (plantType == "Ground Mounted")
-                                {
-                                    PlantLocationGroundMounted = plantType;
+                                        if (plantType == "Roof Top")
+                                        {
+                                            PlantLocationRoofTop = plantType;
+                                        }
+                                        else if (plantType == "Ground Mounted")
+                                        {
+                                            PlantLocationGroundMounted = plantType;
+                                        }
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            ////  Session["PlantLocation"] = "";
                         }
                     }
 
@@ -621,7 +627,7 @@ namespace CEIHaryana.Industry_Master
                 if (atLeastOneInspectionChecked)
                 {
                     string lblCategory = string.Empty;
-                    if (Session["InstallationId"].ToString() != "1" && Session["InstallationId"].ToString() != "2" && Session["InstallationId"].ToString() != "3")
+                    if (Session["InstallationId"].ToString() != "1" || Session["InstallationId"].ToString() != "2" || Session["InstallationId"].ToString() != "3")
                     {
                         lblCategory = "Multiple";
                     }
@@ -1172,148 +1178,148 @@ namespace CEIHaryana.Industry_Master
                     return;
                 }
                 checksuccessmessage = 1;
-                try
-                {
-                    //string actiontype = para_InspectID == 0 ? "Submit" : "ReSubmit";
-                    string actiontype = "Submit";
+                //try
+                //{
+                //    //string actiontype = para_InspectID == 0 ? "Submit" : "ReSubmit";
+                //    string actiontype = "Submit";
 
-                    Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(generatedIdCombinedDetails_Global), actiontype, Session["projectid_New_Temp"].ToString(), Session["Serviceid_New_Temp"].ToString(), Session["SiteOwnerId_Sld_Indus"].ToString());
+                //    Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(generatedIdCombinedDetails_Global), actiontype, Session["projectid_New_Temp"].ToString(), Session["Serviceid_New_Temp"].ToString(), Session["SiteOwnerId_Sld_Indus"].ToString());
 
-                    if (ApiPostformatresult.PremisesType == "Industry")
-                    {
-                        // string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
-                        string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
-                        // string accessToken = "dfsfdsfsfsdf";
+                //    if (ApiPostformatresult.PremisesType == "Industry")
+                //    {
+                //        // string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                //        string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                //        // string accessToken = "dfsfdsfsfsdf";
 
-                        logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                      "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
-                                      new Industry_Inspection_StageWise_JsonDataFormat_Model
-                                      {
-                                          actionTaken = ApiPostformatresult.ActionTaken,
-                                          commentByUserLogin = ApiPostformatresult.CommentByUserLogin,
-                                          //commentDate = ApiPostformatresult.CommentDate,
-                                          commentDate = ApiPostformatresult.CommentDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                          comments = ApiPostformatresult.Comments,
-                                          id = ApiPostformatresult.Id,
-                                          projectid = ApiPostformatresult.ProjectId,
-                                          serviceid = ApiPostformatresult.ServiceId
-                                          //projectid = "245df444-1808-4ff6-8421-cf4a859efb4c",
-                                          //serviceid = "e31ee2a6-3b99-4f42-b61d-38cd80be45b6"
-                                      }, ApiPostformatresult, accessToken);
+                //        logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
+                //                      "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                //                      new Industry_Inspection_StageWise_JsonDataFormat_Model
+                //                      {
+                //                          actionTaken = ApiPostformatresult.ActionTaken,
+                //                          commentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                //                          //commentDate = ApiPostformatresult.CommentDate,
+                //                          commentDate = ApiPostformatresult.CommentDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                //                          comments = ApiPostformatresult.Comments,
+                //                          id = ApiPostformatresult.Id,
+                //                          projectid = ApiPostformatresult.ProjectId,
+                //                          serviceid = ApiPostformatresult.ServiceId
+                //                          //projectid = "245df444-1808-4ff6-8421-cf4a859efb4c",
+                //                          //serviceid = "e31ee2a6-3b99-4f42-b61d-38cd80be45b6"
+                //                      }, ApiPostformatresult, accessToken);
 
-                        if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
-                        {
-                            throw new Exception(logDetails.ErrorMessage);
-                        }
+                //        if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
+                //        {
+                //            throw new Exception(logDetails.ErrorMessage);
+                //        }
 
 
-                        CEI.LogToIndustryApiSuccessDatabase(
-                        logDetails.Url,
-                        logDetails.Method,
-                        logDetails.RequestHeaders,
-                        logDetails.ContentType,
-                        logDetails.RequestBody,
-                        logDetails.ResponseStatusCode,
-                        logDetails.ResponseHeaders,
-                        logDetails.ResponseBody,
+                //        CEI.LogToIndustryApiSuccessDatabase(
+                //        logDetails.Url,
+                //        logDetails.Method,
+                //        logDetails.RequestHeaders,
+                //        logDetails.ContentType,
+                //        logDetails.RequestBody,
+                //        logDetails.ResponseStatusCode,
+                //        logDetails.ResponseHeaders,
+                //        logDetails.ResponseBody,
 
-                        new Industry_Api_Post_DataformatModel
-                        {
-                            InspectionId = ApiPostformatresult.InspectionId,
-                            InspectionLogId = ApiPostformatresult.InspectionLogId,
-                            IncomingJsonId = ApiPostformatresult.IncomingJsonId,
-                            ActionTaken = ApiPostformatresult.ActionTaken,
-                            CommentByUserLogin = ApiPostformatresult.CommentByUserLogin,
-                            CommentDate = ApiPostformatresult.CommentDate,
+                //        new Industry_Api_Post_DataformatModel
+                //        {
+                //            InspectionId = ApiPostformatresult.InspectionId,
+                //            InspectionLogId = ApiPostformatresult.InspectionLogId,
+                //            IncomingJsonId = ApiPostformatresult.IncomingJsonId,
+                //            ActionTaken = ApiPostformatresult.ActionTaken,
+                //            CommentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                //            CommentDate = ApiPostformatresult.CommentDate,
 
-                            Comments = ApiPostformatresult.Comments,
-                            Id = ApiPostformatresult.Id,
-                            ProjectId = ApiPostformatresult.ProjectId,
-                            ServiceId = ApiPostformatresult.ServiceId,
-                        }
+                //            Comments = ApiPostformatresult.Comments,
+                //            Id = ApiPostformatresult.Id,
+                //            ProjectId = ApiPostformatresult.ProjectId,
+                //            ServiceId = ApiPostformatresult.ServiceId,
+                //        }
 
-                    );
+                //    );
 
-                    }
-                }
-                catch (TokenManagerException ex)
-                {
-                    CEI.LogToIndustryApiErrorDatabase(
-                        ex.RequestUrl,
-                        ex.RequestMethod,
-                        ex.RequestHeaders,
-                        ex.RequestContentType,
-                        ex.RequestBody,
-                        ex.ResponseStatusCode,
-                        ex.ResponseHeaders,
-                        ex.ResponseBody,
-                        new Industry_Api_Post_DataformatModel
-                        {
-                            InspectionId = ex.InspectionId,
-                            InspectionLogId = ex.InspectionLogId,
-                            IncomingJsonId = ex.IncomingJsonId,
-                            ActionTaken = ex.ActionTaken,
-                            CommentByUserLogin = ex.CommentByUserLogin,
-                            CommentDate = ex.CommentDate,
-                            Comments = ex.Comments,
-                            Id = ex.Id,
-                            ProjectId = ex.ProjectId,
-                            ServiceId = ex.ServiceId,
-                        }
-                    );
-                    string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
-                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
-                    //   ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
-                }
-                catch (IndustryApiException ex)
-                {
-                    CEI.LogToIndustryApiErrorDatabase(
-                        ex.RequestUrl,
-                        ex.RequestMethod,
-                        ex.RequestHeaders,
-                        ex.RequestContentType,
-                        ex.RequestBody,
-                        ex.ResponseStatusCode,
-                        ex.ResponseHeaders,
-                        ex.ResponseBody,
-                        new Industry_Api_Post_DataformatModel
-                        {
-                            InspectionId = ex.InspectionId,
-                            InspectionLogId = ex.InspectionLogId,
-                            IncomingJsonId = ex.IncomingJsonId,
-                            ActionTaken = ex.ActionTaken,
-                            CommentByUserLogin = ex.CommentByUserLogin,
-                            CommentDate = ex.CommentDate,
+                //    }
+                //}
+                //catch (TokenManagerException ex)
+                //{
+                //    CEI.LogToIndustryApiErrorDatabase(
+                //        ex.RequestUrl,
+                //        ex.RequestMethod,
+                //        ex.RequestHeaders,
+                //        ex.RequestContentType,
+                //        ex.RequestBody,
+                //        ex.ResponseStatusCode,
+                //        ex.ResponseHeaders,
+                //        ex.ResponseBody,
+                //        new Industry_Api_Post_DataformatModel
+                //        {
+                //            InspectionId = ex.InspectionId,
+                //            InspectionLogId = ex.InspectionLogId,
+                //            IncomingJsonId = ex.IncomingJsonId,
+                //            ActionTaken = ex.ActionTaken,
+                //            CommentByUserLogin = ex.CommentByUserLogin,
+                //            CommentDate = ex.CommentDate,
+                //            Comments = ex.Comments,
+                //            Id = ex.Id,
+                //            ProjectId = ex.ProjectId,
+                //            ServiceId = ex.ServiceId,
+                //        }
+                //    );
+                //    string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
+                //    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                //    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+                //    //   ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
+                //}
+                //catch (IndustryApiException ex)
+                //{
+                //    CEI.LogToIndustryApiErrorDatabase(
+                //        ex.RequestUrl,
+                //        ex.RequestMethod,
+                //        ex.RequestHeaders,
+                //        ex.RequestContentType,
+                //        ex.RequestBody,
+                //        ex.ResponseStatusCode,
+                //        ex.ResponseHeaders,
+                //        ex.ResponseBody,
+                //        new Industry_Api_Post_DataformatModel
+                //        {
+                //            InspectionId = ex.InspectionId,
+                //            InspectionLogId = ex.InspectionLogId,
+                //            IncomingJsonId = ex.IncomingJsonId,
+                //            ActionTaken = ex.ActionTaken,
+                //            CommentByUserLogin = ex.CommentByUserLogin,
+                //            CommentDate = ex.CommentDate,
 
-                            Comments = ex.Comments,
-                            Id = ex.Id,
-                            ProjectId = ex.ProjectId,
-                            ServiceId = ex.ServiceId,
-                        }
-                    );
+                //            Comments = ex.Comments,
+                //            Id = ex.Id,
+                //            ProjectId = ex.ProjectId,
+                //            ServiceId = ex.ServiceId,
+                //        }
+                //    );
 
-                    //   string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
+                //    //   string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
 
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.ResponseBody.ToString() + "')", true);
-                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
-                }
-                catch (Exception ex)
-                {
+                //    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                //    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.ResponseBody.ToString() + "')", true);
+                //    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
+                //}
+                //catch (Exception ex)
+                //{
 
-                    //Commented below to raise errors as per backend
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please fill All details carefully')", true);
-                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
-                }
-                finally
-                {
-                    if (checksuccessmessage == 1)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                    }
+                //    //Commented below to raise errors as per backend
+                //    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please fill All details carefully')", true);
+                //    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+                //}
+                //finally
+                //{
+                //    if (checksuccessmessage == 1)
+                //    {
+                //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                //    }
 
-                }
+                //}
 
 
             }

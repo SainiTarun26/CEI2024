@@ -92,26 +92,6 @@
         .ReturnedRowColor {
             background-color: #f9c7c7 !important;
         }
-        nput#ContentPlaceHolder1_txtName {
-    height: 30px;
-    margin-left: 0px !important;
-    width: 90%;
-}
-        input#ContentPlaceHolder1_txtagency {
-    height: 30px;
-    margin-left: 0px !important;
-    width: 90%;
-}
-        input#ContentPlaceHolder1_txtPanNo {
-    height: 30px;
-    margin-left: 0px !important;
-    width: 90%;
-}
-        input#ContentPlaceHolder1_txtAddress {
-    height: 30px;
-    margin-left: 0px !important;
-    width: 97%;
-}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -141,37 +121,6 @@
                             </div>
                         </div>
                     </div>--%>
-                    <div class="row">
-    <div class="card-title" style="margin-bottom:10px !important;margin-left:20px;">SiteOwner Details</div>
-</div>
-                                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;">
-
-                    
-                                          <div class="row">
-                       <div class="col-4" runat="server">
-          <label for="Name">
-       Name Of The Owner
-   </label>
-     <asp:TextBox class="form-control" ReadOnly="true" ID="txtName" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                  </div>
-                    <div class="col-4" id="agency" runat="server" >
-   <label for="agency">Name of Firm</label>
-   <asp:TextBox class="form-control" ReadOnly="true" ID="txtagency" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                     </div>
-                <div class="col-4" id="individual" runat="server">
-               <label for="Name">
-                  Pan Number
-                 </label>
-                  <asp:TextBox class="form-control" ReadOnly="true" ID="txtPanNo" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                 </div>
-                         <div class="col-12" id="Div1" runat="server">
-<label for="Name">
-    Site Address
-  </label>
-   <asp:TextBox class="form-control" ReadOnly="true" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-  </div>
-                  </div>
-                        </div>
                     <asp:Panel ID="pnlSearch" runat="server" DefaultButton="btnSearch">
                         <div class="row" style="margin-bottom: -30px;">
                             <div class="col-md-6">
@@ -190,9 +139,6 @@
                             </div>
                         </div>
                     </asp:Panel>
-                    <div>
-
-                    </div>
 
                     <table class="table table-responsive">
                         <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" 
@@ -380,10 +326,4 @@
             }
         }
     </script>
-    <script>
-        function alertWithRedirectdata_InvalidSession() {
-            alert('Your Session Expired..');
-            window.location.href = 'https://staging.investharyana.in/#/';
-        }
-     </script>
 </asp:Content>

@@ -1,5 +1,4 @@
 ﻿using CEI_PRoject;
-using CEIHaryana.Model.Industry;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,21 +12,20 @@ namespace CEIHaryana.Industry_Master
     public partial class ForNewInstallation : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-        string PanNumber;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
                 if (!Page.IsPostBack)
                 {
-                    if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != string.Empty && Convert.ToString(Session["district_Temp"]) != null && Convert.ToString(Session["district_Temp"]) != string.Empty)
+                    if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != "" && Convert.ToString(Session["district_Temp"]) != null && Convert.ToString(Session["district_Temp"]) != "")
                     {
                         //Session["SiteOwnerId_Sld_Indus"] = "ABCDG1234G";
                         //Session["district_Temp"] = "Hisar";
                         string District = Session["district_Temp"].ToString();
                         string PanNumber = Session["SiteOwnerId_Sld_Indus"].ToString();
                         bool panExists = false;
-                        getdata();
+
                         DataSet ds1 = CEI.checkInspection(PanNumber);
                         if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
                         {
@@ -38,7 +36,7 @@ namespace CEIHaryana.Industry_Master
                             {
                                 getWorkIntimationData();
                             }
-                            else if(statusType == "Approved" || statusType == "Rejected")
+                            if(statusType == "Approved" || statusType == "Rejected")
                             {
                                 getWorkIntimationData();
                             }
@@ -57,30 +55,13 @@ namespace CEIHaryana.Industry_Master
 
                         // getWorkIntimationData();
                     }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata_InvalidSession();", true);
-                    }
                 }
             }
             catch(Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
-                //Response.Redirect("/login.aspx",false);
+                Response.Redirect("/login.aspx",false);
             }
 
-        }
-        public void getdata()
-        {
-            if (Session["UserSessionData"] is Cei_IndustryServices_Redirection_IncomingJson_Model userSession)
-            {
-                // Populate textboxes with session data
-                txtName.Text = userSession.uname;
-                txtagency.Text = userSession.businessentity;
-                txtAddress.Text = userSession.address;
-            }
-            txtPanNo.Text = PanNumber;
         }
         private void getWorkIntimationData(string searchText = null)
         {

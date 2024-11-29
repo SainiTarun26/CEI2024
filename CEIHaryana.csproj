@@ -2001,9 +2001,9 @@
     <Content Include="TestReportModal\GeneratingSetTestReportModal.aspx" />
     <Content Include="TestReportModal\LineTestReportModal.aspx" />
     <Content Include="TestReportModal\SubstationTransformerTestReportModal.aspx" />
-    <Content Include="TestReportModal_Industry\GeneratingSetTestReport_Industry.aspx" />
-    <Content Include="TestReportModal_Industry\LineTestReport_Industry.aspx" />
-    <Content Include="TestReportModal_Industry\SubstationTestReport_Industry.aspx" />
+    <Content Include="TestReportModel_Industry\GeneratingSetTestReport_Industry.aspx" />
+    <Content Include="TestReportModel_Industry\LineTestReport_Industry.aspx" />
+    <Content Include="TestReportModel_Industry\SubstationTestReport_Industry.aspx" />
     <Content Include="TestReportsNew\GeneratingSet.aspx" />
     <Content Include="TestReportsNew\LineTestReport.aspx" />
     <Content Include="TestReportsNew\SubstationTestReport.aspx" />
@@ -3389,25 +3389,25 @@
     <Compile Include="TestReportModal\SubstationTransformerTestReportModal.aspx.designer.cs">
       <DependentUpon>SubstationTransformerTestReportModal.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TestReportModal_Industry\GeneratingSetTestReport_Industry.aspx.cs">
+    <Compile Include="TestReportModel_Industry\GeneratingSetTestReport_Industry.aspx.cs">
       <DependentUpon>GeneratingSetTestReport_Industry.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="TestReportModal_Industry\GeneratingSetTestReport_Industry.aspx.designer.cs">
+    <Compile Include="TestReportModel_Industry\GeneratingSetTestReport_Industry.aspx.designer.cs">
       <DependentUpon>GeneratingSetTestReport_Industry.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TestReportModal_Industry\LineTestReport_Industry.aspx.cs">
+    <Compile Include="TestReportModel_Industry\LineTestReport_Industry.aspx.cs">
       <DependentUpon>LineTestReport_Industry.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="TestReportModal_Industry\LineTestReport_Industry.aspx.designer.cs">
+    <Compile Include="TestReportModel_Industry\LineTestReport_Industry.aspx.designer.cs">
       <DependentUpon>LineTestReport_Industry.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TestReportModal_Industry\SubstationTestReport_Industry.aspx.cs">
+    <Compile Include="TestReportModel_Industry\SubstationTestReport_Industry.aspx.cs">
       <DependentUpon>SubstationTestReport_Industry.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="TestReportModal_Industry\SubstationTestReport_Industry.aspx.designer.cs">
+    <Compile Include="TestReportModel_Industry\SubstationTestReport_Industry.aspx.designer.cs">
       <DependentUpon>SubstationTestReport_Industry.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestReportsNew\GeneratingSet.aspx.cs">

@@ -32,23 +32,23 @@ namespace CEIHaryana.Industry_Master
                 if (!Page.IsPostBack)
                 {
                     //Session["SiteOwnerId_Industry"] = "BDJPB4957Q";
-                    Session["SiteOwnerId_Industry"] = "1123";
-                    Session["district_Temp"] = "Ambala";
-                    Session["SiteOwner_mobile"] = "9876543210";
-                    Session["SiteOwner_useremail"] = "navneet10a28@gmail.com";
-                    Session["SiteOwner_address"] = "Ambala";
-                    Session["Serviceid_pd_Indus"] = "ec289b0f-e803-4bce-9dc2-d1d5ce93ba5a";
-                    Session["projectid_pd_Indus"] = "1";
-                    var userSession = new Cei_IndustryServices_Redirection_IncomingJson_Model
-                    {
-                        uname = "sdsd",
-                        businessentity = "edscsd",
-                        useremail = "dcscs",
-                        address = "decsc",
-                        mobile = "fddfds",
-                    };
+                    //Session["SiteOwnerId_Industry"] = "1123";
+                    //Session["district_Temp"] = "Ambala";
+                    //Session["SiteOwner_mobile"] = "9876543210";
+                    //Session["SiteOwner_useremail"] = "navneet10a28@gmail.com";
+                    //Session["SiteOwner_address"] = "Ambala";
+                    //Session["Serviceid_pd_Indus"] = "ec289b0f-e803-4bce-9dc2-d1d5ce93ba5a";
+                    //Session["projectid_pd_Indus"] = "1";
+                    //var userSession = new Cei_IndustryServices_Redirection_IncomingJson_Model
+                    //{
+                    //    uname = "sdsd",
+                    //    businessentity = "edscsd",
+                    //    useremail = "dcscs",
+                    //    address = "decsc",
+                    //    mobile = "fddfds",
+                    //};
 
-                    Session["UserSessionData"] = userSession;
+                    //Session["UserSessionData"] = userSession;
                     if (Session["SiteOwnerId_Industry"] != null || Request.Cookies["SiteOwnerId_Industry"] != null)
                     {
                         if (CheckInspectionStatus())
