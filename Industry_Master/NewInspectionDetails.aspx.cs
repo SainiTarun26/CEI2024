@@ -27,18 +27,18 @@ namespace CEIHaryana.Industry_Master
             {
                 if (!IsPostBack)
                 {
-                    if (Session["LineID"] != null && Convert.ToString(Session["LineID"]) != "")
+                    if (Session["Line"] != null && Convert.ToString(Session["Line"]) != "")
                     {
-                        id = Session["LineID"].ToString();
+                        id = Session["Line"].ToString();
 
                     }
-                    else if (Session["SubStationID"] != null && Convert.ToString(Session["SubStationID"]) != "")
+                    else if (Session["SubStation"] != null && Convert.ToString(Session["SubStation"]) != "")
                     {
-                        id = Session["SubStationID"].ToString();
+                        id = Session["SubStation"].ToString();
                     }
-                    else if (Session["GeneratingSetId"] != null && Convert.ToString(Session["GeneratingSetId"]) != "")
+                    else if (Session["GeneratingSet"] != null && Convert.ToString(Session["GeneratingSet"]) != "")
                     {
-                        id = Session["GeneratingSetId"].ToString();
+                        id = Session["GeneratingSet"].ToString();
                     }
 
                     GetDetailsWithId();
@@ -119,18 +119,18 @@ namespace CEIHaryana.Industry_Master
                     }
                     else
                     {
-                        if (Session["LineID"] != null && Convert.ToString(Session["LineID"]) != "")
+                        if (Session["Line"] != null && Convert.ToString(Session["Line"]) != "")
                         {
                             txtWorkType.Text = "Line";
 
                         }
-                        else if (Session["SubStationID"] != null && Convert.ToString(Session["SubStationID"]) != "")
+                        else if (Session["SubStation"] != null && Convert.ToString(Session["SubStation"]) != "")
                         {
 
                             txtWorkType.Text = "Substation Transformer";
 
                         }
-                        else if (Session["GeneratingSetId"] != null && Convert.ToString(Session["GeneratingSetId"]) != "")
+                        else if (Session["GeneratingSet"] != null && Convert.ToString(Session["GeneratingSet"]) != "")
                         {
                             txtWorkType.Text = "Generating Set";
 
@@ -350,18 +350,18 @@ namespace CEIHaryana.Industry_Master
                     //ID = Session["InspectionId"].ToString();
                     if (lblCategory.Text.Trim() == "Line")
                     {
-                        Session["LineID"] = testReportId;
-                        Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
+                        Session["Line"] = testReportId;
+                        Response.Write("<script>window.open('/TestReportModel_Industry/LineTestReport_Industry.aspx','_blank');</script>");
                     }
                     else if (lblCategory.Text.Trim() == "Substation Transformer")
                     {
-                        Session["SubStationID"] = testReportId;
-                        Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
+                        Session["SubStation"] = testReportId;
+                        Response.Redirect("/TestReportModel_Industry/SubstationTestReport_Industry.aspx", false);
                     }
                     else if (lblCategory.Text.Trim() == "Generating Set")
                     {
-                        Session["GeneratingSetId"] = testReportId;
-                        Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
+                        Session["GeneratingSet"] = testReportId;
+                        Response.Redirect("/TestReportModel_Industry/GeneratingSetTestReport_Industry.aspx", false);
                     };
 
                 }
@@ -413,18 +413,18 @@ namespace CEIHaryana.Industry_Master
             //Session["InspectionTestReportId"] = testReportId;
             if (txtWorkType.Text.Trim() == "Line")
             {
-                Session["LineID"] = testReportId;
-                Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
+                Session["Line"] = testReportId;
+                Response.Write("<script>window.open('/TestReportModel_Industry/LineTestReport_Industry.aspx','_blank');</script>");
             }
             else if (txtWorkType.Text.Trim() == "Substation Transformer")
             {
-                Session["SubStationID"] = testReportId;
-                Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
+                Session["SubStation"] = testReportId;
+                Response.Redirect("/TestReportModel_Industry/SubstationTestReport_Industry.aspx", false);
             }
             else if (txtWorkType.Text.Trim() == "Generating Set")
             {
-                Session["GeneratingSetId"] = testReportId;
-                Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
+                Session["GeneratingSet"] = testReportId;
+                Response.Redirect("/TestReportModel_Industry/GeneratingSetTestReport_Industry.aspx", false);
             }
         }
 

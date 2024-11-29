@@ -1,18 +1,17 @@
 ﻿using CEI_PRoject;
-using CEIHaryana.Contractor;
+using CEIHaryana.SiteOwnerPages;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using static System.Net.WebRequestMethods;
 
-namespace CEIHaryana.TestReportModal
+namespace CEIHaryana.TestReportModel_Industry
 {
-    public partial class SubstationTransformerTestReportModal : System.Web.UI.Page
+    public partial class SubstationTestReport_Industry : System.Web.UI.Page
+
     {
         CEI CEI = new CEI();
         string id = String.Empty;
@@ -27,139 +26,47 @@ namespace CEIHaryana.TestReportModal
                         Session["PreviousPage"] = Request.UrlReferrer.ToString();
                     }
 
-                    if (Session["ContractorID"] != null && Convert.ToString(Session["ContractorID"]) != "")
-                    {
-                        Session["SubstationOtp"] = "0";
-                        ID = Session["SubStationID"].ToString();
-                        GetDetailswithId();
-                        if (Convert.ToString(Session["Approval"]) == "Pending")
-                        {
-                            //Contractor.Visible = true;
-                            //Contractor3.Visible = true;
-                            //CreatedDate.Visible = true;
-                            ToOTPVerify.Visible = true;
-                        }
-                        else
-                        {
-                            if (!string.IsNullOrEmpty(Request.QueryString["Return"]))
-                            {
-                            }
-                            else
-                            {    //Contractor.Visible = true;
-                                FinalSubmit.Visible = true;
-                                //CreatedDate.Visible = true;
-                            }
-                        }
-                    }
-                    //else if (Session["SiteOwnerId_Sld_Indus"] != null && Session["SiteOwnerId_Sld_Indus"].ToString() != "")
-                    //{
-                    //    if (Request.UrlReferrer != null)
-                    //    {
-                    //        Session["PreviousPage_Industry"] = Request.UrlReferrer.ToString();
-                    //    }
-                    //    ID = Session["SubStationID"].ToString();
-                    //    GetDetailswithId();
-                    //    SiteOwner.Visible = false;
-                    //    SiteOwner2.Visible = true;
-                    //    IntimationData.Visible = true;
-                    //    ApprovalCard.Visible = true;
-                    //    //CreatedDate.Visible = true; //Added
-                    //    //SubmitDate.Visible = true;
-                    //    //SubmitBy.Visible = true;
-                    //}
-                    //else if (Session["SiteOwnerId_Industry"] != null && Session["SiteOwnerId_Industry"].ToString() != "")
-                    //{
-                    //    if (Request.UrlReferrer != null)
-                    //    {
-                    //        Session["PreviousPage_Industry"] = Request.UrlReferrer.ToString();
-                    //    }
-
-                    //    ID = Session["SubStationID_Industry"].ToString();
-                    //    GetDetailswithId();
-
-                    //    SiteOwner.Visible = false;
-                    //    SiteOwner2.Visible = true;
-                    //    IntimationData.Visible = true;
-                    //    ApprovalCard.Visible = true;
-                    //    //CreatedDate.Visible = true; //Added
-                    //    //SubmitDate.Visible = true;
-                    //    //SubmitBy.Visible = true;
-                    //}
-                    else if (Session["SiteOwnerId"] != null && Session["SiteOwnerId"].ToString() != "")
-                    {
-                        ID = Session["SubStationID"].ToString();
-                        GetDetailswithId();
-
-                        SiteOwner.Visible = false;
-                        SiteOwner2.Visible = true;
-                        IntimationData.Visible = true;
-                        ApprovalCard.Visible = true;
-                        //CreatedDate.Visible = true; //Added
-                        //SubmitDate.Visible = true;
-                        //SubmitBy.Visible = true;
-                    }
-                    
-                    else if (Session["InspectionTestReportId"] != null && Session["InspectionTestReportId"].ToString() != "")
-                    {
-                        ID = Session["InspectionTestReportId"].ToString();
-                        GetDetailswithId();
-                        SiteOwner.Visible = true;
-                        IntimationData.Visible = true;
-                        ApprovalCard.Visible = true;
-                        btnNext.Text = "Back";
-
-                    }
-                    else if (Session["IntimationForHistoryId"] != null && Session["IntimationForHistoryId"].ToString() != "")
-                    {
-                        ID = Session["IntimationForHistoryId"].ToString();
-                        GetDetailswithId();
-                        IntimationForHistory.Visible = true;
-                        IntimationData.Visible = true;
-                    }
-                    else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
-
-                    {
-                        if (Session["SupervisorID"] != null && Session["SupervisorID"].ToString() != "")
-                        {
-
-
-                        }
-                        if (Session["AdminID"] != null)
-                        {
-
-                        }
-                        ID = Session["SubStationID"].ToString();
-                        GetDetailswithId();
-                        Supervisor.Visible = true;
-                        IntimationData.Visible = true;
-
-                    }
                 }
-            }
-            catch
-            {
-                Response.Redirect("/Login.aspx", false);
+                if (Session["SiteOwnerId_Sld_Indus"] != null && Session["SiteOwnerId_Sld_Indus"].ToString() != "")
+                {
+                    if (Request.UrlReferrer != null)
+                    {
+                        Session["PreviousPage_Industry"] = Request.UrlReferrer.ToString();
+                    }
+                    ID = Session["SubStation"].ToString();
+                    GetDetailswithId();
+                    SiteOwner.Visible = false;
+                    SiteOwner2.Visible = true;
+                    IntimationData.Visible = true;
+                    ApprovalCard.Visible = true;
+                    //CreatedDate.Visible = true; //Added
+                    //SubmitDate.Visible = true;
+                    //SubmitBy.Visible = true;
+                }
+                else if (Session["SiteOwnerId_Industry"] != null && Session["SiteOwnerId_Industry"].ToString() != "")
+                {
+                    if (Request.UrlReferrer != null)
+                    {
+                        Session["PreviousPage_Industry"] = Request.UrlReferrer.ToString();
+                    }
+
+                    ID = Session["SubStationID_Industry"].ToString();
+                    GetDetailswithId();
+
+                    SiteOwner.Visible = false;
+                    SiteOwner2.Visible = true;
+                    IntimationData.Visible = true;
+                    ApprovalCard.Visible = true;
+                    //CreatedDate.Visible = true; //Added
+                    //SubmitDate.Visible = true;
+                    //SubmitBy.Visible = true;
+                }
+               
 
             }
+            catch { }
         }
-        private void GetDocumentUploadData()
-        {
-            DataTable ds = new DataTable();
-            ds = CEI.GetDocumentlistforContractor(2);
-            if (ds.Rows.Count > 0)
-            {
-                Grd_Document.DataSource = ds;
-                Grd_Document.DataBind();
-            }
-            else
-            {
-                Grd_Document.DataSource = null;
-                Grd_Document.DataBind();
-                string script = "alert(\"No Record Found for document \");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
-            ds.Dispose();
-        }
+
         public void GetDetailswithId()
         {
             try
@@ -174,7 +81,7 @@ namespace CEIHaryana.TestReportModal
                     //ddlType.Attributes.Add("disabled", "disabled");
                     //ddlType.Attributes.Add("Readonly", "true");                 
                     //ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
-                    BtnSubmit.Text = "Back";
+                    //BtnSubmit.Text = "Back";
                 }
                 else if (value1.Trim() == "Reject")
                 {
@@ -183,15 +90,19 @@ namespace CEIHaryana.TestReportModal
                     //ddlType.SelectedIndex = ddlType.Items.IndexOf(ddlType.Items.FindByText(value1));
                     //Rejection.Visible = true;
                     //txtRejection.Attributes.Add("Readonly", "true");
-                    BtnSubmit.Text = "Back";
+                   // BtnSubmit.Text = "Back";
                 }
                 if (value1.Trim() == "Submitted" || value1.Trim() == "Submit")
                 {
                     ApprovalCard.Visible = true;
-                    BtnSubmit.Text = "Back";
+                   // BtnSubmit.Text = "Back";
                 }
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtInstallation.Text = dp_Id;
+                if (dp_Id == "" || dp_Id == null)
+                {
+                    txtInstallation.Text = "Individual Person";
+                }
                 if (dp_Id == "Firm/Organization/Company/Department")
                 {
                     agency.Visible = true;
@@ -625,257 +536,27 @@ namespace CEIHaryana.TestReportModal
                 txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                 txtDivision.Text = ds.Tables[0].Rows[0]["Area"].ToString();
                 txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                Session["SubStation"] = "";
+                Session["SubStationID_Industry"] = "";
             }
             catch
             {
 
             }
         }
-        protected void ddlType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (ddlType.SelectedValue == "2")
-            //{
-            //    Rejection.Visible = true;
-            //}
-            //else
-            //{
-            //    Rejection.Visible = false;
-            //}
-        }
-        protected void btnIntimationForHistoryBack_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/Admin/IntimationForHistory.aspx", false);
-        }
-        protected void BtnSubmit_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (BtnSubmit.Text.Trim() == "Back")
-                {
-                    Response.Redirect("/Contractor/Approved_Test_Reports.aspx");
-                }
-                else
-                {
-                    string InspectionType = Session["InspectionType"].ToString();
-                    string Filename = string.Empty;
-                    string InstallationInvoice = string.Empty;
-                    string ManufacturingReport = string.Empty;
-                    string filePath = string.Empty;
-                    string id = Session["IntimationId"].ToString();
-                    string Counts = Session["Counts"].ToString();
-                    string ContractorId = Session["ContractorID"].ToString();
-                    string TestReportIds = Session["TestReportIds"].ToString();
-                    //CEI.UpdateSubstationData(id, Counts, ddlType.SelectedItem.ToString(), txtRejection.Text);
-                    if (InspectionType == "Existing")
-                    {
-                        CEI.InsertExistingInspectionData(lbltestReportId.Text, lblIntimationId.Text, txtTestReportCount.Text, txtApplicantType.Text, "Substation Transformer", txtVoltagelevel.Text.Trim(),
-                           txtDistrict.Text, txtDivision.Text, TxtPremises.Text, ContractorId);
 
-                    }
-                    if (Session["InspectionType"] != null && Session["InspectionType"].ToString() != "Existing")
-                    {
-                        bool isValid = true;
-                        int rowIndex = 0; // Counter to track iteration
-
-                        // Iterate through each row in the GridView
-                        foreach (GridViewRow row in Grd_Document.Rows)
-                        {
-                            rowIndex++; // Increment row index for each iteration
-
-                            // Find FileUpload control within the row
-                            FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
-
-                            // Ensure FileUpload control is not null and contains a file
-                            if (fileUpload != null && fileUpload.HasFile)
-                            {
-                                // File size validation: file should be <= 1MB
-                                if (fileUpload.PostedFile.ContentLength > 1048576)
-                                {
-                                    isValid = false;
-                                    string script = "alert('File size must be less than or equal to 1MB.');";
-                                    ScriptManager.RegisterStartupScript(this, GetType(), "FileSizeExceeded", script, true);
-                                    break;
-                                }
-
-                                // File type validation: only PDFs are allowed
-                                string fileExtension = Path.GetExtension(fileUpload.FileName).ToLower();
-                                if (fileExtension != ".pdf")
-                                {
-                                    isValid = false;
-                                    string script = "alert('Only PDF files are allowed.');";
-                                    ScriptManager.RegisterStartupScript(this, GetType(), "InvalidFileType", script, true);
-                                    break;
-                                }
-
-                                // Save the file based on the row index
-                                string filename = Path.GetFileName(fileUpload.FileName);
-                                string folderPath = string.Empty;
-                                string fullFilePath = string.Empty;
-
-                                if (rowIndex == 1)
-                                {
-                                    // Save to InstallationInvoice in first iteration
-                                    string InstallationInvoiceFileName = "InstallationInvoice_" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                                    folderPath = Server.MapPath("~/Attachment/" + "Contractor" + "SubstationTransformer" + TestReportIds + "/InstallationInvoice/");
-                                    if (!Directory.Exists(folderPath))
-                                    {
-                                        Directory.CreateDirectory(folderPath);
-                                    }
-                                    fullFilePath = Path.Combine(folderPath, InstallationInvoiceFileName);
-                                    fileUpload.SaveAs(fullFilePath);
-                                    InstallationInvoice = "/Attachment/" + "Contractor" + "SubstationTransformer" + TestReportIds + "/InstallationInvoice/" + InstallationInvoiceFileName;
-                                }
-                                else if (rowIndex == 2)
-                                {
-                                    // Save to ManufacturingReport in second iteration
-                                    string ManufacturingReportFileName = "ManufacturingReport_" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                                    folderPath = Server.MapPath("~/Attachment/" + "Contractor" + "SubstationTransformer" + TestReportIds + "/ManufacturingReport/");
-                                    if (!Directory.Exists(folderPath))
-                                    {
-                                        Directory.CreateDirectory(folderPath);
-                                    }
-                                    fullFilePath = Path.Combine(folderPath, ManufacturingReportFileName);
-                                    fileUpload.SaveAs(fullFilePath);
-                                    ManufacturingReport = "/Attachment/" + "Contractor" + "SubstationTransformer" + TestReportIds + "/ManufacturingReport/" + ManufacturingReportFileName;
-                                }
-                            }
-                            else
-                            {
-                                isValid = false;
-                                // Show error message if the file is missing
-                                string script = "alert('Please upload the required document.');";
-                                ScriptManager.RegisterStartupScript(this, GetType(), "FileUploadMissing", script, true);
-                                break; // Exit the loop if validation fails
-                            }
-                        }
-                        if (isValid && rowIndex == 2) // Ensure two files have been uploaded
-                        {
-                            CEI.UpdateSubstationData(id, Counts, InstallationInvoice, ManufacturingReport);
-                            Session["InspectionType"] = "";
-                            string script = "alert('Test Report Approved Successfully'); window.location='/Contractor/Approved_Test_Reports.aspx';";
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", script, true);
-                        }
-                        else if (rowIndex < 2)
-                        {
-                            // Show error if fewer than 2 rows were processed
-                            string script = "alert('Please upload documents for both rows.');";
-                            ScriptManager.RegisterStartupScript(this, GetType(), "IncompleteUpload", script, true);
-                        }
-                    }
-                    else
-                    {
-                        CEI.UpdateSubstationDataifExisting(id, Counts);
-                        string script = "alert('Test Report Approved  Successfully'); window.location='/Contractor/Approved_Test_Reports.aspx';";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", script, true);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // You can log the error or show a more specific message if necessary
-                string script = $"alert('An error occurred: {ex.Message}');";
-                ScriptManager.RegisterStartupScript(this, GetType(), "Error", script, true);
-            }
-        }
-        protected void btnBack_Click(object sender, EventArgs e)
-        {
-            if (Session["AdminID"] != null)
-            {
-                string previousPageUrl = Session["PreviousPage"] as string;
-                if (!string.IsNullOrEmpty(previousPageUrl))
-                {
-
-                    Response.Redirect(previousPageUrl, false);
-                    Session["PreviousPage"] = null;
-                    //return;
-                    //Response.Redirect("/Admin/TestReportHistoryFromSupervisor.aspx");
-                }
-            }
-            else
-            {
-                id = Session["SubStationID"].ToString();
-                Response.Redirect("/Supervisor/TestReportHistory.aspx");
-            }
-        }
         protected void btnNext_Click(object sender, EventArgs e)
         {
-            if (btnNext.Text.Trim() == "Back")
+            if (Session["PreviousPage"] != null)
             {
-                if (Session["PreviousPage"] != null)
-                {
-                    string previousPageUrl = Session["PreviousPage"].ToString();
-                    Response.Redirect(previousPageUrl, false);
-                    Session["PreviousInspPage"] = null;
-                }
-                else
-                {
-                    Response.Redirect("/Officers/Inspection.aspx", false);
-                }
-            }
-            else
-            {
-                id = Session["SubStationID"].ToString();
-                Response.Redirect("/SiteOwnerPages/CreateInspectionReport.aspx", false);
-            }
-        }
-        protected void BtnVerify_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Session["SubstationOtp"] = Convert.ToString(Convert.ToInt32(Session["SubstationOtp"]) + 1);
-                //OTP.Visible = true;
-                if (btnVerify.Text == "SendOTP" && Session["SubstationOtp"].ToString() == "1")
-                {
-                    OTP.Visible = true;
-                    string Email = Session["Email"].ToString();
-                    if (Email.Trim() == "")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                    }
-                    else
-                    {
-                        Session["OTP"] = CEI.ValidateOTPthroughEmail(Email);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('OTP has been Sent to your registered email Id');", true);
-                        btnVerify.Text = "Verify";
-                    }
-                }
-                else
-                {
-                    if (txtOtp.Text != "")
-                    {
-                        if (Session["OTP"].ToString() == txtOtp.Text)
-                        {
-                            FinalSubmit.Visible = true;
-                            ToOTPVerify.Visible = false;
-
-                            //Session["InspectionType"]
-                            //GetDocumentUploadData();
-                            if (Session["InspectionType"] != null && Session["InspectionType"].ToString() != "Existing")
-                            {
-                                GetDocumentUploadData();
-                            }
-
-                            //Contractor3.Visible = false;
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Incorrect OTP. Please try again.');", true);
-                        }
-                    }
-                    Session["SubstationOtp"] = null;
-                }
-            }
-            catch (Exception ex)
-            {
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An Error Occured Please try again later')", true);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                string previousPageUrl = Session["PreviousPage"].ToString();
+                Response.Redirect(previousPageUrl, false);
+                Session["PreviousInspPage"] = null;
             }
         }
 
         protected void btnBack2_Click(object sender, EventArgs e)
         {
-
-            // Response.Redirect("/SiteOwnerPages/GenerateInspection.aspx", false);
             try
             {
                 string previousPageUrl = Session["PreviousPage"] as string;
@@ -889,6 +570,5 @@ namespace CEIHaryana.TestReportModal
             }
             catch { }
         }
-
     }
 }

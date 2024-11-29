@@ -238,7 +238,7 @@ namespace CEIHaryana.Admin
                     grd_Documemnts.Columns[1].Visible = true;
 
                     GridView1.Columns[5].Visible = false;
-                    GridView1.Columns[3].Visible = false;
+                   // GridView1.Columns[3].Visible = false;
 
                     GridBindDocument();
                     DivTestReports.Visible = true;

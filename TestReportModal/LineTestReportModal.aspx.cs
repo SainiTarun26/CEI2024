@@ -56,42 +56,42 @@ namespace CEIHaryana.TestReportModal
                             }
                         }
                     }
-                    else if (Session["SiteOwnerId_Sld_Indus"] != null && Session["SiteOwnerId_Sld_Indus"].ToString() != "")
-                    {
-                        if (Request.UrlReferrer != null)
-                        {
-                            Session["PreviousPage_Industry"] = Request.UrlReferrer.ToString();
-                        }
+                    //else if (Session["SiteOwnerId_Sld_Indus"] != null && Session["SiteOwnerId_Sld_Indus"].ToString() != "")
+                    //{
+                    //    if (Request.UrlReferrer != null)
+                    //    {
+                    //        Session["PreviousPage_Industry"] = Request.UrlReferrer.ToString();
+                    //    }
 
-                        ID = Session["LineID"].ToString();
-                        GetDetailswithId();
+                    //    ID = Session["LineID"].ToString();
+                    //    GetDetailswithId();
 
-                        SiteOwner.Visible = false;
-                        SiteOwner2.Visible = true;
-                        IntimationData.Visible = true;
-                        ApprovalCard.Visible = true;
-                        //CreatedDate.Visible = true; //Added
-                        //SubmitDate.Visible = true;
-                        //SubmitBy.Visible = true;
-                    }
-                    else if (Session["SiteOwnerId_Industry"] != null && Session["SiteOwnerId_Industry"].ToString() != "")
-                    {
-                        if (Request.UrlReferrer != null)
-                        {
-                            Session["PreviousPage_Industry"] = Request.UrlReferrer.ToString();
-                        }
+                    //    SiteOwner.Visible = false;
+                    //    SiteOwner2.Visible = true;
+                    //    IntimationData.Visible = true;
+                    //    ApprovalCard.Visible = true;
+                    //    //CreatedDate.Visible = true; //Added
+                    //    //SubmitDate.Visible = true;
+                    //    //SubmitBy.Visible = true;
+                    //}
+                    //else if (Session["SiteOwnerId_Industry"] != null && Session["SiteOwnerId_Industry"].ToString() != "")
+                    //{
+                    //    if (Request.UrlReferrer != null)
+                    //    {
+                    //        Session["PreviousPage_Industry"] = Request.UrlReferrer.ToString();
+                    //    }
 
-                        ID = Session["LineID_Industry"].ToString();
-                        GetDetailswithId();
+                    //    ID = Session["LineID_Industry"].ToString();
+                    //    GetDetailswithId();
 
-                        SiteOwner.Visible = false;
-                        SiteOwner2.Visible = true;
-                        IntimationData.Visible = true;
-                        ApprovalCard.Visible = true;
-                        //CreatedDate.Visible = true; //Added
-                        //SubmitDate.Visible = true;
-                        //SubmitBy.Visible = true;
-                    }
+                    //    SiteOwner.Visible = false;
+                    //    SiteOwner2.Visible = true;
+                    //    IntimationData.Visible = true;
+                    //    ApprovalCard.Visible = true;
+                    //    //CreatedDate.Visible = true; //Added
+                    //    //SubmitDate.Visible = true;
+                    //    //SubmitBy.Visible = true;
+                    //}
                     else if (Session["SiteOwnerId"] != null && Session["SiteOwnerId"].ToString() != "")
                     {
                         ID = Session["LineID"].ToString();

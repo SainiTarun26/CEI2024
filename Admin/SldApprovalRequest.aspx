@@ -368,7 +368,7 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
-                                <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <asp:TemplateField HeaderText="SLD Document" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                     <HeaderStyle Width="5%" CssClass="headercolor" />
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("Path") %>' CommandName="Select">view document </asp:LinkButton>

@@ -195,6 +195,15 @@ namespace CEIHaryana.Industry_Master
         protected global::System.Web.UI.WebControls.TextBox txtApplicantType;
 
         /// <summary>
+        /// txtInstallation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtInstallation;
+
+        /// <summary>
         /// individual control.
         /// </summary>
         /// <remarks>

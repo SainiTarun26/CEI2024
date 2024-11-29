@@ -365,17 +365,17 @@ namespace CEIHaryana.Industry_Master
             if (txtWorkType.Text.Trim() == "Line")
             {
                 Session["LineID_Industry"] = testReportId;
-                Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
+                Response.Write("<script>window.open('/TestReportModel_Industry/LineTestReport_Industry.aspx','_blank');</script>");
             }
             else if (txtWorkType.Text.Trim() == "Substation Transformer")
             {
                 Session["SubStationID_Industry"] = testReportId;
-                Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
+                Response.Redirect("/TestReportModel_Industry/SubstationTestReport_Industry.aspx", false);
             }
             else if (txtWorkType.Text.Trim() == "Generating Set")
             {
                 Session["GeneratingSetId_Industry"] = testReportId;
-                Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
+                Response.Redirect("/TestReportModel_Industry/GeneratingSetTestReport_Industry.aspx", false);
             }
 
         }
@@ -558,14 +558,14 @@ namespace CEIHaryana.Industry_Master
         #endregion
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            if (Session["PeriodicInspection_Industry"] != null)
-            {
-                Response.Redirect("/SiteOwnerPages/PeroidicInspection.aspx", false);
-            }
-            else
-            {
+            //if (Session["PeriodicInspection_Industry"] != null)
+            //{
+            //    Response.Redirect("/SiteOwnerPages/PeroidicInspection.aspx", false);
+            //}
+            //else
+            //{
                 Response.Redirect("/Industry_Master/InspectionHistory_Industry.aspx", false);
-            }
+           // }
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -1054,18 +1054,18 @@ namespace CEIHaryana.Industry_Master
                 if (installationName == "Line")
                 {
                     Session["LineID_Industry"] = testReportId;
-                    Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
+                    Response.Write("<script>window.open('/TestReportModel_Industry/LineTestReport_Industry.aspx','_blank');</script>");
                 }
                 else if (installationName == "Substation Transformer")
                 {
                     Session["SubStationID_Industry"] = testReportId;
-                    Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
+                    Response.Redirect("/TestReportModel_Industry/SubstationTestReport_Industry.aspx", false);
 
                 }
                 else if (installationName == "Generating Set")
                 {
                     Session["GeneratingSetId_Industry"] = testReportId;
-                    Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
+                    Response.Redirect("/TestReportModel_Industry/GeneratingSetTestReport_Industry.aspx", false);
                 }
             }
             catch (Exception ex) { }

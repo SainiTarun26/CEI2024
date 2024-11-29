@@ -7,21 +7,57 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CEIHaryana.SiteOwnerPages
+namespace CEIHaryana.TestReportModel_Industry
 {
 
 
-    public partial class LiftDetails
+    public partial class SubstationTestReport_Industry
     {
 
         /// <summary>
-        /// ScriptManager1 control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+
+        /// <summary>
+        /// btnPrint control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPrint;
+
+        /// <summary>
+        /// lbltestReportId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbltestReportId;
+
+        /// <summary>
+        /// lblWorkIntimationId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblWorkIntimationId;
+
+        /// <summary>
+        /// divtrasformer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divtrasformer;
 
         /// <summary>
         /// DataUpdated control.
@@ -42,76 +78,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl DataSaved;
 
         /// <summary>
-        /// UpdatePanel1 control.
+        /// IntimationData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-
-        /// <summary>
-        /// Div8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div8;
-
-        /// <summary>
-        /// txtapplication control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtapplication;
-
-        /// <summary>
-        /// RequiredFieldValidator34 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator34;
-
-        /// <summary>
-        /// Div9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div9;
-
-        /// <summary>
-        /// txtid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtid;
-
-        /// <summary>
-        /// RequiredFieldValidator75 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator75;
-
-        /// <summary>
-        /// Div10 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div10;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl IntimationData;
 
         /// <summary>
         /// txtInstallation control.
@@ -123,1579 +96,1291 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.TextBox txtInstallation;
 
         /// <summary>
-        /// RequiredFieldValidator76 control.
+        /// agency control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator76;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl agency;
 
         /// <summary>
-        /// Div12 control.
+        /// txtagency control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div12;
+        protected global::System.Web.UI.WebControls.TextBox txtagency;
 
         /// <summary>
-        /// txtNOOfInstallation control.
+        /// individual control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNOOfInstallation;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl individual;
 
         /// <summary>
-        /// RequiredFieldValidator77 control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator77;
+        protected global::System.Web.UI.WebControls.TextBox txtName;
 
         /// <summary>
-        /// RadioButtonList2 control.
+        /// txtTestReportCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList2;
+        protected global::System.Web.UI.WebControls.TextBox txtTestReportCount;
 
         /// <summary>
-        /// RequiredFieldValidator20 control.
+        /// individual10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator20;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl individual10;
 
         /// <summary>
-        /// Name control.
+        /// txtAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Name;
+        protected global::System.Web.UI.WebControls.TextBox txtAddress;
 
         /// <summary>
-        /// TxtAgentName control.
+        /// txtApplicantType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtAgentName;
+        protected global::System.Web.UI.WebControls.TextBox txtApplicantType;
 
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// individual5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl individual5;
 
         /// <summary>
-        /// Address control.
+        /// txtPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Address;
+        protected global::System.Web.UI.WebControls.TextBox txtPhone;
 
         /// <summary>
-        /// txtAgentAddress control.
+        /// individual2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAgentAddress;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl individual2;
 
         /// <summary>
-        /// RequiredFieldValidator3 control.
+        /// TxtPremises control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        protected global::System.Web.UI.WebControls.TextBox TxtPremises;
 
         /// <summary>
-        /// Contact control.
+        /// individual3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Contact;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl individual3;
 
         /// <summary>
-        /// txtAgentPhone control.
+        /// txtVoltagelevel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAgentPhone;
+        protected global::System.Web.UI.WebControls.TextBox txtVoltagelevel;
 
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// individual6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl individual6;
 
         /// <summary>
-        /// txtErectionDate control.
+        /// txtStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtErectionDate;
+        protected global::System.Web.UI.WebControls.TextBox txtStartDate;
 
         /// <summary>
-        /// RequiredFieldValidator22 control.
+        /// individual11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator22;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl individual11;
 
         /// <summary>
-        /// RadioButtonAction control.
+        /// txtCompletitionDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonAction;
+        protected global::System.Web.UI.WebControls.TextBox txtCompletitionDate;
 
         /// <summary>
-        /// txtLiftSpeedContract control.
+        /// Div8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLiftSpeedContract;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div8;
 
         /// <summary>
-        /// RequiredFieldValidator5 control.
+        /// txtDistrict control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
+        protected global::System.Web.UI.WebControls.TextBox txtDistrict;
 
         /// <summary>
-        /// txtLiftLoad control.
+        /// Div3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLiftLoad;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div3;
 
         /// <summary>
-        /// RequiredFieldValidator6 control.
+        /// txtDivision control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
+        protected global::System.Web.UI.WebControls.TextBox txtDivision;
 
         /// <summary>
-        /// txtMaxPersonCapacity control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMaxPersonCapacity;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
-        /// RequiredFieldValidator8 control.
+        /// Div121 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div121;
 
         /// <summary>
-        /// txtWeight control.
+        /// txtTransformerSerialNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtWeight;
+        protected global::System.Web.UI.WebControls.TextBox txtTransformerSerialNumber;
 
         /// <summary>
-        /// RequiredFieldValidator4 control.
+        /// txtTransformerCapacityType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
+        protected global::System.Web.UI.WebControls.TextBox txtTransformerCapacityType;
 
         /// <summary>
-        /// txtCounterWeight control.
+        /// txtTransformerCapacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCounterWeight;
+        protected global::System.Web.UI.WebControls.TextBox txtTransformerCapacity;
 
         /// <summary>
-        /// RequiredFieldValidator9 control.
+        /// txtTransformerType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
+        protected global::System.Web.UI.WebControls.TextBox txtTransformerType;
 
         /// <summary>
-        /// txtPitDepth control.
+        /// InCaseOfOil control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPitDepth;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl InCaseOfOil;
 
         /// <summary>
-        /// RequiredFieldValidator13 control.
+        /// txtPrimaryVoltage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator13;
+        protected global::System.Web.UI.WebControls.TextBox txtPrimaryVoltage;
 
         /// <summary>
-        /// txtTravelDistance control.
+        /// txtSecondryVoltage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTravelDistance;
+        protected global::System.Web.UI.WebControls.TextBox txtSecondryVoltage;
 
         /// <summary>
-        /// RequiredFieldValidator14 control.
+        /// Capacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator14;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Capacity;
 
         /// <summary>
-        /// txtFloorsServed control.
+        /// txtOilCapacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFloorsServed;
+        protected global::System.Web.UI.WebControls.TextBox txtOilCapacity;
 
         /// <summary>
-        /// RequiredFieldValidator15 control.
+        /// BDV control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator15;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl BDV;
 
         /// <summary>
-        /// txtTotalHeadRoom control.
+        /// txtOilBDV control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTotalHeadRoom;
+        protected global::System.Web.UI.WebControls.TextBox txtOilBDV;
 
         /// <summary>
-        /// RequiredFieldValidator16 control.
+        /// Div124 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator16;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div124;
 
         /// <summary>
-        /// txtTypeofControll control.
+        /// txtHTsideInsulation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTypeofControll;
+        protected global::System.Web.UI.WebControls.TextBox txtHTsideInsulation;
 
         /// <summary>
-        /// RequiredFieldValidator62 control.
+        /// txtLTSideInsulation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator62;
+        protected global::System.Web.UI.WebControls.TextBox txtLTSideInsulation;
 
         /// <summary>
-        /// txtNoofSuspension control.
+        /// txtLowestValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNoofSuspension;
+        protected global::System.Web.UI.WebControls.TextBox txtLowestValue;
 
         /// <summary>
-        /// RequiredFieldValidator10 control.
+        /// txtLightningArrestor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
+        protected global::System.Web.UI.WebControls.TextBox txtLightningArrestor;
 
         /// <summary>
-        /// txtDescriptionOfSuspension control.
+        /// txtHTType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescriptionOfSuspension;
+        protected global::System.Web.UI.WebControls.TextBox txtHTType;
 
         /// <summary>
-        /// RequiredFieldValidator11 control.
+        /// ddlBreaker control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator11;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBreaker;
 
         /// <summary>
-        /// txtSizeOfSuspension control.
+        /// TypeOfHTBreaker control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSizeOfSuspension;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl TypeOfHTBreaker;
 
         /// <summary>
-        /// RequiredFieldValidator12 control.
+        /// txtBreakerCapacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator12;
+        protected global::System.Web.UI.WebControls.TextBox txtBreakerCapacity;
 
         /// <summary>
-        /// txtBeamWeight control.
+        /// txtLTProtection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBeamWeight;
+        protected global::System.Web.UI.WebControls.TextBox txtLTProtection;
 
         /// <summary>
-        /// RequiredFieldValidator18 control.
+        /// FuseUnit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator18;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FuseUnit;
 
         /// <summary>
-        /// txtBeamSize control.
+        /// txtIndividualCapacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBeamSize;
+        protected global::System.Web.UI.WebControls.TextBox txtIndividualCapacity;
 
         /// <summary>
-        /// RequiredFieldValidator19 control.
+        /// Breaker control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator19;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Breaker;
 
         /// <summary>
-        /// txtMakeMainBreaker control.
+        /// Div167 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMakeMainBreaker;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div167;
 
         /// <summary>
-        /// RequiredFieldValidator24 control.
+        /// txtLTBreakerCapacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator24;
+        protected global::System.Web.UI.WebControls.TextBox txtLTBreakerCapacity;
 
         /// <summary>
-        /// txtTypeMainBreaker control.
+        /// Div168 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTypeMainBreaker;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div168;
 
         /// <summary>
-        /// RequiredFieldValidator21 control.
+        /// txtLoadBreakingCapacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator21;
+        protected global::System.Web.UI.WebControls.TextBox txtLoadBreakingCapacity;
 
         /// <summary>
-        /// ddlPoleMainBreaker control.
+        /// Div169 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPoleMainBreaker;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div169;
 
         /// <summary>
-        /// RequiredFieldValidator17 control.
+        /// txtSealLevelPlinth control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator17;
+        protected global::System.Web.UI.WebControls.TextBox txtSealLevelPlinth;
 
         /// <summary>
-        /// txtratingMainBreaker control.
+        /// txtEarthing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtratingMainBreaker;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthing;
 
         /// <summary>
-        /// RequiredFieldValidator25 control.
+        /// SubstationEarthingDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator25;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SubstationEarthingDiv;
 
         /// <summary>
-        /// txtCapacityMainBreaker control.
+        /// EarthingSubstation4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCapacityMainBreaker;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EarthingSubstation4;
 
         /// <summary>
-        /// RequiredFieldValidator26 control.
+        /// txtEarthingType1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator26;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType1;
 
         /// <summary>
-        /// txtMakeRCCBMainBreaker control.
+        /// txtSubstationEarthing1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMakeRCCBMainBreaker;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing1;
 
         /// <summary>
-        /// RequiredFieldValidator27 control.
+        /// txtUsedFor1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator27;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor1;
 
         /// <summary>
-        /// ddlPolesRCCBMainBreaker control.
+        /// txtOtherUsage1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPolesRCCBMainBreaker;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage1;
 
         /// <summary>
-        /// RequiredFieldValidator55 control.
+        /// txtEarthingType2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator55;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType2;
 
         /// <summary>
-        /// txtRatingRCCBMainBreaker control.
+        /// txtSubstationEarthing2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRatingRCCBMainBreaker;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing2;
 
         /// <summary>
-        /// RequiredFieldValidator30 control.
+        /// txtUsedFor2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator30;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor2;
 
         /// <summary>
-        /// txtfaultratingRCCBMainBreaker control.
+        /// txtOtherUsage2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtfaultratingRCCBMainBreaker;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage2;
 
         /// <summary>
-        /// RequiredFieldValidator31 control.
+        /// txtEarthingType3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator31;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType3;
 
         /// <summary>
-        /// txtMakeLoadBreaker control.
+        /// txtSubstationEarthing3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMakeLoadBreaker;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing3;
 
         /// <summary>
-        /// RequiredFieldValidator28 control.
+        /// txtUsedFor3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator28;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor3;
 
         /// <summary>
-        /// txtTypeLoadBreaker control.
+        /// txtOtherUsage3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTypeLoadBreaker;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage3;
 
         /// <summary>
-        /// RequiredFieldValidator32 control.
+        /// Div52 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator32;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div52;
 
         /// <summary>
-        /// ddlPolesLoadBreaker control.
+        /// txtEarthingType4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPolesLoadBreaker;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType4;
 
         /// <summary>
-        /// RequiredFieldValidator56 control.
+        /// Div53 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator56;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div53;
 
         /// <summary>
-        /// txtRatingLoadBreaker control.
+        /// txtSubstationEarthing4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRatingLoadBreaker;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing4;
 
         /// <summary>
-        /// RequiredFieldValidator35 control.
+        /// txtUsedFor4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator35;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor4;
 
         /// <summary>
-        /// txtCapacityLoadBreaker control.
+        /// txtOtherUsage4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCapacityLoadBreaker;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage4;
 
         /// <summary>
-        /// RequiredFieldValidator36 control.
+        /// EathingSubstation5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator36;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation5;
 
         /// <summary>
-        /// txtMakeRCCBLoadBreaker control.
+        /// Div54 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMakeRCCBLoadBreaker;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div54;
 
         /// <summary>
-        /// RequiredFieldValidator37 control.
+        /// txtEarthingType5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator37;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType5;
 
         /// <summary>
-        /// ddlpolesRCCBLoadBreaker control.
+        /// txtSubstationEarthing5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlpolesRCCBLoadBreaker;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing5;
 
         /// <summary>
-        /// RequiredFieldValidator57 control.
+        /// txtUsedFor5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator57;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor5;
 
         /// <summary>
-        /// txtRatingRCCBLoadBreaker control.
+        /// txtOtherUsage5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRatingRCCBLoadBreaker;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage5;
 
         /// <summary>
-        /// RequiredFieldValidator39 control.
+        /// EathingSubstation6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator39;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation6;
 
         /// <summary>
-        /// txtFaultCurrentRCCBLoadBreaker control.
+        /// txtEarthingType6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFaultCurrentRCCBLoadBreaker;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType6;
 
         /// <summary>
-        /// RequiredFieldValidator40 control.
+        /// txtSubstationEarthing6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator40;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing6;
 
         /// <summary>
-        /// txtwholeInstallation control.
+        /// txtUsedFor6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtwholeInstallation;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor6;
 
         /// <summary>
-        /// RequiredFieldValidator23 control.
+        /// txtOtherUsage6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator23;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage6;
 
         /// <summary>
-        /// TPN1 control.
+        /// EathingSubstation7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl TPN1;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation7;
 
         /// <summary>
-        /// txtNeutralPhase control.
+        /// Div68 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNeutralPhase;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div68;
 
         /// <summary>
-        /// RequiredFieldValidator63 control.
+        /// txtEarthingType7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator63;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType7;
 
         /// <summary>
-        /// TPN2 control.
+        /// txtSubstationEarthing7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl TPN2;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing7;
 
         /// <summary>
-        /// txtEarthPhase control.
+        /// txtUsedFor7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEarthPhase;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor7;
 
         /// <summary>
-        /// RequiredFieldValidator78 control.
+        /// txtOtherUsage7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator78;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage7;
 
         /// <summary>
-        /// InDPO control.
+        /// EathingSubstation8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl InDPO;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation8;
 
         /// <summary>
-        /// txtRedYellow control.
+        /// txtEarthingType8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRedYellow;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType8;
 
         /// <summary>
-        /// RequiredFieldValidator41 control.
+        /// txtSubstationEarthing8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator41;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing8;
 
         /// <summary>
-        /// txtRedBlue control.
+        /// txtUsedFor8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRedBlue;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor8;
 
         /// <summary>
-        /// RequiredFieldValidator29 control.
+        /// txtOtherUsage8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator29;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage8;
 
         /// <summary>
-        /// txtYellowBlue control.
+        /// EathingSubstation9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtYellowBlue;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation9;
 
         /// <summary>
-        /// RequiredFieldValidator33 control.
+        /// txtEarthingType9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator33;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType9;
 
         /// <summary>
-        /// txtRedEarth control.
+        /// txtSubstationEarthing9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRedEarth;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing9;
 
         /// <summary>
-        /// RequiredFieldValidator38 control.
+        /// txtUsedFor9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator38;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor9;
 
         /// <summary>
-        /// txtYellowEarth control.
+        /// txtOtherUsage9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtYellowEarth;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage9;
 
         /// <summary>
-        /// RequiredFieldValidator42 control.
+        /// EathingSubstation10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator42;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation10;
 
         /// <summary>
-        /// txtBlueEarth control.
+        /// txtEarthingType10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBlueEarth;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType10;
 
         /// <summary>
-        /// RequiredFieldValidator43 control.
+        /// txtSubstationEarthing10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator43;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing10;
 
         /// <summary>
-        /// Earthing control.
+        /// txtUsedFor10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Earthing;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor10;
 
         /// <summary>
-        /// ddlNoOfEarthing control.
+        /// txtOtherUsage10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlNoOfEarthing;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage10;
 
         /// <summary>
-        /// RequiredFieldValidator44 control.
+        /// EathingSubstation11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator44;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation11;
 
         /// <summary>
-        /// LineEarthingdiv control.
+        /// txtEarthingType11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LineEarthingdiv;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType11;
 
         /// <summary>
-        /// tbl control.
+        /// txtSubstationEarthing11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable tbl;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing11;
 
         /// <summary>
-        /// Earthingtype1 control.
+        /// txtUsedFor11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype1;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor11;
 
         /// <summary>
-        /// ddlEarthingtype1 control.
+        /// txtOtherUsage11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype1;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage11;
 
         /// <summary>
-        /// RequiredFieldValidator45 control.
+        /// EathingSubstation12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator45;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation12;
 
         /// <summary>
-        /// txtearthingValue1 control.
+        /// txtEarthingType12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtearthingValue1;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType12;
 
         /// <summary>
-        /// RequiredFieldValidator73 control.
+        /// txtSubstationEarthing12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator73;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing12;
 
         /// <summary>
-        /// Earthingtype2 control.
+        /// txtUsedFor12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype2;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor12;
 
         /// <summary>
-        /// ddlEarthingtype2 control.
+        /// txtOtherUsage12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype2;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage12;
 
         /// <summary>
-        /// RequiredFieldValidator46 control.
+        /// EathingSubstation13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator46;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation13;
 
         /// <summary>
-        /// txtEarthingValue2 control.
+        /// txtEarthingType13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue2;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType13;
 
         /// <summary>
-        /// RequiredFieldValidator72 control.
+        /// txtSubstationEarthing13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator72;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing13;
 
         /// <summary>
-        /// Earthingtype3 control.
+        /// txtUsedFor13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype3;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor13;
 
         /// <summary>
-        /// ddlEarthingtype3 control.
+        /// txtOtherUsage13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype3;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage13;
 
         /// <summary>
-        /// RequiredFieldValidator47 control.
+        /// EathingSubstation14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator47;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation14;
 
         /// <summary>
-        /// txtEarthingValue3 control.
+        /// txtEarthingType14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue3;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType14;
 
         /// <summary>
-        /// RequiredFieldValidator71 control.
+        /// txtSubstationEarthing14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator71;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing14;
 
         /// <summary>
-        /// Earthingtype4 control.
+        /// txtUsedFor14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype4;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor14;
 
         /// <summary>
-        /// ddlEarthingtype4 control.
+        /// txtOtherUsage14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype4;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage14;
 
         /// <summary>
-        /// RequiredFieldValidator48 control.
+        /// EathingSubstation15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator48;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EathingSubstation15;
 
         /// <summary>
-        /// Div15 control.
+        /// txtEarthingType15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div15;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType15;
 
         /// <summary>
-        /// txtEarthingValue4 control.
+        /// txtSubstationEarthing15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue4;
+        protected global::System.Web.UI.WebControls.TextBox txtSubstationEarthing15;
 
         /// <summary>
-        /// RequiredFieldValidator70 control.
+        /// txtUsedFor15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator70;
+        protected global::System.Web.UI.WebControls.TextBox txtUsedFor15;
 
         /// <summary>
-        /// Earthingtype5 control.
+        /// txtOtherUsage15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype5;
+        protected global::System.Web.UI.WebControls.TextBox txtOtherUsage15;
 
         /// <summary>
-        /// ddlEarthingtype5 control.
+        /// lblIntimationId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype5;
+        protected global::System.Web.UI.WebControls.Label lblIntimationId;
 
         /// <summary>
-        /// RequiredFieldValidator49 control.
+        /// SubmitDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator49;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SubmitDate;
 
         /// <summary>
-        /// txtEarthingValue5 control.
+        /// txtSubmitteddate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue5;
+        protected global::System.Web.UI.WebControls.TextBox txtSubmitteddate;
 
         /// <summary>
-        /// RequiredFieldValidator69 control.
+        /// SubmitBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator69;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SubmitBy;
 
         /// <summary>
-        /// Earthingtype6 control.
+        /// txtSubmittedBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype6;
+        protected global::System.Web.UI.WebControls.TextBox txtSubmittedBy;
 
         /// <summary>
-        /// ddlEarthingtype6 control.
+        /// updatePanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype6;
+        protected global::System.Web.UI.UpdatePanel updatePanel1;
 
         /// <summary>
-        /// RequiredFieldValidator50 control.
+        /// lblReportNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator50;
+        protected global::System.Web.UI.WebControls.Label lblReportNo;
 
         /// <summary>
-        /// txtEarthingValue6 control.
+        /// CreatedDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue6;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CreatedDate;
 
         /// <summary>
-        /// RequiredFieldValidator68 control.
+        /// txtCreatedDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator68;
+        protected global::System.Web.UI.WebControls.TextBox txtCreatedDate;
 
         /// <summary>
-        /// Earthingtype7 control.
+        /// Rejection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype7;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Rejection;
 
         /// <summary>
-        /// ddlEarthingtype7 control.
+        /// txtPreparedby control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype7;
-
-        /// <summary>
-        /// RequiredFieldValidator51 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator51;
-
-        /// <summary>
-        /// txtEarthingValue7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue7;
-
-        /// <summary>
-        /// RequiredFieldValidator67 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator67;
-
-        /// <summary>
-        /// Earthingtype8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype8;
-
-        /// <summary>
-        /// ddlEarthingtype8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype8;
-
-        /// <summary>
-        /// RequiredFieldValidator52 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator52;
-
-        /// <summary>
-        /// txtEarthingValue8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue8;
-
-        /// <summary>
-        /// RequiredFieldValidator66 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator66;
-
-        /// <summary>
-        /// Earthingtype9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype9;
-
-        /// <summary>
-        /// ddlEarthingtype9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype9;
-
-        /// <summary>
-        /// RequiredFieldValidator53 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator53;
-
-        /// <summary>
-        /// txtEarthingValue9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue9;
-
-        /// <summary>
-        /// RequiredFieldValidator65 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator65;
-
-        /// <summary>
-        /// Earthingtype10 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Earthingtype10;
-
-        /// <summary>
-        /// ddlEarthingtype10 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEarthingtype10;
-
-        /// <summary>
-        /// RequiredFieldValidator54 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator54;
-
-        /// <summary>
-        /// txtEarthingValue10 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEarthingValue10;
-
-        /// <summary>
-        /// RequiredFieldValidator64 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator64;
-
-        /// <summary>
-        /// Div1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
-
-        /// <summary>
-        /// ddlContName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlContName;
-
-        /// <summary>
-        /// RequiredFieldValidator59 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator59;
-
-        /// <summary>
-        /// txtContName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContName;
-
-        /// <summary>
-        /// RequiredFieldValidator58 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator58;
-
-        /// <summary>
-        /// txtContExp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContExp;
-
-        /// <summary>
-        /// RequiredFieldValidator60 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator60;
-
-        /// <summary>
-        /// ddlLicenseNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLicenseNo;
-
-        /// <summary>
-        /// RequiredFieldValidator61 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator61;
-
-        /// <summary>
-        /// txtSupLicenseNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSupLicenseNo;
-
-        /// <summary>
-        /// txtSupExpiryDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSupExpiryDate;
-
-        /// <summary>
-        /// Declaration control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Declaration;
-
-        /// <summary>
-        /// CheckBox1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
-
-        /// <summary>
-        /// labelVerification control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl labelVerification;
+        protected global::System.Web.UI.WebControls.TextBox txtPreparedby;
 
         /// <summary>
         /// OTP control.
@@ -1707,66 +1392,129 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl OTP;
 
         /// <summary>
-        /// txtOTP control.
+        /// txtOtp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOTP;
+        protected global::System.Web.UI.WebControls.TextBox txtOtp;
 
         /// <summary>
-        /// RequiredFieldValidator74 control.
+        /// RequiredFieldValidator2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator74;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
-        /// Check control.
+        /// ApprovalCard control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox Check;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ApprovalCard;
 
         /// <summary>
-        /// BtnBack control.
+        /// Div9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnBack;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div9;
 
         /// <summary>
-        /// btnVerify control.
+        /// txtApprovalDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVerify;
+        protected global::System.Web.UI.WebControls.TextBox txtApprovalDate;
 
         /// <summary>
-        /// btnSubmit control.
+        /// Div10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div10;
 
         /// <summary>
-        /// hdn control.
+        /// txtApprovedBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdn;
+        protected global::System.Web.UI.WebControls.TextBox txtApprovedBy;
+
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+
+        /// <summary>
+        /// Grd_Document control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView Grd_Document;
+
+        /// <summary>
+        /// SiteOwner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SiteOwner;
+
+        /// <summary>
+        /// btnNext control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNext;
+
+        /// <summary>
+        /// SiteOwner2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SiteOwner2;
+
+        /// <summary>
+        /// btnBack2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBack2;
+
+        /// <summary>
+        /// HiddenFieldOtp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldOtp;
     }
 }

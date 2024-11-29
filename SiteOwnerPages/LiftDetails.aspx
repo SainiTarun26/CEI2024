@@ -119,6 +119,18 @@
         }
     </script>
     <style>
+        table#ContentPlaceHolder1_RadioButtonAction {
+            margin-top: -13px;
+        }
+
+        input#ContentPlaceHolder1_RadioButtonAction_0 {
+            margin-right: 5px;
+        }
+
+        input#ContentPlaceHolder1_RadioButtonAction_1 {
+            margin-right: 5px;
+        }
+
         .submit {
             border: 1px solid #563d7c;
             border-radius: 5px;
@@ -412,16 +424,15 @@
                                         <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
                                     </div>
                                     <div class="col-md-4">
-                                        <label>
+                                        <label for="Voltage">
                                             Type of Lift Erected
-        <samp style="color: red">* </samp>
+                                            <samp style="color: red">* </samp>
                                         </label>
-                                        <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlLiftErected" selectionmode="Multiple" Style="width: 100% !important">
-                                            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="Machine Room" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="MRL" Value="2"></asp:ListItem>
-                                        </asp:DropDownList>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" Text="Please Select Lift Erected" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLiftErected" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        <asp:RadioButtonList ID="RadioButtonAction" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                                            <asp:ListItem Text="Passenger lift" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
+                                            <asp:ListItem Text="Goods Lift" Value="1" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
+                                        </asp:RadioButtonList>
+                                        <%--<asp:RequiredFieldValidator ID="rvfRadioButtonList" ErrorMessage="Choose one" ControlToValidate="RadioButtonAction" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />--%>
                                     </div>
                                     <div class="col-md-4" runat="server">
                                         <label for="Name">
@@ -1226,7 +1237,7 @@
     <script type="text/javascript">
         function alertWithRedirect() {
             if (confirm('Test report has been submitted and is under review by the Contractor for final submission')) {
-                window.location.href = "/Supervisor/IntimationData.aspx";
+                window.location.href = "/SiteOwnerPages/IntimationData.aspx";
             } else {
             }
         }
@@ -1235,7 +1246,7 @@
         function alertWithRedirectdata() {
             /*if (confirm('Test Report Submitted Successfully')) {*/
             alert('Test Report Submitted Successfully');
-            window.location.href = "/Supervisor/InstallationDetails.aspx";
+            window.location.href = "/SiteOwnerPages/LiftInstallationDetails.aspx";
             //} else {
             //}
         }

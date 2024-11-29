@@ -3,6 +3,7 @@ using CEI_PRoject.Admin;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
@@ -27,7 +28,6 @@ namespace CEIHaryana.SiteOwnerPages
                     txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim() + " Out of " + Session["TotalInstallation"].ToString().Trim();
                     BtnBack.Visible = true;
                     GetContractorDetails();
-                        GetSupervisorDetails();
                 }
             }
             catch
@@ -49,11 +49,11 @@ namespace CEIHaryana.SiteOwnerPages
             dsContractor.Clear();
 
         }
-        private void GetSupervisorDetails()
+        private void GetSupervisorDetails(string value)
         {
 
             DataSet dsSupervisor= new DataSet();
-            dsSupervisor = CEI.GetSupervisorData();
+            dsSupervisor = CEI.GetSupervisorDataatSiteOwner(value);
             ddlLicenseNo.DataSource = dsSupervisor;
             ddlLicenseNo.DataTextField = "SupervisorData";
             ddlLicenseNo.DataValueField = "LicenseValue";
@@ -131,6 +131,7 @@ namespace CEIHaryana.SiteOwnerPages
 
             }
         }
+       
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -141,6 +142,15 @@ namespace CEIHaryana.SiteOwnerPages
                 string count = Session["NoOfInstallations"].ToString();
                 string installationNo = Session["IHID"].ToString();
 
+                if (txtNeutralPhase.Text=="")
+                {
+                    txtNeutralPhase.Text = "0";
+                    txtEarthPhase.Text="0";
+                }
+                else
+                {
+
+                }
                 // Helper function to safely parse decimal fields
                 decimal ParseOrDefault(string input, decimal defaultValue = 0)
                 {
@@ -149,7 +159,7 @@ namespace CEIHaryana.SiteOwnerPages
                 if (Session["Expired"].ToString()=="False") {
                     CEI.InsertNewLiftData(
                         count, IntimationId, RadioButtonList2.SelectedItem.Text, TxtAgentName.Text, txtAgentAddress.Text,
-                        txtAgentPhone.Text, txtErectionDate.Text, ddlLiftErected.SelectedItem.ToString(), txtLiftSpeedContract.Text,
+                        txtAgentPhone.Text, txtErectionDate.Text, RadioButtonAction.SelectedItem.ToString(), txtLiftSpeedContract.Text,
                         ParseOrDefault(txtLiftLoad.Text), txtMaxPersonCapacity.Text, ParseOrDefault(txtWeight.Text), ParseOrDefault(txtCounterWeight.Text),
                         ParseOrDefault(txtPitDepth.Text), ParseOrDefault(txtTravelDistance.Text), ParseOrDefault(txtFloorsServed.Text),
                         ParseOrDefault(txtTotalHeadRoom.Text), txtTypeofControll.Text, ParseOrDefault(txtNoofSuspension.Text), txtDescriptionOfSuspension.Text,
@@ -227,6 +237,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
 
             }
+            GetSupervisorDetails(ddlContName.SelectedValue);
         }
           
 

@@ -313,7 +313,7 @@
             </div>
             <div class="row" id="TRAttached" runat="server" visible="true">
                 <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
-                    Test Report Detail
+                    Inspection Detail
                 </div>
             </div>
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="TRAttachedGrid" runat="server" visible="true">
@@ -414,6 +414,11 @@
                     </asp:GridView>
                 </div>
             </div>--%>
+             <div class="row" id="Div1" runat="server" visible="true">
+     <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
+         Test Report Detail
+     </div>
+ </div>
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivTRinMultipleCaseNew" runat="server" visible="false">
                 <div class="col-12" style="padding: 0px;">
                     <asp:GridView ID="Grid_MultipleInspectionTR" CssClass="table table-bordered table-striped table-responsive" OnRowDataBound="Grid_MultipleInspectionTR_RowDataBound" OnRowCommand="Grid_MultipleInspectionTR_RowCommand" runat="server" AutoGenerateColumns="false">

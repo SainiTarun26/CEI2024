@@ -339,7 +339,7 @@
             </div>
             <div class="row" id="divTestReportAttachment" runat="server" visible="true">
                 <div class="card-title" style="margin-bottom: 5px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: -10px;">
-                    Test Report Detail
+                    Inspection Detail
                 </div>
                 <div class="card" style="padding-top: 10px; margin-left: 0px !important;">
                     
@@ -412,7 +412,11 @@
                 </div>
                   
             </div>
+                                        <div class="card-title" style="margin-bottom: 5px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: -10px;">
+    Test Report Detail
+</div>  
             <div class="row" style="margin-top:20px;">
+                           
                             <div class="card" style="padding: 11px; margin-bottom: 20px;" id="DivTestReports" runat="server" visible="false">
     <div class="col-12" style="padding: 0px;">
         <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false">

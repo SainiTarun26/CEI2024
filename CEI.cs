@@ -7800,6 +7800,10 @@ string IntimationId, string VoltageLevel, string ApplicantType, string District,
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetSupervisorDetails");
         }
+        public DataSet GetSupervisorDataatSiteOwner(string License)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSupervisorDetails", License);
+        }
 
         public int InsertNewLiftData(string count, string IntimationId, string NameandAddressofLocalAgent, string NameofLocalAgent
 , string AddressofLocalAgent, string ContactNoofLocalAgent, string DateofErection, string TypeofLiftErected, string ContractSpeedofLiftMtrPrSec

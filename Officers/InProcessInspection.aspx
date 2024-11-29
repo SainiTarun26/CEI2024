@@ -30,6 +30,9 @@
 
 
     <style>
+        th.headercolor {
+    color: white !important;
+}
         .multiselect {
             width: 100%;
         }
@@ -378,10 +381,10 @@
             </div>
             <div class="row" id="divTestReportAttachment" runat="server" visible="true">
                 <div class="card-title" style="margin-bottom: 5px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: -10px;">
-                    Test Report Detail
+                    Inspection Details
                 </div>
                 <div class="card" style="padding-top: 10px; margin-left: 0px !important;">
-                    <div class="col-12">
+                   
 
                         <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
                             <HeaderStyle BackColor="#B7E2F0" />
@@ -438,10 +441,13 @@
                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                         </asp:GridView>
 
-                    </div>
+                    
                 </div>
 
             </div>
+             <div class="card-title" style="margin-bottom: 5px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: -10px;">
+     Test Report Detail
+ </div>
             <div class="card" style="margin: -11px; margin-top: 15px; padding: 11px; margin-bottom: 20px;" id="DivTestReports" runat="server" visible="false">
                 <div class="col-12" style="padding: 0px;">
                     <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false">
@@ -482,7 +488,7 @@
                 </div>
             </div>
 
-            <div class="card" style="margin-top: 15px; padding: 11px; margin-bottom: 20px;" id="DivViewTRinMultipleCaseNew" runat="server" visible="false">
+            <div class="card" style="margin-top: 15px; padding: 11px; margin-bottom: 20px;margin-left: -15px; margin-right: -15px;" id="DivViewTRinMultipleCaseNew" runat="server" visible="false">
                     <asp:GridView ID="Grid_MultipleInspectionTR" CssClass="table table-bordered table-striped table-responsive" OnRowDataBound="Grid_MultipleInspectionTR_RowDataBound" OnRowCommand="Grid_MultipleInspectionTR_RowCommand" runat="server" AutoGenerateColumns="false">
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
@@ -631,6 +637,14 @@
 
             </div>
         </div>
+        <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" style="text-align: center;">
+        <asp:Button ID="btnPreview" Text="Preview" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnPreview_Click" />
+        <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
+        <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+    </div>
+</div>
     </div>
     <%--  <div id="modal1" class="modal" runat="server" visible="false">
     <div class="modal-content">
@@ -677,14 +691,7 @@
 
     <%--   </ContentTemplate>
             </asp:UpdatePanel>--%>
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4" style="text-align: center;">
-            <asp:Button ID="btnPreview" Text="Preview" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnPreview_Click" />
-            <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
-            <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
-        </div>
-    </div>
+    
     <script type="text/javascript">
         function alertWithRedirectdata(Message) {
             if (confirm('Inspection Request has been Successfully ' + Message)) {

@@ -149,7 +149,7 @@
                             </asp:BoundField>
                               
                              
-                              <asp:TemplateField HeaderText=" Attached Document" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                              <asp:TemplateField HeaderText=" SLD Document" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                     <HeaderStyle Width="5%" CssClass="headercolor" />
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("SLDApproved") %>' CommandName="Select">view document </asp:LinkButton>

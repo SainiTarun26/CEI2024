@@ -394,7 +394,7 @@
                         </div>
                             <div class="col-md-4" id="Div1" runat="server">
                                 <label class="form-label" for="customFile">
-                                   Request Letter mentionaly Details of Installations<samp style="color: red"> * </samp>
+                                   Request Letter mentioning Details of Installations<samp style="color: red"> * </samp>
                                 </label>
                                 <br />
                                 <asp:FileUpload ID="File" TabIndex="19" runat="server" CssClass="form-control"

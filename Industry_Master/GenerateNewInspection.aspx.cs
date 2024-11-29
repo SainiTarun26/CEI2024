@@ -866,21 +866,21 @@ namespace CEIHaryana.Industry_Master
                         if (lblCategory.Text.Trim() == "Line")
                         {
                             //Session["LineID"] = ds.Tables[0].Rows[0]["ID"].ToString();// gurmeet 4 may, to testreportid instead of id 
-                            Session["LineID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                            Session["Line"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
 
-                            Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
+                            Response.Redirect("/TestReportModel_Industry/LineTestReport_Industry.aspx", false);
                         }
                         else if (lblCategory.Text.Trim() == "Substation Transformer")
                         {
                             //Session["SubStationID"] = ds.Tables[0].Rows[0]["ID"].ToString();
-                            Session["SubStationID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
-                            Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+                            Session["SubStation"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                            Response.Redirect("/TestReportModel_Industry/SubstationTestReport_Industry.aspx", false);
                         }
                         else if (lblCategory.Text.Trim() == "Generating Set")
                         {
                             //Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
-                            Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
-                            Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+                            Session["GeneratingSet"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                            Response.Redirect("/TestReportModel_Industry/GeneratingSetTestReport_Industry.aspx", false);
 
                         }
                     }

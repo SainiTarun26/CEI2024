@@ -540,13 +540,21 @@
                                             <label>
                                                 Applicant Type
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtApplicantType" AutoPostBack="true" ReadOnly="true" Text="Other Department/Organization" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtApplicantType" AutoPostBack="true" ReadOnly="true" Text="Private/Personal Installation" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <%--<asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Visible="false" Style="width: 100% !important;" ID="ddlApplicantType" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                         <asp:ListItem Text="Private/Personal Installation" Value="AT001"></asp:ListItem>
                                         <asp:ListItem Text="Power Utility" Value="AT002"></asp:ListItem>
                                         <asp:ListItem Text="Other Department/Organization" Value="AT003"></asp:ListItem>
                                     </asp:DropDownList>--%>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="Name">
+                                               Electrical Istallation for 
+                                            </label>
+                                            <div class="input-box">
+                                                <asp:TextBox class="form-control" ID="txtInstallation" ReadOnly="true" Text="Firm/Company" autocomplete="off" runat="server" Style="margin-left: 18px; box-shadow: none !important;"></asp:TextBox>
+                                            </div>
                                         </div>
                                         <div class="col-md-4" id="individual" visible="true" runat="server">
                                             <label for="Name">
