@@ -165,6 +165,8 @@ namespace CEIHaryana.Officers
                     Session["InspectionType"] = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                     string ReturnValu = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
                     GridBindDocument();
+                    //txtAmount.Visible = false;
+                    txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
 
 
                     DivViewTRinMultipleCaseNew.Visible = true;
@@ -309,9 +311,11 @@ namespace CEIHaryana.Officers
                     }
                     txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                     txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                    txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                     Session["InspectionType"] = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                     //divTestReportAttachment.Visible = false;
-                    Address.Visible = false;
+                    Address.Visible = true;
+                    txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
                     SiteOwnerContact.Visible = false;
                     ContractorName.Visible = false;
                     ContractorPhoneNo.Visible = false;
