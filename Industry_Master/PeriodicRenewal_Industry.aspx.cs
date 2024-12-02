@@ -182,7 +182,7 @@ namespace CEIHaryana.Industry_Master
             else if (installationtype == "Generating Set")
             {
                 Session["GeneratingSetId_Industry"] = testReportId;
-                Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
+                Response.Write("<script>window.open('/TestReportModel_Industry/GeneratingSetTestReport_Industry.aspx','_blank');</script>");
             }
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
