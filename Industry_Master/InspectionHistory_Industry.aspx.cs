@@ -101,7 +101,15 @@ namespace CEIHaryana.Industry_Master
                     if (LblInspectionType.Text == "New")
                     {
 
-                        Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                        if (lblType.Text == "Multiple")
+                        {
+                            Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                        }
+                        else
+                        {
+                            Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+
+                        }
                     }
                     else
                     {

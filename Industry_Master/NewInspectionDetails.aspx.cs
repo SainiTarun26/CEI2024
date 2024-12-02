@@ -660,22 +660,21 @@ namespace CEIHaryana.Industry_Master
                 string testReportId = lnkRedirect1.CommandArgument;
 
                 Session["InspectionTestReportId"] = btn.CommandArgument;
-
                 if (installationName == "Line")
                 {
                     Session["LineID"] = testReportId;
-                    Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
+                    Response.Write("<script>window.open('/TestReportModel_Industry/LineTestReport_Industry.aspx','_blank');</script>");
                 }
                 else if (installationName == "Substation Transformer")
                 {
                     Session["SubStationID"] = testReportId;
-                    Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
+                    Response.Write("<script>window.open('/TestReportModel_Industry/SubstationTestReport_Industry.aspx','_blank');</script>");
 
                 }
                 else if (installationName == "Generating Set")
                 {
                     Session["GeneratingSetId"] = testReportId;
-                    Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
+                    Response.Write("<script>window.open('/TestReportModel_Industry/GeneratingSetTestReport_Industry.aspx','_blank');</script>");
                 }
             }
             catch (Exception ex) { }
