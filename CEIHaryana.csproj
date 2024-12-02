@@ -1962,6 +1962,8 @@
     <Content Include="SiteOwnerPages\LiftDetails.aspx" />
     <Content Include="SiteOwnerPages\LiftInstallationDetails.aspx" />
     <Content Include="SiteOwnerPages\LiftIntimations.aspx" />
+    <Content Include="SiteOwnerPages\LiftPeriodic.aspx" />
+    <Content Include="SiteOwnerPages\LiftPeriodicRenewal.aspx" />
     <Content Include="SiteOwnerPages\LiftSiteDetails.aspx" />
     <Content Include="SiteOwnerPages\PaymentPage.aspx" />
     <Content Include="SiteOwnerPages\PendingPayment.aspx" />
