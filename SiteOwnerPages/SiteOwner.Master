@@ -473,6 +473,12 @@
                                     <span class="menu-title">Return Inspection</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/SiteOwnerPages/CreateTestReport_Lift.aspx">
+                                    <i class="icon-layout menu-icon"></i>                                  
+                                    <span class="menu-title">For New Installation Lift</span>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <div class="main-panel">

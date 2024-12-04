@@ -77,6 +77,12 @@ namespace CEIHaryana.SiteOwnerPages
                 txtName.Text = ds.Tables[0].Rows[0]["SiteOwnerName"].ToString();
                 txtIntimationId.Text = ds.Tables[0].Rows[0]["IntimationId"].ToString();
                 txtPermisestype.Text = ds.Tables[0].Rows[0]["PremisesTypes"].ToString();
+                if (string.IsNullOrEmpty(txtPermisestype.Text))
+                {
+                    Premises.Visible = false;
+                }
+               
+
                 txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                 txtApplicant.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();

@@ -7956,6 +7956,81 @@ string SupervisorName, string SupervisorLicenseNumber, string SupervisorLicenseE
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetOfficersReturnDocumentHistoryForPeriodic", InspectionId);
         }
+        //lift new inspection 4 dec        
+        public DataTable Payment_Lift(string selectedTypeIds, int? LiftQaunatity, int? EscaltorQaunatity)
+        {
+            DataTable result = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("Sp_Calculate_InspectionPayment_Amount_LiftEscaltor_New", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@InspectionType", "New");
+                command.Parameters.AddWithValue("@InstallationTypeIds", selectedTypeIds);
+                command.Parameters.AddWithValue("@QuantityLift", LiftQaunatity == 0 ? null : LiftQaunatity);
+                command.Parameters.AddWithValue("@QuantityEscalator", EscaltorQaunatity == 0 ? null : EscaltorQaunatity);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(result);
+            }
+
+            return result;
+        }
+        public DataSet SiteOwnerInstallations_Lift(string IntimationId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallationForSiteOwner_Lift", IntimationId);
+        }
+
+        public DataSet SiteIntimations_forLift(string PANNumber)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationsForSiteOwner_Lift", PANNumber);
+        }
+        public void InsertInspectionDataNewCode_Lift(string ContactNo, string ApplicantTypeCode, string IntimationId, string ApplicantType, string InstallationType,
+        string District, string Division, string PaymentMode, string DateOfSubmission, string InspectionRemarks, string CreatedBy,
+        decimal TotalAmount, string para_Assigned, string transcationId, string TranscationDate, int InspectID,
+        int ServiceType, SqlTransaction transaction
+        )
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertInspectionData_NewCodeForMultiple_Lift", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ContactNo ", String.IsNullOrEmpty(ContactNo) ? DBNull.Value : (object)ContactNo);
+            cmd.Parameters.AddWithValue("@ApplicantTypeCode ", ApplicantTypeCode);
+            cmd.Parameters.AddWithValue("@IntimationId ", IntimationId);
+            //cmd.Parameters.AddWithValue("@Inspectiontype ", Inspectiontype);
+            cmd.Parameters.AddWithValue("@ApplicantType ", ApplicantType);
+            cmd.Parameters.AddWithValue("@InstallationType ", InstallationType);
+            cmd.Parameters.AddWithValue("@District ", District);
+            cmd.Parameters.AddWithValue("@Division ", Division);
+            cmd.Parameters.AddWithValue("@PaymentMode ", PaymentMode);
+            DateTime SubmitionDate;
+            if (DateTime.TryParse(DateOfSubmission, out SubmitionDate) && SubmitionDate != DateTime.MinValue)
+            {
+                cmd.Parameters.AddWithValue("@DateOfSubmission", SubmitionDate);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@DateOfSubmission", DBNull.Value);
+            }
+            cmd.Parameters.AddWithValue("@InspectionRemarks ", InspectionRemarks);
+            cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
+            cmd.Parameters.AddWithValue("@TransactionId ", transcationId);
+            cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
+            cmd.Parameters.AddWithValue("@AssignTo", para_Assigned);
+            cmd.Parameters.AddWithValue("@TransctionDate", TranscationDate);
+            cmd.Parameters.AddWithValue("@InspectID", InspectID);
+            cmd.Parameters.AddWithValue("@ServiceType", ServiceType);
+            outputParam = new SqlParameter("@GeneratedCombinedIdDetails", SqlDbType.NVarChar, 500);
+            outputParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParam);
+            cmd.ExecuteNonQuery();
+        }
+
+        public DataTable InsertPaymentHistory_Lift(string IntimationId, int count, int InstallationTypeId, string CreatedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "update_InstallationHistory_NewInspection", IntimationId, count, InstallationTypeId, CreatedBy);
+        }
     }
 }
+
 

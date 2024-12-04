@@ -1945,10 +1945,12 @@
     <Content Include="SiteOwnerPages\CreateInspectionReport.aspx" />
     <Content Include="SiteOwnerPages\CreateTestReports.aspx" />
     <Content Include="SiteOwnerPages\CreateTestReports_Industry.aspx" />
+    <Content Include="SiteOwnerPages\CreateTestReport_Lift.aspx" />
     <Content Include="SiteOwnerPages\ExistingInspectionData.aspx" />
     <Content Include="SiteOwnerPages\ExistingInspectionRequest.aspx" />
     <Content Include="SiteOwnerPages\GenerateInspection.aspx" />
     <Content Include="SiteOwnerPages\GenerateInspection_Industry.aspx" />
+    <Content Include="SiteOwnerPages\GenerateInspection_Lift.aspx" />
     <Content Include="SiteOwnerPages\GeneratingSet.aspx" />
     <Content Include="SiteOwnerPages\GeneratingsetPeriodic.aspx" />
     <Content Include="SiteOwnerPages\Inspection.aspx" />
@@ -2985,6 +2987,13 @@
     <Compile Include="SiteOwnerPages\CreateTestReports_Industry.aspx.designer.cs">
       <DependentUpon>CreateTestReports_Industry.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SiteOwnerPages\CreateTestReport_Lift.aspx.cs">
+      <DependentUpon>CreateTestReport_Lift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\CreateTestReport_Lift.aspx.designer.cs">
+      <DependentUpon>CreateTestReport_Lift.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteOwnerPages\ExistingInspectionData.aspx.cs">
       <DependentUpon>ExistingInspectionData.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3012,6 +3021,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\GenerateInspection_Industry.aspx.designer.cs">
       <DependentUpon>GenerateInspection_Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\GenerateInspection_Lift.aspx.cs">
+      <DependentUpon>GenerateInspection_Lift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\GenerateInspection_Lift.aspx.designer.cs">
+      <DependentUpon>GenerateInspection_Lift.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\GeneratingSet.aspx.cs">
       <DependentUpon>GeneratingSet.aspx</DependentUpon>

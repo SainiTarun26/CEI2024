@@ -152,7 +152,7 @@
                                         <asp:TextBox class="form-control" ID="txtIntimationId" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-4" id="Premises" runat="server" visible="true" >
                                         <label>Type 0f Permises</label>
                                         <asp:TextBox class="form-control" ID="txtPermisestype" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
