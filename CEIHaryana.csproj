@@ -1983,6 +1983,7 @@
     <Content Include="SiteOwnerPages\SubstationTransformerPeriodic.aspx" />
     <Content Include="SiteOwnerPages\TestReport.aspx" />
     <Content Include="SiteOwnerPages\TestReportData.aspx" />
+    <Content Include="SiteOwnerPages\ViewLiftPeriodicReport.aspx" />
     <Content Include="Supervisor\GeneratingSetTestReport.aspx" />
     <Content Include="Supervisor\InstallationDetails.aspx" />
     <Content Include="Supervisor\IntimationData.aspx" />
@@ -3245,6 +3246,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\TestReportData.aspx.designer.cs">
       <DependentUpon>TestReportData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ViewLiftPeriodicReport.aspx.cs">
+      <DependentUpon>ViewLiftPeriodicReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ViewLiftPeriodicReport.aspx.designer.cs">
+      <DependentUpon>ViewLiftPeriodicReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Supervisor\GeneratingSetTestReport.aspx.cs">
       <DependentUpon>GeneratingSetTestReport.aspx</DependentUpon>

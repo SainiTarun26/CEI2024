@@ -8030,6 +8030,83 @@ string SupervisorName, string SupervisorLicenseNumber, string SupervisorLicenseE
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "update_InstallationHistory_NewInspection", IntimationId, count, InstallationTypeId, CreatedBy);
         }
+        //**End
+        public DataTable GetDocumentsForLiftRenewal(string ApplicantType, int InstallationTypeID, string InspectionType, string InstallationType)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDocumentsForLiftRenewal", ApplicantType, InstallationTypeID, InspectionType, InstallationType);
+        }
+
+        public DataSet GetApplicantTypeForLift(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetApplicantTypeForLift", Id);
+        }
+        public void InsertPeriodicLiftData(string InstallationType, string RegistrationNo, string PreviousChallanDate, string PreviousChallanUpload, string Make,
+     string SerialNo, string TypeOfLift, string TypeOfControl, string CapacityAndWeight, string ApplicantDistrict, string SiteAddress, string CreatedBy, SqlTransaction transaction)
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertPeriodicLiftData", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+            cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
+            cmd.Parameters.AddWithValue("@PreviousChallanDate", PreviousChallanDate);
+            cmd.Parameters.AddWithValue("@PreviousChallanUpload", PreviousChallanUpload);
+            cmd.Parameters.AddWithValue("@Make", Make);
+            cmd.Parameters.AddWithValue("@SerialNo", SerialNo);
+            cmd.Parameters.AddWithValue("@TypeOfLift", TypeOfLift);
+            cmd.Parameters.AddWithValue("@TypeOfControl", TypeOfControl);
+            cmd.Parameters.AddWithValue("@CapacityAndWeight", CapacityAndWeight);
+            cmd.Parameters.AddWithValue("@ApplicantDistrict", ApplicantDistrict);
+            cmd.Parameters.AddWithValue("@SiteAddress", SiteAddress);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void UploadDocumentforLiftPeriodic(string RegistrationNo, string InstallationType, string DocumentID, string DocSaveName, string FileName, string FilePath, string CreatedBy, SqlTransaction transaction)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_InsertLiftPeriodicAttachments", transaction.Connection, transaction))
+                    {
+
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
+                        cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+                        cmd.Parameters.AddWithValue("@DocumentID", DocumentID);
+                        cmd.Parameters.AddWithValue("@DocSaveName", DocSaveName);
+                        cmd.Parameters.AddWithValue("@FileName", FileName);
+                        cmd.Parameters.AddWithValue("@FilePath", FilePath);
+                        cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                        //con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
+        }
+
+        public DataTable GetDataForLiftRenewal(string District, string CreatedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetLiftRenewaldata", District, CreatedBy);
+        }
+        public DataSet GetDistrictForLiftRenewal(string SiteOwnerId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetDistrictForLiftRenewal", SiteOwnerId);
+        }
+
+        public DataSet GetDetailsOfLiftRenewalReport(string RegistrationNo)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsOfLiftRenewalReport", RegistrationNo);
+        }
+
+        public DataTable GetDocumentOfLiftRenewalToShow(string ApplicantType)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDocumentOfLiftRenewalToShow", ApplicantType);
+        }
     }
 }
 
