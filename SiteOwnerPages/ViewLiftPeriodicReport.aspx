@@ -206,7 +206,7 @@
                             Upload Previous Challan<samp style="color: red">* </samp>
                         </label>
                         <br />
-                        <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" Visible="true" Text="Open Document" />
+                        <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" OnClick="lnkFile_Click" Visible="true" Text="Open Document" />
 
                     </div>
                 </div>
@@ -270,7 +270,7 @@
             </div>
             <div class="card" id="divLiftAttachments" runat="server" visible="true" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                 <%-- Add Grid Here --%>
-                <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" runat="server" AutoGenerateColumns="false">
+                <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" OnRowCommand="Grd_Document_RowCommand" runat="server" AutoGenerateColumns="false">
                     <PagerStyle CssClass="pagination-ys" />
                     <Columns>
                         <asp:TemplateField HeaderText="SNo">
@@ -288,6 +288,13 @@
                             <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                             <ItemStyle HorizontalAlign="center" Width="12%" />
                         </asp:BoundField>
+                        <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select">View Document </asp:LinkButton>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                            <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                        </asp:TemplateField>
                     </Columns>
                     <FooterStyle BackColor="White" ForeColor="#000066" />
                     <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

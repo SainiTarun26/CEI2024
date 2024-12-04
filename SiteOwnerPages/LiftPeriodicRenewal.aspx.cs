@@ -10,6 +10,7 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Windows.Media;
+using System.Windows.Media.TextFormatting;
 using System.Xml.Linq;
 using CEI_PRoject;
 using CEIHaryana.Contractor;
@@ -31,7 +32,6 @@ namespace CEIHaryana.SiteOwnerPages
                     if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                     {
                         GetApplicantType();
-                        //BindDistrict();
                     }
                 }
             }
@@ -99,6 +99,123 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
+        //protected void btnSubmit_Click(object sender, EventArgs e)
+        //{
+        //    SqlTransaction transaction = null;
+        //    SqlConnection connection = null;
+
+        //    try
+        //    {
+        //        string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+        //        connection = new SqlConnection(connectionString);
+        //        connection.Open();
+        //        transaction = connection.BeginTransaction();
+
+        //        if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
+        //        {
+        //            String SiteOwnerID = Session["SiteOwnerId"].ToString();
+        //            string filePathInfo = "";
+
+        //            if (customFile.HasFile && customFile.PostedFile != null)
+        //            {
+        //                string fileExtension = Path.GetExtension(customFile.PostedFile.FileName).ToLower();
+
+        //                // Validate file size and type
+        //                if (customFile.PostedFile.ContentLength <= 1048576 && fileExtension == ".pdf")
+        //                {
+        //                    string fileName = "PreviousChallan" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + fileExtension;
+        //                    string directoryPath = Server.MapPath($"~/Attachment/{SiteOwnerID}/{txtRegistrationNo.Text}/PreviousChallan/");
+
+        //                    if (!Directory.Exists(directoryPath))
+        //                    {
+        //                        Directory.CreateDirectory(directoryPath);
+        //                    }
+
+        //                    string filePathInfo2 = Path.Combine(directoryPath, fileName);
+        //                    customFile.SaveAs(filePathInfo2);
+
+        //                    filePathInfo = $"~/Attachment/{SiteOwnerID}/{txtRegistrationNo.Text}/PreviousChallan/{fileName}";
+        //                }
+        //                else
+        //                {
+        //                    ClientScript.RegisterStartupScript(this.GetType(), "Error", "alert('Please upload a PDF file that is no larger than 1 MB.');", true);
+        //                    return;
+        //                }
+        //            }
+        //            else
+        //            {
+        //                ClientScript.RegisterStartupScript(this.GetType(), "Error", "alert('Please select a file to upload.');", true);
+        //                return;
+        //            }
+
+        //            CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtMake.Text,
+        //                                       txtSerialNo.Text, txtLiftType.Text, txtControlType.Text, ddlCapacity.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtSiteAddress.Text, SiteOwnerID, transaction);
+
+        //            // Upload Attachments
+        //            foreach (GridViewRow row in Grd_Document.Rows)
+        //            {
+        //                Label LblDocumentID = (Label)row.FindControl("LblDocumentID");
+        //                Label LblDocumentName = (Label)row.FindControl("LblDocumentName");
+        //                Label LblShortName = (Label)row.FindControl("LblShortName");
+
+        //                string fileName = LblShortName.Text;
+        //                string fileNameWithoutExtension = fileName;
+        //                int index = fileName.IndexOf(".pdf");
+        //                if (index > 0)
+        //                {
+        //                    fileNameWithoutExtension = fileName.Substring(0, index);
+        //                }
+
+        //                FileUpload fileUploadDoc1 = row.FindControl("FileUpload1") as FileUpload;
+
+        //                // Check if a file is uploaded
+        //                if (fileUploadDoc1 != null && fileUploadDoc1.HasFile)
+        //                {
+        //                    if (!Directory.Exists(Server.MapPath("/Attachment/" + SiteOwnerID + "/" + txtRegistrationNo.Text + "/" + "CheckListDocuments" + "/")))
+        //                    {
+        //                        Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + txtRegistrationNo.Text + "/" + "CheckListDocuments" + "/"));
+        //                    }
+        //                    string path = "/Attachment/" + SiteOwnerID + "/" + txtRegistrationNo.Text + "/" + "CheckListDocuments";
+        //                    string fileName1 = fileNameWithoutExtension + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+        //                    string filePathInfo1 = Server.MapPath(path + "/" + fileName1);
+        //                    fileUploadDoc1.PostedFile.SaveAs(filePathInfo1);
+
+        //                    CEI.UploadDocumentforLiftPeriodic(txtRegistrationNo.Text, ddlInstallationType.SelectedItem.ToString(), LblDocumentID.Text,
+        //                                                      LblDocumentName.Text, fileName, path + "/" + fileName1, SiteOwnerID, transaction);
+
+        //                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Success", "alert('Document uploaded successfully.');", true);
+        //                }
+        //                else
+        //                {
+        //                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", "alert('Please upload the document.');", true);
+        //                    return;
+        //                }
+        //            }
+
+        //            transaction.Commit();
+        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "Success", "alert('All documents uploaded successfully.');", true);
+        //            Reset();
+        //            // Response.Redirect("/SiteOwnerPages/LiftPeriodic.aspx", false);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        if (transaction != null)
+        //        {
+        //            transaction.Rollback();
+        //        }
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('Error: {ex.Message}');", true);
+        //    }
+        //    finally
+        //    {
+        //        if (connection != null && connection.State == ConnectionState.Open)
+        //        {
+        //            connection.Close();
+        //        }
+        //    }
+        //}
+
+
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             SqlTransaction transaction = null;
@@ -149,9 +266,10 @@ namespace CEIHaryana.SiteOwnerPages
                     }
 
                     CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtMake.Text,
-                                               txtSerialNo.Text, txtLiftType.Text, txtControlType.Text, ddlCapacity.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtSiteAddress.Text, SiteOwnerID, transaction);
+                                              txtSerialNo.Text, txtLiftType.Text, txtControlType.Text, ddlCapacity.SelectedItem.ToString(), ddlDistrict.SelectedItem.ToString(), txtSiteAddress.Text, SiteOwnerID, transaction);
 
                     // Upload Attachments
+                    bool allDocumentsUploaded = true;  // Track whether all documents except "Other Document" are uploaded
                     foreach (GridViewRow row in Grd_Document.Rows)
                     {
                         Label LblDocumentID = (Label)row.FindControl("LblDocumentID");
@@ -169,32 +287,49 @@ namespace CEIHaryana.SiteOwnerPages
                         FileUpload fileUploadDoc1 = row.FindControl("FileUpload1") as FileUpload;
 
                         // Check if a file is uploaded
-                        if (fileUploadDoc1 != null && fileUploadDoc1.HasFile)
+                        if (fileUploadDoc1 != null)
                         {
-                            if (!Directory.Exists(Server.MapPath("/Attachment/" + SiteOwnerID + "/" + txtRegistrationNo.Text + "/" + "CheckListDocuments" + "/")))
+                            // If document name is not "Other Document", the file must be uploaded
+                            if (LblDocumentName.Text != "Other Document")
                             {
-                                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + txtRegistrationNo.Text + "/" + "CheckListDocuments" + "/"));
+                                if (!fileUploadDoc1.HasFile)
+                                {
+                                    allDocumentsUploaded = false;
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", "alert('Please upload the document: " + LblDocumentName.Text + "');", true);
+                                    return;
+                                }
+                                else
+                                {
+                                    // Save the file
+                                    if (!Directory.Exists(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + txtRegistrationNo.Text + "/" + "CheckListDocuments" + "/")))
+                                    {
+                                        Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + txtRegistrationNo.Text + "/" + "CheckListDocuments" + "/"));
+                                    }
+
+                                    string path = "/Attachment/" + SiteOwnerID + "/" + txtRegistrationNo.Text + "/" + "CheckListDocuments";
+                                    string fileName1 = fileNameWithoutExtension + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                                    string filePathInfo1 = Server.MapPath(path + "/" + fileName1);
+                                    fileUploadDoc1.PostedFile.SaveAs(filePathInfo1);
+
+                                    CEI.UploadDocumentforLiftPeriodic(txtRegistrationNo.Text, ddlInstallationType.SelectedItem.ToString(), LblDocumentID.Text,
+                                                                     LblDocumentName.Text, fileName, path + "/" + fileName1, SiteOwnerID, transaction);
+
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Success", "alert('Document uploaded successfully: " + LblDocumentName.Text + "');", true);
+                                }
                             }
-                            string path = "/Attachment/" + SiteOwnerID + "/" + txtRegistrationNo.Text + "/" + "CheckListDocuments";
-                            string fileName1 = fileNameWithoutExtension + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
-                            string filePathInfo1 = Server.MapPath(path + "/" + fileName1);
-                            fileUploadDoc1.PostedFile.SaveAs(filePathInfo1);
-
-                            CEI.UploadDocumentforLiftPeriodic(txtRegistrationNo.Text, ddlInstallationType.SelectedItem.ToString(), LblDocumentID.Text,
-                                                              LblDocumentName.Text, fileName, path + "/" + fileName1, SiteOwnerID, transaction);
-
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Success", "alert('Document uploaded successfully.');", true);
                         }
-                        else
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", "alert('Please upload the document.');", true);
-                            return;
-                        }
+                    }
+
+                    // If any document was missed, don't commit the transaction
+                    if (!allDocumentsUploaded)
+                    {
+                        return;
                     }
 
                     transaction.Commit();
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Success", "alert('All documents uploaded successfully.');", true);
-                }
+                    Reset();
+                    }
             }
             catch (Exception ex)
             {
@@ -211,6 +346,20 @@ namespace CEIHaryana.SiteOwnerPages
                     connection.Close();
                 }
             }
+        }
+
+        private void Reset()
+        {
+            ddlInstallationType.SelectedValue = "0";
+            txtRegistrationNo.Text = "";
+            txtPrevChallanDate.Text = "";
+            txtMake.Text = "";
+            txtSerialNo.Text = "";
+            txtLiftType.Text = "";
+            txtControlType.Text = "";
+            ddlCapacity.SelectedValue = "0";
+            ddlDistrict.SelectedValue = "0";
+            txtSiteAddress.Text = "";
         }
 
         protected void ddlInstallationType_SelectedIndexChanged(object sender, EventArgs e)
@@ -245,5 +394,7 @@ namespace CEIHaryana.SiteOwnerPages
                 lblTypeOfLift.InnerText = "Type of Lift";
             }
         }
+
+       
     }
 }

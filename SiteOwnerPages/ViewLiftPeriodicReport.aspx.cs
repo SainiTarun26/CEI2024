@@ -74,7 +74,7 @@ namespace CEIHaryana.SiteOwnerPages
                     txtCapacityWeight.Text = ds.Tables[0].Rows[0]["CapacityAndWeight"].ToString();
                     txtDistrict.Text = ds.Tables[0].Rows[0]["ApplicantDistrict"].ToString();
                     txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
-
+                    Session["File"] = ds.Tables[0].Rows[0]["PreviousChallanUpload"].ToString();
                     GridDocument();
                 }
             }
@@ -104,6 +104,45 @@ namespace CEIHaryana.SiteOwnerPages
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/SiteOwnerPages/LiftPeriodic.aspx", false);
+        }
+
+        protected void Grd_Document_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            {
+                string fileName = "";
+                try
+                {
+                    if (e.CommandName == "Select")
+                    {
+                        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                        string script = $@"<script>window.open('{fileName}','_blank');</script>";
+                        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                    }
+                }
+                catch (Exception ex)
+                { }
+            }
+        }
+
+        protected void lnkFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Session["File"] != null && Session["File"].ToString() != "")
+                {
+                    string fileName = Session["File"].ToString();
+
+                    string filePath = fileName.Replace("~", "");
+                    filePath = "https://uat.ceiharyana.com" + filePath;
+
+                    string script = $@"<script>window.open('{filePath}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                }
+            }
+            catch (Exception ex)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "Error", $"alert('Error: {ex.Message}');", true);
+            }
         }
     }
 }

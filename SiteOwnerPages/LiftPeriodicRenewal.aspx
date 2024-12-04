@@ -221,6 +221,8 @@
             <div class="card-title" id="divEscalatorDetails" runat="server" visible="false" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
                 Escalator Details
             </div>
+             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
             <div class="card" id="divdetails" runat="server" visible="false" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                 <div class="row">
                     <div class="col-md-4" runat="server">
@@ -281,6 +283,8 @@
                     </div>
                 </div>
             </div>
+                    </ContentTemplate>
+           </asp:UpdatePanel>
             <div id="divLabelLiftAttachments" runat="server" visible="false" class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
                 Attachments
             </div>
