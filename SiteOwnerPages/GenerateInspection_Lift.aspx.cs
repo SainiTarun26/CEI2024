@@ -35,8 +35,10 @@ namespace CEIHaryana.SiteOwnerPages
         string strPreviousRowID = string.Empty;
 
         // string Count = string.Empty;
-        private static string  ApplicantTypeCode, id, Category, InstallationTypeId, Count, PaymentMode,
-            ApplicantType, InstallationType, AssigDesignation, InspectionType, PlantLocation;      
+        private static string  ApplicantTypeCode, id, Category, Count, PaymentMode,
+            ApplicantType,
+            //InstallationType, PlantLocation
+            AssigDesignation, InspectionType;      
         string LoginId, PlantLocationRoofTop, PlantLocationGroundMounted = string.Empty;        
         List<(string Installtypes, string DocumentID, string DocSaveName, string FileName, string FilePath)> uploadedFiles = new List<(string, string, string, string, string)>();
         string TestReportId = string.Empty;
@@ -71,12 +73,10 @@ namespace CEIHaryana.SiteOwnerPages
             {                
                 int quantity = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "Quantity"));
                 decimal totalAmount = Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "TotalAmount"));
-
                 // Update the footer totals
                 totalQuantity += quantity;
                 totalAmountSum += totalAmount;
             }
-
             // Check if the row is a footer row to display the totals
             if (e.Row.RowType == DataControlRowType.Footer)
             {                
@@ -272,7 +272,6 @@ namespace CEIHaryana.SiteOwnerPages
                     if (dt.Rows.Count > 0)
                     {
                         InstallationId = dt.Rows[0]["Id"].ToString();
-
                     }
                     else
                     {
@@ -473,7 +472,8 @@ namespace CEIHaryana.SiteOwnerPages
                         //string lblDistrict = Session["SelectedDistrict"].ToString().Trim();
 
                         string District = HdnDistrict.Value;
-                        string ApplicantType = HdnApplicantType.Value;
+                        //string 
+                        ApplicantType = HdnApplicantType.Value;
                         string Division = HdnDivision.Value;
                         string transcationId = string.Empty;
                         string TranscationDate = string.Empty;

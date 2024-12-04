@@ -2004,6 +2004,7 @@
     <Content Include="Supervisor\TestReportHistory.aspx" />
     <Content Include="Supervisor\TestReportIntimationHistory.aspx" />
     <Content Include="TestReportModal\GeneratingSetTestReportModal.aspx" />
+    <Content Include="TestReportModal\LiftTestReportModal.aspx" />
     <Content Include="TestReportModal\LineTestReportModal.aspx" />
     <Content Include="TestReportModal\SubstationTransformerTestReportModal.aspx" />
     <Content Include="TestReportModel_Industry\GeneratingSetTestReport_Industry.aspx" />
@@ -3400,6 +3401,13 @@
     </Compile>
     <Compile Include="TestReportModal\GeneratingSetTestReportModal.aspx.designer.cs">
       <DependentUpon>GeneratingSetTestReportModal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestReportModal\LiftTestReportModal.aspx.cs">
+      <DependentUpon>LiftTestReportModal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestReportModal\LiftTestReportModal.aspx.designer.cs">
+      <DependentUpon>LiftTestReportModal.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestReportModal\LineTestReportModal.aspx.cs">
       <DependentUpon>LineTestReportModal.aspx</DependentUpon>

@@ -8107,6 +8107,15 @@ string SupervisorName, string SupervisorLicenseNumber, string SupervisorLicenseE
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDocumentOfLiftRenewalToShow", ApplicantType);
         }
+        public DataTable GetDocumentforlift(string Applicanttype)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDocumentsForLift", Applicanttype);
+        }
+        public DataTable InsertNewLiftAttachments(string InstallationType, string DocumentID, string DocSaveName, string FileName, string FilePath, string CreatedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertLiftNewAttachments", InstallationType, int.Parse(DocumentID), DocSaveName, FileName, FilePath, CreatedBy);
+        }
+
     }
 }
 

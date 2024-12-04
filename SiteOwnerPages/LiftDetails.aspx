@@ -1150,7 +1150,56 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row" style="margin-top: 50px;" id="Declaration" visible="false" runat="server">
+
+                                                    </ContentTemplate>
+
+</asp:UpdatePanel>
+                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+    <h7 class="card-title" style="color: #a52a2a; margin-bottom: 5px;">Note: Size of all the Attachments should not be more than 10mb.</h7>
+    <div class="row">
+        <div class="col-12">
+            <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document"  OnRowCommand="Grd_Document_RowCommand" runat="server" AutoGenerateColumns="false">
+                <%-- <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document"  OnRowCommand="Grd_Document_RowCommand"  runat="server" AutoGenerateColumns="false">--%>
+                <PagerStyle CssClass="pagination-ys" />
+                <Columns>
+                    
+                    <asp:TemplateField HeaderText="" Visible="False">
+                        <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
+                        <ItemTemplate>
+                             <asp:Label ID="LblDocumentID" runat="server" Text='<%#Eval("DocumentID") %>'></asp:Label>
+                             <asp:Label ID="LblDocumentName" runat="server" Text='<%#Eval("DocumentName") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                   <%-- <asp:BoundField DataField="SNo" HeaderText="SNo" />--%>
+                    <%--  <asp:BoundField DataField="DocumentID" HeaderText="DocumentID" />--%>
+                    <asp:BoundField DataField="DocumentName" HeaderText="DocumentName">
+                        <HeaderStyle HorizontalAlign="Left" Width="70%" CssClass="headercolor leftalign" />
+                        <ItemStyle HorizontalAlign="Left" Width="70%" />
+                    </asp:BoundField>
+
+                    <asp:TemplateField HeaderText="File Upload (1MB PDF Only)">
+                        <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
+                        <ItemTemplate>
+                            <asp:FileUpload ID="FileUpload1" runat="server" CssClass="file-upload" onchange="validateFileType(this)" />
+                            <span class="error-message" style="color: red; display: none;">Only PDF files are allowed.</span>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+                </Columns>
+                <FooterStyle BackColor="White" ForeColor="#000066" />
+                <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                <RowStyle ForeColor="#000066" />
+                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                <SortedDescendingHeaderStyle BackColor="#00547E" />
+            </asp:GridView>
+        </div>
+    </div>
+</div>
+              <div class="row" style="margin-top: 50px;" id="Declaration" visible="false" runat="server">
                             <%--  <div class="col-2"></div>--%>
                             <div class="col-md-12" style="text-align: center;">
                                 <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
@@ -1195,11 +1244,7 @@
                                 <asp:HiddenField ID="hdn" Value="0" runat="server" />
                             </div>
                         </div>
-                    </ContentTemplate>
-                    <Triggers>
-                        <asp:AsyncPostBackTrigger ControlID="btnSubmit" EventName="Click" />
-                    </Triggers>
-                </asp:UpdatePanel>
+                 
             </div>
         </div>
     </div>
@@ -1216,7 +1261,23 @@
     <script src="/Assets/js/settings.js"></script>
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
-    <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
+    <script src="/Assets/js/Chart.roundedBarCharts.js">
+
+    </script>
+       <script>
+    function validateFileType(fileInput) {
+    var allowedExtensions = /(\.pdf)$/i;
+    var errorMessage = fileInput.parentElement.querySelector('.error-message');
+
+    if (!allowedExtensions.exec(fileInput.value)) {
+        errorMessage.style.display = "block";
+        fileInput.value = ''; // Clear the input
+    } else {
+        errorMessage.style.display = "none";
+    }
+}
+       </script>
+
     <script type="text/javascript">
         function allowNumbersAndSlash(e) {
             var charCode = e.which ? e.which : e.keyCode;
