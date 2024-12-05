@@ -313,7 +313,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                                 transaction.Commit();
                             }
-                            catch
+                            catch(Exception ex)
                             {
                                 transaction.Rollback();
                             }

@@ -71,7 +71,8 @@ namespace CEIHaryana.SiteOwnerPages
                     txtSerialNo.Text = ds.Tables[0].Rows[0]["SerialNo"].ToString();
                     txtLiftType.Text = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
                     txtControlType.Text = ds.Tables[0].Rows[0]["TypeOfControl"].ToString();
-                    txtCapacityWeight.Text = ds.Tables[0].Rows[0]["CapacityAndWeight"].ToString();
+                    txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                    txtWeight.Text = ds.Tables[0].Rows[0]["Weight"].ToString();
                     txtDistrict.Text = ds.Tables[0].Rows[0]["ApplicantDistrict"].ToString();
                     txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
                     Session["File"] = ds.Tables[0].Rows[0]["PreviousChallanUpload"].ToString();

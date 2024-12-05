@@ -245,9 +245,16 @@
                     </div>
                     <div class="col-md-4" runat="server">
                         <label>
-                            Capacity/Weight
+                            Capacity(Persons)
                         </label>
-                        <asp:TextBox class="form-control" ReadOnly="true" ID="txtCapacityWeight" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:TextBox class="form-control" ReadOnly="true" ID="txtCapacity" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                    </div>
+                    <div class="col-md-4" runat="server">
+                        <label>
+                            Weight(In Kgs)
+                        </label>
+                        <asp:TextBox class="form-control" ReadOnly="true" ID="txtWeight" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                     </div>
                     <div class="col-md-4" runat="server">
@@ -257,7 +264,7 @@
                         <asp:TextBox class="form-control" ReadOnly="true" ID="txtDistrict" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                     </div>
-                    <div class="col-md-12" runat="server">
+                    <div class="col-md-8" runat="server">
                         <label>
                             Site Address
                         </label>

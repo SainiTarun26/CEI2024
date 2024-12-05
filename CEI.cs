@@ -8041,7 +8041,7 @@ string SupervisorName, string SupervisorLicenseNumber, string SupervisorLicenseE
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetApplicantTypeForLift", Id);
         }
         public void InsertPeriodicLiftData(string InstallationType, string RegistrationNo, string PreviousChallanDate, string PreviousChallanUpload, string Make,
-     string SerialNo, string TypeOfLift, string TypeOfControl, string CapacityAndWeight, string ApplicantDistrict, string SiteAddress, string CreatedBy, SqlTransaction transaction)
+        string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, string Weight, string ApplicantDistrict, string SiteAddress, string CreatedBy, SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertPeriodicLiftData", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -8053,13 +8053,13 @@ string SupervisorName, string SupervisorLicenseNumber, string SupervisorLicenseE
             cmd.Parameters.AddWithValue("@SerialNo", SerialNo);
             cmd.Parameters.AddWithValue("@TypeOfLift", TypeOfLift);
             cmd.Parameters.AddWithValue("@TypeOfControl", TypeOfControl);
-            cmd.Parameters.AddWithValue("@CapacityAndWeight", CapacityAndWeight);
+            cmd.Parameters.AddWithValue("@Capacity", Capacity);
+            cmd.Parameters.AddWithValue("@Weight", Weight);
             cmd.Parameters.AddWithValue("@ApplicantDistrict", ApplicantDistrict);
             cmd.Parameters.AddWithValue("@SiteAddress", SiteAddress);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             cmd.ExecuteNonQuery();
         }
-
         public void UploadDocumentforLiftPeriodic(string RegistrationNo, string InstallationType, string DocumentID, string DocSaveName, string FileName, string FilePath, string CreatedBy, SqlTransaction transaction)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;

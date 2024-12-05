@@ -245,7 +245,7 @@
                                     <asp:Label ID="LblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="TypeOfLift" HeaderText="Type Of Lift">
+                            <asp:BoundField DataField="TypeOfLift" HeaderText="Type Of Lift" Visible="false">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>
@@ -253,10 +253,19 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="CapacityAndWeight" HeaderText="CapacityAndWeight">
+                            <asp:BoundField DataField="Capacity" HeaderText="Capacity(Persons)" Visible="false">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>
+                            <asp:BoundField DataField="Weight" HeaderText="Weight(In Kgs)" Visible="false">
+                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="TypeOfInstallation" HeaderText="Type Of Installation">
+                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                            </asp:BoundField>
+
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

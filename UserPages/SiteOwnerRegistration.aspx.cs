@@ -16,7 +16,7 @@ namespace CEIHaryana.UserPages
         string ApplicantType, ApplicantCode, PanTanNumber, ElectricalInstallationFor, NameOfOwner, NameofAgency, Address,
             District, PinCode, PhoneNumber, Email;
 
-       
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -108,34 +108,34 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                Regex regex;
+                //Regex regex;
                 string TANNumber = txtPANTan.Text.Trim();
-                if (LblPanNumber.Visible == true)
-                {
-                    regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}");
-                }
-                else
-                {
-                    regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}");
-                }
+                //if (LblPanNumber.Visible == true)
+                //{
+                //regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}");
+                //}
+                //else
+                //{
+                //regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}");
+                //}
 
-                if (!regex.IsMatch(TANNumber))
-                {
-                    if (LblPanNumber.Visible == true)
-                    {
-                        LblPanNumber.Visible = true;
-                        LblTanNumber.Visible = false;
-                    }
-                    else
-                    {
-                        LblPanNumber.Visible = false;
-                        LblTanNumber.Visible = true;
-                    }
-                    txtPANTan.Focus();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid Pan/Tan Number format. Please enter a valid TAN number.');", true);
-                    txtPANTan.Text = "";
-                    return;
-                }
+                //if (!regex.IsMatch(TANNumber))
+                //{
+                //    if (LblPanNumber.Visible == true)
+                //    {
+                //        LblPanNumber.Visible = true;
+                //        LblTanNumber.Visible = false;
+                //    }
+                //    else
+                //    {
+                //        LblPanNumber.Visible = false;
+                //        LblTanNumber.Visible = true;
+                //    }
+                //    txtPANTan.Focus();
+                //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid Pan/Tan Number format. Please enter a valid TAN number.');", true);
+                //    txtPANTan.Text = "";
+                //    return;
+                //}
                 DataSet ds = new DataSet();
                 ds = CEI.GetDetailsByPanNumberId(TANNumber);
                 if (ds.Tables[0].Rows.Count > 0 && ds != null)
@@ -182,9 +182,9 @@ namespace CEIHaryana.UserPages
                 PinCode = txtPin.Text;
                 PhoneNumber = txtPhone.Text;
                 Email = txtEmail.Text;
-               int Ad= CEI.InsertSiteOwnerRegistration(ApplicantType, ApplicantCode, PanTanNumber, ElectricalInstallationFor, NameOfOwner, NameofAgency
-                    ,Address, District, PinCode, PhoneNumber, Email);
-                if (Ad>0)
+                int Ad = CEI.InsertSiteOwnerRegistration(ApplicantType, ApplicantCode, PanTanNumber, ElectricalInstallationFor, NameOfOwner, NameofAgency
+                     , Address, District, PinCode, PhoneNumber, Email);
+                if (Ad > 0)
                 {
                     CEI.SiteOwnerCredentials(txtEmail.Text, PanTanNumber);
                     string script = "alert('Registration Succesffuly,Your userId And Password is sent to email'); window.location='/Login.aspx';";
@@ -192,7 +192,7 @@ namespace CEIHaryana.UserPages
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
                 }
-               // Response.Redirect("~/Login.aspx",false);
+                // Response.Redirect("~/Login.aspx",false);
             }
             catch (Exception ex)
             {
@@ -212,7 +212,7 @@ namespace CEIHaryana.UserPages
 
             ddlApplicantType.SelectedIndex = 0;
             ddlworktype.SelectedIndex = 0;
-           
+
         }
     }
 }
