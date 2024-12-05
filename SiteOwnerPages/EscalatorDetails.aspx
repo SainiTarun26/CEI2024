@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="LiftDetails.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.LiftDetails" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="EscalatorDetails.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.EscalatorDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -112,17 +111,16 @@
     </script>
     <script type="text/javascript">
         function alertWithRedirectdata() {
-            if (confirm('Lift Details Successfully')) {
-                window.location.href = "/SiteOwnerPages/LiftSiteDetails.aspx";
+            if (confirm('Escalator Details Successfully')) {
+                window.location.href = "/SiteOwnerPages/EscalatorSiteDetails.aspx";
             } else {
             }
         }
     </script>
     <style>
         th {
-            width: 1%;
-        }
-
+    width: 1%;
+}
         table#ContentPlaceHolder1_RadioButtonAction {
             margin-top: -13px;
         }
@@ -316,7 +314,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12" style="text-align: center;">
-                        <h7 class="card-title fw-semibold mb-4" id="maincard">LIFT TEST REPORT</h7>
+                        <h7 class="card-title fw-semibold mb-4" id="maincard">ESCALATOR TEST REPORT</h7>
                     </div>
                 </div>
                 <div class="row">
@@ -416,7 +414,7 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtAgentPhone" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Local Agent Contact</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
-                                <h8 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Lift Details</h8>
+                                <h8 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Escalator Details</h8>
                                 <div class="row" style="margin-top: 10px;">
                                     <div class="col-md-4" runat="server" visible="True" style="top: 0px !important;">
                                         <label for="Voltage">
@@ -427,44 +425,44 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtErectionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Erection</asp:RequiredFieldValidator>
                                         <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
                                     </div>
-                                    <div class="col-md-4">
+                                     <%--<div class="col-md-4">
                                         <label for="Voltage">
-                                            Type of Lift Erected
+                                            Type of Escalator Erected
                                             <samp style="color: red">* </samp>
                                         </label>
                                         <asp:RadioButtonList ID="RadioButtonAction" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
-                                            <asp:ListItem Text="Passenger lift" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
-                                            <asp:ListItem Text="Goods Lift" Value="1" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
+                                            <asp:ListItem Text="Passenger Escalator" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
+                                            <asp:ListItem Text="Goods Escalator" Value="1" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
                                         </asp:RadioButtonList>
-                                        <%--<asp:RequiredFieldValidator ID="rvfRadioButtonList" ErrorMessage="Choose one" ControlToValidate="RadioButtonAction" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />--%>
-                                    </div>
+                                       <asp:RequiredFieldValidator ID="rvfRadioButtonList" ErrorMessage="Choose one" ControlToValidate="RadioButtonAction" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />
+                                    </div>--%>
                                     <div class="col-md-4" runat="server">
                                         <label for="Name">
-                                            Contract Speed of Lift (Mtr./sec)<samp style="color: red">* </samp>
+                                            Contract Speed of Escalator (Mtr./sec)<samp style="color: red">* </samp>
                                         </label>
-                                        <asp:TextBox class="form-control" ID="txtLiftSpeedContract"
+                                        <asp:TextBox class="form-control" ID="txtEscalatorSpeedContract"
                                             onKeyPress="return allowNumbersAndSlash(event);"
                                             onkeydown="return preventEnterSubmit(event)"
                                             MaxLength="6" placeholder="" autocomplete="off"
                                             TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
-                                            ControlToValidate="txtLiftSpeedContract"
+                                            ControlToValidate="txtEscalatorSpeedContract"
                                             ErrorMessage="RequiredFieldValidator"
                                             ValidationGroup="Submit" ForeColor="Red">
-        Please Enter Speed of Lift
+        Please Enter Speed of Escalator
                                         </asp:RequiredFieldValidator>
                                     </div>
                                     <div class="col-md-4" runat="server">
                                         <label for="Name">
-                                            Contract Load of Lift (in Kg)<samp style="color: red">* </samp>
+                                            Contract Load of Escalator (in Kg)<samp style="color: red">* </samp>
                                         </label>
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-                                        <asp:TextBox class="form-control" ID="txtLiftLoad" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" MaxLength="5" placeholder="" autocomplete="off" TabIndex="8" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtLiftLoad" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Load of Lift</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control" ID="txtEscalatorLoad" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" MaxLength="5" placeholder="" autocomplete="off" TabIndex="8" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtEscalatorLoad" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Load of Escalator</asp:RequiredFieldValidator>
                                     </div>
                                     <div class="col-md-4" runat="server">
                                         <label for="Name">
-                                            Max Person Capacity (with Lift Operator)<samp style="color: red">* </samp>
+                                            Max Person Capacity (with Escalator Operator)<samp style="color: red">* </samp>
                                         </label>
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
                                         <asp:TextBox class="form-control" ID="txtMaxPersonCapacity" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="2" placeholder="" autocomplete="off" TabIndex="9" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -472,11 +470,11 @@
                                     </div>
                                     <div class="col-md-4" runat="server">
                                         <label for="Name">
-                                            Weight of Lift Car with Contact Load (in kg)<samp style="color: red">* </samp>
+                                            Weight of Escalator Car with Contact Load (in kg)<samp style="color: red">* </samp>
                                         </label>
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
                                         <asp:TextBox class="form-control" ID="txtWeight" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" MaxLength="6" placeholder="" autocomplete="off" TabIndex="10" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtWeight" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Weight of Lift Car</asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtWeight" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Weight of Escalator Car</asp:RequiredFieldValidator>
                                     </div>
                                     <div class="col-md-4" runat="server">
                                         <label for="Name">
@@ -496,11 +494,11 @@
                                     </div>
                                     <div class="col-md-4" runat="server">
                                         <label for="Name">
-                                            Travel Distance of Lift (in mtr)<samp style="color: red">* </samp>
+                                            Travel Distance of Escalator (in mtr)<samp style="color: red">* </samp>
                                         </label>
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
                                         <asp:TextBox class="form-control" ID="txtTravelDistance" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" MaxLength="7" placeholder="" autocomplete="off" TabIndex="13" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtTravelDistance" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter  Distance of Lift</asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtTravelDistance" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter  Distance of Escalator</asp:RequiredFieldValidator>
                                     </div>
                                     <div class="col-md-4" runat="server">
                                         <label for="Name">
@@ -1154,11 +1152,10 @@
                                 </div>
                             </div>
                         </div>
-
-                                                    </ContentTemplate>
+                                                                            </ContentTemplate>
 
 </asp:UpdatePanel>
-                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
     <h7 class="card-title" style="color: #a52a2a; margin-bottom: 5px;">Note: Size of all the Attachments should not be more than 10mb.</h7>
     <div class="row">
         <div class="col-12">
@@ -1210,7 +1207,7 @@
         </div>
     </div>
 </div>
-              <div class="row" style="margin-top: 50px;" id="Declaration" visible="false" runat="server">
+                        <div class="row" style="margin-top: 50px;" id="Declaration" visible="false" runat="server">
                             <%--  <div class="col-2"></div>--%>
                             <div class="col-md-12" style="text-align: center;">
                                 <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
@@ -1255,7 +1252,11 @@
                                 <asp:HiddenField ID="hdn" Value="0" runat="server" />
                             </div>
                         </div>
-                 
+                   <%-- </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="btnSubmit" EventName="Click" />
+                    </Triggers>
+                </asp:UpdatePanel>--%>
             </div>
         </div>
     </div>
@@ -1272,23 +1273,7 @@
     <script src="/Assets/js/settings.js"></script>
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
-    <script src="/Assets/js/Chart.roundedBarCharts.js">
-
-    </script>
-       <script>
-    function validateFileType(fileInput) {
-    var allowedExtensions = /(\.pdf)$/i;
-    var errorMessage = fileInput.parentElement.querySelector('.error-message');
-
-    if (!allowedExtensions.exec(fileInput.value)) {
-        errorMessage.style.display = "block";
-        fileInput.value = ''; // Clear the input
-    } else {
-        errorMessage.style.display = "none";
-    }
-}
-       </script>
-
+    <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
     <script type="text/javascript">
         function allowNumbersAndSlash(e) {
             var charCode = e.which ? e.which : e.keyCode;

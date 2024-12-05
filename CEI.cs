@@ -8115,7 +8115,21 @@ string SupervisorName, string SupervisorLicenseNumber, string SupervisorLicenseE
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertLiftNewAttachments", InstallationType, int.Parse(DocumentID), DocSaveName, FileName, FilePath, CreatedBy);
         }
+        //NaVNEET 5-12
+        public DataTable UpdateLiftTestReportHistory(string Type, string ID, string count, string CreatedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_LiftTestReportApproval", Type, ID, count, CreatedBy);
+        }
+        public DataTable GetAttachments(string TestReportId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAttachments", TestReportId);
+        }
 
+        public DataSet GetLiftTestReportModalData(string Type, string TestReportId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLiftEscalatorDataForSiteowner", Type, TestReportId);
+        }
+        ///
     }
 }
 
