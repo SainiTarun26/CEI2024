@@ -19,7 +19,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="text/javascript">
         function isNumberKey(evt) {
-            var char            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            var char
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
                 Code = (evt.which) ? evt.which : event.keyCode
                 return false;
             }
@@ -40,12 +41,7 @@
             k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
             return (allow.indexOf(String.fromCharCode(k)) != -1);
         }
-        function disableFutureDates() {
-            // Get today's date in yyyy-mm-dd format
-            var today = new Date().toISOString().split('T')[0];
-            // Set the max attribute of the txtDateofIntialissue TextBox to today's date
-            document.getElementById('<%=txttransactionDate.ClientID %>').setAttribute('max', today);
-        }
+       
     </script>
     <style>
         div#ContentPlaceHolder1_Declaration {
@@ -54,7 +50,7 @@
         }
 
         table#ContentPlaceHolder1_RadioButtonList2 {
-            margin-top: -28px;
+            margin-top: -34px;
             margin-left: 35%;
         }
 
@@ -115,7 +111,7 @@
         }
 
         label {
-            font-size: 13px;
+            font-size: 14px;
         }
 
         .form-control:focus {
@@ -185,6 +181,8 @@
         th.headercolor {
             background: #9292cc;
             color: white;
+            width: 15%;
+            text-align:center !important;
         }
 
 
@@ -223,7 +221,10 @@
         input#ContentPlaceHolder1_customFile {
             padding: 0px !important;
         }
-    </style>
+        td {
+    text-align: center;
+}
+          </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
@@ -338,11 +339,11 @@
                             </asp:BoundField>
                           
                             <asp:TemplateField HeaderText="Application">
-                                <HeaderStyle Width="25%" CssClass="headercolor" />
-                                <ItemStyle Width="25%" />
+                                <HeaderStyle Width="20%" CssClass="headercolor" />
+                                <ItemStyle Width="20%" />
                                 <ItemTemplate>
                                     <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true"
-                                        CommandName="Select">View Test Report</asp:LinkButton>
+                                        CommandName="Select">Test Report & Attached Document</asp:LinkButton>
                                     <input type="hidden" id="InspectionCount" runat="server" value='<%# Eval("InspectionCount") %>' class="inspection-count" />
                                     <input type="hidden" id="InspectionId" runat="server" value='<%# Eval("InspectionId") %>' class="inspection-id" />
                                 </ItemTemplate>
@@ -376,7 +377,7 @@
                     </div>
 
                 </div>
-                <div class="card-body" id="SactionVoltage" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+               <%-- <div class="card-body" id="SactionVoltage" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row">
                         <div class="col-md-6">
                             <label>
@@ -401,7 +402,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="customFile" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please upload Demand Notice Document for Sanction Load</asp:RequiredFieldValidator>
                         </div>
                     </div>
-                </div>
+                </div>--%>
                 <div id="FeesDetails" runat="server" visible="false">
                     <h7 class="card-title fw-semibold mb-4">Fees Details</h7>
 
@@ -450,7 +451,7 @@
                                         <asp:Label ID="lblFooterQuantity" runat="server" Text="0" style="font-weight: bold;"></asp:Label>
                                     </footertemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Total Amount">
+                                <asp:TemplateField HeaderText="Total Amount (₹)">
                                     <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="25%" />
                                     <ItemTemplate>
@@ -560,7 +561,7 @@
                                 <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Date</asp:RequiredFieldValidator>--%>
                             </div>
                             <div class="col-4" style="margin-top: auto; margin-bottom: auto;">
-                                <label>
+                                <label style="margin-top: 25px !important;">
                                     Payment Mode
                                 </label>
                                 <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
@@ -618,14 +619,21 @@
     </footer>
     <script type="text/javascript">
 
-        function alertWithRedirectdata() {
-            /*if (confirm('Inspection Request Submit Successfully, and forword to concern officer')) {*/
+        function alertWithRedirectdata() {           
             alert('Inspection Request Submitted Successfully, forwarding to concerned officer.');
-            window.location.href = "/SiteOwnerPages/InspectionRequestPrint.aspx";
-            //} else {
-            //}
+            window.location.href = "/SiteOwnerPages/InspectionRequestPrint.aspx";           
         }
     </script>
+
+    <script type="text/javascript">
+     function disableFutureDates() {
+            // Get today's date in yyyy-mm-dd format
+            var today = new Date().toISOString().split('T')[0];
+            // Set the max attribute of the txtDateofIntialissue TextBox to today's date
+            document.getElementById('<%=txttransactionDate.ClientID %>').setAttribute('max', today);
+        }
+    </script>
+
     <script type="text/javascript">
         function alertWithRedirect() {
             if (confirm('Select all PDF files only')) {
@@ -645,8 +653,8 @@
         var sactionElement;
         var fileInputElement;
         window.onload = function () {
-            sactionElement = document.getElementById('<%= txtSaction.ClientID %>');
-            fileInputElement = document.getElementById('<%= customFile.ClientID %>');
+           <%-- sactionElement = document.getElementById('<%= txtSaction.ClientID %>');
+            fileInputElement = document.getElementById('<%= customFile.ClientID %>');--%>
         };
 
         let isSubmitting = false;
@@ -673,22 +681,7 @@
                 alert('Please Enter Inspection Remarks');
                 return false;
             }
-            if (sactionElement) {
-                var Saction = sactionElement.value.trim();
-                if (fileInputElement) {
-                    var fileName = fileInputElement.value.trim();
-
-                    if (Saction === '') {
-                        alert('Please Enter Saction Voltage.');
-                        return false;
-                    }
-
-                    if (fileName === '') {
-                        alert('Please Upload demand notice document.');
-                        return false;
-                    }
-                }
-            }
+            
 
 
 
