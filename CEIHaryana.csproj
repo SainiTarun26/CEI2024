@@ -1915,6 +1915,7 @@
     <Content Include="Officers\ConsolidatedReport.aspx" />
     <Content Include="Officers\DistrictData.aspx" />
     <Content Include="Officers\InProcessInspection.aspx" />
+    <Content Include="Officers\InProcessInspection_Lift_Escalator.aspx" />
     <Content Include="Officers\InProcessRequest.aspx" />
     <Content Include="Officers\Inspection.aspx" />
     <Content Include="Officers\InstallationIntimationDetails.aspx" />
@@ -1930,6 +1931,7 @@
     <Content Include="Periodic_Industry\RenewalPerodicIndustry.aspx" />
     <Content Include="Periodic_Industry\ViewPerodicRequest.aspx" />
     <Content Include="Print_Forms\InspectionRequestPrint.aspx" />
+    <Content Include="Print_Forms\LiftApprovalCertificate.aspx" />
     <Content Include="Print_Forms\NewInspectionApprovalCertificate.aspx" />
     <Content Include="Print_Forms\PeriodicApprovalCertificate.aspx" />
     <Content Include="Print_Forms\PeriodicApprovalCertificate_Industry.aspx" />
@@ -2793,6 +2795,13 @@
     <Compile Include="Officers\InProcessInspection.aspx.designer.cs">
       <DependentUpon>InProcessInspection.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Officers\InProcessInspection_Lift_Escalator.aspx.cs">
+      <DependentUpon>InProcessInspection_Lift_Escalator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\InProcessInspection_Lift_Escalator.aspx.designer.cs">
+      <DependentUpon>InProcessInspection_Lift_Escalator.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Officers\InProcessRequest.aspx.cs">
       <DependentUpon>InProcessRequest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2904,6 +2913,13 @@
     </Compile>
     <Compile Include="Print_Forms\InspectionRequestPrint.aspx.designer.cs">
       <DependentUpon>InspectionRequestPrint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print_Forms\LiftApprovalCertificate.aspx.cs">
+      <DependentUpon>LiftApprovalCertificate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print_Forms\LiftApprovalCertificate.aspx.designer.cs">
+      <DependentUpon>LiftApprovalCertificate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print_Forms\NewInspectionApprovalCertificate.aspx.cs">
       <DependentUpon>NewInspectionApprovalCertificate.aspx</DependentUpon>

@@ -154,7 +154,7 @@ namespace CEIHaryana.Industry_Master
                 GridView1.DataSource = null;
                 GridView1.DataBind();
                 BtnCart.Visible = false;
-                string script = "alert(\"No Record Found\");";
+                string script = "alert(\"Inspection Already Submitted\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }

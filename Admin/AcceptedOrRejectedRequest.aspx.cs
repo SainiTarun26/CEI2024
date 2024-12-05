@@ -113,11 +113,16 @@ namespace CEIHaryana.Admin
                         {
                             Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
                         }
-                        else
+                        else if (lblInstallationFor.Text != "Lift" || lblInstallationFor.Text != "Escalator" || lblInstallationFor.Text != "Lift/Escalator" || lblInstallationFor.Text != "MultiLift" || lblInstallationFor.Text != "MultiEscalator")
                         {
                             Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
 
                         }
+                    }
+                    if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
+                    {
+
+                        Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
                     }
                     else
                     {

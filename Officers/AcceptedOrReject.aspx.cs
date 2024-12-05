@@ -88,16 +88,23 @@ namespace CEIHaryana.Officers
                     {
                         if (LblInspectionType.Text == "New")
                         {
-                            Session["InProcessInspectionId"] = id; 
+                            Session["InProcessInspectionId"] = id;
                             if (InstallationType == "Multiple")
                             {
                                 Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
                             }
-                            else
+
+                            else if (InstallationType != "Lift" || InstallationType != "Escalator" || InstallationType != "Lift/Escalator" || InstallationType != "MultiLift" || InstallationType != "MultiEscalator")
                             {
                                 Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
                             }
                         }
+                        if (InstallationType == "Lift" || InstallationType == "Escalator" || InstallationType == "Lift/Escalator" || InstallationType == "MultiLift" || InstallationType == "MultiEscalator")
+                        {
+                            Session["InProcessInspectionId"] = id;
+                            Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                        }
+
                         else
                         {
                             Session["InProcessInspectionId"] = id;

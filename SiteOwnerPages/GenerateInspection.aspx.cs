@@ -1082,29 +1082,29 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     connection.Close();
                 }
-                //try
-                //{
-                //    if (isInsertSuccessful == true)
-                //    {
-                //        foreach (GridViewRow rows in GridView1.Rows)
-                //        {
-                //            CheckBox chk = (CheckBox)rows.FindControl("CheckBox1");
+                try
+                {
+                    if (isInsertSuccessful == true)
+                    {
+                        foreach (GridViewRow rows in GridView1.Rows)
+                        {
+                            CheckBox chk = (CheckBox)rows.FindControl("CheckBox1");
 
-                //            if (chk != null && chk.Checked)
-                //            {
-                //                Label lblIntimationId = (Label)rows.FindControl("lblIntimationId");
-                //                Label lblCategorys = (Label)rows.FindControl("lblCategory");
-                //                Label lblNoOfInstallation = (Label)rows.FindControl("lblNoOfInstallations");
-                //                CEI.UpdateInstallationHistory(lblCategorys.Text, lblIntimationId.Text, para_CreatedBy, int.Parse(lblNoOfInstallation.Text));
-                //            }
-                //        }
-                //    }
-                //}
-                //catch (Exception ex)
-                //{
-                //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
-                //    return;
-                //}
+                            if (chk != null && chk.Checked)
+                            {
+                                Label lblIntimationId = (Label)rows.FindControl("lblIntimationId");
+                                Label lblCategorys = (Label)rows.FindControl("lblCategory");
+                                Label lblNoOfInstallation = (Label)rows.FindControl("lblNoOfInstallations");
+                                CEI.UpdateInstallationHistory(lblCategorys.Text, lblIntimationId.Text, para_CreatedBy, int.Parse(lblNoOfInstallation.Text));
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                    return;
+                }
             }
         }
         protected void ddlDocumentFor_SelectedIndexChanged(object sender, EventArgs e)
