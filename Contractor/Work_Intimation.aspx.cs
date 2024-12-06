@@ -440,7 +440,7 @@ namespace CEIHaryana.Contractor
             if (Session["File"].ToString() != "" && Session["File"].ToString() != null)
             {
                 string fileName = Session["File"].ToString();
-                string filePath = "https://ceiharyana.com" + fileName;
+                string filePath = "https://uat.ceiharyana.com" + fileName;
 
                 //if (System.IO.File.Exists(filePath))
                 //{                
@@ -1007,6 +1007,11 @@ namespace CEIHaryana.Contractor
                 PowerUtility.Visible = false;
                 NameUtility.Visible = false;
                 Wing.Visible = false;
+                ListItem checklistItem1 = ddlworktype.Items.FindByValue("1");
+                if (checklistItem1 != null)
+                {
+                    checklistItem1.Enabled = true;
+                }
             }
             else if (ddlApplicantType.SelectedValue == "AT002") //Power Utility
             {
