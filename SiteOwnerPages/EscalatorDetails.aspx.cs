@@ -200,7 +200,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     CEI.InsertNewLiftData(
                         count, IntimationId, RadioButtonList2.SelectedItem.Text, TxtAgentName.Text, txtAgentAddress.Text,
-                        txtAgentPhone.Text, txtErectionDate.Text, "", "",
+                        txtAgentPhone.Text, DateTime.Parse(txtErectionDate.Text), "", "",
                         ParseOrDefault(""), txtMaxPersonCapacity.Text, ParseOrDefault(txtWeight.Text), ParseOrDefault(txtCounterWeight.Text),
                         ParseOrDefault(txtPitDepth.Text), ParseOrDefault(txtTravelDistance.Text), ParseOrDefault(txtFloorsServed.Text),
                         ParseOrDefault(txtTotalHeadRoom.Text), txtTypeofControll.Text, ParseOrDefault(txtNoofSuspension.Text), txtDescriptionOfSuspension.Text,
@@ -218,8 +218,8 @@ namespace CEIHaryana.SiteOwnerPages
                         ParseOrDefault(txtEarthingValue6.Text), ddlEarthingtype7.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue7.Text),
                         ddlEarthingtype8.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue8.Text), ddlEarthingtype9.SelectedItem.ToString(),
                         ParseOrDefault(txtEarthingValue9.Text), ddlEarthingtype10.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue10.Text),
-                        CreatedBy, ddlContName.SelectedItem.ToString(), txtContName.Text, txtContExp.Text, ddlLicenseNo.SelectedItem.ToString(),
-                        txtSupLicenseNo.Text, txtSupExpiryDate.Text
+                        CreatedBy, ddlContName.SelectedItem.ToString(), txtContName.Text, DateTime.Parse(txtContExp.Text), ddlLicenseNo.SelectedItem.ToString(),
+                        txtSupLicenseNo.Text, DateTime.Parse(txtSupExpiryDate.Text)
                     );
                     CEI.UpdateLiftTestReportHistory("Escalator", IntimationId, count, CreatedBy);
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);

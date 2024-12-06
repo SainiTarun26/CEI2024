@@ -282,9 +282,10 @@ namespace CEIHaryana.SiteOwnerPages
                             SqlTransaction transaction = connection.BeginTransaction();
                             try
                             {
+
                                 CEI.InsertNewLiftData(
                             count, IntimationId, RadioButtonList2.SelectedItem.Text, TxtAgentName.Text, txtAgentAddress.Text,
-                            txtAgentPhone.Text, txtErectionDate.Text, RadioButtonAction.SelectedItem.ToString(), txtLiftSpeedContract.Text,
+                            txtAgentPhone.Text, DateTime.Parse(txtErectionDate.Text), RadioButtonAction.SelectedItem.ToString(), txtLiftSpeedContract.Text,
                             ParseOrDefault(txtLiftLoad.Text), txtMaxPersonCapacity.Text, ParseOrDefault(txtWeight.Text), ParseOrDefault(txtCounterWeight.Text),
                             ParseOrDefault(txtPitDepth.Text), ParseOrDefault(txtTravelDistance.Text), ParseOrDefault(txtFloorsServed.Text),
                             ParseOrDefault(txtTotalHeadRoom.Text), txtTypeofControll.Text, ParseOrDefault(txtNoofSuspension.Text), txtDescriptionOfSuspension.Text,
@@ -302,9 +303,9 @@ namespace CEIHaryana.SiteOwnerPages
                             ParseOrDefault(txtEarthingValue6.Text), ddlEarthingtype7.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue7.Text),
                             ddlEarthingtype8.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue8.Text), ddlEarthingtype9.SelectedItem.ToString(),
                             ParseOrDefault(txtEarthingValue9.Text), ddlEarthingtype10.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue10.Text),
-                            CreatedBy, txtContName.Text, txtContExp.Text, ddlContName.SelectedValue.ToString(), txtSupLicenseNo.Text,
+                            CreatedBy, txtContName.Text,  ddlContName.SelectedValue.ToString(), DateTime.Parse(txtContExp.Text), txtSupLicenseNo.Text,
                             ddlLicenseNo.SelectedValue.ToString(),
-                            txtSupExpiryDate.Text
+                            DateTime.Parse(txtSupExpiryDate.Text)
                         );
                                 CEI.UpdateLiftTestReportHistory("Lift",IntimationId, count, CreatedBy);
                                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);

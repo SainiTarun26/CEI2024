@@ -115,33 +115,33 @@ namespace CEIHaryana.Supervisor
                 string installationNo = Session["IHID"].ToString();
 
                 // Helper function to safely parse decimal fields
-                decimal ParseOrDefault(string input, decimal defaultValue = 0)
-                {
-                    return decimal.TryParse(input, out decimal result) ? result : defaultValue;
-                }
+                //decimal ParseOrDefault(string input, decimal defaultValue = 0)
+                //{
+                //    return decimal.TryParse(input, out decimal result) ? result : defaultValue;
+                //}
 
-                CEI.InsertNewLiftData(
-                    count,IntimationId,RadioButtonList2.SelectedItem.Text,TxtAgentName.Text,txtAgentAddress.Text,
-                    txtAgentPhone.Text,txtErectionDate.Text,ddlLiftErected.SelectedItem.ToString(),txtLiftSpeedContract.Text,
-                    ParseOrDefault(txtLiftLoad.Text),txtMaxPersonCapacity.Text,ParseOrDefault(txtWeight.Text),ParseOrDefault(txtCounterWeight.Text),
-                    ParseOrDefault(txtPitDepth.Text),ParseOrDefault(txtTravelDistance.Text),ParseOrDefault(txtFloorsServed.Text),
-                    ParseOrDefault(txtTotalHeadRoom.Text),ParseOrDefault(txtNoofSuspension.Text),txtDescriptionOfSuspension.Text,
-                    ParseOrDefault(txtSizeOfSuspension.Text),ParseOrDefault(txtBeamWeight.Text),ParseOrDefault(txtBeamSize.Text),
-                    txtMakeMainBreaker.Text,txtTypeMainBreaker.Text,ddlPoleMainBreaker.SelectedItem.ToString(),txtratingMainBreaker.Text,
-                    txtCapacityMainBreaker.Text,txtMakeRCCBMainBreaker.Text,ddlPolesRCCBMainBreaker.SelectedItem.ToString(),
-                    txtRatingRCCBMainBreaker.Text,txtfaultratingRCCBMainBreaker.Text,txtMakeLoadBreaker.Text,txtTypeLoadBreaker.Text,
-                    ddlPolesLoadBreaker.SelectedItem.ToString(),txtRatingLoadBreaker.Text,txtCapacityLoadBreaker.Text,txtMakeRCCBLoadBreaker.Text,
-                    ddlpolesRCCBLoadBreaker.SelectedItem.ToString(),txtRatingRCCBLoadBreaker.Text,txtFaultCurrentRCCBLoadBreaker.Text,
-                    txtwholeInstallation.Text,txtRedYellow.Text,txtRedBlue.Text,txtYellowBlue.Text,txtRedEarth.Text,txtYellowEarth.Text,
-                    txtBlueEarth.Text,ddlNoOfEarthing.SelectedItem.ToString(),ddlEarthingtype1.SelectedItem.ToString(),ParseOrDefault(txtearthingValue1.Text),
-                    ddlEarthingtype2.SelectedItem.ToString(),ParseOrDefault(txtEarthingValue2.Text),ddlEarthingtype3.SelectedItem.ToString(),
-                    ParseOrDefault(txtEarthingValue3.Text),ddlEarthingtype4.SelectedItem.ToString(),ParseOrDefault(txtEarthingValue4.Text),
-                    ddlEarthingtype5.SelectedItem.ToString(),ParseOrDefault(txtEarthingValue5.Text),ddlEarthingtype6.SelectedItem.ToString(),
-                    ParseOrDefault(txtEarthingValue6.Text),ddlEarthingtype7.SelectedItem.ToString(),ParseOrDefault(txtEarthingValue7.Text),
-                    ddlEarthingtype8.SelectedItem.ToString(),ParseOrDefault(txtEarthingValue8.Text),ddlEarthingtype9.SelectedItem.ToString(),
-                    ParseOrDefault(txtEarthingValue9.Text),ddlEarthingtype10.SelectedItem.ToString(),ParseOrDefault(txtEarthingValue10.Text),
-                    CreatedBy
-                );
+                //CEI.InsertNewLiftData(
+                //    count,IntimationId,RadioButtonList2.SelectedItem.Text,TxtAgentName.Text,txtAgentAddress.Text,
+                //    txtAgentPhone.Text,txtErectionDate.Text,ddlLiftErected.SelectedItem.ToString(),txtLiftSpeedContract.Text,
+                //    ParseOrDefault(txtLiftLoad.Text),txtMaxPersonCapacity.Text,ParseOrDefault(txtWeight.Text),ParseOrDefault(txtCounterWeight.Text),
+                //    ParseOrDefault(txtPitDepth.Text),ParseOrDefault(txtTravelDistance.Text),ParseOrDefault(txtFloorsServed.Text),
+                //    ParseOrDefault(txtTotalHeadRoom.Text),ParseOrDefault(txtNoofSuspension.Text),txtDescriptionOfSuspension.Text,
+                //    ParseOrDefault(txtSizeOfSuspension.Text),ParseOrDefault(txtBeamWeight.Text),ParseOrDefault(txtBeamSize.Text),
+                //    txtMakeMainBreaker.Text,txtTypeMainBreaker.Text,ddlPoleMainBreaker.SelectedItem.ToString(),txtratingMainBreaker.Text,
+                //    txtCapacityMainBreaker.Text,txtMakeRCCBMainBreaker.Text,ddlPolesRCCBMainBreaker.SelectedItem.ToString(),
+                //    txtRatingRCCBMainBreaker.Text,txtfaultratingRCCBMainBreaker.Text,txtMakeLoadBreaker.Text,txtTypeLoadBreaker.Text,
+                //    ddlPolesLoadBreaker.SelectedItem.ToString(),txtRatingLoadBreaker.Text,txtCapacityLoadBreaker.Text,txtMakeRCCBLoadBreaker.Text,
+                //    ddlpolesRCCBLoadBreaker.SelectedItem.ToString(),txtRatingRCCBLoadBreaker.Text,txtFaultCurrentRCCBLoadBreaker.Text,
+                //    txtwholeInstallation.Text,txtRedYellow.Text,txtRedBlue.Text,txtYellowBlue.Text,txtRedEarth.Text,txtYellowEarth.Text,
+                //    txtBlueEarth.Text,ddlNoOfEarthing.SelectedItem.ToString(),ddlEarthingtype1.SelectedItem.ToString(),ParseOrDefault(txtearthingValue1.Text),
+                //    ddlEarthingtype2.SelectedItem.ToString(),ParseOrDefault(txtEarthingValue2.Text),ddlEarthingtype3.SelectedItem.ToString(),
+                //    ParseOrDefault(txtEarthingValue3.Text),ddlEarthingtype4.SelectedItem.ToString(),ParseOrDefault(txtEarthingValue4.Text),
+                //    ddlEarthingtype5.SelectedItem.ToString(),ParseOrDefault(txtEarthingValue5.Text),ddlEarthingtype6.SelectedItem.ToString(),
+                //    ParseOrDefault(txtEarthingValue6.Text),ddlEarthingtype7.SelectedItem.ToString(),ParseOrDefault(txtEarthingValue7.Text),
+                //    ddlEarthingtype8.SelectedItem.ToString(),ParseOrDefault(txtEarthingValue8.Text),ddlEarthingtype9.SelectedItem.ToString(),
+                //    ParseOrDefault(txtEarthingValue9.Text),ddlEarthingtype10.SelectedItem.ToString(),ParseOrDefault(txtEarthingValue10.Text),
+                //    CreatedBy
+                //);
                 CEI.UpdateInstallations(installationNo, IntimationId);
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
 

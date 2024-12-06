@@ -146,6 +146,11 @@ namespace CEIHaryana.SiteOwnerPages
                                     //}
                                     Response.Redirect("/SiteOwnerPages/LiftDetails.aspx", false);
                                 }
+                            else
+                            {
+
+                                Response.Redirect("/SiteOwnerPages/EscalatorDetails.aspx", false);
+                            }
                             //}
                             //else
                             //{
@@ -187,6 +192,11 @@ namespace CEIHaryana.SiteOwnerPages
                                 //    Session["ValueId"] = "True";
                                 //}
                                 Response.Redirect("/SiteOwnerPages/LiftDetails.aspx", false);
+                            }
+                            else
+                            {
+
+                                Response.Redirect("/SiteOwnerPages/EscalatorDetails.aspx", false);
                             }
                            
                         }
