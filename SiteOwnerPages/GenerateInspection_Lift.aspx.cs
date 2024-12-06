@@ -363,43 +363,17 @@ namespace CEIHaryana.SiteOwnerPages
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblCategory = (Label)row.FindControl("lblCategory");
-                    Label lblNoOfInstallations = (Label)row.FindControl("lblNoOfInstallations");
-                    IntimationId = Session["IntimationId_LiftEscalator"].ToString();
-                    Count = lblNoOfInstallations.Text.Trim();
-                    DataSet ds = new DataSet();
-                    ds = CEI.GetData(lblCategory.Text.Trim(), IntimationId, Count);
-                    if (ds.Tables[0].Rows.Count > 0)
+                    Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
+                    if (lblCategory.Text.Trim() == "Lift")
                     {
-                        if (lblCategory.Text.Trim() == "Line")
-                        {
-                            //Session["LineID"] = ds.Tables[0].Rows[0]["ID"].ToString();// gurmeet 4 may, to testreportid instead of id 
-                            Session["LineID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
-
-                            Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
-                        }
-                        else if (lblCategory.Text.Trim() == "Substation Transformer")
-                        {
-                            //Session["SubStationID"] = ds.Tables[0].Rows[0]["ID"].ToString();
-                            Session["SubStationID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
-                            Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
-                        }
-                        else if (lblCategory.Text.Trim() == "Generating Set")
-                        {
-                            //Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
-                            Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
-                            Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
-
-                        }
+                        Session["LiftTestReportID"] = lblTestReportId.Text;
+                        Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
                     }
-                }
-                else if (e.CommandName == "View")
-                {
-                    string fileName = "";
-                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    //lblerror.Text = fileName;
-                    string script = $@"<script>window.open('{fileName}','_blank');</script>";
-                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                    else if (lblCategory.Text.Trim() == "Escalator")
+                    {
+                        Session["EscalatorTestReportID"] = lblTestReportId.Text;
+                        //Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+                    }
                 }
             }
             catch (Exception)

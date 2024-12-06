@@ -10,12 +10,16 @@
     <link rel="stylesheet" href="/Assets/css/ti-icons/css/themify-icons.css" />
     <link rel="stylesheet" href="/Assets/css/css/vendor.bundle.base.css" />
     <link rel="stylesheet" href="/Assets/css/datatables.net-bs4/dataTables.bootstrap4.css" />
-    <link rel="stylesheet" href="/Assets/css/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="/Assets/css/ti-icons/css/themify-icons.css" />'
+
     <link rel="stylesheet" type="/Assets/css/css" href="js/select.dataTables.min.css" />
     <link rel="stylesheet" href="/Assets/css/vertical-layout-light/style.css" />
     <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" />
     <style type="text/css">
+        td{
+            width:1%;
+        }
         li.tab-content.tab-content-3.typography {
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             border: 8px solid #ced4da !important;
@@ -2036,13 +2040,13 @@
             <ul style="margin: 40px 20px 20px 15px!important;">
                 <li class="tab-content tab-content-3 typography">
                     <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
-                        <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
+                        <asp:Button ID="btnPrint" Text="Print" Enabled="false" runat="server" class="btn btn-primary mr-2"
                             Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="openNewWindow(); return false;" />
                     </div>
                     <div class="row" style="margin-bottom: 15PX;">
                         <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Site Details & Test Details (Lift)</h6>
-                            <div class="row" style="font-size: 18px; font-weight: 600;">
+                            <div class="row" style="font-size: 18px; font-weight: 600;margin-top: 0px !important;">
                                 <div class="col-12" style="margin-top: 0px; padding-left: 0px; text-align: center;">
                                     TestDetailId: (<asp:Label ID="lbltestReportId" runat="server" />) &nbsp;&nbsp;&nbsp;&nbsp;  Intimation Id: (<asp:Label ID="lblWorkIntimationId" runat="server" />)
                                 </div>
@@ -2057,7 +2061,7 @@
                                 <div class="card-title" style="margin-bottom: 1px;">Site Owner Information</div>
                                 <div>
                                     <div class="row row-modal">
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <label>
                                                 Applicant Type
             <samp style="color: red">* </samp>
@@ -2087,14 +2091,14 @@
         <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtTanNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
     </div>--%>
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <label>
                                                 Electrical Installation For<samp style="color: red"> * </samp>
                                             </label>
                                             <asp:TextBox ReadOnly="true" class="form-control" ID="txtInstallationFor" TabIndex="8" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" onkeyup="return isvalidphoneno();" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                         </div>
-                                        <div class="col-md-3" id="individual" runat="server">
+                                        <div class="col-md-4" id="individual" runat="server">
                                             <label for="Name">
                                                 Name of Owner/ Consumer<samp style="color: red"> * </samp>
                                             </label>
@@ -2102,7 +2106,7 @@
                                                 <asp:TextBox ReadOnly="true" class="form-control" ID="txtName" TabIndex="4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return alphabetKey(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px; box-shadow: none !important;"></asp:TextBox>
                                             </div>
                                         </div>
-                                        <div class="col-md-3" id="agency" runat="server">
+                                        <div class="col-md-4" id="agency" runat="server">
                                             <label for="agency">
                                                 Name of Firm/ Org./ Company/ Department
      <samp style="color: red">* </samp>
@@ -2172,7 +2176,7 @@
                                                         </th>
                                                         <th style="width: 20%;">No of Installations
                                                         </th>
-                                                        <th style="width: 10%;"></th>
+                                                       
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -2191,10 +2195,7 @@
                                             font-size: 12px;">Max no. of Installations is only 25.</p>--%>
                                                                 </div>
                                                             </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:ImageButton ID="imgDelete1" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30"
-                                                                    runat="server" />
-                                                            </td>
+                                                         
                                                         </tr>
                                                     </div>
                                                     <div id="installationType2" runat="server">
@@ -2209,9 +2210,7 @@
                                                                     <asp:TextBox ReadOnly="true" class="form-control" ID="txtinstallationNo2" TabIndex="14" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="Max no. of Installations is 25." MaxLength="2" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:ImageButton ID="imgDelete2" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30" runat="server" />
-                                                            </td>
+                                                           
                                                         </tr>
                                                     </div>
 
@@ -3149,8 +3148,9 @@
                                 </div>
                             </div>
 
-                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-
+                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;margin-left:-25px; margin-right:-25px;">
+                                  <div class="card-title" style="margin-bottom: 1px;font-size:22px;font-weight: 700;
+    margin-bottom: 20px;">Document Details</div>
                                 <div class="row">
                                     <div class="col-12">
                                         <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" OnRowCommand="Grd_Document_RowCommand" runat="server" AutoGenerateColumns="false">

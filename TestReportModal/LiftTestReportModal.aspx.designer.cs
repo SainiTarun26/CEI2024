@@ -222,15 +222,6 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtinstallationNo1;
 
         /// <summary>
-        /// imgDelete1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgDelete1;
-
-        /// <summary>
         /// installationType2 control.
         /// </summary>
         /// <remarks>
@@ -256,15 +247,6 @@ namespace CEIHaryana.TestReportModal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtinstallationNo2;
-
-        /// <summary>
-        /// imgDelete2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgDelete2;
 
         /// <summary>
         /// LocalAgents control.

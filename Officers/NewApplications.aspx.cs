@@ -68,6 +68,7 @@ namespace CEIHaryana.Officers
                 string id = lblID.Text;
 
                 Label lblInspectionType = (Label)row.FindControl("lblInspectionType");
+                Label lblInstallationfor = (Label)row.FindControl("lblInstallationfor");
 
 
                 Label lblApproval = (Label)row.FindControl("lblApproval");
@@ -75,6 +76,32 @@ namespace CEIHaryana.Officers
                 Session["InspectionId"] = id;
                 if (e.CommandName == "Select")
                 {
+                    if (lblInstallationfor.Text.Trim() == "Lift" || lblInstallationfor.Text.Trim() == "Escalator" || lblInstallationfor.Text.Trim() == "MultiLift" || lblInstallationfor.Text.Trim() == "MultiEscalator" || lblInstallationfor.Text.Trim() == "Lift/Escalator")
+                    {
+                        if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "New")
+                        {
+                            Response.Redirect("/Officers/Inspection_Lift_Escalator.aspx", false);
+                            return;
+                        }
+                        else if (lblApproval.Text.Trim() == "ReSubmit" && lblInspectionType.Text.Trim() == "New")
+                        {
+                            Response.Redirect("/Officers/ReturnedInspections_Lift_Escalator.aspx", false);
+                            return;
+                        }
+                        else if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "Periodic")
+                        {
+                            Response.Redirect("/Officers/PeriodicInspection_Lift_Escalator.aspx", false);
+                            return;
+                        }
+                        else if (lblApproval.Text.Trim() == "ReSubmit" && lblInspectionType.Text.Trim() == "Periodic")
+                        {
+                            Response.Redirect("/Officers/PeriodicInspection_Lift_Escalator.aspx", false);
+                            return;
+                        }
+
+                    }
+
+
                     if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "New")
                     {
 

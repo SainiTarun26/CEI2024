@@ -302,8 +302,9 @@ namespace CEIHaryana.SiteOwnerPages
                             ParseOrDefault(txtEarthingValue6.Text), ddlEarthingtype7.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue7.Text),
                             ddlEarthingtype8.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue8.Text), ddlEarthingtype9.SelectedItem.ToString(),
                             ParseOrDefault(txtEarthingValue9.Text), ddlEarthingtype10.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue10.Text),
-                            CreatedBy, ddlContName.SelectedItem.ToString(), txtContName.Text, txtContExp.Text, ddlLicenseNo.SelectedItem.ToString(),
-                            txtSupLicenseNo.Text, txtSupExpiryDate.Text
+                            CreatedBy, txtContName.Text, txtContExp.Text, ddlContName.SelectedValue.ToString(), txtSupLicenseNo.Text,
+                            ddlLicenseNo.SelectedValue.ToString(),
+                            txtSupExpiryDate.Text
                         );
                                 CEI.UpdateLiftTestReportHistory("Lift",IntimationId, count, CreatedBy);
                                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);

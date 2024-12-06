@@ -1065,7 +1065,7 @@ namespace CEIHaryana.Officers
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-
+                    Label LblRemarks = (Label)e.Row.FindControl("LblRemarks");
                     Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
                     LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallaionInvoice");
                     LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
@@ -1101,11 +1101,23 @@ namespace CEIHaryana.Officers
                     }
                     else
                     {
-                        lnkPreviousInstallaionInvoice.Visible = true;
-                        lnkPreviosManufacturingReport.Visible = true;
-                        linkButtonInvoice.Visible = true;
-                        LinkButtonReport.Visible = true;
-                        ViewState["AllRowsAreLine"] = false;
+                        if (string.IsNullOrEmpty(LblRemarks.Text.Trim()))
+                        {
+                            lnkPreviousInstallaionInvoice.Visible = false;
+                            lnkPreviosManufacturingReport.Visible = false;
+                            linkButtonInvoice.Visible = false;
+                            LinkButtonReport.Visible = false;
+                            ViewState["AllRowsAreLine"] = false;
+                        }
+                        else
+                        {
+                            lnkPreviousInstallaionInvoice.Visible = true;
+                            lnkPreviosManufacturingReport.Visible = true;
+                            linkButtonInvoice.Visible = true;
+                            LinkButtonReport.Visible = true;
+                            ViewState["AllRowsAreLine"] = false;
+                        }
+                        
                     }
 
 

@@ -177,7 +177,14 @@
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
 
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
+
                             </asp:BoundField>
+
+                             <asp:TemplateField HeaderText="Intallation Type" Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblInstallationfor" runat="server" Text='<%#Eval("Installationfor") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
 
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />

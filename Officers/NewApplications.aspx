@@ -146,6 +146,14 @@
                                     <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("RequestStatus") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Installationfor" Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblInstallationfor" runat="server" Text='<%#Eval("Installationfor") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+
                             <asp:TemplateField HeaderText="SNo">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
@@ -163,7 +171,7 @@
                                     <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            
+
                             <asp:BoundField DataField="RequestStatus" HeaderText="Status">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />

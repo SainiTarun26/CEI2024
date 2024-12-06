@@ -8224,6 +8224,95 @@ string SupervisorName, string SupervisorLicenseNumber, string SupervisorLicenseE
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ApproveCertificate_Lift_Escelator", LoginId);
         }
         //
+
+        //Aslam-06-12-2024
+        public DataSet InspectionData_Lift_Escalator(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionData_Lift_Escalator", Id);
+        }
+
+        public DataSet ViewDocuments_Lift_Escalator(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDocuments_Lift_Escalator", InspectionId);
+        }
+
+
+
+        public DataSet GetDetailsToViewTRinMultipleCaseNew_Lift_Escalator(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewMultipleInspectionTR_Lift_Escalator", InspectionId);
+        }
+
+
+        public DataSet GetTestReport_Lift_Escalator(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReport_Lift_Escalator", Id);
+        }
+
+
+        public DataSet GetTestReportDataIfPeriodic_Lift_Escalator(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReportDataForPerodic_Lift_Escalator", Id);
+        }
+
+
+        public void updateInspectionPeriodic_lift_Escalator(string InspectionID, string StaffId, string IntimatiomnId, string Installationtype,
+string AcceptedOrReReturn, string Reason, string ReasonType)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand("sp_InspectionReviewForPeriodic_Lift_Escalator", connection))
+                    {
+
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ID", InspectionID);
+                        cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                        cmd.Parameters.AddWithValue("@IntimationId", IntimatiomnId);
+                        //cmd.Parameters.AddWithValue("@count", count);
+                        cmd.Parameters.AddWithValue("@Installationtype ", Installationtype);
+                        cmd.Parameters.AddWithValue("@AcceptedOrReturn ", AcceptedOrReReturn);
+                        cmd.Parameters.AddWithValue("@ReasonForRejection ", Reason);
+                        cmd.Parameters.AddWithValue("@ReasonType ", ReasonType);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    //throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+            }
+
+        }
+
+
+        public DataSet UpdateInspectionRejection_Lift_Escalator(string ID, string StaffId, string RejctionReasonType, string ReasonForRejection)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionRejection_Lift_Escalator", ID, StaffId, RejctionReasonType, ReasonForRejection);
+        }
+
+        public DataTable InspectionAccepted_Lift_Escalator(string ID, string StaffId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionAccepted_Lift_Escalator", ID, StaffId);
+        }
+
+        public DataSet GetDetailsToViewCart_Lift_Escalator(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewCart_Lift_Escalator", InspectionId);
+        }
+
+
+
+        //
     }
 }
 

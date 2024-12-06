@@ -20,9 +20,13 @@ namespace CEIHaryana.TestReportModal
             {
                 if (!Page.IsPostBack)
                 {
-                    string TestReportId = "TLF-00002";
-                    GetDetailswithId(TestReportId);
-                    GetDocument(TestReportId);
+                    string TestReportId = string.Empty;
+                    if (Convert.ToString(Session["LiftTestReportID"]) != null && Convert.ToString(Session["LiftTestReportID"]) != "")
+                    {
+                        TestReportId = Session["LiftTestReportID"].ToString();
+                        GetDetailswithId(TestReportId);
+                        GetDocument(TestReportId);
+                    }
                 }
             }
             catch

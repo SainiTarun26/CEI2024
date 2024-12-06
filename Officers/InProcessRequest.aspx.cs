@@ -59,11 +59,21 @@ namespace CEIHaryana.Officers
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
+                    Label lblInstallationfor = (Label)row.FindControl("lblInstallationfor");
                     string id = lblID.Text;
                     Session["InProcessInspectionId"] = id;
                     if (e.CommandName == "Select")
                     {
-                        Response.Redirect("/Officers/InProcessInspection.aspx", false);
+                        if (lblInstallationfor.Text.Trim() == "Lift" || lblInstallationfor.Text.Trim() == "Escalator" || lblInstallationfor.Text.Trim() == "MultiLift" || lblInstallationfor.Text.Trim() == "MultiEscalator" || lblInstallationfor.Text.Trim() == "Lift/Escalator")
+                        {
+                            Response.Redirect("/Officers/InProcessInspection_Lift_Escalator.aspx", false);
+                            return;
+                        }
+                        else
+                        {
+                            Response.Redirect("/Officers/InProcessInspection.aspx", false);
+                        }
+                         
 
                     }
                 }

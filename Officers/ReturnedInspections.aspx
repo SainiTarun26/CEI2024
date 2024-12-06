@@ -360,7 +360,7 @@
                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                 </asp:BoundField>
-                <asp:BoundField DataField="ReturnBased" HeaderText="Return Based" Visible="false">
+                <asp:BoundField DataField="ReturnBased" HeaderText="Return Based" >
                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                 </asp:BoundField>
@@ -490,6 +490,7 @@
                                    <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("Count") %>'></asp:Label>
                                    <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
                                    <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
+                                     <asp:Label ID="LblRemarks" runat="server" Text='<%#Eval("reason") %>'></asp:Label>
                                </ItemTemplate>
                            </asp:TemplateField>
                            <asp:TemplateField HeaderText="View Test Report" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
@@ -527,7 +528,7 @@
                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                            </asp:TemplateField>
-                           <asp:BoundField DataField="Remarks" HeaderText="Remarks">
+                           <asp:BoundField DataField="reason" HeaderText="Remarks">
                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                <ItemStyle HorizontalAlign="Left" Width="15%" />
                            </asp:BoundField>

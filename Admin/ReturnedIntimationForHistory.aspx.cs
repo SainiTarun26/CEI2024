@@ -995,6 +995,7 @@ namespace CEIHaryana.Admin
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
                     Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
+                    Label LblRemarks = (Label)e.Row.FindControl("LblRemarks");
                     LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallationInvoice");
                     LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
                     LinkButton linkButtonPrevInvoice = (LinkButton)e.Row.FindControl("lnkPrevInstallationInvoice");
@@ -1013,6 +1014,16 @@ namespace CEIHaryana.Admin
                     }
                     else
                     {
+                        if (string.IsNullOrEmpty(LblRemarks.Text.Trim()))
+                        {
+                            linkButtonInvoice.Visible = false;
+                            LinkButtonReport.Visible = false;
+                            linkButtonPrevInvoice.Visible = false;
+                            LinkButtonPrevReport.Visible = false;
+                            ViewState["AllRowsAreLine"] = false;
+                        }
+                        else 
+                        {
                         Grid_MultipleInspectionTR.Columns[5].Visible = true;
                         Grid_MultipleInspectionTR.Columns[6].Visible = true;
                         Grid_MultipleInspectionTR.Columns[7].Visible = true;
@@ -1022,6 +1033,7 @@ namespace CEIHaryana.Admin
                         linkButtonPrevInvoice.Visible = true;
                         LinkButtonPrevReport.Visible = true;
                         ViewState["AllRowsAreLine"] = false;
+                        }
                     }
                 }
                 else if (e.Row.RowType == DataControlRowType.Footer)

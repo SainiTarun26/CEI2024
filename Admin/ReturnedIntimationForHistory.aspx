@@ -445,7 +445,8 @@
                                     <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("Count") %>'></asp:Label>
                                     <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
                                     <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
-                                </ItemTemplate>
+                                   <asp:Label ID="LblRemarks" runat="server" Text='<%#Eval("reason") %>'></asp:Label>
+                                    </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Test Report" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <ItemTemplate>
@@ -482,7 +483,7 @@
                                 <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                             </asp:TemplateField>
-                            <asp:BoundField DataField="Remarks" HeaderText="Return Reason">
+                            <asp:BoundField DataField="reason" HeaderText="Return Reason">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>

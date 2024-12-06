@@ -1918,10 +1918,12 @@
     <Content Include="Officers\InProcessInspection_Lift_Escalator.aspx" />
     <Content Include="Officers\InProcessRequest.aspx" />
     <Content Include="Officers\Inspection.aspx" />
+    <Content Include="Officers\Inspection_Lift_Escalator.aspx" />
     <Content Include="Officers\InstallationIntimationDetails.aspx" />
     <Content Include="Officers\NewApplications.aspx" />
     <Content Include="Officers\OfficerDashboard.aspx" />
     <Content Include="Officers\PeriodicInspection.aspx" />
+    <Content Include="Officers\PeriodicInspection_Lift_Escalator.aspx" />
     <Content Include="Officers\ReturnedInspections.aspx" />
     <Content Include="Officers\TotalRequest.aspx" />
     <Content Include="OTPVerification.aspx" />
@@ -2816,6 +2818,13 @@
     <Compile Include="Officers\Inspection.aspx.designer.cs">
       <DependentUpon>Inspection.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Officers\Inspection_Lift_Escalator.aspx.cs">
+      <DependentUpon>Inspection_Lift_Escalator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\Inspection_Lift_Escalator.aspx.designer.cs">
+      <DependentUpon>Inspection_Lift_Escalator.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Officers\InstallationIntimationDetails.aspx.cs">
       <DependentUpon>InstallationIntimationDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2850,6 +2859,13 @@
     </Compile>
     <Compile Include="Officers\PeriodicInspection.aspx.designer.cs">
       <DependentUpon>PeriodicInspection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\PeriodicInspection_Lift_Escalator.aspx.cs">
+      <DependentUpon>PeriodicInspection_Lift_Escalator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\PeriodicInspection_Lift_Escalator.aspx.designer.cs">
+      <DependentUpon>PeriodicInspection_Lift_Escalator.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\ReturnedInspections.aspx.cs">
       <DependentUpon>ReturnedInspections.aspx</DependentUpon>
