@@ -46,6 +46,7 @@ namespace CEIHaryana.UserPages
 
         protected void ddlApplicantType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ddlworktype.SelectedIndex = 0;
             LblPanNumber.Visible = false;
             LblTanNumber.Visible = false;
             txtPANTan.Visible = false;

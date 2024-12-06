@@ -309,11 +309,12 @@ namespace CEIHaryana.Contractor
             {
 
                 string PANNumber = txtPAN.Text.Trim();
-                System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}");
+                //System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}");
+                System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("^[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}$|^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$");
                 if (!regex.IsMatch(PANNumber))
                 {
                     txtPAN.Focus();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid PAN card format. Please enter a valid PAN number.');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid PAN/TAN card format. Please enter a valid PAN/TAN number.');", true);
                     txtPAN.Text = "";
                     return;
                 }
@@ -928,6 +929,7 @@ namespace CEIHaryana.Contractor
         }
         protected void ddlWorkDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ddlworktype.SelectedIndex = 0;
             DivOtherDepartment.Visible = false;
             DivPancard_TanNo.Visible = false;
             //ElectricalInstallation.Visible = true;
@@ -1369,11 +1371,12 @@ namespace CEIHaryana.Contractor
             try
             {
                 string TANNumber = txtTanNumber.Text.Trim();
-                System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}");
+                //System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}");
+                System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("^[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}$|^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$");
                 if (!regex.IsMatch(TANNumber))
                 {
                     txtTanNumber.Focus();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid TAN Number format. Please enter a valid TAN number.');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid PAN/TAN Number format. Please enter a valid pAN/TAN number.');", true);
                     txtTanNumber.Text = "";
                     return;
                 }
