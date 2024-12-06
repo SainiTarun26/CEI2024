@@ -16,6 +16,12 @@
  <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <style type="text/css">
+      th.headercolor {
+    width: 1% !important;
+}
+     td{
+         text-align:center;
+     }
      .pagination-ys {
          /*display: inline-block;*/
          padding-left: 0;

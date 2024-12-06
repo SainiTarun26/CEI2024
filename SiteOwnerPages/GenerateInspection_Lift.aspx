@@ -316,7 +316,7 @@
                                     <asp:Label ID="lblNoOfInstallations" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
                                     <%--<asp:Label ID="lblPermises" runat="server" Text='<%#Eval("Permises") %>'></asp:Label>--%>
                                     <asp:Label ID="lblApplicantTypeCode" runat="server" Text='<%#Eval("ApplicantTypeCode") %>'></asp:Label>
-                                    <asp:Label ID="lblDesignation" runat="server" Text='<%#Eval("Designation") %>'></asp:Label>
+                                    <%--<asp:Label ID="lblDesignation" runat="server" Text='<%#Eval("Designation") %>'></asp:Label>--%>
                                     <%--<asp:Label ID="LblTypeofPlant" runat="server" Text='<%#Eval("TypeOfPlant") %>'></asp:Label>--%>
                                   <%--  <asp:Label ID="LblSactionLoad" runat="server" Text='<%#Eval("SanctionLoad") %>'></asp:Label>--%>
                                     <asp:Label ID="lblReportType" runat="server" Text='<%#Eval("ReportType") %>'></asp:Label>

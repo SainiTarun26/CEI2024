@@ -193,7 +193,7 @@ namespace CEIHaryana.SiteOwnerPages
                     Label lblNoOfInstallations = (Label)row.FindControl("lblNoOfInstallations");
                     //Label lblPremises = (Label)row.FindControl("lblPermises");
                     Label lblApplicantTypeCode = (Label)row.FindControl("lblApplicantTypeCode");
-                    Label lblDesignation = (Label)row.FindControl("lblDesignation");
+                    //Label lblDesignation = (Label)row.FindControl("lblDesignation");
                     Label lblTypeOfPlant = (Label)row.FindControl("LblTypeofPlant");
                     //Label LblSactionLoad = (Label)row.FindControl("LblSactionLoad");
                     Label lblReportType = (Label)row.FindControl("lblReportType");
@@ -287,7 +287,7 @@ namespace CEIHaryana.SiteOwnerPages
                         CEI.DeletePaymentHistory(id, int.Parse(lblNoOfInstallations.Text), int.Parse(InstallationId), CreatedBy);
                     }
                     InspectionType = "New";
-                    AssigDesignation = lblDesignation.Text;                   
+                    //AssigDesignation = lblDesignation.Text;                   
                     UploadDocuments.Visible = true;                   
                     FeesDetails.Visible = true;
                     PaymentDetails.Visible = true;

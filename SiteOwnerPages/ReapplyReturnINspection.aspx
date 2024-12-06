@@ -340,8 +340,8 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:BoundField DataField="Id" HeaderText="Inspection Id">
-                                        <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                        <HeaderStyle HorizontalAlign="Left" Width="22%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="Left" Width="22%" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="Installationfor" HeaderText="Installation Type">
                                         <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
@@ -515,7 +515,7 @@
                 </div>
                 <div>
                     <div class="row">
-                        <div class="col-4" style="text-align: center;">
+                        <div class="col-12" style="text-align: center;">
                             <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
                             <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="true" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                         </div>

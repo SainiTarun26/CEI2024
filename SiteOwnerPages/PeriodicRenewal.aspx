@@ -868,7 +868,7 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <div class="row">
+                <div class="row"  style="margin-bottom:30px;">
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: center;">
                         <asp:Button type="submit" ID="btnBack" Visible="false" OnClick="btnBack_Click" Text="Back" runat="server" class="btn btn-primary mr-2" />

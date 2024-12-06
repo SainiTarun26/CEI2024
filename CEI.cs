@@ -7996,9 +7996,9 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             cmd.ExecuteNonQuery();
         }
 
-        public DataTable InsertPaymentHistory_Lift(string IntimationId, int count, int InstallationTypeId, string CreatedBy)
+        public void InsertPaymentHistory_Lift(string IntimationId, int count, int InstallationTypeId, string CreatedBy)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "update_InstallationHistory_NewInspection", IntimationId, count, InstallationTypeId, CreatedBy);
+             DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "update_InstallationHistory_NewInspection", IntimationId, count, InstallationTypeId, CreatedBy);
         }
         //**End
         public DataTable GetDocumentsForLiftRenewal(string ApplicantType, int InstallationTypeID, string InspectionType, string InstallationType)

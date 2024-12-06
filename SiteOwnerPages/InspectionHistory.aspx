@@ -206,7 +206,7 @@
                                 <ItemStyle Width="10%" />
                                 <ItemTemplate>
                                     <div style="text-align: center;">
-                                        <asp:LinkButton ID="lnkPrint" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px; display: inline-block;" runat="server" Visible="false"
+                                        <asp:LinkButton ID="lnkPrint" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px; display: inline-block;padding-top: 2px !important;padding-bottom: 2px !important;" runat="server" Visible="false"
                                             Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print1" CommandArgument="<%# Container.DataItemIndex %>">
                                         </asp:LinkButton>
                                     </div>

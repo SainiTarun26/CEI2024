@@ -457,7 +457,7 @@ namespace CEIHaryana.Officers
                                         {
 
                                             string TestReportId = (row.FindControl("LblTestReportId") as Label)?.Text;
-                                            string InstallationType = (row.FindControl("lblInstallationType") as Label)?.Text;
+                                            string InstallationType = (row.FindControl("LblInstallationName") as Label)?.Text;
                                             CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, txtRegistrationNo.Text, InspectionType, StaffId, txtChallanDate.Text, Division, transaction);
 
                                         }
@@ -470,7 +470,7 @@ namespace CEIHaryana.Officers
                                         {
 
                                             string TestReportId = (row.FindControl("lblTestReport") as Label)?.Text;
-                                            string InstallationType = (row.FindControl("LblInstallation") as Label)?.Text;
+                                            string InstallationType = (row.FindControl("LblInstallationName") as Label)?.Text;
                                             CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, txtRegistrationNo.Text, InspectionType, StaffId, txtChallanDate.Text, Division, transaction);
 
                                         }
