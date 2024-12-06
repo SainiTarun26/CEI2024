@@ -99,7 +99,7 @@ namespace CEIHaryana.Officers
                 Session["InspectionTestReportId"] = testReportId;
                 if (txtWorkType.Text.Trim() == "Line")
                 {
-                    Response.Write("<script>window.open('/TestReportModal/LineTestReportModal.aspx','_blank');</script>");
+                    Response.Write("<script>window.open('/TestReportModal/LiTestReportModal.aspx','_blank');</script>");
                 }
                 else if (txtWorkType.Text.Trim() == "Substation Transformer")
                 {
@@ -399,7 +399,7 @@ namespace CEIHaryana.Officers
                         StaffId = Session["StaffID"].ToString();
                         ID = Session["InProcessInspectionId"].ToString();
                         string InspectionType = Session["InspectionType"].ToString();
-                        string InstallationType = Session["InstallationType"].ToString();
+                        //string InstallationType = Session["InstallationType"].ToString();
                         string Division = Session["Division"].ToString();
                         String SubmittedDate = Session["lblSubmittedDate"].ToString();
 
@@ -457,6 +457,7 @@ namespace CEIHaryana.Officers
                                         {
 
                                             string TestReportId = (row.FindControl("LblTestReportId") as Label)?.Text;
+                                            string InstallationType = (row.FindControl("lblInstallationType") as Label)?.Text;
                                             CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, txtRegistrationNo.Text, InspectionType, StaffId, txtChallanDate.Text, Division, transaction);
 
                                         }
@@ -469,6 +470,7 @@ namespace CEIHaryana.Officers
                                         {
 
                                             string TestReportId = (row.FindControl("lblTestReport") as Label)?.Text;
+                                            string InstallationType = (row.FindControl("LblInstallation") as Label)?.Text;
                                             CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, txtRegistrationNo.Text, InspectionType, StaffId, txtChallanDate.Text, Division, transaction);
 
                                         }
@@ -667,36 +669,37 @@ namespace CEIHaryana.Officers
                     e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
                 }
             }
-            protected void lnkRedirect1_Click(object sender, EventArgs e)
+        protected void lnkRedirect1_Click(object sender, EventArgs e)
+        {
+            try
             {
-                try
-                {
-                    LinkButton btn = (LinkButton)(sender);
+                LinkButton btn = (LinkButton)(sender);
 
-                    GridViewRow row = (GridViewRow)btn.NamingContainer;
-                    Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
-                    string installationName = lblInstallationName.Text.Trim();
+                GridViewRow row = (GridViewRow)btn.NamingContainer;
+                Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
+                string installationName = lblInstallationName.Text.Trim();
 
-                    Session["InspectionTestReportId"] = btn.CommandArgument;
+                Session["InspectionTestReportId"] = btn.CommandArgument;
 
-                    if (installationName == "Line")
-                    {
-                        Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
-                    }
-                    else if (installationName == "Substation Transformer")
-                    {
-                        Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
-                    }
-                    else if (installationName == "Generating Set")
-                    {
-                        Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
-                    }
-                }
-                catch (Exception ex) { }
+                Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                //if (installationName == "Line")
+                //{
+                //    Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
+                //}
+                //else if (installationName == "Substation Transformer")
+                //{
+                //    Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+                //}
+                //else if (installationName == "Generating Set")
+                //{
+                //    Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+                //}
             }
+            catch (Exception ex) { }
+        }
 
-         
-            protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
+
+        protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
             {
                 Rejection.Visible = false;
                 //Suggestion.Visible = false;
@@ -933,24 +936,26 @@ namespace CEIHaryana.Officers
                     ds = CEI.GetData(LblInstallationName.Text.Trim(), IntimationId, Count);
                     if (ds.Tables[0].Rows.Count > 0)
                     {
-                        if (LblInstallationName.Text.Trim() == "Line")
-                        {
-                            Session["LineID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                    Session["LiftTestReportID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                    Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                    //if (LblInstallationName.Text.Trim() == "Line")
+                    //{
+                    //    Session["LineID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
 
-                            Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
-                        }
-                        else if (LblInstallationName.Text.Trim() == "Substation Transformer")
-                        {
-                            Session["SubStationID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
-                            Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
-                        }
-                        else if (LblInstallationName.Text.Trim() == "Generating Set")
-                        {
-                            Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
-                            Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+                    //    Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
+                    //}
+                    //else if (LblInstallationName.Text.Trim() == "Substation Transformer")
+                    //{
+                    //    Session["SubStationID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                    //    Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+                    //}
+                    //else if (LblInstallationName.Text.Trim() == "Generating Set")
+                    //{
+                    //    Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                    //    Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
 
-                        }
-                    }
+                    //}
+                }
                 }
 
                 //else if (e.CommandName == "View")
@@ -987,20 +992,21 @@ namespace CEIHaryana.Officers
                     string installationName = lblInstallationName.Text.Trim();
 
                     Session["InspectionTestReportId"] = btn.CommandArgument;
+                     Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
 
-                    if (installationName == "Line")
-                    {
-                        Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
-                    }
-                    else if (installationName == "Substation Transformer")
-                    {
-                        Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
-                    }
-                    else if (installationName == "Generating Set")
-                    {
-                        Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
-                    }
-                }
+                //if (installationName == "Line")
+                //{
+                //    Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
+                //}
+                //else if (installationName == "Substation Transformer")
+                //{
+                //    Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+                //}
+                //else if (installationName == "Generating Set")
+                //{
+                //    Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+                //}
+            }
                 catch (Exception ex) { }
             }
         

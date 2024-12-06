@@ -858,143 +858,172 @@ namespace CEIHaryana.Officers
                     //
                 }
             }
-            //private void GridToViewCart()
-            //{
-            //    try
-            //    {
-            //        string ID = Session["InspectionId"].ToString();
-            //        DataSet dsVC = CEI.GetDetailsToViewCart(ID);
+        //private void GridToViewCart()
+        //{
+        //    try
+        //    {
+        //        string ID = Session["InspectionId"].ToString();
+        //        DataSet dsVC = CEI.GetDetailsToViewCart(ID);
 
-            //        if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
-            //        {
-            //            GridView2.DataSource = dsVC;
-            //            GridView2.DataBind();
-            //        }
-            //        else
-            //        {
-            //            GridView2.DataSource = null;
-            //            GridView2.DataBind();
-            //            string script = "alert('No Record Found');";
-            //            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        // Log or handle the exception as needed
-            //    }
-            //}
-            //protected void lnkRedirect1_Click(object sender, EventArgs e)
-            //{
-            //    try
-            //    {
-            //        LinkButton btn = (LinkButton)(sender);
+        //        if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
+        //        {
+        //            GridView2.DataSource = dsVC;
+        //            GridView2.DataBind();
+        //        }
+        //        else
+        //        {
+        //            GridView2.DataSource = null;
+        //            GridView2.DataBind();
+        //            string script = "alert('No Record Found');";
+        //            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log or handle the exception as needed
+        //    }
+        //}
+        //protected void lnkRedirect1_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        LinkButton btn = (LinkButton)(sender);
 
-            //        GridViewRow row = (GridViewRow)btn.NamingContainer;
-            //        Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
-            //        string installationName = lblInstallationName.Text.Trim();
+        //        GridViewRow row = (GridViewRow)btn.NamingContainer;
+        //        Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
+        //        string installationName = lblInstallationName.Text.Trim();
 
-            //        Session["InspectionTestReportId"] = btn.CommandArgument;
+        //        Session["InspectionTestReportId"] = btn.CommandArgument;
 
-            //        if (installationName == "Line")
-            //        {
-            //            Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
-            //        }
-            //        else if (installationName == "Substation Transformer")
-            //        {
-            //            Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
-            //        }
-            //        else if (installationName == "Generating Set")
-            //        {
-            //            Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
-            //        }
-            //    }
-            //    catch (Exception ex) { }
-            //}
-            protected void lnkRedirectTR_Click1(object sender, EventArgs e)
+        //        if (installationName == "Line")
+        //        {
+        //            Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
+        //        }
+        //        else if (installationName == "Substation Transformer")
+        //        {
+        //            Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+        //        }
+        //        else if (installationName == "Generating Set")
+        //        {
+        //            Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+        //        }
+        //    }
+        //    catch (Exception ex) { }
+        //}
+        //protected void lnkRedirectTR_Click1(object sender, EventArgs e)
+        //{
+
+        //    try
+        //    {
+        //        LinkButton btn = (LinkButton)(sender);
+
+        //        GridViewRow row = (GridViewRow)btn.NamingContainer;
+        //        Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
+        //        string installationName = lblInstallationName.Text.Trim();
+
+        //    // Session["InspectionTestReportId"] = btn.CommandArgument;
+        //    Session["LiftTestReportID"] = btn.CommandArgument;
+
+        //    //if (installationName == "Line")
+        //    //{
+        //    Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+        //    return;
+
+
+        //        //}
+        //        //else if (installationName == "Substation Transformer")
+        //        //{
+        //        //    Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+        //        //}
+        //        //else if (installationName == "Generating Set")
+        //        //{
+        //        //    Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+        //        //}
+        //    }
+        //    catch (Exception ex) { }
+        //}
+
+        protected void lnkRedirectTR_Click1(object sender, EventArgs e)
+        {
+
+            try
             {
+                LinkButton btn = (LinkButton)(sender);
 
-                try
-                {
-                    LinkButton btn = (LinkButton)(sender);
+                GridViewRow row = (GridViewRow)btn.NamingContainer;
+                Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
+                string installationName = lblInstallationName.Text.Trim();
 
-                    GridViewRow row = (GridViewRow)btn.NamingContainer;
-                    Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
-                    string installationName = lblInstallationName.Text.Trim();
+                // Session["InspectionTestReportId"] = btn.CommandArgument;
+                Session["LiftTestReportID"] = btn.CommandArgument;
 
-                    Session["InspectionTestReportId"] = btn.CommandArgument;
+                string url = "/TestReportModal/LiftTestReportModal.aspx";
 
-                    //if (installationName == "Line")
-                    //{
-                        Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
-                    //}
-                    //else if (installationName == "Substation Transformer")
-                    //{
-                    //    Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
-                    //}
-                    //else if (installationName == "Generating Set")
-                    //{
-                    //    Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
-                    //}
-                }
-                catch (Exception ex) { }
+                string script = $@"<script>window.open('{url}', '_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenLiftTestReportInNewTab", script);
+                //Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                return;
+
             }
-            protected void Grid_MultipleInspectionTR_RowCommand(object sender, GridViewCommandEventArgs e)
+            catch (Exception ex) { }
+        }
+        protected void Grid_MultipleInspectionTR_RowCommand(object sender, GridViewCommandEventArgs e)
             {
-                string Count = string.Empty;
-                string IntimationId = string.Empty;
-                if (e.CommandName == "Select")
-                {
-                    Control ctrl = e.CommandSource as Control;
-                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                    Label LblInstallationName = (Label)row.FindControl("LblInstallationName");
-                    Label LblTestReportCount = (Label)row.FindControl("LblTestReportCount");
-                    //IntimationId = Session["id"].ToString();
-                    Count = LblTestReportCount.Text.Trim();
+                //string Count = string.Empty;
+                //string IntimationId = string.Empty;
+                //if (e.CommandName == "Select")
+                //{
+                //    Control ctrl = e.CommandSource as Control;
+                //    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                //    Label LblInstallationName = (Label)row.FindControl("LblInstallationName");
+                //    Label LblTestReportCount = (Label)row.FindControl("LblTestReportCount");
+                //    //IntimationId = Session["id"].ToString();
+                //    Count = LblTestReportCount.Text.Trim();
 
-                    Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
-                    IntimationId = LblIntimationId.Text.Trim();
+                //    Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
+                //    IntimationId = LblIntimationId.Text.Trim();
 
-                    DataSet ds = new DataSet();
-                    ds = CEI.GetData(LblInstallationName.Text.Trim(), IntimationId, Count);
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        if (LblInstallationName.Text.Trim() == "Line")
-                        {
-                            Session["LineID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                //    DataSet ds = new DataSet();
+                //    ds = CEI.GetData(LblInstallationName.Text.Trim(), IntimationId, Count);
+                //    if (ds.Tables[0].Rows.Count > 0)
+                //    {
+                //        if (LblInstallationName.Text.Trim() == "Line")
+                //        {
+                //            Session["LineID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
 
-                            Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
-                        }
-                        else if (LblInstallationName.Text.Trim() == "Substation Transformer")
-                        {
-                            Session["SubStationID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
-                            Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
-                        }
-                        else if (LblInstallationName.Text.Trim() == "Generating Set")
-                        {
-                            Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
-                            Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+                //            Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
+                //        }
+                //        else if (LblInstallationName.Text.Trim() == "Substation Transformer")
+                //        {
+                //            Session["SubStationID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                //            Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+                //        }
+                //        else if (LblInstallationName.Text.Trim() == "Generating Set")
+                //        {
+                //            Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                //            Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
 
-                        }
-                    }
-                }
+                //        }
+                //    }
+                //}
 
-                else if (e.CommandName == "View")
-                {
-                    string fileName = "";
-                    // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    //lblerror.Text = fileName;
-                    string script = $@"<script>window.open('{fileName}','_blank');</script>";
-                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-                }
-                else if (e.CommandName == "ViewInvoice")
-                {
-                    string fileName = "";
-                    // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    string script = $@"<script>window.open('{fileName}','_blank');</script>";
-                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-                }
+                //else if (e.CommandName == "View")
+                //{
+                //    string fileName = "";
+                //    // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                //    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                //    //lblerror.Text = fileName;
+                //    string script = $@"<script>window.open('{fileName}','_blank');</script>";
+                //    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                //}
+                //else if (e.CommandName == "ViewInvoice")
+                //{
+                //    string fileName = "";
+                //    // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                //    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                //    string script = $@"<script>window.open('{fileName}','_blank');</script>";
+                //    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                //}
 
 
             }

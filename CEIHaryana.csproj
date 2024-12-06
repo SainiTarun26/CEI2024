@@ -233,6 +233,7 @@
     <Content Include="Admin\InspectionDetails.aspx" />
     <Content Include="Admin\IntimationForHistory.aspx" />
     <Content Include="Admin\IntimationHistoryForAdmin.aspx" />
+    <Content Include="Admin\LiftApprovalData.aspx" />
     <Content Include="Admin\NewRequestInspectionForAdmin.aspx" />
     <Content Include="Admin\PeriodicReturnedIntimationForHistory.aspx" />
     <Content Include="Admin\Projects.aspx" />
@@ -1920,6 +1921,7 @@
     <Content Include="Officers\Inspection.aspx" />
     <Content Include="Officers\Inspection_Lift_Escalator.aspx" />
     <Content Include="Officers\InstallationIntimationDetails.aspx" />
+    <Content Include="Officers\Lift_EscelatorApprovaldata.aspx" />
     <Content Include="Officers\NewApplications.aspx" />
     <Content Include="Officers\OfficerDashboard.aspx" />
     <Content Include="Officers\PeriodicInspection.aspx" />
@@ -1966,6 +1968,7 @@
     <Content Include="SiteOwnerPages\InspectionRequestPrint_Industry.aspx" />
     <Content Include="SiteOwnerPages\InspectionsDetails.aspx" />
     <Content Include="SiteOwnerPages\Inspection_Industry.aspx" />
+    <Content Include="SiteOwnerPages\LiftApprovalData.aspx" />
     <Content Include="SiteOwnerPages\LiftDetails.aspx" />
     <Content Include="SiteOwnerPages\LiftInstallationDetails.aspx" />
     <Content Include="SiteOwnerPages\LiftIntimations.aspx" />
@@ -2170,6 +2173,13 @@
     </Compile>
     <Compile Include="Admin\IntimationHistoryForAdmin.aspx.designer.cs">
       <DependentUpon>IntimationHistoryForAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\LiftApprovalData.aspx.cs">
+      <DependentUpon>LiftApprovalData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\LiftApprovalData.aspx.designer.cs">
+      <DependentUpon>LiftApprovalData.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\NewRequestInspectionForAdmin.aspx.cs">
       <DependentUpon>NewRequestInspectionForAdmin.aspx</DependentUpon>
@@ -2832,6 +2842,13 @@
     <Compile Include="Officers\InstallationIntimationDetails.aspx.designer.cs">
       <DependentUpon>InstallationIntimationDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Officers\Lift_EscelatorApprovaldata.aspx.cs">
+      <DependentUpon>Lift_EscelatorApprovaldata.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\Lift_EscelatorApprovaldata.aspx.designer.cs">
+      <DependentUpon>Lift_EscelatorApprovaldata.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Officers\NewApplications.aspx.cs">
       <DependentUpon>NewApplications.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3140,6 +3157,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\Inspection_Industry.aspx.designer.cs">
       <DependentUpon>Inspection_Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\LiftApprovalData.aspx.cs">
+      <DependentUpon>LiftApprovalData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\LiftApprovalData.aspx.designer.cs">
+      <DependentUpon>LiftApprovalData.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\LiftDetails.aspx.cs">
       <DependentUpon>LiftDetails.aspx</DependentUpon>

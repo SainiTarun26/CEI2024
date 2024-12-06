@@ -286,43 +286,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
-                Documents Attached
-            </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
-                <div class="row">
-                    <div class="col-md-12">
-                        <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
-                            <HeaderStyle BackColor="#B7E2F0" />
-                            <Columns>
-                                <asp:TemplateField HeaderText="SNo">
-                                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                                    <ItemStyle Width="5%" />
-                                    <ItemTemplate>
-                                        <%#Container.DataItemIndex+1 %>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:BoundField DataField="InstallationType" HeaderText="Installation Type" Visible="false">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                </asp:BoundField>
-                                <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
-                                    </ItemTemplate>
-                                    <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
-                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                </asp:TemplateField>
-                            </Columns>
-                            <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
-                        </asp:GridView>
-                    </div>
-                </div>
-            </div>
+           
             <div class="row" id="TRAttached" runat="server" visible="true">
                 <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
                     Inspection Detail
@@ -409,6 +373,10 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
+                            <asp:BoundField DataField="RegistrationNo" HeaderText="RegistrationNo">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="TestReportId" HeaderText="TestReportId" Visible="false">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -422,7 +390,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportId") %>' />
+                                    <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report & Attachments" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportId") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
@@ -431,7 +399,43 @@
                     </asp:GridView>
                 </div>
             </div>
-
+             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
+     Documents Attached
+ </div>
+ <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+     <div class="row">
+         <div class="col-md-12">
+             <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                 <HeaderStyle BackColor="#B7E2F0" />
+                 <Columns>
+                     <asp:TemplateField HeaderText="SNo">
+                         <HeaderStyle Width="5%" CssClass="headercolor" />
+                         <ItemStyle Width="5%" />
+                         <ItemTemplate>
+                             <%#Container.DataItemIndex+1 %>
+                         </ItemTemplate>
+                     </asp:TemplateField>
+                     <asp:BoundField DataField="InstallationType" HeaderText="Installation Type" Visible="false">
+                         <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                         <ItemStyle HorizontalAlign="Left" Width="15%" />
+                     </asp:BoundField>
+                     <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
+                         <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                         <ItemStyle HorizontalAlign="Left" Width="15%" />
+                     </asp:BoundField>
+                     <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                         <ItemTemplate>
+                             <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
+                         </ItemTemplate>
+                         <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                         <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                     </asp:TemplateField>
+                 </Columns>
+                 <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
+             </asp:GridView>
+         </div>
+     </div>
+ </div>
             <div class="row">
                 <div class="col-md-4">
                     <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>

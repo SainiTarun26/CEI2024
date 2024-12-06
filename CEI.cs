@@ -8189,9 +8189,9 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             }
         }
 
-        public DataSet PrintDetailsFor_LiftCertificate(string LoginId)
+        public DataSet PrintDetailsFor_LiftCertificate(string TestReportId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ApproveCertificate_Lift_Escelator", LoginId);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ApproveCertificate_Lift_Escelator", TestReportId);
         }
         //
 
@@ -8281,6 +8281,17 @@ string AcceptedOrReReturn, string Reason, string ReasonType)
         }
 
 
+
+        //
+
+        //Neeraj 06-12-2024
+
+       
+
+        public DataSet ApprovalData_Lift(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DataForApproval_Lift", Id);
+        }
 
         //
     }

@@ -122,7 +122,7 @@ namespace CEIHaryana.Admin
                     if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
                     {
 
-                        Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                        Response.Redirect("/Admin/LiftApprovalData.aspx", false);
                     }
                     else
                     {

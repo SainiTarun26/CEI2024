@@ -96,15 +96,6 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.TextBox txtAmount;
 
         /// <summary>
-        /// grd_Documemnts control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grd_Documemnts;
-
-        /// <summary>
         /// TRAttached control.
         /// </summary>
         /// <remarks>
@@ -157,6 +148,15 @@ namespace CEIHaryana.Officers
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView2;
+
+        /// <summary>
+        /// grd_Documemnts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grd_Documemnts;
 
         /// <summary>
         /// txtTestReportId control.

@@ -13,6 +13,7 @@ namespace CEIHaryana.Print_Forms
     public partial class LiftApprovalCertificate : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+        string LoginID;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -21,18 +22,20 @@ namespace CEIHaryana.Print_Forms
                 {
                     if (!IsPostBack)
                     {
-                        if (Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty)
+                       
+                         if (Session["SiteOwnerId"] != null || Convert.ToString(Session["SiteOwnerId"]) != string.Empty)
                         {
                             GetData();
                         }
-                        else if (Session["SiteOwnerId"] != null)
+                        else if (Session["AdminId"] != null || Convert.ToString(Session["AdminId"]) != string.Empty)
                         {
                             GetData();
                         }
-                        else if (Session["AdminId"] != null)
+                        else if (Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty)
                         {
                             GetData();
                         }
+                      
 
                     }
                 }
@@ -47,14 +50,12 @@ namespace CEIHaryana.Print_Forms
         {
             try
             {
-                if (Session["InProcessInspectionId"] != null)
+                if (Session["LiftTestReportID"] != null)
                 {
-                    ID = Session["InProcessInspectionId"].ToString();
+                    ID = Session["LiftTestReportID"].ToString();
+                    
                 }
-                if (Session["InspectionId"] != null)
-                {
-                    ID = Session["InspectionId"].ToString();
-                }
+               
 
                 DataSet ds = new DataSet();
                 ds = CEI.PrintDetailsFor_LiftCertificate(ID);
@@ -113,6 +114,9 @@ namespace CEIHaryana.Print_Forms
                     lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
                 }
                 GridBind();
+                Session["StaffID"] = "";
+                Session["SiteOwnerId"] = "";
+                Session["AdminId"] = "";
                 string script = "<script type=\"text/javascript\">printDiv('printableDiv');</script>";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "PrintOnLoad", script, false);
 

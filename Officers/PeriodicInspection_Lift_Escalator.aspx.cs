@@ -466,34 +466,50 @@ namespace CEIHaryana.Officers
                 catch (Exception ex)
                 { }
             }
-            protected void lnkRedirect1_Click(object sender, EventArgs e)
+        //protected void lnkRedirect1_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        LinkButton btn = (LinkButton)(sender);
+
+        //        GridViewRow row = (GridViewRow)btn.NamingContainer;
+        //        Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
+        //        string installationName = lblInstallationName.Text.Trim();
+
+        //    //Session["InspectionTestReportId"] = btn.CommandArgument;
+        //    Session["LiftTestReportID"] = btn.CommandArgument;
+
+        //    Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+        //        return;
+        //}
+        //    catch (Exception ex) { }
+        //}
+
+        protected void lnkRedirect1_Click(object sender, EventArgs e)
+        {
+            try
             {
-                try
-                {
-                    LinkButton btn = (LinkButton)(sender);
+                LinkButton btn = (LinkButton)(sender);
 
-                    GridViewRow row = (GridViewRow)btn.NamingContainer;
-                    Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
-                    string installationName = lblInstallationName.Text.Trim();
+                GridViewRow row = (GridViewRow)btn.NamingContainer;
+                Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
+                string installationName = lblInstallationName.Text.Trim();
 
-                    Session["InspectionTestReportId"] = btn.CommandArgument;
+                //Session["InspectionTestReportId"] = btn.CommandArgument;
+                Session["LiftTestReportID"] = btn.CommandArgument;
+                string url = "/TestReportModal/LiftTestReportModal.aspx";
 
-                    if (installationName == "Line")
-                    {
-                        Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
-                    }
-                    else if (installationName == "Substation Transformer")
-                    {
-                        Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
-                    }
-                    else if (installationName == "Generating Set")
-                    {
-                        Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
-                    }
-                }
-                catch (Exception ex) { }
+                string script = $@"<script>window.open('{url}', '_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenLiftTestReportInNewTab", script);
+
+                //Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                return;
             }
-            protected void btnBack_Click(object sender, EventArgs e)
+            catch (Exception ex) { }
+        }
+
+
+        protected void btnBack_Click(object sender, EventArgs e)
             {
                 Response.Redirect("/Officers/NewApplications.aspx", false);
             }

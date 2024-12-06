@@ -104,7 +104,7 @@ namespace CEIHaryana.SiteOwnerPages
                     if (lblType.Text == "Lift" || lblType.Text == "Escalator" || lblType.Text == "Lift/Escalator" || lblType.Text == "MultiLift" || lblType.Text == "MultiEscalator")
                     {
 
-                        Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                        Response.Redirect("/SiteOwnerPages/LiftApprovalData.aspx", false);
                     }
                     else
                     {
