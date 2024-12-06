@@ -763,12 +763,16 @@ namespace CEIHaryana.Admin
                             if (ddlToAssign.SelectedValue != null && ddlToAssign.SelectedValue != "0")
                             {
                                 StaffTo = ddlToAssign.SelectedValue;
-                                CEI.UpdateInspectionDataOnAction(ID, StaffTo, AssignFrom);
-
-                                ddlDivisions.SelectedIndex = 0;
-                                ddlToAssign.SelectedIndex = 0;
-                                string script = $"alert('Inspection sent to {StaffTo} successfully.'); window.location='IntimationHistoryForAdmin.aspx';";
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                                int x = CEI.UpdateInspectionDataOnAction(ID, StaffTo, AssignFrom);
+                                if (x>0)
+                                {
+                                    ddlDivisions.SelectedIndex = 0;
+                                    ddlToAssign.SelectedIndex = 0;
+                                    Session["InspectionId"] = "";
+                                    string script = $"alert('Inspection sent to {StaffTo} successfully.'); window.location='IntimationHistoryForAdmin.aspx';";
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                                }
+                               
                             }
                             else
                             {

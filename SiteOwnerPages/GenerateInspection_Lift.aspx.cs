@@ -310,7 +310,7 @@ namespace CEIHaryana.SiteOwnerPages
                     //    Installationtypes = "Lift/Escalator";
                     //}
                     //else
-                    
+
                     if (liftCount == 0 && EscalatorCount == 1)
                     {
                         Installationtypes = "Escalator";
@@ -319,29 +319,29 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         Installationtypes = "Lift";
                     }
-                    else if (liftCount > 1)
+                    else if (liftCount >= 1)
                     {
-                        if (EscalatorCount > 1)
+                        if (EscalatorCount >= 1)
                         {
                             Installationtypes = "Lift/Escalator";
-                        }                        
+                        }
                         else
                         {
                             Installationtypes = "MultiLift";
                         }
                     }
-                    else if (EscalatorCount > 1)
+                    else if (EscalatorCount >= 1)
                     {
-                        if (liftCount > 1)
+                        if (liftCount >= 1)
                         {
                             Installationtypes = "Lift/Escalator";
                         }
                         else
                         {
                             Installationtypes = "MultiEscalator";
-                        }                        
-                    }                   
-                    
+                        }
+                    }
+
                     hdnInstallationType.Value = Installationtypes;
 
                     GetOtherDetails_ForReturnedInspection(inspectionIdRes);                    

@@ -773,65 +773,72 @@ namespace CEIHaryana.SiteOwnerPages
         }
         private void GetDetails()
         {
-            Id = Session["SiteOwnerId"].ToString();
-            DataSet ds = new DataSet();
-            ds = CEI.GetWorkIntimationDataAtSiteOwner(Id);
-            if (ds.Tables[0].Rows.Count > 0)
+            if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
             {
-                txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
-                ApplicantType = txtApplicantType.Text;
-                ApplicantCode = ds.Tables[0].Rows[0]["ApplicantTypeCode"].ToString();
+                Id = Session["SiteOwnerId"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.GetWorkIntimationDataAtSiteOwner(Id);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                    ApplicantType = txtApplicantType.Text;
+                    ApplicantCode = ds.Tables[0].Rows[0]["ApplicantTypeCode"].ToString();
 
-                txtPAN.Text = ds.Tables[0].Rows[0]["PANNumber"].ToString();
-                txtElecticalInstallation.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
-                EInstallationType = txtElecticalInstallation.Text;
+                    txtPAN.Text = ds.Tables[0].Rows[0]["PANNumber"].ToString();
+                    txtElecticalInstallation.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                    EInstallationType = txtElecticalInstallation.Text;
 
-                if (EInstallationType == "Individual Person")
-                {
-                    individual.Visible = true;
-                }
-                else if (EInstallationType == "Firm/Organization/Company/Department")
-                {
-                    agency.Visible = true;
-                }
+                    if (EInstallationType == "Individual Person")
+                    {
+                        individual.Visible = true;
+                    }
+                    else if (EInstallationType == "Firm/Organization/Company/Department")
+                    {
+                        agency.Visible = true;
+                    }
 
-                txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
-                txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+                    txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+                    txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
 
-                if (ApplicantType == "Private/Personal Installation")
-                {
-                    PowerUtility.Visible = false;
-                    UserId.Visible = false;
-                    string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
-                    DivPancard_TanNo.Visible = true;
-                    txtPAN.Text = PanTanNumber;
+                    if (ApplicantType == "Private/Personal Installation")
+                    {
+                        PowerUtility.Visible = false;
+                        UserId.Visible = false;
+                        string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
+                        DivPancard_TanNo.Visible = true;
+                        txtPAN.Text = PanTanNumber;
+                    }
+                    else if (ApplicantType == "Other Department/Organization")
+                    {
+                        string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
+                        DivOtherDepartment.Visible = true;
+                        txtTanNumber.Text = PanTanNumber;
+                        PowerUtility.Visible = false;
+                        UserId.Visible = false;
+                    }
+                    else if (ApplicantType == "Power Utility")
+                    {
+                        string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
+                        txtUserId.Text = PanTanNumber;
+                        UserId.Visible = true;
+                        NameUtility.Visible = true;
+                        Wing.Visible = true;
+                        PowerUtility.Visible = true;
+                    }
+                    txtUtilityName.Text = ds.Tables[0].Rows[0]["PowerUtility"].ToString();
+                    txtWing.Text = ds.Tables[0].Rows[0]["PowerUtilityWing"].ToString();
+                    txtZone.Text = ds.Tables[0].Rows[0]["ZoneName"].ToString();
+                    txtCircle.Text = ds.Tables[0].Rows[0]["CircleName"].ToString();
+                    txtDivision.Text = ds.Tables[0].Rows[0]["DivisionName"].ToString();
+                    txtSubDivision.Text = ds.Tables[0].Rows[0]["SubDivisionName"].ToString();
+                    Password = ds.Tables[0].Rows[0]["SiteOwnerPassword"].ToString();
+                    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+                    txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
                 }
-                else if (ApplicantType == "Other Department/Organization")
-                {
-                    string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
-                    DivOtherDepartment.Visible = true;
-                    txtTanNumber.Text = PanTanNumber;
-                    PowerUtility.Visible = false;
-                    UserId.Visible = false;
-                }
-                else if (ApplicantType == "Power Utility")
-                {
-                    string PanTanNumber = ds.Tables[0].Rows[0]["PANNumber"].ToString();
-                    txtUserId.Text = PanTanNumber;
-                    UserId.Visible = true;
-                    NameUtility.Visible = true;
-                    Wing.Visible = true;
-                    PowerUtility.Visible = true;
-                }
-                txtUtilityName.Text = ds.Tables[0].Rows[0]["PowerUtility"].ToString();
-                txtWing.Text = ds.Tables[0].Rows[0]["PowerUtilityWing"].ToString();
-                txtZone.Text = ds.Tables[0].Rows[0]["ZoneName"].ToString();
-                txtCircle.Text = ds.Tables[0].Rows[0]["CircleName"].ToString();
-                txtDivision.Text = ds.Tables[0].Rows[0]["DivisionName"].ToString();
-                txtSubDivision.Text = ds.Tables[0].Rows[0]["SubDivisionName"].ToString();
-                Password = ds.Tables[0].Rows[0]["SiteOwnerPassword"].ToString();
-                txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
-                txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+            }
+            else
+            {
+                Response.Redirect("/login.aspx", false);
             }
         }
         protected void ddlPremises_SelectedIndexChanged(object sender, EventArgs e)
@@ -851,122 +858,144 @@ namespace CEIHaryana.SiteOwnerPages
         }
         protected void btnSubmitInstallation_Click(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
             {
-                SqlTransaction transaction = null;
-                try
+                Id = Session["SiteOwnerId"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.GetWorkIntimationDataAtSiteOwner(Id);
+                if (ds.Tables[0].Rows.Count > 0)
                 {
-                    connection.Open();
-                    transaction = connection.BeginTransaction();
+                    ApplicantType = txtApplicantType.Text;
+                    ApplicantCode = ds.Tables[0].Rows[0]["ApplicantTypeCode"].ToString();
+                    Password = ds.Tables[0].Rows[0]["SiteOwnerPassword"].ToString();
+                }
+                else
+                {
+                    ApplicantType = "";
+                    ApplicantCode = "";
+                    Password = "";
+                }
+                    using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                {
+                    SqlTransaction transaction = null;
+                    try
+                    {
+                        connection.Open();
+                        transaction = connection.BeginTransaction();
 
-                    string Pan_TanNumber = "";
-                    if (DivPancard_TanNo.Visible && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
-                    {
-                        Pan_TanNumber = txtPAN.Text.Trim();
-                    }
-                    else if (DivOtherDepartment.Visible && !string.IsNullOrEmpty(txtTanNumber.Text.Trim()))
-                    {
-                        Pan_TanNumber = txtTanNumber.Text.Trim();
-                    }
-                    else if (PowerUtility.Visible)
-                    {
-                        if (string.IsNullOrEmpty(txtUserId.Text.Trim()))
+                        string Pan_TanNumber = "";
+                        if (DivPancard_TanNo.Visible && !string.IsNullOrEmpty(txtPAN.Text.Trim()))
                         {
-                            string email = txtEmail.Text.Trim();
-                            if (email.Contains("@"))
+                            Pan_TanNumber = txtPAN.Text.Trim();
+                        }
+                        else if (DivOtherDepartment.Visible && !string.IsNullOrEmpty(txtTanNumber.Text.Trim()))
+                        {
+                            Pan_TanNumber = txtTanNumber.Text.Trim();
+                        }
+                        else if (PowerUtility.Visible)
+                        {
+                            if (string.IsNullOrEmpty(txtUserId.Text.Trim()))
                             {
-                                Pan_TanNumber = email.Split('@')[0];
+                                string email = txtEmail.Text.Trim();
+                                if (email.Contains("@"))
+                                {
+                                    Pan_TanNumber = email.Split('@')[0];
+                                }
+                            }
+                            else
+                            {
+                                Pan_TanNumber = txtUserId.Text.Trim();
                             }
                         }
-                        else
+                        if (string.IsNullOrEmpty(Pan_TanNumber))
                         {
-                            Pan_TanNumber = txtUserId.Text.Trim();
+                            throw new Exception("Pan/Tan Number cannot be empty.");
                         }
-                    }
-                    if (string.IsNullOrEmpty(Pan_TanNumber))
-                    {
-                        throw new Exception("Pan/Tan Number cannot be empty.");
-                    }
 
-                    // Insert data
-                    CEI.IntimationDataInsertionBySiteowner(
-                        Id,
-                        txtApplicantType.Text.Trim(),
-                        /*ddlApplicantType.SelectedItem.ToString(),*/////------------------------------------
-                        ApplicantCode,
-                        //ddlApplicantType.SelectedValue.ToString(),
-                        txtElecticalInstallation.Text.Trim(),
-                        //ddlPoweUtility.SelectedItem.ToString(),
-                        //DdlWing.SelectedItem.ToString(),
-                        //DdlZone.SelectedItem.ToString(),
-                        //DdlCircle.SelectedItem.ToString(),
-                        //DdlDivision.SelectedItem.ToString(), 
-                        //DdlSubDivision.SelectedItem.ToString(),
-                        txtUtilityName.Text.Trim(),
-                        txtWing.Text.Trim(),
-                        txtZone.Text.Trim(),
-                        txtCircle.Text.Trim(),
-                        txtDivision.Text.Trim(),
-                        txtSubDivision.Text.Trim(),
-                        txtName.Text.Trim(),
-                        txtagency.Text.Trim(),
-                        txtPhone.Text.Trim(),
-                        txtAddress.Text.Trim(),
-                        ddlDistrict.SelectedItem.ToString(),
-                        txtPin.Text.Trim(),
-                        ddlPremises.SelectedItem.ToString(),
-                        txtOtherPremises.Text.Trim(),
-                        ddlVoltageLevel.SelectedValue.ToString(),
-                        Pan_TanNumber,
-                        txtinstallationType2.Text.Trim(),
-                        txtinstallationNo2.Text.Trim(),
-                        txtinstallationType3.Text.Trim(),
-                        txtinstallationNo3.Text.Trim(),
-                        txtEmail.Text.Trim(),
-                        Id,
-                        RadioButtonList2.SelectedValue.ToString(),
-                        "Existing",
-                        txtCapacity.Text.Trim(),
-                        txtSanctionLoad.Text.Trim(),
-                        Password,
-                        transaction
-                    );
+                        // Insert data
+                        CEI.IntimationDataInsertionBySiteowner(
+                            Id,
+                            txtApplicantType.Text.Trim(),
+                            /*ddlApplicantType.SelectedItem.ToString(),*/////------------------------------------
+                            ApplicantCode,
+                            //ddlApplicantType.SelectedValue.ToString(),
+                            txtElecticalInstallation.Text.Trim(),
+                            //ddlPoweUtility.SelectedItem.ToString(),
+                            //DdlWing.SelectedItem.ToString(),
+                            //DdlZone.SelectedItem.ToString(),
+                            //DdlCircle.SelectedItem.ToString(),
+                            //DdlDivision.SelectedItem.ToString(), 
+                            //DdlSubDivision.SelectedItem.ToString(),
+                            txtUtilityName.Text.Trim(),
+                            txtWing.Text.Trim(),
+                            txtZone.Text.Trim(),
+                            txtCircle.Text.Trim(),
+                            txtDivision.Text.Trim(),
+                            txtSubDivision.Text.Trim(),
+                            txtName.Text.Trim(),
+                            txtagency.Text.Trim(),
+                            txtPhone.Text.Trim(),
+                            txtAddress.Text.Trim(),
+                            ddlDistrict.SelectedItem.ToString(),
+                            txtPin.Text.Trim(),
+                            ddlPremises.SelectedItem.ToString(),
+                            txtOtherPremises.Text.Trim(),
+                            ddlVoltageLevel.SelectedValue.ToString(),
+                            Pan_TanNumber,
+                            txtinstallationType2.Text.Trim(),
+                            txtinstallationNo2.Text.Trim(),
+                            txtinstallationType3.Text.Trim(),
+                            txtinstallationNo3.Text.Trim(),
+                            txtEmail.Text.Trim(),
+                            Id,
+                            RadioButtonList2.SelectedValue.ToString(),
+                            "Existing",
+                            txtCapacity.Text.Trim(),
+                            txtSanctionLoad.Text.Trim(),
+                            Password,
+                            transaction
+                        );
 
-                    TypeOfInspection = "Existing";
-                    string projectId = CEI.projectId();
+                        TypeOfInspection = "Existing";
+                        string projectId = CEI.projectId();
 
-                    if (!string.IsNullOrEmpty(projectId))
-                    {
-                        TextBox[] typeTextBoxes = { txtinstallationType2, txtinstallationType3 };
-                        TextBox[] noTextBoxes = { txtinstallationNo2, txtinstallationNo3 };
-
-                        for (int i = 0; i < typeTextBoxes.Length; i++)
+                        if (!string.IsNullOrEmpty(projectId))
                         {
-                            string installationType = typeTextBoxes[i].Text;
-                            string installationNoText = noTextBoxes[i].Text;
+                            TextBox[] typeTextBoxes = { txtinstallationType2, txtinstallationType3 };
+                            TextBox[] noTextBoxes = { txtinstallationNo2, txtinstallationNo3 };
 
-                            if (int.TryParse(installationNoText, out int installationNo) && installationNo > 0)
+                            for (int i = 0; i < typeTextBoxes.Length; i++)
                             {
-                                for (int j = 0; j < installationNo; j++)
+                                string installationType = typeTextBoxes[i].Text;
+                                string installationNoText = noTextBoxes[i].Text;
+
+                                if (int.TryParse(installationNoText, out int installationNo) && installationNo > 0)
                                 {
-                                    CEI.AddInstallationsCreatedbySiteOwner(projectId, installationType, installationNo, Id, TypeOfInspection, transaction);
+                                    for (int j = 0; j < installationNo; j++)
+                                    {
+                                        CEI.AddInstallationsCreatedbySiteOwner(projectId, installationType, installationNo, Id, TypeOfInspection, transaction);
+                                    }
                                 }
                             }
                         }
+                        // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Details of Installation Submitted Successfully !!!')", true);
+                        transaction.Commit();
+                        Reset();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Details of Installation Submitted Successfully !!!'); window.location='RatingOfInstallations.aspx';", true);
                     }
-                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Details of Installation Submitted Successfully !!!')", true);
-                    transaction.Commit();
-                    Reset();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Details of Installation Submitted Successfully !!!'); window.location='RatingOfInstallations.aspx';", true);
-                }
-                catch (Exception ex)
-                {
-                    // Rollback transaction in case of an error
-                    if (transaction != null)
+                    catch (Exception ex)
                     {
-                        transaction.Rollback();
+                        // Rollback transaction in case of an error
+                        if (transaction != null)
+                        {
+                            transaction.Rollback();
+                        }
                     }
                 }
+            }
+            else
+            {
+                Response.Redirect("/login.aspx", false);
             }
         }
         private void Reset()

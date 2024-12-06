@@ -95,6 +95,10 @@
   </script>--%>
 
     <style>
+        th.headercolor {
+    background: #9292cc;
+    color: white;
+}
         .example {
             -ms-overflow-style: none; /* IE and Edge */
             scrollbar-width: none; /* Firefox */

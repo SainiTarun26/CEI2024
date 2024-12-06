@@ -2485,7 +2485,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToAssign");
         }
         #region Update Inspection Data For Action
-        public void UpdateInspectionDataOnAction(string ID, string AssignTo, string AssignFrom)
+        public int UpdateInspectionDataOnAction(string ID, string AssignTo, string AssignFrom)
         {
             SqlCommand cmd = new SqlCommand("sp_UpdateAction");
             //SqlCommand cmd = new SqlCommand("sp_UpdateAction_Testing");
@@ -2505,8 +2505,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             //cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrRejected);
             //cmd.Parameters.AddWithValue("@ReasonForRejection", ReasonForRejection);
             //cmd.Parameters.AddWithValue("@AdditionalNotes", AdditionalNotes);
-            cmd.ExecuteNonQuery();
+            int x = cmd.ExecuteNonQuery();
             con.Close();
+            return x;
         }
         #endregion
 
