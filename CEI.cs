@@ -8295,6 +8295,12 @@ string AcceptedOrReReturn, string Reason, string ReasonType)
         }
 
         //
+        //Gurmeet 09-12-2024
+        public DataTable GetDocumentlistfornewInspection_Lift(string ApplicantType, int InstallationTypeID, string InspectionType, int inspectionIdPrm)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDocumentsForNewMultipleInspection_Lift", ApplicantType, InstallationTypeID, InspectionType, inspectionIdPrm);
+        }
+        ///
     }
 }
 

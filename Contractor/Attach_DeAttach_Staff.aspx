@@ -212,9 +212,14 @@
             overflow: hidden;
             padding: 0px 4px 0px 6px;
         }
+
         td {
-    padding: 10px 10px 10px 10px !important;
-}
+            padding: 10px 10px 10px 10px !important;
+        }
+
+        th {
+            background: #9292cc;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

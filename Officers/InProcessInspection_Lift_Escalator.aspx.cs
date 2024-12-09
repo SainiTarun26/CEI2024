@@ -482,7 +482,7 @@ namespace CEIHaryana.Officers
                                 }
                                 else
                                 {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Request has been Rejected.');", true);
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
                                 }
                                 transaction.Commit();
                                 //if (ApprovedorReject == "Rejected")

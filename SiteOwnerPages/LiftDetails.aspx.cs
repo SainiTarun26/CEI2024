@@ -208,14 +208,14 @@ namespace CEIHaryana.SiteOwnerPages
                             path = "/Attachment/" + CreatedBy + "/" + intimationids + "/" + InstallTypes + "/" + InstallTypeCount + "/";
                             //string fileName = DocSaveName + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
                             //string fileName = DocSaveName + "." + ext;
-                            string fileName = DocSaveName.Text + ".pdf";
+                            string fileName = DocSaveName.Text.Trim() + ".pdf";
 
                             string filePathInfo2 = "";
 
                             filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/" + intimationids + "/" + InstallTypes + "/" + InstallTypeCount + "/" + fileName);
 
                             fileUpload.PostedFile.SaveAs(filePathInfo2);
-                            CEI.InsertNewLiftAttachments(InstallTypes, DocumentID.Text ,DocSaveName.Text, fileName, filePathInfo2, CreatedBy);
+                            CEI.InsertNewLiftAttachments(InstallTypes, DocumentID.Text ,DocSaveName.Text.Trim(), fileName, path + fileName, CreatedBy);
 
                         }
                         else
@@ -432,5 +432,7 @@ namespace CEIHaryana.SiteOwnerPages
                 TPN2.Visible = true;
             }
         }
+
+        
     }
 }

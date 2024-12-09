@@ -29,22 +29,16 @@ namespace CEIHaryana.SiteOwnerPages
         int ServiceType = 0;
         int inspectionCountRes = 0;
         int inspectionIdRes = 0;
-        string InstallationId = string.Empty;
-        //protected decimal totalAmount = 0;        
+        string InstallationId = string.Empty;             
 
-        string strPreviousRowID = string.Empty;
-
-        // string Count = string.Empty;
+        string strPreviousRowID = string.Empty;       
         private static string  ApplicantTypeCode, id, Category, Count, PaymentMode,
-            ApplicantType,
-            //InstallationType, PlantLocation
-            AssigDesignation, InspectionType;      
-        string LoginId, PlantLocationRoofTop, PlantLocationGroundMounted = string.Empty;        
+            ApplicantType, InspectionType;                     
         List<(string Installtypes, string DocumentID, string DocSaveName, string FileName, string FilePath)> uploadedFiles = new List<(string, string, string, string, string)>();
         string TestReportId = string.Empty;
                 
 
-        // Declare for total amoun and quantity
+        // Declare for total amount and quantity
         private int totalQuantity = 0;
         private decimal totalAmountSum = 0;
         protected void Page_Load(object sender, EventArgs e)
@@ -160,11 +154,11 @@ namespace CEIHaryana.SiteOwnerPages
                     {                       
                         Label lblTyps = (Label)rows.FindControl("lblCategory");
 
-                        if (lblTyps.Text.ToLower() == "lift")
+                        if (lblTyps.Text == "Lift")
                         {
                             liftCount++;
                         }
-                        else if (lblTyps.Text.ToLower() == "escalator")
+                        else if (lblTyps.Text == "Escalator")
                         {
                             EscalatorCount++;
                         }
@@ -190,12 +184,9 @@ namespace CEIHaryana.SiteOwnerPages
                     Label lblVoltageLevel = (Label)row.FindControl("lblVoltageLevel");
                     Label lblDivision = (Label)row.FindControl("lblDivision");
                     Label lblDistrict = (Label)row.FindControl("lblDistrict");
-                    Label lblNoOfInstallations = (Label)row.FindControl("lblNoOfInstallations");
-                    //Label lblPremises = (Label)row.FindControl("lblPermises");
-                    Label lblApplicantTypeCode = (Label)row.FindControl("lblApplicantTypeCode");
-                    //Label lblDesignation = (Label)row.FindControl("lblDesignation");
-                    Label lblTypeOfPlant = (Label)row.FindControl("LblTypeofPlant");
-                    //Label LblSactionLoad = (Label)row.FindControl("LblSactionLoad");
+                    Label lblNoOfInstallations = (Label)row.FindControl("lblNoOfInstallations");                   
+                    Label lblApplicantTypeCode = (Label)row.FindControl("lblApplicantTypeCode");                   
+                    Label lblTypeOfPlant = (Label)row.FindControl("LblTypeofPlant");                   
                     Label lblReportType = (Label)row.FindControl("lblReportType");
                     Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
                     Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
@@ -294,9 +285,9 @@ namespace CEIHaryana.SiteOwnerPages
                     btnSubmit.Visible = true;
                     btnReset.Visible = true;
                     
-                    PlantLocationRoofTop = null;
-                    PlantLocationGroundMounted = null;
-                    GetDocumentUploadData(ApplicantTypeCode,InspectionType, PlantLocationRoofTop, PlantLocationGroundMounted, inspectionIdRes);
+                    //PlantLocationRoofTop = null;
+                    //PlantLocationGroundMounted = null;
+                    GetDocumentUploadData(ApplicantTypeCode,InspectionType,inspectionIdRes);
                     //Session["InstallationTypeID"] = int.Parse(InstallationId);
 
                     if (selectedTypess.EndsWith(","))
@@ -713,10 +704,10 @@ namespace CEIHaryana.SiteOwnerPages
                 ChallanDetail.Visible = true;
             }
         }
-        private void GetDocumentUploadData(string ApplicantType, string InspectionType, string PlantLocationRoofTop, string PlantLocationGroundMounted, int inspectionIdPrm)
+        private void GetDocumentUploadData(string ApplicantType, string InspectionType, int inspectionIdPrm)
         {
             DataTable ds = new DataTable();
-            ds = CEI.GetDocumentlistfornewInspection(ApplicantType, 4, InspectionType, PlantLocationRoofTop, PlantLocationGroundMounted, inspectionIdPrm);
+            ds = CEI.GetDocumentlistfornewInspection_Lift(ApplicantType, 4, InspectionType, inspectionIdPrm);
             if (ds.Rows.Count > 0)
             {
                 Grd_Document.DataSource = ds;

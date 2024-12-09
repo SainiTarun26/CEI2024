@@ -625,6 +625,7 @@ namespace CEIHaryana.Officers
                             if (checksuccessmessage == 1)
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                            
                             }
                         }
                     }
