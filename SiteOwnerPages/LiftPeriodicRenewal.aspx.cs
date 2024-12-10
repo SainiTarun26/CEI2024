@@ -31,7 +31,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                     {
-                        GetApplicantType();
+                        //GetApplicantType();
                     }
                 }
             }
@@ -69,6 +69,7 @@ namespace CEIHaryana.SiteOwnerPages
 
         private void GridDocument()
         {
+            GetApplicantType();
             string ApplicantType = Session["ApplicantTypeID"].ToString();
             // int InstallationTypeID = "4";
             int InstallationTypeID = 0;
