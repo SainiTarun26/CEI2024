@@ -273,5 +273,57 @@ namespace CEIHaryana.SiteOwnerPages
         {
             Response.Redirect("/SiteOwnerPages/LiftPeriodic.aspx", false);
         }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+        }
+
+        protected void txtRegistrationNo_TextChanged(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+            ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text.Trim());
+            if (ds.Tables.Count > 0)
+            {
+                txtMake.ReadOnly = true;
+                txtSerialNo.ReadOnly = true;
+                txtLiftType.ReadOnly = true;
+                txtControlType.ReadOnly = true;
+                txtCapacity.ReadOnly = true;
+                txtWeight.ReadOnly = true;
+                txtDistrict.ReadOnly = true;
+                txtSiteAddress.ReadOnly = true;
+                txtMake.Text = ds.Tables[0].Rows[0]["MakeMainBreaker"].ToString();
+                txtSerialNo.Text = ds.Tables[0].Rows[0]["MakeMainBreaker"].ToString();
+                txtLiftType.Text = ds.Tables[0].Rows[0]["TypeofLiftErected"].ToString();
+                txtControlType.Text = ds.Tables[0].Rows[0]["TypeOfControl"].ToString();
+                txtCapacity.Text = ds.Tables[0].Rows[0]["MaxPersonCapacitywithLiftOperator"].ToString();
+                txtWeight.Text = ds.Tables[0].Rows[0]["WeightofLiftCarwithContractLoadInKg"].ToString();
+                txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                ddlDistrict.Visible = false;
+                txtDistrict.Visible = true;
+                txtSiteAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+            }
+            else
+            {
+                string alertScript = "alert('The  Registration number is Not In Our Database. Please provide a different Registration number.');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+            }
+
+        } protected void btnModalSearch_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+            ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtSearch.Text.Trim());
+            if (ds.Tables.Count > 0)
+            {
+                GridView1.DataSource = ds;
+                GridView1.DataBind();
+            }
+            else
+            {
+                string alertScript = "alert('The  Registration number is Not In Our Database. Please provide a different Registration number.');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+            }
+
+        }
     }
 }

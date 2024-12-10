@@ -1979,6 +1979,8 @@
     <Content Include="SiteOwnerPages\PendingPayment.aspx" />
     <Content Include="SiteOwnerPages\PeriodicRenewal.aspx" />
     <Content Include="SiteOwnerPages\PeroidicInspection.aspx" />
+    <Content Include="SiteOwnerPages\PrintLiftTestReport.aspx" />
+    <Content Include="SiteOwnerPages\PrintPeriodicLiftTestReport.aspx" />
     <Content Include="SiteOwnerPages\ProcessInspectionRenewalCart.aspx" />
     <Content Include="SiteOwnerPages\RatingOfInstallations.aspx" />
     <Content Include="SiteOwnerPages\ReapplyReturnINspection.aspx" />
@@ -3234,6 +3236,20 @@
     </Compile>
     <Compile Include="SiteOwnerPages\PeroidicInspection.aspx.designer.cs">
       <DependentUpon>PeroidicInspection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\PrintLiftTestReport.aspx.cs">
+      <DependentUpon>PrintLiftTestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\PrintLiftTestReport.aspx.designer.cs">
+      <DependentUpon>PrintLiftTestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\PrintPeriodicLiftTestReport.aspx.cs">
+      <DependentUpon>PrintPeriodicLiftTestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\PrintPeriodicLiftTestReport.aspx.designer.cs">
+      <DependentUpon>PrintPeriodicLiftTestReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\ProcessInspectionRenewalCart.aspx.cs">
       <DependentUpon>ProcessInspectionRenewalCart.aspx</DependentUpon>

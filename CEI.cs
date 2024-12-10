@@ -7785,8 +7785,8 @@ string TypeMainBreaker, string PolesMainBreaker, string CurrentRatingInAmps, str
 string PolesRCCBMainBreaker, string CurrentRCCBRatingInAmps, string FaultRCCBCurrentRating, string LoadMakeMainBreaker
 , string LoadTypeMainBreaker, string LoadPolesMainBreaker, string LoadCurrentRatingInAmps, string LoadBreakingCapacityInKA,
 string LoadMakeRCCBMainBreaker, string LoadPolesRCCBMainBreaker
-, string LoadRCCBCurrentRatingInAmps, string LoadRCCBFaultCurrentRating, string ForWholeInstallation, string NeutralandPhaseohms, string EarthandPhasemohms, string RedPhaseYellowPhaseInMohms, string RedPhaseBluePhaseInMohms
-, string YellowPhaseBluePhaseInMohms, string RedPhaseEarthWireInMohms, string YellowPhaseEarthWireInMohms, string BluePhaseEarthWirenMohms, string NumberofEarthing
+, string LoadRCCBCurrentRatingInAmps, string LoadRCCBFaultCurrentRating, string ForWholeInstallation, string NeutralandPhaseohms, string EarthandPhasemohms, int RedPhaseYellowPhaseInMohms, int RedPhaseBluePhaseInMohms
+, int YellowPhaseBluePhaseInMohms, int RedPhaseEarthWireInMohms, int YellowPhaseEarthWireInMohms, int BluePhaseEarthWirenMohms, string NumberofEarthing
 , string EarthingType1, decimal Valueinohms1, string EarthingType2, decimal Valueinohms2, string EarthingType3, decimal Valueinohms3, string EarthingType4,
 decimal Valueinohms4, string EarthingType5
 , decimal Valueinohms5, string EarthingType6, decimal Valueinohms6, string EarthingType7, decimal Valueinohms7, string EarthingType8, decimal Valueinohms8,
@@ -8091,6 +8091,10 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertLiftNewAttachments", InstallationType, int.Parse(DocumentID), DocSaveName, FileName, FilePath, CreatedBy);
         }
         //NaVNEET 5-12
+        public DataSet GetRenewalLiftData(string Type, string RegistrationNo)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPeriodicRenewalData", Type, RegistrationNo);
+        }
         public DataTable UpdateLiftTestReportHistory(string Type, string ID, string count, string CreatedBy)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_LiftTestReportApproval", Type, ID, count, CreatedBy);
@@ -8307,9 +8311,90 @@ string AcceptedOrReReturn, string Reason, string ReasonType)
         }
         ///
 
-        public DataSet GetRenewalLiftData(string Type,string RegistrationNo)
+      
+
+       
+
+        public DataTable CheckDuplicacyInLift(string RegistrationNo, string CreatedBy)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPeriodicRenewalData", Type, RegistrationNo);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckDuplicacyInLift", RegistrationNo, CreatedBy);
+        }
+
+        public void Update_LiftRenewalPeriodicInspection(string RegistrationNo, int InstallationTypeId, string CreatedBy)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "update_LiftRenewal_PeriodicInspection", RegistrationNo, InstallationTypeId, CreatedBy);
+        }
+
+        public DataTable Payment_LiftPeriodic(string selectedTypeIds, int? LiftQaunatity, int? EscaltorQaunatity, int? LiftCountForPayment, int? EscalatorCountForPayment)
+        {
+            DataTable result = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("Sp_Calculate_InspectionPayment_Amount_LiftEscaltor_Periodic", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@InspectionType", "Periodic");
+                command.Parameters.AddWithValue("@InstallationTypeIds", selectedTypeIds);
+                command.Parameters.AddWithValue("@QuantityLift", LiftQaunatity == 0 ? null : LiftQaunatity);
+                command.Parameters.AddWithValue("@QuantityEscalator", EscaltorQaunatity == 0 ? null : EscaltorQaunatity);
+                command.Parameters.AddWithValue("@LiftCountForPayment", LiftCountForPayment == 0 ? null : LiftCountForPayment);
+                command.Parameters.AddWithValue("@EscalatorCountForPayment", EscalatorCountForPayment == 0 ? null : EscalatorCountForPayment);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(result);
+            }
+
+            return result;
+        }
+
+        public DataTable GetDocumentforLiftPeriodicRenewal()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDocumentforLiftPeriodicRenewal");
+        }
+
+        public DataTable Get_DocumentGridwithOutChallan()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_DocumentGridwithOutChallan");
+        }
+        public string InsertInspectionDataForPeriodic_LiftInspection(string ApplicantType, string InstallationType, string District, string Division,
+       string PaymentMode, string InspectionRemarks, string CreatedBy, decimal TotalAmount, string para_Assigned,
+       string transcationId, DateTime TranscationDate, int InspectID, int ServiceType, SqlTransaction transaction)
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertInspectionDataForPeriodic_LiftInspection", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
+            cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+            cmd.Parameters.AddWithValue("@District", District);
+            cmd.Parameters.AddWithValue("@Division", Division);
+            cmd.Parameters.AddWithValue("@PaymentMode", PaymentMode);
+            cmd.Parameters.AddWithValue("@InspectionRemarks", InspectionRemarks);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            cmd.Parameters.AddWithValue("@TransactionId", transcationId);
+            cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
+            cmd.Parameters.AddWithValue("@AssignTo", para_Assigned);
+            cmd.Parameters.AddWithValue("@TransctionDate", TranscationDate);
+            cmd.Parameters.AddWithValue("@InspectID", InspectID);
+            cmd.Parameters.AddWithValue("@ServiceType", ServiceType);
+
+            SqlParameter outputParam = new SqlParameter("@GeneratedCombinedIdDetails", SqlDbType.NVarChar, 500);
+            outputParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParam);
+
+            // Execute the command
+            cmd.ExecuteNonQuery();
+            string k = cmd.Parameters["@GeneratedCombinedIdDetails"].Value.ToString();
+            return k;
+
+        }
+        public DataSet GetDivisionByDistrict(string AreaCovered)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetDivisionByDistrict", AreaCovered);
+        }
+        public DataSet TohandleUncheckedCheckbox(string RegistrationNo, string CreatedBy)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_TohandleUncheckedCheckbox", RegistrationNo, CreatedBy);
         }
     }
 }

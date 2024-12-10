@@ -198,12 +198,12 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator25" ErrorMessage="Required" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                         </div>
                     </div>
-                    <asp:GridView class="table-responsive table table-striped" ID="GridView1" runat="server" OnRowCommand="GridView1_RowCommand" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                    <asp:GridView class="table-responsive table table-striped" ID="GridView1" runat="server" OnRowCommand="GridView1_RowCommand" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" AutoPostBack="true">
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
                             <asp:TemplateField ItemStyle-HorizontalAlign="left" ItemStyle-VerticalAlign="Middle">
                                 <ItemTemplate>
-                                    <asp:CheckBox ID="CheckBox1" runat="server" HorizontalAlign="center" />
+                                    <asp:CheckBox ID="CheckBox1" runat="server" HorizontalAlign="center" AutoPostBack="true" OnCheckedChanged="CheckBox1_CheckedChanged" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="SNo">
@@ -225,7 +225,7 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="ApplicantDistrict" HeaderText="District">
+                            <asp:BoundField DataField="ApplicantDistrict" HeaderText="District" Visible="false">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
@@ -242,7 +242,10 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
+                                    <asp:Label ID="LblCategory" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
                                     <asp:Label ID="LblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
+                                    <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("ApplicantDistrict") %>'></asp:Label>
+                                    <asp:Label ID="LblYearsDifference" runat="server" Text='<%#Eval("YearsDifference") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="TypeOfLift" HeaderText="Type Of Lift" Visible="false">
@@ -261,11 +264,18 @@
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="TypeOfInstallation" HeaderText="Type Of Installation">
+                            <asp:BoundField DataField="TypeOfInstallation" HeaderText="Type Of Installation" Visible="false">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>
-
+                            <asp:BoundField DataField="PreviousChallanDate" HeaderText="Last Challan date">
+                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="YearsDifference" HeaderText="Years Difference">
+                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                            </asp:BoundField>
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -284,7 +294,7 @@
                         <h7 class="card-title fw-semibold mb-4" style="font-size: 30px; color: brown">
                             Note : Before proceeding to document checklist kindly pay your requisite fees first and then upload documents along with the treasury challan (PDF).
                         </h7>
-                        <asp:GridView class="table-responsive table table-hover table-striped" Autopostback="true" ID="GridViewPayment" runat="server" Width="100%"
+                        <asp:GridView class="table-responsive table table-hover table-striped" Autopostback="true" ID="GridViewPayment" OnRowDataBound="GridViewPayment_RowDataBound" runat="server" Width="100%"
                             AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" ShowFooter="true">
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
@@ -308,7 +318,7 @@
                                         <asp:Label ID="InstallationType" runat="server" Text="Total" Style="font-weight: bold;"></asp:Label>
                                     </FooterTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Quantity">
+                                <asp:TemplateField HeaderText="Calculated Payment Only For">
                                     <HeaderStyle HorizontalAlign="Left" Width="30%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="30%" />
                                     <ItemTemplate>
@@ -323,7 +333,7 @@
                                     <ItemStyle HorizontalAlign="Left" Width="25%" />
                                     <ItemTemplate>
                                         <asp:Label ID="lblInstallationAmount" runat="server" Text='<%#Eval("TotalAmount") %>'></asp:Label>
-                                    </ItemTemplate>
+                                      </ItemTemplate>
                                     <FooterTemplate>
                                         <asp:Label ID="lblFooterAmount" runat="server" Text="0" Style="font-weight: bold;"></asp:Label>
                                     </FooterTemplate>
@@ -354,28 +364,32 @@
                                 <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" runat="server" AutoGenerateColumns="false">
                                     <PagerStyle CssClass="pagination-ys" />
                                     <Columns>
-                                        <asp:BoundField DataField="SNo" HeaderText="SNo" />
+                                        <asp:TemplateField HeaderText="SNo">
+                                            <HeaderStyle Width="5%" CssClass="headercolor" />
+                                            <ItemStyle Width="5%" />
+                                            <ItemTemplate>
+                                                <%#Container.DataItemIndex+1 %>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                         <asp:BoundField DataField="DocumentName" HeaderText="DocumentName">
                                             <HeaderStyle HorizontalAlign="Left" Width="70%" CssClass="headercolor leftalign" />
                                             <ItemStyle HorizontalAlign="Left" Width="70%" />
                                         </asp:BoundField>
-                                        <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                        <%--  <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                             <ItemTemplate>
                                                 <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select"> View document </asp:LinkButton>
                                             </ItemTemplate>
                                             <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                        </asp:TemplateField>
+                                        </asp:TemplateField>--%>
                                         <asp:TemplateField HeaderText="File Upload (1MB PDF Only)">
                                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
                                             <ItemTemplate>
-                                                <input type="hidden" id="Req" runat="server" value='<%# Eval("Req") %>' />
+                                                 <%--<input type="hidden" id="Req" runat="server" value='<%# Eval("Req") %>' />--%>
                                                 <input type="hidden" id="DocumentShortName" runat="server" value='<%# Eval("DocumentShortName") %>' />
-                                                <input type="hidden" id="ReqClient" data-req='<%# Eval("Req") %>' />
                                                 <input type="hidden" id="DocumentName" data-req='<%# Eval("DocumentName") %>' />
                                                 <input type="hidden" id="DocumentID" runat="server" value='<%# Eval("DocumentID") %>' />
-                                                <asp:FileUpload ID="FileUpload1" runat="server" />
-                                                <%--<span id="asterisk" class='<%# "asterisk-" + Eval("Req") %>'>*</span>--%>
+                                                <asp:FileUpload ID="FileUpload1" runat="server" OnClientClick="return validateFileUpload(this);" onchange="return validateFileUpload(this);" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
@@ -393,11 +407,9 @@
                         </div>
                     </div>
                 </div>
-                <div id="PaymentDetails" runat="server" visible="true">
+                <div id="PaymentDetails" runat="server" visible="False">
                     <h7 class="card-title fw-semibold mb-4">Payment Details</h7>
-
                     <div id="ChallanDetail" runat="server" visible="false" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 15px;">
-
                         <div class="row" style="margin-top: 15px; margin-bottom: 15PX !important;">
                         </div>
                         <div class="row" style="margin-top: -40px !important;">
@@ -406,14 +418,14 @@
                                     Transaction Id<samp style="color: red"> * </samp>
                                 </label>
                                 <asp:TextBox ID="txttransactionId" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
-                                <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Id</asp:RequiredFieldValidator>--%>
+                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Id</asp:RequiredFieldValidator>--%>
                             </div>
                             <div class="col-4">
                                 <label>
                                     Transaction Date<samp style="color: red"> * </samp>
                                 </label>
                                 <asp:TextBox ID="txttransactionDate" onfocus="disableFutureDates()" min='0000-01-01' onkeydown="return false;" max='9999-01-01' TextMode="Date" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
-                                <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Date</asp:RequiredFieldValidator>--%>
+                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Date</asp:RequiredFieldValidator>--%>
                             </div>
                             <div class="col-4" style="margin-top: auto; margin-bottom: auto;">
                                 <label>
@@ -440,6 +452,44 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4" style="text-align: center;">
+                    <asp:Button ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+                    <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" Visible="false" class="btn btn-primary mr-2" />
+                    <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
+                </div>
+                <asp:HiddenField ID="hdnInstallationType" runat="server" />
+                 <asp:HiddenField ID="HdnDistrict" runat="server" />
+                 <asp:HiddenField ID="HdnDivision" runat="server" />
+                   <asp:HiddenField ID="InspectionIdClientSideCheckedRow" runat="server" />
+                <div class="col-4"></div>
+            </div>
         </div>
     </div>
+        <script type="text/javascript">
+        // Validate if the file is a PDF and the size is less than 1MB
+        function validateFileUpload(sender) {
+            var fileUpload = sender;
+            var filePath = fileUpload.value;
+            var fileExtension = filePath.substring(filePath.lastIndexOf('.') + 1).toLowerCase();
+            var fileSize = fileUpload.files[0].size; // Size in bytes
+
+            // Check file extension
+            if (fileExtension !== "pdf") {
+                alert("Only PDF files are allowed.");
+                fileUpload.value = ""; // Clear the file input
+                return false;
+            }
+
+            // Check file size (1MB = 1048576 bytes)
+            if (fileSize > 1048576) {
+                alert("File size should not exceed 1MB.");
+                fileUpload.value = ""; // Clear the file input
+                return false;
+            }
+
+            return true;
+        }
+        </script>
 </asp:Content>

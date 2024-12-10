@@ -847,7 +847,7 @@
                         <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2"  OnClick="Submit_Click" />
                         <%--OnClientClick="this.disabled=true;this.value='Processing...';" UseSubmitBehavior="false"--%>
                         <%--<asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" OnClientClick="return validateCheckBoxes();" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />--%>
-                        <asp:Button type="submit" ID="btnReset" TabIndex="23" Text="Reset" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
+                        <asp:Button type="submit" ID="btnReset" TabIndex="23" Text="Reset" runat="server" OnClick="Unnamed2_Click" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
                         <asp:Button type="Back" ID="btnBack" TabIndex="24" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
                     </div>
                     <div class="col-md-4"></div>

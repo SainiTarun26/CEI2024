@@ -195,6 +195,10 @@ namespace CEIHaryana.SiteOwnerPages
                 decimal ParseOrDefault(string input, decimal defaultValue = 0)
                 {
                     return decimal.TryParse(input, out decimal result) ? result : defaultValue;
+                } 
+                int ParseintOrDefault(string input, int defaultValue = 0)
+                {
+                    return int.TryParse(input, out int result) ? result : defaultValue;
                 }
                 if (Session["Expired"].ToString() == "False")
                 {
@@ -210,8 +214,10 @@ namespace CEIHaryana.SiteOwnerPages
                         txtRatingRCCBMainBreaker.Text, txtfaultratingRCCBMainBreaker.Text, txtMakeLoadBreaker.Text, txtTypeLoadBreaker.Text,
                         ddlPolesLoadBreaker.SelectedItem.ToString(), txtRatingLoadBreaker.Text, txtCapacityLoadBreaker.Text, txtMakeRCCBLoadBreaker.Text,
                         ddlpolesRCCBLoadBreaker.SelectedItem.ToString(), txtRatingRCCBLoadBreaker.Text, txtFaultCurrentRCCBLoadBreaker.Text,
-                        txtwholeInstallation.Text, txtNeutralPhase.Text, txtEarthPhase.Text, txtRedYellow.Text, txtRedBlue.Text, txtYellowBlue.Text, txtRedEarth.Text, txtYellowEarth.Text,
-                        txtBlueEarth.Text, ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), ParseOrDefault(txtearthingValue1.Text),
+                        txtwholeInstallation.Text, txtNeutralPhase.Text, txtEarthPhase.Text, ParseintOrDefault(txtRedYellow.Text),
+                        ParseintOrDefault(txtRedBlue.Text), ParseintOrDefault(txtYellowBlue.Text),
+                        ParseintOrDefault(txtRedEarth.Text), ParseintOrDefault(txtYellowEarth.Text),
+                         ParseintOrDefault(txtBlueEarth.Text), ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), ParseOrDefault(txtearthingValue1.Text),
                         ddlEarthingtype2.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue2.Text), ddlEarthingtype3.SelectedItem.ToString(),
                         ParseOrDefault(txtEarthingValue3.Text), ddlEarthingtype4.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue4.Text),
                         ddlEarthingtype5.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue5.Text), ddlEarthingtype6.SelectedItem.ToString(),

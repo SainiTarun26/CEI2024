@@ -62,7 +62,7 @@
     <script type="text/javascript">
         function validatePAN() {
             var panTextBox = document.getElementById('<%= txtPAN.ClientID %>');
-            <%-- var panValidator = document.getElementById('<%= revPAN.ClientID %>');--%>
+           <%-- var panValidator = document.getElementById('<%= revPAN.ClientID %>');--%>
 
             var panValue = panTextBox.value.toUpperCase(); // Convert to uppercase here
 
@@ -87,7 +87,7 @@
             return true;
         }
     </script>
-       <style>
+    <style>
         .headercolor1 {
             text-align: initial !important;
         }
@@ -184,7 +184,6 @@
         select.form-control.select-form.select2 {
             height: 30px !important;
             padding: 2px 0px 5px 10px;
-            margin-bottom: 6px;
         }
 
         ul.chosen-choices {
@@ -294,15 +293,6 @@
             .input-box:focus-within {
                 border-color: #777;
             }
-            select#ContentPlaceHolder1_ddlVoltageLevel {
-    margin-bottom: 10px;
-}
-            div#ContentPlaceHolder1_DivOtherDepartment {
-    margin-bottom: 0px !important;
-}
-            div#ContentPlaceHolder1_DivPancard_TanNo {
-    margin-bottom: 0px;
-}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -372,11 +362,11 @@
 
                                         <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="false">
                                             <label for="PanNumber">
-                                                PAN/TAN Number
+                                                 PAN/TAN Number
                                             <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtPAN" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" OnTextChanged="txtPAN_TextChanged" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <%-- <asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPAN" ValidationExpression="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ValidationGroup="Submit"
+                                           <%-- <asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPAN" ValidationExpression="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ValidationGroup="Submit"
                                                 ErrorMessage="Enter a valid PAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />--%>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                         </div>

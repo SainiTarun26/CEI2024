@@ -36,9 +36,13 @@ namespace CEIHaryana.Officers
                 {
                     if (!IsPostBack)
                     {
+                    if (Request.UrlReferrer != null)
+                    {
+                        Session["PreviousPage"] = Request.UrlReferrer.ToString();
+                    }
                     //     Session["StaffID"] = "XEN_HI";
                     //Session["InProcessInspectionId"] = "1002603";
-                        if (Session["StaffID"] != null && Session["StaffID"].ToString() != "")
+                    if (Session["StaffID"] != null && Session["StaffID"].ToString() != "")
                         {
                             lineNumber = 0;
                             GetData();
@@ -94,21 +98,21 @@ namespace CEIHaryana.Officers
             protected void lnkRedirect_Click(object sender, EventArgs e)
             {
 
-                LinkButton lnkRedirect = (LinkButton)sender;
-                string testReportId = lnkRedirect.CommandArgument;
-                Session["InspectionTestReportId"] = testReportId;
-                if (txtWorkType.Text.Trim() == "Line")
-                {
-                    Response.Write("<script>window.open('/TestReportModal/LiTestReportModal.aspx','_blank');</script>");
-                }
-                else if (txtWorkType.Text.Trim() == "Substation Transformer")
-                {
-                    Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
-                }
-                else if (txtWorkType.Text.Trim() == "Generating Set")
-                {
-                    Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
-                }
+                //LinkButton lnkRedirect = (LinkButton)sender;
+                //string testReportId = lnkRedirect.CommandArgument;
+                //Session["InspectionTestReportId"] = testReportId;
+                //if (txtWorkType.Text.Trim() == "Line")
+                //{
+                //    Response.Write("<script>window.open('/TestReportModal/LiTestReportModal.aspx','_blank');</script>");
+                //}
+                //else if (txtWorkType.Text.Trim() == "Substation Transformer")
+                //{
+                //    Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
+                //}
+                //else if (txtWorkType.Text.Trim() == "Generating Set")
+                //{
+                //    Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
+                //}
             }
             private void GetData()
             {
@@ -139,7 +143,7 @@ namespace CEIHaryana.Officers
                     //txtAmount.Visible = false;
                        txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                        string Division = ds.Tables[0].Rows[0]["Division"].ToString();
-                       Session["Division"] = Division;
+                         Session["Division"] = Division;
                         ChallanDate.Visible = false;
                         RegNo.Visible = false;
 
@@ -179,11 +183,11 @@ namespace CEIHaryana.Officers
                         {
                             grd_Documemnts.Columns[3].Visible = true;
                             grd_Documemnts.Columns[4].Visible = false;
-                            Grid_MultipleInspectionTR.Columns[5].Visible = false;
-                            Grid_MultipleInspectionTR.Columns[6].Visible = true;
-                            Grid_MultipleInspectionTR.Columns[7].Visible = false;
-                            Grid_MultipleInspectionTR.Columns[8].Visible = true;
-                            Grid_MultipleInspectionTR.Columns[9].Visible = false;
+                            //Grid_MultipleInspectionTR.Columns[5].Visible = false;
+                            //Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                            //Grid_MultipleInspectionTR.Columns[7].Visible = false;
+                            //Grid_MultipleInspectionTR.Columns[8].Visible = true;
+                            //Grid_MultipleInspectionTR.Columns[9].Visible = false;
                         }
 
                         string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
@@ -385,7 +389,7 @@ namespace CEIHaryana.Officers
                 }
             }
 
-        protected void btnSubmit_Click(object sender, EventArgs e)
+            protected void btnSubmit_Click(object sender, EventArgs e)
         {
             //int checksuccessmessage = 0;
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
@@ -647,8 +651,20 @@ namespace CEIHaryana.Officers
           
             protected void btnBack_Click(object sender, EventArgs e)
             {
-                Response.Redirect("/Officers/InProcessRequest.aspx", false);
+            // Response.Redirect("/Officers/InProcessRequest.aspx", false);
+            try
+            {
+                string previousPageUrl = Session["PreviousPage"] as string;
+                if (!string.IsNullOrEmpty(previousPageUrl))
+                {
+
+                    Response.Redirect(previousPageUrl, false);
+                    Session["PreviousPage"] = null;
+
+                }
             }
+            catch { }
+        }
             protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
@@ -681,7 +697,7 @@ namespace CEIHaryana.Officers
                 Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
                 string installationName = lblInstallationName.Text.Trim();
 
-                Session["InspectionTestReportId"] = btn.CommandArgument;
+                Session["LiftTestReportID"] = btn.CommandArgument;
 
                 Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
                 //if (installationName == "Line")
@@ -933,12 +949,12 @@ namespace CEIHaryana.Officers
 
                     Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
                     IntimationId = LblIntimationId.Text.Trim();
-
-                    DataSet ds = new DataSet();
-                    ds = CEI.GetData(LblInstallationName.Text.Trim(), IntimationId, Count);
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                    Session["LiftTestReportID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                    Label LblTestReportId = (Label)row.FindControl("LblTestReportId");
+                //DataSet ds = new DataSet();
+                //ds = CEI.GetData(LblInstallationName.Text.Trim(), IntimationId, Count);
+                //if (ds.Tables[0].Rows.Count > 0)
+                //{
+                    Session["LiftTestReportID"] = LblTestReportId.Text;
                     Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
                     //if (LblInstallationName.Text.Trim() == "Line")
                     //{
@@ -957,7 +973,7 @@ namespace CEIHaryana.Officers
                     //    Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
 
                     //}
-                }
+                //}
                 }
 
                 //else if (e.CommandName == "View")
@@ -993,8 +1009,8 @@ namespace CEIHaryana.Officers
                     Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
                     string installationName = lblInstallationName.Text.Trim();
 
-                    Session["InspectionTestReportId"] = btn.CommandArgument;
-                     Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                    Session["LiftTestReportID"] = btn.CommandArgument;
+                   Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
 
                 //if (installationName == "Line")
                 //{

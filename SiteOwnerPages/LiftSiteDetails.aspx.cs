@@ -481,15 +481,23 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                string valueToAddBack = txtinstallationType1.Text;
-                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                if (installationType2.Visible ==true) 
                 {
-                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                    ddlWorkDetail.Items.Add(newItem);
+                    string valueToAddBack = txtinstallationType1.Text;
+                    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                    {
+                        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                        ddlWorkDetail.Items.Add(newItem);
+                    }
+                    installationType1.Visible = false;
+                    txtinstallationType1.Text = string.Empty;
+                    txtinstallationNo1.Text = string.Empty;
                 }
-                installationType1.Visible = false;
-                txtinstallationType1.Text = string.Empty;
-                txtinstallationNo1.Text = string.Empty;
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('One Installation Is Mandatory');", true);
+
+                }
             }
             catch
             {
@@ -500,7 +508,9 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                string valueToAddBack = txtinstallationType2.Text;
+                if (installationType1.Visible == true)
+                {
+                    string valueToAddBack = txtinstallationType2.Text;
 
                 if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
                 {
@@ -510,6 +520,12 @@ namespace CEIHaryana.SiteOwnerPages
                 installationType2.Visible = false;
                 txtinstallationType2.Text = string.Empty;
                 txtinstallationNo2.Text = string.Empty;
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('One Installation Is Mandatory');", true);
+
+                }
             }
             catch
             {
@@ -528,9 +544,9 @@ namespace CEIHaryana.SiteOwnerPages
                 txtPhone.Text = "";
                 txtAddress.Text = "";
                 txtPin.Text = "";
-                txtTanNumber.Text = "";
-                txtPAN.Text = "";
-                Installation.Visible = false;
+                //txtTanNumber.Text = "";
+                //txtPAN.Text = "";
+                //Installation.Visible = false;
                 txtinstallationType1.Text = "";
                 txtinstallationNo1.Text = "";
                 txtinstallationType2.Text = "";
@@ -544,6 +560,11 @@ namespace CEIHaryana.SiteOwnerPages
             catch (Exception ex)
             {
             }
+        }
+
+        protected void Unnamed2_Click(object sender, EventArgs e)
+        {
+            Reset();
         }
     }
 }
