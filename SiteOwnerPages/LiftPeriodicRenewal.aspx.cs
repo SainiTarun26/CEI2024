@@ -283,7 +283,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             DataSet ds = new DataSet();
             ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text.Trim());
-            if (ds.Tables.Count > 0)
+            if (ds.Tables[0].Rows.Count > 0)
             {
                 txtMake.ReadOnly = true;
                 txtSerialNo.ReadOnly = true;
