@@ -458,7 +458,8 @@ namespace CEIHaryana.Officers
 
                                             string TestReportId = (row.FindControl("LblTestReportId") as Label)?.Text;
                                             string InstallationType = (row.FindControl("LblInstallationName") as Label)?.Text;
-                                            CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, txtRegistrationNo.Text, InspectionType, StaffId, txtChallanDate.Text, Division, transaction);
+                                            string InstallationName = (row.FindControl("lblInstallationType") as Label)?.Text;
+                                            CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, InstallationName, txtRegistrationNo.Text, InspectionType, StaffId, txtChallanDate.Text, Division, transaction);
 
                                         }
                                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
@@ -471,7 +472,8 @@ namespace CEIHaryana.Officers
 
                                             string TestReportId = (row.FindControl("lblTestReport") as Label)?.Text;
                                             string InstallationType = (row.FindControl("LblInstallationName") as Label)?.Text;
-                                            CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, txtRegistrationNo.Text, InspectionType, StaffId, txtChallanDate.Text, Division, transaction);
+                                            string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
+                                            CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, InstallationName, txtRegistrationNo.Text, InspectionType, StaffId, txtChallanDate.Text, Division, transaction);
 
                                         }
                                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);

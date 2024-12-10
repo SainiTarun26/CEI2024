@@ -7804,11 +7804,15 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
 , LoadTypeMainBreaker, LoadPolesMainBreaker, LoadCurrentRatingInAmps, LoadBreakingCapacityInKA, LoadMakeRCCBMainBreaker, LoadPolesRCCBMainBreaker
 , LoadRCCBCurrentRatingInAmps, LoadRCCBFaultCurrentRating, ForWholeInstallation, NeutralandPhaseohms, EarthandPhasemohms, RedPhaseYellowPhaseInMohms, RedPhaseBluePhaseInMohms
 , YellowPhaseBluePhaseInMohms, RedPhaseEarthWireInMohms, YellowPhaseEarthWireInMohms, BluePhaseEarthWirenMohms, NumberofEarthing
-, EarthingType1, Valueinohms1, EarthingType2, Valueinohms2, EarthingType3, Valueinohms3, EarthingType4, Valueinohms4, EarthingType5
-, Valueinohms5, EarthingType6, Valueinohms6, EarthingType7, Valueinohms7, EarthingType8, Valueinohms8, EarthingType9, Valueinohms9
-, EarthingType10, Valueinohms10, CreatedBy, ContractorName, ContractorLicenseNumber, ContractorLicenseExpiryDate, SupervisorName, SupervisorLicenseNumber, SupervisorLicenseExpiryDate);
+, EarthingType1, Valueinohms1, GetValue(EarthingType2), Valueinohms2, GetValue(EarthingType3), Valueinohms3, GetValue(EarthingType4), 
+                Valueinohms4, GetValue(EarthingType5), Valueinohms5, GetValue(EarthingType6), Valueinohms6, GetValue(EarthingType7), 
+                Valueinohms7, GetValue(EarthingType8), Valueinohms8, GetValue(EarthingType9), Valueinohms9, GetValue(EarthingType10), 
+                Valueinohms10, CreatedBy, ContractorName, ContractorLicenseNumber, ContractorLicenseExpiryDate, SupervisorName, SupervisorLicenseNumber, SupervisorLicenseExpiryDate);
         }
-
+        private object GetValue(string value)
+        {
+            return string.IsNullOrEmpty(value) ? DBNull.Value : (object)value;
+        }
         public DataTable UpdateLiftTestReportHistory(string ID, string count, string CreatedBy)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_LiftTestReportApproval", ID, count, CreatedBy);
@@ -8110,7 +8114,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDataForLift", Id);
         }
-        public void InstallationApproval_Lift(string InspectionID, string TestReportId, string InstallationType, string RegistrationNo, string InspectionType, string StaffId, string ChallanDate, string Division, SqlTransaction transaction)
+        public void InstallationApproval_Lift(string InspectionID, string TestReportId, string InstallationType, string InstallationName, string RegistrationNo, string InspectionType, string StaffId, string ChallanDate, string Division, SqlTransaction transaction)
         {
             try
             {
@@ -8126,6 +8130,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                 cmd.Parameters.AddWithValue("@ID", InspectionID);
                 cmd.Parameters.AddWithValue("@Lift_Escelator_Id", TestReportId);
                 cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+                cmd.Parameters.AddWithValue("@InstallationName", InstallationName);
                 cmd.Parameters.AddWithValue("@StaffId", StaffId);
                 cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
                 cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
@@ -8301,6 +8306,11 @@ string AcceptedOrReReturn, string Reason, string ReasonType)
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDocumentsForNewMultipleInspection_Lift", ApplicantType, InstallationTypeID, InspectionType, inspectionIdPrm);
         }
         ///
+
+        public DataSet GetRenewalLiftData(string Type,string RegistrationNo)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPeriodicRenewalData", Type, RegistrationNo);
+        }
     }
 }
 

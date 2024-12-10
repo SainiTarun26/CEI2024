@@ -14,10 +14,15 @@ namespace CEIHaryana.SiteOwnerPages
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["SiteOwnerId"] != null && Session["SiteOwnerId"].ToString() != "")
+            if (!Page.IsPostBack)
             {
-                GridBind();
+                if (Session["SiteOwnerId"] != null && Session["SiteOwnerId"].ToString() != "")
+                {
+                    GridBind();
+                }
+
             }
+           
 
         }
         public void GridBind()
@@ -70,7 +75,8 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Admin/AcceptedOrRejectedRequest.aspx", false);
+            
+            Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx");
         }
     }
 }

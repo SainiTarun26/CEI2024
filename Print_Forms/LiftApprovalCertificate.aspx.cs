@@ -114,9 +114,9 @@ namespace CEIHaryana.Print_Forms
                     lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
                 }
                 GridBind();
-                Session["StaffID"] = "";
-                Session["SiteOwnerId"] = "";
-                Session["AdminId"] = "";
+                //Session["StaffID"] = "";
+                //Session["SiteOwnerId"] = "";
+                //Session["AdminId"] = "";
                 string script = "<script type=\"text/javascript\">printDiv('printableDiv');</script>";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "PrintOnLoad", script, false);
 

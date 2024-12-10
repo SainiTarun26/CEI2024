@@ -15,11 +15,14 @@ namespace CEIHaryana.Admin
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-          if (Session["AdminId"] != null && Session["AdminId"].ToString() != "")
-            { 
-                GridBind();
+            if (!Page.IsPostBack)
+            {
+                if (Session["AdminId"] != null && Session["AdminId"].ToString() != "")
+                {
+                    GridBind();
+                }
             }
+            
 
         }
 
@@ -73,7 +76,7 @@ namespace CEIHaryana.Admin
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);
+            Response.Redirect("/Admin/AcceptedOrRejectedRequest.aspx", false);
         }
     }
 }

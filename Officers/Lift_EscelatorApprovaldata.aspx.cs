@@ -15,10 +15,16 @@ namespace CEIHaryana.Officers
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["StaffID"] != null && Session["StaffID"].ToString() != "")
+
+            if (!Page.IsPostBack)
             {
-                GridBind();
+                if (Session["StaffID"] != null && Session["StaffID"].ToString() != "")
+                {
+                    GridBind();
+                }
+
             }
+           
         }
         public void GridBind()
         {
@@ -70,7 +76,7 @@ namespace CEIHaryana.Officers
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Officers/InProcessInspection_Lift_Escalator.aspx", false);
+            Response.Redirect("/Officers/AcceptedOrReject.aspx", false);
         }
     }
 }

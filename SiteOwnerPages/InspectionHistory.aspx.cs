@@ -19,7 +19,10 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (!Page.IsPostBack)
                 {
-                    BindGrid();
+                    if (Session["SiteOwnerId"] != null && Session["SiteOwnerId"].ToString() != "")
+                    {
+                        BindGrid();
+                    }
                 }
             }
             catch

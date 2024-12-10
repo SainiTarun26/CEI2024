@@ -221,14 +221,25 @@
                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                        </asp:BoundField>
-                         <asp:BoundField DataField="InstallationType" HeaderText="Installation Type" >
+                     <%--    <asp:BoundField DataField="InstallationType" HeaderText="Installation Type" >
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                        <ItemStyle HorizontalAlign="Left" Width="15%" />
-                </asp:BoundField>
+                </asp:BoundField>--%>
                           <asp:BoundField DataField="RegistrationNo" HeaderText="Registration No" >
                  <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                  <ItemStyle HorizontalAlign="Left" Width="15%" />
                            </asp:BoundField>
+
+                                     <asp:BoundField DataField="InstallationType" HeaderText="Installation Type" Visible="false">
+                         <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                 <ItemStyle HorizontalAlign="Left" Width="15%" />
+
+                         </asp:BoundField>
+                              <asp:BoundField DataField="InstallationName" HeaderText="Installation Type" >
+                        <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+               <ItemStyle HorizontalAlign="Left" Width="15%" />
+
+                   </asp:BoundField>
                
                             <asp:TemplateField HeaderText="Approval Letter">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />

@@ -3186,6 +3186,20 @@
     <Compile Include="SiteOwnerPages\LiftIntimations.aspx.designer.cs">
       <DependentUpon>LiftIntimations.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SiteOwnerPages\LiftPeriodic.aspx.cs">
+      <DependentUpon>LiftPeriodic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\LiftPeriodic.aspx.designer.cs">
+      <DependentUpon>LiftPeriodic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\LiftPeriodicRenewal.aspx.cs">
+      <DependentUpon>LiftPeriodicRenewal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\LiftPeriodicRenewal.aspx.designer.cs">
+      <DependentUpon>LiftPeriodicRenewal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteOwnerPages\LiftSiteDetails.aspx.cs">
       <DependentUpon>LiftSiteDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

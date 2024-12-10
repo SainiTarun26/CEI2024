@@ -271,8 +271,6 @@
      </div>
 
  </div>
- <footer class="footer">
- </footer>
  <script>
      new DataTable('#example');
  </script>
