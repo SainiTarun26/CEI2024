@@ -7777,7 +7777,7 @@ string IntimationId, string VoltageLevel, string ApplicantType, string District,
         }
 
         public int InsertNewLiftData(string count, string IntimationId, string NameandAddressofLocalAgent, string NameofLocalAgent
-, string AddressofLocalAgent, string ContactNoofLocalAgent, DateTime DateofErection, string TypeofLiftErected, string ContractSpeedofLiftMtrPrSec
+, string AddressofLocalAgent, string ContactNoofLocalAgent, DateTime DateofErection, string TypeofLift,string Make,string SerialNo, string TypeofLiftErected, string ContractSpeedofLiftMtrPrSec
 , decimal ContractLoadofLiftInKg, string MaxPersonCapacitywithLiftOperator, decimal WeightofLiftCarwithContractLoadInKg, decimal WeightofCounterWeightInkg
 , decimal DepthofPitInmm, decimal TravelDistanceofLiftInMtr, decimal NoofFloorsServedInMtr, decimal TotalHeadRoomInmm, string TypeOfControl, decimal NoofSuspensionRopes,
 string DescrptionofSuspensionRopes, decimal SizeofSusspensionRopesInmm, decimal WeightofBeamInkg, decimal SizeofBeamInmm, string MakeMainBreaker,
@@ -7796,7 +7796,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
                 "sp_InsertLiftTestReportdata", count, IntimationId, NameandAddressofLocalAgent, NameofLocalAgent
-, AddressofLocalAgent, ContactNoofLocalAgent, DateofErection, TypeofLiftErected, ContractSpeedofLiftMtrPrSec
+, AddressofLocalAgent, ContactNoofLocalAgent, DateofErection, TypeofLift, Make, SerialNo,TypeofLiftErected, ContractSpeedofLiftMtrPrSec
 , ContractLoadofLiftInKg, MaxPersonCapacitywithLiftOperator, WeightofLiftCarwithContractLoadInKg, WeightofCounterWeightInkg
 , DepthofPitInmm, TravelDistanceofLiftInMtr, NoofFloorsServedInMtr, TotalHeadRoomInmm, TypeOfControl, NoofSuspensionRopes, DescrptionofSuspensionRopes
 , SizeofSusspensionRopesInmm, WeightofBeamInkg, SizeofBeamInmm, MakeMainBreaker, TypeMainBreaker, PolesMainBreaker, CurrentRatingInAmps

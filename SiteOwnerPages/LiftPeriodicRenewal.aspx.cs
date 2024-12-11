@@ -202,7 +202,7 @@ namespace CEIHaryana.SiteOwnerPages
                     }
 
                     transaction.Commit();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Success", "alert('All documents uploaded successfully.');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Success", "alert('Application Submitted successfully.');", true);
                     Reset();
                 }
             }

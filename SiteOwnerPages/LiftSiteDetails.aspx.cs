@@ -57,9 +57,6 @@ namespace CEIHaryana.SiteOwnerPages
         {
             DivOtherDepartment.Visible = false;
             DivPancard_TanNo.Visible = false;
-            //ElectricalInstallation.Visible = true;
-            //DivPoweUtility.Visible = false;
-            //DivPoweUtilityWing.Visible = false;
             string Value = ddlWorkDetail.SelectedItem.ToString();
             if (ddlWorkDetail.SelectedValue != "0")
             {
@@ -74,32 +71,7 @@ namespace CEIHaryana.SiteOwnerPages
                     installationType2.Visible = true;
                     txtinstallationType2.Text = Value;
                 }
-                //else if (string.IsNullOrEmpty(txtinstallationType4.Text))
-                //{
-                //    installationType4.Visible = true;
-                //    txtinstallationType4.Text = Value;
-                //}
-                //else if (string.IsNullOrEmpty(txtinstallationType5.Text))
-                //{
-                //    installationType5.Visible = true;
-                //    txtinstallationType5.Text = Value;
-                //}
-                //else if (string.IsNullOrEmpty(txtinstallationType6.Text))
-                //{
-
-                //    installationType6.Visible = true;
-                //    txtinstallationType6.Text = Value;
-                //}
-                //else if (string.IsNullOrEmpty(txtinstallationType7.Text))
-                //{
-                //    installationType7.Visible = true;
-                //    txtinstallationType7.Text = Value;
-                //}
-                //else if (string.IsNullOrEmpty(txtinstallationType8.Text))
-                //{
-                //    installationType8.Visible = true;
-                //    txtinstallationType8.Text = Value;
-                //}
+                
                 if (ddlWorkDetail.SelectedValue != "0")
                 {
                     try
@@ -129,17 +101,6 @@ namespace CEIHaryana.SiteOwnerPages
                 NameUtility.Visible = false;
                 Wing.Visible = false;
             }
-            else if (ddlApplicantType.SelectedValue == "AT002")
-            {
-                NameUtility.Visible = true;
-                Wing.Visible = true;
-                PowerUtility.Visible = true;
-                //ElectricalInstallation.Visible= false;
-                ddlPoweUtilityBind();
-                //DivPoweUtilityWing.Visible = true;
-                txtTanNumber.Text = "";
-                txtPAN.Text = "";
-            }
             else if (ddlApplicantType.SelectedValue == "AT003")
             {
                 //ElectricalInstallation.Visible = true;
@@ -150,12 +111,52 @@ namespace CEIHaryana.SiteOwnerPages
                 DivOtherDepartment.Visible = true;
                 txtPAN.Text = "";
             }
-            ddlPoweUtility.SelectedValue = "0";
-            DdlWing.SelectedValue = "0";
-            DdlZone.SelectedValue = "0";
-            DdlCircle.SelectedValue = "0";
-            DdlDivision.SelectedValue = "0";
-            DdlSubDivision.SelectedValue = "0";
+            string PANNumber = Session["SiteOwnerId"].ToString();
+            //System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}");
+            //System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("^[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}$|^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$");
+            //if (!regex.IsMatch(PANNumber))
+            //{
+            //    txtPAN.Focus();
+            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid PAN/TAN card format. Please enter a valid PAN/TAN number.');", true);
+            //    txtPAN.Text = "";
+            //    return;
+            //}
+            DataSet ds = new DataSet();
+            ds = CEI.GetDetailsByPanNumberId(PANNumber);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+
+                string ContractNameAgeny = ds.Tables[0].Rows[0]["username"].ToString();
+                string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                txtPhone.Text = ds.Tables[0].Rows[0]["Contact"].ToString();
+                txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+                txtPhone.ReadOnly = true;
+                txtEmail.ReadOnly = true;
+                ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
+                ddlworktype.Enabled = false;
+                if (contractorType == "Firm/Organization/Company/Department")
+                {
+                    agency.Visible = true;
+                    individual.Visible = false;
+                    txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+                    txtagency.ReadOnly = true;
+                }
+                else if (contractorType == "Individual Person")
+                {
+                    txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+                    txtName.ReadOnly = true;
+                }
+            }
+            else
+            {
+                ddlworktype.SelectedValue = "0";
+                ddlworktype.Enabled = true;
+                txtagency.Text = "";
+                txtName.Text = "";
+                txtagency.ReadOnly = false;
+                txtName.ReadOnly = false;
+                //Page.ClientScript.RegisterStartupScript(GetType(), "panNotFound", "alert('PAN card not found in the database.');", true);
+            }
 
         }
 
@@ -566,5 +567,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             Reset();
         }
+
+        
     }
 }

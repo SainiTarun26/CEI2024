@@ -25,7 +25,7 @@ namespace CEIHaryana.SiteOwnerPages
                     ddlEarthing();
                     txtapplication.Text = Session["Application"].ToString().Trim();
                     txtInstallation.Text = Session["Typs"].ToString().Trim();
-                    txtid.Text = Session["Intimations"].ToString().Trim();
+                    //txtid.Text = Session["Intimations"].ToString().Trim();
                     txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim() + " Out of " + Session["TotalInstallation"].ToString().Trim();
                     BtnBack.Visible = true;
                     GetContractorDetails();
@@ -204,7 +204,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     CEI.InsertNewLiftData(
                         count, IntimationId, RadioButtonList2.SelectedItem.Text, TxtAgentName.Text, txtAgentAddress.Text,
-                        txtAgentPhone.Text, DateTime.Parse(txtErectionDate.Text), "", "",
+                        txtAgentPhone.Text, DateTime.Parse(txtErectionDate.Text),"","","", "", "",
                         ParseOrDefault(""), txtMaxPersonCapacity.Text, ParseOrDefault(txtWeight.Text), ParseOrDefault(txtCounterWeight.Text),
                         ParseOrDefault(txtPitDepth.Text), ParseOrDefault(txtTravelDistance.Text), ParseOrDefault(txtFloorsServed.Text),
                         ParseOrDefault(txtTotalHeadRoom.Text), txtTypeofControll.Text, ParseOrDefault(txtNoofSuspension.Text), txtDescriptionOfSuspension.Text,

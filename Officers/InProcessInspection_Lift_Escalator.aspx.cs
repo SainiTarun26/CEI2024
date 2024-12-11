@@ -486,10 +486,10 @@ namespace CEIHaryana.Officers
                                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
                                    
                                 }
-                                else
-                                {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
-                                }
+                                //else
+                                //{
+                                //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                                //}
                                 transaction.Commit();
                                 //if (ApprovedorReject == "Rejected")
                                 //{

@@ -184,7 +184,7 @@
                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="WorkIntimation">
+                                <asp:TemplateField HeaderText="Site Id">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                     <ItemTemplate>
