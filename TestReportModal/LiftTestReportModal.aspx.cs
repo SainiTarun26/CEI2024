@@ -78,6 +78,9 @@ namespace CEIHaryana.TestReportModal
                 txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
                 txtState.Text = "Haryana";
                 txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                txtLiftType.Text = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
+                txtSerialNo.Text = ds.Tables[0].Rows[0]["SerialNo"].ToString();
+                txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
                 txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
                 txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
                 txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
@@ -163,6 +166,7 @@ namespace CEIHaryana.TestReportModal
                 txtNeutralPhase.Text = ds.Tables[0].Rows[0]["NeutralandPhaseohms"].ToString();
                 txtEarthPhase.Text = ds.Tables[0].Rows[0]["EarthandPhasemohms"].ToString();
                 txtEarthing.Text = ds.Tables[0].Rows[0]["NumberofEarthing"].ToString();
+                txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
                 if (TextBox4.Text.Trim() =="DP")
                 {
                     TPN1.Visible = false;

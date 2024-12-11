@@ -1807,13 +1807,13 @@
     <Content Include="Industry\Industry_Scheduler_Pending_Sld_ErrorLogs.aspx" />
     <Content Include="Industry\SendJson.aspx" />
     <Content Include="Industry\SendJsonL.aspx" />
-    <Content Include="Industry\sld.aspx" />
     <Content Include="Industry\WebForm2.aspx" />
     <Content Include="Industry_Master\ExistingInspectionData_Industry.aspx" />
     <Content Include="Industry_Master\ForNewInspectionRequestPrintForm.aspx" />
     <Content Include="Industry_Master\ForNewInstallation.aspx" />
     <Content Include="Industry_Master\GenerateNewInspection.aspx" />
     <Content Include="Industry_Master\GeneratingsetPeriodic_Industry.aspx" />
+    <Content Include="Industry_Master\Hepc_Scheduler_For_MissedPostRecords.aspx" />
     <Content Include="Industry_Master\InspectionHistory_Industry.aspx" />
     <Content Include="Industry_Master\InspectionRenewalCart_Industry.aspx" />
     <Content Include="Industry_Master\InspectionRequestPrint_Industry.aspx" />
@@ -1957,7 +1957,6 @@
     <Content Include="SiteOwnerPages\ExistingInspectionData.aspx" />
     <Content Include="SiteOwnerPages\ExistingInspectionRequest.aspx" />
     <Content Include="SiteOwnerPages\GenerateInspection.aspx" />
-    <Content Include="SiteOwnerPages\GenerateInspection_Industry.aspx" />
     <Content Include="SiteOwnerPages\GenerateInspection_Lift.aspx" />
     <Content Include="SiteOwnerPages\GeneratingSet.aspx" />
     <Content Include="SiteOwnerPages\GeneratingsetPeriodic.aspx" />
@@ -2559,13 +2558,6 @@
     <Compile Include="Industry\SendJsonL.aspx.designer.cs">
       <DependentUpon>SendJsonL.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Industry\sld.aspx.cs">
-      <DependentUpon>sld.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Industry\sld.aspx.designer.cs">
-      <DependentUpon>sld.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Industry\WebForm2.aspx.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2607,6 +2599,13 @@
     </Compile>
     <Compile Include="Industry_Master\GeneratingsetPeriodic_Industry.aspx.designer.cs">
       <DependentUpon>GeneratingsetPeriodic_Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\Hepc_Scheduler_For_MissedPostRecords.aspx.cs">
+      <DependentUpon>Hepc_Scheduler_For_MissedPostRecords.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\Hepc_Scheduler_For_MissedPostRecords.aspx.designer.cs">
+      <DependentUpon>Hepc_Scheduler_For_MissedPostRecords.aspx</DependentUpon>
     </Compile>
     <Compile Include="Industry_Master\InspectionHistory_Industry.aspx.cs">
       <DependentUpon>InspectionHistory_Industry.aspx</DependentUpon>
@@ -3088,13 +3087,6 @@
     </Compile>
     <Compile Include="SiteOwnerPages\GenerateInspection.aspx.designer.cs">
       <DependentUpon>GenerateInspection.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SiteOwnerPages\GenerateInspection_Industry.aspx.cs">
-      <DependentUpon>GenerateInspection_Industry.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SiteOwnerPages\GenerateInspection_Industry.aspx.designer.cs">
-      <DependentUpon>GenerateInspection_Industry.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\GenerateInspection_Lift.aspx.cs">
       <DependentUpon>GenerateInspection_Lift.aspx</DependentUpon>

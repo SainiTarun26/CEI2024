@@ -356,6 +356,7 @@ namespace CEIHaryana.SiteOwnerPages
                 try
                 {
                     bool atLeastOneInspectionChecked = false;
+                    bool isFileUploadValid = true;
                     foreach (GridViewRow rows in GridView1.Rows)
                     {
                         CheckBox chk = (CheckBox)rows.FindControl("CheckBox1");
@@ -373,6 +374,37 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     if (atLeastOneInspectionChecked)
                     {
+
+                        foreach (GridViewRow row in Grd_Document.Rows)
+                        {
+                            // Get the label that holds the document name
+                            Label LblDocumentName = (Label)row.FindControl("LblDocumentName");
+
+                            if (LblDocumentName != null)
+                            {
+                                string documentName = LblDocumentName.Text.Trim();
+
+                                // Only check for file uploads if the document is not "Other Document"
+                                if (documentName != "Other Document")
+                                {
+                                    FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
+
+                                    if (fileUpload != null && !fileUpload.HasFile)
+                                    {
+                                        isFileUploadValid = false;  // Set flag to false if no file is uploaded
+                                        break;  // Exit loop once invalid file upload is detected
+                                    }
+                                }
+                            }
+                        }
+
+                        if (!isFileUploadValid)
+                        {
+                            // If any mandatory file upload is missing, show an alert and stop the submission
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please upload Treasury Challan.')", true);
+                            return;
+                        }
+
                         string lblCategory = string.Empty;
 
                         if (hdnInstallationType.Value != null && hdnInstallationType.Value != "")
@@ -425,7 +457,7 @@ namespace CEIHaryana.SiteOwnerPages
                         DataSet dsa = new DataSet();
                         dsa = CEI.GetApplicantTypeForLift(Session["SiteOwnerId"].ToString());
                         ApplicantType = dsa.Tables[0].Rows[0]["ApplicantType"].ToString();
-                        
+
                         if (RadioButtonList2.SelectedValue != null)
                         {
                             PaymentMode = RadioButtonList2.SelectedItem.ToString();
@@ -452,9 +484,7 @@ namespace CEIHaryana.SiteOwnerPages
                    txtInspectionRemarks.Text.Trim(), CreatedBy, TotalAmount, Assigned, transcationId, Convert.ToDateTime(TranscationDate),
                    inspectionId, ServiceType);
 
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Renewal of Lift inspection applied successfully')", true);
                         
-                        Response.Redirect("/SiteOwnerPages/LiftPeriodic.aspx", false);
                     }
                     else
                     {
@@ -469,7 +499,7 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
-        public void InsertFilesIntoDatabase(string InstallationTypeID, string para_CreatedBy,string para_ApplicantType, string para_lblCategory, string para_District,
+        public void InsertFilesIntoDatabase(string InstallationTypeID, string para_CreatedBy, string para_ApplicantType, string para_lblCategory, string para_District,
             string para_To, string para_PaymentMode, string para_txtInspectionRemarks, string para_CreatedByy, decimal para_TotalAmount,
             string para_Assigned, string para_transcationId, DateTime para_TranscationDate, int para_InspectID,
                int ServiceType)
@@ -484,9 +514,9 @@ namespace CEIHaryana.SiteOwnerPages
                 try
                 {
                     Session["Duplicacy"] = "2";
-                    string InspectionId=CEI.InsertInspectionDataForPeriodic_LiftInspection( para_ApplicantType, para_lblCategory, para_District,
-                        para_To, para_PaymentMode,para_txtInspectionRemarks, para_CreatedByy, para_TotalAmount, para_Assigned, para_transcationId, para_TranscationDate, para_InspectID, ServiceType, transaction);
-                     UploadCheckListDocInCollection("MultipleInstallationType", para_CreatedByy, "MultipleInstallationType", InspectionId);
+                    string InspectionId = CEI.InsertInspectionDataForPeriodic_LiftInspection(para_ApplicantType, para_lblCategory, para_District,
+                        para_To, para_PaymentMode, para_txtInspectionRemarks, para_CreatedByy, para_TotalAmount, para_Assigned, para_transcationId, para_TranscationDate, para_InspectID, ServiceType, transaction);
+                    UploadCheckListDocInCollection("MultipleInstallationType", para_CreatedByy, "MultipleInstallationType", InspectionId);
 
                     foreach (var file in uploadedFiles)
                     {
@@ -585,7 +615,7 @@ namespace CEIHaryana.SiteOwnerPages
                             string path = "";
                             path = "/Attachment/" + CreatedBy + "/" + InspectionId + "/" + InstallTypes + "/";
                             string fileName = DocSaveName + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                            
+
                             string filePathInfo2 = "";
 
                             filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/" + InspectionId + "/" + InstallTypes + "/" + fileName);

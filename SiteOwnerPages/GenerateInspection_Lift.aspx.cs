@@ -442,12 +442,10 @@ namespace CEIHaryana.SiteOwnerPages
                         string Division = HdnDivision.Value;
                         string transcationId = string.Empty;
                         string TranscationDate = string.Empty;
-                        decimal TotalAmount = Convert.ToDecimal(Session["Amount"]);
-                        //string StaffAssigned = string.Empty;
+                        decimal TotalAmount = Convert.ToDecimal(Session["Amount"]);                       
                         string Assigned = string.Empty;
                         string InstallationTypeID = string.Empty;
-
-                        //Count = lblNoOfInstallations.Trim();
+                     
                         if (ChallanDetail.Visible == true)
                         {
                             if (txttransactionId.Text != "")
@@ -476,7 +474,7 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                         InstallationTypeID = "10";//Session["InstallationTypeID"].ToString();
                         InsertFilesIntoDatabase(InstallationTypeID, CreatedBy, txtContact.Text, ApplicantTypeCode, IntimationId, ApplicantType, lblCategory.Trim(),
-                    District, Division, PaymentMode, txtDate.Text, txtInspectionRemarks.Text.Trim(), CreatedBy, TotalAmount, Assigned, transcationId, TranscationDate, Convert.ToInt32(InspectionIdClientSideCheckedRow.Value),
+                    District, Division, PaymentMode, txtInspectionRemarks.Text.Trim(), CreatedBy, TotalAmount, Assigned, transcationId, TranscationDate, Convert.ToInt32(InspectionIdClientSideCheckedRow.Value),
                     ServiceType);
                     }
                     else
@@ -563,7 +561,7 @@ namespace CEIHaryana.SiteOwnerPages
         }
 
         public void InsertFilesIntoDatabase(string InstallationTypeID, string para_CreatedBy, string para_txtContact, string para_ApplicantTypeCode, string para_IntimationId, string para_lblApplicant, string para_lblCategory,
-             string para_District, string para_To, string para_PaymentMode, string para_txtDate, string para_txtInspectionRemarks, string para_CreatedByy, decimal para_TotalAmount, string para_Assigned, string para_transcationId, string para_TranscationDate, int para_InspectID,
+             string para_District, string para_To, string para_PaymentMode, string para_txtInspectionRemarks, string para_CreatedByy, decimal para_TotalAmount, string para_Assigned, string para_transcationId, string para_TranscationDate, int para_InspectID,
              int ServiceType)
         {
             bool isInsertSuccessful = true;
@@ -577,7 +575,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     Session["Duplicacy"] = "2";
                     CEI.InsertInspectionDataNewCode_Lift(para_txtContact, para_ApplicantTypeCode, para_IntimationId, para_lblApplicant, para_lblCategory,
-                    para_District, para_To, para_PaymentMode, para_txtDate, para_txtInspectionRemarks, para_CreatedByy, para_TotalAmount, para_Assigned, para_transcationId, para_TranscationDate, para_InspectID, ServiceType, transaction);
+                    para_District, para_To, para_PaymentMode, para_txtInspectionRemarks, para_CreatedByy, para_TotalAmount, para_Assigned, para_transcationId, para_TranscationDate, para_InspectID, ServiceType, transaction);
 
                     string generatedIdCombinedDetails = CEI.InspectionId();
                     string[] SplitResultPartsArray = generatedIdCombinedDetails.Split('|');

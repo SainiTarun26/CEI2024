@@ -37,7 +37,7 @@ namespace CEIHaryana.Admin
                         hiddenfield.Visible = false;
                         hiddenfield1.Visible = false;
                         //OtherWorkDetail.Visible = false;
-                        OtherPremises.Visible = false;
+                        //OtherPremises.Visible = false;
                         if (Convert.ToString(Session["id"]) == null || Convert.ToString(Session["id"]) == "")
                         {
 
@@ -74,7 +74,8 @@ namespace CEIHaryana.Admin
             try
             {
                 REID = Session["id"].ToString();
-                SqlCommand cmd = new SqlCommand("sp_WorkIntimationData");
+                //SqlCommand cmd = new SqlCommand("sp_WorkIntimationData");
+                SqlCommand cmd = new SqlCommand("sp_WorkIntimationDataForHistory");
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@ID", REID);
@@ -89,8 +90,9 @@ namespace CEIHaryana.Admin
                     txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                     txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
                     txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
-                    string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
-                    txtPremises.Text = dp_Id1;
+                    //string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
+                    //txtPremises.Text = dp_Id1;                    
+                    txtPremises.Text = ds.Tables[0].Rows[0]["PremisesTypeOther"].ToString();
                     txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                     txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();                    
                     if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Pincode"].ToString()))
@@ -102,14 +104,13 @@ namespace CEIHaryana.Admin
                         txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
                         pin.Visible = true;
                     }
-                    string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
-                    txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
+                    //string dp_Id2 = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
+                    //txtOtherPremises.Text = ds.Tables[0].Rows[0]["OtherPremises"].ToString();
                     string dp_Id3 = ds.Tables[0].Rows[0]["VoltageLevel"].ToString().Trim();
                     ddVoltageLevel.Text = dp_Id3;                   
                     txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                     //txtPAN.Text = ds.Tables[0].Rows[0]["PANNumber"].ToString();
-                    string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();
-                    txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
+                    
                     //txtApplicant.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString().Trim();
                     string ApplicantType = ds.Tables[0].Rows[0]["ApplicantType"].ToString().Trim();
                     txtApplicant.Text = ApplicantType;                    
@@ -128,6 +129,8 @@ namespace CEIHaryana.Admin
                     else if (ApplicantType == "Power Utility")
                     {
                         PowerUtility.Visible = true;
+                        PanNo.Visible = true;
+                        txtPAN.Text = "";
                         TxtPowerUtility.Text = ds.Tables[0].Rows[0]["PowerUtility"].ToString().Trim();
                         TxtWing.Text = ds.Tables[0].Rows[0]["PowerUtilityWing"].ToString().Trim();
                         TxtZone.Text = ds.Tables[0].Rows[0]["ZoneName"].ToString().Trim();
@@ -136,31 +139,58 @@ namespace CEIHaryana.Admin
                         TxtSubDivision.Text = ds.Tables[0].Rows[0]["SubDivisionName"].ToString().Trim();
                     }
 
+                    string dp_Id4 = ds.Tables[0].Rows[0]["WorkStartDate"].ToString();                    
+                    if (dp_Id4 != "")
+                    {
+                        txtStartDate.Text = DateTime.Parse(dp_Id4).ToString("dd-MM-yyyy");
+                    }
                     string dp_Id5 = ds.Tables[0].Rows[0]["CompletionDate"].ToString();
-                    txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("dd-MM-yyyy");
+                    if (dp_Id5 != "")
+                    {
+                        txtCompletitionDate.Text = DateTime.Parse(dp_Id5).ToString("dd-MM-yyyy");
+                    }                   
                     string dp_Id6 = ds.Tables[0].Rows[0]["CompletionDateasPerOrder"].ToString();
                     string dp_Id7 = ds.Tables[0].Rows[0]["AnyWorkIssued"].ToString();
+                    if (dp_Id7 != "")
+                    {
+                        ddlAnyWork.SelectedIndex = ddlAnyWork.Items.IndexOf(ddlAnyWork.Items.FindByText(dp_Id7));
+                    }
+                    else
+                    {
+                        ddlAnyWork_DivId.Visible = false;
+                    }
                     Session["File"] = ds.Tables[0].Rows[0]["CopyOfWorkOrder"].ToString();
-                    ddlAnyWork.SelectedIndex = ddlAnyWork.Items.IndexOf(ddlAnyWork.Items.FindByText(dp_Id7));
+                  
                     string dp_Id8 = ds.Tables[0].Rows[0]["TypeOfInstallation1"].ToString();
                     string dp_Id9 = ds.Tables[0].Rows[0]["NumberOfInstallation1"].ToString();
                     string dp_Id10 = ds.Tables[0].Rows[0]["TypeOfInstallation2"].ToString();
                     string dp_Id11 = ds.Tables[0].Rows[0]["NumberOfInstallation2"].ToString();
                     string dp_Id12 = ds.Tables[0].Rows[0]["TypeOfInstallation3"].ToString();
                     string dp_Id13 = ds.Tables[0].Rows[0]["NumberOfInstallation3"].ToString();
-                    string dp_Id14 = ds.Tables[0].Rows[0]["TypeOfInstallation4"].ToString();
-                    string dp_Id15 = ds.Tables[0].Rows[0]["NumberOfInstallation4"].ToString();
-                    string dp_Id16 = ds.Tables[0].Rows[0]["TypeOfInstallation5"].ToString();
-                    string dp_Id17 = ds.Tables[0].Rows[0]["NumberOfInstallation5"].ToString();
-                    string dp_Id18 = ds.Tables[0].Rows[0]["TypeOfInstallation6"].ToString();
-                    string dp_Id19 = ds.Tables[0].Rows[0]["NumberOfInstallation6"].ToString();
-                    string dp_Id20 = ds.Tables[0].Rows[0]["TypeOfInstallation7"].ToString();
-                    string dp_Id21 = ds.Tables[0].Rows[0]["NumberOfInstallation7"].ToString();
-                    string dp_Id22 = ds.Tables[0].Rows[0]["TypeOfInstallation8"].ToString();
-                    string dp_Id23 = ds.Tables[0].Rows[0]["NumberOfInstallation8"].ToString();
-                    RadioButtonList2.SelectedValue = ds.Tables[0].Rows[0]["SanctionLoad"].ToString();
-                    RadioButtonList2.Enabled = false;
-                    if (dp_Id8 != "")
+                    //string dp_Id14 = ds.Tables[0].Rows[0]["TypeOfInstallation4"].ToString();
+                    //string dp_Id15 = ds.Tables[0].Rows[0]["NumberOfInstallation4"].ToString();
+                    //string dp_Id16 = ds.Tables[0].Rows[0]["TypeOfInstallation5"].ToString();
+                    //string dp_Id17 = ds.Tables[0].Rows[0]["NumberOfInstallation5"].ToString();
+                    //string dp_Id18 = ds.Tables[0].Rows[0]["TypeOfInstallation6"].ToString();
+                    //string dp_Id19 = ds.Tables[0].Rows[0]["NumberOfInstallation6"].ToString();
+                    //string dp_Id20 = ds.Tables[0].Rows[0]["TypeOfInstallation7"].ToString();
+                    //string dp_Id21 = ds.Tables[0].Rows[0]["NumberOfInstallation7"].ToString();
+                    //string dp_Id22 = ds.Tables[0].Rows[0]["TypeOfInstallation8"].ToString();
+                    //string dp_Id23 = ds.Tables[0].Rows[0]["NumberOfInstallation8"].ToString();
+                    //RadioButtonList2.SelectedValue = ds.Tables[0].Rows[0]["SanctionLoad"].ToString();
+                    // RadioButtonList2.Enabled = false;
+                    TxtInspectionType.Text = ds.Tables[0].Rows[0]["InspectionType"].ToString();
+                    string sanctionLoad = ds.Tables[0].Rows[0]["SanctionLoad"].ToString();
+                    if (sanctionLoad == "1")
+                    {
+                        TxtSanction.Text = "Yes";
+                    }
+                    else
+                    {
+                        TxtSanction.Text = "No";
+                    }
+                    txtCapacity.Text = ds.Tables[0].Rows[0]["TotalCapacity"].ToString();
+                    if (dp_Id8 != "" && dp_Id9 != "")
                     {
                         Installation.Visible = true;
                         installationType1.Visible = true;
@@ -172,7 +202,7 @@ namespace CEIHaryana.Admin
                         //Installation.Visible = false;
                         installationType1.Visible = false;
                     }
-                    if (dp_Id10 != "")
+                    if (dp_Id10 != "" && dp_Id11 != "")
                     {
                         Installation.Visible = true;
                         installationType2.Visible = true;
@@ -185,7 +215,7 @@ namespace CEIHaryana.Admin
                         // Installation.Visible = false;
                         installationType2.Visible = false;
                     }
-                    if (dp_Id12 != "")
+                    if (dp_Id12 != "" && dp_Id13 != "")
                     {
                         Installation.Visible = true;
                         installationType3.Visible = true;
@@ -198,41 +228,41 @@ namespace CEIHaryana.Admin
                         //  Installation.Visible = false;
                         installationType3.Visible = false;
                     }
-                    if (dp_Id14 != "")
-                    {
-                        Installation.Visible = true;
-                        installationType4.Visible = true;
-                        txtinstallationType4.Text = dp_Id14;
-                        txtinstallationNo4.Text = dp_Id15;
-                    }
-                    if (dp_Id16 != "")
-                    {
-                        Installation.Visible = true;
-                        installationType5.Visible = true;
-                        txtinstallationType5.Text = dp_Id16;
-                        txtinstallationNo5.Text = dp_Id17;
-                    }
-                    if (dp_Id18 != "")
-                    {
-                        Installation.Visible = true;
-                        installationType6.Visible = true;
-                        txtinstallationType6.Text = dp_Id18;
-                        txtinstallationNo6.Text = dp_Id19;
-                    }
-                    if (dp_Id20 != "")
-                    {
-                        Installation.Visible = true;
-                        installationType7.Visible = true;
-                        txtinstallationType7.Text = dp_Id20;
-                        txtinstallationNo7.Text = dp_Id21;
-                    }
-                    if (dp_Id22 != "")
-                    {
-                        Installation.Visible = true;
-                        installationType8.Visible = true;
-                        txtinstallationType8.Text = dp_Id22;
-                        txtinstallationNo8.Text = dp_Id23;
-                    }
+                    //if (dp_Id14 != "")
+                    //{
+                    //    Installation.Visible = true;
+                    //    installationType4.Visible = true;
+                    //    txtinstallationType4.Text = dp_Id14;
+                    //    txtinstallationNo4.Text = dp_Id15;
+                    //}
+                    //if (dp_Id16 != "")
+                    //{
+                    //    Installation.Visible = true;
+                    //    installationType5.Visible = true;
+                    //    txtinstallationType5.Text = dp_Id16;
+                    //    txtinstallationNo5.Text = dp_Id17;
+                    //}
+                    //if (dp_Id18 != "")
+                    //{
+                    //    Installation.Visible = true;
+                    //    installationType6.Visible = true;
+                    //    txtinstallationType6.Text = dp_Id18;
+                    //    txtinstallationNo6.Text = dp_Id19;
+                    //}
+                    //if (dp_Id20 != "")
+                    //{
+                    //    Installation.Visible = true;
+                    //    installationType7.Visible = true;
+                    //    txtinstallationType7.Text = dp_Id20;
+                    //    txtinstallationNo7.Text = dp_Id21;
+                    //}
+                    //if (dp_Id22 != "")
+                    //{
+                    //    Installation.Visible = true;
+                    //    installationType8.Visible = true;
+                    //    txtinstallationType8.Text = dp_Id22;
+                    //    txtinstallationNo8.Text = dp_Id23;
+                    //}
 
                     if (dp_Id7.Trim() == "Yes")
                     {
@@ -247,14 +277,14 @@ namespace CEIHaryana.Admin
                         hiddenfield1.Visible = false;
                     }
 
-                    if (dp_Id3 == "upto 650 V")
-                    {
-                        installationType2.Visible = false;
-                    }
-                    else
-                    {
-                        installationType2.Visible = true;
-                    }
+                    //if (dp_Id3 == "upto 650 V")
+                    //{
+                    //    installationType2.Visible = false;
+                    //}
+                    //else
+                    //{
+                    //    installationType2.Visible = true;
+                    //}
                     //string dp_Id8 = ds.Tables[0].Rows[0]["WorkDetails"].ToString();
                     //ddWorkDetail.Text = dp_Id8;
 
@@ -307,8 +337,9 @@ namespace CEIHaryana.Admin
                 {
                     GridView1.DataSource = null;
                     GridView1.DataBind();
-                    string script = "alert(\"No Record of attached Supervisor/Wireman Found \");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    AssignedSupervisor.Visible = false;
+                    //string script = "alert(\"No Record of attached Supervisor/Wireman Found \");";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 ds.Dispose();
             }

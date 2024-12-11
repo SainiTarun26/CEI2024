@@ -10,16 +10,18 @@
     <link rel="stylesheet" href="/Assets/css/ti-icons/css/themify-icons.css" />
     <link rel="stylesheet" href="/Assets/css/css/vendor.bundle.base.css" />
     <link rel="stylesheet" href="/Assets/css/datatables.net-bs4/dataTables.bootstrap4.css" />
-    <link rel="stylesheet" href="/Assets/css/ti-icons/css/themify-icons.css" />'
+    <link rel="stylesheet" href="/Assets/css/ti-icons/css/themify-icons.css" />
+    '
 
     <link rel="stylesheet" type="/Assets/css/css" href="js/select.dataTables.min.css" />
     <link rel="stylesheet" href="/Assets/css/vertical-layout-light/style.css" />
     <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" />
     <style type="text/css">
-        td{
-            width:1%;
+        td {
+            width: 1%;
         }
+
         li.tab-content.tab-content-3.typography {
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             border: 8px solid #ced4da !important;
@@ -2019,7 +2021,7 @@
         }
 
         function openNewWindow() {
-            var newWindow = window.open('../UserPages/PrintGeneratingSetTestReport.aspx', '_blank');
+            var newWindow = window.open('../SiteOwnerPages/PrintLiftTestReport.aspx', '_blank');
             newWindow.focus();
             console.log(newWindow);
         }
@@ -2040,13 +2042,13 @@
             <ul style="margin: 40px 20px 20px 15px!important;">
                 <li class="tab-content tab-content-3 typography">
                     <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
-                        <asp:Button ID="btnPrint" Text="Print" Enabled="false" runat="server" class="btn btn-primary mr-2"
+                        <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
                             Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="openNewWindow(); return false;" />
                     </div>
                     <div class="row" style="margin-bottom: 15PX;">
                         <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Site Details & Test Details (Lift)</h6>
-                            <div class="row" style="font-size: 18px; font-weight: 600;margin-top: 0px !important;">
+                            <div class="row" style="font-size: 18px; font-weight: 600; margin-top: 0px !important;">
                                 <div class="col-12" style="margin-top: 0px; padding-left: 0px; text-align: center;">
                                     TestDetailId: (<asp:Label ID="lbltestReportId" runat="server" />) &nbsp;&nbsp;&nbsp;&nbsp;  Intimation Id: (<asp:Label ID="lblWorkIntimationId" runat="server" />)
                                 </div>
@@ -2176,7 +2178,7 @@
                                                         </th>
                                                         <th style="width: 20%;">No of Installations
                                                         </th>
-                                                       
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -2195,7 +2197,7 @@
                                             font-size: 12px;">Max no. of Installations is only 25.</p>--%>
                                                                 </div>
                                                             </td>
-                                                         
+
                                                         </tr>
                                                     </div>
                                                     <div id="installationType2" runat="server">
@@ -2210,7 +2212,7 @@
                                                                     <asp:TextBox ReadOnly="true" class="form-control" ID="txtinstallationNo2" TabIndex="14" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="Max no. of Installations is 25." MaxLength="2" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>
-                                                           
+
                                                         </tr>
                                                     </div>
 
@@ -2371,11 +2373,35 @@
                                         <div class="row" style="margin-top: 10px;">
                                             <div class="col-md-4" runat="server" visible="True" style="top: 0px !important;">
                                                 <label for="Voltage">
+                                                    Make of Lift
+                                                    <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox ReadOnly="true" class="form-control" AutoPostBack="true" ID="txtMake" MaxLength="10" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
+                                            </div>
+                                            <div class="col-md-4" runat="server" visible="True" style="top: 0px !important;">
+                                                <label for="Voltage">
+                                                    Serial No. of Lift
+                                                    <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox ReadOnly="true" class="form-control" AutoPostBack="true" ID="txtSerialNo" MaxLength="10" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
+                                            </div>
+                                            <div class="col-md-4" runat="server" visible="True" style="top: 0px !important;">
+                                                <label for="Voltage">
                                                     Date of Erection
                                     <samp style="color: red">* </samp>
                                                 </label>
                                                 <asp:TextBox ReadOnly="true" class="form-control" AutoPostBack="true" ID="txtErectionDate" MaxLength="10" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>
+                                                    Type of Lift
+                                                    <samp style="color: red">* </samp>
+                                                </label>
+                                                <asp:TextBox ReadOnly="true" class="form-control" AutoPostBack="true" ID="txtLiftType" MaxLength="10" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                             </div>
                                             <div class="col-md-4">
                                                 <label>
@@ -2771,7 +2797,6 @@
                                                 <th>S.No.</th>
                                                 <th>Earthing Type</th>
                                                 <th>Value in(ohms)</th>
-                                                <th>Used For</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -2788,14 +2813,6 @@
                                                         <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing1" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed1" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther1" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                </td>
                                             </tr>
                                             <tr id="LiftEarthing2" runat="server" visible="false">
                                                 <td>2</td>
@@ -2807,14 +2824,6 @@
                                                 <td>
                                                     <div class="col-12">
                                                         <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing2" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed2" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther2" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -2830,14 +2839,6 @@
                                                         <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing3" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed3" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="textOther3" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                </td>
                                             </tr>
                                             <tr id="LiftEarthing4" runat="server" visible="false">
                                                 <td>4</td>
@@ -2849,14 +2850,6 @@
                                                 <td>
                                                     <div class="col-12" id="Div10" runat="server">
                                                         <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther4" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -2873,14 +2866,6 @@
                                                         <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                </td>
                                             </tr>
                                             <tr id="LiftEarthing6" runat="server" visible="false">
                                                 <td>6</td>
@@ -2892,14 +2877,6 @@
                                                 <td>
                                                     <div class="col-12">
                                                         <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing6" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed6" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -2915,14 +2892,6 @@
                                                         <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing7" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed7" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther7" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                </td>
                                             </tr>
                                             <tr id="LiftEarthing8" runat="server" visible="false">
                                                 <td>8</td>
@@ -2934,14 +2903,6 @@
                                                 <td>
                                                     <div class="col-12">
                                                         <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing8" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed8" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther8" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -2958,14 +2919,6 @@
                                                         <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing9" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed9" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther9" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                </td>
                                             </tr>
                                             <tr id="LiftEarthing10" runat="server" visible="false">
                                                 <td>10</td>
@@ -2979,14 +2932,6 @@
                                                         <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                </td>
                                             </tr>
                                             <tr id="LiftEarthing11" runat="server" visible="false">
                                                 <td>11</td>
@@ -2998,14 +2943,6 @@
                                                 <td>
                                                     <div class="col-12">
                                                         <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing11" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed11" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther11" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -3148,9 +3085,10 @@
                                 </div>
                             </div>
 
-                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;margin-left:-25px; margin-right:-25px;">
-                                  <div class="card-title" style="margin-bottom: 1px;font-size:22px;font-weight: 700;
-    margin-bottom: 20px;">Document Details</div>
+                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; margin-left: -25px; margin-right: -25px;">
+                                <div class="card-title" style="margin-bottom: 1px; font-size: 22px; font-weight: 700; margin-bottom: 20px;">
+                                    Document Details
+                                </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" OnRowCommand="Grd_Document_RowCommand" runat="server" AutoGenerateColumns="false">
@@ -3158,7 +3096,7 @@
                                             <PagerStyle CssClass="pagination-ys" />
                                             <Columns>
 
-                                               
+
                                                 <asp:TemplateField HeaderText="SNo">
                                                     <HeaderStyle Width="5%" CssClass="headercolor" />
                                                     <ItemStyle Width="5%" />
@@ -3176,9 +3114,9 @@
                                                 <asp:TemplateField>
                                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
                                                     <ItemTemplate>
-                                                          <asp:LinkButton ID="lnkDocumentPath" runat="server" Text="View Document" CommandName="View" CommandArgument='<%# Eval("DocumentPath") %>' />
-                                                        
-                                                         </ItemTemplate>
+                                                        <asp:LinkButton ID="lnkDocumentPath" runat="server" Text="View Document" CommandName="View" CommandArgument='<%# Eval("DocumentPath") %>' />
+
+                                                    </ItemTemplate>
                                                 </asp:TemplateField>
 
                                             </Columns>

@@ -4528,53 +4528,53 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return insertedSLD_ID;
         }
 
-        public Industry_Api_Post_DataformatModel GetIndustry_OutgoingRequestFormat_Sld(int _inspectionIdparams, string _actionType, string _projectId = null, string _serviceId = null, string _PanNo = null)
-        {
-            Industry_Api_Post_DataformatModel model = new Industry_Api_Post_DataformatModel();
-            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+        //public Industry_Api_Post_DataformatModel GetIndustry_OutgoingRequestFormat_Sld(int _inspectionIdparams, string _actionType, string _projectId = null, string _serviceId = null, string _PanNo = null)
+        //{
+        //    Industry_Api_Post_DataformatModel model = new Industry_Api_Post_DataformatModel();
+        //    string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
 
-                using (SqlCommand cmd = new SqlCommand("sp_Industry_Create_OutgoingRequest_Format_Sld", connection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@InspectionId", _inspectionIdparams);
-                    cmd.Parameters.AddWithValue("@ActionType", _actionType);
-                    cmd.Parameters.AddWithValue("@ProjectId", (object)_projectId ?? DBNull.Value);
-                    cmd.Parameters.AddWithValue("@ServiceId", (object)_serviceId ?? DBNull.Value);
-                    cmd.Parameters.AddWithValue("@PanNo", (object)_PanNo ?? DBNull.Value);
+        //        using (SqlCommand cmd = new SqlCommand("sp_Industry_Create_OutgoingRequest_Format_Sld", connection))
+        //        {
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.Parameters.AddWithValue("@InspectionId", _inspectionIdparams);
+        //            cmd.Parameters.AddWithValue("@ActionType", _actionType);
+        //            cmd.Parameters.AddWithValue("@ProjectId", (object)_projectId ?? DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@ServiceId", (object)_serviceId ?? DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@PanNo", (object)_PanNo ?? DBNull.Value);
 
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            model = new Industry_Api_Post_DataformatModel
-                            {
-                                PremisesType = reader["PremisesType"] != DBNull.Value ? reader["PremisesType"].ToString() : null,
-                                InspectionId = Convert.ToInt32(reader["InspectionId"]),
-                                InspectionLogId = Convert.ToInt32(reader["InspectionLogId"]),
-                                IncomingJsonId = Convert.ToInt32(reader["IncomingJsonId"]),
-                                ActionTaken = reader["ActionTaken"].ToString(),
-                                CommentByUserLogin = reader["CommentByUserLogin"].ToString(),
-                                CommentDate = Convert.ToDateTime(reader["CommentDate"]),
-                                Comments = reader["Comments"].ToString(),
-                                Id = reader["Id"].ToString(),
-                                ProjectId = reader["ProjectId"].ToString(),
-                                ServiceId = reader["ServiceId"].ToString()
-                            };
+        //            using (SqlDataReader reader = cmd.ExecuteReader())
+        //            {
+        //                if (reader.Read())
+        //                {
+        //                    model = new Industry_Api_Post_DataformatModel
+        //                    {
+        //                        PremisesType = reader["PremisesType"] != DBNull.Value ? reader["PremisesType"].ToString() : null,
+        //                        InspectionId = Convert.ToInt32(reader["InspectionId"]),
+        //                        InspectionLogId = Convert.ToInt32(reader["InspectionLogId"]),
+        //                        IncomingJsonId = Convert.ToInt32(reader["IncomingJsonId"]),
+        //                        ActionTaken = reader["ActionTaken"].ToString(),
+        //                        CommentByUserLogin = reader["CommentByUserLogin"].ToString(),
+        //                        CommentDate = Convert.ToDateTime(reader["CommentDate"]),
+        //                        Comments = reader["Comments"].ToString(),
+        //                        Id = reader["Id"].ToString(),
+        //                        ProjectId = reader["ProjectId"].ToString(),
+        //                        ServiceId = reader["ServiceId"].ToString()
+        //                    };
 
-                            return model;
-                        }
-                    }
-                }
-                connection.Close();
-            }
-            return model;
-            //return null;
-        }
+        //                    return model;
+        //                }
+        //            }
+        //        }
+        //        connection.Close();
+        //    }
+        //    return model;
+        //    //return null;
+        //}
 
 
         public void LogToIndustryApiSuccessDatabase_Sld(string requestUrl, string requestMethod, string requestHeaders, string requestContentType, string requestBody, string responseStatusCode, string responseHeaders, string responseBody, Industry_Api_Post_DataformatModel apiData)
@@ -4826,53 +4826,53 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             }
         }
 
-        public Industry_Api_Post_DataformatModel GetIndustry_OutgoingRequestFormat(int _inspectionIdparams, string _actionType, string _projectId = null, string _serviceId = null, string _PanNo = null)
-        {
-            Industry_Api_Post_DataformatModel model = new Industry_Api_Post_DataformatModel();
-            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+        //public Industry_Api_Post_DataformatModel GetIndustry_OutgoingRequestFormat(int _inspectionIdparams, string _actionType, string _projectId = null, string _serviceId = null, string _PanNo = null)
+        //{
+        //    Industry_Api_Post_DataformatModel model = new Industry_Api_Post_DataformatModel();
+        //    string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
 
-                using (SqlCommand cmd = new SqlCommand("sp_Industry_Create_OutgoingRequest_Format", connection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@InspectionId", _inspectionIdparams);
-                    cmd.Parameters.AddWithValue("@ActionType", _actionType);
-                    cmd.Parameters.AddWithValue("@ProjectId", (object)_projectId ?? DBNull.Value);
-                    cmd.Parameters.AddWithValue("@ServiceId", (object)_serviceId ?? DBNull.Value);
-                    cmd.Parameters.AddWithValue("@PanNo", (object)_PanNo ?? DBNull.Value);
+        //        using (SqlCommand cmd = new SqlCommand("sp_Industry_Create_OutgoingRequest_Format", connection))
+        //        {
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.Parameters.AddWithValue("@InspectionId", _inspectionIdparams);
+        //            cmd.Parameters.AddWithValue("@ActionType", _actionType);
+        //            cmd.Parameters.AddWithValue("@ProjectId", (object)_projectId ?? DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@ServiceId", (object)_serviceId ?? DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@PanNo", (object)_PanNo ?? DBNull.Value);
 
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            model = new Industry_Api_Post_DataformatModel
-                            {
-                                PremisesType = reader["PremisesType"] != DBNull.Value ? reader["PremisesType"].ToString() : null,
-                                InspectionId = Convert.ToInt32(reader["InspectionId"]),
-                                InspectionLogId = Convert.ToInt32(reader["InspectionLogId"]),
-                                IncomingJsonId = Convert.ToInt32(reader["IncomingJsonId"]),
-                                ActionTaken = reader["ActionTaken"].ToString(),
-                                CommentByUserLogin = reader["CommentByUserLogin"].ToString(),
-                                CommentDate = Convert.ToDateTime(reader["CommentDate"]),
-                                Comments = reader["Comments"].ToString(),
-                                Id = reader["Id"].ToString(),
-                                ProjectId = reader["ProjectId"].ToString(),
-                                ServiceId = reader["ServiceId"].ToString()
-                            };
+        //            using (SqlDataReader reader = cmd.ExecuteReader())
+        //            {
+        //                if (reader.Read())
+        //                {
+        //                    model = new Industry_Api_Post_DataformatModel
+        //                    {
+        //                        PremisesType = reader["PremisesType"] != DBNull.Value ? reader["PremisesType"].ToString() : null,
+        //                        InspectionId = Convert.ToInt32(reader["InspectionId"]),
+        //                        InspectionLogId = Convert.ToInt32(reader["InspectionLogId"]),
+        //                        IncomingJsonId = Convert.ToInt32(reader["IncomingJsonId"]),
+        //                        ActionTaken = reader["ActionTaken"].ToString(),
+        //                        CommentByUserLogin = reader["CommentByUserLogin"].ToString(),
+        //                        CommentDate = Convert.ToDateTime(reader["CommentDate"]),
+        //                        Comments = reader["Comments"].ToString(),
+        //                        Id = reader["Id"].ToString(),
+        //                        ProjectId = reader["ProjectId"].ToString(),
+        //                        ServiceId = reader["ServiceId"].ToString()
+        //                    };
 
-                            return model;
-                        }
-                    }
-                }
-                connection.Close();
-            }
-            return model;
-            //return null;
-        }
+        //                    return model;
+        //                }
+        //            }
+        //        }
+        //        connection.Close();
+        //    }
+        //    return model;
+        //    //return null;
+        //}
 
         public void LogToIndustryApiErrorDatabase(string requestUrl, string requestMethod, string requestHeaders, string requestContentType, string requestBody, string responseStatusCode, string responseHeaders, string responseBody, Industry_Api_Post_DataformatModel apiData)
         {
@@ -7994,10 +7994,10 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationsForSiteOwner_Lift", PANNumber);
         }
         public void InsertInspectionDataNewCode_Lift(string ContactNo, string ApplicantTypeCode, string IntimationId, string ApplicantType, string InstallationType,
-        string District, string Division, string PaymentMode, string DateOfSubmission, string InspectionRemarks, string CreatedBy,
-        decimal TotalAmount, string para_Assigned, string transcationId, string TranscationDate, int InspectID,
-        int ServiceType, SqlTransaction transaction
-        )
+         string District, string Division, string PaymentMode, string InspectionRemarks, string CreatedBy,
+         decimal TotalAmount, string para_Assigned, string transcationId, string TranscationDate, int InspectID,
+         int ServiceType, SqlTransaction transaction
+         )
         {
             SqlCommand cmd = new SqlCommand("sp_InsertInspectionData_NewCodeForMultiple_Lift", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -8010,15 +8010,6 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             cmd.Parameters.AddWithValue("@District ", District);
             cmd.Parameters.AddWithValue("@Division ", Division);
             cmd.Parameters.AddWithValue("@PaymentMode ", PaymentMode);
-            DateTime SubmitionDate;
-            if (DateTime.TryParse(DateOfSubmission, out SubmitionDate) && SubmitionDate != DateTime.MinValue)
-            {
-                cmd.Parameters.AddWithValue("@DateOfSubmission", SubmitionDate);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@DateOfSubmission", DBNull.Value);
-            }
             cmd.Parameters.AddWithValue("@InspectionRemarks ", InspectionRemarks);
             cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
             cmd.Parameters.AddWithValue("@TransactionId ", transcationId);
@@ -8032,7 +8023,6 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             cmd.Parameters.Add(outputParam);
             cmd.ExecuteNonQuery();
         }
-
         public void InsertPaymentHistory_Lift(string IntimationId, int count, int InstallationTypeId, string CreatedBy)
         {
              DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "update_InstallationHistory_NewInspection", IntimationId, count, InstallationTypeId, CreatedBy);
@@ -8390,8 +8380,8 @@ string AcceptedOrReReturn, string Reason, string ReasonType)
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_DocumentGridwithOutChallan");
         }
         public string InsertInspectionDataForPeriodic_LiftInspection(string ApplicantType, string InstallationType, string District, string Division,
-       string PaymentMode, string InspectionRemarks, string CreatedBy, decimal TotalAmount, string para_Assigned,
-       string transcationId, DateTime TranscationDate, int InspectID, int ServiceType, SqlTransaction transaction)
+  string PaymentMode, string InspectionRemarks, string CreatedBy, decimal TotalAmount, string para_Assigned,
+  string transcationId, DateTime TranscationDate, int InspectID, int ServiceType, SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertInspectionDataForPeriodic_LiftInspection", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -8403,7 +8393,8 @@ string AcceptedOrReReturn, string Reason, string ReasonType)
             cmd.Parameters.AddWithValue("@PaymentMode", PaymentMode);
             cmd.Parameters.AddWithValue("@InspectionRemarks", InspectionRemarks);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
-            cmd.Parameters.AddWithValue("@TransactionId", transcationId);
+
+            cmd.Parameters.AddWithValue("@TransactionId", String.IsNullOrEmpty(transcationId) ? DBNull.Value : (object)transcationId);
             cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
             cmd.Parameters.AddWithValue("@AssignTo", para_Assigned);
             cmd.Parameters.AddWithValue("@TransctionDate", TranscationDate);
@@ -8450,6 +8441,109 @@ string AcceptedOrReReturn, string Reason, string ReasonType)
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             cmd.ExecuteNonQuery();
         }
+
+
+        ////Aslam
+
+        public List<Industry_Api_Post_DataformatModel> GetIndustry_OutgoingRequestFormat_Sld(int _inspectionIdparams, string _actionType, string _projectId = null, string _serviceId = null, string _PanNo = null)
+        {
+            List<Industry_Api_Post_DataformatModel> models = new List<Industry_Api_Post_DataformatModel>();
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand("sp_Industry_Create_OutgoingRequest_Format_Sld", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@InspectionId", _inspectionIdparams);
+                    cmd.Parameters.AddWithValue("@ActionType", _actionType);
+                    cmd.Parameters.AddWithValue("@ProjectId", (object)_projectId ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@ServiceId", (object)_serviceId ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@PanNo", (object)_PanNo ?? DBNull.Value);
+
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Industry_Api_Post_DataformatModel model = new Industry_Api_Post_DataformatModel
+                            {
+                                PremisesType = reader["PremisesType"] != DBNull.Value ? reader["PremisesType"].ToString() : null,
+                                InspectionId = Convert.ToInt32(reader["InspectionId"]),
+                                InspectionLogId = Convert.ToInt32(reader["InspectionLogId"]),
+                                IncomingJsonId = Convert.ToInt32(reader["IncomingJsonId"]),
+                                ActionTaken = reader["ActionTaken"].ToString(),
+                                CommentByUserLogin = reader["CommentByUserLogin"].ToString(),
+                                CommentDate = Convert.ToDateTime(reader["CommentDate"]),
+                                Comments = reader["Comments"].ToString(),
+                                Id = reader["Id"].ToString(),
+                                ProjectId = reader["ProjectId"].ToString(),
+                                ServiceId = reader["ServiceId"].ToString()
+                            };
+
+                            models.Add(model);
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            return models;
+            //return null;
+        }
+
+
+        public List<Industry_Api_Post_DataformatModel> GetIndustry_OutgoingRequestFormat(int _inspectionIdparams, string _actionType, string _projectId = null, string _serviceId = null, string _PanNo = null)
+        {
+            List<Industry_Api_Post_DataformatModel> models = new List<Industry_Api_Post_DataformatModel>();
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand("sp_Industry_Create_OutgoingRequest_Format", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@InspectionId", _inspectionIdparams);
+                    cmd.Parameters.AddWithValue("@ActionType", _actionType);
+                    cmd.Parameters.AddWithValue("@ProjectId", (object)_projectId ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@ServiceId", (object)_serviceId ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@PanNo", (object)_PanNo ?? DBNull.Value);
+
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Industry_Api_Post_DataformatModel model = new Industry_Api_Post_DataformatModel
+                            {
+                                PremisesType = reader["PremisesType"] != DBNull.Value ? reader["PremisesType"].ToString() : null,
+                                InspectionId = Convert.ToInt32(reader["InspectionId"]),
+                                InspectionLogId = Convert.ToInt32(reader["InspectionLogId"]),
+                                IncomingJsonId = Convert.ToInt32(reader["IncomingJsonId"]),
+                                ActionTaken = reader["ActionTaken"].ToString(),
+                                CommentByUserLogin = reader["CommentByUserLogin"].ToString(),
+                                CommentDate = Convert.ToDateTime(reader["CommentDate"]),
+                                Comments = reader["Comments"].ToString(),
+                                Id = reader["Id"].ToString(),
+                                ProjectId = reader["ProjectId"].ToString(),
+                                ServiceId = reader["ServiceId"].ToString()
+                            };
+
+                            models.Add(model);
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            return models;
+            //return null;
+        }
+
+        ///
+
     }
 }
 

@@ -120,6 +120,18 @@
                 <h7 class="card-title fw-semibold mb-4">WORK INTIMATION DETAILS</h7>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row">
+                         <div class="col-md-4">
+                     <label>
+                         Inspection Type
+              
+                     </label>
+                    <%-- <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" disabled="true" Style="width: 100% !important;" ID="ddlInspectionType" TabIndex="2" runat="server" >
+                         <asp:ListItem Text="New" Value="0"></asp:ListItem>
+                         <asp:ListItem Text="Existing" Value="1"></asp:ListItem>
+                     </asp:DropDownList>--%>
+                   <asp:TextBox class="form-control" ID="TxtInspectionType" autocomplete="off" readOnly="true" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                  
+                 </div>
                         <div class="col-md-4">
                             <label>Electrical Installation For</label>
                             <asp:DropDownList ID="ddlworktype" runat="server" AutoPostBack="true" disabled class="form-control  select-form select2" Style="width: 100% !important;">
@@ -142,12 +154,7 @@
                                 ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">*</asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-md-4">
-                            <label for="Phone">Contact No.</label>
-                            <asp:TextBox class="form-control" ID="txtPhone" readOnly="true" onKeyPress="return isNumberKey(event);" TabIndex="5"
-                                onkeyup="return isvalidphoneno();" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <span id="lblErrorContect" style="color: red"></span>
-                        </div>
+                        
                     </div>
                     <div class="row" style="margin-top: -20px">
                         <div class="col-8">
@@ -175,20 +182,20 @@
                                     <%--<span id="lblError" style="color: red"></span>--%>
                                 </div>
                         <div class="col-md-4">
-                            <label>Type of Premises</label>
-                            <asp:TextBox class="form-control" ID="txtPremises" readOnly="true" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" TabIndex="8" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                   
-                    </div>
+    <label for="Phone">Contact No.</label>
+    <asp:TextBox class="form-control" ID="txtPhone" readOnly="true" onKeyPress="return isNumberKey(event);" TabIndex="5"
+        onkeyup="return isvalidphoneno();" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+    <span id="lblErrorContect" style="color: red"></span>
+</div>
+                      
                         </div>
                     <div class="row">
-                        <div class="col-md-4" id="OtherPremises" runat="server">
-                            <label for="OtherPremises">Other Premises</label>
-                            <asp:TextBox class="form-control" ID="txtOtherPremises" readOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtOtherPremises"
-                                ErrorMessage="Please Enter Premises" ValidationGroup="Submit" ForeColor="Red">(*)</asp:RequiredFieldValidator>
-
-                        </div>
-
+                            <div class="col-md-4">
+        <label>Type of Premises</label>
+        <asp:TextBox class="form-control" ID="txtPremises" readOnly="true" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" TabIndex="8" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+               
+</div>
+                      
                         <div class="col-md-4">
                             <label>Highest Voltage Level of Work</label>
                              <asp:TextBox class="form-control" ID="ddVoltageLevel" readOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -209,17 +216,39 @@
                                     <asp:TextBox class="form-control" ID="txtTanNo" MaxLength="10" readOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                   
                         </div>
+                        </div>
+                        <div class="row">
                                    <div class="col-md-4">
                                     <label>
                                         Applicant Type
-                                       <samp style="color: red">* </samp>
+                                      
                                     </label>
                                    <asp:TextBox class="form-control" ID="txtApplicant" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                   
 
                                       </div>
+                         <div class="col-md-4">
+                       <label>
+                        Is there any Sanction Load Issue
+                      
+                    </label>
+                                                     <asp:TextBox class="form-control" ID="TxtSanction" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                                      <div class="row" runat="server" id="PowerUtility" visible="false">
+   <%-- <asp:RadioButtonList ID="RadioButtonList2"   runat="server" RepeatDirection="Horizontal" TabIndex="25">
+    <asp:ListItem Text="Yes" Value="1" ></asp:ListItem>
+    <asp:ListItem Text="No" Value="0"  style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
+</asp:RadioButtonList>--%>
+                 </div>
+                                                     <div class="col-md-4">
+                       <label>
+                       Total Capacity to be installed
+                      
+                    </label>
+                                                     <asp:TextBox class="form-control" ID="txtCapacity" ReadOnly="true"  onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+  
+                 </div>
+                                      <div class="row" runat="server" id="PowerUtility" visible="false" style="padding-left:15px; padding-right:15px;">
                                         <div class="col-md-4">
                                             <label>
                                                 Name Of Power Utility
@@ -248,7 +277,7 @@
                                         <div class="col-md-4">
                                             <label>
                                                 Circle
-                                                <samp style="color: red">* </samp>
+                                              
                                             </label>
                                          
                                             <asp:TextBox class="form-control" ID="TxtCircle" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -256,7 +285,7 @@
                                         <div class="col-md-4">
                                             <label>
                                                 Division
-                                                <samp style="color: red">* </samp>
+                                           
                                             </label>
                                          
                                              <asp:TextBox class="form-control" ID="TxtDivision" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -264,7 +293,7 @@
                                         <div class="col-md-4">
                                             <label>
                                                 Sub-Division
-                                                <samp style="color: red">* </samp>
+                                             
                                             </label>
                                          
                                              <asp:TextBox class="form-control" ID="TxtSubDivision" MaxLength="10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" TabIndex="11" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -274,17 +303,7 @@
 
 
 
-                         <div class="col-md-4">
-                                               <label>
-                                                Is there any Sanction Load Issue
-                                                <samp style="color: red">* </samp>
-                                            </label>
-                                          
-                            <asp:RadioButtonList ID="RadioButtonList2"   runat="server" RepeatDirection="Horizontal" TabIndex="25">
-                            <asp:ListItem Text="Yes" Value="1" ></asp:ListItem>
-                            <asp:ListItem Text="No" Value="0"  style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
-                        </asp:RadioButtonList>
-                                         </div>
+                         
 
                    </div>
                         <div class="row">
@@ -435,11 +454,11 @@
                                 </div>
                             </div>
                 </div>
+               <%-- <div id="WorkSchduled" runat="server">--%>
                 <h7 class="card-title fw-semibold mb-4">Work Schedule</h7>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
 
-                    <%--<asp:UpdatePanel ID="UpdatePanel6" runat="server">
-                        <ContentTemplate>--%>
+                 
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="StartDate">Work Start Date</label>
@@ -449,7 +468,7 @@
                                     <label for="CompletitionDate">Tentative Work Completition Date</label>
                                     <asp:TextBox class="form-control" ID="txtCompletitionDate" readOnly="true" autocomplete="off"  runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" id="ddlAnyWork_DivId" runat="server">
                                     <label>If any work order issued by Department/Owner</label>
                                     <asp:DropDownList class="form-control  select-form select2" ID="ddlAnyWork" disabled Style="width: 100% !important;" runat="server" TabIndex="16" AutoPostBack="true">
                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -459,7 +478,7 @@
                                 </div>
 
 
-                            </div>
+                            </div>  
 
                             <div class="row">
                                 <div class="col-md-4" id="hiddenfield" runat="server">
@@ -478,37 +497,24 @@
 
                                 </div>
                             </div>
-                       <%-- </ContentTemplate>
-                    </asp:UpdatePanel>--%>
+                     
                 </div>
+               <%-- </div>--%>
                 <div>
+                    <div id="AssignedSupervisor" runat="server">
                     <h7 class="card-title fw-semibold mb-4">Attached Supervisor/Wireman Details</h7>
                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                         <div class="row">
                               <div class="col-md-12" >
                             <asp:GridView ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false">
                                 <Columns>
-                                    <%-- <asp:TemplateField>
-                                        <HeaderTemplate>
-                                            <asp:CheckBox ID="chkSelectAll" runat="server" />
-                                        </HeaderTemplate>
-                                        <ItemTemplate>
-                                            <asp:CheckBox ID="CheckBox1" runat="server" HorizontalAlign="center" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>--%>
+                                   
                                     <asp:TemplateField HeaderText="REID" Visible="false">
                                         <ItemTemplate>
                                             <asp:Label ID="lblREID" runat="server" Text='<%#Eval("REID") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                  <%--  <asp:BoundField DataField="REID" HeaderText="ID">
-                                        <HeaderStyle HorizontalAlign="center" Width="10%" />
-                                        <ItemStyle HorizontalAlign="center" Width="10%" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="Category" HeaderText="Category">
-                                        <HeaderStyle HorizontalAlign="center" Width="10%" />
-                                        <ItemStyle HorizontalAlign="center" Width="10%" />
-                                    </asp:BoundField>--%>
+                                
                                     <asp:BoundField DataField="Name" HeaderText="Name">
                                         <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
                                         <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
@@ -519,18 +525,12 @@
                                         <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
                                     </asp:BoundField>
 
-                                    <%--<asp:BoundField DataField="DateOfExpiry" HeaderText="Expiry Date">
-                                        <HeaderStyle HorizontalAlign="right" Width="24%" />
-                                        <ItemStyle HorizontalAlign="right" Width="24%" />
-                                    </asp:BoundField>--%>
+                                  
                                        <asp:BoundField DataField="DateOfExpiry" HeaderText="Valid Upto">
                                         <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter"/>
                                         <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
                                     </asp:BoundField>
-                                   <%-- <asp:BoundField DataField="LicenseNo" HeaderText="License">
-                                        <HeaderStyle HorizontalAlign="right" Width="20%" />
-                                        <ItemStyle HorizontalAlign="right" Width="20%" />
-                                    </asp:BoundField>--%>
+                               
                                 </Columns>
                                 <FooterStyle BackColor="White" ForeColor="#000066" />
                                 <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -545,6 +545,7 @@
                                   </div>
                         </div>
                     </div>
+                        </div>
                      <h7 class="card-title fw-semibold mb-4">Work Intimation Created Details</h7>
  <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
      <div class="row">

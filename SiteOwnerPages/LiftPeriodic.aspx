@@ -375,14 +375,7 @@
                                             <HeaderStyle HorizontalAlign="Left" Width="70%" CssClass="headercolor leftalign" />
                                             <ItemStyle HorizontalAlign="Left" Width="70%" />
                                         </asp:BoundField>
-                                        <%--  <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                                            <ItemTemplate>
-                                                <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select"> View document </asp:LinkButton>
-                                            </ItemTemplate>
-                                            <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
-                                            <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                        </asp:TemplateField>--%>
-                                        <asp:TemplateField HeaderText="File Upload (1MB PDF Only)">
+                                       <asp:TemplateField HeaderText="File Upload (1MB PDF Only)">
                                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
                                             <ItemTemplate>
                                                 <%--<input type="hidden" id="Req" runat="server" value='<%# Eval("Req") %>' />--%>
@@ -390,6 +383,14 @@
                                                 <input type="hidden" id="DocumentName" data-req='<%# Eval("DocumentName") %>' />
                                                 <input type="hidden" id="DocumentID" runat="server" value='<%# Eval("DocumentID") %>' />
                                                 <asp:FileUpload ID="FileUpload1" runat="server" OnClientClick="return validateFileUpload(this);" onchange="return validateFileUpload(this);" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+
+                                        <asp:TemplateField HeaderText="Id" Visible="False">
+                                            <ItemTemplate>
+                                                <asp:Label ID="LblDocumentID" runat="server" Text='<%#Eval("DocumentID") %>'></asp:Label>
+                                                <asp:Label ID="LblDocumentName" runat="server" Text='<%#Eval("DocumentName") %>'></asp:Label>
+                                                <asp:Label ID="LblShortName" runat="server" Text='<%#Eval("DocumentShortName") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
@@ -418,14 +419,14 @@
                                     Transaction Id<samp style="color: red"> * </samp>
                                 </label>
                                 <asp:TextBox ID="txttransactionId" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Id</asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                             </div>
                             <div class="col-4">
                                 <label>
                                     Transaction Date<samp style="color: red"> * </samp>
                                 </label>
                                 <asp:TextBox ID="txttransactionDate" onfocus="disableFutureDates()" min='0000-01-01' onkeydown="return false;" max='9999-01-01' TextMode="Date" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Date</asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                             </div>
                             <div class="col-4" style="margin-top: auto; margin-bottom: auto;">
                                 <label>
@@ -448,7 +449,7 @@
                                 Inspection Remarks<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtInspectionRemarks" runat="server" autocomplete="off" MaxLength="500" Style="margin-left: 18px" TabIndex="3"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtInspectionRemarks" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Inspection Remarks</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtInspectionRemarks" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                 </div>
@@ -491,6 +492,14 @@
             }
 
             return true;
+        }
+    </script>
+    <script type="text/javascript">
+        function alertWithRedirectdata() {
+            if (confirm('Inspection Applied successfully.')) {
+                window.location.href = "/SiteOwnerPages/LiftPeriodic.aspx";
+            } else {
+            }
         }
     </script>
 </asp:Content>

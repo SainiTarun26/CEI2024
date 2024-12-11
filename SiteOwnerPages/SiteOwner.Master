@@ -408,7 +408,7 @@
                                     <ul class="nav flex-column sub-menu">
                                         <li class="nav-item"><a class="nav-link" href="LiftSiteDetails.aspx">Site Details</a></li>
                                         <li class="nav-item"><a class="nav-link" href="LiftIntimations.aspx">Lift Details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/CreateTestReports.aspx">For New Installation</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/CreateTestReport_Lift.aspx">For New Installation</a></li>
                                     </ul>
 
                                 </div>
