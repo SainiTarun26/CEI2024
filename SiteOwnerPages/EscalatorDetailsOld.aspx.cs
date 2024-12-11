@@ -1,15 +1,19 @@
 ﻿using CEI_PRoject;
+using CEI_PRoject.Admin;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace CEIHaryana.SiteOwnerPages
 {
-    public partial class EscalatorDetails1 : System.Web.UI.Page
+    public partial class EscalatorDetails : System.Web.UI.Page
     {
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
@@ -193,7 +197,7 @@ namespace CEIHaryana.SiteOwnerPages
                 decimal ParseOrDefault(string input, decimal defaultValue = 0)
                 {
                     return decimal.TryParse(input, out decimal result) ? result : defaultValue;
-                }
+                } 
                 int ParseintOrDefault(string input, int defaultValue = 0)
                 {
                     return int.TryParse(input, out int result) ? result : defaultValue;
@@ -205,7 +209,7 @@ namespace CEIHaryana.SiteOwnerPages
                         txtAgentPhone.Text, DateTime.Parse(txtErectionDate.Text), txtMake.Text, txtSerialNo.Text, ddlEscalatorType.SelectedItem.ToString(), "",
                         ParseOrDefault(""), txtMaxPersonCapacity.Text, ParseOrDefault(txtWeight.Text), ParseOrDefault(txtCounterWeight.Text),
                         ParseOrDefault(txtPitDepth.Text), ParseOrDefault(txtTravelDistance.Text), ParseOrDefault(txtFloorsServed.Text),
-                        ParseOrDefault(txtTotalHeadRoom.Text), txtTypeofControll.Text, txtMakeMainBreaker.Text, txtTypeMainBreaker.Text,
+                        ParseOrDefault(txtTotalHeadRoom.Text), txtTypeofControll.Text, txtMakeMainBreaker.Text, txtTypeMainBreaker.Text, 
                         ddlPoleMainBreaker.SelectedItem.ToString(), txtratingMainBreaker.Text,
                         txtCapacityMainBreaker.Text, txtMakeRCCBMainBreaker.Text, ddlPolesRCCBMainBreaker.SelectedItem.ToString(),
                         txtRatingRCCBMainBreaker.Text, txtfaultratingRCCBMainBreaker.Text, txtMakeLoadBreaker.Text, txtTypeLoadBreaker.Text,

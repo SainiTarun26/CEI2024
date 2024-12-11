@@ -1953,6 +1953,7 @@
     <Content Include="SiteOwnerPages\CreateTestReports_Industry.aspx" />
     <Content Include="SiteOwnerPages\CreateTestReport_Lift.aspx" />
     <Content Include="SiteOwnerPages\EscalatorDetails.aspx" />
+    <Content Include="SiteOwnerPages\EscalatorDetailsOld.aspx" />
     <Content Include="SiteOwnerPages\ExistingInspectionData.aspx" />
     <Content Include="SiteOwnerPages\ExistingInspectionRequest.aspx" />
     <Content Include="SiteOwnerPages\GenerateInspection.aspx" />
@@ -1994,6 +1995,9 @@
     <Content Include="SiteOwnerPages\TestReport.aspx" />
     <Content Include="SiteOwnerPages\TestReportData.aspx" />
     <Content Include="SiteOwnerPages\ViewLiftPeriodicReport.aspx" />
+    <Content Include="StaticPage1.aspx" />
+    <Content Include="StaticPage2.aspx" />
+    <Content Include="StaticPage3.aspx" />
     <Content Include="Supervisor\GeneratingSetTestReport.aspx" />
     <Content Include="Supervisor\InstallationDetails.aspx" />
     <Content Include="Supervisor\IntimationData.aspx" />
@@ -2013,6 +2017,7 @@
     <Content Include="Supervisor\TestReportForm1.aspx" />
     <Content Include="Supervisor\TestReportHistory.aspx" />
     <Content Include="Supervisor\TestReportIntimationHistory.aspx" />
+    <Content Include="TestReportModal\EscalatorTestReportModal.aspx" />
     <Content Include="TestReportModal\GeneratingSetTestReportModal.aspx" />
     <Content Include="TestReportModal\LiftPeriodicTestReportModal.aspx" />
     <Content Include="TestReportModal\LiftTestReportModal.aspx" />
@@ -3056,6 +3061,13 @@
     <Compile Include="SiteOwnerPages\EscalatorDetails.aspx.designer.cs">
       <DependentUpon>EscalatorDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SiteOwnerPages\EscalatorDetailsOld.aspx.cs">
+      <DependentUpon>EscalatorDetailsOld.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\EscalatorDetailsOld.aspx.designer.cs">
+      <DependentUpon>EscalatorDetailsOld.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteOwnerPages\ExistingInspectionData.aspx.cs">
       <DependentUpon>ExistingInspectionData.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3350,6 +3362,27 @@
     <Compile Include="SiteOwnerPages\ViewLiftPeriodicReport.aspx.designer.cs">
       <DependentUpon>ViewLiftPeriodicReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="StaticPage1.aspx.cs">
+      <DependentUpon>StaticPage1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StaticPage1.aspx.designer.cs">
+      <DependentUpon>StaticPage1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StaticPage2.aspx.cs">
+      <DependentUpon>StaticPage2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StaticPage2.aspx.designer.cs">
+      <DependentUpon>StaticPage2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StaticPage3.aspx.cs">
+      <DependentUpon>StaticPage3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StaticPage3.aspx.designer.cs">
+      <DependentUpon>StaticPage3.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Supervisor\GeneratingSetTestReport.aspx.cs">
       <DependentUpon>GeneratingSetTestReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3489,6 +3522,13 @@
     </Compile>
     <Compile Include="Supervisor\TestReportIntimationHistory.aspx.designer.cs">
       <DependentUpon>TestReportIntimationHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestReportModal\EscalatorTestReportModal.aspx.cs">
+      <DependentUpon>EscalatorTestReportModal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestReportModal\EscalatorTestReportModal.aspx.designer.cs">
+      <DependentUpon>EscalatorTestReportModal.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestReportModal\GeneratingSetTestReportModal.aspx.cs">
       <DependentUpon>GeneratingSetTestReportModal.aspx</DependentUpon>
