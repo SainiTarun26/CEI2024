@@ -1331,12 +1331,23 @@
     <script src="/Assets/js/Chart.roundedBarCharts.js">
 
     </script>
-    <script type="text/javascript">
-        window.onload = function () {
-            var today = new Date().toISOString().split('T')[0];
-            document.getElementById('<%= txtErectionDate.ClientID %>').setAttribute('max', today);
-        };
-    </script>
+  <script type="text/javascript">
+      function setMaxErectionDate() {
+          var today = new Date().toISOString().split('T')[0];
+          document.getElementById('<%= txtErectionDate.ClientID %>').setAttribute('max', today);
+      }
+
+      // Run on page load
+      window.onload = function () {
+          setMaxErectionDate();
+      };
+
+      // Attach to UpdatePanel partial postback events
+      Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
+          setMaxErectionDate();
+      });
+  </script>
+
     <script>
         function validateFileType(fileInput) {
             var allowedExtensions = /(\.pdf)$/i;

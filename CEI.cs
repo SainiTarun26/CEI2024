@@ -7808,6 +7808,38 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                 Valueinohms4, GetValue(EarthingType5), Valueinohms5, GetValue(EarthingType6), Valueinohms6, GetValue(EarthingType7), 
                 Valueinohms7, GetValue(EarthingType8), Valueinohms8, GetValue(EarthingType9), Valueinohms9, GetValue(EarthingType10), 
                 Valueinohms10, CreatedBy, ContractorName, ContractorLicenseNumber, ContractorLicenseExpiryDate, SupervisorName, SupervisorLicenseNumber, SupervisorLicenseExpiryDate);
+        } 
+        public int InsertNewEscalatorData(string count, string IntimationId, string NameandAddressofLocalAgent, string NameofLocalAgent
+, string AddressofLocalAgent, string ContactNoofLocalAgent, DateTime DateofErection, string Make,string SerialNo, string TypeofEscalatorErected, string ContractSpeedofEscalatorMtrPrSec
+, decimal ContractLoadofEscalatorInKg, string MaxPersonCapacitywithEscalatorOperator, decimal WeightofEscalatorCarwithContractLoadInKg, decimal WeightofCounterWeightInkg
+, decimal DepthofPitInmm, decimal TravelDistanceofEscalatorInMtr, decimal NoofFloorsServedInMtr, decimal TotalHeadRoomInmm, string TypeOfControl, 
+            string MakeMainBreaker,
+string TypeMainBreaker, string PolesMainBreaker, string CurrentRatingInAmps, string BreakingCapacityInKA, string MakeRCCBMainBreaker,
+string PolesRCCBMainBreaker, string CurrentRCCBRatingInAmps, string FaultRCCBCurrentRating, string LoadMakeMainBreaker
+, string LoadTypeMainBreaker, string LoadPolesMainBreaker, string LoadCurrentRatingInAmps, string LoadBreakingCapacityInKA,
+string LoadMakeRCCBMainBreaker, string LoadPolesRCCBMainBreaker
+, string LoadRCCBCurrentRatingInAmps, string LoadRCCBFaultCurrentRating, string ForWholeInstallation, string NeutralandPhaseohms, string EarthandPhasemohms, int RedPhaseYellowPhaseInMohms, int RedPhaseBluePhaseInMohms
+, int YellowPhaseBluePhaseInMohms, int RedPhaseEarthWireInMohms, int YellowPhaseEarthWireInMohms, int BluePhaseEarthWirenMohms, string NumberofEarthing
+, string EarthingType1, decimal Valueinohms1, string EarthingType2, decimal Valueinohms2, string EarthingType3, decimal Valueinohms3, string EarthingType4,
+decimal Valueinohms4, string EarthingType5
+, decimal Valueinohms5, string EarthingType6, decimal Valueinohms6, string EarthingType7, decimal Valueinohms7, string EarthingType8, decimal Valueinohms8,
+string EarthingType9, decimal Valueinohms9
+, string EarthingType10, decimal Valueinohms10, string CreatedBy, string ContractorName, string ContractorLicenseNumber, DateTime ContractorLicenseExpiryDate,
+string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicenseExpiryDate)
+        {
+            return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+                "sp_InsertEscalatorTestReportdata", count, IntimationId, NameandAddressofLocalAgent, NameofLocalAgent
+, AddressofLocalAgent, ContactNoofLocalAgent, DateofErection,  Make, SerialNo,TypeofEscalatorErected, ContractSpeedofEscalatorMtrPrSec
+, ContractLoadofEscalatorInKg, MaxPersonCapacitywithEscalatorOperator, WeightofEscalatorCarwithContractLoadInKg, WeightofCounterWeightInkg
+, DepthofPitInmm, TravelDistanceofEscalatorInMtr, NoofFloorsServedInMtr, TotalHeadRoomInmm, TypeOfControl, MakeMainBreaker, TypeMainBreaker, PolesMainBreaker, CurrentRatingInAmps
+, BreakingCapacityInKA, MakeRCCBMainBreaker, PolesRCCBMainBreaker, CurrentRCCBRatingInAmps, FaultRCCBCurrentRating, LoadMakeMainBreaker
+, LoadTypeMainBreaker, LoadPolesMainBreaker, LoadCurrentRatingInAmps, LoadBreakingCapacityInKA, LoadMakeRCCBMainBreaker, LoadPolesRCCBMainBreaker
+, LoadRCCBCurrentRatingInAmps, LoadRCCBFaultCurrentRating, ForWholeInstallation, NeutralandPhaseohms, EarthandPhasemohms, RedPhaseYellowPhaseInMohms, RedPhaseBluePhaseInMohms
+, YellowPhaseBluePhaseInMohms, RedPhaseEarthWireInMohms, YellowPhaseEarthWireInMohms, BluePhaseEarthWirenMohms, NumberofEarthing
+, EarthingType1, Valueinohms1, GetValue(EarthingType2), Valueinohms2, GetValue(EarthingType3), Valueinohms3, GetValue(EarthingType4), 
+                Valueinohms4, GetValue(EarthingType5), Valueinohms5, GetValue(EarthingType6), Valueinohms6, GetValue(EarthingType7), 
+                Valueinohms7, GetValue(EarthingType8), Valueinohms8, GetValue(EarthingType9), Valueinohms9, GetValue(EarthingType10), 
+                Valueinohms10, CreatedBy, ContractorName, ContractorLicenseNumber, ContractorLicenseExpiryDate, SupervisorName, SupervisorLicenseNumber, SupervisorLicenseExpiryDate);
         }
         private object GetValue(string value)
         {
@@ -8395,6 +8427,28 @@ string AcceptedOrReReturn, string Reason, string ReasonType)
         public DataSet TohandleUncheckedCheckbox(string RegistrationNo, string CreatedBy)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_TohandleUncheckedCheckbox", RegistrationNo, CreatedBy);
+        }
+        public void InsertPeriodicLiftData(string InstallationType, string RegistrationNo, string PreviousChallanDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
+ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, string Weight, string ApplicantDistrict, string SiteAddress, string CreatedBy, SqlTransaction transaction)
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertPeriodicLiftData", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+            cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
+            cmd.Parameters.AddWithValue("@PreviousChallanDate", PreviousChallanDate);
+            cmd.Parameters.AddWithValue("@PreviousChallanUpload", PreviousChallanUpload);
+            cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate);
+            cmd.Parameters.AddWithValue("@ErectionDate", ErectionDate);
+            cmd.Parameters.AddWithValue("@Make", Make);
+            cmd.Parameters.AddWithValue("@SerialNo", SerialNo);
+            cmd.Parameters.AddWithValue("@TypeOfLift", TypeOfLift);
+            cmd.Parameters.AddWithValue("@TypeOfControl", TypeOfControl);
+            cmd.Parameters.AddWithValue("@Capacity", Capacity);
+            cmd.Parameters.AddWithValue("@Weight", Weight);
+            cmd.Parameters.AddWithValue("@ApplicantDistrict", ApplicantDistrict);
+            cmd.Parameters.AddWithValue("@SiteAddress", SiteAddress);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            cmd.ExecuteNonQuery();
         }
     }
 }

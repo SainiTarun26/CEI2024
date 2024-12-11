@@ -157,6 +157,12 @@
         .card {
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         }
+
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 5px;
+            box-sizing: border-box;
+            padding: 0;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -197,9 +203,16 @@
                         <asp:RequiredFieldValidator ID="RfvtxtRegistrationNo" ControlToValidate="txtRegistrationNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
                     <div class="col-md-1" style="margin-top: 31px; margin-bottom: auto; padding-left: 0px;">
-                        <asp:Button ID="btnSearch" Class="btn btn-primary" runat="server" Text="Search" Style="height: 30px; padding: 0px 15px 0px 15px;" OnClick="btnSearch_Click" />
+                        <asp:Button ID="btnSearch" Class="btn btn-primary" runat="server" Text="Search" Style="height: 30px; padding: 0px 15px 0px 15px;" />
                     </div>
-                    <div class="col-md-4" runat="server">
+                     <div class="col-md-2" runat="server">
+     <label>
+        Last Approval Date<samp style="color: red"> * </samp>
+     </label>
+     <asp:TextBox type="date" class="form-control" ID="txtLastApprovalDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
+     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="txtLastApprovalDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+ </div>
+                    <div class="col-md-2" runat="server">
                         <label>
                             Previous Challan Date<samp style="color: red"> * </samp>
                         </label>
@@ -226,9 +239,9 @@
                     <div class="card" id="divdetails" runat="server" visible="false" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                         <div class="row">
                             <div class="col-md-4" runat="server">
-                                <label>
-                                    Make<samp style="color: red"> * </samp>
-                                </label>
+                                <label id="lblMake" runat="server">
+                                    Make
+                                </label><samp style="color: red">* </samp>
                                 <asp:TextBox class="form-control" ID="txtMake" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RfvtxtMake" ControlToValidate="txtMake" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
@@ -239,14 +252,31 @@
                                 <asp:TextBox class="form-control" ID="txtSerialNo" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RfvtxtSerialNo" ControlToValidate="txtSerialNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
+                            <div class="col-md-4" runat="server">
+                                <label>
+                                    Date of Erection<samp style="color: red"> * </samp>
+                                </label>
+                                <asp:TextBox type="date" class="form-control" ID="txtDateofErection" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ControlToValidate="txtDateofErection" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                            </div>
                             <div class="col-md-4">
+                                <label id="lblTypeOfLift" runat="server">
+                                    Type of Lift
+                                </label> <samp style="color: red">* </samp>
+                                <asp:RadioButtonList ID="RadioBtnType" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                                    <asp:ListItem Text="Passenger lift" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
+                                    <asp:ListItem Text="Goods Lift" Value="1" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
+                                </asp:RadioButtonList>
+                                <asp:RequiredFieldValidator ID="rvfRadioButtonList" ErrorMessage="Choose one" ControlToValidate="RadioBtnType" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />
+                            </div>
+                            <%--<div class="col-md-4">
                                 <label id="lblTypeOfLift" runat="server">
                                     Type of Lift
                             <samp style="color: red">* </samp>
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtLiftType" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RfvtxtLiftType" ControlToValidate="txtLiftType" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                            </div>
+                            </div>--%>
                             <div class="col-md-4" runat="server">
                                 <label>
                                     Type of Control<samp style="color: red"> * </samp>
@@ -278,7 +308,7 @@
 
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator25" ErrorMessage="Required" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                             </div>
-                            <div class="col-md-8" runat="server">
+                            <div class="col-md-12" runat="server">
                                 <label>
                                     Site Address<samp style="color: red"> * </samp>
                                 </label>
@@ -344,60 +374,60 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                              <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-      <ContentTemplate>
-                            <div class="row">
-                                <div class="col-md-4" runat="server">
-                                    <asp:TextBox class="form-control" ID="txtSearch" autocomplete="off" placeholder="Search" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtSearch" runat="server" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                                </div>
-                                <div class="col-md-4" style="margin-bottom: auto; padding-left: 0px;">
-                                    <asp:Button ID="btn" Class="btn btn-primary" runat="server" Text="Search" OnClick="btnModalSearch_Click" Style="height: 30px; padding: 0px 15px 0px 15px;" />
-                                </div>
-                                
-                            </div>
-          <hr />
-          <div class="row">
-    <%--Grid to filter record according to Registration No--%>
-              <div class="col-md-12">
-    <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" AutoGenerateColumns="false">
-        <PagerStyle CssClass="pagination-ys" />
-        <Columns>
-            <asp:BoundField DataField="MakeMainBreaker" HeaderText="Make">
-                <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
-                <ItemStyle HorizontalAlign="Left" Width="30%" />
-            </asp:BoundField>
-            <asp:BoundField DataField="TypeOfControl" HeaderText="Type Of Control">
-                <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
-                <ItemStyle HorizontalAlign="Left" Width="10%" />
-            </asp:BoundField>
-            <asp:BoundField DataField="MaxPersonCapacitywithLiftOperator" HeaderText="Capacity">
-                <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
-                <ItemStyle HorizontalAlign="Left" Width="10%" />
-            </asp:BoundField>
-            <asp:BoundField DataField="District" HeaderText="District">
-                <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
-                <ItemStyle HorizontalAlign="Left" Width="10%" />
-            </asp:BoundField>
-            <asp:BoundField DataField="Address" HeaderText="Address">
-                <HeaderStyle HorizontalAlign="Left" Width="40%" CssClass="headercolor leftalign" />
-                <ItemStyle HorizontalAlign="Left" Width="40%" />
-            </asp:BoundField>
-        </Columns>
-        <FooterStyle BackColor="White" ForeColor="#000066" />
-        <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-        <RowStyle ForeColor="#000066" />
-        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-        <SortedDescendingHeaderStyle BackColor="#00547E" />
-    </asp:GridView>
-                  </div>
-</div>
-          </ContentTemplate>
-                                  </asp:UpdatePanel>
+                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                <ContentTemplate>
+                                    <div class="row">
+                                        <div class="col-md-4" runat="server">
+                                            <asp:TextBox class="form-control" ID="txtSearch" autocomplete="off" placeholder="Search" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtSearch" runat="server" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-md-4" style="margin-bottom: auto; padding-left: 0px;">
+                                            <asp:Button ID="btn" Class="btn btn-primary" runat="server" Text="Search" OnClick="btnModalSearch_Click" Style="height: 30px; padding: 0px 15px 0px 15px;" />
+                                        </div>
+
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+                                        <%--Grid to filter record according to Registration No--%>
+                                        <div class="col-md-12">
+                                            <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" AutoGenerateColumns="false">
+                                                <PagerStyle CssClass="pagination-ys" />
+                                                <Columns>
+                                                    <asp:BoundField DataField="MakeMainBreaker" HeaderText="Make">
+                                                        <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
+                                                        <ItemStyle HorizontalAlign="Left" Width="30%" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="TypeOfControl" HeaderText="Type Of Control">
+                                                        <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
+                                                        <ItemStyle HorizontalAlign="Left" Width="10%" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="MaxPersonCapacitywithLiftOperator" HeaderText="Capacity">
+                                                        <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
+                                                        <ItemStyle HorizontalAlign="Left" Width="10%" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="District" HeaderText="District">
+                                                        <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
+                                                        <ItemStyle HorizontalAlign="Left" Width="10%" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="Address" HeaderText="Address">
+                                                        <HeaderStyle HorizontalAlign="Left" Width="40%" CssClass="headercolor leftalign" />
+                                                        <ItemStyle HorizontalAlign="Left" Width="40%" />
+                                                    </asp:BoundField>
+                                                </Columns>
+                                                <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                <RowStyle ForeColor="#000066" />
+                                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                            </asp:GridView>
+                                        </div>
+                                    </div>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
@@ -463,20 +493,20 @@
 
         // Attach the openModal function to the button
         document.getElementById('<%= btnSearch.ClientID %>').addEventListener("click", function (e) {
-    e.preventDefault(); // Prevent postback
+            e.preventDefault(); // Prevent postback
 
-    // Get the selected value of the dropdown
-          var ddlInstallationType = document.getElementById('<%= ddlInstallationType.ClientID %>');
-          var selectedValue = ddlInstallationType.value;
+            // Get the selected value of the dropdown
+            var ddlInstallationType = document.getElementById('<%= ddlInstallationType.ClientID %>');
+            var selectedValue = ddlInstallationType.value;
 
-          if (selectedValue === "0") {
-              // Show a message if the value is "0"
-              alert("Please select a valid Installation Type.");
-          } else {
-              // Open the modal if a valid value is selected
-              openModal();
-          }
-      });
+            if (selectedValue === "0") {
+                // Show a message if the value is "0"
+                alert("Please select a valid Installation Type.");
+            } else {
+                // Open the modal if a valid value is selected
+                openModal();
+            }
+        });
 
     </script>
 
@@ -505,4 +535,29 @@
             return true;
         }
     </script>
+    
+<script type="text/javascript">
+    // Function to set the max date to the current date
+    window.onload = function () {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+
+        // Set the max attribute of the date input field to the current date
+        document.getElementById('<%= txtPrevChallanDate.ClientID %>').setAttribute('max', today);
+        document.getElementById('<%= txtDateofErection.ClientID %>').setAttribute('max', today);
+        document.getElementById('<%= txtLastApprovalDate.ClientID %>').setAttribute('max', today);
+    };
+</script>
+     <script type="text/javascript">
+         function alertWithRedirectdata() {
+             if (confirm('Application Submitted successfully.')) {
+                 window.location.href = "/SiteOwnerPages/LiftPeriodicRenewal.aspx";
+             } else {
+             }
+         }
+     </script>
 </asp:Content>

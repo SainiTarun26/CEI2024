@@ -149,8 +149,8 @@ namespace CEIHaryana.SiteOwnerPages
                         return;
                     }
 
-                    CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtMake.Text,
-                                              txtSerialNo.Text, txtLiftType.Text, txtControlType.Text, txtCapacity.Text, txtWeight.Text, ddlDistrict.SelectedItem.ToString(), txtSiteAddress.Text, SiteOwnerID, transaction);
+                    CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
+                                              txtSerialNo.Text, RadioBtnType.SelectedItem.Text, txtControlType.Text, txtCapacity.Text, txtWeight.Text, ddlDistrict.SelectedItem.ToString(), txtSiteAddress.Text, SiteOwnerID, transaction);
 
                     // Upload Attachments
                     bool allDocumentsUploaded = true;
@@ -202,7 +202,11 @@ namespace CEIHaryana.SiteOwnerPages
                     }
 
                     transaction.Commit();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Success", "alert('Application Submitted successfully.');", true);
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "Success", "alert('Application Submitted successfully.');", true);
+                    //Response.Redirect("/SiteOwnerPages/LiftPeriodicRenewal.aspx", false);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+
+                    
                     Reset();
                 }
             }
@@ -230,12 +234,13 @@ namespace CEIHaryana.SiteOwnerPages
             txtPrevChallanDate.Text = "";
             txtMake.Text = "";
             txtSerialNo.Text = "";
-            txtLiftType.Text = "";
+            RadioBtnType.SelectedValue = "";
             txtControlType.Text = "";
             txtCapacity.Text = "";
             txtWeight.Text = "";
             ddlDistrict.SelectedValue = "0";
             txtSiteAddress.Text = "";
+            txtDateofErection.Text = "";
         }
 
         protected void ddlInstallationType_SelectedIndexChanged(object sender, EventArgs e)
@@ -256,6 +261,7 @@ namespace CEIHaryana.SiteOwnerPages
                 divdetails.Visible = true;
                 divEscalatorDetails.Visible = false;
                 lblTypeOfLift.InnerText = "Type of Lift";
+                lblMake.InnerText = "Make of Lift";
             }
             else if (selectedValue == "2")
             {
@@ -263,6 +269,7 @@ namespace CEIHaryana.SiteOwnerPages
                 divdetails.Visible = true;
                 divEscalatorDetails.Visible = true;
                 lblTypeOfLift.InnerText = "Type of Escalator";
+                lblMake.InnerText = "Make of Escalator";
             }
             else
             {
@@ -275,9 +282,9 @@ namespace CEIHaryana.SiteOwnerPages
             Response.Redirect("/SiteOwnerPages/LiftPeriodic.aspx", false);
         }
 
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-        }
+        //protected void btnSearch_Click(object sender, EventArgs e)
+        //{
+        //}
 
         protected void txtRegistrationNo_TextChanged(object sender, EventArgs e)
         {
@@ -287,15 +294,16 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 txtMake.ReadOnly = true;
                 txtSerialNo.ReadOnly = true;
-                txtLiftType.ReadOnly = true;
+                RadioBtnType.Enabled = false;
                 txtControlType.ReadOnly = true;
                 txtCapacity.ReadOnly = true;
                 txtWeight.ReadOnly = true;
                 txtDistrict.ReadOnly = true;
                 txtSiteAddress.ReadOnly = true;
+                txtDateofErection.ReadOnly = true;
                 txtMake.Text = ds.Tables[0].Rows[0]["MakeMainBreaker"].ToString();
                 txtSerialNo.Text = ds.Tables[0].Rows[0]["MakeMainBreaker"].ToString();
-                txtLiftType.Text = ds.Tables[0].Rows[0]["TypeofLiftErected"].ToString();
+                RadioBtnType.Text = ds.Tables[0].Rows[0]["TypeofLiftErected"].ToString();
                 txtControlType.Text = ds.Tables[0].Rows[0]["TypeOfControl"].ToString();
                 txtCapacity.Text = ds.Tables[0].Rows[0]["MaxPersonCapacitywithLiftOperator"].ToString();
                 txtWeight.Text = ds.Tables[0].Rows[0]["WeightofLiftCarwithContractLoadInKg"].ToString();
@@ -306,8 +314,8 @@ namespace CEIHaryana.SiteOwnerPages
             }
             else
             {
-                string alertScript = "alert('The  Registration number is Not In Our Database. Please provide a different Registration number.');";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                //string alertScript = "alert('The  Registration number is Not In Our Database. Please provide a different Registration number.');";
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
             }
 
         } protected void btnModalSearch_Click(object sender, EventArgs e)

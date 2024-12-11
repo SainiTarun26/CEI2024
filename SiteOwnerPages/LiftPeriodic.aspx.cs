@@ -86,7 +86,10 @@ namespace CEIHaryana.SiteOwnerPages
             Session["District"] = ddlDistrict.SelectedItem.ToString();
             Session["Duplicacy"] = "0";
             GridBind();
-            PaymentDetails.Visible = true;
+            //PaymentDetails.Visible = true;
+            //UploadDocuments.Visible = true;
+            //btnSubmit.Visible = true;
+
         }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -237,6 +240,11 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     hdnInstallationType.Value = Installationtypes;
                 }
+
+                //PaymentDetails.Visible = true;
+                UploadDocuments.Visible = true;
+                btnSubmit.Visible = true;
+                InspectionRemarks.Visible = true;
             }
             catch (Exception ex)
             { }
@@ -271,10 +279,12 @@ namespace CEIHaryana.SiteOwnerPages
                     && footerAmount > 0)
                 {
                     BindGridDocumentsBind();
+                    PaymentDetails.Visible = true;
                 }
                 else
                 {
                     BindDocumentGridwithOutChallan();
+                    PaymentDetails.Visible = false;
                 }
             }
         }
@@ -355,6 +365,11 @@ namespace CEIHaryana.SiteOwnerPages
                             atLeastOneInspectionChecked = true;
                             break;
                         }
+                        //else
+                        //{
+                        //    Label LblRegistrationNo = (Label)rows.FindControl("LblRegistrationNo");
+                        //    CEI.TohandleUncheckedCheckbox(LblRegistrationNo.Text, Session["SiteOwnerId"].ToString());
+                        //}
                     }
                     if (atLeastOneInspectionChecked)
                     {
@@ -437,6 +452,9 @@ namespace CEIHaryana.SiteOwnerPages
                    txtInspectionRemarks.Text.Trim(), CreatedBy, TotalAmount, Assigned, transcationId, Convert.ToDateTime(TranscationDate),
                    inspectionId, ServiceType);
 
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Renewal of Lift inspection applied successfully')", true);
+                        
+                        Response.Redirect("/SiteOwnerPages/LiftPeriodic.aspx", false);
                     }
                     else
                     {

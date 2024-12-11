@@ -202,14 +202,13 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 if (Session["Expired"].ToString() == "False")
                 {
-                    CEI.InsertNewLiftData(
+                    CEI.InsertNewEscalatorData(
                         count, IntimationId, RadioButtonList2.SelectedItem.Text, TxtAgentName.Text, txtAgentAddress.Text,
-                        txtAgentPhone.Text, DateTime.Parse(txtErectionDate.Text),"","","", "", "",
+                        txtAgentPhone.Text, DateTime.Parse(txtErectionDate.Text), txtMake.Text, txtSerialNo.Text, ddlEscalatorType.SelectedItem.ToString(), "",
                         ParseOrDefault(""), txtMaxPersonCapacity.Text, ParseOrDefault(txtWeight.Text), ParseOrDefault(txtCounterWeight.Text),
                         ParseOrDefault(txtPitDepth.Text), ParseOrDefault(txtTravelDistance.Text), ParseOrDefault(txtFloorsServed.Text),
-                        ParseOrDefault(txtTotalHeadRoom.Text), txtTypeofControll.Text, ParseOrDefault(txtNoofSuspension.Text), txtDescriptionOfSuspension.Text,
-                        ParseOrDefault(txtSizeOfSuspension.Text), ParseOrDefault(txtBeamWeight.Text), ParseOrDefault(txtBeamSize.Text),
-                        txtMakeMainBreaker.Text, txtTypeMainBreaker.Text, ddlPoleMainBreaker.SelectedItem.ToString(), txtratingMainBreaker.Text,
+                        ParseOrDefault(txtTotalHeadRoom.Text), txtTypeofControll.Text, txtMakeMainBreaker.Text, txtTypeMainBreaker.Text, 
+                        ddlPoleMainBreaker.SelectedItem.ToString(), txtratingMainBreaker.Text,
                         txtCapacityMainBreaker.Text, txtMakeRCCBMainBreaker.Text, ddlPolesRCCBMainBreaker.SelectedItem.ToString(),
                         txtRatingRCCBMainBreaker.Text, txtfaultratingRCCBMainBreaker.Text, txtMakeLoadBreaker.Text, txtTypeLoadBreaker.Text,
                         ddlPolesLoadBreaker.SelectedItem.ToString(), txtRatingLoadBreaker.Text, txtCapacityLoadBreaker.Text, txtMakeRCCBLoadBreaker.Text,

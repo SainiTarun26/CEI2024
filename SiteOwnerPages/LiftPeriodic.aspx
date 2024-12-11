@@ -318,7 +318,7 @@
                                         <asp:Label ID="InstallationType" runat="server" Text="Total" Style="font-weight: bold;"></asp:Label>
                                     </FooterTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Calculated Payment Only For">
+                                <asp:TemplateField HeaderText="No. of Lift/Escalator for Inspection">
                                     <HeaderStyle HorizontalAlign="Left" Width="30%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="30%" />
                                     <ItemTemplate>
@@ -333,7 +333,7 @@
                                     <ItemStyle HorizontalAlign="Left" Width="25%" />
                                     <ItemTemplate>
                                         <asp:Label ID="lblInstallationAmount" runat="server" Text='<%#Eval("TotalAmount") %>'></asp:Label>
-                                      </ItemTemplate>
+                                    </ItemTemplate>
                                     <FooterTemplate>
                                         <asp:Label ID="lblFooterAmount" runat="server" Text="0" Style="font-weight: bold;"></asp:Label>
                                     </FooterTemplate>
@@ -355,7 +355,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="UploadDocuments" runat="server" visible="true">
+                <div id="UploadDocuments" runat="server" visible="False">
                     <h7 class="card-title fw-semibold mb-4">Document Checklist</h7>
                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                         <h7 class="card-title" style="color: #a52a2a; margin-bottom: 5px;">Note: Size of all the Attachments should not be more than 2mb.</h7>
@@ -385,7 +385,7 @@
                                         <asp:TemplateField HeaderText="File Upload (1MB PDF Only)">
                                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
                                             <ItemTemplate>
-                                                 <%--<input type="hidden" id="Req" runat="server" value='<%# Eval("Req") %>' />--%>
+                                                <%--<input type="hidden" id="Req" runat="server" value='<%# Eval("Req") %>' />--%>
                                                 <input type="hidden" id="DocumentShortName" runat="server" value='<%# Eval("DocumentShortName") %>' />
                                                 <input type="hidden" id="DocumentName" data-req='<%# Eval("DocumentName") %>' />
                                                 <input type="hidden" id="DocumentID" runat="server" value='<%# Eval("DocumentID") %>' />
@@ -418,14 +418,14 @@
                                     Transaction Id<samp style="color: red"> * </samp>
                                 </label>
                                 <asp:TextBox ID="txttransactionId" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
-                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Id</asp:RequiredFieldValidator>--%>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Id</asp:RequiredFieldValidator>
                             </div>
                             <div class="col-4">
                                 <label>
                                     Transaction Date<samp style="color: red"> * </samp>
                                 </label>
                                 <asp:TextBox ID="txttransactionDate" onfocus="disableFutureDates()" min='0000-01-01' onkeydown="return false;" max='9999-01-01' TextMode="Date" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
-                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Date</asp:RequiredFieldValidator>--%>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Date</asp:RequiredFieldValidator>
                             </div>
                             <div class="col-4" style="margin-top: auto; margin-bottom: auto;">
                                 <label>
@@ -439,15 +439,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 15px;">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="Remarks">
-                                    Inspection Remarks<samp style="color: red"> * </samp>
-                                </label>
-                                <asp:TextBox class="form-control" ID="txtInspectionRemarks" runat="server" autocomplete="off" MaxLength="500" Style="margin-left: 18px" TabIndex="3"></asp:TextBox>
-                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtInspectionRemarks" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Inspection Remarks</asp:RequiredFieldValidator>--%>
-                            </div>
+
+                </div>
+                <div id="InspectionRemarks" runat="server" visible="False" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 15px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="Remarks">
+                                Inspection Remarks<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:TextBox class="form-control" ID="txtInspectionRemarks" runat="server" autocomplete="off" MaxLength="500" Style="margin-left: 18px" TabIndex="3"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtInspectionRemarks" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Inspection Remarks</asp:RequiredFieldValidator>
                         </div>
                     </div>
                 </div>
@@ -455,19 +456,19 @@
             <div class="row">
                 <div class="col-4"></div>
                 <div class="col-4" style="text-align: center;">
-                    <asp:Button ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+                    <asp:Button ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" Visible="false" />
                     <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" Visible="false" class="btn btn-primary mr-2" />
                     <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
                 </div>
                 <asp:HiddenField ID="hdnInstallationType" runat="server" />
-                 <asp:HiddenField ID="HdnDistrict" runat="server" />
-                 <asp:HiddenField ID="HdnDivision" runat="server" />
-                   <asp:HiddenField ID="InspectionIdClientSideCheckedRow" runat="server" />
+                <asp:HiddenField ID="HdnDistrict" runat="server" />
+                <asp:HiddenField ID="HdnDivision" runat="server" />
+                <asp:HiddenField ID="InspectionIdClientSideCheckedRow" runat="server" />
                 <div class="col-4"></div>
             </div>
         </div>
     </div>
-        <script type="text/javascript">
+    <script type="text/javascript">
         // Validate if the file is a PDF and the size is less than 1MB
         function validateFileUpload(sender) {
             var fileUpload = sender;
@@ -491,5 +492,5 @@
 
             return true;
         }
-        </script>
+    </script>
 </asp:Content>
