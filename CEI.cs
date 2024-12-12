@@ -8544,6 +8544,11 @@ string AcceptedOrReReturn, string Reason, string ReasonType)
 
         ///
 
+        public DataSet GetSiteOwnerDataInPeriodicOfLift(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerDataInPeriodicOfLift", Id);
+        }
+
     }
 }
 

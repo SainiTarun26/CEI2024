@@ -178,75 +178,97 @@ namespace CEIHaryana.SiteOwnerPages
                     InDPO2.Visible = false;
                     InDPO1.Visible = false;
                 }
+                GeneratingEarthing.Visible = true;
                 if (txtEarthing.Text.Trim() == "1")
                 {
-                    
+                   
                     LiftEarthing1.Visible = true;
+
+                    txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
+                    txtLiftEarthing1.Text = ds.Tables[0].Rows[0]["Valueinohms1"].ToString();
                 }
                 else if (txtEarthing.Text.Trim() == "2")
                 {
-                    
+                   
                     LiftEarthing1.Visible = true;
                     LiftEarthing2.Visible = true;
+
+
+                    txtEarthingType2.Text = ds.Tables[0].Rows[0]["EarthingType2"].ToString();
+                    txtLiftEarthing2.Text = ds.Tables[0].Rows[0]["Valueinohms2"].ToString();
                 }
                 else if (txtEarthing.Text.Trim() == "3")
                 {
-                    
+                   
                     LiftEarthing1.Visible = true;
                     LiftEarthing2.Visible = true;
                     LiftEarthing3.Visible = true;
+                    txtEarthingType3.Text = ds.Tables[0].Rows[0]["EarthingType3"].ToString();
+                    txtLiftEarthing3.Text = ds.Tables[0].Rows[0]["Valueinohms3"].ToString();
                 }
                 else if (txtEarthing.Text.Trim() == "4")
                 {
-                    
+                   
                     LiftEarthing1.Visible = true;
                     LiftEarthing2.Visible = true;
                     LiftEarthing3.Visible = true;
                     LiftEarthing4.Visible = true;
+                    txtEarthingType4.Text = ds.Tables[0].Rows[0]["EarthingType4"].ToString();
+                    txtLiftEarthing4.Text = ds.Tables[0].Rows[0]["Valueinohms4"].ToString();
                 }
                 else if (txtEarthing.Text.Trim() == "5")
                 {
-                    
+                   
                     LiftEarthing4.Visible = true;
                     LiftEarthing5.Visible = true;
+                    txtEarthingType5.Text = ds.Tables[0].Rows[0]["EarthingType5"].ToString();
+                    txtLiftEarthing5.Text = ds.Tables[0].Rows[0]["Valueinohms5"].ToString();
                 }
                 else if (txtEarthing.Text.Trim() == "6")
                 {
-                    
+                   
                     LiftEarthing4.Visible = true;
                     LiftEarthing5.Visible = true;
                     LiftEarthing6.Visible = true;
+                    txtEarthingType6.Text = ds.Tables[0].Rows[0]["EarthingType6"].ToString();
+                    txtLiftEarthing6.Text = ds.Tables[0].Rows[0]["Valueinohms6"].ToString();
                 }
                 else if (txtEarthing.Text.Trim() == "7")
                 {
-                    
+                   
                     LiftEarthing4.Visible = true;
                     LiftEarthing5.Visible = true;
                     LiftEarthing6.Visible = true;
                     LiftEarthing7.Visible = true;
+                    txtEarthingType7.Text = ds.Tables[0].Rows[0]["EarthingType7"].ToString();
+                    txtLiftEarthing7.Text = ds.Tables[0].Rows[0]["Valueinohms7"].ToString();
                 }
                 else if (txtEarthing.Text.Trim() == "8")
                 {
-                    
+                   
                     LiftEarthing4.Visible = true;
                     LiftEarthing5.Visible = true;
                     LiftEarthing6.Visible = true;
                     LiftEarthing7.Visible = true;
                     LiftEarthing8.Visible = true;
+                    txtEarthingType8.Text = ds.Tables[0].Rows[0]["EarthingType8"].ToString();
+                    txtLiftEarthing8.Text = ds.Tables[0].Rows[0]["Valueinohms8"].ToString();
                 }
                 else if (txtEarthing.Text.Trim() == "9")
                 {
-                    
+                   
                     LiftEarthing4.Visible = true;
                     LiftEarthing5.Visible = true;
                     LiftEarthing6.Visible = true;
                     LiftEarthing7.Visible = true;
                     LiftEarthing8.Visible = true;
                     LiftEarthing9.Visible = true;
+                    txtEarthingType9.Text = ds.Tables[0].Rows[0]["EarthingType9"].ToString();
+                    txtLiftEarthing9.Text = ds.Tables[0].Rows[0]["Valueinohms9"].ToString();
                 }
                 else if (txtEarthing.Text.Trim() == "10")
                 {
-                    
+                   
                     LiftEarthing4.Visible = true;
                     LiftEarthing5.Visible = true;
                     LiftEarthing6.Visible = true;
@@ -254,10 +276,12 @@ namespace CEIHaryana.SiteOwnerPages
                     LiftEarthing8.Visible = true;
                     LiftEarthing9.Visible = true;
                     LiftEarthing10.Visible = true;
+                    txtEarthingType10.Text = ds.Tables[0].Rows[0]["EarthingType10"].ToString();
+                    txtLiftEarthing10.Text = ds.Tables[0].Rows[0]["Valueinohms10"].ToString();
                 }
                 else
                 {
-                    
+                   
                     LiftEarthing4.Visible = false;
                     LiftEarthing5.Visible = false;
                     LiftEarthing6.Visible = false;
