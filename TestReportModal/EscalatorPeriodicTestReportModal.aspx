@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LiftPeriodicTestReportModal.aspx.cs" Inherits="CEIHaryana.TestReportModal.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EscalatorPeriodicTestReportModal.aspx.cs" Inherits="CEIHaryana.TestReportModal.EscalatorPeriodicTestReportModal" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -2082,7 +2082,7 @@
                  </div>
                  <div class="row" style="margin-bottom: 15PX;">
                      <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                         <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Site Details & Test Details (Lift)</h6>
+                         <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Site Details & Test Details (Escalator)</h6>
                      </div>
                  </div>
                  <div class="card-body" id="divGeneratingSet" runat="server" style="margin-top: -30px; margin-bottom: -60px;">
@@ -2153,27 +2153,27 @@
                          </div>
                      </div>
                      <div class="card" style="background: #fcfcfc; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: -25px; margin-right: -25px; margin-top: 20px; padding: 15px; padding-bottom: 45px; margin-left: 1px; margin-right: 1px; margin-left: 1px; margin-right: 1px;">
-                         <div class="card-title" id="divLiftDetails" runat="server" visible="true" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-bottom: 15px;">
-                             Lift Details
+                         <div class="card-title" id="divEscalatorDetails" runat="server" visible="true" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-bottom: 15px;">
+                             Escalator Details
                          </div>
                          <div class="row">
                              <div class="col-md-4" runat="server">
                                  <label>
-                                     Lift Registration No.
+                                     Escalator Registration No.
                                  </label>
                                  <asp:TextBox class="form-control" ID="txtRegistrationNo" autocomplete="off" ReadOnly="true" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                  <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtRegistrationNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                              </div>
                              <div class="col-md-4" runat="server">
                                  <label id="lblMake" runat="server">
-                                     Make of Lift
+                                     Make of Escalator
                                  </label>
                                  <asp:TextBox class="form-control" ID="txtMake" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                  <asp:RequiredFieldValidator ID="RfvtxtMake" ControlToValidate="txtMake" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                              </div>
                              <div class="col-md-4" runat="server">
                                  <label>
-                                     Serial No. of Lift
+                                     Serial No. of Escalator
                                  </label>
                                  <asp:TextBox class="form-control" ID="txtSerialNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                  <asp:RequiredFieldValidator ID="RfvtxtSerialNo" ControlToValidate="txtSerialNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
@@ -2207,10 +2207,10 @@
                                  <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ControlToValidate="txtDateofErection" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                              </div>
                              <div class="col-md-4">
-                                 <label id="lblTypeOfLift" runat="server">
-                                     Type of Lift
+                                 <label id="lblTypeOfEscalator" runat="server">
+                                     Type of Escalator
                                  </label>
-                                 <asp:TextBox class="form-control" ReadOnly="true" ID="txtLiftType" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                 <asp:TextBox class="form-control" ReadOnly="true" ID="txtEscalatorType" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                              </div>
                              <div class="col-md-4" runat="server">
                                  <label>

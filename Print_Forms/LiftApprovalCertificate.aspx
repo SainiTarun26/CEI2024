@@ -351,6 +351,13 @@
                                             <td class="textbold">
                                                 <asp:Label ID="lblCapacity" runat="server" Text="Label"></asp:Label></td>
                                         </tr>
+                                         <tr>
+     <td class="tableid textbold">(iv)</td>
+     <td>Date of Erection</td>
+     <td class="textbold">:-</td>
+     <td class="textbold">
+         <asp:Label ID="lblErectionDate" runat="server" Text="Label"></asp:Label></td>
+ </tr>
                                     </table>
 
                                 </div>

@@ -2017,6 +2017,7 @@
     <Content Include="Supervisor\TestReportForm1.aspx" />
     <Content Include="Supervisor\TestReportHistory.aspx" />
     <Content Include="Supervisor\TestReportIntimationHistory.aspx" />
+    <Content Include="TestReportModal\EscalatorPeriodicTestReportModal.aspx" />
     <Content Include="TestReportModal\EscalatorTestReportModal.aspx" />
     <Content Include="TestReportModal\GeneratingSetTestReportModal.aspx" />
     <Content Include="TestReportModal\LiftPeriodicTestReportModal.aspx" />
@@ -3522,6 +3523,13 @@
     </Compile>
     <Compile Include="Supervisor\TestReportIntimationHistory.aspx.designer.cs">
       <DependentUpon>TestReportIntimationHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestReportModal\EscalatorPeriodicTestReportModal.aspx.cs">
+      <DependentUpon>EscalatorPeriodicTestReportModal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestReportModal\EscalatorPeriodicTestReportModal.aspx.designer.cs">
+      <DependentUpon>EscalatorPeriodicTestReportModal.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestReportModal\EscalatorTestReportModal.aspx.cs">
       <DependentUpon>EscalatorTestReportModal.aspx</DependentUpon>

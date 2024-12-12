@@ -346,8 +346,10 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch (Exception ex)
             {
-                // Consider logging the exception for debugging purposes
-                Console.WriteLine(ex.Message);
+                string script = ex.Message+ "alert(\"Please Fill Form Correctly\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+
+
             }
         }
 

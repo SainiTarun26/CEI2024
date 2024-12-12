@@ -67,6 +67,7 @@ namespace CEIHaryana.Officers
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
                     string id = lblID.Text;
+                     string  LoginID = Session["InProcessInspectionId"].ToString();
                     Session["LiftTestReportID"] = id;
                     Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
                 }

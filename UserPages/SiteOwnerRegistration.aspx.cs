@@ -30,10 +30,11 @@ namespace CEIHaryana.UserPages
             try
             {
                 DataSet dsDistrict = new DataSet();
-                dsDistrict = CEI.GetddlDrawDistrict(state);
+                //dsDistrict = CEI.GetddlDrawDistrict(state);
+                dsDistrict = CEI.GetddlDistrict();
                 ddlDistrict.DataSource = dsDistrict;
-                ddlDistrict.DataTextField = "District";
-                ddlDistrict.DataValueField = "District";
+                ddlDistrict.DataTextField = "AreaCovered";
+                ddlDistrict.DataValueField = "Id";
                 ddlDistrict.DataBind();
                 ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
                 dsDistrict.Clear();

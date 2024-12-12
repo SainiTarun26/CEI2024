@@ -108,7 +108,7 @@ namespace CEIHaryana.Admin
                 {
                     if (LblInspectionType.Text == "New")
                     {
-                        Session["InProcessInspectionId"] = id;
+                        
                         if (lblInstallationFor.Text == "Multiple")
                         {
                             Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
@@ -121,7 +121,7 @@ namespace CEIHaryana.Admin
                     }
                     if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
                     {
-
+                        
                         Response.Redirect("/Admin/LiftApprovalData.aspx", false);
                     }
                     else

@@ -176,6 +176,29 @@ namespace CEIHaryana.TestReportModal
                     InDPO1.Visible = false;
                     InDPO2.Visible = false;
                 }
+                GeneratingEarthing.Visible = true;
+                txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
+                txtEscalatorEarthing1.Text = ds.Tables[0].Rows[0]["Valueinohms1"].ToString();
+
+                txtEarthingType2.Text = ds.Tables[0].Rows[0]["EarthingType2"].ToString();
+                txtEscalatorEarthing2.Text = ds.Tables[0].Rows[0]["Valueinohms2"].ToString();
+                txtEarthingType3.Text = ds.Tables[0].Rows[0]["EarthingType3"].ToString();
+                txtEscalatorEarthing3.Text = ds.Tables[0].Rows[0]["Valueinohms3"].ToString();
+                txtEarthingType4.Text = ds.Tables[0].Rows[0]["EarthingType4"].ToString();
+                txtEscalatorEarthing4.Text = ds.Tables[0].Rows[0]["Valueinohms4"].ToString();
+                txtEarthingType5.Text = ds.Tables[0].Rows[0]["EarthingType5"].ToString();
+                txtEscalatorEarthing5.Text = ds.Tables[0].Rows[0]["Valueinohms5"].ToString();
+                txtEarthingType6.Text = ds.Tables[0].Rows[0]["EarthingType6"].ToString();
+                txtEscalatorEarthing6.Text = ds.Tables[0].Rows[0]["Valueinohms6"].ToString();
+                txtEarthingType7.Text = ds.Tables[0].Rows[0]["EarthingType7"].ToString();
+                txtEscalatorEarthing7.Text = ds.Tables[0].Rows[0]["Valueinohms7"].ToString();
+                txtEarthingType8.Text = ds.Tables[0].Rows[0]["EarthingType8"].ToString();
+                txtEscalatorEarthing8.Text = ds.Tables[0].Rows[0]["Valueinohms8"].ToString();
+
+                txtEarthingType9.Text = ds.Tables[0].Rows[0]["EarthingType9"].ToString();
+                txtEscalatorEarthing9.Text = ds.Tables[0].Rows[0]["Valueinohms9"].ToString();
+                txtEarthingType10.Text = ds.Tables[0].Rows[0]["EarthingType10"].ToString();
+                txtEscalatorEarthing10.Text = ds.Tables[0].Rows[0]["Valueinohms10"].ToString();
                 if (txtEarthing.Text.Trim() == "1")
                 {
                     Limit.Visible = false;

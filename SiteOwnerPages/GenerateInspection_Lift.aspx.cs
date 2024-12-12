@@ -363,7 +363,7 @@ namespace CEIHaryana.SiteOwnerPages
                     else if (lblCategory.Text.Trim() == "Escalator")
                     {
                         Session["EscalatorTestReportID"] = lblTestReportId.Text;
-                        //Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
+                        Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
                     }
                 }
             }

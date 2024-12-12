@@ -66,6 +66,7 @@ namespace CEIHaryana.SiteOwnerPages
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
                     string id = lblID.Text;
+                    string InspectionId = Session["InspectionId"].ToString();
                     Session["LiftTestReportID"] = id;
                     Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
                 }

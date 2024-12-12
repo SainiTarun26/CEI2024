@@ -142,8 +142,16 @@ namespace CEIHaryana.Officers
                         txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     //txtAmount.Visible = false;
                        txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                      if(txtAmount.Text == "0")
+                      {
+                        TranscationDetails.Visible = false;
+                      }
+                    else
+                    {
+                        TranscationDetails.Visible = true;
+                    }
                        string Division = ds.Tables[0].Rows[0]["Division"].ToString();
-                         Session["Division"] = Division;
+                       //Session["Division"] = Division;
                         ChallanDate.Visible = false;
                         RegNo.Visible = false;
 
@@ -265,16 +273,24 @@ namespace CEIHaryana.Officers
                         txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
                         Session["InstallationType"] = txtWorkType.Text;
                         ChallanDate.Visible = true;
-                         RegNo.Visible = true;
+                         //RegNo.Visible = true;
                         txtChallanDate.Text = ds.Tables[0].Rows[0]["PreviousChallanDate"].ToString();
-                       txtRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
-                       txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                        txtRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
+                        txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                         txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                         txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                         txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                        Session["InspectionType"] = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
+                         if (txtAmount.Text == "0")
+                         {
+                        TranscationDetails.Visible = false;
+                         }
+                    else
+                    {
+                        TranscationDetails.Visible = true;
+                    }
+                    Session["InspectionType"] = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                        string Division = ds.Tables[0].Rows[0]["Division"].ToString();
-                    Session["Division"] = Division;
+                    //Session["Division"] = Division;
                     //divTestReportAttachment.Visible = false;
                     Address.Visible = true;
                         txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
@@ -346,7 +362,7 @@ namespace CEIHaryana.Officers
                 try
                 {
                     string ID = Session["InProcessInspectionId"].ToString();
-                    DataSet dsVC = CEI.GetDetailsToViewCart(ID);
+                    DataSet dsVC = CEI.GetDetailsToViewCart_Lift_Escalator(ID);
 
                     if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                     {
@@ -397,14 +413,55 @@ namespace CEIHaryana.Officers
                 SqlTransaction transaction = null;
                 try
                 {
+                    
+                    
                     connection.Open();
                     if (Session["InProcessInspectionId"].ToString() != null && Session["InProcessInspectionId"].ToString() != "" && Session["StaffID"].ToString() != null)
                     {
+                        ID = Session["InProcessInspectionId"].ToString();
+                        DataSet ds = new DataSet();
+                        ds = CEI.InspectionDataFor_Lift(ID);
+                        Type = ds.Tables[0].Rows[0]["IType"].ToString();
+
+                        if (Type == "New")
+                        {
+                            TxtDivision.Text = ds.Tables[0].Rows[0]["Division"].ToString();
+                          
+                            txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
+                        }
+                        else if (Type == "Periodic")
+                        {
+                            TxtDivision.Text = ds.Tables[0].Rows[0]["Division"].ToString();
+                            TxtApprovalDate.Text = ds.Tables[0].Rows[0]["LastApprovalDate"].ToString();
+                            txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
+                        }
+                        
+
                         StaffId = Session["StaffID"].ToString();
                         ID = Session["InProcessInspectionId"].ToString();
                         string InspectionType = Session["InspectionType"].ToString();
+                        if (Type == "New")
+                        {
+                            DataTable dsVC = CEI.InstallationComponentsforLift(ID);
+                            if (dsVC != null && dsVC.Rows.Count > 0)
+                            {
+                                Grid_MultipleInspectionTR.DataSource = dsVC;
+                                Grid_MultipleInspectionTR.DataBind();
+                            }
+                        }
+                        else
+                        {
+                            DataSet dsVC = CEI.GetDetailsToViewCart_Lift_Escalator(ID);
+
+                            if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
+                            {
+                                GridView2.DataSource = dsVC;
+                                GridView2.DataBind();
+                            }
+
+                        }
                         //string InstallationType = Session["InstallationType"].ToString();
-                        string Division = Session["Division"].ToString();
+                        // string Division = Session["Division"].ToString();
                         String SubmittedDate = Session["lblSubmittedDate"].ToString();
 
                         if (ddlReview.SelectedValue != null && ddlReview.SelectedValue != "" && ddlReview.SelectedValue != "0")
@@ -459,14 +516,23 @@ namespace CEIHaryana.Officers
                                     {
                                         foreach (GridViewRow row in Grid_MultipleInspectionTR.Rows)
                                         {
-
+                                          
                                             string TestReportId = (row.FindControl("LblTestReportId") as Label)?.Text;
                                             string InstallationType = (row.FindControl("LblInstallationName") as Label)?.Text;
-                                            string InstallationName = (row.FindControl("lblInstallationType") as Label)?.Text;
-                                            CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, InstallationName, txtRegistrationNo.Text, InspectionType, StaffId, txtChallanDate.Text, Division, transaction);
+                                            string lblMake = (row.FindControl("lblMake") as Label)?.Text;
+                                            string lblLiftSrNo = (row.FindControl("lblLiftSrNo") as Label)?.Text;
+                                            string lblTypeOfLift = (row.FindControl("lblTypeOfLift") as Label)?.Text;
+                                            string lblTypeOfControl = (row.FindControl("lblTypeOfControl") as Label)?.Text;
+                                            string lblCapacity = (row.FindControl("lblCapacity") as Label)?.Text;
+                                            string lblWeight = (row.FindControl("lblWeight") as Label)?.Text;
+                                            DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
+                                          
+                                         
+                                            CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, txtChallanDate.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
+                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate,"", txtAddress.Text, transaction);
 
                                         }
-                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
 
                                     }
                                     if (InspectionType == "Periodic")
@@ -476,21 +542,32 @@ namespace CEIHaryana.Officers
 
                                             string TestReportId = (row.FindControl("lblTestReport") as Label)?.Text;
                                             string InstallationType = (row.FindControl("LblInstallationName") as Label)?.Text;
-                                            string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
-                                            CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, InstallationName, txtRegistrationNo.Text, InspectionType, StaffId, txtChallanDate.Text, Division, transaction);
+                                            string lblMake = (row.FindControl("lblMake") as Label)?.Text;
+                                            string lblLiftSrNo = (row.FindControl("lblLiftSrNo") as Label)?.Text;
+                                            string lblTypeOfLift = (row.FindControl("lblTypeOfLift") as Label)?.Text;
+                                            string lblTypeOfControl = (row.FindControl("lblTypeOfControl") as Label)?.Text;
+                                            string lblCapacity = (row.FindControl("lblCapacity") as Label)?.Text;
+                                            string lblWeight = (row.FindControl("lblWeight") as Label)?.Text;
+                                            string LblRegistrationNo = (row.FindControl("LblRegistrationNo") as Label)?.Text;
+                                            DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
+                                            DateTime lblLastApprovalDate = DateTime.Parse((row.FindControl("lblLastApprovalDate") as Label)?.Text);
+                                            // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
+                                              CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, LblRegistrationNo,   txtChallanDate.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
+                                              lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, TxtApprovalDate.Text, txtAddress.Text,transaction);
 
                                         }
-                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
 
                                     }
                                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
                                    
                                 }
-                                //else
-                                //{
-                                //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
-                                //}
-                                transaction.Commit();
+                                else
+                                {
+                                    //transaction.Commit();
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                                }
+                               
                                 //if (ApprovedorReject == "Rejected")
                                 //{
                                 //    CEI.InspectionFinalAction_Lift(ID, "", StaffId, InstallationType, InspectionType, ApprovedorReject, Reason, txtInspectionDate.Text, txtChallanDate.Text, txtRegistrationNo.Text, Division);
@@ -498,7 +575,7 @@ namespace CEIHaryana.Officers
                                 //}
                                 Session["InspectionType"] = "";
                                 Session["InstallationType"] = "";
-                                //transaction.Commit();
+                                transaction.Commit();
 
                                 //commented 3 dec 2024 for 
                                 // checksuccessmessage = 1;
@@ -625,6 +702,7 @@ namespace CEIHaryana.Officers
                             }
                             finally
                             {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
                                 transaction?.Dispose();
                                 connection.Close();
                             }
@@ -770,7 +848,7 @@ namespace CEIHaryana.Officers
                 try
                 {
                     string ID = Session["InProcessInspectionId"].ToString();
-                    DataTable dsVC = CEI.InstallationComponentsforSiteOwner(ID);
+                    DataTable dsVC = CEI.InstallationComponentsforLift(ID);
 
                     if (dsVC != null && dsVC.Rows.Count > 0)
                     {
@@ -796,7 +874,7 @@ namespace CEIHaryana.Officers
                 {
                     ID = Session["InProcessInspectionId"].ToString();
                     DataSet ds = new DataSet();
-                    ds = CEI.ViewReturnDocuments(ID);
+                    ds = CEI.ViewReturnDocuments_Lift(ID);
                     if (ds.Tables.Count > 0)
                     {
                         grd_Documemnts.DataSource = ds;

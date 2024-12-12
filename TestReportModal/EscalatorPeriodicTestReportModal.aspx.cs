@@ -2,19 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using AjaxControlToolkit.HtmlEditor.ToolbarButtons;
-using System.Windows.Media.TextFormatting;
 using CEI_PRoject;
-using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
-using iText.StyledXmlParser.Node;
 
 namespace CEIHaryana.TestReportModal
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class EscalatorPeriodicTestReportModal : System.Web.UI.Page
     {
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
@@ -33,7 +28,7 @@ namespace CEIHaryana.TestReportModal
                     }
                 }
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             { }
         }
 
@@ -113,7 +108,7 @@ namespace CEIHaryana.TestReportModal
                     txtWeight.Text = ds.Tables[0].Rows[0]["Weight"].ToString();
                     txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
                     txtDistrictOfTr.Text = ds.Tables[0].Rows[0]["ApplicantDistrict"].ToString();
-                    txtLiftType.Text = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
+                    txtEscalatorType.Text = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
                     Session["File"] = ds.Tables[0].Rows[0]["PreviousChallanUpload"].ToString();
 
                     GridDocument();

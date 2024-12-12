@@ -264,7 +264,7 @@
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
             <div class="card-title" style="margin-top: -15px; margin-bottom: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
-                Inspection/SiteOwner Detail
+                Inspection/SiteOwner Detail (<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>/<asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
             </div>
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                 <div class="row">
@@ -304,9 +304,9 @@
                     </div>
                 </div>
             </div>
-            <div class="card-title" style="margin-top: -15px; margin-bottom: 20px; margin-top: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
+            <div class="card-title" id="TranscationDetails" runat="server" style="margin-top: -15px; margin-bottom: 20px; margin-top: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
                 Transaction Details
-            </div>
+       
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                 <div class="row">
 
@@ -326,16 +326,54 @@
                <label>Previous Challan Date</label>
                <asp:TextBox class="form-control" ID="txtChallanDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                </div>
-                           <div  id="RegNo"   class="col-md-4" runat="server" visible="false">
+                <div  id="RegNo"   class="col-md-4" runat="server" visible="false">
               <label>Registration No</label>
               <asp:TextBox class="form-control" ID="txtRegistrationNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                  </div>
+
+                        <div  id="Make"   class="col-md-4" runat="server" visible="false">
+  <label>Last Approval Date</label>
+  <asp:TextBox class="form-control" ID="TxtApprovalDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+     </div>
+                 <%--       <div  id="Srno"   class="col-md-4" runat="server" visible="false">
+  <label>Lift Sr No</label>
+  <asp:TextBox class="form-control" ID="txtLiftSrNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+     </div>
+                                          <div  id="Type"   class="col-md-4" runat="server" visible="false">
+<label>Type Of Lift</label>
+<asp:TextBox class="form-control" ID="txtTypeOfLift" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+   </div>
+                                          <div  id="TypeControl"   class="col-md-4" runat="server" visible="false">
+<label>Type Of Control</label>
+<asp:TextBox class="form-control" ID="txtControl" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+   </div>
+                                                              <div  id="Capacity"   class="col-md-4" runat="server" visible="false">
+<label>Capacity</label>
+<asp:TextBox class="form-control" ID="txtCapacity" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+   </div>
+                                                              <div  id="Weight"   class="col-md-4" runat="server" visible="false">
+<label>Weight</label>
+<asp:TextBox class="form-control" ID="txtWeight" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+   </div>
+              <div  id="DateOfErection"   class="col-md-4" runat="server" visible="false">
+<label>Date Of Erection</label>
+<asp:TextBox class="form-control" ID="txtErectionDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+   </div>
+                <div  id="LastApprovalDate"   class="col-md-4" runat="server" visible="false">
+<label>Last Approval Date</label>
+<asp:TextBox class="form-control" ID="txtLastAppDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+   </div>--%>
+                               <div  id="Division"   class="col-md-4" runat="server" visible="false">
+<label>Division</label>
+<asp:TextBox class="form-control" ID="TxtDivision" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+   </div>
                     <%--<div class="col-md-4" id="Inspection_Type" runat="server" visible="false">
                         <label>Inspection Type</label>
                         <asp:TextBox class="form-control" ID="TxtInspection" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>--%>
                 </div>
             </div>
+                   </div>
        
             <div class="row" id="divTestReportAttachment" runat="server" visible="true">
                 <div class="card-title" style="margin-bottom: 5px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: -10px;">
@@ -426,22 +464,30 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="TestReportId" HeaderText="TestReportId" Visible="false">
+                            <asp:BoundField DataField="TestReportID" HeaderText="TestReportId" Visible="false">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
-                                    <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
-                                    <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>
-                                    <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("NewInspectionId") %>'></asp:Label>
-                                       <asp:Label ID="lblTestReport" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
-                                     <asp:Label ID="LblInstallation" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                                    <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                                 <%--   <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>--%>
+                                    <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("InspectionID") %>'></asp:Label>
+                                       <asp:Label ID="lblTestReport" runat="server" Text='<%#Eval("TestReportID") %>'></asp:Label>
+                                       <asp:Label ID="lblMake" runat="server" Text='<%#Eval("Make") %>'></asp:Label>
+                                          <asp:Label ID="lblLiftSrNo" runat="server" Text='<%#Eval("SerialNo") %>'></asp:Label>
+                                          <asp:Label ID="lblTypeOfLift" runat="server" Text='<%#Eval("TypeOfLift") %>'></asp:Label>
+                                          <asp:Label ID="lblTypeOfControl" runat="server" Text='<%#Eval("TypeOfControl") %>'></asp:Label>
+                                           <asp:Label ID="lblCapacity" runat="server" Text='<%#Eval("Capacity") %>'></asp:Label>
+                                           <asp:Label ID="lblWeight" runat="server" Text='<%#Eval("Weight") %>'></asp:Label>
+                                            <asp:Label ID="LblErectionDate" runat="server" Text='<%#Eval("ErectionDate") %>'></asp:Label>
+                                       <asp:Label ID="lblLastApprovalDate" runat="server" Text='<%#Eval("LastApprovalDate") %>'></asp:Label>
+                                      <asp:Label ID="LblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="View TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report & Attachments" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportId") %>' />
+                                    <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report & Attachments" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("RegistrationNo") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
@@ -453,7 +499,7 @@
             </div>
               
             <div class="card" style="margin-top: 15px; padding: 11px; margin-bottom: 20px; margin-left: -15px; margin-right: -15px;" id="DivViewTRinMultipleCaseNew" runat="server" visible="false">
-                <asp:GridView ID="Grid_MultipleInspectionTR" CssClass="table table-bordered table-striped table-responsive"  OnRowCommand="Grid_MultipleInspectionTR_RowCommand" runat="server" AutoGenerateColumns="false">
+                <asp:GridView ID="Grid_MultipleInspectionTR" CssClass="table table-bordered table-striped table-responsive" AutoPostBack="true"  OnRowCommand="Grid_MultipleInspectionTR_RowCommand" runat="server" AutoGenerateColumns="false">
                     <HeaderStyle BackColor="#B7E2F0" />
                     <Columns>
                         <asp:TemplateField HeaderText="SNo">
@@ -479,7 +525,15 @@
                                 <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
                                 <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
                                  <asp:Label ID="LblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
-                                 <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                         
+                                    <asp:Label ID="lblMake" runat="server" Text='<%#Eval("Make") %>'></asp:Label>
+                                  <asp:Label ID="lblLiftSrNo" runat="server" Text='<%#Eval("SerialNo") %>'></asp:Label>
+                                    <asp:Label ID="lblTypeOfLift" runat="server" Text='<%#Eval("TypeOfLift") %>'></asp:Label>
+                                    <asp:Label ID="lblTypeOfControl" runat="server" Text='<%#Eval("TypeOfControl") %>'></asp:Label>
+                                 <asp:Label ID="lblCapacity" runat="server" Text='<%#Eval("Capacity") %>'></asp:Label>
+                                 <asp:Label ID="lblWeight" runat="server" Text='<%#Eval("Weight") %>'></asp:Label>
+                                  <asp:Label ID="LblErectionDate" runat="server" Text='<%#Eval("ErectionDate") %>'></asp:Label>
+                                  <%--<asp:Label ID="lblLastApprovalDate" runat="server" Text='<%#Eval("LastApprovalDate") %>'></asp:Label>--%>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="View Test Report & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
@@ -490,10 +544,10 @@
                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                         </asp:TemplateField>
                      
-                        <asp:BoundField DataField="Remarks" HeaderText="Remarks">
+                       <%-- <asp:BoundField DataField="Remarks" HeaderText="Remarks">
                             <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                             <ItemStyle HorizontalAlign="Left" Width="15%" />
-                        </asp:BoundField>
+                        </asp:BoundField>--%>
                     </Columns>
                 </asp:GridView>
                 <div class="col-12" style="padding: 0px;">

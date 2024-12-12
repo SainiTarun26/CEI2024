@@ -21,6 +21,7 @@ namespace CEIHaryana.SiteOwnerPages
     {
         CEI CEI = new CEI();
         string SiteOwnerId = string.Empty;
+        string ApplicantTypeCode = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -32,6 +33,7 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         BindListBoxInstallationType();
                         BindDistrict();
+                        GetDetails();
                     }
                 }
             }
@@ -53,9 +55,14 @@ namespace CEIHaryana.SiteOwnerPages
             dsWorkDetail.Clear();
         }
 
-        protected void ddlWorkDetail_SelectedIndexChanged(object sender, EventArgs e)
+        public void GetDetails()
         {
-            DivOtherDepartment.Visible = false;
+            string PANNumber = Session["SiteOwnerId"].ToString();
+            DataSet ds = new DataSet();
+            ds = CEI.GetDetailsByPanNumberId(PANNumber);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                DivOtherDepartment.Visible = false;
             DivPancard_TanNo.Visible = false;
             string Value = ddlWorkDetail.SelectedItem.ToString();
             if (ddlWorkDetail.SelectedValue != "0")
@@ -71,7 +78,7 @@ namespace CEIHaryana.SiteOwnerPages
                     installationType2.Visible = true;
                     txtinstallationType2.Text = Value;
                 }
-                
+
                 if (ddlWorkDetail.SelectedValue != "0")
                 {
                     try
@@ -91,7 +98,10 @@ namespace CEIHaryana.SiteOwnerPages
 
 
             }
-            if (ddlApplicantType.SelectedValue == "AT001")
+
+                ApplicantTypeCode = ds.Tables[0].Rows[0]["ApplicantTypeCode"].ToString();
+                Session["ApplicantTypeCode"] = ApplicantTypeCode;
+                if (ApplicantTypeCode.ToString() == "AT001")
             {
                 //ElectricalInstallation.Visible = true;
                 DivPancard_TanNo.Visible = true;
@@ -101,7 +111,7 @@ namespace CEIHaryana.SiteOwnerPages
                 NameUtility.Visible = false;
                 Wing.Visible = false;
             }
-            else if (ddlApplicantType.SelectedValue == "AT003")
+            else if (ApplicantTypeCode.ToString() == "AT003")
             {
                 //ElectricalInstallation.Visible = true;
                 PowerUtility.Visible = false;
@@ -111,7 +121,7 @@ namespace CEIHaryana.SiteOwnerPages
                 DivOtherDepartment.Visible = true;
                 txtPAN.Text = "";
             }
-            string PANNumber = Session["SiteOwnerId"].ToString();
+           
             //System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}");
             //System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("^[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}$|^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$");
             //if (!regex.IsMatch(PANNumber))
@@ -121,14 +131,12 @@ namespace CEIHaryana.SiteOwnerPages
             //    txtPAN.Text = "";
             //    return;
             //}
-            DataSet ds = new DataSet();
-            ds = CEI.GetDetailsByPanNumberId(PANNumber);
-            if (ds.Tables[0].Rows.Count > 0)
-            {
+           
 
                 string ContractNameAgeny = ds.Tables[0].Rows[0]["username"].ToString();
                 string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtPhone.Text = ds.Tables[0].Rows[0]["Contact"].ToString();
+                txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                 txtPhone.ReadOnly = true;
                 txtEmail.ReadOnly = true;
@@ -157,6 +165,11 @@ namespace CEIHaryana.SiteOwnerPages
                 txtName.ReadOnly = false;
                 //Page.ClientScript.RegisterStartupScript(GetType(), "panNotFound", "alert('PAN card not found in the database.');", true);
             }
+
+        }
+        protected void ddlWorkDetail_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
 
         }
 
@@ -262,7 +275,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             string email = txtEmail.Text.Trim();
             string emailPattern = @"^[^\s@]+@[^\s@]+\.[^\s@]+$"; // Regex for email
-
+            ApplicantTypeCode = Session["ApplicantTypeCode"].ToString();
             if (Regex.IsMatch(email, emailPattern))
             {
                 using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
@@ -335,23 +348,18 @@ namespace CEIHaryana.SiteOwnerPages
                         SiteOwnerId = Session["SiteOwnerId"].ToString();
                         string filePathInfo = "";
 
-                        if (ddlApplicantType.SelectedValue == "0" || string.IsNullOrEmpty(ddlApplicantType.SelectedValue))
-                        {
-                            Response.Write("<script>alert('Please select Applicant Type');</script>");
-                            return;
-                        }
 
                         hdnId.Value = SiteOwnerId;
 
                         //Check for null and empty values before calling IntimationDataInsertion
 
                         Debug.WriteLine("Before IntimationDataInsertion");
-                        Debug.WriteLine($"ContractorID: {SiteOwnerId}, ApplicantTypeCode: {ddlApplicantType.SelectedValue}, PowerUtility: {ddlPoweUtility.SelectedItem?.ToString()}");
+                        Debug.WriteLine($"ContractorID: {SiteOwnerId}, ApplicantTypeCode: {ApplicantTypeCode.ToString()}, PowerUtility: {ddlPoweUtility.SelectedItem?.ToString()}");
 
                         CEI.IntimationDataInsertion(
                           UpdationId,
                          SiteOwnerId,
-                         ddlApplicantType.SelectedValue,
+                         ApplicantTypeCode.ToString(),
                          ddlPoweUtility.SelectedItem?.ToString(),
                          DdlWing.SelectedItem?.ToString(),
                          DdlZone.SelectedItem?.ToString(),
@@ -381,7 +389,7 @@ namespace CEIHaryana.SiteOwnerPages
                          "",
                         filePathInfo,
                          "",
-                         ddlApplicantType.SelectedItem?.ToString(),
+                         txtApplicantType.Text,
                          SiteOwnerId,
                          "",
                           "New",
@@ -541,7 +549,6 @@ namespace CEIHaryana.SiteOwnerPages
                 txtName.Text = "";
                 txtagency.Text = "";
                 ddlDistrict.SelectedValue = "0";
-                ddlApplicantType.SelectedValue = "0";
                 txtPhone.Text = "";
                 txtAddress.Text = "";
                 txtPin.Text = "";

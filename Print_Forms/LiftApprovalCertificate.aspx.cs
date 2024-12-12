@@ -13,7 +13,7 @@ namespace CEIHaryana.Print_Forms
     public partial class LiftApprovalCertificate : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-        string LoginID;
+        string InspectionId;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -50,15 +50,20 @@ namespace CEIHaryana.Print_Forms
         {
             try
             {
-                if (Session["LiftTestReportID"] != null)
+                if(Session["InProcessInspectionId"] != null)
                 {
-                    ID = Session["LiftTestReportID"].ToString();
-                    
+                    InspectionId = Session["InProcessInspectionId"].ToString();
+
                 }
-               
+                if (Session["InspectionId"] != null)
+                {
+                    InspectionId = Session["InspectionId"].ToString();
+
+                }
+                ID = Session["LiftTestReportID"].ToString();
 
                 DataSet ds = new DataSet();
-                ds = CEI.PrintDetailsFor_LiftCertificate(ID);
+                ds = CEI.PrintDetailsFor_LiftCertificate(InspectionId, ID);
                 lblAddress1.Text = ds.Tables[0].Rows[0]["Header1"].ToString();
                 lblAdress2.Text = ds.Tables[0].Rows[0]["Header2"].ToString();
                 lblAdress3.Text = ds.Tables[0].Rows[0]["Header3"].ToString();
@@ -74,7 +79,7 @@ namespace CEIHaryana.Print_Forms
                 }
 
                 lblRegNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
-                lblCompanyName.Text = ds.Tables[0].Rows[0]["SiteOwnerName"].ToString();
+                lblCompanyName.Text = ds.Tables[0].Rows[0]["Maker"].ToString();
 
                 lblAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
                 DateTime createdDate1 = Convert.ToDateTime(ds.Tables[0].Rows[0]["ApprovedDate"]);
@@ -82,12 +87,12 @@ namespace CEIHaryana.Print_Forms
 
                 lblMakerName.Text = ds.Tables[0].Rows[0]["Maker"].ToString();
                 lblSrNo.Text = ds.Tables[0].Rows[0]["RegistrationSrNo"].ToString();
-                lblTypeOflift.Text = ds.Tables[0].Rows[0]["TypeofLiftErected"].ToString();
+                lblTypeOflift.Text = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
 
                 lblTypeControl.Text = ds.Tables[0].Rows[0]["TypeOfControl"].ToString();
                 lblCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
                 lblMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
-
+                lblErectionDate.Text = ds.Tables[0].Rows[0]["ErectionDate"].ToString();
                 DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
                 lblDated.Text = createdDate.ToString("dd/MM/yyyy");
                 string dp_Id6 = ds.Tables[0].Rows[0]["TypeOfInspection"].ToString();
@@ -99,8 +104,9 @@ namespace CEIHaryana.Print_Forms
                 else
                 {
                     txtSD.Visible = false;
-                    myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])ds.Tables[0].Rows[0]["Signature"]);
+                   
                 }
+                myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])ds.Tables[0].Rows[0]["Signature"]);
                 lblstamp1.Text = ds.Tables[0].Rows[0]["Stamp1"].ToString();
                 lblstamp2.Text = ds.Tables[0].Rows[0]["Stamp2"].ToString();
                 //lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
@@ -176,7 +182,7 @@ namespace CEIHaryana.Print_Forms
                     Image ImgSignature = e.Row.FindControl("ImgSignature") as Image;
                     if (lblTypeOfInspection.Text == "New")
                     {
-                        ImgSignature.Visible = false;
+                        ImgSignature.Visible = true;
                     }
                     else
                     {

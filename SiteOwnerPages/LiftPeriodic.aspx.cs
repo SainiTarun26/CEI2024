@@ -98,8 +98,21 @@ namespace CEIHaryana.SiteOwnerPages
                 Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
+                Label LblCategory = (Label)row.FindControl("LblCategory");
+
                 Session["RegistrationNo"] = LblRegistrationNo.Text;
-                Response.Redirect("/SiteOwnerPages/ViewLiftPeriodicReport.aspx", false);
+
+                if (LblCategory != null)
+                {
+                    if (LblCategory.Text == "Lift") 
+                    {
+                        Response.Redirect("/TestReportModal/LiftPeriodicTestReportModal.aspx", false);
+                    }
+                    else if (LblCategory.Text == "Escalator")
+                    {
+                        Response.Redirect("/TestReportModal/EscalatorPeriodicTestReportModal.aspx", false);
+                    }
+                }
             }
         }
         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)

@@ -834,13 +834,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow EscalatorEarthing1;
 
         /// <summary>
-        /// TextBox52 control.
+        /// txtEarthingType1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox52;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType1;
 
         /// <summary>
         /// txtEscalatorEarthing1 control.
@@ -861,13 +861,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow EscalatorEarthing2;
 
         /// <summary>
-        /// TextBox53 control.
+        /// txtEarthingType2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox53;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType2;
 
         /// <summary>
         /// txtEscalatorEarthing2 control.
@@ -888,13 +888,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow EscalatorEarthing3;
 
         /// <summary>
-        /// TextBox54 control.
+        /// txtEarthingType3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox54;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType3;
 
         /// <summary>
         /// txtEscalatorEarthing3 control.
@@ -924,13 +924,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div24;
 
         /// <summary>
-        /// TextBox55 control.
+        /// txtEarthingType4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox55;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType4;
 
         /// <summary>
         /// Div25 control.
@@ -969,13 +969,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div26;
 
         /// <summary>
-        /// TextBox56 control.
+        /// txtEarthingType5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox56;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType5;
 
         /// <summary>
         /// txtEscalatorEarthing5 control.
@@ -996,13 +996,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow EscalatorEarthing6;
 
         /// <summary>
-        /// TextBox57 control.
+        /// txtEarthingType6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox57;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType6;
 
         /// <summary>
         /// txtEscalatorEarthing6 control.
@@ -1032,13 +1032,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div27;
 
         /// <summary>
-        /// TextBox58 control.
+        /// txtEarthingType7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox58;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType7;
 
         /// <summary>
         /// txtEscalatorEarthing7 control.
@@ -1059,13 +1059,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow EscalatorEarthing8;
 
         /// <summary>
-        /// TextBox59 control.
+        /// txtEarthingType8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox59;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType8;
 
         /// <summary>
         /// txtEscalatorEarthing8 control.
@@ -1095,13 +1095,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow EscalatorEarthing9;
 
         /// <summary>
-        /// TextBox60 control.
+        /// txtEarthingType9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox60;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType9;
 
         /// <summary>
         /// txtEscalatorEarthing9 control.
@@ -1122,13 +1122,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow EscalatorEarthing10;
 
         /// <summary>
-        /// TextBox61 control.
+        /// txtEarthingType10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox61;
+        protected global::System.Web.UI.WebControls.TextBox txtEarthingType10;
 
         /// <summary>
         /// txtEscalatorEarthing10 control.

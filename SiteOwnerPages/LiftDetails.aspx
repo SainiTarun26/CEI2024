@@ -424,7 +424,7 @@
                                             Name of Local Agent
                                             <samp style="color: red">* </samp>
                                         </label>
-                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="TxtAgentName" autocomplete="off" MaxLength="50" onKeyPress="return alphabetKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder=""  TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control"  ID="TxtAgentName" autocomplete="off" MaxLength="50" onKeyPress="return alphabetKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder=""  TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TxtAgentName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Local Agent Name</asp:RequiredFieldValidator>
                                         <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
                                     </div>
@@ -450,10 +450,10 @@
                                     <div class="col-md-4" runat="server" visible="True" style="top: 0px !important;">
                                         <label for="Voltage">
                                             Make
- <samp style="color: red">* </samp>
+                                        <samp style="color: red">* </samp>
                                         </label>
                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtMake" MaxLength="150"  onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtErectionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Erection</asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtMake" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Erection</asp:RequiredFieldValidator>
                                         <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
                                     </div>
                                     <div class="col-md-4" runat="server" visible="True" style="top: 0px !important;">
@@ -462,7 +462,7 @@
                                             <samp style="color: red">* </samp>
                                         </label>
                                         <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSerialNo" MaxLength="30" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator79" runat="server" ControlToValidate="txtErectionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Erection</asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator79" runat="server" ControlToValidate="txtSerialNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Erection</asp:RequiredFieldValidator>
                                         <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
                                     </div>
                                     <div class="col-md-4" runat="server" visible="True" style="top: 0px !important;">
@@ -762,7 +762,7 @@
                                         Poles
                         <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlPolesLoadBreaker" TabIndex="33" runat="server">
+                                    <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" ID="ddlPolesLoadBreaker" TabIndex="33" runat="server">
                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                         <asp:ListItem Text="DP" Value="1"></asp:ListItem>
                                         <asp:ListItem Text="TPN" Value="2"></asp:ListItem>
@@ -803,7 +803,7 @@
                                         Poles
                         <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlpolesRCCBLoadBreaker" TabIndex="37" runat="server">
+                                    <asp:DropDownList class="form-control  select-form select2" Style="width: 100% !important;" ID="ddlpolesRCCBLoadBreaker" TabIndex="37" runat="server">
                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                         <asp:ListItem Text="DP" Value="1"></asp:ListItem>
                                         <asp:ListItem Text="TPN" Value="2"></asp:ListItem>
@@ -1165,7 +1165,7 @@
                                     <label for="Name">
                                         Contractor Name<samp style="color: red">* </samp>
                                     </label>
-                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="70" runat="server" AutoPostBack="true" ID="ddlContName" selectionmode="Multiple" Style="width: 100% !important" OnSelectedIndexChanged="ddlContName_SelectedIndexChanged">
+                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" TabIndex="70" runat="server" ID="ddlContName" selectionmode="Multiple" Style="width: 100% !important" OnSelectedIndexChanged="ddlContName_SelectedIndexChanged">
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator59" ControlToValidate="ddlContName" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Contractor Name"></asp:RequiredFieldValidator>
 
@@ -1192,7 +1192,7 @@
                                     <label for="Name">
                                         Supervisor Name<samp style="color: red">* </samp>
                                     </label>
-                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="73" runat="server" AutoPostBack="true" ID="ddlLicenseNo" selectionmode="Multiple" Style="width: 100% !important" OnSelectedIndexChanged="ddlLicenseNo_SelectedIndexChanged">
+                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" TabIndex="73" runat="server" ID="ddlLicenseNo" selectionmode="Multiple" Style="width: 100% !important" OnSelectedIndexChanged="ddlLicenseNo_SelectedIndexChanged">
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator61" ControlToValidate="ddlLicenseNo" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Supervisor Name"></asp:RequiredFieldValidator>
                                 </div>
@@ -1209,7 +1209,7 @@
                                         License Expiry Date<samp style="color: red">* </samp>
                                     </label>
                                     <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-                                    <asp:TextBox class="form-control" ID="txtSupExpiryDate" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="7" placeholder="" autocomplete="off" TabIndex="75" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtSupExpiryDate" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="7" placeholder="" TabIndex="75" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -1342,6 +1342,7 @@
 
       // Run on page load
       window.onload = function () {
+
           setMaxErectionDate();
       };
 
