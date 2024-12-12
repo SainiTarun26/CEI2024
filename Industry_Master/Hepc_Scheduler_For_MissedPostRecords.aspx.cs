@@ -44,13 +44,13 @@ namespace CEIHaryana.Industry_Master
                     dataAdapter.Fill(dataSet);
 
                     DataTable inspectionLogTable = dataSet.Tables[0];
-                    int[] inspectionIds = inspectionLogTable.AsEnumerable()
-                                                             .Select(row => row.Field<int>("InspectionId"))
+                    long[] inspectionIds = inspectionLogTable.AsEnumerable()
+                                                             .Select(row => row.Field<long>("InspectionId"))
                                                              .ToArray();
 
                     DataTable sldHistoryTable = dataSet.Tables[1];
-                    int[] sldIds = sldHistoryTable.AsEnumerable()
-                                                  .Select(row => row.Field<int>("InspectionId"))
+                    long[] sldIds = sldHistoryTable.AsEnumerable()
+                                                  .Select(row => row.Field<long>("InspectionId"))
                                                   .ToArray();
 
                     if (inspectionIds != null && inspectionIds.Length > 0)
@@ -74,7 +74,7 @@ namespace CEIHaryana.Industry_Master
             }
         }
 
-        private void ProcessInspectionIds(int[] inspectionIds)
+        private void ProcessInspectionIds(long[] inspectionIds)
         {
             foreach (var id in inspectionIds)
             {
@@ -220,7 +220,7 @@ namespace CEIHaryana.Industry_Master
             }
         }
 
-        private void ProcessSldIds(int[] sldIds)
+        private void ProcessSldIds(long[] sldIds)
         {
             foreach (var id in sldIds)
             {

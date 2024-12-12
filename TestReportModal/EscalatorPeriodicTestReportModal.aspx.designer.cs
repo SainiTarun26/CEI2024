@@ -195,15 +195,6 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtMake;
 
         /// <summary>
-        /// RfvtxtMake control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvtxtMake;
-
-        /// <summary>
         /// txtSerialNo control.
         /// </summary>
         /// <remarks>
@@ -211,15 +202,6 @@ namespace CEIHaryana.TestReportModal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSerialNo;
-
-        /// <summary>
-        /// RfvtxtSerialNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvtxtSerialNo;
 
         /// <summary>
         /// txtPrevChallanDate control.
@@ -249,15 +231,6 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtLastApprovalDate;
 
         /// <summary>
-        /// RequiredFieldValidator8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
-
-        /// <summary>
         /// txtDateofErection control.
         /// </summary>
         /// <remarks>
@@ -265,15 +238,6 @@ namespace CEIHaryana.TestReportModal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDateofErection;
-
-        /// <summary>
-        /// RequiredFieldValidator7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
 
         /// <summary>
         /// lblTypeOfEscalator control.
@@ -303,15 +267,6 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtControlType;
 
         /// <summary>
-        /// RfvtxtControlType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvtxtControlType;
-
-        /// <summary>
         /// txtCapacity control.
         /// </summary>
         /// <remarks>
@@ -319,15 +274,6 @@ namespace CEIHaryana.TestReportModal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCapacity;
-
-        /// <summary>
-        /// RequiredFieldValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
         /// txtWeight control.
@@ -339,15 +285,6 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtWeight;
 
         /// <summary>
-        /// RequiredFieldValidator6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
-
-        /// <summary>
         /// txtDistrictOfTr control.
         /// </summary>
         /// <remarks>
@@ -357,15 +294,6 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtDistrictOfTr;
 
         /// <summary>
-        /// RequiredFieldValidator25 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator25;
-
-        /// <summary>
         /// txtSiteAddress control.
         /// </summary>
         /// <remarks>
@@ -373,15 +301,6 @@ namespace CEIHaryana.TestReportModal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSiteAddress;
-
-        /// <summary>
-        /// RequiredFieldValidator4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
 
         /// <summary>
         /// Grd_Document control.

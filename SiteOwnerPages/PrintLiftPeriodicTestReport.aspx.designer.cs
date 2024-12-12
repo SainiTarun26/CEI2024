@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CEIHaryana.TestReportModal
+namespace CEIHaryana.SiteOwnerPages
 {
 
 
-    public partial class WebForm1
+    public partial class PrintLiftPeriodicTestReport
     {
 
         /// <summary>
@@ -33,31 +33,22 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.Button btnPrint;
 
         /// <summary>
-        /// divGeneratingSet control.
+        /// txtTestReportId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divGeneratingSet;
+        protected global::System.Web.UI.WebControls.TextBox txtTestReportId;
 
         /// <summary>
-        /// ScriptManager1 control.
+        /// IntimationData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
-
-        /// <summary>
-        /// DivSiteOwnerDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivSiteOwnerDetails;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl IntimationData;
 
         /// <summary>
         /// txtApplicantType control.
@@ -150,15 +141,6 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// divLiftDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divLiftDetails;
-
-        /// <summary>
         /// txtRegistrationNo control.
         /// </summary>
         /// <remarks>
@@ -195,6 +177,15 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtMake;
 
         /// <summary>
+        /// RfvtxtMake control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvtxtMake;
+
+        /// <summary>
         /// txtSerialNo control.
         /// </summary>
         /// <remarks>
@@ -202,6 +193,15 @@ namespace CEIHaryana.TestReportModal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSerialNo;
+
+        /// <summary>
+        /// RfvtxtSerialNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvtxtSerialNo;
 
         /// <summary>
         /// txtPrevChallanDate control.
@@ -213,13 +213,13 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtPrevChallanDate;
 
         /// <summary>
-        /// lnkFile control.
+        /// TextBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkFile;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
 
         /// <summary>
         /// txtLastApprovalDate control.
@@ -301,6 +301,15 @@ namespace CEIHaryana.TestReportModal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSiteAddress;
+
+        /// <summary>
+        /// Div8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div8;
 
         /// <summary>
         /// Grd_Document control.
