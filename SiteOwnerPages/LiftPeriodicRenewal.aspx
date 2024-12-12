@@ -205,13 +205,13 @@
                     <div class="col-md-1" style="margin-top: 31px; margin-bottom: auto; padding-left: 0px;">
                         <asp:Button ID="btnSearch" Class="btn btn-primary" runat="server" Text="Search" Style="height: 30px; padding: 0px 15px 0px 15px;" />
                     </div>
-                     <div class="col-md-2" runat="server">
-     <label>
-        Last Approval Date<samp style="color: red"> * </samp>
-     </label>
-     <asp:TextBox type="date" class="form-control" ID="txtLastApprovalDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
-     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="txtLastApprovalDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
- </div>
+                    <div class="col-md-2" runat="server">
+                        <label>
+                            Last Approval Date<samp style="color: red"> * </samp>
+                        </label>
+                        <asp:TextBox type="date" class="form-control" ID="txtLastApprovalDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="txtLastApprovalDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                    </div>
                     <div class="col-md-2" runat="server">
                         <label>
                             Previous Challan Date<samp style="color: red"> * </samp>
@@ -241,7 +241,8 @@
                             <div class="col-md-4" runat="server">
                                 <label id="lblMake" runat="server">
                                     Make
-                                </label><samp style="color: red">* </samp>
+                                </label>
+                                <samp style="color: red">* </samp>
                                 <asp:TextBox class="form-control" ID="txtMake" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RfvtxtMake" ControlToValidate="txtMake" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
@@ -262,7 +263,8 @@
                             <div class="col-md-4">
                                 <label id="lblTypeOfLift" runat="server">
                                     Type of Lift
-                                </label> <samp style="color: red">* </samp>
+                                </label>
+                                <samp style="color: red">* </samp>
                                 <asp:RadioButtonList ID="RadioBtnType" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                                     <asp:ListItem Text="Passenger lift" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
                                     <asp:ListItem Text="Goods Lift" Value="1" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
@@ -535,29 +537,62 @@
             return true;
         }
     </script>
-    
-<script type="text/javascript">
-    // Function to set the max date to the current date
-    window.onload = function () {
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
-        var yyyy = today.getFullYear();
 
-        today = yyyy + '-' + mm + '-' + dd;
-
-        // Set the max attribute of the date input field to the current date
-        document.getElementById('<%= txtPrevChallanDate.ClientID %>').setAttribute('max', today);
-        document.getElementById('<%= txtDateofErection.ClientID %>').setAttribute('max', today);
-        document.getElementById('<%= txtLastApprovalDate.ClientID %>').setAttribute('max', today);
-    };
-</script>
-     <script type="text/javascript">
+    <script type="text/javascript">
          function alertWithRedirectdata() {
              if (confirm('Application Submitted successfully.')) {
                  window.location.href = "/SiteOwnerPages/LiftPeriodicRenewal.aspx";
              } else {
              }
          }
-     </script>
+    </script>
+    <script>
+     document.addEventListener("DOMContentLoaded", function () {
+         // Get the current date
+         const today = new Date();
+
+         // Calculate the minimum date (20 years before today)
+         const minDate = new Date();
+         minDate.setFullYear(today.getFullYear() - 20);
+
+         // Format the dates to YYYY-MM-DD
+         const formattedToday = today.toISOString().split('T')[0];
+         const formattedMinDate = minDate.toISOString().split('T')[0];
+
+         // Get the TextBox input and set the min and max attributes
+         const dateInput = document.getElementById('<%= txtLastApprovalDate.ClientID %>');
+      if (dateInput) {
+          dateInput.setAttribute("max", formattedToday); // Disable future dates
+          dateInput.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
+      }
+  });
+ </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          // Get the current date
+          const today = new Date();
+
+          // Calculate the minimum date (20 years before today)
+          const minDate = new Date();
+          minDate.setFullYear(today.getFullYear() - 20);
+
+          // Format the dates to YYYY-MM-DD
+          const formattedToday = today.toISOString().split('T')[0];
+          const formattedMinDate = minDate.toISOString().split('T')[0];
+
+          // Set the date range for txtLastApprovalDate
+          const txtLastApprovalDate = document.getElementById('<%= txtLastApprovalDate.ClientID %>');
+      if (txtLastApprovalDate) {
+          txtLastApprovalDate.setAttribute("max", formattedToday); // Disable future dates
+          txtLastApprovalDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
+      }
+
+      // Set the date range for txtPrevChallanDate
+      const txtPrevChallanDate = document.getElementById('<%= txtPrevChallanDate.ClientID %>');
+      if (txtPrevChallanDate) {
+          txtPrevChallanDate.setAttribute("max", formattedToday); // Disable future dates
+          txtPrevChallanDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
+      }
+  });
+  </script>
 </asp:Content>

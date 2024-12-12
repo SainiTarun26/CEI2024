@@ -317,6 +317,7 @@ namespace CEIHaryana.SiteOwnerPages
                             DateTime.Parse(txtSupExpiryDate.Text)
                         );
                                 CEI.UpdateLiftTestReportHistory("Lift",IntimationId, count, CreatedBy);
+                                CEI.UpdateInstallations(installationNo, IntimationId);
                                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
                                 UploadCheckListDocInCollection(IntimationId, count);
                                 //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);

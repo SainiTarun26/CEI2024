@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -171,6 +172,61 @@ namespace CEIHaryana.SiteOwnerPages
 
             }
         }
+        public void UploadCheckListDocInCollection(string intimationids, string InstallTypeCount)
+        {
+            foreach (GridViewRow row in Grd_Document.Rows)
+            {
+                FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
+                Label DocSaveName = (Label)row.FindControl("LblDocumentName");
+                Label DocumentID = (Label)row.FindControl("LblDocumentID");
+                //string DocName = row.Cells[1].Text.Replace("\r\n", "");
+                string CreatedBy = Session["SiteOwnerId"].ToString();
+                string InstallTypes = "Escalator";
+
+                if (fileUpload.HasFile)
+                {
+                    if (Path.GetExtension(fileUpload.FileName).ToLower() == ".pdf")
+                    {
+
+                        if (fileUpload.PostedFile.ContentLength <= 1048576)
+                        {
+                            string FileName = Path.GetFileName(fileUpload.PostedFile.FileName);
+
+                            if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/" + intimationids + "/" + InstallTypes + "/" + InstallTypeCount + "/")))
+                            {
+                                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/" + intimationids + "/" + InstallTypes + "/" + InstallTypeCount + "/"));
+                            }
+
+                            string ext = fileUpload.PostedFile.FileName.Split('.')[1];
+                            string path = "";
+                            path = "/Attachment/" + CreatedBy + "/" + intimationids + "/" + InstallTypes + "/" + InstallTypeCount + "/";
+                            //string fileName = DocSaveName + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                            //string fileName = DocSaveName + "." + ext;
+                            string fileName = DocSaveName.Text.Trim() + ".pdf";
+
+                            string filePathInfo2 = "";
+
+                            filePathInfo2 = Server.MapPath("~/Attachment/" + CreatedBy + "/" + intimationids + "/" + InstallTypes + "/" + InstallTypeCount + "/" + fileName);
+
+                            fileUpload.PostedFile.SaveAs(filePathInfo2);
+                            CEI.InsertNewLiftAttachments(InstallTypes, DocumentID.Text, DocSaveName.Text.Trim(), fileName, path + fileName, CreatedBy);
+
+                        }
+                        else
+                        {
+                            throw new Exception("Please Upload Pdf Files Less Than 1 Mb Only");
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("Please Upload Pdf Files Only");
+                    }
+                }
+
+            }
+
+        }
+
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             try
@@ -225,6 +281,8 @@ namespace CEIHaryana.SiteOwnerPages
                         txtSupLicenseNo.Text, DateTime.Parse(txtSupExpiryDate.Text)
                     );
                     CEI.UpdateLiftTestReportHistory("Escalator", IntimationId, count, CreatedBy);
+                    CEI.UpdateInstallations(installationNo, IntimationId);
+                    UploadCheckListDocInCollection(IntimationId, count);
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
 
                     //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);

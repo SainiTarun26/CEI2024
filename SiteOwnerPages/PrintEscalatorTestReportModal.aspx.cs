@@ -1,15 +1,15 @@
-﻿using CEI_PRoject;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CEI_PRoject;
+using System.Data;
 
-namespace CEIHaryana.TestReportModal
+namespace CEIHaryana.SiteOwnerPages
 {
-    public partial class EscalatorTestReportModal : System.Web.UI.Page
+    public partial class PrintEscalatorTestReportModal : System.Web.UI.Page
     {
         CEI CEI = new CEI();
 
@@ -19,7 +19,7 @@ namespace CEIHaryana.TestReportModal
             {
                 if (!Page.IsPostBack)
                 {
-                    //Session["EscalatorTestReportID"] = "TEC-00004";
+                   // Session["EscalatorTestReportID"] = "TEC-00004";
                     string TestReportId = string.Empty;
                     if (Convert.ToString(Session["EscalatorTestReportID"]) != null && Convert.ToString(Session["EscalatorTestReportID"]) != "")
                     {
@@ -59,8 +59,8 @@ namespace CEIHaryana.TestReportModal
             {
                 DataSet ds = new DataSet();
                 ds = CEI.GetLiftTestReportModalData("Escalator", TestReportId);
-                lbltestReportId.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString();
-                lblWorkIntimationId.Text = ds.Tables[0].Rows[0]["IntimationId"].ToString();
+                //lbltestReportId.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                //lblWorkIntimationId.Text = ds.Tables[0].Rows[0]["IntimationId"].ToString();
                 ddlApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 txtInstallationFor.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 if (txtInstallationFor.Text == "Firm/Organization/Company/Department")
@@ -143,11 +143,11 @@ namespace CEIHaryana.TestReportModal
                 txtfaultratingRCCBMainBreaker.Text = ds.Tables[0].Rows[0]["FaultRCCBCurrentRating"].ToString();
                 txtMakeLoadBreaker.Text = ds.Tables[0].Rows[0]["LoadMakeMainBreaker"].ToString();
                 txtTypeLoadBreaker.Text = ds.Tables[0].Rows[0]["LoadTypeMainBreaker"].ToString();
-                TextBox6.Text = ds.Tables[0].Rows[0]["LoadPolesMainBreaker"].ToString();
+                TextBox28.Text = ds.Tables[0].Rows[0]["LoadPolesMainBreaker"].ToString();
                 txtRatingLoadBreaker.Text = ds.Tables[0].Rows[0]["LoadCurrentRatingInAmps"].ToString();
                 txtCapacityLoadBreaker.Text = ds.Tables[0].Rows[0]["LoadBreakingCapacityInKA"].ToString();
                 txtMakeRCCBLoadBreaker.Text = ds.Tables[0].Rows[0]["LoadMakeRCCBMainBreaker"].ToString();
-                TextBox5.Text = ds.Tables[0].Rows[0]["LoadPolesRCCBMainBreaker"].ToString();
+                //TextBox5.Text = ds.Tables[0].Rows[0]["LoadPolesRCCBMainBreaker"].ToString();
                 TextBox7.Text = ds.Tables[0].Rows[0]["LoadPolesRCCBMainBreaker"].ToString();
                 txtRatingRCCBLoadBreaker.Text = ds.Tables[0].Rows[0]["LoadRCCBCurrentRatingInAmps"].ToString();
                 txtFaultCurrentRCCBLoadBreaker.Text = ds.Tables[0].Rows[0]["LoadRCCBFaultCurrentRating"].ToString();
@@ -161,7 +161,7 @@ namespace CEIHaryana.TestReportModal
                 txtNeutralPhase.Text = ds.Tables[0].Rows[0]["NeutralandPhaseohms"].ToString();
                 txtEarthPhase.Text = ds.Tables[0].Rows[0]["EarthandPhasemohms"].ToString();
                 txtEarthing.Text = ds.Tables[0].Rows[0]["NumberofEarthing"].ToString();
-                txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
+                //txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
                 if (TextBox4.Text.Trim() == "DP")
                 {
                     TPN1.Visible = false;
@@ -178,25 +178,25 @@ namespace CEIHaryana.TestReportModal
                 }
                 if (txtEarthing.Text.Trim() == "1")
                 {
-                    Limit.Visible = false;
+                    
                     EscalatorEarthing1.Visible = true;
                 }
                 else if (txtEarthing.Text.Trim() == "2")
                 {
-                    Limit.Visible = false;
+                    
                     EscalatorEarthing1.Visible = true;
                     EscalatorEarthing2.Visible = true;
                 }
                 else if (txtEarthing.Text.Trim() == "3")
                 {
-                    Limit.Visible = false;
+                    
                     EscalatorEarthing1.Visible = true;
                     EscalatorEarthing2.Visible = true;
                     EscalatorEarthing3.Visible = true;
                 }
                 else if (txtEarthing.Text.Trim() == "4")
                 {
-                    Limit.Visible = false;
+                    
                     EscalatorEarthing1.Visible = true;
                     EscalatorEarthing2.Visible = true;
                     EscalatorEarthing3.Visible = true;
@@ -204,20 +204,20 @@ namespace CEIHaryana.TestReportModal
                 }
                 else if (txtEarthing.Text.Trim() == "5")
                 {
-                    Limit.Visible = false;
+                    
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                 }
                 else if (txtEarthing.Text.Trim() == "6")
                 {
-                    Limit.Visible = false;
+                    
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                     EscalatorEarthing6.Visible = true;
                 }
                 else if (txtEarthing.Text.Trim() == "7")
                 {
-                    Limit.Visible = false;
+                    
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                     EscalatorEarthing6.Visible = true;
@@ -225,7 +225,7 @@ namespace CEIHaryana.TestReportModal
                 }
                 else if (txtEarthing.Text.Trim() == "8")
                 {
-                    Limit.Visible = false;
+                    
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                     EscalatorEarthing6.Visible = true;
@@ -234,7 +234,7 @@ namespace CEIHaryana.TestReportModal
                 }
                 else if (txtEarthing.Text.Trim() == "9")
                 {
-                    Limit.Visible = false;
+                    
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                     EscalatorEarthing6.Visible = true;
@@ -244,7 +244,7 @@ namespace CEIHaryana.TestReportModal
                 }
                 else if (txtEarthing.Text.Trim() == "10")
                 {
-                    Limit.Visible = false;
+                    
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                     EscalatorEarthing6.Visible = true;
@@ -255,7 +255,7 @@ namespace CEIHaryana.TestReportModal
                 }
                 else
                 {
-                    Limit.Visible = false;
+                    
                     EscalatorEarthing4.Visible = false;
                     EscalatorEarthing5.Visible = false;
                     EscalatorEarthing6.Visible = false;
