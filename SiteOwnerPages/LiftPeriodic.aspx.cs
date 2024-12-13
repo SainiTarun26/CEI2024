@@ -229,9 +229,9 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         Installationtypes = "Lift";
                     }
-                    else if (liftCount > 1)
+                    else if (liftCount >= 1)
                     {
-                        if (EscalatorCount > 1)
+                        if (EscalatorCount >= 1)
                         {
                             Installationtypes = "Lift/Escalator";
                         }
@@ -240,9 +240,9 @@ namespace CEIHaryana.SiteOwnerPages
                             Installationtypes = "MultiLift";
                         }
                     }
-                    else if (EscalatorCount > 1)
+                    else if (EscalatorCount >= 1)
                     {
-                        if (liftCount > 1)
+                        if (liftCount >= 1)
                         {
                             Installationtypes = "Lift/Escalator";
                         }
