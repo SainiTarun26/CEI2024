@@ -122,8 +122,9 @@ namespace CEIHaryana.Officers
                     DataSet ds = new DataSet();
                     ds = CEI.InspectionDataFor_Lift(ID);
                     Type = ds.Tables[0].Rows[0]["IType"].ToString();
-
-                    if (Type == "New")
+                     lblInspectionType.Text = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
+                      lblInstallation.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
+                if (Type == "New")
                     {
                         txtInspectionReportID.Text = ds.Tables[0].Rows[0]["Id"].ToString();
                       
@@ -529,7 +530,7 @@ namespace CEIHaryana.Officers
                                           
                                          
                                             CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, txtChallanDate.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate,"", txtAddress.Text, transaction);
+                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, DateTime.Parse("1999-01-01"), txtAddress.Text, transaction);
 
                                         }
                                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
@@ -551,9 +552,10 @@ namespace CEIHaryana.Officers
                                             string LblRegistrationNo = (row.FindControl("LblRegistrationNo") as Label)?.Text;
                                             DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
                                             DateTime lblLastApprovalDate = DateTime.Parse((row.FindControl("lblLastApprovalDate") as Label)?.Text);
+                                           
                                             // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
                                               CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, LblRegistrationNo,   txtChallanDate.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                              lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, TxtApprovalDate.Text, txtAddress.Text,transaction);
+                                              lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, DateTime.Parse(TxtApprovalDate.Text), txtAddress.Text,transaction);
 
                                         }
                                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
@@ -774,22 +776,21 @@ namespace CEIHaryana.Officers
                 GridViewRow row = (GridViewRow)btn.NamingContainer;
                 Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
                 string installationName = lblInstallationName.Text.Trim();
+                Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
+                Session["RegistrationNo"] = LblRegistrationNo.Text;
 
-                Session["LiftTestReportID"] = btn.CommandArgument;
+                if (lblInstallationName != null)
+                {
+                    if (lblInstallationName.Text == "Lift")
+                    {
+                        Response.Redirect("/TestReportModal/LiftPeriodicTestReportModal.aspx", false);
+                    }
+                    else if (lblInstallationName.Text == "Escalator")
+                    {
+                        Response.Redirect("/TestReportModal/EscalatorPeriodicTestReportModal.aspx", false);
+                    }
+                }
 
-                Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
-                //if (installationName == "Line")
-                //{
-                //    Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
-                //}
-                //else if (installationName == "Substation Transformer")
-                //{
-                //    Response.Redirect("/TestReportModal/SubstationTransformerTestReportModal.aspx", false);
-                //}
-                //else if (installationName == "Generating Set")
-                //{
-                //    Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
-                //}
             }
             catch (Exception ex) { }
         }
@@ -984,8 +985,9 @@ namespace CEIHaryana.Officers
                 catch (Exception ex) { }
             }
 
+     
 
-            private void GridToViewTRinMultipleCaseNew()
+        private void GridToViewTRinMultipleCaseNew()
             {
                 try
                 {

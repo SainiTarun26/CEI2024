@@ -8554,7 +8554,7 @@ string AcceptedOrReReturn, string Reason, string ReasonType)
         /////Neeraj = 12-12-2024
 
         public void InstallationApproval_Lift(string InspectionID, string TestReportId, string InstallationType, string StaffId, string InspectionType, string RegistrationNo, string ChallanDate, string Division, string Make, string LiftSrNo,
-       string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, string LastApprovalDate, string SiteAddress,
+       string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, DateTime LastApprovalDate, string SiteAddress,
        SqlTransaction transaction)
         {
             try
