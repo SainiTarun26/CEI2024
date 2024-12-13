@@ -78,6 +78,15 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.TextBox txtAddress;
 
         /// <summary>
+        /// TranscationDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl TranscationDetails;
+
+        /// <summary>
         /// txtTransactionId control.
         /// </summary>
         /// <remarks>

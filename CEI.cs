@@ -8618,9 +8618,13 @@ string AcceptedOrReReturn, string Reason, string ReasonType)
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReportDataLift", Id);
         }
         ///
+        //Aslam - 13-12-2024
+        public DataSet GetSiteOwnerDataInPeriodicOfLift_AtOfficerEnd(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerDataInPeriodicOfLift_AtOfficerEnd", Id);
+        }
 
-
-
+        //
     }
 }
 

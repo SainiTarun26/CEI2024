@@ -161,7 +161,9 @@
 }
         td {
     font-size: 21px;
+        text-align: center;
 }
+
     </style>
     <%--<script>
 
@@ -410,13 +412,13 @@
             </ItemTemplate>
         </asp:TemplateField>--%>
                                             <asp:BoundField DataField="RenewalDate" HeaderText="Renewal Date">
-                                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                                <ItemStyle HorizontalAlign="Left" />
+                                                <HeaderStyle Horizontalalign="center" CssClass="headercolor" />
+                                                <ItemStyle Horizontalalign="center" />
                                             </asp:BoundField>
 
                                             <asp:BoundField DataField="ExpiryDate" HeaderText="Expiry Date">
-                                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                                <ItemStyle HorizontalAlign="Left" />
+                                                <HeaderStyle Horizontalalign="center" CssClass="headercolor" />
+                                                <ItemStyle Horizontalalign="center" />
                                             </asp:BoundField>
                                             <asp:TemplateField HeaderText="Signature" >
                                                 <ItemTemplate>

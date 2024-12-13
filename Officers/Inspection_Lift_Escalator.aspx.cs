@@ -124,8 +124,16 @@ namespace CEIHaryana.Officers
                         txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                         //count = Convert.ToInt32(ds.Tables[0].Rows[0]["TestReportCount"].ToString());           //Added     
                         IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
+                        if (txtAmount.Text == "0")
+                        {
+                            TranscationDetails.Visible = false;
+                        }
+                        else
+                        {
+                            TranscationDetails.Visible = true;
+                        }
 
-                        GridBindDocument();
+                    GridBindDocument();
 
                         DivViewTRinMultipleCaseNew.Visible = true;
                         GridToViewTRinMultipleCaseNew();
@@ -955,9 +963,20 @@ namespace CEIHaryana.Officers
                 string installationName = lblInstallationName.Text.Trim();
 
                 // Session["InspectionTestReportId"] = btn.CommandArgument;
-                Session["LiftTestReportID"] = btn.CommandArgument;
+               
 
-                string url = "/TestReportModal/LiftTestReportModal.aspx";
+                string url = string.Empty;
+                if (installationName == "Lift")
+                {
+                    Session["LiftTestReportID"] = btn.CommandArgument;
+                    url = "/TestReportModal/LiftTestReportModal.aspx";
+                }
+                if (installationName == "Escalator")
+                {
+                    Session["EscalatorTestReportID"] = btn.CommandArgument;
+                    url = "/TestReportModal/EscalatorTestReportModal.aspx";
+                }
+
 
                 string script = $@"<script>window.open('{url}', '_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenLiftTestReportInNewTab", script);

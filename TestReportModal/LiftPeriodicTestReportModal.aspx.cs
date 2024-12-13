@@ -29,14 +29,25 @@ namespace CEIHaryana.TestReportModal
                     {
                         Session["PreviousPage"] = Request.UrlReferrer.ToString();
                     }
+
+
                     if (!string.IsNullOrEmpty(siteOwnerId) && !string.IsNullOrEmpty(registrationNo))
                     {
                         GetData();
                         GetDetails();
                     }
+                    else if ((Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty) && !string.IsNullOrEmpty(Convert.ToString(Session["RegistrationNo"])))
+                    {
+                        GetData();
+                        GetDetails_AtOfficerEnd();
+                    }
+                    else
+                    {
+                        Response.Redirect("/login.aspx", false);
+                    }
                 }
             }
-            catch(Exception Ex)
+            catch (Exception Ex)
             { }
         }
 
@@ -60,6 +71,10 @@ namespace CEIHaryana.TestReportModal
                     txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                 }
             }
+            //else if ((Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty) && !string.IsNullOrEmpty(Convert.ToString(Session["RegistrationNo"])))
+            //{
+
+            //}
             else
             {
                 Response.Redirect("/login.aspx", false);
@@ -181,6 +196,36 @@ namespace CEIHaryana.TestReportModal
             catch (Exception ex)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "Error", $"alert('Error: {ex.Message}');", true);
+            }
+        }
+
+        private void GetDetails_AtOfficerEnd()
+        {
+            if (Convert.ToString(Session["RegistrationNo"]) != null && Convert.ToString(Session["RegistrationNo"]) != "")
+            {
+                string Id = Session["RegistrationNo"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.GetSiteOwnerDataInPeriodicOfLift_AtOfficerEnd(Id);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                    txtInstallationFor.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                    txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+                    //txtagency.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                    txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+                    txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                    txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
+                    txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+                    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+                }
+            }
+            //else if ((Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty) && !string.IsNullOrEmpty(Convert.ToString(Session["RegistrationNo"])))
+            //{
+
+            //}
+            else
+            {
+                Response.Redirect("/login.aspx", false);
             }
         }
 

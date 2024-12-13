@@ -86,15 +86,25 @@ namespace CEIHaryana.Officers
                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                     txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                    //PermisesType.Visible = false;
-                    //LineVoltage.Visible = false;
-                    //ContractorName.Visible = false;
-                    //ContractorPhoneNo.Visible = false;
-                    //ContractorEmail.Visible = false;
-                    //SupervisorName.Visible = false;
-                    //SupervisorEmail.Visible = false;
-                    //SiteOwnerContact.Visible = false;
-                    OwnerAddress.Visible = false;
+
+                    if (txtAmount.Text == "0")
+                    {
+                        TranscationDetails.Visible = false;
+                    }
+                    else
+                    {
+                        TranscationDetails.Visible = true;
+                    }
+
+                //PermisesType.Visible = false;
+                //LineVoltage.Visible = false;
+                //ContractorName.Visible = false;
+                //ContractorPhoneNo.Visible = false;
+                //ContractorEmail.Visible = false;
+                //SupervisorName.Visible = false;
+                //SupervisorEmail.Visible = false;
+                //SiteOwnerContact.Visible = false;
+                OwnerAddress.Visible = false;
                     TRAttached.Visible = true;
                     TRAttachedGrid.Visible = true;
                     GridView1.Columns[7].Visible = false;
@@ -497,7 +507,16 @@ namespace CEIHaryana.Officers
 
                 //Session["InspectionTestReportId"] = btn.CommandArgument;
                 Session["LiftTestReportID"] = btn.CommandArgument;
-                string url = "/TestReportModal/LiftTestReportModal.aspx";
+
+                string url = string.Empty;
+                if (installationName == "Lift")
+                {
+                    url = "/TestReportModal/LiftPeriodicTestReportModal.aspx";
+                }
+                if (installationName == "Escalator")
+                {
+                    url = "/TestReportModal/EscalatorPeriodicTestReportModal.aspx";
+                }
 
                 string script = $@"<script>window.open('{url}', '_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenLiftTestReportInNewTab", script);
@@ -513,7 +532,7 @@ namespace CEIHaryana.Officers
             {
                 Response.Redirect("/Officers/NewApplications.aspx", false);
             }
-            protected void GridBindDocument()
+        protected void GridBindDocument()
             {
                 try
                 {

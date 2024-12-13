@@ -2837,15 +2837,7 @@
         <SortedDescendingHeaderStyle BackColor="#00547E" />
     </asp:GridView>
 </div>
-                                <div class="row" style="margin-top:30px;" >
-                                    <div class="col-4"></div>
-                                   <%-- id="Contractor3" runat="server" visible="false"--%>
-                                   <div class="col-4" style="text-align: Center;" runat="server" id="ToOTPVerify" visible="false">
-                                        <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="BtnVerify_Click" />
-                                        <br />
-                                        <label>Submit Will be Enable When You Verify Your Details</label>
-                                    </div>
-                                </div>
+                               
                                 <div class="row" style="margin-top: 40px;">
                                     <div class="col-6"  id="FinalSubmit" runat="server" visible="false" style="text-align: end;">
                                         <asp:Button ID="BtnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="BtnSubmit_Click" />
@@ -2869,6 +2861,14 @@
                                     </div>--%>
                                 </div>                            
                     </div>
+                         <div class="row" style="margin-top:30px;" >                                 
+    <%-- id="Contractor3" runat="server" visible="false"--%>
+    <div class="col-md-12" style="text-align: Center;" runat="server" id="ToOTPVerify" visible="false">
+         <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="BtnVerify_Click" />
+         <br />
+         <label>Submit Will be Enable When You Verify Your Details</label>
+     </div>
+ </div>
                     <%--  <div class="card" id="earthing-card" style="background: #fcfcfc; margin-left: 0px; margin-right: 0px; margin-top: -50px;">
                         <div class="row">
                             <div class="col-4">

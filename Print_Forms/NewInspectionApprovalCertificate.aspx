@@ -135,6 +135,9 @@
             margin-left: 8%;
             width: 92%;
         }
+        input#TxtMemo {
+    width: 100%;
+}
     </style>
 
     <script type="text/javascript">
@@ -208,9 +211,9 @@
                                 </div>
                                 <div class="col-2">
                                     <br />
-                                    <asp:TextBox ID="TxtName" runat="server" Columns="70" Style="font-weight:400;"></asp:TextBox>
-                                    <asp:TextBox ID="TextAdress" runat="server" Columns="70" Style="font-weight:400;"></asp:TextBox>
-                                    <asp:TextBox ID="TextLocation" runat="server" Columns="70" Style="font-weight:400;"></asp:TextBox>
+                                    <asp:TextBox ID="TxtName" runat="server" Columns="70" Style="font-weight:700;"></asp:TextBox>
+                                    <asp:TextBox ID="TextAdress" runat="server" Columns="70" Style="font-weight:700;"></asp:TextBox>
+                                    <asp:TextBox ID="TextLocation" runat="server" Columns="70" Style="font-weight:700;"></asp:TextBox>
                                 </div>
                             </div>
                            <br/>
