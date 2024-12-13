@@ -1034,8 +1034,21 @@ namespace CEIHaryana.Officers
                 //ds = CEI.GetData(LblInstallationName.Text.Trim(), IntimationId, Count);
                 //if (ds.Tables[0].Rows.Count > 0)
                 //{
-                    Session["LiftTestReportID"] = LblTestReportId.Text;
-                    Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                    
+                if (LblInstallationName != null)
+                {
+                    if (LblInstallationName.Text == "Lift")
+                    {
+                        Session["LiftTestReportID"] = LblTestReportId.Text;
+                        Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                    }
+                    else if (LblInstallationName.Text == "Escalator")
+                    {
+                        Session["EscalatorTestReportID"] = LblTestReportId.Text;
+                        Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
+                    }
+                }
+               // Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
                     //if (LblInstallationName.Text.Trim() == "Line")
                     //{
                     //    Session["LineID"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
@@ -1088,9 +1101,21 @@ namespace CEIHaryana.Officers
                     GridViewRow row = (GridViewRow)btn.NamingContainer;
                     Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
                     string installationName = lblInstallationName.Text.Trim();
+                    Label LblTestReportId = (Label)row.FindControl("LblTestReportId");
 
-                    Session["LiftTestReportID"] = btn.CommandArgument;
-                   Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                   if (lblInstallationName != null)
+                   {
+                    if (lblInstallationName.Text == "Lift")
+                    {
+                        Session["LiftTestReportID"] = LblTestReportId.Text;
+                        Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                    }
+                    else if (lblInstallationName.Text == "Escalator")
+                    {
+                        Session["EscalatorTestReportID"] = LblTestReportId.Text;
+                        Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
+                    }
+                   }
 
                 //if (installationName == "Line")
                 //{

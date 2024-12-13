@@ -55,7 +55,7 @@ namespace CEIHaryana.Print_Forms
                     InspectionId = Session["InProcessInspectionId"].ToString();
 
                 }
-                if (Session["InspectionId"] != null)
+                else if (Session["InspectionId"] != null)
                 {
                     InspectionId = Session["InspectionId"].ToString();
 
@@ -123,6 +123,8 @@ namespace CEIHaryana.Print_Forms
                 //Session["StaffID"] = "";
                 //Session["SiteOwnerId"] = "";
                 //Session["AdminId"] = "";
+                Session["InProcessInspectionId"] = "";
+                 Session["InspectionId"]= "";
                 string script = "<script type=\"text/javascript\">printDiv('printableDiv');</script>";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "PrintOnLoad", script, false);
 

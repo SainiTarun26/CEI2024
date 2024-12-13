@@ -304,7 +304,8 @@
                     </div>
                 </div>
             </div>
-            <div class="card-title" id="TranscationDetails" runat="server" style="margin-top: -15px; margin-bottom: 20px; margin-top: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
+            <div id="TranscationDetails"  runat="server" >
+            <div class="card-title" style="margin-top: -15px; margin-bottom: 20px; margin-top: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
                 Transaction Details
            </div>
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
@@ -374,7 +375,7 @@
                 </div>
             </div>
                
-       
+       </div>
             <div class="row" id="divTestReportAttachment" runat="server" visible="true">
                 <div class="card-title" style="margin-bottom: 5px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: -10px;">
                     Inspection Details
