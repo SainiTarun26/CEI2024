@@ -234,7 +234,7 @@ namespace CEIHaryana.SiteOwnerPages
             txtPrevChallanDate.Text = "";
             txtMake.Text = "";
             txtSerialNo.Text = "";
-            RadioBtnType.SelectedValue = "";
+            RadioBtnType.ClearSelection();
             txtControlType.Text = "";
             txtCapacity.Text = "";
             txtWeight.Text = "";
@@ -247,7 +247,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             ddlInstallationType.SelectedItem.ToString();
             Session["InstallationType"] = ddlInstallationType.SelectedItem.ToString();
-
+            
             divLabelLiftAttachments.Visible = true;
             divLiftAttachments.Visible = true;
             BindDistrict();
@@ -282,9 +282,6 @@ namespace CEIHaryana.SiteOwnerPages
             Response.Redirect("/SiteOwnerPages/LiftPeriodic.aspx", false);
         }
 
-        //protected void btnSearch_Click(object sender, EventArgs e)
-        //{
-        //}
 
         protected void txtRegistrationNo_TextChanged(object sender, EventArgs e)
         {
@@ -298,19 +295,35 @@ namespace CEIHaryana.SiteOwnerPages
                 txtControlType.ReadOnly = true;
                 txtCapacity.ReadOnly = true;
                 txtWeight.ReadOnly = true;
-                txtDistrict.ReadOnly = true;
-                txtSiteAddress.ReadOnly = true;
-                txtDateofErection.ReadOnly = true;
-                txtMake.Text = ds.Tables[0].Rows[0]["MakeMainBreaker"].ToString();
-                txtSerialNo.Text = ds.Tables[0].Rows[0]["MakeMainBreaker"].ToString();
-                RadioBtnType.Text = ds.Tables[0].Rows[0]["TypeofLiftErected"].ToString();
-                txtControlType.Text = ds.Tables[0].Rows[0]["TypeOfControl"].ToString();
-                txtCapacity.Text = ds.Tables[0].Rows[0]["MaxPersonCapacitywithLiftOperator"].ToString();
-                txtWeight.Text = ds.Tables[0].Rows[0]["WeightofLiftCarwithContractLoadInKg"].ToString();
-                txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                 ddlDistrict.Visible = false;
                 txtDistrict.Visible = true;
-                txtSiteAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+                txtDateofErection.ReadOnly = true;
+                txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
+                txtSerialNo.Text = ds.Tables[0].Rows[0]["LiftSrNo"].ToString();
+                string typeOfLift = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
+                if (typeOfLift == "Passenger lift")
+                {
+                    RadioBtnType.SelectedValue = "0"; 
+                }
+                else if (typeOfLift == "Goods Lift")
+                {
+                    RadioBtnType.SelectedValue = "1"; 
+                }
+                txtControlType.Text = ds.Tables[0].Rows[0]["TypeOfControl"].ToString();
+                txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                txtWeight.Text = ds.Tables[0].Rows[0]["Weight"].ToString();
+                //txtDateofErection.Text = ds.Tables[0].Rows[0]["ErectionDate"].ToString();
+                DateTime erectionDate;
+                if (DateTime.TryParse(ds.Tables[0].Rows[0]["ErectionDate"].ToString(), out erectionDate))
+                {
+                    txtDateofErection.Text = erectionDate.ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    txtDateofErection.Text = ""; 
+                }
+                //txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();              
+               // txtSiteAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
             }
             else
             {
@@ -318,7 +331,8 @@ namespace CEIHaryana.SiteOwnerPages
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
             }
 
-        } protected void btnModalSearch_Click(object sender, EventArgs e)
+        } 
+        protected void btnModalSearch_Click(object sender, EventArgs e)
         {
             DataSet ds = new DataSet();
             ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtSearch.Text.Trim());

@@ -395,7 +395,11 @@
                                             <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" AutoGenerateColumns="false">
                                                 <PagerStyle CssClass="pagination-ys" />
                                                 <Columns>
-                                                    <asp:BoundField DataField="MakeMainBreaker" HeaderText="Make">
+                                                     <asp:BoundField DataField="RegistrationNo" HeaderText="Registration No">
+     <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
+     <ItemStyle HorizontalAlign="Left" Width="30%" />
+ </asp:BoundField>
+                                                    <asp:BoundField DataField="Make" HeaderText="Make">
                                                         <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
                                                         <ItemStyle HorizontalAlign="Left" Width="30%" />
                                                     </asp:BoundField>
@@ -403,18 +407,18 @@
                                                         <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
                                                         <ItemStyle HorizontalAlign="Left" Width="10%" />
                                                     </asp:BoundField>
-                                                    <asp:BoundField DataField="MaxPersonCapacitywithLiftOperator" HeaderText="Capacity">
+                                                    <asp:BoundField DataField="Capacity" HeaderText="Capacity">
                                                         <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
                                                         <ItemStyle HorizontalAlign="Left" Width="10%" />
                                                     </asp:BoundField>
-                                                    <asp:BoundField DataField="District" HeaderText="District">
+                                                   <%-- <asp:BoundField DataField="District" HeaderText="District">
                                                         <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
                                                         <ItemStyle HorizontalAlign="Left" Width="10%" />
-                                                    </asp:BoundField>
-                                                    <asp:BoundField DataField="Address" HeaderText="Address">
+                                                    </asp:BoundField>--%>
+                                                    <%--<asp:BoundField DataField="Address" HeaderText="Address">
                                                         <HeaderStyle HorizontalAlign="Left" Width="40%" CssClass="headercolor leftalign" />
                                                         <ItemStyle HorizontalAlign="Left" Width="40%" />
-                                                    </asp:BoundField>
+                                                    </asp:BoundField>--%>
                                                 </Columns>
                                                 <FooterStyle BackColor="White" ForeColor="#000066" />
                                                 <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
