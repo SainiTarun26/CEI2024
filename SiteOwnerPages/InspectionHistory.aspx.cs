@@ -82,7 +82,15 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 if (e.CommandName == "Select")
                 {
-                    Response.Redirect("/SiteOwnerPages/Inspection.aspx");
+                    if (lblType.Text.Trim() == "Escalator" || lblType.Text.Trim() == "Lift" || lblType.Text.Trim() == "Lift/Escalator" || lblType.Text.Trim() == "MultiLift" || lblType.Text.Trim() == "MultiEscalator")
+                    {
+                        Response.Redirect("/SiteOwnerPages/Inspection_Lift.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("/SiteOwnerPages/Inspection.aspx",false);
+                    }
+                   
                 }
                 else if (e.CommandName == "Print")
                 {

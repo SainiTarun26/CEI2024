@@ -20,7 +20,10 @@ namespace CEIHaryana.TestReportModal
                 {
                     string siteOwnerId = Convert.ToString(Session["SiteOwnerId"]);
                     string registrationNo = Convert.ToString(Session["RegistrationNo"]);
-
+                    if (Request.UrlReferrer != null)
+                    {
+                        Session["PreviousPage"] = Request.UrlReferrer.ToString();
+                    }
                     if (!string.IsNullOrEmpty(siteOwnerId) && !string.IsNullOrEmpty(registrationNo))
                     {
                         GetData();
@@ -178,7 +181,17 @@ namespace CEIHaryana.TestReportModal
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/SiteOwnerPages/LiftPeriodic.aspx", false);
+            try
+            {
+                string previousPageUrl = Session["PreviousPage"] as string;
+                if (!string.IsNullOrEmpty(previousPageUrl))
+                {
+                    Response.Redirect(previousPageUrl, false);
+                   // Response.Redirect("/SiteOwnerPages/LiftPeriodic.aspx", false);
+                    Session["PreviousPage"] = null;
+                }
+            }
+            catch { }
         }
     }
 }

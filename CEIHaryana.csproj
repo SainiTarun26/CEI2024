@@ -1968,6 +1968,7 @@
     <Content Include="SiteOwnerPages\InspectionRequestPrint_Industry.aspx" />
     <Content Include="SiteOwnerPages\InspectionsDetails.aspx" />
     <Content Include="SiteOwnerPages\Inspection_Industry.aspx" />
+    <Content Include="SiteOwnerPages\Inspection_Lift.aspx" />
     <Content Include="SiteOwnerPages\LiftApprovalData.aspx" />
     <Content Include="SiteOwnerPages\LiftDetails.aspx" />
     <Content Include="SiteOwnerPages\LiftInstallationDetails.aspx" />
@@ -3168,6 +3169,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\Inspection_Industry.aspx.designer.cs">
       <DependentUpon>Inspection_Industry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\Inspection_Lift.aspx.cs">
+      <DependentUpon>Inspection_Lift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\Inspection_Lift.aspx.designer.cs">
+      <DependentUpon>Inspection_Lift.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\LiftApprovalData.aspx.cs">
       <DependentUpon>LiftApprovalData.aspx</DependentUpon>
