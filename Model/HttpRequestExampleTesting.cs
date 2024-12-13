@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -96,28 +97,52 @@ namespace CEIHaryana.Model
 
             return result;
         }
+        //commented on 12 dec 2024 for converting in procedure and applying update on processed records 
+        //private void LogToDatabase(string requestUrl, string requestMethod, string requestHeaders, string requestContentType, string requestBody, string responseStatusCode, string responseHeaders, string responseBody)
+        //{
+        //    using (SqlConnection connection = new SqlConnection(_connectionString))
+        //    {
+        //        string query = "INSERT INTO ApiLog (RequestUrl, RequestMethod, RequestHeaders, RequestContentType, RequestBody, ResponseStatusCode, ResponseHeaders, ResponseBody) " +
+        //                       "VALUES (@RequestUrl, @RequestMethod, @RequestHeaders, @RequestContentType, @RequestBody, @ResponseStatusCode, @ResponseHeaders, @ResponseBody)";
+
+        //        SqlCommand command = new SqlCommand(query, connection);
+        //        command.Parameters.AddWithValue("@RequestUrl", requestUrl);
+        //        command.Parameters.AddWithValue("@RequestMethod", requestMethod);
+        //        command.Parameters.AddWithValue("@RequestHeaders", requestHeaders ?? (object)DBNull.Value);
+        //        command.Parameters.AddWithValue("@RequestContentType", requestContentType ?? (object)DBNull.Value);
+        //        command.Parameters.AddWithValue("@RequestBody", requestBody ?? (object)DBNull.Value);
+        //        command.Parameters.AddWithValue("@ResponseStatusCode", responseStatusCode ?? (object)DBNull.Value);
+        //        command.Parameters.AddWithValue("@ResponseHeaders", responseHeaders ?? (object)DBNull.Value);
+        //        command.Parameters.AddWithValue("@ResponseBody", responseBody ?? (object)DBNull.Value);
+
+        //        connection.Open();
+        //        command.ExecuteNonQuery();
+        //    }
+        //}
 
         private void LogToDatabase(string requestUrl, string requestMethod, string requestHeaders, string requestContentType, string requestBody, string responseStatusCode, string responseHeaders, string responseBody)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "INSERT INTO ApiLog (RequestUrl, RequestMethod, RequestHeaders, RequestContentType, RequestBody, ResponseStatusCode, ResponseHeaders, ResponseBody) " +
-                               "VALUES (@RequestUrl, @RequestMethod, @RequestHeaders, @RequestContentType, @RequestBody, @ResponseStatusCode, @ResponseHeaders, @ResponseBody)";
+                using (SqlCommand command = new SqlCommand("sp_LogApiRequestResponse_Saral", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
 
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@RequestUrl", requestUrl);
-                command.Parameters.AddWithValue("@RequestMethod", requestMethod);
-                command.Parameters.AddWithValue("@RequestHeaders", requestHeaders ?? (object)DBNull.Value);
-                command.Parameters.AddWithValue("@RequestContentType", requestContentType ?? (object)DBNull.Value);
-                command.Parameters.AddWithValue("@RequestBody", requestBody ?? (object)DBNull.Value);
-                command.Parameters.AddWithValue("@ResponseStatusCode", responseStatusCode ?? (object)DBNull.Value);
-                command.Parameters.AddWithValue("@ResponseHeaders", responseHeaders ?? (object)DBNull.Value);
-                command.Parameters.AddWithValue("@ResponseBody", responseBody ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@RequestUrl", requestUrl);
+                    command.Parameters.AddWithValue("@RequestMethod", requestMethod);
+                    command.Parameters.AddWithValue("@RequestHeaders", requestHeaders ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@RequestContentType", requestContentType ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@RequestBody", requestBody ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@ResponseStatusCode", responseStatusCode ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@ResponseHeaders", responseHeaders ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@ResponseBody", responseBody ?? (object)DBNull.Value);
 
-                connection.Open();
-                command.ExecuteNonQuery();
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
             }
         }
+
 
         private void LogToResponse(string message)
         {
