@@ -180,5 +180,10 @@ namespace CEIHaryana.TestReportModal
                 ClientScript.RegisterStartupScript(this.GetType(), "Error", $"alert('Error: {ex.Message}');", true);
             }
         }
+
+        protected void BtnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/SiteOwnerPages/LiftPeriodic.aspx", false);
+        }
     }
 }
