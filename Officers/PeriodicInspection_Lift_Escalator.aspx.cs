@@ -76,8 +76,9 @@ namespace CEIHaryana.Officers
                     DataSet ds = new DataSet();
                     ds = CEI.InspectionData_Lift_Escalator(ID);
                     Type = ds.Tables[0].Rows[0]["IType"].ToString();
-
-                    txtInspectionReportID.Text = ds.Tables[0].Rows[0]["Id"].ToString();
+                    lblInspectionType.Text = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
+                    lblInstallation.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
+                     txtInspectionReportID.Text = ds.Tables[0].Rows[0]["Id"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                     //txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
@@ -506,7 +507,7 @@ namespace CEIHaryana.Officers
                 string installationName = lblInstallationName.Text.Trim();
 
                 //Session["InspectionTestReportId"] = btn.CommandArgument;
-                Session["LiftTestReportID"] = btn.CommandArgument;
+                Session["RegistrationNo"] = btn.CommandArgument;
 
                 string url = string.Empty;
                 if (installationName == "Lift")

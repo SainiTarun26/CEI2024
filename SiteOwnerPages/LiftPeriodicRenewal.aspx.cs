@@ -148,10 +148,24 @@ namespace CEIHaryana.SiteOwnerPages
                         ClientScript.RegisterStartupScript(this.GetType(), "Error", "alert('Please select a file to upload.');", true);
                         return;
                     }
+                    string districtValue = string.Empty;
 
-                    CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
-                                              txtSerialNo.Text, RadioBtnType.SelectedItem.Text, txtControlType.Text, txtCapacity.Text, txtWeight.Text, ddlDistrict.SelectedItem.ToString(), txtSiteAddress.Text, SiteOwnerID, transaction);
+                    if (ddlDistrict.Visible)
+                    {
+                        districtValue = ddlDistrict.SelectedItem.ToString();
+                    }
+                    else
+                    {
+                        districtValue = txtDistrict.Text;
+                    }
+                    decimal weight = 0.0m;  
 
+                    // Attempt to parse the weight value
+                    if (decimal.TryParse(txtWeight.Text, out weight))
+                    {
+                        CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
+                                              txtSerialNo.Text, RadioBtnType.SelectedItem.Text, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, SiteOwnerID, transaction);
+                    }
                     // Upload Attachments
                     bool allDocumentsUploaded = true;
                     foreach (GridViewRow row in Grd_Document.Rows)
@@ -295,9 +309,12 @@ namespace CEIHaryana.SiteOwnerPages
                 txtControlType.ReadOnly = true;
                 txtCapacity.ReadOnly = true;
                 txtWeight.ReadOnly = true;
+                txtSiteAddress.ReadOnly = true;
                 ddlDistrict.Visible = false;
                 txtDistrict.Visible = true;
                 txtDateofErection.ReadOnly = true;
+                txtLastApprovalDate.ReadOnly = true;
+                txtPrevChallanDate.ReadOnly = true;
                 txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
                 txtSerialNo.Text = ds.Tables[0].Rows[0]["LiftSrNo"].ToString();
                 string typeOfLift = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
@@ -322,8 +339,26 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     txtDateofErection.Text = ""; 
                 }
-                //txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();              
-               // txtSiteAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+                DateTime LastApprovalDate;
+                if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastApprovalDate"].ToString(), out LastApprovalDate))
+                {
+                    txtLastApprovalDate.Text = LastApprovalDate.ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    txtLastApprovalDate.Text = "";
+                }
+                DateTime PrevChallanDate;
+                if (DateTime.TryParse(ds.Tables[0].Rows[0]["Previous_ChallanDate"].ToString(), out PrevChallanDate))
+                {
+                    txtPrevChallanDate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    txtPrevChallanDate.Text = "";
+                }
+                txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();              
+               txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
             }
             else
             {

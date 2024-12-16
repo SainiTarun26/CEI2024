@@ -95,7 +95,10 @@ namespace CEIHaryana.Officers
                         //txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                         txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                         txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
-                        if (txtWorkType.Text == "Line")
+                        lblInspectionType.Text = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
+                        lblInstallation.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
+
+                    if (txtWorkType.Text == "Line")
                         {
                             //Capacity.Visible = false;
                             //LineVoltage.Visible = true;

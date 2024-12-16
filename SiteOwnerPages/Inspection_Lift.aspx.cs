@@ -42,11 +42,12 @@ namespace CEIHaryana.SiteOwnerPages
                             Session["PreviousPage"] = "";
                         }
                     }
+                    else
+                    {
+                        Response.Redirect("/login.aspx", false);
+                    }
                 }
-                else
-                {
-                    Response.Redirect("/login.aspx", false);
-                }
+               
             }
             catch (Exception ex)
             {

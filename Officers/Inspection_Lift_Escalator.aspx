@@ -207,7 +207,7 @@
             <%-- <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
              <asp:UpdatePanel ID="UpdatePanel1" runat="server"></asp:UpdatePanel>--%>
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
-                Inspection/SiteOwner  Detail
+                Inspection/SiteOwner  Detail (<asp:Label ID="lblInspectionType" runat="server" Text="Label"></asp:Label>/<asp:Label ID="lblInstallation" runat="server" Text="Label"></asp:Label>)
             </div>
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                 <div class="row">

@@ -582,7 +582,7 @@ namespace CEIHaryana.SiteOwnerPages
                     Session["PendingPaymentId"] = SplitResultPartsArray[0];
                     string InspectionId = SplitResultPartsArray[0]; // Extract the first value
                     Session["PrintInspectionID"] = InspectionId;
-                    UploadCheckListDocInCollection("MultipleInstallationType", para_CreatedByy, SplitResultPartsArray[1], "MultipleInstallationType", InspectionId);
+                    UploadCheckListDocInCollection(para_lblCategory, para_CreatedByy, SplitResultPartsArray[1], para_lblCategory, InspectionId);
 
                     foreach (var file in uploadedFiles)
                     {

@@ -188,6 +188,9 @@
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ControlToValidate="ddlInstallationType" InitialValue="0" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
+                    <div class="col-md-4" runat="server" style="margin-top: auto; margin-bottom: auto;">
+                        <span style="color: red; font-weight: 700;">Note: Please select Installation Type First.</span>
+                    </div>
                 </div>
             </div>
             <div class="card-title" id="divInspectiondetailsLabel" runat="server" visible="true" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
@@ -306,7 +309,7 @@
                                 </label>
                                 <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDistrict" TabIndex="6" selectionmode="Multiple" Style="width: 100% !important">
                                 </asp:DropDownList>
-                                <asp:TextBox class="form-control" ID="txtDistrict" Visible="false" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" onkeypress="return isNumberKey(event)"></asp:TextBox>
+                                <asp:TextBox class="form-control" ID="txtDistrict" Visible="false" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" ReadOnly="true"></asp:TextBox>
 
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator25" ErrorMessage="Required" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                             </div>
@@ -395,10 +398,10 @@
                                             <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" AutoGenerateColumns="false">
                                                 <PagerStyle CssClass="pagination-ys" />
                                                 <Columns>
-                                                     <asp:BoundField DataField="RegistrationNo" HeaderText="Registration No">
-     <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
-     <ItemStyle HorizontalAlign="Left" Width="30%" />
- </asp:BoundField>
+                                                    <asp:BoundField DataField="RegistrationNo" HeaderText="Registration No">
+                                                        <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
+                                                        <ItemStyle HorizontalAlign="Left" Width="30%" />
+                                                    </asp:BoundField>
                                                     <asp:BoundField DataField="Make" HeaderText="Make">
                                                         <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
                                                         <ItemStyle HorizontalAlign="Left" Width="30%" />
@@ -411,14 +414,11 @@
                                                         <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
                                                         <ItemStyle HorizontalAlign="Left" Width="10%" />
                                                     </asp:BoundField>
-                                                   <%-- <asp:BoundField DataField="District" HeaderText="District">
-                                                        <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
-                                                        <ItemStyle HorizontalAlign="Left" Width="10%" />
-                                                    </asp:BoundField>--%>
-                                                    <%--<asp:BoundField DataField="Address" HeaderText="Address">
-                                                        <HeaderStyle HorizontalAlign="Left" Width="40%" CssClass="headercolor leftalign" />
-                                                        <ItemStyle HorizontalAlign="Left" Width="40%" />
-                                                    </asp:BoundField>--%>
+                                                    <asp:BoundField DataField="District" HeaderText="District">
+                                                        <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
+                                                        <ItemStyle HorizontalAlign="Left" Width="30%" />
+                                                    </asp:BoundField>
+                                                   
                                                 </Columns>
                                                 <FooterStyle BackColor="White" ForeColor="#000066" />
                                                 <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -543,14 +543,14 @@
     </script>
 
     <script type="text/javascript">
-         function alertWithRedirectdata() {
-             if (confirm('Application Submitted successfully.')) {
-                 window.location.href = "/SiteOwnerPages/LiftPeriodicRenewal.aspx";
-             } else {
-             }
-         }
+        function alertWithRedirectdata() {
+            if (confirm('Application Submitted successfully.')) {
+                window.location.href = "/SiteOwnerPages/LiftPeriodicRenewal.aspx";
+            } else {
+            }
+        }
     </script>
- <%--   <script>
+    <%--   <script>
      document.addEventListener("DOMContentLoaded", function () {
          // Get the current date
          const today = new Date();
@@ -614,27 +614,27 @@
 
             // Get the TextBox input and set the min and max attributes
             const dateInput = document.getElementById('<%= txtLastApprovalDate.ClientID %>');
-              if (dateInput) {
-                  dateInput.setAttribute("max", formattedToday); // Disable future dates
-                  dateInput.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
-              }
-          });
-      </script>
-  <script>
-      document.addEventListener("DOMContentLoaded", function () {
-          // Get the current date
-          const today = new Date();
+            if (dateInput) {
+                dateInput.setAttribute("max", formattedToday); // Disable future dates
+                dateInput.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the current date
+            const today = new Date();
 
-          // Calculate the minimum date (20 years before today)
-          const minDate = new Date();
-          minDate.setFullYear(today.getFullYear() - 20);
+            // Calculate the minimum date (20 years before today)
+            const minDate = new Date();
+            minDate.setFullYear(today.getFullYear() - 20);
 
-          // Format the dates to YYYY-MM-DD
-          const formattedToday = today.toISOString().split('T')[0];
-          const formattedMinDate = minDate.toISOString().split('T')[0];
+            // Format the dates to YYYY-MM-DD
+            const formattedToday = today.toISOString().split('T')[0];
+            const formattedMinDate = minDate.toISOString().split('T')[0];
 
-          // Set the date range for txtLastApprovalDate
-          const txtLastApprovalDate = document.getElementById('<%= txtLastApprovalDate.ClientID %>');
+            // Set the date range for txtLastApprovalDate
+            const txtLastApprovalDate = document.getElementById('<%= txtLastApprovalDate.ClientID %>');
           if (txtLastApprovalDate) {
               txtLastApprovalDate.setAttribute("max", formattedToday); // Disable future dates
               txtLastApprovalDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
@@ -647,33 +647,33 @@
               txtPrevChallanDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
           }
       });
-  </script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-      // Get the current date
-      const today = new Date();
-      
-      // Calculate the minimum date (20 years before today)
-      const minDate = new Date();
-      minDate.setFullYear(today.getFullYear() - 20);
-      
-      // Format the dates to YYYY-MM-DD
-      const formattedToday = today.toISOString().split('T')[0];
-      const formattedMinDate = minDate.toISOString().split('T')[0];
-      
-      // Helper function to set min and max attributes
-      function setDateRange(inputId) {
-          const dateInput = document.getElementById(inputId);
-          if (dateInput) {
-              dateInput.setAttribute("max", formattedToday); // Disable future dates
-              dateInput.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
-          }
-      }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the current date
+            const today = new Date();
 
-      // Set date range for all specified TextBoxes
-      setDateRange('<%= txtLastApprovalDate.ClientID %>');
+            // Calculate the minimum date (20 years before today)
+            const minDate = new Date();
+            minDate.setFullYear(today.getFullYear() - 20);
+
+            // Format the dates to YYYY-MM-DD
+            const formattedToday = today.toISOString().split('T')[0];
+            const formattedMinDate = minDate.toISOString().split('T')[0];
+
+            // Helper function to set min and max attributes
+            function setDateRange(inputId) {
+                const dateInput = document.getElementById(inputId);
+                if (dateInput) {
+                    dateInput.setAttribute("max", formattedToday); // Disable future dates
+                    dateInput.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
+                }
+            }
+
+            // Set date range for all specified TextBoxes
+            setDateRange('<%= txtLastApprovalDate.ClientID %>');
       setDateRange('<%= txtPrevChallanDate.ClientID %>');
       setDateRange('<%= txtDateofErection.ClientID %>');
   });
-</script>
+    </script>
 </asp:Content>
