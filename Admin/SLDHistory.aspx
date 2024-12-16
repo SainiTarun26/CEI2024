@@ -115,8 +115,8 @@
                         <div class="row" style="margin-bottom: -30px;">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="search" class="col-md-1 col-form-label" style="margin-top: 3px; padding: 0px;">Search:</label>
-                                    <div class="col-md-6" style="margin-left: -10px;">
+                                    <label for="search" class="col-md-2 col-form-label" style="margin-top: 3px; padding: 0px;">Search:</label>
+                                    <div class="col-md-6" style="margin-left: -35px;">
                                         <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px"></asp:TextBox><br />
                                     </div>
                                     <div class="col-md-2">

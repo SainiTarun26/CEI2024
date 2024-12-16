@@ -244,6 +244,7 @@
 
         th {
             width: 1%;
+            background: #9292cc;
         }
 
         .input-box {
@@ -308,14 +309,25 @@
                         </label>
                     </div>
                 </div>
-              
+                <div class="row" style="margin-bottom: 8px;">
+      <div class="col-md-12">
+          <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">SLD Diagram Details</h7>
+      </div>
+  </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div>
-                        <div class="row" style="margin-bottom: 8px;">
-                            <div class="col-md-12">
-                                <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">SLD Diagram Details</h7>
-                            </div>
-                        </div>
+                        <div class="row" style="margin-bottom: -30px; margin-left: 0px !important;">
+      <div class="col-md-6">
+          <div class="form-group row">
+              <label for="search" class="col-md-2 col-form-label" style="margin-top: 3px; padding: 0px;">Search:</label>
+              <div class="col-md-6" style="margin-left: -35px;">
+                  <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)"  class="form-control" Font-Size="12px"></asp:TextBox><br />
+              </div>
+
+
+          </div>
+      </div>
+  </div>
                      
                       
                         <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoPostBack="true" AutoGenerateColumns="false"  OnRowCommand="grd_Documemnts_RowCommand"  OnRowDataBound="grd_Documemnts_RowDataBound" AllowPaging="True" PageSize="10"  EnableViewState="true">
@@ -507,7 +519,33 @@
     </script>
 
 
+       <script type="text/javascript">
+           function Search_Gridview(strKey) {
+               var strData = strKey.value.toLowerCase().split(" ");
+               var tblData = document.getElementById("<%=grd_Documemnts.ClientID %>");
+               var rowData;
+               for (var i = 1; i < tblData.rows.length; i++) {
+                   rowData = tblData.rows[i].innerHTML;
+                   var styleDisplay = 'none';
+                   for (var j = 0; j < strData.length; j++) {
+                       if (rowData.toLowerCase().indexOf(strData[j]) >= 0)
+                           styleDisplay = '';
+                       else {
+                           styleDisplay = 'none';
+                           break;
+                       }
+                   }
+                   tblData.rows[i].style.display = styleDisplay;
+               }
 
+           }
+           function SearchOnEnter(event) {
+               if (event.keyCode === 13) {
+                   event.preventDefault();
+                   Search_Gridview(document.getElementById('txtSearch'));
+               }
+           }
+       </script>
 
 
 

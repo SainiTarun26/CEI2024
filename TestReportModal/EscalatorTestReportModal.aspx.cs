@@ -19,6 +19,11 @@ namespace CEIHaryana.TestReportModal
             {
                 if (!Page.IsPostBack)
                 {
+                    if (Request.UrlReferrer != null)
+                    {
+                        Session["PreviousPage"] = Request.UrlReferrer.ToString();
+                    }
+
                     //Session["EscalatorTestReportID"] = "TEC-00004";
                     string TestReportId = string.Empty;
                     if (Convert.ToString(Session["EscalatorTestReportID"]) != null && Convert.ToString(Session["EscalatorTestReportID"]) != "")
@@ -312,6 +317,16 @@ namespace CEIHaryana.TestReportModal
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
 
+            }
+        }
+
+        protected void btnback_Click(object sender, EventArgs e)
+        {
+            if (Session["PreviousPage"] != null)
+            {
+                string previousPageUrl = Session["PreviousPage"].ToString();
+                Response.Redirect(previousPageUrl, false);
+                Session["PreviousInspPage"] = null;
             }
         }
     }

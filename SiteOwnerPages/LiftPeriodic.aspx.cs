@@ -529,7 +529,7 @@ namespace CEIHaryana.SiteOwnerPages
                     Session["Duplicacy"] = "2";
                     string InspectionId = CEI.InsertInspectionDataForPeriodic_LiftInspection(para_ApplicantType, para_lblCategory, para_District,
                         para_To, para_PaymentMode, para_txtInspectionRemarks, para_CreatedByy, para_TotalAmount, para_Assigned, para_transcationId, para_TranscationDate, para_InspectID, ServiceType, transaction);
-                    UploadCheckListDocInCollection("MultipleInstallationType", para_CreatedByy, "MultipleInstallationType", InspectionId);
+                    UploadCheckListDocInCollection(para_lblCategory, para_CreatedByy, para_lblCategory, InspectionId);
 
                     foreach (var file in uploadedFiles)
                     {
@@ -589,25 +589,18 @@ namespace CEIHaryana.SiteOwnerPages
 
         public void UploadCheckListDocInCollection(string Category, string CreatedByy, string InstallTypes, string InspectionId)
         {
+            if (InstallTypes == "Lift/Escalator")
+            {
+                InstallTypes = "Lift_Escalator";
+            }
+
             foreach (GridViewRow row in Grd_Document.Rows)
             {
                 FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
-                //string Req = ((HtmlInputHidden)row.FindControl("Req")).Value.Replace("\r\n", "");
                 string DocSaveName = ((HtmlInputHidden)row.FindControl("DocumentShortName")).Value.Replace("\r\n", "");
                 string DocumentID = ((HtmlInputHidden)row.FindControl("DocumentID")).Value.Replace("\r\n", "");
                 string DocName = row.Cells[1].Text.Replace("\r\n", "");
 
-                //if (Convert.ToInt32(InspectionIdClientSideCheckedRow.Value) == 0)
-                //{
-                //    if (Req == "1")
-                //    {
-                //        if (!fileUpload.HasFile && Req == "1")
-                //        {
-                //            string message = DocName + " is mandatory to upload.";
-                //            throw new Exception(message);
-                //        }
-                //    }
-                //}
 
                 if (fileUpload.HasFile)
                 {

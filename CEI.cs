@@ -4415,9 +4415,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
 
 
-        public DataSet ViewSldDocuments(string loginId)
+        public DataSet ViewSldDocuments(string loginId, string searchText = null)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_getSdlDocument", loginId);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_getSdlDocument", loginId, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
         public DataSet PrintApprovalLetter(string Id)
         {
@@ -4451,9 +4451,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             con.Close();
 
         }
-        public DataSet ViewSldDocumentsFoApproval(string LoginId)
+        public DataSet ViewSldDocumentsFoApproval(string LoginId, string searchText = null)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_getSdlDocumentFoApproval", LoginId);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_getSdlDocumentFoApproval", LoginId, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
         public DataTable UpdateSLD(string Id, string path, string SiteOwnerId)
         {

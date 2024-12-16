@@ -499,7 +499,10 @@ namespace CEIHaryana.SiteOwnerPages
                 string DocSaveName = ((HtmlInputHidden)row.FindControl("DocumentShortName")).Value.Replace("\r\n", "");
                 string DocumentID = ((HtmlInputHidden)row.FindControl("DocumentID")).Value.Replace("\r\n", "");
                 string DocName = row.Cells[1].Text.Replace("\r\n", "");
-
+                if (InstallTypes == "Lift/Escalator")
+                {
+                    InstallTypes = "Lift_Escalator";
+                }
                 if (Convert.ToInt32(InspectionIdClientSideCheckedRow.Value) == 0)
                 {
                     if (Req == "1")
