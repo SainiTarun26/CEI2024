@@ -429,6 +429,7 @@ namespace CEIHaryana.Officers
                             TxtDivision.Text = ds.Tables[0].Rows[0]["Division"].ToString();
                             txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                             txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
+                            txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                         }
                         else if (Type == "Periodic")
                         {
@@ -436,6 +437,7 @@ namespace CEIHaryana.Officers
                             txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                             TxtApprovalDate.Text = ds.Tables[0].Rows[0]["LastApprovalDate"].ToString();
                             txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
+                            txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                         }
                         
 
@@ -531,7 +533,7 @@ namespace CEIHaryana.Officers
                                           
                                          
                                             CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, txtChallanDate.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, DateTime.Parse("1999-01-01"), txtAddress.Text, txtDistrict.Text, transaction);
+                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, DateTime.Parse("1999-01-01"), txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), transaction);
 
                                         }
                                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
@@ -556,19 +558,24 @@ namespace CEIHaryana.Officers
                                            
                                             // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
                                             CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, LblRegistrationNo,   txtChallanDate.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, DateTime.Parse(TxtApprovalDate.Text), txtAddress.Text, txtDistrict.Text,transaction);
+                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, DateTime.Parse(TxtApprovalDate.Text), txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text),transaction);
 
                                         }
                                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
 
                                     }
-                                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
-                                   
+
+                                    transaction.Commit();
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
                                 }
+                             
+
+
                                 else
                                 {
                                     //transaction.Commit();
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                                    ddlReview.Focus();
+                                    return;
                                 }
                                
                                 //if (ApprovedorReject == "Rejected")
@@ -578,7 +585,7 @@ namespace CEIHaryana.Officers
                                 //}
                                 Session["InspectionType"] = "";
                                 Session["InstallationType"] = "";
-                                transaction.Commit();
+                                //transaction.Commit();
 
                                 //commented 3 dec 2024 for 
                                 // checksuccessmessage = 1;
@@ -705,7 +712,7 @@ namespace CEIHaryana.Officers
                             }
                             finally
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                                //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
                                 transaction?.Dispose();
                                 connection.Close();
                             }

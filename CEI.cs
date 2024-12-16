@@ -8143,7 +8143,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDataForLift", Id);
         }
         public void InstallationApproval_Lift(string InspectionID, string TestReportId, string InstallationType, string StaffId, string InspectionType, string RegistrationNo, string ChallanDate, string Division, string Make, string LiftSrNo,
-string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, DateTime LastApprovalDate, string SiteAddress, string District,
+string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, DateTime LastApprovalDate, string SiteAddress, string District, DateTime Current_ChallanDate,
 SqlTransaction transaction)
         {
             try
@@ -8193,6 +8193,7 @@ SqlTransaction transaction)
                 //}
                 cmd.Parameters.AddWithValue("@SiteAddress", SiteAddress);
                 cmd.Parameters.AddWithValue("@District", District);
+                cmd.Parameters.AddWithValue("@Current_ChallanDate", Current_ChallanDate);
                 cmd.ExecuteNonQuery();
 
             }
