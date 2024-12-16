@@ -427,12 +427,13 @@ namespace CEIHaryana.Officers
                         if (Type == "New")
                         {
                             TxtDivision.Text = ds.Tables[0].Rows[0]["Division"].ToString();
-                          
+                            txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                             txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
                         }
                         else if (Type == "Periodic")
                         {
                             TxtDivision.Text = ds.Tables[0].Rows[0]["Division"].ToString();
+                            txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                             TxtApprovalDate.Text = ds.Tables[0].Rows[0]["LastApprovalDate"].ToString();
                             txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
                         }
@@ -530,7 +531,7 @@ namespace CEIHaryana.Officers
                                           
                                          
                                             CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, txtChallanDate.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, DateTime.Parse("1999-01-01"), txtAddress.Text, transaction);
+                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, DateTime.Parse("1999-01-01"), txtAddress.Text, txtDistrict.Text, transaction);
 
                                         }
                                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
@@ -554,8 +555,8 @@ namespace CEIHaryana.Officers
                                             DateTime lblLastApprovalDate = DateTime.Parse((row.FindControl("lblLastApprovalDate") as Label)?.Text);
                                            
                                             // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
-                                              CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, LblRegistrationNo,   txtChallanDate.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                              lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, DateTime.Parse(TxtApprovalDate.Text), txtAddress.Text,transaction);
+                                            CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, LblRegistrationNo,   txtChallanDate.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
+                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, DateTime.Parse(TxtApprovalDate.Text), txtAddress.Text, txtDistrict.Text,transaction);
 
                                         }
                                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);

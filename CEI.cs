@@ -8140,7 +8140,9 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDataForLift", Id);
         }
-        public void InstallationApproval_Lift(string InspectionID, string TestReportId, string InstallationType, string InstallationName, string RegistrationNo, string InspectionType, string StaffId, string ChallanDate, string Division, SqlTransaction transaction)
+        public void InstallationApproval_Lift(string InspectionID, string TestReportId, string InstallationType, string StaffId, string InspectionType, string RegistrationNo, string ChallanDate, string Division, string Make, string LiftSrNo,
+string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, DateTime LastApprovalDate, string SiteAddress, string District,
+SqlTransaction transaction)
         {
             try
             {
@@ -8156,13 +8158,9 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                 cmd.Parameters.AddWithValue("@ID", InspectionID);
                 cmd.Parameters.AddWithValue("@Lift_Escelator_Id", TestReportId);
                 cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
-                cmd.Parameters.AddWithValue("@InstallationName", InstallationName);
                 cmd.Parameters.AddWithValue("@StaffId", StaffId);
                 cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
                 cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
-
-                //cmd.Parameters.AddWithValue("@Division", Division);
-                //cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
 
                 DateTime ChallDate;
                 if (DateTime.TryParse(ChallanDate, out ChallDate) && ChallDate != DateTime.MinValue)
@@ -8175,8 +8173,26 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                 }
 
                 cmd.Parameters.AddWithValue("@Division", Division);
+                cmd.Parameters.AddWithValue("@Make", Make);
+                cmd.Parameters.AddWithValue("@LiftSrNo", LiftSrNo);
+                cmd.Parameters.AddWithValue("@TypeOfLift", TypeOfLift);
+                cmd.Parameters.AddWithValue("@TypeOfControl", TypeOfControl);
+                cmd.Parameters.AddWithValue("@Capacity", Capacity);
+                cmd.Parameters.AddWithValue("@Weight", Weight);
+                cmd.Parameters.AddWithValue("@ErectionDate", DateOfErection);
+                cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate);
+                //if (LastApprovalDate.HasValue)
+                //{
+                //    cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate.Value);  // Pass the valid DateTime value
+                //}
+                //else
+                //{
+                //    cmd.Parameters.AddWithValue("@LastApprovalDate", DBNull.Value);  // Pass DBNull if it's null
+                //}
+                cmd.Parameters.AddWithValue("@SiteAddress", SiteAddress);
+                cmd.Parameters.AddWithValue("@District", District);
                 cmd.ExecuteNonQuery();
-                //con.Close();
+
             }
             catch (Exception ex)
             {
@@ -8624,6 +8640,7 @@ string AcceptedOrReReturn, string Reason, string ReasonType)
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerDataInPeriodicOfLift_AtOfficerEnd", Id);
         }
 
+     
         //
     }
 }

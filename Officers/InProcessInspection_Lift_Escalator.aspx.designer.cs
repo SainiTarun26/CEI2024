@@ -204,6 +204,24 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.TextBox TxtDivision;
 
         /// <summary>
+        /// District control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl District;
+
+        /// <summary>
+        /// txtDistrict control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDistrict;
+
+        /// <summary>
         /// divTestReportAttachment control.
         /// </summary>
         /// <remarks>
