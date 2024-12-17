@@ -1395,7 +1395,7 @@
         function alertWithRedirectdata() {
             /*if (confirm('Test Report Submitted Successfully')) {*/
             alert('Test Report Submitted Successfully');
-            window.location.href = "/SiteOwnerPages/LiftInstallationDetails.aspx";
+            window.location.href = "/SiteOwnerPages/LiftIntimations.aspx";
             //} else {
             //}
         }

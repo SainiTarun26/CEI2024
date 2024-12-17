@@ -95,7 +95,7 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else
                 {
-                    Installation.Visible = false;
+                    //Installation.Visible = false;
                     installationType1.Visible = false;
                 }
                 if (dp_Id2 != "")
@@ -107,7 +107,7 @@ namespace CEIHaryana.SiteOwnerPages
                 else
                 {
 
-                    Installation.Visible = false;
+                    // Installation.Visible = false;
                     installationType2.Visible = false;
                 }
                 if (LocalAgent == "Yes")

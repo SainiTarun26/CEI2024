@@ -787,8 +787,7 @@
                                                             </th>
                                                             <th>Value in(ohms)
                                                             </th>
-                                                            <th>Used For
-                                                            </th>
+                                                            
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -805,14 +804,7 @@
                 <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing1" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
             </div>
         </td>
-        <td>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed1" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther1" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-        </td>
+        
     </tr>
     <tr id="LiftEarthing2" runat="server" visible="false">
         <td>2</td>
@@ -826,14 +818,7 @@
                 <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing2" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
             </div>
         </td>
-        <td>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed2" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther2" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-        </td>
+      
     </tr>
     <tr id="LiftEarthing3" runat="server" visible="false">
         <td>3</td>
@@ -847,14 +832,7 @@
                 <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing3" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
             </div>
         </td>
-        <td>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed3" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="textOther3" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-        </td>
+       
     </tr>
     <tr id="LiftEarthing4" runat="server" visible="false">
         <td>4</td>
@@ -866,14 +844,6 @@
         <td>
             <div class="col-12" id="Div10" runat="server">
                 <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-        </td>
-        <td>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed4" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther4" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
             </div>
         </td>
     </tr>
@@ -890,14 +860,6 @@
                 <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
             </div>
         </td>
-        <td>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed5" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-        </td>
     </tr>
     <tr id="LiftEarthing6" runat="server" visible="false">
         <td>6</td>
@@ -909,14 +871,6 @@
         <td>
             <div class="col-12">
                 <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing6" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-        </td>
-        <td>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed6" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
             </div>
         </td>
     </tr>
@@ -932,14 +886,6 @@
                 <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing7" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
             </div>
         </td>
-        <td>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed7" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther7" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-        </td>
     </tr>
     <tr id="LiftEarthing8" runat="server" visible="false">
         <td>8</td>
@@ -951,14 +897,6 @@
         <td>
             <div class="col-12">
                 <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing8" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-        </td>
-        <td>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed8" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther8" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
             </div>
         </td>
     </tr>
@@ -975,14 +913,6 @@
                 <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing9" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
             </div>
         </td>
-        <td>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed9" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther9" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-        </td>
     </tr>
     <tr id="LiftEarthing10" runat="server" visible="false">
         <td>10</td>
@@ -994,14 +924,6 @@
         <td>
             <div class="col-12">
                 <asp:TextBox ReadOnly="true" class="form-control" ID="txtLiftEarthing10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-        </td>
-        <td>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtEarthingUsed10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-            </div>
-            <div class="col-12">
-                <asp:TextBox ReadOnly="true" class="form-control" ID="txtOther10" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
             </div>
         </td>
     </tr>
