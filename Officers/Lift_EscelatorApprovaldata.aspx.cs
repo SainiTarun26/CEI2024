@@ -66,10 +66,18 @@ namespace CEIHaryana.Officers
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
-                    string id = lblID.Text;
+                    Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
+                     string id = lblID.Text;
                      string  LoginID = Session["InProcessInspectionId"].ToString();
                     Session["LiftTestReportID"] = id;
-                    Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                    if (lblInstallationType.Text == "Lift")
+                    {
+                        Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                    }
                 }
             }
             catch { }

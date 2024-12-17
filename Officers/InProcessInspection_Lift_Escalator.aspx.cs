@@ -124,7 +124,7 @@ namespace CEIHaryana.Officers
                     Type = ds.Tables[0].Rows[0]["IType"].ToString();
                      lblInspectionType.Text = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                       lblInstallation.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
-                if (Type == "New")
+                    if (Type == "New")
                     {
                         txtInspectionReportID.Text = ds.Tables[0].Rows[0]["Id"].ToString();
                       
@@ -568,8 +568,13 @@ namespace CEIHaryana.Officers
                                     transaction.Commit();
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
                                 }
-                             
-
+                               else if (ApprovedorReject == "Rejected")
+                                {
+                                  
+                                   ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Request has been Rejected.');", true);
+                                }
+                           
+                               
 
                                 else
                                 {
@@ -884,17 +889,19 @@ namespace CEIHaryana.Officers
                     ID = Session["InProcessInspectionId"].ToString();
                     DataSet ds = new DataSet();
                     ds = CEI.ViewReturnDocuments_Lift(ID);
-                    if (ds.Tables.Count > 0)
-                    {
+                    if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
                         grd_Documemnts.DataSource = ds;
                         grd_Documemnts.DataBind();
-                    }
+                        statement.Visible = false;
+                }
                     else
                     {
                         grd_Documemnts.DataSource = null;
                         grd_Documemnts.DataBind();
-                        string script = "alert(\"No Record Found\");";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    //string script = "alert(\"No Record Found\");";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    statement.Visible = true;
                     }
                     ds.Dispose();
                 }
@@ -978,11 +985,13 @@ namespace CEIHaryana.Officers
                         //TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                         GridView1.DataSource = ds;
                         GridView1.DataBind();
-                    }
+                       
+                }
                     else
                     {
                         GridView1.DataSource = null;
                         GridView1.DataBind();
+                      
                         string script = "alert(\"No Record Found\");";
                         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                     }

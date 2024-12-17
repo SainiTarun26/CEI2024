@@ -153,7 +153,7 @@
                                 ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">(*)</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-md-4" id="agency" runat="server">
-                            <label for="agency">Name of Firm/ Org./ Company/ Department</label>
+                            <label for="agency">Name of Firm/Company</label>
                             <asp:TextBox class="form-control" ID="txtagency" autocomplete="off" ReadOnly="true" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtagency"
                                 ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">*</asp:RequiredFieldValidator>

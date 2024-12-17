@@ -205,11 +205,12 @@
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
                         <asp:TemplateField HeaderText="Id" Visible="False">
-     <ItemTemplate>
+            <ItemTemplate>
          <asp:Label ID="lblID" runat="server" Text='<%#Eval("Lift_Escelator_Id") %>'></asp:Label>
+          <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
          
      </ItemTemplate>
- </asp:TemplateField>
+      </asp:TemplateField>
                             <asp:TemplateField HeaderText="SNo">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />

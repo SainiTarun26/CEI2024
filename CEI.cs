@@ -8281,7 +8281,7 @@ SqlTransaction transaction)
 
 
         public void updateInspectionPeriodic_lift_Escalator(string InspectionID, string StaffId, string IntimatiomnId, string Installationtype,
-string AcceptedOrReReturn, string Reason, string ReasonType)
+ string AcceptedOrReReturn, string Reason, string ReasonType, string ReasonTypeValue)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -8301,6 +8301,7 @@ string AcceptedOrReReturn, string Reason, string ReasonType)
                         cmd.Parameters.AddWithValue("@AcceptedOrReturn ", AcceptedOrReReturn);
                         cmd.Parameters.AddWithValue("@ReasonForRejection ", Reason);
                         cmd.Parameters.AddWithValue("@ReasonType ", ReasonType);
+                        cmd.Parameters.AddWithValue("@ReasonTypeValue ", ReasonTypeValue);
                         cmd.ExecuteNonQuery();
                     }
 
@@ -8317,8 +8318,6 @@ string AcceptedOrReReturn, string Reason, string ReasonType)
             }
 
         }
-
-
         public DataSet UpdateInspectionRejection_Lift_Escalator(string ID, string StaffId, string RejctionReasonType, string ReasonForRejection)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionRejection_Lift_Escalator", ID, StaffId, RejctionReasonType, ReasonForRejection);
@@ -8643,8 +8642,42 @@ string AcceptedOrReReturn, string Reason, string ReasonType)
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerDataInPeriodicOfLift_AtOfficerEnd", Id);
         }
 
-     
+
         //
+
+        public void Update_NewInspectionReturn_Lift_Escalator(string InspectionID, string StaffId, string IntimatiomnId, string Installationtype,
+                                                     string AcceptedOrReReturn, string Reason, string ReasonType, string ReasonTypeValue)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand("sp_NewInspectionReturn_Lift_Escalator", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ID", InspectionID);
+                        cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                        cmd.Parameters.AddWithValue("@IntimationId", IntimatiomnId);
+                        cmd.Parameters.AddWithValue("@Installationtype ", Installationtype);
+                        cmd.Parameters.AddWithValue("@AcceptedOrReturn ", AcceptedOrReReturn);
+                        cmd.Parameters.AddWithValue("@ReasonForRejection ", Reason);
+                        cmd.Parameters.AddWithValue("@ReasonType ", ReasonType);
+                        cmd.Parameters.AddWithValue("@ReasonTypeValue ", ReasonTypeValue);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                { }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+       
     }
 }
 

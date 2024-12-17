@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace CEIHaryana.Print_Forms
 {
-    public partial class LiftApprovalCertificate : System.Web.UI.Page
+    public partial class EscalatorApprovalCertificate : System.Web.UI.Page
     {
         CEI CEI = new CEI();
         string InspectionId;
@@ -22,8 +22,8 @@ namespace CEIHaryana.Print_Forms
                 {
                     if (!IsPostBack)
                     {
-                       
-                         if (Session["SiteOwnerId"] != null || Convert.ToString(Session["SiteOwnerId"]) != string.Empty)
+
+                        if (Session["SiteOwnerId"] != null || Convert.ToString(Session["SiteOwnerId"]) != string.Empty)
                         {
                             GetData();
                         }
@@ -35,7 +35,7 @@ namespace CEIHaryana.Print_Forms
                         {
                             GetData();
                         }
-                      
+
 
                     }
                 }
@@ -50,7 +50,7 @@ namespace CEIHaryana.Print_Forms
         {
             try
             {
-                if(Session["InProcessInspectionId"] != null)
+                if (Session["InProcessInspectionId"] != null)
                 {
                     InspectionId = Session["InProcessInspectionId"].ToString();
 
@@ -77,8 +77,8 @@ namespace CEIHaryana.Print_Forms
                     lblEmail.Visible = true;
                     lblEmail.Text = ds.Tables[0].Rows[0]["Header4"].ToString();
                 }
+                //string dp1 = ds.Tables[0].Rows[0]["InstallationType"].ToString();
                
-
                 lblRegNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
                 lblCompanyName.Text = ds.Tables[0].Rows[0]["Maker"].ToString();
 
@@ -105,7 +105,7 @@ namespace CEIHaryana.Print_Forms
                 else
                 {
                     txtSD.Visible = false;
-                   
+
                 }
                 myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])ds.Tables[0].Rows[0]["Signature"]);
                 lblstamp1.Text = ds.Tables[0].Rows[0]["Stamp1"].ToString();
@@ -195,6 +195,6 @@ namespace CEIHaryana.Print_Forms
                 }
             }
             catch { }
-            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LiftApprovalCertificate.aspx.cs" Inherits="CEIHaryana.Print_Forms.LiftApprovalCertificate" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EscalatorApprovalCertificate.aspx.cs" Inherits="CEIHaryana.Print_Forms.EscalatorApprovalCertificate" %>
 
 <!DOCTYPE html>
 
@@ -275,10 +275,8 @@
                                     </h6>
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center;">[See rule 4 (2)]
                                     </h6>
-                                    <h6 runat="server" id="txtLift"  class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center; text-decoration: underline;">Registration of Lift
-                                    </h6>
-                                 <%--   <h6 runat="server" id="txtEscalator"  class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center; text-decoration: underline;">Registration of Escalator--%>
-                                    </h6>
+                                    <h6 runat="server" id="txtLift"  class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center; text-decoration: underline;">Registration of Escalator
+                                    </h6>                                
                                 </div>
                             </div>
                             <div class="row">
@@ -294,7 +292,6 @@
                                     <p style="text-decoration: underline;"><b>Registration No. :&nbsp;<asp:Label ID="lblRegNo" runat="server"></asp:Label></b></p>
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="col-12">
                                     <p>
@@ -303,7 +300,7 @@
                                         is/are hereby registered to work or cause to be worked or allow the working of the lift erected and inspected on<asp:Label ID="lblInspectionDate" Style="font-weight: bold;" runat="server"></asp:Label>
                                         at the premises of 
                                         <asp:Label Style="font-weight: bold;" ID="lblAddress" runat="server"></asp:Label>
-                                        subject to the provisions of the Haryana Lift and Escalators Rules, 2008. The perticulars of lift which are given below:-
+                                        subject to the provisions of the Haryana Lift and Escalators Rules, 2008. The perticulars of Escalators which are given below:-
                                     </p>
                                 </div>
                             </div>
@@ -322,7 +319,7 @@
         </tr>--%>
                                         <tr>
                                             <td class="tableid textbold">(i)</td>
-                                            <td>Make of Lift and Serial Number</td>
+                                            <td>Make of Escalator and Serial Number</td>
                                             <td class="textbold">:-</td>
                                             <td class="textbold">
                                                 <asp:Label ID="lblMakerName" runat="server"></asp:Label></td>
@@ -336,7 +333,7 @@
                                         </tr>
                                         <tr>
                                             <td class="tableid textbold">(ii)</td>
-                                            <td>Type of Lift</td>
+                                            <td>Type of Escalator</td>
                                             <td class="textbold">:-</td>
                                             <td class="textbold">
                                                 <asp:Label ID="lblTypeOflift" runat="server"></asp:Label></td>
@@ -356,12 +353,12 @@
                                                 <asp:Label ID="lblCapacity" runat="server" Text="Label"></asp:Label></td>
                                         </tr>
                                          <tr>
-     <td class="tableid textbold">(iv)</td>
-     <td>Date of Erection</td>
-     <td class="textbold">:-</td>
-     <td class="textbold">
-         <asp:Label ID="lblErectionDate" runat="server" Text="Label"></asp:Label></td>
- </tr>
+                             <td class="tableid textbold">(iv)</td>
+                             <td>Date of Erection</td>
+                                  <td class="textbold">:-</td>
+                                  <td class="textbold">
+                       <asp:Label ID="lblErectionDate" runat="server" Text="Label"></asp:Label></td>
+                    </tr>
                                     </table>
 
                                 </div>

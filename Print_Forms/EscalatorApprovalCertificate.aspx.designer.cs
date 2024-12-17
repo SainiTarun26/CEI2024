@@ -11,7 +11,7 @@ namespace CEIHaryana.Print_Forms
 {
 
 
-    public partial class LiftApprovalCertificate
+    public partial class EscalatorApprovalCertificate
     {
 
         /// <summary>

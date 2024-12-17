@@ -607,7 +607,7 @@
                 </div>
                 <div class="col-md-4" id="InspectionDate" runat="server">
                     <label for="StartDate">
-                        Inspection Date                           
+                        Inspection Date<samp style="color: red"> * </samp>                          
                     </label>
                     <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
 
