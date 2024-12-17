@@ -258,8 +258,8 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     CEI.InsertNewEscalatorData(
                         count, IntimationId, RadioButtonList2.SelectedItem.Text, TxtAgentName.Text, txtAgentAddress.Text,
-                        txtAgentPhone.Text, DateTime.Parse(txtErectionDate.Text), txtMake.Text, txtSerialNo.Text, ddlEscalatorType.SelectedItem.ToString(), "",
-                        ParseOrDefault(""), txtMaxPersonCapacity.Text, ParseOrDefault(txtWeight.Text), ParseOrDefault(txtCounterWeight.Text),
+                        txtAgentPhone.Text, DateTime.Parse(txtErectionDate.Text), txtMake.Text, txtSerialNo.Text, ddlEscalatorType.SelectedItem.ToString(), txtEscalatorSpeedContract.Text,
+                        ParseOrDefault(txtEscalatorLoad.Text), txtMaxPersonCapacity.Text, ParseOrDefault(txtWeight.Text), ParseOrDefault(txtCounterWeight.Text),
                         ParseOrDefault(txtPitDepth.Text), ParseOrDefault(txtTravelDistance.Text), ParseOrDefault(txtFloorsServed.Text),
                         ParseOrDefault(txtTotalHeadRoom.Text), txtTypeofControll.Text, txtMakeMainBreaker.Text, txtTypeMainBreaker.Text,
                         ddlPoleMainBreaker.SelectedItem.ToString(), txtratingMainBreaker.Text,
@@ -372,15 +372,15 @@ namespace CEIHaryana.SiteOwnerPages
         {
             if (ddlPoleMainBreaker.SelectedValue == "1")
             {
-                InDPO.Visible = true;
-                TPN1.Visible = false;
-                TPN2.Visible = false;
-            }
-            else
-            {
                 InDPO.Visible = false;
                 TPN1.Visible = true;
                 TPN2.Visible = true;
+            }
+            else
+            {
+                InDPO.Visible = true;
+                TPN1.Visible = false;
+                TPN2.Visible = false;
             }
         }
     }

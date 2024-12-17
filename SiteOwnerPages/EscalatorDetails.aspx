@@ -457,7 +457,7 @@
                                             Serial No.
                                             <samp style="color: red">* </samp>
                                         </label>
-                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSerialNo" MaxLength="30" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSerialNo" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator79" runat="server" ControlToValidate="txtSerialNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Erection</asp:RequiredFieldValidator>
                                         <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
                                     </div>
@@ -498,7 +498,7 @@
                                             Contract Speed of Escalator (Mtr./sec)<samp style="color: red">* </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtEscalatorSpeedContract"
-                                            onKeyPress="return allowNumbersAndSlash(event);"
+                                            onKeyPress="return isNumberdecimalKey(event, this);"
                                             onkeydown="return preventEnterSubmit(event)"
                                             MaxLength="6" placeholder="" autocomplete="off"
                                             TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -573,7 +573,7 @@
                                             Type of Control<samp style="color: red">* </samp>
                                         </label>
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-                                        <asp:TextBox class="form-control" ID="txtTypeofControll" onkeydown="return preventEnterSubmit(event)" MaxLength="10" placeholder="" autocomplete="off" TabIndex="16" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="txtTypeofControll" onkeydown="return preventEnterSubmit(event)" MaxLength="150" placeholder="" autocomplete="off" TabIndex="16" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator62" runat="server" ControlToValidate="txtTypeofControll" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Total Head Room</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
@@ -596,7 +596,7 @@
                                         Make<samp style="color: red">* </samp>
                                     </label>
                                     <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-                                    <asp:TextBox class="form-control" ID="txtMakeMainBreaker" onkeydown="return preventEnterSubmit(event)" MaxLength="7" placeholder="" autocomplete="off" TabIndex="22" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtMakeMainBreaker" onkeydown="return preventEnterSubmit(event)" MaxLength="150" placeholder="" autocomplete="off" TabIndex="22" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtMakeMainBreaker" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Make</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-md-4" runat="server">
@@ -645,7 +645,7 @@
                                         Make<samp style="color: red">* </samp>
                                     </label>
                                     <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-                                    <asp:TextBox class="form-control" ID="txtMakeRCCBMainBreaker" onkeydown="return preventEnterSubmit(event)" MaxLength="7" placeholder="" autocomplete="off" TabIndex="27" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtMakeRCCBMainBreaker" onkeydown="return preventEnterSubmit(event)" MaxLength="150" placeholder="" autocomplete="off" TabIndex="27" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="txtMakeRCCBMainBreaker" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Make</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-md-4">
@@ -693,7 +693,7 @@
                                         Make<samp style="color: red">* </samp>
                                     </label>
                                     <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-                                    <asp:TextBox class="form-control" ID="txtMakeLoadBreaker" onkeydown="return preventEnterSubmit(event)" MaxLength="7" placeholder="" autocomplete="off" TabIndex="31" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtMakeLoadBreaker" onkeydown="return preventEnterSubmit(event)" MaxLength="150" placeholder="" autocomplete="off" TabIndex="31" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ControlToValidate="txtMakeLoadBreaker" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Make</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-md-4" runat="server">
@@ -742,7 +742,7 @@
                                         Make<samp style="color: red">* </samp>
                                     </label>
                                     <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-                                    <asp:TextBox class="form-control" ID="txtMakeRCCBLoadBreaker" onkeydown="return preventEnterSubmit(event)" MaxLength="7" placeholder="" autocomplete="off" TabIndex="36" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtMakeRCCBLoadBreaker" onkeydown="return preventEnterSubmit(event)" MaxLength="150" placeholder="" autocomplete="off" TabIndex="36" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator37" runat="server" ControlToValidate="txtMakeRCCBLoadBreaker" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Make</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-md-4">
@@ -1341,7 +1341,7 @@
         function alertWithRedirectdata() {
             /*if (confirm('Test Report Submitted Successfully')) {*/
             alert('Test Report Submitted Successfully');
-            window.location.href = "/SiteOwnerPages/LiftSiteDetails.aspx";
+            window.location.href = "/SiteOwnerPages/LiftIntimations.aspx";
             //} else {
             //}
         }

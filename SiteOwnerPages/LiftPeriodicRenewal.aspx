@@ -10,14 +10,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" integrity="sha512-P9pgMgcSNlLb4Z2WAB2sH5KBKGnBfyJnq+bhcfLCFusrRc4XdXrhfDluBl/usq75NF5gTDIMcwI1GaG5gju+Mw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
+        .fa-magnifying-glass:before, .fa-search:before {
+            content: "\f002";
+            COLOR: WHITE;
+        }
+
         .modal .modal-dialog {
             margin-top: 100px;
             margin-left: 23%;
@@ -202,11 +210,14 @@
                         <label>
                             Registration No.<samp style="color: red"> * </samp>
                         </label>
-                        <asp:TextBox class="form-control" ID="txtRegistrationNo" autocomplete="off" runat="server" Style="margin-left: 18px" AutoPostBack="true" OnTextChanged="txtRegistrationNo_TextChanged"></asp:TextBox>
+                        <asp:TextBox class="form-control" ID="txtRegistrationNo" MaxLength="20" autocomplete="off" runat="server" Style="margin-left: 18px" AutoPostBack="true" OnTextChanged="txtRegistrationNo_TextChanged"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RfvtxtRegistrationNo" ControlToValidate="txtRegistrationNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
                     <div class="col-md-1" style="margin-top: 31px; margin-bottom: auto; padding-left: 0px;">
-                        <asp:Button ID="btnSearch" Class="btn btn-primary" runat="server" Text="Search" Style="height: 30px; padding: 0px 15px 0px 15px;" />
+                        <%-- <asp:Button ID="btnSearch" Class="btn btn-primary" runat="server" Text="Search" Style="height: 30px; padding: 0px 15px 0px 15px;" />--%>
+                        <asp:LinkButton ID="lnkbtnSearch" CssClass="btn btn-primary" runat="server" Style="height: 30px; padding: 2PX 8PX 5PX 8PX;">
+                        <i class="fa fa-search"></i>
+                        </asp:LinkButton>
                     </div>
                     <div class="col-md-2" runat="server">
                         <label>
@@ -246,14 +257,14 @@
                                     Make
                                 </label>
                                 <samp style="color: red">* </samp>
-                                <asp:TextBox class="form-control" ID="txtMake" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox class="form-control" ID="txtMake" MaxLength="150" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RfvtxtMake" ControlToValidate="txtMake" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
                             <div class="col-md-4" runat="server">
                                 <label>
                                     Serial No.<samp style="color: red"> * </samp>
                                 </label>
-                                <asp:TextBox class="form-control" ID="txtSerialNo" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox class="form-control" ID="txtSerialNo" MaxLength="20" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RfvtxtSerialNo" ControlToValidate="txtSerialNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
                             <div class="col-md-4" runat="server">
@@ -268,25 +279,23 @@
                                     Type of Lift
                                 </label>
                                 <samp style="color: red">* </samp>
-                                <asp:RadioButtonList ID="RadioBtnType" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                                <asp:RadioButtonList ID="RadioBtnType" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" Visible="false">
                                     <asp:ListItem Text="Passenger lift" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
                                     <asp:ListItem Text="Goods Lift" Value="1" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
                                 </asp:RadioButtonList>
                                 <asp:RequiredFieldValidator ID="rvfRadioButtonList" ErrorMessage="Choose one" ControlToValidate="RadioBtnType" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />
+                                <asp:RadioButtonList ID="RadioBtnEscType" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" Visible="false">
+                                    <asp:ListItem Text="Travelator" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
+                                    <asp:ListItem Text="Escalator" Value="1" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
+                                </asp:RadioButtonList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ErrorMessage="Choose one" ControlToValidate="RadioBtnEscType" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />
+
                             </div>
-                            <%--<div class="col-md-4">
-                                <label id="lblTypeOfLift" runat="server">
-                                    Type of Lift
-                            <samp style="color: red">* </samp>
-                                </label>
-                                <asp:TextBox class="form-control" ID="txtLiftType" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RfvtxtLiftType" ControlToValidate="txtLiftType" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                            </div>--%>
                             <div class="col-md-4" runat="server">
                                 <label>
                                     Type of Control<samp style="color: red"> * </samp>
                                 </label>
-                                <asp:TextBox class="form-control" ID="txtControlType" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox class="form-control" ID="txtControlType" MaxLength="150" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RfvtxtControlType" ControlToValidate="txtControlType" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
                             <div class="col-md-4" runat="server">
@@ -317,7 +326,8 @@
                                 <label>
                                     Site Address<samp style="color: red"> * </samp>
                                 </label>
-                                <asp:TextBox class="form-control" ID="txtSiteAddress" MaxLength="200" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox class="form-control" ID="txtSiteAddress" MaxLength="250" autocomplete="off" runat="server"
+                                    TextMode="MultiLine" Rows="2" Columns="125" Style="margin-left: 18px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ControlToValidate="txtSiteAddress" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
                         </div>
@@ -418,7 +428,6 @@
                                                         <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
                                                         <ItemStyle HorizontalAlign="Left" Width="30%" />
                                                     </asp:BoundField>
-                                                   
                                                 </Columns>
                                                 <FooterStyle BackColor="White" ForeColor="#000066" />
                                                 <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -498,7 +507,7 @@
         }
 
         // Attach the openModal function to the button
-        document.getElementById('<%= btnSearch.ClientID %>').addEventListener("click", function (e) {
+        document.getElementById('<%= lnkbtnSearch.ClientID %>').addEventListener("click", function (e) {
             e.preventDefault(); // Prevent postback
 
             // Get the selected value of the dropdown
@@ -515,7 +524,6 @@
         });
 
     </script>
-
     <script type="text/javascript">
         // Validate if the file is a PDF and the size is less than 1MB
         function validateFileUpload(sender) {
@@ -541,7 +549,6 @@
             return true;
         }
     </script>
-
     <script type="text/javascript">
         function alertWithRedirectdata() {
             if (confirm('Application Submitted successfully.')) {
@@ -550,55 +557,6 @@
             }
         }
     </script>
-    <%--   <script>
-     document.addEventListener("DOMContentLoaded", function () {
-         // Get the current date
-         const today = new Date();
-
-         // Calculate the minimum date (20 years before today)
-         const minDate = new Date();
-         minDate.setFullYear(today.getFullYear() - 20);
-
-         // Format the dates to YYYY-MM-DD
-         const formattedToday = today.toISOString().split('T')[0];
-         const formattedMinDate = minDate.toISOString().split('T')[0];
-
-         // Get the TextBox input and set the min and max attributes
-         const dateInput = document.getElementById('<%= txtLastApprovalDate.ClientID %>');
-      if (dateInput) {
-          dateInput.setAttribute("max", formattedToday); // Disable future dates
-          dateInput.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
-      }
-  });
- </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-          // Get the current date
-          const today = new Date();
-
-          // Calculate the minimum date (20 years before today)
-          const minDate = new Date();
-          minDate.setFullYear(today.getFullYear() - 20);
-
-          // Format the dates to YYYY-MM-DD
-          const formattedToday = today.toISOString().split('T')[0];
-          const formattedMinDate = minDate.toISOString().split('T')[0];
-
-          // Set the date range for txtLastApprovalDate
-          const txtLastApprovalDate = document.getElementById('<%= txtLastApprovalDate.ClientID %>');
-      if (txtLastApprovalDate) {
-          txtLastApprovalDate.setAttribute("max", formattedToday); // Disable future dates
-          txtLastApprovalDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
-      }
-
-      // Set the date range for txtPrevChallanDate
-      const txtPrevChallanDate = document.getElementById('<%= txtPrevChallanDate.ClientID %>');
-      if (txtPrevChallanDate) {
-          txtPrevChallanDate.setAttribute("max", formattedToday); // Disable future dates
-          txtPrevChallanDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
-      }
-  });
-  </script>--%>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Get the current date
@@ -635,18 +593,18 @@
 
             // Set the date range for txtLastApprovalDate
             const txtLastApprovalDate = document.getElementById('<%= txtLastApprovalDate.ClientID %>');
-          if (txtLastApprovalDate) {
-              txtLastApprovalDate.setAttribute("max", formattedToday); // Disable future dates
-              txtLastApprovalDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
-          }
+            if (txtLastApprovalDate) {
+                txtLastApprovalDate.setAttribute("max", formattedToday); // Disable future dates
+                txtLastApprovalDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
+            }
 
-          // Set the date range for txtPrevChallanDate
-          const txtPrevChallanDate = document.getElementById('<%= txtPrevChallanDate.ClientID %>');
-          if (txtPrevChallanDate) {
-              txtPrevChallanDate.setAttribute("max", formattedToday); // Disable future dates
-              txtPrevChallanDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
-          }
-      });
+            // Set the date range for txtPrevChallanDate
+            const txtPrevChallanDate = document.getElementById('<%= txtPrevChallanDate.ClientID %>');
+            if (txtPrevChallanDate) {
+                txtPrevChallanDate.setAttribute("max", formattedToday); // Disable future dates
+                txtPrevChallanDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
+            }
+        });
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -672,8 +630,8 @@
 
             // Set date range for all specified TextBoxes
             setDateRange('<%= txtLastApprovalDate.ClientID %>');
-      setDateRange('<%= txtPrevChallanDate.ClientID %>');
-      setDateRange('<%= txtDateofErection.ClientID %>');
-  });
+            setDateRange('<%= txtPrevChallanDate.ClientID %>');
+            setDateRange('<%= txtDateofErection.ClientID %>');
+        });
     </script>
 </asp:Content>

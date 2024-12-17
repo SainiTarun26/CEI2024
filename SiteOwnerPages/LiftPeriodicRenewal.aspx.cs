@@ -149,6 +149,7 @@ namespace CEIHaryana.SiteOwnerPages
                         return;
                     }
                     string districtValue = string.Empty;
+                    string Type = string.Empty;
 
                     if (ddlDistrict.Visible)
                     {
@@ -158,13 +159,22 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         districtValue = txtDistrict.Text;
                     }
+                    if (RadioBtnType.Visible)
+                    {
+                        Type = RadioBtnType.SelectedItem.Text;
+                    }
+                    else if (RadioBtnEscType.Visible)
+                    {
+                        Type = RadioBtnEscType.SelectedItem.Text;
+                    }
+
                     decimal weight = 0.0m;  
 
                     // Attempt to parse the weight value
                     if (decimal.TryParse(txtWeight.Text, out weight))
                     {
                         CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
-                                              txtSerialNo.Text, RadioBtnType.SelectedItem.Text, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, SiteOwnerID, transaction);
+                                              txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, SiteOwnerID, transaction);
                     }
                     // Upload Attachments
                     bool allDocumentsUploaded = true;
@@ -275,6 +285,8 @@ namespace CEIHaryana.SiteOwnerPages
                 divdetails.Visible = true;
                 divEscalatorDetails.Visible = false;
                 lblTypeOfLift.InnerText = "Type of Lift";
+                RadioBtnType.Visible = true;
+                RadioBtnEscType.Visible = false;
                 lblMake.InnerText = "Make of Lift";
             }
             else if (selectedValue == "2")
@@ -283,6 +295,8 @@ namespace CEIHaryana.SiteOwnerPages
                 divdetails.Visible = true;
                 divEscalatorDetails.Visible = true;
                 lblTypeOfLift.InnerText = "Type of Escalator";
+                RadioBtnEscType.Visible = true;
+                RadioBtnType.Visible = false;
                 lblMake.InnerText = "Make of Escalator";
             }
             else
@@ -306,6 +320,7 @@ namespace CEIHaryana.SiteOwnerPages
                 txtMake.ReadOnly = true;
                 txtSerialNo.ReadOnly = true;
                 RadioBtnType.Enabled = false;
+                RadioBtnEscType.Enabled = false;
                 txtControlType.ReadOnly = true;
                 txtCapacity.ReadOnly = true;
                 txtWeight.ReadOnly = true;
@@ -318,13 +333,28 @@ namespace CEIHaryana.SiteOwnerPages
                 txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
                 txtSerialNo.Text = ds.Tables[0].Rows[0]["LiftSrNo"].ToString();
                 string typeOfLift = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
-                if (typeOfLift == "Passenger lift")
+                
+                if (ddlInstallationType.SelectedItem.Text == "Lift")
                 {
-                    RadioBtnType.SelectedValue = "0"; 
+                    if (typeOfLift == "Passenger lift")
+                    {
+                        RadioBtnType.SelectedValue = "0"; 
+                    }
+                    else if (typeOfLift == "Goods Lift")
+                    {
+                        RadioBtnType.SelectedValue = "1";  
+                    }
                 }
-                else if (typeOfLift == "Goods Lift")
+                else if (ddlInstallationType.SelectedItem.Text == "Escalator")
                 {
-                    RadioBtnType.SelectedValue = "1"; 
+                    if (typeOfLift == "Travelator")
+                    {
+                        RadioBtnEscType.SelectedValue = "0"; 
+                    }
+                    else if (typeOfLift == "Escalator")
+                    {
+                        RadioBtnEscType.SelectedValue = "1";  
+                    }
                 }
                 txtControlType.Text = ds.Tables[0].Rows[0]["TypeOfControl"].ToString();
                 txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();

@@ -433,15 +433,15 @@ namespace CEIHaryana.SiteOwnerPages
         {
             if (ddlPoleMainBreaker.SelectedValue =="1")
             {
-                InDPO.Visible = true;
-                TPN1.Visible = false;
-                TPN2.Visible = false;
-            }
-            else
-            {
                 InDPO.Visible = false;
                 TPN1.Visible = true;
                 TPN2.Visible = true;
+            }
+            else
+            {
+                InDPO.Visible = true;
+                TPN1.Visible = false;
+                TPN2.Visible = false;
             }
         }
 
