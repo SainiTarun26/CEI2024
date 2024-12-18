@@ -124,6 +124,7 @@ namespace CEIHaryana.Officers
                     Type = ds.Tables[0].Rows[0]["IType"].ToString();
                      lblInspectionType.Text = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                       lblInstallation.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
+                     
                     if (Type == "New")
                     {
                         txtInspectionReportID.Text = ds.Tables[0].Rows[0]["Id"].ToString();
@@ -145,15 +146,18 @@ namespace CEIHaryana.Officers
                        txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                       if(txtAmount.Text == "0")
                       {
+
                         TranscationDetails.Visible = false;
                       }
                     else
                     {
+                        
                         TranscationDetails.Visible = true;
+                        ChallanDate.Visible = false;
                     }
                        string Division = ds.Tables[0].Rows[0]["Division"].ToString();
                        //Session["Division"] = Division;
-                        ChallanDate.Visible = false;
+                        //ChallanDate.Visible = false;
                         RegNo.Visible = false;
 
                         DivViewTRinMultipleCaseNew.Visible = true;
@@ -273,7 +277,7 @@ namespace CEIHaryana.Officers
                         txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                         txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
                         Session["InstallationType"] = txtWorkType.Text;
-                        ChallanDate.Visible = true;
+                        //ChallanDate.Visible = true;
                          //RegNo.Visible = true;
                         txtChallanDate.Text = ds.Tables[0].Rows[0]["PreviousChallanDate"].ToString();
                         txtRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
@@ -287,7 +291,9 @@ namespace CEIHaryana.Officers
                          }
                     else
                     {
+
                         TranscationDetails.Visible = true;
+                        ChallanDate.Visible = false;
                     }
                     Session["InspectionType"] = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                        string Division = ds.Tables[0].Rows[0]["Division"].ToString();

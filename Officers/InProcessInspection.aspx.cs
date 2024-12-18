@@ -177,7 +177,9 @@ namespace CEIHaryana.Officers
                         grd_Documemnts.Columns[4].Visible = true;
                         Grid_MultipleInspectionTR.Columns[5].Visible = false;
                         Grid_MultipleInspectionTR.Columns[7].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[8].Visible = true;
                         Grid_MultipleInspectionTR.Columns[9].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[6].Visible = true;
                     }
                     else if (ReturnValu == "3")
                     {

@@ -60,15 +60,25 @@ namespace CEIHaryana.Officers
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
                     Label lblInstallationfor = (Label)row.FindControl("lblInstallationfor");
+                    Label LblInspectionCount = (Label)row.FindControl("LblInspectionCount");
                     string id = lblID.Text;
                     Session["InProcessInspectionId"] = id;
                     if (e.CommandName == "Select")
                     {
-                        if (lblInstallationfor.Text.Trim() == "Lift" || lblInstallationfor.Text.Trim() == "Escalator" || lblInstallationfor.Text.Trim() == "MultiLift" || lblInstallationfor.Text.Trim() == "MultiEscalator" || lblInstallationfor.Text.Trim() == "Lift/Escalator")
+                        if (int.TryParse(LblInspectionCount.Text, out int count) && count > 1)
+                        {
+
+                            Response.Redirect("/Officers/InProcess_Returned_Inspection_Lift_Escalator.aspx", false);
+                            return;
+
+                        }
+
+                     else   if (lblInstallationfor.Text.Trim() == "Lift" || lblInstallationfor.Text.Trim() == "Escalator" || lblInstallationfor.Text.Trim() == "MultiLift" || lblInstallationfor.Text.Trim() == "MultiEscalator" || lblInstallationfor.Text.Trim() == "Lift/Escalator")
                         {
                             Response.Redirect("/Officers/InProcessInspection_Lift_Escalator.aspx", false);
                             return;
                         }
+
                         else
                         {
                             Response.Redirect("/Officers/InProcessInspection.aspx", false);

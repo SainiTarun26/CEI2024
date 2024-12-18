@@ -8677,7 +8677,17 @@ SqlTransaction transaction)
             }
         }
 
-       
+        public DataSet GetTestReportLift_Return(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReportLift_Return", Id);
+        }
+
+        public DataSet GetTestReportDataIfPeriodicLift_Return(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReportDataForPerodicLift_Return", Id);
+        }
+
+
     }
 }
 

@@ -231,8 +231,8 @@ namespace CEIHaryana.Admin
                         TypeOfInspection.Visible = false;
                         TRAttached.Visible = true;
                         TRAttachedGrid.Visible = true;
-                        GridView1.Columns[7].Visible = false;
-                        GridView1.Columns[5].Visible = false;
+                        //GridView1.Columns[7].Visible = false;
+                        //GridView1.Columns[5].Visible = false;
 
                         IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
                         grd_Documemnts.Columns[1].Visible = true;

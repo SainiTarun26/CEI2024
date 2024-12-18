@@ -1918,6 +1918,7 @@
     <Content Include="Officers\InProcessInspection.aspx" />
     <Content Include="Officers\InProcessInspection_Lift_Escalator.aspx" />
     <Content Include="Officers\InProcessRequest.aspx" />
+    <Content Include="Officers\InProcess_Returned_Inspection_Lift_Escalator.aspx" />
     <Content Include="Officers\Inspection.aspx" />
     <Content Include="Officers\Inspection_Lift_Escalator.aspx" />
     <Content Include="Officers\InstallationIntimationDetails.aspx" />
@@ -2832,6 +2833,13 @@
     </Compile>
     <Compile Include="Officers\InProcessRequest.aspx.designer.cs">
       <DependentUpon>InProcessRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\InProcess_Returned_Inspection_Lift_Escalator.aspx.cs">
+      <DependentUpon>InProcess_Returned_Inspection_Lift_Escalator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\InProcess_Returned_Inspection_Lift_Escalator.aspx.designer.cs">
+      <DependentUpon>InProcess_Returned_Inspection_Lift_Escalator.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\Inspection.aspx.cs">
       <DependentUpon>Inspection.aspx</DependentUpon>

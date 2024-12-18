@@ -183,6 +183,7 @@
                              <asp:TemplateField HeaderText="Intallation Type" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblInstallationfor" runat="server" Text='<%#Eval("Installationfor") %>'></asp:Label>
+                                    <asp:Label ID="LblInspectionCount" runat="server" Text='<%#Eval("InspectionCount") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
 
