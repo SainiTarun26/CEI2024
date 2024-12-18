@@ -85,7 +85,7 @@ namespace CEIHaryana.Officers
                         }
                         else if (lblApproval.Text.Trim() == "ReSubmit" && lblInspectionType.Text.Trim() == "New")
                         {
-                            Response.Redirect("/Officers/ReturnedInspections_Lift_Escalator.aspx", false);
+                            Response.Redirect("/Officers/Returned_Inspection_Lift_Escalator.aspx", false);
                             return;
                         }
                         else if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "Periodic")
@@ -95,7 +95,7 @@ namespace CEIHaryana.Officers
                         }
                         else if (lblApproval.Text.Trim() == "ReSubmit" && lblInspectionType.Text.Trim() == "Periodic")
                         {
-                            Response.Redirect("/Officers/PeriodicInspection_Lift_Escalator.aspx", false);
+                            Response.Redirect("/Officers/Returned_PeriodicInspection_Lift_Escalator.aspx", false);
                             return;
                         }
 

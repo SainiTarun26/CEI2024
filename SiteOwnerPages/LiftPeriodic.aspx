@@ -502,4 +502,21 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        function disableFutureDates() {
+            // Get today's date in YYYY-MM-DD format
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+            var yyyy = today.getFullYear();
+
+            today = yyyy + '-' + mm + '-' + dd; // Format the date as YYYY-MM-DD
+
+            // Set the max date to today's date
+            document.getElementById('<%= txttransactionDate.ClientID %>').setAttribute('max', today);
+        }
+
+        // Call the function to set the max date when the page loads
+        window.onload = disableFutureDates;
+</script>
 </asp:Content>

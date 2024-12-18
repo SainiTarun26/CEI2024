@@ -1915,6 +1915,7 @@
     <Content Include="Officers\ActionTakenInspections.aspx" />
     <Content Include="Officers\ConsolidatedReport.aspx" />
     <Content Include="Officers\DistrictData.aspx" />
+    <Content Include="Officers\FirstReturn_byOfficer%28Lift%29.txt" />
     <Content Include="Officers\InProcessInspection.aspx" />
     <Content Include="Officers\InProcessInspection_Lift_Escalator.aspx" />
     <Content Include="Officers\InProcessRequest.aspx" />
@@ -1928,6 +1929,8 @@
     <Content Include="Officers\PeriodicInspection.aspx" />
     <Content Include="Officers\PeriodicInspection_Lift_Escalator.aspx" />
     <Content Include="Officers\ReturnedInspections.aspx" />
+    <Content Include="Officers\Returned_Inspection_Lift_Escalator.aspx" />
+    <Content Include="Officers\Returned_PeriodicInspection_Lift_Escalator.aspx" />
     <Content Include="Officers\TotalRequest.aspx" />
     <Content Include="OTPVerification.aspx" />
     <Content Include="PaymentPage.aspx" />
@@ -2910,6 +2913,20 @@
     </Compile>
     <Compile Include="Officers\ReturnedInspections.aspx.designer.cs">
       <DependentUpon>ReturnedInspections.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\Returned_Inspection_Lift_Escalator.aspx.cs">
+      <DependentUpon>Returned_Inspection_Lift_Escalator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\Returned_Inspection_Lift_Escalator.aspx.designer.cs">
+      <DependentUpon>Returned_Inspection_Lift_Escalator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\Returned_PeriodicInspection_Lift_Escalator.aspx.cs">
+      <DependentUpon>Returned_PeriodicInspection_Lift_Escalator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\Returned_PeriodicInspection_Lift_Escalator.aspx.designer.cs">
+      <DependentUpon>Returned_PeriodicInspection_Lift_Escalator.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\TotalRequest.aspx.cs">
       <DependentUpon>TotalRequest.aspx</DependentUpon>

@@ -8687,7 +8687,10 @@ SqlTransaction transaction)
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReportDataForPerodicLift_Return", Id);
         }
 
-
+        public DataSet GetTestReport_Lift_EscalatorIfReturned(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReport_Lift_EscalatorIfReturned", Id);
+        }
     }
 }
 

@@ -429,13 +429,14 @@
             <div class="row" id="Rejection" runat="server" visible="false">
                 <div class="col-md-6">
                     <label>
-                        ReasonType:        
+                        Reason Type :        
                     </label>
                     <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlReasonType" TabIndex="8" runat="server">
                         <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                         <asp:ListItem Value="1" Text="Test Report/Test Report Documents"></asp:ListItem>
                         <asp:ListItem Value="2" Text="Tresury Challan/Other Documents"></asp:ListItem>
                     </asp:DropDownList>
+                       <asp:RequiredFieldValidator  ID="rfvReasonType"  ControlToValidate="ddlReasonType"  InitialValue="0"   ErrorMessage="Required"  ForeColor="Red" ValidationGroup="Submit"  runat="server" />
                     <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" Visible="false" ID="ddlRejectionReasonType" TabIndex="8" runat="server">
                         <asp:ListItem Value="0" Text="Incorrect Data in Document"></asp:ListItem>
                         <asp:ListItem Value="1" Text="Incorrect Data in Lift Details"></asp:ListItem>
