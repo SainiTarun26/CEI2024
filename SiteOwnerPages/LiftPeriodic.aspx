@@ -246,6 +246,7 @@
                                     <asp:Label ID="LblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
                                     <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("ApplicantDistrict") %>'></asp:Label>
                                     <asp:Label ID="LblYearsDifference" runat="server" Text='<%#Eval("YearsDifference") %>'></asp:Label>
+                                     <asp:Label ID="LblTestReportID" runat="server" Text='<%#Eval("TestReportID") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="TypeOfLift" HeaderText="Type Of Lift" Visible="false">

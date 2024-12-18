@@ -21,8 +21,9 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     string siteOwnerId = Convert.ToString(Session["SiteOwnerId"]);
                     string registrationNo = Convert.ToString(Session["RegistrationNo"]);
+                    string TestReportID = Convert.ToString(Session["TestReportID"]);
 
-                    if (!string.IsNullOrEmpty(siteOwnerId) && !string.IsNullOrEmpty(registrationNo))
+                    if (!string.IsNullOrEmpty(siteOwnerId) && !string.IsNullOrEmpty(registrationNo) && !string.IsNullOrEmpty(TestReportID))
                     {
                         GetData();
                         GetDetails();
@@ -66,7 +67,9 @@ namespace CEIHaryana.SiteOwnerPages
                 if (Convert.ToString(Session["RegistrationNo"]) != null && Convert.ToString(Session["RegistrationNo"]) != "")
                 {
                     string RegistrationNo = Session["RegistrationNo"].ToString();
-                    DataSet ds = CEI.GetDetailsOfLiftRenewalReport(RegistrationNo);
+                    string TRId = Session["TestReportID"].ToString();
+                    //DataSet ds = CEI.GetDetailsOfLiftRenewalReport(RegistrationNo);
+                    DataSet ds = CEI.GetDetailsOfLiftRenewalReport(RegistrationNo, TRId);
 
                     object previousChallanDateObj = ds.Tables[0].Rows[0]["PreviousChallanDate"];
                     if (previousChallanDateObj != DBNull.Value)

@@ -120,7 +120,15 @@
         }
     </script>
    
-
+    
+    <script type="text/javascript">
+        function alertWithReturnRedirectdata() {
+            if (confirm('Lift Details Successfully')) {
+                window.location.href = "/SiteOwnerPages/ReturnLiftInspections.aspx";
+            } else {
+            }
+        }
+    </script>
     <style>
         th {
             width: 1%;

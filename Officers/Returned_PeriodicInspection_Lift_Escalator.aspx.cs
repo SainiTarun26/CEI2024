@@ -45,7 +45,7 @@ namespace CEIHaryana.Officers
             {
                 ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReportDataIfPeriodic_Lift_Escalator(ID);
+                ds = CEI.GetTestReportDataIfPeriodic_Lift_EscalatorIfReturned(ID);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {
@@ -95,7 +95,6 @@ namespace CEIHaryana.Officers
                 TRAttached.Visible = true;
                 TRAttachedGrid.Visible = true;
                 IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
-                //grd_Documemnts.Columns[1].Visible = true;
                 string ReturnValue = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
                 GridBindDocument();
                 DivViewCart.Visible = true;
@@ -500,7 +499,7 @@ namespace CEIHaryana.Officers
             {
                 ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.ViewDocuments_Lift_Escalator(ID);
+                ds = CEI.ViewDocuments_ReturnedInspectionLift_Escalator(ID);
                 if (ds.Tables.Count > 0)
                 {
                     grd_Documemnts.DataSource = ds;

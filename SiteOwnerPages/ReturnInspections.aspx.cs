@@ -60,10 +60,16 @@ namespace CEIHaryana.SiteOwnerPages
                 Label lblType = (Label)row.FindControl("lblType");
                 Label LblInspectionType = (Label)row.FindControl("LblInspectionType");
                 Label lblTypeOfInspection = (Label)row.FindControl("lblTypeOfInspection");
-
+                Label lblReturnBased = (Label)row.FindControl("lblReturnBased");
+                Session["ReturnedValue"] = lblReturnBased.Text.Trim();
                 if (e.CommandName == "Select")
                 {
-                    if (lblTypeOfInspection.Text.Trim() == "New")
+                    Session["TypeOfInspection"] = lblTypeOfInspection.Text.Trim();
+                    if (lblType.Text.Trim() == "Lift" || lblType.Text.Trim() == "Escalator" || lblType.Text.Trim() == "Lift/Escalator" || lblType.Text.Trim() == "MultiLift" || lblType.Text.Trim() == "MultiEscalator")
+                    {
+                        Response.Redirect("/SiteOwnerPages/ReturnLiftInspections.aspx", false);
+                    }
+                    else if (lblTypeOfInspection.Text.Trim() == "New")
                     {
 
                         Response.Redirect("/SiteOwnerPages/ReapplyReturnINspection.aspx", false);

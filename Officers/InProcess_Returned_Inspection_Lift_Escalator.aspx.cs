@@ -107,9 +107,9 @@ namespace CEIHaryana.Officers
                     {
                         grd_Documemnts.Columns[3].Visible = true;
                         grd_Documemnts.Columns[4].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[5].Visible = false;
-                        Grid_MultipleInspectionTR.Columns[7].Visible = false;
-                        Grid_MultipleInspectionTR.Columns[9].Visible = false;
+                        //Grid_MultipleInspectionTR.Columns[5].Visible = false;
+                        //Grid_MultipleInspectionTR.Columns[7].Visible = false;
+                        //Grid_MultipleInspectionTR.Columns[9].Visible = false;
                     }
                     else if (ReturnValu == "3")
                     {
@@ -245,7 +245,7 @@ namespace CEIHaryana.Officers
                     grd_Documemnts.Columns[1].Visible = true;
 
                     GridView1.Columns[5].Visible = false;
-                    GridView1.Columns[3].Visible = false;
+                    //GridView1.Columns[3].Visible = false;
 
                     DivTestReports.Visible = true;
                     GridToViewTestReports();
@@ -351,7 +351,7 @@ namespace CEIHaryana.Officers
             try
             {
                 string ID = Session["InProcessInspectionId"].ToString();
-                DataSet dsVC = CEI.GetDetailsToViewCart_Lift_Escalator(ID);
+                DataSet dsVC = CEI.GetDetailsToViewCart_Lift_Escalator_Return(ID);
 
                 if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                 {
@@ -434,7 +434,7 @@ namespace CEIHaryana.Officers
                         string InspectionType = Session["InspectionType"].ToString();
                         if (Type == "New")
                         {
-                            DataTable dsVC = CEI.InstallationComponentsforLift(ID);
+                            DataTable dsVC = CEI.InstallationComponentsforLift_Return(ID);
                             if (dsVC != null && dsVC.Rows.Count > 0)
                             {
                                 Grid_MultipleInspectionTR.DataSource = dsVC;
@@ -443,7 +443,7 @@ namespace CEIHaryana.Officers
                         }
                         else
                         {
-                            DataSet dsVC = CEI.GetDetailsToViewCart_Lift_Escalator(ID);
+                            DataSet dsVC = CEI.GetDetailsToViewCart_Lift_Escalator_Return(ID);
 
                             if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                             {
@@ -845,7 +845,7 @@ namespace CEIHaryana.Officers
             try
             {
                 string ID = Session["InProcessInspectionId"].ToString();
-                DataTable dsVC = CEI.InstallationComponentsforLift(ID);
+                DataTable dsVC = CEI.InstallationComponentsforLift_Return(ID);
 
                 if (dsVC != null && dsVC.Rows.Count > 0)
                 {
@@ -983,7 +983,63 @@ namespace CEIHaryana.Officers
             catch (Exception ex) { }
         }
 
+        protected void lnkRedirect2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton btn = (LinkButton)(sender);
 
+                GridViewRow row = (GridViewRow)btn.NamingContainer;
+                Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
+                string installationName = lblInstallationName.Text.Trim();
+                Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
+                Session["RegistrationNo"] = LblRegistrationNo.Text;
+
+                if (lblInstallationName != null)
+                {
+                    if (lblInstallationName.Text == "Lift")
+                    {
+                        Response.Redirect("/TestReportModal/LiftPeriodicTestReportModal.aspx", false);
+                    }
+                    else if (lblInstallationName.Text == "Escalator")
+                    {
+                        Response.Redirect("/TestReportModal/EscalatorPeriodicTestReportModal.aspx", false);
+                    }
+                }
+
+            }
+            catch (Exception ex) { }
+        }
+
+        protected void lnkRedirectTR1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton btn = (LinkButton)(sender);
+
+                GridViewRow row = (GridViewRow)btn.NamingContainer;
+                Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
+                string installationName = lblInstallationName.Text.Trim();
+                Label LblTestReportId = (Label)row.FindControl("LblOldTestReportId");
+
+                if (lblInstallationName != null)
+                {
+                    if (lblInstallationName.Text == "Lift")
+                    {
+                        Session["LiftTestReportID"] = LblTestReportId.Text;
+                        Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                    }
+                    else if (lblInstallationName.Text == "Escalator")
+                    {
+                        Session["EscalatorTestReportID"] = LblTestReportId.Text;
+                        Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
+                    }
+                }
+
+
+            }
+            catch (Exception ex) { }
+        }
 
         private void GridToViewTRinMultipleCaseNew()
         {
@@ -1012,48 +1068,48 @@ namespace CEIHaryana.Officers
         }
 
 
-        protected void Grid_MultipleInspectionTR_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            string Count = string.Empty;
-            string IntimationId = string.Empty;
-            if (e.CommandName == "Select")
-            {
-                Control ctrl = e.CommandSource as Control;
-                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                Label LblInstallationName = (Label)row.FindControl("LblInstallationName");
-                Label LblTestReportCount = (Label)row.FindControl("LblTestReportCount");
-                //IntimationId = Session["id"].ToString();
-                Count = LblTestReportCount.Text.Trim();
+        //protected void Grid_MultipleInspectionTR_RowCommand(object sender, GridViewCommandEventArgs e)
+        //{
+        //    string Count = string.Empty;
+        //    string IntimationId = string.Empty;
+        //    if (e.CommandName == "Select")
+        //    {
+        //        Control ctrl = e.CommandSource as Control;
+        //        GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+        //        Label LblInstallationName = (Label)row.FindControl("LblInstallationName");
+        //        Label LblTestReportCount = (Label)row.FindControl("LblTestReportCount");
+        //        //IntimationId = Session["id"].ToString();
+        //        Count = LblTestReportCount.Text.Trim();
 
-                Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
-                IntimationId = LblIntimationId.Text.Trim();
-                Label LblTestReportId = (Label)row.FindControl("LblTestReportId");
-                //DataSet ds = new DataSet();
-                //ds = CEI.GetData(LblInstallationName.Text.Trim(), IntimationId, Count);
-                //if (ds.Tables[0].Rows.Count > 0)
-                //{
+        //        Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
+        //        IntimationId = LblIntimationId.Text.Trim();
+        //        Label LblTestReportId = (Label)row.FindControl("LblTestReportId");
+        //        //DataSet ds = new DataSet();
+        //        //ds = CEI.GetData(LblInstallationName.Text.Trim(), IntimationId, Count);
+        //        //if (ds.Tables[0].Rows.Count > 0)
+        //        //{
 
-                if (LblInstallationName != null)
-                {
-                    if (LblInstallationName.Text == "Lift")
-                    {
-                        Session["LiftTestReportID"] = LblTestReportId.Text;
-                        Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
-                    }
-                    else if (LblInstallationName.Text == "Escalator")
-                    {
-                        Session["EscalatorTestReportID"] = LblTestReportId.Text;
-                        Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
-                    }
-                }
+        //        if (LblInstallationName != null)
+        //        {
+        //            if (LblInstallationName.Text == "Lift")
+        //            {
+        //                Session["LiftTestReportID"] = LblTestReportId.Text;
+        //                Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+        //            }
+        //            else if (LblInstallationName.Text == "Escalator")
+        //            {
+        //                Session["EscalatorTestReportID"] = LblTestReportId.Text;
+        //                Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
+        //            }
+        //        }
               
-            }
+        //    }
 
      
-            GetData();
+        //    GetData();
 
 
-        }
+        //}
 
         protected void lnkRedirectTR_Click1(object sender, EventArgs e)
         {

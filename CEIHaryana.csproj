@@ -1915,7 +1915,6 @@
     <Content Include="Officers\ActionTakenInspections.aspx" />
     <Content Include="Officers\ConsolidatedReport.aspx" />
     <Content Include="Officers\DistrictData.aspx" />
-    <Content Include="Officers\FirstReturn_byOfficer%28Lift%29.txt" />
     <Content Include="Officers\InProcessInspection.aspx" />
     <Content Include="Officers\InProcessInspection_Lift_Escalator.aspx" />
     <Content Include="Officers\InProcessRequest.aspx" />
@@ -1993,6 +1992,7 @@
     <Content Include="SiteOwnerPages\RatingOfInstallations.aspx" />
     <Content Include="SiteOwnerPages\ReapplyReturnINspection.aspx" />
     <Content Include="SiteOwnerPages\ReturnInspections.aspx" />
+    <Content Include="SiteOwnerPages\ReturnLiftInspections.aspx" />
     <Content Include="SiteOwnerPages\SiteOwnerDashboard.aspx" />
     <Content Include="SiteOwnerPages\SldHistory.aspx" />
     <Content Include="SiteOwnerPages\SLDReturn.aspx" />
@@ -3341,6 +3341,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\ReturnInspections.aspx.designer.cs">
       <DependentUpon>ReturnInspections.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ReturnLiftInspections.aspx.cs">
+      <DependentUpon>ReturnLiftInspections.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ReturnLiftInspections.aspx.designer.cs">
+      <DependentUpon>ReturnLiftInspections.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\SiteOwner.Master.cs">
       <DependentUpon>SiteOwner.Master</DependentUpon>

@@ -33,6 +33,8 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                     {
+
+                        Session["ReturnedValue"] = "Treys";
                         BindDistrict();
                     }
                 }
@@ -78,6 +80,7 @@ namespace CEIHaryana.SiteOwnerPages
         }
         protected void btnAddnew_Click(object sender, EventArgs e)
         {
+            Session["ReturnedValue"] = "Treys";
             Response.Redirect("/SiteOwnerPages/LiftPeriodicRenewal.aspx", false);
         }
         protected void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
@@ -99,8 +102,10 @@ namespace CEIHaryana.SiteOwnerPages
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
                 Label LblCategory = (Label)row.FindControl("LblCategory");
+                Label LblTestReportID = (Label)row.FindControl("LblTestReportID");
 
                 Session["RegistrationNo"] = LblRegistrationNo.Text;
+                Session["TestReportID"] = LblTestReportID.Text;
 
                 if (LblCategory != null)
                 {

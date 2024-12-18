@@ -79,6 +79,7 @@ namespace CEIHaryana.Officers
 
                     GridBindDocument();
                     DivViewTRinMultipleCaseNew.Visible = true;
+
                     GridToViewTRinMultipleCaseNew();
                     if (ReturnValue == "1")
                     {
@@ -484,7 +485,6 @@ namespace CEIHaryana.Officers
             catch (Exception ex)
             { }
         }
-
         protected void lnkRedirectTR_Click1(object sender, EventArgs e)
         {
             try
@@ -554,7 +554,7 @@ namespace CEIHaryana.Officers
             {
                 ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.ViewDocuments_Lift_Escalator(ID);
+                ds = CEI.ViewDocuments_ReturnedInspectionLift_Escalator(ID);
                 if (ds.Tables.Count > 0)
                 {
                     grd_Documemnts.DataSource = ds;

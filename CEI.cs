@@ -8097,9 +8097,9 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetDistrictForLiftRenewal", SiteOwnerId);
         }
 
-        public DataSet GetDetailsOfLiftRenewalReport(string RegistrationNo)
+        public DataSet GetDetailsOfLiftRenewalReport(string RegistrationNo, string TestReportID)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsOfLiftRenewalReport", RegistrationNo);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsOfLiftRenewalReport", RegistrationNo, TestReportID);
         }
 
         public DataTable GetDocumentOfLiftRenewalToShow(string ApplicantType)
@@ -8690,6 +8690,147 @@ SqlTransaction transaction)
         public DataSet GetTestReport_Lift_EscalatorIfReturned(string Id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReport_Lift_EscalatorIfReturned", Id);
+        }
+        //Navneet 18-12-24
+        public void UpdateReturnLiftInspectionPeriodicStatus(int InspectionId)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateReturnPeriodicStatus", InspectionId);
+        }
+
+        public int InsertReturnedNewLiftData(string OldTestReportId, string count, string IntimationId, string NameandAddressofLocalAgent, string NameofLocalAgent
+, string AddressofLocalAgent, string ContactNoofLocalAgent, DateTime DateofErection, string TypeofLift, string Make, string SerialNo, string TypeofLiftErected, string ContractSpeedofLiftMtrPrSec
+, decimal ContractLoadofLiftInKg, string MaxPersonCapacitywithLiftOperator, decimal WeightofLiftCarwithContractLoadInKg, decimal WeightofCounterWeightInkg
+, decimal DepthofPitInmm, decimal TravelDistanceofLiftInMtr, decimal NoofFloorsServedInMtr, decimal TotalHeadRoomInmm, string TypeOfControl, decimal NoofSuspensionRopes,
+string DescrptionofSuspensionRopes, decimal SizeofSusspensionRopesInmm, decimal WeightofBeamInkg, decimal SizeofBeamInmm, string MakeMainBreaker,
+string TypeMainBreaker, string PolesMainBreaker, string CurrentRatingInAmps, string BreakingCapacityInKA, string MakeRCCBMainBreaker,
+string PolesRCCBMainBreaker, string CurrentRCCBRatingInAmps, string FaultRCCBCurrentRating, string LoadMakeMainBreaker
+, string LoadTypeMainBreaker, string LoadPolesMainBreaker, string LoadCurrentRatingInAmps, string LoadBreakingCapacityInKA,
+string LoadMakeRCCBMainBreaker, string LoadPolesRCCBMainBreaker
+, string LoadRCCBCurrentRatingInAmps, string LoadRCCBFaultCurrentRating, string ForWholeInstallation, string NeutralandPhaseohms, string EarthandPhasemohms, int RedPhaseYellowPhaseInMohms, int RedPhaseBluePhaseInMohms
+, int YellowPhaseBluePhaseInMohms, int RedPhaseEarthWireInMohms, int YellowPhaseEarthWireInMohms, int BluePhaseEarthWirenMohms, string NumberofEarthing
+, string EarthingType1, decimal Valueinohms1, string EarthingType2, decimal Valueinohms2, string EarthingType3, decimal Valueinohms3, string EarthingType4,
+decimal Valueinohms4, string EarthingType5
+, decimal Valueinohms5, string EarthingType6, decimal Valueinohms6, string EarthingType7, decimal Valueinohms7, string EarthingType8, decimal Valueinohms8,
+string EarthingType9, decimal Valueinohms9
+, string EarthingType10, decimal Valueinohms10, string CreatedBy, string ContractorName, string ContractorLicenseNumber, DateTime ContractorLicenseExpiryDate,
+string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicenseExpiryDate)
+        {
+            return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+                "sp_InsertReturnedLiftTestReportdata", OldTestReportId, count, IntimationId, NameandAddressofLocalAgent, NameofLocalAgent
+, AddressofLocalAgent, ContactNoofLocalAgent, DateofErection, TypeofLift, Make, SerialNo, TypeofLiftErected, ContractSpeedofLiftMtrPrSec
+, ContractLoadofLiftInKg, MaxPersonCapacitywithLiftOperator, WeightofLiftCarwithContractLoadInKg, WeightofCounterWeightInkg
+, DepthofPitInmm, TravelDistanceofLiftInMtr, NoofFloorsServedInMtr, TotalHeadRoomInmm, TypeOfControl, NoofSuspensionRopes, DescrptionofSuspensionRopes
+, SizeofSusspensionRopesInmm, WeightofBeamInkg, SizeofBeamInmm, MakeMainBreaker, TypeMainBreaker, PolesMainBreaker, CurrentRatingInAmps
+, BreakingCapacityInKA, MakeRCCBMainBreaker, PolesRCCBMainBreaker, CurrentRCCBRatingInAmps, FaultRCCBCurrentRating, LoadMakeMainBreaker
+, LoadTypeMainBreaker, LoadPolesMainBreaker, LoadCurrentRatingInAmps, LoadBreakingCapacityInKA, LoadMakeRCCBMainBreaker, LoadPolesRCCBMainBreaker
+, LoadRCCBCurrentRatingInAmps, LoadRCCBFaultCurrentRating, ForWholeInstallation, NeutralandPhaseohms, EarthandPhasemohms, RedPhaseYellowPhaseInMohms, RedPhaseBluePhaseInMohms
+, YellowPhaseBluePhaseInMohms, RedPhaseEarthWireInMohms, YellowPhaseEarthWireInMohms, BluePhaseEarthWirenMohms, NumberofEarthing
+, EarthingType1, Valueinohms1, GetValue(EarthingType2), Valueinohms2, GetValue(EarthingType3), Valueinohms3, GetValue(EarthingType4),
+                Valueinohms4, GetValue(EarthingType5), Valueinohms5, GetValue(EarthingType6), Valueinohms6, GetValue(EarthingType7),
+                Valueinohms7, GetValue(EarthingType8), Valueinohms8, GetValue(EarthingType9), Valueinohms9, GetValue(EarthingType10),
+                Valueinohms10, CreatedBy, ContractorName, ContractorLicenseNumber, ContractorLicenseExpiryDate, SupervisorName, SupervisorLicenseNumber, SupervisorLicenseExpiryDate);
+        }
+
+        public DataTable CheckReturnValue(int InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckReturnValue", InspectionId);
+        }
+        public void UpdateReturnLiftInspection(int InspectionId, string TransactionId, DateTime TransactionDate, string InspectionRemarks, string ModifiedBy)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateReturnLiftInspection", InspectionId, TransactionId, TransactionDate, InspectionRemarks, ModifiedBy);
+        }
+        public void UploadDocumentforLiftReturnedInspection(string InspectionId, string InstallationType, string DocumentID,
+                                string DocSaveName, string FileName, string FilePath, string CreatedBy)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertInspectionAttachments", InspectionId, InstallationType, DocumentID, DocSaveName, FileName, FilePath, CreatedBy);
+        }
+
+        public DataTable ReturnPayment_LiftPeriodic(int InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetReturnInspectionPayment_LiftPeriodic", InspectionId);
+        }
+        public DataTable ReturnInstallations_Lift(int InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLiftInstallationOfInspection", InspectionId);
+        }
+
+        public DataTable ReturnInstallations_LiftPeriodic(int InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLiftInstallationOfInspectionPeriodic", InspectionId);
+        }
+
+        public DataTable ReturnDocuments_Lift(int InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetReturnedDocument", InspectionId);
+        }
+        public DataTable ReturnPayment_Lift(int InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetReturnInspectionPayment_Lift", InspectionId);
+        }
+        public int InsertReturnEscalatorData(string OldTestReportId, string count, string IntimationId, string NameandAddressofLocalAgent, string NameofLocalAgent
+, string AddressofLocalAgent, string ContactNoofLocalAgent, DateTime DateofErection, string Make, string SerialNo, string TypeofEscalatorErected, string ContractSpeedofEscalatorMtrPrSec
+, decimal ContractLoadofEscalatorInKg, string MaxPersonCapacitywithEscalatorOperator, decimal WeightofEscalatorCarwithContractLoadInKg, decimal WeightofCounterWeightInkg
+, decimal DepthofPitInmm, decimal TravelDistanceofEscalatorInMtr, decimal NoofFloorsServedInMtr, decimal TotalHeadRoomInmm, string TypeOfControl,
+          string MakeMainBreaker,
+string TypeMainBreaker, string PolesMainBreaker, string CurrentRatingInAmps, string BreakingCapacityInKA, string MakeRCCBMainBreaker,
+string PolesRCCBMainBreaker, string CurrentRCCBRatingInAmps, string FaultRCCBCurrentRating, string LoadMakeMainBreaker
+, string LoadTypeMainBreaker, string LoadPolesMainBreaker, string LoadCurrentRatingInAmps, string LoadBreakingCapacityInKA,
+string LoadMakeRCCBMainBreaker, string LoadPolesRCCBMainBreaker
+, string LoadRCCBCurrentRatingInAmps, string LoadRCCBFaultCurrentRating, string ForWholeInstallation, string NeutralandPhaseohms, string EarthandPhasemohms, int RedPhaseYellowPhaseInMohms, int RedPhaseBluePhaseInMohms
+, int YellowPhaseBluePhaseInMohms, int RedPhaseEarthWireInMohms, int YellowPhaseEarthWireInMohms, int BluePhaseEarthWirenMohms, string NumberofEarthing
+, string EarthingType1, decimal Valueinohms1, string EarthingType2, decimal Valueinohms2, string EarthingType3, decimal Valueinohms3, string EarthingType4,
+decimal Valueinohms4, string EarthingType5
+, decimal Valueinohms5, string EarthingType6, decimal Valueinohms6, string EarthingType7, decimal Valueinohms7, string EarthingType8, decimal Valueinohms8,
+string EarthingType9, decimal Valueinohms9
+, string EarthingType10, decimal Valueinohms10, string CreatedBy, string ContractorName, string ContractorLicenseNumber, DateTime ContractorLicenseExpiryDate,
+string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicenseExpiryDate)
+        {
+            return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+                "sp_InsertReturnEscalatorTestReportdata", OldTestReportId, count, IntimationId, NameandAddressofLocalAgent, NameofLocalAgent
+, AddressofLocalAgent, ContactNoofLocalAgent, DateofErection, Make, SerialNo, TypeofEscalatorErected, ContractSpeedofEscalatorMtrPrSec
+, ContractLoadofEscalatorInKg, MaxPersonCapacitywithEscalatorOperator, WeightofEscalatorCarwithContractLoadInKg, WeightofCounterWeightInkg
+, DepthofPitInmm, TravelDistanceofEscalatorInMtr, NoofFloorsServedInMtr, TotalHeadRoomInmm, TypeOfControl, MakeMainBreaker, TypeMainBreaker, PolesMainBreaker, CurrentRatingInAmps
+, BreakingCapacityInKA, MakeRCCBMainBreaker, PolesRCCBMainBreaker, CurrentRCCBRatingInAmps, FaultRCCBCurrentRating, LoadMakeMainBreaker
+, LoadTypeMainBreaker, LoadPolesMainBreaker, LoadCurrentRatingInAmps, LoadBreakingCapacityInKA, LoadMakeRCCBMainBreaker, LoadPolesRCCBMainBreaker
+, LoadRCCBCurrentRatingInAmps, LoadRCCBFaultCurrentRating, ForWholeInstallation, NeutralandPhaseohms, EarthandPhasemohms, RedPhaseYellowPhaseInMohms, RedPhaseBluePhaseInMohms
+, YellowPhaseBluePhaseInMohms, RedPhaseEarthWireInMohms, YellowPhaseEarthWireInMohms, BluePhaseEarthWirenMohms, NumberofEarthing
+, EarthingType1, Valueinohms1, GetValue(EarthingType2), Valueinohms2, GetValue(EarthingType3), Valueinohms3, GetValue(EarthingType4),
+                Valueinohms4, GetValue(EarthingType5), Valueinohms5, GetValue(EarthingType6), Valueinohms6, GetValue(EarthingType7),
+                Valueinohms7, GetValue(EarthingType8), Valueinohms8, GetValue(EarthingType9), Valueinohms9, GetValue(EarthingType10),
+                Valueinohms10, CreatedBy, ContractorName, ContractorLicenseNumber, ContractorLicenseExpiryDate, SupervisorName, SupervisorLicenseNumber, SupervisorLicenseExpiryDate);
+        }
+
+        public void InsertReturnPeriodicLiftData(string TestReportId, string InstallationType, string RegistrationNo, string PreviousChallanDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
+string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string SiteAddress, string CreatedBy)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertPeriodicReturnData", TestReportId, InstallationType, RegistrationNo, PreviousChallanDate, PreviousChallanUpload, LastApprovalDate, ErectionDate, Make,
+ SerialNo, TypeOfLift, TypeOfControl, Capacity, Weight, ApplicantDistrict, SiteAddress, CreatedBy);
+        }
+
+        public DataTable CheckPeridocReturnValue(int InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PeriodicCheckReturnValue", InspectionId);
+        }
+        ////
+        ///
+
+        public DataSet GetTestReportDataIfPeriodic_Lift_EscalatorIfReturned(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReportDataForPerodic_Lift_EscalatorIfReturned", Id);
+        }
+
+        public DataSet ViewDocuments_ReturnedInspectionLift_Escalator(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetReturnedInspectionDocuments_Lift_Escalator", InspectionId);
+        }
+
+        public DataTable InstallationComponentsforLift_Return(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReportDataLift_Return", Id);
+        }
+        public DataSet GetDetailsToViewCart_Lift_Escalator_Return(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewCart_Lift_Escalator_Return", InspectionId);
         }
     }
 }

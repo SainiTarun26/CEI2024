@@ -173,8 +173,18 @@ namespace CEIHaryana.SiteOwnerPages
                     // Attempt to parse the weight value
                     if (decimal.TryParse(txtWeight.Text, out weight))
                     {
-                        CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
+                        if (Session["ReturnedValue"].ToString() != "1")
+                        {
+                            CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
                                               txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, SiteOwnerID, transaction);
+
+                        }
+                        else
+                        {
+                            string TestReportId = Session["EscalatorTestReportID"].ToString();
+                            CEI.InsertReturnPeriodicLiftData(TestReportId,ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
+                                              txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, SiteOwnerID);
+                        }
                     }
                     // Upload Attachments
                     bool allDocumentsUploaded = true;

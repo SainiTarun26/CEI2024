@@ -256,7 +256,9 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 if (Session["Expired"].ToString() == "False")
                 {
-                    CEI.InsertNewEscalatorData(
+                    if (Session["ReturnedValue"].ToString() != "1")
+                    {
+                        CEI.InsertNewEscalatorData(
                         count, IntimationId, RadioButtonList2.SelectedItem.Text, TxtAgentName.Text, txtAgentAddress.Text,
                         txtAgentPhone.Text, DateTime.Parse(txtErectionDate.Text), txtMake.Text, txtSerialNo.Text, ddlEscalatorType.SelectedItem.ToString(), txtEscalatorSpeedContract.Text,
                         ParseOrDefault(txtEscalatorLoad.Text), txtMaxPersonCapacity.Text, ParseOrDefault(txtWeight.Text), ParseOrDefault(txtCounterWeight.Text),
@@ -280,13 +282,45 @@ namespace CEIHaryana.SiteOwnerPages
                         CreatedBy, ddlContName.SelectedItem.ToString(), txtContName.Text, DateTime.Parse(txtContExp.Text), ddlLicenseNo.SelectedItem.ToString(),
                         txtSupLicenseNo.Text, DateTime.Parse(txtSupExpiryDate.Text)
                     );
-                    CEI.UpdateLiftTestReportHistory("Escalator", IntimationId, count, CreatedBy);
-                    CEI.UpdateInstallations(installationNo, IntimationId);
-                    UploadCheckListDocInCollection(IntimationId, count);
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
+                        CEI.UpdateLiftTestReportHistory("Escalator", IntimationId, count, CreatedBy);
+                        CEI.UpdateInstallations(installationNo, IntimationId);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
 
-                    //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                    }
+                    else
+                    {
+                        string TestReportId = Session["EscalatorTestReportID"].ToString();
+
+                        CEI.InsertReturnEscalatorData(TestReportId,
+                    count, IntimationId, RadioButtonList2.SelectedItem.Text, TxtAgentName.Text, txtAgentAddress.Text,
+                    txtAgentPhone.Text, DateTime.Parse(txtErectionDate.Text), txtMake.Text, txtSerialNo.Text, ddlEscalatorType.SelectedItem.ToString(), txtEscalatorSpeedContract.Text,
+                    ParseOrDefault(txtEscalatorLoad.Text), txtMaxPersonCapacity.Text, ParseOrDefault(txtWeight.Text), ParseOrDefault(txtCounterWeight.Text),
+                    ParseOrDefault(txtPitDepth.Text), ParseOrDefault(txtTravelDistance.Text), ParseOrDefault(txtFloorsServed.Text),
+                    ParseOrDefault(txtTotalHeadRoom.Text), txtTypeofControll.Text, txtMakeMainBreaker.Text, txtTypeMainBreaker.Text,
+                    ddlPoleMainBreaker.SelectedItem.ToString(), txtratingMainBreaker.Text,
+                    txtCapacityMainBreaker.Text, txtMakeRCCBMainBreaker.Text, ddlPolesRCCBMainBreaker.SelectedItem.ToString(),
+                    txtRatingRCCBMainBreaker.Text, txtfaultratingRCCBMainBreaker.Text, txtMakeLoadBreaker.Text, txtTypeLoadBreaker.Text,
+                    ddlPolesLoadBreaker.SelectedItem.ToString(), txtRatingLoadBreaker.Text, txtCapacityLoadBreaker.Text, txtMakeRCCBLoadBreaker.Text,
+                    ddlpolesRCCBLoadBreaker.SelectedItem.ToString(), txtRatingRCCBLoadBreaker.Text, txtFaultCurrentRCCBLoadBreaker.Text,
+                    txtwholeInstallation.Text, txtNeutralPhase.Text, txtEarthPhase.Text, ParseintOrDefault(txtRedYellow.Text),
+                    ParseintOrDefault(txtRedBlue.Text), ParseintOrDefault(txtYellowBlue.Text),
+                    ParseintOrDefault(txtRedEarth.Text), ParseintOrDefault(txtYellowEarth.Text),
+                     ParseintOrDefault(txtBlueEarth.Text), ddlNoOfEarthing.SelectedItem.ToString(), ddlEarthingtype1.SelectedItem.ToString(), ParseOrDefault(txtearthingValue1.Text),
+                    ddlEarthingtype2.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue2.Text), ddlEarthingtype3.SelectedItem.ToString(),
+                    ParseOrDefault(txtEarthingValue3.Text), ddlEarthingtype4.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue4.Text),
+                    ddlEarthingtype5.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue5.Text), ddlEarthingtype6.SelectedItem.ToString(),
+                    ParseOrDefault(txtEarthingValue6.Text), ddlEarthingtype7.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue7.Text),
+                    ddlEarthingtype8.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue8.Text), ddlEarthingtype9.SelectedItem.ToString(),
+                    ParseOrDefault(txtEarthingValue9.Text), ddlEarthingtype10.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue10.Text),
+                    CreatedBy, ddlContName.SelectedItem.ToString(), txtContName.Text, DateTime.Parse(txtContExp.Text), ddlLicenseNo.SelectedItem.ToString(),
+                    txtSupLicenseNo.Text, DateTime.Parse(txtSupExpiryDate.Text));
+                        UploadCheckListDocInCollection(IntimationId, count);
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
+
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithReturnRedirectdata();", true); //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
+
+
+                    }
                 }
                 else
                 {

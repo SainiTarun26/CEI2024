@@ -41,7 +41,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     string RegistrationNo = Session["RegistrationNo"].ToString();
                     DataSet ds = new DataSet();
-                    ds = CEI.GetDetailsOfLiftRenewalReport(RegistrationNo);
+                   // ds = CEI.GetDetailsOfLiftRenewalReport(RegistrationNo);
                     txtInstallationType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
 
                     if (txtInstallationType.Text == "Lift")
