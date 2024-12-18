@@ -773,7 +773,10 @@ namespace CEIHaryana.Officers
                 Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
                 string installationName = lblInstallationName.Text.Trim();
                 Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
+                Label LblOldTestReportId = (Label)row.FindControl("LblOldTestReportId");
                 Session["RegistrationNo"] = LblRegistrationNo.Text;
+                Session["TestReportID"] = LblOldTestReportId.Text;
+                
 
                 if (lblInstallationName != null)
                 {
@@ -993,8 +996,9 @@ namespace CEIHaryana.Officers
                 Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
                 string installationName = lblInstallationName.Text.Trim();
                 Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
+                Label LblOldTestReportId = (Label)row.FindControl("LblOldTestReportId");
                 Session["RegistrationNo"] = LblRegistrationNo.Text;
-
+                Session["TestReportID"] = LblOldTestReportId.Text;
                 if (lblInstallationName != null)
                 {
                     if (lblInstallationName.Text == "Lift")

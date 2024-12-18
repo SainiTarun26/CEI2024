@@ -492,6 +492,8 @@
                                             <asp:Label ID="LblErectionDate" runat="server" Text='<%#Eval("ErectionDate") %>'></asp:Label>
                                        <asp:Label ID="lblLastApprovalDate" runat="server" Text='<%#Eval("LastApprovalDate") %>'></asp:Label>
                                       <asp:Label ID="LblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
+                                     <asp:Label ID="LblOldTestReportId" runat="server" Text='<%#Eval("OldTestReportId") %>'></asp:Label>
+
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="View TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
