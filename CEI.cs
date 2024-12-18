@@ -8832,6 +8832,16 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewCart_Lift_Escalator_Return", InspectionId);
         }
+
+        public DataSet ViewTRinMultipleCaseNewReturned_Lift_Escalator(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ViewTRinMultipleCaseNewReturned_Lift_Escalator", InspectionId);
+        }
+
+        public DataSet GetEodb_ServiceInformation_Data_Lift_Escalator_OnLoad()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_Lift_Escalator_EODB_ServiceInformation_CountCalculate");
+        }
     }
 }
 

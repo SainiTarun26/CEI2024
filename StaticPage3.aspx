@@ -772,35 +772,35 @@
                                     <tr>
                                         <td style="text-align: justify;">Time Limit prescribed as per the Public Service Guarantee Act [Days]</td>
                                         <td>
-                                            <asp:Label ID="Label1" runat="server" Text=" 1000"></asp:Label></td>
+                                            <asp:Label ID="Label1" runat="server" Text="30"></asp:Label></td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: justify;">Total Number of applications received [Nos.]</td>
-                                        <td><asp:Label ID="Label2" runat="server" Text=" 1000"></asp:Label></td>
+                                        <td><asp:Label ID="lblAllLiftEscalatorInspection" runat="server" ></asp:Label></td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: justify;">Total Number of applications approved [Nos.]</td>
-                                        <td><asp:Label ID="Label3" runat="server" Text=" 1000"></asp:Label></td>
+                                        <td><asp:Label ID="lblTotalApprovedLiftEscalatorInspection" runat="server" ></asp:Label></td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: justify;">Average time taken to obtain registration/renewal [Days]</td>
-                                        <td><asp:Label ID="Label4" runat="server" Text=" 1000"></asp:Label></td>
+                                        <td><asp:Label ID="lblAvgTimeTakenForRegs" runat="server" ></asp:Label></td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: justify;">Median time taken to obtain registration/renewal [Days]</td>
-                                        <td><asp:Label ID="Label5" runat="server" Text=" 1000"></asp:Label></td>
+                                        <td><asp:Label ID="lblMedianTimeTakenForRegs" runat="server" ></asp:Label></td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: justify;">Minimum time taken to obtain registration/renewal [Days]</td>
-                                        <td><asp:Label ID="Label6" runat="server" Text=" 1000"></asp:Label></td>
+                                        <td><asp:Label ID="lblMinTimeTakenForRegs" runat="server" ></asp:Label></td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: justify;">Maximum time taken to obtain registration/renewal [Days]</td>
-                                        <td><asp:Label ID="Label7" runat="server" Text=" 1000"></asp:Label></td>
+                                        <td><asp:Label ID="lblMaxTimeTakenForRegs" runat="server" Text=""></asp:Label></td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: justify;">*"Average fee" taken by the Department for completion of entire process of obtaining approval/certificate [Rs.]</td>
-                                        <td><asp:Label ID="Label8" runat="server" Text=" 1000"></asp:Label></td>
+                                        <td><asp:Label ID="lblAverageFees" runat="server" Text=" 1000"></asp:Label></td>
                                     </tr>
                                 </tbody>
                             </table>

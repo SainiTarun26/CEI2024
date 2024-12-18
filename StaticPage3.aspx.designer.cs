@@ -105,66 +105,66 @@ namespace CEIHaryana
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// Label2 control.
+        /// lblAllLiftEscalatorInspection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblAllLiftEscalatorInspection;
 
         /// <summary>
-        /// Label3 control.
+        /// lblTotalApprovedLiftEscalatorInspection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label lblTotalApprovedLiftEscalatorInspection;
 
         /// <summary>
-        /// Label4 control.
+        /// lblAvgTimeTakenForRegs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label lblAvgTimeTakenForRegs;
 
         /// <summary>
-        /// Label5 control.
+        /// lblMedianTimeTakenForRegs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::System.Web.UI.WebControls.Label lblMedianTimeTakenForRegs;
 
         /// <summary>
-        /// Label6 control.
+        /// lblMinTimeTakenForRegs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label6;
+        protected global::System.Web.UI.WebControls.Label lblMinTimeTakenForRegs;
 
         /// <summary>
-        /// Label7 control.
+        /// lblMaxTimeTakenForRegs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label7;
+        protected global::System.Web.UI.WebControls.Label lblMaxTimeTakenForRegs;
 
         /// <summary>
-        /// Label8 control.
+        /// lblAverageFees control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
+        protected global::System.Web.UI.WebControls.Label lblAverageFees;
     }
 }
