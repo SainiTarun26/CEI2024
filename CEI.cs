@@ -8150,67 +8150,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDataForLift", Id);
         }
-        public void InstallationApproval_Lift(string InspectionID, string TestReportId, string InstallationType, string StaffId, string InspectionType, string RegistrationNo, string ChallanDate, string Division, string Make, string LiftSrNo,
-string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, DateTime LastApprovalDate, string SiteAddress, string District, DateTime Current_ChallanDate,
-SqlTransaction transaction)
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand("sp_LiftInstallationApproved", transaction.Connection, transaction);
-
-                //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                //cmd.Connection = con;
-                if (transaction.Connection.State == ConnectionState.Closed)
-                {
-                    transaction.Connection.Open();
-                }
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID", InspectionID);
-                cmd.Parameters.AddWithValue("@Lift_Escelator_Id", TestReportId);
-                cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
-                cmd.Parameters.AddWithValue("@StaffId", StaffId);
-                cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
-                cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
-
-                DateTime ChallDate;
-                if (DateTime.TryParse(ChallanDate, out ChallDate) && ChallDate != DateTime.MinValue)
-                {
-                    cmd.Parameters.AddWithValue("@Previous_ChallanDate", ChallanDate);
-                }
-                else
-                {
-                    cmd.Parameters.AddWithValue("@Previous_ChallanDate", DBNull.Value);
-                }
-
-                cmd.Parameters.AddWithValue("@Division", Division);
-                cmd.Parameters.AddWithValue("@Make", Make);
-                cmd.Parameters.AddWithValue("@LiftSrNo", LiftSrNo);
-                cmd.Parameters.AddWithValue("@TypeOfLift", TypeOfLift);
-                cmd.Parameters.AddWithValue("@TypeOfControl", TypeOfControl);
-                cmd.Parameters.AddWithValue("@Capacity", Capacity);
-                cmd.Parameters.AddWithValue("@Weight", Weight);
-                cmd.Parameters.AddWithValue("@ErectionDate", DateOfErection);
-                cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate);
-                //if (LastApprovalDate.HasValue)
-                //{
-                //    cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate.Value);  // Pass the valid DateTime value
-                //}
-                //else
-                //{
-                //    cmd.Parameters.AddWithValue("@LastApprovalDate", DBNull.Value);  // Pass DBNull if it's null
-                //}
-                cmd.Parameters.AddWithValue("@SiteAddress", SiteAddress);
-                cmd.Parameters.AddWithValue("@District", District);
-                cmd.Parameters.AddWithValue("@Current_ChallanDate", Current_ChallanDate);
-                cmd.ExecuteNonQuery();
-
-            }
-            catch (Exception ex)
-            {
-
-                //throw;
-            }
-        }
+       
         public void InspectionFinalAction_Lift(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, string InspectionDate, SqlTransaction transaction)
         {
             try
@@ -8868,6 +8808,72 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         public void UpdateReturnLiftInspection( string TestReportId)
         {
             DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateAttachmentStatus", TestReportId);
+        }
+
+        public DataTable CalculateRows(string Typeofinstallation, string IntimationId,string InspectionId, string Count )
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CalculateRows",  Typeofinstallation,   IntimationId, InspectionId, Count);
+        }
+        public void InstallationApproval_Lift(string InspectionID, string TestReportId, string InstallationType, string StaffId, string InspectionType, string RegistrationNo, string ChallanDate, string Division, string Make, string LiftSrNo,
+string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, string SiteAddress, string District, DateTime Current_ChallanDate,
+SqlTransaction transaction)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("sp_LiftInstallationApproved", transaction.Connection, transaction);
+
+                //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                //cmd.Connection = con;
+                if (transaction.Connection.State == ConnectionState.Closed)
+                {
+                    transaction.Connection.Open();
+                }
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", InspectionID);
+                cmd.Parameters.AddWithValue("@Lift_Escelator_Id", TestReportId);
+                cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+                cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
+                cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
+
+                DateTime ChallDate;
+                if (DateTime.TryParse(ChallanDate, out ChallDate) && ChallDate != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@Previous_ChallanDate", ChallanDate);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Previous_ChallanDate", DBNull.Value);
+                }
+
+                cmd.Parameters.AddWithValue("@Division", Division);
+                cmd.Parameters.AddWithValue("@Make", Make);
+                cmd.Parameters.AddWithValue("@LiftSrNo", LiftSrNo);
+                cmd.Parameters.AddWithValue("@TypeOfLift", TypeOfLift);
+                cmd.Parameters.AddWithValue("@TypeOfControl", TypeOfControl);
+                cmd.Parameters.AddWithValue("@Capacity", Capacity);
+                cmd.Parameters.AddWithValue("@Weight", Weight);
+                cmd.Parameters.AddWithValue("@ErectionDate", DateOfErection);
+                //cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate);
+                //if (LastApprovalDate.HasValue)
+                //{
+                //    cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate.Value);  // Pass the valid DateTime value
+                //}
+                //else
+                //{
+                //    cmd.Parameters.AddWithValue("@LastApprovalDate", DBNull.Value);  // Pass DBNull if it's null
+                //}
+                cmd.Parameters.AddWithValue("@SiteAddress", SiteAddress);
+                cmd.Parameters.AddWithValue("@District", District);
+                cmd.Parameters.AddWithValue("@Current_ChallanDate", Current_ChallanDate);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+
+                //throw;
+            }
         }
     }
 }

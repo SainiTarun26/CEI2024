@@ -244,7 +244,7 @@
                 <div class="card-title" style="text-align: center; font-size: 23px !important;">Returned Request for Inspection For Lift</div>
 
                 <div id="FeesDetails" runat="server">
-                    <h7 class="card-title fw-semibold mb-4">Fees Details</h7>
+                    <h7 class="card-title fw-semibold mb-4">Component Details</h7>
                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                         <asp:GridView class="table-responsive table table-hover table-striped" Autopostback="true" ID="GridView1" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" runat="server" Width="100%"
                             AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
@@ -255,6 +255,8 @@
                                         <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Typs") %>'></asp:Label>
                                         <asp:Label ID="lblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
                                         <asp:Label ID="lblIntimationId" runat="server" Text='<%#Eval("Intimations") %>'></asp:Label>
+                                        <asp:Label ID="lblCount" runat="server" Text='<%#Eval("Count") %>'></asp:Label>
+                                        <asp:Label ID="lblTypeofinstallation" runat="server" Text='<%#Eval("Typeofinstallation") %>'></asp:Label>
                                         <asp:Label ID="lblNoOfInstallations" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
                                         <asp:Label ID="lblReportType" runat="server" Text='<%#Eval("ReportType") %>'></asp:Label>
                             <asp:Label ID="lblOldTestReportId" runat="server" Text='<%#Eval("OldTestReportId") %>'></asp:Label>
@@ -374,6 +376,13 @@
                 <SortedAscendingHeaderStyle BackColor="#007DBB" />
             </asp:GridView>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12" style="text-align:center;">
+                           <asp:Button type="Back" ID="Button1" Text="Verify" runat="server" Visible="true" class="btn btn-primary mr-2" OnClick="Button1_Click" />
+
+                        </div>
+                    </div>
+                    <div id="Inspection" runat="server" visible="false">
                     <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                         <h7 class="card-title fw-semibold mb-4" style="font-size: 30px; color: brown">
                             Note : Before proceeding to document checklist kindly pay your requisite fees first and then upload documents along with the treasury challan (PDF).
@@ -551,11 +560,12 @@
                             </div>
                         </div>
                     </div>
+                        </div>
                 </div>
                 <div class="row">
                     <div class="col-4"></div>
                     <div class="col-4" style="text-align: center;">
-                        <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" OnClientClick="return validateFileUpload();" class="btn btn-primary mr-2"
+                        <asp:Button ID="btnSubmit" Text="Submit" runat="server" Visible="false"  ValidationGroup="Submit" OnClientClick="return validateFileUpload();" class="btn btn-primary mr-2"
                             OnClick="btnSubmit_Click" />
                         <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" Visible="false" class="btn btn-primary mr-2" />
                         <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />

@@ -1233,11 +1233,11 @@
                         </label>
                     </div>
                 </div>
-                <div class="row" id="OTP" runat="server" visible="false">
-                    <div class="col-md-4"></div>
+                <div class="row" id="OTP" runat="server" Visible="false">
+                    
                     <div class="col-md-4">
                         <label>
-                            Enter the OTP you received to Your Phone Number
+                            Enter the OTP you received to Your Contractor's Email
                                     <samp style="color: red">* </samp>
                         </label>
                         <asp:TextBox class="form-control" ID="txtOTP" MaxLength="6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -1260,7 +1260,7 @@
                     <div class="col-md-4" style="text-align: center;">
                         <%--<asp:Button ID="BtnBack" runat="server" Text="Back" Visible="true" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />--%>
                         <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="false" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
-                        <asp:Button ID="btnVerify" Text="Verify Details" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" />
+                        <asp:Button ID="btnVerify" Text="Verify Details"  Visible="false"  runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click"  />
                         <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
 
                     </div>

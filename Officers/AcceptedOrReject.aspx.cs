@@ -78,13 +78,23 @@ namespace CEIHaryana.Officers
                     string id = lblID.Text;
                     Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
                     string InstallationType = lblInstallationType.Text.Trim();
+                    Label lblApplicationStatus = (Label)row.FindControl("lblApplicationStatus");
+                    string ApplicationStatus = lblApplicationStatus.Text;
                     Session["InProcessInspectionId"] = id;
 
                     if (e.CommandName == "Select")
                     {
+                       
                         if (InstallationType == "Lift" || InstallationType == "Escalator" || InstallationType == "Lift/Escalator" || InstallationType == "MultiLift" || InstallationType == "MultiEscalator")
                         {
-                            Response.Redirect("/Officers/InProcessInspection_Lift_Escalator.aspx", false);
+                            if (ApplicationStatus == "Returned")
+                            {
+                                Response.Redirect("/Officers/InProcess_Returned_Inspection_Lift_Escalator.aspx", false);
+                            }
+                            else
+                            {
+                                Response.Redirect("/Officers/InProcessInspection_Lift_Escalator.aspx", false);
+                            }
                         }
                         else
                         {

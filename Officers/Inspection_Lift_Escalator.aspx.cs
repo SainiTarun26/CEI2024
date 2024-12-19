@@ -601,17 +601,19 @@ namespace CEIHaryana.Officers
                 ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.ViewDocuments_Lift_Escalator(ID);
-                if (ds.Tables.Count > 0)
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     grd_Documemnts.DataSource = ds;
                     grd_Documemnts.DataBind();
+                    statements.Visible = false;
                 }
                 else
                 {
                     grd_Documemnts.DataSource = null;
                     grd_Documemnts.DataBind();
-                    string script = "alert(\"No Record Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    //string script = "alert(\"No Record Found\");";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    statements.Visible = true;
                 }
                 ds.Dispose();
             }

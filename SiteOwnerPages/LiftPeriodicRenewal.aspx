@@ -634,4 +634,12 @@
             setDateRange('<%= txtDateofErection.ClientID %>');
         });
     </script>
+    <script type="text/javascript">
+        function alertWithRedirectdata() {
+            if (confirm('Application Submitted successfully.')) {
+                window.location.href = "/SiteOwnerPages/LiftPeriodicRenewal.aspx";
+            } else {
+            }
+        }
+ </script>
 </asp:Content>

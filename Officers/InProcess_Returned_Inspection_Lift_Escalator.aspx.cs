@@ -116,22 +116,22 @@ namespace CEIHaryana.Officers
 
                         grd_Documemnts.Columns[3].Visible = true;
                         grd_Documemnts.Columns[4].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[5].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[6].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[7].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[8].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[9].Visible = true;
+                        //Grid_MultipleInspectionTR.Columns[5].Visible = true;
+                        //Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                        //Grid_MultipleInspectionTR.Columns[7].Visible = true;
+                        //Grid_MultipleInspectionTR.Columns[8].Visible = true;
+                        //Grid_MultipleInspectionTR.Columns[9].Visible = true;
                     }
                     else if (ReturnValu == "2")
                     {
 
-                        grd_Documemnts.Columns[3].Visible = false;
-                        grd_Documemnts.Columns[4].Visible = false;
-                        Grid_MultipleInspectionTR.Columns[5].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[6].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[7].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[8].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[9].Visible = true;
+                        grd_Documemnts.Columns[3].Visible = true;
+                        grd_Documemnts.Columns[4].Visible = true;
+                        //Grid_MultipleInspectionTR.Columns[5].Visible = true;
+                        //Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                        //Grid_MultipleInspectionTR.Columns[7].Visible = true;
+                        //Grid_MultipleInspectionTR.Columns[8].Visible = true;
+                        //Grid_MultipleInspectionTR.Columns[9].Visible = true;
                     }
                     else
                     {
@@ -202,7 +202,7 @@ namespace CEIHaryana.Officers
 
                         ddlReview.Attributes.Add("disabled", "true");
 
-                        divTestReportAttachment.Visible = false;
+                        divTestReportAttachment.Visible = true;
 
 
 
@@ -521,7 +521,7 @@ namespace CEIHaryana.Officers
 
 
                                             CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, txtChallanDate.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, DateTime.Parse("1999-01-01"), txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), transaction);
+                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate,  txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), transaction);
 
                                         }
                                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
@@ -546,7 +546,7 @@ namespace CEIHaryana.Officers
 
                                             // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
                                             CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, LblRegistrationNo, txtChallanDate.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, DateTime.Parse(TxtApprovalDate.Text), txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), transaction);
+                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), transaction);
 
                                         }
                                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
@@ -773,9 +773,9 @@ namespace CEIHaryana.Officers
                 Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
                 string installationName = lblInstallationName.Text.Trim();
                 Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
-                Label LblOldTestReportId = (Label)row.FindControl("LblOldTestReportId");
+                Label LblTestReportId = (Label)row.FindControl("lblTestReport");
                 Session["RegistrationNo"] = LblRegistrationNo.Text;
-                Session["TestReportID"] = LblOldTestReportId.Text;
+                Session["TestReportID"] = LblTestReportId.Text;
                 
 
                 if (lblInstallationName != null)
@@ -1013,6 +1013,55 @@ namespace CEIHaryana.Officers
 
             }
             catch (Exception ex) { }
+        }
+
+        protected void Grid_MultipleInspectionTR_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    Label lblOldTestReportId = (Label)e.Row.FindControl("LblOldTestReportId");
+                    LinkButton lnkRedirect = (LinkButton)e.Row.FindControl("lnkRedirectTR1");
+
+                    // Check if the OldTestReportId is null or empty
+                    if (string.IsNullOrEmpty(lblOldTestReportId.Text))
+                    {
+                        lnkRedirect.Visible = false;
+                    }
+                    else
+                    {
+                        lnkRedirect.Visible = true;
+                    }
+                }
+            }
+            catch (Exception ex) { }
+        }
+
+        protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    Label lblOldTestReportId = (Label)e.Row.FindControl("LblOldTestReportId");
+                    LinkButton lnkRedirect = (LinkButton)e.Row.FindControl("lnkRedirect2");
+
+                    // Check if the OldTestReportId is null or empty
+                    if (string.IsNullOrEmpty(lblOldTestReportId.Text))
+                    {
+                        lnkRedirect.Visible = false;
+                    }
+                    else
+                    {
+                        lnkRedirect.Visible = true;
+                    }
+                }
+            }
+            catch
+            {
+
+            }
         }
 
         protected void lnkRedirectTR1_Click(object sender, EventArgs e)

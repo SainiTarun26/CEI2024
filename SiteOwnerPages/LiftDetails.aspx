@@ -1287,8 +1287,8 @@
                         </label>
                     </div>
                 </div>
-                <div class="row" id="OTP" runat="server" visible="false">
-                    <div class="col-md-4"></div>
+                <div class="row" id="OTP" runat="server" Visible="false">
+                   
                     <div class="col-md-4">
                         <label>
                             Enter the OTP you received to Your Phone Number
@@ -1303,18 +1303,17 @@
                     <asp:CheckBox ID="Check" runat="server" TabIndex="24" />&nbsp;
                         
                             <text>
-                                I hereby declare that the information furnished in the application is correct.
-                       
+                                I hereby declare that the information furnished in the application is correct.                       
                             </text>
                 </div>
-
+                
                 <div class="row">
                     <div class="col-md-4">
                     </div>
                     <div class="col-md-4" style="text-align: center;">
                         <%--<asp:Button ID="BtnBack" runat="server" Text="Back" Visible="true" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />--%>
                         <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="false" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
-                        <asp:Button ID="btnVerify" Text="Verify Details" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" />
+                        <asp:Button ID="btnVerify" Text="Verify Details" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" />
                         <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
 
                     </div>

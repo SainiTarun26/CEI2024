@@ -102,8 +102,8 @@ namespace CEIHaryana.Officers
                 if (ReturnValue == "1")
                 {
                     grd_Documemnts.Columns[3].Visible = false;
-                    grd_Documemnts.Columns[4].Visible = false;
-                    grd_Documemnts.Columns[5].Visible = false;
+                    //grd_Documemnts.Columns[4].Visible = false;
+                    //grd_Documemnts.Columns[5].Visible = false;
 
                 }
                 else if (ReturnValue == "2")

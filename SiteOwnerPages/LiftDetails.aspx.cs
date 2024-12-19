@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -19,6 +20,8 @@ namespace CEIHaryana.SiteOwnerPages
     public partial class LiftDetails : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+        string Email = string.Empty;
+        string OTPs = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -238,60 +241,98 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                string IntimationId = Session["id"].ToString();
-                string CreatedBy = Session["SiteOwnerId"].ToString();
-                string count = Session["NoOfInstallations"].ToString();
-                string installationNo = Session["IHID"].ToString();
+                //if (Session["OTP"].ToString() == txtOTP.Text.Trim())
+                //{
+                    string IntimationId = Session["id"].ToString();
+                    string CreatedBy = Session["SiteOwnerId"].ToString();
+                    string count = Session["NoOfInstallations"].ToString();
+                    string installationNo = Session["IHID"].ToString();
 
-                if (txtNeutralPhase.Text == "")
-                {
-                    txtNeutralPhase.Text = "0";
-                    txtEarthPhase.Text = "0";
-                }
-                else
-                {
-
-                }
-                // Helper function to safely parse decimal fields
-                decimal ParseOrDefault(string input, decimal defaultValue = 0)
-                {
-                    return decimal.TryParse(input, out decimal result) ? result : defaultValue;
-                }
-                int ParseOrDefaults(string input, int defaultValue = 0)
-                {
-                    return int.TryParse(input, out int result) ? result : defaultValue;
-                }
-
-
-                bool allFilesArePDF = true;
-                foreach (GridViewRow row in Grd_Document.Rows)
-                {
-                    FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
-                    string fileExtension = System.IO.Path.GetExtension(fileUpload.FileName).ToLower();
-
-                    if (fileExtension != ".pdf" || fileUpload == null)
+                    if (txtNeutralPhase.Text == "")
                     {
-                        allFilesArePDF = false;
-                        ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Please upload all the PDF files Correctly');", true);
+                        txtNeutralPhase.Text = "0";
+                        txtEarthPhase.Text = "0";
+                    }
+                    else
+                    {
+
+                    }
+                    // Helper function to safely parse decimal fields
+                    decimal ParseOrDefault(string input, decimal defaultValue = 0)
+                    {
+                        return decimal.TryParse(input, out decimal result) ? result : defaultValue;
+                    }
+                    int ParseOrDefaults(string input, int defaultValue = 0)
+                    {
+                        return int.TryParse(input, out int result) ? result : defaultValue;
+                    }
+
+
+                    bool allFilesArePDF = true;
+                    foreach (GridViewRow row in Grd_Document.Rows)
+                    {
+                        FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
+                        string fileExtension = System.IO.Path.GetExtension(fileUpload.FileName).ToLower();
+
+                        if (fileExtension != ".pdf" || fileUpload == null)
+                        {
+                            allFilesArePDF = false;
+                            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Please upload all the PDF files Correctly');", true);
+
+                        }
 
                     }
 
-                }
-
-                if (allFilesArePDF == true)
-                {
-                    if (Session["Expired"].ToString() == "False")
+                    if (allFilesArePDF == true)
                     {
-                        string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
-                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        if (Session["Expired"].ToString() == "False")
                         {
-                            connection.Open();
-                            SqlTransaction transaction = connection.BeginTransaction();
-                            try
+                            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+                            using (SqlConnection connection = new SqlConnection(connectionString))
                             {
-                                if (Session["ReturnedValue"].ToString() != "1")
+                                connection.Open();
+                                SqlTransaction transaction = connection.BeginTransaction();
+                                try
                                 {
-                                    CEI.InsertNewLiftData(
+                                    if (Session["ReturnedValue"].ToString() != "1")
+                                    {
+                                        CEI.InsertNewLiftData(
+                                    count, IntimationId, RadioButtonList2.SelectedItem.Text, TxtAgentName.Text, txtAgentAddress.Text,
+                                    txtAgentPhone.Text, DateTime.Parse(txtErectionDate.Text), ddlLiftType.SelectedItem.ToString(), txtMake.Text, txtSerialNo.Text, RadioButtonAction.SelectedItem.ToString(), txtLiftSpeedContract.Text,
+                                    ParseOrDefault(txtLiftLoad.Text), txtMaxPersonCapacity.Text, ParseOrDefault(txtWeight.Text), ParseOrDefault(txtCounterWeight.Text),
+                                    ParseOrDefault(txtPitDepth.Text), ParseOrDefault(txtTravelDistance.Text), ParseOrDefault(txtFloorsServed.Text),
+                                    ParseOrDefault(txtTotalHeadRoom.Text), txtTypeofControll.Text, ParseOrDefault(txtNoofSuspension.Text), txtDescriptionOfSuspension.Text,
+                                    ParseOrDefault(txtSizeOfSuspension.Text), ParseOrDefault(txtBeamWeight.Text), ParseOrDefault(txtBeamSize.Text),
+                                    txtMakeMainBreaker.Text, txtTypeMainBreaker.Text, ddlPoleMainBreaker.SelectedItem.ToString(), txtratingMainBreaker.Text,
+                                    txtCapacityMainBreaker.Text, txtMakeRCCBMainBreaker.Text, ddlPolesRCCBMainBreaker.SelectedItem.ToString(),
+                                    txtRatingRCCBMainBreaker.Text, txtfaultratingRCCBMainBreaker.Text, txtMakeLoadBreaker.Text, txtTypeLoadBreaker.Text,
+                                    ddlPolesLoadBreaker.SelectedItem.ToString(), txtRatingLoadBreaker.Text, txtCapacityLoadBreaker.Text, txtMakeRCCBLoadBreaker.Text,
+                                    ddlpolesRCCBLoadBreaker.SelectedItem.ToString(), txtRatingRCCBLoadBreaker.Text, txtFaultCurrentRCCBLoadBreaker.Text,
+                                    txtwholeInstallation.Text, txtNeutralPhase.Text, txtEarthPhase.Text, ParseOrDefaults(txtRedYellow.Text), ParseOrDefaults(txtRedBlue.Text),
+                                    ParseOrDefaults(txtYellowBlue.Text), ParseOrDefaults(txtRedEarth.Text), ParseOrDefaults(txtYellowEarth.Text),
+                                    ParseOrDefaults(txtBlueEarth.Text),
+                                    ddlNoOfEarthing.SelectedItem.ToString(),
+                                    ddlEarthingtype1.SelectedItem.ToString(), ParseOrDefault(txtearthingValue1.Text),
+                                    ddlEarthingtype2.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue2.Text), ddlEarthingtype3.SelectedItem.ToString(),
+                                    ParseOrDefault(txtEarthingValue3.Text), ddlEarthingtype4.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue4.Text),
+                                    ddlEarthingtype5.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue5.Text), ddlEarthingtype6.SelectedItem.ToString(),
+                                    ParseOrDefault(txtEarthingValue6.Text), ddlEarthingtype7.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue7.Text),
+                                    ddlEarthingtype8.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue8.Text), ddlEarthingtype9.SelectedItem.ToString(),
+                                    ParseOrDefault(txtEarthingValue9.Text), ddlEarthingtype10.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue10.Text),
+                                    CreatedBy, txtContName.Text, ddlContName.SelectedValue.ToString(), DateTime.Parse(txtContExp.Text), txtSupLicenseNo.Text,
+                                    ddlLicenseNo.SelectedValue.ToString(),
+                                    DateTime.Parse(txtSupExpiryDate.Text)
+
+                                );
+
+                                        UploadCheckListDocInCollection(IntimationId, count);
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                                    }
+                                    else
+                                    {
+                                        string TestReportId = Session["LiftTestReportID"].ToString();
+
+                                        CEI.InsertReturnedNewLiftData(TestReportId,
                                 count, IntimationId, RadioButtonList2.SelectedItem.Text, TxtAgentName.Text, txtAgentAddress.Text,
                                 txtAgentPhone.Text, DateTime.Parse(txtErectionDate.Text), ddlLiftType.SelectedItem.ToString(), txtMake.Text, txtSerialNo.Text, RadioButtonAction.SelectedItem.ToString(), txtLiftSpeedContract.Text,
                                 ParseOrDefault(txtLiftLoad.Text), txtMaxPersonCapacity.Text, ParseOrDefault(txtWeight.Text), ParseOrDefault(txtCounterWeight.Text),
@@ -316,70 +357,40 @@ namespace CEIHaryana.SiteOwnerPages
                                 ParseOrDefault(txtEarthingValue9.Text), ddlEarthingtype10.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue10.Text),
                                 CreatedBy, txtContName.Text, ddlContName.SelectedValue.ToString(), DateTime.Parse(txtContExp.Text), txtSupLicenseNo.Text,
                                 ddlLicenseNo.SelectedValue.ToString(),
-                                DateTime.Parse(txtSupExpiryDate.Text)
-                                    
-                            );
+                                DateTime.Parse(txtSupExpiryDate.Text));
+                                        CEI.UpdateReturnLiftInspection(TestReportId);
+                                        UploadCheckListDocInCollection(IntimationId, count);
+                                        //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithReturnRedirectdata();", true);
 
-                                    UploadCheckListDocInCollection(IntimationId, count);
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+
+
+                                    }
+                                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
+                                    transaction.Commit();
                                 }
-                                else
+                                catch
                                 {
-                                    string TestReportId = Session["LiftTestReportID"].ToString();
-
-                                    CEI.InsertReturnedNewLiftData(TestReportId,
-                            count, IntimationId, RadioButtonList2.SelectedItem.Text, TxtAgentName.Text, txtAgentAddress.Text,
-                            txtAgentPhone.Text, DateTime.Parse(txtErectionDate.Text), ddlLiftType.SelectedItem.ToString(), txtMake.Text, txtSerialNo.Text, RadioButtonAction.SelectedItem.ToString(), txtLiftSpeedContract.Text,
-                            ParseOrDefault(txtLiftLoad.Text), txtMaxPersonCapacity.Text, ParseOrDefault(txtWeight.Text), ParseOrDefault(txtCounterWeight.Text),
-                            ParseOrDefault(txtPitDepth.Text), ParseOrDefault(txtTravelDistance.Text), ParseOrDefault(txtFloorsServed.Text),
-                            ParseOrDefault(txtTotalHeadRoom.Text), txtTypeofControll.Text, ParseOrDefault(txtNoofSuspension.Text), txtDescriptionOfSuspension.Text,
-                            ParseOrDefault(txtSizeOfSuspension.Text), ParseOrDefault(txtBeamWeight.Text), ParseOrDefault(txtBeamSize.Text),
-                            txtMakeMainBreaker.Text, txtTypeMainBreaker.Text, ddlPoleMainBreaker.SelectedItem.ToString(), txtratingMainBreaker.Text,
-                            txtCapacityMainBreaker.Text, txtMakeRCCBMainBreaker.Text, ddlPolesRCCBMainBreaker.SelectedItem.ToString(),
-                            txtRatingRCCBMainBreaker.Text, txtfaultratingRCCBMainBreaker.Text, txtMakeLoadBreaker.Text, txtTypeLoadBreaker.Text,
-                            ddlPolesLoadBreaker.SelectedItem.ToString(), txtRatingLoadBreaker.Text, txtCapacityLoadBreaker.Text, txtMakeRCCBLoadBreaker.Text,
-                            ddlpolesRCCBLoadBreaker.SelectedItem.ToString(), txtRatingRCCBLoadBreaker.Text, txtFaultCurrentRCCBLoadBreaker.Text,
-                            txtwholeInstallation.Text, txtNeutralPhase.Text, txtEarthPhase.Text, ParseOrDefaults(txtRedYellow.Text), ParseOrDefaults(txtRedBlue.Text),
-                            ParseOrDefaults(txtYellowBlue.Text), ParseOrDefaults(txtRedEarth.Text), ParseOrDefaults(txtYellowEarth.Text),
-                            ParseOrDefaults(txtBlueEarth.Text),
-                            ddlNoOfEarthing.SelectedItem.ToString(),
-                            ddlEarthingtype1.SelectedItem.ToString(), ParseOrDefault(txtearthingValue1.Text),
-                            ddlEarthingtype2.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue2.Text), ddlEarthingtype3.SelectedItem.ToString(),
-                            ParseOrDefault(txtEarthingValue3.Text), ddlEarthingtype4.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue4.Text),
-                            ddlEarthingtype5.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue5.Text), ddlEarthingtype6.SelectedItem.ToString(),
-                            ParseOrDefault(txtEarthingValue6.Text), ddlEarthingtype7.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue7.Text),
-                            ddlEarthingtype8.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue8.Text), ddlEarthingtype9.SelectedItem.ToString(),
-                            ParseOrDefault(txtEarthingValue9.Text), ddlEarthingtype10.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue10.Text),
-                            CreatedBy, txtContName.Text, ddlContName.SelectedValue.ToString(), DateTime.Parse(txtContExp.Text), txtSupLicenseNo.Text,
-                            ddlLicenseNo.SelectedValue.ToString(),
-                            DateTime.Parse(txtSupExpiryDate.Text));
-                                    CEI.UpdateReturnLiftInspection(TestReportId);
-                                    UploadCheckListDocInCollection(IntimationId, count);
-                                    //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithReturnRedirectdata();", true);
-
-
-
+                                    transaction.Rollback();
                                 }
-                                //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
-                                transaction.Commit();
                             }
-                            catch
-                            {
-                                transaction.Rollback();
-                            }
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Sorry Your License Is Expired Please Contact Admin For saving This Information');", true);
+
                         }
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Sorry Your License Is Expired Please Contact Admin For saving This Information');", true);
 
                     }
-                }
-                else
-                {
+                //}
+                //else
+                //{
+                //    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Incorrect Otp Please Try Again');", true);
 
-                }
+                //}
 
 
             }
@@ -401,6 +412,10 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void ddlContName_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DataTable dta = new DataTable();
+            dta = CEI.GetEmailContractor(ddlContName.SelectedValue.ToString());
+            Email = dta.Rows[0]["Email"].ToString();
+            Session["ContractorEmail"] = Email.Trim();
             DataSet dt = new DataSet();
             dt = CEI.GetSupervisorandContractor("Contractor", ddlContName.SelectedValue.ToString());
             if (dt.Tables.Count > 0)
@@ -485,6 +500,14 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
-        
+        protected void btnVerify_Click(object sender, EventArgs e)
+        {
+            OTP.Visible = true;
+            Email = Session["ContractorEmail"].ToString();
+            OTPs = CEI.ValidateOTPthroughEmail(Email);
+            Session["OTP"] = OTPs.Trim();
+            btnVerify.Visible = false;
+            btnSubmit.Visible = true;
+        }
     }
 }

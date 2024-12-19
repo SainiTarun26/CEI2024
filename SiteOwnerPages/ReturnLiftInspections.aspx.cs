@@ -67,6 +67,9 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else
                 {
+                    Inspection.Visible = true;
+                    btnSubmit.Visible = true;
+                    Button1.Visible = false;
                     GridView1.Columns[6].Visible = false;
                     Grd_Document.Columns[3].Visible = true;
                 }
@@ -102,6 +105,9 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else
                 {
+                    Inspection.Visible = true;
+                    btnSubmit.Visible = true;
+                    Button1.Visible = false;
                     GridView2.Columns[5].Visible = false;
                     Grd_Document.Columns[3].Visible = true;
                 }
@@ -325,12 +331,21 @@ namespace CEIHaryana.SiteOwnerPages
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 Label lblOldTestReportId = (Label)e.Row.FindControl("lblOldTestReportId");
+               string InspectionIds = Session["InspectionId"].ToString();
 
                 if (Session["TypeOfInspection"].ToString() == "New")
                 {
+                    Label lblTypeofinstallation = (Label)e.Row.FindControl("lblTypeofinstallation");
+                    Label lblIntimationId = (Label)e.Row.FindControl("lblIntimationId");
+                    Label lblCount = (Label)e.Row.FindControl("lblCount");
+                    DataTable dta = new DataTable();
+
+                    dta = CEI.CalculateRows(lblTypeofinstallation.Text.Trim(), lblIntimationId.Text.Trim(), InspectionIds, lblCount.Text.Trim());
+                    string Result = dta.Rows[0]["Result"].ToString();
                     LinkButton linkButton5 = (LinkButton)e.Row.FindControl("LinkButton5");
-                    if (lblOldTestReportId != null&& lblOldTestReportId.Text != "")
-                    {
+                   
+                        if (Result == "Greater")
+                    { 
                         // Hide LinkButton5 if OldTestReportId is null or empty
                         linkButton5.Text = "Created";
                         linkButton5.Enabled = false;
@@ -597,6 +612,44 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                 }
            
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                InspectionId = int.Parse(Session["InspectionId"].ToString());
+                string Data = string.Empty;
+                DataTable ds = new DataTable();
+                if (Session["TypeOfInspection"].ToString() == "New" && Session["ReturnedValue"].ToString() == "1")
+                {
+
+                    ds = CEI.CheckReturnValue(InspectionId);
+                    Data = ds.Rows[0]["Typs"].ToString();
+                }
+                else if (Session["TypeOfInspection"].ToString() != "New" && Session["ReturnedValue"].ToString() == "1")
+                {
+
+                    ds = CEI.CheckPeridocReturnValue(InspectionId);
+                    Data = ds.Rows[0]["Typs"].ToString();
+                }
+                if (Data != "" && Data != null)
+                {
+                    Button1.Visible = false;
+                    Inspection.Visible = true;
+                    btnSubmit.Visible = true;
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Please Fill atleast 1 TestReport First');", true);
+
+                }
+            }
+            catch
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Please Fill atleast 1 TestReport First');", true);
+
+            }
         }
     }
 }

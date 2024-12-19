@@ -166,9 +166,9 @@ namespace CEIHaryana.Officers
                         {
                             grd_Documemnts.Columns[3].Visible = true;
                             grd_Documemnts.Columns[4].Visible = true;
-                            Grid_MultipleInspectionTR.Columns[5].Visible = false;
-                            Grid_MultipleInspectionTR.Columns[7].Visible = false;
-                            Grid_MultipleInspectionTR.Columns[9].Visible = false;
+                            //Grid_MultipleInspectionTR.Columns[5].Visible = false;
+                            //Grid_MultipleInspectionTR.Columns[7].Visible = false;
+                            //Grid_MultipleInspectionTR.Columns[9].Visible = false;
                         }
                         else if (ReturnValu == "3")
                         {
@@ -539,7 +539,7 @@ namespace CEIHaryana.Officers
                                           
                                          
                                             CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, txtChallanDate.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, DateTime.Parse("1999-01-01"), txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), transaction);
+                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), transaction);
 
                                         }
                                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
@@ -564,7 +564,7 @@ namespace CEIHaryana.Officers
                                            
                                             // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
                                             CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, LblRegistrationNo,   txtChallanDate.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, DateTime.Parse(TxtApprovalDate.Text), txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text),transaction);
+                                            lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text),transaction);
 
                                         }
                                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
