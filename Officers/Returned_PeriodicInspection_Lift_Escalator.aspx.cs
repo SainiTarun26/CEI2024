@@ -108,7 +108,7 @@ namespace CEIHaryana.Officers
                 }
                 else if (ReturnValue == "2")
                 {
-                   
+
                     GridView2.Columns[5].Visible = false;
                 }
                 else
@@ -469,9 +469,10 @@ namespace CEIHaryana.Officers
                 Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
                 string installationName = lblInstallationName.Text.Trim();
                 Label LblOldTestReportId = (Label)row.FindControl("LblOldTestReportId");
+                Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
                 //Session["InspectionTestReportId"] = btn.CommandArgument;
-                Session["RegistrationNo"] = btn.CommandArgument;
-
+                // Session["RegistrationNo"] = btn.CommandArgument;
+                Session["RegistrationNo"] = LblRegistrationNo.Text;
                 string url = string.Empty;
                 if (installationName == "Lift")
                 {
@@ -493,6 +494,31 @@ namespace CEIHaryana.Officers
             catch (Exception ex) { }
         }
 
+        protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    Label lblOldTestReportId = (Label)e.Row.FindControl("LblOldTestReportId");
+                    LinkButton lnkRedirect = (LinkButton)e.Row.FindControl("lnkRedirect");
+
+                    // Check if the OldTestReportId is null or empty
+                    if (string.IsNullOrEmpty(lblOldTestReportId.Text))
+                    {
+                        lnkRedirect.Visible = false;
+                    }
+                    else
+                    {
+                        lnkRedirect.Visible = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
         protected void lnkRedirect1_Click1(object sender, EventArgs e)
         {
             try
@@ -502,9 +528,10 @@ namespace CEIHaryana.Officers
                 GridViewRow row = (GridViewRow)btn.NamingContainer;
                 Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
                 string installationName = lblInstallationName.Text.Trim();
-                Label LblTestReportId = (Label)row.FindControl("LblOldTestReportId");
-                Session["RegistrationNo"] = btn.CommandArgument;
-
+                Label LblTestReportId = (Label)row.FindControl("LblTestReportId");
+                Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
+                //Session["RegistrationNo"] = btn.CommandArgument;
+                Session["RegistrationNo"] = LblRegistrationNo.Text;
                 string url = string.Empty;
                 if (installationName == "Lift")
                 {
@@ -536,22 +563,38 @@ namespace CEIHaryana.Officers
                 ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.ViewDocuments_ReturnedInspectionLift_Escalator(ID);
-                if (ds.Tables.Count > 0)
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     grd_Documemnts.DataSource = ds;
                     grd_Documemnts.DataBind();
+                    statements.Visible = false;
                 }
                 else
                 {
                     grd_Documemnts.DataSource = null;
                     grd_Documemnts.DataBind();
-                    string script = "alert(\"No Record Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    //string script = "alert(\"No Record Found\");";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    statements.Visible = true;
+                }
+                if (statements.Visible)
+                {
+                    ddlReasonType.Items.Clear();
+                    ddlReasonType.Items.Add(new ListItem("Select", "0"));
+                    ddlReasonType.Items.Add(new ListItem("Test Report/Test Report Documents", "1"));
+                }
+                else
+                {
+                    ddlReasonType.Items.Clear();
+                    ddlReasonType.Items.Add(new ListItem("Select", "0"));
+                    ddlReasonType.Items.Add(new ListItem("Test Report/Test Report Documents", "1"));
+                    ddlReasonType.Items.Add(new ListItem("Tresury Challan/Other Documents", "2"));
                 }
                 ds.Dispose();
             }
             catch (Exception ex)
             { }
         }
+
     }
 }

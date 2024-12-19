@@ -173,14 +173,14 @@ namespace CEIHaryana.TestReportModal
                 txtEarthing.Text = ds.Tables[0].Rows[0]["NumberofEarthing"].ToString();
                 if (TextBox4.Text.Trim() =="DP")
                 {
-                    TPN1.Visible = false;
-                    TPN2.Visible = false;
+                    TPN1.Visible = true;
+                    TPN2.Visible = true;
                 }
                 else
                 {
-                    TPN1.Visible = true;
-                    TPN2.Visible = true;
-                    InDPO.Visible = false;
+                    TPN1.Visible = false;
+                    TPN2.Visible = false;
+                    InDPO.Visible = true;
                 }
                 LiftEarthing.Visible= true;
                 txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
@@ -205,7 +205,8 @@ namespace CEIHaryana.TestReportModal
                 txtEarthingType10.Text = ds.Tables[0].Rows[0]["EarthingType10"].ToString();
                 txtLiftEarthing10.Text = ds.Tables[0].Rows[0]["Valueinohms10"].ToString();
 
-
+                txtNeutralPhase.ReadOnly = true;
+                txtEarthPhase.ReadOnly = true;
                 if (txtEarthing.Text.Trim() == "1")
                 {
                     Limit.Visible = false;

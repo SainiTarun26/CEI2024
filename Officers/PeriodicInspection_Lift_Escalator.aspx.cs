@@ -493,11 +493,11 @@ namespace CEIHaryana.Officers
                 ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.ViewDocuments_Lift_Escalator(ID);
-                if (ds.Tables.Count > 0)
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     grd_Documemnts.DataSource = ds;
                     grd_Documemnts.DataBind();
-                    statement.Visible = false;
+                    statements.Visible = false;
                 }
                 else
                 {
@@ -505,8 +505,22 @@ namespace CEIHaryana.Officers
                     grd_Documemnts.DataBind();
                     //string script = "alert(\"No Record Found\");";
                     //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                    statement.Visible = true;
+                    statements.Visible = true;
                 }
+                if (statements.Visible)
+                {
+                    ddlReasonType.Items.Clear();
+                    ddlReasonType.Items.Add(new ListItem("Select", "0"));
+                    ddlReasonType.Items.Add(new ListItem("Test Report/Test Report Documents", "1"));
+                }
+                else
+                {
+                    ddlReasonType.Items.Clear();
+                    ddlReasonType.Items.Add(new ListItem("Select", "0"));
+                    ddlReasonType.Items.Add(new ListItem("Test Report/Test Report Documents", "1"));
+                    ddlReasonType.Items.Add(new ListItem("Tresury Challan/Other Documents", "2"));
+                }
+
                 ds.Dispose();
             }
             catch (Exception ex)

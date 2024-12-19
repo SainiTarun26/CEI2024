@@ -86,7 +86,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
 
             DataSet dsContractor = new DataSet();
-            dsContractor = CEI.GetContractorData();
+            dsContractor = CEI.GetContractorDataForLiftEscalator();
             ddlContName.DataSource = dsContractor;
             ddlContName.DataTextField = "ContractorData";
             ddlContName.DataValueField = "LicenseValue";
@@ -353,7 +353,7 @@ namespace CEIHaryana.SiteOwnerPages
                             CreatedBy, txtContName.Text, ddlContName.SelectedValue.ToString(), DateTime.Parse(txtContExp.Text), txtSupLicenseNo.Text,
                             ddlLicenseNo.SelectedValue.ToString(),
                             DateTime.Parse(txtSupExpiryDate.Text));
-
+                                    CEI.UpdateReturnLiftInspection(TestReportId);
                                     UploadCheckListDocInCollection(IntimationId, count);
                                     //Response.Redirect("/Supervisor/TestReportHistory.aspx", false);
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithReturnRedirectdata();", true);
@@ -473,6 +473,7 @@ namespace CEIHaryana.SiteOwnerPages
             if (ddlPoleMainBreaker.SelectedValue =="1")
             {
                 InDPO.Visible = false;
+                Heading.Visible = false;
                 TPN1.Visible = true;
                 TPN2.Visible = true;
             }

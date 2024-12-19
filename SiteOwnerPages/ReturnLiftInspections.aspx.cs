@@ -61,6 +61,7 @@ namespace CEIHaryana.SiteOwnerPages
                 // To ensure uniqueness
                 if (Session["ReturnedValue"].ToString() == "1")
                 {
+                   
                     GridView1.Columns[6].Visible = true;
                     Grd_Document.Columns[3].Visible = false;
                 }
@@ -105,8 +106,41 @@ namespace CEIHaryana.SiteOwnerPages
                     Grd_Document.Columns[3].Visible = true;
                 }
             }
-
+            GetData();
             GetDocumentUploadData(InspectionId);
+        }
+
+        public void GetData()
+        {
+            InspectionId = int.Parse(Session["InspectionId"].ToString());
+            DataTable dataTable = new DataTable();
+            dataTable = CEI.GetReturnedInspectionData(InspectionId);
+            txttransactionId.Text = dataTable.Rows[0]["TransactionId"].ToString();
+            txtReturntransactionDate.Text = dataTable.Rows[0]["TransctionDate"].ToString();
+            txtInspectionRemarks.Text = dataTable.Rows[0]["InspectionRemarks"].ToString();
+            if (Session["ReturnedValue"].ToString() == "1")
+            {
+                txtInspectionRemarks.ReadOnly = true;
+                txtReturntransactionDate.ReadOnly = true;
+                txttransactionId.ReadOnly = true;
+                txtReturntransactionDate.Visible = true;
+                txttransactionDate.Visible = false;
+            }
+            else
+            {
+
+            }
+            if (Session["Amount"].ToString() =="0")
+            {
+                PaymentDetails.Visible = false;
+                txttransactionDate.Text = dataTable.Rows[0]["TransctionDate"].ToString();
+            }
+            else
+            {
+
+            }
+
+                    
         }
             protected void Grd_Document_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -141,8 +175,9 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 Grd_Document.DataSource = null;
                 Grd_Document.DataBind();
-                string script = "alert(\"No Record Found for document \");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                UploadDocuments.Visible = false;
+                //string script = "alert(\"No Record Found for document \");";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             ds.Dispose();
         }
@@ -476,7 +511,7 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch
             {
-                //transaction.Rollback();
+                throw new Exception("Please Upload Pdf Files Carefully");
 
             }
 
@@ -484,68 +519,84 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["IntimationId_LiftEscalator"]) != null)
-            {
-                string CreatedBy = Session["SiteOwnerId"].ToString();
-                try
+            
+                if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["IntimationId_LiftEscalator"]) != null)
                 {
-                    InspectionId = int.Parse(Session["InspectionId"].ToString());
-                    DataTable ds = new DataTable();
-                    if (Session["TypeOfInspection"].ToString() == "New")
-                    {
-                       
-                        ds = CEI.CheckReturnValue(InspectionId);
-                    }
-                    else
-                    {
-                     
-                        ds = CEI.CheckPeridocReturnValue(InspectionId);
-                    }
-                   string Data = ds.Rows[0]["Typs"].ToString();
-                    if (Data== "Yes" && Session["ReturnedValue"].ToString() == "1")
+                    string CreatedBy = Session["SiteOwnerId"].ToString();
+                    try
                     {
                         InspectionId = int.Parse(Session["InspectionId"].ToString());
-                        CEI.UpdateReturnLiftInspection(InspectionId, txttransactionId.Text, DateTime.Parse(txttransactionDate.Text), txtInspectionRemarks.Text, CreatedBy);
-                        if (Grd_Document.Columns[3].Visible == true) {
+                        string date = string.Empty;
+                        string Data = string.Empty;
+                        if (txtReturntransactionDate.Visible == true || PaymentDetails.Visible ==false)
+                        {
+                            date = txtReturntransactionDate.Text;
+                        }
+                        else
+                        {
+                            date = txttransactionDate.Text;
+                        }
+                        DataTable ds = new DataTable();
+                        if (Session["TypeOfInspection"].ToString() == "New" && Session["ReturnedValue"].ToString() == "1")
+                        {
+
+                            ds = CEI.CheckReturnValue(InspectionId);
+                            Data = ds.Rows[0]["Typs"].ToString();
+                        }
+                        else if (Session["TypeOfInspection"].ToString() != "New" && Session["ReturnedValue"].ToString() == "1")
+                        {
+
+                            ds = CEI.CheckPeridocReturnValue(InspectionId);
+                            Data = ds.Rows[0]["Typs"].ToString();
+                        }
+
+                        if (Data == "Yes" && Session["ReturnedValue"].ToString() == "1")
+                        {
+                            InspectionId = int.Parse(Session["InspectionId"].ToString());
+                        if (Grd_Document.Columns[3].Visible == true&& Grd_Document.Visible ==true)
+                        {
                             UploadCheckListDocInCollection();
                         }
-                        if (Session["TypeOfInspection"].ToString() == "Periodic")
-                        {
-                            CEI.UpdateReturnLiftInspectionPeriodicStatus(InspectionId);
+                        CEI.UpdateReturnLiftInspection(InspectionId, txttransactionId.Text, DateTime.Parse(date), txtInspectionRemarks.Text, CreatedBy);
+                           
+                            if (Session["TypeOfInspection"].ToString() == "Periodic")
+                            {
+                                CEI.UpdateReturnLiftInspectionPeriodicStatus(InspectionId);
+                            }
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                         }
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                    }
-                
-                else if(Session["ReturnedValue"].ToString() != "1")
-                {
-                        InspectionId = int.Parse(Session["InspectionId"].ToString());
-                        CEI.UpdateReturnLiftInspection(InspectionId, txttransactionId.Text, DateTime.Parse(txttransactionDate.Text), txtInspectionRemarks.Text, CreatedBy);
+
+                        else if (Session["ReturnedValue"].ToString() != "1")
+                        {
+                            InspectionId = int.Parse(Session["InspectionId"].ToString());
                         if (Grd_Document.Columns[3].Visible == true)
                         {
                             UploadCheckListDocInCollection();
                         }
-                        if (Session["TypeOfInspection"].ToString() == "Periodic")
-                        {
-                            CEI.UpdateReturnLiftInspectionPeriodicStatus(InspectionId);
-                        }
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                        
-                }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Please Fill atleast 1 TestReport First');", true);
+                        CEI.UpdateReturnLiftInspection(InspectionId, txttransactionId.Text, DateTime.Parse(date), txtInspectionRemarks.Text, CreatedBy);
+                           
+                            if (Session["TypeOfInspection"].ToString() == "Periodic")
+                            {
+                                CEI.UpdateReturnLiftInspectionPeriodicStatus(InspectionId);
+                            }
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
 
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Please Fill atleast 1 TestReport First');", true);
+
+
+                        }
 
                     }
-
+                    catch (Exception ex)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                        return;
+                    }
                 }
-                catch (Exception ex)
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
-                    return;
-                }
-            }
-
+           
         }
     }
 }

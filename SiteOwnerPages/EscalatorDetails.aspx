@@ -523,8 +523,7 @@
                                         </label>
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
                                         <asp:TextBox class="form-control" ID="txtEscalatorLoad" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" MaxLength="5" placeholder="" autocomplete="off" TabIndex="8" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtEscalatorLoad" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Load of Escalator</asp:RequiredFieldValidator>
-                                    </div>
+                                        </div>
                                     <div class="col-md-4" runat="server">
                                         <label for="Name">
                                             Max Person Capacity (with Escalator Operator)<samp style="color: red">* </samp>
@@ -845,7 +844,7 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator33" runat="server" ControlToValidate="txtYellowBlue" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Phase</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
-                                <h8 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Between Each Phase and Earth</h8>
+                                <h8 Id="Heading" runat="Server" class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Between Each Phase and Earth</h8>
                                 <div class="row" style="margin-top: 10px;">
                                     <div class="col-md-4" runat="server">
                                         <label for="Name">

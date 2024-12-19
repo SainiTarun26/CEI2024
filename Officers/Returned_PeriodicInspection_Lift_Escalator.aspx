@@ -319,7 +319,7 @@
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivViewCart" runat="server" visible="false">
                 <div class="col-12" style="padding: 0px;">
 
-                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false">
+                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" OnRowDataBound="GridView2_RowDataBound">
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
                             <asp:TemplateField HeaderText="SNo">
@@ -420,6 +420,12 @@
                             </Columns>
                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                         </asp:GridView>
+                          <div class="row" ID ="statements" runat="server" visible="false">
+      <label for="CompletionDateasperWorkOrder" style="font-size: 16px; font-weight: bold;">
+          No  any Document Attach                                             
+      </label>
+
+  </div>
                     </div>
                 </div>
             </div>
@@ -444,7 +450,7 @@
             <div class="row" id="Rejection" runat="server" visible="false">
                 <div class="col-md-6">
                     <label>
-                        Reason Type :        
+                        Reason Type  <samp style="color: red">* </samp> :        
                     </label>
                     <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlReasonType" TabIndex="8" runat="server">
                         <asp:ListItem Value="0" Text="Select"></asp:ListItem>

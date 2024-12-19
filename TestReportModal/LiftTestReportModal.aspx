@@ -2169,7 +2169,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card" id="inspection-card" style="background: #fcfcfc;">
+                            <div class="card" runat="server" visible="false">
                                 <div class="card-title" style="margin-bottom: 1px;">Application Details</div>
                                 <div class="row">
                                     <div class="col-md-12">

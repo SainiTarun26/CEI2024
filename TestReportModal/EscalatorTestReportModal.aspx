@@ -2163,9 +2163,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card" id="inspection-card" style="background: #fcfcfc;">
-                                <div class="card-title" style="margin-bottom: 1px;">Application Details</div>
-                                <div class="row">
+                            <div class="card" runat="server" visible="false">
+                                <div class="card-title"  runat="server" visible="false" style="margin-bottom: 1px;">Application Details</div>
+                                <div class="row" runat="server" visible="false">
                                     <div class="col-md-12">
                                         <div class="table-responsive pt-3" id="Installation" runat="server">
                                             <table class="table table-bordered table-striped">

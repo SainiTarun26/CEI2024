@@ -2175,6 +2175,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetContractorDetails");
         }
+        public DataSet GetContractorDataForLiftEscalator()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetContractorDetailsForLiftEscalator");
+        }
         public DataTable GetContractorDataforgrid(string loginType, string ID)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorData", loginType, ID);
@@ -7856,6 +7860,10 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSuperVisorAndContractorDetails", Person, LicenseNo);
         }
 
+        public DataTable GetEmailContractor(string LicenseValue)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetEmailContractor", LicenseValue);
+        }
 
         public DataTable GetInstllationsforSitOwner(string IntimationId)
         {
@@ -8850,6 +8858,16 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         public DataSet GetPeriodicViewTRReturned_Lift_Escalator(string InspectionId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PeriodicViewTRReturned_Lift_Escalator", InspectionId);
+        }
+
+        public DataTable GetReturnedInspectionData(int Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetReturnedInspectionData", Id);
+        }
+
+        public void UpdateReturnLiftInspection( string TestReportId)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateAttachmentStatus", TestReportId);
         }
     }
 }

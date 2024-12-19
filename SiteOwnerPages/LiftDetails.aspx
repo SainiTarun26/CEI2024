@@ -898,7 +898,7 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator33" runat="server" ControlToValidate="txtYellowBlue" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Phase</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
-                                <h8 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Between Each Phase and Earth</h8>
+                                <h8 Id="Heading" runat="Server"  class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Between Each Phase and Earth</h8>
                                 <div class="row" style="margin-top: 10px;">
                                     <div class="col-md-4" runat="server">
                                         <label for="Name">

@@ -552,23 +552,17 @@ namespace CEIHaryana.Officers
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
+                    Label lblOldTestReportId = (Label)e.Row.FindControl("LblOldTestReportId");
+                    LinkButton lnkRedirect = (LinkButton)e.Row.FindControl("lnkRedirectTR1");
 
-                    Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
-                    LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallaionInvoice");
-                    LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
-                    if (LblInstallationName.Text.Trim() == "Line")
+                    // Check if the OldTestReportId is null or empty
+                    if (string.IsNullOrEmpty(lblOldTestReportId.Text))
                     {
-                        Grid_MultipleInspectionTR.Columns[5].Visible = false;
-                        Grid_MultipleInspectionTR.Columns[6].Visible = false;
-                        linkButtonInvoice.Visible = false;
-                        LinkButtonReport.Visible = false;
+                        lnkRedirect.Visible = false;
                     }
                     else
                     {
-                        Grid_MultipleInspectionTR.Columns[5].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[6].Visible = true;
-                        linkButtonInvoice.Visible = true;
-                        LinkButtonReport.Visible = true;
+                        lnkRedirect.Visible = true;
                     }
                 }
             }

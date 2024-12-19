@@ -43,7 +43,7 @@ namespace CEIHaryana.TestReportModal
         private void GetDocument(string TestReportId)
         {
             DataTable ds = new DataTable();
-            ds = CEI.GetAttachments(TestReportId);
+            ds = CEI.GetAttachments(TestReportId.Trim());
             if (ds.Rows.Count > 0)
             {
                 Grd_Document.DataSource = ds;
@@ -169,17 +169,18 @@ namespace CEIHaryana.TestReportModal
                 txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
                 if (TextBox4.Text.Trim() == "DP")
                 {
+                    TPN1.Visible = true;
+                    TPN2.Visible = true;
+
+                    InDPO1.Visible = false;
+                    InDPO2.Visible = false;
+                }
+                else
+                {
                     TPN1.Visible = false;
                     TPN2.Visible = false;
                     InDPO1.Visible = true;
                     InDPO2.Visible = true;
-                }
-                else
-                {
-                    TPN1.Visible = true;
-                    TPN2.Visible = true;
-                    InDPO1.Visible = false;
-                    InDPO2.Visible = false;
                 }
                 GeneratingEarthing.Visible = true;
                 txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
@@ -204,6 +205,8 @@ namespace CEIHaryana.TestReportModal
                 txtEscalatorEarthing9.Text = ds.Tables[0].Rows[0]["Valueinohms9"].ToString();
                 txtEarthingType10.Text = ds.Tables[0].Rows[0]["EarthingType10"].ToString();
                 txtEscalatorEarthing10.Text = ds.Tables[0].Rows[0]["Valueinohms10"].ToString();
+                txtNeutralPhase.ReadOnly = true;
+                txtEarthPhase.ReadOnly = true;
                 if (txtEarthing.Text.Trim() == "1")
                 {
                     Limit.Visible = false;

@@ -83,7 +83,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
 
             DataSet dsContractor = new DataSet();
-            dsContractor = CEI.GetContractorData();
+            dsContractor = CEI.GetContractorDataForLiftEscalator();
             ddlContName.DataSource = dsContractor;
             ddlContName.DataTextField = "ContractorData";
             ddlContName.DataValueField = "LicenseValue";
@@ -284,6 +284,7 @@ namespace CEIHaryana.SiteOwnerPages
                     );
                         CEI.UpdateLiftTestReportHistory("Escalator", IntimationId, count, CreatedBy);
                         CEI.UpdateInstallations(installationNo, IntimationId);
+                        UploadCheckListDocInCollection(IntimationId, count);
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
 
                     }
@@ -314,6 +315,7 @@ namespace CEIHaryana.SiteOwnerPages
                     ParseOrDefault(txtEarthingValue9.Text), ddlEarthingtype10.SelectedItem.ToString(), ParseOrDefault(txtEarthingValue10.Text),
                     CreatedBy, ddlContName.SelectedItem.ToString(), txtContName.Text, DateTime.Parse(txtContExp.Text), ddlLicenseNo.SelectedItem.ToString(),
                     txtSupLicenseNo.Text, DateTime.Parse(txtSupExpiryDate.Text));
+                        CEI.UpdateReturnLiftInspection(TestReportId);
                         UploadCheckListDocInCollection(IntimationId, count);
                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Test report has been Updated and is under review by the Contractor for final submission')", true);
 
@@ -340,6 +342,10 @@ namespace CEIHaryana.SiteOwnerPages
         }
         protected void ddlContName_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DataTable dta = new DataTable();
+            dta = CEI.GetEmailContractor(ddlContName.SelectedValue.ToString());
+            string Email = dta.Rows[0]["Email"].ToString();
+            Session["ContractorEmail"] = Email.Trim();
             DataSet dt = new DataSet();
             dt = CEI.GetSupervisorandContractor("Contractor", ddlContName.SelectedValue.ToString());
             if (dt.Tables.Count > 0)
@@ -370,6 +376,7 @@ namespace CEIHaryana.SiteOwnerPages
 
             }
             GetSupervisorDetails(ddlContName.SelectedValue);
+            
         }
         protected void ddlLicenseNo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -407,6 +414,7 @@ namespace CEIHaryana.SiteOwnerPages
             if (ddlPoleMainBreaker.SelectedValue == "1")
             {
                 InDPO.Visible = false;
+                Heading.Visible = false;
                 TPN1.Visible = true;
                 TPN2.Visible = true;
             }

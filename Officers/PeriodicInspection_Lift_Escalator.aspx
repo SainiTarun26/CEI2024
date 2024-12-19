@@ -405,7 +405,7 @@
                             </Columns>
                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                         </asp:GridView>
-                        <div class="row" id="statement" runat="server" visible="false">
+                        <div class="row" ID ="statements" runat="server" visible="false">
                             <label for="CompletionDateasperWorkOrder" style="font-size: 16px; font-weight: bold;">
                                 No  any Document Attach                                             
                             </label>
