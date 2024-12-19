@@ -101,7 +101,7 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else
                 {
-                    GridView2.Columns[6].Visible = false;
+                    GridView2.Columns[5].Visible = false;
                     Grd_Document.Columns[3].Visible = true;
                 }
             }
@@ -289,10 +289,13 @@ namespace CEIHaryana.SiteOwnerPages
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+
+                
             }
         }
-            protected void GridViewPayment_RowDataBound(object sender, GridViewRowEventArgs e)
-            {
+
+        protected void GridViewPayment_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 int quantity = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "Quantity"));
@@ -472,7 +475,9 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         InspectionId = int.Parse(Session["InspectionId"].ToString());
                         CEI.UpdateReturnLiftInspection(InspectionId, txttransactionId.Text, DateTime.Parse(txttransactionDate.Text), txtInspectionRemarks.Text, CreatedBy);
-                        UploadCheckListDocInCollection();
+                        if (Grd_Document.Columns[3].Visible == true) {
+                            UploadCheckListDocInCollection();
+                        }
                         if (Session["TypeOfInspection"].ToString() == "Periodic")
                         {
                             CEI.UpdateReturnLiftInspectionPeriodicStatus(InspectionId);
@@ -484,7 +489,10 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                         InspectionId = int.Parse(Session["InspectionId"].ToString());
                         CEI.UpdateReturnLiftInspection(InspectionId, txttransactionId.Text, DateTime.Parse(txttransactionDate.Text), txtInspectionRemarks.Text, CreatedBy);
-                        UploadCheckListDocInCollection();
+                        if (Grd_Document.Columns[3].Visible == true)
+                        {
+                            UploadCheckListDocInCollection();
+                        }
                         if (Session["TypeOfInspection"].ToString() == "Periodic")
                         {
                             CEI.UpdateReturnLiftInspectionPeriodicStatus(InspectionId);

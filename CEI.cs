@@ -8842,6 +8842,15 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_Lift_Escalator_EODB_ServiceInformation_CountCalculate");
         }
+
+        public DataTable GetPeriodicTestReportHistory(string OldTestReportId,string TestReportId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPeriodicTestReportHistory", OldTestReportId, TestReportId);
+        }
+        public DataSet GetPeriodicViewTRReturned_Lift_Escalator(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PeriodicViewTRReturned_Lift_Escalator", InspectionId);
+        }
     }
 }
 

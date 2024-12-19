@@ -440,7 +440,8 @@ namespace CEIHaryana.Officers
             try
             {
                 string ID = Session["InspectionId"].ToString();
-                DataSet dsVC = CEI.GetDetailsToViewCart_Lift_Escalator(ID);
+                //DataSet dsVC = CEI.GetDetailsToViewCart_Lift_Escalator(ID);
+                DataSet dsVC = CEI.GetPeriodicViewTRReturned_Lift_Escalator(ID);
 
                 if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                 {
@@ -467,17 +468,19 @@ namespace CEIHaryana.Officers
                 GridViewRow row = (GridViewRow)btn.NamingContainer;
                 Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
                 string installationName = lblInstallationName.Text.Trim();
-
+                Label LblOldTestReportId = (Label)row.FindControl("LblOldTestReportId");
                 //Session["InspectionTestReportId"] = btn.CommandArgument;
                 Session["RegistrationNo"] = btn.CommandArgument;
 
                 string url = string.Empty;
                 if (installationName == "Lift")
                 {
+                    Session["TestReportID"] = LblOldTestReportId.Text;
                     url = "/TestReportModal/LiftPeriodicTestReportModal.aspx";
                 }
                 if (installationName == "Escalator")
                 {
+                    Session["TestReportID"] = LblOldTestReportId.Text;
                     url = "/TestReportModal/EscalatorPeriodicTestReportModal.aspx";
                 }
 
@@ -489,6 +492,39 @@ namespace CEIHaryana.Officers
             }
             catch (Exception ex) { }
         }
+
+        protected void lnkRedirect1_Click1(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton btn = (LinkButton)(sender);
+
+                GridViewRow row = (GridViewRow)btn.NamingContainer;
+                Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
+                string installationName = lblInstallationName.Text.Trim();
+                Label LblTestReportId = (Label)row.FindControl("LblOldTestReportId");
+                Session["RegistrationNo"] = btn.CommandArgument;
+
+                string url = string.Empty;
+                if (installationName == "Lift")
+                {
+                    Session["TestReportID"] = LblTestReportId.Text;
+                    url = "/TestReportModal/LiftPeriodicTestReportModal.aspx";
+                }
+                if (installationName == "Escalator")
+                {
+                    Session["TestReportID"] = LblTestReportId.Text;
+                    url = "/TestReportModal/EscalatorPeriodicTestReportModal.aspx";
+                }
+
+                string script = $@"<script>window.open('{url}', '_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenLiftTestReportInNewTab", script);
+
+                return;
+            }
+            catch (Exception ex) { }
+        }
+
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Officers/NewApplications.aspx", false);

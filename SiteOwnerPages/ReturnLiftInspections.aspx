@@ -294,7 +294,7 @@
                                     <ItemStyle Width="20%" />
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LinkButton5" runat="server" AutoPostBack="true"
-                                            CommandName="CreateNew">Create New Report</asp:LinkButton>
+                                            CommandName="CreateNew"  CommandArgument='<%#Eval("OldTestReportId") %>'>Create New Report</asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
@@ -314,7 +314,7 @@
                     <asp:TemplateField HeaderText="Id" Visible="False">
                         <ItemTemplate>
                             <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Typs") %>'></asp:Label>
-                                        <asp:Label ID="lblIntimationId" runat="server" Text='<%#Eval("Intimations") %>'></asp:Label>
+                            <asp:Label ID="lblIntimationId" runat="server" Text='<%#Eval("Intimations") %>'></asp:Label>
                             <asp:Label ID="lblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
                             <asp:Label ID="lblReportType" runat="server" Text='<%#Eval("ReportType") %>'></asp:Label>
                         </ItemTemplate>
@@ -355,7 +355,7 @@
                         <ItemStyle Width="20%" />
                         <ItemTemplate>
                             <asp:LinkButton ID="LinkButton7" runat="server" AutoPostBack="true"
-                                CommandName="CreateNew" >Create New Report</asp:LinkButton>
+                                CommandName="CreateNew" CommandArgument='<%#Eval("OldTestReportId") %>' >Create New Report</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <%-- <asp:BoundField DataField="ReturnRemarks" HeaderText="ReturnRemarks" Visible="false">
