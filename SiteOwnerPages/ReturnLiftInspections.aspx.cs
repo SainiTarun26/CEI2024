@@ -285,13 +285,13 @@ namespace CEIHaryana.SiteOwnerPages
             }
             ds.Dispose();
         }
-        protected void GridViewPayment_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
             }
         }
-            protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+            protected void GridViewPayment_RowDataBound(object sender, GridViewRowEventArgs e)
             {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
