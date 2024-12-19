@@ -600,6 +600,15 @@ namespace CEIHaryana.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtTotalHeadRoom;
 
         /// <summary>
+        /// txtTypeOfControld control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTypeOfControld;
+
+        /// <summary>
         /// txtMakeMainBreaker control.
         /// </summary>
         /// <remarks>

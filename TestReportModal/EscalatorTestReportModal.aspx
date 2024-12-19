@@ -2522,6 +2522,13 @@
                                                 <%--<asp:TextBox ReadOnly="true" class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
                                                 <asp:TextBox ReadOnly="true" class="form-control" ID="txtTotalHeadRoom" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" MaxLength="6" placeholder="" autocomplete="off" TabIndex="15" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
+                                            <div class="col-md-4" runat="server">
+                                                <label for="Name">
+                                                    Type Of Control
+                                                </label>
+                                                <%--<asp:TextBox ReadOnly="true" class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
+                                                <asp:TextBox ReadOnly="true" class="form-control" ID="txtTypeOfControld" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" MaxLength="6" placeholder="" autocomplete="off" TabIndex="15" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
                                         </div>
                                       
                                        

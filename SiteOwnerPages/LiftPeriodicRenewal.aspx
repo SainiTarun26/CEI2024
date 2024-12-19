@@ -376,7 +376,7 @@
                     <asp:Button ID="btnSubmit" Text="Save" runat="server" OnClick="btnSubmit_Click" ValidationGroup="Submit" class="btn btn-primary mr-2" Style="padding-left: 30px; padding-right: 30px;" />
                 </div>
                 <div class="col-6" style="text-align: left; padding-left: 0px;">
-                    <asp:Button ID="btnBack" Style="padding-left: 35px; padding-right: 35px;" OnClick="btnBack_Click" Text="Back" runat="server" class="btn btn-primary mr-2" />
+                    <asp:Button ID="btnBack" Style="padding-left: 35px; padding-right: 35px;" OnClick="btnBack_Click" Text="Back" runat="server" class="btn btn-primary mr-2" CausesValidation="false" />
                 </div>
             </div>
             <div id="searchModal" class="modal" tabindex="-1" role="dialog">

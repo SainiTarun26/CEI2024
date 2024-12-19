@@ -186,11 +186,11 @@ namespace CEIHaryana.Officers
 
                             grd_Documemnts.Columns[3].Visible = false;
                             grd_Documemnts.Columns[4].Visible = false;
-                            Grid_MultipleInspectionTR.Columns[5].Visible = true;
-                            Grid_MultipleInspectionTR.Columns[6].Visible = true;
-                            Grid_MultipleInspectionTR.Columns[7].Visible = true;
-                            Grid_MultipleInspectionTR.Columns[8].Visible = true;
-                            Grid_MultipleInspectionTR.Columns[9].Visible = true;
+                            //Grid_MultipleInspectionTR.Columns[5].Visible = true;
+                            //Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                            //Grid_MultipleInspectionTR.Columns[7].Visible = true;
+                            //Grid_MultipleInspectionTR.Columns[8].Visible = true;
+                            //Grid_MultipleInspectionTR.Columns[9].Visible = true;
                         }
                         else
                         {
