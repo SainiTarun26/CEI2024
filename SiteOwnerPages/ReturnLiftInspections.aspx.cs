@@ -358,8 +358,13 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else
                 {
+                    Label lblIntimationId = (Label)e.Row.FindControl("lblIntimationId");
+                    Label lblTestReportId = (Label)e.Row.FindControl("lblOldTestReportId");
                     LinkButton linkButton7 = (LinkButton)e.Row.FindControl("LinkButton7");
-                    if (lblOldTestReportId != null && lblOldTestReportId.Text != "")
+                    DataTable dta = new DataTable();
+                    dta = CEI.PeriodicCalculateRows(lblTestReportId.Text.Trim(), InspectionIds);
+                    string Result = dta.Rows[0]["Result"].ToString();
+                    if (Result == "Greater")
                     {
                         // Hide LinkButton5 if OldTestReportId is null or empty
                         linkButton7.Text = "Created";

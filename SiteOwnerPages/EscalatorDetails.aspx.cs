@@ -347,10 +347,10 @@ namespace CEIHaryana.SiteOwnerPages
         }
         protected void ddlContName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataTable dta = new DataTable();
-            dta = CEI.GetEmailContractor(ddlContName.SelectedValue.ToString());
-             Email = dta.Rows[0]["Email"].ToString();
-            Session["ContractorEmail"] = Email.Trim();
+            //DataTable dta = new DataTable();
+            //dta = CEI.GetEmailContractor(ddlContName.SelectedValue.ToString());
+            // Email = dta.Rows[0]["Email"].ToString();
+            //Session["ContractorEmail"] = Email.Trim();
             DataSet dt = new DataSet();
             dt = CEI.GetSupervisorandContractor("Contractor", ddlContName.SelectedValue.ToString());
             if (dt.Tables.Count > 0)

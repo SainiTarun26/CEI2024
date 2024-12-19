@@ -8875,6 +8875,11 @@ SqlTransaction transaction)
                 //throw;
             }
         }
+
+        public DataTable PeriodicCalculateRows(string TestReportId, string InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PeriodicCalculateRows", TestReportId, InspectionId);
+        }
     }
 }
 
