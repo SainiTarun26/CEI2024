@@ -1937,6 +1937,7 @@
     <Content Include="Periodic_Industry\Print_PeriodicIndustry.aspx" />
     <Content Include="Periodic_Industry\RenewalPerodicIndustry.aspx" />
     <Content Include="Periodic_Industry\ViewPerodicRequest.aspx" />
+    <Content Include="Print_Forms\EscalatorApprovalCertificate.aspx" />
     <Content Include="Print_Forms\InspectionRequestPrint.aspx" />
     <Content Include="Print_Forms\LiftApprovalCertificate.aspx" />
     <Content Include="Print_Forms\NewInspectionApprovalCertificate.aspx" />
@@ -2976,6 +2977,13 @@
     </Compile>
     <Compile Include="Periodic_Industry\ViewPerodicRequest.aspx.designer.cs">
       <DependentUpon>ViewPerodicRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print_Forms\EscalatorApprovalCertificate.aspx.cs">
+      <DependentUpon>EscalatorApprovalCertificate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print_Forms\EscalatorApprovalCertificate.aspx.designer.cs">
+      <DependentUpon>EscalatorApprovalCertificate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print_Forms\InspectionRequestPrint.aspx.cs">
       <DependentUpon>InspectionRequestPrint.aspx</DependentUpon>
