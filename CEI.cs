@@ -8801,10 +8801,10 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         }
 
         public void InsertReturnPeriodicLiftData(string TestReportId, string InstallationType, string RegistrationNo, string PreviousChallanDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
-string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string SiteAddress, string CreatedBy)
+string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string SiteAddress,int InspectionID, string CreatedBy)
         {
             DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertPeriodicReturnData", TestReportId, InstallationType, RegistrationNo, PreviousChallanDate, PreviousChallanUpload, LastApprovalDate, ErectionDate, Make,
- SerialNo, TypeOfLift, TypeOfControl, Capacity, Weight, ApplicantDistrict, SiteAddress, CreatedBy);
+ SerialNo, TypeOfLift, TypeOfControl, Capacity, Weight, ApplicantDistrict, SiteAddress, InspectionID, CreatedBy);
         }
 
         public DataTable CheckPeridocReturnValue(int InspectionId)

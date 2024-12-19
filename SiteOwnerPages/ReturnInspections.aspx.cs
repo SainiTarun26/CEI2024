@@ -50,7 +50,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             if (e.CommandName == "Select")
             {
-
+                Session["TestReportIds"] = "Test";
                 Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblID = (Label)row.FindControl("lblID");

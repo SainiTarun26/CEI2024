@@ -419,7 +419,7 @@
                                 <label>
                                     Transaction Id<samp style="color: red"> * </samp>
                                 </label>
-                                <asp:TextBox ID="txttransactionId" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
+                                <asp:TextBox ID="txttransactionId" runat="server" class="form-control" MaxLength="20" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                             </div>
                             <div class="col-4">

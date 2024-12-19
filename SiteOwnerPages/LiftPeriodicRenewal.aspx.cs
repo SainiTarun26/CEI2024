@@ -182,8 +182,9 @@ namespace CEIHaryana.SiteOwnerPages
                         else
                         {
                             string TestReportId = Session["EscalatorTestReportID"].ToString();
+                            int InspectionId = int.Parse(Session["InspectionId"].ToString());
                             CEI.InsertReturnPeriodicLiftData(TestReportId,ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
-                                              txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, SiteOwnerID);
+                                              txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, InspectionId, SiteOwnerID);
                         }
                     }
                     // Upload Attachments
@@ -238,7 +239,14 @@ namespace CEIHaryana.SiteOwnerPages
                     transaction.Commit();
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "Success", "alert('Application Submitted successfully.');", true);
                     //Response.Redirect("/SiteOwnerPages/LiftPeriodicRenewal.aspx", false);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                    if (Session["ReturnedValue"].ToString() != "1")
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithReturnRedirectdata();", true);
+                    }
 
                     
                     Reset();

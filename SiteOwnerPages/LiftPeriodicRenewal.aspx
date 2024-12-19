@@ -550,9 +550,9 @@
         }
     </script>
     <script type="text/javascript">
-        function alertWithRedirectdata() {
+        function alertWithReturnRedirectdata() {
             if (confirm('Application Submitted successfully.')) {
-                window.location.href = "/SiteOwnerPages/LiftPeriodicRenewal.aspx";
+                window.location.href = "/SiteOwnerPages/ReturnLiftInspections.aspx";
             } else {
             }
         }

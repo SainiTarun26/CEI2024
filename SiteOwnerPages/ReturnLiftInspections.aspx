@@ -246,7 +246,7 @@
                 <div id="FeesDetails" runat="server">
                     <h7 class="card-title fw-semibold mb-4">Fees Details</h7>
                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                        <asp:GridView class="table-responsive table table-hover table-striped" Autopostback="true" ID="GridView1" OnRowCommand="GridView1_RowCommand" runat="server" Width="100%"
+                        <asp:GridView class="table-responsive table table-hover table-striped" Autopostback="true" ID="GridView1" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" runat="server" Width="100%"
                             AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
@@ -257,6 +257,7 @@
                                         <asp:Label ID="lblIntimationId" runat="server" Text='<%#Eval("Intimations") %>'></asp:Label>
                                         <asp:Label ID="lblNoOfInstallations" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
                                         <asp:Label ID="lblReportType" runat="server" Text='<%#Eval("ReportType") %>'></asp:Label>
+                            <asp:Label ID="lblOldTestReportId" runat="server" Text='<%#Eval("OldTestReportId") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -308,7 +309,7 @@
                         </asp:GridView>
 
                         <asp:GridView class="table-responsive table table-hover table-striped" Autopostback="true" ID="GridView2" Visible="false" runat="server" Width="100%"
-                AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand">
+                AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
                 <PagerStyle CssClass="pagination-ys" />
                 <Columns>
                     <asp:TemplateField HeaderText="Id" Visible="False">
@@ -317,6 +318,7 @@
                             <asp:Label ID="lblIntimationId" runat="server" Text='<%#Eval("Intimations") %>'></asp:Label>
                             <asp:Label ID="lblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
                             <asp:Label ID="lblReportType" runat="server" Text='<%#Eval("ReportType") %>'></asp:Label>
+                            <asp:Label ID="lblOldTestReportId" runat="server" Text='<%#Eval("OldTestReportId") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
 

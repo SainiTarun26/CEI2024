@@ -289,8 +289,39 @@ namespace CEIHaryana.SiteOwnerPages
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                Label lblOldTestReportId = (Label)e.Row.FindControl("lblOldTestReportId");
 
-                
+                if (Session["TypeOfInspection"].ToString() == "New")
+                {
+                    LinkButton linkButton5 = (LinkButton)e.Row.FindControl("LinkButton5");
+                    if (lblOldTestReportId != null&& lblOldTestReportId.Text != "")
+                    {
+                        // Hide LinkButton5 if OldTestReportId is null or empty
+                        linkButton5.Text = "Created";
+                        linkButton5.Enabled = false;
+                    }
+                    else
+                    {
+                        // Show LinkButton5 if OldTestReportId is not null or empty
+                        linkButton5.Visible = true;
+                    }
+                }
+                else
+                {
+                    LinkButton linkButton7 = (LinkButton)e.Row.FindControl("LinkButton7");
+                    if (lblOldTestReportId != null && lblOldTestReportId.Text != "")
+                    {
+                        // Hide LinkButton5 if OldTestReportId is null or empty
+                        linkButton7.Text = "Created";
+                        linkButton7.Enabled = false;
+                    }
+                    else
+                    {
+                        // Show LinkButton5 if OldTestReportId is not null or empty
+                        linkButton7.Visible = true;
+                    }
+                }
+
             }
         }
 
