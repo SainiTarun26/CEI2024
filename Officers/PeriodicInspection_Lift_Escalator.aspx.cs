@@ -497,13 +497,15 @@ namespace CEIHaryana.Officers
                 {
                     grd_Documemnts.DataSource = ds;
                     grd_Documemnts.DataBind();
+                    statement.Visible = false;
                 }
                 else
                 {
                     grd_Documemnts.DataSource = null;
                     grd_Documemnts.DataBind();
-                    string script = "alert(\"No Record Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    //string script = "alert(\"No Record Found\");";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    statement.Visible = true;
                 }
                 ds.Dispose();
             }

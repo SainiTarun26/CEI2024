@@ -405,9 +405,19 @@
                             </Columns>
                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                         </asp:GridView>
+                        <div class="row" id="statement" runat="server" visible="false">
+                            <label for="CompletionDateasperWorkOrder" style="font-size: 16px; font-weight: bold;">
+                                No  any Document Attach                                             
+                            </label>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
+
+
+
             <div class="row">
                 <div class="col-md-4">
                     <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -436,7 +446,7 @@
                         <asp:ListItem Value="1" Text="Test Report/Test Report Documents"></asp:ListItem>
                         <asp:ListItem Value="2" Text="Tresury Challan/Other Documents"></asp:ListItem>
                     </asp:DropDownList>
-                       <asp:RequiredFieldValidator  ID="rfvReasonType"  ControlToValidate="ddlReasonType"  InitialValue="0"   ErrorMessage="Required"  ForeColor="Red" ValidationGroup="Submit"  runat="server" />
+                    <asp:RequiredFieldValidator ID="rfvReasonType" ControlToValidate="ddlReasonType" InitialValue="0" ErrorMessage="Required" ForeColor="Red" ValidationGroup="Submit" runat="server" />
                     <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" Visible="false" ID="ddlRejectionReasonType" TabIndex="8" runat="server">
                         <asp:ListItem Value="0" Text="Incorrect Data in Document"></asp:ListItem>
                         <asp:ListItem Value="1" Text="Incorrect Data in Lift Details"></asp:ListItem>
