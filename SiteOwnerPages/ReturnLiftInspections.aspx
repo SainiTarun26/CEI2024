@@ -346,7 +346,7 @@
                         <ItemStyle Width="20%" />
                         <ItemTemplate>
                             <asp:LinkButton ID="LinkButton6" runat="server" AutoPostBack="true"
-                                CommandName="ViewTestReport" CommandArgument='<%#Eval("TestReportId") %>'>Test Report & Attached Document</asp:LinkButton>
+                                CommandName="ViewPeriodicTestReport" CommandArgument='<%#Eval("TestReportId") %>'>Test Report & Attached Document</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                     

@@ -94,16 +94,16 @@ namespace CEIHaryana.SiteOwnerPages
                 // Join unique categories with '/' delimiter
                 string concatenatedCategories = string.Join("_", uniqueCategories);
                 Session["InstalltionType"] = concatenatedCategories.Trim();
-                //if (Session["ReturnedValue"].ToString() == "1")
-                //{
-                //    GridView2.Columns[6].Visible = true;
-                //    Grd_Document.Columns[3].Visible = false;
-                //}
-                //else
-                //{
-                //    GridView2.Columns[6].Visible = false;
-                //    Grd_Document.Columns[3].Visible = true;
-                //}
+                if (Session["ReturnedValue"].ToString() == "1")
+                {
+                    GridView2.Columns[5].Visible = true;
+                    Grd_Document.Columns[3].Visible = false;
+                }
+                else
+                {
+                    GridView2.Columns[6].Visible = false;
+                    Grd_Document.Columns[3].Visible = true;
+                }
             }
 
             GetDocumentUploadData(InspectionId);
@@ -151,6 +151,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
+                string TypeOfInspection = Session["TypeOfInspection"].ToString();
                 if (e.CommandName == "ViewTestReport")
                 {
                     Control ctrl = e.CommandSource as Control;
@@ -174,7 +175,7 @@ namespace CEIHaryana.SiteOwnerPages
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblCategory = (Label)row.FindControl("lblCategory");
                     Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
-                    string TypeOfInspection = Session["TypeOfInspection"].ToString();
+
                     Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
                     Label lblReportType = (Label)row.FindControl("lblReportType");
                     Label lblNoOfInstallations = (Label)row.FindControl("lblNoOfInstallations");
@@ -208,6 +209,24 @@ namespace CEIHaryana.SiteOwnerPages
                         Response.Redirect("/SiteOwnerPages/LiftPeriodicRenewal.aspx", false);
                     }
 
+                }
+                else if (e.CommandName == "ViewPeriodicTestReport")
+                {
+                    Control ctrl = e.CommandSource as Control;
+                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                    Label lblCategory = (Label)row.FindControl("lblCategory");
+                    Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
+                    Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
+                    Session["TestReportID"] = lblTestReportId.Text;
+                    Session["RegistrationNo"] = lblIntimationId.Text.Trim();
+                    if (lblCategory.Text.Trim() == "Lift")
+                    {
+                        Response.Redirect("/TestReportModal/LiftPeriodicTestReportModal.aspx", false);
+                    }
+                    else if (lblCategory.Text.Trim() == "Escalator")
+                    {
+                        Response.Redirect("/TestReportModal/EscalatorPeriodicTestReportModal.aspx", false);
+                    }
                 }
             }
             catch (Exception)
@@ -268,6 +287,12 @@ namespace CEIHaryana.SiteOwnerPages
         }
         protected void GridViewPayment_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+            }
+        }
+            protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+            {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 int quantity = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "Quantity"));
