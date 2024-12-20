@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -94,7 +95,15 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else if (e.CommandName == "Print")
                 {
-                    Response.Redirect("/SiteOwnerPages/InspectionRequestPrint.aspx");
+                    if ((lblType.Text == "Lift" || lblType.Text == "Lift/Escalator" || lblType.Text == "Escalator") && LblInspectionType.Text == "Periodic")
+                    {
+                        Response.Redirect("/SiteOwnerPages/Periodic_Lift_EscalatorInspectionRequestPrint.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("/SiteOwnerPages/InspectionRequestPrint.aspx");
+                    }
+                    
                 }
                 else if (e.CommandName == "Print1")
                 {

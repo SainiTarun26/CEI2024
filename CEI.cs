@@ -8880,6 +8880,11 @@ SqlTransaction transaction)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PeriodicCalculateRows", TestReportId, InspectionId);
         }
+
+        public DataSet PeriodicLiftDetailstoPrintFormInspectionDetails(int ID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PeriodicLiftDetailstoPrintFormInspectionDetails", ID);
+        }
     }
 }
 
