@@ -8045,8 +8045,8 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetApplicantTypeForLift", Id);
         }
-        public void InsertPeriodicLiftData(string InstallationType, string RegistrationNo, string PreviousChallanDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
-string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string SiteAddress, string CreatedBy, SqlTransaction transaction)
+        public string InsertPeriodicLiftData(string InstallationType, string RegistrationNo, string PreviousChallanDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
+ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string SiteAddress, string CreatedBy, SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertPeriodicLiftData", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -8065,9 +8065,16 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             cmd.Parameters.AddWithValue("@ApplicantDistrict", ApplicantDistrict);
             cmd.Parameters.AddWithValue("@SiteAddress", SiteAddress);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            SqlParameter outputParam = new SqlParameter("@GeneratedTestReportID", SqlDbType.NVarChar, 50);
+            outputParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParam);
+
+            // Execute the command
             cmd.ExecuteNonQuery();
+            string TRID = cmd.Parameters["@GeneratedTestReportID"].Value.ToString();
+            return TRID;
         }
-        public void UploadDocumentforLiftPeriodic(string RegistrationNo, string InstallationType, string DocumentID, string DocSaveName, string FileName, string FilePath, string CreatedBy, SqlTransaction transaction)
+        public void UploadDocumentforLiftPeriodic(string TRID, string RegistrationNo, string InstallationType, string DocumentID, string DocSaveName, string FileName, string FilePath, string CreatedBy, SqlTransaction transaction)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -8078,6 +8085,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
                     {
 
                         cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@TestReportId", TRID);
                         cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
                         cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
                         cmd.Parameters.AddWithValue("@DocumentID", DocumentID);
@@ -8095,7 +8103,6 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
                 }
             }
         }
-
         public DataTable GetDataForLiftRenewal(string District, string CreatedBy)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetLiftRenewaldata", District, CreatedBy);

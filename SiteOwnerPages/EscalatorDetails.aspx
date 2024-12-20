@@ -1,122 +1,123 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="EscalatorDetails.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.EscalatorDetails1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-      <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
-  <link rel="stylesheet" href="/css2/style.css" />
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
-  <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" integrity="sha512-P9pgMgcSNlLb4Z2WAB2sH5KBKGnBfyJnq+bhcfLCFusrRc4XdXrhfDluBl/usq75NF5gTDIMcwI1GaG5gju+Mw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
-  <script type="text/javascript">
-      function isNumberKey(evt) {
-          var charCode = (evt.which) ? evt.which : event.keyCode
-          if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-              return false;
-          }
-          return true;
-      }
+    <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+    <link rel="stylesheet" href="/css2/style.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+    <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" integrity="sha512-P9pgMgcSNlLb4Z2WAB2sH5KBKGnBfyJnq+bhcfLCFusrRc4XdXrhfDluBl/usq75NF5gTDIMcwI1GaG5gju+Mw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
 
-      function preventZero(event) {
-          var key = event.keyCode || event.charCode;
-          var textboxValue = event.target.value;
-          if (key === 48 && textboxValue.length === 0) { // Check if the pressed key is '0'
-              event.preventDefault();
-              return false;
-          }
-          return true;
-      }
+        function preventZero(event) {
+            var key = event.keyCode || event.charCode;
+            var textboxValue = event.target.value;
+            if (key === 48 && textboxValue.length === 0) { // Check if the pressed key is '0'
+                event.preventDefault();
+                return false;
+            }
+            return true;
+        }
 
-      function preventZeroo(textBox) {
-          if (textBox.value === "0") {
-              textBox.value = ""; // Clear the textbox if '0' is entered
-          }
-      }
+        function preventZeroo(textBox) {
+            if (textBox.value === "0") {
+                textBox.value = ""; // Clear the textbox if '0' is entered
+            }
+        }
 
-      //function isNumberdecimalKey(evt, element) {
-      //    var charCode = (evt.which) ? evt.which : evt.keyCode;
+        //function isNumberdecimalKey(evt, element) {
+        //    var charCode = (evt.which) ? evt.which : evt.keyCode;
 
-      //    // Allow only digits and one decimal point
-      //    if (charCode != 46 && (charCode < 48 || charCode > 57))
-      //        return false;
+        //    // Allow only digits and one decimal point
+        //    if (charCode != 46 && (charCode < 48 || charCode > 57))
+        //        return false;
 
-      //    // Get the current value of the textbox
-      //    var value = element.value;
+        //    // Get the current value of the textbox
+        //    var value = element.value;
 
-      //    // Allow only one decimal point
-      //    if (charCode == 46 && value.indexOf('.') != -1)
-      //        return false;
+        //    // Allow only one decimal point
+        //    if (charCode == 46 && value.indexOf('.') != -1)
+        //        return false;
 
-      //    // Ensure only two digits after the decimal point
-      //    if (value.indexOf('.') != -1) {
-      //        var decimalPart = value.split('.')[1];
-      //        if (decimalPart && decimalPart.length >= 2) {
-      //            return false;
-      //        }
-      //    }
-      //    return true;
-      //}
+        //    // Ensure only two digits after the decimal point
+        //    if (value.indexOf('.') != -1) {
+        //        var decimalPart = value.split('.')[1];
+        //        if (decimalPart && decimalPart.length >= 2) {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
 
-      function isNumberdecimalKey(evt, element) {
-          var charCode = (evt.which) ? evt.which : evt.keyCode;
+        function isNumberdecimalKey(evt, element) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
 
-          // Allow only digits and one decimal point
-          if (charCode != 46 && (charCode < 48 || charCode > 57))
-              return false;
+            // Allow only digits and one decimal point
+            if (charCode != 46 && (charCode < 48 || charCode > 57))
+                return false;
 
-          // Get the current value of the textbox
-          var value = element.value;
+            // Get the current value of the textbox
+            var value = element.value;
 
-          // Allow only one decimal point
-          if (charCode == 46 && value.indexOf('.') != -1)
-              return false;
+            // Allow only one decimal point
+            if (charCode == 46 && value.indexOf('.') != -1)
+                return false;
 
-          // Ensure only 5 digits before the decimal point
-          var integerPart = value.split('.')[0];
-          if (value.indexOf('.') === -1 && integerPart.length >= 5 && charCode != 46)
-              return false;
+            // Ensure only 5 digits before the decimal point
+            var integerPart = value.split('.')[0];
+            if (value.indexOf('.') === -1 && integerPart.length >= 5 && charCode != 46)
+                return false;
 
-          // Ensure only 2 digits after the decimal point
-          if (value.indexOf('.') != -1) {
-              var decimalPart = value.split('.')[1];
-              if (decimalPart && decimalPart.length >= 2) {
-                  return false;
-              }
-          }
-          return true;
-      }
+            // Ensure only 2 digits after the decimal point
+            if (value.indexOf('.') != -1) {
+                var decimalPart = value.split('.')[1];
+                if (decimalPart && decimalPart.length >= 2) {
+                    return false;
+                }
+            }
+            return true;
+        }
 
 
 
-      //Allow Only Aplhabet, Delete and Backspace
-      function isAlpha(keyCode) {
-          return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
-      }
+        //Allow Only Aplhabet, Delete and Backspace
+        function isAlpha(keyCode) {
+            return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
+        }
 
-      function alphabetKey(e) {
-          var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
-          var k;
-          k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
-          return (allow.indexOf(String.fromCharCode(k)) != -1);
-      }
-  </script>
-  <script type="text/javascript">
-      function alertWithRedirectdata() {
-          if (confirm('Escalator Details added Successfully')) {
-              window.location.href = "/SiteOwnerPages/LiftSiteDetails.aspx";
-          } else {
-          }
-      }
-  </script>
+        function alphabetKey(e) {
+            var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
+            var k;
+            k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+            return (allow.indexOf(String.fromCharCode(k)) != -1);
+        }
+    </script>
+    <script type="text/javascript">
+        function alertWithRedirectdata() {
+            if (confirm('Escalator Details added Successfully')) {
+                window.location.href = "/SiteOwnerPages/LiftSiteDetails.aspx";
+            } else {
+            }
+        }
+    </script>
     <script type="text/javascript">
         function alertWithReturnRedirectdata() {
             if (confirm('Escalator Details added Successfully')) {
@@ -125,225 +126,225 @@
             }
         }
     </script>
-  <style>
-      th {
-          width: 1%;
-      }
+    <style>
+        th {
+            width: 1%;
+        }
 
-      table#ContentPlaceHolder1_RadioButtonAction {
-          margin-top: -13px;
-      }
+        table#ContentPlaceHolder1_RadioButtonAction {
+            margin-top: -13px;
+        }
 
-      input#ContentPlaceHolder1_RadioButtonAction_0 {
-          margin-right: 5px;
-      }
+        input#ContentPlaceHolder1_RadioButtonAction_0 {
+            margin-right: 5px;
+        }
 
-      input#ContentPlaceHolder1_RadioButtonAction_1 {
-          margin-right: 5px;
-      }
+        input#ContentPlaceHolder1_RadioButtonAction_1 {
+            margin-right: 5px;
+        }
 
-      th {
-          width: 1%;
-      }
+        th {
+            width: 1%;
+        }
 
-      table#ContentPlaceHolder1_RadioButtonAction {
-          margin-top: -13px;
-      }
+        table#ContentPlaceHolder1_RadioButtonAction {
+            margin-top: -13px;
+        }
 
-      input#ContentPlaceHolder1_RadioButtonAction_0 {
-          margin-right: 5px;
-      }
+        input#ContentPlaceHolder1_RadioButtonAction_0 {
+            margin-right: 5px;
+        }
 
-      input#ContentPlaceHolder1_RadioButtonAction_1 {
-          margin-right: 5px;
-      }
+        input#ContentPlaceHolder1_RadioButtonAction_1 {
+            margin-right: 5px;
+        }
 
-      .submit {
-          border: 1px solid #563d7c;
-          border-radius: 5px;
-          color: white;
-          padding: 5px 10px 5px 10px;
-          background: left 3px top 5px no-repeat #563d7c;
-      }
+        .submit {
+            border: 1px solid #563d7c;
+            border-radius: 5px;
+            color: white;
+            padding: 5px 10px 5px 10px;
+            background: left 3px top 5px no-repeat #563d7c;
+        }
 
-          .submit:hover {
-              border: 1px solid #563d7c;
-              border-radius: 5px;
-              color: white;
-              padding: 5px 10px 5px 10px;
-              background: left 3px top 5px no-repeat #26005f;
-              box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          }
+            .submit:hover {
+                border: 1px solid #563d7c;
+                border-radius: 5px;
+                color: white;
+                padding: 5px 10px 5px 10px;
+                background: left 3px top 5px no-repeat #26005f;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            }
 
-      .table-dark {
-          text-align: center !important;
-          background-color: #9292cc !important;
-      }
+        .table-dark {
+            text-align: center !important;
+            background-color: #9292cc !important;
+        }
 
-      .col-md-4 {
-          margin-bottom: 0px;
-      }
+        .col-md-4 {
+            margin-bottom: 0px;
+        }
 
-      .form-control {
-          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-          margin-left: 0px !important;
-          height: 30px;
-          font-size: 13px;
-      }
+        .form-control {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            margin-left: 0px !important;
+            height: 30px;
+            font-size: 13px;
+        }
 
-      select.form-control {
-          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-          margin-left: 0px !important;
-          height: 30px;
-      }
+        select.form-control {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            margin-left: 0px !important;
+            height: 30px;
+        }
 
-      label {
-          font-size: 14px;
-      }
+        label {
+            font-size: 14px;
+        }
 
-      .form-control:focus {
-          border: 2px solid #80bdff;
-      }
+        .form-control:focus {
+            border: 2px solid #80bdff;
+        }
 
-      select.form-control:focus {
-          border: 2px solid #80bdff;
-      }
+        select.form-control:focus {
+            border: 2px solid #80bdff;
+        }
 
-      .select2-container .select2-selection--single {
-          height: 30px !important;
-      }
+        .select2-container .select2-selection--single {
+            height: 30px !important;
+        }
 
-      .select2-container--default .select2-selection--single {
-          border: 1px solid #ccc !important;
-          border-radius: 0px !important;
-      }
+        .select2-container--default .select2-selection--single {
+            border: 1px solid #ccc !important;
+            border-radius: 0px !important;
+        }
 
-      span.select2-selection.select2-selection--single {
-          padding: 0px 0px 0px 5px;
-          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-          margin-left: 0px !important;
-          height: 30px;
-          border-radius: 5px !important;
-      }
+        span.select2-selection.select2-selection--single {
+            padding: 0px 0px 0px 5px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            margin-left: 0px !important;
+            height: 30px;
+            border-radius: 5px !important;
+        }
 
-          span.select2-selection.select2-selection--single:focus {
-              border: 2px solid #80bdff;
-          }
+            span.select2-selection.select2-selection--single:focus {
+                border: 2px solid #80bdff;
+            }
 
-      .card .card-title {
-          font-size: 1rem !important;
-      }
+        .card .card-title {
+            font-size: 1rem !important;
+        }
 
-      .btn-primary:hover {
-          box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-      }
+        .btn-primary:hover {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        }
 
-      button.btn.btn-primary.mr-2 {
-          padding: 10px 25px 10px 25px;
-          font-size: 18px;
-      }
+        button.btn.btn-primary.mr-2 {
+            padding: 10px 25px 10px 25px;
+            font-size: 18px;
+        }
 
-      select.form-control.select-form.select2 {
-          height: 30px !important;
-          padding: 2px 0px 5px 10px;
-      }
+        select.form-control.select-form.select2 {
+            height: 30px !important;
+            padding: 2px 0px 5px 10px;
+        }
 
-      ul.chosen-choices {
-          border-radius: 5px;
-      }
+        ul.chosen-choices {
+            border-radius: 5px;
+        }
 
-      input#customFile {
-          padding: 0px 0px 0px 0px;
-      }
+        input#customFile {
+            padding: 0px 0px 0px 0px;
+        }
 
-      input#ContentPlaceHolder1_txtName {
-          font-size: 12.5px !important;
-      }
+        input#ContentPlaceHolder1_txtName {
+            font-size: 12.5px !important;
+        }
 
 
-      input#ContentPlaceHolder1_txtagency {
-          font-size: 12.5px;
-      }
+        input#ContentPlaceHolder1_txtagency {
+            font-size: 12.5px;
+        }
 
-      .headercolor {
-          background-color: #9292cc;
-      }
+        .headercolor {
+            background-color: #9292cc;
+        }
 
-      th {
-          background: #9292cc;
-      }
+        th {
+            background: #9292cc;
+        }
 
-      .card .card-title {
-          font-size: 23px !important;
-          color: #010101;
-          text-transform: capitalize;
-          font-weight: 700;
-      }
+        .card .card-title {
+            font-size: 23px !important;
+            color: #010101;
+            text-transform: capitalize;
+            font-weight: 700;
+        }
 
-      div#row2 {
-          margin-top: -20px;
-      }
+        div#row2 {
+            margin-top: -20px;
+        }
 
-      div#row3 {
-          margin-top: -20px;
-      }
+        div#row3 {
+            margin-top: -20px;
+        }
 
-      svg#svgcross {
-          height: 35px;
-          width: 67px;
-      }
+        svg#svgcross {
+            height: 35px;
+            width: 67px;
+        }
 
-      svg#svgcross1 {
-          height: 35px;
-          width: 67px;
-      }
+        svg#svgcross1 {
+            height: 35px;
+            width: 67px;
+        }
 
-      svg#svgcross2 {
-          height: 35px;
-          width: 67px;
-      }
+        svg#svgcross2 {
+            height: 35px;
+            width: 67px;
+        }
 
-      td {
-          padding-top: 12px !important;
-          padding-bottom: 0px !important;
-      }
+        td {
+            padding-top: 12px !important;
+            padding-bottom: 0px !important;
+        }
 
-      svg#search1:hover {
-          height: 22px;
-          width: 22px;
-          fill: #4b49ac;
-          transition: ease-out;
-          margin-left: -2px;
-          cursor: pointer;
-      }
+        svg#search1:hover {
+            height: 22px;
+            width: 22px;
+            fill: #4b49ac;
+            transition: ease-out;
+            margin-left: -2px;
+            cursor: pointer;
+        }
 
-      input#ContentPlaceHolder1_RadioButtonList2_1 {
-          margin-left: 15px;
-          margin-right: 5px;
-      }
+        input#ContentPlaceHolder1_RadioButtonList2_1 {
+            margin-left: 15px;
+            margin-right: 5px;
+        }
 
-      input#ContentPlaceHolder1_RadioButtonList2_0 {
-          margin-left: 15px;
-          margin-right: 5px;
-      }
+        input#ContentPlaceHolder1_RadioButtonList2_0 {
+            margin-left: 15px;
+            margin-right: 5px;
+        }
 
-      table#ContentPlaceHolder1_RadioButtonList2 {
-          margin-top: -10px;
-      }
+        table#ContentPlaceHolder1_RadioButtonList2 {
+            margin-top: -10px;
+        }
 
-      input[type=checkbox], input[type=radio] {
-          box-sizing: border-box;
-          padding: 0;
-          margin-right: 7px;
-      }
+        input[type=checkbox], input[type=radio] {
+            box-sizing: border-box;
+            padding: 0;
+            margin-right: 7px;
+        }
 
-      table#ContentPlaceHolder1_RadioButtonAction {
-          margin-top: -9px;
-      }
-  </style>
+        table#ContentPlaceHolder1_RadioButtonAction {
+            margin-top: -9px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      <div class="content-wrapper">
+    <div class="content-wrapper">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
@@ -456,8 +457,8 @@
                                             Make
  <samp style="color: red">* </samp>
                                         </label>
-                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtMake" MaxLength="150"  onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtMake" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Erection</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtMake" MaxLength="150" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtMake" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Make</asp:RequiredFieldValidator>
                                         <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
                                     </div>
                                     <div class="col-md-4" runat="server" visible="True" style="top: 0px !important;">
@@ -488,9 +489,9 @@
                                             <asp:ListItem Text="Travelator" Value="1"></asp:ListItem>
                                             <asp:ListItem Text="Escalator" Value="2"></asp:ListItem>
                                         </asp:DropDownList>
-                                        <%--<asp:RequiredFieldValidator ID="rvfRadioButtonList" ErrorMessage="Choose one" ControlToValidate="RadioButtonAction" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />--%>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Please Select Escalator Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlEscalatorType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                     </div>
-                                  <%--  <div class="col-md-4">
+                                    <%--  <div class="col-md-4">
                                         <label for="Voltage">
                                             Type of Escalator Erected
         <samp style="color: red">* </samp>
@@ -523,7 +524,7 @@
                                         </label>
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
                                         <asp:TextBox class="form-control" ID="txtEscalatorLoad" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" MaxLength="5" placeholder="" autocomplete="off" TabIndex="8" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        </div>
+                                    </div>
                                     <div class="col-md-4" runat="server">
                                         <label for="Name">
                                             Max Person Capacity (with Escalator Operator)<samp style="color: red">* </samp>
@@ -580,14 +581,14 @@
                                             Type of Control<samp style="color: red">* </samp>
                                         </label>
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-                                        <asp:TextBox class="form-control" ID="txtTypeofControll" onkeydown="return preventEnterSubmit(event)" MaxLength="150" placeholder="" autocomplete="off" TabIndex="16" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="txtTypeofControll" onkeydown="return preventEnterSubmit(event)" MaxLength="30" placeholder="" autocomplete="off" TabIndex="16" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator62" runat="server" ControlToValidate="txtTypeofControll" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Total Head Room</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
-                               
+
                                 <div class="row" style="margin-top: 10px;">
                                 </div>
-                               
+
                             </div>
                         </div>
                         <div class="row" style="margin-top: 10px;">
@@ -844,7 +845,7 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator33" runat="server" ControlToValidate="txtYellowBlue" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Phase</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
-                                <h8 Id="Heading" runat="Server" class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Between Each Phase and Earth</h8>
+                                <h8 id="Heading" runat="Server" class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Between Each Phase and Earth</h8>
                                 <div class="row" style="margin-top: 10px;">
                                     <div class="col-md-4" runat="server">
                                         <label for="Name">
@@ -1233,8 +1234,8 @@
                         </label>
                     </div>
                 </div>
-                <div class="row" id="OTP" runat="server" Visible="false">
-                    
+                <div class="row" id="OTP" runat="server" visible="false">
+
                     <div class="col-md-4">
                         <label>
                             Enter the OTP you received to Your Contractor's Email
@@ -1260,7 +1261,7 @@
                     <div class="col-md-4" style="text-align: center;">
                         <%--<asp:Button ID="BtnBack" runat="server" Text="Back" Visible="true" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />--%>
                         <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="false" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
-                        <asp:Button ID="btnVerify" Text="Verify Details"  Visible="false"  runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click"  />
+                        <asp:Button ID="btnVerify" Text="Verify Details" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" />
                         <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
 
                     </div>
@@ -1288,22 +1289,22 @@
     <script src="/Assets/js/Chart.roundedBarCharts.js">
 
     </script>
-  <script type="text/javascript">
-      function setMaxErectionDate() {
-          var today = new Date().toISOString().split('T')[0];
-          document.getElementById('<%= txtErectionDate.ClientID %>').setAttribute('max', today);
-      }
+    <script type="text/javascript">
+        function setMaxErectionDate() {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('<%= txtErectionDate.ClientID %>').setAttribute('max', today);
+        }
 
-      // Run on page load
-      window.onload = function () {
-          setMaxErectionDate();
-      };
+        // Run on page load
+        window.onload = function () {
+            setMaxErectionDate();
+        };
 
-      // Attach to UpdatePanel partial postback events
-      Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
-          setMaxErectionDate();
-      });
-  </script>
+        // Attach to UpdatePanel partial postback events
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
+            setMaxErectionDate();
+        });
+    </script>
 
     <script>
         function validateFileType(fileInput) {

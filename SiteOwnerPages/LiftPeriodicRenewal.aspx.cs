@@ -23,6 +23,7 @@ namespace CEIHaryana.SiteOwnerPages
     public partial class LiftPeriodicRenewal : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+        string TRID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -195,7 +196,7 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         if (Session["ReturnedValue"].ToString() != "1")
                         {
-                            CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
+                             TRID = CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
                                               txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, SiteOwnerID, transaction);
 
                         }
@@ -245,7 +246,7 @@ namespace CEIHaryana.SiteOwnerPages
                                 string filePathInfo1 = Server.MapPath(path + "/" + fileName1);
                                 fileUploadDoc1.PostedFile.SaveAs(filePathInfo1);
 
-                                CEI.UploadDocumentforLiftPeriodic(txtRegistrationNo.Text, ddlInstallationType.SelectedItem.ToString(), LblDocumentID.Text,
+                                CEI.UploadDocumentforLiftPeriodic(TRID, txtRegistrationNo.Text, ddlInstallationType.SelectedItem.ToString(), LblDocumentID.Text,
                                                                  LblDocumentName.Text, fileName, path + "/" + fileName1, SiteOwnerID, transaction);
                             }
                         }

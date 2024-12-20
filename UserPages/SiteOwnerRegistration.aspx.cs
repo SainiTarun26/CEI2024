@@ -53,6 +53,7 @@ namespace CEIHaryana.UserPages
             txtPANTan.Visible = false;
             if (ddlApplicantType.SelectedValue == "AT001")
             {
+                DivPancard_TanNo.Visible = true;
                 LblPanNumber.Visible = true;
                 txtPANTan.Visible = true;
                 txtPANTan.Text = "";
@@ -75,6 +76,7 @@ namespace CEIHaryana.UserPages
             //}
             else if (ddlApplicantType.SelectedValue == "AT003") //Other Department/Organization
             {
+                DivPancard_TanNo.Visible = true;
                 LblTanNumber.Visible = true;
                 txtPANTan.Visible = true;
                 txtPANTan.Text = "";
@@ -138,6 +140,17 @@ namespace CEIHaryana.UserPages
                 //    txtPANTan.Text = "";
                 //    return;
                 //}
+
+                // Added by gurmeet for validation start(20dec 2024)
+                System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("^[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}$|^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$");
+                if (!regex.IsMatch(TANNumber))
+                {
+                    txtPANTan.Focus();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid PAN/TAN card format. Please enter a valid PAN/TAN number.');", true);
+                    txtPANTan.Text = "";
+                    return;
+                }
+                //end
                 DataSet ds = new DataSet();
                 ds = CEI.GetDetailsByPanNumberId(TANNumber);
                 if (ds.Tables[0].Rows.Count > 0 && ds != null)
@@ -154,47 +167,59 @@ namespace CEIHaryana.UserPages
             }
         }
 
+        protected bool CheckSiteownerPAN(string PANNo)
+        {
+            DataTable dt = CEI.CheckSiteownerPan(PANNo);
+            if (dt.Rows.Count > 0 && dt != null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             try
             {
 
                 PanTanNumber = txtPANTan.Text.Trim();
-                DataTable dt = CEI.CheckSiteownerPan(PanTanNumber);
-                if (dt.Rows.Count > 0 && dt != null)
+                if (CheckSiteownerPAN(PanTanNumber))
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Pan/Tan Number already exist');", true);
+                    ApplicantType = ddlApplicantType.SelectedItem.ToString();
+                    ApplicantCode = ddlApplicantType.SelectedValue;
+                    ElectricalInstallationFor = ddlworktype.SelectedItem.ToString();
+                    if (LblNameofOwner.Visible == true)
+                    {
+                        NameOfOwner = txtName.Text;
+                    }
+                    else if (LblAgency.Visible == true)
+                    {
+                        NameofAgency = txtName.Text;
+                    }
+                    Address = txtAddress.Text.Trim();
+                    District = ddlDistrict.SelectedItem.ToString();
+                    PinCode = txtPin.Text;
+                    PhoneNumber = txtPhone.Text;
+                    Email = txtEmail.Text;
+                    int Ad = CEI.InsertSiteOwnerRegistration(ApplicantType, ApplicantCode, PanTanNumber, ElectricalInstallationFor, NameOfOwner, NameofAgency
+                         , Address, District, PinCode, PhoneNumber, Email);
+                    if (Ad > 0)
+                    {
+                        CEI.SiteOwnerCredentials(txtEmail.Text, PanTanNumber);
+                        Reset();
+                        string script = "alert('Registration Succesffuly,Your userId And Password is sent to email'); window.location='/Login.aspx';";
+                        //string script = "alert('Registration Succesffuly,Your userId And Password is sent to email');";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
+                    }
+                }
+                else
+                {
                     txtPANTan.Text = "";
                     txtPANTan.Focus();
-                    return;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Pan/Tan Number already exist');", true);
                 }
-                ApplicantType = ddlApplicantType.SelectedItem.ToString();
-                ApplicantCode = ddlApplicantType.SelectedValue;
-                ElectricalInstallationFor = ddlworktype.SelectedItem.ToString();
-                if (LblNameofOwner.Visible == true)
-                {
-                    NameOfOwner = txtName.Text;
-                }
-                else if (LblAgency.Visible == true)
-                {
-                    NameofAgency = txtName.Text;
-                }
-                Address = txtAddress.Text.Trim();
-                District = ddlDistrict.SelectedItem.ToString();
-                PinCode = txtPin.Text;
-                PhoneNumber = txtPhone.Text;
-                Email = txtEmail.Text;
-                int Ad = CEI.InsertSiteOwnerRegistration(ApplicantType, ApplicantCode, PanTanNumber, ElectricalInstallationFor, NameOfOwner, NameofAgency
-                     , Address, District, PinCode, PhoneNumber, Email);
-                if (Ad > 0)
-                {
-                    CEI.SiteOwnerCredentials(txtEmail.Text, PanTanNumber);
-                    string script = "alert('Registration Succesffuly,Your userId And Password is sent to email'); window.location='/Login.aspx';";
-                    //string script = "alert('Registration Succesffuly,Your userId And Password is sent to email');";                  
-
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
-                }
-                // Response.Redirect("~/Login.aspx",false);
             }
             catch (Exception ex)
             {
@@ -206,15 +231,22 @@ namespace CEIHaryana.UserPages
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
+            Reset();
+        }
+
+        protected void Reset()
+        {
+            DivPancard_TanNo.Visible = false;
+
             txtAddress.Text = "";
             txtPhone.Text = "";
-
             txtEmail.Text = "";
             txtPANTan.Text = "";
-
+            txtName.Text = "";
+            txtPin.Text = "";
             ddlApplicantType.SelectedIndex = 0;
             ddlworktype.SelectedIndex = 0;
-
+            ddlDistrict.SelectedIndex = 0;
         }
     }
 }

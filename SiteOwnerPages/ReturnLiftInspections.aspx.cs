@@ -75,6 +75,7 @@ namespace CEIHaryana.SiteOwnerPages
         }
         public void FetchDetails()
         {
+            Session["Verified"] = "NotVerified";
             //Session["SiteOwnerId"] = "AAAAB3132F";
             InspectionId = int.Parse(Session["InspectionId"].ToString());
             //Session["ReturnedValue"] = "2";
@@ -259,44 +260,80 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+
                     Label lblCategory = (Label)row.FindControl("lblCategory");
-                    Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
-
-                    Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
-                    Label lblReportType = (Label)row.FindControl("lblReportType");
-                    Label lblNoOfInstallations = (Label)row.FindControl("lblNoOfInstallations");
-                    if (lblCategory.Text.Trim() == "Lift" && TypeOfInspection.Trim() == "New")
-
+                    
+                    if (Session["Verified"].ToString() != "Verified")
                     {
-                        Session["Application"] = lblIntimationId.Text.Trim();
-                        Session["id"] = lblIntimationId.Text.Trim();
-                        Session["Typs"] = lblCategory.Text.Trim();
-                        Session["NoOfInstallations"] = lblNoOfInstallations.Text.Trim();
-                        Session["IHID"] = lblNoOfInstallations.Text.Trim();
-                        Session["TotalInstallation"] = lblNoOfInstallations.Text.Trim();
-                        Session["LiftTestReportID"] = lblTestReportId.Text;
-                        Response.Redirect("/SiteOwnerPages/LiftDetails.aspx", false);
-                    }
-                    else if (lblCategory.Text.Trim() == "Escalator" && TypeOfInspection.Trim() == "New")
-                    {
+                        Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
+                        Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
+                        Label lblReportType = (Label)row.FindControl("lblReportType");
+                        Label lblNoOfInstallations = (Label)row.FindControl("lblNoOfInstallations");
+                        if (lblCategory.Text.Trim() == "Lift" && TypeOfInspection.Trim() == "New")
 
-                        Session["Application"] = lblIntimationId.Text.Trim();
-                        Session["id"] = lblIntimationId.Text.Trim();
-                        Session["Typs"] = lblCategory.Text.Trim();
-                        Session["NoOfInstallations"] = lblNoOfInstallations.Text.Trim();
-                        Session["IHID"] = lblNoOfInstallations.Text.Trim();
-                        Session["TotalInstallation"] = lblNoOfInstallations.Text.Trim();
-                        Session["EscalatorTestReportID"] = lblTestReportId.Text;
-                        Response.Redirect("/SiteOwnerPages/EscalatorDetails.aspx", false);
-                    }
-                    else if (TypeOfInspection.Trim() != "New")
-                    {
-                        Session["RegistrationNosessionPass"] = lblIntimationId.Text;
-                        Session["InstallTypePass"] = lblCategory.Text;
-                        Session["EscalatorTestReportID"] = lblTestReportId.Text;
-                        Response.Redirect("/SiteOwnerPages/LiftPeriodicRenewal.aspx", false);
-                    }
+                        {
+                            Session["Application"] = lblIntimationId.Text.Trim();
+                            Session["id"] = lblIntimationId.Text.Trim();
+                            Session["Typs"] = lblCategory.Text.Trim();
+                            Session["NoOfInstallations"] = lblNoOfInstallations.Text.Trim();
+                            Session["IHID"] = lblNoOfInstallations.Text.Trim();
+                            Session["TotalInstallation"] = lblNoOfInstallations.Text.Trim();
+                            Session["LiftTestReportID"] = lblTestReportId.Text;
+                            Response.Redirect("/SiteOwnerPages/LiftDetails.aspx", false);
+                        }
+                        else if (lblCategory.Text.Trim() == "Escalator" && TypeOfInspection.Trim() == "New")
+                        {
 
+                            Session["Application"] = lblIntimationId.Text.Trim();
+                            Session["id"] = lblIntimationId.Text.Trim();
+                            Session["Typs"] = lblCategory.Text.Trim();
+                            Session["NoOfInstallations"] = lblNoOfInstallations.Text.Trim();
+                            Session["IHID"] = lblNoOfInstallations.Text.Trim();
+                            Session["TotalInstallation"] = lblNoOfInstallations.Text.Trim();
+                            Session["EscalatorTestReportID"] = lblTestReportId.Text;
+                            Response.Redirect("/SiteOwnerPages/EscalatorDetails.aspx", false);
+                        }
+                        else if (TypeOfInspection.Trim() != "New")
+                        {
+                            Session["RegistrationNosessionPass"] = lblIntimationId.Text;
+                            Session["InstallTypePass"] = lblCategory.Text;
+                            Session["EscalatorTestReportID"] = lblTestReportId.Text;
+                            Response.Redirect("/SiteOwnerPages/LiftPeriodicRenewal.aspx", false);
+                        }
+                    }
+                    else
+                    {
+                        if (Session["TypeOfInspection"].ToString() == "New")
+                        {
+                            Label lblTestReportId = (Label)row.FindControl("lblOldTestReportId");
+                            if (lblCategory.Text.Trim() == "Lift")
+                            {
+                                Session["LiftTestReportID"] = lblTestReportId.Text;
+                                Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                            }
+                            else if (lblCategory.Text.Trim() == "Escalator")
+                            {
+
+                                Session["EscalatorTestReportID"] = lblTestReportId.Text;
+                                Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
+                            }
+                        }
+                        else
+                        {
+                            Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
+                            Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
+                            Session["TestReportID"] = lblTestReportId.Text;
+                            Session["RegistrationNo"] = lblIntimationId.Text.Trim();
+                            if (lblCategory.Text.Trim() == "Lift")
+                            {
+                                Response.Redirect("/TestReportModal/LiftPeriodicTestReportModal.aspx", false);
+                            }
+                            else if (lblCategory.Text.Trim() == "Escalator")
+                            {
+                                Response.Redirect("/TestReportModal/EscalatorPeriodicTestReportModal.aspx", false);
+                            }
+                        }
+                    }
                 }
                 else if (e.CommandName == "ViewPeriodicTestReport")
                 {
@@ -393,9 +430,16 @@ namespace CEIHaryana.SiteOwnerPages
 
                     if (Result == "Greater")
                     {
-                        // Hide LinkButton5 if OldTestReportId is null or empty
-                        linkButton5.Text = "Created";
-                        linkButton5.Enabled = false;
+                        if (Session["Verified"].ToString() != "Verified")
+                        {
+                            linkButton5.Text = "Created";
+
+                            linkButton5.Enabled = false;
+                        }
+                        else
+                        {
+                            linkButton5.Text = "Old Test Report";
+                        }
                     }
                     else
                     {
@@ -409,13 +453,20 @@ namespace CEIHaryana.SiteOwnerPages
                     Label lblTestReportId = (Label)e.Row.FindControl("lblOldTestReportId");
                     LinkButton linkButton7 = (LinkButton)e.Row.FindControl("LinkButton7");
                     DataTable dta = new DataTable();
-                    dta = CEI.PeriodicCalculateRows(lblTestReportId.Text.Trim(), InspectionIds);
+                    dta = CEI.PeriodicCalculateRows(lblIntimationId.Text.Trim(), InspectionIds);
                     string Result = dta.Rows[0]["Result"].ToString();
                     if (Result == "Greater")
                     {
-                        // Hide LinkButton5 if OldTestReportId is null or empty
-                        linkButton7.Text = "Created";
-                        linkButton7.Enabled = false;
+                        if (Session["Verified"].ToString() != "Verified")
+                        {
+                            // Hide LinkButton5 if OldTestReportId is null or empty
+                            linkButton7.Text = "Created";
+                            linkButton7.Enabled = false;
+                        }
+                        else
+                        {
+                            linkButton7.Text = "Old Test Report";
+                        }
                     }
                     else
                     {
@@ -670,15 +721,12 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                Button btn = sender as Button;
-                GridViewRow row = btn.NamingContainer as GridViewRow;
+                
                 InspectionId = int.Parse(Session["InspectionId"].ToString());
                 string Data = string.Empty;
                 DataTable ds = new DataTable();
                 if (Session["TypeOfInspection"].ToString() == "New" && Session["ReturnedValue"].ToString() == "1")
                 {
-                    //LinkButton linkButton5 = (LinkButton)row.FindControl("linkButton5");
-                    //linkButton5.Text = "Old Test Report";
                     ds = CEI.CheckReturnValue(InspectionId);
                     Data = ds.Rows[0]["Typs"].ToString();
                 }
@@ -693,6 +741,15 @@ namespace CEIHaryana.SiteOwnerPages
                     Button1.Visible = false;
                     Inspection.Visible = true;
                     btnSubmit.Visible = true;
+                    Session["Verified"] = "Verified";
+                    if (Session["TypeOfInspection"].ToString() == "New" && Session["ReturnedValue"].ToString() == "1")
+                    {                        
+                        getWorkIntimationData(InspectionId);
+                    }
+                    else
+                    {
+                        getWorkIntimationDataPeriodi(InspectionId);
+                    }
                 }
                 else
                 {

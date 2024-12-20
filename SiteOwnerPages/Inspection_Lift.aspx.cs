@@ -38,7 +38,7 @@ namespace CEIHaryana.SiteOwnerPages
                             ID = Session["InspectionId"].ToString();
                             GetDetailsWithId(ID);
                             GridBind(ID);
-                            GetTestReportData(ID);                            
+                            GetTestReportData(ID);
                             Session["PreviousPage"] = "";
                         }
                     }
@@ -47,7 +47,7 @@ namespace CEIHaryana.SiteOwnerPages
                         Response.Redirect("/login.aspx", false);
                     }
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -111,14 +111,10 @@ namespace CEIHaryana.SiteOwnerPages
                 txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                 if (IType == "New")
                 {
-
-
                     //string InspectionType = ds.Tables[0].Rows[0]["IType"].ToString();
                     // txtInspectionType.Text= ds.Tables[0].Rows[0]["IType"].ToString();
                     //voltagelevel.Visible = true;
                     // Type.Visible = true;
-
-
 
                     string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                     if (Status == "Rejected")
@@ -134,9 +130,10 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     if (Status == "Return")
                     {
-                        ApprovalRequired.Visible = false;
+                        Reason.Visible = true;
+                        //ApprovalRequired.Visible = false;
                         btnSubmit.Visible = false;
-
+                        txtReason.Text = ds.Tables[0].Rows[0]["ReturnReason"].ToString();
                         //buttonSubmit.Visible = true;
                         //Remarks.Visible = true;
 
@@ -145,7 +142,7 @@ namespace CEIHaryana.SiteOwnerPages
                         //ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                         //ApprovedReject.Visible = true;
                         //ApprovalRequired.Visible = false;
-                        ddlReview.Attributes.Add("disabled", "true");
+                        //ddlReview.Attributes.Add("disabled", "true");
                         //txtRejected.Attributes.Add("disabled", "true");
                     }
                     //string Reason = ds.Tables[0].Rows[0]["ReasonType"].ToString();
@@ -154,7 +151,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                     Div1.Visible = true;
                     DivViewTRinMultipleCaseNew.Visible = true;
-                  
+
                 }
                 else if (IType == "Periodic")
                 {
@@ -194,28 +191,16 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         ApprovalRequired.Visible = false;
                         btnSubmit.Visible = false;
-
-                        //buttonSubmit.Visible = true;
-                        //Remarks.Visible = true;
-                        ddlReview.Attributes.Add("disabled", "true");
-
-                        if (ReturnedBased == "1")
-                        {
-                            //btnResubmit.Visible = true;
-                        }
-                        else
-                        {
-                            //btnResubmit.Visible = false;
-                        }
+                        Reason.Visible = true;
+                        txtReason.Text = ds.Tables[0].Rows[0]["ReturnReason"].ToString();
                     }
-                    
+
                 }
             }
             catch (Exception ex)
             {
             }
         }
-    
         protected void lnkRedirect_Click(object sender, EventArgs e)
         {
             LinkButton lnkRedirect = (LinkButton)sender;
@@ -238,7 +223,6 @@ namespace CEIHaryana.SiteOwnerPages
             }
 
         }
-
         protected void btnBack_Click(object sender, EventArgs e)
         {
             if (Session["PeriodicInspection"] != null)
@@ -294,7 +278,7 @@ namespace CEIHaryana.SiteOwnerPages
             try
             {
                 if (e.CommandName == "Select")
-                {                    
+                {
                     if (e.CommandName == "Select")
                     {
                         fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
@@ -318,20 +302,20 @@ namespace CEIHaryana.SiteOwnerPages
         private void GetTestReportData(string InspectionId)
         {
             try
-            {              
-                DataSet ds = new DataSet();               
+            {
+                DataSet ds = new DataSet();
                 ds = CEI.GetTestReport_Lift_Escalator(InspectionId);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
-                {                 
+                {
                     GridView2.DataSource = ds;
                     GridView2.DataBind();
                 }
                 else
                 {
                     GridView2.DataSource = null;
-                    GridView2.DataBind();                  
-                }             
+                    GridView2.DataBind();
+                }
                 ds.Dispose();
             }
             catch (Exception ex)
@@ -354,8 +338,6 @@ namespace CEIHaryana.SiteOwnerPages
                 e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
             }
         }
-
-
         protected void lnkRedirect1_Click1(object sender, EventArgs e)
         {
             try
@@ -386,8 +368,6 @@ namespace CEIHaryana.SiteOwnerPages
             catch (Exception ex) { }
         }
 
-
-
         private void GridToViewTRinMultipleCaseNew()
         {
             try
@@ -403,7 +383,7 @@ namespace CEIHaryana.SiteOwnerPages
                 else
                 {
                     Grid_MultipleInspectionTR.DataSource = null;
-                    Grid_MultipleInspectionTR.DataBind();                  
+                    Grid_MultipleInspectionTR.DataBind();
                 }
             }
             catch (Exception ex)
@@ -493,7 +473,7 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch (Exception ex) { }
         }
-        
+
         protected void lnkRedirectTR_Periodic_Click(object sender, EventArgs e)
         {
             try
@@ -503,7 +483,7 @@ namespace CEIHaryana.SiteOwnerPages
                 GridViewRow row = (GridViewRow)btn.NamingContainer;
                 Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
                 string installationName = lblInstallationName.Text.Trim();
-                Session["RegistrationNo"] = null;                
+                Session["RegistrationNo"] = null;
                 Session["RegistrationNo"] = btn.CommandArgument;
                 if (installationName == "Lift")
                 {

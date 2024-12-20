@@ -119,8 +119,8 @@
             }
         }
     </script>
-   
-    
+
+
     <script type="text/javascript">
         function alertWithReturnRedirectdata() {
             if (confirm('Lift Details Successfully')) {
@@ -395,14 +395,14 @@
                                     <label for="Name">
                                         Type of Installation<samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width:100%;"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%;"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator76" runat="server" ControlToValidate="txtInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">*</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-md-4" id="Div12" runat="server">
                                     <label for="Name">
                                         No of Installations<samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtNOOfInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width:100%;"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtNOOfInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%;"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator77" runat="server" ControlToValidate="txtNOOfInstallation" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">*</asp:RequiredFieldValidator>
                                 </div>
                             </div>
@@ -432,7 +432,7 @@
                                             Name of Local Agent
                                             <samp style="color: red">* </samp>
                                         </label>
-                                        <asp:TextBox class="form-control"  ID="TxtAgentName" autocomplete="off" MaxLength="50" onKeyPress="return alphabetKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder=""  TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="TxtAgentName" autocomplete="off" MaxLength="50" onKeyPress="return alphabetKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TxtAgentName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Local Agent Name</asp:RequiredFieldValidator>
                                         <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
                                     </div>
@@ -441,7 +441,7 @@
                                             Address of Local Agent<samp style="color: red">* </samp>
                                         </label>
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-                                        <asp:TextBox class="form-control" ID="txtAgentAddress" autocomplete="off" onkeydown="return preventEnterSubmit(event)" MaxLength="250" placeholder=""  TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="txtAgentAddress" autocomplete="off" onkeydown="return preventEnterSubmit(event)" MaxLength="250" placeholder="" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtAgentAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Local Agent Address</asp:RequiredFieldValidator>
                                     </div>
                                     <div class="col-md-3" runat="server" id="Contact">
@@ -449,7 +449,7 @@
                                             Contact No. of Local Agent<samp style="color: red">* </samp>
                                         </label>
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-                                        <asp:TextBox class="form-control" ID="txtAgentPhone" autocomplete="off" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="10" placeholder=""  TabIndex="4" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="txtAgentPhone" autocomplete="off" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="10" placeholder="" TabIndex="4" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtAgentPhone" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Local Agent Contact</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
@@ -460,7 +460,7 @@
                                             Make
                                         <samp style="color: red">* </samp>
                                         </label>
-                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtMake" MaxLength="150"  onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtMake" MaxLength="150" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtMake" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Erection</asp:RequiredFieldValidator>
                                         <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
                                     </div>
@@ -492,7 +492,7 @@
                                             <asp:ListItem Text="MRL" Value="1"></asp:ListItem>
                                             <asp:ListItem Text="Machine Room" Value="2"></asp:ListItem>
                                         </asp:DropDownList>
-                                        <%--<asp:RequiredFieldValidator ID="rvfRadioButtonList" ErrorMessage="Choose one" ControlToValidate="RadioButtonAction" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />--%>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator75" Text="Please Select Lift Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLiftType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                     </div>
                                     <div class="col-md-4">
                                         <label for="Voltage">
@@ -590,7 +590,7 @@
                                             Type of Control<samp style="color: red">* </samp>
                                         </label>
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-                                        <asp:TextBox class="form-control" ID="txtTypeofControll" onkeydown="return preventEnterSubmit(event)" MaxLength="150" placeholder="" autocomplete="off" TabIndex="16" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="txtTypeofControll" onkeydown="return preventEnterSubmit(event)" MaxLength="30" placeholder="" autocomplete="off" TabIndex="16" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator62" runat="server" ControlToValidate="txtTypeofControll" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Total Head Room</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
@@ -898,7 +898,7 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator33" runat="server" ControlToValidate="txtYellowBlue" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Phase</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
-                                <h8 Id="Heading" runat="Server"  class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Between Each Phase and Earth</h8>
+                                <h8 id="Heading" runat="Server" class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Between Each Phase and Earth</h8>
                                 <div class="row" style="margin-top: 10px;">
                                     <div class="col-md-4" runat="server">
                                         <label for="Name">
@@ -1287,8 +1287,8 @@
                         </label>
                     </div>
                 </div>
-                <div class="row" id="OTP" runat="server" Visible="false">
-                   
+                <div class="row" id="OTP" runat="server" visible="false">
+
                     <div class="col-md-4">
                         <label>
                             Enter the OTP you received to Your Phone Number
@@ -1306,7 +1306,7 @@
                                 I hereby declare that the information furnished in the application is correct.                       
                             </text>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-md-4">
                     </div>
@@ -1341,23 +1341,23 @@
     <script src="/Assets/js/Chart.roundedBarCharts.js">
 
     </script>
-  <script type="text/javascript">
-      function setMaxErectionDate() {
-          var today = new Date().toISOString().split('T')[0];
-          document.getElementById('<%= txtErectionDate.ClientID %>').setAttribute('max', today);
-      }
+    <script type="text/javascript">
+        function setMaxErectionDate() {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('<%= txtErectionDate.ClientID %>').setAttribute('max', today);
+        }
 
-      // Run on page load
-      window.onload = function () {
+        // Run on page load
+        window.onload = function () {
 
-          setMaxErectionDate();
-      };
+            setMaxErectionDate();
+        };
 
-      // Attach to UpdatePanel partial postback events
-      Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
-          setMaxErectionDate();
-      });
-  </script>
+        // Attach to UpdatePanel partial postback events
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
+            setMaxErectionDate();
+        });
+    </script>
 
     <script>
         function validateFileType(fileInput) {

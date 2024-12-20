@@ -19,6 +19,7 @@ namespace CEIHaryana.SiteOwnerPages
                 if (!Page.IsPostBack)
                 {
                     BindGrid();
+                    Session["InspectionId"] = "";
                 }
             }
             catch
@@ -64,6 +65,8 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["ReturnedValue"] = lblReturnBased.Text.Trim();
                 if (e.CommandName == "Select")
                 {
+                    Session["TypeOfInspection"] = "";
+                    Session["Verified"] = "NotVerified";
                     Session["TypeOfInspection"] = lblTypeOfInspection.Text.Trim();
                     if (lblType.Text.Trim() == "Lift" || lblType.Text.Trim() == "Escalator" || lblType.Text.Trim() == "Lift/Escalator" || lblType.Text.Trim() == "MultiLift" || lblType.Text.Trim() == "MultiEscalator")
                     {

@@ -586,8 +586,9 @@ namespace CEIHaryana.SiteOwnerPages
                     string InspectionId = SplitResultPartsArray[0]; // Extract the first value
                     Session["PrintInspectionID"] = InspectionId;
                     UploadCheckListDocInCollection(para_lblCategory, para_CreatedByy, SplitResultPartsArray[1], para_lblCategory, InspectionId);
-
-                    foreach (var file in uploadedFiles)
+                    if (uploadedFiles != null && uploadedFiles.Count > 0)
+                    {
+                        foreach (var file in uploadedFiles)
                     {
                         
                         string query = "sp_InsertInspectionAttachments";
@@ -604,6 +605,11 @@ namespace CEIHaryana.SiteOwnerPages
                             command.Parameters.AddWithValue("@CreatedBy", para_CreatedBy);
                             command.ExecuteNonQuery();
                         }
+                    }
+                    }
+                    else
+                    {
+                        throw new Exception("Please Upload Pdf Files");
                     }
                     transaction.Commit();                    
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
