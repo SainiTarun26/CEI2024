@@ -126,7 +126,7 @@ namespace CEIHaryana.SiteOwnerPages
             txtInspectionRemarks.Text = dataTable.Rows[0]["InspectionRemarks"].ToString();
             if (Session["ReturnedValue"].ToString() == "1")
             {
-                txtInspectionRemarks.ReadOnly = true;
+               // txtInspectionRemarks.ReadOnly = true;
                 txtReturntransactionDate.ReadOnly = true;
                 txttransactionId.ReadOnly = true;
                 txtReturntransactionDate.Visible = true;
@@ -206,6 +206,7 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else if (lblCategory.Text.Trim() == "Escalator")
                     {
+                       
                         Session["EscalatorTestReportID"] = lblTestReportId.Text;
                         Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
                     }
@@ -246,6 +247,8 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else if (TypeOfInspection.Trim() != "New")
                     {
+                        Session["RegistrationNosessionPass"] = lblIntimationId.Text;
+                        Session["InstallTypePass"] = lblCategory.Text;
                         Session["EscalatorTestReportID"] = lblTestReportId.Text;
                         Response.Redirect("/SiteOwnerPages/LiftPeriodicRenewal.aspx", false);
                     }

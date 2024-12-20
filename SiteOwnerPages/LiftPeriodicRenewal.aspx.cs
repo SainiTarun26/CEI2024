@@ -32,6 +32,26 @@ namespace CEIHaryana.SiteOwnerPages
                     if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                     {
                         //GetApplicantType();
+                        if (Convert.ToString(Session["RegistrationNosessionPass"]) != null && Convert.ToString(Session["RegistrationNosessionPass"]) != "")
+                        {
+                            txtRegistrationNo.Text = Session["RegistrationNosessionPass"].ToString();
+                            if (Session["InstallTypePass"] != null)
+                            {
+                                if (Session["InstallTypePass"].ToString() == "Lift")
+                                {
+                                    ddlInstallationType.SelectedValue = "1";
+
+                                }
+                                else
+                                {
+                                    ddlInstallationType.SelectedValue = "2";
+                                }
+                                ddlInstallationType_SelectedIndexChanged(ddlInstallationType, EventArgs.Empty);
+                                txtRegistrationNo.Enabled = false;
+                                ddlInstallationType.Enabled = false;
+                            }
+                            ddlInstallationType.SelectedValue = "1";
+                        }
                     }
                 }
             }

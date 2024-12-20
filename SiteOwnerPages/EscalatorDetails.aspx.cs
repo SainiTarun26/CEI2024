@@ -258,6 +258,21 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         return int.TryParse(input, out int result) ? result : defaultValue;
                     }
+                bool allFilesArePDF = true;
+                foreach (GridViewRow row in Grd_Document.Rows)
+                {
+                    FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
+                    string fileExtension = System.IO.Path.GetExtension(fileUpload.FileName).ToLower();
+
+                    if (fileExtension != ".pdf" || fileUpload == null)
+                    {
+                        allFilesArePDF = false;
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Please upload all the PDF files Correctly');", true);
+
+                    }
+
+                }
+                if (allFilesArePDF == true) {
                     if (Session["Expired"].ToString() == "False")
                     {
                         if (Session["ReturnedValue"].ToString() != "1")
@@ -333,12 +348,17 @@ namespace CEIHaryana.SiteOwnerPages
                         ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Sorry Your License Is Expired Please Contact Admin For saving This Information');", true);
 
                     }
+                }
+                else
+                {
+
+                }
                 
             }
             catch (Exception ex)
             {
-                // Consider logging the exception for debugging purposes
-                Console.WriteLine(ex.Message);
+                string script = ex.Message + "alert(\"Please Fill Form Correctly\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }
         protected void BtnBack_Click(object sender, EventArgs e)

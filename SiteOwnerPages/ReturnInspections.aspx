@@ -115,18 +115,18 @@
                             </div>
                         </div>
                     </div>
-                    <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" 
-                           BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand">
+                    <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false"
+                        BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand">
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
                                     <asp:Label ID="LblInspectionType" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label>
-                                   <%-- <asp:Label ID="lblTestRportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>--%>
+                                    <%-- <asp:Label ID="lblTestRportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>--%>
                                     <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
                                     <asp:Label ID="lblType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
-                                  <asp:Label ID="lblReturnBased" runat="server" Text='<%#Eval("ReturnValue") %>'></asp:Label>
+                                    <asp:Label ID="lblReturnBased" runat="server" Text='<%#Eval("ReturnValue") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
@@ -166,6 +166,10 @@
                             <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" Font-Bold="true" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ReturnReason" HeaderText="Return Based On">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />

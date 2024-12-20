@@ -459,6 +459,8 @@ namespace CEIHaryana.Officers
 
                 GridViewRow row = (GridViewRow)btn.NamingContainer;
                 Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
+                Label lblTestReport = (Label)row.FindControl("lblTestReport");
+                
                 string installationName = lblInstallationName.Text.Trim();
 
                 //Session["InspectionTestReportId"] = btn.CommandArgument;
@@ -467,10 +469,12 @@ namespace CEIHaryana.Officers
                 string url = string.Empty;
                 if (installationName == "Lift")
                 {
+                    Session["TestReportID"] = lblTestReport.Text;
                     url = "/TestReportModal/LiftPeriodicTestReportModal.aspx";
                 }
                 if (installationName == "Escalator")
                 {
+                    Session["TestReportID"] = lblTestReport.Text;
                     url = "/TestReportModal/EscalatorPeriodicTestReportModal.aspx";
                 }
 

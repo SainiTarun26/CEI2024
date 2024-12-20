@@ -233,7 +233,7 @@
                         </label>
                         <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px" Visible="false"></asp:TextBox>
                     </div>
-                    <div class="col-md-8" id="OwnerAddress" visible="true" runat="server">
+                    <div class="col-md-12" id="OwnerAddress" visible="true" runat="server">
                         <label>Address</label>
                         <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
