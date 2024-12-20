@@ -241,8 +241,10 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                //if (Session["OTP"].ToString() == txtOTP.Text.Trim())
-                //{
+                if (Page.IsValid)
+                {
+                    //if (Session["OTP"].ToString() == txtOTP.Text.Trim())
+                    //{
                     string IntimationId = Session["id"].ToString();
                     string CreatedBy = Session["SiteOwnerId"].ToString();
                     string count = Session["NoOfInstallations"].ToString();
@@ -385,12 +387,18 @@ namespace CEIHaryana.SiteOwnerPages
                     {
 
                     }
-                //}
-                //else
-                //{
-                //    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Incorrect Otp Please Try Again');", true);
+                    //}
+                    //else
+                    //{
+                    //    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Incorrect Otp Please Try Again');", true);
 
-                //}
+                    //}
+                }
+                else
+                {
+                    string message = "Please fill form Correctly";
+                    throw new Exception(message);
+                }
 
 
             }

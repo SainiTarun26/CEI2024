@@ -237,12 +237,18 @@ namespace CEIHaryana.TestReportModal
                 else if (txtEarthing.Text.Trim() == "5")
                 {
                     Limit.Visible = false;
+                    EscalatorEarthing1.Visible = true;
+                    EscalatorEarthing2.Visible = true;
+                    EscalatorEarthing3.Visible = true;
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                 }
                 else if (txtEarthing.Text.Trim() == "6")
                 {
                     Limit.Visible = false;
+                    EscalatorEarthing1.Visible = true;
+                    EscalatorEarthing2.Visible = true;
+                    EscalatorEarthing3.Visible = true;
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                     EscalatorEarthing6.Visible = true;
@@ -250,6 +256,9 @@ namespace CEIHaryana.TestReportModal
                 else if (txtEarthing.Text.Trim() == "7")
                 {
                     Limit.Visible = false;
+                    EscalatorEarthing1.Visible = true;
+                    EscalatorEarthing2.Visible = true;
+                    EscalatorEarthing3.Visible = true;
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                     EscalatorEarthing6.Visible = true;
@@ -258,6 +267,9 @@ namespace CEIHaryana.TestReportModal
                 else if (txtEarthing.Text.Trim() == "8")
                 {
                     Limit.Visible = false;
+                    EscalatorEarthing1.Visible = true;
+                    EscalatorEarthing2.Visible = true;
+                    EscalatorEarthing3.Visible = true;
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                     EscalatorEarthing6.Visible = true;
@@ -267,6 +279,9 @@ namespace CEIHaryana.TestReportModal
                 else if (txtEarthing.Text.Trim() == "9")
                 {
                     Limit.Visible = false;
+                    EscalatorEarthing1.Visible = true;
+                    EscalatorEarthing2.Visible = true;
+                    EscalatorEarthing3.Visible = true;
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                     EscalatorEarthing6.Visible = true;
@@ -277,6 +292,9 @@ namespace CEIHaryana.TestReportModal
                 else if (txtEarthing.Text.Trim() == "10")
                 {
                     Limit.Visible = false;
+                    EscalatorEarthing1.Visible = true;
+                    EscalatorEarthing2.Visible = true;
+                    EscalatorEarthing3.Visible = true;
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                     EscalatorEarthing6.Visible = true;
@@ -288,6 +306,9 @@ namespace CEIHaryana.TestReportModal
                 else
                 {
                     Limit.Visible = false;
+                    EscalatorEarthing1.Visible = true;
+                    EscalatorEarthing2.Visible = true;
+                    EscalatorEarthing3.Visible = true;
                     EscalatorEarthing4.Visible = false;
                     EscalatorEarthing5.Visible = false;
                     EscalatorEarthing6.Visible = false;

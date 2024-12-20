@@ -239,12 +239,18 @@ namespace CEIHaryana.TestReportModal
                 else if (txtEarthing.Text.Trim() == "5")
                 {
                     Limit.Visible = false;
+                    LiftEarthing1.Visible = true;
+                    LiftEarthing2.Visible = true;
+                    LiftEarthing3.Visible = true;
                     LiftEarthing4.Visible = true;
                     LiftEarthing5.Visible = true;
                 }
                 else if (txtEarthing.Text.Trim() == "6")
                 {
                     Limit.Visible = false;
+                    LiftEarthing1.Visible = true;
+                    LiftEarthing2.Visible = true;
+                    LiftEarthing3.Visible = true;
                     LiftEarthing4.Visible = true;
                     LiftEarthing5.Visible = true;
                     LiftEarthing6.Visible = true;
@@ -252,6 +258,9 @@ namespace CEIHaryana.TestReportModal
                 else if (txtEarthing.Text.Trim() == "7")
                 {
                     Limit.Visible = false;
+                    LiftEarthing1.Visible = true;
+                    LiftEarthing2.Visible = true;
+                    LiftEarthing3.Visible = true;
                     LiftEarthing4.Visible = true;
                     LiftEarthing5.Visible = true;
                     LiftEarthing6.Visible = true;
@@ -269,6 +278,9 @@ namespace CEIHaryana.TestReportModal
                 else if (txtEarthing.Text.Trim() == "9")
                 {
                     Limit.Visible = false;
+                    LiftEarthing1.Visible = true;
+                    LiftEarthing2.Visible = true;
+                    LiftEarthing3.Visible = true;
                     LiftEarthing4.Visible = true;
                     LiftEarthing5.Visible = true;
                     LiftEarthing6.Visible = true;
@@ -279,6 +291,9 @@ namespace CEIHaryana.TestReportModal
                 else if (txtEarthing.Text.Trim() == "10")
                 {
                     Limit.Visible = false;
+                    LiftEarthing1.Visible = true;
+                    LiftEarthing2.Visible = true;
+                    LiftEarthing3.Visible = true;
                     LiftEarthing4.Visible = true;
                     LiftEarthing5.Visible = true;
                     LiftEarthing6.Visible = true;
@@ -290,6 +305,9 @@ namespace CEIHaryana.TestReportModal
                 else
                 {
                     Limit.Visible = false;
+                    LiftEarthing1.Visible = true;
+                    LiftEarthing2.Visible = true;
+                    LiftEarthing3.Visible = true;
                     LiftEarthing4.Visible = false;
                     LiftEarthing5.Visible = false;
                     LiftEarthing6.Visible = false;

@@ -253,17 +253,18 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 DataSet ds = new DataSet();
                 ds = CEI.ViewDocuments(InspectionId);
-                if (ds.Tables.Count > 0)
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
                 }
                 else
                 {
+                    DocumentDiv.Visible = false;
                     GridView1.DataSource = null;
                     GridView1.DataBind();
-                    string script = "alert(\"No Documnet Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    //string script = "alert(\"No Documnet Found\");";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 ds.Dispose();
             }
@@ -482,9 +483,13 @@ namespace CEIHaryana.SiteOwnerPages
 
                 GridViewRow row = (GridViewRow)btn.NamingContainer;
                 Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
+                Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
+
                 string installationName = lblInstallationName.Text.Trim();
                 Session["RegistrationNo"] = null;
-                Session["RegistrationNo"] = btn.CommandArgument;
+                Session["TestReportID"] = null;
+                Session["RegistrationNo"] = LblRegistrationNo.Text.Trim();
+                Session["TestReportID"] = btn.CommandArgument;
                 if (installationName == "Lift")
                 {
                     Response.Redirect("/TestReportModal/LiftPeriodicTestReportModal.aspx", false);

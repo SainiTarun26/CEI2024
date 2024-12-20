@@ -234,7 +234,8 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-               
+                if (Page.IsValid)
+                {
                     string IntimationId = Session["id"].ToString();
                     string CreatedBy = Session["SiteOwnerId"].ToString();
                     string count = Session["NoOfInstallations"].ToString();
@@ -353,7 +354,13 @@ namespace CEIHaryana.SiteOwnerPages
                 {
 
                 }
-                
+                }
+                else
+                {
+                    string message = "Please fill form Correctly";
+                    throw new Exception(message);
+                }
+
             }
             catch (Exception ex)
             {
