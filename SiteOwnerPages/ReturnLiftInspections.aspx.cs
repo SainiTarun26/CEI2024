@@ -390,9 +390,9 @@ namespace CEIHaryana.SiteOwnerPages
                     dta = CEI.CalculateRows(lblTypeofinstallation.Text.Trim(), lblIntimationId.Text.Trim(), InspectionIds, lblCount.Text.Trim());
                     string Result = dta.Rows[0]["Result"].ToString();
                     LinkButton linkButton5 = (LinkButton)e.Row.FindControl("LinkButton5");
-                   
-                        if (Result == "Greater")
-                    { 
+
+                    if (Result == "Greater")
+                    {
                         // Hide LinkButton5 if OldTestReportId is null or empty
                         linkButton5.Text = "Created";
                         linkButton5.Enabled = false;
@@ -670,12 +670,15 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
+                Button btn = sender as Button;
+                GridViewRow row = btn.NamingContainer as GridViewRow;
                 InspectionId = int.Parse(Session["InspectionId"].ToString());
                 string Data = string.Empty;
                 DataTable ds = new DataTable();
                 if (Session["TypeOfInspection"].ToString() == "New" && Session["ReturnedValue"].ToString() == "1")
                 {
-
+                    //LinkButton linkButton5 = (LinkButton)row.FindControl("linkButton5");
+                    //linkButton5.Text = "Old Test Report";
                     ds = CEI.CheckReturnValue(InspectionId);
                     Data = ds.Rows[0]["Typs"].ToString();
                 }
