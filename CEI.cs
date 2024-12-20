@@ -2632,6 +2632,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsByPanNumberId", PANNumber);
         }
+        public DataSet GetDetailsByPanNumberIdLift(string PANNumber)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsByPanNumberIdLift", PANNumber);
+        }
         #region Insert New user data Data
         public void InserNewUserData(string ApplicationFor, string Name, string Age, string CalculatedAge, string FatherName,
             string gender, string aadhar, string Address, string District, string State, string PinCode, string PhoneNo, string Email,
@@ -8836,8 +8840,8 @@ SqlTransaction transaction)
             }
         }
         public void InstallationApproval_Lift_New(string InspectionID, string TestReportId, string InstallationType, string StaffId, string InspectionType, string RegistrationNo, string Division, string Make, string LiftSrNo,
-string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, string SiteAddress, string District, DateTime Current_ChallanDate,
-SqlTransaction transaction)
+ string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, string SiteAddress, string District, DateTime Current_ChallanDate,
+ SqlTransaction transaction)
         {
             try
             {
@@ -8876,6 +8880,12 @@ SqlTransaction transaction)
 
                 //throw;
             }
+        }
+
+        public void UploadDocumentforLiftReturnedInspectionLift(string InspectionId, string InstallationType, string DocumentID,
+                               string DocSaveName, string FileName, string FilePath, string CreatedBy)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertInspectionAttachmentsLift", InspectionId, InstallationType, DocumentID, DocSaveName, FileName, FilePath, CreatedBy);
         }
     }
 }

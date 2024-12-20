@@ -469,7 +469,7 @@
                                             Serial No.
                                             <samp style="color: red">* </samp>
                                         </label>
-                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSerialNo" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSerialNo" MaxLength="20" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator79" runat="server" ControlToValidate="txtSerialNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Date of Erection</asp:RequiredFieldValidator>
                                         <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
                                     </div>

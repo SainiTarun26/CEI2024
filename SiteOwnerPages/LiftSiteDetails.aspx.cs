@@ -59,7 +59,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             string PANNumber = Session["SiteOwnerId"].ToString();
             DataSet ds = new DataSet();
-            ds = CEI.GetDetailsByPanNumberId(PANNumber);
+            ds = CEI.GetDetailsByPanNumberIdLift(PANNumber);
             if (ds.Tables[0].Rows.Count > 0)
             {
                 DivOtherDepartment.Visible = false;
