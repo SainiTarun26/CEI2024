@@ -28,8 +28,8 @@
     width: 46% !important;
 }*/
         img#Gridview1_ImgSignature_0 {
-            height: 90px;
-            width: 300px;
+            height: 70px;
+            width: 150px;
         }
 
         th {
@@ -154,16 +154,17 @@
         .p1 {
             font-family: 'Cedarville Cursive', cursive;
         }
-        th {
-    width: 1% !important;
-    text-align:center;
-    font-size:21px;
-}
-        td {
-    font-size: 21px;
-        text-align: center;
-}
 
+        th {
+            width: 1% !important;
+            text-align: center;
+            font-size: 21px;
+        }
+
+        td {
+            font-size: 21px;
+            /*  text-align: center;*/
+        }
     </style>
     <%--<script>
 
@@ -224,7 +225,7 @@
             textbox.value = lines.join('\n');
         }
     </script>
-     <script>
+    <script>
         // Detect when the print dialog is closed (whether by printing or canceling)
         window.onafterprint = function () {
             // Delay execution to ensure the print dialog is fully closed
@@ -275,9 +276,9 @@
                                     </h6>
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center;">[See rule 4 (2)]
                                     </h6>
-                                    <h6 runat="server" id="txtLift"  class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center; text-decoration: underline;">Registration of Lift
+                                    <h6 runat="server" id="txtLift" class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center; text-decoration: underline;">Registration of Lift
                                     </h6>
-                                 <%--   <h6 runat="server" id="txtEscalator"  class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center; text-decoration: underline;">Registration of Escalator--%>
+                                    <%--   <h6 runat="server" id="txtEscalator"  class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center; text-decoration: underline;">Registration of Escalator--%>
                                     </h6>
                                 </div>
                             </div>
@@ -355,13 +356,13 @@
                                             <td class="textbold">
                                                 <asp:Label ID="lblCapacity" runat="server" Text="Label"></asp:Label></td>
                                         </tr>
-                                         <tr>
-     <td class="tableid textbold">(iv)</td>
-     <td>Date of Erection</td>
-     <td class="textbold">:-</td>
-     <td class="textbold">
-         <asp:Label ID="lblErectionDate" runat="server" Text="Label"></asp:Label></td>
- </tr>
+                                        <tr style="border-bottom: 1px solid #dee2e6;">
+                                            <td class="tableid textbold">(iv)</td>
+                                            <td>Date of Erection</td>
+                                            <td class="textbold">:-</td>
+                                            <td class="textbold">
+                                                <asp:Label ID="lblErectionDate" runat="server" Text="Label"></asp:Label></td>
+                                        </tr>
                                     </table>
 
                                 </div>
@@ -413,23 +414,35 @@
                 <%#Container.DataItemIndex+1 %>
             </ItemTemplate>
         </asp:TemplateField>--%>
-                                            <asp:BoundField DataField="RenewalDate" HeaderText="Renewal Date">
-                                                <HeaderStyle Horizontalalign="center" CssClass="headercolor" />
-                                                <ItemStyle Horizontalalign="center" />
-                                            </asp:BoundField>
+                                            <asp:TemplateField HeaderText="Renewal Date">
+    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="headercolor" />
+    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="itemcenter" />
+    <HeaderTemplate>
+        Renewal Date
+    </HeaderTemplate>
+    <ItemTemplate>
+                <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
+
+        <%# Eval("RenewalDate") %>
+                    </div>
+    </ItemTemplate>
+</asp:TemplateField>
+
+
 
                                             <asp:BoundField DataField="ExpiryDate" HeaderText="Expiry Date">
-                                                <HeaderStyle Horizontalalign="center" CssClass="headercolor" />
-                                                <ItemStyle Horizontalalign="center" />
+                                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="center" />
                                             </asp:BoundField>
-                                            <asp:TemplateField HeaderText="Signature" >
-                                                <ItemTemplate>
-                                                    <div style="display: inline-block; width: 30% !important;">
-                                                        <asp:Image ID="ImgSignature" runat="server"
-                                                            ImageUrl='<%# "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) %>' />
-                                                    </div>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Signature">
+    <ItemTemplate>
+        <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
+            <asp:Image ID="ImgSignature" runat="server"
+                ImageUrl='<%# "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) %>' />
+        </div>
+    </ItemTemplate>
+</asp:TemplateField>
+
 
 
                                         </Columns>

@@ -28,9 +28,9 @@
     width: 46% !important;
 }*/
         img#Gridview1_ImgSignature_0 {
-            height: 90px;
-            width: 300px;
-        }
+     height: 70px;
+     width: 150px;
+ }
 
         th {
             width: 45%;
@@ -133,7 +133,9 @@
             vertical-align: middle;
             border-style: none;
         }
-
+        td {
+    text-align: justify !important;
+}
         td.textbold {
             font-weight: bold;
         }
@@ -162,6 +164,9 @@
         td {
     font-size: 21px;
         text-align: center;
+}
+        .center-align {
+    text-align: center !important; /* Ensures centering overrides conflicting styles */
 }
 
     </style>
@@ -394,7 +399,7 @@
                                 <div class="col-md-12">
 
 
-                                    <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="10" OnRowDataBound="Gridview1_RowDataBound">
+                                                                        <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="10" OnRowDataBound="Gridview1_RowDataBound">
                                         <HeaderStyle BackColor="#B7E2F0" />
                                         <Columns>
                                             <asp:TemplateField HeaderText="Id" Visible="False">
@@ -410,23 +415,36 @@
                 <%#Container.DataItemIndex+1 %>
             </ItemTemplate>
         </asp:TemplateField>--%>
-                                            <asp:BoundField DataField="RenewalDate" HeaderText="Renewal Date">
-                                                <HeaderStyle Horizontalalign="center" CssClass="headercolor" />
-                                                <ItemStyle Horizontalalign="center" />
-                                            </asp:BoundField>
+                                            <asp:TemplateField HeaderText="Renewal Date">
+    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="headercolor" />
+    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="itemcenter" />
+    <HeaderTemplate>
+        Renewal Date
+    </HeaderTemplate>
+    <ItemTemplate>
+                <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
 
-                                            <asp:BoundField DataField="ExpiryDate" HeaderText="Expiry Date">
-                                                <HeaderStyle Horizontalalign="center" CssClass="headercolor" />
-                                                <ItemStyle Horizontalalign="center" />
-                                            </asp:BoundField>
-                                            <asp:TemplateField HeaderText="Signature" >
-                                                <ItemTemplate>
-                                                    <div style="display: inline-block; width: 30% !important;">
-                                                        <asp:Image ID="ImgSignature" runat="server"
-                                                            ImageUrl='<%# "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) %>' />
-                                                    </div>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
+        <%# Eval("RenewalDate") %>
+                    </div>
+    </ItemTemplate>
+</asp:TemplateField>
+
+
+
+                                           <asp:BoundField DataField="ExpiryDate" HeaderText="Expiry Date">
+    <HeaderStyle CssClass="headercolor center-align" />
+    <ItemStyle CssClass="center-align" />
+</asp:BoundField>
+
+                                            <asp:TemplateField HeaderText="Signature">
+    <ItemTemplate>
+        <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
+            <asp:Image ID="ImgSignature" runat="server"
+                ImageUrl='<%# "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) %>' />
+        </div>
+    </ItemTemplate>
+</asp:TemplateField>
+
 
 
                                         </Columns>
