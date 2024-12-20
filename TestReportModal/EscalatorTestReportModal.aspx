@@ -2445,7 +2445,7 @@
                                                     Date of Erection
                                      
                                                 </label>
-                                                <asp:TextBox ReadOnly="true" class="form-control" Type="Date" AutoPostBack="true" ID="txtErectionDate" MaxLength="10" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox ReadOnly="true" class="form-control" AutoPostBack="true" ID="txtErectionDate" MaxLength="10" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                 <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
                                             </div>
                                             <div class="col-md-4">
@@ -2730,9 +2730,9 @@
     <asp:RequiredFieldValidator ID="RequiredFieldValidator78" runat="server" ControlToValidate="txtEarthPhase" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Installation</asp:RequiredFieldValidator>
 </div>
                                     </div>
-
+                                    <div id="InDPO1" runat="server">
                                     <h8 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Between Phases</h8>
-                                    <div class="row" id="InDPO1" runat="server" style="margin-top: 10px;">
+                                    <div class="row"  style="margin-top: 10px;">
                                         <div class="col-md-4" runat="server">
                                             <label for="Name">
                                                 Red Phase – Yellow Phase(in Mohms) 
@@ -2755,8 +2755,10 @@
                                             <asp:TextBox ReadOnly="true" class="form-control" ID="txtYellowBlue" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="7" placeholder="" autocomplete="off" TabIndex="42" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                     </div>
+                                        </div>
+                                    <div  id="InDPO2" runat="server" >
                                     <h8 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Between Each Phase and Earth</h8>
-                                    <div class="row" id="InDPO2" runat="server" style="margin-top: 10px;">
+                                    <div class="row" style="margin-top: 10px;">
                                         <div class="col-md-4" runat="server">
                                             <label for="Name">
                                                 Red Phase – Earth Wire(in Mohms) 
@@ -2779,7 +2781,7 @@
                                             <asp:TextBox ReadOnly="true" class="form-control" ID="txtBlueEarth" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="7" placeholder="" autocomplete="off" TabIndex="45" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                     </div>
-
+                                        </div>
                                 </div>
 
                             </div>

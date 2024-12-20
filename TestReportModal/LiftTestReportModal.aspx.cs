@@ -172,10 +172,12 @@ namespace CEIHaryana.TestReportModal
                 txtNeutralPhase.Text = ds.Tables[0].Rows[0]["NeutralandPhaseohms"].ToString();
                 txtEarthPhase.Text = ds.Tables[0].Rows[0]["EarthandPhasemohms"].ToString();
                 txtEarthing.Text = ds.Tables[0].Rows[0]["NumberofEarthing"].ToString();
-                if (TextBox4.Text.Trim() =="DP")
+                if (TextBox4.Text.Trim() == "DP")
                 {
                     TPN1.Visible = true;
                     TPN2.Visible = true;
+
+                    InDPO.Visible = false;
                 }
                 else
                 {

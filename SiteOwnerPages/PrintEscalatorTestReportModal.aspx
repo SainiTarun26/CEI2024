@@ -310,9 +310,8 @@
                                     </div>
                                 </div>
                                 <div class="card" id="inspection-card" style="margin-top: 5%;">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Application Details</u></h6>
-                                    <div class="card" id="inspection-card-child1">
-                                        <div class="row">
+                                     <div class="card" id="inspection-card-child1">
+                                        <div class="row" runat="server" visible="false">
                                             <div class="col-md-12">
                                                 <div class="table-responsive pt-3" id="Installation" runat="server">
                                                     <table class="table table-bordered table-striped">
@@ -754,8 +753,10 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator78" runat="server" ControlToValidate="txtEarthPhase" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Installation</asp:RequiredFieldValidator>
                                         </div>
                                     </div>
+
+                                        <div id="InDPO1" runat="server">
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; margin-top: 25px; margin-bottom: -50px !important; margin-left: 15px;">Between Phases</h6>
-                                    <div class="row" id="InDPO1" runat="server" style="margin-left: 0px;">
+                                    <div class="row"  style="margin-left: 0px;">
                                         <div class="col-4">
                                             <label for="Name">
                                                 Red Phase - Yellow Phase (in Mohms.)
@@ -775,9 +776,11 @@
                                             <asp:TextBox class="form-control" ID="txtYellowBlue" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                     </div>
+                                        </div>
+                                    <div id="InDPO2" runat="server">
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; margin-top: 25px; margin-bottom: -50px !important; margin-left: 15px;">Between Each Phase and Earth</h6>
 
-                                    <div class="row" id="InDPO2" runat="server" style="margin-left: 0px;">
+                                    <div class="row"  style="margin-left: 0px;">
                                         <div class="col-4">
                                             <label for="Name">
                                                 Red Phase - Earth Wire (in Mohms.)
@@ -797,6 +800,7 @@
                                             <asp:TextBox class="form-control" ID="txtBlueEarth" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                     </div>
+                                        </div>
                                 </div>
                             </div>
                             <div class="page4">

@@ -164,17 +164,18 @@ namespace CEIHaryana.SiteOwnerPages
                 //txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
                 if (TextBox4.Text.Trim() == "DP")
                 {
+                    TPN1.Visible = true;
+                    TPN2.Visible = true;
+
+                    InDPO1.Visible = false;
+                    InDPO2.Visible = false;
+                }
+                else
+                {
                     TPN1.Visible = false;
                     TPN2.Visible = false;
                     InDPO1.Visible = true;
                     InDPO2.Visible = true;
-                }
-                else
-                {
-                    TPN1.Visible = true;
-                    TPN2.Visible = true;
-                    InDPO1.Visible = false;
-                    InDPO2.Visible = false;
                 }
                 GeneratingEarthing.Visible = true;
                 txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();

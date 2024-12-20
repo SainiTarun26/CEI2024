@@ -246,6 +246,8 @@
  
                 <div id="FeesDetails" runat="server">
                       <h7 class="card-title fw-semibold mb-4">Inspection Details</h7>
+                                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+
                                                                   <asp:GridView ID="GridView7" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowDataBound="GridView3_RowDataBound" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
     <HeaderStyle BackColor="#B7E2F0" />
     <Columns>
@@ -296,6 +298,9 @@
     </Columns>
     <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
 </asp:GridView>
+
+                                            </div>
+
                     <h7 class="card-title fw-semibold mb-4">Component Details</h7>
                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                         
@@ -522,7 +527,14 @@
                                         <%-- <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document"  OnRowCommand="Grd_Document_RowCommand"  runat="server" AutoGenerateColumns="false">--%>
                                         <PagerStyle CssClass="pagination-ys" />
                                         <Columns>
-                                            <asp:BoundField DataField="SNo" HeaderText="SNo" />
+
+                                            <asp:TemplateField HeaderText="SNo">
+                                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                <ItemStyle Width="5%" />
+                                                <ItemTemplate>
+                                                    <%#Container.DataItemIndex+1 %>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                             <%--  <asp:BoundField DataField="DocumentID" HeaderText="DocumentID" />--%>
                                             <asp:BoundField DataField="DocumentName" HeaderText="DocumentName">
                                                 <HeaderStyle HorizontalAlign="Left" Width="70%" CssClass="headercolor leftalign" />

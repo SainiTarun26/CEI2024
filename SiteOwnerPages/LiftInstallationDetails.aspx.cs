@@ -125,11 +125,11 @@ namespace CEIHaryana.SiteOwnerPages
                                 Label lblIntimations = (Label)row.FindControl("lblIntimations");
                                 Session["Intimations"] = lblIntimations.Text.Trim();
                                 Label lblNoOfInstallations = (Label)row.FindControl("lblNoOfInstallations");
-                                Session["NoOfInstallations"] = lblNoOfInstallations.Text.Trim();
                                 Session["NoOfInstallation"] = lblNoOfInstallations.Text.Trim();
                                 Label lblTotalInstallation = (Label)row.FindControl("lblTotalInstallation");
                                 Session["TotalInstallation"] = lblTotalInstallation.Text.Trim();
-                                Label lblID = (Label)row.FindControl("lblID");
+                            //Session["TotalInstallation"] = lblTotalInstallation.Text.Trim();
+                            Label lblID = (Label)row.FindControl("lblID");
                                 Session["IHID"] = lblID.Text.Trim();
                                 Session["IHIDs"] = lblID.Text.Trim();                           //////////////
                                 Label lblVoltageLevel = (Label)row.FindControl("lblVoltageLevel");
@@ -175,7 +175,7 @@ namespace CEIHaryana.SiteOwnerPages
                             Session["NoOfInstallations"] = lblNoOfInstallations.Text.Trim();
                             Session["NoOfInstallation"] = lblNoOfInstallations.Text.Trim();
                             Label lblTotalInstallation = (Label)row.FindControl("lblTotalInstallation");
-                            Session["TotalInstallation"] = lblNoOfInstallations.Text.Trim();
+                            Session["TotalInstallation"] = lblTotalInstallation.Text.Trim();
                             Label lblID = (Label)row.FindControl("lblID");
                             Session["IHID"] = lblID.Text.Trim();
                             Session["IHIDs"] = lblID.Text.Trim();                           //////////////
