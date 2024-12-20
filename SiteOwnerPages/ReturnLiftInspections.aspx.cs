@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -27,7 +28,50 @@ namespace CEIHaryana.SiteOwnerPages
             {
 
                 FetchDetails();
+                GetTestReportDataIfPeriodic();
+                GridView7.Visible = true;
+
             }
+        }
+        protected void GridView3_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                if (status == "RETURN")
+                {
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+                }
+            }
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
+            }
+        }
+        private void GetTestReportDataIfPeriodic()
+        {
+            try
+            {
+                ID = Session["InspectionId"].ToString();
+                DataTable ds = new DataTable();
+                ds = CEI.GetReturnedInspectionData(int.Parse(ID));
+                string TestRportId = string.Empty;
+                if (ds != null && ds.Rows.Count > 0)
+                {
+
+                    GridView7.DataSource = ds;
+                    GridView7.DataBind();
+                }
+                else
+                {
+                    GridView7.DataSource = null;
+                    GridView7.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                ds.Dispose();
+            }
+            catch (Exception ex) { }
         }
         public void FetchDetails()
         {

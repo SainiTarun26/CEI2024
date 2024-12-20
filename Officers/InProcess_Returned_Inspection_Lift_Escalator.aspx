@@ -515,7 +515,7 @@
             </div>
               
             <div class="card" style="margin-top: 15px; padding: 11px; margin-bottom: 20px; margin-left: -15px; margin-right: -15px;" id="DivViewTRinMultipleCaseNew" runat="server" visible="false">
-                <asp:GridView ID="Grid_MultipleInspectionTR" CssClass="table table-bordered table-striped table-responsive" AutoPostBack="true"  runat="server" AutoGenerateColumns="false" OnRowDataBound="Grid_MultipleInspectionTR_RowDataBound">
+                <asp:GridView ID="Grid_MultipleInspectionTR" CssClass="table table-bordered table-striped table-responsive" AutoPostBack="true"  runat="server" AutoGenerateColumns="false">
                     <HeaderStyle BackColor="#B7E2F0" />
                     <Columns>
                         <asp:TemplateField HeaderText="SNo">
@@ -720,6 +720,14 @@
             }
         }
     </script>
+     <script type="text/javascript">
+ function alertWithRedirectdata2(Message) {
+     if (confirm('Inspection Request has been Rejected' + Message)) {
+         window.location.href = "/Officers/InProcessRequest.aspx";
+     } else {
+     }
+ }
+     </script>
     <script>
         function closeModal() {
             $('#modal1').modal('hide');

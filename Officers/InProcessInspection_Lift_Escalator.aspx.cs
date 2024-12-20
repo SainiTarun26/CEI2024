@@ -576,8 +576,8 @@ namespace CEIHaryana.Officers
                                 }
                                else if (ApprovedorReject == "Rejected")
                                 {
-                                  
-                                   ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Request has been Rejected.');", true);
+                                    transaction.Commit();
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata2", true);
                                 }
                            
                                
@@ -854,7 +854,7 @@ namespace CEIHaryana.Officers
                         else
                         {
                             LnkDocumemtPath2.Visible = true;
-                            LnkDocumemtPath2.Text = "Click here to view document";
+                          //  LnkDocumemtPath2.Text = "Click here to view document";
 
                         }
                     }

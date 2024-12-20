@@ -557,8 +557,11 @@ namespace CEIHaryana.Officers
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
                                 }
 
-
-
+                                else if (ApprovedorReject == "Rejected")
+                                {
+                                    transaction.Commit();
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata2", true);
+                                }
                                 else
                                 {
                                     //transaction.Commit();
@@ -897,7 +900,7 @@ namespace CEIHaryana.Officers
             }
         }
 
-        //protected void Grid_MultipleInspectionTR_RowDataBound(object sender, GridViewRowEventArgs e)
+        //protected void lnkRedirectTR(object sender, GridViewRowEventArgs e)
         //{
         //    try
         //    {
@@ -1015,28 +1018,28 @@ namespace CEIHaryana.Officers
             catch (Exception ex) { }
         }
 
-        protected void Grid_MultipleInspectionTR_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            try
-            {
-                if (e.Row.RowType == DataControlRowType.DataRow)
-                {
-                    Label lblOldTestReportId = (Label)e.Row.FindControl("LblOldTestReportId");
-                    LinkButton lnkRedirect = (LinkButton)e.Row.FindControl("lnkRedirectTR1");
+        //protected void Grid_MultipleInspectionTR_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (e.Row.RowType == DataControlRowType.DataRow)
+        //        {
+        //            Label lblOldTestReportId = (Label)e.Row.FindControl("LblOldTestReportId");
+        //            LinkButton lnkRedirect = (LinkButton)e.Row.FindControl("lnkRedirectTR1");
 
-                    // Check if the OldTestReportId is null or empty
-                    if (string.IsNullOrEmpty(lblOldTestReportId.Text))
-                    {
-                        lnkRedirect.Visible = false;
-                    }
-                    else
-                    {
-                        lnkRedirect.Visible = true;
-                    }
-                }
-            }
-            catch (Exception ex) { }
-        }
+        //            // Check if the OldTestReportId is null or empty
+        //            if (string.IsNullOrEmpty(lblOldTestReportId.Text))
+        //            {
+        //                lnkRedirect.Visible = false;
+        //            }
+        //            else
+        //            {
+        //                lnkRedirect.Visible = true;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex) { }
+        //}
 
         protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
         {

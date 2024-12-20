@@ -242,10 +242,64 @@
 
             <div class="card-body">
                 <div class="card-title" style="text-align: center; font-size: 23px !important;">Returned Request for Inspection For Lift</div>
-
+                 
+ 
                 <div id="FeesDetails" runat="server">
+                      <h7 class="card-title fw-semibold mb-4">Inspection Details</h7>
+                                                                  <asp:GridView ID="GridView7" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowDataBound="GridView3_RowDataBound" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+    <HeaderStyle BackColor="#B7E2F0" />
+    <Columns>
+        <asp:TemplateField HeaderText="SNo">
+            <HeaderStyle Width="5%" CssClass="headercolor" />
+            <ItemStyle Width="5%" />
+            <ItemTemplate>
+                <%#Container.DataItemIndex+1 %>
+            </ItemTemplate>
+        </asp:TemplateField>
+        <asp:BoundField DataField="Installationfor" HeaderText="Installation Type">
+            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="Left" Width="15%" />
+        </asp:BoundField>
+        <asp:BoundField DataField="Status" HeaderText="Status" Visible="false">
+            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="Left" Width="15%" />
+        </asp:BoundField>
+        <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
+            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="Left" Width="15%" />
+        </asp:BoundField>
+        <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
+            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="Left" Width="15%" />
+        </asp:BoundField>
+
+        <asp:BoundField DataField="SubmittedDate" HeaderText="Submitted Date">
+            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="Left" Width="15%" />
+        </asp:BoundField>
+        <asp:BoundField DataField="InspectionRemarks" HeaderText="Inspection Remarks" Visible="false">
+            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="Left" Width="15%" />
+        </asp:BoundField>
+        <asp:BoundField DataField="ReturnDate" HeaderText="Return Date">
+            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="Left" Width="15%" />
+        </asp:BoundField>
+        <asp:BoundField DataField="ReasonForReturn" HeaderText="Return Reason">
+            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="Left" Width="15%" />
+        </asp:BoundField>
+        <asp:BoundField DataField="ReturnBased" HeaderText="Return Based">
+            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="Left" Width="15%" />
+        </asp:BoundField>
+    </Columns>
+    <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
+</asp:GridView>
                     <h7 class="card-title fw-semibold mb-4">Component Details</h7>
                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                        
+                                             
                         <asp:GridView class="table-responsive table table-hover table-striped" Autopostback="true" ID="GridView1" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" runat="server" Width="100%"
                             AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                             <PagerStyle CssClass="pagination-ys" />
@@ -378,7 +432,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12" style="text-align:center;">
-                           <asp:Button type="Back" ID="Button1" Text="Verify" runat="server" Visible="true" class="btn btn-primary mr-2" OnClick="Button1_Click" />
+                           <asp:Button type="Back" ID="Button1" Text="Resubmit" runat="server" Visible="true" class="btn btn-primary mr-2" OnClick="Button1_Click" />
 
                         </div>
                     </div>
