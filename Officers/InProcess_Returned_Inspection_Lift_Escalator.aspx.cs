@@ -26,10 +26,10 @@ namespace CEIHaryana.Officers
             {
                 if (!IsPostBack)
                 {
-                    if (Request.UrlReferrer != null)
-                    {
-                        Session["PreviousPage"] = Request.UrlReferrer.ToString();
-                    }
+                    //if (Request.UrlReferrer != null)
+                    //{
+                    //    Session["PreviousPage"] = Request.UrlReferrer.ToString();
+                    //}
                     //     Session["StaffID"] = "XEN_HI";
                     //Session["InProcessInspectionId"] = "1002603";
                     if (Session["StaffID"] != null && Session["StaffID"].ToString() != "")
@@ -76,7 +76,7 @@ namespace CEIHaryana.Officers
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
                     Session["InstallationType"] = txtWorkType.Text;
-
+                   
                     txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                     txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
                     txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
@@ -145,7 +145,7 @@ namespace CEIHaryana.Officers
                     }
 
                     string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
-
+                    Session["ApplicationStatus"] = Status;
                     if (Status == "Approved")
                     {
                         InspectionDate.Visible = false;
@@ -203,7 +203,7 @@ namespace CEIHaryana.Officers
                         ddlReview.Attributes.Add("disabled", "true");
 
                         divTestReportAttachment.Visible = true;
-
+                        
 
 
 
@@ -226,6 +226,7 @@ namespace CEIHaryana.Officers
                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                     txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                   
                     if (txtAmount.Text == "0")
                     {
                         TranscationDetails.Visible = false;
@@ -253,7 +254,7 @@ namespace CEIHaryana.Officers
                     GridBindDocument();
 
                     string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
-
+                    Session["ApplicationStatus"] = Status;
                     if (Status == "Approved")
                     {
                         InspectionDate.Visible = false;
@@ -295,6 +296,7 @@ namespace CEIHaryana.Officers
                         ApprovalRequired.Visible = false;
                         btnSubmit.Visible = false;
                         ddlReview.Attributes.Add("disabled", "true");
+                        
                     }
                 }
             }
@@ -520,7 +522,7 @@ namespace CEIHaryana.Officers
                                             DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
 
 
-                                            CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
+                                            CEI.InstallationApproval_Lift_New(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
                                              lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), transaction);
 
                                         }
@@ -733,13 +735,19 @@ namespace CEIHaryana.Officers
             // Response.Redirect("/Officers/InProcessRequest.aspx", false);
             try
             {
-                string previousPageUrl = Session["PreviousPage"] as string;
-                if (!string.IsNullOrEmpty(previousPageUrl))
+                string Status = Session["ApplicationStatus"].ToString();
                 {
+                    if (Status == "Approved" || Status == "Rejected" || Status == "Return")
+                    {
+                        //Response.Redirect("/Officers/InProcessRequest.aspx", false);
+                        Response.Redirect("/Officers/AcceptedOrReject.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("/Officers/InProcessRequest.aspx", false);
 
-                    Response.Redirect(previousPageUrl, false);
-                    Session["PreviousPage"] = null;
-
+                    }
+                    Session["ApplicationStatus"] = "";
                 }
             }
             catch { }
@@ -1064,6 +1072,26 @@ namespace CEIHaryana.Officers
             catch
             {
 
+            }
+        }
+
+        protected void Grid_MultipleInspectionTR_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+
+                Label lblOldTestReportId = (Label)e.Row.FindControl("LblOldTestReportId");
+                LinkButton lnkRedirect = (LinkButton)e.Row.FindControl("lnkRedirectTR1");
+
+                
+                if (string.IsNullOrEmpty(lblOldTestReportId.Text))
+                {
+                    lnkRedirect.Visible = false;
+                }
+                else
+                {
+                    lnkRedirect.Visible = true;
+                }
             }
         }
 

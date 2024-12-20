@@ -335,6 +335,10 @@
   <label>Last Approval Date</label>
   <asp:TextBox class="form-control" ID="TxtApprovalDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
      </div>
+                                                          <%--    <div  id="Type"   class="col-md-4" runat="server" visible="false">
+<label>Type Of Lift</label>
+<asp:TextBox class="form-control" ID="txtInspectionCount" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+   </div>--%>
                  <%--       <div  id="Srno"   class="col-md-4" runat="server" visible="false">
   <label>Lift Sr No</label>
   <asp:TextBox class="form-control" ID="txtLiftSrNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -515,7 +519,7 @@
             </div>
               
             <div class="card" style="margin-top: 15px; padding: 11px; margin-bottom: 20px; margin-left: -15px; margin-right: -15px;" id="DivViewTRinMultipleCaseNew" runat="server" visible="false">
-                <asp:GridView ID="Grid_MultipleInspectionTR" CssClass="table table-bordered table-striped table-responsive" AutoPostBack="true"  runat="server" AutoGenerateColumns="false">
+                <asp:GridView ID="Grid_MultipleInspectionTR" CssClass="table table-bordered table-striped table-responsive" AutoPostBack="true"  runat="server" AutoGenerateColumns="false" OnRowDataBound="Grid_MultipleInspectionTR_RowDataBound">
                     <HeaderStyle BackColor="#B7E2F0" />
                     <Columns>
                         <asp:TemplateField HeaderText="SNo">

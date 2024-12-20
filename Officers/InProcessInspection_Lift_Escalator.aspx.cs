@@ -36,10 +36,10 @@ namespace CEIHaryana.Officers
                 {
                     if (!IsPostBack)
                     {
-                    if (Request.UrlReferrer != null)
-                    {
-                        Session["PreviousPage"] = Request.UrlReferrer.ToString();
-                    }
+                    //if (Request.UrlReferrer != null)
+                    //{
+                    //    Session["PreviousPage"] = Request.UrlReferrer.ToString();
+                    //}
                     //     Session["StaffID"] = "XEN_HI";
                     //Session["InProcessInspectionId"] = "1002603";
                     if (Session["StaffID"] != null && Session["StaffID"].ToString() != "")
@@ -204,7 +204,7 @@ namespace CEIHaryana.Officers
                         }
 
                         string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
-
+                    Session["ApplicationStatus"] = Status;
                         if (Status == "Approved")
                         {
                             InspectionDate.Visible = false;
@@ -314,8 +314,8 @@ namespace CEIHaryana.Officers
                         GridBindDocument();
 
                         string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
-
-                        if (Status == "Approved")
+                       Session["ApplicationStatus"] = Status;
+                    if (Status == "Approved")
                         {
                             InspectionDate.Visible = false;
                           
@@ -538,7 +538,7 @@ namespace CEIHaryana.Officers
                                             DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
 
 
-                                            CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
+                                            CEI.InstallationApproval_Lift_New(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text,  TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
                                               lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), transaction);
 
                                         }
@@ -753,14 +753,28 @@ namespace CEIHaryana.Officers
             // Response.Redirect("/Officers/InProcessRequest.aspx", false);
             try
             {
-                string previousPageUrl = Session["PreviousPage"] as string;
-                if (!string.IsNullOrEmpty(previousPageUrl))
+                string Status = Session["ApplicationStatus"].ToString();
                 {
+                    if(Status == "Approved" || Status == "Rejected" || Status == "Return")
+                    {
+                        //Response.Redirect("/Officers/InProcessRequest.aspx", false);
+                        Response.Redirect("/Officers/AcceptedOrReject.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("/Officers/InProcessRequest.aspx", false);
 
-                    Response.Redirect(previousPageUrl, false);
-                    Session["PreviousPage"] = null;
-
+                    }
+                    Session["ApplicationStatus"] = "";
                 }
+                //string previousPageUrl = Session["PreviousPage"] as string;
+                //if (!string.IsNullOrEmpty(previousPageUrl))
+                //{
+
+                //    Response.Redirect(previousPageUrl, false);
+                //    Session["PreviousPage"] = null;
+
+                //}
             }
             catch { }
         }
@@ -796,9 +810,9 @@ namespace CEIHaryana.Officers
                 Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
                 string installationName = lblInstallationName.Text.Trim();
                 Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
-                Label LblOldTestReportId = (Label)row.FindControl("LblOldTestReportId");
+                Label LblTestReportId = (Label)row.FindControl("lblTestReport");
                 Session["RegistrationNo"] = LblRegistrationNo.Text;
-                Session["TestReportID"] = LblOldTestReportId.Text;
+                Session["TestReportID"] = LblTestReportId.Text;
 
                 if (lblInstallationName != null)
                 {
