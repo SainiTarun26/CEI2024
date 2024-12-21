@@ -344,7 +344,7 @@
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
                                 </asp:BoundField>
 
-                                <asp:TemplateField HeaderText="Application">
+                                <asp:TemplateField HeaderText="Test Report">
                                     <HeaderStyle Width="20%" CssClass="headercolor" />
                                     <ItemStyle Width="20%" />
                                     <ItemTemplate>
@@ -642,4 +642,12 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        function disableFutureDates() {
+            // Get today's date in yyyy-mm-dd format
+            var today = new Date().toISOString().split('T')[0];
+            // Set the max attribute of the txtDateofIntialissue TextBox to today's date
+            document.getElementById('<%=txttransactionDate.ClientID %>').setAttribute('max', today);
+        }
+    </script>
 </asp:Content>

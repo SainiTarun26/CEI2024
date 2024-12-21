@@ -338,7 +338,7 @@
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
                           
-                            <asp:TemplateField HeaderText="Application">
+                            <asp:TemplateField HeaderText="Test Report">
                                 <HeaderStyle Width="20%" CssClass="headercolor" />
                                 <ItemStyle Width="20%" />
                                 <ItemTemplate>

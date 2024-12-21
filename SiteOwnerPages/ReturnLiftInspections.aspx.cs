@@ -187,6 +187,7 @@ namespace CEIHaryana.SiteOwnerPages
             if (Session["Amount"].ToString() =="0")
             {
                 PaymentDetails.Visible = false;
+                ChallanDetail.Visible = false;
                 txttransactionDate.Text = dataTable.Rows[0]["TransctionDate"].ToString();
             }
             else
