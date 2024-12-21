@@ -190,6 +190,8 @@ namespace CEIHaryana.SiteOwnerPages
                 if (fileUpload.HasFile)
                 {
                     if (Path.GetExtension(fileUpload.FileName).ToLower() == ".pdf")
+                    
+                    
                     {
 
                         if (fileUpload.PostedFile.ContentLength <= 1048576)
@@ -367,7 +369,10 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch (Exception ex)
             {
-                string script = ex.Message + "alert(\"Please Fill Form Correctly\");";
+
+                 
+
+                    string script = ex.Message + "alert(\"Please Fill Form Correctly\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             }

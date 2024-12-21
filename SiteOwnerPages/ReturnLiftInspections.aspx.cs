@@ -616,7 +616,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                                 fileUpload.PostedFile.SaveAs(filePathInfo2);
 
-                                CEI.UploadDocumentforLiftReturnedInspectionLift(InspectionId, InstallTypes, DocumentID, DocSaveName, fileName, path + fileName, CreatedBy);
+                                CEI.UploadDocumentforLiftReturnedInspectionLift(InspectionId, InstallTypes, DocumentID, DocName, DocSaveName,  path + fileName, CreatedBy);
                                // transaction.Commit();
                             }
                             else
