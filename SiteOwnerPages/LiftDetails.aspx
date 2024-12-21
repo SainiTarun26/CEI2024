@@ -432,7 +432,7 @@
                                             Name of Local Agent
                                             <samp style="color: red">* </samp>
                                         </label>
-                                        <asp:TextBox class="form-control" ID="TxtAgentName"   onpaste="preventPaste(event)" autocomplete="off" MaxLength="50" onKeyPress="return alphabetKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="TxtAgentName" onpaste="preventPaste(event)" autocomplete="off" MaxLength="50" onKeyPress="return alphabetKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TxtAgentName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Local Agent Name</asp:RequiredFieldValidator>
                                         <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
                                     </div>
@@ -450,6 +450,9 @@
                                         </label>
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
                                         <asp:TextBox class="form-control" ID="txtAgentPhone" onpaste="preventPaste(event)" autocomplete="off" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="10" placeholder="" TabIndex="4" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2"
+                                            runat="server" ErrorMessage="Enter valid Phone number" ControlToValidate="txtAgentPhone" ForeColor="Red" SetFocusOnError="true" ValidationGroup="Submit"
+                                            ValidationExpression="^\d{10}$"></asp:RegularExpressionValidator>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtAgentPhone" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Local Agent Contact</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
@@ -905,7 +908,7 @@
                                             Red Phase – Earth Wire(in Mohms)<samp style="color: red">* </samp>
                                         </label>
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-                                        <asp:TextBox class="form-control" ID="txtRedEarth"  onpaste="preventPaste(event)" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="7" placeholder="" autocomplete="off" TabIndex="46" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="txtRedEarth" onpaste="preventPaste(event)" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="7" placeholder="" autocomplete="off" TabIndex="46" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator38" runat="server" ControlToValidate="txtRedEarth" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Phase</asp:RequiredFieldValidator>
                                     </div>
                                     <div class="col-md-4" runat="server">
@@ -1314,7 +1317,7 @@
                         <%--<asp:Button ID="BtnBack" runat="server" Text="Back" Visible="true" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />--%>
                         <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="false" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
                         <asp:Button ID="btnVerify" Text="Verify Details" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" />
-                        <asp:Button ID="btnSubmit" Text="Submit" runat="server"  OnClientClick="focusInvalidField();"  class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
+                        <asp:Button ID="btnSubmit" Text="Submit" runat="server" OnClientClick="focusInvalidField();" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
 
                     </div>
                     <div class="col-md-4">
