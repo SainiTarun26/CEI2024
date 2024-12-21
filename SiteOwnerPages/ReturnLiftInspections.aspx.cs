@@ -185,7 +185,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
 
             }
-            if (Session["Amount"].ToString() =="0")
+            if (Session["Amount"].ToString() =="0" || Session["Amount"].ToString() == "0.00")
             {
                 PaymentDetails.Visible = false;
                 ChallanDetail.Visible = false;
