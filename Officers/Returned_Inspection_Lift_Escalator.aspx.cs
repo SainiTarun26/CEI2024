@@ -83,17 +83,19 @@ namespace CEIHaryana.Officers
                     GridToViewTRinMultipleCaseNew();
                     if (ReturnValue == "1")
                     {
-                        grd_Documemnts.Columns[3].Visible = false;
-                     
+                        // grd_Documemnts.Columns[3].Visible = false;
+                        grd_Documemnts.Columns[4].Visible = false;
+
                     }
                     else if (ReturnValue == "2")
                     {
-                        Grid_MultipleInspectionTR.Columns[4].Visible = false;
+                        //Grid_MultipleInspectionTR.Columns[4].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[5].Visible = false;
                     }
                     else
                     {
-                        grd_Documemnts.Columns[2].Visible = false;
-                        Grid_MultipleInspectionTR.Columns[3].Visible = false;
+                        grd_Documemnts.Columns[4].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[5].Visible = false;
                     }
 
                     string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
@@ -570,6 +572,31 @@ namespace CEIHaryana.Officers
             {
             }
         }
+
+        protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    Label LblPreviousDocument = (Label)e.Row.FindControl("LblPreviousDocument");
+                    LinkButton LnkDocumemtPath = (LinkButton)e.Row.FindControl("LnkDocumemtPath");
+
+                    // Check if the OldTestReportId is null or empty
+                    if (string.IsNullOrEmpty(LblPreviousDocument.Text))
+                    {
+                        LnkDocumemtPath.Visible = false;
+                    }
+                    else
+                    {
+                        LnkDocumemtPath.Visible = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {}
+        }
+
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Officers/NewApplications.aspx", false);

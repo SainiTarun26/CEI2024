@@ -350,20 +350,27 @@
                                      <asp:Label ID="LblOldTestReportId" runat="server" Text='<%#Eval("OldTestReportId") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="View Previous Test Report" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                            <asp:TemplateField HeaderText="Current TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+    <ItemTemplate>
+        <asp:LinkButton ID="lnkRedirectTR" runat="server" Text="View Test Report & Attachments" OnClick="lnkRedirectNewTR_Click1" CommandName="Select" CommandArgument='<%# Eval("TestReportId") %>' />
+    </ItemTemplate>
+    <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+</asp:TemplateField>
+                            <asp:TemplateField HeaderText="Previous TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkRedirectTR1" runat="server" Text="View Test Report & Attachments" OnClick="lnkRedirectPreviousTR_Click" CommandName="Select" CommandArgument='<%# Eval("OldTestReportId") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="View New Test Report" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                            <%--<asp:TemplateField HeaderText="Current TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkRedirectTR" runat="server" Text="View Test Report & Attachments" OnClick="lnkRedirectNewTR_Click1" CommandName="Select" CommandArgument='<%# Eval("TestReportId") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
                         </Columns>
                     </asp:GridView>
                 </div>
@@ -374,7 +381,7 @@
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                 <div class="row">
                     <div class="col-md-12">
-                        <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                        <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" OnRowDataBound="grd_Documemnts_RowDataBound" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
                             <HeaderStyle BackColor="#B7E2F0" />
                             <Columns>
                                 <asp:TemplateField HeaderText="SNo">
@@ -392,6 +399,13 @@
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
+                                  <asp:TemplateField HeaderText="Current Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+      <ItemTemplate>
+          <asp:LinkButton ID="LnkDocumemtPathNew" runat="server" CommandArgument='<%# Bind("CurrentDocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
+      </ItemTemplate>
+      <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+      <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+  </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Previous Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("PreviousDocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
@@ -399,13 +413,20 @@
                                     <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="New Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+
+                               <%-- <asp:TemplateField HeaderText="Current Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LnkDocumemtPathNew" runat="server" CommandArgument='<%# Bind("CurrentDocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                </asp:TemplateField>
+                                </asp:TemplateField>--%>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+    <ItemTemplate>
+        <asp:Label ID="LblCurrentDocument" runat="server" Text='<%#Eval("CurrentDocumentPath") %>'></asp:Label>
+        <asp:Label ID="LblPreviousDocument" runat="server" Text='<%#Eval("PreviousDocumentPath") %>'></asp:Label>
+    </ItemTemplate>
+</asp:TemplateField>
                             </Columns>
                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                         </asp:GridView>

@@ -702,16 +702,16 @@
 
                                             <div class="col-md-6" runat="server" id="DivPancard_TanNo" visible="true">
                                                 <label id="LblPanNumber" runat="server" visible="false" for="PanNumber">
-                                                    PAN Card
+                                                    PAN/TAN Card
                  <samp style="color: red">* </samp>
                                                 </label>
                                                 <label id="LblTanNumber" runat="server" visible="false" for="TanNumber">
                                                     PAN/TAN Number
                                             <samp style="color: red">* </samp>
                                                 </label>
-                                                <asp:TextBox class="form-control" ID="txtPANTan" Visible="false" TabIndex="1" OnTextChanged="txtPANTan_TextChanged" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtPANTan" Visible="false" TabIndex="1" OnTextChanged="txtPANTan_TextChanged" MaxLength="10" oninput="this.value = this.value.toUpperCase();" AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPANTan" ValidationExpression="^[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}$|^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$" ValidationGroup="Submit"
-                                            ErrorMessage="Enter a valid PAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />
+                                                    ErrorMessage="Enter a valid PAN/TAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtPANTan" ErrorMessage="RequiredFieldValidator" SetFocusOnError="true" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                             </div>
                                         </div>
@@ -809,7 +809,7 @@
                                             </div>
                                             <div class="col-md-6" runat="server">
                                                 <label for="Pin">PinCode</label>
-                                                <asp:TextBox class="form-control" ID="txtPin" TabIndex="7" MaxLength="6" onkeydown="return preventEnterSubmit(event)"  onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtPin" TabIndex="7" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server"></asp:TextBox>
                                                 <span id="lblPinError" style="color: red"></span>
                                             </div>
                                         </div>
@@ -819,9 +819,12 @@
                                                     Contact Number
                      <samp style="color: red">* </samp>
                                                 </label>
-                                                <asp:TextBox class="form-control" ID="txtPhone" TabIndex="8" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);"  MaxLength="10" autocomplete="off" runat="server"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtPhone" TabIndex="8" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" MaxLength="10" autocomplete="off" runat="server"></asp:TextBox>
                                                 <span id="lblErrorContect" style="color: red"></span>
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtPhone" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
+                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2"
+                                                    runat="server" ErrorMessage="Enter valid Phone number" ControlToValidate="txtPhone" ForeColor="Red" SetFocusOnError="true" ValidationGroup="Submit"
+                                                    ValidationExpression="^\d{10}$"></asp:RegularExpressionValidator>
                                             </div>
                                             <div class="col-md-6" runat="server" style="margin-top: 20px;">
                                                 <label for="Email">
@@ -931,7 +934,7 @@
         });
     </script> --%>
 
-     <script type="text/javascript">
+    <script type="text/javascript">
         function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode
             if (charCode > 31 && (charCode < 48 || charCode > 57)) {
@@ -954,7 +957,7 @@
             k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
             return (allow.indexOf(String.fromCharCode(k)) != -1);
         }
-     </script>
+    </script>
 
 
 

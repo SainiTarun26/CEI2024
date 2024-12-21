@@ -165,10 +165,11 @@
             background: #9292cc;
             color: white;
         }
-         input[type = radio] {
-     margin-left: 6px!important;
-     margin-right: 6px!important;
- }
+
+        input[type = radio] {
+            margin-left: 6px !important;
+            margin-right: 6px !important;
+        }
     </style>
 
     <script type="text/javascript">
@@ -191,7 +192,7 @@
             alert('Inspection Request is Returned to Owner');
             window.location.href = "/Officers/NewApplications.aspx";
         }
-       
+
     </script>
 </asp:Content>
 
@@ -357,9 +358,16 @@
                                     <asp:Label ID="LblErectionDate" runat="server" Text='<%#Eval("ErectionDate") %>'></asp:Label>
                                     <asp:Label ID="lblLastApprovalDate" runat="server" Text='<%#Eval("LastApprovalDate") %>'></asp:Label>
                                     <asp:Label ID="LblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
-                                   <asp:Label ID="LblTestReportId" runat="server" Text='<%#Eval("TestReportID") %>'></asp:Label>
-                                   <asp:Label ID="LblOldTestReportId" runat="server" Text='<%#Eval("OldTestReportId") %>'></asp:Label>
+                                    <asp:Label ID="LblTestReportId" runat="server" Text='<%#Eval("TestReportID") %>'></asp:Label>
+                                    <asp:Label ID="LblOldTestReportId" runat="server" Text='<%#Eval("OldTestReportId") %>'></asp:Label>
                                 </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Current TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report & Attachments" OnClick="lnkRedirect1_Click1" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportID") %>' />
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Previous TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <ItemTemplate>
@@ -368,13 +376,13 @@
                                 <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="New TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                            <%-- <asp:TemplateField HeaderText="New TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report & Attachments" OnClick="lnkRedirect1_Click1" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportID") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
                         </Columns>
                     </asp:GridView>
                 </div>
@@ -385,7 +393,7 @@
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                 <div class="row">
                     <div class="col-md-12">
-                        <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                        <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" OnRowDataBound="grd_Documemnts_RowDataBound" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
                             <HeaderStyle BackColor="#B7E2F0" />
                             <Columns>
                                 <asp:TemplateField HeaderText="SNo">
@@ -403,6 +411,13 @@
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
+                                <asp:TemplateField HeaderText="Current Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LnkDocumemtPathNew" runat="server" CommandArgument='<%# Bind("CurrentDocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
+                                    </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Previous Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("PreviousDocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
@@ -410,22 +425,29 @@
                                     <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="New Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <%-- <asp:TemplateField HeaderText="New Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LnkDocumemtPathNew" runat="server" CommandArgument='<%# Bind("CurrentDocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                </asp:TemplateField>--%>
+
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="LblCurrentDocument" runat="server" Text='<%#Eval("CurrentDocumentPath") %>'></asp:Label>
+                                        <asp:Label ID="LblPreviousDocument" runat="server" Text='<%#Eval("PreviousDocumentPath") %>'></asp:Label>
+                                    </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                         </asp:GridView>
-                          <div class="row" ID ="statements" runat="server" visible="false">
-      <label for="CompletionDateasperWorkOrder" style="font-size: 16px; font-weight: bold;">
-          No  any Document Attach                                             
-      </label>
+                        <div class="row" id="statements" runat="server" visible="false">
+                            <label for="CompletionDateasperWorkOrder" style="font-size: 16px; font-weight: bold;">
+                                No  any Document Attach                                             
+                            </label>
 
-  </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -450,7 +472,9 @@
             <div class="row" id="Rejection" runat="server" visible="false">
                 <div class="col-md-6">
                     <label>
-                        Reason Type  <samp style="color: red">* </samp> :        
+                        Reason Type 
+                        <samp style="color: red">* </samp>
+                        :        
                     </label>
                     <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlReasonType" TabIndex="8" runat="server">
                         <asp:ListItem Value="0" Text="Select"></asp:ListItem>

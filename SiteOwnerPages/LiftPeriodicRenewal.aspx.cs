@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -204,8 +205,10 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             string TestReportId = Session["EscalatorTestReportID"].ToString();
                             int InspectionId = int.Parse(Session["InspectionId"].ToString());
-                            CEI.InsertReturnPeriodicLiftData(TestReportId,ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
+                            DataTable dt = new DataTable();
+                            dt = CEI.InsertReturnPeriodicLiftData(TestReportId,ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
                                               txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, InspectionId, SiteOwnerID);
+                            TRID =  dt.Rows[0]["TestReportId"].ToString();
                         }
                     }
                     // Upload Attachments

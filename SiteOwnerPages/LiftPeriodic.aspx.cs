@@ -534,6 +534,7 @@ namespace CEIHaryana.SiteOwnerPages
                     Session["Duplicacy"] = "2";
                     string InspectionId = CEI.InsertInspectionDataForPeriodic_LiftInspection(para_ApplicantType, para_lblCategory, para_District,
                         para_To, para_PaymentMode, para_txtInspectionRemarks, para_CreatedByy, para_TotalAmount, para_Assigned, para_transcationId, para_TranscationDate, para_InspectID, ServiceType, transaction);
+                    Session["PrintInspectionID"] = InspectionId;
                     UploadCheckListDocInCollection(para_lblCategory, para_CreatedByy, para_lblCategory, InspectionId);
 
                     foreach (var file in uploadedFiles)

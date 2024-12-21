@@ -495,14 +495,21 @@
             return true;
         }
     </script>
-    <script type="text/javascript">
+   <%-- <script type="text/javascript">
         function alertWithRedirectdata() {
             if (confirm('Inspection Applied successfully.')) {
                 window.location.href = "/SiteOwnerPages/LiftPeriodic.aspx";
             } else {
             }
         }
-    </script>
+    </script>--%>
+    <script type="text/javascript">
+
+        function alertWithRedirectdata() {
+            alert('Inspection Request Submitted Successfully, forwarding to concerned officer.');
+            window.location.href = "/SiteOwnerPages/Periodic_Lift_EscalatorInspectionRequestPrint.aspx";
+        }
+</script>
     <script type="text/javascript">
         function disableFutureDates() {
             // Get today's date in YYYY-MM-DD format

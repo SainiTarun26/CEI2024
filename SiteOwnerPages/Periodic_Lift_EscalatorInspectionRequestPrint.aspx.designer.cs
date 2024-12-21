@@ -123,6 +123,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
+        /// statements control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl statements;
+
+        /// <summary>
         /// Earthing control.
         /// </summary>
         /// <remarks>
@@ -130,6 +139,15 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Earthing;
+
+        /// <summary>
+        /// TransactionID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl TransactionID;
 
         /// <summary>
         /// txtUTRN control.
@@ -141,6 +159,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.TextBox txtUTRN;
 
         /// <summary>
+        /// TransactionDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl TransactionDate;
+
+        /// <summary>
         /// txtTransactionDate control.
         /// </summary>
         /// <remarks>
@@ -150,6 +177,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.TextBox txtTransactionDate;
 
         /// <summary>
+        /// PaymentMode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PaymentMode;
+
+        /// <summary>
         /// txtPaymentMode control.
         /// </summary>
         /// <remarks>
@@ -157,6 +193,15 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPaymentMode;
+
+        /// <summary>
+        /// PaymentAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PaymentAmount;
 
         /// <summary>
         /// txtPaymentAmount control.

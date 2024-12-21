@@ -22,6 +22,7 @@ namespace CEIHaryana.SiteOwnerPages
         int InspectionId = 0;
         private int totalQuantity = 0;
         private decimal totalAmountSum = 0;
+        string intimationids = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -89,7 +90,8 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     Label lblCategory = (Label)currentRow.FindControl("lblCategory");
                     Label lblIntimationId = (Label)currentRow.FindControl("lblIntimationId");
-                    Session["IntimationId"] = lblIntimationId.ToString();
+                    Session["IntimationId"] = lblIntimationId.Text.Trim();
+                    intimationids = lblIntimationId.Text.Trim();
                     if (lblCategory != null)
                     {
                         string category = lblCategory.Text.Trim();
@@ -129,7 +131,8 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     Label lblCategory = (Label)currentRow.FindControl("lblCategory");
                     Label lblIntimationId = (Label)currentRow.FindControl("lblIntimationId");
-                    Session["IntimationId"] = lblIntimationId.ToString();
+                    Session["IntimationId"] = lblIntimationId.Text.Trim(); ;
+                    intimationids = lblIntimationId.Text.Trim();
                     if (lblCategory != null)
                     {
                         string category = lblCategory.Text.Trim();
@@ -556,7 +559,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
            string InspectionId = Session["InspectionId"].ToString();
             string InstallTypes = Session["InstalltionType"].ToString();
-            string intimationids = Session["IntimationId"].ToString();
+             intimationids = Session["IntimationId"].ToString();
             string CreatedByy = Session["SiteOwnerId"].ToString();
             //SqlTransaction transaction = null;
             try

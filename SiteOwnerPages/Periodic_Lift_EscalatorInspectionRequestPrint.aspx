@@ -201,33 +201,39 @@
                                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                     <SortedDescendingHeaderStyle BackColor="#00547E" />
                                 </asp:GridView>
-                            </div>
+                             <div class="row" ID ="statements" runat="server" visible="false">
+      <label for="CompletionDateasperWorkOrder" style="font-size: 16px; font-weight: bold;">
+          No  any Document Attach                                             
+      </label>
+
+  </div>
+                                </div>
                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Payment Details</u></h6>
                             <div id="Earthing" runat="server" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-4" id="TransactionID" runat="server" visible="true" >
                                         <label for="Name">
                                             Transaction ID(UTRN):
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtUTRN" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px;">
                                         </asp:TextBox>
                                     </div>
-                                    <div class="col-4">
-                                        <label for="FatherName">Transaction Date:</label>
+                                    <div class="col-4"  id="TransactionDate" runat="server" visible="true">
+                                        <label>Transaction Date:</label>
                                         <asp:TextBox class="form-control" ID="txtTransactionDate" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-4" id="PaymentMode" runat="server" visible="true">
                                         <label>Payment Mode</label>
                                         <asp:TextBox class="form-control" ID="txtPaymentMode" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
-                                    <div class="col-4" style="margin-top: 35px;">
+                                    <div class="col-4" id="PaymentAmount" runat="server" visible="true" >
                                         <label>Payment Amount</label>
                                         <asp:TextBox class="form-control" ID="txtPaymentAmount" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
-                                    <div class="col-4" style="margin-top: 35px;">
+                                    <div class="col-4" >
                                         <label for="SubmissionDate">Submission Date:</label>
 
                                         <asp:TextBox class="form-control" ID="txtSubmissionDate" ReadOnly="true" autocomplete="off" runat="server" TabIndex="2"
