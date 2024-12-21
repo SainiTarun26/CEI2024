@@ -90,10 +90,10 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["ApplicantTypeID"] = ApplicantTypeID.ToString();
             }
             else
-            { }          
+            { }
         }
 
-        private void GridtoViewAllRecords(string InstallationType,string CreatedBy)
+        private void GridtoViewAllRecords(string InstallationType, string CreatedBy)
         {
             DataSet ds = new DataSet();
             ds = CEI.GetRenewalLiftDataGridOfAllREcords(InstallationType, CreatedBy);
@@ -210,15 +210,15 @@ namespace CEIHaryana.SiteOwnerPages
                         Type = RadioBtnEscType.SelectedItem.Text;
                     }
 
-                    decimal weight = 0.0m;  
+                    decimal weight = 0.0m;
 
                     // Attempt to parse the weight value
                     if (decimal.TryParse(txtWeight.Text, out weight))
                     {
                         if (Session["ReturnedValue"].ToString() != "1")
                         {
-                             TRID = CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
-                                              txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, SiteOwnerID, transaction);
+                            TRID = CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
+                                             txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, SiteOwnerID, transaction);
 
                         }
                         else
@@ -226,9 +226,9 @@ namespace CEIHaryana.SiteOwnerPages
                             string TestReportId = Session["EscalatorTestReportID"].ToString();
                             int InspectionId = int.Parse(Session["InspectionId"].ToString());
                             DataTable dt = new DataTable();
-                            dt = CEI.InsertReturnPeriodicLiftData(TestReportId,ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
+                            dt = CEI.InsertReturnPeriodicLiftData(TestReportId, ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
                                               txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, InspectionId, SiteOwnerID);
-                            TRID =  dt.Rows[0]["TestReportId"].ToString();
+                            TRID = dt.Rows[0]["TestReportId"].ToString();
                         }
                     }
                     // Upload Attachments
@@ -281,8 +281,6 @@ namespace CEIHaryana.SiteOwnerPages
                     }
 
                     transaction.Commit();
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "Success", "alert('Application Submitted successfully.');", true);
-                    //Response.Redirect("/SiteOwnerPages/LiftPeriodicRenewal.aspx", false);
                     if (Session["ReturnedValue"].ToString() != "1")
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
@@ -292,7 +290,7 @@ namespace CEIHaryana.SiteOwnerPages
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithReturnRedirectdata();", true);
                     }
 
-                    
+
                     Reset();
                 }
             }
@@ -354,7 +352,7 @@ namespace CEIHaryana.SiteOwnerPages
             txtRegistrationNo.Text = "";
             ddlInstallationType.SelectedItem.ToString();
             Session["InstallationType"] = ddlInstallationType.SelectedItem.ToString();
-            
+
             divLabelLiftAttachments.Visible = true;
             divLiftAttachments.Visible = true;
             string CreatedBy = Session["SiteOwnerId"].ToString();
@@ -419,27 +417,27 @@ namespace CEIHaryana.SiteOwnerPages
                 txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
                 txtSerialNo.Text = ds.Tables[0].Rows[0]["LiftSrNo"].ToString();
                 string typeOfLift = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
-                
+
                 if (ddlInstallationType.SelectedItem.Text == "Lift")
                 {
                     if (typeOfLift == "Passenger lift")
                     {
-                        RadioBtnType.SelectedValue = "0"; 
+                        RadioBtnType.SelectedValue = "0";
                     }
                     else if (typeOfLift == "Goods Lift")
                     {
-                        RadioBtnType.SelectedValue = "1";  
+                        RadioBtnType.SelectedValue = "1";
                     }
                 }
                 else if (ddlInstallationType.SelectedItem.Text == "Escalator")
                 {
                     if (typeOfLift == "Travelator")
                     {
-                        RadioBtnEscType.SelectedValue = "0"; 
+                        RadioBtnEscType.SelectedValue = "0";
                     }
                     else if (typeOfLift == "Escalator")
                     {
-                        RadioBtnEscType.SelectedValue = "1";  
+                        RadioBtnEscType.SelectedValue = "1";
                     }
                 }
                 txtControlType.Text = ds.Tables[0].Rows[0]["TypeOfControl"].ToString();
@@ -453,7 +451,7 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else
                 {
-                    txtDateofErection.Text = ""; 
+                    txtDateofErection.Text = "";
                 }
                 DateTime LastApprovalDate;
                 if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastApprovalDate"].ToString(), out LastApprovalDate))
@@ -473,18 +471,111 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     txtPrevChallanDate.Text = "";
                 }
-                txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();              
-               txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
+                txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
             }
             else
             {
 
                 Reset();
-                //string alertScript = "alert('The  Registration number is Not In Our Database. Please provide a different Registration number.');";
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
             }
 
-        } 
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Select")
+            {
+
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
+                string RegistrationNo = LblRegistrationNo.Text;
+                //txtRegistrationNo.Text = RegistrationNo;
+                DataSet ds = new DataSet();
+                ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), RegistrationNo);
+                if (ds.Tables[0].Rows.Count > 0 && ds != null)
+                {
+
+                    txtMake.ReadOnly = true;
+                    txtSerialNo.ReadOnly = true;
+                    RadioBtnType.Enabled = false;
+                    RadioBtnEscType.Enabled = false;
+                    txtControlType.ReadOnly = true;
+                    txtCapacity.ReadOnly = true;
+                    txtWeight.ReadOnly = true;
+                    txtSiteAddress.ReadOnly = true;
+                    ddlDistrict.Visible = false;
+                    txtDistrict.Visible = true;
+                    txtDateofErection.ReadOnly = true;
+                    txtLastApprovalDate.ReadOnly = true;
+                    txtPrevChallanDate.ReadOnly = true;
+                    txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
+                    txtSerialNo.Text = ds.Tables[0].Rows[0]["LiftSrNo"].ToString();
+                    string typeOfLift = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
+
+                    if (ddlInstallationType.SelectedItem.Text == "Lift")
+                    {
+                        if (typeOfLift == "Passenger lift")
+                        {
+                            RadioBtnType.SelectedValue = "0";
+                        }
+                        else if (typeOfLift == "Goods Lift")
+                        {
+                            RadioBtnType.SelectedValue = "1";
+                        }
+                    }
+                    else if (ddlInstallationType.SelectedItem.Text == "Escalator")
+                    {
+                        if (typeOfLift == "Travelator")
+                        {
+                            RadioBtnEscType.SelectedValue = "0";
+                        }
+                        else if (typeOfLift == "Escalator")
+                        {
+                            RadioBtnEscType.SelectedValue = "1";
+                        }
+                    }
+                    txtControlType.Text = ds.Tables[0].Rows[0]["TypeOfControl"].ToString();
+                    txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                    txtWeight.Text = ds.Tables[0].Rows[0]["Weight"].ToString();
+                    DateTime erectionDate;
+                    if (DateTime.TryParse(ds.Tables[0].Rows[0]["ErectionDate"].ToString(), out erectionDate))
+                    {
+                        txtDateofErection.Text = erectionDate.ToString("yyyy-MM-dd");
+                    }
+                    else
+                    {
+                        txtDateofErection.Text = "";
+                    }
+                    DateTime LastApprovalDate;
+                    if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastApprovalDate"].ToString(), out LastApprovalDate))
+                    {
+                        txtLastApprovalDate.Text = LastApprovalDate.ToString("yyyy-MM-dd");
+                    }
+                    else
+                    {
+                        txtLastApprovalDate.Text = "";
+                    }
+                    DateTime PrevChallanDate;
+                    if (DateTime.TryParse(ds.Tables[0].Rows[0]["Previous_ChallanDate"].ToString(), out PrevChallanDate))
+                    {
+                        txtPrevChallanDate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
+                    }
+                    else
+                    {
+                        txtPrevChallanDate.Text = "";
+                    }
+                    txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                    txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
+                    txtRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
+                }
+                else
+                {
+                    Reset();
+                }
+            }
+        }
         //protected void btnModalSearch_Click(object sender, EventArgs e)
         //{
         //    DataSet ds = new DataSet();

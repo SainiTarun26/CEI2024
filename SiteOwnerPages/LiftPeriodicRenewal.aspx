@@ -371,7 +371,7 @@
                                 <label>
                                     District<samp style="color: red"> * </samp>
                                 </label>
-                                <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDistrict"  Style="width: 100% !important">
+                                <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDistrict" Style="width: 100% !important">
                                 </asp:DropDownList>
                                 <asp:TextBox class="form-control" ID="txtDistrict" Visible="false" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" ReadOnly="true"></asp:TextBox>
 
@@ -444,13 +444,14 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                                <ContentTemplate>
+                           <%-- <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                <ContentTemplate>--%>
                                     <div class="row">
                                         <div class="col-md-4" runat="server">
                                             <asp:TextBox class="form-control" ID="txtSearch" autocomplete="off" placeholder="Search" runat="server" Style="margin-left: 18px" onkeyup="Search_Gridview(this)"
                                                 onkeydown="SearchOnEnter(event)"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtSearch" runat="server" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                            <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtSearch" runat="server" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                            --%>
                                         </div>
                                         <%-- <div class="col-md-4" style="margin-bottom: auto; padding-left: 0px;">
                                             <asp:Button ID="btn" Class="btn btn-primary" runat="server" Text="Search" OnClick="btnModalSearch_Click" Style="height: 30px; padding: 0px 15px 0px 15px;" />
@@ -460,14 +461,24 @@
                                     <div class="row">
                                         <%--Grid to filter record according to Registration No--%>
                                         <div class="col-md-12">
-                                            <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" AutoGenerateColumns="false">
+                                            <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" OnRowCommand="GridView1_RowCommand" runat="server" AutoGenerateColumns="false">
                                                 <%--AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging"--%>
                                                 <PagerStyle CssClass="pagination-ys" />
                                                 <Columns>
-                                                    <asp:BoundField DataField="RegistrationNo" HeaderText="Registration No">
+                                                    <%--<asp:BoundField DataField="RegistrationNo" HeaderText="Registration No">
                                                         <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
                                                         <ItemStyle HorizontalAlign="Left" Width="30%" />
-                                                    </asp:BoundField>
+                                                    </asp:BoundField>--%>
+                                                    <asp:TemplateField>
+                                                        <HeaderStyle Width="10%" CssClass="headercolor" />
+                                                        <ItemStyle Width="10%" Font-Bold="true" />
+                                                        <HeaderTemplate>
+                                                            Registration No
+                                                        </HeaderTemplate>
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("RegistrationNo") %> ' CommandName="Select"><%#Eval("RegistrationNo") %></asp:LinkButton>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
                                                     <asp:BoundField DataField="Make" HeaderText="Make">
                                                         <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
                                                         <ItemStyle HorizontalAlign="Left" Width="30%" CssClass="wrap-text" />
@@ -484,6 +495,11 @@
                                                         <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
                                                         <ItemStyle HorizontalAlign="Left" Width="30%" />
                                                     </asp:BoundField>
+                                                    <asp:TemplateField HeaderText="Id" Visible="False">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="LblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
                                                 </Columns>
                                                 <FooterStyle BackColor="White" ForeColor="#000066" />
                                                 <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -497,8 +513,8 @@
                                             </asp:GridView>
                                         </div>
                                     </div>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
+                             <%--   </ContentTemplate>
+                            </asp:UpdatePanel>--%>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>

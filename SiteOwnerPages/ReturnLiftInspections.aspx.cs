@@ -104,7 +104,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                 // Join unique categories with '/' delimiter
                 string concatenatedCategories = string.Join("_", uniqueCategories);
-                Session["InstalltionType"] = concatenatedCategories.Trim();
+                //Session["InstalltionType"] = concatenatedCategories.Trim();
                 // To ensure uniqueness
                 if (Session["ReturnedValue"].ToString() == "1")
                 {
@@ -145,7 +145,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                 // Join unique categories with '/' delimiter
                 string concatenatedCategories = string.Join("_", uniqueCategories);
-                Session["InstalltionType"] = concatenatedCategories.Trim();
+               // Session["InstalltionType"] = concatenatedCategories.Trim();
                 if (Session["ReturnedValue"].ToString() == "1")
                 {
                     GridView2.Columns[5].Visible = true;
@@ -172,6 +172,7 @@ namespace CEIHaryana.SiteOwnerPages
             txttransactionId.Text = dataTable.Rows[0]["TransactionId"].ToString();
             txtReturntransactionDate.Text = dataTable.Rows[0]["TransctionDate"].ToString();
             txtInspectionRemarks.Text = dataTable.Rows[0]["InspectionRemarks"].ToString();
+            Session["InstalltionType"] = dataTable.Rows[0]["InstallationType"].ToString();
             if (Session["ReturnedValue"].ToString() == "1")
             {
                // txtInspectionRemarks.ReadOnly = true;
