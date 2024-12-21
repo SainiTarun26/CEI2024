@@ -116,6 +116,7 @@ namespace CEIHaryana.Officers
 
                         grd_Documemnts.Columns[3].Visible = true;
                         grd_Documemnts.Columns[4].Visible = true;
+
                         //Grid_MultipleInspectionTR.Columns[5].Visible = true;
                         //Grid_MultipleInspectionTR.Columns[6].Visible = true;
                         //Grid_MultipleInspectionTR.Columns[7].Visible = true;
@@ -127,6 +128,7 @@ namespace CEIHaryana.Officers
 
                         grd_Documemnts.Columns[3].Visible = true;
                         grd_Documemnts.Columns[4].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[4].Visible = false;
                         //Grid_MultipleInspectionTR.Columns[5].Visible = true;
                         //Grid_MultipleInspectionTR.Columns[6].Visible = true;
                         //Grid_MultipleInspectionTR.Columns[7].Visible = true;
@@ -247,10 +249,24 @@ namespace CEIHaryana.Officers
 
                     GridView1.Columns[5].Visible = false;
                     //GridView1.Columns[3].Visible = false;
-
+                    
                     DivTestReports.Visible = true;
                     GridToViewTestReports();
+                    string ReturnValu = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
+                    if (ReturnValu == "1")
+                    {
+                        grd_Documemnts.Columns[3].Visible = true;
+                        grd_Documemnts.Columns[4].Visible = true;
 
+                    }
+                    else if (ReturnValu == "2")
+                    {
+
+                        grd_Documemnts.Columns[3].Visible = true;
+                        grd_Documemnts.Columns[4].Visible = true;
+                        GridView2.Columns[5].Visible = false;
+
+                    }
                     GridBindDocument();
 
                     string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
@@ -548,7 +564,7 @@ namespace CEIHaryana.Officers
 
                                             // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
                                             CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                             lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), transaction);
+                                             lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate,lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), transaction);
 
                                         }
                                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);

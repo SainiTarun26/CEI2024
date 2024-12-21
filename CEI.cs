@@ -8779,7 +8779,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PeriodicLiftDetailstoPrintFormInspectionDetails", ID);
         }
         public void InstallationApproval_Lift(string InspectionID, string TestReportId, string InstallationType, string StaffId, string InspectionType, string RegistrationNo, DateTime ChallanDate, string Division, string Make, string LiftSrNo,
-string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, string SiteAddress, string District, DateTime Current_ChallanDate,
+string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, DateTime LastApprovalDate, string SiteAddress, string District, DateTime Current_ChallanDate,
 SqlTransaction transaction)
         {
             try
@@ -8818,6 +8818,7 @@ SqlTransaction transaction)
                 cmd.Parameters.AddWithValue("@Capacity", Capacity);
                 cmd.Parameters.AddWithValue("@Weight", Weight);
                 cmd.Parameters.AddWithValue("@ErectionDate", DateOfErection);
+                cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate);
                 //cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate);
                 //if (LastApprovalDate.HasValue)
                 //{
