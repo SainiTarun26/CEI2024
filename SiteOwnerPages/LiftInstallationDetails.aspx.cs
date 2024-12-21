@@ -72,6 +72,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
+                Session["OTP"] = "0";
                 Session["ReturnedValue"] = "Treys";
                 if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
                 {

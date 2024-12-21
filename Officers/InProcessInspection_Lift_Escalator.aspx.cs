@@ -2,6 +2,7 @@
 using CEI_PRoject;
 using CEIHaryana.Contractor;
 using CEIHaryana.Model.Industry;
+using CEIHaryana.UserPages;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -211,7 +212,8 @@ namespace CEIHaryana.Officers
                     
                             ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                             ddlReview.Attributes.Add("disabled", "true");
-                        grd_Documemnts.Columns[3].Visible = true;
+                            grd_Documemnts.Columns[3].Visible = true;
+                            grd_Documemnts.Columns[4].Visible = false;
                         if (!string.IsNullOrEmpty(SiteInspectionDate))
                             {
                                 InspectionDate.Visible = true;
@@ -251,7 +253,9 @@ namespace CEIHaryana.Officers
                             }
                             btnBack.Visible = true;
                             btnSubmit.Visible = false;
-                        }
+                        grd_Documemnts.Columns[3].Visible = true;
+                        grd_Documemnts.Columns[4].Visible = false;
+                    }
                         if (Status == "Return")
                         {
                             InspectionDate.Visible = false;

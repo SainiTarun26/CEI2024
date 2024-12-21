@@ -25,6 +25,7 @@ namespace CEIHaryana.SiteOwnerPages
         string ReturnedBased = string.Empty;
         private static string IType = string.Empty;
         bool Edit = false;
+        private bool hasLinkInAnyRow = false;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -252,11 +253,21 @@ namespace CEIHaryana.SiteOwnerPages
             try
             {
                 DataSet ds = new DataSet();
-                ds = CEI.ViewDocuments(InspectionId);
+                //ds = CEI.ViewDocuments(InspectionId);
+                ds = CEI.ViewDocuments_ReturnedInspectionLift_Escalator(ID);
                 if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
+
+                    if (!hasLinkInAnyRow)
+                    {
+                        GridView1.Columns[4].Visible = false; // Hide the "Previous Documents" column
+                    }
+                    else
+                    {
+                        GridView1.Columns[4].Visible = true; // Show the column if at least one link is found
+                    }
                 }
                 else
                 {
@@ -278,8 +289,7 @@ namespace CEIHaryana.SiteOwnerPages
             string fileName = "";
             try
             {
-                if (e.CommandName == "Select")
-                {
+               
                     if (e.CommandName == "Select")
                     {
                         fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
@@ -292,7 +302,7 @@ namespace CEIHaryana.SiteOwnerPages
                     {
 
                     }
-                }
+               
 
             }
             catch (Exception ex)
@@ -500,6 +510,33 @@ namespace CEIHaryana.SiteOwnerPages
                 }
             }
             catch (Exception ex) { }
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+           
+                try
+                {
+                    if (e.Row.RowType == DataControlRowType.DataRow)
+                    {
+                        Label LblPreviousDocument = (Label)e.Row.FindControl("LblPreviousDocument");
+                        LinkButton LnkPreviousDocumemtPath = (LinkButton)e.Row.FindControl("LnkPreviousDocumemtPath");
+
+                        // Check if the OldTestReportId is null or empty
+                        if (string.IsNullOrEmpty(LblPreviousDocument.Text))
+                        {
+                        LnkPreviousDocumemtPath.Visible = false;
+                        }
+                        else
+                        {
+                        LnkPreviousDocumemtPath.Visible = true;
+                        hasLinkInAnyRow = true;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                }           
         }
     }
 }

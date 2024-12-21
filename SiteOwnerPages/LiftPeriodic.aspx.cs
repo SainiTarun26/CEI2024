@@ -33,7 +33,8 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                     {
-
+                        Session["RegistrationNosessionPass"] = null;
+                        Session["InstallTypePass"] = null;
                         Session["ReturnedValue"] = "Treys";
                         BindDistrict();
                     }

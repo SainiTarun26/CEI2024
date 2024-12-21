@@ -7816,39 +7816,54 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                 Valueinohms4, GetValue(EarthingType5), Valueinohms5, GetValue(EarthingType6), Valueinohms6, GetValue(EarthingType7), 
                 Valueinohms7, GetValue(EarthingType8), Valueinohms8, GetValue(EarthingType9), Valueinohms9, GetValue(EarthingType10), 
                 Valueinohms10, CreatedBy, ContractorName, ContractorLicenseNumber, ContractorLicenseExpiryDate, SupervisorName, SupervisorLicenseNumber, SupervisorLicenseExpiryDate);
-        } 
-        public int InsertNewEscalatorData(string count, string IntimationId, string NameandAddressofLocalAgent, string NameofLocalAgent
-, string AddressofLocalAgent, string ContactNoofLocalAgent, DateTime DateofErection, string Make,string SerialNo, string TypeofEscalatorErected, string ContractSpeedofEscalatorMtrPrSec
-, decimal ContractLoadofEscalatorInKg, string MaxPersonCapacitywithEscalatorOperator, decimal WeightofEscalatorCarwithContractLoadInKg, decimal WeightofCounterWeightInkg
-, decimal DepthofPitInmm, decimal TravelDistanceofEscalatorInMtr, decimal NoofFloorsServedInMtr, decimal TotalHeadRoomInmm, string TypeOfControl, 
-            string MakeMainBreaker,
-string TypeMainBreaker, string PolesMainBreaker, string CurrentRatingInAmps, string BreakingCapacityInKA, string MakeRCCBMainBreaker,
-string PolesRCCBMainBreaker, string CurrentRCCBRatingInAmps, string FaultRCCBCurrentRating, string LoadMakeMainBreaker
-, string LoadTypeMainBreaker, string LoadPolesMainBreaker, string LoadCurrentRatingInAmps, string LoadBreakingCapacityInKA,
-string LoadMakeRCCBMainBreaker, string LoadPolesRCCBMainBreaker
-, string LoadRCCBCurrentRatingInAmps, string LoadRCCBFaultCurrentRating, string ForWholeInstallation, string NeutralandPhaseohms, string EarthandPhasemohms, int RedPhaseYellowPhaseInMohms, int RedPhaseBluePhaseInMohms
-, int YellowPhaseBluePhaseInMohms, int RedPhaseEarthWireInMohms, int YellowPhaseEarthWireInMohms, int BluePhaseEarthWirenMohms, string NumberofEarthing
-, string EarthingType1, decimal Valueinohms1, string EarthingType2, decimal Valueinohms2, string EarthingType3, decimal Valueinohms3, string EarthingType4,
-decimal Valueinohms4, string EarthingType5
-, decimal Valueinohms5, string EarthingType6, decimal Valueinohms6, string EarthingType7, decimal Valueinohms7, string EarthingType8, decimal Valueinohms8,
-string EarthingType9, decimal Valueinohms9
-, string EarthingType10, decimal Valueinohms10, string CreatedBy, string ContractorName, string ContractorLicenseNumber, DateTime ContractorLicenseExpiryDate,
-string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicenseExpiryDate)
+        }
+        private object GetValue(object value)
+        {
+            if (value == null || value.ToString() == "0" || value.ToString() == "Select" || string.IsNullOrWhiteSpace(value.ToString()))
+            {
+                return DBNull.Value;
+            }
+            return value;
+        }
+
+        public int InsertNewEscalatorData(string count, string IntimationId, string NameandAddressofLocalAgent, string NameofLocalAgent,
+ string AddressofLocalAgent, string ContactNoofLocalAgent, DateTime? DateofErection, string Make, string SerialNo, string TypeofEscalatorErected, string ContractSpeedofEscalatorMtrPrSec,
+ decimal? ContractLoadofEscalatorInKg, string MaxPersonCapacitywithEscalatorOperator, decimal? WeightofEscalatorCarwithContractLoadInKg, decimal? WeightofCounterWeightInkg,
+ decimal? DepthofPitInmm, decimal? TravelDistanceofEscalatorInMtr, decimal? NoofFloorsServedInMtr, decimal? TotalHeadRoomInmm, string TypeOfControl,
+ string MakeMainBreaker, string TypeMainBreaker, string PolesMainBreaker, string CurrentRatingInAmps, string BreakingCapacityInKA, string MakeRCCBMainBreaker,
+ string PolesRCCBMainBreaker, string CurrentRCCBRatingInAmps, string FaultRCCBCurrentRating, string LoadMakeMainBreaker,
+ string LoadTypeMainBreaker, string LoadPolesMainBreaker, string LoadCurrentRatingInAmps, string LoadBreakingCapacityInKA,
+ string LoadMakeRCCBMainBreaker, string LoadPolesRCCBMainBreaker,
+ string LoadRCCBCurrentRatingInAmps, string LoadRCCBFaultCurrentRating, string ForWholeInstallation, string NeutralandPhaseohms, string EarthandPhasemohms, int? RedPhaseYellowPhaseInMohms, int? RedPhaseBluePhaseInMohms,
+ int? YellowPhaseBluePhaseInMohms, int? RedPhaseEarthWireInMohms, int? YellowPhaseEarthWireInMohms, int? BluePhaseEarthWirenMohms, string NumberofEarthing,
+ string EarthingType1, decimal? Valueinohms1, string EarthingType2, decimal? Valueinohms2, string EarthingType3, decimal? Valueinohms3, string EarthingType4,
+ decimal? Valueinohms4, string EarthingType5,
+ decimal? Valueinohms5, string EarthingType6, decimal? Valueinohms6, string EarthingType7, decimal? Valueinohms7, string EarthingType8, decimal? Valueinohms8,
+ string EarthingType9, decimal? Valueinohms9,
+ string EarthingType10, decimal? Valueinohms10, string CreatedBy, string ContractorName, string ContractorLicenseNumber, DateTime? ContractorLicenseExpiryDate,
+ string SupervisorName, string SupervisorLicenseNumber, DateTime? SupervisorLicenseExpiryDate)
         {
             return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
-                "sp_InsertEscalatorTestReportdata", count, IntimationId, NameandAddressofLocalAgent, NameofLocalAgent
-, AddressofLocalAgent, ContactNoofLocalAgent, DateofErection,  Make, SerialNo,TypeofEscalatorErected, ContractSpeedofEscalatorMtrPrSec
-, ContractLoadofEscalatorInKg, MaxPersonCapacitywithEscalatorOperator, WeightofEscalatorCarwithContractLoadInKg, WeightofCounterWeightInkg
-, DepthofPitInmm, TravelDistanceofEscalatorInMtr, NoofFloorsServedInMtr, TotalHeadRoomInmm, TypeOfControl, MakeMainBreaker, TypeMainBreaker, PolesMainBreaker, CurrentRatingInAmps
-, BreakingCapacityInKA, MakeRCCBMainBreaker, PolesRCCBMainBreaker, CurrentRCCBRatingInAmps, FaultRCCBCurrentRating, LoadMakeMainBreaker
-, LoadTypeMainBreaker, LoadPolesMainBreaker, LoadCurrentRatingInAmps, LoadBreakingCapacityInKA, LoadMakeRCCBMainBreaker, LoadPolesRCCBMainBreaker
-, LoadRCCBCurrentRatingInAmps, LoadRCCBFaultCurrentRating, ForWholeInstallation, NeutralandPhaseohms, EarthandPhasemohms, RedPhaseYellowPhaseInMohms, RedPhaseBluePhaseInMohms
-, YellowPhaseBluePhaseInMohms, RedPhaseEarthWireInMohms, YellowPhaseEarthWireInMohms, BluePhaseEarthWirenMohms, NumberofEarthing
-, EarthingType1, Valueinohms1, GetValue(EarthingType2), Valueinohms2, GetValue(EarthingType3), Valueinohms3, GetValue(EarthingType4), 
-                Valueinohms4, GetValue(EarthingType5), Valueinohms5, GetValue(EarthingType6), Valueinohms6, GetValue(EarthingType7), 
-                Valueinohms7, GetValue(EarthingType8), Valueinohms8, GetValue(EarthingType9), Valueinohms9, GetValue(EarthingType10), 
-                Valueinohms10, CreatedBy, ContractorName, ContractorLicenseNumber, ContractorLicenseExpiryDate, SupervisorName, SupervisorLicenseNumber, SupervisorLicenseExpiryDate);
+                "sp_InsertEscalatorTestReportdata",
+                GetValue(count), GetValue(IntimationId), GetValue(NameandAddressofLocalAgent), GetValue(NameofLocalAgent),
+                GetValue(AddressofLocalAgent), GetValue(ContactNoofLocalAgent), GetValue(DateofErection), GetValue(Make), GetValue(SerialNo),
+                GetValue(TypeofEscalatorErected), GetValue(ContractSpeedofEscalatorMtrPrSec), GetValue(ContractLoadofEscalatorInKg), GetValue(MaxPersonCapacitywithEscalatorOperator),
+                GetValue(WeightofEscalatorCarwithContractLoadInKg), GetValue(WeightofCounterWeightInkg), GetValue(DepthofPitInmm), GetValue(TravelDistanceofEscalatorInMtr),
+                GetValue(NoofFloorsServedInMtr), GetValue(TotalHeadRoomInmm), GetValue(TypeOfControl), GetValue(MakeMainBreaker), GetValue(TypeMainBreaker),
+                GetValue(PolesMainBreaker), GetValue(CurrentRatingInAmps), GetValue(BreakingCapacityInKA), GetValue(MakeRCCBMainBreaker),
+                GetValue(PolesRCCBMainBreaker), GetValue(CurrentRCCBRatingInAmps), GetValue(FaultRCCBCurrentRating), GetValue(LoadMakeMainBreaker),
+                GetValue(LoadTypeMainBreaker), GetValue(LoadPolesMainBreaker), GetValue(LoadCurrentRatingInAmps), GetValue(LoadBreakingCapacityInKA),
+                GetValue(LoadMakeRCCBMainBreaker), GetValue(LoadPolesRCCBMainBreaker), GetValue(LoadRCCBCurrentRatingInAmps), GetValue(LoadRCCBFaultCurrentRating),
+                GetValue(ForWholeInstallation), GetValue(NeutralandPhaseohms), GetValue(EarthandPhasemohms), GetValue(RedPhaseYellowPhaseInMohms),
+                GetValue(RedPhaseBluePhaseInMohms), GetValue(YellowPhaseBluePhaseInMohms), GetValue(RedPhaseEarthWireInMohms), GetValue(YellowPhaseEarthWireInMohms),
+                GetValue(BluePhaseEarthWirenMohms), GetValue(NumberofEarthing), GetValue(EarthingType1), GetValue(Valueinohms1), GetValue(EarthingType2),
+                GetValue(Valueinohms2), GetValue(EarthingType3), GetValue(Valueinohms3), GetValue(EarthingType4), GetValue(Valueinohms4), GetValue(EarthingType5),
+                GetValue(Valueinohms5), GetValue(EarthingType6), GetValue(Valueinohms6), GetValue(EarthingType7), GetValue(Valueinohms7), GetValue(EarthingType8),
+                GetValue(Valueinohms8), GetValue(EarthingType9), GetValue(Valueinohms9), GetValue(EarthingType10), GetValue(Valueinohms10), GetValue(CreatedBy),
+                GetValue(ContractorName), GetValue(ContractorLicenseNumber), GetValue(ContractorLicenseExpiryDate), GetValue(SupervisorName),
+                GetValue(SupervisorLicenseNumber), GetValue(SupervisorLicenseExpiryDate));
         }
+
         private object GetValue(string value)
         {
             return string.IsNullOrEmpty(value) ? DBNull.Value : (object)value;
@@ -8688,13 +8703,13 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
                 "sp_InsertReturnEscalatorTestReportdata", OldTestReportId, count, IntimationId, NameandAddressofLocalAgent, NameofLocalAgent
-, AddressofLocalAgent, ContactNoofLocalAgent, DateofErection, Make, SerialNo, TypeofEscalatorErected, ContractSpeedofEscalatorMtrPrSec
-, ContractLoadofEscalatorInKg, MaxPersonCapacitywithEscalatorOperator, WeightofEscalatorCarwithContractLoadInKg, WeightofCounterWeightInkg
-, DepthofPitInmm, TravelDistanceofEscalatorInMtr, NoofFloorsServedInMtr, TotalHeadRoomInmm, TypeOfControl, MakeMainBreaker, TypeMainBreaker, PolesMainBreaker, CurrentRatingInAmps
+, GetValue(AddressofLocalAgent), GetValue(ContactNoofLocalAgent), GetValue(DateofErection), Make, SerialNo, TypeofEscalatorErected, ContractSpeedofEscalatorMtrPrSec
+, GetValue(ContractLoadofEscalatorInKg), MaxPersonCapacitywithEscalatorOperator, GetValue(WeightofEscalatorCarwithContractLoadInKg), GetValue(WeightofCounterWeightInkg)
+, DepthofPitInmm, GetValue(TravelDistanceofEscalatorInMtr), GetValue(NoofFloorsServedInMtr), GetValue(TotalHeadRoomInmm), TypeOfControl, MakeMainBreaker, TypeMainBreaker, PolesMainBreaker, CurrentRatingInAmps
 , BreakingCapacityInKA, MakeRCCBMainBreaker, PolesRCCBMainBreaker, CurrentRCCBRatingInAmps, FaultRCCBCurrentRating, LoadMakeMainBreaker
 , LoadTypeMainBreaker, LoadPolesMainBreaker, LoadCurrentRatingInAmps, LoadBreakingCapacityInKA, LoadMakeRCCBMainBreaker, LoadPolesRCCBMainBreaker
-, LoadRCCBCurrentRatingInAmps, LoadRCCBFaultCurrentRating, ForWholeInstallation, NeutralandPhaseohms, EarthandPhasemohms, RedPhaseYellowPhaseInMohms, RedPhaseBluePhaseInMohms
-, YellowPhaseBluePhaseInMohms, RedPhaseEarthWireInMohms, YellowPhaseEarthWireInMohms, BluePhaseEarthWirenMohms, NumberofEarthing
+, LoadRCCBCurrentRatingInAmps, LoadRCCBFaultCurrentRating, ForWholeInstallation, GetValue(NeutralandPhaseohms), GetValue(EarthandPhasemohms), GetValue(RedPhaseYellowPhaseInMohms), GetValue(RedPhaseBluePhaseInMohms)
+, GetValue(YellowPhaseBluePhaseInMohms), GetValue(RedPhaseEarthWireInMohms), GetValue(YellowPhaseEarthWireInMohms), GetValue(BluePhaseEarthWirenMohms), NumberofEarthing
 , EarthingType1, Valueinohms1, GetValue(EarthingType2), Valueinohms2, GetValue(EarthingType3), Valueinohms3, GetValue(EarthingType4),
                 Valueinohms4, GetValue(EarthingType5), Valueinohms5, GetValue(EarthingType6), Valueinohms6, GetValue(EarthingType7),
                 Valueinohms7, GetValue(EarthingType8), Valueinohms8, GetValue(EarthingType9), Valueinohms9, GetValue(EarthingType10),

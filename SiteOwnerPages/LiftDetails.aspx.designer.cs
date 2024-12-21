@@ -1725,6 +1725,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.TextBox txtSupExpiryDate;
 
         /// <summary>
+        /// Attachments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Attachments;
+
+        /// <summary>
         /// Grd_Document control.
         /// </summary>
         /// <remarks>

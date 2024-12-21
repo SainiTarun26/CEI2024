@@ -106,7 +106,8 @@ namespace CEIHaryana.Officers
                     if (ReturnValu == "1")
                     {
                         grd_Documemnts.Columns[3].Visible = true;
-                        grd_Documemnts.Columns[4].Visible = true;
+                        grd_Documemnts.Columns[4].Visible = false;
+                       // Grid_MultipleInspectionTR.Columns[4].Visible = false;
                         //Grid_MultipleInspectionTR.Columns[5].Visible = false;
                         //Grid_MultipleInspectionTR.Columns[7].Visible = false;
                         //Grid_MultipleInspectionTR.Columns[9].Visible = false;
@@ -115,7 +116,7 @@ namespace CEIHaryana.Officers
                     {
 
                         grd_Documemnts.Columns[3].Visible = true;
-                        grd_Documemnts.Columns[4].Visible = true;
+                        grd_Documemnts.Columns[4].Visible = false;
 
                         //Grid_MultipleInspectionTR.Columns[5].Visible = true;
                         //Grid_MultipleInspectionTR.Columns[6].Visible = true;
@@ -128,7 +129,7 @@ namespace CEIHaryana.Officers
 
                         grd_Documemnts.Columns[3].Visible = true;
                         grd_Documemnts.Columns[4].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[4].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[5].Visible = false;
                         //Grid_MultipleInspectionTR.Columns[5].Visible = true;
                         //Grid_MultipleInspectionTR.Columns[6].Visible = true;
                         //Grid_MultipleInspectionTR.Columns[7].Visible = true;
@@ -163,6 +164,7 @@ namespace CEIHaryana.Officers
                         }
                         btnBack.Visible = true;
                         btnSubmit.Visible = false;
+                        grd_Documemnts.Columns[4].Visible = false;
                     }
                     if (Status == "Rejected")
                     {
@@ -256,8 +258,8 @@ namespace CEIHaryana.Officers
                     if (ReturnValu == "1")
                     {
                         grd_Documemnts.Columns[3].Visible = true;
-                        grd_Documemnts.Columns[4].Visible = true;
-
+                        grd_Documemnts.Columns[4].Visible = false;
+                       // grd_Documemnts.Columns[5].Visible = true;
                     }
                     else if (ReturnValu == "2")
                     {

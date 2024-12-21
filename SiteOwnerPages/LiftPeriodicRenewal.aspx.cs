@@ -289,6 +289,8 @@ namespace CEIHaryana.SiteOwnerPages
                 if (connection != null && connection.State == ConnectionState.Open)
                 {
                     connection.Close();
+                    Session["RegistrationNosessionPass"] = null;
+                    Session["InstallTypePass"] = null;
                 }
             }
         }

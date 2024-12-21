@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -374,10 +375,10 @@ namespace CEIHaryana.SiteOwnerPages
         }
         protected void ddlContName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //DataTable dta = new DataTable();
-            //dta = CEI.GetEmailContractor(ddlContName.SelectedValue.ToString());
-            // Email = dta.Rows[0]["Email"].ToString();
-            //Session["ContractorEmail"] = Email.Trim();
+            DataTable dta = new DataTable();
+            dta = CEI.GetEmailContractor(ddlContName.SelectedValue.ToString());
+            Email = dta.Rows[0]["Email"].ToString();
+            Session["ContractorEmail"] = Email.Trim();
             DataSet dt = new DataSet();
             dt = CEI.GetSupervisorandContractor("Contractor", ddlContName.SelectedValue.ToString());
             if (dt.Tables.Count > 0)
@@ -459,12 +460,31 @@ namespace CEIHaryana.SiteOwnerPages
         }
         protected void btnVerify_Click(object sender, EventArgs e)
         {
-            OTP.Visible = true;
-            Email = Session["ContractorEmail"].ToString();
-            OTPs = CEI.ValidateOTPthroughEmail(Email);
-            Session["OTP"] = OTPs.Trim();
-            btnVerify.Visible = false;
-            btnSubmit.Visible = true;
+            if (Session["OTP"].ToString() == "0")
+            {
+
+                OTP.Visible = true;
+                Email = Session["ContractorEmail"].ToString();
+                OTPs = CEI.ValidateOTPthroughEmail(Email);
+                Session["OTP"] = OTPs.Trim();
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Enter the OTP you received to Your Contractor's Email');", true);
+            }
+            else
+            {
+                if (Session["OTP"].ToString() == txtOTP.Text.Trim())
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Otp Verified Successfully');", true);
+                    OTP.Visible = false;
+                    btnVerify.Visible = false;
+                    btnSubmit.Visible = true;
+                    Attachments.Visible = true;
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Incorrect Otp Please Try Again');", true);
+
+                }
+            }
         }
     }
 }
