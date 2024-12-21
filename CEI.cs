@@ -8121,9 +8121,9 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsOfLiftRenewalReport", RegistrationNo, TestReportID);
         }
 
-        public DataTable GetDocumentOfLiftRenewalToShow(string ApplicantType)
+        public DataTable GetDocumentOfLiftRenewalToShow(string TestReportId)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDocumentOfLiftRenewalToShow", ApplicantType);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDocumentOfLiftRenewalToShow", TestReportId);
         }
         public DataTable GetDocumentforlift(string Applicanttype)
         {

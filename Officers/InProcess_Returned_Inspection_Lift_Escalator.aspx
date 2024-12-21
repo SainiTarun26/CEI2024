@@ -725,8 +725,8 @@
         }
     </script>
      <script type="text/javascript">
- function alertWithRedirectdata2(Message) {
-     if (confirm('Inspection Request has been Rejected' + Message)) {
+ function alertWithRedirectdata2() {
+     if (confirm('Inspection Request has been Rejected.')) {
          window.location.href = "/Officers/InProcessRequest.aspx";
      } else {
      }

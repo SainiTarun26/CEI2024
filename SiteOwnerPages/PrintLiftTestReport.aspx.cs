@@ -61,6 +61,9 @@ namespace CEIHaryana.SiteOwnerPages
                 ds = CEI.GetLiftTestReportModalData("Lift", TestReportId);
                 //lbltestReportId.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                 //lblWorkIntimationId.Text = ds.Tables[0].Rows[0]["IntimationId"].ToString();
+
+                txtTestReportId.Text = TestReportId;
+
                 ddlApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 txtInstallationFor.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 if (txtInstallationFor.Text == "Firm/Organization/Company/Department")
@@ -119,6 +122,7 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else
                 {
+                    Div6.Visible = false;
                     LocalAgents.Visible = false;
                 }
 
@@ -231,14 +235,18 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else if (txtEarthing.Text.Trim() == "5")
                 {
-                   
+                    LiftEarthing1.Visible = true;
+                    LiftEarthing2.Visible = true;
+                    LiftEarthing3.Visible = true;
                     LiftEarthing4.Visible = true;
                     LiftEarthing5.Visible = true;
                    
                 }
                 else if (txtEarthing.Text.Trim() == "6")
                 {
-                   
+                    LiftEarthing1.Visible = true;
+                    LiftEarthing2.Visible = true;
+                    LiftEarthing3.Visible = true;
                     LiftEarthing4.Visible = true;
                     LiftEarthing5.Visible = true;
                     LiftEarthing6.Visible = true;
@@ -246,7 +254,9 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else if (txtEarthing.Text.Trim() == "7")
                 {
-                   
+                    LiftEarthing1.Visible = true;
+                    LiftEarthing2.Visible = true;
+                    LiftEarthing3.Visible = true;
                     LiftEarthing4.Visible = true;
                     LiftEarthing5.Visible = true;
                     LiftEarthing6.Visible = true;
@@ -254,7 +264,9 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else if (txtEarthing.Text.Trim() == "8")
                 {
-                   
+                    LiftEarthing1.Visible = true;
+                    LiftEarthing2.Visible = true;
+                    LiftEarthing3.Visible = true;
                     LiftEarthing4.Visible = true;
                     LiftEarthing5.Visible = true;
                     LiftEarthing6.Visible = true;
@@ -263,7 +275,9 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else if (txtEarthing.Text.Trim() == "9")
                 {
-                   
+                    LiftEarthing1.Visible = true;
+                    LiftEarthing2.Visible = true;
+                    LiftEarthing3.Visible = true;
                     LiftEarthing4.Visible = true;
                     LiftEarthing5.Visible = true;
                     LiftEarthing6.Visible = true;
@@ -273,7 +287,9 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else if (txtEarthing.Text.Trim() == "10")
                 {
-                   
+                    LiftEarthing1.Visible = true;
+                    LiftEarthing2.Visible = true;
+                    LiftEarthing3.Visible = true;
                     LiftEarthing4.Visible = true;
                     LiftEarthing5.Visible = true;
                     LiftEarthing6.Visible = true;
@@ -284,7 +300,9 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else
                 {
-                   
+                    LiftEarthing1.Visible = true;
+                    LiftEarthing2.Visible = true;
+                    LiftEarthing3.Visible = true;
                     LiftEarthing4.Visible = false;
                     LiftEarthing5.Visible = false;
                     LiftEarthing6.Visible = false;

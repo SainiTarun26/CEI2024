@@ -211,8 +211,8 @@ namespace CEIHaryana.Officers
                     
                             ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                             ddlReview.Attributes.Add("disabled", "true");
-                           
-                            if (!string.IsNullOrEmpty(SiteInspectionDate))
+                        grd_Documemnts.Columns[3].Visible = true;
+                        if (!string.IsNullOrEmpty(SiteInspectionDate))
                             {
                                 InspectionDate.Visible = true;
                                 txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
@@ -577,7 +577,7 @@ namespace CEIHaryana.Officers
                                else if (ApprovedorReject == "Rejected")
                                 {
                                     transaction.Commit();
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata2", true);
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata2()", true);
                                 }
                            
                                

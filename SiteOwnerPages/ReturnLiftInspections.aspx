@@ -319,6 +319,7 @@
                                         <asp:Label ID="lblNoOfInstallations" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
                                         <asp:Label ID="lblReportType" runat="server" Text='<%#Eval("ReportType") %>'></asp:Label>
                                         <asp:Label ID="lblOldTestReportId" runat="server" Text='<%#Eval("OldTestReportId") %>'></asp:Label>
+                                        <asp:Label ID="lblTotalNo" runat="server" Text='<%#Eval("TotalNo") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
 

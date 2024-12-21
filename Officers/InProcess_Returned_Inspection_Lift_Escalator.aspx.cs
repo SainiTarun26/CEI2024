@@ -562,7 +562,7 @@ namespace CEIHaryana.Officers
                                 else if (ApprovedorReject == "Rejected")
                                 {
                                     transaction.Commit();
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata2", true);
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata2()", true);
                                 }
                                 else
                                 {

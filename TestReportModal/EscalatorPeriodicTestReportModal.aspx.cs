@@ -136,8 +136,9 @@ namespace CEIHaryana.TestReportModal
         private void GridDocument()
         {
             string RegistrationNo = Session["RegistrationNo"].ToString();
-
-            DataTable ds = CEI.GetDocumentOfLiftRenewalToShow(RegistrationNo);
+            string TReportID = Convert.ToString(Session["TestReportID"]);
+            DataTable ds = CEI.GetDocumentOfLiftRenewalToShow(TReportID);
+            //DataTable ds = CEI.GetDocumentOfLiftRenewalToShow(RegistrationNo);
             if (ds != null && ds.Rows.Count > 0)
             {
                 Grd_Document.DataSource = ds;

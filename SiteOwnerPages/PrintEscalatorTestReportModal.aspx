@@ -461,7 +461,7 @@
                                         </div>
 
 
-                                        <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; margin-top: 6%;"><u>Installation Details</u></h6>
+                                        <%--<h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; margin-top: 6%;"><u>Installation Details</u></h6>--%>
                                         <div id="Div6" runat="server" visible="true">
                                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; margin-top: 25px; margin-bottom: -50px !important; margin-left: 15px;">Local Agent Details</h6>
 

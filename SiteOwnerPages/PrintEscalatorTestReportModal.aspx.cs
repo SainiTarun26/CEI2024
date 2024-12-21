@@ -61,6 +61,7 @@ namespace CEIHaryana.SiteOwnerPages
                 ds = CEI.GetLiftTestReportModalData("Escalator", TestReportId);
                 //lbltestReportId.Text = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                 //lblWorkIntimationId.Text = ds.Tables[0].Rows[0]["IntimationId"].ToString();
+                txtTestReportId.Text = TestReportId;
                 ddlApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 txtInstallationFor.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 if (txtInstallationFor.Text == "Firm/Organization/Company/Department")
@@ -119,6 +120,7 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else
                 {
+                    Div6.Visible = false;
                     LocalAgents.Visible = false;
                 }
 
@@ -228,20 +230,26 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else if (txtEarthing.Text.Trim() == "5")
                 {
-                    
+                    EscalatorEarthing1.Visible = true;
+                    EscalatorEarthing2.Visible = true;
+                    EscalatorEarthing3.Visible = true;
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                 }
                 else if (txtEarthing.Text.Trim() == "6")
                 {
-                    
+                    EscalatorEarthing1.Visible = true;
+                    EscalatorEarthing2.Visible = true;
+                    EscalatorEarthing3.Visible = true;
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                     EscalatorEarthing6.Visible = true;
                 }
                 else if (txtEarthing.Text.Trim() == "7")
                 {
-                    
+                    EscalatorEarthing1.Visible = true;
+                    EscalatorEarthing2.Visible = true;
+                    EscalatorEarthing3.Visible = true;
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                     EscalatorEarthing6.Visible = true;
@@ -249,7 +257,9 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else if (txtEarthing.Text.Trim() == "8")
                 {
-                    
+                    EscalatorEarthing1.Visible = true;
+                    EscalatorEarthing2.Visible = true;
+                    EscalatorEarthing3.Visible = true;
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                     EscalatorEarthing6.Visible = true;
@@ -258,7 +268,9 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else if (txtEarthing.Text.Trim() == "9")
                 {
-                    
+                    EscalatorEarthing1.Visible = true;
+                    EscalatorEarthing2.Visible = true;
+                    EscalatorEarthing3.Visible = true;
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                     EscalatorEarthing6.Visible = true;
@@ -268,7 +280,9 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else if (txtEarthing.Text.Trim() == "10")
                 {
-                    
+                    EscalatorEarthing1.Visible = true;
+                    EscalatorEarthing2.Visible = true;
+                    EscalatorEarthing3.Visible = true;
                     EscalatorEarthing4.Visible = true;
                     EscalatorEarthing5.Visible = true;
                     EscalatorEarthing6.Visible = true;
@@ -279,7 +293,9 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else
                 {
-                    
+                    EscalatorEarthing1.Visible = false;
+                    EscalatorEarthing2.Visible = false;
+                    EscalatorEarthing3.Visible = false;
                     EscalatorEarthing4.Visible = false;
                     EscalatorEarthing5.Visible = false;
                     EscalatorEarthing6.Visible = false;

@@ -539,7 +539,8 @@
                                         </label>
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
                                         <asp:TextBox class="form-control" ID="txtWeight" onpaste="preventPaste(event)" onKeyPress="return isNumberdecimalKey(event, this);" onkeydown="return preventEnterSubmit(event)" MaxLength="6" placeholder="" autocomplete="off" TabIndex="10" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                    </div>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtWeight" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Weight of Escalator</asp:RequiredFieldValidator>
+                                        </div>
                                     <div class="col-md-4" runat="server">
                                         <label for="Name">
                                             Weight of Counter Weight (in kg)
@@ -1374,4 +1375,25 @@
                alert("Pasting is not allowed in this field."); // Notify the user
            }
        </script>
+     <script type="text/javascript">
+         function isvalidphoneno() {
+             var Phone1 = document.getElementById("<%=txtAgentPhone.ClientID %>");
+             phoneNo = Phone1.value;
+             var lblErrorContect = document.getElementById("lblErrorContect");
+             lblErrorContect.innerHTML = "";
+             var expr = /^[6-9]\d{9}$/;
+             if (phoneNo == "") {
+                 lblErrorContect.innerHTML = "Please Enter Contact Number" + "\n";
+                 return false;
+             }
+             else if (expr.test(phoneNo)) {
+                 lblErrorContect.innerHTML = "";
+                 return true;
+             }
+             else {
+                 lblErrorContect.innerHTML = "Invalid Contact Number" + "\n";
+                 return false;
+             }
+         }
+     </script>
 </asp:Content>

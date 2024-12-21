@@ -369,10 +369,11 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
-                                        <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; margin-top: 6%;"><u>Installation Details</u></h6>
+                                     </div>
+                                    </div>
+                                       <%-- <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; margin-top: 6%;"><u>Installation Details</u></h6>--%>
                                         <div id="Div6" runat="server" visible="true">
+
                                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; margin-top: 25px; margin-bottom: -50px !important; margin-left: 15px;">Local Agent Details</h6>
 
                                             <div class="row" style="margin-left: 0px;" id="LocalAgents" runat="server">
@@ -404,8 +405,8 @@
 
                                         <%--aa--%>
                                     </div>
-                                </div>
-                            </div>
+                              <%--  </div>
+                            </div>--%>
                             <div class="page2">
                                 <div id="Div8" runat="server" visible="true">
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; margin-top: 25px; margin-bottom: -50px !important; margin-left: 15px;">Lift Details</h6>
@@ -413,7 +414,7 @@
                                         <div class="col-4" runat="server" visible="True" style="margin-top: 5% !important;">
                                             <label for="Voltage">
                                                 Make of Lift
-                                                <samp style="color: red">* </samp>
+                                               
                                             </label>
                                             <asp:TextBox ReadOnly="true" class="form-control" AutoPostBack="true" ID="txtMake" MaxLength="10" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
@@ -421,7 +422,7 @@
                                         <div class="col-4" runat="server" visible="True" style="margin-top: 5% !important;">
                                             <label for="Voltage">
                                                 Serial No. of Lift
-                                                <samp style="color: red">* </samp>
+                                               
                                             </label>
                                             <asp:TextBox ReadOnly="true" class="form-control" AutoPostBack="true" ID="txtSerialNo" MaxLength="10" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
@@ -707,14 +708,14 @@
                                         </div>
                                         <div class="col-4" id="TPN1" runat="server" visible="true" style="margin-top: 5% !important;">
                                             <label for="Name">
-                                                Neutral and Phase (ohms)<samp style="color: red">* </samp>
+                                                Neutral and Phase (ohms)
                                             </label>
                                             <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
                                             <asp:TextBox class="form-control" ID="txtNeutralPhase" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="7" placeholder="" autocomplete="off" TabIndex="41" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                         <div class="col-4" id="TPN2" runat="server" visible="true" style="margin-top: 5% !important;">
                                             <label for="Name">
-                                                Earth and Phase (mohms)<samp style="color: red">* </samp>
+                                                Earth and Phase (mohms)
                                             </label>
                                             <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
                                             <asp:TextBox class="form-control" ID="txtEarthPhase" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="7" placeholder="" autocomplete="off" TabIndex="42" runat="server" Style="margin-left: 18px"></asp:TextBox>

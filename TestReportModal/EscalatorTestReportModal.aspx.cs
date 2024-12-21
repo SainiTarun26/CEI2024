@@ -125,6 +125,7 @@ namespace CEIHaryana.TestReportModal
                 }
                 else
                 {
+                    LocalAgentsouterDiv.Visible = false;
                     LocalAgents.Visible = false;
                 }
 

@@ -272,6 +272,7 @@ namespace CEIHaryana.SiteOwnerPages
                         Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
                         Label lblReportType = (Label)row.FindControl("lblReportType");
                         Label lblNoOfInstallations = (Label)row.FindControl("lblNoOfInstallations");
+                        Label lblTotalNo = (Label)row.FindControl("lblTotalNo");
                         if (lblCategory.Text.Trim() == "Lift" && TypeOfInspection.Trim() == "New")
 
                         {
@@ -280,7 +281,7 @@ namespace CEIHaryana.SiteOwnerPages
                             Session["Typs"] = lblCategory.Text.Trim();
                             Session["NoOfInstallations"] = lblNoOfInstallations.Text.Trim();
                             Session["IHID"] = lblNoOfInstallations.Text.Trim();
-                            Session["TotalInstallation"] = lblNoOfInstallations.Text.Trim();
+                            Session["TotalInstallation"] = lblTotalNo.Text.Trim();
                             Session["LiftTestReportID"] = lblTestReportId.Text;
                             Response.Redirect("/SiteOwnerPages/LiftDetails.aspx", false);
                         }

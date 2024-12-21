@@ -2336,9 +2336,10 @@
 
                                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                     <div>
+                                        <div runat="server" id="LocalAgents" > 
                                         <h8 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Local Agent Details</h8>
-                                        <div class="row" style="margin-top: 10px;" runat="server" id="LocalAgents">
-                                            <%--<div class="col-md-3">
+                                        <div class="row" style="margin-top: 10px;" >
+                                            <%--<div class="col-md-3" runat="server" id="LocalAgents">
                                         <label>
                                             Name and Address of Local Agent
         <samp style="color: red">* </samp>
@@ -2372,6 +2373,7 @@
                                                 <asp:TextBox ReadOnly="true" class="form-control" ID="txtAgentPhone" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="10" placeholder="" autocomplete="off" TabIndex="4" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </div>
+                                            </div>
                                         <h8 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">Lift Details</h8>
                                         <div class="row" style="margin-top: 10px;">
                                             <div class="col-md-4" runat="server" visible="True" style="top: 0px !important;">

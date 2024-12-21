@@ -1427,6 +1427,26 @@
             alert("Pasting is not allowed in this field."); // Notify the user
         }
     </script>
-
+    <script type="text/javascript">
+        function isvalidphoneno() {
+            var Phone1 = document.getElementById("<%=txtAgentPhone.ClientID %>");
+            phoneNo = Phone1.value;
+            var lblErrorContect = document.getElementById("lblErrorContect");
+            lblErrorContect.innerHTML = "";
+            var expr = /^[6-9]\d{9}$/;
+            if (phoneNo == "") {
+                lblErrorContect.innerHTML = "Please Enter Contact Number" + "\n";
+                return false;
+            }
+            else if (expr.test(phoneNo)) {
+                lblErrorContect.innerHTML = "";
+                return true;
+            }
+            else {
+                lblErrorContect.innerHTML = "Invalid Contact Number" + "\n";
+                return false;
+            }
+        }
+    </script>
 
 </asp:Content>
