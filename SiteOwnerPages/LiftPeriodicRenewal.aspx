@@ -21,6 +21,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
+        .modal-dialog {
+            max-width: 80%; /* Sets a maximum width for the modal */
+            width: 100%; /* Ensures the modal takes up full available width */
+            margin: 30px auto; /* Centers the modal vertically and horizontally */
+        }
+
+        .modal-content {
+            height: auto; /* Ensures the content height adjusts to the content inside */
+            overflow: visible; /* Ensures any overflowed content is visible */
+        }
+
+        .modal-body {
+            max-height: 70vh; /* Set a maximum height for the modal body */
+            overflow-y: auto; /* Adds vertical scroll if content exceeds the max-height */
+        }
+
         .fa-magnifying-glass:before, .fa-search:before {
             content: "\f002";
             COLOR: WHITE;
@@ -171,6 +187,45 @@
             box-sizing: border-box;
             padding: 0;
         }
+        /* Style for the modal */
+        #searchModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Style for the GridView inside the modal */
+        .modal-grid-container {
+            width: 80%; /* Adjust this to your preference */
+            max-height: 70%; /* Adjust height based on your modal size */
+            overflow-y: auto; /* Enable vertical scrolling */
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        /* Optional: Style for the grid itself */
+        .table-responsive {
+            width: 100%;
+            max-height: 500px; /* Adjust height as needed */
+            overflow-y: scroll; /* Enable scrolling when the grid overflows */
+        }
+
+        .wrap-text {
+            white-space: normal; /* Allow the text to wrap naturally */
+            word-wrap: break-word; /* Break long words if necessary */
+            word-break: break-word; /* Ensures that long words can break and wrap within the container */
+            max-width: 200px; /* Set a maximum width for the text to wrap (adjust this as necessary) */
+            overflow: hidden; /* Prevents text from overflowing outside the container */
+            word-break: break-all; /* This ensures that long words will break at any point if they exceed the container width */
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -316,7 +371,7 @@
                                 <label>
                                     District<samp style="color: red"> * </samp>
                                 </label>
-                                <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDistrict" TabIndex="6" selectionmode="Multiple" Style="width: 100% !important">
+                                <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDistrict"  Style="width: 100% !important">
                                 </asp:DropDownList>
                                 <asp:TextBox class="form-control" ID="txtDistrict" Visible="false" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" ReadOnly="true"></asp:TextBox>
 
@@ -393,19 +448,20 @@
                                 <ContentTemplate>
                                     <div class="row">
                                         <div class="col-md-4" runat="server">
-                                            <asp:TextBox class="form-control" ID="txtSearch" autocomplete="off" placeholder="Search" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtSearch" autocomplete="off" placeholder="Search" runat="server" Style="margin-left: 18px" onkeyup="Search_Gridview(this)"
+                                                onkeydown="SearchOnEnter(event)"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtSearch" runat="server" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
                                         </div>
-                                        <div class="col-md-4" style="margin-bottom: auto; padding-left: 0px;">
+                                        <%-- <div class="col-md-4" style="margin-bottom: auto; padding-left: 0px;">
                                             <asp:Button ID="btn" Class="btn btn-primary" runat="server" Text="Search" OnClick="btnModalSearch_Click" Style="height: 30px; padding: 0px 15px 0px 15px;" />
-                                        </div>
-
+                                        </div>--%>
                                     </div>
                                     <hr />
                                     <div class="row">
                                         <%--Grid to filter record according to Registration No--%>
                                         <div class="col-md-12">
                                             <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" AutoGenerateColumns="false">
+                                                <%--AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging"--%>
                                                 <PagerStyle CssClass="pagination-ys" />
                                                 <Columns>
                                                     <asp:BoundField DataField="RegistrationNo" HeaderText="Registration No">
@@ -414,7 +470,7 @@
                                                     </asp:BoundField>
                                                     <asp:BoundField DataField="Make" HeaderText="Make">
                                                         <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
-                                                        <ItemStyle HorizontalAlign="Left" Width="30%" />
+                                                        <ItemStyle HorizontalAlign="Left" Width="30%" CssClass="wrap-text" />
                                                     </asp:BoundField>
                                                     <asp:BoundField DataField="TypeOfControl" HeaderText="Type Of Control">
                                                         <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
@@ -452,6 +508,41 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        // Function to search through the GridView rows
+        function Search_Gridview(strKey) {
+            var strData = strKey.value.toLowerCase().split(" ");
+            var tblData = document.getElementById("<%=GridView1.ClientID %>");
+            var rowData;
+
+            // Iterate through each row in the GridView
+            for (var i = 1; i < tblData.rows.length; i++) {
+                rowData = tblData.rows[i].innerHTML;
+                var styleDisplay = 'none';
+
+                // Check if all search keywords match a part of the row data
+                for (var j = 0; j < strData.length; j++) {
+                    if (rowData.toLowerCase().indexOf(strData[j]) >= 0)
+                        styleDisplay = '';  // Display this row if a match is found
+                    else {
+                        styleDisplay = 'none';  // Hide the row if no match found
+                        break;
+                    }
+                }
+
+                tblData.rows[i].style.display = styleDisplay;  // Apply the visibility
+            }
+        }
+
+        // Function to trigger search when pressing Enter
+        function SearchOnEnter(event) {
+            if (event.keyCode === 13) {  // Check if Enter (keyCode 13) was pressed
+                event.preventDefault();  // Prevent default form submission
+                Search_Gridview(document.getElementById('<%=txtSearch.ClientID %>'));
+            }
+        }
+    </script>
+
     <script type="text/javascript">
         function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode

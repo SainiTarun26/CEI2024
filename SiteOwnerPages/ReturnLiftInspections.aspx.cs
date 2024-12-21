@@ -241,6 +241,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
+                Session["OTP"] = "0";
                 string TypeOfInspection = Session["TypeOfInspection"].ToString();
                 if (e.CommandName == "ViewTestReport")
                 {

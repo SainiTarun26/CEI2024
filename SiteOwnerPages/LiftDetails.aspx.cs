@@ -240,7 +240,9 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            try
+            if (Check.Checked == true)
+            {
+                try
             {
                 if (Page.IsValid)
                 {
@@ -404,6 +406,12 @@ namespace CEIHaryana.SiteOwnerPages
 
 
             }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Please Check declaration first');", true);
+
+            }
         }
 
         protected void BtnBack_Click(object sender, EventArgs e)
@@ -505,30 +513,32 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void btnVerify_Click(object sender, EventArgs e)
         {
-            if (Session["OTP"].ToString()=="0") {
-                OTP.Visible = true;
-                Email = Session["ContractorEmail"].ToString();
-                OTPs = CEI.ValidateOTPthroughEmail(Email);
-                Session["OTP"] = OTPs.Trim(); 
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Enter the OTP you received to Your Contractor's Email');", true);
+            
+                if (Session["OTP"].ToString() == "0") {
+                    OTP.Visible = true;
+                    Email = Session["ContractorEmail"].ToString();
+                    OTPs = CEI.ValidateOTPthroughEmail(Email);
+                    Session["OTP"] = OTPs.Trim();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Enter the OTP you received to Your Contractor's Email');", true);
 
-            }
-            else
-            {
-                if (Session["OTP"].ToString() == txtOTP.Text.Trim())
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Otp Verified Successfully');", true);
-                    OTP.Visible = false;
-                    btnVerify.Visible = false;
-                    btnSubmit.Visible = true;
-                    Attachments.Visible = true;
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Incorrect Otp Please Try Again');", true);
+                    if (Session["OTP"].ToString() == txtOTP.Text.Trim())
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Otp Verified Successfully');", true);
+                        OTP.Visible = false;
+                        btnVerify.Visible = false;
+                        btnSubmit.Visible = true;
+                        Attachments.Visible = true;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Incorrect Otp Please Try Again');", true);
 
+                    }
                 }
-            }
+           
         }
     }
 }

@@ -8903,6 +8903,11 @@ SqlTransaction transaction)
         {
             DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertInspectionAttachmentsLift", InspectionId, InstallationType, DocumentID, DocSaveName, FileName, FilePath, CreatedBy);
         }
+
+        public DataSet GetRenewalLiftDataGridOfAllREcords(string Type, string CreatedBy)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetRenewalLiftDataGridOfAllRecords", Type, CreatedBy);
+        }
     }
 }
 

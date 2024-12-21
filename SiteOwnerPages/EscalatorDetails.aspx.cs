@@ -233,7 +233,9 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            try
+            if (Check.Checked == true)
+            {
+                try
             {
                 if (Page.IsValid)
                 {
@@ -367,6 +369,12 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 string script = ex.Message + "alert(\"Please Fill Form Correctly\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Please Check declaration first');", true);
+
             }
         }
         protected void BtnBack_Click(object sender, EventArgs e)

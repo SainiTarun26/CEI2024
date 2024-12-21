@@ -84,9 +84,29 @@ namespace CEIHaryana.SiteOwnerPages
 
             DataSet ds = new DataSet();
             ds = CEI.GetApplicantTypeForLift(OwnerId);
-            ApplicantTypeID = ds.Tables[0].Rows[0]["ApplicantTypeCode"].ToString();
-            //ApplicantTypeID = "AT001";
-            Session["ApplicantTypeID"] = ApplicantTypeID.ToString();
+            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                ApplicantTypeID = ds.Tables[0].Rows[0]["ApplicantTypeCode"].ToString();
+                Session["ApplicantTypeID"] = ApplicantTypeID.ToString();
+            }
+            else
+            { }          
+        }
+
+        private void GridtoViewAllRecords(string InstallationType,string CreatedBy)
+        {
+            DataSet ds = new DataSet();
+            ds = CEI.GetRenewalLiftDataGridOfAllREcords(InstallationType, CreatedBy);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                GridView1.DataSource = ds.Tables[0];
+                GridView1.DataBind();
+            }
+            else
+            {
+                GridView1.DataSource = null;
+                GridView1.DataBind();
+            }
         }
 
         private void GridDocument()
@@ -289,35 +309,57 @@ namespace CEIHaryana.SiteOwnerPages
                 if (connection != null && connection.State == ConnectionState.Open)
                 {
                     connection.Close();
-                    Session["RegistrationNosessionPass"] = null;
-                    Session["InstallTypePass"] = null;
                 }
             }
         }
 
         private void Reset()
         {
-            ddlInstallationType.SelectedValue = "0";
-            txtRegistrationNo.Text = "";
-            txtPrevChallanDate.Text = "";
+            txtMake.ReadOnly = false;
+            txtSerialNo.ReadOnly = false;
+            RadioBtnType.Enabled = true;
+            RadioBtnEscType.Enabled = true;
+            txtControlType.ReadOnly = false;
+            txtCapacity.ReadOnly = false;
+            txtWeight.ReadOnly = false;
+            txtSiteAddress.ReadOnly = false;
+            ddlDistrict.Visible = true;
+            txtDistrict.Visible = false;
+            txtDateofErection.ReadOnly = false;
+            txtLastApprovalDate.ReadOnly = false;
+            txtPrevChallanDate.ReadOnly = false;
+
+            // Clear text and selections
+            //txtRegistrationNo.Text = "";
             txtMake.Text = "";
             txtSerialNo.Text = "";
-            RadioBtnType.ClearSelection();
+            RadioBtnType.SelectedIndex = -1;
+            RadioBtnEscType.SelectedIndex = -1;
             txtControlType.Text = "";
             txtCapacity.Text = "";
             txtWeight.Text = "";
-            ddlDistrict.SelectedValue = "0";
             txtSiteAddress.Text = "";
+            //ddlDistrict.SelectedIndex = 0;
+            //ddlDistrict.SelectedIndex = 0;// Default value for dropdown
+            ddlDistrict.ClearSelection();
+            txtDistrict.Text = "";
             txtDateofErection.Text = "";
+            txtLastApprovalDate.Text = "";
+            txtPrevChallanDate.Text = "";
         }
 
         protected void ddlInstallationType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Reset();
+            txtRegistrationNo.Text = "";
             ddlInstallationType.SelectedItem.ToString();
             Session["InstallationType"] = ddlInstallationType.SelectedItem.ToString();
             
             divLabelLiftAttachments.Visible = true;
             divLiftAttachments.Visible = true;
+            string CreatedBy = Session["SiteOwnerId"].ToString();
+
+            GridtoViewAllRecords(ddlInstallationType.SelectedItem.ToString(), CreatedBy);
             BindDistrict();
             GridDocument();
 
@@ -359,7 +401,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             DataSet ds = new DataSet();
             ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text.Trim());
-            if (ds.Tables[0].Rows.Count > 0)
+            if (ds.Tables[0].Rows.Count > 0 && ds != null)
             {
                 txtMake.ReadOnly = true;
                 txtSerialNo.ReadOnly = true;
@@ -436,26 +478,28 @@ namespace CEIHaryana.SiteOwnerPages
             }
             else
             {
+
+                Reset();
                 //string alertScript = "alert('The  Registration number is Not In Our Database. Please provide a different Registration number.');";
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
             }
 
         } 
-        protected void btnModalSearch_Click(object sender, EventArgs e)
-        {
-            DataSet ds = new DataSet();
-            ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtSearch.Text.Trim());
-            if (ds.Tables.Count > 0)
-            {
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
-            }
-            else
-            {
-                string alertScript = "alert('The  Registration number is Not In Our Database. Please provide a different Registration number.');";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-            }
+        //protected void btnModalSearch_Click(object sender, EventArgs e)
+        //{
+        //    DataSet ds = new DataSet();
+        //    ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtSearch.Text.Trim());
+        //    if (ds.Tables.Count > 0)
+        //    {
+        //        GridView1.DataSource = ds;
+        //        GridView1.DataBind();
+        //    }
+        //    else
+        //    {
+        //        string alertScript = "alert('The  Registration number is Not In Our Database. Please provide a different Registration number.');";
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+        //    }
+        //}
 
-        }
     }
 }
