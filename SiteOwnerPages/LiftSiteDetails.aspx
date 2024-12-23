@@ -138,7 +138,7 @@
 <script type="text/javascript">
     function alertWithRedirectdata() {
         if (confirm('Lift Details Successfully')) {
-            window.location.href = "/SiteOwnerPages/LiftSiteDetails.aspx";
+            window.location.href = "/SiteOwnerPages/LiftIntimations.aspx";
         } else {
         }
     }
@@ -147,7 +147,7 @@
         function alertWithRedirectdata() {
 
             alert('SiteDetails Created Successfully');
-            window.location.href = "/SiteOwnerPages/LiftSiteDetails.aspx";
+            window.location.href = "/SiteOwnerPages/LiftIntimations.aspx";
 
         }
     </script>
@@ -160,18 +160,7 @@
         }
     </script>
     <script type="text/javascript">
-        function validatePAN() {
-            var panTextBox = document.getElementById('<%= txtPAN.ClientID %>');
-            var panValidator = document.getElementById('<%= revPAN.ClientID %>');
-
-            var panValue = panTextBox.value.toUpperCase(); // Convert to uppercase here
-
-            if (panValue.length > 0 && !panValidator.isvalid) {
-                alert("Please enter a valid PAN number.");
-                return false;
-            }
-            return true;
-        }
+       
 
         function convertToUpperCase(event) {
             var textBox = event.target;
@@ -446,9 +435,9 @@
         <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtPAN" TabIndex="1" ReadOnly="true" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPAN" ValidationExpression="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ValidationGroup="Submit"
+                                           <%-- <asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPAN" ValidationExpression="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ValidationGroup="Submit"
                                                 ErrorMessage="Enter a valid PAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>--%>
                                         </div>
 
                                         <div class="col-md-4" runat="server" id="DivOtherDepartment" visible="false">

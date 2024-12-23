@@ -8149,9 +8149,9 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertLiftNewAttachments", InstallationType, int.Parse(DocumentID), DocSaveName, FileName, FilePath, CreatedBy);
         }
         //NaVNEET 5-12
-        public DataSet GetRenewalLiftData(string Type, string RegistrationNo)
+        public DataSet GetRenewalLiftData(string Type, string RegistrationNo, string CreatedBy)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPeriodicRenewalData", Type, RegistrationNo);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPeriodicRenewalData", Type, RegistrationNo, CreatedBy);
         }
         public DataTable UpdateLiftTestReportHistory(string Type, string ID, string count, string CreatedBy)
         {
@@ -8375,8 +8375,8 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_DocumentGridwithOutChallan");
         }
         public string InsertInspectionDataForPeriodic_LiftInspection(string ApplicantType, string InstallationType, string District, string Division,
-  string PaymentMode, string InspectionRemarks, string CreatedBy, decimal TotalAmount, string para_Assigned,
-  string transcationId, DateTime TranscationDate, int InspectID, int ServiceType, SqlTransaction transaction)
+ string PaymentMode, string InspectionRemarks, string CreatedBy, decimal TotalAmount, string para_Assigned,
+ string transcationId, string TranscationDate, int InspectID, int ServiceType, SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertInspectionDataForPeriodic_LiftInspection", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -8392,7 +8392,23 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             cmd.Parameters.AddWithValue("@TransactionId", String.IsNullOrEmpty(transcationId) ? DBNull.Value : (object)transcationId);
             cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
             cmd.Parameters.AddWithValue("@AssignTo", para_Assigned);
-            cmd.Parameters.AddWithValue("@TransctionDate", TranscationDate);
+            //cmd.Parameters.AddWithValue("@TransctionDate", TranscationDate);
+            if (String.IsNullOrEmpty(TranscationDate))
+            {
+                cmd.Parameters.AddWithValue("@TransctionDate", DBNull.Value);
+            }
+            else
+            {
+                DateTime transactionDateValue;
+                if (DateTime.TryParse(TranscationDate, out transactionDateValue))
+                {
+                    cmd.Parameters.AddWithValue("@TransctionDate", transactionDateValue);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@TransctionDate", DBNull.Value);
+                }
+            }
             cmd.Parameters.AddWithValue("@InspectID", InspectID);
             cmd.Parameters.AddWithValue("@ServiceType", ServiceType);
 

@@ -449,7 +449,8 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                         decimal TotalAmount = 0;
                         string transcationId = string.Empty;
-                        DateTime TranscationDate = DateTime.Now;
+                        //DateTime TranscationDate = DateTime.Now;
+                        string TranscationDate = string.Empty;
                         TotalAmount = Convert.ToDecimal(Session["Amount"]);
 
 
@@ -462,7 +463,7 @@ namespace CEIHaryana.SiteOwnerPages
                             if (txttransactionId.Text != "")
                             {
                                 transcationId = txttransactionId.Text.Trim();
-                                TranscationDate = Convert.ToDateTime(txttransactionDate.Text);
+                                TranscationDate = txttransactionDate.Text;
                             }
                             else
                             {
@@ -500,7 +501,7 @@ namespace CEIHaryana.SiteOwnerPages
                         }
 
                         InsertFilesIntoDatabase(InstallationTypeID, CreatedBy, ApplicantType, lblCategory.Trim(), District, Division, PaymentMode,
-                   txtInspectionRemarks.Text.Trim(), CreatedBy, TotalAmount, Assigned, transcationId, Convert.ToDateTime(TranscationDate),
+                   txtInspectionRemarks.Text.Trim(), CreatedBy, TotalAmount, Assigned, transcationId, TranscationDate,
                    inspectionId, ServiceType);
 
                         
@@ -520,7 +521,7 @@ namespace CEIHaryana.SiteOwnerPages
 
         public void InsertFilesIntoDatabase(string InstallationTypeID, string para_CreatedBy, string para_ApplicantType, string para_lblCategory, string para_District,
             string para_To, string para_PaymentMode, string para_txtInspectionRemarks, string para_CreatedByy, decimal para_TotalAmount,
-            string para_Assigned, string para_transcationId, DateTime para_TranscationDate, int para_InspectID,
+            string para_Assigned, string para_transcationId, string para_TranscationDate, int para_InspectID,
                int ServiceType)
         {
             bool isInsertSuccessful = true;

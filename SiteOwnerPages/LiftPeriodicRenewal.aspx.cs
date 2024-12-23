@@ -397,8 +397,9 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void txtRegistrationNo_TextChanged(object sender, EventArgs e)
         {
+            string CreatedBy = Session["SiteOwnerId"].ToString();
             DataSet ds = new DataSet();
-            ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text.Trim());
+            ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text.Trim(), CreatedBy);
             if (ds.Tables[0].Rows.Count > 0 && ds != null)
             {
                 txtMake.ReadOnly = true;
@@ -491,9 +492,10 @@ namespace CEIHaryana.SiteOwnerPages
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
                 string RegistrationNo = LblRegistrationNo.Text;
+                string CreatedBy = Session["SiteOwnerId"].ToString();
                 //txtRegistrationNo.Text = RegistrationNo;
                 DataSet ds = new DataSet();
-                ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), RegistrationNo);
+                ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), RegistrationNo, CreatedBy);
                 if (ds.Tables[0].Rows.Count > 0 && ds != null)
                 {
 

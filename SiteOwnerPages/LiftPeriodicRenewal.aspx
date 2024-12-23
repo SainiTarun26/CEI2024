@@ -487,7 +487,7 @@
                                                         <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
                                                         <ItemStyle HorizontalAlign="Left" Width="10%" />
                                                     </asp:BoundField>
-                                                    <asp:BoundField DataField="Capacity" HeaderText="Capacity">
+                                                    <asp:BoundField DataField="Capacity" HeaderText="Capacity(Persons)">
                                                         <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
                                                         <ItemStyle HorizontalAlign="Left" Width="10%" />
                                                     </asp:BoundField>

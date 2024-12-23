@@ -46,7 +46,7 @@
     <script type="text/javascript">
         function alertWithRedirectdata() {
             if (confirm('Inspection Submitted Successfully')) {
-                window.location.href = "/SiteOwnerPages/LiftIntimations.aspx";
+                window.location.href = "/SiteOwnerPages/ReturnInspections.aspx";
             } else {
             }
         }

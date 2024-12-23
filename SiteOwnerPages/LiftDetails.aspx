@@ -1290,6 +1290,8 @@
                         </label>
                     </div>
                 </div>
+                 <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+     <ContentTemplate>
                 <div class="row" id="OTP" runat="server" visible="false">
 
                     <div class="col-md-4">
@@ -1301,7 +1303,8 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator74" ControlToValidate="txtOTP" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter OTP"></asp:RequiredFieldValidator>
                     </div>
                 </div>
-
+             </ContentTemplate>
+</asp:UpdatePanel>
                 <div class="row" style="margin-left: 1%; margin-bottom: 20px;">
                     <asp:CheckBox ID="Check" runat="server" TabIndex="24" />&nbsp;
                         
@@ -1310,13 +1313,17 @@
                             </text>
                 </div>
 
+
                 <div class="row">
                     <div class="col-md-4">
                     </div>
                     <div class="col-md-4" style="text-align: center;">
                         <%--<asp:Button ID="BtnBack" runat="server" Text="Back" Visible="true" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />--%>
                         <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="false" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
-                        <asp:Button ID="btnVerify" Text="Verify Details"  runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" />
+
+                        <asp:Button ID="btnVerify" Text="Verify Details" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" />
+
+
                         <asp:Button ID="btnSubmit" Text="Submit" runat="server" Visible="false" OnClientClick="focusInvalidField();" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
 
                     </div>
@@ -1344,6 +1351,33 @@
     <script src="/Assets/js/Chart.roundedBarCharts.js">
 
     </script>
+   <script type="text/javascript">
+       // Function to show the OTP section and focus on the OTP TextBox
+       function showAndFocusOTP() {
+           // Show the OTP row
+           document.getElementById('<%= OTP.ClientID %>').style.display = "flex";
+
+        // Focus on the OTP TextBox
+        document.getElementById('<%= txtOTP.ClientID %>').focus();
+    }
+
+    // Function to focus on the GridView
+    function focusOnGridView() {
+        // Focus on the GridView container
+        const gridContainer = document.getElementById('<%= Grd_Document.ClientID %>');
+
+           if (gridContainer) {
+               // Scroll to the GridView if it's not in the viewport
+               gridContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+               // Focus on the GridView container
+               gridContainer.focus();
+           }
+       }
+   </script>
+
+
+
     <script type="text/javascript">
         function setMaxErectionDate() {
             var today = new Date().toISOString().split('T')[0];
