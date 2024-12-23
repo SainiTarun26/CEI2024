@@ -661,6 +661,10 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             date = txttransactionDate.Text;
                         }
+                    if (date==""|| date ==null)
+                    {
+                        date = "1899-09-09";
+                    }
                         DataTable ds = new DataTable();
                         if (Session["TypeOfInspection"].ToString() == "New" && Session["ReturnedValue"].ToString() == "1")
                         {
@@ -743,7 +747,7 @@ namespace CEIHaryana.SiteOwnerPages
                     ds = CEI.CheckPeridocReturnValue(InspectionId);
                     Data = ds.Rows[0]["Typs"].ToString();
                 }
-                if (Data != "" && Data != null)
+                if (Data != "" && Data != "No" && Data != null)
                 {
                     Button1.Visible = false;
                     Inspection.Visible = true;

@@ -255,6 +255,37 @@
             padding-top: 2px;
             padding-bottom: 2px;
         }
+.input-box {
+       display: flex;
+       align-items: center;
+       max-width: 300px;
+       background: #fff;
+       border: 1px solid #a0a0a0;
+       border-radius: 4px;
+       padding-left: 0.5rem;
+       overflow: hidden;
+       font-family: sans-serif;
+   }
+
+       .input-box .prefix {
+           font-weight: 300;
+           font-size: 14px;
+           color: black;
+       }
+
+       .input-box input {
+           flex-grow: 1;
+           font-size: 14px;
+           background: #fff;
+           border: none;
+           outline: none;
+           padding: 0.5rem;
+       }
+
+       .input-box:focus-within {
+           border-color: #777;
+       }
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -271,15 +302,45 @@
                         <label>Inspection Application No</label>
                         <asp:TextBox class="form-control" ID="txtInspectionReportID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-md-4" runat="server">
+                    <div class="col-md-4" id="individual" runat="server">
                         <label>Owner Name</label>
                         <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-md-4">
+<div class="col-md-4" id="agency" runat="server" visible="false">
+                        <label for="agency">
+                            Name of Firm/ Org./ Company/ Department
+                        </label>
+                        <div class="input-box">
+                            <span class="prefix">M/s.</span>
+                            <asp:TextBox class="form-control" ID="txtagency" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" runat="server" id="DivPancard_TanNo">
+                        <label for="PanNumber">
+                            PAN Card
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtPAN" TabIndex="1" ReadOnly="true" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+
+                    <div class="col-md-4" runat="server" id="DivOtherDepartment" visible="false">
+                        <label for="TanNumber">
+                           PAN/TAN Number
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtTanNumber" ReadOnly="true" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+
+                   <div class="col-md-4" style="margin-top: -10px;">
                         <label>Type of Applicant</label>
                         <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-md-4">
+                      <div class="col-md-4" style="margin-top: -10px;">
+                        <label>
+                            Electrical Installation For
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtelectrical" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>                   
+                    <div class="col-md-4" id="Installation" runat="server" visible="false">
                         <label>Type of Installation</label>
                         <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -472,27 +533,27 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                             <%--<asp:BoundField DataField="Status" HeaderText="Status">
+                            <%--<asp:BoundField DataField="Status" HeaderText="Status">
      <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
      <ItemStyle HorizontalAlign="Left" Width="15%" />
  </asp:BoundField>--%>
-                            <asp:BoundField DataField="TestReportID" HeaderText="TestReportId"  Visible="false">
+                            <asp:BoundField DataField="TestReportID" HeaderText="TestReportId" Visible="false">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
-                                 <%--   <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>--%>
+                                    <%--   <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>--%>
                                     <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("InspectionID") %>'></asp:Label>
-                                       <asp:Label ID="lblTestReport" runat="server" Text='<%#Eval("TestReportID") %>'></asp:Label>
-                                       <asp:Label ID="lblMake" runat="server" Text='<%#Eval("Make") %>'></asp:Label>
-                                          <asp:Label ID="lblLiftSrNo" runat="server" Text='<%#Eval("SerialNo") %>'></asp:Label>
-                                          <asp:Label ID="lblTypeOfLift" runat="server" Text='<%#Eval("TypeOfLift") %>'></asp:Label>
-                                          <asp:Label ID="lblTypeOfControl" runat="server" Text='<%#Eval("TypeOfControl") %>'></asp:Label>
-                                           <asp:Label ID="lblCapacity" runat="server" Text='<%#Eval("Capacity") %>'></asp:Label>
-                                           <asp:Label ID="lblWeight" runat="server" Text='<%#Eval("Weight") %>'></asp:Label>
-                                            <asp:Label ID="LblErectionDate" runat="server" Text='<%#Eval("ErectionDate") %>'></asp:Label>
+                                    <asp:Label ID="lblTestReport" runat="server" Text='<%#Eval("TestReportID") %>'></asp:Label>
+                                    <asp:Label ID="lblMake" runat="server" Text='<%#Eval("Make") %>'></asp:Label>
+                                    <asp:Label ID="lblLiftSrNo" runat="server" Text='<%#Eval("SerialNo") %>'></asp:Label>
+                                    <asp:Label ID="lblTypeOfLift" runat="server" Text='<%#Eval("TypeOfLift") %>'></asp:Label>
+                                    <asp:Label ID="lblTypeOfControl" runat="server" Text='<%#Eval("TypeOfControl") %>'></asp:Label>
+                                    <asp:Label ID="lblCapacity" runat="server" Text='<%#Eval("Capacity") %>'></asp:Label>
+                                    <asp:Label ID="lblWeight" runat="server" Text='<%#Eval("Weight") %>'></asp:Label>
+                                    <asp:Label ID="LblErectionDate" runat="server" Text='<%#Eval("ErectionDate") %>'></asp:Label>
                                        <asp:Label ID="lblLastApprovalDate" runat="server" Text='<%#Eval("LastApprovalDate") %>'></asp:Label>
                                       <asp:Label ID="LblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
                                         <asp:Label ID="LblOldTestReportId" runat="server" Text='<%#Eval("OldTestReportId") %>'></asp:Label>
@@ -775,8 +836,7 @@
             });
         }
 
-    
-
+  
         function toggleCheckboxArea(onlyHide = false) {
             var checkboxes = document.getElementById("mySelectOptions");
             var displayValue = checkboxes.style.display;

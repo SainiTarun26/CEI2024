@@ -427,6 +427,7 @@ namespace CEIHaryana.SiteOwnerPages
             dta = CEI.GetEmailContractor(ddlContName.SelectedValue.ToString());
             Email = dta.Rows[0]["Email"].ToString();
             Session["ContractorEmail"] = Email.Trim();
+            
             DataSet dt = new DataSet();
             dt = CEI.GetSupervisorandContractor("Contractor", ddlContName.SelectedValue.ToString());
             if (dt.Tables.Count > 0)
@@ -456,6 +457,8 @@ namespace CEIHaryana.SiteOwnerPages
             {
 
             }
+            ScriptManager.RegisterStartupScript(this, GetType(), "CallUpdateButtonText", "updateButtonText();", true);
+
             GetSupervisorDetails(ddlContName.SelectedValue);
         }
           
@@ -516,6 +519,7 @@ namespace CEIHaryana.SiteOwnerPages
             if (Session["OTP"].ToString() == txtOTP.Text.Trim())
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "focusGridView", "focusOnGridView();", true);
+                
             }
             else
             {
@@ -524,16 +528,18 @@ namespace CEIHaryana.SiteOwnerPages
             }
             if (Session["OTP"].ToString() == "0")
             {
-                //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Enter the OTP you received to Your Contractor's Email');", true);
-
+              
                 OTP.Visible = true;
+                btnVerify.Text = "Verify";
                 Email = Session["ContractorEmail"].ToString();
                 OTPs = CEI.ValidateOTPthroughEmail(Email);
                 Session["OTP"] = OTPs.Trim();
-
+                //Session["OTP"] = "Sent";
+                btnResend.Visible = true;
             }
             else
             {
+
                 if (Session["OTP"].ToString() == txtOTP.Text.Trim())
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Otp Verified Successfully');", true);
@@ -541,14 +547,51 @@ namespace CEIHaryana.SiteOwnerPages
                     btnVerify.Visible = false;
                     btnSubmit.Visible = true;
                     Attachments.Visible = true;
+                    btnResend.Visible = false;
+                    CheckDeclaration.Visible = true;
                 }
                 else
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Incorrect Otp Please Try Again');", true);
 
                 }
+                
             }
            
+        }
+
+        protected void btnResend_Click(object sender, EventArgs e)
+        {
+            if (Session["OTP"].ToString() == txtOTP.Text.Trim())
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "focusGridView", "focusOnGridView();", true);
+               // ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Enter the OTP you received to Your Contractor's Email');", true);
+
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "focusOTP", "document.getElementById('" + txtOTP.ClientID + "').focus();", true);
+
+            }
+            if (Session["ContractorEmail"].ToString() != "")
+            {
+               
+                OTP.Visible = true;
+                btnVerify.Text = "Verify";
+                Email = Session["ContractorEmail"].ToString();
+                OTPs = CEI.ValidateOTPthroughEmail(Email);
+                Session["OTP"] = OTPs.Trim();
+               // Session["ContractorEmail"] = "";
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert(' Otp Sent Successfully');", true);
+            }
+            else
+            {
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Please click on Verify Button For Verification');", true);
+
+
+
+            }
         }
     }
 }

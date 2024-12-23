@@ -431,7 +431,7 @@
 
                                         <div class="col-md-4" runat="server" id="DivPancard_TanNo">
                                             <label for="PanNumber">
-                                                PAN Card
+                                                PAN/TAN Number
         <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtPAN" TabIndex="1" ReadOnly="true" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -442,7 +442,7 @@
 
                                         <div class="col-md-4" runat="server" id="DivOtherDepartment" visible="false">
                                             <label for="TanNumber">
-                                                TAN Number
+                                               PAN/TAN Number
         <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtTanNumber" ReadOnly="true" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>

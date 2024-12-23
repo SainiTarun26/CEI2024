@@ -19,6 +19,7 @@ using System.Reflection.Emit;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Media.TextFormatting;
 using Label = System.Web.UI.WebControls.Label;
 
 namespace CEIHaryana.Officers
@@ -156,7 +157,32 @@ namespace CEIHaryana.Officers
                         TranscationDetails.Visible = true;
                         ChallanDate.Visible = false;
                     }
-                       string Division = ds.Tables[0].Rows[0]["Division"].ToString();
+                    //addedby aslam on 23 dec 2024 Start
+                    txtelectrical.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                    if (ds.Tables[0].Rows[0]["ContractorType"].ToString() == "Firm/Organization/Company/Department")
+                    {
+                        agency.Visible = true;
+                        individual.Visible = false;
+                        txtagency.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                        txtagency.ReadOnly = true;
+
+                        DivOtherDepartment.Visible = true;
+                        DivPancard_TanNo.Visible = false;
+                        txtTanNumber.Text = ds.Tables[0].Rows[0]["PanOrTan"].ToString();
+
+
+                    }
+                    else if (ds.Tables[0].Rows[0]["ContractorType"].ToString() == "Individual Person")
+                    {
+                        txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                        txtSiteOwnerName.ReadOnly = true;
+                        DivPancard_TanNo.Visible = true;
+                        DivOtherDepartment.Visible = false;
+                        txtPAN.Text = ds.Tables[0].Rows[0]["PanOrTan"].ToString();
+                    }
+                    //addedby aslam on 23 dec 2024 End
+
+                    string Division = ds.Tables[0].Rows[0]["Division"].ToString();
                        //Session["Division"] = Division;
                         //ChallanDate.Visible = false;
                         RegNo.Visible = false;
@@ -299,6 +325,31 @@ namespace CEIHaryana.Officers
                         TranscationDetails.Visible = true;
                         ChallanDate.Visible = false;
                     }
+                    //addedby aslam on 23 dec 2024 Start
+                    txtelectrical.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                    if (ds.Tables[0].Rows[0]["ContractorType"].ToString() == "Firm/Organization/Company/Department")
+                    {
+                        agency.Visible = true;
+                        individual.Visible = false;
+                        txtagency.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                        txtagency.ReadOnly = true;
+
+                        DivOtherDepartment.Visible = true;
+                        DivPancard_TanNo.Visible = false;
+                        txtTanNumber.Text = ds.Tables[0].Rows[0]["PanOrTan"].ToString();
+
+
+                    }
+                    else if (ds.Tables[0].Rows[0]["ContractorType"].ToString() == "Individual Person")
+                    {
+                        txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                        txtSiteOwnerName.ReadOnly = true;
+                        DivPancard_TanNo.Visible = true;
+                        DivOtherDepartment.Visible = false;
+                        txtPAN.Text = ds.Tables[0].Rows[0]["PanOrTan"].ToString();
+                    }
+                    //addedby aslam on 23 dec 2024 End
+
                     Session["InspectionType"] = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                        string Division = ds.Tables[0].Rows[0]["Division"].ToString();
                     //Session["Division"] = Division;

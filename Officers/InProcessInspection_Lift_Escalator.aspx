@@ -272,13 +272,42 @@
                         <label>Inspection Application No</label>
                         <asp:TextBox class="form-control" ID="txtInspectionReportID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-md-4" runat="server">
+                    <div class="col-md-4" id="individual" runat="server">
                         <label>Owner Name</label>
                         <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4" id="agency" runat="server" visible="false">
+                        <label for="agency">
+                            Name of Firm/ Org./ Company/ Department
+                        </label>
+                        <div class="input-box">
+                            <span class="prefix">M/s.</span>
+                            <asp:TextBox class="form-control" ID="txtagency" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" runat="server" id="DivPancard_TanNo">
+                        <label for="PanNumber">
+                            PAN Card
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtPAN" TabIndex="1" ReadOnly="true" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+
+                    <div class="col-md-4" runat="server" id="DivOtherDepartment" visible="false">
+                        <label for="TanNumber">
+                           PAN/TAN Number
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtTanNumber" ReadOnly="true" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4" style="margin-top: -10px;">
                         <label>Type of Applicant</label>
                         <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                                         <div class="col-md-4" style="margin-top: -10px;">
+                        <label>
+                            Electrical Installation For
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtelectrical" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-md-4" id="Installation" runat="server" visible="false">
                         <label>Type of Installation</label>

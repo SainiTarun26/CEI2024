@@ -53,6 +53,7 @@ namespace CEIHaryana.SiteOwnerPages
                                 ddlInstallationType.Enabled = false;
                             }
                             ddlInstallationType.SelectedValue = "1";
+                            txtRegistrationNo.Text = Session["RegistrationNosessionPass"].ToString();
                         }
                     }
                 }

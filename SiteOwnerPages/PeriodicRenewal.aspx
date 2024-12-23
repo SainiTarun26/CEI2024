@@ -605,13 +605,13 @@
                                         </div>
                                         <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="false">
                                             <label for="PanNumber">
-                                                PAN Card
+                                               PAN/TAN Number
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtPAN" ReadOnly="true" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                         <div class="col-md-4" runat="server" id="DivOtherDepartment" visible="false">
                                             <label for="TanNumber">
-                                                TAN Number
+                                                PAN/TAN Number
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtTanNumber" ReadOnly="true" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <%--<asp:RegularExpressionValidator ID="revTANNumber" runat="server" ControlToValidate="txtTanNumber" ValidationExpression="[A-Za-z]{4}[0-9]{5}[A-Za-z]" ValidationGroup="Submit"

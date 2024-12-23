@@ -48,7 +48,7 @@ namespace CEIHaryana.Officers
                 Response.Redirect("/Login.aspx");
             }
         }
-       public void GetData()
+        public void GetData()
         {
             try
             {
@@ -103,6 +103,28 @@ namespace CEIHaryana.Officers
                     else
                     {
                         TranscationDetails.Visible = true;
+                    }
+                    txtelectrical.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                    if (ds.Tables[0].Rows[0]["ContractorType"].ToString() == "Firm/Organization/Company/Department")
+                    {
+                        agency.Visible = true;
+                        individual.Visible = false;
+                        txtagency.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                        txtagency.ReadOnly = true;
+
+                        DivOtherDepartment.Visible = true;
+                        DivPancard_TanNo.Visible = false;
+                        txtTanNumber.Text = ds.Tables[0].Rows[0]["PanOrTan"].ToString();
+
+
+                    }
+                    else if (ds.Tables[0].Rows[0]["ContractorType"].ToString() == "Individual Person")
+                    {
+                        txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                        txtSiteOwnerName.ReadOnly = true;
+                        DivPancard_TanNo.Visible = true;
+                        DivOtherDepartment.Visible = false;
+                        txtPAN.Text = ds.Tables[0].Rows[0]["PanOrTan"].ToString();
                     }
 
                     GridBindDocument();
@@ -338,7 +360,7 @@ namespace CEIHaryana.Officers
                                             CEI.RejectMessagethroughEmail(ToEmail, CCemail, subject, Message);
                                         }
                                         else
-                                        {}
+                                        { }
                                     }
                                     else if (RadioButtonList2.SelectedValue == "1")
                                     {
@@ -519,7 +541,7 @@ namespace CEIHaryana.Officers
                 }
             }
             catch (Exception ex)
-            {}
+            { }
         }
 
         protected void lnkRedirectTR_Click1(object sender, EventArgs e)
@@ -648,6 +670,6 @@ namespace CEIHaryana.Officers
                 ds.Dispose();
             }
             catch (Exception ex) { }
-        }     
+        }
     }
 }
