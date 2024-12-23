@@ -473,6 +473,15 @@ namespace CEIHaryana.SiteOwnerPages
         }
         protected void btnVerify_Click(object sender, EventArgs e)
         {
+            if (Session["OTP"].ToString() == txtOTP.Text.Trim())
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "focusGridView", "focusOnGridView();", true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "focusOTP", "document.getElementById('" + txtOTP.ClientID + "').focus();", true);
+
+            }
             if (Session["OTP"].ToString() == "0")
             {
 

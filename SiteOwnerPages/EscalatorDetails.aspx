@@ -1293,6 +1293,30 @@
     <script src="/Assets/js/Chart.roundedBarCharts.js">
 
     </script>
+     <script type="text/javascript">
+         // Function to show the OTP section and focus on the OTP TextBox
+         function showAndFocusOTP() {
+             // Show the OTP row
+             document.getElementById('<%= OTP.ClientID %>').style.display = "flex";
+
+         // Focus on the OTP TextBox
+         document.getElementById('<%= txtOTP.ClientID %>').focus();
+  }
+
+  // Function to focus on the GridView
+  function focusOnGridView() {
+      // Focus on the GridView container
+      const gridContainer = document.getElementById('<%= Grd_Document.ClientID %>');
+
+             if (gridContainer) {
+                 // Scroll to the GridView if it's not in the viewport
+                 gridContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                 // Focus on the GridView container
+                 gridContainer.focus();
+             }
+         }
+     </script>
     <script type="text/javascript">
         function setMaxErectionDate() {
             var today = new Date().toISOString().split('T')[0];
