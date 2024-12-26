@@ -246,6 +246,18 @@
                                              Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
+                                    <div class="col-4" style="margin-top:35px;">
+                                        <label for="SubmissionDate">RTS Due Date:</label>
+
+                                        <asp:TextBox class="form-control" ID="txtRTSDueDate" ReadOnly="true" autocomplete="off" runat="server" TabIndex="2"
+                                            Style="margin-left: 18px">
+                                        </asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 25px; margin-left: 0px !important; text-align: center !important;">
+                                    <div class="col-12" style="text-align: center !important;">
+                                        <p style="color: red; font-weight: bold;">Note: This RTS due date is valid only if all the documents and information of this application is correct in all the aspects. "</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -118,120 +118,129 @@
                         </div>
                     </div>
                     <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%"
-                        AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" AllowPaging="true" PageSize="10" OnRowDataBound="GridView1_RowDataBound" BorderWidth="1px" BorderColor="#dbddff">
-                        <PagerStyle CssClass="pagination-ys" />
-                        <Columns>
-                            <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
-                                    <asp:Label ID="LblInspectionType" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label>
-                                    <%-- <asp:Label ID="LblAssignTo" runat="server" Text='<%#Eval("AssignTo") %>'></asp:Label>--%>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblTestRportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField>
-                                <HeaderStyle Width="10%" CssClass="headercolor" />
-                                <ItemStyle Width="10%" Font-Bold="true"  />
-                                <HeaderTemplate>
-                                    Inspection ID 
-                                </HeaderTemplate>
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <%--  <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                </asp:BoundField>--%>
-                            <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="TypeOfInspection" HeaderText="Inspection Type">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="ApplicantType" HeaderText="Applicant Type" Visible="false">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                            <asp:TemplateField HeaderText="Voltage ">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                                <ItemTemplate>
-                                    <div>
-                                        <%# Eval("VoltageLevel") %>
-                                    </div>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:BoundField DataField="ApplicationStatus" HeaderText="Status" >
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" Font-Bold="true" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="CreatedDate1" HeaderText="Created Date">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                            <asp:TemplateField>
-                                <HeaderTemplate>
-                                    <asp:Label ID="lblHeader" runat="server" Text="Form" CssClass="headercolor" />
-                                </HeaderTemplate>
-                                <ItemStyle Width="10%" />
-                                <ItemTemplate>
-                                    <div style="text-align: center;">
-                                        <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server"
-                                            Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
-                                        </asp:LinkButton>
-                                    </div>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField>
-                                <HeaderTemplate>
-                                    <asp:Label ID="lblHeader" runat="server" Text="Certificate" CssClass="headercolor" />
-                                </HeaderTemplate>
-                                <ItemStyle Width="10%" />
-                                <ItemTemplate>
-                                    <div style="text-align: center;">
-                                        <asp:LinkButton ID="lnkPrint" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px; display: inline-block;padding-top: 2px !important;padding-bottom: 2px !important;" runat="server" Visible="false"
-                                            Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print1" CommandArgument="<%# Container.DataItemIndex %>">
-                                        </asp:LinkButton>
-                                    </div>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <%-- <asp:TemplateField>
-                                <HeaderStyle Width="10%" CssClass="headercolor" />
-                                <ItemStyle Width="10%" />
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server"
-                                        Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
-                                     </asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>--%>
-                        </Columns>
-                        <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                        <RowStyle ForeColor="#000066" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#00547E" />
-                    </asp:GridView>
+    AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" AllowPaging="true" PageSize="10" OnRowDataBound="GridView1_RowDataBound" BorderWidth="1px" BorderColor="#dbddff">
+    <PagerStyle CssClass="pagination-ys" />
+    <Columns>
+        <asp:TemplateField HeaderText="Id" Visible="False">
+            <ItemTemplate>
+                <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                <asp:Label ID="LblInspectionType" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label>
+                <%-- <asp:Label ID="LblAssignTo" runat="server" Text='<%#Eval("AssignTo") %>'></asp:Label>--%>
+            </ItemTemplate>
+        </asp:TemplateField>
+        <asp:TemplateField HeaderText="Id" Visible="False">
+            <ItemTemplate>
+                <asp:Label ID="lblTestRportId" runat="server" Text='<%#Eval("TestRportId") %>'></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
+        <asp:TemplateField HeaderText="Id" Visible="False">
+            <ItemTemplate>
+                <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
+        <asp:TemplateField HeaderText="Id" Visible="False">
+            <ItemTemplate>
+                <asp:Label ID="lblType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
+        <asp:TemplateField>
+            <HeaderStyle Width="10%" CssClass="headercolor" />
+            <ItemStyle Width="10%" Font-Bold="true"  />
+            <HeaderTemplate>
+                Inspection ID 
+            </HeaderTemplate>
+            <ItemTemplate>
+                <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
+            </ItemTemplate>
+        </asp:TemplateField>
+        <%--  <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
+                <HeaderStyle HorizontalAlign="Left" Width="15%" />
+                <ItemStyle HorizontalAlign="Left" Width="15%" />
+            </asp:BoundField>--%>
+        <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
+            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="center" Width="15%" />
+        </asp:BoundField>
+        <asp:BoundField DataField="TypeOfInspection" HeaderText="Inspection Type">
+            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="center" Width="15%" />
+        </asp:BoundField>
+        <asp:BoundField DataField="ApplicantType" HeaderText="Applicant Type" Visible="false">
+            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="center" Width="15%" />
+        </asp:BoundField>
+        <%--<asp:TemplateField HeaderText="Voltage ">
+            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="center" Width="15%" />
+            <ItemTemplate>
+                <div>
+                    <%# Eval("VoltageLevel") %>
+                </div>
+            </ItemTemplate>
+        </asp:TemplateField>--%>
+        <asp:BoundField DataField="ApplicationStatus" HeaderText="Status" >
+            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="center" Width="15%" Font-Bold="true" />
+        </asp:BoundField>
+        <asp:BoundField DataField="CreatedDate1" HeaderText="Created Date">
+            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="center" Width="15%" />
+        </asp:BoundField>
+        <asp:TemplateField HeaderText="RTS Due Date">
+            <ItemTemplate>
+                <asp:Label ID="lblFinalExpectedApprovalDate" runat="server" Text='<%#Eval("FinalExpectedApprovalDate") %>'></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
+      <%--  <asp:BoundField DataField="FinalExpectedApprovalDate" HeaderText="Expected Approval Date" Visible="false">
+            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="center" Width="15%" />
+        </asp:BoundField>--%>
+        <asp:TemplateField>
+            <HeaderTemplate>
+                <asp:Label ID="lblHeader" runat="server" Text="Form" CssClass="headercolor" />
+            </HeaderTemplate>
+            <ItemStyle Width="10%" />
+            <ItemTemplate>
+                <div style="text-align: center;">
+                    <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server"
+                        Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
+                    </asp:LinkButton>
+                </div>
+            </ItemTemplate>
+        </asp:TemplateField>
+        <asp:TemplateField>
+            <HeaderTemplate>
+                <asp:Label ID="lblHeader" runat="server" Text="Certificate" CssClass="headercolor" />
+            </HeaderTemplate>
+            <ItemStyle Width="10%" />
+            <ItemTemplate>
+                <div style="text-align: center;">
+                    <asp:LinkButton ID="lnkPrint" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px; display: inline-block;" runat="server" Visible="false"
+                        Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print1" CommandArgument="<%# Container.DataItemIndex %>">
+                    </asp:LinkButton>
+                </div>
+            </ItemTemplate>
+        </asp:TemplateField>
+        <%-- <asp:TemplateField>
+            <HeaderStyle Width="10%" CssClass="headercolor" />
+            <ItemStyle Width="10%" />
+            <ItemTemplate>
+                <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server"
+                    Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
+                 </asp:LinkButton>
+            </ItemTemplate>
+        </asp:TemplateField>--%>
+    </Columns>
+    <FooterStyle BackColor="White" ForeColor="#000066" />
+    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+    <RowStyle ForeColor="#000066" />
+    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+    <SortedDescendingHeaderStyle BackColor="#00547E" />
+</asp:GridView>
                 </div>
             </div>
         </div>

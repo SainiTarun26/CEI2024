@@ -507,6 +507,8 @@ namespace CEIHaryana.SiteOwnerPages
                     Attachments.Visible = true;
                     CheckDeclaration.Visible = true; 
                     btnResend.Visible = false;
+                    ddlContName.Enabled = false;
+                    ddlLicenseNo.Enabled = false;
                 }
                 else
                 {

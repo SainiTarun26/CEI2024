@@ -235,30 +235,33 @@ namespace CEIHaryana.Officers
                         if (Status == "Approved")
                         {
                             InspectionDate.Visible = false;
-                    
-                            ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
+                        InsDate.Visible = true;
+
+                        ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                             ddlReview.Attributes.Add("disabled", "true");
                             grd_Documemnts.Columns[3].Visible = true;
                             grd_Documemnts.Columns[4].Visible = false;
-                        if (!string.IsNullOrEmpty(SiteInspectionDate))
-                            {
-                                InspectionDate.Visible = true;
-                                txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
-                                txtInspectionDate.Attributes.Add("disabled", "true");
-                            }
+                        txtDATE.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
+                        //if (!string.IsNullOrEmpty(SiteInspectionDate))
+                        //    {
+                        //        InspectionDate.Visible = true;
+                        //        txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
+                        //        txtInspectionDate.Attributes.Add("disabled", "true");
+                        //    }
                             btnBack.Visible = true;
                             btnSubmit.Visible = false;
                         }
                         if (Status == "Rejected")
                         {
                             InspectionDate.Visible = false;
-
-                            if (!string.IsNullOrEmpty(SiteInspectionDate))
-                            {
-                                InspectionDate.Visible = true;
-                                txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
-                                txtInspectionDate.Attributes.Add("disabled", "true");
-                            }
+                        InsDate.Visible = true;
+                        txtDATE.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
+                        //if (!string.IsNullOrEmpty(SiteInspectionDate))
+                        //    {
+                        //        InspectionDate.Visible = true;
+                        //        txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
+                        //        txtInspectionDate.Attributes.Add("disabled", "true");
+                        //    }
                             Rejection.Visible = true;
                             txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                             txtRejectionBasis.Text = ds.Tables[0].Rows[0]["RejctionReasonType"].ToString();
@@ -373,30 +376,33 @@ namespace CEIHaryana.Officers
                     if (Status == "Approved")
                         {
                             InspectionDate.Visible = false;
-                          
-                            ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
+                        InsDate.Visible = true;
+
+                        txtDATE.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
+                        ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                             ddlReview.Attributes.Add("disabled", "true");
                            
 
-                            if (!string.IsNullOrEmpty(SiteInspectionDate))
-                            {
-                                InspectionDate.Visible = true;
-                                txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
-                                txtInspectionDate.Attributes.Add("disabled", "true");
-                            }
+                            //if (!string.IsNullOrEmpty(SiteInspectionDate))
+                            //{
+                            //    InspectionDate.Visible = true;
+                            //    txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
+                            //    txtInspectionDate.Attributes.Add("disabled", "true");
+                            //}
                             btnBack.Visible = true;
                             btnSubmit.Visible = false;
                         }
                         if (Status == "Rejected")
                         {
                             InspectionDate.Visible = false;
-
-                            if (!string.IsNullOrEmpty(SiteInspectionDate))
-                            {
-                                InspectionDate.Visible = true;
-                                txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
-                                txtInspectionDate.Attributes.Add("disabled", "true");
-                            }
+                        InsDate.Visible = true;
+                        txtDATE.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
+                        //if (!string.IsNullOrEmpty(SiteInspectionDate))
+                        //    {
+                        //        InspectionDate.Visible = true;
+                        //        txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
+                        //        txtInspectionDate.Attributes.Add("disabled", "true");
+                        //    }
                             Rejection.Visible = true;
                             txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                             ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
@@ -619,7 +625,7 @@ namespace CEIHaryana.Officers
 
                                             // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
                                             CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                             lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate,lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), transaction);
+                                             lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate,lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, txtTranscationDate.Text, transaction);
 
                                         }
                                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);

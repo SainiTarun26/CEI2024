@@ -256,6 +256,33 @@
             padding-top: 2px;
             padding-bottom: 2px;
         }
+        .input-box {
+       display: flex;
+       align-items: center;
+       max-width: 300px;
+       background: #fff;
+       border: 1px solid #a0a0a0;
+       border-radius: 4px;
+       padding-left: 0.5rem;
+       overflow: hidden;
+       font-family: sans-serif;
+   }
+       .input-box .prefix {
+           font-weight: 300;
+           font-size: 14px;
+           color: black;
+       }
+       .input-box input {
+           flex-grow: 1;
+           font-size: 14px;
+           background: #fff;
+           border: none;
+           outline: none;
+           padding: 0.5rem;
+       }
+       .input-box:focus-within {
+           border-color: #777;
+       }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -686,6 +713,12 @@
 
                 </div>
 
+                <div class="col-md-4" id="InsDate" runat="server" visible="false">
+                    <label for="StartDate">
+                        Inspection Date<samp style="color: red"> * </samp>
+                    </label>
+                    <asp:TextBox class="form-control" ID="txtDATE" TabIndex="16" autocomplete="off" ReadOnly="true" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
+                </div>
                 <div class="row">
                     <div class="col-12" id="Rejection" runat="server" visible="false">
                         <label>
@@ -695,7 +728,7 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
                 </div>
-              
+
 
 
 

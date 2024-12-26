@@ -378,7 +378,7 @@
                             <div class="row" style="padding-right: 5px !important;">
                                 <div class="col-12" style="text-align: end; padding-left: 10px; margin-top: -60px;">
                                     <i>
-                                        <asp:Label class="p1" ID="txtSD" runat="server" Text="Sd"></asp:Label></i><br />
+                                        <asp:Label class="p1" ID="txtSD" runat="server" Text="SD"></asp:Label></i><br />
                                     <%-- <img src="../Assets/Line_Through_Name-removebg-preview.png" width="300" height="90" style="position: fixed; bottom: 140px; margin-left: -300px;" />--%>
                                     <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
                                 </div>

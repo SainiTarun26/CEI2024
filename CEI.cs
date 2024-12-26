@@ -2191,10 +2191,12 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetWiremanorSuperwiserData", searchterm, category);
         }
-        public DataTable WorkIntimationData(string LoginID)
+        //Neeraj 26-12
+        public DataTable WorkIntimationData(string LoginID, string searchText = null)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationProjects", LoginID);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationProjects", LoginID, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
+       
         // public DataSet LineDataWithId(int ID) gurmeet
         public DataSet LineDataWithId(string ID)
         {
@@ -8810,8 +8812,8 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PeriodicLiftDetailstoPrintFormInspectionDetails", ID);
         }
         public void InstallationApproval_Lift(string InspectionID, string TestReportId, string InstallationType, string StaffId, string InspectionType, string RegistrationNo, DateTime ChallanDate, string Division, string Make, string LiftSrNo,
-string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, DateTime LastApprovalDate, string SiteAddress, string District, DateTime Current_ChallanDate,
-SqlTransaction transaction)
+  string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, DateTime LastApprovalDate, string SiteAddress, string District, string Current_ChallanDate,
+  SqlTransaction transaction)
         {
             try
             {
@@ -8831,15 +8833,6 @@ SqlTransaction transaction)
                 cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
                 cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
 
-                //DateTime ChallDate;
-                //if (DateTime.TryParse(ChallanDate, out ChallDate) && ChallDate != DateTime.MinValue)
-                //{
-                //    cmd.Parameters.AddWithValue("@Previous_ChallanDate", ChallanDate);
-                //}
-                //else
-                //{
-                //    cmd.Parameters.AddWithValue("@Previous_ChallanDate", DBNull.Value);
-                //}
                 cmd.Parameters.AddWithValue("@Previous_ChallanDate", ChallanDate);
                 cmd.Parameters.AddWithValue("@Division", Division);
                 cmd.Parameters.AddWithValue("@Make", Make);
@@ -8850,18 +8843,25 @@ SqlTransaction transaction)
                 cmd.Parameters.AddWithValue("@Weight", Weight);
                 cmd.Parameters.AddWithValue("@ErectionDate", DateOfErection);
                 cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate);
-                //cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate);
-                //if (LastApprovalDate.HasValue)
-                //{
-                //    cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate.Value);  // Pass the valid DateTime value
-                //}
-                //else
-                //{
-                //    cmd.Parameters.AddWithValue("@LastApprovalDate", DBNull.Value);  // Pass DBNull if it's null
-                //}
                 cmd.Parameters.AddWithValue("@SiteAddress", SiteAddress);
                 cmd.Parameters.AddWithValue("@District", District);
-                cmd.Parameters.AddWithValue("@Current_ChallanDate", Current_ChallanDate);
+                if (String.IsNullOrEmpty(Current_ChallanDate))
+                {
+                    cmd.Parameters.AddWithValue("@Current_ChallanDate", DBNull.Value);
+                }
+                else
+                {
+                    DateTime transactionDateValue;
+                    if (DateTime.TryParse(Current_ChallanDate, out transactionDateValue))
+                    {
+                        cmd.Parameters.AddWithValue("@Current_ChallanDate", transactionDateValue);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Current_ChallanDate", DBNull.Value);
+                    }
+                }
+
                 cmd.ExecuteNonQuery();
 
             }

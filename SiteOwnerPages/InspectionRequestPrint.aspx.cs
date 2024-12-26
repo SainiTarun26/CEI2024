@@ -91,6 +91,7 @@ namespace CEIHaryana.SiteOwnerPages
                 txtPaymentMode.Text = ds.Tables[0].Rows[0]["PaymentMode"].ToString();
                 txtPaymentAmount.Text = ds.Tables[0].Rows[0]["PaymentAmount"].ToString();
                 txtSubmissionDate.Text = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
+                txtRTSDueDate.Text = ds.Tables[0].Rows[0]["RTSDueDate"].ToString();
             }
             //Session["PrintInspectionID"] = "";
             //Session["InspectionId"] = "";

@@ -141,8 +141,18 @@ namespace CEIHaryana.SiteOwnerPages
             {
 
                 LinkButton linkButton = (LinkButton)e.Row.FindControl("lnkPrint");
+                Label lblFinalExpectedApprovalDate = (Label)e.Row.FindControl("lblFinalExpectedApprovalDate");
+                Label lblApproval = (Label)e.Row.FindControl("lblApproval");
                 string applicationStatus = DataBinder.Eval(e.Row.DataItem, "ApplicationStatus").ToString();
                 string AssignTo = DataBinder.Eval(e.Row.DataItem, "AssignTo").ToString();
+                if (lblApproval.Text == "Submitted" || lblApproval.Text == "InProcess")
+                {
+                    lblFinalExpectedApprovalDate.Visible = true;
+                }
+                else
+                {
+                    lblFinalExpectedApprovalDate.Visible = false;
+                }
                 if (applicationStatus == "Approved")
                 {
                     if (string.IsNullOrEmpty(AssignTo))

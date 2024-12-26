@@ -1229,7 +1229,7 @@
 
                 </asp:UpdatePanel>
                 <div class="card-body" id="Attachments" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                   <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">Upload Documents</h7>
+                    <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">Upload Documents</h7>
                     <h7 class="card-title" style="color: #a52a2a; margin-bottom: 5px;">Note: Size of all the Attachments should not be more than 10mb.</h7>
                     <div class="row">
                         <div class="col-12">
@@ -1291,24 +1291,24 @@
                         </label>
                     </div>
                 </div>
-                 <asp:UpdatePanel ID="UpdatePanel3" runat="server">
-     <ContentTemplate>
-                <div class="row" id="OTP" runat="server" visible="false">
+                <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                    <ContentTemplate>
+                        <div class="row" id="OTP" runat="server" visible="false">
 
-                    <div class="col-md-4">
-                        <label>
-                            Enter the OTP you received to Your Contractor's Email
+                            <div class="col-md-4">
+                                <label>
+                                    Enter the OTP you received to Your Contractor's Email
                                     <samp style="color: red">* </samp>
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtOTP" MaxLength="6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                     <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator74" ControlToValidate="txtOTP" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter OTP"></asp:RequiredFieldValidator>--%>
-                    </div>
-                </div>
-             </ContentTemplate>
-                     <Triggers>
-        <asp:PostBackTrigger ControlID="btnVerify" />
-    </Triggers>
-</asp:UpdatePanel>
+                                </label>
+                                <asp:TextBox class="form-control" ID="txtOTP" MaxLength="6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator74" ControlToValidate="txtOTP" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter OTP"></asp:RequiredFieldValidator>--%>
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:PostBackTrigger ControlID="btnVerify" />
+                    </Triggers>
+                </asp:UpdatePanel>
                 <div class="row" style="margin-left: 1%; margin-bottom: 20px;" id="CheckDeclaration" runat="server" visible="false">
                     <asp:CheckBox ID="Check" runat="server" TabIndex="24" />&nbsp;
                         
@@ -1326,7 +1326,7 @@
                         <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="false" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
 
                         <asp:Button ID="btnVerify" Text="Generate OTP For Contractor" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" />
-                        <asp:Button ID="btnResend" Text="Resend OTP" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnResend_Click"  />
+                        <asp:Button ID="btnResend" Text="Resend OTP" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnResend_Click" />
 
 
                         <asp:Button ID="btnSubmit" Text="Submit" runat="server" Visible="false" OnClientClick="focusInvalidField();" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
@@ -1356,43 +1356,43 @@
     <script src="/Assets/js/Chart.roundedBarCharts.js">
 
     </script>
-   <script type="text/javascript">
-       // Function to show the OTP section and focus on the OTP TextBox
-       function showAndFocusOTP() {
-           // Show the OTP row
-           document.getElementById('<%= OTP.ClientID %>').style.display = "flex";
+    <script type="text/javascript">
+        // Function to show the OTP section and focus on the OTP TextBox
+        function showAndFocusOTP() {
+            // Show the OTP row
+            document.getElementById('<%= OTP.ClientID %>').style.display = "flex";
 
-        // Focus on the OTP TextBox
-        document.getElementById('<%= txtOTP.ClientID %>').focus();
-    }
+           // Focus on the OTP TextBox
+           document.getElementById('<%= txtOTP.ClientID %>').focus();
+        }
 
-    // Function to focus on the GridView
-    function focusOnGridView() {
-        // Focus on the GridView container
-        const gridContainer = document.getElementById('<%= Grd_Document.ClientID %>');
+        // Function to focus on the GridView
+        function focusOnGridView() {
+            // Focus on the GridView container
+            const gridContainer = document.getElementById('<%= Grd_Document.ClientID %>');
 
-           if (gridContainer) {
-               // Scroll to the GridView if it's not in the viewport
-               gridContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if (gridContainer) {
+                // Scroll to the GridView if it's not in the viewport
+                gridContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-               // Focus on the GridView container
-               gridContainer.focus();
-           }
-       }
+                // Focus on the GridView container
+                gridContainer.focus();
+            }
+        }
 
-       
-   </script>
-  <script type="text/javascript">
-      // This function will update the button text
-      function updateButtonText() {
-          document.getElementById('<%= btnVerify.ClientID %>').innerText = 'Generate OTP For Contractor';
-      }
 
-      // Listen for the end of the partial postback and call the function to update button text
-      Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function (sender, args) {
-          updateButtonText();
-      });
-  </script>
+    </script>
+    <script type="text/javascript">
+        // This function will update the button text
+        function updateButtonText() {
+            document.getElementById('<%= btnVerify.ClientID %>').innerText = 'Generate OTP For Contractor';
+        }
+
+        // Listen for the end of the partial postback and call the function to update button text
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function (sender, args) {
+            updateButtonText();
+        });
+    </script>
 
 
 
