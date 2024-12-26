@@ -8924,6 +8924,11 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetRenewalLiftDataGridOfAllRecords", Type, CreatedBy);
         }
+
+        public DataTable WorkIntimationDataForSearch(string LoginID)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationProjectsWithoutSearch", LoginID);
+        }
     }
 }
 

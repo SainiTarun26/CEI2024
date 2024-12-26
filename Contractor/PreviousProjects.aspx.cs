@@ -62,7 +62,7 @@ namespace CEIHaryana.Contractor
             string LoginID = string.Empty;
             LoginID = Session["ContractorID"].ToString();
             DataTable ds = new DataTable();
-            ds = cei.WorkIntimationData(LoginID);
+            ds = cei.WorkIntimationDataForSearch(LoginID);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
