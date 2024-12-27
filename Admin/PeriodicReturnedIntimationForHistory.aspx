@@ -380,6 +380,14 @@
                                 <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("NewInspectionId") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:BoundField DataField="Voltage" HeaderText="Voltage(In Volts)">
+     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+     <ItemStyle HorizontalAlign="Left" Width="15%" />
+ </asp:BoundField>
+ <asp:BoundField DataField="Capacity" HeaderText="Capacity(In KVA)">
+     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+     <ItemStyle HorizontalAlign="Left" Width="15%" />
+ </asp:BoundField>
                         <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                             <ItemTemplate>
                                 <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportId") %>' />

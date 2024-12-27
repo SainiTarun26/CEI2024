@@ -133,31 +133,36 @@ namespace CEIHaryana.Officers
                         {
                             grd_Documemnts.Columns[3].Visible = true;
                             grd_Documemnts.Columns[4].Visible = true;
-                            Grid_MultipleInspectionTR.Columns[5].Visible = false;
+                            //Grid_MultipleInspectionTR.Columns[5].Visible = false;
                             Grid_MultipleInspectionTR.Columns[7].Visible = false;
                             Grid_MultipleInspectionTR.Columns[9].Visible = false;
+                            Grid_MultipleInspectionTR.Columns[11].Visible = false;
+
                         }
                         else if (ReturnValu == "3")
                         {
-
                             grd_Documemnts.Columns[3].Visible = true;
                             grd_Documemnts.Columns[4].Visible = true;
-                            Grid_MultipleInspectionTR.Columns[5].Visible = true;
-                            Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                            //Grid_MultipleInspectionTR.Columns[5].Visible = true;
+                            //Grid_MultipleInspectionTR.Columns[6].Visible = true;
                             Grid_MultipleInspectionTR.Columns[7].Visible = true;
                             Grid_MultipleInspectionTR.Columns[8].Visible = true;
                             Grid_MultipleInspectionTR.Columns[9].Visible = true;
+                            Grid_MultipleInspectionTR.Columns[10].Visible = true;
+                            Grid_MultipleInspectionTR.Columns[11].Visible = true;
                         }
                         else
                         {
 
                             grd_Documemnts.Columns[3].Visible = false;
                             grd_Documemnts.Columns[4].Visible = false;
-                            Grid_MultipleInspectionTR.Columns[5].Visible = true;
-                            Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                            //Grid_MultipleInspectionTR.Columns[5].Visible = true;
+                            //Grid_MultipleInspectionTR.Columns[6].Visible = true;
                             Grid_MultipleInspectionTR.Columns[7].Visible = true;
                             Grid_MultipleInspectionTR.Columns[8].Visible = true;
                             Grid_MultipleInspectionTR.Columns[9].Visible = true;
+                            Grid_MultipleInspectionTR.Columns[10].Visible = true;
+                            Grid_MultipleInspectionTR.Columns[11].Visible = true;
                         }
                     }
                     else
@@ -1067,7 +1072,7 @@ namespace CEIHaryana.Officers
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    Label LblRemarks = (Label)e.Row.FindControl("LblRemarks");
+
                     Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
                     LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallaionInvoice");
                     LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
@@ -1103,23 +1108,11 @@ namespace CEIHaryana.Officers
                     }
                     else
                     {
-                        if (string.IsNullOrEmpty(LblRemarks.Text.Trim()))
-                        {
-                            lnkPreviousInstallaionInvoice.Visible = false;
-                            lnkPreviosManufacturingReport.Visible = false;
-                            linkButtonInvoice.Visible = false;
-                            LinkButtonReport.Visible = false;
-                            ViewState["AllRowsAreLine"] = false;
-                        }
-                        else
-                        {
-                            lnkPreviousInstallaionInvoice.Visible = true;
-                            lnkPreviosManufacturingReport.Visible = true;
-                            linkButtonInvoice.Visible = true;
-                            LinkButtonReport.Visible = true;
-                            ViewState["AllRowsAreLine"] = false;
-                        }
-                        
+                        lnkPreviousInstallaionInvoice.Visible = true;
+                        lnkPreviosManufacturingReport.Visible = true;
+                        linkButtonInvoice.Visible = true;
+                        LinkButtonReport.Visible = true;
+                        ViewState["AllRowsAreLine"] = false;
                     }
 
 
@@ -1148,6 +1141,93 @@ namespace CEIHaryana.Officers
 
             }
         }
+        //protected void Grid_MultipleInspectionTR_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (e.Row.RowType == DataControlRowType.DataRow)
+        //        {
+        //            Label LblRemarks = (Label)e.Row.FindControl("LblRemarks");
+        //            Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
+        //            LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallaionInvoice");
+        //            LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
+        //            LinkButton lnkPreviousInstallaionInvoice = (LinkButton)e.Row.FindControl("lnkPreviousInstallaionInvoice");
+        //            LinkButton lnkPreviosManufacturingReport = (LinkButton)e.Row.FindControl("lnkPreviosManufacturingReport");
+        //            if (lnkPreviosManufacturingReport.Text.Trim() == "" || lnkPreviosManufacturingReport == null)
+        //            {
+        //                lnkPreviosManufacturingReport.Visible = false;
+
+        //            }
+        //            else
+        //            {
+        //                lnkPreviosManufacturingReport.Visible = true;
+        //                lnkPreviosManufacturingReport.Text = "View Document";
+        //            }
+        //            if (lnkPreviousInstallaionInvoice.Text.Trim() == "" || lnkPreviousInstallaionInvoice == null)
+        //            {
+        //                lnkPreviousInstallaionInvoice.Visible = false;
+
+        //            }
+        //            else
+        //            {
+        //                lnkPreviousInstallaionInvoice.Visible = true;
+        //                lnkPreviousInstallaionInvoice.Text = "View Document";
+        //            }
+        //            if (LblInstallationName.Text.Trim() == "Line")
+        //            {
+
+        //                lnkPreviousInstallaionInvoice.Visible = false;
+        //                lnkPreviosManufacturingReport.Visible = false;
+        //                linkButtonInvoice.Visible = false;
+        //                LinkButtonReport.Visible = false;
+        //            }
+        //            else
+        //            {
+        //                if (string.IsNullOrEmpty(LblRemarks.Text.Trim()))
+        //                {
+        //                    lnkPreviousInstallaionInvoice.Visible = false;
+        //                    lnkPreviosManufacturingReport.Visible = false;
+        //                    linkButtonInvoice.Visible = false;
+        //                    LinkButtonReport.Visible = false;
+        //                    ViewState["AllRowsAreLine"] = false;
+        //                }
+        //                else
+        //                {
+        //                    lnkPreviousInstallaionInvoice.Visible = true;
+        //                    lnkPreviosManufacturingReport.Visible = true;
+        //                    linkButtonInvoice.Visible = true;
+        //                    LinkButtonReport.Visible = true;
+        //                    ViewState["AllRowsAreLine"] = false;
+        //                }
+
+        //            }
+
+
+        //        }
+        //        else if (e.Row.RowType == DataControlRowType.Footer)
+        //        {
+        //            if (ViewState["AllRowsAreLine"] == null || (bool)ViewState["AllRowsAreLine"] == true)
+        //            {
+        //                ddlReasonType.Items.Clear();
+        //                ddlReasonType.Items.Add(new ListItem("Select", "0"));
+        //                ddlReasonType.Items.Add(new ListItem("Checklist Documents", "1"));
+        //            }
+        //            else
+        //            {
+        //                // Restore original items
+        //                ddlReasonType.Items.Clear();
+        //                ddlReasonType.Items.Add(new ListItem("Select", "0"));
+        //                ddlReasonType.Items.Add(new ListItem("Checklist Documents", "1"));
+        //                ddlReasonType.Items.Add(new ListItem("Test Report Documents", "2"));
+        //                ddlReasonType.Items.Add(new ListItem("Both (Checklist & TestReport Documents)", "3"));
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //    }
+        //}
         protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try

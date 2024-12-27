@@ -16,28 +16,28 @@
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
-    function isNumberKey(evt) {
-        var charCode = (evt.which) ? evt.which : event.keyCode
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-            return false;
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
         }
-        return true;
-    }
 
-    //Allow Only Aplhabet, Delete and Backspace
+        //Allow Only Aplhabet, Delete and Backspace
 
-    function isAlpha(keyCode) {
+        function isAlpha(keyCode) {
 
-        return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
+            return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
 
-    }
+        }
 
-    function alphabetKey(e) {
-        var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
-        var k;
-        k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
-        return (allow.indexOf(String.fromCharCode(k)) != -1);
-    }
+        function alphabetKey(e) {
+            var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
+            var k;
+            k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+            return (allow.indexOf(String.fromCharCode(k)) != -1);
+        }
     </script>
     <style>
         .submit {
@@ -172,29 +172,29 @@
     </style>
 
     <script type="text/javascript">
-    function alertWithRedirectdata() {
+        function alertWithRedirectdata() {
 
-        alert('Inspection Request is Successfully Accepted');
-        window.location.href = "/Officers/NewApplications.aspx";
-    }
-    function alertWithRedirectdataReturn() {
-        alert('Inspection Request is Returned to Site Owner');
-        window.location.href = "/Officers/NewApplications.aspx";
-    }
+            alert('Inspection Request is Successfully Accepted');
+            window.location.href = "/Officers/NewApplications.aspx";
+        }
+        function alertWithRedirectdataReturn() {
+            alert('Inspection Request is Returned to Site Owner');
+            window.location.href = "/Officers/NewApplications.aspx";
+        }
 
-    function alertWithRedirectdataSupervisorReturn() {
-        alert('Inspection Request is Returned to Supervisor');
-        window.location.href = "/Officers/NewApplications.aspx";
-    }
-    function alertWithRedirectdataOfRejection() {
-        alert('Inspection Request Rejected Successfully');
-        window.location.href = "/Officers/NewApplications.aspx";
-    }
+        function alertWithRedirectdataSupervisorReturn() {
+            alert('Inspection Request is Returned to Supervisor');
+            window.location.href = "/Officers/NewApplications.aspx";
+        }
+        function alertWithRedirectdataOfRejection() {
+            alert('Inspection Request Rejected Successfully');
+            window.location.href = "/Officers/NewApplications.aspx";
+        }
 
-    function alertWithRedirectdataCommonReturn() {
-        alert('Inspection Request is Returned to Owner');
-        window.location.href = "/Officers/NewApplications.aspx";
-    }
+        function alertWithRedirectdataCommonReturn() {
+            alert('Inspection Request is Returned to Owner');
+            window.location.href = "/Officers/NewApplications.aspx";
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -482,6 +482,14 @@
                                     <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:BoundField DataField="Voltage" HeaderText="Voltage(In Volts)">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Capacity" HeaderText="Capacity(In KVA)">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
                             <asp:TemplateField HeaderText="View Test Report" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkRedirectTR" runat="server" Text="View Test Report" OnClick="lnkRedirectTR_Click1" CommandName="Select" CommandArgument='<%# Eval("TestReportId") %>' />
@@ -532,7 +540,8 @@
             <asp:UpdatePanel ID="Updatepanel1" runat="server">
                 <ContentTemplate>
                     <div class="row" style="margin-left: 0px;">
-                        <p style="margin-top: auto; margin-bottom: auto;">Action Required<samp style="color: red"> * </samp></p>
+                        <p style="margin-top: auto; margin-bottom: auto;">Action Required<samp style="color: red"> * </samp>
+                        </p>
                         <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                             <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
                             <asp:ListItem Text="No(Return)" Value="1" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
@@ -542,7 +551,8 @@
                     <div class="row">
                         <div class="col-md-6" id="Rejection" runat="server" visible="false">
                             <label>
-                                Reason Type<samp style="color: red"> * </samp> :
+                                Reason Type<samp style="color: red"> * </samp>
+                                :
                             </label>
                             <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlReasonType" OnSelectedIndexChanged="ddlReasonType_SelectedIndexChanged" AutoPostBack="true" runat="server">
                                 <%-- <asp:ListItem Value="0" Text="Based On TestReport"></asp:ListItem>--%>
@@ -551,7 +561,7 @@
                                 <asp:ListItem Value="2" Text="Test Report Documents"></asp:ListItem>
                                 <asp:ListItem Value="3" Text="Both (Checklist & TestReport Documents)"></asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator  ID="rfvReasonType"  ControlToValidate="ddlReasonType" InitialValue="0"  ErrorMessage="Please select a Reason Type."  ForeColor="Red"  runat="server" />
+                            <asp:RequiredFieldValidator ID="rfvReasonType" ControlToValidate="ddlReasonType" InitialValue="0" ErrorMessage="Please select a Reason Type." ForeColor="Red" runat="server" />
                             <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" Visible="false" ID="ddlRejectionReasonType" TabIndex="8" runat="server">
                                 <asp:ListItem Value="0" Text="Incorrect Data in WorkIntimation"></asp:ListItem>
                             </asp:DropDownList>
@@ -590,11 +600,11 @@
                                             <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                             <ItemStyle HorizontalAlign="Left" Width="15%" />
                                         </asp:BoundField>
-                                         <asp:TemplateField HeaderText="Id" Visible="False">
-     <ItemTemplate>
-         <asp:Label ID="LabelRowId" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
-      </ItemTemplate>
- </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Id" Visible="False">
+                                            <ItemTemplate>
+                                                <asp:Label ID="LabelRowId" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
 
                                         <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
                                             <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
@@ -649,13 +659,13 @@
                                             <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("Typeofinstallation") %>'></asp:Label>
                                             <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("Count") %>'></asp:Label>
                                             <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
-                                             <asp:Label ID="LblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
+                                            <asp:Label ID="LblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
                                             <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
-                                         </ItemTemplate>
+                                        </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Remarks" HeaderStyle-BackColor="#9292cc" HeaderStyle-ForeColor="white">
                                         <ItemTemplate>
-                                            <asp:TextBox ID="txt_Remarks" runat="server" CssClass="form-control" Placeholder="Mention the Document Name" Enabled="false" MaxLength="100"  />
+                                            <asp:TextBox ID="txt_Remarks" runat="server" CssClass="form-control" Placeholder="Mention the Document Name" Enabled="false" MaxLength="100" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -682,5 +692,5 @@
             }
             return true;
         }
-</script>
+    </script>
 </asp:Content>

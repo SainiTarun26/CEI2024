@@ -1260,15 +1260,20 @@ namespace CEIHaryana.Admin
                     LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
                     if (LblInstallationName.Text.Trim() == "Line")
                     {
-                        Grid_MultipleInspectionTR.Columns[5].Visible = false;
-                        Grid_MultipleInspectionTR.Columns[6].Visible = false;
+                        //Grid_MultipleInspectionTR.Columns[5].Visible = false;
+                        //Grid_MultipleInspectionTR.Columns[6].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[7].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[8].Visible = false;
+
                         linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = false;
                     }
                     else
                     {
-                        Grid_MultipleInspectionTR.Columns[5].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                        //Grid_MultipleInspectionTR.Columns[5].Visible = true;
+                        //Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[7].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[8].Visible = true;
                         linkButtonInvoice.Visible = true;
                         LinkButtonReport.Visible = true;
                         ViewState["AllRowsAreLine"] = false;

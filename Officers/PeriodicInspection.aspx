@@ -382,10 +382,10 @@
                 </div>
             </div>
             <div class="row" id="Div1" runat="server" visible="true">
-    <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
-        Test Report Detail
-    </div>
-</div>
+                <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
+                    Test Report Detail
+                </div>
+            </div>
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivViewCart" runat="server" visible="false">
                 <div class="col-12" style="padding: 0px;">
                     <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false">
@@ -413,6 +413,14 @@
                                     <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("NewInspectionId") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:BoundField DataField="Voltage" HeaderText="Voltage(In Volts)">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Capacity" HeaderText="Capacity(In KVA)">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
                             <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportId") %>' />
@@ -429,38 +437,40 @@
                     <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
             </div>
-        <%--    <asp:UpdatePanel ID="Updatepanel1" runat="server">
+            <%--    <asp:UpdatePanel ID="Updatepanel1" runat="server">
                 <ContentTemplate>--%>
-                    <div class="row">
-                        <p style="margin-top: auto; margin-bottom: auto;">Action Required <samp style="color: red"> * </samp></p>
-                        <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
-                            <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
-                            <asp:ListItem Text="No(Return)" Value="1" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
-                             <asp:ListItem Text="Reject" Value="2" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
-                        </asp:RadioButtonList>
-                    </div>
-                    <div class="row" id="Rejection" runat="server" visible="false">
-                        <div class="col-md-6">
-                            <label>
-                                ReasonType:        
-                            </label>
-                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlReasonType" TabIndex="8" runat="server" Enabled="false">
-                                <asp:ListItem Value="0" Text="Based On TestReport" ></asp:ListItem>
-                                <asp:ListItem Value="1" Text="Based On Documents" Selected="True"></asp:ListItem>
-                            </asp:DropDownList>
-                              <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" Visible="false" ID="ddlRejectionReasonType" TabIndex="8" runat="server">
-      <asp:ListItem Value="0" Text="Incorrect Data in WorkIntimation"></asp:ListItem>
-  </asp:DropDownList>
-                        </div>
-                        <div class="col-md-6" id="RejectionReason" runat="server" visible="false">
-                            <label>
-                                Reason<samp style="color: red"> * </samp>
-                            </label>
-                            <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                        </div>
-                    </div>
-           <%--     </ContentTemplate>
+            <div class="row">
+                <p style="margin-top: auto; margin-bottom: auto;">Action Required
+                    <samp style="color: red">* </samp>
+                </p>
+                <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                    <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
+                    <asp:ListItem Text="No(Return)" Value="1" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
+                    <asp:ListItem Text="Reject" Value="2" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
+                </asp:RadioButtonList>
+            </div>
+            <div class="row" id="Rejection" runat="server" visible="false">
+                <div class="col-md-6">
+                    <label>
+                        ReasonType:        
+                    </label>
+                    <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlReasonType" TabIndex="8" runat="server" Enabled="false">
+                        <asp:ListItem Value="0" Text="Based On TestReport"></asp:ListItem>
+                        <asp:ListItem Value="1" Text="Based On Documents" Selected="True"></asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" Visible="false" ID="ddlRejectionReasonType" TabIndex="8" runat="server">
+                        <asp:ListItem Value="0" Text="Incorrect Data in WorkIntimation"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="col-md-6" id="RejectionReason" runat="server" visible="false">
+                    <label>
+                        Reason<samp style="color: red"> * </samp>
+                    </label>
+                    <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                </div>
+            </div>
+            <%--     </ContentTemplate>
             </asp:UpdatePanel>--%>
         </div>
         <div class="row">

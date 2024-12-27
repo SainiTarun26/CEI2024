@@ -1003,10 +1003,11 @@ namespace CEIHaryana.Admin
                     LinkButton linkButtonPrevInvoice = (LinkButton)e.Row.FindControl("lnkPrevInstallationInvoice");
                     LinkButton LinkButtonPrevReport = (LinkButton)e.Row.FindControl("lnkPrevManufacturingReport");
 
+                    
                     if (LblInstallationName.Text.Trim() == "Line")
                     {
-                        Grid_MultipleInspectionTR.Columns[5].Visible = false;
-                        Grid_MultipleInspectionTR.Columns[6].Visible = false;
+                        //Grid_MultipleInspectionTR.Columns[5].Visible = false;
+                        //Grid_MultipleInspectionTR.Columns[6].Visible = false;
                         Grid_MultipleInspectionTR.Columns[7].Visible = false;
                         Grid_MultipleInspectionTR.Columns[8].Visible = false;
                         linkButtonInvoice.Visible = false;
@@ -1018,23 +1019,25 @@ namespace CEIHaryana.Admin
                     {
                         if (string.IsNullOrEmpty(LblRemarks.Text.Trim()))
                         {
-                            linkButtonInvoice.Visible = false;
-                            LinkButtonReport.Visible = false;
+                            linkButtonInvoice.Visible = true;
+                            LinkButtonReport.Visible = true;
                             linkButtonPrevInvoice.Visible = false;
                             LinkButtonPrevReport.Visible = false;
                             ViewState["AllRowsAreLine"] = false;
                         }
-                        else 
+                        else
                         {
-                        Grid_MultipleInspectionTR.Columns[5].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[6].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[7].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[8].Visible = true;
-                        linkButtonInvoice.Visible = true;
-                        LinkButtonReport.Visible = true;
-                        linkButtonPrevInvoice.Visible = true;
-                        LinkButtonPrevReport.Visible = true;
-                        ViewState["AllRowsAreLine"] = false;
+                            //Grid_MultipleInspectionTR.Columns[5].Visible = true;
+                            //Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                            Grid_MultipleInspectionTR.Columns[7].Visible = true;
+                            Grid_MultipleInspectionTR.Columns[8].Visible = true;
+                            Grid_MultipleInspectionTR.Columns[9].Visible = true;
+                            Grid_MultipleInspectionTR.Columns[10].Visible = true;
+                            linkButtonInvoice.Visible = true;
+                            LinkButtonReport.Visible = true;
+                            linkButtonPrevInvoice.Visible = true;
+                            LinkButtonPrevReport.Visible = true;
+                            ViewState["AllRowsAreLine"] = false;
                         }
                     }
                 }
