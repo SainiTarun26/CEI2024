@@ -374,4 +374,11 @@
             </div>
         </div>
     </div>
+    <script>  
+        function disableFutureDates() {
+            // Get today's date in yyyy-mm-dd format
+            var today = new Date().toISOString().split('T')[0];
+            // Set the max attribute of the txtDateofIntialissue TextBox to today's date
+            document.getElementById('<%=txtTransactiondate.ClientID %>').setAttribute('max', today);
+    }</script>
 </asp:Content>

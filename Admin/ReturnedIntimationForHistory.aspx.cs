@@ -921,6 +921,31 @@ namespace CEIHaryana.Admin
                 Check_TRDocuments.Visible = false;
             }
         }
+
+        protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    Label LblRemarks = (Label)e.Row.FindControl("LblRemarks");
+                    LinkButton LnkPreviousDocPath = (LinkButton)e.Row.FindControl("LnkPreviousDocPath");
+                    if (string.IsNullOrEmpty(LblRemarks.Text.Trim()))
+                    {
+                       
+                        LnkPreviousDocPath.Visible = false;
+                    }
+                    else
+                    {
+    
+                        LnkPreviousDocPath.Visible = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
+
         protected void lnkRedirect_Click(object sender, EventArgs e)
         {
             LinkButton btn = (LinkButton)(sender);
@@ -984,7 +1009,7 @@ namespace CEIHaryana.Admin
             else if (e.CommandName == "ViewInvoice")
             {
                 string fileName = "";
-               // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -1003,13 +1028,15 @@ namespace CEIHaryana.Admin
                     LinkButton linkButtonPrevInvoice = (LinkButton)e.Row.FindControl("lnkPrevInstallationInvoice");
                     LinkButton LinkButtonPrevReport = (LinkButton)e.Row.FindControl("lnkPrevManufacturingReport");
 
-                    
+
                     if (LblInstallationName.Text.Trim() == "Line")
                     {
                         //Grid_MultipleInspectionTR.Columns[5].Visible = false;
                         //Grid_MultipleInspectionTR.Columns[6].Visible = false;
                         Grid_MultipleInspectionTR.Columns[7].Visible = false;
                         Grid_MultipleInspectionTR.Columns[8].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[9].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[10].Visible = false;
                         linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = false;
                         linkButtonPrevInvoice.Visible = false;
@@ -1019,6 +1046,10 @@ namespace CEIHaryana.Admin
                     {
                         if (string.IsNullOrEmpty(LblRemarks.Text.Trim()))
                         {
+                            //Grid_MultipleInspectionTR.Columns[7].Visible = false;
+                            //Grid_MultipleInspectionTR.Columns[8].Visible = false;
+                            //Grid_MultipleInspectionTR.Columns[9].Visible = false;
+                            //Grid_MultipleInspectionTR.Columns[10].Visible = false;
                             linkButtonInvoice.Visible = true;
                             LinkButtonReport.Visible = true;
                             linkButtonPrevInvoice.Visible = false;
@@ -1027,12 +1058,12 @@ namespace CEIHaryana.Admin
                         }
                         else
                         {
-                            //Grid_MultipleInspectionTR.Columns[5].Visible = true;
-                            //Grid_MultipleInspectionTR.Columns[6].Visible = true;
+
                             Grid_MultipleInspectionTR.Columns[7].Visible = true;
                             Grid_MultipleInspectionTR.Columns[8].Visible = true;
                             Grid_MultipleInspectionTR.Columns[9].Visible = true;
                             Grid_MultipleInspectionTR.Columns[10].Visible = true;
+
                             linkButtonInvoice.Visible = true;
                             LinkButtonReport.Visible = true;
                             linkButtonPrevInvoice.Visible = true;
