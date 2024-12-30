@@ -128,7 +128,6 @@ namespace CEIHaryana.TestReportModal
 
                     txtRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
                     txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
-                    txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
                     txtSerialNo.Text = ds.Tables[0].Rows[0]["SerialNo"].ToString();
                     txtControlType.Text = ds.Tables[0].Rows[0]["TypeOfControl"].ToString();
                     txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
