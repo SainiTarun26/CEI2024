@@ -218,7 +218,7 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         if (Session["ReturnedValue"].ToString() != "1")
                         {
-                            TRID = CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtMemoNo.Text, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
+                            TRID = CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
                                              txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, SiteOwnerID, transaction);
 
                         }
@@ -227,7 +227,7 @@ namespace CEIHaryana.SiteOwnerPages
                             string TestReportId = Session["EscalatorTestReportID"].ToString();
                             int InspectionId = int.Parse(Session["InspectionId"].ToString());
                             DataTable dt = new DataTable();
-                            dt = CEI.InsertReturnPeriodicLiftData(TestReportId, ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtMemoNo.Text, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
+                            dt = CEI.InsertReturnPeriodicLiftData(TestReportId, ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo,  txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
                                               txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, InspectionId, SiteOwnerID);
                             TRID = dt.Rows[0]["TestReportId"].ToString();
                         }
@@ -325,7 +325,7 @@ namespace CEIHaryana.SiteOwnerPages
             ddlDistrict.Visible = true;
             txtDistrict.Visible = false;
             txtDateofErection.ReadOnly = false;
-            txtMemoNo.ReadOnly = false;
+            //txtMemoNo.ReadOnly = false;
             txtLastApprovalDate.ReadOnly = false;
             txtPrevChallanDate.ReadOnly = false;
 
@@ -340,7 +340,7 @@ namespace CEIHaryana.SiteOwnerPages
             ddlDistrict.ClearSelection();
             txtDistrict.Text = "";
             txtDateofErection.Text = "";
-            txtMemoNo.Text = "";
+            //txtMemoNo.Text = "";
             txtLastApprovalDate.Text = "";
             txtPrevChallanDate.Text = "";
         }
@@ -412,12 +412,12 @@ namespace CEIHaryana.SiteOwnerPages
                 ddlDistrict.Visible = false;
                 txtDistrict.Visible = true;
                 txtDateofErection.ReadOnly = true;
-                txtMemoNo.ReadOnly = true;
+                //txtMemoNo.ReadOnly = true;
                 txtLastApprovalDate.ReadOnly = true;
                 txtPrevChallanDate.ReadOnly = true;
                 txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
                 txtSerialNo.Text = ds.Tables[0].Rows[0]["LiftSrNo"].ToString();
-                txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
+                //txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
                 
                 string typeOfLift = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
 
@@ -511,12 +511,12 @@ namespace CEIHaryana.SiteOwnerPages
                     ddlDistrict.Visible = false;
                     txtDistrict.Visible = true;
                     txtDateofErection.ReadOnly = true;
-                    txtMemoNo.ReadOnly = true;
+                    //txtMemoNo.ReadOnly = true;
                     txtLastApprovalDate.ReadOnly = true;
                     txtPrevChallanDate.ReadOnly = true;
                     txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
                     txtSerialNo.Text = ds.Tables[0].Rows[0]["LiftSrNo"].ToString();
-                    txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
+                   // txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
                     string typeOfLift = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
 
                     if (ddlInstallationType.SelectedItem.Text == "Lift")

@@ -286,13 +286,13 @@
                             ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
 
-                    <div class="col-md-2" runat="server">
+                   <%-- <div class="col-md-2" runat="server">
                         <label>
                             Memo No.<samp style="color: red"> * </samp>
                         </label>
                         <asp:TextBox class="form-control" ID="txtMemoNo" autocomplete="off" runat="server" MaxLength="25" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtMemoNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                    </div>
+                    </div>--%>
                     <div class="col-md-2" runat="server">
                         <label>
                             Last Approval Date<samp style="color: red"> * </samp>
