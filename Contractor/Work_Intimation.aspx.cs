@@ -332,7 +332,7 @@ namespace CEIHaryana.Contractor
                     ddlworktype.Enabled = false;
                     txtPhone.ReadOnly = true;
                     txtEmail.ReadOnly = true;
-                    if (contractorType == "Other Department/Organization")
+                    if (contractorType == "Firm/Company")
                     {
                         agency.Visible = true;
                         individual.Visible = false;
@@ -833,6 +833,16 @@ namespace CEIHaryana.Contractor
             DdlCircle.SelectedValue = "0";
             DdlDivision.SelectedValue = "0";
             DdlSubDivision.SelectedValue = "0";
+            ddlworktype.SelectedValue = "0";
+            txtagency.Text = "";
+            txtName.Text = "";
+            txtPhone.Text = "";
+            txtEmail.Text = "";
+            ddlworktype.Enabled = true;
+            txtagency.ReadOnly = false;
+            txtName.ReadOnly = false;
+            txtPhone.ReadOnly = false; 
+            txtEmail.ReadOnly = false;
 
         }
         private void ddlPoweUtilityBind()
@@ -1079,7 +1089,7 @@ namespace CEIHaryana.Contractor
                     ddlworktype.Enabled = false;
                     txtPhone.ReadOnly = true;
                     txtEmail.ReadOnly = true;
-                    if (contractorType == "Firm/Organization/Company/Department")
+                    if (contractorType == "Firm/Company")
                     {
                         agency.Visible = true;
                         individual.Visible = false;
@@ -1096,11 +1106,14 @@ namespace CEIHaryana.Contractor
                 }
                 else
                 {
+                    
                     ddlworktype.SelectedValue = "0";
                     ddlworktype.Enabled = true;
                     txtagency.ReadOnly = false;
                     txtName.ReadOnly = false;
-                    txtagency.Text = "";
+                    txtPhone.ReadOnly = false;
+                    txtName.ReadOnly = false;
+                    txtEmail.Text = "";
                     txtName.Text = "";
                     txtPhone.Text = "";
                     txtEmail.Text = "";
