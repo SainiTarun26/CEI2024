@@ -105,6 +105,7 @@ namespace CEIHaryana.SiteOwnerPages
                     txtRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
                     txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
                     txtSerialNo.Text = ds.Tables[0].Rows[0]["SerialNo"].ToString();
+                    txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
                     txtControlType.Text = ds.Tables[0].Rows[0]["TypeOfControl"].ToString();
                     txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
                     txtWeight.Text = ds.Tables[0].Rows[0]["Weight"].ToString();
@@ -124,8 +125,8 @@ namespace CEIHaryana.SiteOwnerPages
         private void GridDocument()
         {
             string RegistrationNo = Session["RegistrationNo"].ToString();
-
-            DataTable ds = CEI.GetDocumentOfLiftRenewalToShow(RegistrationNo);
+            string TReportID = Convert.ToString(Session["TestReportID"]);
+            DataTable ds = CEI.GetDocumentOfLiftRenewalToShow(TReportID);
             if (ds != null && ds.Rows.Count > 0)
             {
                 Grd_Document.DataSource = ds;

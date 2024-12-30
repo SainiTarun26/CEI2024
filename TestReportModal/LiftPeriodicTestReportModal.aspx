@@ -2171,6 +2171,13 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtRegistrationNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-4" runat="server">
+    <label>
+       Memo No.
+    </label>
+    <asp:TextBox class="form-control" ID="txtMemoNo" autocomplete="off" ReadOnly="true" runat="server" Style="margin-left: 18px"></asp:TextBox>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtMemoNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+</div>
+                                <div class="col-4" runat="server">
                                     <label id="lblMake" runat="server">
                                         Make of Lift
                                     </label>
@@ -2198,7 +2205,7 @@
                                 </div>
                                 <div class="col-4" runat="server">
                                     <label>
-                                        Last Approval Date 
+                                        Memo Date 
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtLastApprovalDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                                 </div>

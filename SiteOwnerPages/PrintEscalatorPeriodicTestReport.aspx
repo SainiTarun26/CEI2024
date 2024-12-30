@@ -124,7 +124,7 @@
         .col-4 {
             top: 0px;
             left: 0px;
-            margin-top: 5%;
+            margin-top: 4%;
         }
 
         .col-3 {
@@ -144,7 +144,7 @@
         }
 
         .col-12 {
-            margin-top: 5%;
+            margin-top: 4%;
         }
 
         .form-control {
@@ -300,6 +300,13 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtRegistrationNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                                         </div>
                                         <div class="col-4" runat="server">
+                                            <label id="Label1" runat="server">
+                                                Memo No.
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtMemoNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtMemoNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-4" runat="server">
                                             <label id="lblMake" runat="server">
                                                 Make of Escalator
                                             </label>
@@ -327,16 +334,16 @@
                                         </div>
                                         <div class="col-4" runat="server">
                                             <label>
-                                                Last Approval Date 
+                                                Memo Date 
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtLastApprovalDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
-                                            </div>
+                                        </div>
                                         <div class="col-4" runat="server">
                                             <label>
                                                 Date of Erection
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtDateofErection" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                             </div>
+                                        </div>
 
                                         <div class="col-4">
                                             <label id="lblTypeOfEscalator" runat="server">
@@ -349,31 +356,31 @@
                                                 Type of Control 
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtControlType" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                             </div>
+                                        </div>
                                         <div class="col-4" runat="server">
                                             <label>
                                                 Capacity(Persons) 
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtCapacity" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" onkeypress="return isNumberKey(event)"></asp:TextBox>
-                                              </div>
+                                        </div>
                                         <div class="col-4" runat="server">
                                             <label>
                                                 Weight(In Kgs) 
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtWeight" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" onkeypress="return isNumberKey(event)"></asp:TextBox>
-                                               </div>
+                                        </div>
                                         <div class="col-4" runat="server">
                                             <label>
                                                 District 
                                             </label>
                                             <asp:TextBox ReadOnly="true" class="form-control" ID="txtDistrictOfTr" TabIndex="7" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                              </div>
-                                        <div class="col-md-12" runat="server">
+                                        </div>
+                                        <div class="col-md-12" runat="server" style="margin-top: 4%;">
                                             <label>
                                                 Site Address 
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtSiteAddress" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

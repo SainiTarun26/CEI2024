@@ -332,7 +332,7 @@ namespace CEIHaryana.Contractor
                     ddlworktype.Enabled = false;
                     txtPhone.ReadOnly = true;
                     txtEmail.ReadOnly = true;
-                    if (contractorType == "Firm/Organization/Company/Department")
+                    if (contractorType == "Other Department/Organization")
                     {
                         agency.Visible = true;
                         individual.Visible = false;
