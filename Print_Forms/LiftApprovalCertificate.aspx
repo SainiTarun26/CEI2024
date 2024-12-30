@@ -372,7 +372,7 @@
                                     <asp:Label ID="lblMemoNoText" runat="server" Text="Memo No:-"></asp:Label>&nbsp;<asp:Label ID="lblMemoNo" runat="server"></asp:Label>
                                 </div>
                                 <div class="col-md-12" style="font-weight: bold;">
-                                    <asp:Label runat="server" Text="Dated:-"></asp:Label>&nbsp;<asp:Label ID="lblDated" runat="server"></asp:Label>
+                                    <asp:Label runat="server" Text="Memo Date:-"></asp:Label>&nbsp;<asp:Label ID="lblDated" runat="server"></asp:Label>
                                 </div>
                             </div>
                             <div class="row" style="padding-right: 5px !important;">

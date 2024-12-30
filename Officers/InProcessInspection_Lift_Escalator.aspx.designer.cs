@@ -267,6 +267,24 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.TextBox TxtApprovalDate;
 
         /// <summary>
+        /// MemoNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MemoNo;
+
+        /// <summary>
+        /// TxtMemoNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtMemoNo;
+
+        /// <summary>
         /// Division control.
         /// </summary>
         /// <remarks>
@@ -438,6 +456,24 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl InspectionDate;
 
         /// <summary>
+        /// labelInspectionDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl labelInspectionDate;
+
+        /// <summary>
+        /// labelApprovalDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl labelApprovalDate;
+
+        /// <summary>
         /// txtInspectionDate control.
         /// </summary>
         /// <remarks>
@@ -454,6 +490,24 @@ namespace CEIHaryana.Officers
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl InsDate;
+
+        /// <summary>
+        /// inDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl inDate;
+
+        /// <summary>
+        /// AppDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AppDate;
 
         /// <summary>
         /// txtDATE control.

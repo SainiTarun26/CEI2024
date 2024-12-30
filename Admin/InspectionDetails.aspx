@@ -164,12 +164,16 @@
         input#ContentPlaceHolder1_txtagency {
             font-size: 12.5px;
         }
+        .col-12{
+            padding-left: 5px;
+    padding-right: 5px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+        <div class="card-body" style="background:white;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
                 Inspection Details (<asp:Label runat="server" ID="lbltype"></asp:Label>&nbsp;Inspection) 
             </div>
@@ -280,7 +284,10 @@
                     </asp:GridView>
                 </div>
             </div>
-        </div>
+        
+        <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
+    Inspection Details
+</div>
         <div class="card" id="TestReport_Card" runat="server" visible="true" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <div class="col-12" style="padding: 0px;">
                 <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" OnRowDataBound="GridView2_RowDataBound1" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
@@ -333,6 +340,9 @@
                 </asp:GridView>
             </div>
         </div>
+                <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
+    Test Report Details
+</div>
         <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;"
             id="PeriodTestReport_CardId" runat="server" visible="false">
             <div class="col-12" style="padding: 0px;">
@@ -535,6 +545,7 @@
                     </div>
             </ContentTemplate>
         </asp:UpdatePanel>
+            </div>
     </div>
     <div class="row" style="margin-top: 25px;">
         <%-- <div class="col-5" style="text-align: end;">

@@ -396,6 +396,11 @@
   <label>Last Approval Date</label>
   <asp:TextBox class="form-control" ID="TxtApprovalDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
      </div>
+
+                                                              <div  id="MemoNo"   class="col-md-4" runat="server" visible="false">
+<label>Memo No</label>
+<asp:TextBox class="form-control" ID="TxtMemoNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+   </div>
                                                           <%--    <div  id="Type"   class="col-md-4" runat="server" visible="false">
 <label>Type Of Lift</label>
 <asp:TextBox class="form-control" ID="txtInspectionCount" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -557,6 +562,7 @@
                                        <asp:Label ID="lblLastApprovalDate" runat="server" Text='<%#Eval("LastApprovalDate") %>'></asp:Label>
                                       <asp:Label ID="LblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
                                         <asp:Label ID="LblOldTestReportId" runat="server" Text='<%#Eval("OldTestReportId") %>'></asp:Label>
+                                      <asp:Label ID="lblMemoNo" runat="server" Text='<%#Eval("MemoNo") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Current View TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
@@ -727,9 +733,12 @@
 
                 </div>
                 <div class="col-md-4" id="InspectionDate" runat="server">
-                    <label for="StartDate">
-                        Inspection Date<samp style="color: red"> * </samp>                           
-                    </label>
+                <label for="StartDate" id="labelInspectionDate" runat="server">
+        Inspection Date<samp style="color: red"> * </samp>                           
+    </label>
+    <label for="StartDate" id="labelApprovalDate" runat="server">
+Approval Date<samp style="color: red"> * </samp>                           
+    </label>
                     <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                 </div>

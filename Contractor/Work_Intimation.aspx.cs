@@ -326,8 +326,12 @@ namespace CEIHaryana.Contractor
 
                     string ContractNameAgeny = ds.Tables[0].Rows[0]["username"].ToString();
                     string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                    txtPhone.Text = ds.Tables[0].Rows[0]["Contact"].ToString();
+                    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                     ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
                     ddlworktype.Enabled = false;
+                    txtPhone.ReadOnly = true;
+                    txtEmail.ReadOnly = true;
                     if (contractorType == "Firm/Organization/Company/Department")
                     {
                         agency.Visible = true;
@@ -349,6 +353,10 @@ namespace CEIHaryana.Contractor
                     txtName.Text = "";
                     txtagency.ReadOnly = false;
                     txtName.ReadOnly = false;
+                    txtPhone.ReadOnly = false;
+                    txtEmail.ReadOnly = false;
+                    txtPhone.Text = "";
+                    txtEmail.Text = "";
                     //Page.ClientScript.RegisterStartupScript(GetType(), "panNotFound", "alert('PAN card not found in the database.');", true);
                 }
 
@@ -1065,8 +1073,12 @@ namespace CEIHaryana.Contractor
                 {
                     string ContractNameAgeny = ds.Tables[0].Rows[0]["username"].ToString();
                     string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                    txtPhone.Text = ds.Tables[0].Rows[0]["Contact"].ToString();
+                    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                     ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
                     ddlworktype.Enabled = false;
+                    txtPhone.ReadOnly = true;
+                    txtEmail.ReadOnly = true;
                     if (contractorType == "Firm/Organization/Company/Department")
                     {
                         agency.Visible = true;
@@ -1090,6 +1102,8 @@ namespace CEIHaryana.Contractor
                     txtName.ReadOnly = false;
                     txtagency.Text = "";
                     txtName.Text = "";
+                    txtPhone.Text = "";
+                    txtEmail.Text = "";
                     // Page.ClientScript.RegisterStartupScript(GetType(), "panNotFound", "alert('PAN card not found in the database.');", true);
                 }
 

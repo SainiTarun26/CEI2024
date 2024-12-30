@@ -392,6 +392,10 @@
   <label>Last Approval Date</label>
   <asp:TextBox class="form-control" ID="TxtApprovalDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
      </div>
+                                          <div  id="MemoNo"   class="col-md-4" runat="server" visible="false">
+<label>Memo No</label>
+<asp:TextBox class="form-control" ID="TxtMemoNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+   </div>
                  <%--       <div  id="Srno"   class="col-md-4" runat="server" visible="false">
   <label>Lift Sr No</label>
   <asp:TextBox class="form-control" ID="txtLiftSrNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -548,7 +552,7 @@
                                             <asp:Label ID="LblErectionDate" runat="server" Text='<%#Eval("ErectionDate") %>'></asp:Label>
                                        <asp:Label ID="lblLastApprovalDate" runat="server" Text='<%#Eval("LastApprovalDate") %>'></asp:Label>
                                       <asp:Label ID="LblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
-                                   <%--  <asp:Label ID="LblOldTestReportId" runat="server" Text='<%#Eval("OldTestReportId") %>'></asp:Label>--%>
+                                     <asp:Label ID="LblMemoNo" runat="server" Text='<%#Eval("MemoNo") %>'></asp:Label>
 
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -706,17 +710,23 @@
 
                 </div>
                 <div class="col-md-4" id="InspectionDate" runat="server">
-                    <label for="StartDate">
+                    <label for="StartDate" id="labelInspectionDate" runat="server">
                         Inspection Date<samp style="color: red"> * </samp>                           
                     </label>
+                     <label for="StartDate" id="labelApprovalDate" runat="server">
+                    Approval Date<samp style="color: red"> * </samp>                           
+                        </label>
                     <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                 </div>
 
                 <div class="col-md-4" id="InsDate" runat="server" visible="false">
-                    <label for="StartDate">
+                    <label for="StartDate" id="inDate" runat="server">
                         Inspection Date<samp style="color: red"> * </samp>
                     </label>
+                    <label for="StartDate" id="AppDate" runat="server">
+    Approval Date<samp style="color: red"> * </samp>
+</label>
                     <asp:TextBox class="form-control" ID="txtDATE" TabIndex="16" autocomplete="off" ReadOnly="true" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
                 <div class="row">

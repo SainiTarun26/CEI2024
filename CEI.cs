@@ -8179,8 +8179,8 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDataForLift", Id);
         }
-       
-        public void InspectionFinalAction_Lift(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, string InspectionDate, SqlTransaction transaction)
+
+        public void InspectionFinalAction_Lift(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, string MemoNo, string InspectionDate, SqlTransaction transaction)
         {
             try
             {
@@ -8197,7 +8197,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                 cmd.Parameters.AddWithValue("@StaffId", StaffId);
                 cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrReReturn);
                 cmd.Parameters.AddWithValue("@ReasonForRejection", Reason);
-                //cmd.Parameters.AddWithValue("@Suggestion", suggestions);
+                cmd.Parameters.AddWithValue("@MemoNo", MemoNo);
                 //cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
                 DateTime InsDate;
                 if (DateTime.TryParse(InspectionDate, out InsDate) && InsDate != DateTime.MinValue)
@@ -8758,7 +8758,10 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetReturnedInspectionDocuments_Lift_Escalator", InspectionId);
         }
-
+        public DataSet GetTestReportDataIfPeriodic_Lift(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReportDataForPerodic_Lift", Id);
+        }
         public DataTable InstallationComponentsforLift_Return(string Id)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReportDataLift_Return", Id);
@@ -8813,8 +8816,8 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PeriodicLiftDetailstoPrintFormInspectionDetails", ID);
         }
         public void InstallationApproval_Lift(string InspectionID, string TestReportId, string InstallationType, string StaffId, string InspectionType, string RegistrationNo, DateTime ChallanDate, string Division, string Make, string LiftSrNo,
-  string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, DateTime LastApprovalDate, string SiteAddress, string District, string Current_ChallanDate,
-  SqlTransaction transaction)
+   string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, DateTime LastApprovalDate, string SiteAddress, string District, string MemoNo, string Current_ChallanDate,
+   SqlTransaction transaction)
         {
             try
             {
@@ -8846,6 +8849,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                 cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate);
                 cmd.Parameters.AddWithValue("@SiteAddress", SiteAddress);
                 cmd.Parameters.AddWithValue("@District", District);
+                cmd.Parameters.AddWithValue("@MemoNo", MemoNo);
                 if (String.IsNullOrEmpty(Current_ChallanDate))
                 {
                     cmd.Parameters.AddWithValue("@Current_ChallanDate", DBNull.Value);
@@ -8929,6 +8933,10 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         public DataTable WorkIntimationDataForSearch(string LoginID)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationProjectsWithoutSearch", LoginID);
+        }
+        public DataSet GetTestReport_Lift(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReport_Lift", Id);
         }
     }
 }

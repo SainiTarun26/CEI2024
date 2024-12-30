@@ -90,11 +90,16 @@ namespace CEIHaryana.Officers
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                     if (txtAmount.Text == "0")
                     {
+                        labelApprovalDate.Visible = true;
+                        labelInspectionDate.Visible = false;
                         TranscationDetails.Visible = false;
                     }
                     else
                     {
+                        labelApprovalDate.Visible = false;
+                        labelInspectionDate.Visible = true;
                         TranscationDetails.Visible = true;
+                        ChallanDate.Visible = false;
                     }
 
                     //added by aslam on 23 dec 2024 start 
@@ -254,15 +259,21 @@ namespace CEIHaryana.Officers
                     txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                     txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    string SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                   
+
                     if (txtAmount.Text == "0")
                     {
+                        labelApprovalDate.Visible = true;
+                        labelInspectionDate.Visible = false;
                         TranscationDetails.Visible = false;
                     }
                     else
                     {
+                        labelApprovalDate.Visible = false;
+                        labelInspectionDate.Visible = true;
                         TranscationDetails.Visible = true;
+                        ChallanDate.Visible = false;
                     }
                     //added by aslam on 23 dec 2024 start 
                     txtelectrical.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
@@ -296,7 +307,7 @@ namespace CEIHaryana.Officers
                     Address.Visible = true;
                     txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
 
-                    string SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
+                   
                     grd_Documemnts.Columns[1].Visible = true;
 
                     GridView1.Columns[5].Visible = false;
@@ -496,6 +507,7 @@ namespace CEIHaryana.Officers
                             TxtApprovalDate.Text = ds.Tables[0].Rows[0]["LastApprovalDate"].ToString();
                             txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
                             txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                            TxtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
                         }
 
 
@@ -544,7 +556,7 @@ namespace CEIHaryana.Officers
 
                             if (inspectionDate < submittedDate)
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be greater equal to application requested date.');", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection/Approval date must be greater equal to application requested date.');", true);
                                 return;
                             }
 
@@ -571,7 +583,7 @@ namespace CEIHaryana.Officers
                                 //    }
                                 //}
                                 transaction = connection.BeginTransaction();
-                                CEI.InspectionFinalAction_Lift(ID, StaffId, ApprovedorReject, Reason, txtInspectionDate.Text, transaction);
+                                CEI.InspectionFinalAction_Lift(ID, StaffId, ApprovedorReject, Reason, TxtMemoNo.Text, txtInspectionDate.Text, transaction);
                                 if (ApprovedorReject == "Approved")
                                 {
                                     if (InspectionType == "New")
@@ -611,12 +623,13 @@ namespace CEIHaryana.Officers
                                             string lblCapacity = (row.FindControl("lblCapacity") as Label)?.Text;
                                             string lblWeight = (row.FindControl("lblWeight") as Label)?.Text;
                                             string LblRegistrationNo = (row.FindControl("LblRegistrationNo") as Label)?.Text;
+                                            string lblMemoNo = (row.FindControl("lblMemoNo") as Label)?.Text;
                                             DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
                                             DateTime lblLastApprovalDate = DateTime.Parse((row.FindControl("lblLastApprovalDate") as Label)?.Text);
 
                                             // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
                                             CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                             lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate,lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, txtTranscationDate.Text, transaction);
+                                             lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate,lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, lblMemoNo, txtTranscationDate.Text, transaction);
 
                                         }
                                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
