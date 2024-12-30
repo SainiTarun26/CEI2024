@@ -69,6 +69,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.TextBox txtRegistrationNo;
 
         /// <summary>
+        /// lnkbtnSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkbtnSearch;
+
+        /// <summary>
         /// RfvtxtRegistrationNo control.
         /// </summary>
         /// <remarks>
@@ -78,13 +87,22 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvtxtRegistrationNo;
 
         /// <summary>
-        /// lnkbtnSearch control.
+        /// txtMemoNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkbtnSearch;
+        protected global::System.Web.UI.WebControls.TextBox txtMemoNo;
+
+        /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
         /// txtLastApprovalDate control.

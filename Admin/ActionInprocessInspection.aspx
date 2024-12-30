@@ -653,4 +653,18 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            // Get the current date in YYYY-MM-DD format
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+            var yyyy = today.getFullYear();
+
+            today = yyyy + '-' + mm + '-' + dd;
+
+            // Set the max date for the txtTransactiondate input to the current date
+            document.getElementById('<%= txtInspectionDate.ClientID %>').setAttribute('max', today);
+        }
+</script>
 </asp:Content>

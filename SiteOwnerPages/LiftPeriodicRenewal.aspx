@@ -226,6 +226,14 @@
             overflow: hidden; /* Prevents text from overflowing outside the container */
             word-break: break-all; /* This ensures that long words will break at any point if they exceed the container width */
         }
+
+        i.fa.fa-search {
+            padding: 0px 10px 0px 10px !important;
+        }
+
+        a#ContentPlaceHolder1_lnkbtnSearch {
+            border-radius: 5px !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -265,18 +273,29 @@
                         <label>
                             Registration No.<samp style="color: red"> * </samp>
                         </label>
-                        <asp:TextBox class="form-control" ID="txtRegistrationNo" MaxLength="20" autocomplete="off" runat="server" Style="margin-left: 18px" AutoPostBack="true" OnTextChanged="txtRegistrationNo_TextChanged"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RfvtxtRegistrationNo" ControlToValidate="txtRegistrationNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                        <div class="input-group">
+                            <asp:TextBox class="form-control" ID="txtRegistrationNo" MaxLength="20" autocomplete="off" runat="server"
+                                Style="margin-right: 5px;" AutoPostBack="true" OnTextChanged="txtRegistrationNo_TextChanged"></asp:TextBox>
+                            <div class="input-group-append">
+                                <asp:LinkButton ID="lnkbtnSearch" CssClass="btn btn-primary" runat="server" Style="height: 100%; padding: 0px;">
+                <i class="fa fa-search"></i>
+                                </asp:LinkButton>
+                            </div>
+                        </div>
+                        <asp:RequiredFieldValidator ID="RfvtxtRegistrationNo" ControlToValidate="txtRegistrationNo" runat="server"
+                            ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="col-md-1" style="margin-top: 31px; margin-bottom: auto; padding-left: 0px;">
-                        <%-- <asp:Button ID="btnSearch" Class="btn btn-primary" runat="server" Text="Search" Style="height: 30px; padding: 0px 15px 0px 15px;" />--%>
-                        <asp:LinkButton ID="lnkbtnSearch" CssClass="btn btn-primary" runat="server" Style="height: 30px; padding: 2PX 8PX 5PX 8PX;">
-                        <i class="fa fa-search"></i>
-                        </asp:LinkButton>
+
+                    <div class="col-md-2" runat="server">
+                        <label>
+                            Memo No.<samp style="color: red"> * </samp>
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtMemoNo" autocomplete="off" runat="server" MaxLength="25" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtMemoNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
                     <div class="col-md-2" runat="server">
                         <label>
-                            Last Approval Date<samp style="color: red"> * </samp>
+                            Memo Date<samp style="color: red"> * </samp>
                         </label>
                         <asp:TextBox type="date" class="form-control" ID="txtLastApprovalDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="txtLastApprovalDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
@@ -288,9 +307,10 @@
                         <asp:TextBox type="date" class="form-control" ID="txtPrevChallanDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RfvtxtPrevChallanDate" ControlToValidate="txtPrevChallanDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="col-md-4">
+
+                    <div class="col-md-3">
                         <label class="form-label" for="customFile">
-                            Upload Previous Challan<samp style="color: red">* </samp>
+                            Upload Previous Challan<samp style="color: red"> * </samp>
                         </label>
                         <asp:FileUpload ID="customFile" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="customFile" ValidationGroup="Submit" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
@@ -444,76 +464,76 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                           <%-- <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                            <%-- <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                 <ContentTemplate>--%>
-                                    <div class="row">
-                                        <div class="col-md-4" runat="server">
-                                            <asp:TextBox class="form-control" ID="txtSearch" autocomplete="off" placeholder="Search" runat="server" Style="margin-left: 18px" onkeyup="Search_Gridview(this)"
-                                                onkeydown="SearchOnEnter(event)"></asp:TextBox>
-                                            <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtSearch" runat="server" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                                            --%>
-                                        </div>
-                                        <%-- <div class="col-md-4" style="margin-bottom: auto; padding-left: 0px;">
+                            <div class="row">
+                                <div class="col-md-4" runat="server">
+                                    <asp:TextBox class="form-control" ID="txtSearch" autocomplete="off" placeholder="Search" runat="server" Style="margin-left: 18px" onkeyup="Search_Gridview(this)"
+                                        onkeydown="SearchOnEnter(event)"></asp:TextBox>
+                                    <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtSearch" runat="server" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                    --%>
+                                </div>
+                                <%-- <div class="col-md-4" style="margin-bottom: auto; padding-left: 0px;">
                                             <asp:Button ID="btn" Class="btn btn-primary" runat="server" Text="Search" OnClick="btnModalSearch_Click" Style="height: 30px; padding: 0px 15px 0px 15px;" />
                                         </div>--%>
-                                    </div>
-                                    <hr />
-                                    <div class="row">
-                                        <%--Grid to filter record according to Registration No--%>
-                                        <div class="col-md-12">
-                                            <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" OnRowCommand="GridView1_RowCommand" runat="server" AutoGenerateColumns="false">
-                                                <%--AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging"--%>
-                                                <PagerStyle CssClass="pagination-ys" />
-                                                <Columns>
-                                                    <%--<asp:BoundField DataField="RegistrationNo" HeaderText="Registration No">
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <%--Grid to filter record according to Registration No--%>
+                                <div class="col-md-12">
+                                    <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" OnRowCommand="GridView1_RowCommand" runat="server" AutoGenerateColumns="false">
+                                        <%--AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging"--%>
+                                        <PagerStyle CssClass="pagination-ys" />
+                                        <Columns>
+                                            <%--<asp:BoundField DataField="RegistrationNo" HeaderText="Registration No">
                                                         <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
                                                         <ItemStyle HorizontalAlign="Left" Width="30%" />
                                                     </asp:BoundField>--%>
-                                                    <asp:TemplateField>
-                                                        <HeaderStyle Width="10%" CssClass="headercolor" />
-                                                        <ItemStyle Width="10%" Font-Bold="true" />
-                                                        <HeaderTemplate>
-                                                            Registration No
-                                                        </HeaderTemplate>
-                                                        <ItemTemplate>
-                                                            <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("RegistrationNo") %> ' CommandName="Select"><%#Eval("RegistrationNo") %></asp:LinkButton>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:BoundField DataField="Make" HeaderText="Make">
-                                                        <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
-                                                        <ItemStyle HorizontalAlign="Left" Width="30%" CssClass="wrap-text" />
-                                                    </asp:BoundField>
-                                                    <asp:BoundField DataField="TypeOfControl" HeaderText="Type Of Control">
-                                                        <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
-                                                        <ItemStyle HorizontalAlign="Left" Width="10%" />
-                                                    </asp:BoundField>
-                                                    <asp:BoundField DataField="Capacity" HeaderText="Capacity(Persons)">
-                                                        <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
-                                                        <ItemStyle HorizontalAlign="Left" Width="10%" />
-                                                    </asp:BoundField>
-                                                    <asp:BoundField DataField="District" HeaderText="District">
-                                                        <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
-                                                        <ItemStyle HorizontalAlign="Left" Width="30%" />
-                                                    </asp:BoundField>
-                                                    <asp:TemplateField HeaderText="Id" Visible="False">
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="LblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                </Columns>
-                                                <FooterStyle BackColor="White" ForeColor="#000066" />
-                                                <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                                <RowStyle ForeColor="#000066" />
-                                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                                <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                            </asp:GridView>
-                                        </div>
-                                    </div>
-                             <%--   </ContentTemplate>
+                                            <asp:TemplateField>
+                                                <HeaderStyle Width="10%" CssClass="headercolor" />
+                                                <ItemStyle Width="10%" Font-Bold="true" />
+                                                <HeaderTemplate>
+                                                    Registration No
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("RegistrationNo") %> ' CommandName="Select"><%#Eval("RegistrationNo") %></asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="Make" HeaderText="Make">
+                                                <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
+                                                <ItemStyle HorizontalAlign="Left" Width="30%" CssClass="wrap-text" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="TypeOfControl" HeaderText="Type Of Control">
+                                                <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
+                                                <ItemStyle HorizontalAlign="Left" Width="10%" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="Capacity" HeaderText="Capacity(Persons)">
+                                                <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor leftalign" />
+                                                <ItemStyle HorizontalAlign="Left" Width="10%" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="District" HeaderText="District">
+                                                <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
+                                                <ItemStyle HorizontalAlign="Left" Width="30%" />
+                                            </asp:BoundField>
+                                            <asp:TemplateField HeaderText="Id" Visible="False">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="LblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                        </Columns>
+                                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                                        <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                        <RowStyle ForeColor="#000066" />
+                                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                    </asp:GridView>
+                                </div>
+                            </div>
+                            <%--   </ContentTemplate>
                             </asp:UpdatePanel>--%>
                         </div>
                         <div class="modal-footer">

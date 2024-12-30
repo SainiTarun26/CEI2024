@@ -8066,8 +8066,8 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetApplicantTypeForLift", Id);
         }
-        public string InsertPeriodicLiftData(string InstallationType, string RegistrationNo, string PreviousChallanDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
- string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string SiteAddress, string CreatedBy, SqlTransaction transaction)
+        public string InsertPeriodicLiftData(string InstallationType, string RegistrationNo, string PreviousChallanDate, string PreviousChallanUpload, string MemoNo, string LastApprovalDate, string ErectionDate, string Make,
+   string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string SiteAddress, string CreatedBy, SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertPeriodicLiftData", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -8075,7 +8075,8 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
             cmd.Parameters.AddWithValue("@PreviousChallanDate", PreviousChallanDate);
             cmd.Parameters.AddWithValue("@PreviousChallanUpload", PreviousChallanUpload);
-            cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate);
+            cmd.Parameters.AddWithValue("@MemoNo", MemoNo);
+            cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate); //MemoDate
             cmd.Parameters.AddWithValue("@ErectionDate", ErectionDate);
             cmd.Parameters.AddWithValue("@Make", Make);
             cmd.Parameters.AddWithValue("@SerialNo", SerialNo);
@@ -8734,10 +8735,10 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                 Valueinohms10, CreatedBy, ContractorName, ContractorLicenseNumber, ContractorLicenseExpiryDate, SupervisorName, SupervisorLicenseNumber, SupervisorLicenseExpiryDate);
         }
 
-        public DataTable InsertReturnPeriodicLiftData(string TestReportId, string InstallationType, string RegistrationNo, string PreviousChallanDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
-string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string SiteAddress,int InspectionID, string CreatedBy)
+        public DataTable InsertReturnPeriodicLiftData(string TestReportId, string InstallationType, string RegistrationNo, string PreviousChallanDate, string PreviousChallanUpload, string MemoNo, string LastApprovalDate, string ErectionDate, string Make,
+  string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string SiteAddress, int InspectionID, string CreatedBy)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertPeriodicReturnData", TestReportId, InstallationType, RegistrationNo, PreviousChallanDate, PreviousChallanUpload, LastApprovalDate, ErectionDate, Make,
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertPeriodicReturnData", TestReportId, InstallationType, RegistrationNo, PreviousChallanDate, PreviousChallanUpload, MemoNo, LastApprovalDate, ErectionDate, Make,
  SerialNo, TypeOfLift, TypeOfControl, Capacity, Weight, ApplicantDistrict, SiteAddress, InspectionID, CreatedBy);
         }
 

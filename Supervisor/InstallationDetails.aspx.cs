@@ -133,7 +133,7 @@ namespace CEIHaryana.Supervisor
                                 Session["NoOfInstallations"] = lblNoOfInstallations.Text.Trim();
                                 Session["NoOfInstallation"] = lblNoOfInstallations.Text.Trim();
                                 Label lblTotalInstallation = (Label)row.FindControl("lblTotalInstallation");
-                                Session["TotalInstallation"] = lblNoOfInstallations.Text.Trim();
+                                Session["TotalInstallation"] = lblTotalInstallation.Text.Trim();
                                 Label lblID = (Label)row.FindControl("lblID");
                                 Session["IHID"] = lblID.Text.Trim();
                                 Session["IHIDs"] = lblID.Text.Trim();                           //////////////
@@ -197,7 +197,7 @@ namespace CEIHaryana.Supervisor
                             Session["NoOfInstallations"] = lblNoOfInstallations.Text.Trim();
                             Session["NoOfInstallation"] = lblNoOfInstallations.Text.Trim();
                             Label lblTotalInstallation = (Label)row.FindControl("lblTotalInstallation");
-                            Session["TotalInstallation"] = lblNoOfInstallations.Text.Trim();
+                            Session["TotalInstallation"] = lblTotalInstallation.Text.Trim();
                             Label lblID = (Label)row.FindControl("lblID");
                             Session["IHID"] = lblID.Text.Trim();
                             Session["IHIDs"] = lblID.Text.Trim();                           //////////////
