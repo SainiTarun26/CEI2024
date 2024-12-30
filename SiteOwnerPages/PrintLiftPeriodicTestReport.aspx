@@ -123,7 +123,7 @@
         .col-4 {
             top: 0px;
             left: 0px;
-            margin-top: 5%;
+            margin-top: 4%;
         }
 
         .col-3 {
@@ -298,6 +298,13 @@
                                             <asp:TextBox class="form-control" ID="txtRegistrationNo" autocomplete="off" ReadOnly="true" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtRegistrationNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                                         </div>
+                                         <div class="col-4" runat="server">
+     <label>
+         Memo No.
+     </label>
+     <asp:TextBox class="form-control" ID="txtMemoNo" autocomplete="off" ReadOnly="true" runat="server" Style="margin-left: 18px"></asp:TextBox>
+     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtMemoNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+ </div>
                                         <div class="col-4" runat="server">
                                             <label id="lblMake" runat="server">
                                                 Make of Lift
@@ -326,7 +333,7 @@
                                         </div>
                                         <div class="col-4" runat="server">
                                             <label>
-                                                Last Approval Date 
+                                                Memo Date 
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtLastApprovalDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                                             </div>
@@ -367,7 +374,7 @@
                                             </label>
                                             <asp:TextBox ReadOnly="true" class="form-control" ID="txtDistrictOfTr" TabIndex="7" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                               </div>
-                                        <div class="col-md-12" runat="server">
+                                        <div class="col-md-12" runat="server" style="margin-top:4%;">
                                             <label>
                                                 Site Address 
                                             </label>
