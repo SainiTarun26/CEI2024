@@ -84,7 +84,7 @@ namespace CEIHaryana.Officers
 
                     if (e.CommandName == "Select")
                     {
-                       
+
                         if (InstallationType == "Lift" || InstallationType == "Escalator" || InstallationType == "Lift/Escalator" || InstallationType == "MultiLift" || InstallationType == "MultiEscalator")
                         {
                             if (ApplicationStatus == "Returned")
@@ -111,23 +111,32 @@ namespace CEIHaryana.Officers
                                 Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
                             }
 
-                            else if (InstallationType != "Lift" || InstallationType != "Escalator" || InstallationType != "Lift/Escalator" || InstallationType != "MultiLift" || InstallationType != "MultiEscalator")
+                            else if (InstallationType != "Lift" && InstallationType != "Escalator" && InstallationType != "Lift/Escalator" && InstallationType != "MultiLift" && InstallationType != "MultiEscalator")
                             {
                                 Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
                             }
+                            else if (InstallationType == "Lift" || InstallationType == "Escalator" || InstallationType == "Lift/Escalator" || InstallationType == "MultiLift" || InstallationType == "MultiEscalator")
+                            {
+                                Session["InProcessInspectionId"] = id;
+                                Response.Redirect("/Officers/Lift_EscelatorApprovaldata.aspx", false);
+                            }
                         }
-                        if (InstallationType == "Lift" || InstallationType == "Escalator" || InstallationType == "Lift/Escalator" || InstallationType == "MultiLift" || InstallationType == "MultiEscalator")
+                        else if (LblInspectionType.Text == "Periodic")
                         {
                             Session["InProcessInspectionId"] = id;
-                            Response.Redirect("/Officers/Lift_EscelatorApprovaldata.aspx", false);
-                        }
 
-                        else
-                        {
-                            Session["InProcessInspectionId"] = id;
-                            Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
+                            if (InstallationType != "Lift" && InstallationType != "Escalator" && InstallationType != "Lift/Escalator" && InstallationType != "MultiLift" && InstallationType != "MultiEscalator")
+                            {
+                                Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
+                            }
+                            else if (InstallationType == "Lift" || InstallationType == "Escalator" || InstallationType == "Lift/Escalator" || InstallationType == "MultiLift" || InstallationType == "MultiEscalator")
+                            {
+                                Response.Redirect("/Officers/Lift_EscelatorApprovaldata.aspx", false);
+                            }
+
                         }
                     }
+
                 }
             }
 
@@ -136,7 +145,6 @@ namespace CEIHaryana.Officers
                 //
             }
         }
-
 
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)

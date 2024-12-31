@@ -634,6 +634,13 @@
                         <asp:Button ID="BtnAddSuggestion" Text="Add Suggestion" runat="server" class="btn btn-primary mr-2" OnClientClick="$('#modal1').modal('show'); return false;" />
                     </div>
                 </div>
+                <div id="Note" runat="server" visible="false">
+                    <label>
+                        <span style="color: red;">NOTE:</span>&nbsp;YOU CAN NOT GIVE MORE THAN 4 SUGGESTIONS.   
+                    </label>
+
+
+                </div>
                 <div class="row" style="margin-top: 25px;">
 
                     <div class="col-12" id="Suggestion" runat="server" visible="false">

@@ -1,6 +1,7 @@
 ﻿using AjaxControlToolkit;
 using CEI_PRoject;
 using CEIHaryana.Model.Industry;
+using iText.StyledXmlParser.Jsoup.Nodes;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -661,8 +662,17 @@ namespace CEIHaryana.Officers
                 lineNumber++;
             }
             string selectedItemText = ddlSuggestion.SelectedItem.Text;
-            txtSuggestion.Text += lineNumber + ". " + selectedItemText + "\n";
+           // txtSuggestion.Text += lineNumber + ". " + selectedItemText + "\n";
             ddlSuggestion.Items.Remove(ddlSuggestion.SelectedItem);
+            if(lineNumber > 4)
+                {
+                //string script = "alert('Suggestion can\'t be more than 4 suggestions.');";
+               // ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Suggestion can\'t be more than 4 suggestions.');", true);
+                return;
+               
+            }
+            txtSuggestion.Text += lineNumber + ". " + selectedItemText + "\n";
             //lineNumber++;
         }
         protected void btnPreview_Click(object sender, EventArgs e)
@@ -799,6 +809,7 @@ namespace CEIHaryana.Officers
             Suggestion.Visible = false;
             ddlSuggestions.Visible = false;
             btnPreview.Visible = false;
+            Note.Visible= false;
             if (ddlReview.SelectedValue == "2")
             {
                 Rejection.Visible = true;
@@ -807,7 +818,7 @@ namespace CEIHaryana.Officers
             {
                 btnPreview.Visible = true;
                 ddlSuggestions.Visible = true;
-
+                Note.Visible = true;
                 Suggestion.Visible = true;
             }
         }

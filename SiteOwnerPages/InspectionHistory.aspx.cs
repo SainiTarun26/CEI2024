@@ -89,9 +89,9 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else
                     {
-                        Response.Redirect("/SiteOwnerPages/Inspection.aspx",false);
+                        Response.Redirect("/SiteOwnerPages/Inspection.aspx", false);
                     }
-                   
+
                 }
                 else if (e.CommandName == "Print")
                 {
@@ -103,10 +103,12 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         Response.Redirect("/SiteOwnerPages/InspectionRequestPrint.aspx");
                     }
-                    
+
                 }
                 else if (e.CommandName == "Print1")
                 {
+
+
                     if (LblInspectionType.Text == "New")
                     {
 
@@ -115,26 +117,32 @@ namespace CEIHaryana.SiteOwnerPages
                             Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
                         }
 
-                        else if (lblType.Text != "Lift" || lblType.Text != "Escalator" || lblType.Text != "Lift/Escalator" || lblType.Text != "MultiLift" || lblType.Text != "MultiEscalator")
+                        else if (lblType.Text != "Lift" && lblType.Text != "Escalator" && lblType.Text != "Lift/Escalator" && lblType.Text != "MultiLift" && lblType.Text != "MultiEscalator")
                         {
                             Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                        }
+                        else if (lblType.Text == "Lift" || lblType.Text == "Escalator" || lblType.Text == "Lift/Escalator" || lblType.Text == "MultiLift" || lblType.Text == "MultiEscalator")
+                        {
 
+                            Response.Redirect("/SiteOwnerPages/LiftApprovalData.aspx", false);
                         }
                     }
-                    if (lblType.Text == "Lift" || lblType.Text == "Escalator" || lblType.Text == "Lift/Escalator" || lblType.Text == "MultiLift" || lblType.Text == "MultiEscalator")
+                    else if (LblInspectionType.Text == "Periodic")
                     {
+                        if (lblType.Text != "Lift" && lblType.Text != "Escalator" && lblType.Text != "Lift/Escalator" && lblType.Text != "MultiLift" && lblType.Text != "MultiEscalator")
+                        {
+                            Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
+                        }
+                        else if (lblType.Text == "Lift" || lblType.Text == "Escalator" || lblType.Text == "Lift/Escalator" || lblType.Text == "MultiLift" || lblType.Text == "MultiEscalator")
+                        {
 
-                        Response.Redirect("/SiteOwnerPages/LiftApprovalData.aspx", false);
-                    }
-                    else
-                    {
+                            Response.Redirect("/SiteOwnerPages/LiftApprovalData.aspx", false);
+                        }
 
-                        Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
                     }
                 }
             }
         }
-
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)

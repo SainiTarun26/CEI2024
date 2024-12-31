@@ -65,25 +65,40 @@ namespace CEIHaryana.Officers
                     Session["InProcessInspectionId"] = id;
                     if (e.CommandName == "Select")
                     {
-                        if (int.TryParse(LblInspectionCount.Text, out int count) && count > 1)
+                        if (lblInstallationfor.Text.Trim() == "Lift" || lblInstallationfor.Text.Trim() == "Escalator" || lblInstallationfor.Text.Trim() == "MultiLift" || lblInstallationfor.Text.Trim() == "MultiEscalator" || lblInstallationfor.Text.Trim() == "Lift/Escalator")
                         {
+                            if (int.TryParse(LblInspectionCount.Text, out int count) && count > 1)
+                            {
 
-                            Response.Redirect("/Officers/InProcess_Returned_Inspection_Lift_Escalator.aspx", false);
-                            return;
+                                Response.Redirect("/Officers/InProcess_Returned_Inspection_Lift_Escalator.aspx", false);
+                                return;
 
+                            }
+                            else
+                            {
+                                Response.Redirect("/Officers/InProcessInspection_Lift_Escalator.aspx", false);
+                                return;
+                            }
                         }
+                        //if (int.TryParse(LblInspectionCount.Text, out int count) && count > 1)
+                        //{
 
-                     else   if (lblInstallationfor.Text.Trim() == "Lift" || lblInstallationfor.Text.Trim() == "Escalator" || lblInstallationfor.Text.Trim() == "MultiLift" || lblInstallationfor.Text.Trim() == "MultiEscalator" || lblInstallationfor.Text.Trim() == "Lift/Escalator")
-                        {
-                            Response.Redirect("/Officers/InProcessInspection_Lift_Escalator.aspx", false);
-                            return;
-                        }
+                        //    Response.Redirect("/Officers/InProcess_Returned_Inspection_Lift_Escalator.aspx", false);
+                        //    return;
+
+                        //}
+
+                        //else   if (lblInstallationfor.Text.Trim() == "Lift" || lblInstallationfor.Text.Trim() == "Escalator" || lblInstallationfor.Text.Trim() == "MultiLift" || lblInstallationfor.Text.Trim() == "MultiEscalator" || lblInstallationfor.Text.Trim() == "Lift/Escalator")
+                        //{
+                        //    Response.Redirect("/Officers/InProcessInspection_Lift_Escalator.aspx", false);
+                        //    return;
+                        //}
 
                         else
                         {
                             Response.Redirect("/Officers/InProcessInspection.aspx", false);
                         }
-                         
+
 
                     }
                 }
