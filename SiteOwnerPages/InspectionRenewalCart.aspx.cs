@@ -340,7 +340,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                 {
-                   
+
                     string id = Session["SiteOwnerId"].ToString();
                     string GrandTotalCapacity = Session["TotalCapacity"].ToString();
                     string HighestVoltage = Session["HighestVoltage"].ToString();
@@ -447,6 +447,7 @@ namespace CEIHaryana.SiteOwnerPages
               PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, Assigned, "Offline", totalAmount, 1, id, ServiceType);
 
                     Session["CartID"] = CartID;
+                    Session["IDCart"] = string.Empty;
                     Session["TotalCapacity"] = string.Empty;
                     Session["HighestVoltage"] = string.Empty;
                     Session["FinalAmount"] = string.Empty;

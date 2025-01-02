@@ -145,7 +145,8 @@ namespace CEIHaryana.Industry
                     totalproposedprojectarea = Request.Params["totalproposedprojectarea"],
                     totalpurposedemployment = Request.Params["totalpurposedemployment"],
                     total_project_cost = Request.Params["total_project_cost"],
-                    project_site_district = Request.Params["project_site_district"],
+                    //project_site_district = Request.Params["project_site_district"], commented on 2 jan 2025 to Handle Hissar Issue in HEPC
+                    project_site_district = Request.Params["project_site_district"] == "Hissar" ? "Hisar" : Request.Params["project_site_district"],
                     landzoneuse_type = Request.Params["landzoneuse_type"],
                     businessentity = Request.Params["businessentity"],
                     projecttype = Request.Params["projecttype"],

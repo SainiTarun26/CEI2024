@@ -1074,6 +1074,7 @@ namespace CEIHaryana.SiteOwnerPages
 
             CartId = ds.Tables[0].Rows[0]["CartId"].ToString();
             Session["IDCart"] = CartId;
+            Session["CartID"] = string.Empty;
             Response.Redirect("/SiteOwnerPages/ProcessInspectionRenewalCart.aspx", false);
         }
 

@@ -44,11 +44,11 @@ namespace CEIHaryana.Industry_Master
             }
 
         }
-        private void getWorkIntimationData(string searchText = null)
+        private void getWorkIntimationData()
         {
             DataTable ds = new DataTable();
             string Id = Session["SiteOwnerId_Industry"].ToString();
-            ds = cei.WorkIntimationDataforSiteOwner_Industries(Id, searchText);
+            ds = cei.WorkIntimationDataforSiteOwner_Industries(Id);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -90,7 +90,7 @@ namespace CEIHaryana.Industry_Master
             string searchText = txtSearch.Text.Trim();
             if (!string.IsNullOrEmpty(searchText))
             {
-                getWorkIntimationData(searchText);
+                getWorkIntimationData();
             }
             else
             {

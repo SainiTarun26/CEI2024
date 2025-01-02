@@ -28,7 +28,7 @@ namespace CEIHaryana.Industry_Master
         private static string PrevInspectionId = string.Empty, PrevInstallationType = string.Empty, PrevTestReportId = string.Empty,
                               PrevIntimationId = string.Empty, PrevVoltageLevel = string.Empty,
                               PrevApplicantType = string.Empty, AssignToOfficer = string.Empty;
-        
+
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace CEIHaryana.Industry_Master
                 if (!Page.IsPostBack)
                 {
                     if (Convert.ToString(Session["SiteOwnerId_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
-                       
+
                     {
                         if (CheckInspectionStatus())
                         {
@@ -349,7 +349,7 @@ namespace CEIHaryana.Industry_Master
                     BindGrid();
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
@@ -468,6 +468,7 @@ namespace CEIHaryana.Industry_Master
               PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, Assigned, "Offline", totalAmount, 1, id, ServiceType);
 
                     Session["CartID_Industry"] = CartID;
+                    Session["IDCart_Industry"] = string.Empty;
                     Session["TotalCapacity_Industry"] = string.Empty;
                     Session["HighestVoltage_Industry"] = string.Empty;
                     Session["FinalAmount_Industry"] = string.Empty;

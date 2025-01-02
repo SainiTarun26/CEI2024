@@ -144,7 +144,7 @@ namespace CEIHaryana.Industry_Master
                     }
                     else
                     {
-                       // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata_InvalidSession();", true);
+                        // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata_InvalidSession();", true);
                     }
 
                     // Visibilty();
@@ -564,8 +564,8 @@ namespace CEIHaryana.Industry_Master
             //}
             //else
             //{
-                Response.Redirect("/Industry_Master/InspectionHistory_Industry.aspx", false);
-           // }
+            Response.Redirect("/Industry_Master/InspectionHistory_Industry.aspx", false);
+            // }
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -1079,6 +1079,7 @@ namespace CEIHaryana.Industry_Master
 
             CartId = ds.Tables[0].Rows[0]["CartId"].ToString();
             Session["IDCart_Industry"] = CartId;
+            Session["CartID_Industry"] = string.Empty;
             Response.Redirect("/Industry_Master/ProcessInspectionRenewalCart_Industries.aspx", false);
         }
     }

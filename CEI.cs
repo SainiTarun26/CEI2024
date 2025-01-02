@@ -6155,10 +6155,10 @@ string AdressDistrict, string OwnerName, string District, string Division, strin
 //        }
 
 
-        public DataTable WorkIntimationDataforSiteOwner_Industries(string Id, string searchText = null)
-        {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationsDetailsForSiteOwner_Industries", Id, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
-        }
+        //public DataTable WorkIntimationDataforSiteOwner_Industries(string Id, string searchText = null)
+        //{
+        //    return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationsDetailsForSiteOwner_Industries", Id, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        //}
 
 
         //public DataTable InstallationDataforSiteOwner_Industries(string Id)
