@@ -446,7 +446,7 @@
                 <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                     <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
                     <asp:ListItem Text="No(Return)" Value="1" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
-                    <asp:ListItem Text="Reject" Value="2" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
+                    <asp:ListItem Text="Reject" Value="2" style="margin-top: auto; margin-bottom: auto; margin-left: 8px;"></asp:ListItem>
                 </asp:RadioButtonList>
             </div>
             <div class="row" id="Rejection" runat="server" visible="false">
