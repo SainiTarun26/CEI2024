@@ -22,7 +22,7 @@
         }
 
         ::before {
-            color: #382c2c;
+            color: #382c2cc;
         }
 
         img {
