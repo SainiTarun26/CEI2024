@@ -63,6 +63,8 @@ namespace CEIHaryana.SiteOwnerPages
                 Label lblTypeOfInspection = (Label)row.FindControl("lblTypeOfInspection");
                 Label lblReturnBased = (Label)row.FindControl("lblReturnBased");
                 Session["ReturnedValue"] = lblReturnBased.Text.Trim();
+                Label lblCartId = (Label)row.FindControl("lblCartId");   //Added
+                Session["CartID"] = lblCartId.Text.Trim();
                 if (e.CommandName == "Select")
                 {
                     Session["TypeOfInspection"] = "";
@@ -79,7 +81,8 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else if (lblTypeOfInspection.Text.Trim() == "Periodic")
                     {
-                        Response.Redirect("/SiteOwnerPages/InspectionRenewalCart.aspx", false);
+                       // Response.Redirect("/SiteOwnerPages/InspectionRenewalCart.aspx", false);
+                        Response.Redirect("/SiteOwnerPages/ProcessInspectionRenewalCart.aspx", false);
                     }
 
                 }

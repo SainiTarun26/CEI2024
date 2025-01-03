@@ -659,6 +659,7 @@
                 <asp:Button ID="btnPreview" Text="Preview" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnPreview_Click" />
                 <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
                 <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+                 <asp:Button ID="Backbtn" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="Backbtn_Click" Visible="false" />
             </div>
         </div>
     </div>

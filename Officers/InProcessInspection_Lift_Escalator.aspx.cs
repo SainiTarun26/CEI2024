@@ -1114,7 +1114,7 @@ namespace CEIHaryana.Officers
                 {
                     ID = Session["InProcessInspectionId"].ToString();
                     DataSet ds = new DataSet();
-                    ds = CEI.GetTestReport(ID);
+                    ds = CEI.GetTestReport_Lift(ID);
                     string TestRportId = string.Empty;
                     if (ds != null && ds.Tables.Count > 0)
                     {

@@ -214,11 +214,14 @@ namespace CEIHaryana.Officers
                         Grid_MultipleInspectionTR.Columns[8].Visible = true;
                         Grid_MultipleInspectionTR.Columns[9].Visible = false;
                     }
-
+                    //btnBack.Visible = true;
+                    //Backbtn.Visible = false;
                     string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
 
                     if (Status == "Approved")
                     {
+                        btnBack.Visible = false;
+                        Backbtn.Visible = true;
                         InspectionDate.Visible = false;
                         txtSuggestion.Text = ds.Tables[0].Rows[0]["Suggestion"].ToString();
                         if (!string.IsNullOrEmpty(txtSuggestion.Text))
@@ -226,6 +229,7 @@ namespace CEIHaryana.Officers
                             Suggestion.Visible = true;
                             txtSuggestion.ReadOnly = true;
                         }
+                        grd_Documemnts.Columns[3].Visible = true;
                         ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                         ddlReview.Attributes.Add("disabled", "true");
                         txtSuggestion.Attributes.Add("disabled", "true");
@@ -236,11 +240,13 @@ namespace CEIHaryana.Officers
                             txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
                             txtInspectionDate.Attributes.Add("disabled", "true");
                         }
-                        btnBack.Visible = true;
+                        //btnBack.Visible = true;
                         btnSubmit.Visible = false;
                     }
                     if (Status == "Rejected")
                     {
+                        btnBack.Visible = false;
+                        Backbtn.Visible = true;
                         InspectionDate.Visible = false;
 
                         if (!string.IsNullOrEmpty(SiteInspectionDate))
@@ -269,11 +275,13 @@ namespace CEIHaryana.Officers
                             RejectionBasis.Visible = true;
                             Rejection.Visible = true;
                         }
-                        btnBack.Visible = true;
+                        //btnBack.Visible = true;
                         btnSubmit.Visible = false;
                     }
                     if (Status == "Return")
                     {
+                        btnBack.Visible = false;
+                        Backbtn.Visible = true;
                         InspectionDate.Visible = false;
                         ApprovalRequired.Visible = false;
                         btnSubmit.Visible = false;
@@ -340,6 +348,8 @@ namespace CEIHaryana.Officers
 
                     if (Status == "Approved")
                     {
+                        btnBack.Visible = false;
+                        Backbtn.Visible = true;
                         InspectionDate.Visible = false;
                         txtSuggestion.Text = ds.Tables[0].Rows[0]["Suggestion"].ToString();
                         if (!string.IsNullOrEmpty(txtSuggestion.Text))
@@ -347,6 +357,7 @@ namespace CEIHaryana.Officers
                             Suggestion.Visible = true;
                             txtSuggestion.ReadOnly = true;
                         }
+                        grd_Documemnts.Columns[3].Visible = true;
                         ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                         ddlReview.Attributes.Add("disabled", "true");
                         txtSuggestion.Attributes.Add("disabled", "true");
@@ -357,11 +368,12 @@ namespace CEIHaryana.Officers
                             txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
                             txtInspectionDate.Attributes.Add("disabled", "true");
                         }
-                        btnBack.Visible = true;
                         btnSubmit.Visible = false;
                     }
                     if (Status == "Rejected")
                     {
+                        btnBack.Visible = false;
+                        Backbtn.Visible = true;
                         InspectionDate.Visible = false;
 
                         if (!string.IsNullOrEmpty(SiteInspectionDate))
@@ -375,11 +387,13 @@ namespace CEIHaryana.Officers
                         ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                         ddlReview.Attributes.Add("disabled", "true");
                         txtRejected.Attributes.Add("disabled", "true");
-                        btnBack.Visible = true;
+                        //btnBack.Visible = true;
                         btnSubmit.Visible = false;
                     }
                     if (Status == "Return")
                     {
+                        btnBack.Visible = false;
+                        Backbtn.Visible = true;
                         InspectionDate.Visible = false;
                         ApprovalRequired.Visible = false;
                         btnSubmit.Visible = false;
@@ -427,7 +441,7 @@ namespace CEIHaryana.Officers
                 {
                     //ID = Session["InspectionId"].ToString();
                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                   // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -630,7 +644,7 @@ namespace CEIHaryana.Officers
                             if (checksuccessmessage == 1)
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
-                            
+
                             }
                         }
                     }
@@ -662,15 +676,15 @@ namespace CEIHaryana.Officers
                 lineNumber++;
             }
             string selectedItemText = ddlSuggestion.SelectedItem.Text;
-           // txtSuggestion.Text += lineNumber + ". " + selectedItemText + "\n";
+            // txtSuggestion.Text += lineNumber + ". " + selectedItemText + "\n";
             ddlSuggestion.Items.Remove(ddlSuggestion.SelectedItem);
-            if(lineNumber > 4)
-                {
+            if (lineNumber > 4)
+            {
                 //string script = "alert('Suggestion can\'t be more than 4 suggestions.');";
-               // ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                // ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Suggestion can\'t be more than 4 suggestions.');", true);
                 return;
-               
+
             }
             txtSuggestion.Text += lineNumber + ". " + selectedItemText + "\n";
             //lineNumber++;
@@ -809,7 +823,7 @@ namespace CEIHaryana.Officers
             Suggestion.Visible = false;
             ddlSuggestions.Visible = false;
             btnPreview.Visible = false;
-            Note.Visible= false;
+            Note.Visible = false;
             if (ddlReview.SelectedValue == "2")
             {
                 Rejection.Visible = true;
@@ -831,9 +845,11 @@ namespace CEIHaryana.Officers
                 {
 
                     //Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
-                    //LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallaionInvoice");
+                    //LinkButton LnkDocumemtPath = (LinkButton)e.Row.FindControl("LnkDocumemtPath");
                     LinkButton LnkDocumemtPath2 = (LinkButton)e.Row.FindControl("LnkDocumemtPath2");
 
+                    //LnkDocumemtPath.Visible = true;
+                    //LnkDocumemtPath.Text = "Click here to view document";
                     if (LnkDocumemtPath2.Text.Trim() == "" || LnkDocumemtPath2 == null)
                     {
                         LnkDocumemtPath2.Visible = false;
@@ -993,6 +1009,10 @@ namespace CEIHaryana.Officers
             catch (Exception ex) { }
         }
 
+        protected void Backbtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Officers/AcceptedOrReject.aspx", false);
+        }
 
         private void GridToViewTRinMultipleCaseNew()
         {
@@ -1064,7 +1084,7 @@ namespace CEIHaryana.Officers
             else if (e.CommandName == "View")
             {
                 string fileName = "";
-               // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 //lblerror.Text = fileName;
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";

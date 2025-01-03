@@ -203,6 +203,8 @@ namespace CEIHaryana.Industry_Master
                         txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
                         Session["TestReport_Industry"] = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                         txtApplicationNo.Text = ds.Tables[0].Rows[0]["InspectionReportID"].ToString();
+                        txtOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                        txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
 
                         string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
                         DateTime.TryParse(createdDate, out inspectionCreatedDate);
@@ -263,9 +265,9 @@ namespace CEIHaryana.Industry_Master
                         txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
                         Session["TestReport_Industry"] = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                         txtApplicationNo.Text = ds.Tables[0].Rows[0]["InspectionReportID"].ToString();
-
+                        txtOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                        txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
                         ReturnedBased = ds.Tables[0].Rows[0]["ReasonType"].ToString();
-
                         string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
                         DateTime.TryParse(createdDate, out inspectionCreatedDate);
                         string InspectionType = ds.Tables[0].Rows[0]["IType"].ToString();

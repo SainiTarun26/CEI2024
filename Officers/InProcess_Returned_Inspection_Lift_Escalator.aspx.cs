@@ -104,7 +104,7 @@ namespace CEIHaryana.Officers
 
                     //added by aslam on 23 dec 2024 start 
                     txtelectrical.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
-                    if (ds.Tables[0].Rows[0]["ContractorType"].ToString() == "Firm/Organization/Company/Department")
+                    if (ds.Tables[0].Rows[0]["ContractorType"].ToString() == "Firm/Company")
                     {
                         agency.Visible = true;
                         individual.Visible = false;
@@ -277,7 +277,7 @@ namespace CEIHaryana.Officers
                     }
                     //added by aslam on 23 dec 2024 start 
                     txtelectrical.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
-                    if (ds.Tables[0].Rows[0]["ContractorType"].ToString() == "Firm/Organization/Company/Department")
+                    if (ds.Tables[0].Rows[0]["ContractorType"].ToString() == "Firm/Company")
                     {
                         agency.Visible = true;
                         individual.Visible = false;

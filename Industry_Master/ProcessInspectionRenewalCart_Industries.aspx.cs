@@ -57,6 +57,12 @@ namespace CEIHaryana.Industry_Master
                         else
                         {
                             GetInspectionDataIfPeriodicExist();
+
+
+                            InspectionDetails.Visible = true;
+                            InspectionDetailsHeading.Visible = true;
+
+                            ToViewInspectionDetails(NewInspectionId);
                         }
                     }
                 }
@@ -66,6 +72,29 @@ namespace CEIHaryana.Industry_Master
                 string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
+        }
+
+        private void ToViewInspectionDetails(string newInspectionId)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                ds = CEI.ToViewInspectionDetails_InIndustry(NewInspectionId);
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    GridView3.DataSource = ds;
+                    GridView3.DataBind();
+                }
+                else
+                {
+                    GridView3.DataSource = null;
+                    GridView3.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                ds.Dispose();
+            }
+            catch (Exception ex) { }
         }
 
         private void GetInspectionDataIfPeriodicExist()
@@ -185,6 +214,7 @@ namespace CEIHaryana.Industry_Master
                 if (Convert.ToString(Session["SiteOwnerId_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
                 {
                     string IdLogin = Session["SiteOwnerId_Industry"].ToString();
+
                     string CartID = Session["CartID_Industry"].ToString();
                     DataSet ds = new DataSet();
                     ds = CEI.GetPeriodicdataAfterCart_Industries(CartID);
@@ -1035,6 +1065,7 @@ namespace CEIHaryana.Industry_Master
 
                                 finally
                                 {
+                                    
                                     if (checksuccessmessage == 1)
                                     {
                                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Submitted Successfully !!!'); window.location='/Industry_Master/InspectionHistory_Industry.aspx';", true);

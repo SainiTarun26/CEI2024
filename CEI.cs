@@ -8938,6 +8938,16 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReport_Lift", Id);
         }
+
+        public DataSet ToViewInspectionDetails(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDatails", InspectionId);
+        }
+        public DataSet ToViewInspectionDetails_InIndustry(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDatails_Industry", InspectionId);
+        }
+
     }
 }
 

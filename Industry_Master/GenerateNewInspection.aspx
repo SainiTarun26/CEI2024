@@ -862,6 +862,12 @@
             window.location.href = 'https://staging.investharyana.in/#/';
         }
     </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('<%= txttransactionDate.ClientID %>').setAttribute('max', today);
+        };
+</script>
 </asp:Content>
 
 

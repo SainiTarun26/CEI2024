@@ -100,7 +100,7 @@ namespace CEIHaryana.TestReportModel_Industry
                 {
                     txtInstallation.Text = "Individual Person";
                 }
-                if (dp_Id == "Firm/Organization/Company/Department")
+                if (dp_Id == "Firm/Company")
                 {
                     agency.Visible = true;
                     individual.Visible = false;
