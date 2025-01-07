@@ -257,7 +257,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 string Id = DdlWing.SelectedValue.ToString();
                 DataSet dsZone = new DataSet();
-                dsZone = CEI.GetZoneName(Id);
+               // dsZone = CEI.GetZoneName(Id);
                 DdlZone.DataSource = dsZone;
                 DdlZone.DataTextField = "ZoneName";
                 DdlZone.DataValueField = "Id";

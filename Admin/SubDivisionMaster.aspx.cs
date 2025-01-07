@@ -72,9 +72,10 @@ namespace CEIHaryana.Admin
         {
             try
             {
-                string Id = ddlWing.SelectedValue.ToString();
+                string UtilityId = ddlUtility.SelectedValue.ToString();
+                string WingId = ddlWing.SelectedValue.ToString();
                 DataSet dsZone = new DataSet();
-                dsZone = CEI.GetZoneName(Id);
+                dsZone = CEI.GetZoneName(UtilityId, WingId);
                 ddlZone.DataSource = dsZone;
                 ddlZone.DataTextField = "ZoneName";
                 ddlZone.DataValueField = "Id";
@@ -91,9 +92,12 @@ namespace CEIHaryana.Admin
         {
             try
             {
-                string Id = ddlZone.SelectedValue.ToString();
+                string UtilityId = ddlUtility.SelectedValue.ToString();
+                string WingId = ddlWing.SelectedValue.ToString();
+                string ZoneId = ddlZone.SelectedValue.ToString();
+                //string Id = ddlZone.SelectedValue.ToString();
                 DataSet dsCircle = new DataSet();
-                dsCircle = CEI.GetCirclesName(Id);
+                dsCircle = CEI.GetCirclesName(UtilityId, WingId, ZoneId);
                 ddlCircle.DataSource = dsCircle;
                 ddlCircle.DataTextField = "CircleName";
                 ddlCircle.DataValueField = "Id";
@@ -110,10 +114,14 @@ namespace CEIHaryana.Admin
         {
             try
             {
-                string id = ddlCircle.SelectedValue.ToString();
+                string UtilityId = ddlUtility.SelectedValue.ToString();
+                string WingId = ddlWing.SelectedValue.ToString();
+                string ZoneId = ddlZone.SelectedValue.ToString();
+
+                string Circleid = ddlCircle.SelectedValue.ToString();
 
                 DataSet dsDivision = new DataSet();
-                dsDivision = CEI.GetDivisionName(id);
+                dsDivision = CEI.GetDivisionName(UtilityId, WingId, ZoneId, Circleid);
                 ddlDivision.DataSource = dsDivision;
                 ddlDivision.DataTextField = "DivisionName";
                 ddlDivision.DataValueField = "Id";

@@ -53,9 +53,9 @@ namespace CEIHaryana.Admin
         {
             try
             {
-                string Id = ddlUtility.SelectedValue.ToString();
+                string UtilityId = ddlUtility.SelectedValue.ToString();
                 DataSet dsWing = new DataSet();
-                dsWing = CEI.GetWingName(Id);
+                dsWing = CEI.GetWingName(UtilityId);
                 ddlWingName.DataSource = dsWing;
                 ddlWingName.DataTextField = "WingName";
                 ddlWingName.DataValueField = "Id";
@@ -72,9 +72,10 @@ namespace CEIHaryana.Admin
         {
             try
             {
-                string Id = ddlWingName.SelectedValue.ToString();
+                string UtilityId = ddlUtility.SelectedValue.ToString();
+                string WingId = ddlWingName.SelectedValue.ToString();
                 DataSet dsZone = new DataSet();
-                dsZone = CEI.GetZoneName(Id);
+                dsZone = CEI.GetZoneName(UtilityId, WingId);
                 ddlZoneName.DataSource = dsZone;
                 ddlZoneName.DataTextField = "ZoneName";
                 ddlZoneName.DataValueField = "Id";

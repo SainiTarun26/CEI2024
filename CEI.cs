@@ -4357,21 +4357,21 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getWingName", id);
         }
-        public DataSet GetZoneName(string id)
+        public DataSet GetZoneName(string UtilityId, string WingId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getZoneName", id);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getZoneName", UtilityId, WingId);
         }
-        public DataSet GetCirclesName(string id)
+        public DataSet GetCirclesName(string UtilityId, string WingId, string ZoneId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getCircles", id);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getCircles", UtilityId, WingId, ZoneId);
         }
-        public DataSet GetDivisionName(string id)
+        public DataSet GetDivisionName(string UtilityId, string WingId, string ZoneId, string CircleId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDivision", id);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDivision", UtilityId, WingId, ZoneId, CircleId);
         }
-        public DataSet GetSubDivisionName(string id)
+        public DataSet GetSubDivisionName(string UtilityId, string WingId, string ZoneId, string CircleId, string DivisionId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getSub_Divisions", id);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getSub_Divisions", UtilityId, WingId, ZoneId, CircleId, DivisionId);
         }
         public DataSet GetSubDivisionEmail(string id)
         {

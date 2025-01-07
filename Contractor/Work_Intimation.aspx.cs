@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using CEIHaryana.Admin;
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Net.Mail;
 using System.Net.NetworkInformation;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Media;
 using static System.Net.WebRequestMethods;
 
 
@@ -326,13 +328,9 @@ namespace CEIHaryana.Contractor
 
                     string ContractNameAgeny = ds.Tables[0].Rows[0]["username"].ToString();
                     string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
-                    txtPhone.Text = ds.Tables[0].Rows[0]["Contact"].ToString();
-                    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                     ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
                     ddlworktype.Enabled = false;
-                    txtPhone.ReadOnly = true;
-                    txtEmail.ReadOnly = true;
-                    if (contractorType == "Firm/Company")
+                    if (contractorType == "Firm/Organization/Company/Department")
                     {
                         agency.Visible = true;
                         individual.Visible = false;
@@ -353,10 +351,6 @@ namespace CEIHaryana.Contractor
                     txtName.Text = "";
                     txtagency.ReadOnly = false;
                     txtName.ReadOnly = false;
-                    txtPhone.ReadOnly = false;
-                    txtEmail.ReadOnly = false;
-                    txtPhone.Text = "";
-                    txtEmail.Text = "";
                     //Page.ClientScript.RegisterStartupScript(GetType(), "panNotFound", "alert('PAN card not found in the database.');", true);
                 }
 
@@ -450,8 +444,7 @@ namespace CEIHaryana.Contractor
             if (Session["File"].ToString() != "" && Session["File"].ToString() != null)
             {
                 string fileName = Session["File"].ToString();
-                //string filePath = "https://ceiharyana.com" + fileName;
-                string filePath = "https://uat.ceiharyana.com" + fileName;
+                string filePath = "https://ceiharyana.com" + fileName;
 
                 //if (System.IO.File.Exists(filePath))
                 //{                
@@ -833,16 +826,6 @@ namespace CEIHaryana.Contractor
             DdlCircle.SelectedValue = "0";
             DdlDivision.SelectedValue = "0";
             DdlSubDivision.SelectedValue = "0";
-            ddlworktype.SelectedValue = "0";
-            txtagency.Text = "";
-            txtName.Text = "";
-            txtPhone.Text = "";
-            txtEmail.Text = "";
-            ddlworktype.Enabled = true;
-            txtagency.ReadOnly = false;
-            txtName.ReadOnly = false;
-            txtPhone.ReadOnly = false; 
-            txtEmail.ReadOnly = false;
 
         }
         private void ddlPoweUtilityBind()
@@ -869,9 +852,9 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-                string Id = ddlPoweUtility.SelectedValue.ToString();
+                string UtilityId = ddlPoweUtility.SelectedValue.ToString();
                 DataSet dsWing = new DataSet();
-                dsWing = CEI.GetWingName(Id);
+                dsWing = CEI.GetWingName(UtilityId);
                 DdlWing.DataSource = dsWing;
                 DdlWing.DataTextField = "WingName";
                 DdlWing.DataValueField = "Id";
@@ -890,9 +873,10 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-                string Id = DdlWing.SelectedValue.ToString();
+                string UtilityId= ddlPoweUtility.SelectedValue.ToString();
+                string WingId = DdlWing.SelectedValue.ToString();
                 DataSet dsZone = new DataSet();
-                dsZone = CEI.GetZoneName(Id);
+                dsZone = CEI.GetZoneName(UtilityId, WingId);
                 DdlZone.DataSource = dsZone;
                 DdlZone.DataTextField = "ZoneName";
                 DdlZone.DataValueField = "Id";
@@ -909,9 +893,11 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-                string Id = DdlZone.SelectedValue.ToString();
+                string UtilityId = ddlPoweUtility.SelectedValue.ToString();
+                string WingId = DdlWing.SelectedValue.ToString();
+                string ZoneId = DdlZone.SelectedValue.ToString();
                 DataSet dsCircle = new DataSet();
-                dsCircle = CEI.GetCirclesName(Id);
+                dsCircle = CEI.GetCirclesName(UtilityId, WingId,ZoneId);
                 DdlCircle.DataSource = dsCircle;
                 DdlCircle.DataTextField = "CircleName";
                 DdlCircle.DataValueField = "Id";
@@ -928,9 +914,13 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-                string id = DdlCircle.SelectedValue.ToString();
+                string UtilityId = ddlPoweUtility.SelectedValue.ToString();
+                string WingId = DdlWing.SelectedValue.ToString();
+                string ZoneId = DdlZone.SelectedValue.ToString();
+                string CircleId = DdlCircle.SelectedValue.ToString();
+
                 DataSet dsDivision = new DataSet();
-                dsDivision = CEI.GetDivisionName(id);
+                dsDivision = CEI.GetDivisionName(UtilityId, WingId, ZoneId, CircleId);
                 DdlDivision.DataSource = dsDivision;
                 DdlDivision.DataTextField = "DivisionName";
                 DdlDivision.DataValueField = "Id";
@@ -948,9 +938,14 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-                string id = DdlDivision.SelectedValue.ToString();
+                string UtilityId = ddlPoweUtility.SelectedValue.ToString();
+                string WingId = DdlWing.SelectedValue.ToString();
+                string ZoneId = DdlZone.SelectedValue.ToString();
+                string CircleId = DdlCircle.SelectedValue.ToString();
+
+                string DivisionId = DdlDivision.SelectedValue.ToString();
                 DataSet dsSubDivision = new DataSet();
-                dsSubDivision = CEI.GetSubDivisionName(id);
+                dsSubDivision = CEI.GetSubDivisionName(UtilityId, WingId, ZoneId, CircleId, DivisionId);
                 DdlSubDivision.DataSource = dsSubDivision;
                 DdlSubDivision.DataTextField = "SubDivision";
                 DdlSubDivision.DataValueField = "Id";
@@ -1083,13 +1078,9 @@ namespace CEIHaryana.Contractor
                 {
                     string ContractNameAgeny = ds.Tables[0].Rows[0]["username"].ToString();
                     string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
-                    txtPhone.Text = ds.Tables[0].Rows[0]["Contact"].ToString();
-                    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                     ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
                     ddlworktype.Enabled = false;
-                    txtPhone.ReadOnly = true;
-                    txtEmail.ReadOnly = true;
-                    if (contractorType == "Firm/Company")
+                    if (contractorType == "Firm/Organization/Company/Department")
                     {
                         agency.Visible = true;
                         individual.Visible = false;
@@ -1106,17 +1097,12 @@ namespace CEIHaryana.Contractor
                 }
                 else
                 {
-                    
                     ddlworktype.SelectedValue = "0";
                     ddlworktype.Enabled = true;
                     txtagency.ReadOnly = false;
                     txtName.ReadOnly = false;
-                    txtPhone.ReadOnly = false;
-                    txtName.ReadOnly = false;
-                    txtEmail.Text = "";
+                    txtagency.Text = "";
                     txtName.Text = "";
-                    txtPhone.Text = "";
-                    txtEmail.Text = "";
                     // Page.ClientScript.RegisterStartupScript(GetType(), "panNotFound", "alert('PAN card not found in the database.');", true);
                 }
 

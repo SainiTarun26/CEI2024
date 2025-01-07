@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.UI;
@@ -56,9 +57,9 @@ namespace CEIHaryana.Admin
         {
             try
             {
-                string Id = ddlUtility.SelectedValue.ToString();
+                string UtilityId = ddlUtility.SelectedValue.ToString();
                 DataSet dsWing = new DataSet();
-                dsWing = CEI.GetWingName(Id);
+                dsWing = CEI.GetWingName(UtilityId);
                 ddlWing.DataSource = dsWing;
                 ddlWing.DataTextField = "WingName";
                 ddlWing.DataValueField = "Id";
@@ -75,9 +76,10 @@ namespace CEIHaryana.Admin
         {
             try
             {
-                string Id = ddlWing.SelectedValue.ToString();
+                string UtilityId = ddlUtility.SelectedValue.ToString();
+                string WingId = ddlWing.SelectedValue.ToString();
                 DataSet dsZone = new DataSet();
-                dsZone = CEI.GetZoneName(Id);
+                dsZone = CEI.GetZoneName(UtilityId, WingId);
                 ddlZone.DataSource = dsZone;
                 ddlZone.DataTextField = "ZoneName";
                 ddlZone.DataValueField = "Id";
@@ -94,9 +96,11 @@ namespace CEIHaryana.Admin
         {
             try
             {
-                string Id = ddlZone.SelectedValue.ToString();
+                string UtilityId = ddlUtility.SelectedValue.ToString();
+                string WingId = ddlWing.SelectedValue.ToString();
+                string ZoneId = ddlZone.SelectedValue.ToString();
                 DataSet dsCircle = new DataSet();
-                dsCircle = CEI.GetCirclesName(Id);
+                dsCircle = CEI.GetCirclesName(UtilityId, WingId, ZoneId);
                 ddlCircle.DataSource = dsCircle;
                 ddlCircle.DataTextField = "CircleName";
                 ddlCircle.DataValueField = "Id";

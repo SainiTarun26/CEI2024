@@ -997,7 +997,7 @@ namespace CEIHaryana.Contractor
             {
                 string Id = DdlWing.SelectedValue.ToString();
                 DataSet dsZone = new DataSet();
-                dsZone = CEI.GetZoneName(Id);
+               // dsZone = CEI.GetZoneName(Id);
                 DdlZone.DataSource = dsZone;
                 DdlZone.DataTextField = "ZoneName";
                 DdlZone.DataValueField = "Id";
@@ -1016,7 +1016,7 @@ namespace CEIHaryana.Contractor
             {
                 string Id = DdlZone.SelectedValue.ToString();
                 DataSet dsCircle = new DataSet();
-                dsCircle = CEI.GetCirclesName(Id);
+                //dsCircle = CEI.GetCirclesName(Id);
                 DdlCircle.DataSource = dsCircle;
                 DdlCircle.DataTextField = "CircleName";
                 DdlCircle.DataValueField = "Id";
@@ -1035,7 +1035,7 @@ namespace CEIHaryana.Contractor
             {
                 string id = DdlCircle.SelectedValue.ToString();
                 DataSet dsDivision = new DataSet();
-                dsDivision = CEI.GetDivisionName(id);
+                //dsDivision = CEI.GetDivisionName(id);
                 DdlDivision.DataSource = dsDivision;
                 DdlDivision.DataTextField = "DivisionName";
                 DdlDivision.DataValueField = "Id";
@@ -1054,7 +1054,7 @@ namespace CEIHaryana.Contractor
             {
                 string id = DdlDivision.SelectedValue.ToString();
                 DataSet dsSubDivision = new DataSet();
-                dsSubDivision = CEI.GetSubDivisionName(id);
+                //dsSubDivision = CEI.GetSubDivisionName(id);
                 DdlSubDivision.DataSource = dsSubDivision;
                 DdlSubDivision.DataTextField = "SubDivision";
                 DdlSubDivision.DataValueField = "Id";
