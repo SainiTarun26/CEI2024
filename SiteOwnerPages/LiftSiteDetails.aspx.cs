@@ -63,41 +63,42 @@ namespace CEIHaryana.SiteOwnerPages
             if (ds.Tables[0].Rows.Count > 0)
             {
                 DivOtherDepartment.Visible = false;
-            DivPancard_TanNo.Visible = false;
-            string Value = ddlWorkDetail.SelectedItem.ToString();
-            if (ddlWorkDetail.SelectedValue != "0")
-            {
-                Installation.Visible = true;
-                installationType1.Visible = true;
-                if (string.IsNullOrEmpty(txtinstallationType1.Text))
-                {
-                    txtinstallationType1.Text = Value;
-                }
-                else if (txtinstallationType1.Text != string.Empty && string.IsNullOrEmpty(txtinstallationType2.Text))
-                {
-                    installationType2.Visible = true;
-                    txtinstallationType2.Text = Value;
-                }
+                DivPancard_TanNo.Visible = false;
 
-                if (ddlWorkDetail.SelectedValue != "0")
-                {
-                    try
-                    {
-                        string selectedValue = ddlWorkDetail.SelectedValue;
-                        ListItem itemToRemove = ddlWorkDetail.Items.FindByValue(selectedValue);
-                        if (itemToRemove != null)
-                        {
-                            ddlWorkDetail.Items.Remove(itemToRemove);
-                        }
-                    }
-                    catch (Exception)
-                    {
-                    }
-                    ddlWorkDetail.SelectedValue = "0";
-                }
+            //string Value = ddlWorkDetail.SelectedItem.ToString();
+            //if (ddlWorkDetail.SelectedValue != "0")
+            //{
+            //    Installation.Visible = true;
+            //    installationType1.Visible = true;
+            //    if (string.IsNullOrEmpty(txtinstallationType1.Text))
+            //    {
+            //        txtinstallationType1.Text = Value;
+            //    }
+            //    else if (txtinstallationType1.Text != string.Empty && string.IsNullOrEmpty(txtinstallationType2.Text))
+            //    {
+            //        installationType2.Visible = true;
+            //        txtinstallationType2.Text = Value;
+            //    }
+
+            //    if (ddlWorkDetail.SelectedValue != "0")
+            //    {
+            //        try
+            //        {
+            //            string selectedValue = ddlWorkDetail.SelectedValue;
+            //            ListItem itemToRemove = ddlWorkDetail.Items.FindByValue(selectedValue);
+            //            if (itemToRemove != null)
+            //            {
+            //                ddlWorkDetail.Items.Remove(itemToRemove);
+            //            }
+            //        }
+            //        catch (Exception)
+            //        {
+            //        }
+            //        ddlWorkDetail.SelectedValue = "0";
+            //    }
 
 
-            }
+            //}
 
                 ApplicantTypeCode = ds.Tables[0].Rows[0]["ApplicantTypeCode"].ToString();
                 Session["ApplicantTypeCode"] = ApplicantTypeCode;
@@ -133,32 +134,39 @@ namespace CEIHaryana.SiteOwnerPages
             //}
            
 
-                string ContractNameAgeny = ds.Tables[0].Rows[0]["username"].ToString();
+                string AgenyName = ds.Tables[0].Rows[0]["AgenyName"].ToString();
+                string Name = ds.Tables[0].Rows[0]["Name"].ToString();
                 string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtPhone.Text = ds.Tables[0].Rows[0]["Contact"].ToString();
                 txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+                txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+                string district = ds.Tables[0].Rows[0]["District"].ToString();
+                ddlDistrict.SelectedIndex = ddlDistrict.Items.IndexOf(ddlDistrict.Items.FindByText(district));
+                txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
                 txtPhone.ReadOnly = true;
                 txtEmail.ReadOnly = true;
-                ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
-                ddlworktype.Enabled = false;
-                if (contractorType == "Firm/Organization/Company/Department")
+                txtWorkType.ReadOnly = true;
+                txtWorkType.Text = contractorType;
+                //ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
+                //ddlworktype.Enabled = false;
+                if (contractorType == "Firm/Organization/Company/Department" || contractorType == "Firm/Company")
                 {
                     agency.Visible = true;
                     individual.Visible = false;
-                    txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+                    txtagency.Text = AgenyName; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                     txtagency.ReadOnly = true;
                 }
                 else if (contractorType == "Individual Person")
                 {
-                    txtName.Text = ContractNameAgeny; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+                    txtName.Text = Name; //ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
                     txtName.ReadOnly = true;
                 }
             }
             else
             {
-                ddlworktype.SelectedValue = "0";
-                ddlworktype.Enabled = true;
+                //ddlworktype.SelectedValue = "0";
+                //ddlworktype.Enabled = true;
                 txtagency.Text = "";
                 txtName.Text = "";
                 txtagency.ReadOnly = false;
@@ -173,23 +181,23 @@ namespace CEIHaryana.SiteOwnerPages
 
         }
 
-        private void ddlPoweUtilityBind()
-        {
-            try
-            {
-                DataSet dsUtility = new DataSet();
-                dsUtility = CEI.GetUtilityName();
-                ddlPoweUtility.DataSource = dsUtility;
-                ddlPoweUtility.DataTextField = "UtilityName";
-                ddlPoweUtility.DataValueField = "Id";
-                ddlPoweUtility.DataBind();
-                ddlPoweUtility.Items.Insert(0, new ListItem("Select", "0"));
-                dsUtility.Clear();
-            }
-            catch
-            {
-            }
-        }
+        //private void ddlPoweUtilityBind()
+        //{
+        //    try
+        //    {
+        //        DataSet dsUtility = new DataSet();
+        //        dsUtility = CEI.GetUtilityName();
+        //        ddlPoweUtility.DataSource = dsUtility;
+        //        ddlPoweUtility.DataTextField = "UtilityName";
+        //        ddlPoweUtility.DataValueField = "Id";
+        //        ddlPoweUtility.DataBind();
+        //        ddlPoweUtility.Items.Insert(0, new ListItem("Select", "0"));
+        //        dsUtility.Clear();
+        //    }
+        //    catch
+        //    {
+        //    }
+        //}
 
         protected void ddlworktype_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -199,23 +207,23 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                if (ddlworktype.SelectedValue == "1")
-                {
-                    individual.Visible = true;
-                    agency.Visible = false;
-                    txtagency.Text = "";
-                }
-                else if (ddlworktype.SelectedValue == "2")
-                {
-                    individual.Visible = false;
-                    agency.Visible = true;
-                    txtName.Text = "";
-                }
-                else
-                {
-                    individual.Visible = true;
-                    agency.Visible = false;
-                }
+                //if (ddlworktype.SelectedValue == "1")
+                //{
+                //    individual.Visible = true;
+                //    agency.Visible = false;
+                //    txtagency.Text = "";
+                //}
+                //else if (ddlworktype.SelectedValue == "2")
+                //{
+                //    individual.Visible = false;
+                //    agency.Visible = true;
+                //    txtName.Text = "";
+                //}
+                //else
+                //{
+                //    individual.Visible = true;
+                //    agency.Visible = false;
+                //}
             }
             catch { }
 
@@ -366,7 +374,8 @@ namespace CEIHaryana.SiteOwnerPages
                          DdlCircle.SelectedItem?.ToString(),
                          DdlDivision.SelectedItem?.ToString(),
                          DdlSubDivision.SelectedItem?.ToString(),
-                         ddlworktype.SelectedItem?.ToString(),
+                         //ddlworktype.SelectedItem?.ToString(),
+                         txtWorkType.Text,
                          txtName.Text,
                          txtagency.Text,
                          txtPhone.Text,
@@ -545,25 +554,12 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                ddlworktype.SelectedValue = "0";
-                txtName.Text = "";
-                txtagency.Text = "";
-                ddlDistrict.SelectedValue = "0";
-                txtPhone.Text = "";
-                txtAddress.Text = "";
-                txtPin.Text = "";
-                //txtTanNumber.Text = "";
-                //txtPAN.Text = "";
-                //Installation.Visible = false;
-                txtinstallationType1.Text = "";
-                txtinstallationNo1.Text = "";
-                txtinstallationType2.Text = "";
-                txtinstallationNo2.Text = "";
-                foreach (ListItem item in ddlWorkDetail.Items)
+                if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
                 {
-                    item.Selected = false;
+                    BindListBoxInstallationType();
+                    BindDistrict();
+                    GetDetails();
                 }
-                txtEmail.Text = "";
             }
             catch (Exception ex)
             {

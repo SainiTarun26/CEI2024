@@ -454,12 +454,13 @@
                                             <label>
                                                 Electrical Installation For<samp style="color: red"> * </samp>
                                             </label>
-                                            <asp:DropDownList ID="ddlworktype" TabIndex="3" OnSelectedIndexChanged="ddlworktype_SelectedIndexChanged" runat="server" AutoPostBack="true" EnableViewState="true" class="form-control  select-form select2" Style="width: 100% !important;">
+                                            <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                           <%-- <asp:DropDownList ID="ddlworktype" TabIndex="3" OnSelectedIndexChanged="ddlworktype_SelectedIndexChanged" runat="server" AutoPostBack="true" EnableViewState="true" class="form-control  select-form select2" Style="width: 100% !important;">
                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                 <asp:ListItem Value="1" Text="Individual Person"></asp:ListItem>
                                                 <asp:ListItem Value="2" Text="Firm/Organization/Company/Department"></asp:ListItem>
                                             </asp:DropDownList>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="Please Select Work Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlworktype" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="Please Select Work Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlworktype" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />--%>
                                         </div>
                                         <div class="col-md-4" id="NameUtility" runat="server" visible="false">
                                             <label>
@@ -582,7 +583,7 @@
                                         </div>
                                         <div class="col-md-4" id="agency" runat="server" visible="false">
                                             <label for="agency">
-                                                Name of Firm/ Org./ Company/ Department
+                                                Name of Firm/ Company
                                             <samp style="color: red">* </samp>
                                             </label>
                                             <div class="input-box">
@@ -821,10 +822,10 @@
                         </div>
 
                     </ContentTemplate>
-                    <Triggers>
+                    <%--<Triggers>
                         <asp:AsyncPostBackTrigger ControlID="ddlworktype" EventName="SelectedIndexChanged" />
 
-                    </Triggers>
+                    </Triggers>--%>
                 </asp:UpdatePanel>
                 <div class="row">
                     <div class="col-md-4"></div>
@@ -975,7 +976,7 @@
             }
         }
     </script>
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         function showHide1() {
 
             let experience = document.getElementById('ddlworktype');
@@ -990,7 +991,7 @@
                 document.getElementById('Agency').style.display = 'none';
             }
         }
-    </script>
+    </script>--%>
     <script type="text/javascript">
         function allowAlphabets(event) {
             var keyCode = event.which || event.keyCode;
