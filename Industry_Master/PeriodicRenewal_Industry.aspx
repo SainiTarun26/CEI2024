@@ -628,7 +628,7 @@
     <label for="Address">
         Address of Site(Preferred As Per Demand Notice of Utility or Electricity Bill)<samp style="color: red">* </samp>
     </label>
-    <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" ReadOnly="true" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+    <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Address</asp:RequiredFieldValidator>
 </div>
                                         <div class="col-md-4" style="margin-top:22px;">
