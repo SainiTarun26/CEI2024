@@ -600,11 +600,14 @@ namespace CEIHaryana.Industry_Master
                                     string directoryPath;
                                     if (DocName2 == "Treasury Challan" || DocName2 == "Other Document")
                                     {
-                                        directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/");
+                                       // directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/");
+                                        directoryPath = Server.MapPath($"~/Attachment/SiteOwner/{CreatedBy}/");
                                     }
                                     else
                                     {
-                                        directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/{InstallTypes}/");
+                                        //directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/{InstallTypes}/");
+                                        directoryPath = Server.MapPath($"~/Attachment/SiteOwner/{CreatedBy}/{InstallTypes}/");
+
                                     }
 
                                     if (!Directory.Exists(directoryPath))

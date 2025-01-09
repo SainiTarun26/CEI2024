@@ -440,11 +440,15 @@ namespace CEIHaryana.SiteOwnerPages
                                     string directoryPath;
                                     if (DocName2 == "Treasury Challan" || DocName2 == "Other Document")
                                     {
-                                        directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/");
+                                        //directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/");
+                                        directoryPath = Server.MapPath($"~/Attachment/SiteOwner/{CreatedBy}/{InstallTypes}/");
+
                                     }
                                     else
                                     {
-                                        directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/{InstallTypes}/");
+                                        //directoryPath = Server.MapPath($"~/Attachment/{CreatedBy}/{InstallTypes}/");
+                                        directoryPath = Server.MapPath($"~/Attachment/SiteOwner/{CreatedBy}/{InstallTypes}/");
+
                                     }
 
                                     if (!Directory.Exists(directoryPath))

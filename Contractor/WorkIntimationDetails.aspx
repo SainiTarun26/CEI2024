@@ -140,11 +140,12 @@
                                         </div>
                         <div class="col-md-4" id="InstallationFor" runat="server" visible="false">
                             <label>Electrical Installation For</label>
-                            <asp:DropDownList ID="ddlworktype" runat="server" AutoPostBack="true" disabled class="form-control  select-form select2" Style="width: 100% !important;">
+                           <%-- <asp:DropDownList ID="ddlworktype" runat="server" AutoPostBack="true" disabled class="form-control  select-form select2" Style="width: 100% !important;">
                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                 <asp:ListItem Value="1" Text="Individual Person"></asp:ListItem>
                                 <asp:ListItem Value="2" Text="Firm/Organization/Company/Department"></asp:ListItem>
-                            </asp:DropDownList>
+                            </asp:DropDownList>--%>
+                               <asp:TextBox class="form-control" ID="TxtInstallationFor" autocomplete="off" ReadOnly="true" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
                         <div class="col-md-4" id="individual" runat="server">
                             <label for="Name">Name of Owner/ Responsible Person</label>

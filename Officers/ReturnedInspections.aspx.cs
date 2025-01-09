@@ -45,6 +45,7 @@ namespace CEIHaryana.Officers
 
                         GetTestReportDataIfPeriodic();
                     }
+                    Page.Session["ClickCount"] = "0";
                 }
             }
             catch
@@ -455,270 +456,180 @@ namespace CEIHaryana.Officers
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            int checksuccessmessage = 0;
-            try
+            int ClickCount = 0;
+            ClickCount = Convert.ToInt32(Session["ClickCount"]);
+            if (ClickCount < 1)
             {
-                if (Session["InspectionId"].ToString() != null && Session["InspectionId"].ToString() != "" && Session["StaffID"].ToString() != null)
+                ClickCount = ClickCount + 1;
+                Session["ClickCount"] = ClickCount;
+                int checksuccessmessage = 0;
+                try
                 {
-                    StaffId = Session["StaffID"].ToString();
-                    ID = Session["InspectionId"].ToString();
-
-                    bool isRemarksValid = true;
-
-                    //Remarks validation started
-                    #region Remarksvalidation
-
-                    foreach (GridViewRow row in Grid_TRDocuments.Rows)
+                    if (Session["InspectionId"].ToString() != null && Session["InspectionId"].ToString() != "" && Session["StaffID"].ToString() != null)
                     {
-                        CheckBox chkSelect = (CheckBox)row.FindControl("chk_Select");
-                        TextBox txtRemarks = (TextBox)row.FindControl("txt_Remarks");
+                        StaffId = Session["StaffID"].ToString();
+                        ID = Session["InspectionId"].ToString();
 
-                        if (chkSelect != null && chkSelect.Checked && (txtRemarks == null || string.IsNullOrWhiteSpace(txtRemarks.Text)))
+                        bool isRemarksValid = true;
+
+                        //Remarks validation started
+                        #region Remarksvalidation
+
+                        foreach (GridViewRow row in Grid_TRDocuments.Rows)
                         {
-                            isRemarksValid = false;
-                            break;
-                        }
-                    }
+                            CheckBox chkSelect = (CheckBox)row.FindControl("chk_Select");
+                            TextBox txtRemarks = (TextBox)row.FindControl("txt_Remarks");
 
-                    foreach (GridViewRow row in grd_ChecklistDocumemnts.Rows)
-                    {
-                        CheckBox chkSelect = (CheckBox)row.FindControl("chk_SelectDoc");
-                        TextBox txtRemarks = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
-
-                        if (chkSelect != null && chkSelect.Checked && (txtRemarks == null || string.IsNullOrWhiteSpace(txtRemarks.Text)))
-                        {
-                            isRemarksValid = false;
-                            break;
-                        }
-                    }
-
-                    if (!isRemarksValid)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please fill in remarks for selected rows.');", true);
-                        return;
-                    }
-
-                    #endregion
-                    //End Code for validation
-
-                    if (RadioButtonList2.SelectedValue != "" && RadioButtonList2.SelectedValue != null)
-                    {
-                        //AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" : "Return";
-                        AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" :
-                                         RadioButtonList2.SelectedValue == "1" ? "Return" :
-                                         RadioButtonList2.SelectedValue == "2" ? "Rejected" : "";
-                        Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
-
-                        string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
-
-                        //SqlTransaction transaction = null;
-                        try
-                        {
-                            string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
-                            if (reqType == "Industry")
+                            if (chkSelect != null && chkSelect.Checked && (txtRemarks == null || string.IsNullOrWhiteSpace(txtRemarks.Text)))
                             {
-                                string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
-                                // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
-                                if (serverStatus != "Server is reachable.")
-                                {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
-                                    return;
-                                }
+                                isRemarksValid = false;
+                                break;
                             }
-                            DataSet ds = new DataSet();
-                            ds = CEI.GetTypeOfInspection(ID);
-                            InstallType = ds.Tables[0].Rows[0]["TypeOfInspection"].ToString();
-                            if (RadioButtonList2.SelectedValue == "2")
+                        }
+
+                        foreach (GridViewRow row in grd_ChecklistDocumemnts.Rows)
+                        {
+                            CheckBox chkSelect = (CheckBox)row.FindControl("chk_SelectDoc");
+                            TextBox txtRemarks = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
+
+                            if (chkSelect != null && chkSelect.Checked && (txtRemarks == null || string.IsNullOrWhiteSpace(txtRemarks.Text)))
                             {
-                                CEI.UpdateInspectionRejection(ID, StaffId, ddlRejectionReasonType.SelectedItem.ToString(), Reason);
-                                CCemail = Session["CCemail"].ToString();
-                                ToEmail = Session["ToEmail"].ToString();
-                                if (ToEmail.Trim() != "" && ToEmail != null)
+                                isRemarksValid = false;
+                                break;
+                            }
+                        }
+
+                        if (!isRemarksValid)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please fill in remarks for selected rows.');", true);
+                            return;
+                        }
+
+                        #endregion
+                        //End Code for validation
+
+                        if (RadioButtonList2.SelectedValue != "" && RadioButtonList2.SelectedValue != null)
+                        {
+                            //AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" : "Return";
+                            AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" :
+                                             RadioButtonList2.SelectedValue == "1" ? "Return" :
+                                             RadioButtonList2.SelectedValue == "2" ? "Rejected" : "";
+                            Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
+
+                            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+
+                            //SqlTransaction transaction = null;
+                            try
+                            {
+                                string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
+                                if (reqType == "Industry")
                                 {
-                                    string subject = "Inspection Application Rejected";
-                                    string Message = "Your inspection application (ID: '" + ID + "') has been rejected by the officer. We regret any inconvenience this may cause.Please login to your Portal with your credentials to check remarks     \n\nThank you for your understanding.     \n\nBest regards,     \n\n[CEIHaryana]'";
-                                    CEI.RejectMessagethroughEmail(ToEmail, CCemail, subject, Message);
+                                    string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
+                                    // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
+                                    if (serverStatus != "Server is reachable.")
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
+                                        return;
+                                    }
+                                }
+                                DataSet ds = new DataSet();
+                                ds = CEI.GetTypeOfInspection(ID);
+                                InstallType = ds.Tables[0].Rows[0]["TypeOfInspection"].ToString();
+                                if (RadioButtonList2.SelectedValue == "2")
+                                {
+                                    CEI.UpdateInspectionRejection(ID, StaffId, ddlRejectionReasonType.SelectedItem.ToString(), Reason);
+                                    CCemail = Session["CCemail"].ToString();
+                                    ToEmail = Session["ToEmail"].ToString();
+                                    if (ToEmail.Trim() != "" && ToEmail != null)
+                                    {
+                                        string subject = "Inspection Application Rejected";
+                                        string Message = "Your inspection application (ID: '" + ID + "') has been rejected by the officer. We regret any inconvenience this may cause.Please login to your Portal with your credentials to check remarks     \n\nThank you for your understanding.     \n\nBest regards,     \n\n[CEIHaryana]'";
+                                        CEI.RejectMessagethroughEmail(ToEmail, CCemail, subject, Message);
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                    checksuccessmessage = 1;
                                 }
                                 else
                                 {
-
-                                }
-                                checksuccessmessage = 1;
-                            }
-                            else
-                            {
-                                if (InstallType == "New")
-                                {
-                                    if (RadioButtonList2.SelectedValue == "0")
+                                    if (InstallType == "New")
                                     {
-                                        CEI.InspectionAccepted(ID, StaffId);
-                                        CCemail = Session["CCemail"].ToString();
-                                        ToEmail = Session["ToEmail"].ToString();
-                                        if (ToEmail.Trim() != "" && ToEmail != null)
+                                        if (RadioButtonList2.SelectedValue == "0")
                                         {
-                                            string subject = "Inspection Application Accepted";
-                                            string Message = "We are pleased to inform you that your inspection application (ID: '" + ID + "') has been Accepted by the officer . Please login to your Portal with your credentials to check remarks     \n\n    \n\nShould you have any questions or need assistance, feel free to reach out.     \n\nBest regards,     \n\n[CEIHaryana]'";
-                                            CEI.RejectMessagethroughEmail(ToEmail, CCemail, subject, Message);
-                                        }
-                                        else
-                                        {
-
-                                        }
-                                    }
-                                    else if (RadioButtonList2.SelectedValue == "1")
-                                    {
-                                        SqlTransaction transaction = null;
-                                        try
-                                        {
-                                            using (SqlConnection connection = new SqlConnection(connectionString))
+                                            CEI.InspectionAccepted(ID, StaffId);
+                                            CCemail = Session["CCemail"].ToString();
+                                            ToEmail = Session["ToEmail"].ToString();
+                                            if (ToEmail.Trim() != "" && ToEmail != null)
                                             {
-                                                connection.Open();
-                                                transaction = connection.BeginTransaction();
-                                                CEI.UpdateStatusOfReturnedInspection(ID, StaffId, ddlReasonType.SelectedItem.Value, transaction);
-                                                CCemail = Session["CCemail"].ToString();
-                                                ToEmail = Session["ToEmail"].ToString();
-                                                if (ToEmail.Trim() != "" && ToEmail != null)
+                                                string subject = "Inspection Application Accepted";
+                                                string Message = "We are pleased to inform you that your inspection application (ID: '" + ID + "') has been Accepted by the officer . Please login to your Portal with your credentials to check remarks     \n\n    \n\nShould you have any questions or need assistance, feel free to reach out.     \n\nBest regards,     \n\n[CEIHaryana]'";
+                                                CEI.RejectMessagethroughEmail(ToEmail, CCemail, subject, Message);
+                                            }
+                                            else
+                                            {
+
+                                            }
+                                        }
+                                        else if (RadioButtonList2.SelectedValue == "1")
+                                        {
+                                            SqlTransaction transaction = null;
+                                            try
+                                            {
+                                                using (SqlConnection connection = new SqlConnection(connectionString))
                                                 {
-                                                    string subject = "Inspection Application Returned";
-                                                    string Message = "Your inspection application (ID: '" + ID + "') has been Returned by the officer . Please login to your Portal with your credentials to check return remarks    \n\nKindly revert within 15 days Otherwise Your Inspection request will be auto rejecteed.\n\nBest regards,     \n\n[CEIHaryana]'";
-                                                    CEI.RejectMessagethroughEmail(ToEmail, CCemail, subject, Message);
-                                                }
-                                                else
-                                                {
-
-                                                }
-                                                if (ddlReasonType.SelectedItem.Value == "1") // Checklist Documents
-                                                {
-                                                    bool AtLeastOneChecked = false;
-                                                    foreach (GridViewRow row in grd_ChecklistDocumemnts.Rows)
+                                                    connection.Open();
+                                                    transaction = connection.BeginTransaction();
+                                                    CEI.UpdateStatusOfReturnedInspection(ID, StaffId, ddlReasonType.SelectedItem.Value, transaction);
+                                                    CCemail = Session["CCemail"].ToString();
+                                                    ToEmail = Session["ToEmail"].ToString();
+                                                    if (ToEmail.Trim() != "" && ToEmail != null)
                                                     {
-                                                        CheckBox chkChecklist = (CheckBox)row.FindControl("chk_SelectDoc");
-                                                        if (chkChecklist != null && chkChecklist.Checked)
-                                                        {
-                                                            AtLeastOneChecked = true;
-
-                                                            Label LabelRowId = (Label)row.FindControl("LabelRowId");
-                                                            TextBox txt_RemarksforOwnerDoc = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
-
-                                                            if (LabelRowId != null && !string.IsNullOrEmpty(txt_RemarksforOwnerDoc.Text))
-                                                            {
-                                                                CEI.updateReturnRemarksOnBasesOnChecklistDocuments(ID, LabelRowId.Text, txt_RemarksforOwnerDoc.Text, transaction);
-                                                            }
-                                                        }
-                                                    }
-                                                    if (AtLeastOneChecked != true)
-                                                    {
-                                                        transaction.Rollback();
-                                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please Tick Atleast One Test Report Before Submit'); ", true);
-                                                        return;
-                                                    }
-                                                }
-                                                else if (ddlReasonType.SelectedItem.Value == "2") // Test Report Documents
-                                                {
-                                                    bool AtLeastOneChecked = false;
-                                                    foreach (GridViewRow row in Grid_TRDocuments.Rows)
-                                                    {
-                                                        CheckBox chk = (CheckBox)row.FindControl("chk_Select");
-                                                        if (chk != null && chk.Checked)
-                                                        {
-                                                            AtLeastOneChecked = true;
-
-                                                            Label Labelid = (Label)row.FindControl("Labelid");
-                                                            Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
-                                                            TextBox txtRemarks = (TextBox)row.FindControl("txt_Remarks");
-
-                                                            if (Labelid != null && !string.IsNullOrEmpty(txtRemarks.Text))
-                                                            {
-                                                                //CEI.updateReturnRemarksOnBasesOfTrDocuments(ID, StaffId, LblIntimationId.Text, Labelid.Text, txtRemarks.Text, ddlReasonType.SelectedItem.Value);
-                                                                CEI.updateReturnRemarksOnBasesOfTrDocuments(ID, LblIntimationId.Text, Labelid.Text, txtRemarks.Text, transaction);
-                                                            }
-                                                        }
-                                                    }
-                                                    if (!AtLeastOneChecked)
-                                                    {
-                                                        transaction.Rollback();
-                                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please Tick Atleast One Test Report Before Submit'); ", true);
-                                                    }
-                                                }
-                                                else if (ddlReasonType.SelectedItem.Value == "3") // Checklist & Test Report Documents
-                                                {
-                                                    bool isChecklistValid = false;
-                                                    bool isTestReportValid = false;
-                                                    bool allRemarksFilled = true;
-
-                                                    // Validate Checklist Documents
-                                                    foreach (GridViewRow row in grd_ChecklistDocumemnts.Rows)
-                                                    {
-                                                        CheckBox chkChecklist = (CheckBox)row.FindControl("chk_SelectDoc");
-                                                        TextBox txt_RemarksforOwnerDoc = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
-
-                                                        if (chkChecklist != null && chkChecklist.Checked)
-                                                        {
-                                                            isChecklistValid = true;
-
-                                                            if (txt_RemarksforOwnerDoc == null || string.IsNullOrEmpty(txt_RemarksforOwnerDoc.Text))
-                                                            {
-                                                                allRemarksFilled = false;
-                                                                break;
-                                                            }
-                                                        }
-                                                    }
-
-                                                    // Validate Test Report Documents
-                                                    foreach (GridViewRow row in Grid_TRDocuments.Rows)
-                                                    {
-                                                        CheckBox chk = (CheckBox)row.FindControl("chk_Select");
-                                                        TextBox txtRemarks = (TextBox)row.FindControl("txt_Remarks");
-
-                                                        if (chk != null && chk.Checked)
-                                                        {
-                                                            isTestReportValid = true;
-
-                                                            if (txtRemarks == null || string.IsNullOrEmpty(txtRemarks.Text))
-                                                            {
-                                                                allRemarksFilled = false;
-                                                                break;
-                                                            }
-                                                        }
-                                                    }
-
-                                                    if (!isChecklistValid || !isTestReportValid)
-                                                    {
-                                                        transaction.Rollback();
-                                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please tick at least one document in both Checklist and Test Report Documents before submitting.');", true);
-                                                        return;
-                                                    }
-                                                    else if (!allRemarksFilled)
-                                                    {
-                                                        transaction.Rollback();
-                                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please ensure all checked rows have remarks filled in.');", true);
-                                                        return;
+                                                        string subject = "Inspection Application Returned";
+                                                        string Message = "Your inspection application (ID: '" + ID + "') has been Returned by the officer . Please login to your Portal with your credentials to check return remarks    \n\nKindly revert within 15 days Otherwise Your Inspection request will be auto rejecteed.\n\nBest regards,     \n\n[CEIHaryana]'";
+                                                        CEI.RejectMessagethroughEmail(ToEmail, CCemail, subject, Message);
                                                     }
                                                     else
                                                     {
-                                                        // Process Checklist Documents
+
+                                                    }
+                                                    if (ddlReasonType.SelectedItem.Value == "1") // Checklist Documents
+                                                    {
+                                                        bool AtLeastOneChecked = false;
                                                         foreach (GridViewRow row in grd_ChecklistDocumemnts.Rows)
                                                         {
                                                             CheckBox chkChecklist = (CheckBox)row.FindControl("chk_SelectDoc");
                                                             if (chkChecklist != null && chkChecklist.Checked)
                                                             {
+                                                                AtLeastOneChecked = true;
+
                                                                 Label LabelRowId = (Label)row.FindControl("LabelRowId");
                                                                 TextBox txt_RemarksforOwnerDoc = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
 
                                                                 if (LabelRowId != null && !string.IsNullOrEmpty(txt_RemarksforOwnerDoc.Text))
                                                                 {
-                                                                    //CEI.updateReturnRemarksOnBasesOnChecklistDocuments(ID, StaffId, LabelRowId.Text, txt_RemarksforOwnerDoc.Text, ddlReasonType.SelectedItem.Value);
                                                                     CEI.updateReturnRemarksOnBasesOnChecklistDocuments(ID, LabelRowId.Text, txt_RemarksforOwnerDoc.Text, transaction);
                                                                 }
                                                             }
                                                         }
-
-                                                        // Process Test Report Documents
+                                                        if (AtLeastOneChecked != true)
+                                                        {
+                                                            transaction.Rollback();
+                                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please Tick Atleast One Test Report Before Submit'); ", true);
+                                                            return;
+                                                        }
+                                                    }
+                                                    else if (ddlReasonType.SelectedItem.Value == "2") // Test Report Documents
+                                                    {
+                                                        bool AtLeastOneChecked = false;
                                                         foreach (GridViewRow row in Grid_TRDocuments.Rows)
                                                         {
                                                             CheckBox chk = (CheckBox)row.FindControl("chk_Select");
                                                             if (chk != null && chk.Checked)
                                                             {
+                                                                AtLeastOneChecked = true;
+
                                                                 Label Labelid = (Label)row.FindControl("Labelid");
                                                                 Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
                                                                 TextBox txtRemarks = (TextBox)row.FindControl("txt_Remarks");
@@ -730,200 +641,301 @@ namespace CEIHaryana.Officers
                                                                 }
                                                             }
                                                         }
+                                                        if (!AtLeastOneChecked)
+                                                        {
+                                                            transaction.Rollback();
+                                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please Tick Atleast One Test Report Before Submit'); ", true);
+                                                        }
                                                     }
-                                                }
+                                                    else if (ddlReasonType.SelectedItem.Value == "3") // Checklist & Test Report Documents
+                                                    {
+                                                        bool isChecklistValid = false;
+                                                        bool isTestReportValid = false;
+                                                        bool allRemarksFilled = true;
 
-                                                transaction.Commit();
+                                                        // Validate Checklist Documents
+                                                        foreach (GridViewRow row in grd_ChecklistDocumemnts.Rows)
+                                                        {
+                                                            CheckBox chkChecklist = (CheckBox)row.FindControl("chk_SelectDoc");
+                                                            TextBox txt_RemarksforOwnerDoc = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
+
+                                                            if (chkChecklist != null && chkChecklist.Checked)
+                                                            {
+                                                                isChecklistValid = true;
+
+                                                                if (txt_RemarksforOwnerDoc == null || string.IsNullOrEmpty(txt_RemarksforOwnerDoc.Text))
+                                                                {
+                                                                    allRemarksFilled = false;
+                                                                    break;
+                                                                }
+                                                            }
+                                                        }
+
+                                                        // Validate Test Report Documents
+                                                        foreach (GridViewRow row in Grid_TRDocuments.Rows)
+                                                        {
+                                                            CheckBox chk = (CheckBox)row.FindControl("chk_Select");
+                                                            TextBox txtRemarks = (TextBox)row.FindControl("txt_Remarks");
+
+                                                            if (chk != null && chk.Checked)
+                                                            {
+                                                                isTestReportValid = true;
+
+                                                                if (txtRemarks == null || string.IsNullOrEmpty(txtRemarks.Text))
+                                                                {
+                                                                    allRemarksFilled = false;
+                                                                    break;
+                                                                }
+                                                            }
+                                                        }
+
+                                                        if (!isChecklistValid || !isTestReportValid)
+                                                        {
+                                                            transaction.Rollback();
+                                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please tick at least one document in both Checklist and Test Report Documents before submitting.');", true);
+                                                            return;
+                                                        }
+                                                        else if (!allRemarksFilled)
+                                                        {
+                                                            transaction.Rollback();
+                                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please ensure all checked rows have remarks filled in.');", true);
+                                                            return;
+                                                        }
+                                                        else
+                                                        {
+                                                            // Process Checklist Documents
+                                                            foreach (GridViewRow row in grd_ChecklistDocumemnts.Rows)
+                                                            {
+                                                                CheckBox chkChecklist = (CheckBox)row.FindControl("chk_SelectDoc");
+                                                                if (chkChecklist != null && chkChecklist.Checked)
+                                                                {
+                                                                    Label LabelRowId = (Label)row.FindControl("LabelRowId");
+                                                                    TextBox txt_RemarksforOwnerDoc = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
+
+                                                                    if (LabelRowId != null && !string.IsNullOrEmpty(txt_RemarksforOwnerDoc.Text))
+                                                                    {
+                                                                        //CEI.updateReturnRemarksOnBasesOnChecklistDocuments(ID, StaffId, LabelRowId.Text, txt_RemarksforOwnerDoc.Text, ddlReasonType.SelectedItem.Value);
+                                                                        CEI.updateReturnRemarksOnBasesOnChecklistDocuments(ID, LabelRowId.Text, txt_RemarksforOwnerDoc.Text, transaction);
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            // Process Test Report Documents
+                                                            foreach (GridViewRow row in Grid_TRDocuments.Rows)
+                                                            {
+                                                                CheckBox chk = (CheckBox)row.FindControl("chk_Select");
+                                                                if (chk != null && chk.Checked)
+                                                                {
+                                                                    Label Labelid = (Label)row.FindControl("Labelid");
+                                                                    Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
+                                                                    TextBox txtRemarks = (TextBox)row.FindControl("txt_Remarks");
+
+                                                                    if (Labelid != null && !string.IsNullOrEmpty(txtRemarks.Text))
+                                                                    {
+                                                                        //CEI.updateReturnRemarksOnBasesOfTrDocuments(ID, StaffId, LblIntimationId.Text, Labelid.Text, txtRemarks.Text, ddlReasonType.SelectedItem.Value);
+                                                                        CEI.updateReturnRemarksOnBasesOfTrDocuments(ID, LblIntimationId.Text, Labelid.Text, txtRemarks.Text, transaction);
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+
+                                                    transaction.Commit();
+                                                }
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                transaction.Rollback();
                                             }
                                         }
-                                        catch (Exception ex)
-                                        {
-                                            transaction.Rollback();
-                                        }
                                     }
-                                }
-                                else if (InstallType == "Periodic")
-                                {
-                                    CEI.updateInspectionPeriodic(ID, StaffId, IntimationId, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value);
-                                }
-
-                                checksuccessmessage = 1;
-                            }
-
-                            //string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
-                            string actiontype = AcceptorReturn == "Accepted" ? "InProgress" :
-                                                AcceptorReturn == "Return" ? "Return" :
-                                                AcceptorReturn == "Rejected" ? "Rejected" : "";
-                            List<Industry_Api_Post_DataformatModel> ApiPostformatResults = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype);
-                            foreach (var ApiPostformatresult in ApiPostformatResults)
-                            {
-                                if (ApiPostformatresult.PremisesType == "Industry")
-                                {
-                                    // string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
-                                    string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
-                                    // string accessToken = "dfsfdsfsfsdf";
-
-                                    logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                                  "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
-                                                  new Industry_Inspection_StageWise_JsonDataFormat_Model
-                                                  {
-                                                      actionTaken = ApiPostformatresult.ActionTaken,
-                                                      commentByUserLogin = ApiPostformatresult.CommentByUserLogin,
-                                                      commentDate = ApiPostformatresult.CommentDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                                      comments = ApiPostformatresult.Comments,
-                                                      id = ApiPostformatresult.Id,
-                                                      projectid = ApiPostformatresult.ProjectId,
-                                                      serviceid = ApiPostformatresult.ServiceId
-                                                  }, ApiPostformatresult, accessToken);
-
-                                    if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
+                                    else if (InstallType == "Periodic")
                                     {
-                                        throw new Exception(logDetails.ErrorMessage);
+                                        CEI.updateInspectionPeriodic(ID, StaffId, IntimationId, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value);
                                     }
 
+                                    checksuccessmessage = 1;
+                                }
 
-                                    CEI.LogToIndustryApiSuccessDatabase(
-                                    logDetails.Url,
-                                    logDetails.Method,
-                                    logDetails.RequestHeaders,
-                                    logDetails.ContentType,
-                                    logDetails.RequestBody,
-                                    logDetails.ResponseStatusCode,
-                                    logDetails.ResponseHeaders,
-                                    logDetails.ResponseBody,
+                                //string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
+                                string actiontype = AcceptorReturn == "Accepted" ? "InProgress" :
+                                                    AcceptorReturn == "Return" ? "Return" :
+                                                    AcceptorReturn == "Rejected" ? "Rejected" : "";
+                                List<Industry_Api_Post_DataformatModel> ApiPostformatResults = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype);
+                                foreach (var ApiPostformatresult in ApiPostformatResults)
+                                {
+                                    if (ApiPostformatresult.PremisesType == "Industry")
+                                    {
+                                        // string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                                        string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                                        // string accessToken = "dfsfdsfsfsdf";
 
+                                        logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
+                                                      "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                                      new Industry_Inspection_StageWise_JsonDataFormat_Model
+                                                      {
+                                                          actionTaken = ApiPostformatresult.ActionTaken,
+                                                          commentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                                                          commentDate = ApiPostformatresult.CommentDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                                          comments = ApiPostformatresult.Comments,
+                                                          id = ApiPostformatresult.Id,
+                                                          projectid = ApiPostformatresult.ProjectId,
+                                                          serviceid = ApiPostformatresult.ServiceId
+                                                      }, ApiPostformatresult, accessToken);
+
+                                        if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
+                                        {
+                                            throw new Exception(logDetails.ErrorMessage);
+                                        }
+
+
+                                        CEI.LogToIndustryApiSuccessDatabase(
+                                        logDetails.Url,
+                                        logDetails.Method,
+                                        logDetails.RequestHeaders,
+                                        logDetails.ContentType,
+                                        logDetails.RequestBody,
+                                        logDetails.ResponseStatusCode,
+                                        logDetails.ResponseHeaders,
+                                        logDetails.ResponseBody,
+
+                                        new Industry_Api_Post_DataformatModel
+                                        {
+                                            InspectionId = ApiPostformatresult.InspectionId,
+                                            InspectionLogId = ApiPostformatresult.InspectionLogId,
+                                            IncomingJsonId = ApiPostformatresult.IncomingJsonId,
+                                            ActionTaken = ApiPostformatresult.ActionTaken,
+                                            CommentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                                            CommentDate = ApiPostformatresult.CommentDate,
+
+                                            Comments = ApiPostformatresult.Comments,
+                                            Id = ApiPostformatresult.Id,
+                                            ProjectId = ApiPostformatresult.ProjectId,
+                                            ServiceId = ApiPostformatresult.ServiceId,
+                                        }
+
+                                    );
+
+                                    }
+                                }
+                            }
+                            catch (TokenManagerException ex)
+                            {
+                                CEI.LogToIndustryApiErrorDatabase(
+                                    ex.RequestUrl,
+                                    ex.RequestMethod,
+                                    ex.RequestHeaders,
+                                    ex.RequestContentType,
+                                    ex.RequestBody,
+                                    ex.ResponseStatusCode,
+                                    ex.ResponseHeaders,
+                                    ex.ResponseBody,
                                     new Industry_Api_Post_DataformatModel
                                     {
-                                        InspectionId = ApiPostformatresult.InspectionId,
-                                        InspectionLogId = ApiPostformatresult.InspectionLogId,
-                                        IncomingJsonId = ApiPostformatresult.IncomingJsonId,
-                                        ActionTaken = ApiPostformatresult.ActionTaken,
-                                        CommentByUserLogin = ApiPostformatresult.CommentByUserLogin,
-                                        CommentDate = ApiPostformatresult.CommentDate,
-
-                                        Comments = ApiPostformatresult.Comments,
-                                        Id = ApiPostformatresult.Id,
-                                        ProjectId = ApiPostformatresult.ProjectId,
-                                        ServiceId = ApiPostformatresult.ServiceId,
+                                        InspectionId = ex.InspectionId,
+                                        InspectionLogId = ex.InspectionLogId,
+                                        IncomingJsonId = ex.IncomingJsonId,
+                                        ActionTaken = ex.ActionTaken,
+                                        CommentByUserLogin = ex.CommentByUserLogin,
+                                        CommentDate = ex.CommentDate,
+                                        Comments = ex.Comments,
+                                        Id = ex.Id,
+                                        ProjectId = ex.ProjectId,
+                                        ServiceId = ex.ServiceId,
                                     }
+                                );
+                                string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
+                                // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                                //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+                                //  ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
+                            }
+                            catch (IndustryApiException ex)
+                            {
+                                CEI.LogToIndustryApiErrorDatabase(
+                                    ex.RequestUrl,
+                                    ex.RequestMethod,
+                                    ex.RequestHeaders,
+                                    ex.RequestContentType,
+                                    ex.RequestBody,
+                                    ex.ResponseStatusCode,
+                                    ex.ResponseHeaders,
+                                    ex.ResponseBody,
+                                    new Industry_Api_Post_DataformatModel
+                                    {
+                                        InspectionId = ex.InspectionId,
+                                        InspectionLogId = ex.InspectionLogId,
+                                        IncomingJsonId = ex.IncomingJsonId,
+                                        ActionTaken = ex.ActionTaken,
+                                        CommentByUserLogin = ex.CommentByUserLogin,
+                                        CommentDate = ex.CommentDate,
 
+                                        Comments = ex.Comments,
+                                        Id = ex.Id,
+                                        ProjectId = ex.ProjectId,
+                                        ServiceId = ex.ServiceId,
+                                    }
                                 );
 
-                                }
+                                string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
+                                //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                                //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+                                // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
                             }
-                        }
-                        catch (TokenManagerException ex)
-                        {
-                            CEI.LogToIndustryApiErrorDatabase(
-                                ex.RequestUrl,
-                                ex.RequestMethod,
-                                ex.RequestHeaders,
-                                ex.RequestContentType,
-                                ex.RequestBody,
-                                ex.ResponseStatusCode,
-                                ex.ResponseHeaders,
-                                ex.ResponseBody,
-                                new Industry_Api_Post_DataformatModel
-                                {
-                                    InspectionId = ex.InspectionId,
-                                    InspectionLogId = ex.InspectionLogId,
-                                    IncomingJsonId = ex.IncomingJsonId,
-                                    ActionTaken = ex.ActionTaken,
-                                    CommentByUserLogin = ex.CommentByUserLogin,
-                                    CommentDate = ex.CommentDate,
-                                    Comments = ex.Comments,
-                                    Id = ex.Id,
-                                    ProjectId = ex.ProjectId,
-                                    ServiceId = ex.ServiceId,
-                                }
-                            );
-                            string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
-                            // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                            //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
-                            //  ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
-                        }
-                        catch (IndustryApiException ex)
-                        {
-                            CEI.LogToIndustryApiErrorDatabase(
-                                ex.RequestUrl,
-                                ex.RequestMethod,
-                                ex.RequestHeaders,
-                                ex.RequestContentType,
-                                ex.RequestBody,
-                                ex.ResponseStatusCode,
-                                ex.ResponseHeaders,
-                                ex.ResponseBody,
-                                new Industry_Api_Post_DataformatModel
-                                {
-                                    InspectionId = ex.InspectionId,
-                                    InspectionLogId = ex.InspectionLogId,
-                                    IncomingJsonId = ex.IncomingJsonId,
-                                    ActionTaken = ex.ActionTaken,
-                                    CommentByUserLogin = ex.CommentByUserLogin,
-                                    CommentDate = ex.CommentDate,
-
-                                    Comments = ex.Comments,
-                                    Id = ex.Id,
-                                    ProjectId = ex.ProjectId,
-                                    ServiceId = ex.ServiceId,
-                                }
-                            );
-
-                            string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
-                            //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                            //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
-                            // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
-                        }
-                        catch (Exception ex)
-                        {
-                            // Rollback the transaction if an error occurs
-                            //transaction.Rollback();
-                            // Handle the exception, log it, etc.
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An error occurred.');", true);
-                        }
-                        finally
-                        {
-                            if (checksuccessmessage == 1)
+                            catch (Exception ex)
                             {
-                                if (AcceptorReturn == "Accepted")
+                                // Rollback the transaction if an error occurs
+                                //transaction.Rollback();
+                                // Handle the exception, log it, etc.
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An error occurred.');", true);
+                            }
+                            finally
+                            {
+                                if (checksuccessmessage == 1)
                                 {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                                }
-                                else
-                                {
-                                    if (RadioButtonList2.SelectedValue == "2")
+                                    if (AcceptorReturn == "Accepted")
                                     {
-                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataOfRejection();", true);
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                                     }
                                     else
                                     {
-                                        if (ddlReasonType.SelectedItem.Value != null)
+                                        if (RadioButtonList2.SelectedValue == "2")
                                         {
-                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Inspection Returned to Site Owner'); window.location='NewApplications.aspx'", true);
-
+                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataOfRejection();", true);
                                         }
-                                        //if (ddlReasonType.SelectedItem.Value == "1") //Based On Documents Returned 
-                                        //{
-                                        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
-                                        //}
+                                        else
+                                        {
+                                            if (ddlReasonType.SelectedItem.Value != null)
+                                            {
+                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Inspection Returned to Site Owner'); window.location='NewApplications.aspx'", true);
+
+                                            }
+                                            //if (ddlReasonType.SelectedItem.Value == "1") //Based On Documents Returned 
+                                            //{
+                                            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdataCommonReturn();", true);
+                                            //}
+                                        }
                                     }
                                 }
                             }
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please select the Action Required for Inspection');", true);
                         }
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please select the Action Required for Inspection');", true);
+                        Response.Redirect("/Login.aspx");
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    Response.Redirect("/Login.aspx");
+                    //
                 }
             }
-            catch (Exception ex)
+            else
             {
-                //
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('You double click on Button.'); window.location='NewApplications.aspx'", true);
             }
         }
         private void GridToViewCart()

@@ -641,13 +641,16 @@
 
 
                 </div>
+             
+                    
                 <div class="row" style="margin-top: 25px;">
 
                     <div class="col-12" id="Suggestion" runat="server" visible="false">
 
-                        <asp:TextBox class="form-control" ID="txtSuggestion" TextMode="MultiLine" Rows="2" MaxLength="1000" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:TextBox class="form-control" ID="txtSuggestion" TextMode="MultiLine" Rows="2" MaxLength="1000" autocomplete="off" TabIndex="7" runat="server"  Style="margin-left: 18px"></asp:TextBox>
                     </div>
                 </div>
+         
 
 
 

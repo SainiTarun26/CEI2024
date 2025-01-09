@@ -1005,6 +1005,7 @@ namespace CEIHaryana.SiteOwnerPages
             txtPin.Text = "";
             txtOtherPremises.Text = "";
             ddlVoltageLevel.SelectedValue = "0";
+            ddlPremises.SelectedValue = "0";
             RadioButtonList2.ClearSelection();
             txtSanctionLoad.Text = "";
             txtCapacity.Text = "";

@@ -8947,6 +8947,11 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDatails_Industry", InspectionId);
         }
+        //Neeraj 9-Jan
+        public DataSet GetDistrictForSld(string id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "District_Sld", id);
+        }
 
     }
 }

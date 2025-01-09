@@ -53,7 +53,7 @@ namespace CEIHaryana.Contractor
                            // Session["id"] = null; // added by gurmeet to resolve redirection problem 24 Aprail
                         }
                      
-                        worktypevisiblity();                    
+                       // worktypevisiblity();                    
 
                     }
                     else
@@ -85,9 +85,21 @@ namespace CEIHaryana.Contractor
                     DataSet ds = new DataSet();
                     adp.Fill(ds);
                     string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
-                    ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(dp_Id));
+                    //ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(dp_Id));
+                    TxtInstallationFor.Text = dp_Id;
                     txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
-                    txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+                    if(string.IsNullOrEmpty(txtName.Text))
+                    {
+                        individual.Visible = false;
+                        txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+                       
+                    }
+                    else
+                    {
+                        agency.Visible = false;
+                        txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+                    }
+                   
                     txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
                     txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
                     //string dp_Id1 = ds.Tables[0].Rows[0]["PremisesType"].ToString();
@@ -377,33 +389,33 @@ namespace CEIHaryana.Contractor
             {
             }
         }
-        protected void worktypevisiblity()
-        {
+        //protected void worktypevisiblity()
+        //{
 
-            if (ddlworktype.SelectedValue == "1")
-            {
-                individual.Visible = true;
-                agency.Visible = false;
+        //    if (ddlworktype.SelectedValue == "1")
+        //    {
+        //        individual.Visible = true;
+        //        agency.Visible = false;
 
-            }
-            else if (ddlworktype.SelectedValue == "2")
-            {
-                individual.Visible = false;
-                agency.Visible = true;
+        //    }
+        //    else if (ddlworktype.SelectedValue == "2")
+        //    {
+        //        individual.Visible = false;
+        //        agency.Visible = true;
 
-            }
-            else
-            {
-                individual.Visible = true;
-                agency.Visible = false;
-            }
+        //    }
+        //    else
+        //    {
+        //        individual.Visible = true;
+        //        agency.Visible = false;
+        //    }
 
-        }
+        //}
 
-        protected void ddlworktype_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            worktypevisiblity();
-        }
+        //protected void ddlworktype_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    worktypevisiblity();
+        //}
        
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
