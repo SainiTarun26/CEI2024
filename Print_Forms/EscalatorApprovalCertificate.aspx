@@ -28,9 +28,9 @@
     width: 46% !important;
 }*/
         img#Gridview1_ImgSignature_0 {
-     height: 70px;
-     width: 150px;
- }
+            height: 70px;
+            width: 150px;
+        }
 
         th {
             width: 45%;
@@ -133,12 +133,14 @@
             vertical-align: middle;
             border-style: none;
         }
+
         td {
-    text-align: justify !important;
-}
-        td.textbold {
-            font-weight: bold;
+            text-align: justify !important;
         }
+
+            td.textbold {
+                font-weight: bold;
+            }
 
         span {
             font-size: 20px !important;
@@ -156,19 +158,21 @@
         .p1 {
             font-family: 'Cedarville Cursive', cursive;
         }
-        th {
-    width: 1% !important;
-    text-align:center;
-    font-size:21px;
-}
-        td {
-    font-size: 21px;
-        text-align: center;
-}
-        .center-align {
-    text-align: center !important; /* Ensures centering overrides conflicting styles */
-}
 
+        th {
+            width: 1% !important;
+            text-align: center;
+            font-size: 21px;
+        }
+
+        td {
+            font-size: 21px;
+            text-align: center;
+        }
+
+        .center-align {
+            text-align: center !important; /* Ensures centering overrides conflicting styles */
+        }
     </style>
     <%--<script>
 
@@ -229,7 +233,7 @@
             textbox.value = lines.join('\n');
         }
     </script>
-     <script>
+    <script>
         // Detect when the print dialog is closed (whether by printing or canceling)
         window.onafterprint = function () {
             // Delay execution to ensure the print dialog is fully closed
@@ -237,7 +241,7 @@
                 // Check if the print dialog is still open
                 if (!document.hidden) {
                     // User canceled printing, navigate back to the previous page
-                window.history.back();
+                    window.history.back();
                 }
             }, 100);
         };
@@ -280,8 +284,8 @@
                                     </h6>
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center;">[See rule 4 (2)]
                                     </h6>
-                                    <h6 runat="server" id="txtLift"  class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center; text-decoration: underline;">Registration of Escalator
-                                    </h6>                                
+                                    <h6 runat="server" id="txtLift" class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center; text-decoration: underline;">Registration of Escalator
+                                    </h6>
                                 </div>
                             </div>
                             <div class="row">
@@ -300,12 +304,12 @@
                             <div class="row">
                                 <div class="col-12">
                                     <p>
-                                        Under sub-section (2) of section 4 of the Haryana  Lifts and Escalators Act, 2008 (27 of 2008) through
+                                        Under sub-section (2) of section 4 of the Haryana  Lifts and Escalators Act, 2009 (27 of 2009) through
                                         <asp:Label ID="lblCompanyName" Style="font-weight: bold;" runat="server" Text="M/s"></asp:Label>
-                                        is/are hereby registered to work or cause to be worked or allow the working of the lift erected and inspected on<asp:Label ID="lblInspectionDate" Style="font-weight: bold;" runat="server"></asp:Label>
+                                        is/are hereby registered to work or cause to be worked or allow the working of the lift erected and inspected on&nbsp;<asp:Label ID="lblInspectionDate" Style="font-weight: bold;" runat="server"></asp:Label>
                                         at the premises of 
                                         <asp:Label Style="font-weight: bold;" ID="lblAddress" runat="server"></asp:Label>
-                                        subject to the provisions of the Haryana Lift and Escalators Rules, 2008. The perticulars of Escalators which are given below:-
+                                        subject to the provisions of the Haryana Lift and Escalators Rules, 2009. The perticulars of Escalators which are given below:-
                                     </p>
                                 </div>
                             </div>
@@ -357,13 +361,13 @@
                                             <td class="textbold">
                                                 <asp:Label ID="lblCapacity" runat="server" Text="Label"></asp:Label></td>
                                         </tr>
-                                         <tr>
-                             <td class="tableid textbold">(iv)</td>
-                             <td>Date of Erection</td>
-                                  <td class="textbold">:-</td>
-                                  <td class="textbold">
-                       <asp:Label ID="lblErectionDate" runat="server" Text="Label"></asp:Label></td>
-                    </tr>
+                                        <tr>
+                                            <td class="tableid textbold">(iv)</td>
+                                            <td>Date of Erection</td>
+                                            <td class="textbold">:-</td>
+                                            <td class="textbold">
+                                                <asp:Label ID="lblErectionDate" runat="server" Text="Label"></asp:Label></td>
+                                        </tr>
                                     </table>
 
                                 </div>
@@ -399,7 +403,7 @@
                                 <div class="col-md-12">
 
 
-                                                                        <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="10" OnRowDataBound="Gridview1_RowDataBound">
+                                    <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="10" OnRowDataBound="Gridview1_RowDataBound">
                                         <HeaderStyle BackColor="#B7E2F0" />
                                         <Columns>
                                             <asp:TemplateField HeaderText="Id" Visible="False">
@@ -416,34 +420,34 @@
             </ItemTemplate>
         </asp:TemplateField>--%>
                                             <asp:TemplateField HeaderText="Renewal Date">
-    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="headercolor" />
-    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="itemcenter" />
-    <HeaderTemplate>
-        Renewal Date
-    </HeaderTemplate>
-    <ItemTemplate>
-                <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="itemcenter" />
+                                                <HeaderTemplate>
+                                                    Renewal Date
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
 
-        <%# Eval("RenewalDate") %>
-                    </div>
-    </ItemTemplate>
-</asp:TemplateField>
+                                                        <%# Eval("RenewalDate") %>
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
 
 
 
-                                           <asp:BoundField DataField="ExpiryDate" HeaderText="Expiry Date">
-    <HeaderStyle CssClass="headercolor center-align" />
-    <ItemStyle CssClass="center-align" />
-</asp:BoundField>
+                                            <asp:BoundField DataField="ExpiryDate" HeaderText="Expiry Date">
+                                                <HeaderStyle CssClass="headercolor center-align" />
+                                                <ItemStyle CssClass="center-align" />
+                                            </asp:BoundField>
 
                                             <asp:TemplateField HeaderText="Signature">
-    <ItemTemplate>
-        <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
-            <asp:Image ID="ImgSignature" runat="server"
-                ImageUrl='<%# "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) %>' />
-        </div>
-    </ItemTemplate>
-</asp:TemplateField>
+                                                <ItemTemplate>
+                                                    <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
+                                                        <asp:Image ID="ImgSignature" runat="server"
+                                                            ImageUrl='<%# "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) %>' />
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
 
 
 

@@ -129,7 +129,8 @@ namespace CEIHaryana.Admin
                     else if (ApplicantType == "Power Utility")
                     {
                         PowerUtility.Visible = true;
-                        PanNo.Visible = true;
+                        PanNo.Visible = false;
+                        TanNo.Visible = false;
                         txtPAN.Text = "";
                         TxtPowerUtility.Text = ds.Tables[0].Rows[0]["PowerUtility"].ToString().Trim();
                         TxtWing.Text = ds.Tables[0].Rows[0]["PowerUtilityWing"].ToString().Trim();

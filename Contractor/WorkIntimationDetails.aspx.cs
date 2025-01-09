@@ -161,7 +161,8 @@ namespace CEIHaryana.Contractor
                         PowerUtility.Visible= true;
                         //InstallationFor.Visible = false;
                         InstallationFor.Visible = true;
-                        PanNo.Visible = true;
+                        PanNo.Visible = false;
+                        TanNo.Visible = false;
                         txtPAN.Text = "";
 
                     }

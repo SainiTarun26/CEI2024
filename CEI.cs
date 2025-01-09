@@ -4419,10 +4419,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
         #endregion
         #region SLD 
-        public DataTable SldHistory(string SiteOwnerId)
-        {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ApproveSdlHistory", SiteOwnerId);
-        }
+        //public DataTable SldHistory(string SiteOwnerId)
+        //{
+        //    return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ApproveSdlHistory", SiteOwnerId);
+        //}
 
 
         public DataSet ViewSldDocuments(string loginId, string searchText = null)
@@ -4465,10 +4465,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_getSdlDocumentFoApproval", LoginId, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
-        public DataTable UpdateSLD(string Id, string path, string SiteOwnerId)
-        {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_UpdateSdlData", Id, path, SiteOwnerId);
-        }
+        //public DataTable UpdateSLD(string Id, string path, string SiteOwnerId)
+        //{
+        //    return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_UpdateSdlData", Id, path, SiteOwnerId);
+        //}
         public DataTable SldReturnHistory(string SiteOwnerId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SdlReturnHistory", SiteOwnerId);
@@ -4652,10 +4652,10 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             }
         }
 
-        public DataTable UpdateSLD_Industry(string Id, string path, string SiteOwnerId, string serviceid)
-        {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_UpdateSdlData_Industry", Id, path, SiteOwnerId, serviceid);
-        }
+        //public DataTable UpdateSLD_Industry(string Id, string path, string SiteOwnerId, string serviceid)
+        //{
+        //    return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_UpdateSdlData_Industry", Id, path, SiteOwnerId, serviceid);
+        //}
 
 
         #endregion
@@ -6432,10 +6432,10 @@ string CreatedBy, string TotalCapacity, string MaxVoltage, int InspectID)
         }
 
 
-        public DataSet UploadSldDocument(string SiteOwnerID, string Path, string Createdby, string SiteOwnerAddress, string OwnerName, string UserType, string District)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_InsertSdlData", SiteOwnerID, Path, Createdby, SiteOwnerAddress, OwnerName, UserType, District);
-        }
+        //public DataSet UploadSldDocument(string SiteOwnerID, string Path, string Createdby, string SiteOwnerAddress, string OwnerName, string UserType, string District)
+        //{
+        //    return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_InsertSdlData", SiteOwnerID, Path, Createdby, SiteOwnerAddress, OwnerName, UserType, District);
+        //}
         public DataTable SldHistory(string SiteOwnerId, string searchText = null)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ApproveSdlHistory", SiteOwnerId, String.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
@@ -7458,36 +7458,36 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetReturnedTestReport", Id);
         }
-        public int UploadSldDocument_Industries(string SiteOwnerID, string Path, string Createdby, string SiteOwnerAddress, string OwnerName, string UserType, string District, string serviceid)
-        {
-            // Prepare the output parameter
-            SqlParameter outputParam = new SqlParameter("@InsertedSLD_ID", SqlDbType.Int)
-            {
-                Direction = ParameterDirection.Output
-            };
+        //public int UploadSldDocument_Industries(string SiteOwnerID, string Path, string Createdby, string SiteOwnerAddress, string OwnerName, string UserType, string District, string serviceid)
+        //{
+        //    // Prepare the output parameter
+        //    SqlParameter outputParam = new SqlParameter("@InsertedSLD_ID", SqlDbType.Int)
+        //    {
+        //        Direction = ParameterDirection.Output
+        //    };
 
-            // Execute the stored procedure and pass the output parameter
-            DBTask.ExecuteNonQuery(
-                ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
-                CommandType.StoredProcedure,
-                "Sp_InsertSdlData_Industries",
-                new SqlParameter("@SiteOwnerID", SiteOwnerID),
-                new SqlParameter("@Path", Path),
-                new SqlParameter("@Createdby", Createdby),
-                new SqlParameter("@SiteOwnerAddress", SiteOwnerAddress),
-                new SqlParameter("@OwnerName", OwnerName),
-                new SqlParameter("@UserType", UserType),
-                new SqlParameter("@District", District),
-                new SqlParameter("@ServiceId", serviceid),
-                outputParam  // Include the output parameter
-            );
+        //    // Execute the stored procedure and pass the output parameter
+        //    DBTask.ExecuteNonQuery(
+        //        ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+        //        CommandType.StoredProcedure,
+        //        "Sp_InsertSdlData_Industries",
+        //        new SqlParameter("@SiteOwnerID", SiteOwnerID),
+        //        new SqlParameter("@Path", Path),
+        //        new SqlParameter("@Createdby", Createdby),
+        //        new SqlParameter("@SiteOwnerAddress", SiteOwnerAddress),
+        //        new SqlParameter("@OwnerName", OwnerName),
+        //        new SqlParameter("@UserType", UserType),
+        //        new SqlParameter("@District", District),
+        //        new SqlParameter("@ServiceId", serviceid),
+        //        outputParam  // Include the output parameter
+        //    );
 
-            // Retrieve the output parameter value
-            int insertedSLD_ID = (int)outputParam.Value;
+        //    // Retrieve the output parameter value
+        //    int insertedSLD_ID = (int)outputParam.Value;
 
-            // Return the inserted SLD_ID
-            return insertedSLD_ID;
-        }
+        //    // Return the inserted SLD_ID
+        //    return insertedSLD_ID;
+        //}
         public DataSet GetInspectionReport_Industry(string Id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionReport_Industry", Id);
