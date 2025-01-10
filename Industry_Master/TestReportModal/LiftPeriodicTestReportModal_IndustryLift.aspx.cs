@@ -1,0 +1,251 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Net.NetworkInformation;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using AjaxControlToolkit.HtmlEditor.ToolbarButtons;
+using System.Windows.Media.TextFormatting;
+using CEI_PRoject;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
+using iText.StyledXmlParser.Node;
+
+namespace CEIHaryana.Industry_Master.TestReportModal
+{
+    public partial class LiftPeriodicTestReportModal_IndustryLift : System.Web.UI.Page
+    {
+        CEI CEI = new CEI();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!Page.IsPostBack)
+                {
+                    string siteOwnerId = Convert.ToString(Session["SiteOwnerId_IndustryLift"]);
+                    string registrationNo = Convert.ToString(Session["RegistrationNo_IndustryLift"]);
+                    string TestReportID = Convert.ToString(Session["TestReportID_IndustryLift"]);
+                    if (Request.UrlReferrer != null)
+                    {
+                        Session["PreviousPage_IndustryLift"] = Request.UrlReferrer.ToString();
+                    }
+
+
+                    if (!string.IsNullOrEmpty(siteOwnerId) && !string.IsNullOrEmpty(registrationNo) && !string.IsNullOrEmpty(TestReportID))
+                    {
+                        GetData();
+                        GetDetails();
+                    }
+                    else if ((Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty)
+                        && !string.IsNullOrEmpty(Convert.ToString(Session["RegistrationNo_IndustryLift"])) && !string.IsNullOrEmpty(Convert.ToString(Session["TestReportID_IndustryLift"])))
+                    {
+                        GetData();
+                        GetDetails_AtOfficerEnd();
+                    }
+                    else
+                    {
+                        Response.Redirect("/login.aspx", false);
+                    }
+                }
+            }
+            catch (Exception Ex)
+            { }
+        }
+
+        private void GetDetails()
+        {
+            if (Convert.ToString(Session["SiteOwnerId_IndustryLift"]) != null && Convert.ToString(Session["SiteOwnerId_IndustryLift"]) != "")
+            {
+                string Id = Session["SiteOwnerId_IndustryLift"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.GetSiteOwnerDataInPeriodicOfLift_IndustryLift(Id);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                    txtInstallationFor.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                    txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+                    //txtagency.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                    txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+                    txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                    txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
+                    txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+                    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+                }
+            }
+            //else if ((Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty) && !string.IsNullOrEmpty(Convert.ToString(Session["RegistrationNo"])))
+            //{
+
+            //}
+            else
+            {
+                Response.Redirect("/login.aspx", false);
+            }
+        }
+
+        private void GetData()
+        {
+            try
+            {
+                if (Convert.ToString(Session["RegistrationNo_IndustryLift"]) != null && Convert.ToString(Session["RegistrationNo_IndustryLift"]) != "")
+                {
+                    string RegistrationNo = Session["RegistrationNo_IndustryLift"].ToString();
+                    string TRId = Session["TestReportID_IndustryLift"].ToString();
+                    DataSet ds = CEI.GetDetailsOfLiftRenewalReport_IndustryLift(RegistrationNo, TRId);
+
+                    object previousChallanDateObj = ds.Tables[0].Rows[0]["PreviousChallanDate"];
+                    if (previousChallanDateObj != DBNull.Value)
+                    {
+                        DateTime previousChallanDate = Convert.ToDateTime(previousChallanDateObj);
+                        txtPrevChallanDate.Text = previousChallanDate.ToString("yyyy-MM-dd");
+                    }
+                    else
+                    {
+                        txtPrevChallanDate.Text = string.Empty;
+                    }
+
+                    object LastApprovalDateObj = ds.Tables[0].Rows[0]["LastApprovalDate"];
+                    if (LastApprovalDateObj != DBNull.Value)
+                    {
+                        DateTime LastApproval = Convert.ToDateTime(LastApprovalDateObj);
+                        txtLastApprovalDate.Text = LastApproval.ToString("yyyy-MM-dd");
+                    }
+                    else
+                    {
+                        txtLastApprovalDate.Text = string.Empty;
+                    }
+
+                    object ErectionDateObj = ds.Tables[0].Rows[0]["ErectionDate"];
+                    if (ErectionDateObj != DBNull.Value)
+                    {
+                        DateTime ErectionDate = Convert.ToDateTime(ErectionDateObj);
+                        txtDateofErection.Text = ErectionDate.ToString("yyyy-MM-dd");
+                    }
+                    else
+                    {
+                        txtDateofErection.Text = string.Empty;
+                    }
+
+                    txtRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
+                    txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
+                    txtSerialNo.Text = ds.Tables[0].Rows[0]["SerialNo"].ToString();
+                    txtControlType.Text = ds.Tables[0].Rows[0]["TypeOfControl"].ToString();
+                    txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                    txtWeight.Text = ds.Tables[0].Rows[0]["Weight"].ToString();
+                    txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
+                    txtDistrictOfTr.Text = ds.Tables[0].Rows[0]["ApplicantDistrict"].ToString();
+                    txtLiftType.Text = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
+                    Session["File_IndustryLift"] = ds.Tables[0].Rows[0]["PreviousChallanUpload"].ToString();
+
+                    GridDocument();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void GridDocument()
+        {
+            string RegistrationNo = Session["RegistrationNo_IndustryLift"].ToString();
+
+            string TReportID = Convert.ToString(Session["TestReportID_IndustryLift"]);
+            DataTable ds = CEI.GetDocumentOfLiftRenewalToShow_IndustryLift(TReportID);
+            if (ds != null && ds.Rows.Count > 0)
+            {
+                Grd_Document.DataSource = ds;
+                Grd_Document.DataBind();
+            }
+            else
+            {
+                Grd_Document.DataSource = null;
+                Grd_Document.DataBind();
+                string script = "alert('No Record Found for document');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+        }
+        protected void Grd_Document_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            {
+                string fileName = "";
+                try
+                {
+                    if (e.CommandName == "Select")
+                    {
+                        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                        string script = $@"<script>window.open('{fileName}','_blank');</script>";
+                        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                    }
+                }
+                catch (Exception ex)
+                { }
+            }
+        }
+
+        protected void lnkFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Session["File_IndustryLift"] != null && Session["File_IndustryLift"].ToString() != "")
+                {
+                    string fileName = Session["File_IndustryLift"].ToString();
+
+                    string filePath = fileName.Replace("~", "");
+                    filePath = "https://uat.ceiharyana.com" + filePath;
+
+                    string script = $@"<script>window.open('{filePath}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                }
+            }
+            catch (Exception ex)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "Error", $"alert('Error: {ex.Message}');", true);
+            }
+        }
+
+        private void GetDetails_AtOfficerEnd()
+        {
+            if (Convert.ToString(Session["RegistrationNo_IndustryLift"]) != null && Convert.ToString(Session["RegistrationNo_IndustryLift"]) != "")
+            {
+                string Id = Session["RegistrationNo_IndustryLift"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.GetSiteOwnerDataInPeriodicOfLift_AtOfficerEnd_IndustryLift(Id);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                    txtInstallationFor.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
+                    txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
+                    //txtagency.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                    txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+                    txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                    txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
+                    txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+                    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+                }
+            }
+            //else if ((Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty) && !string.IsNullOrEmpty(Convert.ToString(Session["RegistrationNo"])))
+            //{
+
+            //}
+            else
+            {
+                Response.Redirect("/login.aspx", false);
+            }
+        }
+
+        protected void BtnBack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string previousPageUrl = Session["PreviousPage_IndustryLift"] as string;
+                if (!string.IsNullOrEmpty(previousPageUrl))
+                {
+                    Response.Redirect(previousPageUrl, false);
+                    //Response.Redirect("/SiteOwnerPages/LiftPeriodic.aspx", false);
+                    Session["PreviousPage_IndustryLift"] = null;
+                }
+            }
+            catch { }
+        }
+    }
+}
