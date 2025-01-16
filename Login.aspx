@@ -364,7 +364,7 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="#">About CEI</a>
+                                        <a href="AboutCEI.aspx">About CEI</a>
                                     </li>
                                     <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
@@ -376,10 +376,10 @@
                 </ul>
               </li> -->
                                     <li>
-                                        <a href="#">State Licensing Board, Haryana</a>
+                                        <a href="/StateLicensingBoard.aspx">State Licensing Board, Haryana</a>
                                     </li>
                                     <li>
-                                        <a href="#">Functions</a>
+                                        <a href="Functions.aspx">Functions</a>
                                     </li>
                                 </ul>
                             </li>
@@ -390,11 +390,21 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="#">Procedure For Registration/
+                                        <a href="Procedure_For_Registration_Lift_Exclator.aspx">Procedure For Registration /
                   <br>
                                             Inspection Lifts and Esclators
                                         </a>
                                     </li>
+                                                      <li>
+                      <a href="https://egovservices.in/" target="_blank">Apply for New / Renewal Lift
+                      </a>
+                  </li>
+                                                                        <li>
+    <a href="StaticPage2.aspx" target="_blank">List of Lift Inspectors
+    </a>
+</li>
+
+
                                     <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
@@ -405,13 +415,18 @@
                 </ul>
               </li> -->
                                     <li>
-                                        <a href="#">Checklist for Registration/
-                  <br>
-                                            Inspection of Lifts and Esclators
+                                        <a href="UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Checklist for Registration/
+ <br />
+                                            Inspection of Lifts and Elevators
                                         </a>
                                     </li>
+
+
+
+
                                     <li>
-                                        <a href="#">Forms</a>
+                                        <a href="   " target="_blank">Forms
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
@@ -423,7 +438,7 @@
                                 <ul>
                                     <li>
                                         <a href="UserManual/Haryana-Electrical-Contractor-Licence-Certificate-of.pdf" target="_blank">Electrical Licensing Rules-2021
-</a>
+                                        </a>
                                     </li>
                                     <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
@@ -442,7 +457,7 @@
                                     </li>--%>
                                     <li>
                                         <a href="UserManual/form_split.pdf" target="_blank">Forms & Fees
-</a>
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
@@ -452,9 +467,7 @@
                                     <i class="bi bi-chevron-down"></i>
                                 </a>
                                 <ul>
-                                    <li>
-                                        <a href="#">Checklist for Online Service(Inspection)</a>
-                                    </li>
+                                   
                                     <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
@@ -465,10 +478,10 @@
                 </ul>
               </li> -->
                                     <li>
-                                        <a href="#">Procedure for Electrical Installation</a>
+                                        <a href="/Procedure_for_Electrical _Installation.aspx">Procedure for Electrical Installation</a>
                                     </li>
                                     <li>
-                                        <a href="#">Procedure for Grant of
+                                        <a href="Procedure_for_grant_of_approval.aspx">Procedure for Grant of
                   <br />
                                             approval for Energisation of
                   <br />
@@ -480,15 +493,11 @@
                             </li>
 
                             <li class="dropdown">
-                                <a href="#">
+                                <a href="OurOnlineServices.aspx">
                                     <span>Services</span>
-                                    <i class="bi bi-chevron-down"></i>
+                                    
                                 </a>
-                                <ul>
-                                    <li>
-                                        <a href="#">Our Services</a>
-                                    </li>
-                                </ul>
+                                
                             </li>
                             <li class="dropdown">
                                 <a href="#">
@@ -497,11 +506,20 @@
                                 </a>
                                 <ul>
                                     <li>
+                                        <a href="/UserManual/CamScanner 01-13-2025 13.54.pdf" target="_blank">BRAP-2024 Griviance Mechanism</a>
+                                    </li>
+                                      <li>
+      <a href="UserManual/office order 223.pdf" target="_blank">Mendate Regarding high medium low risk profile</a>
+  </li>
+                                    <li>
+                                        <a href="UserManual/CamScanner 01-09-2025 13.37_1.pdf" target="_blank">Mendate Regarding Registration and<br/> Renewal 0f Lift/Escalator</a>
+                                    </li>
+                                    <li>
                                         <a href="UserManual/Mendate%20Regarding%20Electrical%20Installations.pdf" target="_blank">Mendate Regarding ELectrical Installations</a>
                                     </li>
 
                                     <li>
-                                        <a href="UserManual/Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf"  target="_blank">Authorisation of Chartered<br />
+                                        <a href="UserManual/Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf" target="_blank">Authorisation of Chartered<br />
                                             Electrical Safety Engineer(CESE) (New)</a>
 
                                     </li>
@@ -510,10 +528,10 @@
                                     </li>
                                     <li class="dropdown"><a href="#"><span>Fees Details</span> <i class="bi bi-chevron-right"></i></a>
                                         <ul>
-                                            <li><a href="UserManual/Fees-for-New-Installation-Inspection.pdf" target="_blank">Fees for New Installation Inspection</a></li>
-                                            <li><a href="UserManual/Fees-For-Periodical-Inspection.pdf" target="_blank">Fees For Periodical Inspection</a></li>
+                                            <li><a href="UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for New Installation Inspection</a></li>
+                                            <li><a href="UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees For Periodical Inspection</a></li>
 
-                                            <li><a href="UserManual/Fees-for-various-certificates-Licences.pdf" target="_blank">Fees for various certificates & Licences</a></li>
+                                            <li><a href="UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for various certificates & Licences</a></li>
 
                                         </ul>
                                     </li>
@@ -573,7 +591,7 @@
                                                     SetFocusOnError="True" ValidationGroup="Submit">*</asp:RequiredFieldValidator>
                                             </div>
                                             <div class="field">
-                                                <asp:TextBox ID="txtPassword" runat="server" class="form-control form-control-lg" autocomplete="off"  MaxLength="40" TextMode="Password"
+                                                <asp:TextBox ID="txtPassword" runat="server" class="form-control form-control-lg" autocomplete="off" MaxLength="40" TextMode="Password"
                                                     placeholder="Enter Your Password" TabIndex="2" Style="font-size: 13px; border-color: white; border: #d9dee3 1px solid;"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                                                     ControlToValidate="txtPassword" Display="Dynamic"
@@ -666,7 +684,8 @@
                                             </li>
                                         </ul>
                                         <li>
-                                            <a href="#">Right to Service Act</a>
+                                            
+                                            <a href="UserManual/RTS2014.pdf" target="_blank">Right to Service Act</a>
                                         </li>
                                         <li>
                                             <a href="#">List of Contractors</a>
@@ -678,7 +697,7 @@
                                             <a href="#">Orders</a>
                                         </li>
                                         <li>
-                                            <a href="#">Acts, Rules & Regulations</a>
+                                            <a href="UserManual/Haryana-Lifts-and-Escalators-Act-2008.pdf">Acts, Rules & Regulations</a>
                                         </li>
                                         <li>
                                             <a href="#">Downloads</a>

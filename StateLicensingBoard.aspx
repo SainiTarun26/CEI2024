@@ -1,6 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StaticPage1.aspx.cs" Inherits="CEIHaryana.StaticPage1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StateLicensingBoard.aspx.cs" Inherits="CEIHaryana.StateLicensingBoard" %>
 
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>CEI-Haryana</title>
@@ -11,8 +12,6 @@
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
-
     <!-- Vendor CSS Files -->
     <link href="/assetsnew/vendor/aos/aos.css" rel="stylesheet" />
     <link href="/assetsnew/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -308,106 +307,45 @@
         b {
             text-decoration: underline !important;
         }
-
-        .card-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .styled-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 18px;
-            text-align: left;
-        }
-
-            .styled-table thead tr {
-                background-color: #009879;
-                color: #ffffff;
-                text-align: left;
-                font-weight: bold;
-            }
-
-            .styled-table th, .styled-table td {
-                padding: 12px 15px;
-                border: 1px solid #ddd;
-            }
-
-            .styled-table tbody tr {
-                border-bottom: 1px solid #ddd;
-            }
-
-                .styled-table tbody tr:nth-of-type(even) {
-                    background-color: #f3f3f3;
-                }
-
-                .styled-table tbody tr:last-of-type {
-                    border-bottom: 2px solid #009879;
-                }
-
-            .styled-table a {
-                color: #007BFF;
-                text-decoration: none;
-            }
-
-                .styled-table a:hover {
-                    text-decoration: underline;
-                }
-
-        th {
-            background: #9292cc;
-        }
-
-        .dropdown-icon-wrapper {
-            position: relative;
-            width: 100%;
-        }
-
-        .dropdown-icon {
-            position: absolute;
-            top: 50%;
-            right: 15px;
-            transform: translateY(-50%);
-            pointer-events: none;
-            color: #555; /* Adjust icon color as needed */
-        }
+        section {
+    padding: 20px 0;
+    overflow: hidden;
+}
     </style>
 </head>
-<body style="zoom: 85% !important;">
+<body style="zoom: 90% !important;">
     <form id="form1" runat="server">
+        <div>
+            <!-- ======= Top Bar ======= -->
+            <section id="topbar" class="d-flex align-items-center">
+                <div class="container d-flex justify-content-center justify-content-md-between">
+                    <div class="contact-info d-flex align-items-center">
+                        <%-- <i class="bi bi-envelope d-flex align-items-center">
+                            <a href="mailto:contact@example.com">contact@example.com</a>
+                        </i>--%>
+                        <%-- <i class="bi bi-phone d-flex align-items-center ms-4">
+                            <span>+91 7696438770</span>
+                        </i> --%>
+                    </div>
+                    <div class="social-links d-none d-md-flex align-items-center">
+                        <a href="#" class="twitter">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="linkedin">
+                            <i class="bi bi-linkedin"></i>
 
-        <!-- ======= Top Bar ======= -->
-        <section id="topbar" class="d-flex align-items-center">
-    <div class="container d-flex justify-content-center justify-content-md-between">
-        <div class="contact-info d-flex align-items-center">
-            <%-- <i class="bi bi-envelope d-flex align-items-center">
-                <a href="mailto:contact@example.com">contact@example.com</a>
-            </i>--%>
-            <%-- <i class="bi bi-phone d-flex align-items-center ms-4">
-                <span>+91 7696438770</span>
-            </i> --%>
-        </div>
-        <div class="social-links d-none d-md-flex align-items-center">
-            <a href="#" class="twitter">
-                <i class="bi bi-twitter"></i>
-            </a>
-            <a href="#" class="facebook">
-                <i class="bi bi-facebook"></i>
-            </a>
-            <a href="#" class="instagram">
-                <i class="bi bi-instagram"></i>
-            </a>
-            <a href="#" class="linkedin">
-                <i class="bi bi-linkedin"></i>
-
-            </a>
-        </div>
-    </div>
-</section>
-        <!-- ======= Header ======= -->
-                    <header id="header" class="d-flex align-items-center"
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <!-- ======= Header ======= -->
+                                   <header id="header" class="d-flex align-items-center"
                 style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
                 <div class="container d-flex align-items-center justify-content-between">
                     <a href="Login.aspx" class="logo">
@@ -430,7 +368,7 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="#">About CEI</a>
+                                        <a href="AboutCEI.aspx">About CEI</a>
                                     </li>
                                     <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
@@ -442,10 +380,10 @@
                 </ul>
               </li> -->
                                     <li>
-                                        <a href="#">State Licensing Board, Haryana</a>
+                                        <a href="/StateLicensingBoard.aspx">State Licensing Board, Haryana</a>
                                     </li>
                                     <li>
-                                        <a href="#">Functions</a>
+                                        <a href="Functions.aspx">Functions</a>
                                     </li>
                                 </ul>
                             </li>
@@ -456,7 +394,7 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="Procedure For Registration Lift Exclator.aspx">Procedure For Registration /
+                                        <a href="Procedure_For_Registration_Lift_Exclator.aspx">Procedure For Registration /
                   <br>
                                             Inspection Lifts and Esclators
                                         </a>
@@ -491,7 +429,7 @@
 
 
                                     <li>
-                                        <a href="UserManual/Forms.pdf" target="_blank">Forms
+                                        <a href="   " target="_blank">Forms
                                         </a>
                                     </li>
                                 </ul>
@@ -533,9 +471,7 @@
                                     <i class="bi bi-chevron-down"></i>
                                 </a>
                                 <ul>
-                                    <li>
-                                        <a href="#">Checklist for Online Service(Inspection)</a>
-                                    </li>
+                                   
                                     <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
@@ -546,10 +482,10 @@
                 </ul>
               </li> -->
                                     <li>
-                                        <a href="#">Procedure for Electrical Installation</a>
+                                        <a href="/Procedure_for_Electrical _Installation.aspx">Procedure for Electrical Installation</a>
                                     </li>
                                     <li>
-                                        <a href="#">Procedure for Grant of
+                                        <a href="Procedure_for_grant_of_approval.aspx">Procedure for Grant of
                   <br />
                                             approval for Energisation of
                   <br />
@@ -561,15 +497,11 @@
                             </li>
 
                             <li class="dropdown">
-                                <a href="#">
+                                <a href="OurOnlineServices.aspx">
                                     <span>Services</span>
-                                    <i class="bi bi-chevron-down"></i>
+                                    
                                 </a>
-                                <ul>
-                                    <li>
-                                        <a href="#">Our Services</a>
-                                    </li>
-                                </ul>
+                                
                             </li>
                             <li class="dropdown">
                                 <a href="#">
@@ -578,7 +510,7 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="#" target="_blank">BRAP-2024 Griviance Mechanism</a>
+                                        <a href="/UserManual/CamScanner 01-13-2025 13.54.pdf" target="_blank">BRAP-2024 Griviance Mechanism</a>
                                     </li>
                                       <li>
       <a href="UserManual/office order 223.pdf" target="_blank">Mendate Regarding high medium low risk profile</a>
@@ -600,10 +532,10 @@
                                     </li>
                                     <li class="dropdown"><a href="#"><span>Fees Details</span> <i class="bi bi-chevron-right"></i></a>
                                         <ul>
-                                            <li><a href="UserManual/Fees-for-New-Installation-Inspection.pdf" target="_blank">Fees for New Installation Inspection</a></li>
-                                            <li><a href="UserManual/Fees-For-Periodical-Inspection.pdf" target="_blank">Fees For Periodical Inspection</a></li>
+                                            <li><a href="UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for New Installation Inspection</a></li>
+                                            <li><a href="UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees For Periodical Inspection</a></li>
 
-                                            <li><a href="UserManual/Fees-for-various-certificates-Licences.pdf" target="_blank">Fees for various certificates & Licences</a></li>
+                                            <li><a href="UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for various certificates & Licences</a></li>
 
                                         </ul>
                                     </li>
@@ -627,180 +559,163 @@
                     <!-- .navbar -->
                 </div>
             </header>
-        <!-- End Header -->
-        <!-- ======= Hero Section ======= -->
+            <!-- End Header -->
 
-        <!-- End Hero -->
+        </div>
+      
+         <main id="main">
+     <!-- ======= About Section ======= -->
+     <section id="about" class="about section-bg">
+         <div class="row">
+             <div class="col-md-2" style="margin-left: 20px;">
+                 <!--  data-aos="fade-right" -->
+                 <div class="card" style="width: 220px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                     <div class="card-header"
+                         style="background-color: #106eea; color: #f9f9f9; text-align: center; font-weight: 700;">
+                         Navigation
+                     </div>
+                     <div class="card-body" style="font-size: 15px;">
+                         <ul>
+                             <li>
+                                 <a href="UserPages/OurServices.aspx" id="alertLink" style="position: relative; z-index: 1;">User Manual</a>&nbsp;&nbsp;&nbsp;<img src="Assets/new1.gif" id="alertGif" />
+                             </li>
+                             <li>
+                                 <a href="#">Department Service Rules</a>
+                             </li>
+                             <li>
+                                 <a href="#">Clearances Report</a>
+                             </li>
+                             <li>
+                                 <a href="#">RTI</a>
+                                 <ul>
+                                     <li>
+                                         <a href="#">RTI Acts & Rules</a>
+                                     </li>
+                                     <li>
+                                         <a href="#">RTI Authorities</a>
+                                     </li>
+                                     <li>
+                                         <a href="#">SUO MOTU DISCLOSURE UNDER SECTION 4 OF RTI ACT, 2005.</a>
+                                     </li>
+                                 </ul>
+                                 <li>
+                                     <a href="#">Right to Service Act</a>
+                                 </li>
+                                 <li>
+                                     <a href="#">List of Contractors</a>
+                                 </li>
+                                 <li>
+                                     <a href="#">Notifications</a>
+                                 </li>
+                                 <li>
+                                     <a href="#">Orders</a>
+                                 </li>
+                                 <li>
+                                     <a href="#">Acts, Rules & Regulations</a>
+                                 </li>
+                                 <li>
+                                     <a href="#">Downloads</a>
+                                 </li>
+                                 <li>
+                                     <a href="#">Frequetly Asked Questions(FAQs)</a>
+                                 </li>
+                         </ul>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-md-9" style="margin-top: -15px;">
+                 <section id="about" class="about section-bg" style="padding-top: 15px;">
+    <div class="container" data-aos="fade-up">
+        <%-- <div class="row">
+      <div class="col-md-12" style="margin-bottom: 15px; font-weight: 700;">
+          <p style="text-align: center;">
+              (Please read the instructions carefully as given in Instruction
+  Page before filling the form)                           
+          </p>
+          <img src="/Assets/capsules/registration.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
+      </div>
+  </div>--%>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-12">
 
-        <main id="main">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card" style="margin: 20px; padding: 15px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 10px !important;">
-                        <div class="card-title" style="margin-bottom: 0px; text-align: center;">EODB Dashboard</div>
+                <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important;height:563px; padding-left: 30px;">
+
+                    <div class="row" style="padding-top: 20px; padding-bottom: 10px;
+    background: #106eea; color: white; margin-left: -30px;
+    margin-right: 0px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                        <div class="col-md-12">
+                            <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">STATE LICENSING BOARD, HARYANA</h7>
+
+
+                        </div>
                     </div>
+                    <hr style="margin-top: 0px !important; margin-left: -15px; width: 100%;" />
+                    <div class="row" style="margin-left: 10px;">
+                        
+
+                    </div>
+                    <div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+                        <div class="col-md-12">
+                            <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">The State Licensing Board was constituted by the State Government on formation of Haryana state in the year 1966 and its functions are as under;</h7>
+
+                        </div>
+                    </div>
+                    <hr style="margin-top: 0px !important; margin-left: -15px; width: 100%;" />
+                    <div class="row" style="margin-left: 10px;">
+                        <ul>
+
+                            <li>To grant licence to the Electrical Contractors and Competency Certificate to the Electrical Supervisors and Permit to the Wiremen.</li>
+                            <li>To conduct examination, grant licences and permits/ competency certificates mentioned in sub clause(i).</li>
+                            <li>To deal with all matters in connection with the electrical contractors, licences and supervisors and wiremen’s examination.</li>
+                            <li>To enquire into allegations or incompetence, negligence and breach of the provisions of rule 45 of the Indian Electricity Rules, 1956 now “Central Electricity Authority (Measures relating to Safety and Electric Supply) Regulations 2010” and conditions of the licences, certificates and permits as the case may be or of mal-practice on the part of the wiring contractor and to take such action as might be deemed proper.</li>
+                            <li>To do such other works of the State Government as it may from time to time direct in connection with the enforcement of the Indian Electricity Rules 1956 now “Central Electricity Authority (Measures relating to Safety and Electric Supply) Regulations 2010”.</li>
+                            <li>To maintain a register of the electrical contractors, electrical supervisors and wiremen, holding licences, certificates and permits respectively.</li>
+                        </ul>
+
+                    </div>
+
                 </div>
+
             </div>
-            <div class="card" style="margin: 20px; padding: 15px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-top: -10px; height: 550px !important;">
-                <div class="card-body" style="border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-                    <div class="col-md-12">
-                        <div class="card-title">Document Checklist and Procedures</div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label>
-                                    Select Firm
-                        <samp style="color: red">* </samp>
-                                </label>
-                                <div class="dropdown-icon-wrapper" style="position: relative; width: 100%;">
-                                    <asp:DropDownList
-                                        class="form-control select-form select2"
-                                        AutoPostBack="true"
-                                        Style="width: 100% !important;"
-                                        ID="ddlInspectionType"
-                                        TabIndex="2"
-                                        runat="server">
-                                        <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
-                                        <asp:ListItem Text="Small" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Medium" Value="Existing"></asp:ListItem>
-                                        <asp:ListItem Text="Large" Value="Existing"></asp:ListItem>
-                                        <asp:ListItem Text="Mega" Value="Existing"></asp:ListItem>
-                                        <asp:ListItem Text="Ultra" Value="Existing"></asp:ListItem>
-                                    </asp:DropDownList>
-                                    <i class="dropdown-icon fas fa-chevron-down" style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); pointer-events: none;"></i>
-                                </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</section>
+             </div>
+         </div>
+     </section>
 
-                            </div>
-                            <div class="col-md-3">
-                                <label>
-                                    Select Location
-                        <samp style="color: red">* </samp>
-                                </label>
-                                <div class="dropdown-icon-wrapper" style="position: relative; width: 100%;">
-                                    <asp:DropDownList
-                                        class="form-control select-form select2"
-                                        AutoPostBack="true"
-                                        Style="width: 100% !important;"
-                                        ID="DropDownList1"
-                                        TabIndex="2"
-                                        runat="server">
-                                        <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
-                                        <asp:ListItem Text="Black Category A" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Black Category B" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Black Category C" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Black Category D" Value="1"></asp:ListItem>
-                                    </asp:DropDownList>
-                                    <i class="dropdown-icon fas fa-chevron-down" style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); pointer-events: none;"></i>
-                                </div>
-
-                            </div>
-                            <div class="col-md-3">
-                                <label>
-                                    Select Investor Type
-                        <samp style="color: red">* </samp>
-                                </label>
-                                <div class="dropdown-icon-wrapper" style="position: relative; width: 100%;">
-                                    <asp:DropDownList
-                                        class="form-control select-form select2"
-                                        AutoPostBack="true"
-                                        Style="width: 100% !important;"
-                                        ID="DropDownList2"
-                                        TabIndex="2"
-                                        runat="server">
-                                        <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
-                                        <asp:ListItem Text="Foreign" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Domastic" Value="2"></asp:ListItem>
-                                    </asp:DropDownList>
-                                    <i class="dropdown-icon fas fa-chevron-down" style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); pointer-events: none;"></i>
-                                </div>
-
-                            </div>
-                            <div class="col-md-3">
-                                <label>
-                                    Select Risk Category
-                        <samp style="color: red">* </samp>
-                                </label>
-                                <div class="dropdown-icon-wrapper" style="position: relative; width: 100%;">
-                                    <asp:DropDownList
-                                        class="form-control select-form select2"
-                                        AutoPostBack="true"
-                                        Style="width: 100% !important;"
-                                       
-                                        TabIndex="2"
-                                        runat="server">
-                                        <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
-                                        <asp:ListItem Text="High" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Medium" Value="2"></asp:ListItem>
-                                        <asp:ListItem Text="Low" Value="3"></asp:ListItem>
-                                    </asp:DropDownList>
-                                    <i class="dropdown-icon fas fa-chevron-down" style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); pointer-events: none;"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body" visible="true" style="border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-top: 20px;">
-                    <div class="col-md-12">
-                        <div class="card-title" style="margin-bottom: 0px; margin-bottom: 10px;">Service Information</div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <span>( Results between 01-04-2024 and 29-11-2024)</span>
-                            </div>
-                            <div class="col-md-6" style="text-align: end;">
-                                <span>Last Updated On (dd-mm-yyyy hh:mm:ss) : 29-11-2024 17:00:17</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <table class="styled-table" style="text-align: center;">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 20%; text-align: center;">Service</th>
-                                        <th style="width: 20%; text-align: center;">Fees</th>
-                                        <th style="width: 20%; text-align: center;">Checklist</th>
-                                        <th style="width: 20%; text-align: center;">Procedure</th>
-                                        <th style="width: 20%; text-align: center;">Timeline</th>
-                                    </tr>
-                                </thead>    
-                                <tbody>
-                                    <tr>
-                                        <td>Lift New</td>
-                                        <td>₹3500 (1000 for registration + 2500 for Inspection)</td>
-                                        <td><a href="UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Download Document</a></td>
-                                        <td><a href="/Procedure_For_Registration_Lift_Exclator.aspx">View Details</a>                                                                  
-                                        </td>
-                                        <td><a href="#">Download Timeline PDF</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lift Periodic</td>
-                                        <td>₹1000</td>
-                                        <td><a href="UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Download Document</a></td>
-                                        <td><a href="/Procedure_For_Registration_Lift_Exclator.aspx">View Details</a>                                                                  
-</td>
-                                        <td><a href="#">Download Timeline PDF</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+     <!-- End Contact Section -->
+ </main>
         <!-- End #main -->
         <!-- ======= Footer ======= -->
-        <%-- <footer id="footer" style="background-color: #d1e6ff !important;">
+        <footer id="footer" style="background-color: #d1e6ff !important;">
 
 
-                <div class="container py-4">
-                    <div class="copyright">
-                        All Rights Reserved @ <span style="color: blue;">Chief Electrical Inspector Govt. of Haryana,
+            <div class="container py-4">
+                <div class="copyright">
+                    All Rights Reserved @ <span style="color: blue;">Chief Electrical Inspector Govt. of Haryana,
                             SCO NO 117-118, Top Floor, Sector 17-B, Chandigarh-160017. </span>
-                  
-                    </div>
                 </div>
-            </footer>--%>
+                <%--<div class="credits">
+                        <!-- All the links in the footer should remain intact. -->
+                        <!-- You can delete the links only if you purchased the pro version. -->
+                        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
+                        Developed by
+        <a href="http://safedot.in/">Safedot E Solution Pvt. Ltd.</a>
+                    </div>--%>
+            </div>
+        </footer>
         <!-- End Footer -->
+        <div id="preloader"></div>
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
             <i class="bi bi-arrow-up-short"></i>
         </a>
         <!-- Vendor JS Files -->
+
+        </div>
     </form>
     <script src="/assetsnew/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="/assetsnew/vendor/aos/aos.js"></script>
@@ -831,7 +746,5 @@
             return false;
         });
     </script>
-    
-    
 </body>
 </html>

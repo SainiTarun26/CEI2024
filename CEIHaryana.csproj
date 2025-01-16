@@ -1796,6 +1796,7 @@
     <Content Include="DataTableJs\bootstrap.min.js" />
     <Content Include="DataTableJs\jquery.js" />
     <Content Include="DataTableJs\jqueryDataTable.js" />
+    <Content Include="Functions.aspx" />
     <Content Include="GetPassword.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Image\Image\ImageToDelete-removebg-preview.png" />
@@ -1938,6 +1939,7 @@
     <Content Include="Officers\Returned_PeriodicInspection_Lift_Escalator.aspx" />
     <Content Include="Officers\TotalRequest.aspx" />
     <Content Include="OTPVerification.aspx" />
+    <Content Include="OurOnlineServices.aspx" />
     <Content Include="PaymentPage.aspx" />
     <Content Include="Periodic_Industry\InProcessRenewal_Industry.aspx" />
     <Content Include="Periodic_Industry\Print_PeriodicIndustry.aspx" />
@@ -1954,6 +1956,9 @@
     <Content Include="Print_Forms\PrintCertificate2.aspx" />
     <Content Include="Print_Forms\PrintCertificate3.aspx" />
     <Content Include="Print_Forms\PrintCertificate4.aspx" />
+    <Content Include="Procedure_for_Electrical _Installation.aspx" />
+    <Content Include="Procedure_for_grant_of_approval.aspx" />
+    <Content Include="Procedure_For_Registration_Lift_Exclator.aspx" />
     <Content Include="ScriptCalendar\jquery-1.11.0.min.js" />
     <Content Include="ScriptCalendar\jquery-ui.css" />
     <Content Include="ScriptCalendar\jquery-ui.min.js" />
@@ -2010,6 +2015,7 @@
     <Content Include="SiteOwnerPages\TestReport.aspx" />
     <Content Include="SiteOwnerPages\TestReportData.aspx" />
     <Content Include="SiteOwnerPages\ViewLiftPeriodicReport.aspx" />
+    <Content Include="StateLicensingBoard.aspx" />
     <Content Include="StaticPage1.aspx" />
     <Content Include="StaticPage2.aspx" />
     <Content Include="StaticPage3.aspx" />
@@ -2053,6 +2059,7 @@
     <Content Include="TestReport\Single-Three-Phase.aspx" />
     <Content Include="TestReport\SubstationTransformer.aspx" />
     <Content Include="TestReport\TestReport.aspx" />
+    <Content Include="UserManual\Flow-Chart-for-LiftSolar-Panel-DG-Set-Renewable-Sources.jpg" />
     <Content Include="UserPages\ApplicationForLiftEscalators.aspx" />
     <Content Include="UserPages\ContractorApplicationForm.aspx" />
     <Content Include="UserPages\Documents.aspx" />
@@ -2509,6 +2516,13 @@
       <DependentUpon>Work_Intimation.aspx</DependentUpon>
     </Compile>
     <Compile Include="DBTask.cs" />
+    <Compile Include="Functions.aspx.cs">
+      <DependentUpon>Functions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Functions.aspx.designer.cs">
+      <DependentUpon>Functions.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GetPassword.aspx.cs">
       <DependentUpon>GetPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2992,6 +3006,13 @@
     <Compile Include="OTPVerification.aspx.designer.cs">
       <DependentUpon>OTPVerification.aspx</DependentUpon>
     </Compile>
+    <Compile Include="OurOnlineServices.aspx.cs">
+      <DependentUpon>OurOnlineServices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OurOnlineServices.aspx.designer.cs">
+      <DependentUpon>OurOnlineServices.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PaymentPage.aspx.cs">
       <DependentUpon>PaymentPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3103,6 +3124,27 @@
     </Compile>
     <Compile Include="Print_Forms\PrintCertificate4.aspx.designer.cs">
       <DependentUpon>PrintCertificate4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure_for_Electrical _Installation.aspx.cs">
+      <DependentUpon>Procedure_for_Electrical _Installation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Procedure_for_Electrical _Installation.aspx.designer.cs">
+      <DependentUpon>Procedure_for_Electrical _Installation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure_for_grant_of_approval.aspx.cs">
+      <DependentUpon>Procedure_for_grant_of_approval.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Procedure_for_grant_of_approval.aspx.designer.cs">
+      <DependentUpon>Procedure_for_grant_of_approval.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure_For_Registration_Lift_Exclator.aspx.cs">
+      <DependentUpon>Procedure_For_Registration_Lift_Exclator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Procedure_For_Registration_Lift_Exclator.aspx.designer.cs">
+      <DependentUpon>Procedure_For_Registration_Lift_Exclator.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteOwnerPages\ChallanReport.aspx.cs">
@@ -3482,6 +3524,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\ViewLiftPeriodicReport.aspx.designer.cs">
       <DependentUpon>ViewLiftPeriodicReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StateLicensingBoard.aspx.cs">
+      <DependentUpon>StateLicensingBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StateLicensingBoard.aspx.designer.cs">
+      <DependentUpon>StateLicensingBoard.aspx</DependentUpon>
     </Compile>
     <Compile Include="StaticPage1.aspx.cs">
       <DependentUpon>StaticPage1.aspx</DependentUpon>
@@ -4161,19 +4210,27 @@
     <Content Include="TestReport\TestReport.Master" />
     <Content Include="SiteOwnerPages\SiteOwner.Master" />
     <Content Include="TestReportsNew\TestReport.Master" />
-    <Content Include="UserManual\USERmanualContractor.pdf" />
-    <Content Include="UserManual\USERmanualSiteowner.pdf" />
-    <Content Include="UserManual\USERmanualSupervisor.pdf" />
-    <Content Include="UserManual\Haryana-Electrical-Contractor-Licence-Certificate-of.pdf" />
-    <Content Include="UserManual\form_split.pdf" />
-    <Content Include="UserManual\Mendate Regarding Electrical Installations.pdf" />
+    <Content Include="UserManual\Adobe Scan 13-Jan-2025.pdf" />
+    <Content Include="UserManual\Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf" />
+    <Content Include="UserManual\CamScanner 01-09-2025 13.37_1.pdf" />
+    <Content Include="UserManual\CamScanner 01-13-2025 13.54.pdf" />
     <Content Include="UserManual\cancellation-order.pdf" />
     <Content Include="UserManual\Fees-for-New-Installation-Inspection.pdf" />
     <Content Include="UserManual\Fees-For-Periodical-Inspection.pdf" />
     <Content Include="UserManual\Fees-for-various-certificates-Licences.pdf" />
+    <Content Include="UserManual\Forms.pdf" />
+    <Content Include="UserManual\form_split.pdf" />
+    <Content Include="UserManual\Haryana-Electrical-Contractor-Licence-Certificate-of.pdf" />
+    <Content Include="UserManual\Haryana-Lifts-and-Escalators-Act-2008.pdf" />
+    <Content Include="UserManual\Mendate Regarding Electrical Installations.pdf" />
+    <Content Include="UserManual\office order 223.pdf" />
     <Content Include="UserManual\Orderof22authorisedCharteredElectricalSafetyEngineersdated28.11.2016.pdf" />
     <Content Include="UserManual\OrderofauthorisedCharteredElectricalSafetyEngineers.pdf" />
-    <Content Include="UserManual\Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf" />
+    <Content Include="UserManual\Procedure_and_Check_List_for_Lift.pdf" />
+    <Content Include="UserManual\RTS2014.pdf" />
+    <Content Include="UserManual\USERmanualContractor.pdf" />
+    <Content Include="UserManual\USERmanualSiteowner.pdf" />
+    <Content Include="UserManual\USERmanualSupervisor.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

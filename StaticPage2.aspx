@@ -28,6 +28,7 @@
         th {
     background: #106eeab0 !important;
     color: white !important;
+    width:1%;
 }
         input#Button1 {
             height: 35px !important;
@@ -434,32 +435,32 @@
             </div>
         </section>
         <!-- ======= Header ======= -->
-        <header id="header" class="d-flex align-items-center"
-            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
-            <div class="container d-flex align-items-center justify-content-between">
-                <a href="Login.aspx" class="logo">
-                    <img src="/Assets/haryana.png" alt="" />
-                </a>
-                <h1 class="logo">
-                    <a href="Login.aspx">
-                        <span style="font-size: 25px; margin-left: -30px;">CEI,
-            Haryana
-                        </span>
+                                            <header id="header" class="d-flex align-items-center"
+                style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
+                <div class="container d-flex align-items-center justify-content-between">
+                    <a href="Login.aspx" class="logo">
+                        <img src="/Assets/haryana.png" alt="" />
                     </a>
-                </h1>
-                <!-- Uncomment below if you prefer to use an image logo -->
-                <nav id="navbar" class="navbar">
-                    <ul>
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Home</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="#">About CEI</a>
-                                </li>
-                                <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                    <h1 class="logo">
+                        <a href="Login.aspx">
+                            <span style="font-size: 25px; margin-left: -30px;">CEI,
+            Haryana
+                            </span>
+                        </a>
+                    </h1>
+                    <!-- Uncomment below if you prefer to use an image logo -->
+                    <nav id="navbar" class="navbar">
+                        <ul>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Home</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#">About CEI</a>
+                                    </li>
+                                    <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
                   <li><a href="#">Deep Drop Down 2</a></li>
@@ -468,27 +469,37 @@
                   <li><a href="#">Deep Drop Down 5</a></li>
                 </ul>
               </li> -->
-                                <li>
-                                    <a href="#">State Licensing Board, Haryana</a>
-                                </li>
-                                <li>
-                                    <a href="#">Functions</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Lift & Esclator</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="#">Procedure For Registration/
+                                    <li>
+                                        <a href="#">State Licensing Board, Haryana</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Functions</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Lift & Esclator</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="/Procedure_For_Registration_Lift Exclator.aspx">Procedure For Registration /
                   <br>
-                                        Inspection Lifts and Esclators
-                                    </a>
-                                </li>
-                                <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                                            Inspection Lifts and Esclators
+                                        </a>
+                                    </li>
+                                                      <li>
+                      <a href="https://egovservices.in/" target="_blank">Apply for New / Renewal Lift
+                      </a>
+                  </li>
+                                                                        <li>
+    <a href="/StaticPage2.aspx" target="_blank">List of Lift Inspectors
+    </a>
+</li>
+
+
+                                    <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
                   <li><a href="#">Deep Drop Down 2</a></li>
@@ -497,28 +508,33 @@
                   <li><a href="#">Deep Drop Down 5</a></li>
                 </ul>
               </li> -->
-                                <li>
-                                    <a href="#">Checklist for Registration/
-                  <br>
-                                        Inspection of Lifts and Esclators
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">Forms</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Licensing</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="UserManual/Haryana-Electrical-Contractor-Licence-Certificate-of.pdf" target="_blank">Electrical Licensing Rules-2021
-                                    </a>
-                                </li>
-                                <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                                    <li>
+                                        <a href="UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Checklist for Registration/
+ <br />
+                                            Inspection of Lifts and Elevators
+                                        </a>
+                                    </li>
+
+
+
+
+                                    <li>
+                                        <a href="UserManual/Forms.pdf" target="_blank">Forms
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Licensing</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="UserManual/Haryana-Electrical-Contractor-Licence-Certificate-of.pdf" target="_blank">Electrical Licensing Rules-2021
+                                        </a>
+                                    </li>
+                                    <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
                   <li><a href="#">Deep Drop Down 2</a></li>
@@ -527,28 +543,28 @@
                   <li><a href="#">Deep Drop Down 5</a></li>
                 </ul>
               </li> -->
-                                <%--<li>
+                                    <%--<li>
                                         <a href="#">Electrical Supervisor Competency
                   <br>
                                             Certificate(Excemption)
                                         </a>
                                     </li>--%>
-                                <li>
-                                    <a href="UserManual/form_split.pdf" target="_blank">Forms & Fees
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Inspection</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="#">Checklist for Online Service(Inspection)</a>
-                                </li>
-                                <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                                    <li>
+                                        <a href="UserManual/form_split.pdf" target="_blank">Forms & Fees
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Inspection</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#">Checklist for Online Service(Inspection)</a>
+                                    </li>
+                                    <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
                   <li><a href="#">Deep Drop Down 2</a></li>
@@ -557,169 +573,183 @@
                   <li><a href="#">Deep Drop Down 5</a></li>
                 </ul>
               </li> -->
-                                <li>
-                                    <a href="#">Procedure for Electrical Installation</a>
-                                </li>
-                                <li>
-                                    <a href="#">Procedure for Grant of
+                                    <li>
+                                        <a href="#">Procedure for Electrical Installation</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Procedure for Grant of
                   <br />
-                                        approval for Energisation of
+                                            approval for Energisation of
                   <br />
-                                        New Electrical
+                                            New Electrical
                   Installation
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Services</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="#">Our Services</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Orders</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="UserManual/Mendate%20Regarding%20Electrical%20Installations.pdf" target="_blank">Mendate Regarding ELectrical Installations</a>
-                                </li>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Services</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#">Our Services</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>Orders</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#" target="_blank">BRAP-2024 Griviance Mechanism</a>
+                                    </li>
+                                      <li>
+      <a href="UserManual/office order 223.pdf" target="_blank">Mendate Regarding high medium low risk profile</a>
+  </li>
+                                    <li>
+                                        <a href="UserManual/CamScanner 01-09-2025 13.37_1.pdf" target="_blank">Mendate Regarding Registration and<br/> Renewal 0f Lift/Escalator</a>
+                                    </li>
+                                    <li>
+                                        <a href="UserManual/Mendate%20Regarding%20Electrical%20Installations.pdf" target="_blank">Mendate Regarding ELectrical Installations</a>
+                                    </li>
 
-                                <li>
-                                    <a href="UserManual/Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf" target="_blank">Authorisation of Chartered<br />
-                                        Electrical Safety Engineer(CESE) (New)</a>
+                                    <li>
+                                        <a href="UserManual/Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf" target="_blank">Authorisation of Chartered<br />
+                                            Electrical Safety Engineer(CESE) (New)</a>
 
-                                </li>
-                                <li>
-                                    <a href="UserManual/cancellation-order.pdf" target="_blank">cancellation order</a>
-                                </li>
-                                <li class="dropdown"><a href="#"><span>Fees Details</span> <i class="bi bi-chevron-right"></i></a>
-                                    <ul>
-                                        <li><a href="UserManual/Fees-for-New-Installation-Inspection.pdf" target="_blank">Fees for New Installation Inspection</a></li>
-                                        <li><a href="UserManual/Fees-For-Periodical-Inspection.pdf" target="_blank">Fees For Periodical Inspection</a></li>
+                                    </li>
+                                    <li>
+                                        <a href="UserManual/cancellation-order.pdf" target="_blank">cancellation order</a>
+                                    </li>
+                                    <li class="dropdown"><a href="#"><span>Fees Details</span> <i class="bi bi-chevron-right"></i></a>
+                                        <ul>
+                                            <li><a href="UserManual/Fees-for-New-Installation-Inspection.pdf" target="_blank">Fees for New Installation Inspection</a></li>
+                                            <li><a href="UserManual/Fees-For-Periodical-Inspection.pdf" target="_blank">Fees For Periodical Inspection</a></li>
 
-                                        <li><a href="UserManual/Fees-for-various-certificates-Licences.pdf" target="_blank">Fees for various certificates & Licences</a></li>
+                                            <li><a href="UserManual/Fees-for-various-certificates-Licences.pdf" target="_blank">Fees for various certificates & Licences</a></li>
 
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="UserManual/Orderof22authorisedCharteredElectricalSafetyEngineersdated28.11.2016.pdf" target="_blank">Order of 22 authorised Chartered<br />
-                                        Electrical Safety Engineers dated 28.11.2016
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="UserManual/OrderofauthorisedCharteredElectricalSafetyEngineers.pdf" target="_blank">Order of 209 authorised Chartered<br>
-                                        Electrical Safety Engineers dated 18.03.2016</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li style="display: flex;">
-                            <a href="UserPages/OurServices.aspx" id="alertLink" style="position: relative; z-index: 1;">User Manual</a><img src="Assets/new1.gif" id="alertGif" />
-                        </li>
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav>
-                <!-- .navbar -->
-            </div>
-        </header>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="UserManual/Orderof22authorisedCharteredElectricalSafetyEngineersdated28.11.2016.pdf" target="_blank">Order of 22 authorised Chartered<br />
+                                            Electrical Safety Engineers dated 28.11.2016
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="UserManual/OrderofauthorisedCharteredElectricalSafetyEngineers.pdf" target="_blank">Order of 209 authorised Chartered<br>
+                                            Electrical Safety Engineers dated 18.03.2016</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="display: flex;">
+                                <a href="UserPages/OurServices.aspx" id="alertLink" style="position: relative; z-index: 1;">User Manual</a><img src="Assets/new1.gif" id="alertGif" />
+                            </li>
+                        </ul>
+                        <i class="bi bi-list mobile-nav-toggle"></i>
+                    </nav>
+                    <!-- .navbar -->
+                </div>
+            </header>
         <!-- End Header -->
         <!-- ======= Hero Section ======= -->
 
         <!-- End Hero -->
 
         <main id="main" style="background:#f9f9f9;">
+             <div class="row">
+     <div class="col-md-3"></div>
+     <div class="col-md-6">
+ <div class="card" style="margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 5px !important;">
+             <div class="card-title" style="margin-bottom: 0px;text-align:center;font-size:20px !important;">Chief Electrical Inspector Er. Surender Sangwan, Cont.- 8708478983</div>
+     </div>
+         </div>
+     <div class="col-md-3"></div>
+     </div>
             <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
             <div class="card" style="margin: 20px; padding: 30px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;padding: 10px !important;">
-                        <div class="card-title" style="margin-bottom: 0px;text-align:center;">ALL DISTRICT INSPECTOR DETAILS</div>
+                        <div class="card-title" style="margin-bottom: 0px;text-align:center;font-size:19px !important;">ALL DIVISION LIFT INSPECTOR DETAILS</div>
                 </div>
                     </div>
-                <div class="col-md-4"></div>
+                <div class="col-md-3"></div>
                 </div>
             
             <div class="card" style="margin: 20px; padding: 30px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;    margin-left: 70px;
     margin-right: 70px;">
                 
-                    <div class="col-md-12">
-                
-                            <div class="col-md-4" style="margin-bottom:25px;">
-         <label>
-            Search :
-<%--<samp style="color: red">* </samp>--%>
-        </label>
-        <input id="myInput" type="text" placeholder="Search.." style="height:35px;width:80%;" />
-
-    </div>
-                        <div class="row">
+                    <div class="col-md-12">                
+                           <div class="row">
                             <table class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>S.No.</th>
-                                        <th>District</th>
-                                        <th>Inspctor Name</th>
-                                        <th>Contact No.</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="myTable">
-                                    <tr>
-                                        <td>John</td>
-                                        <td>Doe</td>
-                                        <td>john@example.com</td>
-                                        <td>john@example.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mary</td>
-                                        <td>Moe</td>
-                                        <td>mary@mail.com</td>
-                                        <td>mary@mail.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td>July</td>
-                                        <td>Dooley</td>
-                                        <td>july@greatstuff.com</td>
-                                        <td>july@greatstuff.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Anja</td>
-                                        <td>Ravendale</td>
-                                        <td>a_r@test.com</td>
-                                        <td>a_r@test.com</td>
-                                    </tr>
-                                     <tr>
-     <td>John</td>
-     <td>Doe</td>
-     <td>john@example.com</td>
-     <td>john@example.com</td>
- </tr>
- <tr>
-     <td>Mary</td>
-     <td>Moe</td>
-     <td>mary@mail.com</td>
-     <td>mary@mail.com</td>
- </tr>
- <tr>
-     <td>July</td>
-     <td>Dooley</td>
-     <td>july@greatstuff.com</td>
-     <td>july@greatstuff.com</td>
- </tr>
- <tr>
-     <td>Anja</td>
-     <td>Ravendale</td>
-     <td>a_r@test.com</td>
-     <td>a_r@test.com</td>
- </tr>
-                                </tbody>
-                            </table>
+    <thead>
+        <tr>
+            <th style="width:1%;">S.No.</th>
+            <th style="width:23%;">Division</th>
+            <th style="width:23%;">Inspector Name</th>
+            <th style="width:12%;">Contact No.</th>
+            <th style="width:40%;">Area Covered</th>
+        </tr>
+    </thead>
+    <tbody id="myTable">
+        <tr>
+            <td>1.</td>
+            <td>Chandigarh</td>
+            <td>Er. Deepak Malik</td>
+            <td>8685880088</td>
+            <td>Panchkula, Yamunanagar, Ambala, Kurukshetra, Karnal</td>
+        </tr>
+        <tr>
+            <td>2.</td>
+            <td>Faridabad</td>
+            <td>Er. Neeraj Dalal</td>
+            <td>9911031492</td>
+            <td>Faridabad</td>
+        </tr>
+        <tr>
+            <td>3.</td>
+            <td>Gurugram-I</td>
+            <td>Er. Anju Dhillon</td>
+            <td>9541100024</td>
+            <td>Gurugram-I, Rewari, Mahendragarh</td>
+        </tr>
+        <tr>
+            <td>4.</td>
+            <td>Gurugram-II</td>
+            <td>Er. Vinod Chaudhary</td>
+            <td>9315315623</td>
+            <td>Gurugram-II, Palwal, Nuh</td>
+        </tr>
+        <tr>
+            <td>5.</td>
+            <td>Hisar</td>
+            <td>Er. Yashbir Gulia</td>
+            <td>9354194830</td>
+            <td>Hisar, Sirsa, Kaithal, Bhiwani</td>
+        </tr>
+        <tr>
+            <td>6.</td>
+            <td>Panipat</td>
+            <td>Er. Sandeep Hooda</td>
+            <td>7011517720</td>
+            <td>Panipat, Sonipat</td>
+        </tr>
+        <tr>
+            <td>7.</td>
+            <td>Rohtak</td>
+            <td>Er. Siddharth Chaudhary</td>
+            <td>9988878790</td>
+            <td>Rohtak, Charkhi Dadri, Jind, Jhajjar</td>
+        </tr>
+    </tbody>
+</table>
+
                         </div>
                     </div>
             </div>

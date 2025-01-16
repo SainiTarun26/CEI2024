@@ -256,7 +256,7 @@ namespace CEIHaryana
                             Response.Cookies["logintype"].Value = "SiteOwner";
                             Response.Cookies["SiteOwnerId"].Expires = DateTime.Now.AddDays(15);
                             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(15);
-                            Response.Redirect("/SiteOwnerPages/SiteOwnerDashboard.aspx", false);
+                            Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);
                         }
                         else
                         {
@@ -266,7 +266,7 @@ namespace CEIHaryana
                             Response.Cookies["logintype"].Value = "SiteOwner";
                             Response.Cookies["SiteOwnerId"].Expires = DateTime.Now.AddDays(1);
                             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(1);
-                            Response.Redirect("/SiteOwnerPages/SiteOwnerDashboard.aspx", false);
+                            Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);
                         }
                     }
                     else
