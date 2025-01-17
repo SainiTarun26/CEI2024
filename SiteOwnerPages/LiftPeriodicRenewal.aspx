@@ -236,6 +236,7 @@
         }
     </style>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -278,29 +279,21 @@
                                 Style="margin-right: 5px;" AutoPostBack="true" OnTextChanged="txtRegistrationNo_TextChanged"></asp:TextBox>
                             <div class="input-group-append">
                                 <asp:LinkButton ID="lnkbtnSearch" CssClass="btn btn-primary" runat="server" Style="height: 100%; padding: 0px;">
-                <i class="fa fa-search"></i>
+                                <i class="fa fa-search"></i>
                                 </asp:LinkButton>
                             </div>
                         </div>
                         <asp:RequiredFieldValidator ID="RfvtxtRegistrationNo" ControlToValidate="txtRegistrationNo" runat="server"
                             ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-
-                   <%-- <div class="col-md-2" runat="server">
-                        <label>
-                            Memo No.<samp style="color: red"> * </samp>
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtMemoNo" autocomplete="off" runat="server" MaxLength="25" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtMemoNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                    </div>--%>
-                    <div class="col-md-2" runat="server">
+                    <div class="col-md-3" runat="server">
                         <label>
                             Last Approval Date<samp style="color: red"> * </samp>
                         </label>
                         <asp:TextBox type="date" class="form-control" ID="txtLastApprovalDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="txtLastApprovalDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="col-md-2" runat="server">
+                    <div class="col-md-3" runat="server">
                         <label>
                             Previous Challan Date<samp style="color: red"> * </samp>
                         </label>
@@ -364,7 +357,6 @@
                                     <asp:ListItem Text="Escalator" Value="1" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
                                 </asp:RadioButtonList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ErrorMessage="Choose one" ControlToValidate="RadioBtnEscType" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />
-
                             </div>
                             <div class="col-md-4" runat="server">
                                 <label>
@@ -380,14 +372,14 @@
                                 <asp:TextBox class="form-control" ID="txtCapacity" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" onkeypress="return isNumberKey(event)"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtCapacity" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
-                            <div class="col-md-4" runat="server">
+                            <div class="col-md-3" runat="server">
                                 <label>
                                     Weight(In Kgs)<samp style="color: red"> * </samp>
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtWeight" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" onkeypress="return isNumberKey(event)"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ControlToValidate="txtWeight" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
-                            <div class="col-md-4" runat="server">
+                            <div class="col-md-3" runat="server">
                                 <label>
                                     District<samp style="color: red"> * </samp>
                                 </label>
@@ -397,6 +389,21 @@
 
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator25" ErrorMessage="Required" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                             </div>
+                            <div class="col-md-3" runat="server">
+                                <label>
+                                    Memo No.<samp style="color: red"> * </samp>
+                                </label>
+                                <asp:TextBox class="form-control" ID="txtMemoNo" autocomplete="off" runat="server" MaxLength="25" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtMemoNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="col-md-3" runat="server">
+                                <label>
+                                    Memo Date<samp style="color: red"> * </samp>
+                                </label>
+                                <asp:TextBox class="form-control" Type="date" ID="txtMemoDate" autocomplete="off" runat="server" MaxLength="25" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ControlToValidate="txtMemoDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                            </div>
+
                             <div class="col-md-12" runat="server">
                                 <label>
                                     Site Address<samp style="color: red"> * </samp>
@@ -464,25 +471,17 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <%-- <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                                <ContentTemplate>--%>
                             <div class="row">
                                 <div class="col-md-4" runat="server">
                                     <asp:TextBox class="form-control" ID="txtSearch" autocomplete="off" placeholder="Search" runat="server" Style="margin-left: 18px" onkeyup="Search_Gridview(this)"
                                         onkeydown="SearchOnEnter(event)"></asp:TextBox>
-                                    <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtSearch" runat="server" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                                    --%>
                                 </div>
-                                <%-- <div class="col-md-4" style="margin-bottom: auto; padding-left: 0px;">
-                                            <asp:Button ID="btn" Class="btn btn-primary" runat="server" Text="Search" OnClick="btnModalSearch_Click" Style="height: 30px; padding: 0px 15px 0px 15px;" />
-                                        </div>--%>
                             </div>
                             <hr />
                             <div class="row">
                                 <%--Grid to filter record according to Registration No--%>
                                 <div class="col-md-12">
                                     <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" OnRowCommand="GridView1_RowCommand" runat="server" AutoGenerateColumns="false">
-                                        <%--AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging"--%>
                                         <PagerStyle CssClass="pagination-ys" />
                                         <Columns>
                                             <%--<asp:BoundField DataField="RegistrationNo" HeaderText="Registration No">
@@ -533,8 +532,6 @@
                                     </asp:GridView>
                                 </div>
                             </div>
-                            <%--   </ContentTemplate>
-                            </asp:UpdatePanel>--%>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
@@ -578,7 +575,6 @@
             }
         }
     </script>
-
     <script type="text/javascript">
         function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode

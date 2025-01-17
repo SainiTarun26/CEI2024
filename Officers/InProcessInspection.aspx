@@ -562,10 +562,10 @@
                             <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Remarks" HeaderText="Remarks">
+                       <%-- <asp:BoundField DataField="Remarks" HeaderText="Remarks">
                             <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                             <ItemStyle HorizontalAlign="Left" Width="15%" />
-                        </asp:BoundField>
+                        </asp:BoundField>--%>
                     </Columns>
                 </asp:GridView>
                 <div class="col-12" style="padding: 0px;">

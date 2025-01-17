@@ -42,7 +42,6 @@ namespace CEIHaryana.SiteOwnerPages
                                 if (Session["InstallTypePass"].ToString() == "Lift")
                                 {
                                     ddlInstallationType.SelectedValue = "1";
-
                                 }
                                 else
                                 {
@@ -52,7 +51,6 @@ namespace CEIHaryana.SiteOwnerPages
                                 txtRegistrationNo.Enabled = false;
                                 ddlInstallationType.Enabled = false;
                             }
-                            //ddlInstallationType.SelectedValue = "1";
                             txtRegistrationNo.Text = Session["RegistrationNosessionPass"].ToString();
                         }
                     }
@@ -114,7 +112,6 @@ namespace CEIHaryana.SiteOwnerPages
         {
             GetApplicantType();
             string ApplicantType = Session["ApplicantTypeID"].ToString();
-            // int InstallationTypeID = "4";
             int InstallationTypeID = 0;
             string InspectionType = "Periodic";
             string InstallationType = Session["InstallationType"].ToString();
@@ -147,7 +144,6 @@ namespace CEIHaryana.SiteOwnerPages
         {
             SqlTransaction transaction = null;
             SqlConnection connection = null;
-
             try
             {
                 string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
@@ -219,16 +215,15 @@ namespace CEIHaryana.SiteOwnerPages
                         if (Session["ReturnedValue"].ToString() != "1")
                         {
                             TRID = CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
-                                             txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, SiteOwnerID, transaction);
-
+                                             txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtMemoNo.Text, txtMemoDate.Text, txtSiteAddress.Text, SiteOwnerID, transaction);
                         }
                         else
                         {
                             string TestReportId = Session["EscalatorTestReportID"].ToString();
                             int InspectionId = int.Parse(Session["InspectionId"].ToString());
                             DataTable dt = new DataTable();
-                            dt = CEI.InsertReturnPeriodicLiftData(TestReportId, ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo,  txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
-                                              txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, InspectionId, SiteOwnerID);
+                            dt = CEI.InsertReturnPeriodicLiftData(TestReportId, ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
+                                                 txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtMemoNo.Text, txtMemoDate.Text, txtSiteAddress.Text, InspectionId, SiteOwnerID);
                             TRID = dt.Rows[0]["TestReportId"].ToString();
                         }
                     }
@@ -290,8 +285,6 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithReturnRedirectdata();", true);
                     }
-
-
                     Reset();
                 }
             }
@@ -325,7 +318,8 @@ namespace CEIHaryana.SiteOwnerPages
             ddlDistrict.Visible = true;
             txtDistrict.Visible = false;
             txtDateofErection.ReadOnly = false;
-            //txtMemoNo.ReadOnly = false;
+            txtMemoNo.ReadOnly = false;
+            txtMemoDate.ReadOnly = false;
             txtLastApprovalDate.ReadOnly = false;
             txtPrevChallanDate.ReadOnly = false;
 
@@ -336,11 +330,12 @@ namespace CEIHaryana.SiteOwnerPages
             txtControlType.Text = "";
             txtCapacity.Text = "";
             txtWeight.Text = "";
-            txtSiteAddress.Text = "";         
+            txtSiteAddress.Text = "";
             ddlDistrict.ClearSelection();
             txtDistrict.Text = "";
             txtDateofErection.Text = "";
-            //txtMemoNo.Text = "";
+            txtMemoNo.Text = "";
+            txtMemoDate.Text = "";
             txtLastApprovalDate.Text = "";
             txtPrevChallanDate.Text = "";
         }
@@ -412,13 +407,14 @@ namespace CEIHaryana.SiteOwnerPages
                 ddlDistrict.Visible = false;
                 txtDistrict.Visible = true;
                 txtDateofErection.ReadOnly = true;
-                //txtMemoNo.ReadOnly = true;
+                txtMemoNo.ReadOnly = true;
+                txtMemoDate.ReadOnly = true;
                 txtLastApprovalDate.ReadOnly = true;
                 txtPrevChallanDate.ReadOnly = true;
                 txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
                 txtSerialNo.Text = ds.Tables[0].Rows[0]["LiftSrNo"].ToString();
                 //txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
-                
+
                 string typeOfLift = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
 
                 if (ddlInstallationType.SelectedItem.Text == "Lift")
@@ -465,7 +461,8 @@ namespace CEIHaryana.SiteOwnerPages
                     txtLastApprovalDate.Text = "";
                 }
                 DateTime PrevChallanDate;
-                if (DateTime.TryParse(ds.Tables[0].Rows[0]["Previous_ChallanDate"].ToString(), out PrevChallanDate))
+                // if (DateTime.TryParse(ds.Tables[0].Rows[0]["Previous_ChallanDate"].ToString(), out PrevChallanDate))
+                if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastTransactionDate"].ToString(), out PrevChallanDate))
                 {
                     txtPrevChallanDate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
                 }
@@ -475,20 +472,27 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                 txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
+                txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
+                DateTime MemoDate;
+                if (DateTime.TryParse(ds.Tables[0].Rows[0]["MemoDate"].ToString(), out MemoDate))
+                {
+                    txtMemoDate.Text = MemoDate.ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    txtMemoDate.Text = "";
+                }
             }
             else
             {
-
                 Reset();
             }
-
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Select")
             {
-
                 Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
@@ -499,7 +503,6 @@ namespace CEIHaryana.SiteOwnerPages
                 ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), RegistrationNo, CreatedBy);
                 if (ds.Tables[0].Rows.Count > 0 && ds != null)
                 {
-
                     txtMake.ReadOnly = true;
                     txtSerialNo.ReadOnly = true;
                     RadioBtnType.Enabled = false;
@@ -511,12 +514,13 @@ namespace CEIHaryana.SiteOwnerPages
                     ddlDistrict.Visible = false;
                     txtDistrict.Visible = true;
                     txtDateofErection.ReadOnly = true;
-                    //txtMemoNo.ReadOnly = true;
+                    txtMemoNo.ReadOnly = true;
+                    txtMemoDate.ReadOnly = true;
                     txtLastApprovalDate.ReadOnly = true;
                     txtPrevChallanDate.ReadOnly = true;
                     txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
                     txtSerialNo.Text = ds.Tables[0].Rows[0]["LiftSrNo"].ToString();
-                   // txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
+                    // txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
                     string typeOfLift = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
 
                     if (ddlInstallationType.SelectedItem.Text == "Lift")
@@ -563,7 +567,8 @@ namespace CEIHaryana.SiteOwnerPages
                         txtLastApprovalDate.Text = "";
                     }
                     DateTime PrevChallanDate;
-                    if (DateTime.TryParse(ds.Tables[0].Rows[0]["Previous_ChallanDate"].ToString(), out PrevChallanDate))
+                    //if (DateTime.TryParse(ds.Tables[0].Rows[0]["Previous_ChallanDate"].ToString(), out PrevChallanDate))
+                    if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastTransactionDate"].ToString(), out PrevChallanDate))
                     {
                         txtPrevChallanDate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
                     }
@@ -574,6 +579,16 @@ namespace CEIHaryana.SiteOwnerPages
                     txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                     txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
                     txtRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
+                    txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
+                    DateTime MemoDate;
+                    if (DateTime.TryParse(ds.Tables[0].Rows[0]["MemoDate"].ToString(), out MemoDate))
+                    {
+                        txtMemoDate.Text = MemoDate.ToString("yyyy-MM-dd");
+                    }
+                    else
+                    {
+                        txtMemoDate.Text = "";
+                    }
                 }
                 else
                 {
@@ -581,21 +596,31 @@ namespace CEIHaryana.SiteOwnerPages
                 }
             }
         }
-        //protected void btnModalSearch_Click(object sender, EventArgs e)
-        //{
-        //    DataSet ds = new DataSet();
-        //    ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtSearch.Text.Trim());
-        //    if (ds.Tables.Count > 0)
-        //    {
-        //        GridView1.DataSource = ds;
-        //        GridView1.DataBind();
-        //    }
-        //    else
-        //    {
-        //        string alertScript = "alert('The  Registration number is Not In Our Database. Please provide a different Registration number.');";
-        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-        //    }
-        //}
 
+        protected bool CheckAttachment(int check_para)
+        {
+            int Flag = 0;
+            if (check_para == 0)
+            {
+                foreach (GridViewRow row in Grd_Document.Rows)
+                {
+                    Label DocName = (Label)row.FindControl("lblDocumentName");
+                    if (DocName.Text != "Other Document")
+                    {
+                        FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
+                        if (fileUpload == null || !fileUpload.HasFile)
+                        {
+                            Flag = 1;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (Flag == 0)
+                return true;
+            else
+                return false;
+        }
     }
 }

@@ -441,11 +441,6 @@
                                  <label>District</label>
                 <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                  </div>
-
-                                    <div  id="divusertype"   class="col-md-4" runat="server" visible="true">
-                                 <label>UserType</label>
-                <asp:TextBox class="form-control" ID="txtUserType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                 </div>
                     <%--<div class="col-md-4" id="Inspection_Type" runat="server" visible="false">
                         <label>Inspection Type</label>
                         <asp:TextBox class="form-control" ID="TxtInspection" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -568,6 +563,8 @@
                                       <asp:Label ID="LblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
                                         <asp:Label ID="LblOldTestReportId" runat="server" Text='<%#Eval("OldTestReportId") %>'></asp:Label>
                                       <asp:Label ID="lblMemoNo" runat="server" Text='<%#Eval("MemoNo") %>'></asp:Label>
+                                     <asp:Label ID="LblMemoDate" runat="server" Text='<%#Eval("MemoDate") %>'></asp:Label>
+                                        <asp:Label ID="LblAmount" runat="server" Text='<%#Eval("Amount") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Current View TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
@@ -626,7 +623,7 @@
                                  <asp:Label ID="lblWeight" runat="server" Text='<%#Eval("Weight") %>'></asp:Label>
                                   <asp:Label ID="LblErectionDate" runat="server" Text='<%#Eval("ErectionDate") %>'></asp:Label>
                                 <asp:Label ID="LblOldTestReportId" runat="server" Text='<%#Eval("OldTestReportId") %>'></asp:Label>
-                                  <%--<asp:Label ID="lblLastApprovalDate" runat="server" Text='<%#Eval("LastApprovalDate") %>'></asp:Label>--%>
+                                 <asp:Label ID="lblAmount" runat="server" Text='<%#Eval("Amount") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Current View Test Report & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
