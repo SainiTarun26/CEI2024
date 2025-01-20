@@ -2079,13 +2079,13 @@
         <div>
             <ul style="margin: 40px 20px 20px 60px!important;">
                 <li class="tab-content tab-content-3 typography">
-                                      <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
-    <asp:Button ID="btnBack" Text="Back" Enabled="true" runat="server" class="btn btn-primary mr-2"
-        Style="margin-top: -45px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; left: 10px; z-index: 50;" Onclick="btnBack_Click"/>
-    
-    <asp:Button ID="btnPrint" Text="Print" Enabled="true" runat="server" class="btn btn-primary mr-2"
-        Style="margin-top: -45px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; right: 10px; z-index: 50;" OnClientClick="openNewWindow(); return false;" />
-</div>
+                    <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
+                        <asp:Button ID="btnBack" Text="Back" Enabled="true" runat="server" class="btn btn-primary mr-2"
+                            Style="margin-top: -45px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; left: 10px; z-index: 50;" OnClick="btnBack_Click" />
+
+                        <asp:Button ID="btnPrint" Text="Print" Enabled="true" runat="server" class="btn btn-primary mr-2"
+                            Style="margin-top: -45px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; right: 10px; z-index: 50;" OnClientClick="openNewWindow(); return false;" />
+                    </div>
                     <div class="row" style="margin-bottom: 15PX;">
                         <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Site Details & Test Details (Escalator)</h6>
@@ -2137,6 +2137,7 @@
                                             <asp:TextBox ReadOnly="true" class="form-control" ID="txtDistrict" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                         </div>
+
                                         <div class="col-md-4" runat="server">
                                             <label for="Pin">PinCode</label>
                                             <asp:TextBox ReadOnly="true" class="form-control" ID="txtPin" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -2231,6 +2232,20 @@
                                         Weight(In Kgs) 
                                     </label>
                                     <asp:TextBox class="form-control" ReadOnly="true" ID="txtWeight" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" onkeypress="return isNumberKey(event)"></asp:TextBox>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>
+                                        Memo No.
+                                    </label>
+                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtMemoNo" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label>
+                                        Memo Date
+                                    </label>
+                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtMemoDate" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                 </div>
                                 <div class="col-md-4" runat="server">
                                     <label>

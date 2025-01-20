@@ -78,42 +78,12 @@ namespace CEIHaryana.TestReportModal
                 if (Convert.ToString(Session["RegistrationNo"]) != null && Convert.ToString(Session["RegistrationNo"]) != "")
                 {
                     string RegistrationNo = Session["RegistrationNo"].ToString();
-                    //DataSet ds = CEI.GetDetailsOfLiftRenewalReport(RegistrationNo);
                     string TRId = Session["TestReportID"].ToString();
                     DataSet ds = CEI.GetDetailsOfLiftRenewalReport(RegistrationNo, TRId);
-                    object previousChallanDateObj = ds.Tables[0].Rows[0]["PreviousChallanDate"];
-                    if (previousChallanDateObj != DBNull.Value)
-                    {
-                        DateTime previousChallanDate = Convert.ToDateTime(previousChallanDateObj);
-                        txtPrevChallanDate.Text = previousChallanDate.ToString("yyyy-MM-dd");
-                    }
-                    else
-                    {
-                        txtPrevChallanDate.Text = string.Empty;
-                    }
-
-                    object LastApprovalDateObj = ds.Tables[0].Rows[0]["LastApprovalDate"];
-                    if (LastApprovalDateObj != DBNull.Value)
-                    {
-                        DateTime LastApproval = Convert.ToDateTime(LastApprovalDateObj);
-                        txtLastApprovalDate.Text = LastApproval.ToString("yyyy-MM-dd");
-                    }
-                    else
-                    {
-                        txtLastApprovalDate.Text = string.Empty;
-                    }
-
-                    object ErectionDateObj = ds.Tables[0].Rows[0]["ErectionDate"];
-                    if (ErectionDateObj != DBNull.Value)
-                    {
-                        DateTime ErectionDate = Convert.ToDateTime(ErectionDateObj);
-                        txtDateofErection.Text = ErectionDate.ToString("yyyy-MM-dd");
-                    }
-                    else
-                    {
-                        txtDateofErection.Text = string.Empty;
-                    }
-
+                    
+                    txtPrevChallanDate.Text = ds.Tables[0].Rows[0]["PreviousChallanDate"].ToString();
+                    txtLastApprovalDate.Text = ds.Tables[0].Rows[0]["LastApprovalDate"].ToString();
+                    txtDateofErection.Text = ds.Tables[0].Rows[0]["ErectionDate"].ToString();
                     txtRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
                     txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
                     txtSerialNo.Text = ds.Tables[0].Rows[0]["SerialNo"].ToString();
@@ -124,6 +94,9 @@ namespace CEIHaryana.TestReportModal
                     txtDistrictOfTr.Text = ds.Tables[0].Rows[0]["ApplicantDistrict"].ToString();
                     txtEscalatorType.Text = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
                     Session["File"] = ds.Tables[0].Rows[0]["PreviousChallanUpload"].ToString();
+
+                    txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
+                    txtMemoDate.Text = ds.Tables[0].Rows[0]["MemoDate"].ToString();
 
                     GridDocument();
                 }

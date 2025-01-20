@@ -2233,6 +2233,18 @@
                                     <asp:TextBox class="form-control" ReadOnly="true" ID="txtWeight" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" onkeypress="return isNumberKey(event)"></asp:TextBox>
                                 </div>
                                 <div class="col-4" runat="server">
+    <label>
+        Memo No.
+    </label>
+    <asp:TextBox class="form-control" ReadOnly="true" ID="txtMemoNo" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" onkeypress="return isNumberKey(event)"></asp:TextBox>
+</div>
+                                <div class="col-4" runat="server">
+    <label>
+        Memo Date
+    </label>
+    <asp:TextBox class="form-control" ReadOnly="true" ID="txtMemodate" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" onkeypress="return isNumberKey(event)"></asp:TextBox>
+</div>
+                                <div class="col-4" runat="server">
                                     <label>
                                         District 
                                     </label>

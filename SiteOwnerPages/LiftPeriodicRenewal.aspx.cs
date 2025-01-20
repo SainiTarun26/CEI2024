@@ -470,6 +470,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     txtPrevChallanDate.Text = "";
                 }
+
                 txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                 txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
                 txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
@@ -568,7 +569,7 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     DateTime PrevChallanDate;
                     //if (DateTime.TryParse(ds.Tables[0].Rows[0]["Previous_ChallanDate"].ToString(), out PrevChallanDate))
-                    if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastTransactionDate"].ToString(), out PrevChallanDate))
+                    if (DateTime.TryParse(ds.Tables[0].Rows[0]["Previous_ChallanDate"].ToString(), out PrevChallanDate))
                     {
                         txtPrevChallanDate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
                     }
@@ -576,6 +577,7 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         txtPrevChallanDate.Text = "";
                     }
+
                     txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                     txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
                     txtRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
