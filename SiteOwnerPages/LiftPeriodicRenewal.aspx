@@ -693,6 +693,34 @@
             const formattedToday = today.toISOString().split('T')[0];
             const formattedMinDate = minDate.toISOString().split('T')[0];
 
+            // Set the date range for txtLastApprovalDate
+            const txtLastApprovalDate = document.getElementById('<%= txtLastApprovalDate.ClientID %>');
+            if (txtLastApprovalDate) {
+                txtLastApprovalDate.setAttribute("max", formattedToday); // Disable future dates
+                txtLastApprovalDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
+            }
+
+            // Set the date range for txtPrevChallanDate
+            const txtPrevChallanDate = document.getElementById('<%= txtPrevChallanDate.ClientID %>');
+            if (txtPrevChallanDate) {
+                txtPrevChallanDate.setAttribute("max", formattedToday); // Disable future dates
+                txtPrevChallanDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the current date
+            const today = new Date();
+
+            // Calculate the minimum date (20 years before today)
+            const minDate = new Date();
+            minDate.setFullYear(today.getFullYear() - 20);
+
+            // Format the dates to YYYY-MM-DD
+            const formattedToday = today.toISOString().split('T')[0];
+            const formattedMinDate = minDate.toISOString().split('T')[0];
+
             // Helper function to set min and max attributes
             function setDateRange(inputId) {
                 const dateInput = document.getElementById(inputId);

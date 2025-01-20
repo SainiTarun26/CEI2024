@@ -129,7 +129,7 @@ namespace CEIHaryana.SiteOwnerPages
                 int EscalatorCount = 0;
                 int LiftCountForPayment = 0;
                 int EscalatorCountForPayment = 0;
-                int yearsDifference = 0;
+                //int yearsDifference = 0;
 
                 string selectedTypes = string.Empty;
                 foreach (GridViewRow rows in GridView1.Rows)
@@ -138,7 +138,9 @@ namespace CEIHaryana.SiteOwnerPages
                     if (chk != null && chk.Checked)
                     {
                         Label lblTypes = (Label)rows.FindControl("LblCategory");
-                        Label lblYearsDifference = (Label)rows.FindControl("LblYearsDifference");
+                        //Label lblYearsDifference = (Label)rows.FindControl("LblYearsDifference");
+                        Label LblAmount = (Label)rows.FindControl("LblAmount");
+                        
 
                         if (lblTypes.Text == "Lift")
                         {
@@ -158,17 +160,23 @@ namespace CEIHaryana.SiteOwnerPages
                             selectedTypes += "10,";
                         }
 
-                        // Try to parse the years difference from the label text to an integer
-                        if (int.TryParse(lblYearsDifference.Text, out yearsDifference))
+                        //if (int.TryParse(lblYearsDifference.Text, out yearsDifference))
+                        decimal Amount;
+
+                        if (decimal.TryParse(LblAmount.Text, out Amount)) 
                         {
-                            if (lblTypes.Text == "Lift" && yearsDifference >= 3)
+                            if (lblTypes.Text == "Lift" && Amount > 0.00m) 
                             {
                                 LiftCountForPayment++;
                             }
-                            else if (lblTypes.Text == "Escalator" && yearsDifference >= 3)
+                            else if (lblTypes.Text == "Escalator" && Amount > 0.00m) 
                             {
-                                EscalatorCountForPayment++;
+                                EscalatorCountForPayment++; 
                             }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid amount input.");
                         }
                     }
                     else
@@ -358,8 +366,17 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     GridViewPayment.DataSource = null;
                     GridViewPayment.DataBind();
-                    string script = "alert(\"Please Fill the Form first for knowing Payment \");";
+                    string script = "alert(\"Please check atleast One checkbox\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "serverscript", script, true);
+
+                    FeesDetails.Visible = false;
+                    PaymentDetails.Visible = false;
+                    btnSubmit.Visible = false;
+                    btnReset.Visible = false;
+                    UploadDocuments.Visible = false;
+                    InspectionRemarks.Visible = false;
+
+
                 }
                 dsa.Dispose();
             }
