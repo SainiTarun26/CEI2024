@@ -455,7 +455,7 @@
             </div>
             <div class="row" style="margin-top: 25px;">
                 <div class="col-6" style="text-align: end; padding-right: 0px;">
-                    <asp:Button ID="btnSubmit" Text="Save" runat="server" OnClick="btnSubmit_Click" ValidationGroup="Submit" class="btn btn-primary mr-2" Style="padding-left: 30px; padding-right: 30px;" />
+                    <asp:Button ID="btnSubmit" Text="Save" runat="server" OnClick="btnSubmit_Click" OnClientClick="return validateDates();" ValidationGroup="Submit" class="btn btn-primary mr-2" Style="padding-left: 30px; padding-right: 30px;" />
                 </div>
                 <div class="col-6" style="text-align: left; padding-left: 0px;">
                     <asp:Button ID="btnBack" Style="padding-left: 35px; padding-right: 35px;" OnClick="btnBack_Click" Text="Back" runat="server" class="btn btn-primary mr-2" CausesValidation="false" />
@@ -745,4 +745,51 @@
             }
         }
     </script>
+
+
+    <script type="text/javascript">
+        function validateDates() {
+            var isValid = true;
+
+            // Get all the dates
+            var lastApprovalDate = document.getElementById('<%= txtLastApprovalDate.ClientID %>').value;
+        var prevChallanDate = document.getElementById('<%= txtPrevChallanDate.ClientID %>').value;
+        var dateOfErection = document.getElementById('<%= txtDateofErection.ClientID %>').value;
+        var memoDate = document.getElementById('<%= txtMemoDate.ClientID %>').value;
+
+            // Get the current date and set the threshold (20 years ago)
+            var currentDate = new Date();
+            var twentyYearsAgo = new Date();
+            twentyYearsAgo.setFullYear(currentDate.getFullYear() - 20);
+
+            // Function to check if a date is more than 20 years ago
+            function isDateMoreThan20YearsAgo(dateString) {
+                if (!dateString) return false;  // If no date is provided, return false
+                var inputDate = new Date(dateString);
+                return inputDate < twentyYearsAgo;
+            }
+
+            // Check each date field
+            if (isDateMoreThan20YearsAgo(lastApprovalDate)) {
+                isValid = false;
+            }
+            if (isDateMoreThan20YearsAgo(prevChallanDate)) {
+                isValid = false;
+            }
+            if (isDateMoreThan20YearsAgo(dateOfErection)) {
+                isValid = false;
+            }
+            if (isDateMoreThan20YearsAgo(memoDate)) {
+                isValid = false;
+            }
+
+            // If any date is more than 20 years ago, show the popup
+            if (!isValid) {
+                alert("You are not eligible for renewal. One or more dates are more than 20 years old.");
+                return false;  // Prevent form submission
+            }
+
+            return true;  // Allow form submission
+        }
+</script>
 </asp:Content>

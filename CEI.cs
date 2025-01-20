@@ -8153,9 +8153,9 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertLiftNewAttachments", InstallationType, int.Parse(DocumentID), DocSaveName, FileName, FilePath, CreatedBy);
         }
         //NaVNEET 5-12
-        public DataSet GetRenewalLiftData(string Type, string RegistrationNo, string CreatedBy)
+        public DataSet GetRenewalLiftData(string Type, string RegistrationNo)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPeriodicRenewalData", Type, RegistrationNo, CreatedBy);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPeriodicRenewalData", Type, RegistrationNo);
         }
         public DataTable UpdateLiftTestReportHistory(string Type, string ID, string count, string CreatedBy)
         {

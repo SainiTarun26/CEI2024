@@ -393,7 +393,8 @@ namespace CEIHaryana.SiteOwnerPages
         {
             string CreatedBy = Session["SiteOwnerId"].ToString();
             DataSet ds = new DataSet();
-            ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text.Trim(), CreatedBy);
+            //ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text.Trim(), CreatedBy);
+            ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text.Trim());
             if (ds.Tables[0].Rows.Count > 0 && ds != null)
             {
                 txtMake.ReadOnly = true;
@@ -498,10 +499,11 @@ namespace CEIHaryana.SiteOwnerPages
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
                 string RegistrationNo = LblRegistrationNo.Text;
-                string CreatedBy = Session["SiteOwnerId"].ToString();
+                //string CreatedBy = Session["SiteOwnerId"].ToString();
                 //txtRegistrationNo.Text = RegistrationNo;
                 DataSet ds = new DataSet();
-                ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), RegistrationNo, CreatedBy);
+                //ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), RegistrationNo, CreatedBy);
+                ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), RegistrationNo);
                 if (ds.Tables[0].Rows.Count > 0 && ds != null)
                 {
                     txtMake.ReadOnly = true;
@@ -569,7 +571,7 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     DateTime PrevChallanDate;
                     //if (DateTime.TryParse(ds.Tables[0].Rows[0]["Previous_ChallanDate"].ToString(), out PrevChallanDate))
-                    if (DateTime.TryParse(ds.Tables[0].Rows[0]["Previous_ChallanDate"].ToString(), out PrevChallanDate))
+                    if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastTransactionDate"].ToString(), out PrevChallanDate))
                     {
                         txtPrevChallanDate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
                     }
