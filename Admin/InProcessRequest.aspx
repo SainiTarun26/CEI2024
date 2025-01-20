@@ -148,7 +148,7 @@
      </div>
  </div>
                 <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
-                            AutoGenerateColumns="false" onrowcommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" AllowPaging="true" PageSize="20"  BorderWidth="1px" BorderColor="#dbddff" >
+                            AutoGenerateColumns="false" onrowcommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" AllowPaging="true" PageSize="50"  BorderWidth="1px" BorderColor="#dbddff" >
                              <Columns>
                               
                                   <asp:TemplateField HeaderText="Id" Visible="False">
@@ -271,6 +271,8 @@
      </div>
 
  </div>
+ <footer class="footer">
+ </footer>
  <script>
      new DataTable('#example');
  </script>

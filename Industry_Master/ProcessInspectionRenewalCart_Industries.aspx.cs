@@ -69,7 +69,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
         }
@@ -709,8 +709,8 @@ namespace CEIHaryana.Industry_Master
             {
                 if (e.CommandName == "Select")
                 {
-                    // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                     fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -783,7 +783,7 @@ namespace CEIHaryana.Industry_Master
                     {
                         bool isValid1 = true;
                         bool isValid2 = true;
-                        string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
+                        string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
                         if (serverStatus != "Server is reachable.")
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
@@ -944,7 +944,7 @@ namespace CEIHaryana.Industry_Master
                                             // string accessToken = "dfsfdsfsfsdf";
 
                                             logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                                          "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                                          "https://investharyana.in/api/project-service-logs-external_UHBVN",
                                                           new Industry_Inspection_StageWise_JsonDataFormat_Model
                                                           {
                                                               actionTaken = ApiPostformatresult.ActionTaken,

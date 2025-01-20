@@ -37,7 +37,7 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
 
             }
@@ -103,7 +103,7 @@ namespace CEIHaryana.SiteOwnerPages
                 ApplicantTypeCode = ds.Tables[0].Rows[0]["ApplicantTypeCode"].ToString();
                 Session["ApplicantTypeCode"] = ApplicantTypeCode;
                 if (ApplicantTypeCode.ToString() == "AT001")
-            {
+                { 
                 //ElectricalInstallation.Visible = true;
                 DivPancard_TanNo.Visible = true;
                 txtPAN.Text = Session["SiteOwnerId"].ToString();

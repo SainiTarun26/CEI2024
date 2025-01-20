@@ -656,8 +656,8 @@ namespace CEIHaryana.SiteOwnerPages
                 else if (e.CommandName == "View")
                 {
                     string fileName = "";
-                   // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                   // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     //lblerror.Text = fileName;
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -1127,8 +1127,16 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     GridViewPayment.DataSource = null;
                     GridViewPayment.DataBind();
-                    string script = "alert(\"Please Fill the Form first for knowing Payment \");";
+                    //string script = "alert(\"Please Fill the Form first for knowing Payment \");";
+                    string script = "alert(\"Please Check atleast one CheckBox \");";
+
                     ScriptManager.RegisterStartupScript(this, GetType(), "serverscript", script, true);
+
+                    UploadDocuments.Visible = false;
+                    FeesDetails.Visible = false;
+                    PaymentDetails.Visible = false;
+                    btnReset.Visible = false;
+                    btnSubmit.Visible = false;
                 }
                 ds.Dispose();
             }
@@ -1217,7 +1225,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     //ID = Session["InspectionId"].ToString();
 
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);

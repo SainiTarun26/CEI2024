@@ -19,7 +19,7 @@ namespace CEIHaryana.Industry_Master
             {
                 try
                 {
-                    if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != string.Empty)
+                    if (Convert.ToString(Session["SiteOwnerId_Sld_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Industry"]) != string.Empty)
                     {
                         BindGrid();
 
@@ -31,7 +31,7 @@ namespace CEIHaryana.Industry_Master
                 }
                 catch (Exception ex)
                 {
-                    string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                    string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
                 }
                
@@ -41,7 +41,7 @@ namespace CEIHaryana.Industry_Master
         public void BindGrid(string searchText = null)
         {
             string LoginID = string.Empty;
-            LoginID = Session["SiteOwnerId_Sld_Indus"].ToString();
+            LoginID = Session["SiteOwnerId_Sld_Industry"].ToString();
             DataTable ds = new DataTable();
             ds = CEI.SldHistory_Industry(LoginID, searchText);
             if (ds.Rows.Count > 0)
@@ -118,16 +118,16 @@ namespace CEIHaryana.Industry_Master
                 LinkButton linkButton1 = (LinkButton)e.Row.FindControl("LinkButton1");
                 LinkButton Lnkbtn = (LinkButton)e.Row.FindControl("Lnkbtn");
 
-                if (status == "Approved" || status == "Rejected")
+                linkButton1.Visible = true;
+                if (status == "Approved")
                 {
-                    linkButton1.Visible = false;
+                   // linkButton1.Visible = false;
                     lnkDocumemtPath.Visible = true;
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
 
-                    linkButton1.Visible = true;
                     lnkDocumemtPath.Visible = false;
                 }
                 if (RequestLetter != null && RequestLetter != "")

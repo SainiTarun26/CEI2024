@@ -27,6 +27,22 @@ namespace CEIHaryana.SiteOwnerPages
                               PrevIntimationId = string.Empty, PrevVoltageLevel = string.Empty,
                               PrevApplicantType = string.Empty, AssignToOfficer = string.Empty;
 
+        protected void BtnDelete_Click(object sender, EventArgs e)
+        {
+            if (Session["SelectedCartID"] != null)
+            {
+                string SelectedCartID = Session["SelectedCartID"].ToString();
+
+                CEI.ToDeleteCart(SelectedCartID);
+                Response.Redirect("/SiteOwnerPages/PeriodicRenewal.aspx", false);
+                Session["SelectedCartID"] = "";
+            }
+            else
+            {
+                Response.Write("<script>alert('No Cart ID selected.');</script>");
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -80,6 +96,7 @@ namespace CEIHaryana.SiteOwnerPages
                 DivGrid.Visible = true;
                 BindGrid();
                 BtnSubmit.Visible = true;
+                BtnDelete.Visible = true;
             }
             catch (Exception ex)
             {
@@ -93,6 +110,7 @@ namespace CEIHaryana.SiteOwnerPages
                 string[] str = txtAddressFilter.Text.Split('|');
                 string address = str[0].Trim();
                 string CartID = str[1].Trim();
+                Session["SelectedCartID"] = CartID;
 
                 DataSet ds = new DataSet();
                 ds = CEI.ShowDataToCart(address, CartID, CreatedBy);
@@ -319,21 +337,21 @@ namespace CEIHaryana.SiteOwnerPages
             dblSubTotalCapacity = 0;
             dblSubHighestVoltage = 0;
         }
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            try
-            {
-                if (e.CommandName == "DeleteRow")
-                {
-                    int inspectionId = Convert.ToInt32(e.CommandArgument);
-                    DataSet ds = new DataSet();
-                    ds = CEI.ToRemoveDataCart(inspectionId);
+        //protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (e.CommandName == "DeleteRow")
+        //        {
+        //            int inspectionId = Convert.ToInt32(e.CommandArgument);
+        //            DataSet ds = new DataSet();
+        //            ds = CEI.ToRemoveDataCart(inspectionId);
 
-                    BindGrid();
-                }
-            }
-            catch (Exception ex) { }
-        }
+        //            BindGrid();
+        //        }
+        //    }
+        //    catch (Exception ex) { }
+        //}
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
             try

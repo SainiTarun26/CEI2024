@@ -180,7 +180,7 @@
                                         <asp:DropDownList ID="ddlworktype" TabIndex="3" runat="server" disabled  AutoPostBack="true" class="form-control  select-form select2" OnSelectedIndexChanged="ddlworktype_SelectedIndexChanged" Style="width: 100% !important;">
                                             <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                             <asp:ListItem Value="1" Text="Individual Person"></asp:ListItem>
-                                            <asp:ListItem Value="2" Text="Firm/Organization/Company/Department"></asp:ListItem>
+                                            <asp:ListItem Value="2" Text="Firm/Company"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
 

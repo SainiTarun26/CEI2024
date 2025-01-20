@@ -17,6 +17,7 @@ namespace CEIHaryana.TestReportModal
         CEI CEI = new CEI();
         string ID = string.Empty;
         string id = string.Empty;
+        bool OTPSEND = false;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -789,9 +790,10 @@ namespace CEIHaryana.TestReportModal
         {
             try
             {
+              
                 Session["GeneratorSetOtp"] = Convert.ToString(Convert.ToInt32(Session["GeneratorSetOtp"]) + 1);
                 // OTP.Visible = true;
-                if (btnVerify.Text == "SendOTP" && Session["GeneratorSetOtp"].ToString() == "1")
+                if (btnVerify.Text == "SendOTP" && Session["GeneratorSetOtp"].ToString() != "0")
                 {
                     OTP.Visible = true;
                     string Email = Session["Email"].ToString();
@@ -801,9 +803,13 @@ namespace CEIHaryana.TestReportModal
                     }
                     else
                     {
-                        Session["OTP"] = CEI.ValidateOTPthroughEmail(Email);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('OTP has been Sent to your registered email Id');", true);
-                        btnVerify.Text = "Verify";
+                        if (Session["Email"].ToString().Trim() != "OTPSEND") {
+                            Session["OTP"] = CEI.ValidateOTPthroughEmail(Email);
+                            Session["Email"] = "OTPSEND";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('OTP has been Sent to your registered email Id');", true);
+                            btnVerify.Text = "Verify";
+                        }
+                        
                     }
                 }
                 else

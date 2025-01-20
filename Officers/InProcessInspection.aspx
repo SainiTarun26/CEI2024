@@ -589,7 +589,7 @@
 
                 <div class="col-md-4" id="ApprovalRequired" runat="server" visible="true">
                     <label>
-                        Approval<samp style="color: red"> * </samp>
+                        Action<samp style="color: red"> * </samp>
                     </label>
                     <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>

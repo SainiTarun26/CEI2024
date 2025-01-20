@@ -180,7 +180,7 @@
                             <asp:DropDownList ID="ddlworktype" runat="server" AutoPostBack="true" class="form-control  select-form select2" TabIndex="1" Style="width: 100% !important;">
                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                 <asp:ListItem Value="1" Text="Individual Person"></asp:ListItem>
-                                <asp:ListItem Value="2" Text="Firm/Organization/Company/Department"></asp:ListItem>
+                                <asp:ListItem Value="2" Text="Firm/Company"></asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Text="Please Select Work Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlworktype" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 

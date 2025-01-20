@@ -28,6 +28,7 @@ namespace CEIHaryana.UserPages
 
                         ID = Session["LineID"].ToString();
                         GetDetailswithId();
+                        GetEarthingData();
                         if (Convert.ToString(Session["Approval"]) == "Pending")
                         {
                             ////Contractor.Visible = true;
@@ -46,6 +47,7 @@ namespace CEIHaryana.UserPages
                     {
                         ID = Session["LineID"].ToString();
                         GetDetailswithId();
+                        GetEarthingData();
                         IntimationData.Visible = true;
                         ApprovalTitle.Visible = true;
                         DivApproval.Visible = true;
@@ -57,6 +59,7 @@ namespace CEIHaryana.UserPages
                     {
                         ID = Session["LineID_Industry"].ToString();
                         GetDetailswithId();
+                        GetEarthingData();
                         IntimationData.Visible = true;
                         ApprovalTitle.Visible = true;
                         DivApproval.Visible = true;
@@ -68,6 +71,7 @@ namespace CEIHaryana.UserPages
                     {
                         ID = Session["InspectionTestReportId"].ToString();
                         GetDetailswithId();
+                        GetEarthingData();
                         ApprovalTitle.Visible = true;
                         DivApproval.Visible = true;
                         //SiteOwner.Visible = true;
@@ -79,6 +83,7 @@ namespace CEIHaryana.UserPages
                     {
                         ID = Session["IntimationForHistoryId"].ToString();
                         GetDetailswithId();
+                        GetEarthingData();
                     }
                     else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
                     {
@@ -96,6 +101,7 @@ namespace CEIHaryana.UserPages
                         }
                         ID = Session["LineID"].ToString();
                         GetDetailswithId();
+                        GetEarthingData();
                         IntimationData.Visible = true;
 
                     }
@@ -138,7 +144,7 @@ namespace CEIHaryana.UserPages
 
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtInstallation.Text = dp_Id;
-                if (dp_Id == "Firm/Organization/Company/Department")
+                if (dp_Id == "Firm/Company")
                 {
                     agency.Visible = true;
                     individual.Visible = false;
@@ -370,212 +376,212 @@ namespace CEIHaryana.UserPages
                 txtRiverCanalCrossing.Text = ds.Tables[0].Rows[0]["NmbrofRiverCanalCrossing"].ToString();
                 txtPowerLineCrossing.Text = ds.Tables[0].Rows[0]["NmbrofPowerLineCrossing"].ToString();
                 txtEarthing.Text = ds.Tables[0].Rows[0]["NmbrofEarthing"].ToString();
-                if (txtEarthing.Text == "1")
-                {
-                    Earthingtype1.Visible = true;
-                }
-                else if (txtEarthing.Text == "2")
-                {
-                    Earthingtype1.Visible = true;
-                    Earthingtype2.Style.Add("display", "table-row");
+                //if (txtEarthing.Text == "1")
+                //{
+                //    Earthingtype1.Visible = true;
+                //}
+                //else if (txtEarthing.Text == "2")
+                //{
+                //    Earthingtype1.Visible = true;
+                //    Earthingtype2.Style.Add("display", "table-row");
 
-                }
-                else if (txtEarthing.Text == "3")
-                {
-                    Earthingtype1.Visible = true;
-                    Earthingtype2.Style.Add("display", "table-row");
-                    Earthingtype3.Style.Add("display", "table-row");
+                //}
+                //else if (txtEarthing.Text == "3")
+                //{
+                //    Earthingtype1.Visible = true;
+                //    Earthingtype2.Style.Add("display", "table-row");
+                //    Earthingtype3.Style.Add("display", "table-row");
 
-                }
-                else if (txtEarthing.Text == "4")
-                {
-                    Earthingtype1.Visible = true;
-                    Earthingtype2.Style.Add("display", "table-row");
-                    Earthingtype3.Style.Add("display", "table-row");
-                    Earthingtype4.Style.Add("display", "table-row");
+                //}
+                //else if (txtEarthing.Text == "4")
+                //{
+                //    Earthingtype1.Visible = true;
+                //    Earthingtype2.Style.Add("display", "table-row");
+                //    Earthingtype3.Style.Add("display", "table-row");
+                //    Earthingtype4.Style.Add("display", "table-row");
 
-                }
-                else if (txtEarthing.Text == "5")
-                {
-                    Earthingtype1.Visible = true;
-                    Earthingtype2.Style.Add("display", "table-row");
-                    Earthingtype3.Style.Add("display", "table-row");
-                    Earthingtype4.Style.Add("display", "table-row");
-                    Earthingtype5.Style.Add("display", "table-row");
+                //}
+                //else if (txtEarthing.Text == "5")
+                //{
+                //    Earthingtype1.Visible = true;
+                //    Earthingtype2.Style.Add("display", "table-row");
+                //    Earthingtype3.Style.Add("display", "table-row");
+                //    Earthingtype4.Style.Add("display", "table-row");
+                //    Earthingtype5.Style.Add("display", "table-row");
 
-                }
-                else if (txtEarthing.Text == "6")
-                {
-                    Earthingtype1.Visible = true;
-                    Earthingtype2.Style.Add("display", "table-row");
-                    Earthingtype3.Style.Add("display", "table-row");
-                    Earthingtype4.Style.Add("display", "table-row");
-                    Earthingtype5.Style.Add("display", "table-row");
-                    Earthingtype6.Style.Add("display", "table-row");
+                //}
+                //else if (txtEarthing.Text == "6")
+                //{
+                //    Earthingtype1.Visible = true;
+                //    Earthingtype2.Style.Add("display", "table-row");
+                //    Earthingtype3.Style.Add("display", "table-row");
+                //    Earthingtype4.Style.Add("display", "table-row");
+                //    Earthingtype5.Style.Add("display", "table-row");
+                //    Earthingtype6.Style.Add("display", "table-row");
 
-                }
-                else if (txtEarthing.Text == "7")
-                {
-                    Earthingtype1.Visible = true;
-                    Earthingtype2.Style.Add("display", "table-row");
-                    Earthingtype3.Style.Add("display", "table-row");
-                    Earthingtype4.Style.Add("display", "table-row");
-                    Earthingtype5.Style.Add("display", "table-row");
-                    Earthingtype6.Style.Add("display", "table-row");
-                    Earthingtype7.Style.Add("display", "table-row");
+                //}
+                //else if (txtEarthing.Text == "7")
+                //{
+                //    Earthingtype1.Visible = true;
+                //    Earthingtype2.Style.Add("display", "table-row");
+                //    Earthingtype3.Style.Add("display", "table-row");
+                //    Earthingtype4.Style.Add("display", "table-row");
+                //    Earthingtype5.Style.Add("display", "table-row");
+                //    Earthingtype6.Style.Add("display", "table-row");
+                //    Earthingtype7.Style.Add("display", "table-row");
 
-                }
-                else if (txtEarthing.Text == "8")
-                {
-                    Earthingtype1.Visible = true;
-                    Earthingtype2.Style.Add("display", "table-row");
-                    Earthingtype3.Style.Add("display", "table-row");
-                    Earthingtype4.Style.Add("display", "table-row");
-                    Earthingtype5.Style.Add("display", "table-row");
-                    Earthingtype6.Style.Add("display", "table-row");
-                    Earthingtype7.Style.Add("display", "table-row");
-                    Earthingtype8.Style.Add("display", "table-row");
+                //}
+                //else if (txtEarthing.Text == "8")
+                //{
+                //    Earthingtype1.Visible = true;
+                //    Earthingtype2.Style.Add("display", "table-row");
+                //    Earthingtype3.Style.Add("display", "table-row");
+                //    Earthingtype4.Style.Add("display", "table-row");
+                //    Earthingtype5.Style.Add("display", "table-row");
+                //    Earthingtype6.Style.Add("display", "table-row");
+                //    Earthingtype7.Style.Add("display", "table-row");
+                //    Earthingtype8.Style.Add("display", "table-row");
 
-                }
-                else if (txtEarthing.Text == "9")
-                {
-                    Earthingtype1.Visible = true;
-                    Earthingtype2.Style.Add("display", "table-row");
-                    Earthingtype3.Style.Add("display", "table-row");
-                    Earthingtype4.Style.Add("display", "table-row");
-                    Earthingtype5.Style.Add("display", "table-row");
-                    Earthingtype6.Style.Add("display", "table-row");
-                    Earthingtype7.Style.Add("display", "table-row");
-                    Earthingtype8.Style.Add("display", "table-row");
-                    Earthingtype9.Style.Add("display", "table-row");
+                //}
+                //else if (txtEarthing.Text == "9")
+                //{
+                //    Earthingtype1.Visible = true;
+                //    Earthingtype2.Style.Add("display", "table-row");
+                //    Earthingtype3.Style.Add("display", "table-row");
+                //    Earthingtype4.Style.Add("display", "table-row");
+                //    Earthingtype5.Style.Add("display", "table-row");
+                //    Earthingtype6.Style.Add("display", "table-row");
+                //    Earthingtype7.Style.Add("display", "table-row");
+                //    Earthingtype8.Style.Add("display", "table-row");
+                //    Earthingtype9.Style.Add("display", "table-row");
 
-                }
-                else if (txtEarthing.Text == "10")
-                {
-                    Earthingtype1.Visible = true;
-                    Earthingtype2.Style.Add("display", "table-row");
-                    Earthingtype3.Style.Add("display", "table-row");
-                    Earthingtype4.Style.Add("display", "table-row");
-                    Earthingtype5.Style.Add("display", "table-row");
-                    Earthingtype6.Style.Add("display", "table-row");
-                    Earthingtype7.Style.Add("display", "table-row");
-                    Earthingtype8.Style.Add("display", "table-row");
-                    Earthingtype9.Style.Add("display", "table-row");
-                    Earthingtype10.Style.Add("display", "table-row");
+                //}
+                //else if (txtEarthing.Text == "10")
+                //{
+                //    Earthingtype1.Visible = true;
+                //    Earthingtype2.Style.Add("display", "table-row");
+                //    Earthingtype3.Style.Add("display", "table-row");
+                //    Earthingtype4.Style.Add("display", "table-row");
+                //    Earthingtype5.Style.Add("display", "table-row");
+                //    Earthingtype6.Style.Add("display", "table-row");
+                //    Earthingtype7.Style.Add("display", "table-row");
+                //    Earthingtype8.Style.Add("display", "table-row");
+                //    Earthingtype9.Style.Add("display", "table-row");
+                //    Earthingtype10.Style.Add("display", "table-row");
 
-                }
-                else if (txtEarthing.Text == "11")
-                {
-                    Earthingtype1.Visible = true;
-                    Earthingtype2.Style.Add("display", "table-row");
-                    Earthingtype3.Style.Add("display", "table-row");
-                    Earthingtype4.Style.Add("display", "table-row");
-                    Earthingtype5.Style.Add("display", "table-row");
-                    Earthingtype6.Style.Add("display", "table-row");
-                    Earthingtype7.Style.Add("display", "table-row");
-                    Earthingtype8.Style.Add("display", "table-row");
-                    Earthingtype9.Style.Add("display", "table-row");
-                    Earthingtype10.Style.Add("display", "table-row");
-                    Earthingtype11.Style.Add("display", "table-row");
+                //}
+                //else if (txtEarthing.Text == "11")
+                //{
+                //    Earthingtype1.Visible = true;
+                //    Earthingtype2.Style.Add("display", "table-row");
+                //    Earthingtype3.Style.Add("display", "table-row");
+                //    Earthingtype4.Style.Add("display", "table-row");
+                //    Earthingtype5.Style.Add("display", "table-row");
+                //    Earthingtype6.Style.Add("display", "table-row");
+                //    Earthingtype7.Style.Add("display", "table-row");
+                //    Earthingtype8.Style.Add("display", "table-row");
+                //    Earthingtype9.Style.Add("display", "table-row");
+                //    Earthingtype10.Style.Add("display", "table-row");
+                //    Earthingtype11.Style.Add("display", "table-row");
 
-                }
-                else if (txtEarthing.Text == "12")
-                {
-                    Earthingtype1.Visible = true;
-                    Earthingtype2.Style.Add("display", "table-row");
-                    Earthingtype3.Style.Add("display", "table-row");
-                    Earthingtype4.Style.Add("display", "table-row");
-                    Earthingtype5.Style.Add("display", "table-row");
-                    Earthingtype6.Style.Add("display", "table-row");
-                    Earthingtype7.Style.Add("display", "table-row");
-                    Earthingtype8.Style.Add("display", "table-row");
-                    Earthingtype9.Style.Add("display", "table-row");
-                    Earthingtype10.Style.Add("display", "table-row");
-                    Earthingtype11.Style.Add("display", "table-row");
-                    Earthingtype12.Style.Add("display", "table-row");
+                //}
+                //else if (txtEarthing.Text == "12")
+                //{
+                //    Earthingtype1.Visible = true;
+                //    Earthingtype2.Style.Add("display", "table-row");
+                //    Earthingtype3.Style.Add("display", "table-row");
+                //    Earthingtype4.Style.Add("display", "table-row");
+                //    Earthingtype5.Style.Add("display", "table-row");
+                //    Earthingtype6.Style.Add("display", "table-row");
+                //    Earthingtype7.Style.Add("display", "table-row");
+                //    Earthingtype8.Style.Add("display", "table-row");
+                //    Earthingtype9.Style.Add("display", "table-row");
+                //    Earthingtype10.Style.Add("display", "table-row");
+                //    Earthingtype11.Style.Add("display", "table-row");
+                //    Earthingtype12.Style.Add("display", "table-row");
 
-                }
-                else if (txtEarthing.Text == "13")
-                {
-                    Earthingtype1.Visible = true;
-                    Earthingtype2.Style.Add("display", "table-row");
-                    Earthingtype3.Style.Add("display", "table-row");
-                    Earthingtype4.Style.Add("display", "table-row");
-                    Earthingtype5.Style.Add("display", "table-row");
-                    Earthingtype6.Style.Add("display", "table-row");
-                    Earthingtype7.Style.Add("display", "table-row");
-                    Earthingtype8.Style.Add("display", "table-row");
-                    Earthingtype9.Style.Add("display", "table-row");
-                    Earthingtype10.Style.Add("display", "table-row");
-                    Earthingtype11.Style.Add("display", "table-row");
-                    Earthingtype12.Style.Add("display", "table-row");
-                    Earthingtype13.Style.Add("display", "table-row");
+                //}
+                //else if (txtEarthing.Text == "13")
+                //{
+                //    Earthingtype1.Visible = true;
+                //    Earthingtype2.Style.Add("display", "table-row");
+                //    Earthingtype3.Style.Add("display", "table-row");
+                //    Earthingtype4.Style.Add("display", "table-row");
+                //    Earthingtype5.Style.Add("display", "table-row");
+                //    Earthingtype6.Style.Add("display", "table-row");
+                //    Earthingtype7.Style.Add("display", "table-row");
+                //    Earthingtype8.Style.Add("display", "table-row");
+                //    Earthingtype9.Style.Add("display", "table-row");
+                //    Earthingtype10.Style.Add("display", "table-row");
+                //    Earthingtype11.Style.Add("display", "table-row");
+                //    Earthingtype12.Style.Add("display", "table-row");
+                //    Earthingtype13.Style.Add("display", "table-row");
 
-                }
-                else if (txtEarthing.Text == "14")
-                {
-                    Earthingtype1.Visible = true;
-                    Earthingtype2.Style.Add("display", "table-row");
-                    Earthingtype3.Style.Add("display", "table-row");
-                    Earthingtype4.Style.Add("display", "table-row");
-                    Earthingtype5.Style.Add("display", "table-row");
-                    Earthingtype6.Style.Add("display", "table-row");
-                    Earthingtype7.Style.Add("display", "table-row");
-                    Earthingtype8.Style.Add("display", "table-row");
-                    Earthingtype9.Style.Add("display", "table-row");
-                    Earthingtype10.Style.Add("display", "table-row");
-                    Earthingtype11.Style.Add("display", "table-row");
-                    Earthingtype12.Style.Add("display", "table-row");
-                    Earthingtype14.Style.Add("display", "table-row");
+                //}
+                //else if (txtEarthing.Text == "14")
+                //{
+                //    Earthingtype1.Visible = true;
+                //    Earthingtype2.Style.Add("display", "table-row");
+                //    Earthingtype3.Style.Add("display", "table-row");
+                //    Earthingtype4.Style.Add("display", "table-row");
+                //    Earthingtype5.Style.Add("display", "table-row");
+                //    Earthingtype6.Style.Add("display", "table-row");
+                //    Earthingtype7.Style.Add("display", "table-row");
+                //    Earthingtype8.Style.Add("display", "table-row");
+                //    Earthingtype9.Style.Add("display", "table-row");
+                //    Earthingtype10.Style.Add("display", "table-row");
+                //    Earthingtype11.Style.Add("display", "table-row");
+                //    Earthingtype12.Style.Add("display", "table-row");
+                //    Earthingtype14.Style.Add("display", "table-row");
 
-                }
-                else if (txtEarthing.Text == "15")
-                {
-                    Earthingtype1.Visible = true;
-                    Earthingtype2.Style.Add("display", "table-row");
-                    Earthingtype3.Style.Add("display", "table-row");
-                    Earthingtype4.Style.Add("display", "table-row");
-                    Earthingtype5.Style.Add("display", "table-row");
-                    Earthingtype6.Style.Add("display", "table-row");
-                    Earthingtype7.Style.Add("display", "table-row");
-                    Earthingtype8.Style.Add("display", "table-row");
-                    Earthingtype9.Style.Add("display", "table-row");
-                    Earthingtype10.Style.Add("display", "table-row");
-                    Earthingtype11.Style.Add("display", "table-row");
-                    Earthingtype12.Style.Add("display", "table-row");
-                    Earthingtype15.Style.Add("display", "table-row");
+                //}
+                //else if (txtEarthing.Text == "15")
+                //{
+                //    Earthingtype1.Visible = true;
+                //    Earthingtype2.Style.Add("display", "table-row");
+                //    Earthingtype3.Style.Add("display", "table-row");
+                //    Earthingtype4.Style.Add("display", "table-row");
+                //    Earthingtype5.Style.Add("display", "table-row");
+                //    Earthingtype6.Style.Add("display", "table-row");
+                //    Earthingtype7.Style.Add("display", "table-row");
+                //    Earthingtype8.Style.Add("display", "table-row");
+                //    Earthingtype9.Style.Add("display", "table-row");
+                //    Earthingtype10.Style.Add("display", "table-row");
+                //    Earthingtype11.Style.Add("display", "table-row");
+                //    Earthingtype12.Style.Add("display", "table-row");
+                //    Earthingtype15.Style.Add("display", "table-row");
 
-                }
-                txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
-                txtearthingValue1.Text = ds.Tables[0].Rows[0]["Valueinohms1"].ToString();
-                txtEarthingType2.Text = ds.Tables[0].Rows[0]["EarthingType2"].ToString();
-                txtEarthingValue2.Text = ds.Tables[0].Rows[0]["Valueinohms2"].ToString();
-                txtEarthingType3.Text = ds.Tables[0].Rows[0]["EarthingType3"].ToString();
-                txtEarthingValue3.Text = ds.Tables[0].Rows[0]["Valueinohms3"].ToString();
-                txtEarthingType4.Text = ds.Tables[0].Rows[0]["EarthingType4"].ToString();
-                txtEarthingValue4.Text = ds.Tables[0].Rows[0]["Valueinohms4"].ToString();
-                txtEarthingType5.Text = ds.Tables[0].Rows[0]["EarthingType5"].ToString();
-                txtEarthingValue5.Text = ds.Tables[0].Rows[0]["Valueinohms5"].ToString();
-                txtEarthingType6.Text = ds.Tables[0].Rows[0]["EarthingType6"].ToString();
-                txtEarthingValue6.Text = ds.Tables[0].Rows[0]["Valueinohms6"].ToString();
-                txtEarthingType7.Text = ds.Tables[0].Rows[0]["EarthingType7"].ToString();
-                txtEarthingValue7.Text = ds.Tables[0].Rows[0]["Valueinohms7"].ToString();
-                txtEarthingType8.Text = ds.Tables[0].Rows[0]["EarthingType8"].ToString();
-                txtEarthingValue8.Text = ds.Tables[0].Rows[0]["Valueinohms8"].ToString();
-                txtEarthingType9.Text = ds.Tables[0].Rows[0]["EarthingType9"].ToString();
-                txtEarthingValue9.Text = ds.Tables[0].Rows[0]["Valueinohms9"].ToString();
-                txtEarthingType10.Text = ds.Tables[0].Rows[0]["EarthingType10"].ToString();
-                txtEarthingValue10.Text = ds.Tables[0].Rows[0]["Valueinohms10"].ToString();
-                txtEarthingType11.Text = ds.Tables[0].Rows[0]["EarthingType11"].ToString();
-                txtEarthingValue11.Text = ds.Tables[0].Rows[0]["Valueinohms11"].ToString();
-                txtEarthingType12.Text = ds.Tables[0].Rows[0]["EarthingType12"].ToString();
-                txtEarthingValue12.Text = ds.Tables[0].Rows[0]["Valueinohms12"].ToString();
-                txtEarthingType13.Text = ds.Tables[0].Rows[0]["EarthingType13"].ToString();
-                txtEarthingValue13.Text = ds.Tables[0].Rows[0]["Valueinohms13"].ToString();
-                txtEarthingType14.Text = ds.Tables[0].Rows[0]["EarthingType14"].ToString();
-                txtEarthingValue14.Text = ds.Tables[0].Rows[0]["Valueinohms14"].ToString();
-                txtEarthingType15.Text = ds.Tables[0].Rows[0]["EarthingType15"].ToString();
-                txtEarthingValue15.Text = ds.Tables[0].Rows[0]["Valueinohms15"].ToString();
+                //}
+                //txtEarthingType1.Text = ds.Tables[0].Rows[0]["EarthingType1"].ToString();
+                //txtearthingValue1.Text = ds.Tables[0].Rows[0]["Valueinohms1"].ToString();
+                //txtEarthingType2.Text = ds.Tables[0].Rows[0]["EarthingType2"].ToString();
+                //txtEarthingValue2.Text = ds.Tables[0].Rows[0]["Valueinohms2"].ToString();
+                //txtEarthingType3.Text = ds.Tables[0].Rows[0]["EarthingType3"].ToString();
+                //txtEarthingValue3.Text = ds.Tables[0].Rows[0]["Valueinohms3"].ToString();
+                //txtEarthingType4.Text = ds.Tables[0].Rows[0]["EarthingType4"].ToString();
+                //txtEarthingValue4.Text = ds.Tables[0].Rows[0]["Valueinohms4"].ToString();
+                //txtEarthingType5.Text = ds.Tables[0].Rows[0]["EarthingType5"].ToString();
+                //txtEarthingValue5.Text = ds.Tables[0].Rows[0]["Valueinohms5"].ToString();
+                //txtEarthingType6.Text = ds.Tables[0].Rows[0]["EarthingType6"].ToString();
+                //txtEarthingValue6.Text = ds.Tables[0].Rows[0]["Valueinohms6"].ToString();
+                //txtEarthingType7.Text = ds.Tables[0].Rows[0]["EarthingType7"].ToString();
+                //txtEarthingValue7.Text = ds.Tables[0].Rows[0]["Valueinohms7"].ToString();
+                //txtEarthingType8.Text = ds.Tables[0].Rows[0]["EarthingType8"].ToString();
+                //txtEarthingValue8.Text = ds.Tables[0].Rows[0]["Valueinohms8"].ToString();
+                //txtEarthingType9.Text = ds.Tables[0].Rows[0]["EarthingType9"].ToString();
+                //txtEarthingValue9.Text = ds.Tables[0].Rows[0]["Valueinohms9"].ToString();
+                //txtEarthingType10.Text = ds.Tables[0].Rows[0]["EarthingType10"].ToString();
+                //txtEarthingValue10.Text = ds.Tables[0].Rows[0]["Valueinohms10"].ToString();
+                //txtEarthingType11.Text = ds.Tables[0].Rows[0]["EarthingType11"].ToString();
+                //txtEarthingValue11.Text = ds.Tables[0].Rows[0]["Valueinohms11"].ToString();
+                //txtEarthingType12.Text = ds.Tables[0].Rows[0]["EarthingType12"].ToString();
+                //txtEarthingValue12.Text = ds.Tables[0].Rows[0]["Valueinohms12"].ToString();
+                //txtEarthingType13.Text = ds.Tables[0].Rows[0]["EarthingType13"].ToString();
+                //txtEarthingValue13.Text = ds.Tables[0].Rows[0]["Valueinohms13"].ToString();
+                //txtEarthingType14.Text = ds.Tables[0].Rows[0]["EarthingType14"].ToString();
+                //txtEarthingValue14.Text = ds.Tables[0].Rows[0]["Valueinohms14"].ToString();
+                //txtEarthingType15.Text = ds.Tables[0].Rows[0]["EarthingType15"].ToString();
+                //txtEarthingValue15.Text = ds.Tables[0].Rows[0]["Valueinohms15"].ToString();
                 txtPoleTowerNo.Text = ds.Tables[0].Rows[0]["NoofPoleTowerForOverheadCable"].ToString();
                 txtCableSize1.Text = ds.Tables[0].Rows[0]["CableSize"].ToString();
                 txtRailwayCrossingNmbr.Text = ds.Tables[0].Rows[0]["RailwayCrossingNoForOC"].ToString();
@@ -619,6 +625,24 @@ namespace CEIHaryana.UserPages
             {
 
             }
+        }
+        public void GetEarthingData()
+        {
+
+            DataSet ds = new DataSet();
+            ds = CEI.GetEarthingData(ID);
+            if (ds.Tables[0].Rows.Count > 0 && ds != null)
+            {
+                GridView1.DataSource = ds;
+                GridView1.DataBind();
+            }
+            else
+            {
+                GridView1.DataSource = null;
+                GridView1.DataBind();
+
+            }
+
         }
 
     }

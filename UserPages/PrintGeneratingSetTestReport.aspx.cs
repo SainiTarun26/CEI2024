@@ -127,7 +127,7 @@ namespace CEIHaryana.UserPages
                 }
                 string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtInstallation.Text = dp_Id;
-                if (dp_Id == "Firm/Organization/Company/Department")
+                if (dp_Id == "Firm/Company")
                 {
                     agency.Visible = true;
                     individual.Visible = false;

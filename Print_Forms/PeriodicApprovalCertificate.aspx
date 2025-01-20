@@ -21,12 +21,6 @@
     <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
     <style>
-                @media print {
-    #lowerdiv {
-        page-break-inside: avoid; /* Avoid breaking within the div */
-        margin-top: auto;        /* Let it flow naturally unless it exceeds */
-    }
-}
         .row {
             padding-left: 25px !important;
             padding-right: 25px !important;
@@ -35,7 +29,7 @@
         body {
             box-sizing: border-box;
             min-height: 100vh;
-            margin: 1px;
+            margin: 0px;
             border: solid 1px black;
             PADDING: 10PX;
         }
@@ -300,12 +294,7 @@
                                             <span id="suggestion4" runat="server" style="margin-bottom: 15px !important;"></span>
                                         </div>
 
-                                        
-                                    </p>
-                                </div>
-                            </div>
-                            <div id="lowerdiv">
-                                                                    <p style="margin-left: 10%;margin-top:30px;">
+                                        <p style="margin-left: 8%;">
                                             Consistent compliance of the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) Regualtions,
  2023 may be ensured in these installations at your end. Please note that it shall be the responsibility of the owner 
 of the electrical installations to maintain and operate the installations in a condition free from danger and as recommended
@@ -323,6 +312,9 @@ by the manufacturer or by the relevant code of practice of the bureau of Indian 
                                             <%--  <p>For Next Inspection shall due in--%>
                                             <%--  <asp:Label ID="NextInspection" runat="server" Text="date"></asp:Label></p>--%>
                                         </p>
+                                    </p>
+                                </div>
+                            </div>
                             <br />
                             <div class="row" style="padding-right: 5px !important;">
                                 <div class="col-12" style="text-align: end; padding-left: 10px;">
@@ -342,7 +334,7 @@ by the manufacturer or by the relevant code of practice of the bureau of Indian 
                                     </p>
                                 </div>
                             </div>
-</div>
+
                         </div>
                     </div>
                 </div>

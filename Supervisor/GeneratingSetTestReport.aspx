@@ -430,7 +430,7 @@
                             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                 <ContentTemplate>
                                     <div class="row">
-                                        <div class="col-4" id="Div170" runat="server">
+                                        <div class="col-2" id="Div170" runat="server">
                                             <label for="Name">
                                                 Unit of Generator  <samp style="color: red">* </samp>
                                             </label>
@@ -443,7 +443,7 @@
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ForeColor="Red" ControlToValidate="ddlCapacity" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Capacity "></asp:RequiredFieldValidator>
                                         </div>
-                                        <div class="col-4" id="Div171" runat="server">
+                                        <div class="col-2" id="Div171" runat="server">
                                             <label for="Name">
                                                 capacity of Generator <samp style="color: red">* </samp>
                                             </label>
@@ -451,14 +451,14 @@
                                                 placeholder="" TabIndex="2" MaxLength="4" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="rvfCapacity" runat="server" ForeColor="Red" ControlToValidate="txtCapacity" ValidationGroup="Submit" ErrorMessage="Please Enter Capacity"></asp:RequiredFieldValidator>
                                         </div>
-                                        <div class="col-4" runat="server">
+                                        <div class="col-2" runat="server">
                                             <label for="Name">
                                                 Serial no. <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtSerialNoOfGenerator" placeholder="of Ac generator/ Alternator" MaxLength="50" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" ControlToValidate="txtSerialNoOfGenerator" ValidationGroup="Submit" ErrorMessage="Please Enter Serial No Of Generator"></asp:RequiredFieldValidator>
                                         </div>
-                                        <div class="col-4" id="Div172" runat="server">
+                                        <div class="col-2" id="Div172" runat="server">
                                             <label for="Name">
                                                 Type of Generating Set <samp style="color: red">* </samp>
                                             </label>

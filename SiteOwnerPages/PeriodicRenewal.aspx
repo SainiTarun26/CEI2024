@@ -579,7 +579,7 @@
                                 <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="No" Value="0" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
                             </asp:RadioButtonList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="RadioButtonList2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select any Sanction Load</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="RadioButtonList2" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-md-8" id="divToShowLabel" visible="false" runat="server" style="margin-top: auto; margin-bottom: auto; text-align: center; font-weight: 700; font-size: 17px; color: red;">
                             <span>Note:- Please test your existing installation from any authorized 'A' class electrical Contractor of Haryana.</span>
@@ -800,7 +800,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="table-responsive pt-3" id="Installation" runat="server">
+                                            <div class="table-responsive pt-3" id="Installation" visible="true" runat="server">
                                                 <table class="table table-bordered table-striped">
                                                     <thead class="table-dark">
                                                         <tr>
@@ -816,7 +816,7 @@
                                                             <tr>
                                                                 <td>
                                                                     <div class="col-md-12">
-                                                                        <asp:TextBox class="form-control" ID="txtinstallationType2" Text="Substation Transformer" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationType2" Text="Substation Transformer" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -834,7 +834,7 @@
                                                             <tr>
                                                                 <td>
                                                                     <div class="col-md-12">
-                                                                        <asp:TextBox class="form-control" ID="txtinstallationType3" Text="Generating Set" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationType3" Text="Generating Set" ReadOnly="true" onkeydown="return preventEnterSubmit(event)"  autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -915,6 +915,28 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        function restrictInput(event) {
+            var keyCode = event.which || event.keyCode;
+            var inputValue = event.target.value + String.fromCharCode(keyCode);
+
+            // Allow only digits (0-9)
+            if (keyCode < 48 || keyCode > 57) {
+                event.preventDefault();
+                return false;
+            }
+
+            // Check if the input value is between 1 and 25
+            var numValue = parseInt(inputValue);
+
+            if (isNaN(numValue) || numValue < 1 || numValue > 25) {
+                event.preventDefault();
+                return false;
+            }
+
+            return true;
+        }
+ </script>
     <script type="text/javascript">
         function ValidateEmail() {
 

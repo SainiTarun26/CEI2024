@@ -146,15 +146,19 @@ namespace CEIHaryana.Officers
                         txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                         //txtAmount.Visible = false;
                         txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                        if(txtAmount.Text == "0")
+                        Session["InsAmount"] = txtAmount.Text;
+                        if (txtAmount.Text == "0")
                         {
                         labelApprovalDate.Visible = true;
                         labelInspectionDate.Visible = false;
+                        labelRejectedDate.Visible = false;
                         TranscationDetails.Visible = false;
-                        }
+                      
+                    }
                        else
                        {
                         labelApprovalDate.Visible = false;
+                        labelRejectedDate.Visible = false;
                         labelInspectionDate.Visible = true;
                         TranscationDetails.Visible = true;
                         ChallanDate.Visible = false;
@@ -236,7 +240,7 @@ namespace CEIHaryana.Officers
                     Session["ApplicationStatus"] = Status;
                         if (Status == "Approved")
                         {
-                            InspectionDate.Visible = false;
+                         InspectionDate.Visible = false;
                         InsDate.Visible = true;
                         txtDATE.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
                         if (txtAmount.Text == "0")
@@ -244,11 +248,13 @@ namespace CEIHaryana.Officers
                         {
                             AppDate.Visible = true;
                             inDate.Visible = false;
+                            AppReject.Visible = false;
                         }
                         else
                         {
                             AppDate.Visible = false;
                             inDate.Visible = true;
+                            AppReject.Visible = false;
                         }
 
                             ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
@@ -267,19 +273,21 @@ namespace CEIHaryana.Officers
                         }
                         if (Status == "Rejected")
                         {
-                            InspectionDate.Visible = false;
+                         InspectionDate.Visible = false;
                         InsDate.Visible = true;
                         txtDATE.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
                         if (txtAmount.Text == "0")
 
                         {
-                            AppDate.Visible = true;
+                            AppReject.Visible = true;
                             inDate.Visible = false;
+                            AppDate.Visible = false;
                         }
                         else
                         {
-                            AppDate.Visible = false;
+                            AppReject.Visible = false;
                             inDate.Visible = true;
+                            AppDate.Visible = false;
                         }
 
                         //if (!string.IsNullOrEmpty(SiteInspectionDate))
@@ -288,8 +296,8 @@ namespace CEIHaryana.Officers
                         //        txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
                         //        txtInspectionDate.Attributes.Add("disabled", "true");
                         //    }
-                        Rejection.Visible = true;
-                            txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                            Rejection.Visible = true;
+                        txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                             txtRejectionBasis.Text = ds.Tables[0].Rows[0]["RejctionReasonType"].ToString();
                             ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                             ddlReview.Attributes.Add("disabled", "true");
@@ -317,8 +325,8 @@ namespace CEIHaryana.Officers
                             ApprovalRequired.Visible = false;
                             btnSubmit.Visible = false;
                             RejectionBasis.Visible = false;
-
-                            ddlReview.Attributes.Add("disabled", "true");
+                            AppReject.Visible = false;
+                        ddlReview.Attributes.Add("disabled", "true");
 
                             divTestReportAttachment.Visible = false;
 
@@ -344,15 +352,19 @@ namespace CEIHaryana.Officers
                         txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                         txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                         txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                    if (txtAmount.Text == "0")
-                    {
+                        Session["InsAmount"] = txtAmount.Text;
+                        if (txtAmount.Text == "0")
+                        {
                         labelApprovalDate.Visible = true;
                         labelInspectionDate.Visible = false;
+                        labelRejectedDate.Visible = false;
                         TranscationDetails.Visible = false;
-                    }
-                    else
+                     
+                        }
+                       else
                     {
                         labelApprovalDate.Visible = false;
+                        labelRejectedDate.Visible = false;
                         labelInspectionDate.Visible = true;
                         TranscationDetails.Visible = true;
                         ChallanDate.Visible = false;
@@ -413,11 +425,13 @@ namespace CEIHaryana.Officers
                         {
                             AppDate.Visible = true;
                             inDate.Visible = false;
+                            AppReject.Visible = false;
                         }
                         else
                         {
                             AppDate.Visible = false;
                             inDate.Visible = true;
+                            AppReject.Visible = false;
                         }
                         ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                             ddlReview.Attributes.Add("disabled", "true");
@@ -434,19 +448,21 @@ namespace CEIHaryana.Officers
                         }
                         if (Status == "Rejected")
                         {
-                            InspectionDate.Visible = false;
+                       
                         InsDate.Visible = true;
                         txtDATE.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
                         if (txtAmount.Text == "0")
 
                         {
-                            AppDate.Visible = true;
+                            AppReject.Visible = true;
                             inDate.Visible = false;
+                            AppDate.Visible = false;
                         }
                         else
                         {
-                            AppDate.Visible = false;
+                            AppReject.Visible = false;
                             inDate.Visible = true;
+                            AppDate.Visible = false;
                         }
                         //if (!string.IsNullOrEmpty(SiteInspectionDate))
                         //    {
@@ -455,7 +471,11 @@ namespace CEIHaryana.Officers
                         //        txtInspectionDate.Attributes.Add("disabled", "true");
                         //    }
                         Rejection.Visible = true;
-                            txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                        labelInspectionDate.Visible = false;
+                        labelApprovalDate.Visible = false;
+                        labelRejectedDate.Visible = true;
+                        InspectionDate.Visible = false;
+                        txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                             ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                             ddlReview.Attributes.Add("disabled", "true");
                             txtRejected.Attributes.Add("disabled", "true");
@@ -467,7 +487,8 @@ namespace CEIHaryana.Officers
                             InspectionDate.Visible = false;
                             ApprovalRequired.Visible = false;
                             btnSubmit.Visible = false;
-                            ddlReview.Attributes.Add("disabled", "true");
+                        AppReject.Visible = false;
+                        ddlReview.Attributes.Add("disabled", "true");
                         }
                     }
                 }
@@ -555,6 +576,7 @@ namespace CEIHaryana.Officers
                                 txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
                                 txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                                 txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                              
                             }
                             else if (Type == "Periodic")
                             {
@@ -607,13 +629,14 @@ namespace CEIHaryana.Officers
                                 DateTime submittedDate;
                                 if (!DateTime.TryParse(Session["lblSubmittedDate"].ToString(), out submittedDate))
                                 {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid submitted date.');", true);
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid submitted date.'); window.location='InProcessRequest.aspx';", true);
                                     return;
                                 }
 
                                 if (inspectionDate < submittedDate)
                                 {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection/Approval date must be greater equal to application requested date.');", true);
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection/Approval date must be greater equal to application requested date.'); window.location='InProcessRequest.aspx';", true);
+                                    //Response.Redirect("/Officers/InProcessRequest.aspx", true);
                                     return;
                                 }
 
@@ -657,11 +680,23 @@ namespace CEIHaryana.Officers
                                                 string lblCapacity = (row.FindControl("lblCapacity") as Label)?.Text;
                                                 string lblWeight = (row.FindControl("lblWeight") as Label)?.Text;
                                                 string lblAmount = (row.FindControl("lblAmount") as Label)?.Text;
+                                                if(lblAmount == "0.00" || lblAmount == "0")
+                                                {
+                                                    txtTranscationDate.Text = "";
+                                                    txtTransactionId.Text = "";
+
+                                                }
+                                                else
+                                                {
+                                                    txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                                                    txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+
+                                                }
                                                 DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
 
 
                                                 CEI.InstallationApproval_Lift_New(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                                  lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), lblAmount, txtTransactionId.Text, DateTime.Parse(txtTranscationDate.Text), transaction);
+                                                  lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text, txtTranscationDate.Text, lblAmount, txtTransactionId.Text, txtTranscationDate.Text, transaction);
 
                                             }
                                             //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
@@ -686,6 +721,18 @@ namespace CEIHaryana.Officers
                                                 DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
                                                 DateTime lblLastApprovalDate = DateTime.Parse((row.FindControl("lblLastApprovalDate") as Label)?.Text);
                                                 DateTime LblMemoDate = DateTime.Parse((row.FindControl("LblMemoDate") as Label)?.Text);
+                                                if (LblAmount == "0.00" || LblAmount == "0")
+                                                {
+                                                    txtTranscationDate.Text = "";
+                                                    txtTransactionId.Text = "";
+
+                                                }
+                                                else
+                                                {
+                                                    txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                                                    txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+
+                                                }
                                                 // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
                                                 CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
                                                 lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, txtTranscationDate.Text, LblMemoNo, LblAmount, txtTransactionId.Text, txtTranscationDate.Text, LblMemoDate, transaction);
@@ -720,6 +767,7 @@ namespace CEIHaryana.Officers
                                     //}
                                     Session["InspectionType"] = "";
                                     Session["InstallationType"] = "";
+                                    Session["InsAmount"] = "";
                                     //transaction.Commit();
 
                                     //commented 3 dec 2024 for 
@@ -968,15 +1016,31 @@ namespace CEIHaryana.Officers
                // btnPreview.Visible = false;
                 if (ddlReview.SelectedValue == "2")
                 {
-                    Rejection.Visible = true;
+                Rejection.Visible = true;
+                labelInspectionDate.Visible = false;
+                labelApprovalDate.Visible = false;
+                labelRejectedDate.Visible = true;
                 }
                 else if (ddlReview.SelectedValue == "1")
                 {
-                    //btnPreview.Visible = true;
-                    //ddlSuggestions.Visible = true;
-
-                    //Suggestion.Visible = true;
+                string amount = Session["InsAmount"].ToString();
+                if(amount != "0" && amount != "0.00")
+                {
+                    labelInspectionDate.Visible = true;
+                    labelApprovalDate.Visible = false;
                 }
+                else
+                {
+                    labelApprovalDate.Visible = true;
+                    labelInspectionDate.Visible = false;
+                }
+                labelRejectedDate.Visible = false;
+               // labelInspectionDate.Visible = true;
+                //btnPreview.Visible = true;
+                //ddlSuggestions.Visible = true;
+
+                //Suggestion.Visible = true;
+            }
             }
 
             protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)

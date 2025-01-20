@@ -281,6 +281,18 @@
                             <SortedDescendingHeaderStyle BackColor="#00547E" />
                         </asp:GridView>--%>
                     </table>
+                    <div class="row" id="Note" runat="server" visible="false">
+
+                        <div class="col-12">
+                            <samp style="color: red; font-weight: bold; font-size: 15px;">NOTE:</samp>&nbsp;
+            
+                            <label for="Phone" style="font-weight: bold; font-size: 15px;">
+                                Please contact your contractor whether test reports are approved.
+            
+                            </label>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -326,4 +338,11 @@
             }
         }
     </script>
+
+     <script>
+         function alertWithRedirectdata_InvalidSession() {
+             alert('Your Session Expired..');
+             window.location.href = 'https://investharyana.in/#/';
+         }
+     </script>
 </asp:Content>

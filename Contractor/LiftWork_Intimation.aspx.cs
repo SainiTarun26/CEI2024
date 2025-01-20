@@ -10,6 +10,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Security.Policy;
+using CEIHaryana.Admin;
 
 namespace CEIHaryana.Contractor
 {
@@ -358,7 +360,7 @@ namespace CEIHaryana.Contractor
                     string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                     ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
                     ddlworktype.Enabled = false;
-                    if (contractorType == "Firm/Organization/Company/Department")
+                    if (contractorType == "Firm/Company")
                     {
                         agency.Visible = true;
                         individual.Visible = false;
@@ -470,7 +472,7 @@ namespace CEIHaryana.Contractor
             if (Session["File"].ToString() != "" && Session["File"].ToString() != null)
             {
                 string fileName = Session["File"].ToString();
-                string filePath = "https://uat.ceiharyana.com" + fileName;
+                string filePath = "https://ceiharyana.com" + fileName;
 
                 //if (System.IO.File.Exists(filePath))
                 //{                
@@ -976,9 +978,9 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-                string Id = ddlPoweUtility.SelectedValue.ToString();
+                string UtilityId = ddlPoweUtility.SelectedValue.ToString();
                 DataSet dsWing = new DataSet();
-                dsWing = CEI.GetWingName(Id);
+                dsWing = CEI.GetWingName(UtilityId);
                 DdlWing.DataSource = dsWing;
                 DdlWing.DataTextField = "WingName";
                 DdlWing.DataValueField = "Id";
@@ -995,9 +997,10 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-                string Id = DdlWing.SelectedValue.ToString();
+                string UtilityId = ddlPoweUtility.SelectedValue.ToString();
+                string WingId = DdlWing.SelectedValue.ToString();
                 DataSet dsZone = new DataSet();
-               // dsZone = CEI.GetZoneName(Id);
+                dsZone = CEI.GetZoneName(UtilityId, WingId);
                 DdlZone.DataSource = dsZone;
                 DdlZone.DataTextField = "ZoneName";
                 DdlZone.DataValueField = "Id";
@@ -1014,9 +1017,11 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-                string Id = DdlZone.SelectedValue.ToString();
+                string UtilityId = ddlPoweUtility.SelectedValue.ToString();
+                string WingId = DdlWing.SelectedValue.ToString();
+                string ZoneId = DdlZone.SelectedValue.ToString();
                 DataSet dsCircle = new DataSet();
-                //dsCircle = CEI.GetCirclesName(Id);
+                dsCircle = CEI.GetCirclesName(UtilityId, WingId, ZoneId);
                 DdlCircle.DataSource = dsCircle;
                 DdlCircle.DataTextField = "CircleName";
                 DdlCircle.DataValueField = "Id";
@@ -1033,9 +1038,12 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-                string id = DdlCircle.SelectedValue.ToString();
+                string UtilityId = ddlPoweUtility.SelectedValue.ToString();
+                string WingId = DdlWing.SelectedValue.ToString();
+                string ZoneId = DdlZone.SelectedValue.ToString();
+                string CircleId = DdlCircle.SelectedValue.ToString();
                 DataSet dsDivision = new DataSet();
-                //dsDivision = CEI.GetDivisionName(id);
+                dsDivision = CEI.GetDivisionName(UtilityId, WingId, ZoneId, CircleId);
                 DdlDivision.DataSource = dsDivision;
                 DdlDivision.DataTextField = "DivisionName";
                 DdlDivision.DataValueField = "Id";
@@ -1052,9 +1060,13 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-                string id = DdlDivision.SelectedValue.ToString();
+                string UtilityId = ddlPoweUtility.SelectedValue.ToString();
+                string WingId = DdlWing.SelectedValue.ToString();
+                string ZoneId = DdlZone.SelectedValue.ToString();
+                string CircleId = DdlCircle.SelectedValue.ToString();
+                string DivisionId = DdlDivision.SelectedValue.ToString();
                 DataSet dsSubDivision = new DataSet();
-                //dsSubDivision = CEI.GetSubDivisionName(id);
+                dsSubDivision = CEI.GetSubDivisionName(UtilityId, WingId, ZoneId, CircleId, DivisionId);
                 DdlSubDivision.DataSource = dsSubDivision;
                 DdlSubDivision.DataTextField = "SubDivision";
                 DdlSubDivision.DataValueField = "Id";
@@ -1260,7 +1272,7 @@ namespace CEIHaryana.Contractor
                     string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                     ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
                     ddlworktype.Enabled = false;
-                    if (contractorType == "Firm/Organization/Company/Department")
+                    if (contractorType == "Firm/Company")
                     {
                         agency.Visible = true;
                         individual.Visible = false;

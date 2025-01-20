@@ -85,32 +85,32 @@ namespace CEIHaryana.SiteOwnerPages
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-               
+
                 string status = DataBinder.Eval(e.Row.DataItem, "Status_type").ToString();
                 string RequestLetter = DataBinder.Eval(e.Row.DataItem, "RequestLetter").ToString();
                 LinkButton lnkDocumemtPath = (LinkButton)e.Row.FindControl("LnkDocumemtPath");
                 LinkButton linkButton1 = (LinkButton)e.Row.FindControl("LinkButton1");
-                LinkButton LnkDocumemtPath2 = (LinkButton)e.Row.FindControl("LnkDocumemtPath2");
+                LinkButton Lnkbtn = (LinkButton)e.Row.FindControl("Lnkbtn");
 
-                if (status == "Approved" || status == "Rejected")
+                linkButton1.Visible = true;
+                if (status == "Approved")
                 {
-                    linkButton1.Visible = false;
+                    // linkButton1.Visible = false;
                     lnkDocumemtPath.Visible = true;
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
-                 
-                    linkButton1.Visible = true;
+
                     lnkDocumemtPath.Visible = false;
                 }
                 if (RequestLetter != null && RequestLetter != "")
                 {
-                    LnkDocumemtPath2.Visible = true;
+                    Lnkbtn.Visible = true;
                 }
                 else
                 {
-                    LnkDocumemtPath2.Visible = false;
+                    Lnkbtn.Visible = false;
                 }
             }
         }

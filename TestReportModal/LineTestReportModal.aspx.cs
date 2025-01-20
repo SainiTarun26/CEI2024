@@ -791,7 +791,7 @@ namespace CEIHaryana.TestReportModal
                 Session["LineOtp"] = Convert.ToString(Convert.ToInt32(Session["LineOtp"]) + 1);
                 //if (btnVerify.Text == "SendOTP" && HiddenField1.Value == "1")
                 //{
-                if (btnVerify.Text == "SendOTP" && Session["LineOtp"].ToString() == "1")
+                if (btnVerify.Text == "SendOTP" && Session["LineOtp"].ToString() != "0")
                 {
 
                     OTP.Visible = true;
@@ -802,9 +802,13 @@ namespace CEIHaryana.TestReportModal
                     }
                     else
                     {
-                        Session["OTP"] = CEI.ValidateOTPthroughEmail(Email);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('OTP has been Sent to your registered email Id');", true);
-                        btnVerify.Text = "Verify";
+                        if (Session["Email"].ToString().Trim() != "OTPSEND")
+                        {
+                            Session["OTP"] = CEI.ValidateOTPthroughEmail(Email);
+                            Session["Email"] = "OTPSEND";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('OTP has been Sent to your registered email Id');", true);
+                            btnVerify.Text = "Verify";
+                        }
                     }
                 }
                 else

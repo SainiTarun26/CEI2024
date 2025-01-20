@@ -115,10 +115,10 @@ namespace CEIHaryana.Supervisor
                 string installationNo = Session["IHID"].ToString();
 
                 // Helper function to safely parse decimal fields
-                //decimal ParseOrDefault(string input, decimal defaultValue = 0)
-                //{
-                //    return decimal.TryParse(input, out decimal result) ? result : defaultValue;
-                //}
+                decimal ParseOrDefault(string input, decimal defaultValue = 0)
+                {
+                    return decimal.TryParse(input, out decimal result) ? result : defaultValue;
+                }
 
                 //CEI.InsertNewLiftData(
                 //    count,IntimationId,RadioButtonList2.SelectedItem.Text,TxtAgentName.Text,txtAgentAddress.Text,

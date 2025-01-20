@@ -234,45 +234,11 @@ namespace CEIHaryana.Admin
                     ID = Session["InspectionId"].ToString();
                     AssignFrom = Session["AdminID"].ToString();
 
-                    bool isRemarksValid = true;
-                    #region RemarksValidation
-
-                    foreach (GridViewRow row in Grid_TRDocuments.Rows)
-                    {
-                        CheckBox chkSelect = (CheckBox)row.FindControl("chk_Select");
-                        TextBox txtRemarks = (TextBox)row.FindControl("txt_Remarks");
-
-                        if (chkSelect != null && chkSelect.Checked && (txtRemarks == null || string.IsNullOrWhiteSpace(txtRemarks.Text)))
-                        {
-                            isRemarksValid = false;
-                            break;
-                        }
-                    }
-
-                    foreach (GridViewRow row in grd_ChecklistDocumemnts.Rows)
-                    {
-                        CheckBox chkSelect = (CheckBox)row.FindControl("chk_SelectDoc");
-                        TextBox txtRemarks = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
-
-                        if (chkSelect != null && chkSelect.Checked && (txtRemarks == null || string.IsNullOrWhiteSpace(txtRemarks.Text)))
-                        {
-                            isRemarksValid = false;
-                            break;
-                        }
-                    }
-
-                    if (!isRemarksValid)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please fill in remarks for selected rows.');", true);
-                        return;
-                    }
-
-                    #endregion
-
                     if (RadioButtonAction.SelectedValue != "" && RadioButtonAction.SelectedValue != null)
                     {
                         if (RadioButtonAction.SelectedValue == "0")
                         {
+
                             if (RdbtnAccptReturn.SelectedValue != "" && RdbtnAccptReturn.SelectedValue != null)
                             {
                                 AcceptorReturn = RdbtnAccptReturn.SelectedValue == "0" ? "Accepted" : "Return";
@@ -285,7 +251,7 @@ namespace CEIHaryana.Admin
                                     string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
                                     if (reqType == "Industry")
                                     {
-                                        string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
+                                        string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
                                         // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
                                         if (serverStatus != "Server is reachable.")
                                         {
@@ -305,170 +271,8 @@ namespace CEIHaryana.Admin
                                     }
                                     else
                                     {
-                                        if (InstallType == "New")
-                                        {
-                                            if (RdbtnAccptReturn.SelectedValue == "0")
-                                            {
-                                                CEI.updateInspectionCEI(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value);
-                                            }
-                                            else if (RdbtnAccptReturn.SelectedValue == "1")
-                                            {
-                                                SqlTransaction transaction = null;
-                                                try
-                                                {
-                                                    using (SqlConnection connection = new SqlConnection(connectionString))
-                                                    {
-                                                        connection.Open();
-                                                        transaction = connection.BeginTransaction();
-                                                        CEI.UpdateStatusOfReturnedInspection(ID, StaffId, ddlReasonType.SelectedItem.Value, transaction);
+                                        CEI.updateInspectionPeriodic(ID, StaffId, IntimationId, txtWorkType.Text.Trim(), AcceptorReturn, Reason, DdlReturnInPeriodic.SelectedItem.Value);
 
-                                                        if (ddlReasonType.SelectedItem.Value == "1") // Checklist Documents
-                                                        {
-                                                            bool AtLeastOneChecked = false;
-                                                            foreach (GridViewRow row in grd_ChecklistDocumemnts.Rows)
-                                                            {
-                                                                CheckBox chkChecklist = (CheckBox)row.FindControl("chk_SelectDoc");
-                                                                if (chkChecklist != null && chkChecklist.Checked)
-                                                                {
-                                                                    AtLeastOneChecked = true;
-
-                                                                    Label LabelRowId = (Label)row.FindControl("LabelRowId");
-                                                                    TextBox txt_RemarksforOwnerDoc = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
-                                                                    if (LabelRowId != null && !string.IsNullOrEmpty(txt_RemarksforOwnerDoc.Text))
-                                                                    {
-                                                                        CEI.updateReturnRemarksOnBasesOnChecklistDocuments(ID, LabelRowId.Text, txt_RemarksforOwnerDoc.Text, transaction);
-                                                                    }
-                                                                }
-                                                            }
-                                                            if (AtLeastOneChecked != true)
-                                                            {
-                                                                transaction.Rollback();
-                                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please Tick Atleast One Test Report Before Submit'); ", true);
-                                                                return;
-                                                            }
-                                                        }
-                                                        else if (ddlReasonType.SelectedItem.Value == "2") // Test Report Documents
-                                                        {
-                                                            bool AtLeastOneChecked = false;
-                                                            foreach (GridViewRow row in Grid_TRDocuments.Rows)
-                                                            {
-                                                                CheckBox chk = (CheckBox)row.FindControl("chk_Select");
-                                                                if (chk != null && chk.Checked)
-                                                                {
-                                                                    AtLeastOneChecked = true;
-
-                                                                    Label Labelid = (Label)row.FindControl("Labelid");
-                                                                    Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
-                                                                    TextBox txtRemarks = (TextBox)row.FindControl("txt_Remarks");
-                                                                    if (Labelid != null && !string.IsNullOrEmpty(txtRemarks.Text))
-                                                                    {
-                                                                        CEI.updateReturnRemarksOnBasesOfTrDocuments(ID, LblIntimationId.Text, Labelid.Text, txtRemarks.Text, transaction);
-                                                                    }
-                                                                }
-                                                            }
-                                                            if (!AtLeastOneChecked)
-                                                            {
-                                                                transaction.Rollback();
-                                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please Tick Atleast One Test Report Before Submit'); ", true);
-                                                            }
-                                                        }
-                                                        else if (ddlReasonType.SelectedItem.Value == "3") // Checklist & Test Report Documents
-                                                        {
-                                                            bool isChecklistValid = false;
-                                                            bool isTestReportValid = false;
-                                                            bool allRemarksFilled = true;
-
-                                                            foreach (GridViewRow row in grd_ChecklistDocumemnts.Rows)
-                                                            {
-                                                                CheckBox chkChecklist = (CheckBox)row.FindControl("chk_SelectDoc");
-                                                                TextBox txt_RemarksforOwnerDoc = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
-
-                                                                if (chkChecklist != null && chkChecklist.Checked)
-                                                                {
-                                                                    isChecklistValid = true;
-                                                                    if (txt_RemarksforOwnerDoc == null || string.IsNullOrEmpty(txt_RemarksforOwnerDoc.Text))
-                                                                    {
-                                                                        allRemarksFilled = false;
-                                                                        break;
-                                                                    }
-                                                                }
-                                                            }
-                                                            foreach (GridViewRow row in Grid_TRDocuments.Rows)
-                                                            {
-                                                                CheckBox chk = (CheckBox)row.FindControl("chk_Select");
-                                                                TextBox txtRemarks = (TextBox)row.FindControl("txt_Remarks");
-
-                                                                if (chk != null && chk.Checked)
-                                                                {
-                                                                    isTestReportValid = true;
-
-                                                                    if (txtRemarks == null || string.IsNullOrEmpty(txtRemarks.Text))
-                                                                    {
-                                                                        allRemarksFilled = false;
-                                                                        break;
-                                                                    }
-                                                                }
-                                                            }
-                                                            if (!isChecklistValid || !isTestReportValid)
-                                                            {
-                                                                transaction.Rollback();
-                                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please tick at least one document in both Checklist and Test Report Documents before submitting.');", true);
-                                                                return;
-                                                            }
-                                                            else if (!allRemarksFilled)
-                                                            {
-                                                                transaction.Rollback();
-                                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please ensure all checked rows have remarks filled in.');", true);
-                                                                return;
-                                                            }
-                                                            else
-                                                            {
-                                                                // Process Checklist Documents
-                                                                foreach (GridViewRow row in grd_ChecklistDocumemnts.Rows)
-                                                                {
-                                                                    CheckBox chkChecklist = (CheckBox)row.FindControl("chk_SelectDoc");
-                                                                    if (chkChecklist != null && chkChecklist.Checked)
-                                                                    {
-                                                                        Label LabelRowId = (Label)row.FindControl("LabelRowId");
-                                                                        TextBox txt_RemarksforOwnerDoc = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
-
-                                                                        if (LabelRowId != null && !string.IsNullOrEmpty(txt_RemarksforOwnerDoc.Text))
-                                                                        {
-                                                                            CEI.updateReturnRemarksOnBasesOnChecklistDocuments(ID, LabelRowId.Text, txt_RemarksforOwnerDoc.Text, transaction);
-                                                                        }
-                                                                    }
-                                                                }
-                                                                // Process Test Report Documents
-                                                                foreach (GridViewRow row in Grid_TRDocuments.Rows)
-                                                                {
-                                                                    CheckBox chk = (CheckBox)row.FindControl("chk_Select");
-                                                                    if (chk != null && chk.Checked)
-                                                                    {
-                                                                        Label Labelid = (Label)row.FindControl("Labelid");
-                                                                        Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
-                                                                        TextBox txtRemarks = (TextBox)row.FindControl("txt_Remarks");
-
-                                                                        if (Labelid != null && !string.IsNullOrEmpty(txtRemarks.Text))
-                                                                        {
-                                                                            CEI.updateReturnRemarksOnBasesOfTrDocuments(ID, LblIntimationId.Text, Labelid.Text, txtRemarks.Text, transaction);
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                        transaction.Commit();
-                                                    }
-                                                }
-                                                catch (Exception ex)
-                                                {
-                                                    transaction.Rollback();
-                                                }
-                                            }
-                                        }
-                                        else if (InstallType == "Periodic")
-                                        {
-                                            CEI.updateInspectionPeriodic(ID, StaffId, IntimationId, txtWorkType.Text.Trim(), AcceptorReturn, Reason, DdlReturnInPeriodic.SelectedItem.Value);
-                                        }
                                         checksuccessmessage = 1;
                                     }
                                     string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
@@ -482,7 +286,7 @@ namespace CEIHaryana.Admin
                                             // string accessToken = "dfsfdsfsfsdf";
 
                                             logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                                          "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                                          "https://investharyana.in/api/project-service-logs-external_UHBVN",
                                                           new Industry_Inspection_StageWise_JsonDataFormat_Model
                                                           {
                                                               actionTaken = ApiPostformatresult.ActionTaken,
@@ -585,7 +389,7 @@ namespace CEIHaryana.Admin
 
                                 catch (Exception ex)
                                 {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An error occurred.');", true);
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Enter valid reason for your action.');", true);
                                 }
                                 finally
                                 {
@@ -643,10 +447,8 @@ namespace CEIHaryana.Admin
                 {
                     Response.Redirect("/Login.aspx");
                 }
-
             }
-            catch (Exception ex)
-            { }
+            catch (Exception ex) { }
         }
         protected void lnkRedirect1_Click(object sender, EventArgs e)
         {
@@ -683,8 +485,8 @@ namespace CEIHaryana.Admin
                 if (e.CommandName == "Select")
                 {
                     ID = Session["InspectionId"].ToString();
-                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                 }
@@ -921,31 +723,6 @@ namespace CEIHaryana.Admin
                 Check_TRDocuments.Visible = false;
             }
         }
-
-        protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            try
-            {
-                if (e.Row.RowType == DataControlRowType.DataRow)
-                {
-                    Label LblRemarks = (Label)e.Row.FindControl("LblRemarks");
-                    LinkButton LnkPreviousDocPath = (LinkButton)e.Row.FindControl("LnkPreviousDocPath");
-                    if (string.IsNullOrEmpty(LblRemarks.Text.Trim()))
-                    {
-                       
-                        LnkPreviousDocPath.Visible = false;
-                    }
-                    else
-                    {
-    
-                        LnkPreviousDocPath.Visible = true;
-                    }
-                }
-            }
-            catch (Exception ex)
-            { }
-        }
-
         protected void lnkRedirect_Click(object sender, EventArgs e)
         {
             LinkButton btn = (LinkButton)(sender);
@@ -1001,15 +778,15 @@ namespace CEIHaryana.Admin
             else if (e.CommandName == "View")
             {
                 string fileName = "";
-                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
             else if (e.CommandName == "ViewInvoice")
             {
                 string fileName = "";
-                // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -1022,21 +799,17 @@ namespace CEIHaryana.Admin
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
                     Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
-                    Label LblRemarks = (Label)e.Row.FindControl("LblRemarks");
                     LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallationInvoice");
                     LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
                     LinkButton linkButtonPrevInvoice = (LinkButton)e.Row.FindControl("lnkPrevInstallationInvoice");
                     LinkButton LinkButtonPrevReport = (LinkButton)e.Row.FindControl("lnkPrevManufacturingReport");
 
-
                     if (LblInstallationName.Text.Trim() == "Line")
                     {
-                        //Grid_MultipleInspectionTR.Columns[5].Visible = false;
-                        //Grid_MultipleInspectionTR.Columns[6].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[5].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[6].Visible = false;
                         Grid_MultipleInspectionTR.Columns[7].Visible = false;
                         Grid_MultipleInspectionTR.Columns[8].Visible = false;
-                        Grid_MultipleInspectionTR.Columns[9].Visible = false;
-                        Grid_MultipleInspectionTR.Columns[10].Visible = false;
                         linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = false;
                         linkButtonPrevInvoice.Visible = false;
@@ -1044,32 +817,15 @@ namespace CEIHaryana.Admin
                     }
                     else
                     {
-                        if (string.IsNullOrEmpty(LblRemarks.Text.Trim()))
-                        {
-                            //Grid_MultipleInspectionTR.Columns[7].Visible = false;
-                            //Grid_MultipleInspectionTR.Columns[8].Visible = false;
-                            //Grid_MultipleInspectionTR.Columns[9].Visible = false;
-                            //Grid_MultipleInspectionTR.Columns[10].Visible = false;
-                            linkButtonInvoice.Visible = true;
-                            LinkButtonReport.Visible = true;
-                            linkButtonPrevInvoice.Visible = false;
-                            LinkButtonPrevReport.Visible = false;
-                            ViewState["AllRowsAreLine"] = false;
-                        }
-                        else
-                        {
-
-                            Grid_MultipleInspectionTR.Columns[7].Visible = true;
-                            Grid_MultipleInspectionTR.Columns[8].Visible = true;
-                            Grid_MultipleInspectionTR.Columns[9].Visible = true;
-                            Grid_MultipleInspectionTR.Columns[10].Visible = true;
-
-                            linkButtonInvoice.Visible = true;
-                            LinkButtonReport.Visible = true;
-                            linkButtonPrevInvoice.Visible = true;
-                            LinkButtonPrevReport.Visible = true;
-                            ViewState["AllRowsAreLine"] = false;
-                        }
+                        Grid_MultipleInspectionTR.Columns[5].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[7].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[8].Visible = true;
+                        linkButtonInvoice.Visible = true;
+                        LinkButtonReport.Visible = true;
+                        linkButtonPrevInvoice.Visible = true;
+                        LinkButtonPrevReport.Visible = true;
+                        ViewState["AllRowsAreLine"] = false;
                     }
                 }
                 else if (e.Row.RowType == DataControlRowType.Footer)

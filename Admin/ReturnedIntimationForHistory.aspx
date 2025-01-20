@@ -264,7 +264,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" OnRowDataBound="grd_Documemnts_RowDataBound" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                    <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
                             <asp:TemplateField HeaderText="SNo">
@@ -301,11 +301,6 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                              <asp:TemplateField HeaderText="Id" Visible="False">
-      <ItemTemplate>
-          <asp:Label ID="LblRemarks" runat="server" Text='<%#Eval("DocumentRemarks") %>'></asp:Label>
-          </ItemTemplate>
-  </asp:TemplateField>
                         </Columns>
                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                     </asp:GridView>
@@ -450,18 +445,8 @@
                                     <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("Count") %>'></asp:Label>
                                     <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
                                     <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
-                                   <%--<asp:Label ID="LblRemarks" runat="server" Text='<%#Eval("reason") %>'></asp:Label>--%>
-                                    <asp:Label ID="LblRemarks" runat="server" Text='<%#Eval("Remarks") %>'></asp:Label>
-                                    </ItemTemplate>
+                                </ItemTemplate>
                             </asp:TemplateField>
-                             <asp:BoundField DataField="Voltage" HeaderText="Voltage(In Volts)">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Capacity" HeaderText="Capacity(In KVA)">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
                             <asp:TemplateField HeaderText="Test Report" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkRedirectTRr" runat="server" Text="View" OnClick="lnkRedirectTRr_Click1" CommandName="Select" CommandArgument='<%# Eval("TestReportId") %>' />
@@ -497,7 +482,6 @@
                                 <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                             </asp:TemplateField>
-                            <%--<asp:BoundField DataField="reason" HeaderText="Return Reason">--%>
                             <asp:BoundField DataField="Remarks" HeaderText="Return Reason">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />

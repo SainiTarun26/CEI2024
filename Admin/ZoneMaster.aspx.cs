@@ -54,9 +54,9 @@ namespace CEIHaryana.Admin
         {
             try
             {
-                string Id = ddlUtility.SelectedValue.ToString();
+                string UtilityId = ddlUtility.SelectedValue.ToString();
                 DataSet dsWing = new DataSet();
-                dsWing = CEI.GetWingName(Id);
+                dsWing = CEI.GetWingName(UtilityId);
                 ddlWingName.DataSource = dsWing;
                 ddlWingName.DataTextField = "WingName";
                 ddlWingName.DataValueField = "Id";

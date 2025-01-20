@@ -66,7 +66,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                 ddlApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 txtInstallationFor.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
-                if (txtInstallationFor.Text == "Firm/Organization/Company/Department")
+                if (txtInstallationFor.Text == "Firm/Company")
                 {
                     agency.Visible = true;
                     individual.Visible = false;
@@ -336,7 +336,7 @@ namespace CEIHaryana.SiteOwnerPages
             if (e.CommandName == "View")
             {
                 string fileName = "";
-                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 // fileName = "https://localhost:44393" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);

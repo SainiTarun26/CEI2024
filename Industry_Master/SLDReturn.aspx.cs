@@ -23,7 +23,7 @@ namespace CEIHaryana.Industry_Master
             {
                 try
                 {
-                    if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != string.Empty)
+                    if (Convert.ToString(Session["SiteOwnerId_Sld_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Industry"]) != string.Empty)
                     {
                         Page.Session["ClickCount"] = "0";
 
@@ -36,7 +36,7 @@ namespace CEIHaryana.Industry_Master
                 catch (Exception ex)
                 {
 
-                    string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                    string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
                 }
                
@@ -55,7 +55,7 @@ namespace CEIHaryana.Industry_Master
                 int checksuccessmessage = 0;
                 try
                 {
-                    string SiteOwnerId = Session["SiteOwnerId_Sld_Indus"].ToString();
+                    string SiteOwnerId = Session["SiteOwnerId_Sld_Industry"].ToString();
                     string SldId = Session["Sld_id"].ToString();
                     int maxFileSize = 2 * 1024 * 1024;
                     string filePathInfo = "";
@@ -182,7 +182,7 @@ namespace CEIHaryana.Industry_Master
                 {
                     string actiontype = "ReSubmit";
 
-                    List<Industry_Api_Post_DataformatModel> ApiPostformatResults = CEI.GetIndustry_OutgoingRequestFormat_Sld(Convert.ToInt32(Session["Sld_id"].ToString()), actiontype, Session["projectid_Sld_Indus"].ToString(), Session["Serviceid_Sld_Indus"].ToString(), Session["SiteOwnerId_Sld_Indus"].ToString());
+                    List<Industry_Api_Post_DataformatModel> ApiPostformatResults = CEI.GetIndustry_OutgoingRequestFormat_Sld(Convert.ToInt32(Session["Sld_id"].ToString()), actiontype, Session["projectid_Sld_Indus"].ToString(), Session["Serviceid_Sld_Indus"].ToString(), Session["SiteOwnerId_Sld_Industry"].ToString());
                     foreach (var ApiPostformatresult in ApiPostformatResults)
                     {
                         if (ApiPostformatresult.PremisesType == "Industry")
@@ -192,7 +192,7 @@ namespace CEIHaryana.Industry_Master
                             // string accessToken = "dfsfdsfsfsdf";
 
                             logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                          "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                          "https://investharyana.in/api/project-service-logs-external_UHBVN",
                                           new Industry_Inspection_StageWise_JsonDataFormat_Model
                                           {
                                               actionTaken = ApiPostformatresult.ActionTaken,

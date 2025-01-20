@@ -31,24 +31,24 @@ namespace CEIHaryana.Industry_Master
             {
                 if (!Page.IsPostBack)
                 {
-                    //Session["SiteOwnerId_Industry"] = "BDJPB4957Q";
-                    //Session["SiteOwnerId_Industry"] = "1123";
-                    //Session["district_Temp"] = "Ambala";
-                    //Session["SiteOwner_mobile"] = "9876543210";
-                    //Session["SiteOwner_useremail"] = "navneet10a28@gmail.com";
-                    //Session["SiteOwner_address"] = "Ambala";
-                    //Session["Serviceid_pd_Indus"] = "ec289b0f-e803-4bce-9dc2-d1d5ce93ba5a";
-                    //Session["projectid_pd_Indus"] = "1";
-                    //var userSession = new Cei_IndustryServices_Redirection_IncomingJson_Model
-                    //{
-                    //    uname = "sdsd",
-                    //    businessentity = "edscsd",
-                    //    useremail = "dcscs",
-                    //    address = "decsc",
-                    //    mobile = "fddfds",
-                    //};
+                   // Session["SiteOwnerId_Industry"] = "YUYUY7777Y";
+                   //// Session["SiteOwnerId_Industry"] = "1123";
+                   // Session["district_Temp"] = "Hisar";
+                   // Session["SiteOwner_mobile"] = "9876543210";
+                   // Session["SiteOwner_useremail"] = "navneet10a28@gmail.com";
+                   // Session["SiteOwner_address"] = "Hisar";
+                   // Session["Serviceid_pd_Indus"] = "ec289b0f-e803-4bce-9dc2-d1d5ce93ba5a";
+                   // Session["projectid_pd_Indus"] = "1";
+                   // var userSession = new Cei_IndustryServices_Redirection_IncomingJson_Model
+                   // {
+                   //     uname = "sdsd",
+                   //     businessentity = "edscsd",
+                   //     useremail = "dcscs@dsc.gbh",
+                   //     address = "decsc",
+                   //     mobile = "9876543234",
+                   // };
 
-                    //Session["UserSessionData"] = userSession;
+                   // Session["UserSessionData"] = userSession;
                     if (Session["SiteOwnerId_Industry"] != null || Request.Cookies["SiteOwnerId_Industry"] != null)
                     {
                         if (CheckInspectionStatus())
@@ -63,7 +63,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch(Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
         }
@@ -72,8 +72,12 @@ namespace CEIHaryana.Industry_Master
         {
             try
             {
+                installationType3.Visible = true;
+                installationType2.Visible = true;
                 if (RadioButtonList1.SelectedValue == "1")
                 {
+
+                    divToShowLabel.Visible = false;
                     DivDetails.Visible = true;
                     btnSubmitInstallation.Visible = true;
                     btnBack.Visible = true;
@@ -84,16 +88,18 @@ namespace CEIHaryana.Industry_Master
                     BindDistrict();
                     ddlLoadBindPremises();
                     ddlLoadBindVoltage();
-
-                    BindListBoxInstallationType(); ;
                 }
                 else if (RadioButtonList1.SelectedValue == "0")
                 {
                     divToShowLabel.Visible = true;
+                    DivDetails.Visible = false;
+                    btnSubmitInstallation.Visible = false;
+                    btnBack.Visible = false;
+                    btnReset.Visible = false;
+                    Reset();
                 }
                 else
                 {
-
                     DivDetails.Visible = false;
                     btnSubmitInstallation.Visible = false;
                     //DivExistingInspectionRequest.Visible = true;
@@ -580,8 +586,8 @@ namespace CEIHaryana.Industry_Master
                 {
                     ddlPremises.SelectedIndex = ddlPremises.Items.IndexOf(selectedItem);
                 }
-                //ddlPremises.Attributes.Add("disabled", "disabled");
-                ddlPremises.Enabled = false;
+                ddlPremises.Attributes.Add("disabled", "disabled");
+               // ddlPremises.Enabled = false;
             }
             catch (Exception ex) { }
         }
@@ -589,23 +595,24 @@ namespace CEIHaryana.Industry_Master
         {
             try
             {
-                DataSet dsDistrict = new DataSet();
-                dsDistrict = CEI.GetddlDistrict_Industries();
-                ddlDistrict.DataSource = dsDistrict;
-                ddlDistrict.DataTextField = "AreaCovered";
-                ddlDistrict.DataValueField = "Id";
-                ddlDistrict.DataBind();
-                ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
-                dsDistrict.Clear();
-                string dp_Id24 = Session["district_Temp"].ToString();
-                ListItem selectedItem = ddlDistrict.Items.FindByText(dp_Id24);
+                //DataSet dsDistrict = new DataSet();
+                //dsDistrict = CEI.GetddlDistrict_Industries();
+                //ddlDistrict.DataSource = dsDistrict;
+                //ddlDistrict.DataTextField = "AreaCovered";
+                //ddlDistrict.DataValueField = "Id";
+                //ddlDistrict.DataBind();
+                //ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
+                //dsDistrict.Clear();
+                txtDistrict.Text = Session["district_Temp"].ToString();
 
-                if (selectedItem != null)
-                {
-                    ddlDistrict.SelectedIndex = ddlDistrict.Items.IndexOf(selectedItem);
-                }
-                ddlDistrict.Enabled = false;
-                //ddlDistrict.Attributes.Add("disabled", "disabled");
+               // ListItem selectedItem = ddlDistrict.Items.FindByText(dp_Id24);
+
+               // if (selectedItem != null)
+               // {
+               //     ddlDistrict.SelectedIndex = ddlDistrict.Items.IndexOf(selectedItem);
+               // }
+               //// ddlDistrict.Enabled = false;
+               //ddlDistrict.Attributes.Add("disabled", "disabled");
 
             }
             catch (Exception ex) { }
@@ -690,7 +697,7 @@ namespace CEIHaryana.Industry_Master
                 // Populate textboxes with session data
                 txtName.Text = userSession.uname;
                 txtagency.Text = userSession.businessentity;
-                txtAddress.Text = userSession.address;
+                //txtAddress.Text = userSession.address; Commented on 13 jan 2025 to stop autofilling of  address textbox
                 txtEmail.Text = userSession.useremail;
                 txtPhone.Text = userSession.mobile;
             }
@@ -884,7 +891,7 @@ namespace CEIHaryana.Industry_Master
                         txtagency.Text.Trim(),
                         txtPhone.Text.Trim(),
                         txtAddress.Text.Trim(),
-                        ddlDistrict.SelectedItem.ToString(),
+                        txtDistrict.Text,
                         "",
                         ddlPremises.SelectedItem.ToString(),
                         txtOtherPremises.Text.Trim(),
@@ -951,7 +958,6 @@ namespace CEIHaryana.Industry_Master
         private void Reset()
         {
             txtAddress.Text = "";
-            ddlDistrict.SelectedValue = "0";
             //txtPin.Text = "";
             txtOtherPremises.Text = "";
             ddlVoltageLevel.SelectedValue = "0";
@@ -985,16 +991,24 @@ namespace CEIHaryana.Industry_Master
         {
             try
             {
-                string valueToAddBack = txtinstallationType2.Text;
-
-                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                if (installationType3.Visible == true)
                 {
-                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                    ddlWorkDetail.Items.Add(newItem);
+                    string valueToAddBack = txtinstallationType2.Text;
+
+                    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                    {
+                        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                        ddlWorkDetail.Items.Add(newItem);
+                    }
+                    installationType2.Visible = false;
+                    //txtinstallationType2.Text = string.Empty;
+                    txtinstallationNo2.Text = string.Empty;
                 }
-                installationType2.Visible = false;
-                txtinstallationType2.Text = string.Empty;
-                txtinstallationNo2.Text = string.Empty;
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('One Installation Is Mandatory');", true);
+
+                }
             }
             catch (Exception ex)
             {
@@ -1006,15 +1020,23 @@ namespace CEIHaryana.Industry_Master
 
             try
             {
-                string valueToAddBack = txtinstallationType3.Text;
-                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                if (installationType2.Visible == true)
                 {
-                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                    ddlWorkDetail.Items.Add(newItem);
+                    string valueToAddBack = txtinstallationType3.Text;
+                    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                    {
+                        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                        ddlWorkDetail.Items.Add(newItem);
+                    }
+                    installationType3.Visible = false;
+                    // txtinstallationType3.Text = string.Empty;
+                    txtinstallationNo3.Text = string.Empty;
                 }
-                installationType3.Visible = false;
-                txtinstallationType3.Text = string.Empty;
-                txtinstallationNo3.Text = string.Empty;
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('One Installation Is Mandatory');", true);
+
+                }
             }
             catch (Exception ex) { }
         }

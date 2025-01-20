@@ -221,7 +221,14 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-
+                            <asp:BoundField DataField="PreviousChallanDate" HeaderText="PreviousChallan Date" Visible="false">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ApplicantDistrict" HeaderText="District" Visible="false">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="SerialNo" HeaderText="Serial No">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
@@ -238,27 +245,35 @@
                                     <asp:Label ID="LblCategory" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
                                     <asp:Label ID="LblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
                                     <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("ApplicantDistrict") %>'></asp:Label>
-                                    <asp:Label ID="LblTestReportID" runat="server" Text='<%#Eval("TestReportID") %>'></asp:Label>
-                                    <asp:Label ID="LblAmount" runat="server" Text='<%#Eval("Amount") %>'></asp:Label>
-                                    <%-- <asp:Label ID="LblYearsDifference" runat="server" Text='<%#Eval("YearsDifference") %>'></asp:Label>--%>
-                                    <%-- <asp:Label ID="LblWeight" runat="server" Text='<%#Eval("Weight") %>'></asp:Label>--%>
-                                    <%-- <asp:Label ID="LblCapacity" runat="server" Text='<%#Eval("Capacity") %>'></asp:Label>--%>
-                                    <%-- <asp:Label ID="LblTypeOfLift" runat="server" Text='<%#Eval("TypeOfLift") %>'></asp:Label>--%>
-                                    <%-- <asp:Label ID="LblTypeOfControl" runat="server" Text='<%#Eval("TypeOfControl") %>'></asp:Label>--%>
-                                    <%-- <asp:Label ID="LblTypeOfInstallation" runat="server" Text='<%#Eval("TypeOfInstallation") %>'></asp:Label>--%>
-                                    <%-- <asp:Label ID="LblPreviousChallanDate" runat="server" Text='<%#Eval("PreviousChallanDate") %>'></asp:Label>--%>
-                                    <%-- <asp:Label ID="LblApplicantDistrict" runat="server" Text='<%#Eval("ApplicantDistrict") %>'></asp:Label>--%>
+                                    <asp:Label ID="LblYearsDifference" runat="server" Text='<%#Eval("YearsDifference") %>'></asp:Label>
+                                     <asp:Label ID="LblTestReportID" runat="server" Text='<%#Eval("TestReportID") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:BoundField DataField="TypeOfLift" HeaderText="Type Of Lift" Visible="false">
+                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="TypeOfControl" HeaderText="TypeOfControl" Visible="false">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Capacity" HeaderText="Capacity(Persons)" Visible="false">
+                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Weight" HeaderText="Weight(In Kgs)" Visible="false">
+                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="TypeOfInstallation" HeaderText="Type Of Installation" Visible="false">
+                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="LastApprovalDate" HeaderText="Approval date">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>
-                            <%-- <asp:BoundField DataField="YearsDifference" HeaderText="Years Difference">
-                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="12%" />
-                            </asp:BoundField>--%>
-                            <asp:BoundField DataField="Amount" HeaderText="Amount">
+                            <asp:BoundField DataField="YearsDifference" HeaderText="Years Difference">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>
@@ -361,7 +376,7 @@
                                             <HeaderStyle HorizontalAlign="Left" Width="70%" CssClass="headercolor leftalign" />
                                             <ItemStyle HorizontalAlign="Left" Width="70%" />
                                         </asp:BoundField>
-                                        <asp:TemplateField HeaderText="File Upload (1MB PDF Only)">
+                                       <asp:TemplateField HeaderText="File Upload (1MB PDF Only)">
                                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
                                             <ItemTemplate>
                                                 <%--<input type="hidden" id="Req" runat="server" value='<%# Eval("Req") %>' />--%>
@@ -488,7 +503,7 @@
             }
         }
     </script>
-    <%-- <script type="text/javascript">
+   <%-- <script type="text/javascript">
 
         function alertWithRedirectdata() {
             alert('Inspection Request Submitted Successfully, forwarding to concerned officer.');
@@ -511,5 +526,5 @@
 
         // Call the function to set the max date when the page loads
         window.onload = disableFutureDates;
-    </script>
+</script>
 </asp:Content>

@@ -137,7 +137,7 @@
                             <asp:DropDownList ID="ddlworktype" runat="server" AutoPostBack="true" disabled class="form-control  select-form select2" Style="width: 100% !important;">
                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                 <asp:ListItem Value="1" Text="Individual Person"></asp:ListItem>
-                                <asp:ListItem Value="2" Text="Firm/Organization/Company/Department"></asp:ListItem>
+                                <asp:ListItem Value="2" Text="Firm/Company"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                         <div class="col-md-4" id="individual" runat="server">

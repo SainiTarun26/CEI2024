@@ -23,17 +23,17 @@ namespace CEIHaryana.Industry_Master
         {
             if (!Page.IsPostBack)
             {
-                //Session["SiteOwnerId_Sld_Indus"] = "XZCVR7896K";
+                //Session["SiteOwnerId_Sld_Industry"] = "YUYUY7777Y";
                 //Session["district_Temp"] = "Hisar";
                 //Session["Serviceid_Sld_Indus"] = "930e4959-d5a0-4624-9995-8c5e3e9cadce";
                 //Session["projectid_Sld_Indus"] = "332b5554-b740-4948-9670-22ce40ecba6c";
                 try
                 {
-                    if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != string.Empty && Convert.ToString(Session["district_Temp"]) != null && Convert.ToString(Session["district_Temp"]) != string.Empty)
+                    if (Convert.ToString(Session["SiteOwnerId_Sld_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Industry"]) != string.Empty && Convert.ToString(Session["district_Temp"]) != null && Convert.ToString(Session["district_Temp"]) != string.Empty)
                     {
-                        //Session["SiteOwnerId_Sld_Indus"] = "ABCDG1234G";
+                        //Session["SiteOwnerId_Sld_Industry"] = "ABCDG1234G";
                         string District = Session["district_Temp"].ToString();
-                        string ownerId = Session["SiteOwnerId_Sld_Indus"].ToString();
+                        string ownerId = Session["SiteOwnerId_Sld_Industry"].ToString();
                         Page.Session["ClickCount"] = "0";
                         bool distExist = false;
 
@@ -44,6 +44,7 @@ namespace CEIHaryana.Industry_Master
                             string statusType = ds1.Tables[0].Rows[0]["Status_type"].ToString();
                             if (statusType == "Returned")
                             {
+                                BtnSubmit.Visible = false;
                                 BindGrid();
                                 //BindAdress();
                             }
@@ -76,7 +77,7 @@ namespace CEIHaryana.Industry_Master
                 }
                 catch (Exception ex)
                 {
-                    string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                    string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
                 }
             }
@@ -86,7 +87,7 @@ namespace CEIHaryana.Industry_Master
         {
             try
             {
-                string id = Session["SiteOwnerId_Sld_Indus"].ToString();
+                string id = Session["SiteOwnerId_Sld_Industry"].ToString();
                 string district = Session["district_Temp"].ToString();
                 DataSet dsAdress = new DataSet();
                 dsAdress = CEI.GetOwnerAdressForIndustry(id, district);
@@ -108,7 +109,7 @@ namespace CEIHaryana.Industry_Master
         public void BindGrid()
         {
             string LoginID = string.Empty;
-            LoginID = Session["SiteOwnerId_Sld_Indus"].ToString();
+            LoginID = Session["SiteOwnerId_Sld_Industry"].ToString();
             DataTable ds = new DataTable();
             ds = CEI.SldReturnHistory(LoginID);
             if (ds.Rows.Count > 0)
@@ -144,6 +145,7 @@ namespace CEIHaryana.Industry_Master
                 BtnSubmit.Visible = true;
                 if (status == "Returned")
                 {
+                    BtnSubmit.Visible = false;
                     Document.Visible = false;
                     Document.Visible = false;
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
@@ -191,7 +193,7 @@ namespace CEIHaryana.Industry_Master
                 ClickCount = ClickCount + 1;
                 Session["ClickCount"] = ClickCount;
                 int checksuccessmessage = 0;
-                string SiteOwnerId = Session["SiteOwnerId_Sld_Indus"].ToString();
+                string SiteOwnerId = Session["SiteOwnerId_Sld_Industry"].ToString();
                 string SiteOwnerName = Session["OwnerName"].ToString();
                 string[] allowedExtensions = { ".jpg", ".jpeg", ".png" };
                 int maxFileSize = 2 * 1024 * 1024;
@@ -279,7 +281,7 @@ namespace CEIHaryana.Industry_Master
                 {
                     string actiontype = "Submit";
 
-                    List<Industry_Api_Post_DataformatModel> ApiPostformatResults = CEI.GetIndustry_OutgoingRequestFormat_Sld(newSLD_ID, actiontype, Session["projectid_Sld_Indus"].ToString(), Session["Serviceid_Sld_Indus"].ToString(), Session["SiteOwnerId_Sld_Indus"].ToString());
+                    List<Industry_Api_Post_DataformatModel> ApiPostformatResults = CEI.GetIndustry_OutgoingRequestFormat_Sld(newSLD_ID, actiontype, Session["projectid_Sld_Indus"].ToString(), Session["Serviceid_Sld_Indus"].ToString(), Session["SiteOwnerId_Sld_Industry"].ToString());
                     foreach (var ApiPostformatresult in ApiPostformatResults)
                     {
                         if (ApiPostformatresult.PremisesType == "Industry")
@@ -289,7 +291,7 @@ namespace CEIHaryana.Industry_Master
                             // string accessToken = "dfsfdsfsfsdf";
 
                             logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                          "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                          "https://investharyana.in/api/project-service-logs-external_UHBVN",
                                           new Industry_Inspection_StageWise_JsonDataFormat_Model
                                           {
                                               actionTaken = ApiPostformatresult.ActionTaken,

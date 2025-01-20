@@ -619,10 +619,10 @@
                                             <label>
                                                 District<samp style="color: red">* </samp>
                                             </label>
-                                            <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDistrict" TabIndex="6" selectionmode="Multiple" Style="width: 100% !important">
-                                            </asp:DropDownList>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator25" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                        </div>
+                                             <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        
+                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtDistrict" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter District</asp:RequiredFieldValidator>
+  </div>
 
                                    <div class="col-md-8" style="margin-top:22px;">
     <label for="Address">
@@ -901,7 +901,7 @@
     <script>
         function alertWithRedirectdata_InvalidSession() {
             alert('Your Session Expired..');
-            window.location.href = 'https://staging.investharyana.in/#/';
+            window.location.href = 'https://investharyana.in/#/';
         }
     </script>
 </asp:Content>

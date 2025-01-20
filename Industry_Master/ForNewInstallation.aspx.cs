@@ -55,6 +55,11 @@ namespace CEIHaryana.Industry_Master
 
                         // getWorkIntimationData();
                     }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata_InvalidSession();", true);
+                        //Response.Redirect("SLD_Status.aspx");
+                    }
                 }
             }
             catch(Exception ex)
@@ -69,22 +74,23 @@ namespace CEIHaryana.Industry_Master
             string District = Session["district_Temp"].ToString();
             DataSet ds = new DataSet();
             ds = CEI.TestReportData_Industry(Id, District, searchText);
-            if (ds.Tables.Count > 0)
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
+
             }
             else
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-                string script = "alert(\"No Record Found\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                Note.Visible = true;
+                //string script = "alert(\"No Record Found\");";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
 
             ds.Dispose();
         }
-
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try

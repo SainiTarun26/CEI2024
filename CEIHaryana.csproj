@@ -233,7 +233,6 @@
     <Content Include="Admin\InspectionDetails.aspx" />
     <Content Include="Admin\IntimationForHistory.aspx" />
     <Content Include="Admin\IntimationHistoryForAdmin.aspx" />
-    <Content Include="Admin\LiftApprovalData.aspx" />
     <Content Include="Admin\NewRequestInspectionForAdmin.aspx" />
     <Content Include="Admin\PeriodicReturnedIntimationForHistory.aspx" />
     <Content Include="Admin\Projects.aspx" />
@@ -1824,10 +1823,7 @@
     <Content Include="Industry_Master\PeriodicRenewal_Industry.aspx" />
     <Content Include="Industry_Master\Periodic_Installation_Rating.aspx" />
     <Content Include="Industry_Master\Periodic_Renewal.aspx" />
-    <Content Include="Industry_Master\Periodic_Renewal_Cart.aspx" />
     <Content Include="Industry_Master\Periodic_Status.aspx" />
-    <Content Include="Industry_Master\Print_Forms\EscalatorApprovalCertificate_IndustryLift.aspx" />
-    <Content Include="Industry_Master\Print_Forms\LiftApprovalCertificate_IndustryLift.aspx" />
     <Content Include="Industry_Master\ProcessInspectionRenewalCart_Industries.aspx" />
     <Content Include="Industry_Master\RatingOfInstallations_Industry.aspx" />
     <Content Include="Industry_Master\ReapplyReturnInspectionForNew.aspx" />
@@ -1835,10 +1831,6 @@
     <Content Include="Industry_Master\SLD_request.aspx" />
     <Content Include="Industry_Master\SLD_Status.aspx" />
     <Content Include="Industry_Master\SubstationTransformerPeriodic_Industry.aspx" />
-    <Content Include="Industry_Master\TestReportModal\EscalatorPeriodicTestReportModal_IndustryLift.aspx" />
-    <Content Include="Industry_Master\TestReportModal\EscalatorTestReportModal_IndustryLift.aspx" />
-    <Content Include="Industry_Master\TestReportModal\LiftPeriodicTestReportModal_IndustryLift.aspx" />
-    <Content Include="Industry_Master\TestReportModal\LiftTestReportModal_IndustryLift.aspx" />
     <Content Include="Industry_Master\TestReport_Industries.aspx" />
     <Content Include="js2\ace.js" />
     <Content Include="js2\alerts.js" />
@@ -2204,13 +2196,6 @@
     </Compile>
     <Compile Include="Admin\IntimationHistoryForAdmin.aspx.designer.cs">
       <DependentUpon>IntimationHistoryForAdmin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\LiftApprovalData.aspx.cs">
-      <DependentUpon>LiftApprovalData.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\LiftApprovalData.aspx.designer.cs">
-      <DependentUpon>LiftApprovalData.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\NewRequestInspectionForAdmin.aspx.cs">
       <DependentUpon>NewRequestInspectionForAdmin.aspx</DependentUpon>
@@ -2715,33 +2700,12 @@
     <Compile Include="Industry_Master\Periodic_Renewal.aspx.designer.cs">
       <DependentUpon>Periodic_Renewal.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Industry_Master\Periodic_Renewal_Cart.aspx.cs">
-      <DependentUpon>Periodic_Renewal_Cart.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Industry_Master\Periodic_Renewal_Cart.aspx.designer.cs">
-      <DependentUpon>Periodic_Renewal_Cart.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Industry_Master\Periodic_Status.aspx.cs">
       <DependentUpon>Periodic_Status.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Industry_Master\Periodic_Status.aspx.designer.cs">
       <DependentUpon>Periodic_Status.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Industry_Master\Print_Forms\EscalatorApprovalCertificate_IndustryLift.aspx.cs">
-      <DependentUpon>EscalatorApprovalCertificate_IndustryLift.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Industry_Master\Print_Forms\EscalatorApprovalCertificate_IndustryLift.aspx.designer.cs">
-      <DependentUpon>EscalatorApprovalCertificate_IndustryLift.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Industry_Master\Print_Forms\LiftApprovalCertificate_IndustryLift.aspx.cs">
-      <DependentUpon>LiftApprovalCertificate_IndustryLift.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Industry_Master\Print_Forms\LiftApprovalCertificate_IndustryLift.aspx.designer.cs">
-      <DependentUpon>LiftApprovalCertificate_IndustryLift.aspx</DependentUpon>
     </Compile>
     <Compile Include="Industry_Master\ProcessInspectionRenewalCart_Industries.aspx.cs">
       <DependentUpon>ProcessInspectionRenewalCart_Industries.aspx</DependentUpon>
@@ -2798,34 +2762,6 @@
     </Compile>
     <Compile Include="Industry_Master\SubstationTransformerPeriodic_Industry.aspx.designer.cs">
       <DependentUpon>SubstationTransformerPeriodic_Industry.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Industry_Master\TestReportModal\EscalatorPeriodicTestReportModal_IndustryLift.aspx.cs">
-      <DependentUpon>EscalatorPeriodicTestReportModal_IndustryLift.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Industry_Master\TestReportModal\EscalatorPeriodicTestReportModal_IndustryLift.aspx.designer.cs">
-      <DependentUpon>EscalatorPeriodicTestReportModal_IndustryLift.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Industry_Master\TestReportModal\EscalatorTestReportModal_IndustryLift.aspx.cs">
-      <DependentUpon>EscalatorTestReportModal_IndustryLift.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Industry_Master\TestReportModal\EscalatorTestReportModal_IndustryLift.aspx.designer.cs">
-      <DependentUpon>EscalatorTestReportModal_IndustryLift.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Industry_Master\TestReportModal\LiftPeriodicTestReportModal_IndustryLift.aspx.cs">
-      <DependentUpon>LiftPeriodicTestReportModal_IndustryLift.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Industry_Master\TestReportModal\LiftPeriodicTestReportModal_IndustryLift.aspx.designer.cs">
-      <DependentUpon>LiftPeriodicTestReportModal_IndustryLift.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Industry_Master\TestReportModal\LiftTestReportModal_IndustryLift.aspx.cs">
-      <DependentUpon>LiftTestReportModal_IndustryLift.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Industry_Master\TestReportModal\LiftTestReportModal_IndustryLift.aspx.designer.cs">
-      <DependentUpon>LiftTestReportModal_IndustryLift.aspx</DependentUpon>
     </Compile>
     <Compile Include="Industry_Master\TestReport_Industries.aspx.cs">
       <DependentUpon>TestReport_Industries.aspx</DependentUpon>
@@ -4097,7 +4033,6 @@
     <Content Include="assetsnew\vendor\boxicons\fonts\boxicons.woff2" />
     <Content Include="assetsnew\vendor\purecounter\purecounter_vanilla.js.map" />
     <Content Include="assetsnew\vendor\swiper\swiper-bundle.min.js.map" />
-    <Content Include="Officers\Officers.Master" />
     <Content Include="Dashboard_Css\fonts\poppins\poppins-v5-latin-100.eot" />
     <Content Include="Dashboard_Css\fonts\poppins\poppins-v5-latin-100.ttf" />
     <Content Include="Dashboard_Css\fonts\poppins\poppins-v5-latin-100.woff" />
@@ -4205,11 +4140,12 @@
     <Content Include="Industry_Master\PeriodicInspection.Master" />
     <Content Include="Industry_Master\NewInstallation.Master" />
     <Content Include="Industry_Master\SLD.Master" />
+    <Content Include="Officers\Officers.Master" />
     <None Include="packages.config" />
     <Content Include="Supervisor\Supervisor.Master" />
     <Content Include="TestReport\TestReport.Master" />
-    <Content Include="SiteOwnerPages\SiteOwner.Master" />
     <Content Include="TestReportsNew\TestReport.Master" />
+    <Content Include="SiteOwnerPages\SiteOwner.Master" />
     <Content Include="UserManual\Adobe Scan 13-Jan-2025.pdf" />
     <Content Include="UserManual\Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf" />
     <Content Include="UserManual\CamScanner 01-09-2025 13.37_1.pdf" />

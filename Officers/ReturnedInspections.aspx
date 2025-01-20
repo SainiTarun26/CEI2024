@@ -493,14 +493,14 @@
                                      <asp:Label ID="LblRemarks" runat="server" Text='<%#Eval("Remarks") %>'></asp:Label>
                                </ItemTemplate>
                            </asp:TemplateField>
-                            <asp:BoundField DataField="Voltage" HeaderText="Voltage(In Volts)">
-    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-    <ItemStyle HorizontalAlign="Left" Width="15%" />
-</asp:BoundField>
-<asp:BoundField DataField="Capacity" HeaderText="Capacity(In KVA)">
-    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-    <ItemStyle HorizontalAlign="Left" Width="15%" />
-</asp:BoundField>
+                           <asp:BoundField DataField="Voltage" HeaderText="Voltage(In Volts)">
+                               <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                               <ItemStyle HorizontalAlign="Left" Width="15%" />
+                           </asp:BoundField>
+                           <asp:BoundField DataField="Capacity" HeaderText="Capacity(In KVA)">
+                               <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                               <ItemStyle HorizontalAlign="Left" Width="15%" />
+                           </asp:BoundField>
                            <asp:TemplateField HeaderText="View Test Report" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                <ItemTemplate>
                                    <asp:LinkButton ID="lnkRedirectTR" runat="server" Text="View Test Report" OnClick="lnkRedirectTR_Click1" CommandName="Select" CommandArgument='<%# Eval("TestReportId") %>' />

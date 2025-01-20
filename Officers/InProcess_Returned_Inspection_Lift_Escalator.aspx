@@ -718,7 +718,7 @@
 
                 <div class="col-md-4" id="ApprovalRequired" runat="server" visible="true">
                     <label>
-                        Approval<samp style="color: red"> * </samp>
+                        Action<samp style="color: red"> * </samp>
                     </label>
                     <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -741,6 +741,9 @@
     <label for="StartDate" id="labelApprovalDate" runat="server">
 Approval Date<samp style="color: red"> * </samp>                           
     </label>
+         <label for="StartDate" id="labelRejectedDate" runat="server">
+      Reject Date<samp style="color: red"> * </samp>                           
+       </label>
                     <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                 </div>

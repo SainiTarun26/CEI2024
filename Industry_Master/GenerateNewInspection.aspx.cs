@@ -64,7 +64,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
 
@@ -127,8 +127,8 @@ namespace CEIHaryana.Industry_Master
                 {
                     //ID = Session["InspectionId"].ToString();
 
-                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -268,7 +268,7 @@ namespace CEIHaryana.Industry_Master
                                 }
                             }
                         }
-                        if (checkedCount > 1)
+                        if (checkedCount > 0)
                         {
                             ddlDocumentFor.Items.Add(new ListItem("Select All", "1"));
                             UploadDocuments.Visible = true;
@@ -277,6 +277,11 @@ namespace CEIHaryana.Industry_Master
                         {
                             UploadDocuments.Visible = false;
                             TestReportId = null;
+                            //FeesDetails.Visible = false;
+                            //PaymentDetails.Visible = false;
+                            //// btnSubmit.Visible = true;
+                            //btnReset.Visible = false;
+                            //return;
                         }
                     }
                     string CreatedBy = Session["SiteOwnerId_Sld_Indus"].ToString();
@@ -893,8 +898,8 @@ namespace CEIHaryana.Industry_Master
                 else if (e.CommandName == "View")
                 {
                     string fileName = "";
-                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     //lblerror.Text = fileName;
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -1111,11 +1116,11 @@ namespace CEIHaryana.Industry_Master
                     //string totalAmount = Session["TotalAmount"].ToString();
                     // CEI.UpdatePaymentHistory(para_CreatedBy, para_IntimationId, decimal.Parse(totalAmount));
                     // Session["PrintInspectionID"] = id.ToString();
-
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                    
+                   // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Request Submitted Successfully')", true);
 
-                    Response.Redirect("/Industry_Master/ForNewInspectionRequestPrintForm.aspx", false);
+                   // Response.Redirect("/Industry_Master/ForNewInspectionRequestPrintForm.aspx", false);
 
                 }
                 catch (Exception ex)
@@ -1192,7 +1197,7 @@ namespace CEIHaryana.Industry_Master
                             // string accessToken = "dfsfdsfsfsdf";
 
                             logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                          "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                          "https://investharyana.in/api/project-service-logs-external_UHBVN",
                                           new Industry_Inspection_StageWise_JsonDataFormat_Model
                                           {
                                               actionTaken = ApiPostformatresult.ActionTaken,
@@ -1344,8 +1349,14 @@ namespace CEIHaryana.Industry_Master
                 {
                     GridViewPayment.DataSource = null;
                     GridViewPayment.DataBind();
-                    string script = "alert(\"Please Fill the Form first for knowing Payment \");";
+                    string script = "alert(\"Please Check atleast one CheckBox \");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "serverscript", script, true);
+                    UploadDocuments.Visible = false;
+                    FeesDetails.Visible = false;
+                    PaymentDetails.Visible = false;
+                    btnReset.Visible = false;
+                    btnSubmit.Visible = false;
+                    //return;
                 }
                 ds.Dispose();
             }

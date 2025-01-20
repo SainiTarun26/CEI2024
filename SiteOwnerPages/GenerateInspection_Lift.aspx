@@ -431,14 +431,14 @@
                                         <%#Container.DataItemIndex+1 %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                 <asp:TemplateField HeaderText="Installation Type">
+                                <asp:TemplateField HeaderText="Installation Type">
                                     <HeaderStyle HorizontalAlign="Left" Width="30%" CssClass="headercolor" />
                                     <ItemTemplate>
                                         <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
                                     </ItemTemplate>
-                                   <footertemplate>
-    <asp:Label ID="InstallationType" runat="server" Text="Total" style="font-weight: bold;"></asp:Label>
-</footertemplate>
+                                    <FooterTemplate>
+                                        <asp:Label ID="InstallationType" runat="server" Text="Total" Style="font-weight: bold;"></asp:Label>
+                                    </FooterTemplate>
 
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Quantity">

@@ -259,55 +259,107 @@
          <HeaderStyle Width="35%" CssClass="headercolor"/>
          <ItemStyle Width="35%" />
          <HeaderTemplate>
-           Inspection ID
+           Insp. ID
          </HeaderTemplate>
          <ItemTemplate>
              <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
          </ItemTemplate>
      </asp:TemplateField>
 
-                                    <asp:BoundField DataField="OwnerName" HeaderText="SiteOwner Name">
-                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center" Width="15%" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="FirmName" HeaderText="Contractor FirmName">
-                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center" Width="15%" />
-                                    </asp:BoundField>
+                                 <asp:TemplateField HeaderText="SiteOwner Name">
+    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+    <ItemStyle HorizontalAlign="left" Width="15%" />
+    <ItemTemplate>
+        <asp:Label ID="lblOwnerName" runat="server" Text='<%# Eval("OwnerName") %>' CssClass="break-text"></asp:Label>
+    </ItemTemplate>
+</asp:TemplateField>
+
+
+                                  <asp:BoundField DataField="FirmName" HeaderText="Contractor FirmName">
+    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+    <ItemStyle HorizontalAlign="left" Width="15%" CssClass="break-text" />
+</asp:BoundField>
+
                                     <%--<asp:BoundField DataField="TypeOfInstallations" HeaderText="Type of Installation">
             <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
             <ItemStyle HorizontalAlign="center" Width="15%" />
         </asp:BoundField>--%>
-                                    <asp:BoundField DataField="Type" HeaderText="Type(New/Periodic)">
-                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center" Width="15%" />
-                                    </asp:BoundField>
+                                   <asp:TemplateField>
+    <HeaderTemplate>
+        <div style="text-align: center;">
+            Type<br/>(New/Periodic)
+        </div>
+    </HeaderTemplate>
+    <ItemTemplate>
+        <%# Eval("Type") %>
+    </ItemTemplate>
+    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+    <ItemStyle HorizontalAlign="center" Width="15%" />
+</asp:TemplateField>
+
+
                                     <%--<asp:BoundField DataField="Capacity" HeaderText="Capacity">
             <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
             <ItemStyle HorizontalAlign="center" Width="15%" />
         </asp:BoundField>--%>
-                                    <asp:BoundField DataField="CreatedDate" HeaderText="Applied Date">
-                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center" Width="15%" />
-                                    </asp:BoundField>
+                                  <asp:TemplateField>
+    <HeaderTemplate>
+        <div style="text-align: center;">
+            Applied<br/>Date
+        </div>
+    </HeaderTemplate>
+    <ItemTemplate>
+        <%# Eval("CreatedDate") %>
+    </ItemTemplate>
+    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+    <ItemStyle HorizontalAlign="center" Width="15%" />
+</asp:TemplateField>
 
-                                    <asp:BoundField DataField="AssignTo" HeaderText="Assign To">
+
+                                   <%-- <asp:BoundField DataField="AssignTo" HeaderText="Assign To">
                                         <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="center" Width="15%" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="Transfer" HeaderText="Transfer to">
-                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center" Width="15%" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="TransferDate" HeaderText="Transferred Date">
-                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center" Width="15%" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="ApplicationStatus" HeaderText="Current Status">
-                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center" Width="15%" />
-                                    </asp:BoundField>
-                                    <asp:TemplateField HeaderText="Pending in days<br/>(From TransferDate)">
+                                    </asp:BoundField>--%>
+                                  <asp:TemplateField>
+    <HeaderTemplate>
+        <div style="text-align: center;">
+            Transfer<br/>to
+        </div>
+    </HeaderTemplate>
+    <ItemTemplate>
+        <%# Eval("Transfer") %>
+    </ItemTemplate>
+    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+    <ItemStyle HorizontalAlign="center" Width="15%" />
+</asp:TemplateField>
+
+                                   <asp:TemplateField>
+    <HeaderTemplate>
+        <div style="text-align: center;">
+            Transferred<br/>Date
+        </div>
+    </HeaderTemplate>
+    <ItemTemplate>
+        <%# Eval("TransferDate") %>
+    </ItemTemplate>
+    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+    <ItemStyle HorizontalAlign="center" Width="15%" />
+</asp:TemplateField>
+
+                                <asp:TemplateField>
+    <HeaderTemplate>
+        <div style="text-align: center;">
+            Current<br/>Status
+        </div>
+    </HeaderTemplate>
+    <ItemTemplate>
+        <%# Eval("ApplicationStatus") %>
+    </ItemTemplate>
+    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+    <ItemStyle HorizontalAlign="center" Width="15%" />
+</asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Pendency">
                                         <ItemTemplate>
                                             <asp:Label ID="lblPendingInDays" runat="server" Text='<%# Eval("PendingInDays") %>'></asp:Label>
                                         </ItemTemplate>
@@ -376,5 +428,41 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
+    <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll('.break-text');
+
+        elements.forEach(function (element) {
+            let text = element.innerText;
+            let formattedText = '';
+            let currentIndex = 0;
+
+            while (currentIndex < text.length) {
+                // Take a chunk of up to 20 characters
+                let chunk = text.slice(currentIndex, currentIndex + 20);
+
+                if (chunk.length < 20) {
+                    // If the chunk is less than 20 characters, add it without breaking
+                    formattedText += chunk;
+                    break; // Exit the loop as we've processed the remaining text
+                }
+
+                // For chunks of 20 or more characters, try to break at the last whitespace
+                let breakIndex = chunk.lastIndexOf(" ");
+                if (breakIndex !== -1) {
+                    // If there's a whitespace, break at that space
+                    formattedText += chunk.slice(0, breakIndex) + '<br>';
+                    currentIndex += breakIndex + 1; // Move past the space
+                } else {
+                    // Otherwise, break at the 20-character limit
+                    formattedText += chunk + '<br>';
+                    currentIndex += 20;
+                }
+            }
+
+            element.innerHTML = formattedText.trim(); // Remove any trailing <br>
+        });
+    });
+    </script>sss
 </asp:Content>
 

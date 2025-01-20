@@ -322,7 +322,7 @@ namespace CEIHaryana.Contractor
                     string contractorType = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                     ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(contractorType));
                     ddlworktype.Enabled = false;
-                    if (contractorType == "Firm/Organization/Company/Department")
+                    if (contractorType == "Firm/Company")
                     {
                         txtagency.Text = ContractNameAgeny; // ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
                         txtagency.ReadOnly = true;

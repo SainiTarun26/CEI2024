@@ -50,7 +50,7 @@ namespace CEIHaryana.Supervisor
                     adp.Fill(ds);
                     string dp_Id = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                     ddlworktype.SelectedIndex = ddlworktype.Items.IndexOf(ddlworktype.Items.FindByText(dp_Id));
-                    if (dp_Id == "Firm/Organization/Company/Department")
+                    if (dp_Id == "Firm/Company")
                     {
                         agency.Visible = true;
                         individual.Visible = false;

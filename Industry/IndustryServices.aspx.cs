@@ -194,6 +194,8 @@ namespace CEIHaryana.Industry
                         Session["Serviceid_Sld_Indus"] = null;
                         Session["projectid_Sld_Indus"] = null;
 
+                        Session["SiteOwnerId_Sld_Industry"] = null;
+
 
                         Session["SiteOwnerId_Industry"] = null;
                         Session["Serviceid_pd_Indus"] = null;
@@ -205,16 +207,6 @@ namespace CEIHaryana.Industry
                         Session["SiteOwner_useremail"] = null;
                         Session["SiteOwner_address"] = null;
                         Session["UserSessionData"] = null;
-                        Session["SiteOwnerId_IndustryLift"] = null;
-                        Session["Serviceid_IndustryLift"] = null;
-                        Session["projectid_IndustryLift"] = null;
-                        Session["district_IndustryLift"] = null;
-
-
-
-                        Session["Serviceid_pd_IndustryLift"] = null;
-                        Session["projectid_pd_IndustryLift"] = null;
-                        Session["district_pd_IndustryLift"] = null;
 
 
                         Session["projectid_Temp"] = inputObject.projectid;
@@ -249,40 +241,20 @@ namespace CEIHaryana.Industry
                             Session["Serviceid_pd_Indus"] = inputObject.serviceid;
                             Session["projectid_pd_Indus"] = inputObject.projectid;
 
-                            // Session["SiteOwner_Uname"] = inputObject.uname;
+                           // Session["SiteOwner_Uname"] = inputObject.uname;
                             Session["SiteOwner_mobile"] = inputObject.mobile;
                             Session["SiteOwner_useremail"] = inputObject.useremail;
                             Session["SiteOwner_address"] = inputObject.address;
                             Response.Redirect("/Industry_Master/PeriodicRenewal_Industry.aspx", false);
                         }
                         //sld 
-                        //else if (Session["Serviceid_Temp"].ToString() == "930e4959-d5a0-4624-9995-8c5e3e9cadce")
-                        //{
-                        //    Session["SiteOwnerId_Sld_Indus"] = inputObject.pannumber;
-                        //    Session["Serviceid_Sld_Indus"] = inputObject.serviceid;
-                        //    Session["projectid_Sld_Indus"] = inputObject.projectid;
-                        //    Session["district_Temp"] = inputObject.project_site_district;
-                        //    Response.Redirect("/Industry_Master/SLD_request.aspx", false);
-                        //}
-                        //LiftNew 
                         else if (Session["Serviceid_Temp"].ToString() == "930e4959-d5a0-4624-9995-8c5e3e9cadce")
                         {
-                            Session["SiteOwnerId_IndustryLift"] = inputObject.pannumber;
-                            Session["Serviceid_IndustryLift"] = inputObject.serviceid;
-                            Session["projectid_IndustryLift"] = inputObject.projectid;
-                            Session["district_IndustryLift"] = inputObject.project_site_district;
-                            Response.Redirect("/Industry_Master/SiteOwnerPages/LiftSiteDetails_IndustryLift.aspx", false);
-                            return;
-                        }
-                        //LiftPeriodic
-                        else if (Session["Serviceid_Temp"].ToString() == "930e4959-d5a0-4624-9995-8c5e3e9cadcZ")
-                        {
-                            Session["SiteOwnerId_IndustryLift"] = inputObject.pannumber;
-                            Session["Serviceid_pd_IndustryLift"] = inputObject.serviceid;
-                            Session["projectid_pd_IndustryLift"] = inputObject.projectid;
-                            Session["district_pd_IndustryLift"] = inputObject.project_site_district;
-                            Response.Redirect("/Industry_Master/SiteOwnerPages/LiftPeriodic_IndustryLift.aspx", false);
-                            return;
+                            Session["SiteOwnerId_Sld_Industry"] = inputObject.pannumber;
+                            Session["Serviceid_Sld_Indus"] = inputObject.serviceid;
+                            Session["projectid_Sld_Indus"] = inputObject.projectid;
+                            Session["district_Temp"] = inputObject.project_site_district;
+                            Response.Redirect("/Industry_Master/SLD_request.aspx", false);
                         }
                         else
                         {
@@ -302,7 +274,7 @@ namespace CEIHaryana.Industry
                     return;
                 }
 
-
+               
             }
         }
 

@@ -41,28 +41,7 @@ namespace CEIHaryana.Contractor
             string LoginID = string.Empty;
             LoginID = Session["ContractorID"].ToString();
             DataTable ds = new DataTable();
-            ds = cei.WorkIntimationData(LoginID, txtSearch.Text);
-            if (ds.Rows.Count > 0)
-            {
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
-            }
-            else
-            {
-                GridView1.DataSource = null;
-                GridView1.DataBind();
-                string script = "alert(\"No Record Found\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
-            ds.Dispose();
-        }
-
-        private void getWorkIntimationDataWithoutSearch()
-        {
-            string LoginID = string.Empty;
-            LoginID = Session["ContractorID"].ToString();
-            DataTable ds = new DataTable();
-            ds = cei.WorkIntimationDataForSearch(LoginID);
+            ds = cei.WorkIntimationData(LoginID);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -107,7 +86,7 @@ namespace CEIHaryana.Contractor
                     Label lblID = (Label)row.FindControl("lblID");
                     string id = lblID.Text;
                     Session["id"] = id;
-                    Response.Redirect("/Contractor/Upgratation_WorkIntimation.aspx");
+                    Response.Redirect("/Contractor/Upgratation_WorkIntimation.aspx",false);
                 }
             }
             catch(Exception ex) { }
@@ -123,16 +102,6 @@ namespace CEIHaryana.Contractor
             {
                 
             }
-        }
-
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            getWorkIntimationData();
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
-            getWorkIntimationDataWithoutSearch();
         }
     }
 }

@@ -40,8 +40,8 @@
 
     <style>
         .card {
-    padding: 0px !important;
-}
+            padding: 0px !important;
+        }
         header#header {
     width: 99%;
     margin-top: 10px;

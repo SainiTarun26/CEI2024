@@ -33,10 +33,6 @@ namespace CEIHaryana.Print_Forms
                         {
                             GetData();
                         }
-                        else if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != string.Empty)
-                        {
-                            GetData();
-                        }
                     }
                 }
                 catch (Exception ex)
@@ -59,21 +55,6 @@ namespace CEIHaryana.Print_Forms
                 {
                     ID = Session["InspectionId"].ToString();
 
-                }
-
-                else if (Session["InspectionIdforNew"] != null)
-                {
-                    ID = Session["InspectionIdforNew"].ToString();
-
-                }
-                else if (Session["InspectionIdNew"] != null)
-                {
-                    ID = Session["InspectionIdNew"].ToString();
-
-                }
-                else if (Session["InspId"] != null)
-                {
-                    ID = Session["InspId"].ToString();
                 }
 
                 DataSet ds = new DataSet();

@@ -229,9 +229,10 @@
         input, optgroup, select, textarea {
             height: 20px;
         }
+
         label {
-    font-size: 0.875rem;
-}
+            font-size: 0.875rem;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -247,7 +248,7 @@
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col-md-11">
                             <label>
-                               Select Site Address of Different Installations<samp style="color: red">* </samp>
+                                Select Site Address of Different Installations<samp style="color: red">* </samp>
                             </label>
                             <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlAddress" OnSelectedIndexChanged="ddlAddress_SelectedIndexChanged" runat="server"></asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Address" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAddress" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
@@ -261,21 +262,21 @@
                     <div>
                         <div class="card" id="DivGrid" visible="false" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;" runat="server">
                             <%-- Add Gridview Here --%>
-                            <asp:GridView ID="GridView1" class="table-responsive table table-striped table-hover" OnRowCommand="GridView1_RowCommand" runat="server" OnRowDataBound="GridView1_RowDataBound" OnRowCreated="GridView1_RowCreated" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" ShowFooter="true">
+                            <asp:GridView ID="GridView1" class="table-responsive table table-striped table-hover" runat="server" OnRowDataBound="GridView1_RowDataBound" OnRowCreated="GridView1_RowCreated" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" ShowFooter="true">
                                 <PagerStyle CssClass="pagination-ys" />
                                 <Columns>
                                     <asp:TemplateField HeaderText="Id" Visible="False">
                                         <ItemTemplate>
-                                          
+
                                             <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
-                                            <asp:Label ID="LblDivision" runat="server" Text='<%#Eval("Division") %>'></asp:Label> 
-                                            <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label> 
-                                            <asp:Label ID="LblCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>  
-                                            <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>  
-                                            <asp:Label ID="LblInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>  
+                                            <asp:Label ID="LblDivision" runat="server" Text='<%#Eval("Division") %>'></asp:Label>
+                                            <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label>
+                                            <asp:Label ID="LblCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>
+                                            <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
+                                            <asp:Label ID="LblInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
                                             <asp:Label ID="Lbldesignation" runat="server" Text='<%#Eval("Designation") %>'></asp:Label>
 
-                                            </ItemTemplate>
+                                        </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="SNo">
                                         <HeaderStyle Width="5%" CssClass="headercolor" />
@@ -284,7 +285,7 @@
                                             <%#Container.DataItemIndex+1 %>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Id"  Visible="false">
+                                    <asp:TemplateField HeaderText="Id" Visible="false">
                                         <HeaderStyle Width="25%" CssClass="headercolor" />
                                         <ItemStyle Width="25%" />
                                         <ItemTemplate>
@@ -319,17 +320,22 @@
                                             <asp:Label ID="lblMaxVoltage" runat="server" Text="Max Voltage: " Font-Bold="true"></asp:Label>
                                         </FooterTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Remove">
+                                    <%--<asp:TemplateField HeaderText="Remove" Visible="false">
                                         <ItemTemplate>
                                             <asp:ImageButton ID="btnDelete" runat="server" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="DeleteRow" Style="display: block; margin: 0 auto;" />
                                         </ItemTemplate>
-                                    </asp:TemplateField>                                    
+                                    </asp:TemplateField>--%>
                                 </Columns>
                             </asp:GridView>
                         </div>
                         <div class="row" style="margin-top: 25px; margin-bottom: -15px;">
                             <div class="col-4" style="margin-top: auto;">
                                 <asp:Button type="submit" ID="BtnSubmit" Text="Process" runat="server" Visible="false" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px; height: 40px;" OnClick="BtnSubmit_Click" ValidationGroup="Submit" />
+                            </div>
+                            <div class="col-4" style="margin-top: auto;"></div>
+                            <div class="col-4" style="margin-top: auto; text-align: end; padding-right: 8px;">
+                                <asp:Button type="submit" ID="BtnDelete" Text="Delete Cart" runat="server" Visible="false" OnClick="BtnDelete_Click" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px; height: 40px;" />
+
                             </div>
                         </div>
                     </div>

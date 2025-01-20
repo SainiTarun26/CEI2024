@@ -2094,10 +2094,10 @@
             <ul style="margin: 20px 20px 20px 15px;">
                 <li class="tab-content tab-content-last typography">
                     <div id="IfInstallationIsLine" runat="server">
-                        <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
-                            <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
+                     <%--   <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
+                            <asp:Button ID="btnPrint" Text="Print" runat="server" Visible="false"  class="btn btn-primary mr-2"
                                 Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="openNewWindow(); return false;" />
-                        </div>
+                        </div>--%>
                              <div class="row" style="margin-bottom: 15PX;">
     <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
         <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Work Completion and Test Report (Line)</h6>

@@ -51,7 +51,7 @@ namespace CEIHaryana.SiteOwnerPages
                     //ID = Session["InspectionId"].ToString();
 
                     //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -492,9 +492,17 @@ namespace CEIHaryana.SiteOwnerPages
                 Email = Session["ContractorEmail"].ToString();
                 OTPs = CEI.ValidateOTPthroughEmail(Email);
                 Session["OTP"] = OTPs.Trim();
-               // Session["ContractorEmail"] = "";
-               btnResend.Visible = true;
+                Session["ContractorEmail"] = "OTPSEND";
+                // Session["ContractorEmail"] = "";
+                btnResend.Visible = true;
                // ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Enter the OTP you received to Your Contractor's Email');", true);
+            }
+            else if (Session["ContractorEmail"].ToString() == "OTPSEND")
+            {
+                OTP.Visible = true;
+                btnVerify.Text = "Verify";
+                btnResend.Visible = true;
+                Session["ContractorEmail"] = "";
             }
             else
             {

@@ -66,7 +66,7 @@ namespace CEIHaryana.Model.Industry
 
             try
             {
-                string response = client.UploadString("https://staging.investharyana.in/api/getrefresh-token", inputJson);
+                string response = client.UploadString("https://investharyana.in/api/getrefresh-token", inputJson);
                 dynamic jsonResponse = JsonConvert.DeserializeObject(response);
                 result = jsonResponse.token;
 
@@ -86,7 +86,7 @@ namespace CEIHaryana.Model.Industry
                     throw new TokenManagerException(
                         //ex.Message + " | SSL/TLS Error: " + ex.Status.ToString()
                         ex.Message + " | " + ex.Status.ToString(),
-                        "https://staging.investharyana.in/api/getrefresh-token",
+                        "https://investharyana.in/api/getrefresh-token",
                         "POST",
                         client.Headers.ToString(),
                         "application/json",
@@ -112,7 +112,7 @@ namespace CEIHaryana.Model.Industry
                     // Handle cases where there's no response, such as server down, DNS failure, etc.
                     throw new TokenManagerException(
                         $"Failed to connect to server: {ex.Message}",
-                        "https://staging.investharyana.in/api/getaccess-token",
+                        "https://investharyana.in/api/getaccess-token",
                         "POST",
                         client.Headers.ToString(),
                         "application/json",
@@ -153,7 +153,7 @@ namespace CEIHaryana.Model.Industry
 
             try
             {
-                string response = client.UploadString("https://staging.investharyana.in/api/getaccess-token", inputJson);
+                string response = client.UploadString("https://investharyana.in/api/getaccess-token", inputJson);
                 dynamic jsonResponse = JsonConvert.DeserializeObject(response);
                 result = jsonResponse.token;
 
@@ -173,7 +173,7 @@ namespace CEIHaryana.Model.Industry
                     // If there's a response, handle it as before
                     throw new TokenManagerException(
                         ex.Message,
-                        "https://staging.investharyana.in/api/getaccess-token",
+                        "https://investharyana.in/api/getaccess-token",
                         "POST",
                         client.Headers.ToString(),
                         "application/json",
@@ -199,7 +199,7 @@ namespace CEIHaryana.Model.Industry
                     // Handle cases where there's no response, such as server down, DNS failure, etc.
                     throw new TokenManagerException(
                         $"Failed to connect to server: {ex.Message}",
-                        "https://staging.investharyana.in/api/getaccess-token",
+                        "https://investharyana.in/api/getaccess-token",
                         "POST",
                         client.Headers.ToString(),
                         "application/json",

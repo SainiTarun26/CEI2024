@@ -91,16 +91,17 @@ namespace CEIHaryana.Admin
                 LinkButton linkButton1 = (LinkButton)e.Row.FindControl("LinkButton1");
                 string RequestLetter = DataBinder.Eval(e.Row.DataItem, "RequestLetter").ToString();
                 LinkButton Lnkbtn = (LinkButton)e.Row.FindControl("Lnkbtn");
-                if (status == "Approved" || status == "Rejected")
+                     linkButton1.Visible = true;
+                if (status == "Approved")
                 {
-                    linkButton1.Visible = false;
+                   // linkButton1.Visible = false;
                     lnkDocumemtPath.Visible = true;
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
 
-                    linkButton1.Visible = true;
+                   // linkButton1.Visible = true;
                     lnkDocumemtPath.Visible = false;
                 }
                 if (RequestLetter != null && RequestLetter != "")

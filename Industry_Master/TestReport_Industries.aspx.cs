@@ -38,7 +38,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
 
@@ -116,7 +116,7 @@ namespace CEIHaryana.Industry_Master
                         Session["NoOfInstallations_Industry"] = lblNoOfInstallations.Text.Trim();
                         Session["NoOfInstallation_Industry"] = lblNoOfInstallations.Text.Trim();
                         Label lblTotalInstallation = (Label)row.FindControl("lblTotalInstallation");
-                        Session["TotalInstallation_Industry"] = lblNoOfInstallations.Text.Trim();
+                        Session["TotalInstallation_Industry"] = lblTotalInstallation.Text.Trim();
                         Label lblID = (Label)row.FindControl("lblID");
                         Session["IHID_Industry"] = lblID.Text.Trim();
                         Session["IHIDs_Industry"] = lblID.Text.Trim();                           //////////////

@@ -388,7 +388,7 @@
                             <label for="Name">
                                 Capacity of Transformer<samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" AutoPostBack="true" OnTextChanged="txtTransformerCapacity_TextChanged" ID="txtTransformerCapacity" MaxLength="5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" AutoPostBack="true" OnTextChanged="txtTransformerCapacity_TextChanged" ID="txtTransformerCapacity" MaxLength="6" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ForeColor="Red" ControlToValidate="txtTransformerCapacity" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                         </div>
                         <div class="col-3" id="Div2" runat="server" style="margin-top: -15px;">

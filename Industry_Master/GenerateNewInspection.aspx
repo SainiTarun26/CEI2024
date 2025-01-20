@@ -668,7 +668,7 @@
                     <div class="row">
                         <div class="col-4"></div>
                         <div class="col-4" style="text-align: center;">
-                            <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" OnClientClick="return validateFileUpload();" class="btn btn-primary mr-2"
+                            <asp:Button ID="btnSubmit" Text="Submit" runat="server" Visible="false" ValidationGroup="Submit" OnClientClick="return validateFileUpload();" class="btn btn-primary mr-2"
                                 OnClick="btnSubmit_Click" />
                             <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" Visible="false" class="btn btn-primary mr-2" />
                             <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
@@ -859,7 +859,7 @@
     <script>
         function alertWithRedirectdata_InvalidSession() {
             alert('Your Session Expired..');
-            window.location.href = 'https://staging.investharyana.in/#/';
+            window.location.href = 'https://investharyana.in/#/';
         }
     </script>
     <script type="text/javascript">

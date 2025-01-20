@@ -152,7 +152,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
 
@@ -962,8 +962,8 @@ namespace CEIHaryana.Industry_Master
                     ID = Session["InspectionId_Industry"].ToString();
                     if (e.CommandName == "Select")
                     {
-                        //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                        fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                        //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                         //lblerror.Text = fileName;
                         string script = $@"<script>window.open('{fileName}','_blank');</script>";
                         ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);

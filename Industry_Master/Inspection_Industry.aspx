@@ -232,6 +232,13 @@
                             PageSize="20">
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
+                                <asp:TemplateField HeaderText="SNo">
+                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                    <ItemStyle Width="5%" />
+                                    <ItemTemplate>
+                                        <%#Container.DataItemIndex+1 %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText=" Document Id" Visible="False">
                                     <ItemTemplate>
                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
@@ -242,6 +249,10 @@
                                         <asp:Label ID="lblID1" runat="server" Text='<%#Eval("DocumentID") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                </asp:BoundField>
                                 <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -441,7 +452,7 @@
     <script>
         function alertWithRedirectdata_InvalidSession() {
             alert('Your Session Expired..');
-            window.location.href = 'https://staging.investharyana.in/#/';
+            window.location.href = 'https://investharyana.in/#/';
         }
     </script>
 

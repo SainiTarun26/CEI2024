@@ -50,8 +50,12 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
+                installationType3.Visible = true;
+                installationType2.Visible = true;
                 if (RadioButtonList1.SelectedValue == "1")
                 {
+                    
+                    divToShowLabel.Visible = false;
                     DivDetails.Visible = true;
                     btnSubmitInstallation.Visible = true;
                     btnBack.Visible = true;
@@ -66,6 +70,11 @@ namespace CEIHaryana.SiteOwnerPages
                 else if (RadioButtonList1.SelectedValue == "0")
                 {
                     divToShowLabel.Visible = true;
+                    DivDetails.Visible = false;
+                    btnSubmitInstallation.Visible = false;
+                    btnBack.Visible = false;
+                    btnReset.Visible = false;
+                    Reset();
                 }
                 else
                 {
@@ -792,7 +801,7 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         individual.Visible = true;
                     }
-                    else if (EInstallationType == "Firm/Organization/Company/Department")
+                    else if (EInstallationType == "Firm/Company")
                     {
                         agency.Visible = true;
                     }
@@ -1009,8 +1018,6 @@ namespace CEIHaryana.SiteOwnerPages
             RadioButtonList2.ClearSelection();
             txtSanctionLoad.Text = "";
             txtCapacity.Text = "";
-            txtinstallationNo2.Text = "";
-            txtinstallationNo3.Text = "";
             divSanctionLoad.Visible = false;
         }
         protected void btnReset_Click(object sender, EventArgs e)
@@ -1036,16 +1043,24 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                string valueToAddBack = txtinstallationType2.Text;
-
-                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                if (installationType3.Visible == true)
                 {
-                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                    ddlWorkDetail.Items.Add(newItem);
+                    string valueToAddBack = txtinstallationType2.Text;
+
+                    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                    {
+                        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                        ddlWorkDetail.Items.Add(newItem);
+                    }
+                    installationType2.Visible = false;
+                    //txtinstallationType2.Text = string.Empty;
+                    txtinstallationNo2.Text = string.Empty;
                 }
-                installationType2.Visible = false;
-                txtinstallationType2.Text = string.Empty;
-                txtinstallationNo2.Text = string.Empty;
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('One Installation Is Mandatory');", true);
+
+                }
             }
             catch (Exception ex)
             {
@@ -1057,15 +1072,23 @@ namespace CEIHaryana.SiteOwnerPages
 
             try
             {
-                string valueToAddBack = txtinstallationType3.Text;
-                if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                if (installationType2.Visible == true)
                 {
-                    ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                    ddlWorkDetail.Items.Add(newItem);
+                    string valueToAddBack = txtinstallationType3.Text;
+                    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                    {
+                        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                        ddlWorkDetail.Items.Add(newItem);
+                    }
+                    installationType3.Visible = false;
+                   // txtinstallationType3.Text = string.Empty;
+                    txtinstallationNo3.Text = string.Empty;
                 }
-                installationType3.Visible = false;
-                txtinstallationType3.Text = string.Empty;
-                txtinstallationNo3.Text = string.Empty;
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('One Installation Is Mandatory');", true);
+
+                }
             }
             catch (Exception ex) { }
         }

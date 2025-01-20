@@ -348,7 +348,7 @@
                                         <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="15%" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="Status" HeaderText="Status">
+                                    <asp:BoundField DataField="Status" HeaderText="Status" visible="false">
                                         <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="15%" />
                                     </asp:BoundField>
@@ -551,7 +551,7 @@
     <script>
         function alertWithRedirectdata_InvalidSession() {
             alert('Your Session Expired..');
-            window.location.href = 'https://staging.investharyana.in/#/';
+            window.location.href = 'https://investharyana.in/#/';
         }
     </script>
 </asp:Content>

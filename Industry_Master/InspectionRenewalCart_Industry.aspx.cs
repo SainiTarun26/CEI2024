@@ -29,7 +29,21 @@ namespace CEIHaryana.Industry_Master
                               PrevIntimationId = string.Empty, PrevVoltageLevel = string.Empty,
                               PrevApplicantType = string.Empty, AssignToOfficer = string.Empty;
 
+        protected void BtnDelete_Click(object sender, EventArgs e)
+        {
+            if (Session["SelectedCartID_Industry"] != null)
+            {
+                string SelectedCartID_Industry = Session["SelectedCartID_Industry"].ToString();
 
+                CEI.ToDeleteCart(SelectedCartID_Industry);
+                Response.Redirect("/Industry_Master/PeriodicRenewal_Industry.aspx", false);
+                Session["SelectedCartID_Industry"] = "";
+            }
+            else
+            {
+                Response.Write("<script>alert('No Cart ID selected.');</script>");
+            }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -57,7 +71,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
         }
@@ -80,7 +94,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
         }
@@ -94,10 +108,11 @@ namespace CEIHaryana.Industry_Master
                 DivGrid.Visible = true;
                 BindGrid();
                 BtnSubmit.Visible = true;
+                BtnDelete.Visible = true;
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
         }
@@ -109,7 +124,7 @@ namespace CEIHaryana.Industry_Master
                 string[] str = txtAddressFilter.Text.Split('|');
                 string address = str[0].Trim();
                 string CartID = str[1].Trim();
-
+                Session["SelectedCartID_Industry"] = CartID;
                 DataSet ds = new DataSet();
                 ds = CEI.ShowDataToCart_Industries(address, CartID, CreatedBy);
                 if (ds.Tables.Count > 0)
@@ -336,25 +351,25 @@ namespace CEIHaryana.Industry_Master
             dblSubTotalCapacity = 0;
             dblSubHighestVoltage = 0;
         }
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            try
-            {
-                if (e.CommandName == "DeleteRow")
-                {
-                    int inspectionId = Convert.ToInt32(e.CommandArgument);
-                    DataSet ds = new DataSet();
-                    ds = CEI.ToRemoveDataCart_Industries(inspectionId);
+        //protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (e.CommandName == "DeleteRow")
+        //        {
+        //            int inspectionId = Convert.ToInt32(e.CommandArgument);
+        //            DataSet ds = new DataSet();
+        //            ds = CEI.ToRemoveDataCart_Industries(inspectionId);
 
-                    BindGrid();
-                }
-            }
-            catch (Exception ex)
-            {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
-            }
-        }
+        //            BindGrid();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
+        //    }
+        //}
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
             try
@@ -479,7 +494,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
         }

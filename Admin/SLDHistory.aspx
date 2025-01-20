@@ -166,23 +166,31 @@
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
 
-
-                            <asp:TemplateField HeaderText=" SLD Document" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                            <asp:TemplateField HeaderText=" Attached Document" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("SLDApproved") %>' CommandName="Select">view document </asp:LinkButton>
-                                    <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Bind("Path") %>' CommandName="Select1">view document </asp:LinkButton>
+
+                                    <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Bind("Path") %>' CommandName="Select1">Click here to view document </asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" />
                             </asp:TemplateField>
-                                           <asp:TemplateField HeaderText="Request Letter" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                            <asp:TemplateField HeaderText=" SLD Approved" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemTemplate>
-                            <asp:LinkButton ID="Lnkbtn" runat="server" CommandArgument='<%# Bind("RequestLetter") %>' CommandName="Print">view document </asp:LinkButton>
-                          </ItemTemplate>
-                      <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
-                      <HeaderStyle HorizontalAlign="Left" />
+                                    <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("SLDApproved") %>' CommandName="Select">Click here to view document </asp:LinkButton>
+
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Left" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Request Letter" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="Lnkbtn" runat="server" CommandArgument='<%# Bind("RequestLetter") %>' CommandName="Print">view document </asp:LinkButton>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Left" />
                     </asp:TemplateField>
                             <asp:BoundField DataField="SubmittedDate" HeaderText="Submitted Date">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
