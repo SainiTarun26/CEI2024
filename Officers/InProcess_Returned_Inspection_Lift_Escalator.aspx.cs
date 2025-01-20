@@ -950,7 +950,7 @@ namespace CEIHaryana.Officers
             }
             else if (ddlReview.SelectedValue == "1")
             {
-               string amount = Session["amount"].ToString();
+                string amount = Session["amount"].ToString();
                 if (amount != "0" && amount != "0.00")
                 {
                     labelInspectionDate.Visible = true;
@@ -967,8 +967,23 @@ namespace CEIHaryana.Officers
 
                 //Suggestion.Visible = true;
             }
-        }
+            else if (ddlReview.SelectedValue == "0")
+            {
+                string amount = Session["InsAmount"].ToString();
+                if (amount != "0" && amount != "0.00")
+                {
+                    labelInspectionDate.Visible = true;
+                    labelApprovalDate.Visible = false;
+                }
+                else
+                {
+                    labelApprovalDate.Visible = true;
+                    labelInspectionDate.Visible = false;
+                }
+                labelRejectedDate.Visible = false;
 
+            }
+        }
         protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try

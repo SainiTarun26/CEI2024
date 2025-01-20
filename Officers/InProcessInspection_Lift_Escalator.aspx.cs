@@ -1009,22 +1009,22 @@ namespace CEIHaryana.Officers
 
 
         protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Rejection.Visible = false;
+            //Suggestion.Visible = false;
+            //ddlSuggestions.Visible = false;
+            // btnPreview.Visible = false;
+            if (ddlReview.SelectedValue == "2")
             {
-                Rejection.Visible = false;
-                //Suggestion.Visible = false;
-                //ddlSuggestions.Visible = false;
-               // btnPreview.Visible = false;
-                if (ddlReview.SelectedValue == "2")
-                {
                 Rejection.Visible = true;
                 labelInspectionDate.Visible = false;
                 labelApprovalDate.Visible = false;
                 labelRejectedDate.Visible = true;
-                }
-                else if (ddlReview.SelectedValue == "1")
-                {
+            }
+            else if (ddlReview.SelectedValue == "1")
+            {
                 string amount = Session["InsAmount"].ToString();
-                if(amount != "0" && amount != "0.00")
+                if (amount != "0" && amount != "0.00")
                 {
                     labelInspectionDate.Visible = true;
                     labelApprovalDate.Visible = false;
@@ -1035,15 +1035,30 @@ namespace CEIHaryana.Officers
                     labelInspectionDate.Visible = false;
                 }
                 labelRejectedDate.Visible = false;
-               // labelInspectionDate.Visible = true;
+                // labelInspectionDate.Visible = true;
                 //btnPreview.Visible = true;
                 //ddlSuggestions.Visible = true;
 
                 //Suggestion.Visible = true;
             }
-            }
+            else if (ddlReview.SelectedValue == "0")
+            {
+                string amount = Session["InsAmount"].ToString();
+                if (amount != "0" && amount != "0.00")
+                {
+                    labelInspectionDate.Visible = true;
+                    labelApprovalDate.Visible = false;
+                }
+                else
+                {
+                    labelApprovalDate.Visible = true;
+                    labelInspectionDate.Visible = false;
+                }
+                labelRejectedDate.Visible = false;
 
-            protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
+            }
+        }
+        protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
             {
                 try
                 {

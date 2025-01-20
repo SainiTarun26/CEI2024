@@ -8966,7 +8966,7 @@ SqlTransaction transaction)
                         cmd.Parameters.AddWithValue("@TranscationDate", DBNull.Value);
                     }
                 }
-                cmd.Parameters.AddWithValue("@TranscationDate", TranscationDate);
+            //    cmd.Parameters.AddWithValue("@TranscationDate", TranscationDate);
                 cmd.ExecuteNonQuery();
 
             }
