@@ -969,7 +969,7 @@ namespace CEIHaryana.Officers
             }
             else if (ddlReview.SelectedValue == "0")
             {
-                string amount = Session["InsAmount"].ToString();
+                string amount = Session["amount"].ToString();
                 if (amount != "0" && amount != "0.00")
                 {
                     labelInspectionDate.Visible = true;
