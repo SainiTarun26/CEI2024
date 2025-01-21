@@ -8066,14 +8066,14 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetApplicantTypeForLift", Id);
         }
-        public string InsertPeriodicLiftData(string InstallationType, string RegistrationNo, string PreviousChallanDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
+        public string InsertPeriodicLiftData(string InstallationType, string RegistrationNo, string LastExpiryDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
  string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string MemoNo, string MemoDate, string SiteAddress, string CreatedBy, SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertPeriodicLiftData", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
             cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
-            cmd.Parameters.AddWithValue("@PreviousChallanDate", PreviousChallanDate);
+            cmd.Parameters.AddWithValue("@LastExpiryDate", LastExpiryDate);
             cmd.Parameters.AddWithValue("@PreviousChallanUpload", PreviousChallanUpload);
             cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate);
             cmd.Parameters.AddWithValue("@ErectionDate", ErectionDate);
@@ -8434,28 +8434,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_TohandleUncheckedCheckbox", RegistrationNo, CreatedBy);
         }
-        public void InsertPeriodicLiftData(string InstallationType, string RegistrationNo, string PreviousChallanDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
- string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, string Weight, string ApplicantDistrict, string SiteAddress, string CreatedBy, SqlTransaction transaction)
-        {
-            SqlCommand cmd = new SqlCommand("sp_InsertPeriodicLiftData", transaction.Connection, transaction);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
-            cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
-            cmd.Parameters.AddWithValue("@PreviousChallanDate", PreviousChallanDate);
-            cmd.Parameters.AddWithValue("@PreviousChallanUpload", PreviousChallanUpload);
-            cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate);
-            cmd.Parameters.AddWithValue("@ErectionDate", ErectionDate);
-            cmd.Parameters.AddWithValue("@Make", Make);
-            cmd.Parameters.AddWithValue("@SerialNo", SerialNo);
-            cmd.Parameters.AddWithValue("@TypeOfLift", TypeOfLift);
-            cmd.Parameters.AddWithValue("@TypeOfControl", TypeOfControl);
-            cmd.Parameters.AddWithValue("@Capacity", Capacity);
-            cmd.Parameters.AddWithValue("@Weight", Weight);
-            cmd.Parameters.AddWithValue("@ApplicantDistrict", ApplicantDistrict);
-            cmd.Parameters.AddWithValue("@SiteAddress", SiteAddress);
-            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
-            cmd.ExecuteNonQuery();
-        }
+        
 
 
         ////Aslam
@@ -8737,10 +8716,10 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         }
 
 
-        public DataTable InsertReturnPeriodicLiftData(string TestReportId, string InstallationType, string RegistrationNo, string PreviousChallanDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
+        public DataTable InsertReturnPeriodicLiftData(string TestReportId, string InstallationType, string RegistrationNo, string LastExpiryDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
      string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string MemoNo, string MemoDate, string SiteAddress, int InspectionID, string CreatedBy)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertPeriodicReturnData", TestReportId, InstallationType, RegistrationNo, PreviousChallanDate, PreviousChallanUpload, LastApprovalDate, ErectionDate, Make,
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertPeriodicReturnData", TestReportId, InstallationType, RegistrationNo, LastExpiryDate, PreviousChallanUpload, LastApprovalDate, ErectionDate, Make,
  SerialNo, TypeOfLift, TypeOfControl, Capacity, Weight, ApplicantDistrict, MemoNo, MemoDate, SiteAddress, InspectionID, CreatedBy);
         }
 
@@ -9017,6 +8996,40 @@ SqlTransaction transaction)
         public DataSet ToDeleteCart_Industry(string CartId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_ToDeleteCart_Industry", CartId);
+        }
+        //
+        //Aslam
+        public void InspectionFinalAction_Lift_Check(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, /*string MemoNo,*/ string InspectionDate)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand("sp_InspectionApproveReject_Lift_Escelater_CheckBeforeApproval", connection))
+                {
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", InspectionID);
+                    cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                    cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrReReturn);
+                    cmd.Parameters.AddWithValue("@ReasonForRejection", Reason);
+                    //cmd.Parameters.AddWithValue("@MemoNo", MemoNo);
+                    //cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
+                    DateTime InsDate;
+                    if (DateTime.TryParse(InspectionDate, out InsDate) && InsDate != DateTime.MinValue)
+                    {
+                        cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@InspectionDate", DBNull.Value);
+                    }
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+
         }
         //
     }

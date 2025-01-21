@@ -222,7 +222,10 @@ namespace CEIHaryana.Industry
 
                         Session["UserSessionData"] = userSession;
                         //new
-                        if (Session["Serviceid_Temp"].ToString() == "c1406da9-263f-4399-b20f-387a71caa5de")
+                        //TestServer
+                        //if (Session["Serviceid_Temp"].ToString() == "c1406da9-263f-4399-b20f-387a71caa5de")
+                        //Live Server  Changed on 20 jan 2025 for live 
+                        if (Session["Serviceid_Temp"].ToString() == "17977bcc-6250-4851-bac9-3eff26d6cc02")
                         {
                             Session["SiteOwnerId_Sld_Indus"] = inputObject.pannumber;
                             Session["district_Temp"] = inputObject.project_site_district;
@@ -234,7 +237,10 @@ namespace CEIHaryana.Industry
 
                         }
                         //Periodic
-                        else if (Session["Serviceid_Temp"].ToString() == "ec289b0f-e803-4bce-9dc2-d1d5ce93ba5a")
+                        //TestServer
+                        //else if (Session["Serviceid_Temp"].ToString() == "ec289b0f-e803-4bce-9dc2-d1d5ce93ba5a")
+                        //Live Server  Changed on 20 jan 2025 for live 
+                        else if (Session["Serviceid_Temp"].ToString() == "bc4fc633-d2c0-4d9f-b23c-34503e70ea94")
                         {
                             Session["SiteOwnerId_Industry"] = inputObject.pannumber;
                             Session["district_Temp"] = inputObject.project_site_district;
@@ -248,7 +254,10 @@ namespace CEIHaryana.Industry
                             Response.Redirect("/Industry_Master/PeriodicRenewal_Industry.aspx", false);
                         }
                         //sld 
-                        else if (Session["Serviceid_Temp"].ToString() == "930e4959-d5a0-4624-9995-8c5e3e9cadce")
+                        //TestServer
+                        //else if (Session["Serviceid_Temp"].ToString() == "930e4959-d5a0-4624-9995-8c5e3e9cadce")
+                        //Live Server  Changed on 20 jan 2025 for live 
+                        else if (Session["Serviceid_Temp"].ToString() == "ee05404a-54df-48ab-a818-a369358ccf06")
                         {
                             Session["SiteOwnerId_Sld_Industry"] = inputObject.pannumber;
                             Session["Serviceid_Sld_Indus"] = inputObject.serviceid;

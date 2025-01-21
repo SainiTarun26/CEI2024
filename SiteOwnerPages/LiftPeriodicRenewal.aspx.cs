@@ -214,7 +214,7 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         if (Session["ReturnedValue"].ToString() != "1")
                         {
-                            TRID = CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
+                            TRID = CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtLastexpirydate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
                                              txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtMemoNo.Text, txtMemoDate.Text, txtSiteAddress.Text, SiteOwnerID, transaction);
                         }
                         else
@@ -222,7 +222,7 @@ namespace CEIHaryana.SiteOwnerPages
                             string TestReportId = Session["EscalatorTestReportID"].ToString();
                             int InspectionId = int.Parse(Session["InspectionId"].ToString());
                             DataTable dt = new DataTable();
-                            dt = CEI.InsertReturnPeriodicLiftData(TestReportId, ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
+                            dt = CEI.InsertReturnPeriodicLiftData(TestReportId, ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtLastexpirydate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
                                                  txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtMemoNo.Text, txtMemoDate.Text, txtSiteAddress.Text, InspectionId, SiteOwnerID);
                             TRID = dt.Rows[0]["TestReportId"].ToString();
                         }
@@ -321,7 +321,7 @@ namespace CEIHaryana.SiteOwnerPages
             txtMemoNo.ReadOnly = false;
             txtMemoDate.ReadOnly = false;
             txtLastApprovalDate.ReadOnly = false;
-            txtPrevChallanDate.ReadOnly = false;
+            txtLastexpirydate.ReadOnly = false;
 
             txtMake.Text = "";
             txtSerialNo.Text = "";
@@ -337,7 +337,7 @@ namespace CEIHaryana.SiteOwnerPages
             txtMemoNo.Text = "";
             txtMemoDate.Text = "";
             txtLastApprovalDate.Text = "";
-            txtPrevChallanDate.Text = "";
+            txtLastexpirydate.Text = "";
         }
 
         protected void ddlInstallationType_SelectedIndexChanged(object sender, EventArgs e)
@@ -411,7 +411,7 @@ namespace CEIHaryana.SiteOwnerPages
                 txtMemoNo.ReadOnly = true;
                 txtMemoDate.ReadOnly = true;
                 txtLastApprovalDate.ReadOnly = true;
-                txtPrevChallanDate.ReadOnly = true;
+                txtLastexpirydate.ReadOnly = true;
                 txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
                 txtSerialNo.Text = ds.Tables[0].Rows[0]["LiftSrNo"].ToString();
                 //txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
@@ -465,11 +465,11 @@ namespace CEIHaryana.SiteOwnerPages
                 // if (DateTime.TryParse(ds.Tables[0].Rows[0]["Previous_ChallanDate"].ToString(), out PrevChallanDate))
                 if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastTransactionDate"].ToString(), out PrevChallanDate))
                 {
-                    txtPrevChallanDate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
+                    txtLastexpirydate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
                 }
                 else
                 {
-                    txtPrevChallanDate.Text = "";
+                    txtLastexpirydate.Text = "";
                 }
 
                 txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
@@ -520,7 +520,7 @@ namespace CEIHaryana.SiteOwnerPages
                     txtMemoNo.ReadOnly = true;
                     txtMemoDate.ReadOnly = true;
                     txtLastApprovalDate.ReadOnly = true;
-                    txtPrevChallanDate.ReadOnly = true;
+                    txtLastexpirydate.ReadOnly = true;
                     txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
                     txtSerialNo.Text = ds.Tables[0].Rows[0]["LiftSrNo"].ToString();
                     // txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
@@ -573,11 +573,11 @@ namespace CEIHaryana.SiteOwnerPages
                     //if (DateTime.TryParse(ds.Tables[0].Rows[0]["Previous_ChallanDate"].ToString(), out PrevChallanDate))
                     if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastTransactionDate"].ToString(), out PrevChallanDate))
                     {
-                        txtPrevChallanDate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
+                        txtLastexpirydate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
                     }
                     else
                     {
-                        txtPrevChallanDate.Text = "";
+                        txtLastexpirydate.Text = "";
                     }
 
                     txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();

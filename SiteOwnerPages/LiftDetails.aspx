@@ -1393,50 +1393,49 @@
             updateButtonText();
         });
     </script>
-     <script>
-         document.addEventListener("DOMContentLoaded", function () {
-             // Get the current date
-             const today = new Date();
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          // Get the current date
+          const today = new Date();
 
-             // Calculate the minimum date (20 years before today)
-             const minDate = new Date();
-             minDate.setFullYear(today.getFullYear() - 20);
+          // Calculate the minimum date (20 years before today)
+          const minDate = new Date();
+          minDate.setFullYear(today.getFullYear() - 20);
 
-             // Format the dates to YYYY-MM-DD
-             const formattedToday = today.toISOString().split('T')[0];
-             const formattedMinDate = minDate.toISOString().split('T')[0];
+          // Format the dates to YYYY-MM-DD
+          const formattedToday = today.toISOString().split('T')[0];
+          const formattedMinDate = minDate.toISOString().split('T')[0];
 
-             // Helper function to set or reset min and max attributes
-             function setDateRange(inputId) {
-                 const dateInput = document.getElementById(inputId);
-                 if (dateInput) {
-                     // Function to apply min and max
-                     function applyDateRange() {
-                         dateInput.setAttribute("min", formattedMinDate);
-                         dateInput.setAttribute("max", formattedToday);
-                     }
+          // Helper function to set or reset min and max attributes
+          function setDateRange(inputId) {
+              const dateInput = document.getElementById(inputId);
+              if (dateInput) {
+                  // Apply min and max
+                  dateInput.setAttribute("min", formattedMinDate);
+                  dateInput.setAttribute("max", formattedToday);
 
-                     // Apply min and max initially
-                     applyDateRange();
+                  // Validate the date on input
+                  dateInput.addEventListener("input", function () {
+                      const selectedDate = new Date(dateInput.value);
+                      if (selectedDate > today || selectedDate < minDate) {
+                          alert("Please select a date within the last 20 years.");
+                          dateInput.value = ""; // Clear invalid input
+                      }
+                  });
 
-                     // Reapply min and max on focus (for subsequent interactions)
-                     dateInput.addEventListener("focus", applyDateRange);
+                  // Reapply min and max attributes on focus to ensure proper behavior
+                  dateInput.addEventListener("focus", function () {
+                      dateInput.setAttribute("min", formattedMinDate);
+                      dateInput.setAttribute("max", formattedToday);
+                  });
+              }
+          }
 
-                     // Validate the date on input
-                     dateInput.addEventListener("input", function () {
-                         const selectedDate = new Date(dateInput.value);
-                         if (selectedDate > today || selectedDate < minDate) {
-                             alert("Please select a date within the last 20 years.");
-                             dateInput.value = ""; // Clear invalid input
-                         }
-                     });
-                 }
-             }
-
-             // Call the function with the correct input ID
-             setDateRange('<%= txtErectionDate.ClientID %>');
+          // Call the function with the correct input ID
+          setDateRange('<%= txtErectionDate.ClientID %>');
     });
-     </script>
+  </script>
+
 
 
 

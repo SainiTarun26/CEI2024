@@ -286,19 +286,19 @@
                         <asp:RequiredFieldValidator ID="RfvtxtRegistrationNo" ControlToValidate="txtRegistrationNo" runat="server"
                             ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="col-md-3" runat="server">
+                    <div class="col-md-2" runat="server">
                         <label>
                             Last Approval Date<samp style="color: red"> * </samp>
                         </label>
                         <asp:TextBox type="date" class="form-control" ID="txtLastApprovalDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="txtLastApprovalDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="col-md-3" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>
-                            Previous Challan Date<samp style="color: red"> * </samp>
+                            Last expiry date in which payment made<samp style="color: red"> * </samp>
                         </label>
-                        <asp:TextBox type="date" class="form-control" ID="txtPrevChallanDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RfvtxtPrevChallanDate" ControlToValidate="txtPrevChallanDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                        <asp:TextBox type="date" class="form-control" ID="txtLastexpirydate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RfvtxtLastexpirydate" ControlToValidate="txtLastexpirydate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
 
                     <div class="col-md-3">
@@ -403,8 +403,7 @@
                                 <asp:TextBox class="form-control" Type="date" ID="txtMemoDate" autocomplete="off" runat="server" MaxLength="25" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ControlToValidate="txtMemoDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
-
-                            <div class="col-md-12" runat="server">
+                             <div class="col-md-12" runat="server">
                                 <label>
                                     Site Address<samp style="color: red"> * </samp>
                                 </label>
@@ -700,11 +699,11 @@
                 txtLastApprovalDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
             }
 
-            // Set the date range for txtPrevChallanDate
-            const txtPrevChallanDate = document.getElementById('<%= txtPrevChallanDate.ClientID %>');
-            if (txtPrevChallanDate) {
-                txtPrevChallanDate.setAttribute("max", formattedToday); // Disable future dates
-                txtPrevChallanDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
+            // Set the date range for txtLastexpirydate
+            const txtLastexpirydate = document.getElementById('<%= txtLastexpirydate.ClientID %>');
+            if (txtLastexpirydate) {
+                txtLastexpirydate.setAttribute("max", formattedToday); // Disable future dates
+                txtLastexpirydate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
             }
         });
     </script>
@@ -732,7 +731,7 @@
 
             // Set date range for all specified TextBoxes
             setDateRange('<%= txtLastApprovalDate.ClientID %>');
-            setDateRange('<%= txtPrevChallanDate.ClientID %>');
+            setDateRange('<%= txtLastexpirydate.ClientID %>');
             setDateRange('<%= txtDateofErection.ClientID %>');
             setDateRange('<%= txtMemoDate.ClientID %>');
         });
@@ -746,18 +745,13 @@
         }
     </script>
 
-
     <script type="text/javascript">
         function validateDates() {
             var isValid = true;
 
             // Get all the dates
-            var lastApprovalDate = document.getElementById('<%= txtLastApprovalDate.ClientID %>').value;
-        var prevChallanDate = document.getElementById('<%= txtPrevChallanDate.ClientID %>').value;
-        var dateOfErection = document.getElementById('<%= txtDateofErection.ClientID %>').value;
+            var dateOfErection = document.getElementById('<%= txtDateofErection.ClientID %>').value;
         var memoDate = document.getElementById('<%= txtMemoDate.ClientID %>').value;
-
-            // Get the current date and set the threshold (20 years ago)
             var currentDate = new Date();
             var twentyYearsAgo = new Date();
             twentyYearsAgo.setFullYear(currentDate.getFullYear() - 20);
@@ -769,27 +763,35 @@
                 return inputDate < twentyYearsAgo;
             }
 
-            // Check each date field
-            if (isDateMoreThan20YearsAgo(lastApprovalDate)) {
-                isValid = false;
-            }
-            if (isDateMoreThan20YearsAgo(prevChallanDate)) {
-                isValid = false;
-            }
+            // Check if "Date of Erection" is more than 20 years ago
             if (isDateMoreThan20YearsAgo(dateOfErection)) {
                 isValid = false;
-            }
-            if (isDateMoreThan20YearsAgo(memoDate)) {
-                isValid = false;
-            }
-
-            // If any date is more than 20 years ago, show the popup
-            if (!isValid) {
-                alert("You are not eligible for renewal. One or more dates are more than 20 years old.");
+                alert("You are not eligible for renewal. As your Erection date is more than 20 years old.");
                 return false;  // Prevent form submission
             }
 
-            return true;  // Allow form submission
+            // Check if Date of Erection is smaller than Memo Date
+            if (dateOfErection && memoDate) {
+                var dateErectionObj = new Date(dateOfErection);
+                var dateMemoObj = new Date(memoDate);
+
+                if (dateErectionObj >= dateMemoObj) {
+                    alert("Date of Erection must be smaller than Memo Date.");
+                    isValid = false;
+                }
+            } else {
+                // If either of the dates is missing, show an error
+                alert("Both Date of Erection and Memo Date are required.");
+                isValid = false;
+            }
+
+            // If the validation fails, prevent form submission
+            if (!isValid) {
+                return false;
+            }
+
+            // If all validations pass, allow form submission
+            return true;
         }
 </script>
 </asp:Content>

@@ -105,22 +105,22 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
 
         /// <summary>
-        /// txtPrevChallanDate control.
+        /// txtLastexpirydate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrevChallanDate;
+        protected global::System.Web.UI.WebControls.TextBox txtLastexpirydate;
 
         /// <summary>
-        /// RfvtxtPrevChallanDate control.
+        /// RfvtxtLastexpirydate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvtxtPrevChallanDate;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvtxtLastexpirydate;
 
         /// <summary>
         /// customFile control.

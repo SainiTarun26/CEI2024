@@ -28,7 +28,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (!IsPostBack)
                 {
-                   
+                    DateSetting();
                     ddlEarthing();
                     txtapplication.Text = Session["Application"].ToString().Trim();
                     txtInstallation.Text = Session["Typs"].ToString().Trim();
@@ -46,6 +46,17 @@ namespace CEIHaryana.SiteOwnerPages
             }
 
         }
+        public void DateSetting()
+        {
+            DateTime today = DateTime.Today;
+
+            // Calculate the minimum date (20 years before today)
+            DateTime minDate = today.AddYears(-20);
+
+            // Set the min and max attributes for the date input
+            txtErectionDate.Attributes["min"] = minDate.ToString("yyyy-MM-dd");
+            txtErectionDate.Attributes["max"] = today.ToString("yyyy-MM-dd");
+        }
         protected void Grd_Document_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string fileName = "";
@@ -55,8 +66,8 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     //ID = Session["InspectionId"].ToString();
 
-                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -167,6 +178,8 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            DateSetting();
             if (RadioButtonList2.SelectedValue == "1")
             {
                 Name.Visible = true;
