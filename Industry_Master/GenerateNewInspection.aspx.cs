@@ -64,7 +64,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
 
@@ -1197,7 +1197,7 @@ namespace CEIHaryana.Industry_Master
                             // string accessToken = "dfsfdsfsfsdf";
 
                             logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                          "https://investharyana.in/api/project-service-logs-external_UHBVN",
+                                          "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
                                           new Industry_Inspection_StageWise_JsonDataFormat_Model
                                           {
                                               actionTaken = ApiPostformatresult.ActionTaken,

@@ -336,7 +336,10 @@
                                 <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="right" Width="15%" />
                             </asp:BoundField>
-                    
+                     <asp:BoundField DataField="UserType" HeaderText="User Type">
+     <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
+     <ItemStyle HorizontalAlign="right" Width="15%" />
+ </asp:BoundField>
 
                           <asp:TemplateField HeaderText="Reset Password">
        <HeaderStyle Width="5%" CssClass="headercolor" />

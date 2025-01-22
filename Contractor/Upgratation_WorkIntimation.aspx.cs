@@ -153,6 +153,7 @@ namespace CEIHaryana.Contractor
                 DdlWing.SelectedIndex = DdlWing.Items.IndexOf(DdlWing.Items.FindByText(dp_wing));
 
                 string dp_Id16 = ds.Tables[0].Rows[0]["ZoneName"].ToString().Trim();
+                DdlZoneBind();
                 DdlZone.SelectedIndex = DdlZone.Items.IndexOf(DdlZone.Items.FindByText(dp_Id16));
 
                 DdlCircleBind();

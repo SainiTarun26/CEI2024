@@ -518,7 +518,7 @@ namespace CEIHaryana.Officers
                                 if (reqType == "Industry")
                                 {
                                     string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
-                                    // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
+                                    // string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in/api/project-service-logs-external_UHBVN");
                                     if (serverStatus != "Server is reachable.")
                                     {
                                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);

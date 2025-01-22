@@ -585,7 +585,7 @@
      <script>
          function alertWithRedirectdata_InvalidSession() {
              alert('Your Session Expired..');
-             window.location.href = 'https://investharyana.in/#/';
+             window.location.href = 'https://staging.investharyana.in/#/';
          }
      </script>
 </asp:Content>

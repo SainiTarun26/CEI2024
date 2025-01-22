@@ -4959,7 +4959,7 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
 
                 //logDetails = new IndustryApiLogDetails
                 //{
-                //    Url = "https://investharyana.in/api/getrefresh-token",
+                //    Url = "https://staging.investharyana.in/api/getrefresh-token",
                 //    Method = request.Method,
                 //    RequestHeaders = requestHeaders,
                 //    ContentType = request.ContentType,
@@ -8067,7 +8067,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetApplicantTypeForLift", Id);
         }
         public string InsertPeriodicLiftData(string InstallationType, string RegistrationNo, string LastExpiryDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
- string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string MemoNo, string MemoDate, string SiteAddress, string CreatedBy, SqlTransaction transaction)
+   string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string MemoNo, string MemoDate, string SiteAddress, string CreatedBy, SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertPeriodicLiftData", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -8717,7 +8717,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
 
 
         public DataTable InsertReturnPeriodicLiftData(string TestReportId, string InstallationType, string RegistrationNo, string LastExpiryDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
-     string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string MemoNo, string MemoDate, string SiteAddress, int InspectionID, string CreatedBy)
+      string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string MemoNo, string MemoDate, string SiteAddress, int InspectionID, string CreatedBy)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertPeriodicReturnData", TestReportId, InstallationType, RegistrationNo, LastExpiryDate, PreviousChallanUpload, LastApprovalDate, ErectionDate, Make,
  SerialNo, TypeOfLift, TypeOfControl, Capacity, Weight, ApplicantDistrict, MemoNo, MemoDate, SiteAddress, InspectionID, CreatedBy);
@@ -9030,6 +9030,12 @@ SqlTransaction transaction)
 
             }
 
+        }
+        //
+        //Neha 22-Jan-2025
+        public DataTable ToCheckDatesForLiftRenewal(DateTime lastExpiryDate, DateTime memoDate)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToCheckDatesForLiftRenewal", lastExpiryDate, memoDate);
         }
         //
     }
