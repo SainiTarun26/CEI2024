@@ -168,7 +168,7 @@
                                     <ItemTemplate>
 
                                         <asp:LinkButton runat="server" ID="LnkBtn4" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
-                                            Text="<i class='fa fa-edit' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="update" CommandArgument="<%# Container.DataItemIndex %>" />
+                                            Text="<i class='fa fa-edit' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>" />
 
                                         <%-- <asp:LinkButton runat="server" ID="LinkButton5" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
 

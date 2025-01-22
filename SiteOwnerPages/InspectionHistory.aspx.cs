@@ -153,7 +153,7 @@ namespace CEIHaryana.SiteOwnerPages
                 Label lblApproval = (Label)e.Row.FindControl("lblApproval");
                 string applicationStatus = DataBinder.Eval(e.Row.DataItem, "ApplicationStatus").ToString();
                 string AssignTo = DataBinder.Eval(e.Row.DataItem, "AssignTo").ToString();
-                if (lblApproval.Text == "Submitted" || lblApproval.Text == "InProcess")
+                if (lblApproval.Text == "Submitted" || lblApproval.Text == "InProcess"|| lblApproval.Text == "ReSubmit")
                 {
                     lblFinalExpectedApprovalDate.Visible = true;
                 }

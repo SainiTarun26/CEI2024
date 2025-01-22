@@ -147,25 +147,26 @@ namespace CEIHaryana.Contractor
                 ddlPowerUtility.SelectedIndex = ddlPowerUtility.Items.IndexOf(ddlPowerUtility.Items.FindByText(dp_PowerUtility));
                 
                 
-                string dp_wing = ds.Tables[0].Rows[0]["PowerUtilityWing"].ToString();
-
+                string dp_wing = ds.Tables[0].Rows[0]["PowerUtilityWing"].ToString().Trim();
+                DdlWingBind();
 
                 DdlWing.SelectedIndex = DdlWing.Items.IndexOf(DdlWing.Items.FindByText(dp_wing));
 
-                string dp_Id16 = ds.Tables[0].Rows[0]["ZoneName"].ToString();
+                string dp_Id16 = ds.Tables[0].Rows[0]["ZoneName"].ToString().Trim();
                 DdlZone.SelectedIndex = DdlZone.Items.IndexOf(DdlZone.Items.FindByText(dp_Id16));
 
-             
-                string dp_Id17 = ds.Tables[0].Rows[0]["CircleName"].ToString();
+                DdlCircleBind();
+                string dp_Id17 = ds.Tables[0].Rows[0]["CircleName"].ToString().Trim();
                 DdlCircle.SelectedIndex = DdlCircle.Items.IndexOf(DdlCircle.Items.FindByText(dp_Id17));
 
-                DdlDivisionBind();
                 string dp_Id18 = ds.Tables[0].Rows[0]["DivisionName"].ToString();
 
+                DdlDivisionBind();
                 DdlDivision.SelectedIndex = DdlDivision.Items.IndexOf(DdlDivision.Items.FindByText(dp_Id18));
 
-                DdlSubDivisionBind();
                 string dp_Id19 = ds.Tables[0].Rows[0]["SubDivisionName"].ToString();
+
+                DdlSubDivisionBind();
                 DdlSubDivision.SelectedIndex = DdlSubDivision.Items.IndexOf(DdlSubDivision.Items.FindByText(dp_Id19));
 
                 Page.Session["OldUserID"] = PanTanNumber;
@@ -1209,7 +1210,7 @@ namespace CEIHaryana.Contractor
                 if (DdlWing.Items.Count > 1)
                 {
                     DdlWing.SelectedIndex = 1; 
-                    DdlZoneBind(); 
+                    //DdlZoneBind(); 
                 }
             }
             catch
@@ -1236,7 +1237,7 @@ namespace CEIHaryana.Contractor
                 if (DdlZone.Items.Count > 1)
                 {
                     DdlZone.SelectedIndex = 1; 
-                    DdlCircleBind(); 
+                    //DdlCircleBind(); 
                 }
             }
             catch
@@ -1262,7 +1263,7 @@ namespace CEIHaryana.Contractor
                 if (DdlCircle.Items.Count > 1)
                 {
                     DdlCircle.SelectedIndex = 1;
-                    DdlDivisionBind();
+                   // DdlDivisionBind();
                 }
             }
             catch
@@ -1289,7 +1290,7 @@ namespace CEIHaryana.Contractor
                 if (DdlDivision.Items.Count > 1)
                 {
                     DdlDivision.SelectedIndex = 1;
-                    DdlSubDivisionBind();
+                   // DdlSubDivisionBind();
                 }
             }
             catch

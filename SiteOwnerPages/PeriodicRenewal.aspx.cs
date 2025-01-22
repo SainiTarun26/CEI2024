@@ -761,6 +761,14 @@ namespace CEIHaryana.SiteOwnerPages
                 ddlPremises.DataValueField = "ID";
                 ddlPremises.DataBind();
                 ddlPremises.Items.Insert(0, new ListItem("Select", "0"));
+                if (ApplicantType == "Private/Personal Installation" || ApplicantType == "Power Utility" || ApplicantType == "Other Department/Organization")
+                {
+                    ListItem industryItem = ddlPremises.Items.FindByText("Industry");
+                    if (industryItem != null)
+                    {
+                        ddlPremises.Items.Remove(industryItem);
+                    }
+                }
                 dsPremises.Clear();
             }
             catch (Exception ex) { }

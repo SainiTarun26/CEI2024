@@ -1,6 +1,7 @@
 ﻿using CEI_PRoject;
 using System;
 using System.Data;
+using System.Threading;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -79,7 +80,7 @@ namespace CEIHaryana.Contractor
                     }
 
                 }
-                if (e.CommandName == "update")
+                if (e.CommandName == "Print")
                 {
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
@@ -87,9 +88,11 @@ namespace CEIHaryana.Contractor
                     string id = lblID.Text;
                     Session["id"] = id;
                     Response.Redirect("/Contractor/Upgratation_WorkIntimation.aspx",false);
+                    Context.ApplicationInstance.CompleteRequest();
                 }
             }
-            catch(Exception ex) { }
+            catch (ThreadAbortException)
+            { }
         }
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
