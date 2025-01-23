@@ -363,8 +363,8 @@ namespace CEIHaryana.Officers
                             Suggestion.Visible = true;
                             txtSuggestion.ReadOnly = true;
                         }
-                        GridView2.Columns[5].Visible = false;
-                        GridView2.Columns[7].Visible = false;
+                        GridView1.Columns[5].Visible = false;
+                        GridView1.Columns[7].Visible = false;
                         grd_Documemnts.Columns[3].Visible = true;
                         ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                         ddlReview.Attributes.Add("disabled", "true");
@@ -383,8 +383,8 @@ namespace CEIHaryana.Officers
                         btnBack.Visible = false;
                         Backbtn.Visible = true;
                         InspectionDate.Visible = false;
-                        GridView2.Columns[5].Visible = false;
-                        GridView2.Columns[7].Visible = false;
+                        GridView1.Columns[5].Visible = false;
+                        GridView1.Columns[7].Visible = false;
                         if (!string.IsNullOrEmpty(SiteInspectionDate))
                         {
                             InspectionDate.Visible = true;
@@ -401,8 +401,8 @@ namespace CEIHaryana.Officers
                     }
                     if (Status == "Return")
                     {
-                        GridView2.Columns[5].Visible = false;
-                        GridView2.Columns[7].Visible = false;
+                        GridView1.Columns[5].Visible = false;
+                        GridView1.Columns[7].Visible = false;
                         btnBack.Visible = false;
                         Backbtn.Visible = true;
                         InspectionDate.Visible = false;
