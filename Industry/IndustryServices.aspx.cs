@@ -146,7 +146,13 @@ namespace CEIHaryana.Industry
                     totalpurposedemployment = Request.Params["totalpurposedemployment"],
                     total_project_cost = Request.Params["total_project_cost"],
                     //project_site_district = Request.Params["project_site_district"], commented on 2 jan 2025 to Handle Hissar Issue in HEPC
-                    project_site_district = Request.Params["project_site_district"] == "Hissar" ? "Hisar" : Request.Params["project_site_district"],
+                    //project_site_district = Request.Params["project_site_district"] == "Hissar" ? "Hisar" : Request.Params["project_site_district"],
+
+                    //Added On 24 jan 2025 to treat Fatehabad similar to Hisar
+                    project_site_district = (Request.Params["project_site_district"] == "Hissar" || Request.Params["project_site_district"] == "Fatehabad") ? "Hisar" : Request.Params["project_site_district"],
+
+
+
                     landzoneuse_type = Request.Params["landzoneuse_type"],
                     businessentity = Request.Params["businessentity"],
                     projecttype = Request.Params["projecttype"],
