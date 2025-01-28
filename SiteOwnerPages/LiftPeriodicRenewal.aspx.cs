@@ -619,19 +619,19 @@ namespace CEIHaryana.SiteOwnerPages
             try
             {
                 CEI.ToCheckDatesForLiftRenewal(lastExpiryDate, memoDate);
-                return true; 
+                return true;
             }
             catch (SqlException ex)
             {
-               foreach (SqlError error in ex.Errors)
+                foreach (SqlError error in ex.Errors)
                 {
                     if (error.Number == 50000 && error.Message.Contains("The date (month and day) of the FirstExpiryDate from Memo Date must match the Last Expiry Date"))
                     {
-                       return false;
+                        return false;
                     }
                 }
-                throw new Exception("An unexpected error occurred during the date validation.", ex);
             }
+            return false;
         }
     }
 }

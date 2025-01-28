@@ -70,7 +70,8 @@ namespace CEIHaryana.SiteOwnerPages
                     string TRId = Session["TestReportID"].ToString();
                     DataSet ds = CEI.GetDetailsOfLiftRenewalReport(RegistrationNo, TRId);
 
-                    txtPrevChallanDate.Text = ds.Tables[0].Rows[0]["PreviousChallanDate"].ToString();
+                    //txtPrevChallanDate.Text = ds.Tables[0].Rows[0]["PreviousChallanDate"].ToString();
+                    txtLastExpiryDate.Text = ds.Tables[0].Rows[0]["LastExpiryDate"].ToString();
                     txtLastApprovalDate.Text = ds.Tables[0].Rows[0]["LastApprovalDate"].ToString();
                     txtDateofErection.Text = ds.Tables[0].Rows[0]["ErectionDate"].ToString();
 

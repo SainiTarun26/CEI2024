@@ -315,9 +315,9 @@
                                         </div>
                                         <div class="col-4" runat="server">
                                             <label>
-                                                Previous Challan Date
+                                                Expiry date (Last Challan Deposited)
                                             </label>
-                                            <asp:TextBox class="form-control" ReadOnly="true" ID="txtPrevChallanDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ReadOnly="true" ID="txtLastExpiryDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                                         </div>
                                         <div class="col-4">
                                             <label class="form-label" for="customFile">

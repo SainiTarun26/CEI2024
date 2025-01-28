@@ -286,29 +286,51 @@
                         <asp:RequiredFieldValidator ID="RfvtxtRegistrationNo" ControlToValidate="txtRegistrationNo" runat="server"
                             ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="col-md-2" runat="server">
+                    <div class="col-md-3" runat="server">
+                        <label>
+                            Memo No.<samp style="color: red"> * </samp>
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtMemoNo" autocomplete="off" runat="server" MaxLength="25" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtMemoNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                    </div>
+                    <div class="col-md-3" runat="server">
+                        <label>
+                            Memo Date<samp style="color: red"> * </samp>
+                        </label>
+                        <asp:TextBox class="form-control" Type="date" ID="txtMemoDate" autocomplete="off" runat="server" MaxLength="25" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ControlToValidate="txtMemoDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                    </div>
+                    <div class="col-md-3" runat="server">
+                        <label>
+                            Date of Erection<samp style="color: red"> * </samp>
+                        </label>
+                        <asp:TextBox type="date" class="form-control" ID="txtDateofErection" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ControlToValidate="txtDateofErection" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                    </div>
+                   </div>
+                <div class="row">
+                    <div class="col-md-3" runat="server">
                         <label>
                             Last Approval Date<samp style="color: red"> * </samp>
                         </label>
                         <asp:TextBox type="date" class="form-control" ID="txtLastApprovalDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="txtLastApprovalDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="col-md-4" runat="server">
+                    <div class="col-md-3" runat="server">
                         <label>
-                            Last expiry date in which payment made<samp style="color: red"> * </samp>
+                            Expiry date (Last Challan Deposited)<samp style="color: red"> * </samp>
                         </label>
                         <asp:TextBox type="date" class="form-control" ID="txtLastexpirydate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RfvtxtLastexpirydate" ControlToValidate="txtLastexpirydate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <label class="form-label" for="customFile">
                             Upload Previous Challan<samp style="color: red"> * </samp>
                         </label>
                         <asp:FileUpload ID="customFile" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="customFile" ValidationGroup="Submit" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-                </div>
+                               </div>
             </div>
             <div class="card-title" id="divLiftDetails" runat="server" visible="false" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
                 Lift Details
@@ -320,29 +342,7 @@
                 <ContentTemplate>
                     <div class="card" id="divdetails" runat="server" visible="false" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                         <div class="row">
-                            <div class="col-md-4" runat="server">
-                                <label id="lblMake" runat="server">
-                                    Make
-                                </label>
-                                <samp style="color: red">* </samp>
-                                <asp:TextBox class="form-control" ID="txtMake" MaxLength="150" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RfvtxtMake" ControlToValidate="txtMake" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                            </div>
-                            <div class="col-md-4" runat="server">
-                                <label>
-                                    Serial No.<samp style="color: red"> * </samp>
-                                </label>
-                                <asp:TextBox class="form-control" ID="txtSerialNo" MaxLength="20" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RfvtxtSerialNo" ControlToValidate="txtSerialNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                            </div>
-                            <div class="col-md-4" runat="server">
-                                <label>
-                                    Date of Erection<samp style="color: red"> * </samp>
-                                </label>
-                                <asp:TextBox type="date" class="form-control" ID="txtDateofErection" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ControlToValidate="txtDateofErection" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                            </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label id="lblTypeOfLift" runat="server">
                                     Type of Lift
                                 </label>
@@ -358,13 +358,30 @@
                                 </asp:RadioButtonList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ErrorMessage="Choose one" ControlToValidate="RadioBtnEscType" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />
                             </div>
-                            <div class="col-md-4" runat="server">
+                            <div class="col-md-3" runat="server">
+                                <label id="lblMake" runat="server">
+                                    Make
+                                </label>
+                                <samp style="color: red">* </samp>
+                                <asp:TextBox class="form-control" ID="txtMake" MaxLength="150" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RfvtxtMake" ControlToValidate="txtMake" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="col-md-3" runat="server">
+                                <label>
+                                    Serial No.<samp style="color: red"> * </samp>
+                                </label>
+                                <asp:TextBox class="form-control" ID="txtSerialNo" MaxLength="20" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RfvtxtSerialNo" ControlToValidate="txtSerialNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                            </div>
+                             <div class="col-md-3" runat="server">
                                 <label>
                                     Type of Control<samp style="color: red"> * </samp>
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtControlType" MaxLength="150" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RfvtxtControlType" ControlToValidate="txtControlType" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-4" runat="server">
                                 <label>
                                     Capacity(Persons)<samp style="color: red"> * </samp>
@@ -372,38 +389,23 @@
                                 <asp:TextBox class="form-control" ID="txtCapacity" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" onkeypress="return isNumberKey(event)"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtCapacity" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
-                            <div class="col-md-3" runat="server">
+                            <div class="col-md-4" runat="server">
                                 <label>
                                     Weight(In Kgs)<samp style="color: red"> * </samp>
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtWeight" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" onkeypress="return isNumberKey(event)"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ControlToValidate="txtWeight" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
-                            <div class="col-md-3" runat="server">
+                            <div class="col-md-4" runat="server">
                                 <label>
                                     District<samp style="color: red"> * </samp>
                                 </label>
                                 <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDistrict" Style="width: 100% !important">
                                 </asp:DropDownList>
                                 <asp:TextBox class="form-control" ID="txtDistrict" Visible="false" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" ReadOnly="true"></asp:TextBox>
-
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator25" ErrorMessage="Required" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                             </div>
-                            <div class="col-md-3" runat="server">
-                                <label>
-                                    Memo No.<samp style="color: red"> * </samp>
-                                </label>
-                                <asp:TextBox class="form-control" ID="txtMemoNo" autocomplete="off" runat="server" MaxLength="25" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtMemoNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                            </div>
-                            <div class="col-md-3" runat="server">
-                                <label>
-                                    Memo Date<samp style="color: red"> * </samp>
-                                </label>
-                                <asp:TextBox class="form-control" Type="date" ID="txtMemoDate" autocomplete="off" runat="server" MaxLength="25" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ControlToValidate="txtMemoDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                            </div>
-                             <div class="col-md-12" runat="server">
+                            <div class="col-md-12" runat="server">
                                 <label>
                                     Site Address<samp style="color: red"> * </samp>
                                 </label>
@@ -483,10 +485,6 @@
                                     <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" OnRowCommand="GridView1_RowCommand" runat="server" AutoGenerateColumns="false">
                                         <PagerStyle CssClass="pagination-ys" />
                                         <Columns>
-                                            <%--<asp:BoundField DataField="RegistrationNo" HeaderText="Registration No">
-                                                        <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
-                                                        <ItemStyle HorizontalAlign="Left" Width="30%" />
-                                                    </asp:BoundField>--%>
                                             <asp:TemplateField>
                                                 <HeaderStyle Width="10%" CssClass="headercolor" />
                                                 <ItemStyle Width="10%" Font-Bold="true" />
@@ -744,14 +742,13 @@
             }
         }
     </script>
-
     <script type="text/javascript">
         function validateDates() {
             var isValid = true;
 
             // Get all the dates
             var dateOfErection = document.getElementById('<%= txtDateofErection.ClientID %>').value;
-        var memoDate = document.getElementById('<%= txtMemoDate.ClientID %>').value;
+            var memoDate = document.getElementById('<%= txtMemoDate.ClientID %>').value;
             var currentDate = new Date();
             var twentyYearsAgo = new Date();
             twentyYearsAgo.setFullYear(currentDate.getFullYear() - 20);
@@ -793,5 +790,5 @@
             // If all validations pass, allow form submission
             return true;
         }
-</script>
+    </script>
 </asp:Content>

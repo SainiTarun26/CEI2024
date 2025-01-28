@@ -80,8 +80,9 @@ namespace CEIHaryana.TestReportModal
                     string RegistrationNo = Session["RegistrationNo"].ToString();
                     string TRId = Session["TestReportID"].ToString();
                     DataSet ds = CEI.GetDetailsOfLiftRenewalReport(RegistrationNo, TRId);
-                    
-                    txtPrevChallanDate.Text = ds.Tables[0].Rows[0]["PreviousChallanDate"].ToString();
+
+                    //txtPrevChallanDate.Text = ds.Tables[0].Rows[0]["PreviousChallanDate"].ToString();
+                    txtLastExpiryDate.Text = ds.Tables[0].Rows[0]["LastExpiryDate"].ToString();
                     txtLastApprovalDate.Text = ds.Tables[0].Rows[0]["LastApprovalDate"].ToString();
                     txtDateofErection.Text = ds.Tables[0].Rows[0]["ErectionDate"].ToString();
                     txtRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
