@@ -2,6 +2,7 @@
 using CEIHaryana.Model.Industry;
 using iTextSharp.text.pdf.parser;
 using Newtonsoft.Json;
+using Org.BouncyCastle.Asn1.X509;
 using Pipelines.Sockets.Unofficial.Arenas;
 using System;
 using System.Collections;
@@ -17,6 +18,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Web.UI.WebControls;
 using System.Windows.Media.TextFormatting;
+using static iTextSharp.text.pdf.XfaForm;
 using static System.Net.WebRequestMethods;
 
 namespace CEI_PRoject
@@ -9038,6 +9040,63 @@ SqlTransaction transaction)
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToCheckDatesForLiftRenewal", lastExpiryDate, memoDate);
         }
         //
+        public DataTable GetCertificateData(string InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetCertificateData", InspectionId);
+        }
+        public void InsertApprovedCertificatedata(string InspectionId)
+        {
+             DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertApprovedCertificatedata", InspectionId);
+        }
+        public void UpdateLiftApprovedCertificatedata(string InspectionId)
+        {
+             DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateLiftApprovalInspections", InspectionId);
+        }
+        public DataTable GetLiftCertificateData(string InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLiftApproalHistor", InspectionId);
+        }
+
+        public DataSet GetDataForUpdateSubdivision(string ID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSubDivisionMasterDataForUpdate", ID);
+        }
+        public DataSet checkSubDivisionName(string UserId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getSubDivisionName", UserId);
+        }
+
+        public DataSet checkUserID(string UserId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getUserIdFromSubDivision", UserId);
+        }
+        public void UpdateSubdivision(string Id, string SubDivision, string Email, string Mobile, string UtilityId, string WingId, string ZoneId, string CircleId, string DivisionId)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand("sp_UpdateSubDivisionInMaster", connection))
+                {
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", Id);
+                    cmd.Parameters.AddWithValue("@SubDivision", SubDivision);
+                    cmd.Parameters.AddWithValue("@Email", Email);
+                    cmd.Parameters.AddWithValue("@Mobile", Mobile);
+                    cmd.Parameters.AddWithValue("@UtilityId", UtilityId);
+                    cmd.Parameters.AddWithValue("@WingId", WingId);
+                    cmd.Parameters.AddWithValue("@ZoneId", ZoneId);
+                    cmd.Parameters.AddWithValue("@CircleId", CircleId);
+                    cmd.Parameters.AddWithValue("@DivisionId", DivisionId);
+                    //cmd.Parameters.AddWithValue("@UserId", UserId);
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+
+        }
     }
 }
 

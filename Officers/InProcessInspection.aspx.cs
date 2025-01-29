@@ -527,7 +527,10 @@ namespace CEIHaryana.Officers
                                 }
 
                                 CEI.InspectionFinalAction(ID, StaffId, ApprovedorReject, Reason, Suggestions, txtInspectionDate.Text);
-
+                                if (ApprovedorReject == "Approved")
+                                {
+                                    CEI.InsertApprovedCertificatedata(ID);     
+                                }
                                 checksuccessmessage = 1;
 
                                 string actiontype = ApprovedorReject == "Approved" ? "Approved" : "Rejected";

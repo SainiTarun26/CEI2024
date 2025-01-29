@@ -646,50 +646,51 @@ namespace CEIHaryana.Officers
 
                                                 CEI.InstallationApproval_Lift_New(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
                                                  lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text,txtTranscationDate.Text, lblAmount, txtTransactionId.Text, txtTranscationDate.Text, transaction);
-
+                                                CEI.UpdateLiftApprovedCertificatedata(ID);
                                             }
                                             //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
 
                                         }
-                                        if (InspectionType == "Periodic")
-                                        {
-                                            foreach (GridViewRow row in GridView2.Rows)
-                                            {
+                                        //if (InspectionType == "Periodic")
+                                        //{
 
-                                                string TestReportId = (row.FindControl("lblTestReport") as Label)?.Text;
-                                                string InstallationType = (row.FindControl("LblInstallationName") as Label)?.Text;
-                                                string lblMake = (row.FindControl("lblMake") as Label)?.Text;
-                                                string lblLiftSrNo = (row.FindControl("lblLiftSrNo") as Label)?.Text;
-                                                string lblTypeOfLift = (row.FindControl("lblTypeOfLift") as Label)?.Text;
-                                                string lblTypeOfControl = (row.FindControl("lblTypeOfControl") as Label)?.Text;
-                                                string lblCapacity = (row.FindControl("lblCapacity") as Label)?.Text;
-                                                string lblWeight = (row.FindControl("lblWeight") as Label)?.Text;
-                                                string LblRegistrationNo = (row.FindControl("LblRegistrationNo") as Label)?.Text;
-                                                string lblMemoNo = (row.FindControl("lblMemoNo") as Label)?.Text;
-                                                string LblAmount = (row.FindControl("LblAmount") as Label)?.Text;
-                                                DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
-                                                DateTime lblLastApprovalDate = DateTime.Parse((row.FindControl("lblLastApprovalDate") as Label)?.Text);
-                                                DateTime LblMemoDate = DateTime.Parse((row.FindControl("LblMemoDate") as Label)?.Text);
-                                                if (LblAmount == "0.00" || LblAmount == "0")
-                                                {
-                                                    txtTranscationDate.Text = "";
-                                                    txtTransactionId.Text = "";
+                                        //    foreach (GridViewRow row in GridView2.Rows)
+                                        //    {
 
-                                                }
-                                                else
-                                                {
-                                                    txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
-                                                    txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                                        //        string TestReportId = (row.FindControl("lblTestReport") as Label)?.Text;
+                                        //        string InstallationType = (row.FindControl("LblInstallationName") as Label)?.Text;
+                                        //        string lblMake = (row.FindControl("lblMake") as Label)?.Text;
+                                        //        string lblLiftSrNo = (row.FindControl("lblLiftSrNo") as Label)?.Text;
+                                        //        string lblTypeOfLift = (row.FindControl("lblTypeOfLift") as Label)?.Text;
+                                        //        string lblTypeOfControl = (row.FindControl("lblTypeOfControl") as Label)?.Text;
+                                        //        string lblCapacity = (row.FindControl("lblCapacity") as Label)?.Text;
+                                        //        string lblWeight = (row.FindControl("lblWeight") as Label)?.Text;
+                                        //        string LblRegistrationNo = (row.FindControl("LblRegistrationNo") as Label)?.Text;
+                                        //        string lblMemoNo = (row.FindControl("lblMemoNo") as Label)?.Text;
+                                        //        string LblAmount = (row.FindControl("LblAmount") as Label)?.Text;
+                                        //        DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
+                                        //        DateTime lblLastApprovalDate = DateTime.Parse((row.FindControl("lblLastApprovalDate") as Label)?.Text);
+                                        //        DateTime LblMemoDate = DateTime.Parse((row.FindControl("LblMemoDate") as Label)?.Text);
+                                        //        if (LblAmount == "0.00" || LblAmount == "0")
+                                        //        {
+                                        //            txtTranscationDate.Text = "";
+                                        //            txtTransactionId.Text = "";
 
-                                                }
-                                                // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
-                                                CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                                lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, txtTranscationDate.Text, lblMemoNo, LblAmount, txtTransactionId.Text, txtTranscationDate.Text, LblMemoDate, transaction);
+                                        //        }
+                                        //        else
+                                        //        {
+                                        //            txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                                        //            txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
 
-                                            }
-                                            //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                                        //        }
+                                        //        // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
+                                        //        CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
+                                        //        lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, txtTranscationDate.Text, lblMemoNo, LblAmount, txtTransactionId.Text, txtTranscationDate.Text, LblMemoDate, transaction);
 
-                                        }
+                                        //    }
+                                        //    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+
+                                        //}
 
                                         transaction.Commit();
                                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);

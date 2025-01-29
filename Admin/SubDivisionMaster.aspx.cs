@@ -128,7 +128,7 @@ namespace CEIHaryana.Admin
                 ddlDivision.DataBind();
                 ddlDivision.Items.Insert(0, new ListItem("Select", "0"));
                 dsDivision.Clear();
-
+                //GridBind();
             }
             catch
             {
@@ -195,9 +195,9 @@ namespace CEIHaryana.Admin
 
 
                 CEI.InsertInSubDivisionMaster(txtSubDivision.Text.Trim(), txtEmail.Text.Trim(), txtPhone.Text.Trim(),
-                    ddlUtility.SelectedValue, ddlWing.SelectedValue, ddlZone.SelectedValue, ddlCircle.SelectedValue, ddlDivision.SelectedValue, UserId);
+                ddlUtility.SelectedValue, ddlWing.SelectedValue, ddlZone.SelectedValue, ddlCircle.SelectedValue, ddlDivision.SelectedValue, UserId);
                 Reset();
-               ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Sub-Division name Submitted Successfully !!!');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Sub-Division name Submitted Successfully !!!');", true);
                 GridBind();
             }
         }
@@ -275,7 +275,25 @@ namespace CEIHaryana.Admin
             }
         }
 
-       
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Select")
+            {
+                Control ctrl = e.CommandSource as Control;
+                if (ctrl != null)
+                {
+                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                    Label lblSubDivisionId = (Label)row.FindControl("lblSubDivisionId");
+                    string ID = lblSubDivisionId.Text;
+                 
+                     Session["SubDivisionID"] = ID;
+                     Response.Redirect("UpdateSubdivisionMaster.aspx");
+
+                   
+                }
+
+            }
+        }
     }
 
 

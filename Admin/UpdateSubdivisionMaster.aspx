@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="SubDivisionMaster.aspx.cs" Inherits="CEIHaryana.Admin.SubDivisionMaster" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="UpdateSubdivisionMaster.aspx.cs" Inherits="CEIHaryana.Admin.UpdateSubdivisionMaster" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
@@ -14,7 +14,6 @@
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -334,34 +333,8 @@
                 return false;
             }
         }
-</script>
-    <script type="text/javascript">
-        function Search_Gridview(strKey) {
-            var strData = strKey.value.toLowerCase().split(" ");
-            var tblData = document.getElementById("<%=GridView1.ClientID %>");
-            var rowData;
-            for (var i = 1; i < tblData.rows.length; i++) {
-                rowData = tblData.rows[i].innerHTML;
-                var styleDisplay = 'none';
-                for (var j = 0; j < strData.length; j++) {
-                    if (rowData.toLowerCase().indexOf(strData[j]) >= 0)
-                        styleDisplay = '';
-                    else {
-                        styleDisplay = 'none';
-                        break;
-                    }
-                }
-                tblData.rows[i].style.display = styleDisplay;
-            }
-
-        }
-        function SearchOnEnter(event) {
-            if (event.keyCode === 13) {
-                event.preventDefault(); // Prevent default form submission
-                Search_Gridview(document.getElementById('txtSearch'));
-            }
-        }
     </script>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
@@ -436,7 +409,7 @@
                                     <label for="Division">
                                         Division Name<samp style="color: red"> * </samp>
                                     </label>
-                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlDivision" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlDivision_SelectedIndexChanged">
+                                    <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlDivision" TabIndex="2" runat="server" >
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator30" Text="Please Select Division name" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDivision" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
@@ -462,7 +435,7 @@
                                         ErrorMessage="Enter a valid Email" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtEmail" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter valid Email</asp:RequiredFieldValidator>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <label>
                                         Phone N0.
                                 <samp style="color: red">* </samp>
@@ -471,14 +444,20 @@
                                     <span id="lblErrorContect" style="color: red"></span>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtPhone" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
                                 </div>
+                                <div class="col-md-3" runat="server" visible="false">
+                                  
+                                    <asp:TextBox class="form-control" ID="txtUserId" TabIndex="8" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" onkeyup="return isvalidphoneno();" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    
+                                </div>
+
                             </div>
                             <div class="row">
                                 <div class="col-md-12" style="text-align: center;">
-                                    <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
+                                    <asp:Button type="submit" ID="btnUpdate" TabIndex="22" ValidationGroup="Submit" Text="Update" runat="server" class="btn btn-primary mr-2" OnClick="btnUpdate_Click" />
                                 </div>
                             </div>
 
-                            <div class="card-body" id="SubDivision" runat="server" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                         <%--   <div class="card-body" id="SubDivision" runat="server" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                 <div class="row" style="margin-bottom: -30px;">
                                     <div class="col-md-4">
                                         <div class="form-group row">
@@ -490,85 +469,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" OnRowCommand="GridView1_RowCommand"
-                                    AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
-                                    <Columns>
 
-                                        <asp:TemplateField HeaderText="SNo">
-                                            <HeaderStyle Width="5%" CssClass="headercolor" />
-                                            <ItemStyle Width="5%" />
-                                            <ItemTemplate>
-                                                <%#Container.DataItemIndex+1 %>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-
-
-                                        <asp:BoundField DataField="UtilityId" HeaderText="Utility Id">
-                                            <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center"   />
-                                        </asp:BoundField>
-                                  
-
-                                        <asp:BoundField DataField="WingId" HeaderText="Wing Id">
-                                            <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center"   />
-                                        </asp:BoundField>
-                                       
-                                        <asp:BoundField DataField="ZoneId" HeaderText="Zone Id">
-                                            <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center"   />
-                                        </asp:BoundField>
-                                       
-                                        <asp:BoundField DataField="CircleId" HeaderText="Circle Id">
-                                            <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center"   />
-                                        </asp:BoundField>
-                                   
-                                        <asp:BoundField DataField="DivisionId" HeaderText="Division Id">
-                                            <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center" Width="28%" />
-                                        </asp:BoundField>
-                                     
-                                        <asp:BoundField DataField="SubDivision" HeaderText="SubDivision Name">
-                                            <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center"   CssClass="break-text-10" />
-                                        </asp:BoundField>
-                                        <asp:BoundField DataField="Email" HeaderText="Email">
-                                            <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center"   CssClass="break-text-10" />
-                                        </asp:BoundField>
-                                        <asp:BoundField DataField="Mobile" HeaderText="Mobile No.">
-                                            <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center"   />
-                                        </asp:BoundField>
-
-                                        <asp:TemplateField HeaderText="Edit">
-                                            <HeaderStyle Width="5%" CssClass="headercolor" />
-                                            <ItemStyle Width="5%" />
-                                            <ItemTemplate>
-                                                <asp:LinkButton runat="server" ID="LinkButton4" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
-                                                    Text="<i class='fa fa-edit' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="SubDivision Id" Visible="false">
-                                            <HeaderStyle Width="13%" CssClass="headercolor" />
-                                            <ItemStyle Width="13%" CssClass="text-wrap" />
-                                            <ItemTemplate>
-                                                <asp:Label ID="lblSubDivisionId" runat="server" Text='<%# Eval("Id") %>' CssClass="text-wrap"></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                    </Columns>
-                                    <FooterStyle BackColor="White" ForeColor="#000066" />
-                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                    <RowStyle ForeColor="#000066" />
-                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                </asp:GridView>
-                            </div>
+                            </div>--%>
                     </ContentTemplate>
                 </asp:UpdatePanel>
 
@@ -632,5 +534,5 @@
                 element.innerHTML = formattedText.trim(); // Remove any trailing <br>
             });
         });
-</script>
+    </script>
 </asp:Content>
