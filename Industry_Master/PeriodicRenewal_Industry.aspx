@@ -234,7 +234,7 @@
             align-items: center;
             max-width: 340px;
             background: #e9ecef;
-            border:1px solid #ced4da;
+            border: 1px solid #ced4da;
             border-radius: 4px;
             padding-left: 0rem;
             overflow: hidden;
@@ -284,6 +284,13 @@
 
         label {
             font-size: 0.875rem;
+        }
+
+        select#ContentPlaceHolder1_ddlGurugram {
+            margin-top: 31px;
+            height: 30px;
+            padding: 0px;
+            padding-left: 5px;
         }
     </style>
 </asp:Content>
@@ -550,7 +557,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label for="Name">
-                                               Electrical Istallation for 
+                                                Electrical Istallation for 
                                             </label>
                                             <div class="input-box">
                                                 <asp:TextBox class="form-control" ID="txtInstallation" ReadOnly="true" Text="Firm/Company" autocomplete="off" runat="server" Style="margin-left: 18px; box-shadow: none !important;"></asp:TextBox>
@@ -564,7 +571,7 @@
                                                 <asp:TextBox class="form-control" ID="txtName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px; box-shadow: none !important;"></asp:TextBox>
                                             </div>
                                         </div>
-                                        <div class="col-md-4" id="agency" visible="true" runat="server">
+                                        <div class="col-md-4" id="agency" visible="true" runat="server" style="margin-top: 18px;">
                                             <label for="agency">
                                                 Name of Agency<samp style="color: red">* </samp>
                                             </label>
@@ -573,7 +580,7 @@
                                                 <asp:TextBox class="form-control" ID="txtagency" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
                                             </div>
                                         </div>
-                                                                                <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="true" style="margin-top:20px;">
+                                        <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="true" style="margin-top: 20px;">
                                             <label for="PanNumber">
                                                 PAN Card
                                             </label>
@@ -588,7 +595,7 @@
                                                 ErrorMessage="Enter a valid TAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtTanNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                         </div>
-                                       <%-- <div class="col-md-4" id="InstallationFor" runat="server">
+                                        <%-- <div class="col-md-4" id="InstallationFor" runat="server">
                                             <label>
                                                 Electrical Installation For
                                             </label>
@@ -599,46 +606,56 @@
                                             </asp:DropDownList>
                                             <asp:TextBox class="form-control" ID="txtElecticalInstallation" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>--%>
-                                   
+
                                         <div class="col-md-4" runat="server" id="UserId" visible="false">
                                             <label for="UserId">
                                                 UserId
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtUserId" AutoPostBack="true" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
-                                  
-                                        
-                                  
-                                  
-                                        <div class="col-md-4" runat="server" style="margin-top:20px;">
+
+
+
+
+                                        <div class="col-md-4" runat="server" style="margin-top: 20px;">
                                             <label for="Pin">State</label>
                                             <asp:TextBox class="form-control" ID="txtState" MaxLength="6" Text="Haryana" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
 
-                                        <div class="col-md-4" style="margin-top:20px;">
+                                        <div class="col-md-4" style="margin-top: 20px;">
                                             <label>
                                                 District<samp style="color: red">* </samp>
                                             </label>
-                                             <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        
-                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtDistrict" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter District</asp:RequiredFieldValidator>
-  </div>
+                                            <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                                   <div class="col-md-8" style="margin-top:22px;">
-    <label for="Address">
-        Address of Site(Preferred As Per Demand Notice of Utility or Electricity Bill)<samp style="color: red">* </samp>
-    </label>
-    <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Address</asp:RequiredFieldValidator>
-</div>
-                                        <div class="col-md-4" style="margin-top:22px;">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtDistrict" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter District</asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-md-4" style="margin-top: 20px;" id ="divGurugramSelection" runat="server">
+                                            <label>
+                                                Area covered sc operation circle<samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList ID="ddlGurugram" readonly="false" Class="form-control" runat="server" Visible="true" Style="margin-left: 18px;margin-top:0px !important;">
+                                                <asp:ListItem Text="Please Select" Value="" />
+                                                <asp:ListItem Text="Gurugram-I" Value="Gurugram-I"></asp:ListItem>
+                                                <asp:ListItem Text="Gurugram-II" Value="Gurugram-II"></asp:ListItem>
+                                            </asp:DropDownList>
+                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="ddlGurugram" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Select District</asp:RequiredFieldValidator>                                             
+                                        </div>
+                                        <div class="col-md-8" style="margin-top: 22px;">
+                                            <label for="Address">
+                                                Address of Site(Preferred As Per Demand Notice of Utility or Electricity Bill)<samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="5" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Address</asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-md-4" style="margin-top: 22px;">
                                             <label for="Phone">
                                                 Contact Number (Site Owner)<samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtPhone" onkeydown="return preventEnterSubmit(event)" ReadOnly="true" onKeyPress="return isNumberKey(event);" onkeyup="return isvalidphoneno();" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtPhone" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
                                         </div>
-                                        <div class="col-md-4" runat="server">
+                                        <div class="col-md-4" runat="server" style="margin-top:22px;">
                                             <label for="Email">
                                                 Email<samp style="color: red">* </samp>
                                             </label>
@@ -654,7 +671,7 @@
                                         <h7 class="card-title fw-semibold mb-4" style="margin-top: 5%; font-size: 18px !important;">Application Details</h7>
                                     </div>
                                 </div>
-                                <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-left:20px; padding-right:20px;">
+                                <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-left: 20px; padding-right: 20px;">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label>
@@ -691,7 +708,7 @@
                                         </div>--%>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-4" runat="server" style="margin-top:20px;">
+                                        <div class="col-md-4" runat="server" style="margin-top: 20px;">
                                             <label for="Email">
                                                 Total Capacity installed in KVA<samp style="color: red">* </samp>
                                             </label>
@@ -703,7 +720,7 @@
                                             
                                             </asp:RegularExpressionValidator>
                                         </div>
-                                        <div class="col-md-4"  style="margin-top:20px;">
+                                        <div class="col-md-4" style="margin-top: 20px;">
                                             <label>
                                                 Is there any Sanction Load Issued
                                             </label>

@@ -31,24 +31,24 @@ namespace CEIHaryana.Industry_Master
             {
                 if (!Page.IsPostBack)
                 {
-                   // Session["SiteOwnerId_Industry"] = "YUYUY7777Y";
-                   //// Session["SiteOwnerId_Industry"] = "1123";
-                   // Session["district_Temp"] = "Hisar";
-                   // Session["SiteOwner_mobile"] = "9876543210";
-                   // Session["SiteOwner_useremail"] = "navneet10a28@gmail.com";
-                   // Session["SiteOwner_address"] = "Hisar";
-                   // Session["Serviceid_pd_Indus"] = "ec289b0f-e803-4bce-9dc2-d1d5ce93ba5a";
-                   // Session["projectid_pd_Indus"] = "1";
-                   // var userSession = new Cei_IndustryServices_Redirection_IncomingJson_Model
-                   // {
-                   //     uname = "sdsd",
-                   //     businessentity = "edscsd",
-                   //     useremail = "dcscs@dsc.gbh",
-                   //     address = "decsc",
-                   //     mobile = "9876543234",
-                   // };
+                    // Session["SiteOwnerId_Industry"] = "YUYUY7777Y";
+                    //// Session["SiteOwnerId_Industry"] = "1123";
+                    // Session["district_Temp"] = "Hisar";
+                    // Session["SiteOwner_mobile"] = "9876543210";
+                    // Session["SiteOwner_useremail"] = "navneet10a28@gmail.com";
+                    // Session["SiteOwner_address"] = "Hisar";
+                    // Session["Serviceid_pd_Indus"] = "ec289b0f-e803-4bce-9dc2-d1d5ce93ba5a";
+                    // Session["projectid_pd_Indus"] = "1";
+                    // var userSession = new Cei_IndustryServices_Redirection_IncomingJson_Model
+                    // {
+                    //     uname = "sdsd",
+                    //     businessentity = "edscsd",
+                    //     useremail = "dcscs@dsc.gbh",
+                    //     address = "decsc",
+                    //     mobile = "9876543234",
+                    // };
 
-                   // Session["UserSessionData"] = userSession;
+                    // Session["UserSessionData"] = userSession;
                     if (Session["SiteOwnerId_Industry"] != null || Request.Cookies["SiteOwnerId_Industry"] != null)
                     {
                         if (CheckInspectionStatus())
@@ -61,7 +61,7 @@ namespace CEIHaryana.Industry_Master
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
@@ -587,7 +587,7 @@ namespace CEIHaryana.Industry_Master
                     ddlPremises.SelectedIndex = ddlPremises.Items.IndexOf(selectedItem);
                 }
                 ddlPremises.Attributes.Add("disabled", "disabled");
-               // ddlPremises.Enabled = false;
+                // ddlPremises.Enabled = false;
             }
             catch (Exception ex) { }
         }
@@ -604,15 +604,23 @@ namespace CEIHaryana.Industry_Master
                 //ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
                 //dsDistrict.Clear();
                 txtDistrict.Text = Session["district_Temp"].ToString();
+                // Check if the district is "Gurugram"
+                if (Session["district_Temp"].ToString().Equals("Gurugram", StringComparison.OrdinalIgnoreCase))
+                {
+                    divGurugramSelection.Visible = true;
+                }
+                else
+                {
+                    divGurugramSelection.Visible = false;
+                }
+                // ListItem selectedItem = ddlDistrict.Items.FindByText(dp_Id24);
 
-               // ListItem selectedItem = ddlDistrict.Items.FindByText(dp_Id24);
-
-               // if (selectedItem != null)
-               // {
-               //     ddlDistrict.SelectedIndex = ddlDistrict.Items.IndexOf(selectedItem);
-               // }
-               //// ddlDistrict.Enabled = false;
-               //ddlDistrict.Attributes.Add("disabled", "disabled");
+                // if (selectedItem != null)
+                // {
+                //     ddlDistrict.SelectedIndex = ddlDistrict.Items.IndexOf(selectedItem);
+                // }
+                //// ddlDistrict.Enabled = false;
+                //ddlDistrict.Attributes.Add("disabled", "disabled");
 
             }
             catch (Exception ex) { }
@@ -625,7 +633,7 @@ namespace CEIHaryana.Industry_Master
             //if (ds.Tables[0].Rows.Count > 0)
             //{
             //    Session["TestReportGenerated"] = ds.Tables[0].Rows[0]["TestReportGenerated"].ToString();
-               
+
             //    ApplicantCode = ds.Tables[0].Rows[0]["ApplicantTypeCode"].ToString();
 
             //    txtPAN.Text = ds.Tables[0].Rows[0]["PANNumber"].ToString();
@@ -634,7 +642,7 @@ namespace CEIHaryana.Industry_Master
             //    txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
             //    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
             //    txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
-               
+
 
             //    if (ApplicantType == "Private/Personal Installation")
             //    {
@@ -676,7 +684,7 @@ namespace CEIHaryana.Industry_Master
             //}
             //else
             //{
-               // Session["TestReportGenerated"] = "";
+            // Session["TestReportGenerated"] = "";
             //    //txtCircle.Visible = false;
             //    //DdlCircle.Visible = true;
             //    //txtSubDivision.Visible = false;
@@ -690,7 +698,7 @@ namespace CEIHaryana.Industry_Master
             //    //DdlWing.Visible = true;
             //    //txtUtilityName.Visible = false;
             //    //ddlPoweUtility.Visible = true;
-               
+
             //}
             if (Session["UserSessionData"] is Cei_IndustryServices_Redirection_IncomingJson_Model userSession)
             {
@@ -705,12 +713,12 @@ namespace CEIHaryana.Industry_Master
             txtTanNumber.Text = Session["SiteOwnerId_Industry"].ToString();
 
         }
-         
-       
-      
-        
-           
-       
+
+
+
+
+
+
         private void BindListBoxInstallationType()
         {
             DataSet dsWorkDetail = new DataSet();
@@ -811,14 +819,14 @@ namespace CEIHaryana.Industry_Master
             //}
             //else if (ddlApplicantType.SelectedValue == "AT003")
             //{
-                //ElectricalInstallation.Visible = true;
-                //PowerUtility.Visible = false;
-                //NameUtility.Visible = false;
-                //Wing.Visible = false;
-                //DivOtherDepartment.Visible = true;
-                //txtPAN.Text = Session["SiteOwnerId_Industry"].ToString();
+            //ElectricalInstallation.Visible = true;
+            //PowerUtility.Visible = false;
+            //NameUtility.Visible = false;
+            //Wing.Visible = false;
+            //DivOtherDepartment.Visible = true;
+            //txtPAN.Text = Session["SiteOwnerId_Industry"].ToString();
             //}
-      
+
 
         }
         protected void ddlPremises_SelectedIndexChanged(object sender, EventArgs e)
@@ -862,10 +870,10 @@ namespace CEIHaryana.Industry_Master
                     {
                         Pan_TanNumber = txtTanNumber.Text.Trim();
                     }
-                    
+
                     Id = Session["SiteOwnerId_Industry"].ToString();
                     //string TestReportGenerated = "";
-                   // TestReportGenerated = Session["TestReportGenerated"].ToString();
+                    // TestReportGenerated = Session["TestReportGenerated"].ToString();
                     // if (TestReportGenerated != "" || TestReportGenerated!= null) {
                     // Insert data
                     CEI.IntimationDataInsertionBySiteowner_Industries(
@@ -891,7 +899,8 @@ namespace CEIHaryana.Industry_Master
                         txtagency.Text.Trim(),
                         txtPhone.Text.Trim(),
                         txtAddress.Text.Trim(),
-                        txtDistrict.Text,
+                        // txtDistrict.Text,
+                        divGurugramSelection.Visible == false ? txtDistrict.Text : ddlGurugram.SelectedValue,
                         "",
                         ddlPremises.SelectedItem.ToString(),
                         txtOtherPremises.Text.Trim(),
