@@ -48,7 +48,9 @@ namespace CEIHaryana.Admin
                 LoginId = Convert.ToString(Session["AdminId"]);
                 string id = ddldivision.SelectedValue.ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.AcceptedOrRejectedRequestInspectionForAdmin(LoginId, id);
+                //ds = CEI.AcceptedOrRejectedRequestInspectionForAdmin(LoginId, id);
+                ds = CEI.AcceptRejectReturnedInspectionATAdmin(LoginId, id);
+
                 if (ds.Tables.Count > 0)
                 {
                     GridView1.DataSource = ds;

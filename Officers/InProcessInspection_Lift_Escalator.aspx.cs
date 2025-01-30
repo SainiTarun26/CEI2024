@@ -404,8 +404,8 @@ namespace CEIHaryana.Officers
                     string SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
                     grd_Documemnts.Columns[1].Visible = true;
 
-                    GridView1.Columns[5].Visible = false;
-                    GridView1.Columns[3].Visible = false;
+                    GridView2.Columns[5].Visible = false;
+                    GridView2.Columns[3].Visible = false;
 
                     DivTestReports.Visible = true;
                     GridToViewTestReports();
@@ -418,7 +418,10 @@ namespace CEIHaryana.Officers
                     {
                         InspectionDate.Visible = false;
                         InsDate.Visible = true;
-
+                        GridView2.Columns[4].Visible = false;
+                        GridView2.Columns[5].Visible = false;
+                        GridView2.Columns[6].Visible = false;
+                        GridView2.Columns[7].Visible = false;
                         txtDATE.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
                         if (txtAmount.Text == "0")
 
@@ -449,6 +452,10 @@ namespace CEIHaryana.Officers
                     if (Status == "Rejected")
                     {
 
+                        GridView2.Columns[4].Visible = false;
+                        GridView2.Columns[5].Visible = false;
+                        GridView2.Columns[6].Visible = false;
+                        GridView2.Columns[7].Visible = false;
                         InsDate.Visible = true;
                         txtDATE.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
                         if (txtAmount.Text == "0")
@@ -484,6 +491,10 @@ namespace CEIHaryana.Officers
                     }
                     if (Status == "Return")
                     {
+                        GridView2.Columns[4].Visible = false;
+                        GridView2.Columns[5].Visible = false;
+                        GridView2.Columns[6].Visible = false;
+                        GridView2.Columns[7].Visible = false;
                         InspectionDate.Visible = false;
                         ApprovalRequired.Visible = false;
                         btnSubmit.Visible = false;
@@ -759,7 +770,7 @@ namespace CEIHaryana.Officers
                                                     if (txtFirstRenewalDateControl.Text != "" && txtFirstExpiryDateControl.Text != null)
                                                     {
                                                         // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
-                                                        CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text,
+                                                        CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, LblRegistrationNo,
                                                             DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift, lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate,
                                                             lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, txtTranscationDate.Text, LblMemoNo, LblAmount, txtTransactionId.Text, txtTranscationDate.Text, LblMemoDate, DateTime.Parse(txtFirstRenewalDateControl.Text), DateTime.Parse(txtFirstExpiryDateControl.Text), transaction);
 
@@ -774,7 +785,7 @@ namespace CEIHaryana.Officers
 
                                                     if (txtSecRenewalDateControl.Text != "" && txtSecRenewalDateControl.Text != null)
                                                     {
-                                                        CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift, lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, txtTranscationDate.Text, LblMemoNo, LblAmount,
+                                                        CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, LblRegistrationNo, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift, lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, txtTranscationDate.Text, LblMemoNo, LblAmount,
                                                             txtTransactionId.Text, txtTranscationDate.Text, LblMemoDate, DateTime.Parse(txtSecRenewalDateControl.Text), DateTime.Parse(txtSecExpiryDateControl.Text), transaction);
                                                     }
 

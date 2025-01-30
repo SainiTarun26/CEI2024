@@ -120,27 +120,7 @@
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
-                <div class="row" style="margin-bottom:-40px;">
-     <div class="col-4">
-         <div class="form-group row">
-             <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
-             <div class="col-sm-9" style="margin-left: -35px;">
-                 <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
-             </div>
-         </div>
-     </div>
-     <div class="col-4"></div>
-     <div class="col-4">
-         <div class="form-group row">
-             <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Division:</label>
-             <div class="col-sm-9" style="margin-left:0px;">
-                 <asp:DropDownList ID="ddldivision" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddldivision_SelectedIndexChanged" class="form-control  select-form select2" Style="width: 100% !important;padding-top: 3px;
-    font-size: 16px !important;">
-                 </asp:DropDownList>
-             </div>
-         </div>
-     </div>
- </div>
+               
                 <div class="row ">
                     <div class="col-sm-4 col-md-4">
                         <h6 class="card-title fw-semibold mb-4">
@@ -149,6 +129,29 @@
                     <div class="col-sm-6 col-md-6"></div>
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                  <div class="row" style="margin-bottom:-20px;">
+    <div class="col-4">
+        <div class="form-group row">
+            <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
+            <div class="col-sm-9" style="margin-left: -35px;">
+                <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
+            </div>
+        </div>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="form-group row">
+            <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Division:</label>
+            <div class="col-sm-9" style="margin-left:0px;">
+                <asp:DropDownList ID="ddldivision" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddldivision_SelectedIndexChanged" class="form-control  select-form select2" Style="width: 100% !important;padding-top: 3px;
+   font-size: 16px !important;">
+                </asp:DropDownList>
+            </div>
+        </div>
+    </div>
+</div>
+                    <div class="row">
+                        <div class="col-md-12">
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" OnRowDataBound="GridView1_RowDataBound" PageSize="100" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                         <Columns>
@@ -267,6 +270,8 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
+                </div>
+                </div>
                 </div>
             </div>
         </div>

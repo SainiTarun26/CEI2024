@@ -9122,6 +9122,13 @@ SqlTransaction transaction)
 
         }
         #endregion
+
+        #region Neha -30Jan-2025
+        public DataSet AcceptRejectReturnedInspectionATAdmin(string LoginId, string Division = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectReturnedInspectionATAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division);
+        }
+        #endregion
     }
 }
 
