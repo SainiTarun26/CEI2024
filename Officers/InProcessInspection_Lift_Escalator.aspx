@@ -533,6 +533,53 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
+                            <asp:TemplateField HeaderText="View TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report & Attachments" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("RegistrationNo") %>' />
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="1st Renewal Date">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                <ItemTemplate>
+                                    <asp:TextBox ID="txtFirstRenewalDate" Type="date" runat="server" class="form-control" ></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvFirstRenewalDate" runat="server"
+                                        ControlToValidate="txtFirstRenewalDate"
+                                        ErrorMessage="First time Renewal Date is required."
+                                        Display="Dynamic"
+                                        CssClass="text-danger"></asp:RequiredFieldValidator>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="1st Expiry Date">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                <ItemTemplate>
+                                    <asp:TextBox ID="txtFirstExpiryDate" Type="date" runat="server" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvFirstExpiryDate" runat="server"
+                                        ControlToValidate="txtFirstExpiryDate"
+                                        ErrorMessage="First time Expiry Date is required."
+                                        Display="Dynamic"
+                                        CssClass="text-danger"></asp:RequiredFieldValidator>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="2nd Renewal Date">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                <ItemTemplate>
+                                    <asp:TextBox ID="txtSecRenewalDate" Type="date" runat="server" class="form-control" ></asp:TextBox>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="2nd Expiry Date">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                <ItemTemplate>
+                                    <asp:TextBox ID="txtSecExpiryDate" Type="date" runat="server" class="form-control" ></asp:TextBox>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+
                             <asp:BoundField DataField="TestReportID" HeaderText="TestReportId" Visible="false">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -558,13 +605,7 @@
 
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="View TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report & Attachments" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("RegistrationNo") %>' />
-                                </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
-                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                            </asp:TemplateField>
+                           
                         </Columns>
                     </asp:GridView>
 

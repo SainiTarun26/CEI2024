@@ -346,7 +346,7 @@ namespace CEIHaryana.Officers
                     Session["InstallationType"] = txtWorkType.Text;
                     //ChallanDate.Visible = true;
                     //RegNo.Visible = true;
-                    txtChallanDate.Text = ds.Tables[0].Rows[0]["PreviousChallanDate"].ToString();
+                    txtChallanDate.Text = ds.Tables[0].Rows[0]["LastExpiryDate"].ToString();
                     txtRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
                     txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
@@ -604,13 +604,13 @@ namespace CEIHaryana.Officers
                             }
                             else
                             {
-                                DataSet dsVC = CEI.GetDetailsToViewCart_Lift_Escalator(ID);
+                                //DataSet dsVC = CEI.GetDetailsToViewCart_Lift_Escalator(ID);
 
-                                if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
-                                {
-                                    GridView2.DataSource = dsVC;
-                                    GridView2.DataBind();
-                                }
+                                //if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
+                                //{
+                                //    GridView2.DataSource = dsVC;
+                                //    GridView2.DataBind();
+                                //}
 
                             }
                             //string InstallationType = Session["InstallationType"].ToString();
@@ -709,16 +709,21 @@ namespace CEIHaryana.Officers
 
                                                 CEI.InstallationApproval_Lift_New(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
                                                   lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text, txtTranscationDate.Text, lblAmount, txtTransactionId.Text, txtTranscationDate.Text, transaction);
-                                                CEI.UpdateLiftApprovedCertificatedata(ID);
+                                                //CEI.UpdateLiftApprovedCertificatedata(ID);
                                             }
                                             //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
 
                                         }
                                         if (InspectionType == "Periodic")
                                         {
+                                          //  int count = 0;
                                             foreach (GridViewRow row in GridView2.Rows)
                                             {
-
+                                                
+                                                TextBox txtFirstRenewalDateControl = (TextBox)row.FindControl("txtFirstRenewalDate");
+                                                TextBox txtFirstExpiryDateControl = (TextBox)row.FindControl("txtFirstExpiryDate");
+                                                TextBox txtSecRenewalDateControl = (TextBox)row.FindControl("txtSecRenewalDate");
+                                                TextBox txtSecExpiryDateControl = (TextBox)row.FindControl("txtSecExpiryDate");
                                                 string TestReportId = (row.FindControl("lblTestReport") as Label)?.Text;
                                                 string InstallationType = (row.FindControl("LblInstallationName") as Label)?.Text;
                                                 string lblMake = (row.FindControl("lblMake") as Label)?.Text;
@@ -733,6 +738,7 @@ namespace CEIHaryana.Officers
                                                 DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
                                                 DateTime lblLastApprovalDate = DateTime.Parse((row.FindControl("lblLastApprovalDate") as Label)?.Text);
                                                 DateTime LblMemoDate = DateTime.Parse((row.FindControl("LblMemoDate") as Label)?.Text);
+
                                                 if (LblAmount == "0.00" || LblAmount == "0")
                                                 {
                                                     txtTranscationDate.Text = "";
@@ -745,16 +751,35 @@ namespace CEIHaryana.Officers
                                                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
 
                                                 }
-                                                // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
-                                                CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                                lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, txtTranscationDate.Text, LblMemoNo, LblAmount, txtTransactionId.Text, txtTranscationDate.Text, LblMemoDate, transaction);
-                                                CEI.UpdateLiftApprovedCertificatedata(ID);
+                                              
+                                                    if (txtFirstRenewalDateControl.Text != "" && txtFirstExpiryDateControl.Text != null)
+                                                    {
+                                                        // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
+                                                        CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text,
+                                                            DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift, lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate,
+                                                            lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, txtTranscationDate.Text, LblMemoNo, LblAmount, txtTransactionId.Text, txtTranscationDate.Text, LblMemoDate, DateTime.Parse(txtFirstRenewalDateControl.Text), DateTime.Parse(txtFirstExpiryDateControl.Text), transaction);
+                                                      
+                                                    }
+                                                
+                                                
+                                                
+                                                    if (txtSecRenewalDateControl.Text != "" && txtSecRenewalDateControl.Text != null)
+                                                    {
+                                                        CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift, lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, txtTranscationDate.Text, LblMemoNo, LblAmount,
+                                                            txtTransactionId.Text, txtTranscationDate.Text, LblMemoDate, DateTime.Parse(txtSecRenewalDateControl.Text), DateTime.Parse(txtSecExpiryDateControl.Text), transaction);
+                                                    }
+                                                
+
+                                               
+
+                                                
                                             }
-                                            //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
 
                                         }
 
                                         transaction.Commit();
+                                        CEI.UpdateLiftApprovedCertificatedata(ID);
                                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
                                     }
                                     else if (ApprovedorReject == "Rejected")
