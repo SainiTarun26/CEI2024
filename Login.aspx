@@ -22,6 +22,12 @@
     <!-- Template Main CSS File -->
     <link href="/assetsnew/css/style.css" rel="stylesheet" />
     <style type="text/css">
+        li.dropdown {
+    padding: 10px 0 10px 20px !important;
+}
+        .container.d-flex.align-items-center.justify-content-between {
+    max-width: 1550px;
+}
         body {
             overflow-x: hidden;
         }
@@ -391,18 +397,19 @@
                                 <ul>
                                     <li>
                                         <a href="Procedure_For_Registration_Lift_Exclator.aspx">Procedure For Registration /
-                  <br>
+                 
+                                            <br>
                                             Inspection Lifts and Esclators
                                         </a>
                                     </li>
-                                                      <li>
-                      <a href="https://egovservices.in/" target="_blank">Apply for New / Renewal Lift
-                      </a>
-                  </li>
-                                                                        <li>
-    <a href="StaticPage2.aspx" target="_blank">List of Lift Inspectors
-    </a>
-</li>
+                                    <li>
+                                        <a href="https://egovservices.in/" target="_blank">Apply for New / Renewal Lift
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="StaticPage2.aspx" target="_blank">List of Lift Inspectors
+                                        </a>
+                                    </li>
 
 
                                     <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -416,7 +423,8 @@
               </li> -->
                                     <li>
                                         <a href="UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Checklist for Registration/
- <br />
+
+                                            <br />
                                             Inspection of Lifts and Elevators
                                         </a>
                                     </li>
@@ -467,7 +475,7 @@
                                     <i class="bi bi-chevron-down"></i>
                                 </a>
                                 <ul>
-                                   
+
                                     <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
@@ -482,9 +490,11 @@
                                     </li>
                                     <li>
                                         <a href="Procedure_for_grant_of_approval.aspx">Procedure for Grant of
-                  <br />
+                 
+                                            <br />
                                             approval for Energisation of
-                  <br />
+                 
+                                            <br />
                                             New Electrical
                   Installation
                                         </a>
@@ -495,9 +505,9 @@
                             <li class="dropdown">
                                 <a href="OurOnlineServices.aspx">
                                     <span>Services</span>
-                                    
+
                                 </a>
-                                
+
                             </li>
                             <li class="dropdown">
                                 <a href="#">
@@ -508,11 +518,12 @@
                                     <li>
                                         <a href="/UserManual/CamScanner 01-13-2025 13.54.pdf" target="_blank">BRAP-2024 Griviance Mechanism</a>
                                     </li>
-                                      <li>
-      <a href="UserManual/office order 223.pdf" target="_blank">Mendate Regarding high medium low risk profile</a>
-  </li>
                                     <li>
-                                        <a href="UserManual/CamScanner 01-09-2025 13.37_1.pdf" target="_blank">Mendate Regarding Registration and<br/> Renewal 0f Lift/Escalator</a>
+                                        <a href="UserManual/office order 223.pdf" target="_blank">Mendate Regarding high medium low risk profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="UserManual/CamScanner 01-09-2025 13.37_1.pdf" target="_blank">Mendate Regarding Registration and<br />
+                                            Renewal 0f Lift/Escalator</a>
                                     </li>
                                     <li>
                                         <a href="UserManual/Mendate%20Regarding%20Electrical%20Installations.pdf" target="_blank">Mendate Regarding ELectrical Installations</a>
@@ -546,6 +557,32 @@
                                     </li>
                                 </ul>
                             </li>
+
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>EODB Dashboard</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="StaticPage1.aspx" target="_blank">Checklist/Procedure/<br />
+                                            Fees Structure for lift</a>
+                                    </li>
+                                    <li>
+                                        <a href="StaticPage2.aspx" target="_blank">List of Lift Inspectors</a>
+                                    </li>
+                                    <li>
+                                        <a href="StaticPage3.aspx" target="_blank">EODB Dashboard</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                          <%--  <li style="display: flex;">
+                                <a href="/VerifyCertificate.aspx" id="alertLink1" style="position: relative; z-index: 1;">Verify Certificate</a>
+                            </li>--%>
+                             <li style="display: flex;">
+     <a href="https://grs.hartron.io/#/" target="_blank" id="alertLink2" style="position: relative; z-index: 1;">Grievance Redressal</a>
+ </li>
                             <li style="display: flex;">
                                 <a href="UserPages/OurServices.aspx" id="alertLink" style="position: relative; z-index: 1;">User Manual</a><img src="Assets/new1.gif" id="alertGif" />
                             </li>
@@ -553,6 +590,66 @@
                         <i class="bi bi-list mobile-nav-toggle"></i>
                     </nav>
                     <!-- .navbar -->
+                    <%--<div id="myModal" class="modal">
+                        <div class="modal-content">
+                           <div class="modal-header" style="display: flex; justify-content: center; align-items: center; position: relative;">
+    <h2 style="margin: 0;">CERTIFICATE VERIFICATION</h2>
+    <span class="close" style="position: absolute; right: 10px; font-size: 24px; cursor: pointer;">&times;</span>
+</div>
+
+
+                            <br />
+                            <div id="varification" style="display: flex; flex-direction: column; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <asp:Label ID="lblName" runat="server" Text="Enter Certificate No.:" Style="white-space: nowrap;"></asp:Label>
+                                    <asp:TextBox ID="txtName" Class="form-control" runat="server" Style="width: 300px;"></asp:TextBox>
+                                </div>
+                                <br />
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <asp:Label ID="Label1" runat="server" Text="Verification Code:" Style="white-space: nowrap; margin-left: 25px;"></asp:Label>
+                                    <asp:TextBox ID="TextBox1" Class="form-control" runat="server" Style="width: 300px;"></asp:TextBox>
+                                </div>
+                                <br />
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <asp:Label ID="Label2" runat="server" Text="Enter Verification Code:" Style="white-space: nowrap; margin-left: -20px;"></asp:Label>
+                                    <asp:TextBox ID="TextBox2" Class="form-control" runat="server" Style="width: 300px;"></asp:TextBox>
+                                </div>
+                                                                
+                            </div>
+                            <br />
+                            <div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-2">
+        <asp:Button ID="Button2" Class="btn btn-primary" runat="server" Text="Verify" style="height:40px !important;"/>
+
+    </div>
+    <div class="col-md-4"></div>
+</div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table table-striped table-responsive table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">Name of Owner</th>
+                                                <th scope="col">Serial No. of Lift</th>
+                                                <th scope="col">Make of Lift/Escalator</th>
+                                                <th scope="col">Download Certificate</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Test Name</td>
+                                                <td>25834fjka28437</td>
+                                                <td>Mitsubishi</td>
+                                                <td><i class="fa-solid fa-download"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>--%>
                 </div>
             </header>
             <!-- End Header -->

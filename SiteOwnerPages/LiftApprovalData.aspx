@@ -200,18 +200,18 @@
                             </div>
                         </div>
                     </div>--%>
-                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" 
-                       BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand">
+                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false"
+                        BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand">
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
-                        <asp:TemplateField HeaderText="Id" Visible="False">
-     <ItemTemplate>
-         <asp:Label ID="lblID" runat="server" Text='<%#Eval("Lift_Escelator_Id") %>'></asp:Label>
-          <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                            <asp:TemplateField HeaderText="Id" Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblID" runat="server" Text='<%#Eval("Lift_Escelator_Id") %>'></asp:Label>
+                                    <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
 
-         
-     </ItemTemplate>
- </asp:TemplateField>
+                                    <asp:Label ID="lblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="SNo">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
@@ -219,30 +219,30 @@
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                           <asp:BoundField DataField="Lift_Escelator_Id" HeaderText="Test ReportId" >
-                   <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                       </asp:BoundField>
-                        <%-- <asp:BoundField DataField="InstallationType" HeaderText="Installation Type" >
+                            <asp:BoundField DataField="Lift_Escelator_Id" HeaderText="Test ReportId">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <%-- <asp:BoundField DataField="InstallationType" HeaderText="Installation Type" >
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                        <ItemStyle HorizontalAlign="Left" Width="15%" />
                 </asp:BoundField>--%>
-                          <asp:BoundField DataField="RegistrationNo" HeaderText="Registration No" >
-                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                 <ItemStyle HorizontalAlign="Left" Width="15%" />
-                           </asp:BoundField>
+                            <asp:BoundField DataField="RegistrationNo" HeaderText="Registration No">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
 
-     <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
-         <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-<ItemStyle HorizontalAlign="Left" Width="15%" />
+                            <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
 
-         </asp:BoundField>
+                            </asp:BoundField>
                             <%--  <asp:BoundField DataField="InstallationName" HeaderText="Installation Type" >
   <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                <ItemStyle HorizontalAlign="Left" Width="15%" />
 
   </asp:BoundField>--%>
-               
+
                             <asp:TemplateField HeaderText="Approval Letter">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
@@ -251,7 +251,7 @@
                                         Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                           
+
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -265,11 +265,11 @@
                     </asp:GridView>
                     <!-- Bootstrap Modal -->
                     <div class="row">
-     <div class="col-12" style="text-align: center;">
-<%--         <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />--%>
-         <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="true" class="btn btn-primary mr-2" OnClick="btnBack_Click"/>
-     </div>
- </div>
+                        <div class="col-12" style="text-align: center;">
+                            <%--         <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />--%>
+                            <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="true" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

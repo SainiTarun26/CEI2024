@@ -505,18 +505,18 @@ namespace CEIHaryana.SiteOwnerPages
                 Email = Session["ContractorEmail"].ToString();
                 OTPs = CEI.ValidateOTPthroughEmail(Email);
                 Session["OTP"] = OTPs.Trim();
-                Session["ContractorEmail"] = "OTPSEND";
+                //Session["ContractorEmail"] = "OTPSEND";
                 // Session["ContractorEmail"] = "";
                 btnResend.Visible = true;
                // ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Enter the OTP you received to Your Contractor's Email');", true);
             }
-            else if (Session["ContractorEmail"].ToString() == "OTPSEND")
-            {
-                OTP.Visible = true;
-                btnVerify.Text = "Verify";
-                btnResend.Visible = true;
-                Session["ContractorEmail"] = "";
-            }
+            //else if (Session["ContractorEmail"].ToString() == "OTPSEND")
+            //{
+            //    OTP.Visible = true;
+            //    btnVerify.Text = "Verify";
+            //    btnResend.Visible = true;
+            //    Session["ContractorEmail"] = "";
+            //}
             else
             {
                 if (Session["OTP"].ToString() == txtOTP.Text.Trim())

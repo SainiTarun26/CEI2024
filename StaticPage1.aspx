@@ -23,6 +23,12 @@
     <!-- Template Main CSS File -->
     <link href="/assetsnew/css/style.css" rel="stylesheet" />
     <style type="text/css">
+                li.dropdown {
+    padding: 10px 0 10px 20px !important;
+}
+        .container.d-flex.align-items-center.justify-content-between {
+    max-width: 1400px;
+}
         body {
             overflow-x: hidden;
         }
@@ -379,35 +385,35 @@
     <form id="form1" runat="server">
 
         <!-- ======= Top Bar ======= -->
-        <section id="topbar" class="d-flex align-items-center">
-    <div class="container d-flex justify-content-center justify-content-md-between">
-        <div class="contact-info d-flex align-items-center">
-            <%-- <i class="bi bi-envelope d-flex align-items-center">
-                <a href="mailto:contact@example.com">contact@example.com</a>
-            </i>--%>
-            <%-- <i class="bi bi-phone d-flex align-items-center ms-4">
-                <span>+91 7696438770</span>
-            </i> --%>
-        </div>
-        <div class="social-links d-none d-md-flex align-items-center">
-            <a href="#" class="twitter">
-                <i class="bi bi-twitter"></i>
-            </a>
-            <a href="#" class="facebook">
-                <i class="bi bi-facebook"></i>
-            </a>
-            <a href="#" class="instagram">
-                <i class="bi bi-instagram"></i>
-            </a>
-            <a href="#" class="linkedin">
-                <i class="bi bi-linkedin"></i>
+                  <section id="topbar" class="d-flex align-items-center">
+                <div class="container d-flex justify-content-center justify-content-md-between">
+                    <div class="contact-info d-flex align-items-center">
+                        <%-- <i class="bi bi-envelope d-flex align-items-center">
+                            <a href="mailto:contact@example.com">contact@example.com</a>
+                        </i>--%>
+                        <%-- <i class="bi bi-phone d-flex align-items-center ms-4">
+                            <span>+91 7696438770</span>
+                        </i> --%>
+                    </div>
+                    <div class="social-links d-none d-md-flex align-items-center">
+                        <a href="#" class="twitter">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="linkedin">
+                            <i class="bi bi-linkedin"></i>
 
-            </a>
-        </div>
-    </div>
-</section>
-        <!-- ======= Header ======= -->
-                    <header id="header" class="d-flex align-items-center"
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <!-- ======= Header ======= -->
+            <header id="header" class="d-flex align-items-center"
                 style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
                 <div class="container d-flex align-items-center justify-content-between">
                     <a href="Login.aspx" class="logo">
@@ -430,7 +436,7 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="#">About CEI</a>
+                                        <a href="AboutCEI.aspx">About CEI</a>
                                     </li>
                                     <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
@@ -442,10 +448,10 @@
                 </ul>
               </li> -->
                                     <li>
-                                        <a href="#">State Licensing Board, Haryana</a>
+                                        <a href="/StateLicensingBoard.aspx">State Licensing Board, Haryana</a>
                                     </li>
                                     <li>
-                                        <a href="#">Functions</a>
+                                        <a href="Functions.aspx">Functions</a>
                                     </li>
                                 </ul>
                             </li>
@@ -456,19 +462,20 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="Procedure For Registration Lift Exclator.aspx">Procedure For Registration /
-                  <br>
+                                        <a href="Procedure_For_Registration_Lift_Exclator.aspx">Procedure For Registration /
+                 
+                                            <br>
                                             Inspection Lifts and Esclators
                                         </a>
                                     </li>
-                                                      <li>
-                      <a href="https://egovservices.in/" target="_blank">Apply for New / Renewal Lift
-                      </a>
-                  </li>
-                                                                        <li>
-    <a href="StaticPage2.aspx" target="_blank">List of Lift Inspectors
-    </a>
-</li>
+                                    <li>
+                                        <a href="https://egovservices.in/" target="_blank">Apply for New / Renewal Lift
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="StaticPage2.aspx" target="_blank">List of Lift Inspectors
+                                        </a>
+                                    </li>
 
 
                                     <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -482,7 +489,8 @@
               </li> -->
                                     <li>
                                         <a href="UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Checklist for Registration/
- <br />
+
+                                            <br />
                                             Inspection of Lifts and Elevators
                                         </a>
                                     </li>
@@ -491,7 +499,7 @@
 
 
                                     <li>
-                                        <a href="UserManual/Forms.pdf" target="_blank">Forms
+                                        <a href="   " target="_blank">Forms
                                         </a>
                                     </li>
                                 </ul>
@@ -533,9 +541,7 @@
                                     <i class="bi bi-chevron-down"></i>
                                 </a>
                                 <ul>
-                                    <li>
-                                        <a href="#">Checklist for Online Service(Inspection)</a>
-                                    </li>
+
                                     <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
@@ -546,13 +552,15 @@
                 </ul>
               </li> -->
                                     <li>
-                                        <a href="#">Procedure for Electrical Installation</a>
+                                        <a href="/Procedure_for_Electrical _Installation.aspx">Procedure for Electrical Installation</a>
                                     </li>
                                     <li>
-                                        <a href="#">Procedure for Grant of
-                  <br />
+                                        <a href="Procedure_for_grant_of_approval.aspx">Procedure for Grant of
+                 
+                                            <br />
                                             approval for Energisation of
-                  <br />
+                 
+                                            <br />
                                             New Electrical
                   Installation
                                         </a>
@@ -561,15 +569,11 @@
                             </li>
 
                             <li class="dropdown">
-                                <a href="#">
+                                <a href="OurOnlineServices.aspx">
                                     <span>Services</span>
-                                    <i class="bi bi-chevron-down"></i>
+
                                 </a>
-                                <ul>
-                                    <li>
-                                        <a href="#">Our Services</a>
-                                    </li>
-                                </ul>
+
                             </li>
                             <li class="dropdown">
                                 <a href="#">
@@ -578,13 +582,14 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="#" target="_blank">BRAP-2024 Griviance Mechanism</a>
+                                        <a href="/UserManual/CamScanner 01-13-2025 13.54.pdf" target="_blank">BRAP-2024 Griviance Mechanism</a>
                                     </li>
-                                      <li>
-      <a href="UserManual/office order 223.pdf" target="_blank">Mendate Regarding high medium low risk profile</a>
-  </li>
                                     <li>
-                                        <a href="UserManual/CamScanner 01-09-2025 13.37_1.pdf" target="_blank">Mendate Regarding Registration and<br/> Renewal 0f Lift/Escalator</a>
+                                        <a href="UserManual/office order 223.pdf" target="_blank">Mendate Regarding high medium low risk profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="UserManual/CamScanner 01-09-2025 13.37_1.pdf" target="_blank">Mendate Regarding Registration and<br />
+                                            Renewal 0f Lift/Escalator</a>
                                     </li>
                                     <li>
                                         <a href="UserManual/Mendate%20Regarding%20Electrical%20Installations.pdf" target="_blank">Mendate Regarding ELectrical Installations</a>
@@ -600,10 +605,10 @@
                                     </li>
                                     <li class="dropdown"><a href="#"><span>Fees Details</span> <i class="bi bi-chevron-right"></i></a>
                                         <ul>
-                                            <li><a href="UserManual/Fees-for-New-Installation-Inspection.pdf" target="_blank">Fees for New Installation Inspection</a></li>
-                                            <li><a href="UserManual/Fees-For-Periodical-Inspection.pdf" target="_blank">Fees For Periodical Inspection</a></li>
+                                            <li><a href="UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for New Installation Inspection</a></li>
+                                            <li><a href="UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees For Periodical Inspection</a></li>
 
-                                            <li><a href="UserManual/Fees-for-various-certificates-Licences.pdf" target="_blank">Fees for various certificates & Licences</a></li>
+                                            <li><a href="UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for various certificates & Licences</a></li>
 
                                         </ul>
                                     </li>
@@ -618,6 +623,32 @@
                                     </li>
                                 </ul>
                             </li>
+
+                            <li class="dropdown">
+                                <a href="#">
+                                    <span>EODB Dashboard</span>
+                                    <i class="bi bi-chevron-down"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="StaticPage1.aspx" target="_blank">Checklist/Procedure/<br />
+                                            Fees Structure for lift</a>
+                                    </li>
+                                    <li>
+                                        <a href="StaticPage2.aspx" target="_blank">List of Lift Inspectors</a>
+                                    </li>
+                                    <li>
+                                        <a href="StaticPage3.aspx" target="_blank">EODB Dashboard</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <%--<li style="display: flex;">
+                                <a href="/VerifyCertificate.aspx" id="alertLink1" style="position: relative; z-index: 1;">Verify Certificate</a>
+                            </li>--%>
+                             <li style="display: flex;">
+     <a href="https://grs.hartron.io/#/" target="_blank" id="alertLink2" style="position: relative; z-index: 1;">Grievance Redressal</a>
+ </li>
                             <li style="display: flex;">
                                 <a href="UserPages/OurServices.aspx" id="alertLink" style="position: relative; z-index: 1;">User Manual</a><img src="Assets/new1.gif" id="alertGif" />
                             </li>
@@ -625,6 +656,66 @@
                         <i class="bi bi-list mobile-nav-toggle"></i>
                     </nav>
                     <!-- .navbar -->
+                    <%--<div id="myModal" class="modal">
+                        <div class="modal-content">
+                           <div class="modal-header" style="display: flex; justify-content: center; align-items: center; position: relative;">
+    <h2 style="margin: 0;">CERTIFICATE VERIFICATION</h2>
+    <span class="close" style="position: absolute; right: 10px; font-size: 24px; cursor: pointer;">&times;</span>
+</div>
+
+
+                            <br />
+                            <div id="varification" style="display: flex; flex-direction: column; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <asp:Label ID="lblName" runat="server" Text="Enter Certificate No.:" Style="white-space: nowrap;"></asp:Label>
+                                    <asp:TextBox ID="txtName" Class="form-control" runat="server" Style="width: 300px;"></asp:TextBox>
+                                </div>
+                                <br />
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <asp:Label ID="Label1" runat="server" Text="Verification Code:" Style="white-space: nowrap; margin-left: 25px;"></asp:Label>
+                                    <asp:TextBox ID="TextBox1" Class="form-control" runat="server" Style="width: 300px;"></asp:TextBox>
+                                </div>
+                                <br />
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <asp:Label ID="Label2" runat="server" Text="Enter Verification Code:" Style="white-space: nowrap; margin-left: -20px;"></asp:Label>
+                                    <asp:TextBox ID="TextBox2" Class="form-control" runat="server" Style="width: 300px;"></asp:TextBox>
+                                </div>
+                                                                
+                            </div>
+                            <br />
+                            <div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-2">
+        <asp:Button ID="Button2" Class="btn btn-primary" runat="server" Text="Verify" style="height:40px !important;"/>
+
+    </div>
+    <div class="col-md-4"></div>
+</div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table table-striped table-responsive table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">Name of Owner</th>
+                                                <th scope="col">Serial No. of Lift</th>
+                                                <th scope="col">Make of Lift/Escalator</th>
+                                                <th scope="col">Download Certificate</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Test Name</td>
+                                                <td>25834fjka28437</td>
+                                                <td>Mitsubishi</td>
+                                                <td><i class="fa-solid fa-download"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>--%>
                 </div>
             </header>
         <!-- End Header -->
@@ -640,148 +731,127 @@
                     </div>
                 </div>
             </div>
-            <div class="card" style="margin: 20px; padding: 15px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-top: -10px; height: 550px !important;">
-                <div class="card-body" style="border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-                    <div class="col-md-12">
-                        <div class="card-title">Document Checklist and Procedures</div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label>
-                                    Select Firm
-                        <samp style="color: red">* </samp>
-                                </label>
-                                <div class="dropdown-icon-wrapper" style="position: relative; width: 100%;">
-                                    <asp:DropDownList
-                                        class="form-control select-form select2"
-                                        AutoPostBack="true"
-                                        Style="width: 100% !important;"
-                                        ID="ddlInspectionType"
-                                        TabIndex="2"
-                                        runat="server">
-                                        <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
-                                        <asp:ListItem Text="Small" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Medium" Value="Existing"></asp:ListItem>
-                                        <asp:ListItem Text="Large" Value="Existing"></asp:ListItem>
-                                        <asp:ListItem Text="Mega" Value="Existing"></asp:ListItem>
-                                        <asp:ListItem Text="Ultra" Value="Existing"></asp:ListItem>
-                                    </asp:DropDownList>
-                                    <i class="dropdown-icon fas fa-chevron-down" style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); pointer-events: none;"></i>
-                                </div>
-
-                            </div>
-                            <div class="col-md-3">
-                                <label>
-                                    Select Location
-                        <samp style="color: red">* </samp>
-                                </label>
-                                <div class="dropdown-icon-wrapper" style="position: relative; width: 100%;">
-                                    <asp:DropDownList
-                                        class="form-control select-form select2"
-                                        AutoPostBack="true"
-                                        Style="width: 100% !important;"
-                                        ID="DropDownList1"
-                                        TabIndex="2"
-                                        runat="server">
-                                        <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
-                                        <asp:ListItem Text="Black Category A" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Black Category B" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Black Category C" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Black Category D" Value="1"></asp:ListItem>
-                                    </asp:DropDownList>
-                                    <i class="dropdown-icon fas fa-chevron-down" style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); pointer-events: none;"></i>
-                                </div>
-
-                            </div>
-                            <div class="col-md-3">
-                                <label>
-                                    Select Investor Type
-                        <samp style="color: red">* </samp>
-                                </label>
-                                <div class="dropdown-icon-wrapper" style="position: relative; width: 100%;">
-                                    <asp:DropDownList
-                                        class="form-control select-form select2"
-                                        AutoPostBack="true"
-                                        Style="width: 100% !important;"
-                                        ID="DropDownList2"
-                                        TabIndex="2"
-                                        runat="server">
-                                        <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
-                                        <asp:ListItem Text="Foreign" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Domastic" Value="2"></asp:ListItem>
-                                    </asp:DropDownList>
-                                    <i class="dropdown-icon fas fa-chevron-down" style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); pointer-events: none;"></i>
-                                </div>
-
-                            </div>
-                            <div class="col-md-3">
-                                <label>
-                                    Select Risk Category
-                        <samp style="color: red">* </samp>
-                                </label>
-                                <div class="dropdown-icon-wrapper" style="position: relative; width: 100%;">
-                                    <asp:DropDownList
-                                        class="form-control select-form select2"
-                                        AutoPostBack="true"
-                                        Style="width: 100% !important;"
-                                       
-                                        TabIndex="2"
-                                        runat="server">
-                                        <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
-                                        <asp:ListItem Text="High" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Medium" Value="2"></asp:ListItem>
-                                        <asp:ListItem Text="Low" Value="3"></asp:ListItem>
-                                    </asp:DropDownList>
-                                    <i class="dropdown-icon fas fa-chevron-down" style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); pointer-events: none;"></i>
-                                </div>
-                            </div>
-                        </div>
+           <div class="card" style="margin: 20px; padding: 15px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-top: -10px; height: 550px !important;">
+  <div class="card" style="margin: 20px; padding: 15px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-top: -10px; height: auto;">
+    <div class="card-body" style="border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+        <div class="col-md-12">
+            <div class="card-title">Document Checklist and Procedures</div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Select Firm <samp style="color: red">*</samp></label>
+                    <div class="dropdown-icon-wrapper" style="position: relative; width: 100%;">
+                        <asp:DropDownList class="form-control select-form select2"
+                            Style="width: 100% !important;"
+                            ID="ddlInspectionType"
+                            TabIndex="2"
+                            runat="server">
+                            <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="Small" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Medium" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Large" Value="3"></asp:ListItem>
+                        </asp:DropDownList>
+                        <i class="dropdown-icon fas fa-chevron-down"></i>
                     </div>
                 </div>
-                <div class="card-body" visible="true" style="border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-top: 20px;">
-                    <div class="col-md-12">
-                        <div class="card-title" style="margin-bottom: 0px; margin-bottom: 10px;">Service Information</div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <span>( Results between 01-04-2024 and 29-11-2024)</span>
-                            </div>
-                            <div class="col-md-6" style="text-align: end;">
-                                <span>Last Updated On (dd-mm-yyyy hh:mm:ss) : 29-11-2024 17:00:17</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <table class="styled-table" style="text-align: center;">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 20%; text-align: center;">Service</th>
-                                        <th style="width: 20%; text-align: center;">Fees</th>
-                                        <th style="width: 20%; text-align: center;">Checklist</th>
-                                        <th style="width: 20%; text-align: center;">Procedure</th>
-                                        <th style="width: 20%; text-align: center;">Timeline</th>
-                                    </tr>
-                                </thead>    
-                                <tbody>
-                                    <tr>
-                                        <td>Lift New</td>
-                                        <td>₹3500 (1000 for registration + 2500 for Inspection)</td>
-                                        <td><a href="UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Download Document</a></td>
-                                        <td><a href="/Procedure_For_Registration_Lift_Exclator.aspx">View Details</a>                                                                  
-                                        </td>
-                                        <td><a href="#">Download Timeline PDF</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lift Periodic</td>
-                                        <td>₹1000</td>
-                                        <td><a href="UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Download Document</a></td>
-                                        <td><a href="/Procedure_For_Registration_Lift_Exclator.aspx">View Details</a>                                                                  
-</td>
-                                        <td><a href="#">Download Timeline PDF</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+
+                <div class="col-md-3">
+                    <label>Select Location <samp style="color: red">*</samp></label>
+                    <div class="dropdown-icon-wrapper" style="position: relative; width: 100%;">
+                        <asp:DropDownList class="form-control select-form select2"
+                            Style="width: 100% !important;"
+                            ID="DropDownList1"
+                            TabIndex="2"
+                            runat="server">
+                            <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="Black Category A" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Black Category B" Value="2"></asp:ListItem>
+                        </asp:DropDownList>
+                        <i class="dropdown-icon fas fa-chevron-down"></i>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label>Select Investor Type <samp style="color: red">*</samp></label>
+                    <div class="dropdown-icon-wrapper" style="position: relative; width: 100%;">
+                        <asp:DropDownList class="form-control select-form select2"
+                            Style="width: 100% !important;"
+                            ID="DropDownList2"
+                            TabIndex="2"
+                            runat="server">
+                            <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="Foreign" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Domestic" Value="2"></asp:ListItem>
+                        </asp:DropDownList>
+                        <i class="dropdown-icon fas fa-chevron-down"></i>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label>Select Risk Category <samp style="color: red">*</samp></label>
+                    <div class="dropdown-icon-wrapper" style="position: relative; width: 100%;">
+                        <asp:DropDownList class="form-control select-form select2"
+                            Style="width: 100% !important;"
+                            ID="DropDownList3"
+                            TabIndex="2"
+                            runat="server"
+                            onchange="toggleServiceInfo()"> 
+                            <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="High" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Medium" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Low" Value="3"></asp:ListItem>
+                        </asp:DropDownList>
+                        <i class="dropdown-icon fas fa-chevron-down"></i>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Service Information Card (Initially Hidden) -->
+    <div class="card-body" id="serviceInfoCard" style="border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-top: 20px; display: none;">
+        <div class="col-md-12">
+            <div class="card-title">Service Information</div>
+            <div class="row">
+                <div class="col-md-6">
+                    <span>(Results between 01-04-2024 and 29-11-2024)</span>
+                </div>
+                <div class="col-md-6" style="text-align: end;">
+                    <span>Last Updated On: 29-11-2024 17:00:17</span>
+                </div>
+            </div>
+            <div class="row">
+                <table class="styled-table" style="text-align: center;">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Fees</th>
+                            <th>Checklist</th>
+                            <th>Procedure</th>
+                            <th>Timeline</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Lift New</td>
+                            <td>₹3500 (1000 for registration + 2500 for Inspection)</td>
+                            <td><a href="UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Download Document</a></td>
+                            <td><a href="UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">View Details</a></td>
+                            <td><a href="UserManual/Order.pdf">Download Timeline PDF</a></td>
+                        </tr>
+                        <tr>
+                            <td>Lift Periodic</td>
+                            <td>₹1000</td>
+                            <td><a href="UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Download Document</a></td>
+                            <td><a href="UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">View Details</a></td>
+                            <td><a href="UserManual/Order.pdf">Download Timeline PDF</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
         </main>
         <!-- End #main -->
         <!-- ======= Footer ======= -->
@@ -831,7 +901,31 @@
             return false;
         });
     </script>
-    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var serviceInfoDiv = document.getElementById("serviceInfoCard");
+            var riskCategoryDropdown = document.getElementById("<%= DropDownList3.ClientID %>");
+
+        // Restore state from session storage
+        if (sessionStorage.getItem("riskCategory") && sessionStorage.getItem("riskCategory") !== "0") {
+            serviceInfoDiv.style.display = "block";
+            riskCategoryDropdown.value = sessionStorage.getItem("riskCategory");
+        } else {
+            serviceInfoDiv.style.display = "none";
+        }
+
+        riskCategoryDropdown.addEventListener("change", function () {
+            var selectedValue = this.value;
+            sessionStorage.setItem("riskCategory", selectedValue); // Store selection
+
+            if (selectedValue !== "0") {
+                serviceInfoDiv.style.display = "block";
+            } else {
+                serviceInfoDiv.style.display = "none";
+            }
+        });
+    });
+</script>
     
 </body>
 </html>

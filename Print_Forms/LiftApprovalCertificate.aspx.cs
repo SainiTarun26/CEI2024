@@ -207,7 +207,7 @@ namespace CEIHaryana.Print_Forms
         {
             try
             {
-                ID = Session["RegistrationNo"].ToString();
+                ID = Session["LiftTestReportID"].ToString();
                 //if (Session["InProcessInspectionId"] != null)
                 //{
                 //    ID = Session["InProcessInspectionId"].ToString();

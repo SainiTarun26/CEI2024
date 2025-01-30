@@ -67,6 +67,8 @@ namespace CEIHaryana.SiteOwnerPages
                     Label lblID = (Label)row.FindControl("lblID");
                     string id = lblID.Text;
                     Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
+                    Label lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
+                    Session["RegistrationNo"] = lblRegistrationNo.Text;
                     string InspectionId = Session["InspectionId"].ToString();
                     Session["LiftTestReportID"] = id;
                     if(lblInstallationType.Text =="Lift")

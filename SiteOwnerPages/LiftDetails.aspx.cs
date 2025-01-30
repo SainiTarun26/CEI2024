@@ -529,56 +529,63 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void btnVerify_Click(object sender, EventArgs e)
         {
-            if (Session["OTP"].ToString() == txtOTP.Text.Trim())
+            try
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "focusGridView", "focusOnGridView();", true);
-                
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "focusOTP", "document.getElementById('" + txtOTP.ClientID + "').focus();", true);
-
-            }
-            if (Session["OTP"].ToString() == "0")
-            {
-              
-                OTP.Visible = true;
-                btnVerify.Text = "Verify";
-                Email = Session["ContractorEmail"].ToString();
-                OTPs = CEI.ValidateOTPthroughEmail(Email);
-                Session["OTP"] = OTPs.Trim();
-                Session["ContractorEmail"] = "OTPSEND";
-                //Session["OTP"] = "Sent";
-                btnResend.Visible = true;
-            }
-            else if (Session["ContractorEmail"].ToString() == "OTPSEND")
-            {
-                OTP.Visible = true;
-                btnVerify.Text = "Verify";
-                btnResend.Visible = true;
-                Session["ContractorEmail"] = "";
-            }
-            else
-            {
-
                 if (Session["OTP"].ToString() == txtOTP.Text.Trim())
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Otp Verified Successfully');", true);
-                    OTP.Visible = false;
-                    btnVerify.Visible = false;
-                    btnSubmit.Visible = true;
-                    Attachments.Visible = true;
-                    btnResend.Visible = false;
-                    CheckDeclaration.Visible = true;
-                    ddlContName.Enabled= false;
-                    ddlLicenseNo.Enabled= false;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "focusGridView", "focusOnGridView();", true);
+
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Incorrect Otp Please Try Again');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "focusOTP", "document.getElementById('" + txtOTP.ClientID + "').focus();", true);
 
                 }
-                
+                if (Session["OTP"].ToString() == "0")
+                {
+
+                    OTP.Visible = true;
+                    btnVerify.Text = "Verify";
+                    Email = Session["ContractorEmail"].ToString();
+                    OTPs = CEI.ValidateOTPthroughEmail(Email);
+                    Session["OTP"] = OTPs.Trim();
+                    //Session["ContractorEmail"] = "OTPSEND";
+                    //Session["OTP"] = "Sent";
+                    btnResend.Visible = true;
+                }
+                //else if (Session["ContractorEmail"].ToString() == "OTPSEND")
+                //{
+                //    OTP.Visible = true;
+                //    btnVerify.Text = "Verify";
+                //    btnResend.Visible = true;
+                //    Session["ContractorEmail"] = "";
+                //}
+                else
+                {
+
+                    if (Session["OTP"].ToString() == txtOTP.Text.Trim())
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Otp Verified Successfully');", true);
+                        OTP.Visible = false;
+                        btnVerify.Visible = false;
+                        btnSubmit.Visible = true;
+                        Attachments.Visible = true;
+                        btnResend.Visible = false;
+                        CheckDeclaration.Visible = true;
+                        ddlContName.Enabled = false;
+                        ddlLicenseNo.Enabled = false;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Incorrect Otp Please Try Again');", true);
+
+                    }
+
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
            
         }
