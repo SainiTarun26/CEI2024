@@ -395,7 +395,7 @@ namespace CEIHaryana.Industry_Master
                                                 filePathInfo = Server.MapPath(path + "/" + fileName1);
                                                 fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
                                                 filePatnInfo1 = Server.MapPath(path + "/" + fileName2);
-                                                fileUploadInvoice.PostedFile.SaveAs(filePatnInfo1);
+                                                fileUploadReport.PostedFile.SaveAs(filePatnInfo1);
                                                 CEI.InsertReturnedInspectionTestReportAttachments_Industry(LblRowid.Text, ID, path + "/" + fileName1, path + "/" + fileName2, LblInstallationName.Text, SiteOwnerID, transaction);
                                             }
                                             else
@@ -498,8 +498,8 @@ namespace CEIHaryana.Industry_Master
                                                 string filePathInfo1 = "";
                                                 filePathInfo = Server.MapPath(path + "/" + fileName1);
                                                 fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
-                                                filePathInfo = Server.MapPath(path + "/" + fileName2);
-                                                fileUploadInvoice.PostedFile.SaveAs(filePathInfo1);
+                                                filePathInfo1 = Server.MapPath(path + "/" + fileName2);
+                                                fileUploadReport.PostedFile.SaveAs(filePathInfo1);
                                                 CEI.InsertReturnedInspectionTestReportAttachments_Industry(LblRowid.Text, ID, path + "/" + fileName1, path + "/" + fileName2, LblInstallationName.Text, SiteOwnerID, transaction);
                                             }
                                             else

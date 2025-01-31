@@ -162,7 +162,7 @@ namespace CEIHaryana.Supervisor
 
                     string generaterType = ds.Tables[0].Rows[0]["GeneratingSetType"].ToString();
                     ddlGeneratingSetType.SelectedIndex = ddlGeneratingSetType.Items.IndexOf(ddlGeneratingSetType.Items.FindByText(generaterType));
-                    if (generaterType == "Solar Panel")
+                    if (generaterType == "Solar PowerPlant")
                     {
                         SolarPanelGeneratingSet.Visible = true;
 
@@ -1104,7 +1104,7 @@ namespace CEIHaryana.Supervisor
 
             if (ddlCapacity.SelectedValue == "3" || ddlCapacity.SelectedValue == "4")
             {
-                ddlGeneratingSetType.Items.Add(new ListItem("Solar Panel", "3"));
+                ddlGeneratingSetType.Items.Add(new ListItem("Solar PowerPlant", "3"));
                 ddlGeneratingSetType.SelectedValue = "3";
                 ddlGeneratingSetType.SelectedValue = "0";
             }

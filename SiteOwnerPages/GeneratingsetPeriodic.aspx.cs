@@ -124,7 +124,7 @@ namespace CEIHaryana.SiteOwnerPages
 
             if (ddlCapacity.SelectedValue == "3" || ddlCapacity.SelectedValue == "4")
             {
-                ddlGeneratingSetType.Items.Add(new ListItem("Solar Panel", "3"));
+                ddlGeneratingSetType.Items.Add(new ListItem("Solar PowerPlant", "3"));
                 ddlGeneratingSetType.SelectedValue = "3";
                 ddlGeneratingSetType.SelectedValue = "0";
             }
