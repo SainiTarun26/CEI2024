@@ -23,6 +23,17 @@
     <!-- Template Main CSS File -->
     <link href="/assetsnew/css/style.css" rel="stylesheet" />
     <style type="text/css">
+        span#lastupdatetext {
+    font-size: 15px;
+       padding-left: 6px;
+    padding-right: 6px;
+}
+      span#lastRefreshTime {
+    font-size: 15px;
+    background: yellow;
+    padding-left: 6px;
+    padding-right: 6px;
+}
                 li.dropdown {
     padding: 10px 0 10px 20px !important;
 }
@@ -874,7 +885,14 @@
                 <div class="card-body" style="border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-top: 20px;">
                     <!--  id="showhide" -->
                     <div class="col-md-12">
-                        <div class="card-title" style="margin-bottom: 0px;">Service Information</div>
+                      <div class="card-title" style="margin-bottom: 0px; display: flex; justify-content: space-between; align-items: center;">
+    <span>Service Information</span>
+    <span id="lastupdatetext">
+        Last Updated On (dd-mm-yyyy hh:mm:ss) : <span id="lastRefreshTime"></span>
+    </span>
+</div>
+
+
                         <div class="row">
                             <table class="styled-table" style="text-align: center;">
                                 <thead>
@@ -999,5 +1017,15 @@
     });
 
 </script>--%>
+<script>
+    function updateDateTime() {
+        const now = new Date();
+        const formattedDate = now.toLocaleDateString('en-GB') + ' ' + now.toLocaleTimeString(); // DD/MM/YYYY HH:MM:SS
+        document.getElementById("lastRefreshTime").textContent = formattedDate;
+    }
+
+    // Update once on page load
+    updateDateTime();
+</script>
 </body>
 </html>

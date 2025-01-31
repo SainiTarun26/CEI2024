@@ -765,6 +765,8 @@
                             <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
                             <asp:ListItem Text="Black Category A" Value="1"></asp:ListItem>
                             <asp:ListItem Text="Black Category B" Value="2"></asp:ListItem>
+                        <asp:ListItem Text="Black Category C" Value="3"></asp:ListItem>
+                        <asp:ListItem Text="Black Category D" Value="4"></asp:ListItem>
                         </asp:DropDownList>
                         <i class="dropdown-icon fas fa-chevron-down"></i>
                     </div>
