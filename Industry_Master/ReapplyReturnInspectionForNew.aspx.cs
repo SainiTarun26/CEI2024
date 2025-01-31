@@ -40,7 +40,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
 
@@ -210,8 +210,8 @@ namespace CEIHaryana.Industry_Master
                 {
                     if (e.CommandName == "Select")
                     {
-                        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                        //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                        //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                        fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                         string script = $@"<script>window.open('{fileName}','_blank');</script>";
                         ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                     }
@@ -263,16 +263,16 @@ namespace CEIHaryana.Industry_Master
             else if (e.CommandName == "View")
             {
                 string fileName = "";
-                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
             else if (e.CommandName == "ViewInvoice")
             {
                 string fileName = "";
-               fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+               // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
@@ -391,10 +391,11 @@ namespace CEIHaryana.Industry_Master
                                                 string fileName1 = "InstallaionInvoice" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
                                                 string fileName2 = "ManufacturingReport" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
                                                 string filePathInfo = "";
+                                                string filePatnInfo1 = "";
                                                 filePathInfo = Server.MapPath(path + "/" + fileName1);
                                                 fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
-                                                filePathInfo = Server.MapPath(path + "/" + fileName2);
-                                                fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
+                                                filePatnInfo1 = Server.MapPath(path + "/" + fileName2);
+                                                fileUploadInvoice.PostedFile.SaveAs(filePatnInfo1);
                                                 CEI.InsertReturnedInspectionTestReportAttachments_Industry(LblRowid.Text, ID, path + "/" + fileName1, path + "/" + fileName2, LblInstallationName.Text, SiteOwnerID, transaction);
                                             }
                                             else
@@ -445,6 +446,7 @@ namespace CEIHaryana.Industry_Master
                                                 path = "/Attachment/" + SiteOwnerID + "/" + ID + "/" + "CheckListDocuments";  //+ "/" + fileNameWithoutExtension
                                                 string fileName1 = fileNameWithoutExtension + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
                                                 string filePathInfo = "";
+                                                //string filePathInfo1 = "";
                                                 filePathInfo = Server.MapPath(path + "/" + fileName1);
                                                 fileUploadDoc.PostedFile.SaveAs(filePathInfo);
                                                 CEI.UploadDocumentforReturnedInspection_Industry(ID, LblInstallationType.Text, LblDocumentID.Text, LblDocumentName.Text, LblFileName.Text, path + "/" + fileName1, SiteOwnerID, transaction);
@@ -493,10 +495,11 @@ namespace CEIHaryana.Industry_Master
                                                 string fileName1 = "InstallaionInvoice" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
                                                 string fileName2 = "ManufacturingReport" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
                                                 string filePathInfo = "";
+                                                string filePathInfo1 = "";
                                                 filePathInfo = Server.MapPath(path + "/" + fileName1);
                                                 fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
                                                 filePathInfo = Server.MapPath(path + "/" + fileName2);
-                                                fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
+                                                fileUploadInvoice.PostedFile.SaveAs(filePathInfo1);
                                                 CEI.InsertReturnedInspectionTestReportAttachments_Industry(LblRowid.Text, ID, path + "/" + fileName1, path + "/" + fileName2, LblInstallationName.Text, SiteOwnerID, transaction);
                                             }
                                             else
@@ -536,7 +539,7 @@ namespace CEIHaryana.Industry_Master
                                             // string accessToken = "dfsfdsfsfsdf";
 
                                             logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                                          "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                                          "https://investharyana.in/api/project-service-logs-external_UHBVN",
                                                           new Industry_Inspection_StageWise_JsonDataFormat_Model
                                                           {
                                                               actionTaken = ApiPostformatresult.ActionTaken,
