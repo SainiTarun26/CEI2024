@@ -404,8 +404,8 @@ namespace CEIHaryana.Officers
                     string SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
                     grd_Documemnts.Columns[1].Visible = true;
 
-                    GridView2.Columns[5].Visible = false;
-                    GridView2.Columns[3].Visible = false;
+                    //GridView2.Columns[5].Visible = false;
+                    //GridView2.Columns[3].Visible = false;
 
                     DivTestReports.Visible = true;
                     GridToViewTestReports();
