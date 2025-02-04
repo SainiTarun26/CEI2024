@@ -796,7 +796,7 @@ namespace CEIHaryana.TestReportModal
                 if (btnVerify.Text == "SendOTP" && Session["GeneratorSetOtp"].ToString() != "0")
                 {
                     OTP.Visible = true;
-                    string Email = Session["Email"].ToString();
+                    string Email = Session["Email"].ToString().Trim();
                     if (Email.Trim() == "")
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
