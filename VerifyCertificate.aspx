@@ -436,8 +436,15 @@
             margin-right: 1px;
             padding-top: 15px !important;
         }
-
         div#CertificateDetailsForLift {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 15px;
+    padding-top: 15px;
+    margin-left: 1px;
+margin-right: 1px;
+border-radius: 10px;
+}
+        /*div#CertificateDetailsForLift {
             margin-top: -33px;
             border: 1px solid #c1c1c1;
             border-radius: 10px;
@@ -445,12 +452,15 @@
             margin-left: 1px;
             margin-right: 1px;
             padding-top: 15px !important;
-        }
+        }*/
 
         th.headercolor {
             background: #9292cc;
             color: white;
         }
+        td {
+    text-align: center;
+}
     </style>
 </head>
 <body style="zoom: 90% !important;">
@@ -675,14 +685,14 @@
                             <center>
                                 <div class="mid_box">
                                     <div id="ctl00_ContentPlaceHolder1_main">
-                                        <div class="card-header">Verify Certificate</div>
+                                        <div class="card-header">Verify Certificate for Lift/Escalator</div>
                                         <div class="row" style="margin-top: 25px; margin-bottom: -20px;">
                                             <div class="col-md-4"></div>
                                             <div class="col-md-4">
                                             </div>
                                             <div class="col-md-4"></div>
                                         </div>
-                                        <div class="form-group row" style="margin-bottom: -10px; margin-top: 10px;">
+                                        <%-- <div class="form-group row" style="margin-bottom: -10px; margin-top: 10px;">
                                             <label for="staticEmail" class="col-sm-6 col-form-label">Type of Certificate <span class="style3" style="color: red;">*</span> :</label>
                                             <div class="col-sm-6">
                                                 <asp:RadioButtonList ID="RadioBtnType" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioBtnType_SelectedIndexChanged">
@@ -700,33 +710,33 @@
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ForeColor="Red" ErrorMessage="Memo No. is Required."
                                                     ControlToValidate="txtMemoNo" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                             </div>
-                                        </div>
-                                        <div class="form-group row" id="trRegistrationNo" runat="server" visible="false">
+                                        </div>--%>
+                                        <br />
+                                        <div class="form-group row" id="trRegistrationNo" runat="server">
                                             <label for="inputPassword" class="col-sm-6 col-form-label">Registration No. <span class="style3" style="color: red;">*</span> :</label>
                                             <div class="col-sm-6">
                                                 <asp:TextBox ID="txtRegistrationNo" runat="server" Width="300px" CssClass="Txtstyle"></asp:TextBox>
-                                                &nbsp;
-                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" ErrorMessage="Registration No. is Required."
+                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" ErrorMessage="Registration No. is Required."
                                                              ControlToValidate="txtRegistrationNo" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                             </div>
                                         </div>
-                                        <div class="form-group row" id="trEnterSecurityCode" runat="server" visible="false">
+                                        <div class="form-group row" id="trEnterSecurityCode" runat="server">
                                             <label for="inputPassword" class="col-sm-6 col-form-label">Enter Security Code <span class="style3" style="color: red;">*</span> :</label>
                                             <div class="col-sm-6">
                                                 <asp:TextBox ID="txtSecurityCode" runat="server" MaxLength="6" onkeypress="return isNumberKey(event)"
                                                     Width="200px" CssClass="Txtstyle"></asp:TextBox>
-                                                &nbsp;
+                                              
  <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtSecurityCode"
      ErrorMessage="Security Code is Required." ForeColor="Red" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                             </div>
                                         </div>
                                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                             <ContentTemplate>
-                                                <div class="form-group row" id="trCode" runat="server" visible="false">
+                                                <div class="form-group row" id="trCode" runat="server">
                                                     <label for="inputPassword" class="col-sm-6 col-form-label">Security Code:</label>
                                                     <div class="col-sm-6">
-                                                        <asp:Image ID="imgCaptcha" runat="server" Height="30px" Width="132px" />
-                                                        <asp:ImageButton ID="btnRefresh" runat="server" Height="23px"
+                                                        <asp:Image ID="imgCaptcha" runat="server" Height="30px" Width="132px" Style="margin-top: -15px;" />
+                                                        <asp:ImageButton ID="btnRefresh" runat="server" Height="23px" Style="margin-top: 9px;"
                                                             ImageUrl="~/Image/Image/refresh.png" Width="33px" OnClick="btnRefresh_Click" />
                                                     </div>
                                                 </div>
@@ -744,7 +754,7 @@
                                     </div>
                                 </div>
                                 <%-- Add grid--%>
-                                <div class="row" id="CertificateDetails" runat="server" visible="false">
+                                <%--<div class="row" id="CertificateDetails" runat="server" visible="false">
                                     <div class="col-md-12">
                                         <asp:Label ID="lblNoDataMessage" runat="server" ForeColor="Red" Visible="false" />
                                         <asp:GridView class="table-responsive table table-bordered table-striped table-hover" ID="GridView1" runat="server" Width="100%"
@@ -820,72 +830,66 @@
                                         </asp:GridView>
 
                                     </div>
-                                </div>
-                                <div class="row" id="CertificateDetailsForLift" runat="server" visible="false">
-                                    <div class="col-md-12">
-                                        <asp:Label ID="Label1" runat="server" ForeColor="Red" Visible="false" />
-                                        <asp:GridView class="table-responsive table table-bordered table-striped table-hover" ID="GridView2" runat="server" Width="100%"
-                                            AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView2_RowCommand">
-                                            
-                                            <Columns>
-                                                <asp:TemplateField HeaderText="Id" Visible="False">
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="lblID" runat="server" Text='<%#Eval("Lift_Escelator_Id") %>'></asp:Label>
-                                                        <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
-                                                        <asp:Label ID="lblInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
-
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="SNo">
-                                                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                                                    <ItemStyle Width="5%" />
-                                                    <ItemTemplate>
-                                                        <%#Container.DataItemIndex+1 %>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:BoundField DataField="Lift_Escelator_Id" HeaderText="Test ReportId">
-                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="RegistrationNo" HeaderText="Registration No">
-                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
-                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                </asp:BoundField>
-                                                <asp:TemplateField HeaderText="Approval Letter">
-                                                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                                                    <ItemStyle Width="5%" />
-                                                    <ItemTemplate>
-                                                        <asp:LinkButton runat="server" ID="lnkBtn" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
-                                                            Text="<i class='fa fa-print' style='color:blue !important; font-size:20px;'></i>" CssClass='greenButton btn-primary' CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
-
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-
-                                            </Columns>
-                                            <FooterStyle BackColor="White" ForeColor="#000066" />
-                                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                            <RowStyle ForeColor="#000066" />
-                                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                            <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                        </asp:GridView>
-
-                                    </div>
-                                </div>
-                                <div class="rounded_footer">
-                                    <div class="left_footer">
-                                    </div>
-                                    <div class="right_footer">
-                                    </div>
-                                </div>
+                                </div>--%>
                             </center>
+                            <div class="row" id="CertificateDetailsForLift" runat="server" visible="false">
+                                <div class="col-md-12">
+                                    <asp:Label ID="Label1" runat="server" ForeColor="Red" Visible="false" />
+                                    <asp:GridView class="table-responsive table table-bordered table-striped table-hover" ID="GridView2" runat="server" Width="100%"
+                                        AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView2_RowCommand">
+                                        <Columns>
+                                            <asp:TemplateField HeaderText="Id" Visible="False">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblID" runat="server" Text='<%#Eval("Lift_Escelator_Id") %>'></asp:Label>
+                                                    <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                                                    <asp:Label ID="lblInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="SNo">
+                                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                <ItemStyle Width="5%" />
+                                                <ItemTemplate>
+                                                    <%#Container.DataItemIndex+1 %>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="SiteOwnerName" HeaderText="Owner Name">
+                                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="Lift_Escelator_Id" HeaderText="Test ReportId" Visible="false">
+                                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="RegistrationNo" HeaderText="Registration No">
+                                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="InstallationType" HeaderText="Installation Type" Visible="false">
+                                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                            </asp:BoundField>
+                                            <asp:TemplateField HeaderText="Approval Letter">
+                                                <HeaderStyle Width="10%" CssClass="headercolor" />
+                                                <ItemStyle Width="10%" />
+                                                <ItemTemplate>
+                                                    <asp:LinkButton runat="server" ID="lnkBtn" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
+                                                        Text="<i class='fa fa-print' style='color:blue !important; font-size:20px;'></i>" CssClass='greenButton btn-primary' CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                        </Columns>
+                                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                        <RowStyle ForeColor="#000066" />
+                                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                    </asp:GridView>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -19,9 +19,8 @@ namespace CEIHaryana
             {
                 FillCAPTCHA();
                 txtSecurityCode.Text = "";
-                txtMemoNo.Text = "";
                 txtRegistrationNo.Text = "";
-                RadioBtnType.SelectedIndex = -1;
+                //RadioBtnType.SelectedIndex = -1;
 
             }
         }
@@ -43,98 +42,81 @@ namespace CEIHaryana
                 throw;
             }
         }
+   
+        //protected void RadioBtnType_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (RadioBtnType.SelectedValue == "0") // Lift/Esclator 
+        //    {
+        //        CertificateDetails.Visible = false;
+        //        CertificateDetailsForLift.Visible = false;
+        //        FillCAPTCHA();
+        //        txtSecurityCode.Text = "";
+        //        txtMemoNo.Text = "";
+        //        txtRegistrationNo.Text = "";
+        //        trMemoNo.Visible = false;
+        //        trRegistrationNo.Visible = true;
+        //        trEnterSecurityCode.Visible = true;
+        //        trCode.Visible = true;
+        //        DivButtons.Visible = true;
+        //    }
+        //    else if (RadioBtnType.SelectedValue == "1") // Generator/Line/Transformer 
+        //    {
+        //        CertificateDetails.Visible = false;
+        //        CertificateDetailsForLift.Visible = false;
+        //        FillCAPTCHA();
+        //        txtSecurityCode.Text = "";
+        //        txtMemoNo.Text = "";
+        //        txtRegistrationNo.Text = "";              
+        //        trMemoNo.Visible = true;
+        //        trRegistrationNo.Visible = false;
+        //        trEnterSecurityCode.Visible = true;
+        //        trCode.Visible = true;
+        //        DivButtons.Visible = true;
+        //    }
+        //}
 
-       
-
-      
-
-      
-
-        protected void RadioBtnType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            if (RadioBtnType.SelectedValue == "0") // Lift/Esclator 
-            {
-                CertificateDetails.Visible = false;
-                CertificateDetailsForLift.Visible = false;
-                FillCAPTCHA();
-                txtSecurityCode.Text = "";
-                txtMemoNo.Text = "";
-                txtRegistrationNo.Text = "";
-
-                trMemoNo.Visible = false;
-                trRegistrationNo.Visible = true;
-                trEnterSecurityCode.Visible = true;
-                trCode.Visible = true;
-                //trMemoNo.Style["display"] = "none";
-                //trRegistrationNo.Style["display"] = "table-row";
-                //trEnterSecurityCode.Style["display"] = "table-row";
-                //trCode.Style["display"] = "table-row";
-                DivButtons.Visible = true;
-            }
-            else if (RadioBtnType.SelectedValue == "1") // Generator/Line/Transformer 
-            {
-                CertificateDetails.Visible = false;
-                CertificateDetailsForLift.Visible = false;
-                FillCAPTCHA();
-                txtSecurityCode.Text = "";
-                txtMemoNo.Text = "";
-                txtRegistrationNo.Text = "";
-              
-                trMemoNo.Visible = true;
-                trRegistrationNo.Visible = false;
-                trEnterSecurityCode.Visible = true;
-                trCode.Visible = true;
-                //trMemoNo.Style["display"] = "table-row";
-                //trRegistrationNo.Style["display"] = "none";
-                //trEnterSecurityCode.Style["display"] = "table-row";
-                //trCode.Style["display"] = "table-row";
-                DivButtons.Visible = true;
-            }
-        }
-
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            try
-            {
-                if (e.CommandName == "Print")
-                {
-                    Control ctrl = e.CommandSource as Control;
-                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                    Label lblID = (Label)row.FindControl("lblID");
-                    string id = lblID.Text;
-                    Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
-                    string InstallationType = lblInstallationType.Text.Trim();
-                    Label LblInspectionType = (Label)row.FindControl("LblInspectionType");
-                    Session["ViewCertificate"] = id;
-                    if (LblInspectionType.Text == "New")
-                    {
-                        Session["InProcessInspectionId"] = id;
-                        if (InstallationType == "Multiple")
-                        {
-                            Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
-                        }
-                        else if (InstallationType != "Lift" && InstallationType != "Escalator" && InstallationType != "Lift/Escalator" && InstallationType != "MultiLift" && InstallationType != "MultiEscalator")
-                        {
-                            Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
-                        }
+        //protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (e.CommandName == "Print")
+        //        {
+        //            Control ctrl = e.CommandSource as Control;
+        //            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+        //            Label lblID = (Label)row.FindControl("lblID");
+        //            string id = lblID.Text;
+        //            Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
+        //            string InstallationType = lblInstallationType.Text.Trim();
+        //            Label LblInspectionType = (Label)row.FindControl("LblInspectionType");
+        //            Session["ViewCertificate"] = id;
+        //            if (LblInspectionType.Text == "New")
+        //            {
+        //                Session["InProcessInspectionId"] = id;
+        //                if (InstallationType == "Multiple")
+        //                {
+        //                    Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+        //                }
+        //                else if (InstallationType != "Lift" && InstallationType != "Escalator" && InstallationType != "Lift/Escalator" && InstallationType != "MultiLift" && InstallationType != "MultiEscalator")
+        //                {
+        //                    Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+        //                }
                         
-                    }
-                    else if (LblInspectionType.Text == "Periodic")
-                    {
-                        Session["InProcessInspectionId"] = id;
-                        if (InstallationType != "Lift" && InstallationType != "Escalator" && InstallationType != "Lift/Escalator" && InstallationType != "MultiLift" && InstallationType != "MultiEscalator")
-                        {
-                            Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
-                        }
+        //            }
+        //            else if (LblInspectionType.Text == "Periodic")
+        //            {
+        //                Session["InProcessInspectionId"] = id;
+        //                if (InstallationType != "Lift" && InstallationType != "Escalator" && InstallationType != "Lift/Escalator" && InstallationType != "MultiLift" && InstallationType != "MultiEscalator")
+        //                {
+        //                    Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
+        //                }
                       
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-        }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //    }
+        //}
 
         protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -179,34 +161,32 @@ namespace CEIHaryana
             else
             {
                 //CertificateDetails.Visible = true;
-                if (!string.IsNullOrWhiteSpace(txtMemoNo.Text)) // Generator/Line/Transformer 
+                //if (!string.IsNullOrWhiteSpace(txtMemoNo.Text)) // Generator/Line/Transformer 
+                //{
+                //    CertificateDetails.Visible = true;
+                //    CertificateDetailsForLift.Visible = false;
+                //    DataSet ds = CEI.GetVerifyCertificateDetails(txtMemoNo.Text);
+                //    if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                //    {
+                //        GridView1.DataSource = ds;
+                //        GridView1.DataBind();
+                //        lblNoDataMessage.Visible = false;
+                //        GridView1.Visible = true;
+                //    }
+                //    else
+                //    {
+                //        GridView1.DataSource = null;
+                //        GridView1.DataBind();
+                //        GridView1.Visible = false;
+                //        lblNoDataMessage.Text = "No any certificate Available with this number";
+                //        lblNoDataMessage.Visible = true;
+                //    }
+                //    ds.Dispose();
+                //}
+                //else 
+                if (!string.IsNullOrWhiteSpace(txtRegistrationNo.Text)) 
                 {
-                    CertificateDetails.Visible = true;
-                    CertificateDetailsForLift.Visible = false;
-                    DataSet ds = CEI.GetVerifyCertificateDetails(txtMemoNo.Text);
-
-                    if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-                    {
-                        GridView1.DataSource = ds;
-                        GridView1.DataBind();
-
-                        lblNoDataMessage.Visible = false;
-                        GridView1.Visible = true;
-                    }
-                    else
-                    {
-                        GridView1.DataSource = null;
-                        GridView1.DataBind();
-                        GridView1.Visible = false;
-
-                        lblNoDataMessage.Text = "No any certificate Available with this number";
-                        lblNoDataMessage.Visible = true;
-                    }
-                    ds.Dispose();
-                }
-                else if (!string.IsNullOrWhiteSpace(txtRegistrationNo.Text)) // Generator/Line/Transformer 
-                {
-                    CertificateDetails.Visible = false;
+                    //CertificateDetails.Visible = false;
                     CertificateDetailsForLift.Visible = true;
                     DataSet ds = CEI.GetVerifyCertificateDetailsforLift(txtRegistrationNo.Text);
                     if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
