@@ -1797,10 +1797,12 @@
     <Content Include="DataTableJs\jquery.js" />
     <Content Include="DataTableJs\jqueryDataTable.js" />
     <Content Include="Functions.aspx" />
+    <Content Include="GenerateCaptcha.aspx" />
     <Content Include="GetPassword.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Image\Image\ImageToDelete-removebg-preview.png" />
     <Content Include="Image\Image\ImageToDelete.jpeg" />
+    <Content Include="Image\Image\refresh.png" />
     <Content Include="Industry\CeiTrackApiDetailsPost_DefaultMethodTesting.aspx" />
     <Content Include="Industry\Industry.aspx" />
     <Content Include="Industry\IndustryServices.aspx" />
@@ -2071,6 +2073,7 @@
     <Content Include="UserPages\Qualification.aspx" />
     <Content Include="UserPages\Registration.aspx" />
     <Content Include="UserPages\SiteOwnerRegistration.aspx" />
+    <Content Include="VerifyCertificate.aspx" />
     <Content Include="Web.config" />
     <Content Include="Wiremen\CertificateRenewal.aspx" />
     <Content Include="Wiremen\CompetencyRenewalCertificate.aspx" />
@@ -2515,6 +2518,13 @@
     </Compile>
     <Compile Include="Functions.aspx.designer.cs">
       <DependentUpon>Functions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateCaptcha.aspx.cs">
+      <DependentUpon>GenerateCaptcha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GenerateCaptcha.aspx.designer.cs">
+      <DependentUpon>GenerateCaptcha.aspx</DependentUpon>
     </Compile>
     <Compile Include="GetPassword.aspx.cs">
       <DependentUpon>GetPassword.aspx</DependentUpon>
@@ -3923,6 +3933,13 @@
     </Compile>
     <Compile Include="UserPages\SiteOwnerRegistration.aspx.designer.cs">
       <DependentUpon>SiteOwnerRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VerifyCertificate.aspx.cs">
+      <DependentUpon>VerifyCertificate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VerifyCertificate.aspx.designer.cs">
+      <DependentUpon>VerifyCertificate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Wiremen\CertificateRenewal.aspx.cs">
       <DependentUpon>CertificateRenewal.aspx</DependentUpon>

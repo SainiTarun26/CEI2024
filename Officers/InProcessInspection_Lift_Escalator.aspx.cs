@@ -724,7 +724,7 @@ namespace CEIHaryana.Officers
 
                                                     CEI.InstallationApproval_Lift_New(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
                                                       lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text, txtTranscationDate.Text, lblAmount, txtTransactionId.Text, txtTranscationDate.Text, transaction);
-                                                    CEI.UpdateLiftApprovedCertificatedata(ID);
+                                                   // CEI.UpdateLiftApprovedCertificatedata(ID);
                                                 }
                                                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
 

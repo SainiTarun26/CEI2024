@@ -28,7 +28,10 @@ namespace CEIHaryana.Print_Forms
                 {
                     GetData();
                 }
-
+                else if (Session["ViewCertificate"] != null)
+                {
+                    GetData();
+                }
 
             }
 

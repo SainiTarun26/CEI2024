@@ -398,12 +398,16 @@
                                     <li>
                                         <a href="Procedure_For_Registration_Lift_Exclator.aspx">Procedure For Registration /
                  
-                                            <br>
+                                            <br />
                                             Inspection Lifts and Esclators
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://egovservices.in/" target="_blank">Apply for New / Renewal Lift
+                                        <a href="#" target="_blank">Apply for New
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://egovservices.in/" target="_blank">Apply for Renewal Lift
                                         </a>
                                     </li>
                                     <li>
@@ -583,6 +587,9 @@
                              <li style="display: flex;">
      <a href="https://grs.hartron.io/#/" target="_blank" id="alertLink2" style="position: relative; z-index: 1;">Grievance Redressal</a>
  </li>
+                            <li style="display: flex;">
+      <a href="VerifyCertificate.aspx" style="position: relative; z-index: 1;">Verify Certificate</a>
+  </li>
                             <li style="display: flex;">
                                 <a href="UserPages/OurServices.aspx" id="alertLink" style="position: relative; z-index: 1;">User Manual</a><img src="Assets/new1.gif" id="alertGif" />
                             </li>

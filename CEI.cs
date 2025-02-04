@@ -9123,10 +9123,22 @@ SqlTransaction transaction)
         }
         #endregion
 
-        #region Neha -30Jan-2025
+        #region Neha 
+        //-30Jan-2025
         public DataSet AcceptRejectReturnedInspectionATAdmin(string LoginId, string Division = null)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectReturnedInspectionATAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division);
+
+        }
+
+        public DataSet GetVerifyCertificateDetails(string MemoNo)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetVerifyCertificateDetails", MemoNo);
+        }
+
+        public DataSet GetVerifyCertificateDetailsforLift(string RegistrationNo)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetVerifyCertificateDetailsforLift", RegistrationNo);
         }
         #endregion
     }

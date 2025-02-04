@@ -403,7 +403,7 @@
                                 <div class="col-md-12">
 
 
-                                    <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="10" OnRowDataBound="Gridview1_RowDataBound">
+                                    <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false"  OnRowDataBound="Gridview1_RowDataBound">
                                         <HeaderStyle BackColor="#B7E2F0" />
                                         <Columns>
                                             <asp:TemplateField HeaderText="Id" Visible="False">
@@ -440,11 +440,24 @@
                                                 <ItemStyle CssClass="center-align" />
                                             </asp:BoundField>
 
-                                            <asp:TemplateField HeaderText="Signature">
+                                         <%--   <asp:TemplateField HeaderText="Signature">
                                                 <ItemTemplate>
                                                     <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
                                                         <asp:Image ID="ImgSignature" runat="server"
                                                             ImageUrl='<%# "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) %>' />
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>--%>
+                                            <asp:TemplateField HeaderText="Signature">
+                                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                                <ItemTemplate>
+                                                    <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
+                                                        <%-- <asp:Image ID="ImgSignature" runat="server"
+                                                        ImageUrl='<%# "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) %>' />--%>
+                                                        <asp:Image ID="ImgSignature" runat="server"
+                                                            ImageUrl='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null ? 
+"data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) : "" %>'
+                                                            Visible='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null %>' />
                                                     </div>
                                                 </ItemTemplate>
                                             </asp:TemplateField>

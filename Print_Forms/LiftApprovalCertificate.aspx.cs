@@ -35,7 +35,11 @@ namespace CEIHaryana.Print_Forms
                         {
                             GetData();
                         }
-                      
+                        else if (Convert.ToString(Session["InProcessInspectionId"]) != null || Convert.ToString(Session["InProcessInspectionId"]) != string.Empty)
+                        {
+                            GetData();
+                        }
+
 
                     }
                 }
@@ -249,6 +253,24 @@ namespace CEIHaryana.Print_Forms
                 {
                     Label lblTypeOfInspection = e.Row.FindControl("lblTypeOfInspection") as Label;
                     Image ImgSignature = e.Row.FindControl("ImgSignature") as Image;
+                    object signatureData = DataBinder.Eval(e.Row.DataItem, "Signature");
+                    if (signatureData != DBNull.Value && signatureData is byte[])
+                    {
+                        byte[] signatureBytes = (byte[])signatureData;
+                        if (signatureBytes.Length > 0)
+                        {
+                            ImgSignature.Visible = true;
+                            ImgSignature.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String(signatureBytes);
+                        }
+                        else
+                        {
+                            ImgSignature.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        ImgSignature.Visible = false;
+                    }
                     if (lblTypeOfInspection.Text == "New")
                     {
                         ImgSignature.Visible = true;
