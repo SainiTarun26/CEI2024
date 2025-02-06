@@ -28,13 +28,15 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
-                    if (Convert.ToString(Session["AdminID"]) != null && Convert.ToString(Session["AdminID"]) != "")
+                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
                     {
                         GetDetailsWithId();
                     }
                     else
                     {
-                        Response.Redirect("/Login.aspx", false);
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                        // Response.Redirect("/Login.aspx", false);
                     }
                 }
             }
@@ -460,7 +462,7 @@ namespace CEIHaryana.Admin
                 {
                     ID = Session["InspectionId"].ToString();
                     //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                 }
@@ -632,7 +634,7 @@ namespace CEIHaryana.Admin
             else if (e.CommandName == "View")
             {
                 string fileName = "";
-                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+               // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);

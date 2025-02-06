@@ -26,6 +26,11 @@ namespace CEIHaryana.Admin
                 {
                     GridBind();
                 }
+                else
+                {
+                    Session["AdminId"] = "";
+                    Response.Redirect("/AdminLogout.aspx", false);
+                }
             }
 
 

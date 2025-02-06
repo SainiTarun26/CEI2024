@@ -24,7 +24,8 @@ namespace CEIHaryana.Admin
                 }
                 else
                 {
-
+                    Session["AdminId"] = "";
+                    Response.Redirect("/AdminLogout.aspx", false);
                 }
             }
         }

@@ -31,40 +31,47 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
-                    if (Session["LineID"] != null && Convert.ToString(Session["LineID"]) != "")
+                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
                     {
-                        txtWorkType.Text = "Line";
-                        Id = Session["LineID"].ToString();
-                    }
-                    else if (Session["SubStationID"] != null && Convert.ToString(Session["LineID"]) != "")
-                    {
-                        txtWorkType.Text = "Substation Transformer";
-                        Id = Session["SubStationID"].ToString();
-                    }
-                    else if (Session["GeneratingSetId"] != null && Convert.ToString(Session["LineID"]) != "")
-                    {
-                        txtWorkType.Text = "Generating Station";
-                        Id = Session["GeneratingSetId"].ToString();
-                    }
-                    else if (Session["PeriodicMultiple"] != null && Convert.ToString(Session["PeriodicMultiple"]) != "")
-                    {
-                        txtWorkType.Text = "Multiple";
-                        Id = Session["PeriodicMultiple"].ToString();
-                    }
+                        if (Session["LineID"] != null && Convert.ToString(Session["LineID"]) != "")
+                        {
+                            txtWorkType.Text = "Line";
+                            Id = Session["LineID"].ToString();
+                        }
+                        else if (Session["SubStationID"] != null && Convert.ToString(Session["LineID"]) != "")
+                        {
+                            txtWorkType.Text = "Substation Transformer";
+                            Id = Session["SubStationID"].ToString();
+                        }
+                        else if (Session["GeneratingSetId"] != null && Convert.ToString(Session["LineID"]) != "")
+                        {
+                            txtWorkType.Text = "Generating Station";
+                            Id = Session["GeneratingSetId"].ToString();
+                        }
+                        else if (Session["PeriodicMultiple"] != null && Convert.ToString(Session["PeriodicMultiple"]) != "")
+                        {
+                            txtWorkType.Text = "Multiple";
+                            Id = Session["PeriodicMultiple"].ToString();
+                        }
 
 
-                    GetDetailsWithId();
-                    if (Type == "New")
-                    {
-                        GetTestReportData();
+                        GetDetailsWithId();
+                        if (Type == "New")
+                        {
+                            GetTestReportData();
+                        }
+                        else if (Type == "Periodic")
+                        {
+                            //TRAttachedGrid.Visible = false;
+                            GetTestReportDataIfPeriodic();
+                        }
+                        //GetTestReportData();
                     }
-                    else if (Type == "Periodic")
+                    else
                     {
-                        //TRAttachedGrid.Visible = false;
-                        GetTestReportDataIfPeriodic();
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
                     }
-                    //GetTestReportData();
-
                 }
             }
             catch (Exception ex)
@@ -385,8 +392,8 @@ namespace CEIHaryana.Admin
                                     string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
                                     if (reqType == "Industry")
                                     {
-                                        string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
-                                        // string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in/api/project-service-logs-external_UHBVN");
+                                        string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
+                                        // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
                                         if (serverStatus != "Server is reachable.")
                                         {
                                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
@@ -590,7 +597,7 @@ namespace CEIHaryana.Admin
                                             // string accessToken = "dfsfdsfsfsdf";
 
                                             logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                                          "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                                          "https://investharyana.in/api/project-service-logs-external_UHBVN",
                                                           new Industry_Inspection_StageWise_JsonDataFormat_Model
                                                           {
                                                               actionTaken = ApiPostformatresult.ActionTaken,
@@ -860,8 +867,8 @@ namespace CEIHaryana.Admin
                 if (e.CommandName == "Select")
                 {
                     ID = Session["InspectionId"].ToString();
-                   // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 

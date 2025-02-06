@@ -23,9 +23,16 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
-                    ddlPoweUtilityBind();
-                    Circle.Visible = false;
-
+                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
+                    {
+                        ddlPoweUtilityBind();
+                        Circle.Visible = false;
+                    }
+                    else
+                    {
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                    }
 
                 }
             }

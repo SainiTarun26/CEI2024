@@ -29,6 +29,11 @@ namespace CEIHaryana.Admin
                         AllDataGrid();
                         DdlDivisionData();
                     }
+                    else
+                    {
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                    }
                 }
             }
             catch

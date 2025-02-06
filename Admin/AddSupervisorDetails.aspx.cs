@@ -63,7 +63,10 @@ namespace CEI_PRoject.Admin
                     }
                     else
                     {
-                        Response.Redirect("/Login.aspx");
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+
+                        //Response.Redirect("/Login.aspx");
                     }
                 }
             }
@@ -252,11 +255,11 @@ namespace CEI_PRoject.Admin
 
                 if (CertificateNew.Text.Trim() != "" && CertificateNew.Text.Trim() != null)
                 {
-                    UserId = "S-"  + CertificateNew.Text.Trim();
+                    UserId = "S-" + CertificateNew.Text.Trim();
                 }
                 else
                 {
-                    UserId =  CertificateOld.Text.Trim();
+                    UserId = CertificateOld.Text.Trim();
                 }
                 if (btnSubmit.Text.Trim() == "Submit")
                 {
@@ -315,13 +318,13 @@ namespace CEI_PRoject.Admin
                                 }
                                 else
                                 {
-                                    NewUserID =  CertificateOld.Text;
+                                    NewUserID = CertificateOld.Text;
                                 }
                             }
                         }
                     }
 
-                    
+
                 }
 
                 GetIP();

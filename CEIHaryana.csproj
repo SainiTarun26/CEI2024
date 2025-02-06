@@ -217,6 +217,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AboutCEI.aspx" />
+    <Content Include="AdminLogout.aspx" />
     <Content Include="Admin\AcceptedOrRejectedRequest.aspx" />
     <Content Include="Admin\AddContractorDetails.aspx" />
     <Content Include="Admin\AddRemoveStaff.aspx" />
@@ -2082,6 +2084,18 @@
     <Content Include="Wiremen\WiremenUpgradationLicence.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutCEI.aspx.cs">
+      <DependentUpon>AboutCEI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AboutCEI.aspx.designer.cs">
+      <DependentUpon>AboutCEI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminLogout.aspx.cs">
+      <DependentUpon>AdminLogout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminLogout.aspx.designer.cs">
+      <DependentUpon>AdminLogout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AcceptedOrRejectedRequest.aspx.cs">
       <DependentUpon>AcceptedOrRejectedRequest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

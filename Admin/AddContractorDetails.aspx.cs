@@ -54,9 +54,11 @@ namespace CEI_PRoject.Admin
                     }
                     else
                     {
-                        Session["ID"] = "";
-                        Session["AdminID"] = "";
-                        Response.Redirect("/Login.aspx");
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                        //Session["ID"] = "";
+                        //Session["AdminID"] = "";
+                        //Response.Redirect("/Login.aspx");
                     }
                 }
             }

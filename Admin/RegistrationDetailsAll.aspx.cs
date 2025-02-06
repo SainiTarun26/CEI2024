@@ -14,8 +14,16 @@ namespace CEIHaryana.Admin
         {
             try
             {
-                getRegistrationDetails();
-                getRegistrationDetailsWirmen();
+                if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
+                {
+                    getRegistrationDetails();
+                    getRegistrationDetailsWirmen();
+                }
+                else
+                {
+                    Session["AdminId"] = "";
+                    Response.Redirect("/AdminLogout.aspx", false);
+                }
             }
             catch
             {

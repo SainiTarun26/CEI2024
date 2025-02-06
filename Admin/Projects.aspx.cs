@@ -15,7 +15,15 @@ namespace CEIHaryana.Admin
             {
                 if (!Page.IsPostBack)
                 {
-                    getWorkIntimationData();
+                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
+                    { 
+                        getWorkIntimationData();
+                    }
+                    else
+                    {
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                    }
                 }
             }
             catch

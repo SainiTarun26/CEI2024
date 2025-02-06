@@ -31,7 +31,7 @@ namespace CEIHaryana.Admin
                         loginTypeLabel.Text = "Admin / WorkIntimation / WorkIntimationDetails";
                     }
 
-                    if (Session["AdminID"] != null || Request.Cookies["AdminID"] != null)
+                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
                     {
                         //BindListBoxInstallationType();
                         hiddenfield.Visible = false;
@@ -50,17 +50,14 @@ namespace CEIHaryana.Admin
                         }
                         //ddlLoadBindPremises();
 
-
                         worktypevisiblity();
                         // ddlLoadBindVoltage();
-
-
-
-
                     }
                     else
                     {
-                        Response.Redirect("/Login.aspx");
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                        //Response.Redirect("/Login.aspx");
                     }
                 }
             }

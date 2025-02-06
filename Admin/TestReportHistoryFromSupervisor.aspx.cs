@@ -18,7 +18,16 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
-                    GridViewBind();
+
+                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
+                    {
+                        GridViewBind();
+                    }
+                    else
+                    {
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                    }
                 }
             }
             catch

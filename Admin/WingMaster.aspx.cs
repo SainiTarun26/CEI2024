@@ -19,12 +19,17 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
-                    ddlPoweUtilityBind();
-                    //GridBind();
-                    Wing.Visible = false;
-
-
-
+                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
+                    {
+                        ddlPoweUtilityBind();
+                        //GridBind();
+                        Wing.Visible = false;
+                    }
+                    else
+                    {
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                    }
                 }
             }
             catch (Exception ex)
@@ -65,7 +70,7 @@ namespace CEIHaryana.Admin
             }
             else
             {
-                CEI.InsertInWingMaster(txtWingName.Text.Trim(),ddlUtility.SelectedValue);
+                CEI.InsertInWingMaster(txtWingName.Text.Trim(), ddlUtility.SelectedValue);
                 Reset();
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Wing Name Submitted Successfully !!!');  window.location='AdminMaster.aspx';", true);
             }

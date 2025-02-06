@@ -45,8 +45,12 @@ namespace CEIHaryana.Admin
                         else if (Type == "Periodic")
                         {
                             GetTestReportDataIfPeriodic();
-                        }
-
+                        }                    
+                    else
+                    {
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                    }
                         //GetTestReportData();
                         btnPreview.Visible = false;
                     }

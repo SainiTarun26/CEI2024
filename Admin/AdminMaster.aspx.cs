@@ -28,10 +28,18 @@ namespace CEIHaryana.Admin
 
                 try
                 {
-                    BindBarChart();
-                    BindDoughnutChart();
-                    GridViewBind();
-                    OfficersGridBind();
+                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
+                    {
+                        BindBarChart();
+                        BindDoughnutChart();
+                        GridViewBind();
+                        OfficersGridBind();
+                    }
+                    else
+                    {
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                    }
                 }
                 catch (Exception ex)
                 { 

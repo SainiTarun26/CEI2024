@@ -11,7 +11,7 @@ using System.Windows.Media;
 
 namespace CEIHaryana.Admin
 {
-   
+
     public partial class ZoneMaster : System.Web.UI.Page
     {
         CEI CEI = new CEI();
@@ -21,10 +21,16 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
-                    ddlPoweUtilityBind();
-                    Zone.Visible = false;
-
-
+                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
+                    {
+                        ddlPoweUtilityBind();
+                        Zone.Visible = false;
+                    }
+                    else
+                    {
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                    }
                 }
             }
             catch (Exception ex)
@@ -70,7 +76,7 @@ namespace CEIHaryana.Admin
 
         }
 
-        
+
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
 
@@ -86,7 +92,7 @@ namespace CEIHaryana.Admin
             }
             else
             {
-                CEI.InsertInZoneMaster(txtZoneName.Text.Trim(),ddlUtility.SelectedValue,ddlWingName.SelectedValue);
+                CEI.InsertInZoneMaster(txtZoneName.Text.Trim(), ddlUtility.SelectedValue, ddlWingName.SelectedValue);
                 Reset();
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Zone Name Submitted Successfully !!!');  window.location='AdminMaster.aspx';", true);
             }
@@ -100,7 +106,7 @@ namespace CEIHaryana.Admin
                 txtZoneName.Text = "";
 
                 ddlWingName.SelectedValue = "0";
-              
+
 
 
             }
@@ -111,7 +117,7 @@ namespace CEIHaryana.Admin
 
         protected void ddlUtility_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ddlUtility.SelectedValue == "0")
+            if (ddlUtility.SelectedValue == "0")
             {
                 ddlWingName.SelectedValue = "0";
                 Zone.Visible = false;
@@ -120,7 +126,7 @@ namespace CEIHaryana.Admin
             {
                 DdlWingBind();
             }
-            
+
         }
         private void GridBind()
         {

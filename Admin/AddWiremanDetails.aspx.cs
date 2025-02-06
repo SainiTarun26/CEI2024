@@ -64,7 +64,9 @@ namespace CEI_PRoject.Admin
                     }
                     else
                     {
-                        Response.Redirect("/Login.aspx");
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                        // Response.Redirect("/Login.aspx");
                     }
                 }
 
@@ -200,7 +202,7 @@ namespace CEI_PRoject.Admin
         protected void ddlAttachedContractor_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlAttachedContractor.SelectedValue == "Yes")
-            { 
+            {
                 rowContractorDetails.Visible = true;
                 GetContractorDetails();
             }
@@ -274,7 +276,7 @@ namespace CEI_PRoject.Admin
                     }
                     else
                     {
-                        UserId =  txtCertifacateOld.Text.Trim();
+                        UserId = txtCertifacateOld.Text.Trim();
                     }
                     if (btnSubmit.Text.Trim() == "Submit")
                     {
@@ -299,13 +301,13 @@ namespace CEI_PRoject.Admin
                             UserId = str[0];
                             if (str[1] == "New")
                             {
-                                if (UserId == "W-"  + txtCertificateNew.Text)
+                                if (UserId == "W-" + txtCertificateNew.Text)
                                 {
                                     NewUserID = "";
                                 }
                                 else
                                 {
-                                    NewUserID = "W-" +  txtCertificateNew.Text;
+                                    NewUserID = "W-" + txtCertificateNew.Text;
                                 }
                             }
                             else
@@ -322,7 +324,7 @@ namespace CEI_PRoject.Admin
                                     }
                                     else
                                     {
-                                        NewUserID =  txtCertifacateOld.Text;
+                                        NewUserID = txtCertifacateOld.Text;
                                     }
                                 }
                             }

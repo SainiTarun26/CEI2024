@@ -86,12 +86,11 @@ namespace CEIHaryana.Admin
                                 getSiteOwnerData();
                             }
                         }
-
                     }
                     else
                     {
-                        Session["AdminID"] = "";
-                        Response.Redirect("/Login.aspx");
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
                     }
                 }
             }

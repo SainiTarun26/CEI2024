@@ -21,10 +21,15 @@ namespace CEIHaryana.Admin
         {
             if (!IsPostBack)
             {
-                if (Session["AdminID"] != null)
+                if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
                 {
                     GetDivisionName();
                     LoadSavedRecords();
+                }
+                else
+                {
+                    Session["AdminId"] = "";
+                    Response.Redirect("/AdminLogout.aspx", false);
                 }
             }
         }
@@ -123,7 +128,7 @@ namespace CEIHaryana.Admin
 
             }
             catch { }
-        } 
+        }
         private void GetStaffName()
         {
             try
@@ -252,14 +257,14 @@ namespace CEIHaryana.Admin
             string filePathInfo1 = "";
             string fileExtensionFormat = "";
 
-            if (Signature.HasFile) 
+            if (Signature.HasFile)
             {
                 string[] allowedExtensions = { ".jpg", ".jpeg", ".png" };
 
-                
+
                 int maxFileSize = 1 * 1024 * 1024;
 
-              
+
                 string fileName = Path.GetFileName(Signature.FileName);
                 string fileExtension = Path.GetExtension(fileName).ToLower();
                 fileExtensionFormat = fileExtension.TrimStart('.'); ;
@@ -303,17 +308,17 @@ namespace CEIHaryana.Admin
                 return;
             }
 
-          
+
             CEI.UploadSignature(DivisionName, StaffName, signatureBytes, fileExtensionFormat);
 
-            
+
             ddlDivisionName.SelectedIndex = 0;
             ddlstaffname.SelectedIndex = 0;
 
             LoadSavedRecords();
             string script = $"alert('Signature for {StaffName} updated successfully.'); window.location='AdminMaster.aspx';";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
-           
+
         }
 
         protected void ddlDivisionName_SelectedIndexChanged(object sender, EventArgs e)

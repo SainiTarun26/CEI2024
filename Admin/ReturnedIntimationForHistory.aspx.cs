@@ -34,6 +34,11 @@ namespace CEIHaryana.Admin
                         GetDetailsWithId();
                         GetTestReportData();
                     }
+                    else
+                    {
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                    }
                 }
             }
             catch (Exception ex)

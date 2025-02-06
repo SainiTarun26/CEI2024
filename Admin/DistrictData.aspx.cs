@@ -20,11 +20,19 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
-                    BindDaysGridView();
+                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
+                    {
+                        BindDaysGridView();
+                    }
+                    else
+                    {
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                    }
                 }
             }
-            catch 
-            { 
+            catch
+            {
                 Response.Redirect("/Login.aspx");
             }
         }
@@ -46,7 +54,7 @@ namespace CEIHaryana.Admin
                 {
                     string script = "alert(\"No Data Found\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), " script", script, true);
-                   
+
                 }
             }
             catch (Exception)

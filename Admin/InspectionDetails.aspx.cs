@@ -22,24 +22,34 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
-                    if (Session["LineID"] != null && Convert.ToString(Session["LineID"]) != "")
+                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
                     {
-                        txtWorkType.Text = "Line";
-                        Id = Session["LineID"].ToString();
+
+                        if (Session["LineID"] != null && Convert.ToString(Session["LineID"]) != "")
+                        {
+                            txtWorkType.Text = "Line";
+                            Id = Session["LineID"].ToString();
+                        }
+                        else if (Session["SubStationID"] != null && Convert.ToString(Session["LineID"]) != "")
+                        {
+                            txtWorkType.Text = "Substation Transformer";
+                            Id = Session["SubStationID"].ToString();
+                        }
+                        else if (Session["GeneratingSetId"] != null && Convert.ToString(Session["LineID"]) != "")
+                        {
+                            txtWorkType.Text = "Generating Set";
+                            Id = Session["GeneratingSetId"].ToString();
+                        }
+
+                        GetDetailsWithId();
+
                     }
-                    else if (Session["SubStationID"] != null && Convert.ToString(Session["LineID"]) != "")
+                    else
                     {
-                        txtWorkType.Text = "Substation Transformer";
-                        Id = Session["SubStationID"].ToString();
-                    }
-                    else if (Session["GeneratingSetId"] != null && Convert.ToString(Session["LineID"]) != "")
-                    {
-                        txtWorkType.Text = "Generating Set";
-                        Id = Session["GeneratingSetId"].ToString();
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
                     }
 
-                    GetDetailsWithId();
-                   
                 }
             }
             catch (Exception ex)
@@ -197,7 +207,7 @@ namespace CEIHaryana.Admin
                 {
                     ID = Session["InspectionId"].ToString();
                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                   //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                  // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -515,7 +525,7 @@ namespace CEIHaryana.Admin
             {
                 string fileName = "";
                 fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+               // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }

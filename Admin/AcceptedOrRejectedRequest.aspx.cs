@@ -32,7 +32,10 @@ namespace CEIHaryana.Admin
                         BindDropDownForDivision();
                     }
                     else
-                    { }
+                    {
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                    }
                 }
             }
             catch (Exception ex)
@@ -50,7 +53,6 @@ namespace CEIHaryana.Admin
                 DataSet ds = new DataSet();
                 //ds = CEI.AcceptedOrRejectedRequestInspectionForAdmin(LoginId, id);
                 ds = CEI.AcceptRejectReturnedInspectionATAdmin(LoginId, id);
-
                 if (ds.Tables.Count > 0)
                 {
                     GridView1.DataSource = ds;

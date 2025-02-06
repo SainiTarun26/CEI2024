@@ -20,10 +20,16 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
-                    ddlPoweUtilityBind();
-
-                    GridBind();
-
+                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
+                    {
+                        ddlPoweUtilityBind();
+                        GridBind();
+                    }
+                    else
+                    {
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                    }
                 }
             }
             catch (Exception ex)
