@@ -1589,6 +1589,7 @@
     <Content Include="css2\icons\tabler-icons\tabler-icons.css" />
     <Content Include="css2\styles.css" />
     <Content Include="css2\styles.min.css" />
+    <Content Include="CustomErrorPage.htm" />
     <Content Include="Dashboard_Css\css\bootstrap-datetimepicker.min.css" />
     <Content Include="Dashboard_Css\css\font-face.css" />
     <Content Include="Dashboard_Css\css\theme.css" />
