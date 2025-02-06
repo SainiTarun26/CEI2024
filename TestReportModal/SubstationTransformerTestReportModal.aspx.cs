@@ -117,8 +117,7 @@ namespace CEIHaryana.TestReportModal
                         IntimationData.Visible = true;
                     }
                     else if (Session["SupervisorID"] != null || Session["AdminID"] != null)
-
-                    {
+                    { 
                         if (Session["SupervisorID"] != null && Session["SupervisorID"].ToString() != "")
                         {
 

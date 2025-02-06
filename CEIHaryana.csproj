@@ -2087,12 +2087,14 @@
   <ItemGroup>
     <Compile Include="AboutCEI.aspx.cs">
       <DependentUpon>AboutCEI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AboutCEI.aspx.designer.cs">
       <DependentUpon>AboutCEI.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminLogout.aspx.cs">
       <DependentUpon>AdminLogout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AdminLogout.aspx.designer.cs">
       <DependentUpon>AdminLogout.aspx</DependentUpon>

@@ -62,7 +62,7 @@ namespace CEIHaryana.Print_Forms
                 }
                 ID = Session["LiftTestReportID"].ToString();
                 DataTable dt = new DataTable();
-                dt = CEI.GetLiftCertificateData(InspectionId);
+                dt = CEI.GetLiftCertificateData(InspectionId, ID);
                 if (dt.Rows.Count > 0)
                 {
                     lblAddress1.Text = dt.Rows[0]["Header1"].ToString();

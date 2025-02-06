@@ -9075,9 +9075,9 @@ SqlTransaction transaction)
         {
             DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateLiftApprovalInspections", InspectionId);
         }
-        public DataTable GetLiftCertificateData(string InspectionId)
+        public DataTable GetLiftCertificateData(string InspectionId,string TestRportId)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLiftApproalHistor", InspectionId);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLiftApproalHistor", InspectionId, TestRportId);
         }
         #endregion
         #region Neeraj 29-Jan-2025
