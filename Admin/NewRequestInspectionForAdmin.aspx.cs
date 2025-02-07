@@ -72,13 +72,20 @@ namespace CEIHaryana.Admin
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblID = (Label)row.FindControl("lblID");
                 Label lblApproval = (Label)row.FindControl("lblApproval");
+                Label lblInstallationFor = (Label)row.FindControl("lblInstallationFor");
                 Session["Approval"] = lblApproval.Text.Trim();
                 string id = lblID.Text;
                 Session["InspectionId"] = id;
                 if (e.CommandName == "Select")
                 {
-                    Response.Redirect("/Admin/InspectionDetails.aspx", false);
-
+                    if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
+                    {
+                        Response.Redirect("/Admin/LiftInspectionDetails.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("/Admin/InspectionDetails.aspx", false);
+                    }
                 }
             }
         }

@@ -106,7 +106,14 @@ namespace CEIHaryana.Admin
                 Session["InspectionId"] = id;
                 if (e.CommandName == "Select")
                 {
-                    Response.Redirect("/Admin/InspectionDetails.aspx", false);
+                    if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
+                    {
+                        Response.Redirect("/Admin/LiftInspectionDetails.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("/Admin/InspectionDetails.aspx", false);
+                    }
                 }
                 else if (e.CommandName == "Print")
                 {
@@ -117,16 +124,30 @@ namespace CEIHaryana.Admin
                         {
                             Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
                         }
-                        else
+
+                        else if (lblInstallationFor.Text != "Lift" && lblInstallationFor.Text != "Escalator" && lblInstallationFor.Text != "Lift/Escalator" && lblInstallationFor.Text != "MultiLift" && lblInstallationFor.Text != "MultiEscalator")
                         {
                             Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
-
+                        }
+                        else if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
+                        {
+                            Session["InProcessInspectionId"] = id;
+                            Response.Redirect("/Officers/Lift_EscelatorApprovaldata.aspx", false);
                         }
                     }
-                    else
+                    else if (LblInspectionType.Text == "Periodic")
                     {
                         Session["InProcessInspectionId"] = id;
-                        Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
+
+                        if (lblInstallationFor.Text != "Lift" && lblInstallationFor.Text != "Escalator" && lblInstallationFor.Text != "Lift/Escalator" && lblInstallationFor.Text != "MultiLift" && lblInstallationFor.Text != "MultiEscalator")
+                        {
+                            Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
+                        }
+                        else if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
+                        {
+                            Response.Redirect("/Admin/LiftEscalatorData.aspx", false);
+                        }
+
                     }
                 }
             }

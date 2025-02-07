@@ -235,6 +235,8 @@
     <Content Include="Admin\InspectionDetails.aspx" />
     <Content Include="Admin\IntimationForHistory.aspx" />
     <Content Include="Admin\IntimationHistoryForAdmin.aspx" />
+    <Content Include="Admin\LiftEscalatorData.aspx" />
+    <Content Include="Admin\LiftInspectionDetails.aspx" />
     <Content Include="Admin\NewRequestInspectionForAdmin.aspx" />
     <Content Include="Admin\PeriodicReturnedIntimationForHistory.aspx" />
     <Content Include="Admin\Projects.aspx" />
@@ -2217,6 +2219,20 @@
     </Compile>
     <Compile Include="Admin\IntimationHistoryForAdmin.aspx.designer.cs">
       <DependentUpon>IntimationHistoryForAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\LiftEscalatorData.aspx.cs">
+      <DependentUpon>LiftEscalatorData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\LiftEscalatorData.aspx.designer.cs">
+      <DependentUpon>LiftEscalatorData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\LiftInspectionDetails.aspx.cs">
+      <DependentUpon>LiftInspectionDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\LiftInspectionDetails.aspx.designer.cs">
+      <DependentUpon>LiftInspectionDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\NewRequestInspectionForAdmin.aspx.cs">
       <DependentUpon>NewRequestInspectionForAdmin.aspx</DependentUpon>
