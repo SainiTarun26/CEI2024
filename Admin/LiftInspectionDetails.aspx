@@ -402,13 +402,13 @@
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
 
-                            <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" Visible="false">
+                           <%-- <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" Visible="false">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkRedirect" runat="server" Text="View Test Report & Attachments"  CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
                             <asp:BoundField DataField="SubmittedDate" HeaderText="Submit Date">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -584,10 +584,10 @@
                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                 </asp:TemplateField>
              
-                <asp:BoundField DataField="DocumentRemarks" HeaderText="Returned Reason" Visible="false">
+             <%--   <asp:BoundField DataField="DocumentRemarks" HeaderText="Returned Reason" Visible="false">
                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                     <ItemStyle HorizontalAlign="Left" Width="15%" />
-                </asp:BoundField>
+                </asp:BoundField>--%>
             </Columns>
             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
         </asp:GridView>

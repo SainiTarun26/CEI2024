@@ -132,7 +132,7 @@ namespace CEIHaryana.Admin
                         else if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
                         {
                             Session["InProcessInspectionId"] = id;
-                            Response.Redirect("/Officers/Lift_EscelatorApprovaldata.aspx", false);
+                            Response.Redirect("/Admin/LiftEscalatorData.aspx", false);
                         }
                     }
                     else if (LblInspectionType.Text == "Periodic")

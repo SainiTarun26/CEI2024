@@ -21,15 +21,15 @@ namespace CEIHaryana.Admin
             if (Session["AdminId"] != null && Session["AdminId"].ToString() != "")
             {
                 GetData();
-                if (Type == "New")
-                {
-                    GetTestReportData();
+                //if (Type == "New")
+                //{
+                //    GetTestReportData();
 
-                }
-                else if (Type == "Periodic")
-                {
-                    GetTestReportDataIfPeriodic();
-                }
+                //}
+                //else if (Type == "Periodic")
+                //{
+                //    GetTestReportDataIfPeriodic();
+                //}
 
             }
         }
@@ -105,14 +105,14 @@ namespace CEIHaryana.Admin
                     if (ReturnValu == "1")
                     {
                         grd_Documemnts.Columns[3].Visible = true;
-                        grd_Documemnts.Columns[4].Visible = true;
+                        //grd_Documemnts.Columns[4].Visible = true;
                     
                     }
                     else if (ReturnValu == "3")
                     {
-
+                        
                         grd_Documemnts.Columns[3].Visible = true;
-                        grd_Documemnts.Columns[4].Visible = true;
+                        //grd_Documemnts.Columns[4].Visible = true;
                         Grid_MultipleInspectionTR.Columns[5].Visible = true;
                         Grid_MultipleInspectionTR.Columns[6].Visible = true;
                         Grid_MultipleInspectionTR.Columns[7].Visible = true;
@@ -123,23 +123,34 @@ namespace CEIHaryana.Admin
                     {
 
                         grd_Documemnts.Columns[3].Visible = false;
-                        grd_Documemnts.Columns[4].Visible = false;
+                        //grd_Documemnts.Columns[4].Visible = false;
                        
                     }
                     else
                     {
                         grd_Documemnts.Columns[3].Visible = true;
-                        grd_Documemnts.Columns[4].Visible = false;
+                       // grd_Documemnts.Columns[4].Visible = false;
                       
                     }
 
                    txtAction.Text = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                     Session["ApplicationStatus"] = txtAction.Text;
-                   
+
+                    if(txtAction.Text == "Return")
+                    {
+                        GetTestReportData_Return();
+                    }
+                    else
+                    {
+                        GetTestReportData();
+                    }
+
+
+
                 }
                 else if (Type == "Periodic")
                 {
-                    grd_Documemnts.Columns[4].Visible = false;
+                    //grd_Documemnts.Columns[4].Visible = false;
                     txtInspectionReportID.Text = ds.Tables[0].Rows[0]["Id"].ToString();
                     //InspectionType.Visible = false;
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
@@ -202,7 +213,16 @@ namespace CEIHaryana.Admin
 
                    txtAction.Text = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                     Session["ApplicationStatus"] = txtAction.Text;
-                    
+                    if (txtAction.Text == "Return")
+                    {
+                        GetTestReportDataIfPeriodic_Return();
+                    }
+                    else
+                    {
+                        GetTestReportDataIfPeriodic();
+                    }
+
+
                 }
             }
             catch (Exception ex)
@@ -216,6 +236,31 @@ namespace CEIHaryana.Admin
                 ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.GetTestReportDataIfPeriodic_Lift(ID);
+                string TestRportId = string.Empty;
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                ds.Dispose();
+            }
+            catch (Exception ex) { }
+        }
+
+        private void GetTestReportDataIfPeriodic_Return()
+        {
+            try
+            {
+                ID = Session["InspectionId"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.GetTestReportDataIfPeriodicLift_Return(ID);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {
@@ -258,6 +303,38 @@ namespace CEIHaryana.Admin
                
             }
         }
+
+       
+
+        private void GetTestReportData_Return()
+        {
+            try
+            {
+                ID = Session["InspectionId"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.GetTestReportLift_Return(ID);
+                string TestRportId = string.Empty;
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    //TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
+                //Session["TestRportId"] = TestRportId;
+
+                ds.Dispose();
+            }
+            catch (Exception ex) { }
+        }
+
+
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string fileName = "";
@@ -534,8 +611,8 @@ namespace CEIHaryana.Admin
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Admin/AdminMaster.aspx", false);
-
+            Response.Redirect("/Admin/AdminMaster.aspx", false);
+           
         }
     }
 }
