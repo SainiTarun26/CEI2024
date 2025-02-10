@@ -9140,7 +9140,44 @@ SqlTransaction transaction)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetVerifyCertificateDetailsforLift", RegistrationNo);
         }
+        public DataSet ToGetDivision()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToGetDivision");
+        }
+
+        public DataSet ToGetDistrict(string StaffId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToGetDistrict", StaffId);
+        }
+
+        public DataSet ToGetStaff(string Division)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToGetStaff", Division);
+        }
+
+        public DataSet ToShowCEIAreaCoveredData()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToShowCEIAreaCoveredData");
+        }
+        public DataSet ToFilterCEIAreaCoveredData(string Division, string Staff, string District)
+        {
+
+            object staffParam = string.IsNullOrEmpty(Staff) ? DBNull.Value : (object)Staff;
+            object districtParam = string.IsNullOrEmpty(District) ? DBNull.Value : (object)District;
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToFilterCEIAreaCoveredData", Division, staffParam, districtParam);
+        }
+
+        public DataSet ToReplaceStaffId(string ChangeForDivision, string Staff, string ChangeForStaffId, string NewStaffId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToReplaceStaffId", ChangeForDivision, Staff, ChangeForStaffId, NewStaffId);
+        }
+        public DataSet GetStaffForAssign(string Division)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetStaffForAssign", Division);
+        }
         #endregion
+
+
     }
 }
 

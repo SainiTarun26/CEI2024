@@ -227,6 +227,7 @@
     <Content Include="Admin\AdminDashboard.aspx" />
     <Content Include="Admin\AdminMaster.aspx" />
     <Content Include="Admin\AllTestReports.aspx" />
+    <Content Include="Admin\ChangeStaff.aspx" />
     <Content Include="Admin\CircleMaster.aspx" />
     <Content Include="Admin\Consolidated_Report.aspx" />
     <Content Include="Admin\DistrictData.aspx" />
@@ -2163,6 +2164,13 @@
     </Compile>
     <Compile Include="Admin\AllTestReports.aspx.designer.cs">
       <DependentUpon>AllTestReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ChangeStaff.aspx.cs">
+      <DependentUpon>ChangeStaff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ChangeStaff.aspx.designer.cs">
+      <DependentUpon>ChangeStaff.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\CircleMaster.aspx.cs">
       <DependentUpon>CircleMaster.aspx</DependentUpon>
