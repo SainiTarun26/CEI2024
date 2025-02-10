@@ -226,7 +226,7 @@ namespace CEIHaryana.Admin
 
             if (!atLeastOneChecked)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Please select at least one Inspection');", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Please check at least one Checkbox');", true);
                 return;
             }
         }
