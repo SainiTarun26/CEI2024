@@ -1325,7 +1325,7 @@
                         <%--<asp:Button ID="BtnBack" runat="server" Text="Back" Visible="true" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />--%>
                         <asp:Button ID="BtnBack" runat="server" Text="Back" Visible="false" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
 
-                        <asp:Button ID="btnVerify" Text="Generate OTP For Contractor" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" />
+                        <asp:Button ID="btnVerify" Text="Generate OTP For Contractor" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnVerify_Click" UseSubmitBehavior="false" />
                         <asp:Button ID="btnResend" Text="Resend OTP" Visible="false" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnResend_Click" />
 
 

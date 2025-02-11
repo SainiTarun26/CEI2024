@@ -292,14 +292,14 @@
                     </div>
                 </div>
                 <div id="PaymentDetails" runat="server" visible="true">
-                    <h7 class="card-title fw-semibold mb-4">Payment Details</h7>
+                    <h7 class="card-title fw-semibold mb-4">Treasury challan details / GRN No. details</h7>
                     <div id="ChallanDetail" runat="server" visible="true" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 15px;">
                         <div class="row" style="margin-top: 15px; margin-bottom: 15PX !important;">
                         </div>
                         <div class="row" style="margin-top: -40px !important;">
                             <div class="col-4">
                                 <label>
-                                    Transaction Id
+                                    GRN Number
                                 </label>
                                 <asp:TextBox ID="txttransactionId" runat="server" ReadOnly="true" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
                             </div>

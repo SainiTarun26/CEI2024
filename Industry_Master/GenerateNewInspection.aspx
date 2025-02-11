@@ -433,7 +433,7 @@
                     </div>
                 </div>
                 <div id="FeesDetails" runat="server" visible="false">
-                    <h7 class="card-title fw-semibold mb-4">Fees Details</h7>
+                    <h7 class="card-title fw-semibold mb-4">Treasury challan details / GRN No. details</h7>
 
                     <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                         <h7 class="card-title fw-semibold mb-4" style="font-size: 30px; color: brown">
@@ -600,7 +600,7 @@
                 </div>--%>
 
                 <div id="PaymentDetails" runat="server" visible="false">
-                    <h7 class="card-title fw-semibold mb-4">Payment Details</h7>
+                    <h7 class="card-title fw-semibold mb-4">Treasury challan details / GRN No. details</h7>
 
                     <div id="ChallanDetail" runat="server" visible="false" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 15px;">
 
@@ -617,7 +617,7 @@
                             <div class="row" style="margin-top: -40px !important;">
                             <div class="col-4">
                                 <label>
-                                    Transaction Id<samp style="color: red"> * </samp>
+                                    GRN Number<samp style="color: red"> * </samp>
                                 </label>
                                 <asp:TextBox ID="txttransactionId" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
                                 <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Id</asp:RequiredFieldValidator>--%>                            

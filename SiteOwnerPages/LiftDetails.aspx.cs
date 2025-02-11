@@ -259,7 +259,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (Page.IsValid)
                 {
-                   
+                        btnSubmit.Attributes.Add("onclick", "this.disabled = true;");
                         string IntimationId = Session["id"].ToString();
                     string CreatedBy = Session["SiteOwnerId"].ToString();
                     string count = Session["NoOfInstallations"].ToString();
@@ -531,6 +531,9 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
+                OTP.Visible = true;
+                btnVerify.Text = "Verify";
+                btnResend.Visible = true;
                 if (Session["OTP"].ToString() == txtOTP.Text.Trim())
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "focusGridView", "focusOnGridView();", true);
@@ -544,14 +547,9 @@ namespace CEIHaryana.SiteOwnerPages
                 if (Session["OTP"].ToString() == "0")
                 {
 
-                    OTP.Visible = true;
-                    btnVerify.Text = "Verify";
                     Email = Session["ContractorEmail"].ToString();
                     OTPs = CEI.ValidateOTPthroughEmail(Email);
                     Session["OTP"] = OTPs.Trim();
-                    //Session["ContractorEmail"] = "OTPSEND";
-                    //Session["OTP"] = "Sent";
-                    btnResend.Visible = true;
                 }
                 //else if (Session["ContractorEmail"].ToString() == "OTPSEND")
                 //{
@@ -575,9 +573,13 @@ namespace CEIHaryana.SiteOwnerPages
                         ddlContName.Enabled = false;
                         ddlLicenseNo.Enabled = false;
                     }
-                    else
+                    else if(txtOTP.Text!=""&& txtOTP.Text!=null)
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Incorrect Otp Please Try Again');", true);
+
+                    }
+                    else
+                    {
 
                     }
 

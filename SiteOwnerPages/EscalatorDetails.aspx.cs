@@ -254,7 +254,8 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (Page.IsValid)
                 {
-                    string IntimationId = Session["id"].ToString();
+                        btnSubmit.Attributes.Add("onclick", "this.disabled = true;");
+                        string IntimationId = Session["id"].ToString();
                     string CreatedBy = Session["SiteOwnerId"].ToString();
                     string count = Session["NoOfInstallations"].ToString();
                     string installationNo = Session["IHID"].ToString();
@@ -488,6 +489,9 @@ namespace CEIHaryana.SiteOwnerPages
         }
         protected void btnVerify_Click(object sender, EventArgs e)
         {
+            OTP.Visible = true;
+            btnVerify.Text = "Verify";
+            btnResend.Visible = true;
             if (Session["OTP"].ToString() == txtOTP.Text.Trim())
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "focusGridView", "focusOnGridView();", true);
@@ -500,14 +504,9 @@ namespace CEIHaryana.SiteOwnerPages
             if (Session["OTP"].ToString() == "0")
             {
 
-                OTP.Visible = true;
-                btnVerify.Text = "Verify";
                 Email = Session["ContractorEmail"].ToString();
                 OTPs = CEI.ValidateOTPthroughEmail(Email);
                 Session["OTP"] = OTPs.Trim();
-                //Session["ContractorEmail"] = "OTPSEND";
-                // Session["ContractorEmail"] = "";
-                btnResend.Visible = true;
                // ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Enter the OTP you received to Your Contractor's Email');", true);
             }
             //else if (Session["ContractorEmail"].ToString() == "OTPSEND")
@@ -531,9 +530,13 @@ namespace CEIHaryana.SiteOwnerPages
                     ddlContName.Enabled = false;
                     ddlLicenseNo.Enabled = false;
                 }
-                else
+                else if (txtOTP.Text != "" && txtOTP.Text != null)
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Incorrect Otp Please Try Again');", true);
+
+                }
+                else
+                {
 
                 }
             }

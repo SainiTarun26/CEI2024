@@ -84,7 +84,7 @@ namespace CEIHaryana.Admin
                 dsDistrict = CEI.ToGetDistrict(StaffId);
                 DdlDistrict.DataSource = dsDistrict;
                 DdlDistrict.DataTextField = "AreaCovered";
-                DdlDistrict.DataValueField = "StaffUserID";
+                DdlDistrict.DataValueField = "AreaCovered";
                 DdlDistrict.DataBind();
                 DdlDistrict.Items.Insert(0, new ListItem("Select", "0"));
                 dsDistrict.Clear();
@@ -128,6 +128,7 @@ namespace CEIHaryana.Admin
                 dataGrid.Visible = true;
                 CardHeader.Visible = false;
                 ToChangeStaff.Visible = false;
+                BtnSelect.Visible = true;
 
                 GridView1.Columns[0].Visible = true;
                 GridView1.Visible = true;
@@ -167,28 +168,6 @@ namespace CEIHaryana.Admin
             DdlDistrictBind();
         }
 
-        //protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (e.Row.RowType == DataControlRowType.DataRow)
-        //        {
-        //            Label LblDivision = (Label)e.Row.FindControl("LblDivision");
-        //            //Label LblDistrict = (Label)e.Row.FindControl("LblDistrict");
-        //            Label LblStaff = (Label)e.Row.FindControl("LblStaff");
-        //            Label LblStaffId = (Label)e.Row.FindControl("LblStaffId");
-
-        //            txtDivision.Text = LblDivision.Text.Trim();
-        //            txtStaff.Text = LblStaff.Text.Trim();
-        //            txtStaffId.Text = LblStaffId.Text.Trim();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //}
-
         protected void BtnSelect_Click(object sender, EventArgs e)
         {
             bool atLeastOneChecked = false;
@@ -205,6 +184,7 @@ namespace CEIHaryana.Admin
 
                     dataGridheader.Visible = false;
                     dataGrid.Visible = false;
+                    BtnSelect.Visible = false;
 
                     Label LblDivision = (Label)row.FindControl("LblDivision");
                     Label LblStaff = (Label)row.FindControl("LblStaff");
@@ -261,7 +241,7 @@ namespace CEIHaryana.Admin
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
 
-                  
+
                 }
 
             }
@@ -275,7 +255,7 @@ namespace CEIHaryana.Admin
                 string ChangeForDivision = txtDivision.Text;
                 string Staff = txtStaff.Text;
                 string ChangeForStaffId = txtStaffId.Text;
-              
+
                 string NewStaffId = DdlNewStaffId.SelectedItem.Text;
 
                 DataSet ds = CEI.ToReplaceStaffId(ChangeForDivision, Staff, ChangeForStaffId, NewStaffId);
