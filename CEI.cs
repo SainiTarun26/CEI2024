@@ -9053,6 +9053,65 @@ SqlTransaction transaction)
             }
 
         }
+
+        public DataSet GetDivisionList()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAllDivisionsList");
+        }
+
+        public DataSet GetStaffByDivisionList(string division)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetStaffByDivisionList", division);
+        }
+
+        public DataSet GetDistrictsByDivisionList(string division)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDistrictsByDivisionList", division);
+        }
+
+        public DataSet InspectionGridDataList_Admin(string ddlDivisions, string staff, string district)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAllInspections_ToTransfer_List_ByAdmin", ddlDivisions, staff, district);
+        }
+
+
+        public void sp_Transfer_Inspections_ToDifferentStaff_ByAdmin_Method(int Id, string Staff)
+        {
+            SqlCommand cmd = new SqlCommand("sp_Transfer_Inspections_ToDifferentStaff_ByAdmin");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", Id);
+                cmd.Parameters.AddWithValue("@Staff", String.IsNullOrEmpty(Staff) ? null : Staff);
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
+
+        public DataSet GetNewStaffByDistrictList(string division, string staffcurrentid)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_New_StaffByDivisionAndDistrict_List", division, staffcurrentid);
+        }
         #endregion
 
         #region Neha 22-Jan-2025
