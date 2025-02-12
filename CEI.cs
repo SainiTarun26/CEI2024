@@ -9075,7 +9075,7 @@ SqlTransaction transaction)
         }
 
 
-        public void sp_Transfer_Inspections_ToDifferentStaff_ByAdmin_Method(int Id, string Staff)
+        public void sp_Transfer_Inspections_ToDifferentStaff_ByAdmin_Method(int Id, string Staff, string LoginUser)
         {
             SqlCommand cmd = new SqlCommand("sp_Transfer_Inspections_ToDifferentStaff_ByAdmin");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -9092,7 +9092,7 @@ SqlTransaction transaction)
 
                 cmd.Parameters.AddWithValue("@Id", Id);
                 cmd.Parameters.AddWithValue("@Staff", String.IsNullOrEmpty(Staff) ? null : Staff);
-
+                cmd.Parameters.AddWithValue("@LoginUser", String.IsNullOrEmpty(LoginUser) ? null : LoginUser);
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
@@ -9106,7 +9106,6 @@ SqlTransaction transaction)
             }
 
         }
-
 
         public DataSet GetNewStaffByDistrictList(string division, string staffcurrentid)
         {
@@ -9226,9 +9225,9 @@ SqlTransaction transaction)
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToFilterCEIAreaCoveredData", Division, staffParam, districtParam);
         }
 
-        public DataSet ToReplaceStaffId(string ChangeForDivision, string Staff, string ChangeForStaffId, string NewStaffId)
+        public DataSet ToReplaceStaffId(string ChangeForDivision, string Staff, string ChangeForStaffId, string NewStaffId, string District, string ModifiedBy)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToReplaceStaffId", ChangeForDivision, Staff, ChangeForStaffId, NewStaffId);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToReplaceStaffId", ChangeForDivision, Staff, ChangeForStaffId, NewStaffId, District, ModifiedBy);
         }
         public DataSet GetStaffForAssign(string Division)
         {

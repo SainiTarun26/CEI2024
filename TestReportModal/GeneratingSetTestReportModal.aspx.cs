@@ -158,6 +158,7 @@ namespace CEIHaryana.TestReportModal
         }
         private void GetDocumentUploadData()
         {
+            OTP.Visible = false;
             DataTable ds = new DataTable();
             ds = CEI.GetDocumentlistforContractor(3);
             if (ds.Rows.Count > 0)
@@ -790,7 +791,8 @@ namespace CEIHaryana.TestReportModal
         {
             try
             {
-              
+                OTP.Visible = true;
+                btnVerify.Text = "Verify";
                 Session["GeneratorSetOtp"] = Convert.ToString(Convert.ToInt32(Session["GeneratorSetOtp"]) + 1);
                 // OTP.Visible = true;
                 if (btnVerify.Text == "SendOTP" && Session["GeneratorSetOtp"].ToString() != "0")
@@ -823,6 +825,7 @@ namespace CEIHaryana.TestReportModal
                             if (Session["GSInspectionType"] != null && Session["GSInspectionType"].ToString() != "Existing")
                             {
                                 GetDocumentUploadData();
+                                Session["GeneratorSetOtp"] = null;
                             }
                         }
                         else
@@ -830,7 +833,6 @@ namespace CEIHaryana.TestReportModal
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Incorrect OTP. Please try again.');", true);
                         }
                     }
-                    Session["GeneratorSetOtp"] = null;
 
                 }
             }

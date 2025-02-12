@@ -286,7 +286,7 @@ namespace CEIHaryana.Admin
                     if ((row.FindControl("CheckBox1") as CheckBox)?.Checked == true)
                     {
                         string lbllblInspectionId = (row.FindControl("lblInspectionId") as Label)?.Text;
-                        CEI.sp_Transfer_Inspections_ToDifferentStaff_ByAdmin_Method(Convert.ToInt32(lbllblInspectionId), ddlNewAssignee.SelectedItem.Value);
+                        CEI.sp_Transfer_Inspections_ToDifferentStaff_ByAdmin_Method(Convert.ToInt32(lbllblInspectionId), ddlNewAssignee.SelectedItem.Value, Session["AdminId"].ToString());
                     }
                 }
                 GetGridData2_WithNoMessage();

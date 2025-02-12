@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -182,9 +183,9 @@ namespace CEIHaryana.Admin
                     CardHeader.Visible = true;
                     ToChangeStaff.Visible = true;
 
-                    dataGridheader.Visible = false;
-                    dataGrid.Visible = false;
-                    BtnSelect.Visible = false;
+                    dataGridheader.Visible = true;
+                    dataGrid.Visible = true;
+                    BtnSelect.Visible = true;
 
                     Label LblDivision = (Label)row.FindControl("LblDivision");
                     Label LblStaff = (Label)row.FindControl("LblStaff");
@@ -252,14 +253,26 @@ namespace CEIHaryana.Admin
         {
             if (!string.IsNullOrEmpty(Convert.ToString(Session["AdminId"])))
             {
-                string ChangeForDivision = txtDivision.Text;
-                string Staff = txtStaff.Text;
-                string ChangeForStaffId = txtStaffId.Text;
 
-                string NewStaffId = DdlNewStaffId.SelectedItem.Text;
+                foreach (GridViewRow row in GridView1.Rows)
+                {
+                    string NewStaffId = DdlNewStaffId.SelectedItem.Text;
+                    CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
+                    if (chk != null && chk.Checked)
+                    {
+                        Label LblDivision = (Label)row.FindControl("LblDivision") as Label;
+                        string ChangeForDivision = LblDivision.Text;
+                        Label LblStaff = (Label)row.FindControl("LblStaff");
+                        string Staff = LblStaff.Text;
+                        Label LblStaffId = (Label)row.FindControl("LblStaffId");
+                        string ChangeForStaffId = LblStaffId.Text;
+                        Label LblDistrict = (Label)row.FindControl("LblDistrict");
+                        string District = LblDistrict.Text;
 
-                DataSet ds = CEI.ToReplaceStaffId(ChangeForDivision, Staff, ChangeForStaffId, NewStaffId);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithReturnRedirectdata();", true);
+                        CEI.ToReplaceStaffId(ChangeForDivision, Staff, ChangeForStaffId, NewStaffId, District, Session["AdminId"].ToString());
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithReturnRedirectdata();", true);
+                    }
+                }
             }
             else
             {

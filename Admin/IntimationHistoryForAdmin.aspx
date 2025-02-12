@@ -156,6 +156,15 @@
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
+                            <asp:TemplateField HeaderText="Owner Name">
+                                <HeaderStyle Width="35%" CssClass="headercolor textjustify" />
+                                <ItemStyle Width="35%" CssClass="owner-name" />
+                                <ItemTemplate>
+
+                                    <asp:Label ID="lblInspectionOwnerName" runat="server" Text='<%# Eval("InspectionOwnerName") %>' CssClass="break-text"></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
                             <asp:BoundField DataField="ApplicantType" HeaderText="Applicant Type">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
@@ -219,4 +228,40 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll('.break-text');
+
+            elements.forEach(function (element) {
+                let text = element.innerText;
+                let formattedText = '';
+                let currentIndex = 0;
+
+                while (currentIndex < text.length) {
+                    // Take a chunk of up to 20 characters
+                    let chunk = text.slice(currentIndex, currentIndex + 30);
+
+                    if (chunk.length < 30) {
+                        // If the chunk is less than 20 characters, add it without breaking
+                        formattedText += chunk;
+                        break; // Exit the loop as we've processed the remaining text
+                    }
+
+                    // For chunks of 20 or more characters, try to break at the last whitespace
+                    let breakIndex = chunk.lastIndexOf(" ");
+                    if (breakIndex !== -1) {
+                        // If there's a whitespace, break at that space
+                        formattedText += chunk.slice(0, breakIndex) + '<br>';
+                        currentIndex += breakIndex + 1; // Move past the space
+                    } else {
+                        // Otherwise, break at the 20-character limit
+                        formattedText += chunk + '<br>';
+                        currentIndex += 30;
+                    }
+                }
+
+                element.innerHTML = formattedText.trim(); // Remove any trailing <br>
+            });
+        });
+</script>
 </asp:Content>
