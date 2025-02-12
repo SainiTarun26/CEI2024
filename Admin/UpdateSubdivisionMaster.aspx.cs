@@ -13,7 +13,8 @@ namespace CEIHaryana.Admin
     public partial class UpdateSubdivisionMaster : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-      //  string UserId;
+       string Id;
+        string NewId;
         string UserName;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -55,10 +56,10 @@ namespace CEIHaryana.Admin
             txtSubDivision.Text = ds.Tables[0].Rows[0]["SubDivision"].ToString();
             txtPhone.Text = ds.Tables[0].Rows[0]["Mobile"].ToString();
             txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
-            if (!string.IsNullOrEmpty(txtEmail.Text))
-            {
-                Session["EmailId"] = txtEmail.Text;
-            }
+            //if (!string.IsNullOrEmpty(txtEmail.Text))
+            //{
+            //    Session["EmailId"] = txtEmail.Text;
+            //}
             string dp_Id = ds.Tables[0].Rows[0]["UtilityId"].ToString();
             ddlUtility.SelectedIndex = ddlUtility.Items.IndexOf(ddlUtility.Items.FindByValue(dp_Id));
            
@@ -74,8 +75,8 @@ namespace CEIHaryana.Admin
             string dp_Id4 = ds.Tables[0].Rows[0]["DivisionId"].ToString();
             DdlDivisionBind();
             ddlDivision.SelectedIndex = ddlDivision.Items.IndexOf(ddlDivision.Items.FindByValue(dp_Id4));
-            txtUserId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
-            Session["UserName"] = ds.Tables[0].Rows[0]["SubDivision"].ToString(); 
+            txtUserId.Text = ds.Tables[0].Rows[0]["UserId"].ToString();
+            //Session["UserName"] = ds.Tables[0].Rows[0]["SubDivision"].ToString(); 
         }
 
         private void DdlWingBind()
@@ -167,43 +168,68 @@ namespace CEIHaryana.Admin
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            UserName = Session["UserName"].ToString();
-            if (Session["EmailId"] == null && Convert.ToString(Session["EmailId"]) == "")
+            if (Convert.ToString(Session["AdminID"]) != null && Convert.ToString(Session["AdminID"]) != "" && Convert.ToString(Session["SubDivisionID"]) != null && Convert.ToString(Session["SubDivisionID"]) != "")
             {
-                string email = txtEmail.Text.Trim();
-                DataSet ds1 = CEI.checkEmail(email);
-                if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+               Id = Session["SubDivisionID"].ToString();
+              
+               string email = txtEmail.Text.Trim();
+            
+               string UserId = txtUserId.Text.Trim();
+                   if (!string.IsNullOrEmpty(UserId))
+                   {
+                   
+                        DataTable dt = CEI.checkUserId(UserId);
+                        {
+                            if (dt.Rows.Count > 0)
+                            {
+                                string script = $"alert('USER is already exists with this UserId.');";
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
+                                return;
+
+                            }
+                              
+                        }
+                    }
+                else
                 {
+                    string NewId = txtEmail.Text.Trim();
+                    if (NewId.Contains("@"))
+                    {
+                        UserName = email.Split('@')[0];
+                    }
+                    DataTable dt = CEI.checkUser_Id(UserName);
+                    {
+                        if (dt.Rows.Count > 0)
+                        {
+                            string script = $"alert('USER is already exists with this UserId.');";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
+                            return;
 
-                    string script = $"alert('User with Email ID  {email}  already exists.');";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
-                    return;
+                        }
 
+                    }
                 }
+                   //}
+
+                     DataSet ds1 = CEI.checkEmailForUpdate(email);
+                    if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+                    {
+
+                        string script = $"alert('Email ID  {email} is  already exists.');";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
+                        return;
+                    
+                    }
+ 
+                CEI.UpdateSubdivision(Id, txtSubDivision.Text.Trim(), txtEmail.Text.Trim(), txtPhone.Text.Trim(), ddlUtility.SelectedValue.Trim(), ddlWing.SelectedValue.Trim(),
+                    ddlZone.SelectedValue.Trim(), ddlCircle.SelectedValue.Trim(), ddlDivision.SelectedValue.Trim());
+                Reset();
+                Session["SubDivisionID"] = "";
+                Session["UserName"] = "";
+                Session["EmailId"] = "";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Sub-Division details updated Successfully !!!');  window.location='SubDivisionMaster.aspx'", true);
 
             }
-            
-            UserName = txtSubDivision.Text.Trim();
-            if (txtSubDivision.Text != UserName)
-            {
-                DataSet ds2 = CEI.checkSubDivisionName(UserName);
-                if (ds2 != null && ds2.Tables.Count > 0 && ds2.Tables[0].Rows.Count > 0)
-                {
-
-                    string script = $"alert('User with Same Name  {UserName}  already exists.');";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
-
-                }
-            }
-            CEI.UpdateSubdivision(txtUserId.Text, txtSubDivision.Text.Trim() , txtEmail.Text.Trim(), txtPhone.Text.Trim(), ddlUtility.SelectedValue.Trim(),ddlWing.SelectedValue.Trim(),
-                ddlZone.SelectedValue.Trim(), ddlCircle.SelectedValue.Trim(),ddlDivision.SelectedValue.Trim());
-            Reset();
-            Session["SubDivisionID"] = "";
-            Session["UserName"] = "";
-            Session["EmailId"] = "";
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Sub-Division details updated Successfully !!!');  window.location='SubDivisionMaster.aspx'", true);
-            
-
 
         }
 

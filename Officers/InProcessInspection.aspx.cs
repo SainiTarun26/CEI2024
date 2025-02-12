@@ -53,6 +53,7 @@ namespace CEIHaryana.Officers
 
                         //GetTestReportData();
                         btnPreview.Visible = false;
+                        btnSuggestions.Visible= false;
                         Page.Session["ClickCount"] = "0";
                     }
                 }
@@ -760,7 +761,7 @@ namespace CEIHaryana.Officers
                         if (x > 0)
                         {
                             btnPreview.Visible = false;
-
+                            btnSuggestions.Visible = true;
                             if (InspectionType == "New")
                             {
                                 if (InstallationType == "Multiple")
@@ -777,7 +778,7 @@ namespace CEIHaryana.Officers
                                 Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
                             }
                         }
-                        //btnPreview.Visible = false;
+                       
                     }
                     // }
                 }
@@ -855,14 +856,17 @@ namespace CEIHaryana.Officers
             Suggestion.Visible = false;
             ddlSuggestions.Visible = false;
             btnPreview.Visible = false;
+            btnSuggestions.Visible= false;
             Note.Visible = false;
             if (ddlReview.SelectedValue == "2")
             {
                 Rejection.Visible = true;
+                txtSuggestion.Text = "";
             }
             else if (ddlReview.SelectedValue == "1")
             {
                 btnPreview.Visible = true;
+                btnSuggestions.Visible = true;
                 ddlSuggestions.Visible = true;
                 Note.Visible = true;
                 Suggestion.Visible = true;
@@ -1046,7 +1050,60 @@ namespace CEIHaryana.Officers
             Response.Redirect("/Officers/AcceptedOrReject.aspx", false);
         }
 
-      
+        protected void btnSuggestions_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ddlReview.SelectedValue == "1")
+                {
+                    if (Session["InProcessInspectionId"].ToString() != null && Session["InProcessInspectionId"].ToString() != "")
+                    {
+                        ID = Session["InProcessInspectionId"].ToString();
+                        string InspectionType = Session["InspectionType"].ToString();
+                        string InstallationType = Session["InstallationType"].ToString();
+
+
+                        SqlCommand cmd = new SqlCommand("Sp_insertTempInspection");
+                        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                        cmd.Connection = con;
+                        if (con.State == ConnectionState.Closed)
+                        {
+                            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                            con.Open();
+                        }
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@inspectionId", ID);
+                        cmd.Parameters.AddWithValue("@suggestion", txtSuggestion.Text.Trim());
+                        cmd.Parameters.AddWithValue("@ReasionRejection", txtRejected.Text == null ? null : txtRejected.Text);
+                        cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
+                        DateTime initialIssueDate;
+                        if (DateTime.TryParse(txtInspectionDate.Text, out initialIssueDate) && initialIssueDate != DateTime.MinValue)
+                        {
+                            cmd.Parameters.AddWithValue("@inspectionDate", initialIssueDate);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@inspectionDate", DBNull.Value);
+                        }
+                        int x = cmd.ExecuteNonQuery();
+                        con.Close();
+                        if (x > 0)
+                        {
+                            btnPreview.Visible = true;
+                            btnSuggestions.Visible = true;
+                        }
+                        
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                //throw;
+            }
+
+        }
+
         private void GridToViewTRinMultipleCaseNew()
         {
             try

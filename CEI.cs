@@ -9149,9 +9149,9 @@ SqlTransaction transaction)
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getSubDivisionName", UserId);
         }
 
-        public DataSet checkUserID(string UserId)
+        public DataTable checkUserId(string UserId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getUserIdFromSubDivision", UserId);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getUserId_SubDivision", UserId);
         }
         public void UpdateSubdivision(string Id, string SubDivision, string Email, string Mobile, string UtilityId, string WingId, string ZoneId, string CircleId, string DivisionId)
         {
@@ -9236,7 +9236,21 @@ SqlTransaction transaction)
         }
         #endregion
 
+        #region Neeraj 12-Feb-2025
+        public DataSet checkEmailForUpdate(string Email)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getEmailFromSubDivisionForUpdate", Email);
+        }
+        //public DataSet checkUserId(string  UserId)
+        //{
+        //    return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getEmailFromSubDivisionForUpdate", UserId);
+        //}
 
+        public DataTable checkUser_Id(string UserId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getUserId_Division", UserId);
+        }
+        #endregion
     }
 }
 
