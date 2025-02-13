@@ -204,13 +204,18 @@
                             <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="DdlDistrict" Style="width: 100% !important;"></asp:DropDownList>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" style="margin-top: -10px;">
                         <div class="col-4">
                         </div>
                         <div class="col-4" style="text-align: center;">
                             <asp:Button ID="btnSearch" ValidationGroup="Submit" Style="padding-left: 35px; padding-right: 35px;" Text="Search" runat="server" class="btn btn-primary mr-2" OnClick="btnSearch_Click" />
                         </div>
                         <div class="col-4">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" style="text-align: center; margin-top: 0px; margin-bottom: 10px;">
+                            <span id="spanNote">Note: For individual allocation please select District.</span>
                         </div>
                     </div>
                 </div>
@@ -220,7 +225,7 @@
                 <div class="card" id="dataGrid" runat="server" visible="true" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                     <div class="row">
                         <div class="col-12">
-                            <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" OnRowDataBound="GridView1_RowDataBound1" OnRowCommand="GridView1_RowCommand" runat="server" AutoGenerateColumns="false" Visible="true">
+                            <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" OnRowDataBound="GridView1_RowDataBound1" runat="server" AutoGenerateColumns="false" Visible="true">
                                 <HeaderStyle BackColor="#B7E2F0" />
                                 <Columns>
                                     <asp:TemplateField Visible="false">
@@ -244,7 +249,7 @@
                                         <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="15%" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="AreaCovered" HeaderText="	District">
+                                    <asp:BoundField DataField="AreaCovered" HeaderText="District">
                                         <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="15%" />
                                     </asp:BoundField>
@@ -266,14 +271,7 @@
                                             <asp:Label ID="LblStaffId" runat="server" Text='<%# Eval("StaffUserID") %>' CssClass="text-wrap"></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Edit" Visible="false">
-                                        <HeaderStyle Width="5%" CssClass="headercolor" />
-                                        <ItemStyle Width="5%" />
-                                        <ItemTemplate>
-                                            <asp:LinkButton runat="server" ID="LinkButton4" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
-                                                Text="<i class='fa fa-edit' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
+
                                 </Columns>
                             </asp:GridView>
                         </div>
@@ -319,6 +317,16 @@
                             </label>
                             <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="DdlNewStaffId" Style="width: 100% !important;"></asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" InitialValue="0" ErrorMessage="Please Select Staff to replace" ValidationGroup="Submit" ControlToValidate="DdlNewStaffId" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-md-4" runat="server">
+                            <label class="form-label" for="customFile">
+                                Attached Copy of Work Order(1MB PDF ONLY)<samp style="color: red"> * </samp>
+                            </label>
+                            <br />
+                            <asp:FileUpload ID="customFile" runat="server" CssClass="form-control"
+                                Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
+                                ControlToValidate="customFile" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="row">

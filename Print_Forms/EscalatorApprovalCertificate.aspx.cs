@@ -125,66 +125,71 @@ namespace CEIHaryana.Print_Forms
                 }
                 else
                 {
-                    DataSet ds = new DataSet();
-                    ds = CEI.PrintDetailsFor_LiftCertificate(InspectionId, ID);
-                    lblAddress1.Text = ds.Tables[0].Rows[0]["Header1"].ToString();
-                    lblAdress2.Text = ds.Tables[0].Rows[0]["Header2"].ToString();
-                    lblAdress3.Text = ds.Tables[0].Rows[0]["Header3"].ToString();
-                    //lblEmail.Text = ds.Tables[0].Rows[0]["Header4"].ToString();
-                    if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Header4"].ToString()))
-                    {
-                        lblEmail.Visible = false;
-                    }
-                    else
-                    {
-                        lblEmail.Visible = true;
-                        lblEmail.Text = ds.Tables[0].Rows[0]["Header4"].ToString();
-                    }
-                    //string dp1 = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-
-                    lblRegNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
-                    lblCompanyName.Text = ds.Tables[0].Rows[0]["Maker"].ToString();
-
-                    lblAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
-                    DateTime createdDate1 = Convert.ToDateTime(ds.Tables[0].Rows[0]["ApprovedDate"]);
-                    lblInspectionDate.Text = createdDate1.ToString("dd/MM/yyyy");
-
-                    lblMakerName.Text = ds.Tables[0].Rows[0]["Maker"].ToString();
-                    lblSrNo.Text = ds.Tables[0].Rows[0]["RegistrationSrNo"].ToString();
-                    lblTypeOflift.Text = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
-
-                    lblTypeControl.Text = ds.Tables[0].Rows[0]["TypeOfControl"].ToString();
-                    lblCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
-                    lblMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
-                    lblErectionDate.Text = ds.Tables[0].Rows[0]["ErectionDate"].ToString();
-                    DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
-                    lblDated.Text = createdDate.ToString("dd/MM/yyyy");
-                    string dp_Id6 = ds.Tables[0].Rows[0]["TypeOfInspection"].ToString();
-                    if (dp_Id6 == "Periodic")
-                    {
-                        txtSD.Visible = true;
-                        myImage.Visible = false;
-                    }
-                    else
-                    {
-                        txtSD.Visible = false;
-
-                    }
-                    myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])ds.Tables[0].Rows[0]["Signature"]);
-                    lblstamp1.Text = ds.Tables[0].Rows[0]["Stamp1"].ToString();
-                    lblstamp2.Text = ds.Tables[0].Rows[0]["Stamp2"].ToString();
-                    //lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
-                    if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Stamp3"].ToString()))
-                    {
-                        lblstamp3.Visible = false;
-                    }
-                    else
-                    {
-                        lblstamp3.Visible = true;
-                        lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
-                    }
                     CEI.UpdateLiftApprovedCertificatedata(InspectionId);
+                    GetData();
                 }
+                //else
+                //{
+                //    DataSet ds = new DataSet();
+                //    ds = CEI.PrintDetailsFor_LiftCertificate(InspectionId, ID);
+                //    lblAddress1.Text = ds.Tables[0].Rows[0]["Header1"].ToString();
+                //    lblAdress2.Text = ds.Tables[0].Rows[0]["Header2"].ToString();
+                //    lblAdress3.Text = ds.Tables[0].Rows[0]["Header3"].ToString();
+                //    //lblEmail.Text = ds.Tables[0].Rows[0]["Header4"].ToString();
+                //    if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Header4"].ToString()))
+                //    {
+                //        lblEmail.Visible = false;
+                //    }
+                //    else
+                //    {
+                //        lblEmail.Visible = true;
+                //        lblEmail.Text = ds.Tables[0].Rows[0]["Header4"].ToString();
+                //    }
+                //    //string dp1 = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+
+                //    lblRegNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
+                //    lblCompanyName.Text = ds.Tables[0].Rows[0]["Maker"].ToString();
+
+                //    lblAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
+                //    DateTime createdDate1 = Convert.ToDateTime(ds.Tables[0].Rows[0]["ApprovedDate"]);
+                //    lblInspectionDate.Text = createdDate1.ToString("dd/MM/yyyy");
+
+                //    lblMakerName.Text = ds.Tables[0].Rows[0]["Maker"].ToString();
+                //    lblSrNo.Text = ds.Tables[0].Rows[0]["RegistrationSrNo"].ToString();
+                //    lblTypeOflift.Text = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
+
+                //    lblTypeControl.Text = ds.Tables[0].Rows[0]["TypeOfControl"].ToString();
+                //    lblCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                //    lblMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
+                //    lblErectionDate.Text = ds.Tables[0].Rows[0]["ErectionDate"].ToString();
+                //    DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
+                //    lblDated.Text = createdDate.ToString("dd/MM/yyyy");
+                //    string dp_Id6 = ds.Tables[0].Rows[0]["TypeOfInspection"].ToString();
+                //    if (dp_Id6 == "Periodic")
+                //    {
+                //        txtSD.Visible = true;
+                //        myImage.Visible = false;
+                //    }
+                //    else
+                //    {
+                //        txtSD.Visible = false;
+
+                //    }
+                //    myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])ds.Tables[0].Rows[0]["Signature"]);
+                //    lblstamp1.Text = ds.Tables[0].Rows[0]["Stamp1"].ToString();
+                //    lblstamp2.Text = ds.Tables[0].Rows[0]["Stamp2"].ToString();
+                //    //lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
+                //    if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Stamp3"].ToString()))
+                //    {
+                //        lblstamp3.Visible = false;
+                //    }
+                //    else
+                //    {
+                //        lblstamp3.Visible = true;
+                //        lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
+                //    }
+                //    CEI.UpdateLiftApprovedCertificatedata(InspectionId);
+                //}
                 GridBind();
                 //Session["StaffID"] = "";
                 //Session["SiteOwnerId"] = "";

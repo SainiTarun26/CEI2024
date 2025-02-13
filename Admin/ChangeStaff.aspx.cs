@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CEI_PRoject;
+using CEIHaryana.SiteOwnerPages;
 
 namespace CEIHaryana.Admin
 {
@@ -145,25 +149,6 @@ namespace CEIHaryana.Admin
             }
         }
 
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            string Count = string.Empty;
-            string IntimationId = string.Empty;
-            if (e.CommandName == "Select")
-            {
-                Control ctrl = e.CommandSource as Control;
-                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                Label LblDivision = (Label)row.FindControl("LblDivision");
-                Label LblDistrict = (Label)row.FindControl("LblDistrict");
-                Label LblStaff = (Label)row.FindControl("LblStaff");
-                Label LblStaffId = (Label)row.FindControl("LblStaffId");
-
-                txtDivision.Text = LblDivision.Text.Trim();
-                txtStaff.Text = LblStaff.Text.Trim();
-                txtStaffId.Text = LblStaffId.Text.Trim();
-            }
-        }
-
         protected void DdlStaff_SelectedIndexChanged(object sender, EventArgs e)
         {
             DdlDistrictBind();
@@ -172,17 +157,84 @@ namespace CEIHaryana.Admin
         protected void BtnSelect_Click(object sender, EventArgs e)
         {
             bool atLeastOneChecked = false;
+            bool allStaffsChecked = true; 
+            bool multipleStaffSelected = false;
+            string selectedStaffValue = null; 
 
+            // check all checkboxes for the same "Staff"
+            foreach (GridViewRow row in GridView1.Rows)
+            {
+                CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
+                Label lblStaff = (Label)row.FindControl("LblStaff");
+
+                if (chk != null && lblStaff != null)
+                {
+                    string staffValue = lblStaff.Text.Trim();
+
+                    // If checkbox is checked, check if it's the first checkbox for this staff
+                    if (chk.Checked)
+                    {
+                        atLeastOneChecked = true;
+
+                        // If it's the first selected staff, save its value
+                        if (selectedStaffValue == null)
+                        {
+                            selectedStaffValue = staffValue;
+                        }
+
+                        // If a different staff is selected, set multipleStaffSelected to true
+                        if (staffValue != selectedStaffValue)
+                        {
+                            multipleStaffSelected = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //If multiple staff are selected, show an error
+            if (multipleStaffSelected)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Please select only checkboxes for the same Staff');", true);
+                return;
+            }
+
+            // Check if all checkboxes for the selected "Staff" are checked
+            foreach (GridViewRow row in GridView1.Rows)
+            {
+                CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
+                Label lblStaff = (Label)row.FindControl("LblStaff");
+
+                if (chk != null && lblStaff != null && lblStaff.Text.Trim() == selectedStaffValue)
+                {
+                    // If any checkbox for the selected "Staff" is unchecked, set the flag to false
+                    if (!chk.Checked)
+                    {
+                        allStaffsChecked = false;
+                        break; 
+                    }
+                }
+            }
+
+            if (!atLeastOneChecked)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Please check at least one Checkbox');", true);
+                return;
+            }
+            else if (!allStaffsChecked)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Please check all checkboxes for the selected Staff');", true);
+                return;
+            }
+
+           
             foreach (GridViewRow row in GridView1.Rows)
             {
                 CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
                 if (chk != null && chk.Checked)
                 {
-                    atLeastOneChecked = true;
-
                     CardHeader.Visible = true;
                     ToChangeStaff.Visible = true;
-
                     dataGridheader.Visible = true;
                     dataGrid.Visible = true;
                     BtnSelect.Visible = true;
@@ -204,13 +256,8 @@ namespace CEIHaryana.Admin
                     }
                 }
             }
-
-            if (!atLeastOneChecked)
-            {
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Please check at least one Checkbox');", true);
-                return;
-            }
         }
+
 
         private void DDLToBindNewStaff(string DivisionForStaff)
         {
@@ -251,33 +298,88 @@ namespace CEIHaryana.Admin
 
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(Convert.ToString(Session["AdminId"])))
+            SqlTransaction transaction = null;
+            SqlConnection connection = null;
+            try
             {
-
-                foreach (GridViewRow row in GridView1.Rows)
+                string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+                connection = new SqlConnection(connectionString);
+                connection.Open();
+                transaction = connection.BeginTransaction();
+                if (!string.IsNullOrEmpty(Convert.ToString(Session["AdminId"])))
                 {
-                    string NewStaffId = DdlNewStaffId.SelectedItem.Text;
-                    CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
-                    if (chk != null && chk.Checked)
+                    string id = Session["AdminId"].ToString();
+                    string TransferOrderId = CEI.UploadDetailsForChangeStaff(txtStaffId.Text, DdlNewStaffId.SelectedItem.Text
+                    , id, id, transaction);
+                    string filePathInfo = "";
+                    if (customFile.HasFile && customFile.PostedFile != null)
                     {
-                        Label LblDivision = (Label)row.FindControl("LblDivision") as Label;
-                        string ChangeForDivision = LblDivision.Text;
-                        Label LblStaff = (Label)row.FindControl("LblStaff");
-                        string Staff = LblStaff.Text;
-                        Label LblStaffId = (Label)row.FindControl("LblStaffId");
-                        string ChangeForStaffId = LblStaffId.Text;
-                        Label LblDistrict = (Label)row.FindControl("LblDistrict");
-                        string District = LblDistrict.Text;
+                        string fileExtension = Path.GetExtension(customFile.PostedFile.FileName).ToLower();
+                        if (customFile.PostedFile.ContentLength <= 1048576 && fileExtension == ".pdf")
+                        {
+                            string fileName = "TransferOrder" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + fileExtension;
+                            string directoryPath = Server.MapPath($"~/Attachment/TransferOrder/{TransferOrderId}/");
+                            if (!Directory.Exists(directoryPath))
+                            {
+                                Directory.CreateDirectory(directoryPath);
+                            }
+                            string filePathInfo2 = Path.Combine(directoryPath, fileName);
+                            customFile.SaveAs(filePathInfo2);
+                            filePathInfo = $"~/Attachment/TransferOrder/{TransferOrderId}/{fileName}";
+                            CEI.UploadAttachmentForChangeStaff(filePathInfo, TransferOrderId, transaction);
+                        }
+                        else
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "Error", "alert('Please upload a PDF file that is no larger than 1 MB.');", true);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "Error", "alert('Please select a file to upload.');", true);
+                        return;
+                    }
+                    foreach (GridViewRow row in GridView1.Rows)
+                    {
+                        string NewStaffId = DdlNewStaffId.SelectedItem.Text;
+                        CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
+                        if (chk != null && chk.Checked)
+                        {
+                            Label LblDivision = (Label)row.FindControl("LblDivision");
+                            string ChangeForDivision = LblDivision.Text;
+                            Label LblStaff = (Label)row.FindControl("LblStaff");
+                            string Staff = LblStaff.Text;
+                            Label LblStaffId = (Label)row.FindControl("LblStaffId");
+                            string ChangeForStaffId = LblStaffId.Text;
+                            Label LblDistrict = (Label)row.FindControl("LblDistrict");
+                            string District = LblDistrict.Text;
 
-                        CEI.ToReplaceStaffId(ChangeForDivision, Staff, ChangeForStaffId, NewStaffId, District, Session["AdminId"].ToString());
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithReturnRedirectdata();", true);
+                            CEI.ToReplaceStaffId(ChangeForDivision, Staff, ChangeForStaffId, NewStaffId, District, id, TransferOrderId, transaction);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithReturnRedirectdata();", true);
+                        }
                     }
                 }
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Session expired or not valid');", true);
+                    return;
+                }
+                transaction.Commit();
             }
-            else
+            catch (Exception ex)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Session expired or not valid');", true);
-                return;
+                if (transaction != null)
+                {
+                    transaction.Rollback();
+                }
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('Error: {ex.Message}');", true);
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
             }
         }
     }

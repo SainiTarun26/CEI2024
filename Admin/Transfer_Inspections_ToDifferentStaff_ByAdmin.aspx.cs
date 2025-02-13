@@ -1,5 +1,6 @@
 ﻿using CEI_PRoject;
 using CEIHaryana.Contractor;
+using CEIHaryana.SiteOwnerPages;
 using CEIHaryana.UserPages;
 using Org.BouncyCastle.Asn1.X509.Qualified;
 using Pipelines.Sockets.Unofficial.Arenas;
@@ -7,8 +8,10 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -21,6 +24,7 @@ namespace CEIHaryana.Admin
     public partial class Transfer_Inspections_ToDifferentStaff_ByAdmin : System.Web.UI.Page
     {
         private string selectedDistrict = "";
+        private bool secondProcedureExecuted = false;
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,8 +32,7 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
-
-                    ViewState["SelectedDistrict"] = null;
+                    selectedInspectionIds = ViewState["SelectedInspectionIds"] as List<int> ?? new List<int>();
                     if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
                     {
                         BindDivisions();
@@ -86,6 +89,7 @@ namespace CEIHaryana.Admin
 
         protected void ddlDivisions_SelectedIndexChanged(object sender, EventArgs e)
         {
+            selectedInspectionIds.Clear();
             string selectedDivision = ddlDivisions.SelectedValue;
             if (selectedDivision == "0")
             {
@@ -141,6 +145,8 @@ namespace CEIHaryana.Admin
                 {
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
+
+                    //RestoreSelectedCheckboxes();
 
                     btnSubmit.Visible = true;
                 }
@@ -224,9 +230,21 @@ namespace CEIHaryana.Admin
 
             ViewState["SelectedDistrict"] = null;
             ViewState["IsFirstSelection"] = null;
+            selectedInspectionIds.Clear();
 
 
 
+        }
+        private List<int> selectedInspectionIds
+        {
+            get
+            {
+                return ViewState["SelectedInspectionIds"] as List<int> ?? new List<int>();
+            }
+            set
+            {
+                ViewState["SelectedInspectionIds"] = value;
+            }
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -238,6 +256,22 @@ namespace CEIHaryana.Admin
                     CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
                     //chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
 
+                }
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    // Get the checkbox control
+                    CheckBox chk = (CheckBox)e.Row.FindControl("CheckBox1");
+
+                    if (chk != null)
+                    {
+                        int inspectionId = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "Id"));
+
+                        // If the inspection ID is in the list of selected IDs, check the checkbox
+                        if (selectedInspectionIds.Contains(inspectionId))
+                        {
+                            chk.Checked = true;
+                        }
+                    }
                 }
 
             }
@@ -258,10 +292,15 @@ namespace CEIHaryana.Admin
             btnSubmit.Visible = false;
             ViewState["SelectedDistrict"] = null;
             ViewState["IsFirstSelection"] = null;
+            selectedInspectionIds.Clear();
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            List<int> selectedInspectionIds = ViewState["SelectedInspectionIds"] as List<int> ?? new List<int>();
+
+            string fixfileName = string.Empty;
+            fixfileName = "TransferOrder" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
             bool atLeastOneSupervisorChecked = false;
             foreach (GridViewRow row in GridView1.Rows)
             {
@@ -275,29 +314,84 @@ namespace CEIHaryana.Admin
 
             if (!atLeastOneSupervisorChecked)
             {
-                Response.Write("<script>alert('Please Select One InspectionId At A Time.');</script>");
+                Response.Write("<script>alert('Please Select Atleast One InspectionId At A Time.');</script>");
                 return;
             }
 
             try
             {
-                foreach (GridViewRow row in GridView1.Rows)
+                TransferAttachmentSaveMethod_Validation(fixfileName);
+                int newReturnedTransferOrderId = 0;
+                foreach (int inspectionId in selectedInspectionIds)
                 {
-                    if ((row.FindControl("CheckBox1") as CheckBox)?.Checked == true)
+                    if (!secondProcedureExecuted)
                     {
-                        string lbllblInspectionId = (row.FindControl("lblInspectionId") as Label)?.Text;
-                        CEI.sp_Transfer_Inspections_ToDifferentStaff_ByAdmin_Method(Convert.ToInt32(lbllblInspectionId), ddlNewAssignee.SelectedItem.Value, Session["AdminId"].ToString());
+                        newReturnedTransferOrderId = CEI.Transfer_Order_Inspections_Attachments_ToDifferentStaff_ByAdmin(Convert.ToInt32(inspectionId), ddlNewAssignee.SelectedItem.Value, Session["AdminId"].ToString(), fixfileName);
+
+                        TransferAttachmentSaveMethod(fixfileName, newReturnedTransferOrderId);
+                        secondProcedureExecuted = true;
                     }
+                    CEI.sp_Transfer_Inspections_ToDifferentStaff_ByAdmin_Method(Convert.ToInt32(inspectionId), ddlNewAssignee.SelectedItem.Value, Session["AdminId"].ToString(), newReturnedTransferOrderId);
+
                 }
+                selectedInspectionIds.Clear();
                 GetGridData2_WithNoMessage();
                 ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alertWithRedirectUpdation();", true);
+         
 
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "'); window.location.href = '/Admin/Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx';", true);
                 return;
             }
+        }
+
+        private string TransferAttachmentSaveMethod(string fixfileName, int newReturnedTransferOrderId)
+        {
+            string fileName;
+            fileName = Path.GetFileName(CustomFile.PostedFile.FileName); 
+
+            string directoryPath = Server.MapPath("~/Attachment/TransferOrder/" + newReturnedTransferOrderId.ToString());
+
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            string filePath = Path.Combine(directoryPath, fixfileName);
+
+            CustomFile.SaveAs(filePath);
+            return fileName;
+        }
+
+
+        private void TransferAttachmentSaveMethod_Validation(string fixfileName)
+        {
+            string fileName;
+            HttpPostedFile postedFile = CustomFile.PostedFile;
+
+            // Validate if the file is selected
+            if (postedFile == null || postedFile.ContentLength == 0)
+            {
+                throw new Exception("No file selected. Please upload a Transfer Order document.");
+            }
+
+            // Validate the file type - only PDF allowed
+            string fileExtension = Path.GetExtension(postedFile.FileName).ToLower();
+            if (fileExtension != ".pdf")
+            {
+                throw new Exception("Only PDF files are allowed. Please upload a PDF file.");
+            }
+
+            // Validate the file size - 2MB max
+            int maxFileSize = 2 * 1024 * 1024; // 2MB
+            if (postedFile.ContentLength > maxFileSize)
+            {
+                throw new Exception("The file size exceeds the 2MB limit. Please upload a file smaller than 2MB.");
+            }
+
         }
 
         public void BindStaff_ToTransfer(string district, string staffcurrentid)
@@ -311,7 +405,6 @@ namespace CEIHaryana.Admin
             ddlNewAssignee.Items.Insert(0, new ListItem("Select", "0"));
             ds.Clear();
 
-
         }
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -319,13 +412,22 @@ namespace CEIHaryana.Admin
             {
                 GridView1.PageIndex = e.NewPageIndex;
                 GetGridData();
-                ViewState["SelectedDistrict"] = null;
-                ViewState["IsFirstSelection"] = null;
+                //ViewState["SelectedDistrict"] = null;
+                //ViewState["IsFirstSelection"] = null;
             }
             catch { }
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
+    
+            ViewState["SelectedDistrict"] = null;
+            ViewState["IsFirstSelection"] = null;
+            //ViewState["SelectedInspectionIds"] = null;
+            ddlNewAssignee.ClearSelection();
+            ddlNewAssignee.Items.Clear();
+            ddlNewAssignee.Items.Add(new ListItem("Select", "0"));
+            ddlNewAssignee.Items.FindByValue("0").Selected = true;
+            selectedInspectionIds.Clear();
             GetGridData();
         }
 
@@ -333,6 +435,10 @@ namespace CEIHaryana.Admin
         {
             try
             {
+                CheckBox chk1 = (CheckBox)sender;
+                GridViewRow row1 = (GridViewRow)chk1.NamingContainer;
+                int inspectionId = Convert.ToInt32(((Label)row1.FindControl("lblInspectionId")).Text);
+
                 bool stillSelectedSameDistrict = false;
                 CheckBox clickedChk = (CheckBox)sender;
                 bool isChecked = clickedChk.Checked;
@@ -351,6 +457,7 @@ namespace CEIHaryana.Admin
                         ViewState["SelectedDistrict"] = currentDistrict;
 
                         ViewState["IsFirstSelection"] = true;
+
                         BindStaff_ToTransfer(lblDistrict.Text, lbllblAssignTo.Text);
                     }
                     else if (selectedDistrict != currentDistrict)
@@ -359,9 +466,23 @@ namespace CEIHaryana.Admin
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Please select checkboxes from the same district.');", true);
                         return;
                     }
+
+                    if (chk1.Checked)
+                    {
+                        if (!selectedInspectionIds.Contains(inspectionId))
+                        {
+                            selectedInspectionIds.Add(inspectionId);
+                        }
+                    }
+
                 }
                 else
                 {
+
+                    if (selectedInspectionIds.Contains(inspectionId))
+                    {
+                        selectedInspectionIds.Remove(inspectionId);
+                    }
                     foreach (GridViewRow row in GridView1.Rows)
                     {
                         CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
@@ -381,11 +502,13 @@ namespace CEIHaryana.Admin
                     {
                         ViewState["SelectedDistrict"] = null;
                         ViewState["IsFirstSelection"] = null;
+                        //ViewState["SelectedInspectionIds"] = null;
 
                         ddlNewAssignee.ClearSelection();
                         ddlNewAssignee.Items.Clear();
                         ddlNewAssignee.Items.Add(new ListItem("Select", "0"));
                         ddlNewAssignee.Items.FindByValue("0").Selected = true;
+                        selectedInspectionIds.Clear();
                     }
 
                 }

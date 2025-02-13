@@ -8924,6 +8924,81 @@ SqlTransaction transaction)
         }
         #endregion
         #region Aslam 
+
+        public void sp_Transfer_Inspections_ToDifferentStaff_ByAdmin_Method(int Id, string Staff, string LoginUser, int newReturnedTransferOrderId)
+        {
+            SqlCommand cmd = new SqlCommand("sp_Transfer_Inspections_ToDifferentStaff_ByAdmin");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", Id);
+                cmd.Parameters.AddWithValue("@Staff", String.IsNullOrEmpty(Staff) ? null : Staff);
+                cmd.Parameters.AddWithValue("@LoginUser", String.IsNullOrEmpty(LoginUser) ? null : LoginUser);
+                cmd.Parameters.AddWithValue("@TransferOrderId", newReturnedTransferOrderId);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
+
+        public int Transfer_Order_Inspections_Attachments_ToDifferentStaff_ByAdmin(int Id, string Staff, string LoginUser, string Attachmentpath)
+        {
+            SqlCommand cmd = new SqlCommand("sp_Transfer_Order_Inspections_Attachments_ToDifferentStaff_ByAdmin");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", Id);
+                cmd.Parameters.AddWithValue("@Staff", String.IsNullOrEmpty(Staff) ? null : Staff);
+                cmd.Parameters.AddWithValue("@LoginUser", String.IsNullOrEmpty(LoginUser) ? null : LoginUser);
+                cmd.Parameters.AddWithValue("@TransferAttachmentPath", Attachmentpath);
+                SqlParameter outputId = new SqlParameter("@NewTransferOrderId", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(outputId);
+                cmd.ExecuteNonQuery();
+                int newTransferOrderId = (int)outputId.Value;
+                con.Close();
+                return newTransferOrderId;
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
         public List<Industry_Api_Post_DataformatModel> GetIndustry_OutgoingRequestFormat_Sld(int _inspectionIdparams, string _actionType, string _projectId = null, string _serviceId = null, string _PanNo = null)
         {
             List<Industry_Api_Post_DataformatModel> models = new List<Industry_Api_Post_DataformatModel>();
@@ -9075,38 +9150,7 @@ SqlTransaction transaction)
         }
 
 
-        public void sp_Transfer_Inspections_ToDifferentStaff_ByAdmin_Method(int Id, string Staff, string LoginUser)
-        {
-            SqlCommand cmd = new SqlCommand("sp_Transfer_Inspections_ToDifferentStaff_ByAdmin");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            cmd.Connection = con;
-            try
-            {
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                    con.Open();
-                }
-
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("@Id", Id);
-                cmd.Parameters.AddWithValue("@Staff", String.IsNullOrEmpty(Staff) ? null : Staff);
-                cmd.Parameters.AddWithValue("@LoginUser", String.IsNullOrEmpty(LoginUser) ? null : LoginUser);
-                cmd.ExecuteNonQuery();
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            finally
-            {
-                con.Close();
-            }
-
-        }
-
+    
         public DataSet GetNewStaffByDistrictList(string division, string staffcurrentid)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_New_StaffByDivisionAndDistrict_List", division, staffcurrentid);
@@ -9224,11 +9268,58 @@ SqlTransaction transaction)
             object districtParam = string.IsNullOrEmpty(District) ? DBNull.Value : (object)District;
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToFilterCEIAreaCoveredData", Division, staffParam, districtParam);
         }
-
-        public DataSet ToReplaceStaffId(string ChangeForDivision, string Staff, string ChangeForStaffId, string NewStaffId, string District, string ModifiedBy)
+        public string UploadDetailsForChangeStaff(string PreviousAssinedStaff, string NewAssinedStaff, string TransferBy
+         , string ModifiedBy, SqlTransaction transaction)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToReplaceStaffId", ChangeForDivision, Staff, ChangeForStaffId, NewStaffId, District, ModifiedBy);
+            SqlCommand cmd = new SqlCommand("sp_UploadDetailsForChangeStaff", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@PreviousAssinedStaff", PreviousAssinedStaff);
+            cmd.Parameters.AddWithValue("@NewAssinedStaff", NewAssinedStaff);
+            cmd.Parameters.AddWithValue("@TransferBy", TransferBy);
+            cmd.Parameters.AddWithValue("@ModifiedBy", ModifiedBy);
+            SqlParameter outputParam = new SqlParameter("@GeneratedTransferOrderID", SqlDbType.NVarChar, 50);
+            outputParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParam);
+
+            // Execute the command
+            cmd.ExecuteNonQuery();
+            string TransferOrderID = cmd.Parameters["@GeneratedTransferOrderID"].Value.ToString();
+            return TransferOrderID;
         }
+
+        public void UploadAttachmentForChangeStaff(string filePathInfo, string TransferOrderId, SqlTransaction transaction)
+        {
+            SqlCommand cmd = new SqlCommand("sp_UploadAttachmentForChangeStaff", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@TransferAttachment", filePathInfo);
+            cmd.Parameters.AddWithValue("@TransferOrderId", TransferOrderId);
+
+            cmd.ExecuteNonQuery();
+        }
+
+
+        public void ToReplaceStaffId(string ChangeForDivision, string Staff, string ChangeForStaffId, string NewStaffId, string District, string ModifiedBy, string TransferOrderId, SqlTransaction transaction)
+        {
+            //return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToReplaceStaffId", ChangeForDivision, Staff, ChangeForStaffId, NewStaffId, District, ModifiedBy);
+            SqlCommand cmd = new SqlCommand("sp_ToReplaceStaffId", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@HeadOffice", ChangeForDivision);
+            cmd.Parameters.AddWithValue("@staff", Staff);
+            cmd.Parameters.AddWithValue("@StaffUserID", ChangeForStaffId);
+            cmd.Parameters.AddWithValue("@NewStaffUserID", NewStaffId);
+            cmd.Parameters.AddWithValue("@AreaCovered", District);
+            cmd.Parameters.AddWithValue("@ModifiedBy", ModifiedBy);
+            cmd.Parameters.AddWithValue("@Transfer_OrderID", TransferOrderId);
+
+            cmd.ExecuteNonQuery();
+        }
+
+
+
+        //public DataSet ToReplaceStaffId(string ChangeForDivision, string Staff, string ChangeForStaffId, string NewStaffId, string District, string ModifiedBy)
+        //{
+        //    return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToReplaceStaffId", ChangeForDivision, Staff, ChangeForStaffId, NewStaffId, District, ModifiedBy);
+        //}
         public DataSet GetStaffForAssign(string Division)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetStaffForAssign", Division);

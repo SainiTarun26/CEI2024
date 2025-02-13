@@ -104,55 +104,60 @@ namespace CEIHaryana.Print_Forms
                     lblstamp2.Text = dt.Rows[0]["Stamp2"].ToString();
                     lblstamp3.Text = dt.Rows[0]["Stamp3"].ToString();
                 }
-                else 
+                else
                 {
-                    DataSet ds = new DataSet();
-                    ds = CEI.PrintApprovalLetter(ID);
-                    lblAddress1.Text = ds.Tables[1].Rows[0]["Header1"].ToString();
-                    lblAdress2.Text = ds.Tables[1].Rows[0]["Header2"].ToString();
-                    lblAdress3.Text = ds.Tables[1].Rows[0]["Header3"].ToString();
-                    lblAdress4.Text = ds.Tables[1].Rows[0]["Header4"].ToString();
-                    TxtName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
-                    TextAdress.Text = ds.Tables[0].Rows[0]["Location"].ToString();
-                    TextLocation.Text = ds.Tables[0].Rows[0]["CompleteAdress"].ToString();
-                    txtApplicationNo.Text = ds.Tables[1].Rows[0]["ReferenceNo"].ToString();
-                    txtCreatedDate.Text = ds.Tables[1].Rows[0]["CreatedDate"].ToString();
-                    TxtMemo.Text = ds.Tables[1].Rows[0]["MemoNo"].ToString();
-                    txtMemoDate.Text = ds.Tables[1].Rows[0]["ApprovedDate"].ToString();
-                    string Suggestion= ds.Tables[1].Rows[0]["Suggestion"].ToString();
-                    string[] str = ds.Tables[1].Rows[0]["Suggestion"].ToString().Split('\n');
-                    suggestion1.Visible = false;
-                    suggestion2.Visible = false;
-                    suggestion3.Visible = false;
-                    suggestion4.Visible = false;
-                    if (str.Length > 0)
-                    {
-                        suggestion1.InnerText = str[0];
-                        suggestion1.Visible = true;
-                    }
-                    if (str.Length > 1)
-                    {
-                        suggestion2.InnerText = str[1];
-                        suggestion2.Visible = true;
-                    }
-                    if (str.Length > 2)
-                    {
-                        suggestion3.InnerText = str[2];
-                        suggestion3.Visible = true;
-                    }
-                    if (str.Length > 3)
-                    {
-                        suggestion4.InnerText = str[3];
-                        suggestion4.Visible = true;
-                    }
-                    // lblVoltage.Text = ds.Tables[2].Rows[0]["InstallationDetails"].ToString();
-                    // Year.Text = ds.Tables[1].Rows[0]["ApprovedYear"].ToString();
-                    myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])ds.Tables[1].Rows[0]["Signature"]);
-                    lblstamp1.Text = ds.Tables[1].Rows[0]["Stamp1"].ToString();
-                    lblstamp2.Text = ds.Tables[1].Rows[0]["Stamp2"].ToString();
-                    lblstamp3.Text = ds.Tables[1].Rows[0]["Stamp3"].ToString();
                     CEI.InsertApprovedCertificatedata(ID);
+                    GetData();
                 }
+                //else 
+                //{
+                //    DataSet ds = new DataSet();
+                //    ds = CEI.PrintApprovalLetter(ID);
+                //    lblAddress1.Text = ds.Tables[1].Rows[0]["Header1"].ToString();
+                //    lblAdress2.Text = ds.Tables[1].Rows[0]["Header2"].ToString();
+                //    lblAdress3.Text = ds.Tables[1].Rows[0]["Header3"].ToString();
+                //    lblAdress4.Text = ds.Tables[1].Rows[0]["Header4"].ToString();
+                //    TxtName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                //    TextAdress.Text = ds.Tables[0].Rows[0]["Location"].ToString();
+                //    TextLocation.Text = ds.Tables[0].Rows[0]["CompleteAdress"].ToString();
+                //    txtApplicationNo.Text = ds.Tables[1].Rows[0]["ReferenceNo"].ToString();
+                //    txtCreatedDate.Text = ds.Tables[1].Rows[0]["CreatedDate"].ToString();
+                //    TxtMemo.Text = ds.Tables[1].Rows[0]["MemoNo"].ToString();
+                //    txtMemoDate.Text = ds.Tables[1].Rows[0]["ApprovedDate"].ToString();
+                //    string Suggestion= ds.Tables[1].Rows[0]["Suggestion"].ToString();
+                //    string[] str = ds.Tables[1].Rows[0]["Suggestion"].ToString().Split('\n');
+                //    suggestion1.Visible = false;
+                //    suggestion2.Visible = false;
+                //    suggestion3.Visible = false;
+                //    suggestion4.Visible = false;
+                //    if (str.Length > 0)
+                //    {
+                //        suggestion1.InnerText = str[0];
+                //        suggestion1.Visible = true;
+                //    }
+                //    if (str.Length > 1)
+                //    {
+                //        suggestion2.InnerText = str[1];
+                //        suggestion2.Visible = true;
+                //    }
+                //    if (str.Length > 2)
+                //    {
+                //        suggestion3.InnerText = str[2];
+                //        suggestion3.Visible = true;
+                //    }
+                //    if (str.Length > 3)
+                //    {
+                //        suggestion4.InnerText = str[3];
+                //        suggestion4.Visible = true;
+                //    }
+                //    // lblVoltage.Text = ds.Tables[2].Rows[0]["InstallationDetails"].ToString();
+                //    // Year.Text = ds.Tables[1].Rows[0]["ApprovedYear"].ToString();
+                //    myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])ds.Tables[1].Rows[0]["Signature"]);
+                //    lblstamp1.Text = ds.Tables[1].Rows[0]["Stamp1"].ToString();
+                //    lblstamp2.Text = ds.Tables[1].Rows[0]["Stamp2"].ToString();
+                //    lblstamp3.Text = ds.Tables[1].Rows[0]["Stamp3"].ToString();
+                //    CEI.InsertApprovedCertificatedata(ID);
+                //}
                 GridBind();
             }
             catch(Exception ex) 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx.cs" Inherits="CEIHaryana.Admin.Transfer_Inspections_ToDifferentStaff_ByAdmin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx.cs" Inherits="CEIHaryana.Admin.Transfer_Inspections_ToDifferentStaff_ByAdmin" EnableViewState="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -250,9 +250,9 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
-
-
-                    <div class="col-md-3" id="ddlNewAssigneediv" runat="server" visible="true" style="margin-top: -33px; padding-left: 0px;">
+                    <div class="row">
+                        
+                    <div class="col-md-4" id="ddlNewAssigneediv" runat="server" visible="true" style="margin-top: -33px; padding-left: 0px;">
                         <br />
                         <br />
                         <label>
@@ -265,9 +265,25 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ControlToValidate="ddlNewAssignee" runat="server" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
 
+                    <div class="col-md-4" id="hiddenfield1" runat="server" style="margin-top:18px;">
+                        <label class="form-label" for="CustomFile" style="margin-bottom:5px !important">
+                            Transfer Order Document (2MB PDF ONLY)<samp style="color: red"> * </samp>
+                        </label>
+                        <br />
+                        <asp:FileUpload ID="CustomFile" TabIndex="19" runat="server" CssClass="form-control"
+                            Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
 
-                    <asp:Button type="submit" Visible="false" ID="btnSubmit" TabIndex="22" OnClientClick="return validateFileUpload();" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
+                            ControlToValidate="CustomFile" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                    </div>
 
+                        </div>
+                    <div class="row">
+                        <div class="col-md-12" style="text-align:center;">
+                                                <asp:Button type="submit" Visible="false" ID="btnSubmit" TabIndex="22" OnClientClick="return validateFileUpload();" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
+
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -277,7 +293,7 @@
     <script type="text/javascript">
         window.onload = function () {
             ddldistrictcontrol = document.getElementById('<%= DropDownList1.ClientID %>');
-                };
+        };
 
         function SelectAllCheckboxes(headerCheckbox) {
             var checkboxes = document.querySelectorAll('[id*=CheckBox1]');
@@ -291,6 +307,8 @@
             window.location.href = "/Admin/Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx";
 
         }
+
+
         let isSubmitting = false;
 
         function validateFileUpload() {
@@ -316,13 +334,31 @@
                 return false;
             }
 
-            debugger;
+
             if (ddldistrictcontrol) {
                 var ddlDistrict = document.getElementById('<%= DropDownList1.ClientID %>');
                 if (ddlDistrict.value == "0") {
                     alert("Please select a district.");
                     return false;
                 }
+            }
+             
+            var customFile = document.getElementById('<%= CustomFile.ClientID %>');
+            if (!customFile.value) {
+                alert("Please upload a Transfer Order document (PDF only).");
+                return false;
+            }
+
+            var fileExtension = customFile.value.split('.').pop().toLowerCase();
+            if (fileExtension !== "pdf") {
+                alert("Please upload a PDF file only.");
+                return false;
+            }
+
+            var fileSize = customFile.files[0].size; 
+            if (fileSize > 2 * 1024 * 1024) { 
+                alert("File size should not exceed 2MB.");
+                return false;
             }
 
             if (Page_ClientValidate()) {
