@@ -725,7 +725,7 @@
                                                     Your UserName or Password is Invalid.
                                                 </label>
                                             </div>
-                                            <div class="signup-link">Don't have an Account?<a href="#" class="text-primary">Create</a></div>
+                                           <%-- <div class="signup-link">Don't have an Account?<a href="#" class="text-primary">Create</a></div>--%>
                                                                                         <div class="signup-link">Don't have an Account?<a href="/UserPages/Registration.aspx" class="text-primary">Create</a></div>
                                             <div class="signup-link"><a href="UserPages/SiteOwnerRegistration.aspx" class="text-primary">Register as Site Owner</a></div>
                                             <%--  <div class="signup-link"><a href="GetPassword.aspx" class="text-primary">Get user Id & Password</a></div>--%>
