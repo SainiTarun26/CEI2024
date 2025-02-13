@@ -2437,7 +2437,10 @@
     <script type="text/javascript">
 
 </script>
-    <script type="text/javascript">
+
+  <!-- Comment for flow only-->
+
+  <%--  <script type="text/javascript">
         function validateAddTeam() {
             var isValid = true;
 
@@ -2580,7 +2583,7 @@
             }
             return isValid;
         }
-    </script>
+    </script>--%>
     <script type="text/javascript">
         function validateDates() {
             var issuingDate = document.getElementById('<%=txtIssueDate1.ClientID %>').value;

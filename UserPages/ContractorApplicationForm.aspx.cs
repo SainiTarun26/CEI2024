@@ -175,74 +175,74 @@ namespace CEIHaryana.UserPages
         }
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
+            Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
+            //try
+            //{
+            //    LoginID = Session["ContractorID"].ToString();
+            //    DataTable ds = new DataTable();
+            //    ds = CEI.GetPartnersDirectorDate(LoginID);
 
-            try
-            {
-                LoginID = Session["ContractorID"].ToString();
-                DataTable ds = new DataTable();
-                ds = CEI.GetPartnersDirectorDate(LoginID);
 
+            //    bool atLeastOneSupervisorConnecrt = false;
+            //    bool atLeastOneWiremanConnect = false;
+            //    foreach (GridViewRow row in GridView3.Rows)
+            //    {
+            //        Label lblTypeofEmployee = (Label)row.FindControl("lblTypeofEmployee");
+            //        if (lblTypeofEmployee != null)
+            //        {
+            //            if (lblTypeofEmployee.Text == "Supervisor")
+            //            {
+            //                atLeastOneSupervisorConnecrt = true;
+            //            }
+            //            if (lblTypeofEmployee.Text == "Wiremen")
+            //            {
+            //                atLeastOneWiremanConnect = true;
+            //            }
+            //            if (atLeastOneSupervisorConnecrt && atLeastOneWiremanConnect)
+            //            {
+            //                break;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            Response.Write("<script>alert('Please Add at least one Supervisor And Wireman.');</script>");
+            //            return;
+            //        }
+            //    }
 
-                bool atLeastOneSupervisorConnecrt = false;
-                bool atLeastOneWiremanConnect = false;
-                foreach (GridViewRow row in GridView3.Rows)
-                {
-                    Label lblTypeofEmployee = (Label)row.FindControl("lblTypeofEmployee");
-                    if (lblTypeofEmployee != null)
-                    {
-                        if (lblTypeofEmployee.Text == "Supervisor")
-                        {
-                            atLeastOneSupervisorConnecrt = true;
-                        }
-                        if (lblTypeofEmployee.Text == "Wiremen")
-                        {
-                            atLeastOneWiremanConnect = true;
-                        }
-                        if (atLeastOneSupervisorConnecrt && atLeastOneWiremanConnect)
-                        {
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        Response.Write("<script>alert('Please Add at least one Supervisor And Wireman.');</script>");
-                        return;
-                    }
-                }
+            //    if (DdlPartnerOrDirector.SelectedValue == "1" && ds.Rows.Count < 0)
+            //    {
+            //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "PartnerDirectorAlert();", true);
+            //    }
+            //    else if (!atLeastOneSupervisorConnecrt || !atLeastOneWiremanConnect)
+            //    {
+            //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "ContractorTeamAlert();", true);
+            //    }
+            //    else
+            //    {
+            //        ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
 
-                if (DdlPartnerOrDirector.SelectedValue == "1" && ds.Rows.Count < 0)
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "PartnerDirectorAlert();", true);
-                }
-                else if (!atLeastOneSupervisorConnecrt || !atLeastOneWiremanConnect)
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "ContractorTeamAlert();", true);
-                }
-                else
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
+            //        string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
 
-                    string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
+            //        bool isValidBoolean;
+            //        if (!bool.TryParse(validationResult, out isValidBoolean))
+            //        {
+            //            string Createdby = Session["ContractorID"].ToString();
+            //            string selectedValues = txtPenalities.Text.Trim();
+            //            CEI.ContractorApplicationData(txtGstNumber.Text, ddlCompanyStyle.SelectedItem.ToString(), ddlOffice.SelectedItem.ToString(),
+            //                DdlPartnerOrDirector.SelectedItem.ToString(), ddlPenalities.SelectedItem.ToString(), ddlAnnexureOrNot.SelectedItem.ToString(),
+            //                txtAgentName.Text, ddlUnitOrNot.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(), txtIssusuingName.Text,
+            //                txtDOB.Text, txtLicenseExpiry.Text, ddlSameNameLicense.SelectedItem.ToString(), txtLicenseNo.Text, txtLicenseIssue.Text,
+            //               Createdby);
+            //            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application Submitted Successfully !!!')", true);
+            //            Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
+            //        }
 
-                    bool isValidBoolean;
-                    if (!bool.TryParse(validationResult, out isValidBoolean))
-                    {
-                        string Createdby = Session["ContractorID"].ToString();
-                        string selectedValues = txtPenalities.Text.Trim();
-                        CEI.ContractorApplicationData(txtGstNumber.Text, ddlCompanyStyle.SelectedItem.ToString(), ddlOffice.SelectedItem.ToString(),
-                            DdlPartnerOrDirector.SelectedItem.ToString(), ddlPenalities.SelectedItem.ToString(), ddlAnnexureOrNot.SelectedItem.ToString(),
-                            txtAgentName.Text, ddlUnitOrNot.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(), txtIssusuingName.Text,
-                            txtDOB.Text, txtLicenseExpiry.Text, ddlSameNameLicense.SelectedItem.ToString(), txtLicenseNo.Text, txtLicenseIssue.Text,
-                           Createdby);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application Submitted Successfully !!!')", true);
-                        Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
-                    }
+            //    }
+            //    //CEI.ContractorPartners()
 
-                }
-                //CEI.ContractorPartners()
-
-            }
-            catch { }
+            //}
+            //catch { }
         }
 
         private void PartnersModalDirectorData()
