@@ -6,6 +6,8 @@
     <title>CEI-Haryana</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
+
+
     <!-- Favicons -->
 
     <link
@@ -23,10 +25,31 @@
     <!-- Template Main CSS File -->
     <link href="/assetsnew/css/style.css" rel="stylesheet" />
     <style type="text/css">
+        .modal.fade .modal-dialog {
+    transition: transform .3sease-out;
+    transform: translate(0, -50px);
+    max-width: 80%;
+    margin-left: 11%;
+    top: 20%;
+}
+        .fade {
+    transition: opacity .15slinear;
+    width: 100% !important;
+    height: 100% !important;
+}
+        modal-backdrop {
+    z-index: 1040 !important;
+    position: fixed;
+    width: 90vw;
+    height: 90vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust transparency */
+}
+
         span#lastupdatetext {
     font-size: 15px;
        padding-left: 6px;
     padding-right: 6px;
+    text-align:center;
 }
       span#lastRefreshTime {
     font-size: 15px;
@@ -390,6 +413,17 @@
             pointer-events: none;
             color: #555; /* Adjust icon color as needed */
         }
+        span#lblTotalApprovedLiftEscalatorInspection {
+    color: blue;
+    font-weight: bold;
+}
+        span#lblTotalApprovedLiftEscalatorInspection:hover {
+    color: blue;
+    font-weight: bold;
+    font-size:18px;
+    text-decoration:underline;
+    cursor:pointer;
+}
     </style>
 </head>
 <body style="zoom: 90% !important;">
@@ -593,7 +627,7 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="/UserManual/CamScanner 01-13-2025 13.54.pdf" target="_blank">BRAP-2024 Griviance Mechanism</a>
+                                        <a href="/UserManual/BRAP_Griviance.pdf" target="_blank">BRAP-2024 Griviance Mechanism</a>
                                     </li>
                                     <li>
                                         <a href="UserManual/office order 223.pdf" target="_blank">Mendate Regarding high medium low risk profile</a>
@@ -637,7 +671,8 @@
 
                             <li class="dropdown">
                                 <a href="#">
-                                    <span>EODB Dashboard</span>
+                                    <span>EODB Compliance's
+                                    </span>
                                     <i class="bi bi-chevron-down"></i>
                                 </a>
                                 <ul>
@@ -738,7 +773,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card" style="margin: 20px; padding: 30px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 10px !important;">
-                        <div class="card-title" style="margin-bottom: 0px; text-align: center;">Ease of Doing Business Recommendations - 174 - New Connection - Time Taken & Fee deposited</div>
+                        <div class="card-title" style="margin-bottom: 0px; text-align: center;">Ease of Doing Business (EODB) for Registration of New/Renewal of Lift.</div>
                     </div>
                 </div>
             </div>
@@ -746,127 +781,15 @@
                 <div class="card-body" style="border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                     <div class="col-md-12">
                         <div class="card-title">Filter Conditions</div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label>
-                                    Select Circle
-                        <samp style="color: red">* </samp>
-                                </label>
-                                <div class="dropdown-icon-wrapper" style="position: relative; width: 100%;">
-                                    <asp:DropDownList
-                                        class="form-control select-form select2"
-                                        AutoPostBack="true"
-                                        Style="width: 100% !important;"
-                                        ID="ddlInspectionType"
-                                        TabIndex="2"
-                                        runat="server">
-                                        <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
-                                        <asp:ListItem Text="Small" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Medium" Value="Existing"></asp:ListItem>
-                                        <asp:ListItem Text="Large" Value="Existing"></asp:ListItem>
-                                        <asp:ListItem Text="Mega" Value="Existing"></asp:ListItem>
-                                        <asp:ListItem Text="Ultra" Value="Existing"></asp:ListItem>
-                                    </asp:DropDownList>
-                                    <i class="dropdown-icon fas fa-chevron-down" style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); pointer-events: none;"></i>
-                                </div>
-
-                            </div>
-                            <div class="col-md-3">
-                                <label>
-                                    Select Division
-                        <samp style="color: red">* </samp>
-                                </label>
-                                <div class="dropdown-icon-wrapper" style="position: relative; width: 100%;">
-                                    <asp:DropDownList
-                                        class="form-control select-form select2"
-                                        AutoPostBack="true"
-                                        Style="width: 100% !important;"
-                                        ID="DropDownList1"
-                                        TabIndex="2"
-                                        runat="server">
-                                        <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
-                                        <asp:ListItem Text="Black Category A" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Black Category B" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Black Category C" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Black Category D" Value="1"></asp:ListItem>
-                                    </asp:DropDownList>
-                                    <i class="dropdown-icon fas fa-chevron-down" style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); pointer-events: none;"></i>
-                                </div>
-
-                            </div>
-                            <div class="col-md-3">
-                                <label>
-                                    Select Sub-Division
-                        <samp style="color: red">* </samp>
-                                </label>
-                                <div class="dropdown-icon-wrapper" style="position: relative; width: 100%;">
-                                    <asp:DropDownList
-                                        class="form-control select-form select2"
-                                        AutoPostBack="true"
-                                        Style="width: 100% !important;"
-                                        ID="DropDownList2"
-                                        TabIndex="2"
-                                        runat="server">
-                                        <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
-                                        <asp:ListItem Text="Foreign" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Domastic" Value="2"></asp:ListItem>
-                                    </asp:DropDownList>
-                                    <i class="dropdown-icon fas fa-chevron-down" style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); pointer-events: none;"></i>
-                                </div>
-
-                            </div>
-                            <div class="col-md-3">
-                                <label>
-                                    Select Connection Type
-                        <samp style="color: red">* </samp>
-                                </label>
-                                <div class="dropdown-icon-wrapper" style="position: relative; width: 100%;">
-                                    <asp:DropDownList
-                                        class="form-control select-form select2"
-                                        AutoPostBack="true"
-                                        Style="width: 100% !important;"
-                                        ID="ddlRiskCategory"
-                                        TabIndex="2"
-                                        runat="server">
-                                        <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
-                                        <asp:ListItem Text="High" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Medium" Value="2"></asp:ListItem>
-                                        <asp:ListItem Text="Low" Value="3"></asp:ListItem>
-                                    </asp:DropDownList>
-                                    <i class="dropdown-icon fas fa-chevron-down" style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); pointer-events: none;"></i>
-                                </div>
-
-                            </div>
-                        </div>
+                       
                         <div class="row" style="margin-top: 15px; margin-bottom: 15px;">
-                            <div class="col-md-3">
-                                <label>
-                                    Select Category
-                                    <samp style="color: red">* </samp>
-                                </label>
-                                <div class="dropdown-icon-wrapper" style="position: relative; width: 100%;">
-                                    <asp:DropDownList
-                                        class="form-control select-form select2"
-                                        AutoPostBack="true"
-                                        Style="width: 100% !important;"
-                                        ID="DropDownList3"
-                                        TabIndex="2"
-                                        runat="server">
-                                        <asp:ListItem Text="--SELECT--" Value="0"></asp:ListItem>
-                                        <asp:ListItem Text="High" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="Medium" Value="2"></asp:ListItem>
-                                        <asp:ListItem Text="Low" Value="3"></asp:ListItem>
-                                    </asp:DropDownList>
-                                    <i class="dropdown-icon fas fa-chevron-down" style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); pointer-events: none;"></i>
-                                </div>
-
-                            </div>
+                          
                             <div class="col-md-3">
                                 <label>
                                     From Date
                                     <samp style="color: red">* </samp>
                                 </label>
-                                <asp:TextBox class="form-control" Type="date" ID="txtFromDate" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
+                                <asp:TextBox class="form-control" Type="date" ID="txtFromDate" TabIndex="1" MaxLength="10"  AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
                             </div>
                             <div class="col-md-3">
                                 <label>
@@ -876,7 +799,7 @@
                                 <asp:TextBox class="form-control" Type="date" ID="txtToDate" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
                             </div>
                             <div class="col-md-3" style="margin-top: auto;">
-                                <asp:Button ID="btnSearch" Class="btn btn-primary" runat="server" Text="Filter" Style="width: 30% !important; height: 38px !important;" />
+                                <asp:Button ID="btnSearch" Class="btn btn-primary" runat="server" Text="Filter" Style="width: 30% !important; height: 38px !important;" OnClick="btnSearch_Click" />
                             </div>
                         </div>
 
@@ -888,8 +811,10 @@
                       <div class="card-title" style="margin-bottom: 0px; display: flex; justify-content: space-between; align-items: center;">
     <span>Service Information</span>
     <span id="lastupdatetext">
-        Last Updated On (dd-mm-yyyy hh:mm:ss) : <span id="lastRefreshTime"></span>
+        Last Updated On (dd-mm-yyyy hh:mm:ss) : <span id="lastRefreshTime"></span> <br />
+        <p style="text-align:end;">This portal is active since 1 Feb 2025.</p>
     </span>
+
 </div>
 
 
@@ -913,7 +838,9 @@
                                     </tr>
                                     <tr>
                                         <td style="text-align: justify;">Total Number of applications approved [Nos.]</td>
-                                        <td><asp:Label ID="lblTotalApprovedLiftEscalatorInspection" runat="server" ></asp:Label></td>
+                                        <td><asp:Label ID="lblTotalApprovedLiftEscalatorInspection" runat="server"
+    CssClass="clickable-label" ></asp:Label>
+</td>
                                     </tr>
                                     <tr>
                                         <td style="text-align: justify;">Average time taken to obtain registration/renewal [Days]</td>
@@ -941,6 +868,46 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Bootstrap Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #9292cc; color: white;">
+                <h5 class="modal-title" id="exampleModalLabel">Inspection Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               <div class="row">
+                   <div class="col-md-12">
+                       <asp:GridView ID="gvInspection" css="table table-bordered table-striped table-responsive table-hover" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered">
+    <Columns>
+        <asp:BoundField DataField="SrNo" HeaderText="Sr. No." />
+        <asp:BoundField DataField="InspectionID" HeaderText="Application No" />
+        <asp:BoundField DataField="CreatedDate" HeaderText="Apply Date" DataFormatString="{0:yyyy-MM-dd}" />
+        <asp:BoundField DataField="SiteOwnerName" HeaderText="Site Owner Name" DataFormatString="{0:C}" />
+        <asp:BoundField DataField="ApprovedDate" HeaderText="Approval Date" DataFormatString="{0:yyyy-MM-dd}" />
+        <asp:BoundField DataField="ActualWorkingDaysDiff" HeaderText="Time Taken (in Days)"  />
+            <asp:BoundField DataField="TotalAmount" HeaderText="TotalFees"  />
+
+    </Columns>
+</asp:GridView>
+                   </div>
+               </div>
+            </div>
+            <%--<div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+               
+            </div>--%>
+        </div>
+    </div>
+</div>
+
+
         </main>
         <!-- End #main -->
         <!-- ======= Footer ======= -->
@@ -972,51 +939,6 @@
     <!-- Template Main JS File -->
     <script src="/assetsnew/js/main.js"></script>
 
-    <%--<script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Get the dropdown and the div to toggle
-            const riskCategoryDropdown = document.getElementById("ddlRiskCategory");
-            const showHideDiv = document.getElementById("showhide");
-
-            // Function to toggle div visibility
-            function toggleDivVisibility() {
-                if (riskCategoryDropdown.value !== "0") {
-                    showHideDiv.style.display = "block";
-                } else {
-                    showHideDiv.style.display = "none";
-                }
-            }
-
-            // Check the dropdown value on page load (after postback)
-            toggleDivVisibility();
-
-            // Add an event listener to the dropdown
-            riskCategoryDropdown.addEventListener("change", function () {
-                toggleDivVisibility();
-            });
-        });
-    </script>--%>
-    <%--<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Check if the page was refreshed via browser
-        const isPageReloaded = performance.getEntriesByType("navigation")[0].type === "reload";
-
-        if (isPageReloaded) {
-            // Clear all dropdowns
-            const dropdowns = document.querySelectorAll("select");
-            dropdowns.forEach((dropdown) => {
-                dropdown.value = "0"; // Set the value to the default option
-            });
-
-            // Hide the div with id="showhide"
-            const showHideDiv = document.getElementById("showhide");
-            if (showHideDiv) {
-                showHideDiv.style.display = "none";
-            }
-        }
-    });
-
-</script>--%>
 <script>
     function updateDateTime() {
         const now = new Date();
@@ -1027,5 +949,37 @@
     // Update once on page load
     updateDateTime();
 </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('<%= lblTotalApprovedLiftEscalatorInspection.ClientID %>').addEventListener("click", function () {
+                var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+                myModal.show();
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const today = new Date();
+            const minDate = new Date('2025-02-01');
+            // Format the dates to YYYY-MM-DD
+            const formattedToday = today.toISOString().split('T')[0];
+            const formattedMinDate = minDate.toISOString().split('T')[0];
+            // Helper function to set min and max attributes
+            function setDateRange(inputId) {
+                const dateInput = document.getElementById(inputId);
+                if (dateInput) {
+                    dateInput.setAttribute("max", formattedToday); 
+                    dateInput.setAttribute("min", formattedMinDate);
+                }
+            }
+            // Set the date range for the input element
+            setDateRange('<%= txtFromDate.ClientID %>');
+            setDateRange('<%= txtToDate.ClientID %>'); 
+});
+
+    </script>
+
+
 </body>
 </html>

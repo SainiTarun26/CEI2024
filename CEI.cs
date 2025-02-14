@@ -8647,11 +8647,27 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ViewTRinMultipleCaseNewReturned_Lift_Escalator", InspectionId);
         }
 
-        public DataSet GetEodb_ServiceInformation_Data_Lift_Escalator_OnLoad()
+        public DataSet GetEodb_ServiceInformation_Data_Lift_Escalator_OnLoad(DateTime? fromDate = null, DateTime? toDate = null)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_Lift_Escalator_EODB_ServiceInformation_CountCalculate");
-        }
+            var parameters = new List<System.Data.SqlClient.SqlParameter>();
 
+            if (fromDate.HasValue || toDate.HasValue)
+            {
+                if (fromDate.HasValue)
+                {
+                    parameters.Add(new System.Data.SqlClient.SqlParameter("@FromDate", fromDate.Value));
+                }
+                if (toDate.HasValue)
+                {
+                    parameters.Add(new System.Data.SqlClient.SqlParameter("@ToDate", toDate.Value));
+                }
+                return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_Lift_Escalator_EODB_ServiceInformation_CountCalculate_WithFilters", fromDate.Value, toDate.Value);
+            }
+            else
+            {
+                return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_Lift_Escalator_EODB_ServiceInformation_CountCalculate_WithFilters");
+            }
+        }
         public DataTable GetPeriodicTestReportHistory(string OldTestReportId,string TestReportId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPeriodicTestReportHistory", OldTestReportId, TestReportId);
