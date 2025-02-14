@@ -378,5 +378,17 @@ namespace CEIHaryana.Admin
 
             }
         }
+        protected void grd_Documemnts_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                grd_Documemnts.PageIndex = e.NewPageIndex;
+                GridBind();
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

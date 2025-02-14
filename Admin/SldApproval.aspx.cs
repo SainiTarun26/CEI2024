@@ -359,6 +359,18 @@ namespace CEIHaryana.Admin
             //string script = $"alert('SLD Document submitted successfully.'); window.location='AdminMaster.aspx';";
             //ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
         }
-    
+        protected void grd_Documemnts_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                grd_Documemnts.PageIndex = e.NewPageIndex;
+                GridBind();
+            }
+            catch
+            {
+
+            }
+        }
+
     }
 }
