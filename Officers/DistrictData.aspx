@@ -106,7 +106,7 @@
                         </div>
                         <br />
                         <div class="col-md-4"></div>
-                        <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: 10px; margin-right: 10px; margin-top: 30px; margin-bottom: 10px;">
+                        <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left: 10px; margin-right: 10px; margin-top: 30px; margin-bottom: 10px; Width:100%">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12">

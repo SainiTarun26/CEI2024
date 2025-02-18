@@ -26,6 +26,7 @@ namespace CEIHaryana.SiteOwnerPages
         List<(string InspectionId, string CartId, string Installtypes, string DocumentId, string DocSaveName, string FileName, string FilePath)> uploadedFiles = new List<(string, string, string, string, string, string, string)>();
         private static string IdCart, Voltage, Capacity, TestRportId, IntimationId, InstallationType, VoltageLevel, ApplicantType, District, Division, AssignTo, PaymentMode, Amount, NewInspectionId, type, inspectionCountRes, inspectionIdRes;
         int para_InspectID = 0;
+        int updatedCount ;
         string CartID = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -44,7 +45,16 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             CartID = Convert.ToString(Session["CartID"]);
                         }
-
+                        DataSet ds1 = CEI.GetInstallationDetails(CartID);
+                        int count = Convert.ToInt32(ds1.Tables[0].Rows[0]["InstallationCount"]);
+                        if (count > 0)
+                        {
+                             updatedCount = count + 2;
+                        }
+                        else
+                        {
+                            btnSubmit.Enabled = false;
+                        }
                         DataSet ds = new DataSet();
                         ds = CEI.GetPeriodicType(CartID);
                         type = ds.Tables[0].Rows[0]["InspectionStatus"].ToString();
@@ -58,7 +68,6 @@ namespace CEIHaryana.SiteOwnerPages
                             GetInspectionDataIfPeriodicExist();
                             InspectionDetails.Visible = true;
                             InspectionDetailsHeading.Visible = true;
-
                             ToViewInspectionDetails(NewInspectionId);
 
                         }
@@ -259,15 +268,17 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                         else
                         {
+                            btnSubmit.Enabled = false;
                             GridView1.DataSource = null;
-                            GridView1.DataBind();
+                            //GridView1.DataBind();
                         }
                     }
 
                     else
                     {
+                        btnSubmit.Enabled = false;
                         GridView1.DataSource = null;
-                        GridView1.DataBind();
+                        //GridView1.DataBind();
                     }
                 }
             }
@@ -566,180 +577,208 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+
+            if (!string.IsNullOrEmpty(Convert.ToString(Session["IDCart"])))
+            {
+                CartID = Convert.ToString(Session["IDCart"]);
+            }
+            else
+            {
+                CartID = Convert.ToString(Session["CartID"]);
+            }
             int NewPara = 0;
             if (HF_para_InspectID.Value != null && HF_para_InspectID.Value != "")
             {
                 NewPara = Convert.ToInt32(HF_para_InspectID.Value);
             }
-            if (CheckAttachment(NewPara))
+            DataSet ds1 = CEI.GetInstallationDetails(CartID);
+            int count = Convert.ToInt32(ds1.Tables[0].Rows[0]["InstallationCount"]);
+            if (count > 0)
+ 
             {
-                try
+                updatedCount = count + 2;
+            }
+            else
+            {
+                Response.Write("<script>alert('Please Contact helpdesk.');</script>");
+            }
+            if (updatedCount > 0)
+            {
+                if (CheckAttachment(NewPara))
                 {
-                    if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
+                    try
                     {
-                        bool isValid1 = true;
-                        bool isValid2 = true;
-                        if (HF_para_InspectID.Value != null && HF_para_InspectID.Value != "")
+                        if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                         {
-                            NewPara = Convert.ToInt32(HF_para_InspectID.Value);
-                        }
-
-                        if (!string.IsNullOrEmpty(Convert.ToString(Session["IDCart"])))
-                        {
-                            CartID = Convert.ToString(Session["IDCart"]);
-                        }
-                        else
-                        {
-                            CartID = Convert.ToString(Session["CartID"]);
-                        }
-                        if (CartID == null || CartID == "")
-                        {
-                            isValid1 = false;
-                        }
-                        //foreach (GridViewRow row in GridView1.Rows)
-                        //{
-                        //    FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
-                        //    if (fileUpload != null && !fileUpload.HasFile)
-                        //    {
-                        //        isValid2 = false;
-                        //        // Add any additional logic here (e.g., display error message)
-                        //        break;
-                        //    }
-                        //}
-
-                        if (isValid1 == true)//&& isValid2 == true)
-                        {
-                            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                            bool isValid1 = true;
+                            bool isValid2 = true;
+                            if (HF_para_InspectID.Value != null && HF_para_InspectID.Value != "")
                             {
-                                SqlTransaction transaction = null;
-                                try
+                                NewPara = Convert.ToInt32(HF_para_InspectID.Value);
+                            }
+
+                            if (!string.IsNullOrEmpty(Convert.ToString(Session["IDCart"])))
+                            {
+                                CartID = Convert.ToString(Session["IDCart"]);
+                            }
+                            else
+                            {
+                                CartID = Convert.ToString(Session["CartID"]);
+                            }
+                            if (CartID == null || CartID == "")
+                            {
+                                isValid1 = false;
+                            }
+                            //foreach (GridViewRow row in GridView1.Rows)
+                            //{
+                            //    FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
+                            //    if (fileUpload != null && !fileUpload.HasFile)
+                            //    {
+                            //        isValid2 = false;
+                            //        // Add any additional logic here (e.g., display error message)
+                            //        break;
+                            //    }
+                            //}
+
+                            if (isValid1 == true)//&& isValid2 == true)
+                            {
+                                using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
                                 {
-                                    connection.Open();
-                                    string para_CreatedByy = Session["SiteOwnerId"].ToString();
-                                    string transcationId = string.Empty;
-                                    string TranscationDate = string.Empty;
-                                    /* int para_InspectID = 0; */   //////////
-                                                                    //string TransactionId = txtTransactionId.Text;
-                                                                    //string TransctionDate = txtTransactiondate.Text;
-                                    if (txtTransactionId.Text != "")
+                                    SqlTransaction transaction = null;
+                                    try
                                     {
-                                        transcationId = txtTransactionId.Text.Trim();
-                                        TranscationDate = string.IsNullOrEmpty(txtTransactiondate.Text) ? null : txtTransactiondate.Text;
-                                    }
-                                    else
-                                    {
-                                        txtTransactiondate.Focus();
-                                        txtTransactionId.Focus();
-                                        return;
-                                    }
-
-                                    //string NewInspID = 
-                                    transaction = connection.BeginTransaction();
-                                    CEI.InsertPeriodicInspectionDataNew("Periodic", CartID, transcationId, TranscationDate, para_CreatedByy, NewPara, transaction);
-                                    //CEI.InsertPeriodicInspectionData("Periodic", IdCart, IntimationId, ApplicantType,InstallationType, VoltageLevel, District, Division, AssignTo,
-                                    //                   PaymentMode, Amount, transcationId, TranscationDate,para_CreatedByy, Capacity, Voltage, NewPara,Convert.ToInt32(Session["ServiceType"]), transaction);
-
-                                    UploadCheckListDocInCollection(para_CreatedByy, NewPara, CartID);
-                                    string generatedIdCombinedDetails = CEI.InspectionId();
-                                    if (uploadedFiles != null && uploadedFiles.Count > 0)
-                                    {
-                                        if (generatedIdCombinedDetails != "")
+                                        connection.Open();
+                                        string para_CreatedByy = Session["SiteOwnerId"].ToString();
+                                        string transcationId = string.Empty;
+                                        string TranscationDate = string.Empty;
+                                        /* int para_InspectID = 0; */   //////////
+                                                                        //string TransactionId = txtTransactionId.Text;
+                                                                        //string TransctionDate = txtTransactiondate.Text;
+                                        if (txtTransactionId.Text != "")
                                         {
-                                            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
-
-                                            //using (SqlConnection connection = new SqlConnection(connectionString))
-                                            //{
-                                            //connection.Open();
-                                            //string generatedIdCombiedDetails = CEI.InspectionId();                                    
-                                            foreach (var file in uploadedFiles)
-                                            {
-                                                string query = "sp_InsertInspectionAttachmentsForPeriodic";
-
-                                                using (SqlCommand command = new SqlCommand(query, transaction.Connection, transaction))
-                                                {
-                                                    command.CommandType = CommandType.StoredProcedure;
-                                                    command.Parameters.AddWithValue("@InspectionId", generatedIdCombinedDetails);
-                                                    command.Parameters.AddWithValue("@CartId", file.CartId);
-                                                    command.Parameters.AddWithValue("@InstallationType", file.Installtypes);
-                                                    command.Parameters.AddWithValue("@DocumentID", file.DocumentId);
-                                                    command.Parameters.AddWithValue("@DocSaveName", file.DocSaveName);
-                                                    command.Parameters.AddWithValue("@FileName", file.FileName);
-                                                    command.Parameters.AddWithValue("@FilePath", file.FilePath);
-                                                    command.Parameters.AddWithValue("@CreatedBy", para_CreatedByy);
-                                                    command.ExecuteNonQuery();
-                                                }
-                                            }
-                                            //}
+                                            transcationId = txtTransactionId.Text.Trim();
+                                            TranscationDate = string.IsNullOrEmpty(txtTransactiondate.Text) ? null : txtTransactiondate.Text;
                                         }
                                         else
                                         {
-                                            //string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
-
-                                            //using (SqlConnection connection = new SqlConnection(connectionString))
-                                            //{
-                                            //connection.Open();
-                                            //string generatedIdCombinedDetails = CEI.InspectionId();
-                                            foreach (var file in uploadedFiles)
-                                            {
-                                                string query = "sp_InsertInspectionAttachmentsForPeriodic";
-
-                                                using (SqlCommand command = new SqlCommand(query, transaction.Connection, transaction))
-                                                {
-                                                    command.CommandType = CommandType.StoredProcedure;
-                                                    command.Parameters.AddWithValue("@InspectionId", file.InspectionId);
-                                                    command.Parameters.AddWithValue("@CartId", file.CartId);
-                                                    command.Parameters.AddWithValue("@InstallationType", file.Installtypes);
-                                                    command.Parameters.AddWithValue("@DocumentID", file.DocumentId);
-                                                    command.Parameters.AddWithValue("@DocSaveName", file.DocSaveName);
-                                                    command.Parameters.AddWithValue("@FileName", file.FileName);
-                                                    command.Parameters.AddWithValue("@FilePath", file.FilePath);
-                                                    command.Parameters.AddWithValue("@CreatedBy", para_CreatedByy);
-                                                    command.ExecuteNonQuery();
-                                                }
-                                            }
-                                            //}
+                                            txtTransactiondate.Focus();
+                                            txtTransactionId.Focus();
+                                            return;
                                         }
-                                    }
-                                    else
-                                    {
-                                        throw new Exception("Please Upload Pdf Files");
-                                    }
 
-                                    transaction.Commit();
-                                    Session["CartID"] = string.Empty;
-                                    //Response.Redirect("/SiteOwnerPages/InspectionRenewalCart.aspx", false);
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Submitted Successfully !!!'); window.location='/SiteOwnerPages/InspectionHistory.aspx';", true);
-                                    Session["ServiceType"] = string.Empty;
-                                }
-                                catch (Exception ex)
-                                {
-                                    transaction?.Rollback();
-                                    string errorMessage = ex.Message.Replace("'", "\\'");
-                                    ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
-                                }
-                                finally
-                                {
-                                    transaction?.Dispose();
-                                    connection.Close();
+                                        //string NewInspID = 
+                                        transaction = connection.BeginTransaction();
+                                        CEI.InsertPeriodicInspectionDataNew("Periodic", CartID, transcationId, TranscationDate, para_CreatedByy, NewPara, transaction);
+                                        //CEI.InsertPeriodicInspectionData("Periodic", IdCart, IntimationId, ApplicantType,InstallationType, VoltageLevel, District, Division, AssignTo,
+                                        //                   PaymentMode, Amount, transcationId, TranscationDate,para_CreatedByy, Capacity, Voltage, NewPara,Convert.ToInt32(Session["ServiceType"]), transaction);
+
+                                        UploadCheckListDocInCollection(para_CreatedByy, NewPara, CartID);
+                                        string generatedIdCombinedDetails = CEI.InspectionId();
+                                        if (uploadedFiles != null && uploadedFiles.Count > 0)
+                                        {
+                                            if (generatedIdCombinedDetails != "")
+                                            {
+                                                string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+
+                                                //using (SqlConnection connection = new SqlConnection(connectionString))
+                                                //{
+                                                //connection.Open();
+                                                //string generatedIdCombiedDetails = CEI.InspectionId();                                    
+                                                foreach (var file in uploadedFiles)
+                                                {
+                                                    string query = "sp_InsertInspectionAttachmentsForPeriodic";
+
+                                                    using (SqlCommand command = new SqlCommand(query, transaction.Connection, transaction))
+                                                    {
+                                                        command.CommandType = CommandType.StoredProcedure;
+                                                        command.Parameters.AddWithValue("@InspectionId", generatedIdCombinedDetails);
+                                                        command.Parameters.AddWithValue("@CartId", file.CartId);
+                                                        command.Parameters.AddWithValue("@InstallationType", file.Installtypes);
+                                                        command.Parameters.AddWithValue("@DocumentID", file.DocumentId);
+                                                        command.Parameters.AddWithValue("@DocSaveName", file.DocSaveName);
+                                                        command.Parameters.AddWithValue("@FileName", file.FileName);
+                                                        command.Parameters.AddWithValue("@FilePath", file.FilePath);
+                                                        command.Parameters.AddWithValue("@CreatedBy", para_CreatedByy);
+                                                        command.ExecuteNonQuery();
+                                                    }
+                                                }
+                                                //}
+                                            }
+                                            else
+                                            {
+                                                //string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+
+                                                //using (SqlConnection connection = new SqlConnection(connectionString))
+                                                //{
+                                                //connection.Open();
+                                                //string generatedIdCombinedDetails = CEI.InspectionId();
+                                                foreach (var file in uploadedFiles)
+                                                {
+                                                    string query = "sp_InsertInspectionAttachmentsForPeriodic";
+
+                                                    using (SqlCommand command = new SqlCommand(query, transaction.Connection, transaction))
+                                                    {
+                                                        command.CommandType = CommandType.StoredProcedure;
+                                                        command.Parameters.AddWithValue("@InspectionId", file.InspectionId);
+                                                        command.Parameters.AddWithValue("@CartId", file.CartId);
+                                                        command.Parameters.AddWithValue("@InstallationType", file.Installtypes);
+                                                        command.Parameters.AddWithValue("@DocumentID", file.DocumentId);
+                                                        command.Parameters.AddWithValue("@DocSaveName", file.DocSaveName);
+                                                        command.Parameters.AddWithValue("@FileName", file.FileName);
+                                                        command.Parameters.AddWithValue("@FilePath", file.FilePath);
+                                                        command.Parameters.AddWithValue("@CreatedBy", para_CreatedByy);
+                                                        command.ExecuteNonQuery();
+                                                    }
+                                                }
+                                                //}
+                                            }
+                                        }
+                                        else
+                                        {
+                                            throw new Exception("Please Upload Pdf Files");
+                                        }
+
+                                        transaction.Commit();
+                                        Session["CartID"] = string.Empty;
+                                        //Response.Redirect("/SiteOwnerPages/InspectionRenewalCart.aspx", false);
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Submitted Successfully !!!'); window.location='/SiteOwnerPages/InspectionHistory.aspx';", true);
+                                        Session["ServiceType"] = string.Empty;
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        transaction?.Rollback();
+                                        string errorMessage = ex.Message.Replace("'", "\\'");
+                                        ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
+                                    }
+                                    finally
+                                    {
+                                        transaction?.Dispose();
+                                        connection.Close();
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            // Response.Write("<script>alert('Please select a file to upload.');</script>");
+                            else
+                            {
+                                // Response.Write("<script>alert('Please select a file to upload.');</script>");
+                            }
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        string message = "alert(Error :'" + ex.Message + "')";
+                        ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    string message = "alert(Error :'" + ex.Message + "')";
-                    ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
+                    Response.Write("<script>alert('Please upload mandatory files.');</script>");
                 }
             }
             else
             {
-                Response.Write("<script>alert('Please upload mandatory files.');</script>");
+                Response.Write("<script>alert('Please Contact helpdesk.');</script>");
             }
+            
         }
 
         protected bool CheckAttachment(int check_para)

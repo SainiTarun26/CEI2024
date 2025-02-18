@@ -26,6 +26,7 @@ namespace CEIHaryana.Industry_Master
         List<(string InspectionId, string CartId, string Installtypes, string DocumentId, string DocSaveName, string FileName, string FilePath)> uploadedFiles = new List<(string, string, string, string, string, string, string)>();
         private static string IdCart, Voltage, Capacity, TestRportId, IntimationId, InstallationType, VoltageLevel, ApplicantType, District, Division, AssignTo, PaymentMode, Amount, NewInspectionId, type, inspectionCountRes, inspectionIdRes;
         int para_InspectID = 0;
+        int updatedCount;
         string CartID = string.Empty;
         string generatedIdCombinedDetails = string.Empty;
 
@@ -47,6 +48,17 @@ namespace CEIHaryana.Industry_Master
                             CartID = Convert.ToString(Session["CartID_Industry"]);
                         }
                         Page.Session["ClickCount"] = "0";
+                        DataSet ds1 = CEI.GetInstallationDetails(CartID);
+                        int count = Convert.ToInt32(ds1.Tables[0].Rows[0]["InstallationCount"]);
+                        if (count > 0)
+
+                        {
+                            updatedCount = count + 2;
+                        }
+                        else
+                        {
+                            btnSubmit.Enabled = false;
+                        }
                         DataSet ds = new DataSet();
                         ds = CEI.GetPeriodicType_Industries(CartID);
                         type = ds.Tables[0].Rows[0]["InspectionStatus"].ToString();
@@ -776,329 +788,355 @@ namespace CEIHaryana.Industry_Master
 
                 int checksuccessmessage = 0;
                 int NewPara = 0;
+                if (!string.IsNullOrEmpty(Convert.ToString(Session["IDCart"])))
+                {
+                    CartID = Convert.ToString(Session["IDCart"]);
+                }
+                else
+                {
+                    CartID = Convert.ToString(Session["CartID"]);
+                }
 
                 if (HF_para_InspectID.Value != null && HF_para_InspectID.Value != "")
                 {
                     NewPara = Convert.ToInt32(HF_para_InspectID.Value);
                 }
-                if (CheckAttachment(NewPara))
+                DataSet ds1 = CEI.GetInstallationDetails(CartID);
+                int count = Convert.ToInt32(ds1.Tables[0].Rows[0]["InstallationCount"]);
+                if (count > 0)
+
                 {
-                    try
+                    updatedCount = count + 2;
+                }
+                else
+                {
+                    Response.Write("<script>alert('Please Contact helpdesk.');</script>");
+                }
+                if (updatedCount > 0)
+                {
+                    if (CheckAttachment(NewPara))
                     {
-
-                        if (Convert.ToString(Session["SiteOwnerId_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
+                        try
                         {
-                            bool isValid1 = true;
-                            bool isValid2 = true;
-                            string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
-                            if (serverStatus != "Server is reachable.")
-                            {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
-                                return;
-                            }
 
-                            if (!string.IsNullOrEmpty(Convert.ToString(Session["IDCart_Industry"])))
+                            if (Convert.ToString(Session["SiteOwnerId_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
                             {
-                                CartID = Convert.ToString(Session["IDCart_Industry"]);
-                            }
-                            else
-                            {
-                                CartID = Convert.ToString(Session["CartID_Industry"]);
-                            }
-                            if (CartID == null || CartID == "")
-                            {
-                                isValid1 = false;
-                            }
-
-                            if (isValid1 == true)
-                            {
-
-                                using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                                bool isValid1 = true;
+                                bool isValid2 = true;
+                                string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
+                                if (serverStatus != "Server is reachable.")
                                 {
-                                    SqlTransaction transaction = null;
-                                    try
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
+                                    return;
+                                }
+
+                                if (!string.IsNullOrEmpty(Convert.ToString(Session["IDCart_Industry"])))
+                                {
+                                    CartID = Convert.ToString(Session["IDCart_Industry"]);
+                                }
+                                else
+                                {
+                                    CartID = Convert.ToString(Session["CartID_Industry"]);
+                                }
+                                if (CartID == null || CartID == "")
+                                {
+                                    isValid1 = false;
+                                }
+
+                                if (isValid1 == true)
+                                {
+
+                                    using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
                                     {
-                                        connection.Open();
-                                        string para_CreatedByy = Session["SiteOwnerId_Industry"].ToString();
-                                        string transcationId = string.Empty;
-                                        string TranscationDate = string.Empty;
-                                        /* int para_InspectID = 0; */   //////////
-                                                                        //string TransactionId = txtTransactionId.Text;
-                                                                        //string TransctionDate = txtTransactiondate.Text;
-                                        if (txtTransactionId.Text != "")
+                                        SqlTransaction transaction = null;
+                                        try
                                         {
-                                            transcationId = txtTransactionId.Text.Trim();
-                                            TranscationDate = string.IsNullOrEmpty(txtTransactiondate.Text) ? null : txtTransactiondate.Text;
-                                        }
-                                        else
-                                        {
-                                            txtTransactiondate.Focus();
-                                            txtTransactionId.Focus();
-                                            return;
-                                        }
-
-                                        //string NewInspID = 
-                                        transaction = connection.BeginTransaction();
-                                        CEI.InsertPeriodicInspectionData_Industries("Periodic", CartID, transcationId, TranscationDate,
-                                                           para_CreatedByy, NewPara, transaction);
-
-                                        //IntimationId, ApplicantType,
-                                        //            InstallationType, VoltageLevel, District, Division, AssignTo,
-                                        //               PaymentMode, Amount, Capacity, Voltage,
-
-
-                                        UploadCheckListDocInCollection(para_CreatedByy, NewPara, CartID);
-                                        generatedIdCombinedDetails = CEI.InspectionId();
-                                        if (uploadedFiles != null && uploadedFiles.Count > 0)
-                                        {
-                                            if (generatedIdCombinedDetails != "")
+                                            connection.Open();
+                                            string para_CreatedByy = Session["SiteOwnerId_Industry"].ToString();
+                                            string transcationId = string.Empty;
+                                            string TranscationDate = string.Empty;
+                                            /* int para_InspectID = 0; */   //////////
+                                                                            //string TransactionId = txtTransactionId.Text;
+                                                                            //string TransctionDate = txtTransactiondate.Text;
+                                            if (txtTransactionId.Text != "")
                                             {
-                                                string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
-
-                                                //using (SqlConnection connection = new SqlConnection(connectionString))
-                                                //{
-                                                //connection.Open();
-                                                //string generatedIdCombiedDetails = CEI.InspectionId();  
-                                                foreach (var file in uploadedFiles)
-                                                {
-                                                    string query = "sp_InsertInspectionAttachmentsForPeriodic_Industries";
-
-                                                    using (SqlCommand command = new SqlCommand(query, transaction.Connection, transaction))
-                                                    {
-                                                        command.CommandType = CommandType.StoredProcedure;
-                                                        command.Parameters.AddWithValue("@InspectionId", generatedIdCombinedDetails);
-                                                        command.Parameters.AddWithValue("@CartId", file.CartId);
-                                                        command.Parameters.AddWithValue("@InstallationType", file.Installtypes);
-                                                        command.Parameters.AddWithValue("@DocumentID", file.DocumentId);
-                                                        command.Parameters.AddWithValue("@DocSaveName", file.DocSaveName);
-                                                        command.Parameters.AddWithValue("@FileName", file.FileName);
-                                                        command.Parameters.AddWithValue("@FilePath", file.FilePath);
-                                                        command.Parameters.AddWithValue("@CreatedBy", para_CreatedByy);
-                                                        command.ExecuteNonQuery();
-                                                    }
-                                                }
-                                                //}
+                                                transcationId = txtTransactionId.Text.Trim();
+                                                TranscationDate = string.IsNullOrEmpty(txtTransactiondate.Text) ? null : txtTransactiondate.Text;
                                             }
                                             else
                                             {
-                                                //string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
-
-                                                //using (SqlConnection connection = new SqlConnection(connectionString))
-                                                //{
-                                                //connection.Open();
-                                                //string generatedIdCombinedDetails = CEI.InspectionId();
-                                                foreach (var file in uploadedFiles)
-                                                {
-                                                    string query = "sp_InsertInspectionAttachmentsForPeriodic_Industries";
-
-                                                    using (SqlCommand command = new SqlCommand(query, transaction.Connection, transaction))
-                                                    {
-                                                        command.CommandType = CommandType.StoredProcedure;
-                                                        command.Parameters.AddWithValue("@InspectionId", file.InspectionId);
-                                                        command.Parameters.AddWithValue("@CartId", file.CartId);
-                                                        command.Parameters.AddWithValue("@InstallationType", file.Installtypes);
-                                                        command.Parameters.AddWithValue("@DocumentID", file.DocumentId);
-                                                        command.Parameters.AddWithValue("@DocSaveName", file.DocSaveName);
-                                                        command.Parameters.AddWithValue("@FileName", file.FileName);
-                                                        command.Parameters.AddWithValue("@FilePath", file.FilePath);
-                                                        command.Parameters.AddWithValue("@CreatedBy", para_CreatedByy);
-                                                        command.ExecuteNonQuery();
-                                                    }
-                                                }
-                                                //}
+                                                txtTransactiondate.Focus();
+                                                txtTransactionId.Focus();
+                                                return;
                                             }
-                                        }
-                                        else
-                                        {
-                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please Upload Pdf Files.');", true);
-                                            return;
-                                            //throw new Exception("Please Upload Pdf Files");
-                                        }
 
-                                        transaction.Commit();
-                                        Session["CartID_Industry"] = string.Empty;
-                                        checksuccessmessage = 1;
-                                       // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Submitted Successfully !!!'); window.location='/Industry_Master/InspectionHistory_Industry.aspx';", true);
-                                        Session["ServiceType"] = string.Empty;
-                                        // Response.Redirect("/SiteOwnerPages/InspectionRenewalCart.aspx", false);
-                                        // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Submitted Successfully !!!'); window.location='/Industry_Master/InspectionHistory_Industry.aspx';", true);
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        transaction?.Rollback();
-                                        string errorMessage = ex.Message.Replace("'", "\\'");
-                                        ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
-                                    }
-                                    finally
-                                    {
-                                        transaction?.Dispose();
-                                        connection.Close();
-                                    }
+                                            //string NewInspID = 
+                                            transaction = connection.BeginTransaction();
+                                            CEI.InsertPeriodicInspectionData_Industries("Periodic", CartID, transcationId, TranscationDate,
+                                                               para_CreatedByy, NewPara, transaction);
 
-                                    try
-                                    {
+                                            //IntimationId, ApplicantType,
+                                            //            InstallationType, VoltageLevel, District, Division, AssignTo,
+                                            //               PaymentMode, Amount, Capacity, Voltage,
 
-                                        // string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
-                                        //commented on 10 nov 2024 aslam 
-                                        //Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(generatedIdCombinedDetails), "Submit");
-                                        List<Industry_Api_Post_DataformatModel> ApiPostformatResults = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(generatedIdCombinedDetails), "Submit", Session["projectid_pd_Indus"].ToString(), Session["Serviceid_pd_Indus"].ToString(), Session["SiteOwnerId_Industry"].ToString());
-                                        foreach (var ApiPostformatresult in ApiPostformatResults)
-                                        {
-                                            if (ApiPostformatresult.PremisesType == "Industry")
+
+                                            UploadCheckListDocInCollection(para_CreatedByy, NewPara, CartID);
+                                            generatedIdCombinedDetails = CEI.InspectionId();
+                                            if (uploadedFiles != null && uploadedFiles.Count > 0)
                                             {
-                                                // string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
-                                                string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
-                                                // string accessToken = "dfsfdsfsfsdf";
-
-                                                logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                                              "https://investharyana.in/api/project-service-logs-external_UHBVN",
-                                                              new Industry_Inspection_StageWise_JsonDataFormat_Model
-                                                              {
-                                                                  actionTaken = ApiPostformatresult.ActionTaken,
-                                                                  commentByUserLogin = ApiPostformatresult.CommentByUserLogin,
-                                                                  commentDate = ApiPostformatresult.CommentDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                                                  comments = ApiPostformatresult.Comments,
-                                                                  id = ApiPostformatresult.Id,
-                                                                  projectid = ApiPostformatresult.ProjectId,
-                                                                  serviceid = ApiPostformatresult.ServiceId
-                                                              }, ApiPostformatresult, accessToken);
-
-                                                if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
+                                                if (generatedIdCombinedDetails != "")
                                                 {
-                                                    throw new Exception(logDetails.ErrorMessage);
+                                                    string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+
+                                                    //using (SqlConnection connection = new SqlConnection(connectionString))
+                                                    //{
+                                                    //connection.Open();
+                                                    //string generatedIdCombiedDetails = CEI.InspectionId();  
+                                                    foreach (var file in uploadedFiles)
+                                                    {
+                                                        string query = "sp_InsertInspectionAttachmentsForPeriodic_Industries";
+
+                                                        using (SqlCommand command = new SqlCommand(query, transaction.Connection, transaction))
+                                                        {
+                                                            command.CommandType = CommandType.StoredProcedure;
+                                                            command.Parameters.AddWithValue("@InspectionId", generatedIdCombinedDetails);
+                                                            command.Parameters.AddWithValue("@CartId", file.CartId);
+                                                            command.Parameters.AddWithValue("@InstallationType", file.Installtypes);
+                                                            command.Parameters.AddWithValue("@DocumentID", file.DocumentId);
+                                                            command.Parameters.AddWithValue("@DocSaveName", file.DocSaveName);
+                                                            command.Parameters.AddWithValue("@FileName", file.FileName);
+                                                            command.Parameters.AddWithValue("@FilePath", file.FilePath);
+                                                            command.Parameters.AddWithValue("@CreatedBy", para_CreatedByy);
+                                                            command.ExecuteNonQuery();
+                                                        }
+                                                    }
+                                                    //}
                                                 }
+                                                else
+                                                {
+                                                    //string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+
+                                                    //using (SqlConnection connection = new SqlConnection(connectionString))
+                                                    //{
+                                                    //connection.Open();
+                                                    //string generatedIdCombinedDetails = CEI.InspectionId();
+                                                    foreach (var file in uploadedFiles)
+                                                    {
+                                                        string query = "sp_InsertInspectionAttachmentsForPeriodic_Industries";
+
+                                                        using (SqlCommand command = new SqlCommand(query, transaction.Connection, transaction))
+                                                        {
+                                                            command.CommandType = CommandType.StoredProcedure;
+                                                            command.Parameters.AddWithValue("@InspectionId", file.InspectionId);
+                                                            command.Parameters.AddWithValue("@CartId", file.CartId);
+                                                            command.Parameters.AddWithValue("@InstallationType", file.Installtypes);
+                                                            command.Parameters.AddWithValue("@DocumentID", file.DocumentId);
+                                                            command.Parameters.AddWithValue("@DocSaveName", file.DocSaveName);
+                                                            command.Parameters.AddWithValue("@FileName", file.FileName);
+                                                            command.Parameters.AddWithValue("@FilePath", file.FilePath);
+                                                            command.Parameters.AddWithValue("@CreatedBy", para_CreatedByy);
+                                                            command.ExecuteNonQuery();
+                                                        }
+                                                    }
+                                                    //}
+                                                }
+                                            }
+                                            else
+                                            {
+                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please Upload Pdf Files.');", true);
+                                                return;
+                                                //throw new Exception("Please Upload Pdf Files");
+                                            }
+
+                                            transaction.Commit();
+                                            Session["CartID_Industry"] = string.Empty;
+                                            checksuccessmessage = 1;
+                                            // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Submitted Successfully !!!'); window.location='/Industry_Master/InspectionHistory_Industry.aspx';", true);
+                                            Session["ServiceType"] = string.Empty;
+                                            // Response.Redirect("/SiteOwnerPages/InspectionRenewalCart.aspx", false);
+                                            // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Submitted Successfully !!!'); window.location='/Industry_Master/InspectionHistory_Industry.aspx';", true);
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            transaction?.Rollback();
+                                            string errorMessage = ex.Message.Replace("'", "\\'");
+                                            ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
+                                        }
+                                        finally
+                                        {
+                                            transaction?.Dispose();
+                                            connection.Close();
+                                        }
+
+                                        try
+                                        {
+
+                                            // string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
+                                            //commented on 10 nov 2024 aslam 
+                                            //Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(generatedIdCombinedDetails), "Submit");
+                                            List<Industry_Api_Post_DataformatModel> ApiPostformatResults = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(generatedIdCombinedDetails), "Submit", Session["projectid_pd_Indus"].ToString(), Session["Serviceid_pd_Indus"].ToString(), Session["SiteOwnerId_Industry"].ToString());
+                                            foreach (var ApiPostformatresult in ApiPostformatResults)
+                                            {
+                                                if (ApiPostformatresult.PremisesType == "Industry")
+                                                {
+                                                    // string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                                                    string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                                                    // string accessToken = "dfsfdsfsfsdf";
+
+                                                    logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
+                                                                  "https://investharyana.in/api/project-service-logs-external_UHBVN",
+                                                                  new Industry_Inspection_StageWise_JsonDataFormat_Model
+                                                                  {
+                                                                      actionTaken = ApiPostformatresult.ActionTaken,
+                                                                      commentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                                                                      commentDate = ApiPostformatresult.CommentDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                                                      comments = ApiPostformatresult.Comments,
+                                                                      id = ApiPostformatresult.Id,
+                                                                      projectid = ApiPostformatresult.ProjectId,
+                                                                      serviceid = ApiPostformatresult.ServiceId
+                                                                  }, ApiPostformatresult, accessToken);
+
+                                                    if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
+                                                    {
+                                                        throw new Exception(logDetails.ErrorMessage);
+                                                    }
 
 
-                                                CEI.LogToIndustryApiSuccessDatabase(
-                                                logDetails.Url,
-                                                logDetails.Method,
-                                                logDetails.RequestHeaders,
-                                                logDetails.ContentType,
-                                                logDetails.RequestBody,
-                                                logDetails.ResponseStatusCode,
-                                                logDetails.ResponseHeaders,
-                                                logDetails.ResponseBody,
+                                                    CEI.LogToIndustryApiSuccessDatabase(
+                                                    logDetails.Url,
+                                                    logDetails.Method,
+                                                    logDetails.RequestHeaders,
+                                                    logDetails.ContentType,
+                                                    logDetails.RequestBody,
+                                                    logDetails.ResponseStatusCode,
+                                                    logDetails.ResponseHeaders,
+                                                    logDetails.ResponseBody,
 
+                                                    new Industry_Api_Post_DataformatModel
+                                                    {
+                                                        InspectionId = ApiPostformatresult.InspectionId,
+                                                        InspectionLogId = ApiPostformatresult.InspectionLogId,
+                                                        IncomingJsonId = ApiPostformatresult.IncomingJsonId,
+                                                        ActionTaken = ApiPostformatresult.ActionTaken,
+                                                        CommentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                                                        CommentDate = ApiPostformatresult.CommentDate,
+
+                                                        Comments = ApiPostformatresult.Comments,
+                                                        Id = ApiPostformatresult.Id,
+                                                        ProjectId = ApiPostformatresult.ProjectId,
+                                                        ServiceId = ApiPostformatresult.ServiceId,
+                                                    }
+
+                                                );
+
+                                                }
+                                            }
+
+                                        }
+                                        catch (TokenManagerException ex)
+                                        {
+                                            CEI.LogToIndustryApiErrorDatabase(
+                                                ex.RequestUrl,
+                                                ex.RequestMethod,
+                                                ex.RequestHeaders,
+                                                ex.RequestContentType,
+                                                ex.RequestBody,
+                                                ex.ResponseStatusCode,
+                                                ex.ResponseHeaders,
+                                                ex.ResponseBody,
                                                 new Industry_Api_Post_DataformatModel
                                                 {
-                                                    InspectionId = ApiPostformatresult.InspectionId,
-                                                    InspectionLogId = ApiPostformatresult.InspectionLogId,
-                                                    IncomingJsonId = ApiPostformatresult.IncomingJsonId,
-                                                    ActionTaken = ApiPostformatresult.ActionTaken,
-                                                    CommentByUserLogin = ApiPostformatresult.CommentByUserLogin,
-                                                    CommentDate = ApiPostformatresult.CommentDate,
-
-                                                    Comments = ApiPostformatresult.Comments,
-                                                    Id = ApiPostformatresult.Id,
-                                                    ProjectId = ApiPostformatresult.ProjectId,
-                                                    ServiceId = ApiPostformatresult.ServiceId,
+                                                    InspectionId = ex.InspectionId,
+                                                    InspectionLogId = ex.InspectionLogId,
+                                                    IncomingJsonId = ex.IncomingJsonId,
+                                                    ActionTaken = ex.ActionTaken,
+                                                    CommentByUserLogin = ex.CommentByUserLogin,
+                                                    CommentDate = ex.CommentDate,
+                                                    Comments = ex.Comments,
+                                                    Id = ex.Id,
+                                                    ProjectId = ex.ProjectId,
+                                                    ServiceId = ex.ServiceId,
                                                 }
+                                            );
+                                            string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
+                                            // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                                            //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+                                            //  ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
+                                        }
+                                        catch (IndustryApiException ex)
+                                        {
+                                            CEI.LogToIndustryApiErrorDatabase(
+                                                ex.RequestUrl,
+                                                ex.RequestMethod,
+                                                ex.RequestHeaders,
+                                                ex.RequestContentType,
+                                                ex.RequestBody,
+                                                ex.ResponseStatusCode,
+                                                ex.ResponseHeaders,
+                                                ex.ResponseBody,
+                                                new Industry_Api_Post_DataformatModel
+                                                {
+                                                    InspectionId = ex.InspectionId,
+                                                    InspectionLogId = ex.InspectionLogId,
+                                                    IncomingJsonId = ex.IncomingJsonId,
+                                                    ActionTaken = ex.ActionTaken,
+                                                    CommentByUserLogin = ex.CommentByUserLogin,
+                                                    CommentDate = ex.CommentDate,
 
+                                                    Comments = ex.Comments,
+                                                    Id = ex.Id,
+                                                    ProjectId = ex.ProjectId,
+                                                    ServiceId = ex.ServiceId,
+                                                }
                                             );
 
-                                            }
+                                            string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
+
+                                            //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                                            //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+
+                                            // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
                                         }
 
-                                    }
-                                    catch (TokenManagerException ex)
-                                    {
-                                        CEI.LogToIndustryApiErrorDatabase(
-                                            ex.RequestUrl,
-                                            ex.RequestMethod,
-                                            ex.RequestHeaders,
-                                            ex.RequestContentType,
-                                            ex.RequestBody,
-                                            ex.ResponseStatusCode,
-                                            ex.ResponseHeaders,
-                                            ex.ResponseBody,
-                                            new Industry_Api_Post_DataformatModel
-                                            {
-                                                InspectionId = ex.InspectionId,
-                                                InspectionLogId = ex.InspectionLogId,
-                                                IncomingJsonId = ex.IncomingJsonId,
-                                                ActionTaken = ex.ActionTaken,
-                                                CommentByUserLogin = ex.CommentByUserLogin,
-                                                CommentDate = ex.CommentDate,
-                                                Comments = ex.Comments,
-                                                Id = ex.Id,
-                                                ProjectId = ex.ProjectId,
-                                                ServiceId = ex.ServiceId,
-                                            }
-                                        );
-                                        string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
-                                        // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
-                                        //  ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
-                                    }
-                                    catch (IndustryApiException ex)
-                                    {
-                                        CEI.LogToIndustryApiErrorDatabase(
-                                            ex.RequestUrl,
-                                            ex.RequestMethod,
-                                            ex.RequestHeaders,
-                                            ex.RequestContentType,
-                                            ex.RequestBody,
-                                            ex.ResponseStatusCode,
-                                            ex.ResponseHeaders,
-                                            ex.ResponseBody,
-                                            new Industry_Api_Post_DataformatModel
-                                            {
-                                                InspectionId = ex.InspectionId,
-                                                InspectionLogId = ex.InspectionLogId,
-                                                IncomingJsonId = ex.IncomingJsonId,
-                                                ActionTaken = ex.ActionTaken,
-                                                CommentByUserLogin = ex.CommentByUserLogin,
-                                                CommentDate = ex.CommentDate,
-
-                                                Comments = ex.Comments,
-                                                Id = ex.Id,
-                                                ProjectId = ex.ProjectId,
-                                                ServiceId = ex.ServiceId,
-                                            }
-                                        );
-
-                                        string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
-
-                                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
-
-                                        // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
-                                    }
-
-                                    catch (Exception ex)
-                                    {
-                                        // Rollback the transaction if an error occurs
-                                        //transaction.Rollback();
-                                        // Handle the exception, log it, etc.
-                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An error occurred.');", true);
-                                    }
-
-                                    finally
-                                    {
-
-                                        if (checksuccessmessage == 1)
+                                        catch (Exception ex)
                                         {
-                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Submitted Successfully !!!'); window.location='InspectionHistory_Industry.aspx'", true);
+                                            // Rollback the transaction if an error occurs
+                                            //transaction.Rollback();
+                                            // Handle the exception, log it, etc.
+                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An error occurred.');", true);
+                                        }
+
+                                        finally
+                                        {
+
+                                            if (checksuccessmessage == 1)
+                                            {
+                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Submitted Successfully !!!'); window.location='InspectionHistory_Industry.aspx'", true);
+                                            }
                                         }
                                     }
                                 }
-                            }
-                            else
-                            {
-                                // Display error message
-                                Response.Write("<script>alert('Please select a file to upload.');</script>");
+                                else
+                                {
+                                    // Display error message
+                                    Response.Write("<script>alert('Please select a file to upload.');</script>");
+                                }
                             }
                         }
+                        catch (Exception ex)
+                        {
+                            string message = "alert(Error :'" + ex.Message + "')";
+                            ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        string message = "alert(Error :'" + ex.Message + "')";
-                        ScriptManager.RegisterClientScriptBlock((sender as Control), this.GetType(), "alert", message, true);
+                        Response.Write("<script>alert('Please upload mandatory files.');</script>");
                     }
                 }
                 else
                 {
-                    Response.Write("<script>alert('Please upload mandatory files.');</script>");
+                    Response.Write("<script>alert('Please Contact helpdesk.');</script>");
                 }
             }
             else

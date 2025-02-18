@@ -9361,6 +9361,10 @@ SqlTransaction transaction)
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getUserId_Division", UserId);
         }
         #endregion
+        public DataSet GetInstallationDetails(string CartId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallation_Type", CartId);
+        }
     }
 }
 
