@@ -9243,6 +9243,10 @@ SqlTransaction transaction)
 
         #region Neha 
         //-30Jan-2025
+        public DataTable ShowPendingDivisionDaysDataForOfficer(string dated, string Division, string District)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ShowPendingDivisionDaysDataForOfficer", dated, Division, District);
+        }
         public DataSet AcceptRejectReturnedInspectionATAdmin(string LoginId, string Division = null)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectReturnedInspectionATAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division);
