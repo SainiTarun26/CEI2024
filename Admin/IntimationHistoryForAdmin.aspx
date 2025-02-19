@@ -79,7 +79,7 @@
 
         .headercolor {
             background-color: #9292cc;
-            color:white !important;
+            color: white !important;
         }
 
         .form-group {
@@ -133,8 +133,8 @@
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
-                                     <asp:Label ID="lblRequestStatus" runat="server" Text='<%#Eval("RequestStatus") %>'></asp:Label>
-                                     <asp:Label ID="lblTypeOfInspection" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label>
+                                    <asp:Label ID="lblRequestStatus" runat="server" Text='<%#Eval("RequestStatus") %>'></asp:Label>
+                                    <asp:Label ID="lblTypeOfInspection" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Id" Visible="False">
@@ -146,7 +146,7 @@
                                 <HeaderStyle Width="10%" CssClass="headercolor" />
                                 <ItemStyle Width="10%" />
                                 <HeaderTemplate>
-                                    Inspection Number
+                                    Inspection No.
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
@@ -156,20 +156,26 @@
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
+
                             <asp:TemplateField HeaderText="Owner Name">
                                 <HeaderStyle Width="35%" CssClass="headercolor textjustify" />
                                 <ItemStyle Width="35%" CssClass="owner-name" />
                                 <ItemTemplate>
-
                                     <asp:Label ID="lblInspectionOwnerName" runat="server" Text='<%# Eval("InspectionOwnerName") %>' CssClass="break-text"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-
-                            <asp:BoundField DataField="ApplicantType" HeaderText="Applicant Type">
+                            <asp:TemplateField HeaderText="Contractor Name">
+                                <HeaderStyle Width="35%" CssClass="headercolor textjustify" />
+                                <ItemStyle Width="35%" CssClass="owner-name" />
+                                <ItemTemplate>
+                                    <asp:Label ID="lblContractorName" runat="server" Text='<%# Eval("ContractorName") %>' CssClass="break-text"></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="ApplicantType" HeaderText="Applicant Type" Visible="false">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level">
+                            <asp:BoundField DataField="VoltageLevel" HeaderText="Voltage Level" Visible="false">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
