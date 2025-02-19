@@ -286,7 +286,32 @@ var myDoughnutChart = new Chart(ctx, {{
                 //
             }
         }
-
+        protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                LinkButton LinkButton1 = (LinkButton)e.Row.FindControl("LinkButton1");
+                LinkButton LinkButton2 = (LinkButton)e.Row.FindControl("LinkButton2");
+                LinkButton LinkButton3 = (LinkButton)e.Row.FindControl("LinkButton3");
+                LinkButton LinkButton5 = (LinkButton)e.Row.FindControl("LinkButton5");
+                if (LinkButton1.CommandArgument.ToString() == "" || LinkButton1.CommandArgument.ToString() == "0")
+                {
+                    LinkButton1.Enabled = false;
+                }
+                if (LinkButton2.CommandArgument.ToString() == "" || LinkButton2.CommandArgument.ToString() == "0")
+                {
+                    LinkButton2.Enabled = false;
+                }
+                if (LinkButton3.CommandArgument.ToString() == "" || LinkButton3.CommandArgument.ToString() == "0")
+                {
+                    LinkButton3.Enabled = false;
+                }
+                if (LinkButton5.CommandArgument.ToString() == "" || LinkButton5.CommandArgument.ToString() == "0")
+                {
+                    LinkButton5.Enabled = false;
+                }
+            }
+        }
         protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try

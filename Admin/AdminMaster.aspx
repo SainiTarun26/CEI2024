@@ -893,7 +893,7 @@ text-decoration: underline;
                                             </div>
                                             <div id="printableDiv2">
                                                 <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView2" Visible="false"
-                                                    OnRowCommand="GridView2_RowCommand" AllowPaging="true" OnPageIndexChanging="GridView2_PageIndexChanging" PageSize="10"
+                                                    OnRowCommand="GridView2_RowCommand" AllowPaging="true" OnPageIndexChanging="GridView2_PageIndexChanging" OnRowDataBound="GridView2_RowDataBound" PageSize="10"
                                                     AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false"
                                                     BorderWidth="1px" BorderColor="#dbddff">
                                                     <PagerStyle CssClass="pagination-ys" />
