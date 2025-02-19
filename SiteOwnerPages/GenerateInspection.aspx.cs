@@ -55,6 +55,7 @@ namespace CEIHaryana.SiteOwnerPages
                     if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
                     {
                         Session["Amount"] = "";
+                        Session["Duplicacy"] = "0";
                         getWorkIntimationData();
                         Session["PreviousPage"] = Request.Url.ToString();
                         Grd_Document.RowDataBound += Grd_Document_RowDataBound;
@@ -197,6 +198,7 @@ namespace CEIHaryana.SiteOwnerPages
                     Label LblSactionLoad = (Label)row.FindControl("LblSactionLoad");
                     Label lblReportType = (Label)row.FindControl("lblReportType");
                     Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
+                    Session["lblIntimationId"] = lblIntimationId.Text;
                     Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
                     TestReportId = lblTestReportId.Text;
                     if (LblSactionLoad.Text == "1")
@@ -358,6 +360,7 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                     }
                     DataTable dsa = new DataTable();
+                    id = Session["lblIntimationId"].ToString();
                     dsa = CEI.Payment(id, Count, InstallationId, "New");
                     int Amount = 0;
                     if (dsa.Rows.Count > 0)

@@ -785,7 +785,7 @@
                                             <div id="printableDiv">
                                                 <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1"
                                                     OnRowCommand="GridView1_RowCommand" AllowPaging="true" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="10"
-                                                    AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false" Visible="false"
+                                                    AutoPostBack="true" runat="server" Width="100%" OnRowDataBound="GridView1_RowDataBound" AutoGenerateColumns="false" Visible="false"
                                                     BorderWidth="1px" BorderColor="#dbddff">
                                                     <PagerStyle CssClass="pagination-ys" />
                                                     <Columns>

@@ -91,7 +91,7 @@ namespace CEIHaryana.SiteOwnerPages
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
                     Session["id"] = lblID.Text;
-                    Session["Duplicacy"] = "0";
+                   
                     Session["TotalAmount"] = "0";
                     Response.Redirect("/SiteOwnerPages/GenerateInspection.aspx", false);
                 }
