@@ -267,8 +267,7 @@
                     <div class="col-12">
                         <asp:GridView class="table-responsive table table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20"
                             AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
-                            <%-- OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand"--%>
-
+                        
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
                                 <asp:TemplateField HeaderText="SNo">
@@ -287,7 +286,8 @@
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                     <ItemTemplate>
                                         <asp:Label ID="lblDocumentName" runat="server" Text='<%#Eval("DocumentName") %>'></asp:Label>
-                                    </ItemTemplate>
+  <asp:Label ID="lblMandatory" runat="server"  Text="*"   ForeColor="Red"  Visible='<%# Eval("DocumentName").ToString() != "Other Document" %>'></asp:Label>
+                                        </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Upload Document">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />

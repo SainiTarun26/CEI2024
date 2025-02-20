@@ -189,6 +189,7 @@ namespace CEIHaryana.SiteOwnerPages
                     Label lblTypeOfPlant = (Label)row.FindControl("LblTypeofPlant");                   
                     Label lblReportType = (Label)row.FindControl("lblReportType");
                     Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
+                    Session["lblIntimationId"] = lblIntimationId.Text;
                     Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
                     TestReportId = lblTestReportId.Text;
                     
@@ -258,6 +259,7 @@ namespace CEIHaryana.SiteOwnerPages
                     {
 
                     }
+                    id = Session["lblIntimationId"].ToString();
                     DataTable dt = new DataTable();
                     dt = CEI.GetApplicantCode(lblCategory.Text);
                     if (dt.Rows.Count > 0)

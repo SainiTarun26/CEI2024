@@ -496,6 +496,9 @@ namespace CEIHaryana.Industry_Master
                             case "Other Document":
                                 DocumentId = "14";
                                 break;
+                            case "Copy Of Electricity Bill":
+                                DocumentId = "9";
+                                break;
                             default:
                                 DocumentId = string.Empty;
                                 break;
@@ -586,6 +589,9 @@ namespace CEIHaryana.Industry_Master
                                 break;
                             case "Other Document":
                                 DocumentId = "14";
+                                break;
+                            case "Copy Of Electricity Bill":
+                                DocumentId = "9";
                                 break;
                             default:
                                 DocumentId = string.Empty;

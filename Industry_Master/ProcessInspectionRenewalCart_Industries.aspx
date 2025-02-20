@@ -308,6 +308,7 @@
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                     <ItemTemplate>
                                         <asp:Label ID="lblDocumentName" runat="server" Text='<%#Eval("DocumentName") %>'></asp:Label>
+                                        <asp:Label ID="lblMandatory" runat="server"  Text="*"   ForeColor="Red"  Visible='<%# Eval("DocumentName").ToString() != "Other Document" %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Upload Document">
