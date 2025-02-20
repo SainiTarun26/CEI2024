@@ -2471,9 +2471,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
 
 
-        public DataTable RequestPendingDaysData(string dated, string Division, string District)
+        public DataTable RequestPendingDaysData(string dated, string District)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ShowRequestPendingDaysData", dated, Division, District);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ShowRequestPendingDaysData", dated, District);
         }
         public DataSet DasboardCalculations()
         {
