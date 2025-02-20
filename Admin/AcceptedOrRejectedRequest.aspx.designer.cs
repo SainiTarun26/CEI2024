@@ -15,6 +15,15 @@ namespace CEIHaryana.Admin
     {
 
         /// <summary>
+        /// lblData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblData;
+
+        /// <summary>
         /// txtSearch control.
         /// </summary>
         /// <remarks>
@@ -24,6 +33,15 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
 
         /// <summary>
+        /// RadioButtonList1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
+
+        /// <summary>
         /// ddldivision control.
         /// </summary>
         /// <remarks>
@@ -31,15 +49,6 @@ namespace CEIHaryana.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddldivision;
-
-        /// <summary>
-        /// lblData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblData;
 
         /// <summary>
         /// GridView1 control.

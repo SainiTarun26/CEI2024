@@ -3547,18 +3547,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
         #endregion
         #region forAdmin        
-        public DataSet TotalRequestInspectionForAdmin(string LoginId)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin", LoginId);
-        }
-        public DataSet NeWRequestInspectionForAdmin(string LoginId)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceivedForAdmin", LoginId);
-        }
-        public DataSet InProcessRequestInspectionForAdmin(string LoginId)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetProcessRequestForAdmin", LoginId);
-        }
+        
+     
         public DataSet AcceptedOrRejectedRequestInspectionForAdmin(string LoginId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectInspectionForAdmin", LoginId);
@@ -7306,17 +7296,17 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
 
         #endregion
 
-        public DataSet TotalRequestInspectionForAdmin(string LoginId, string Division = null)
+        public DataSet TotalRequestInspectionForAdmin(string LoginId, string Division = null, string InstallationType = null)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType);
         }
-        public DataSet NeWRequestInspectionForAdmin(string LoginId, string Division = null)
+        public DataSet NeWRequestInspectionForAdmin(string LoginId, string Division = null, string InstallationType = null)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceivedForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceivedForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType);
         }
-        public DataSet InProcessRequestInspectionForAdmin(string LoginId, string Division = null)
+        public DataSet InProcessRequestInspectionForAdmin(string LoginId, string Division = null, string InstallationType = null)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetProcessRequestForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetProcessRequestForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType);
         }
         public DataSet AcceptedOrRejectedRequestInspectionForAdmin(string LoginId, string Division = null)
         {
@@ -9247,9 +9237,9 @@ SqlTransaction transaction)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ShowPendingDivisionDaysDataForOfficer", dated, Division, District);
         }
-        public DataSet AcceptRejectReturnedInspectionATAdmin(string LoginId, string Division = null)
+        public DataSet AcceptRejectReturnedInspectionATAdmin(string LoginId, string Division = null, string InstallationType = null)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectReturnedInspectionATAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectReturnedInspectionATAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType);
 
         }
 

@@ -109,6 +109,13 @@
         th {
     background: #9292cc;
 }
+                     input#ContentPlaceHolder1_RadioButtonList1_0 {
+    margin-right: 7px;
+}
+input#ContentPlaceHolder1_RadioButtonList1_1 {
+    margin-left: 10px;
+    margin-right: 7px;
+}
     </style>
 
 </asp:Content>
@@ -134,7 +141,14 @@
              </div>
          </div>
      </div>
-     <div class="col-4"></div>
+     <div class="col-4" style="text-align:center;">
+        <div style="display: inline-block;margin-left: -55px;">
+                   <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+    <asp:ListItem Text="Lift/Escalator" Value="1"></asp:ListItem>
+    <asp:ListItem Text="Line/Substration/Generating Set" Value="0"></asp:ListItem>
+</asp:RadioButtonList>
+</div>
+     </div>
      <div class="col-4">
          <div class="form-group row">
              <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Division:</label>

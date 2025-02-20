@@ -42,8 +42,9 @@ namespace CEIHaryana.Admin
             {
                 LoginId = Convert.ToString(Session["AdminId"]);
                 string id = ddldivision.SelectedValue.ToString();
+                string InstallationType = RadioButtonList1.SelectedValue.ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.NeWRequestInspectionForAdmin(LoginId, id);
+                ds = CEI.NeWRequestInspectionForAdmin(LoginId, id , InstallationType);
                 if (ds.Tables.Count > 0)
                 {
                     GridView1.DataSource = ds;
@@ -121,6 +122,12 @@ namespace CEIHaryana.Admin
         protected void ddldivision_SelectedIndexChanged(object sender, EventArgs e)
         {
             string id = ddldivision.SelectedValue.ToString();
+            GridBind();
+        }
+               
+        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string InstallationType = RadioButtonList1.SelectedValue.ToString();
             GridBind();
         }
     }
