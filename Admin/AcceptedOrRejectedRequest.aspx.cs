@@ -81,7 +81,7 @@ namespace CEIHaryana.Admin
                 dsDivision = CEI.DdlForDivision();
                 ddldivision.DataSource = dsDivision;
                 ddldivision.DataTextField = "HeadOffice";
-                ddldivision.DataValueField = "Area";
+                ddldivision.DataValueField = "HeadOffice";
                 ddldivision.DataBind();
                 ddldivision.Items.Insert(0, new ListItem("Select", "0"));
                 dsDivision.Clear();
