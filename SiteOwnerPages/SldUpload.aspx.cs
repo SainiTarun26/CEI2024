@@ -45,7 +45,7 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["OwnerName"] = OwnerName;
                 ddlSiteOwnerAdress.DataSource = dsAdress;
                 ddlSiteOwnerAdress.DataTextField = "FullAddress";
-                ddlSiteOwnerAdress.DataValueField = "FullAddress";
+                ddlSiteOwnerAdress.DataValueField = "Id";
                 ddlSiteOwnerAdress.DataBind();
                 ddlSiteOwnerAdress.Items.Insert(0, new ListItem("Select", "0"));
                 dsAdress.Clear();
@@ -132,7 +132,7 @@ namespace CEIHaryana.SiteOwnerPages
 
 
                         transaction = connection.BeginTransaction();
-                        int x = CEI.UploadSldDocument(SiteOwnerId, filePathInfo, filePathInfo1, SiteOwnerId, ddlSiteOwnerAdress.SelectedItem.ToString(), SiteOwnerName, "", transaction);
+                        int x = CEI.UploadSldDocument(SiteOwnerId, ddlSiteOwnerAdress.SelectedValue.ToString(), filePathInfo, filePathInfo1, SiteOwnerId, ddlSiteOwnerAdress.SelectedItem.ToString(), SiteOwnerName, "", transaction);
                         if (x == 2)
                         {
                             filePathInfo2 = Server.MapPath("~/Attachment/" + SiteOwnerId + "/Sld Document/" + fileName);

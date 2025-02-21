@@ -6437,12 +6437,12 @@ string CreatedBy, string TotalCapacity, string MaxVoltage, int InspectID)
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ApproveSdlHistoryForAdmin", Id, String.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
         //neeraj induatry
-        public DataSet checkInspection(string PanNumber)
+        public DataSet checkInspection(string PanNumber, string District)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckInspection", PanNumber);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckInspection", PanNumber, District);
         }
 
- 
+
         public DataSet TestReportData_Industry(string PANNumber, string District, string searchText = null)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationsForSiteOwner_Industry", PANNumber, District, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
@@ -7956,11 +7956,12 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
 
         }
 
-        public int UploadSldDocument(string SiteOwnerID, string Path, string RequestLetter, string Createdby, string SiteOwnerAddress, string OwnerName, string UserType, SqlTransaction transaction  )
+        public int UploadSldDocument(string SiteOwnerID, string IntimationId, string Path, string RequestLetter, string Createdby, string SiteOwnerAddress, string OwnerName, string UserType, SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("Sp_InsertSdlData", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@SiteOwnerID ", SiteOwnerID);
+            cmd.Parameters.AddWithValue("@IntimationId ", IntimationId);
             cmd.Parameters.AddWithValue("@Path ", Path);
             cmd.Parameters.AddWithValue("@RequestLetter ", RequestLetter);
             cmd.Parameters.AddWithValue("@Createdby ", Createdby);

@@ -18,6 +18,8 @@ namespace CEIHaryana.Industry_Master
             {
                 if (!Page.IsPostBack)
                 {
+                    //Session["SiteOwnerId_Sld_Indus"] = "AIEPK0565G";
+                    //Session["district_Temp"] = "Karnal";
                     if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != "" && Convert.ToString(Session["district_Temp"]) != null && Convert.ToString(Session["district_Temp"]) != "")
                     {
                         //Session["SiteOwnerId_Sld_Indus"] = "ABCDG1234G";
@@ -26,12 +28,12 @@ namespace CEIHaryana.Industry_Master
                         string PanNumber = Session["SiteOwnerId_Sld_Indus"].ToString();
                         bool panExists = false;
 
-                        DataSet ds1 = CEI.checkInspection(PanNumber);
+                        DataSet ds1 = CEI.checkInspection(PanNumber, District);
                         if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
                         {
                             panExists = true;
                             string statusType = ds1.Tables[0].Rows[0]["ApplicationStatus"].ToString();
-                            string ReasonType = ds1.Tables[0].Rows[0]["ReasonType"].ToString();
+                            //string ReasonType = ds1.Tables[0].Rows[0]["ReasonType"].ToString();
                             //if (statusType == "Return")
                             //{
                             //    getWorkIntimationData();
