@@ -287,10 +287,16 @@
                             <samp style="color: red; font-weight: bold; font-size: 15px;">NOTE:</samp>&nbsp;
             
                             <label for="Phone" style="font-weight: bold; font-size: 15px;">
-                                Please contact your contractor whether test reports are approved.
-            
+                                Please contact your contractor whether test reports are approved. <br/>
+                               
                             </label>
+                            
                         </div>
+                        <div>
+                         <label for="Phone" style="font-weight: bold; font-size: 20px;">
+                                     Please verify that the PAN number entered in the CAF matches with the PAN number given to the contractor.
+                             </label>
+                            </div>
 
                     </div>
                 </div>
