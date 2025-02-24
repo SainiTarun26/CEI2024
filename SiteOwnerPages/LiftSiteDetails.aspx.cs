@@ -281,7 +281,6 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void Submit_Click(object sender, EventArgs e)
         {
-            btnSubmit.Attributes.Add("onclick", "this.disabled = true;");
             string email = txtEmail.Text.Trim();
             string emailPattern = @"^[^\s@]+@[^\s@]+\.[^\s@]+$"; // Regex for email
             ApplicantTypeCode = Session["ApplicantTypeCode"].ToString();

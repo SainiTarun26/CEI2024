@@ -55,7 +55,6 @@ namespace CEIHaryana.SiteOwnerPages
                     if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
                     {
                         Session["Amount"] = "";
-                        Session["Duplicacy"] = "0";
                         getWorkIntimationData();
                         Session["PreviousPage"] = Request.Url.ToString();
                         Grd_Document.RowDataBound += Grd_Document_RowDataBound;
@@ -359,8 +358,8 @@ namespace CEIHaryana.SiteOwnerPages
                     else
                     {
                     }
-                    DataTable dsa = new DataTable();
                     id = Session["lblIntimationId"].ToString();
+                    DataTable dsa = new DataTable();
                     dsa = CEI.Payment(id, Count, InstallationId, "New");
                     int Amount = 0;
                     if (dsa.Rows.Count > 0)
@@ -659,8 +658,8 @@ namespace CEIHaryana.SiteOwnerPages
                 else if (e.CommandName == "View")
                 {
                     string fileName = "";
-                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                   // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     //lblerror.Text = fileName;
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -1228,8 +1227,8 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     //ID = Session["InspectionId"].ToString();
 
-                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 

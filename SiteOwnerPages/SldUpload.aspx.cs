@@ -132,7 +132,7 @@ namespace CEIHaryana.SiteOwnerPages
 
 
                         transaction = connection.BeginTransaction();
-                        int x = CEI.UploadSldDocument(SiteOwnerId, ddlSiteOwnerAdress.SelectedValue.ToString(), filePathInfo, filePathInfo1, SiteOwnerId, ddlSiteOwnerAdress.SelectedItem.ToString(), SiteOwnerName, "", transaction);
+                        int x = CEI.UploadSldDocument(SiteOwnerId, filePathInfo, filePathInfo1, SiteOwnerId, ddlSiteOwnerAdress.SelectedItem.ToString(), SiteOwnerName, "", transaction);
                         if (x == 2)
                         {
                             filePathInfo2 = Server.MapPath("~/Attachment/" + SiteOwnerId + "/Sld Document/" + fileName);

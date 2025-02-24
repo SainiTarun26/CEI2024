@@ -42,13 +42,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtwIpID;
 
         /// <summary>
-        /// ddlApplicantType control.
+        /// txtApplicantType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlApplicantType;
+        protected global::System.Web.UI.WebControls.TextBox txtApplicantType;
 
         /// <summary>
         /// DivPancard_PanNo control.
@@ -96,13 +96,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivPoweUtility;
 
         /// <summary>
-        /// ddlPoweUtility control.
+        /// txtUtility control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPoweUtility;
+        protected global::System.Web.UI.WebControls.TextBox txtUtility;
 
         /// <summary>
         /// DivPoweUtilityWing control.
@@ -114,22 +114,22 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivPoweUtilityWing;
 
         /// <summary>
-        /// ddlPowerUtilityWing control.
+        /// txtPowerUtility control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPowerUtilityWing;
+        protected global::System.Web.UI.WebControls.TextBox txtPowerUtility;
 
         /// <summary>
-        /// ddlworktype control.
+        /// txtworktype control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlworktype;
+        protected global::System.Web.UI.WebControls.TextBox txtworktype;
 
         /// <summary>
         /// individual control.
@@ -186,13 +186,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtState;
 
         /// <summary>
-        /// ddlDistrict control.
+        /// Textdistrict control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDistrict;
+        protected global::System.Web.UI.WebControls.TextBox Textdistrict;
 
         /// <summary>
         /// pin control.
@@ -231,13 +231,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// ddlPremises control.
+        /// txtPremises control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPremises;
+        protected global::System.Web.UI.WebControls.TextBox txtPremises;
 
         /// <summary>
         /// OtherPremises control.
@@ -258,13 +258,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtOtherPremises;
 
         /// <summary>
-        /// ddlVoltageLevel control.
+        /// TextVoltage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlVoltageLevel;
+        protected global::System.Web.UI.WebControls.TextBox TextVoltage;
 
         /// <summary>
         /// Installation control.
@@ -366,13 +366,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl InstallationType;
 
         /// <summary>
-        /// ddlWorkDetail control.
+        /// txtWorkDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlWorkDetail;
+        protected global::System.Web.UI.WebControls.TextBox txtWorkDetail;
 
         /// <summary>
         /// WorkDetail control.

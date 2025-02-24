@@ -135,8 +135,10 @@ namespace CEIHaryana.Officers
                             grd_Documemnts.Columns[4].Visible = true;
                             //Grid_MultipleInspectionTR.Columns[5].Visible = false;
                             Grid_MultipleInspectionTR.Columns[7].Visible = false;
-                            Grid_MultipleInspectionTR.Columns[9].Visible = false;
-                            Grid_MultipleInspectionTR.Columns[11].Visible = false;
+                            Grid_MultipleInspectionTR.Columns[8].Visible = false;
+                            Grid_MultipleInspectionTR.Columns[9].Visible = true;
+                            Grid_MultipleInspectionTR.Columns[10].Visible = true;
+                            Grid_MultipleInspectionTR.Columns[11].Visible = false ;
 
                         }
                         else if (ReturnValu == "3")
@@ -417,8 +419,8 @@ namespace CEIHaryana.Officers
                 if (e.CommandName == "Select")
                 {
                     //ID = Session["InspectionId"].ToString();                   
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                   // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                 }
@@ -524,8 +526,8 @@ namespace CEIHaryana.Officers
                                 string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
                                 if (reqType == "Industry")
                                 {
-                                    string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
-                                    // string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in/api/project-service-logs-external_UHBVN");
+                                    string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
+                                    // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
                                     if (serverStatus != "Server is reachable.")
                                     {
                                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
@@ -771,7 +773,7 @@ namespace CEIHaryana.Officers
                                         // string accessToken = "dfsfdsfsfsdf";
 
                                         logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                                      "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                                      "https://investharyana.in/api/project-service-logs-external_UHBVN",
                                                       new Industry_Inspection_StageWise_JsonDataFormat_Model
                                                       {
                                                           actionTaken = ApiPostformatresult.ActionTaken,
@@ -1061,8 +1063,8 @@ namespace CEIHaryana.Officers
             else if (e.CommandName == "View")
             {
                 string fileName = "";
-                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-               // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 //lblerror.Text = fileName;
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -1070,8 +1072,8 @@ namespace CEIHaryana.Officers
             else if (e.CommandName == "ViewInvoice")
             {
                 string fileName = "";
-                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-               // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }

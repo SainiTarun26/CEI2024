@@ -67,9 +67,7 @@ namespace CEIHaryana.Officers
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
                     Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
-                    Label lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
-                    //Session["RegistrationNo"] = lblRegistrationNo.Text;
-                    string id = lblID.Text;
+                     string id = lblID.Text;
                      string  LoginID = Session["InProcessInspectionId"].ToString();
                     Session["LiftTestReportID"] = id;
                     if (lblInstallationType.Text == "Lift")

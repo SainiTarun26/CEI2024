@@ -1615,12 +1615,7 @@
             <script src="/js2/select2.js"></script>
 
 
-
-
-
-             <!-- Comment for flow only-->
-
-           <%--  <script type="text/javascript">
+            <script type="text/javascript">
                 function validateDates() {
                     var issuingDate = document.getElementById('<%=txtIssuingDate.ClientID %>').value;
                     var expiryDate = document.getElementById('<%=txtExpiryDate.ClientID %>').value;
@@ -1851,7 +1846,7 @@
                       return isValid;
                   }
               </script>
-           <script type="text/javascript">
+            <script type="text/javascript">
                 function validateForm() {
                     var isValid = true;
 
@@ -1992,7 +1987,7 @@
                     }
                     return isValid;
                 }
-            </script>--%>
+            </script>
         </div>
     </form>
 </body>

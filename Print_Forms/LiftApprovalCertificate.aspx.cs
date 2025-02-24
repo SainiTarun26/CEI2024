@@ -127,7 +127,6 @@ namespace CEIHaryana.Print_Forms
                     }
 
                 }
-                
                 else
                 {
                     DataSet ds = new DataSet();
@@ -189,7 +188,7 @@ namespace CEIHaryana.Print_Forms
                         lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
                     }
 
-                   // CEI.UpdateLiftApprovedCertificatedata(InspectionId);
+                    //CEI.UpdateLiftApprovedCertificatedata(InspectionId);
                 }
                 GridBind();
                 //Session["StaffID"] = "";

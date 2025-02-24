@@ -22,7 +22,7 @@ namespace CEIHaryana.Print_Forms
                 {
                     if (!IsPostBack)
                     {
-                        if (Session["SiteOwnerId_Industry"] != null)
+                        if (Session["SiteOwnerId_Sld_Indus"] != null)
                         {
                             GetData();
                         }
@@ -45,9 +45,9 @@ namespace CEIHaryana.Print_Forms
                 //    ID = Session["InProcessInspectionId"].ToString();
                 //}
                 //else 
-                if (Session["InspectionId_Industry"] != null)
+                if (Session["InspId"] != null)
                 {
-                    ID = Session["InspectionId_Industry"].ToString();
+                    ID = Session["InspId"].ToString();
 
                 }
 

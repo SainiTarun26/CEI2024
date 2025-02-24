@@ -563,8 +563,6 @@
                                       <asp:Label ID="LblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
                                         <asp:Label ID="LblOldTestReportId" runat="server" Text='<%#Eval("OldTestReportId") %>'></asp:Label>
                                       <asp:Label ID="lblMemoNo" runat="server" Text='<%#Eval("MemoNo") %>'></asp:Label>
-                                     <asp:Label ID="LblMemoDate" runat="server" Text='<%#Eval("MemoDate") %>'></asp:Label>
-                                        <asp:Label ID="LblAmount" runat="server" Text='<%#Eval("Amount") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Current View TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
@@ -598,32 +596,32 @@
                                 <%# Container.DataItemIndex + 1 %>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="TestReportId" HeaderText="TestReportId" Visible="false">
-                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                            <ItemStyle HorizontalAlign="Left" Width="15%" />
-                        </asp:BoundField>
+                         <asp:BoundField DataField="TestReportId" HeaderText="TestReportId"  Visible="false">
+                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                  <ItemStyle HorizontalAlign="Left" Width="15%" />
+              </asp:BoundField>
                         <asp:BoundField DataField="InstallationType" HeaderText="InstallationType">
                             <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                             <ItemStyle HorizontalAlign="Left" Width="15%" />
                         </asp:BoundField>
-
+                       
                         <asp:TemplateField HeaderText="Id" Visible="False">
                             <ItemTemplate>
                                 <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("Typeofinstallation") %>'></asp:Label>
                                 <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("Count") %>'></asp:Label>
                                 <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
                                 <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
-                                <asp:Label ID="LblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
-
-                                <asp:Label ID="lblMake" runat="server" Text='<%#Eval("Make") %>'></asp:Label>
-                                <asp:Label ID="lblLiftSrNo" runat="server" Text='<%#Eval("SerialNo") %>'></asp:Label>
-                                <asp:Label ID="lblTypeOfLift" runat="server" Text='<%#Eval("TypeOfLift") %>'></asp:Label>
-                                <asp:Label ID="lblTypeOfControl" runat="server" Text='<%#Eval("TypeOfControl") %>'></asp:Label>
-                                <asp:Label ID="lblCapacity" runat="server" Text='<%#Eval("Capacity") %>'></asp:Label>
-                                <asp:Label ID="lblWeight" runat="server" Text='<%#Eval("Weight") %>'></asp:Label>
-                                <asp:Label ID="LblErectionDate" runat="server" Text='<%#Eval("ErectionDate") %>'></asp:Label>
+                                 <asp:Label ID="LblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
+                         
+                                    <asp:Label ID="lblMake" runat="server" Text='<%#Eval("Make") %>'></asp:Label>
+                                  <asp:Label ID="lblLiftSrNo" runat="server" Text='<%#Eval("SerialNo") %>'></asp:Label>
+                                    <asp:Label ID="lblTypeOfLift" runat="server" Text='<%#Eval("TypeOfLift") %>'></asp:Label>
+                                    <asp:Label ID="lblTypeOfControl" runat="server" Text='<%#Eval("TypeOfControl") %>'></asp:Label>
+                                 <asp:Label ID="lblCapacity" runat="server" Text='<%#Eval("Capacity") %>'></asp:Label>
+                                 <asp:Label ID="lblWeight" runat="server" Text='<%#Eval("Weight") %>'></asp:Label>
+                                  <asp:Label ID="LblErectionDate" runat="server" Text='<%#Eval("ErectionDate") %>'></asp:Label>
                                 <asp:Label ID="LblOldTestReportId" runat="server" Text='<%#Eval("OldTestReportId") %>'></asp:Label>
-                                <asp:Label ID="lblAmount" runat="server" Text='<%#Eval("Amount") %>'></asp:Label>
+                                  <%--<asp:Label ID="lblLastApprovalDate" runat="server" Text='<%#Eval("LastApprovalDate") %>'></asp:Label>--%>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Current View Test Report & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
@@ -633,14 +631,14 @@
                             <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Previous View Test Report & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="lnkRedirectTR1" runat="server" Text="View Test Report & Attachments" OnClick="lnkRedirectTR1_Click" CommandName="Select" CommandArgument='<%# Eval("OldTestReportId") %>' />
-                            </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
-                            <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                        </asp:TemplateField>
-                        <%-- <asp:BoundField DataField="Remarks" HeaderText="Remarks">
+                     <asp:TemplateField HeaderText="Previous View Test Report & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+         <ItemTemplate>
+             <asp:LinkButton ID="lnkRedirectTR1" runat="server" Text="View Test Report & Attachments" OnClick="lnkRedirectTR1_Click" CommandName="Select" CommandArgument='<%# Eval("OldTestReportId") %>' />
+          </ItemTemplate>
+            <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+           </asp:TemplateField>
+                       <%-- <asp:BoundField DataField="Remarks" HeaderText="Remarks">
                             <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                             <ItemStyle HorizontalAlign="Left" Width="15%" />
                         </asp:BoundField>--%>
@@ -649,10 +647,10 @@
                 <div class="col-12" style="padding: 0px;">
                 </div>
             </div>
-            <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px;">
-                Documents Attached
-            </div>
-            <div class="row card" style="padding-top: 10px; padding-left: 0px !important; padding-right: 0px !important;">
+                        <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px;">
+    Documents Attached
+</div>
+<div class="row card" style="padding-top: 10px;padding-left:0px !important;padding-right:0px !important;">
     <div class="col-12">
         <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" OnRowDataBound="grd_Documemnts_RowDataBound" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
             <HeaderStyle BackColor="#B7E2F0" />
@@ -718,7 +716,7 @@
 
                 <div class="col-md-4" id="ApprovalRequired" runat="server" visible="true">
                     <label>
-                        Action<samp style="color: red"> * </samp>
+                        Approval<samp style="color: red"> * </samp>
                     </label>
                     <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -741,9 +739,6 @@
     <label for="StartDate" id="labelApprovalDate" runat="server">
 Approval Date<samp style="color: red"> * </samp>                           
     </label>
-         <label for="StartDate" id="labelRejectedDate" runat="server">
-      Reject Date<samp style="color: red"> * </samp>                           
-       </label>
                     <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                 </div>
@@ -791,22 +786,14 @@ Approval Date<samp style="color: red"> * </samp>
     <%--   </ContentTemplate>
             </asp:UpdatePanel>--%>
 
-     <script type="text/javascript">
-
-         function alertWithRedirectdata_CheckAlert(Message) {
-             if (confirm(Message)) {
-                 // window.location.href = "/Officers/InProcessRequest.aspx";
-             } else {
-             }
-         }
-
-         function alertWithRedirectdata(Message) {
-             if (confirm('Inspection Request has been Successfully ' + Message)) {
-                 window.location.href = "/Officers/InProcessRequest.aspx";
-             } else {
-             }
-         }
-     </script>
+    <script type="text/javascript">
+        function alertWithRedirectdata(Message) {
+            if (confirm('Inspection Request has been Successfully ' + Message)) {
+                window.location.href = "/Officers/InProcessRequest.aspx";
+            } else {
+            }
+        }
+    </script>
      <script type="text/javascript">
  function alertWithRedirectdata2() {
      if (confirm('Inspection Request has been Rejected.')) {

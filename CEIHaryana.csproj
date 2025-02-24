@@ -236,6 +236,7 @@
     <Content Include="Admin\InspectionDetails.aspx" />
     <Content Include="Admin\IntimationForHistory.aspx" />
     <Content Include="Admin\IntimationHistoryForAdmin.aspx" />
+    <Content Include="Admin\LiftApprovalData.aspx" />
     <Content Include="Admin\LiftEscalatorData.aspx" />
     <Content Include="Admin\LiftInspectionDetails.aspx" />
     <Content Include="Admin\NewRequestInspectionForAdmin.aspx" />
@@ -255,7 +256,6 @@
     <Content Include="Admin\TotalRequestInspectionForAdmin.aspx" />
     <Content Include="Admin\TransferRequestReport.aspx" />
     <Content Include="Admin\Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx" />
-    <Content Include="Admin\UpdateSubdivisionMaster.aspx" />
     <Content Include="Admin\UploadSignature.aspx" />
     <Content Include="Admin\UtilityMaster.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
@@ -1809,7 +1809,6 @@
     <Content Include="Global.asax" />
     <Content Include="Image\Image\ImageToDelete-removebg-preview.png" />
     <Content Include="Image\Image\ImageToDelete.jpeg" />
-    <Content Include="Image\Image\refresh.png" />
     <Content Include="Industry\CeiTrackApiDetailsPost_DefaultMethodTesting.aspx" />
     <Content Include="Industry\Industry.aspx" />
     <Content Include="Industry\IndustryServices.aspx" />
@@ -1951,6 +1950,7 @@
     <Content Include="Print_Forms\InspectionRequestPrint.aspx" />
     <Content Include="Print_Forms\LiftApprovalCertificate.aspx" />
     <Content Include="Print_Forms\NewInspectionApprovalCertificate.aspx" />
+    <Content Include="Print_Forms\NewInspectionApprovalCertificate_Industry.aspx" />
     <Content Include="Print_Forms\PeriodicApprovalCertificate.aspx" />
     <Content Include="Print_Forms\PeriodicApprovalCertificate_Industry.aspx" />
     <Content Include="Print_Forms\PrintCertificate1.aspx" />
@@ -2229,6 +2229,13 @@
     <Compile Include="Admin\IntimationHistoryForAdmin.aspx.designer.cs">
       <DependentUpon>IntimationHistoryForAdmin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\LiftApprovalData.aspx.cs">
+      <DependentUpon>LiftApprovalData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\LiftApprovalData.aspx.designer.cs">
+      <DependentUpon>LiftApprovalData.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\LiftEscalatorData.aspx.cs">
       <DependentUpon>LiftEscalatorData.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2361,13 +2368,6 @@
     </Compile>
     <Compile Include="Admin\Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx.designer.cs">
       <DependentUpon>Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\UpdateSubdivisionMaster.aspx.cs">
-      <DependentUpon>UpdateSubdivisionMaster.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\UpdateSubdivisionMaster.aspx.designer.cs">
-      <DependentUpon>UpdateSubdivisionMaster.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\UploadSignature.aspx.cs">
       <DependentUpon>UploadSignature.aspx</DependentUpon>
@@ -3078,6 +3078,13 @@
     </Compile>
     <Compile Include="Print_Forms\NewInspectionApprovalCertificate.aspx.designer.cs">
       <DependentUpon>NewInspectionApprovalCertificate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print_Forms\NewInspectionApprovalCertificate_Industry.aspx.cs">
+      <DependentUpon>NewInspectionApprovalCertificate_Industry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print_Forms\NewInspectionApprovalCertificate_Industry.aspx.designer.cs">
+      <DependentUpon>NewInspectionApprovalCertificate_Industry.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print_Forms\PeriodicApprovalCertificate.aspx.cs">
       <DependentUpon>PeriodicApprovalCertificate.aspx</DependentUpon>

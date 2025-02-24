@@ -158,7 +158,6 @@ namespace CEIHaryana.TestReportModal
         }
         private void GetDocumentUploadData()
         {
-            OTP.Visible = false;
             DataTable ds = new DataTable();
             ds = CEI.GetDocumentlistforContractor(3);
             if (ds.Rows.Count > 0)
@@ -174,8 +173,6 @@ namespace CEIHaryana.TestReportModal
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             ds.Dispose();
-
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "focusGridView", "focusOnGridView();", true);
         }
         public void GetDetailswithId()
         {
@@ -793,12 +790,10 @@ namespace CEIHaryana.TestReportModal
         {
             try
             {
-                OTP.Visible = true;
-                btnVerify.Text = "Verify";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "focusOTP", "document.getElementById('" + txtOtp.ClientID + "').focus();", true);
+              
                 Session["GeneratorSetOtp"] = Convert.ToString(Convert.ToInt32(Session["GeneratorSetOtp"]) + 1);
                 // OTP.Visible = true;
-                if (Session["GeneratorSetOtp"].ToString() == "1")
+                if (btnVerify.Text == "SendOTP" && Session["GeneratorSetOtp"].ToString() != "0")
                 {
                     OTP.Visible = true;
                     string Email = Session["Email"].ToString().Trim();
@@ -812,7 +807,7 @@ namespace CEIHaryana.TestReportModal
                             Session["OTP"] = CEI.ValidateOTPthroughEmail(Email);
                             Session["Email"] = "OTPSEND";
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('OTP has been Sent to your registered email Id');", true);
-                        
+                            btnVerify.Text = "Verify";
                         }
                         
                     }
@@ -821,15 +816,13 @@ namespace CEIHaryana.TestReportModal
                 {
                     if (txtOtp.Text != "")
                     {
-                        if (Session["OTP"].ToString().Trim() == txtOtp.Text.Trim())
+                        if (Session["OTP"].ToString() == txtOtp.Text)
                         {
                             Contractor2.Visible = true;
                             Contractor3.Visible = false;
                             if (Session["GSInspectionType"] != null && Session["GSInspectionType"].ToString() != "Existing")
                             {
                                 GetDocumentUploadData();
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "focusGridView", "focusOnGridView();", true);
-                                Session["GeneratorSetOtp"] = null;
                             }
                         }
                         else
@@ -837,6 +830,7 @@ namespace CEIHaryana.TestReportModal
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Incorrect OTP. Please try again.');", true);
                         }
                     }
+                    Session["GeneratorSetOtp"] = null;
 
                 }
             }

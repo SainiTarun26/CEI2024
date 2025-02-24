@@ -282,55 +282,57 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                //if (Session["WiremanId"] != null)
-                //{
-                //    REID = Session["WiremanId"].ToString();
-                //}
-                //else
-                //{
-                //    REID = Session["SupervisorID"].ToString();
-                //}
-                //hdnId.Value = REID;
-                //QualificationValidations();
-                //CheckExperience();
-                ////validations();
+                if (Session["WiremanId"] != null)
+                {
+                    REID = Session["WiremanId"].ToString();
+                }
+                else
+                {
+                    REID = Session["SupervisorID"].ToString();
+                }
+                hdnId.Value = REID;
+                QualificationValidations();
+                CheckExperience();
+                //validations();
 
 
-                //ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
 
-                //string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
+                string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
 
-                //bool isValidBoolean;
-                //// bool result;
+                bool isValidBoolean;
+                // bool result;
 
-                //// Check if the string is a valid boolean representation
-                //if (!bool.TryParse(validationResult, out isValidBoolean))
-                //{
+                // Check if the string is a valid boolean representation
+                if (!bool.TryParse(validationResult, out isValidBoolean))
+                {
 
-                //    CEI.InsertnewUseQualification(REID, txtUniversity.Text, txtPassingyear.Text, txtmarksObtained.Text, txtmarksmax.Text, txtprcntg.Text,
-                //      ddlQualification.SelectedItem.ToString(), txtUniversity1.Text, txtPassingyear1.Text, txtmarksObtained1.Text, txtmarksmax1.Text, txtprcntg1.Text,
-                //      ddlQualification1.SelectedItem.ToString(), txtUniversity2.Text, txtPassingyear2.Text, txtmarksObtained2.Text, txtmarksmax2.Text, txtprcntg2.Text,
-                //      ddlQualification2.SelectedItem.ToString(), txtUniversity3.Text, txtPassingyear3.Text, txtmarksObtained3.Text, txtmarksmax3.Text, txtprcntg3.Text,
-                //      ddlQualification3.SelectedItem.ToString(), txtUniversity4.Text, txtPassingyear4.Text, txtmarksObtained4.Text, txtmarksmax4.Text, txtprcntg4.Text,
-                //      RadioButtonList2.SelectedItem.ToString(), txtCategory.Text, txtPermitNo.Text, txtIssuingAuthority.Text, txtIssuingDate.Text, txtExpiryDate.Text,
-                //      RadioButtonList3.SelectedItem.ToString(), txtPermanentEmployerName.Text, txtPermanentDescription.Text, txtPermanentFrom.Text, txtPermanentTo.Text,
-                //     // ddlExperience.SelectedItem.ToString(),ddlTrainingUnder.SelectedItem.ToString(),txtEmployerName1.Text, txtDescription1.Text, txtFrom1.Text, txtTo1.Text, 
-                //     ddlExperiene.SelectedItem.ToString(), ddlTraningUnder.SelectedItem.ToString(), txtExperienceEmployer.Text, txtPostDescription.Text, txtExperienceFrom.Text, txtExperienceTo.Text,
-                //     ddlExperience1.SelectedItem.ToString(), ddlTrainingUnder1.SelectedItem.ToString(), txtExperienceEmployer1.Text, txtPostDescription1.Text, txtExperienceFrom1.Text, txtExperienceTo1.Text,
-                //     ddlExperience2.SelectedItem.ToString(), ddlTrainingUnder2.SelectedItem.ToString(), txtExperienceEmployer2.Text, txtPostDescription2.Text, txtExperienceFrom2.Text, txtExperienceTo2.Text,
-                //     ddlExperience3.SelectedItem.ToString(), ddlTrainingUnder3.SelectedItem.ToString(), txtExperienceEmployer3.Text, txtPostDescription3.Text, txtExperienceFrom3.Text, txtExperienceTo3.Text,
-                //     ddlExperience4.SelectedItem.ToString(), ddlTrainingUnder4.SelectedItem.ToString(), txtExperienceEmployer4.Text, txtPostDescription3.Text, txtExperienceFrom4.Text, txtExperienceTo4.Text,
-                //     txtTotalExperience.Text, RadioButtonList1.SelectedItem.ToString()
-                //     );
+                    CEI.InsertnewUseQualification(REID, txtUniversity.Text, txtPassingyear.Text, txtmarksObtained.Text, txtmarksmax.Text, txtprcntg.Text,
+                      ddlQualification.SelectedItem.ToString(), txtUniversity1.Text, txtPassingyear1.Text, txtmarksObtained1.Text, txtmarksmax1.Text, txtprcntg1.Text,
+                      ddlQualification1.SelectedItem.ToString(), txtUniversity2.Text, txtPassingyear2.Text, txtmarksObtained2.Text, txtmarksmax2.Text, txtprcntg2.Text,
+                      ddlQualification2.SelectedItem.ToString(), txtUniversity3.Text, txtPassingyear3.Text, txtmarksObtained3.Text, txtmarksmax3.Text, txtprcntg3.Text,
+                      ddlQualification3.SelectedItem.ToString(), txtUniversity4.Text, txtPassingyear4.Text, txtmarksObtained4.Text, txtmarksmax4.Text, txtprcntg4.Text,
+                      RadioButtonList2.SelectedItem.ToString(), txtCategory.Text, txtPermitNo.Text, txtIssuingAuthority.Text, txtIssuingDate.Text, txtExpiryDate.Text,
+                      RadioButtonList3.SelectedItem.ToString(), txtPermanentEmployerName.Text, txtPermanentDescription.Text, txtPermanentFrom.Text, txtPermanentTo.Text,
+                     // ddlExperience.SelectedItem.ToString(),ddlTrainingUnder.SelectedItem.ToString(),txtEmployerName1.Text, txtDescription1.Text, txtFrom1.Text, txtTo1.Text, 
+                     ddlExperiene.SelectedItem.ToString(), ddlTraningUnder.SelectedItem.ToString(), txtExperienceEmployer.Text, txtPostDescription.Text, txtExperienceFrom.Text, txtExperienceTo.Text,
+                     ddlExperience1.SelectedItem.ToString(), ddlTrainingUnder1.SelectedItem.ToString(), txtExperienceEmployer1.Text, txtPostDescription1.Text, txtExperienceFrom1.Text, txtExperienceTo1.Text,
+                     ddlExperience2.SelectedItem.ToString(), ddlTrainingUnder2.SelectedItem.ToString(), txtExperienceEmployer2.Text, txtPostDescription2.Text, txtExperienceFrom2.Text, txtExperienceTo2.Text,
+                     ddlExperience3.SelectedItem.ToString(), ddlTrainingUnder3.SelectedItem.ToString(), txtExperienceEmployer3.Text, txtPostDescription3.Text, txtExperienceFrom3.Text, txtExperienceTo3.Text,
+                     ddlExperience4.SelectedItem.ToString(), ddlTrainingUnder4.SelectedItem.ToString(), txtExperienceEmployer4.Text, txtPostDescription3.Text, txtExperienceFrom4.Text, txtExperienceTo4.Text,
+                     txtTotalExperience.Text, RadioButtonList1.SelectedItem.ToString()
+                     );
 
-                //    Session["Back"] = txtUniversity.Text;
-                //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Qualification Added Successfully !!!')", true);
-                //    showAlert = true;
+                    Session["Back"] = txtUniversity.Text;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Qualification Added Successfully !!!')", true);
+                    showAlert = true;
                     Response.Redirect("/UserPages/Documents.aspx", false);
-                //}
+                }
             }
             catch
-            {}
+            {
+
+            }
         }
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
         {

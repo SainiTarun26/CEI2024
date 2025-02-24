@@ -256,7 +256,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <p>
-                                        <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                                        <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" >
                                             <HeaderStyle BackColor="#B7E2F0" />
                                             <Columns>
                                                 <asp:TemplateField HeaderText="S.No.">

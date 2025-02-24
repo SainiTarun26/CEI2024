@@ -2789,7 +2789,6 @@
                     </div>
                 </li>
             </ul>
-
             <script src="/Assets/js/js/vendor.bundle.base.js"></script>
             <script src="/Assets/js/chart.js/Chart.min.js"></script>
             <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>
@@ -2802,32 +2801,6 @@
             <script src="/Assets/js/todolist.js"></script>
             <script src="/Assets/js/dashboard.js"></script>
             <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
-             <script type="text/javascript">
-                 // Function to show the OTP section and focus on the OTP TextBox
-                 function showAndFocusOTP() {
-                     // Show the OTP row
-                     document.getElementById('<%= OTP.ClientID %>').style.display = "flex";
-
-                     // Focus on the OTP TextBox
-                     document.getElementById('<%= txtOtp.ClientID %>').focus();
-                 }
-
-                 // Function to focus on the GridView
-                 function focusOnGridView() {
-                     // Focus on the GridView container
-                     const gridContainer = document.getElementById('<%= Grd_Document.ClientID %>');
-
-                     if (gridContainer) {
-                         // Scroll to the GridView if it's not in the viewport
-                         gridContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                         // Focus on the GridView container
-                         gridContainer.focus();
-                     }
-                 }
-
-
-             </script>
         </div>
     </form>
 </body>

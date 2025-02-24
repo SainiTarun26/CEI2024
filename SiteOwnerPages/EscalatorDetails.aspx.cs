@@ -62,8 +62,8 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     //ID = Session["InspectionId"].ToString();
 
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -174,7 +174,6 @@ namespace CEIHaryana.SiteOwnerPages
         }
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DateSetting();
             if (RadioButtonList2.SelectedValue == "1")
             {
                 Name.Visible = true;
@@ -254,8 +253,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (Page.IsValid)
                 {
-                        btnSubmit.Attributes.Add("onclick", "this.disabled = true;");
-                        string IntimationId = Session["id"].ToString();
+                    string IntimationId = Session["id"].ToString();
                     string CreatedBy = Session["SiteOwnerId"].ToString();
                     string count = Session["NoOfInstallations"].ToString();
                     string installationNo = Session["IHID"].ToString();
@@ -321,8 +319,8 @@ namespace CEIHaryana.SiteOwnerPages
                             CreatedBy, ddlContName.SelectedItem.ToString(), txtContName.Text, DateTime.Parse(txtContExp.Text), ddlLicenseNo.SelectedItem.ToString(),
                             txtSupLicenseNo.Text, DateTime.Parse(txtSupExpiryDate.Text)
                         );
-                            //CEI.UpdateLiftTestReportHistory("Escalator", IntimationId, count, CreatedBy);
-                            //CEI.UpdateInstallations(installationNo, IntimationId);
+                            CEI.UpdateLiftTestReportHistory("Escalator", IntimationId, count, CreatedBy);
+                            CEI.UpdateInstallations(installationNo, IntimationId);
                             UploadCheckListDocInCollection(IntimationId, count);
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
 
@@ -489,9 +487,6 @@ namespace CEIHaryana.SiteOwnerPages
         }
         protected void btnVerify_Click(object sender, EventArgs e)
         {
-            OTP.Visible = true;
-            btnVerify.Text = "Verify";
-            btnResend.Visible = true;
             if (Session["OTP"].ToString() == txtOTP.Text.Trim())
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "focusGridView", "focusOnGridView();", true);
@@ -504,18 +499,23 @@ namespace CEIHaryana.SiteOwnerPages
             if (Session["OTP"].ToString() == "0")
             {
 
+                OTP.Visible = true;
+                btnVerify.Text = "Verify";
                 Email = Session["ContractorEmail"].ToString();
                 OTPs = CEI.ValidateOTPthroughEmail(Email);
                 Session["OTP"] = OTPs.Trim();
+                Session["ContractorEmail"] = "OTPSEND";
+                // Session["ContractorEmail"] = "";
+                btnResend.Visible = true;
                // ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Enter the OTP you received to Your Contractor's Email');", true);
             }
-            //else if (Session["ContractorEmail"].ToString() == "OTPSEND")
-            //{
-            //    OTP.Visible = true;
-            //    btnVerify.Text = "Verify";
-            //    btnResend.Visible = true;
-            //    Session["ContractorEmail"] = "";
-            //}
+            else if (Session["ContractorEmail"].ToString() == "OTPSEND")
+            {
+                OTP.Visible = true;
+                btnVerify.Text = "Verify";
+                btnResend.Visible = true;
+                Session["ContractorEmail"] = "";
+            }
             else
             {
                 if (Session["OTP"].ToString() == txtOTP.Text.Trim())
@@ -530,13 +530,9 @@ namespace CEIHaryana.SiteOwnerPages
                     ddlContName.Enabled = false;
                     ddlLicenseNo.Enabled = false;
                 }
-                else if (txtOTP.Text != "" && txtOTP.Text != null)
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Incorrect Otp Please Try Again');", true);
-
-                }
                 else
                 {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Incorrect Otp Please Try Again');", true);
 
                 }
             }

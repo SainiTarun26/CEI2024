@@ -582,7 +582,7 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="/UserManual/CamScanner 01-13-2025 13.54.pdf" target="_blank">BRAP-2024 Griviance Mechanism</a>
+                                        <a href="/UserManual/BRAP_Griviance.pdf" target="_blank">BRAP-2024 Griviance Mechanism</a>
                                     </li>
                                     <li>
                                         <a href="UserManual/office order 223.pdf" target="_blank">Mendate Regarding high medium low risk profile</a>
@@ -626,7 +626,7 @@
 
                             <li class="dropdown">
                                 <a href="#">
-                                    <span>EODB Dashboard</span>
+                                    <span>EODB Compliance's</span>
                                     <i class="bi bi-chevron-down"></i>
                                 </a>
                                 <ul>
@@ -813,14 +813,14 @@
     <div class="card-body" id="serviceInfoCard" style="border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-top: 20px; display: none;">
         <div class="col-md-12">
             <div class="card-title">Service Information</div>
-            <div class="row">
+           <%-- <div class="row">
                 <div class="col-md-6">
                     <span>(Results between 01-04-2024 and 29-11-2024)</span>
                 </div>
                 <div class="col-md-6" style="text-align: end;">
                     <span>Last Updated On: 29-11-2024 17:00:17</span>
                 </div>
-            </div>
+            </div>--%>
             <div class="row">
                 <table class="styled-table" style="text-align: center;">
                     <thead>

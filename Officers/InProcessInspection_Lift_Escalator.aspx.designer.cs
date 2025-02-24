@@ -474,15 +474,6 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl labelApprovalDate;
 
         /// <summary>
-        /// labelRejectedDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl labelRejectedDate;
-
-        /// <summary>
         /// txtInspectionDate control.
         /// </summary>
         /// <remarks>
@@ -517,15 +508,6 @@ namespace CEIHaryana.Officers
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl AppDate;
-
-        /// <summary>
-        /// AppReject control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AppReject;
 
         /// <summary>
         /// txtDATE control.

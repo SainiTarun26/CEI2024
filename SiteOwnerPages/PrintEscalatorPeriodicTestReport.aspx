@@ -124,7 +124,7 @@
         .col-4 {
             top: 0px;
             left: 0px;
-            margin-top: 4%;
+            margin-top: 5%;
         }
 
         .col-3 {
@@ -143,8 +143,8 @@
             margin-top: 5%;
         }
 
-        .col-md-12 {
-            margin-top: 4% !important;
+        .col-12 {
+            margin-top: 5%;
         }
 
         .form-control {
@@ -315,9 +315,9 @@
                                         </div>
                                         <div class="col-4" runat="server">
                                             <label>
-                                                Expiry date (Last Challan Deposited)
+                                                Previous Challan Date
                                             </label>
-                                            <asp:TextBox class="form-control" ReadOnly="true" ID="txtLastExpiryDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ReadOnly="true" ID="txtPrevChallanDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                                         </div>
                                         <div class="col-4">
                                             <label class="form-label" for="customFile">
@@ -330,13 +330,13 @@
                                                 Last Approval Date 
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtLastApprovalDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
-                                        </div>
+                                            </div>
                                         <div class="col-4" runat="server">
                                             <label>
                                                 Date of Erection
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtDateofErection" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        </div>
+                                             </div>
 
                                         <div class="col-4">
                                             <label id="lblTypeOfEscalator" runat="server">
@@ -349,43 +349,31 @@
                                                 Type of Control 
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtControlType" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        </div>
+                                             </div>
                                         <div class="col-4" runat="server">
                                             <label>
                                                 Capacity(Persons) 
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtCapacity" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" onkeypress="return isNumberKey(event)"></asp:TextBox>
-                                        </div>
+                                              </div>
                                         <div class="col-4" runat="server">
                                             <label>
                                                 Weight(In Kgs) 
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtWeight" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" onkeypress="return isNumberKey(event)"></asp:TextBox>
-                                        </div>
-                                        <div class="col-4" runat="server">
-                                            <label>
-                                                Memo No.
-                                            </label>
-                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtMemoNo" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        </div>
-                                        <div class="col-4" runat="server">
-                                            <label>
-                                                Memo Date
-                                            </label>
-                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtMemoDate" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        </div>
+                                               </div>
                                         <div class="col-4" runat="server">
                                             <label>
                                                 District 
                                             </label>
                                             <asp:TextBox ReadOnly="true" class="form-control" ID="txtDistrictOfTr" TabIndex="7" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        </div>
+                                              </div>
                                         <div class="col-md-12" runat="server">
                                             <label>
                                                 Site Address 
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtSiteAddress" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        </div>
+                                            </div>
                                     </div>
                                 </div>
                             </div>

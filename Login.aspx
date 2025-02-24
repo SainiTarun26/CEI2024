@@ -520,7 +520,7 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="/UserManual/CamScanner 01-13-2025 13.54.pdf" target="_blank">BRAP-2024 Griviance Mechanism</a>
+                                        <a href="/UserManual/BRAP_Griviance.pdf" target="_blank">BRAP-2024 Griviance Mechanism</a>
                                     </li>
                                     <li>
                                         <a href="UserManual/office order 223.pdf" target="_blank">Mendate Regarding high medium low risk profile</a>
@@ -564,7 +564,8 @@
 
                             <li class="dropdown">
                                 <a href="#">
-                                    <span>EODB Dashboard</span>
+                                    <span>EODB Compliance's
+</span>
                                     <i class="bi bi-chevron-down"></i>
                                 </a>
                                 <ul>
@@ -725,8 +726,8 @@
                                                     Your UserName or Password is Invalid.
                                                 </label>
                                             </div>
-                                           <%-- <div class="signup-link">Don't have an Account?<a href="#" class="text-primary">Create</a></div>--%>
-                                                                                        <div class="signup-link">Don't have an Account?<a href="/UserPages/Registration.aspx" class="text-primary">Create</a></div>
+                                            <%--<div class="signup-link">Don't have an Account?<a href="#" class="text-primary">Create</a></div>--%>
+                                            <%--                                            <div class="signup-link">Don't have an Account?<a href="/UserPages/Registration.aspx" class="text-primary">Create</a></div>--%>
                                             <div class="signup-link"><a href="UserPages/SiteOwnerRegistration.aspx" class="text-primary">Register as Site Owner</a></div>
                                             <%--  <div class="signup-link"><a href="GetPassword.aspx" class="text-primary">Get user Id & Password</a></div>--%>
                                         </div>

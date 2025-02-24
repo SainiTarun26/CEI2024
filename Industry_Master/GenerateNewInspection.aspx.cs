@@ -64,7 +64,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
 
@@ -127,8 +127,8 @@ namespace CEIHaryana.Industry_Master
                 {
                     //ID = Session["InspectionId"].ToString();
 
-                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -217,6 +217,7 @@ namespace CEIHaryana.Industry_Master
                     Label LblSactionLoad = (Label)row.FindControl("LblSactionLoad");
                     Label lblReportType = (Label)row.FindControl("lblReportType");
                     Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
+                    Session["lblIntimationId"] = lblIntimationId.Text;
                     Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
                     TestReportId = lblTestReportId.Text;
                     if (LblSactionLoad.Text == "1")
@@ -382,6 +383,7 @@ namespace CEIHaryana.Industry_Master
                     else
                     {
                     }
+                    id = Session["lblIntimationId"].ToString();
                     DataTable dsa = new DataTable();
                     dsa = CEI.Payment_Industry(id, Count, InstallationId, "New");
                     int Amount = 0;
@@ -898,8 +900,8 @@ namespace CEIHaryana.Industry_Master
                 else if (e.CommandName == "View")
                 {
                     string fileName = "";
-                   // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     //lblerror.Text = fileName;
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -1197,7 +1199,7 @@ namespace CEIHaryana.Industry_Master
                             // string accessToken = "dfsfdsfsfsdf";
 
                             logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                          "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                          "https://investharyana.in/api/project-service-logs-external_UHBVN",
                                           new Industry_Inspection_StageWise_JsonDataFormat_Model
                                           {
                                               actionTaken = ApiPostformatresult.ActionTaken,

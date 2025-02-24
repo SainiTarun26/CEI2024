@@ -14,7 +14,6 @@
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -490,7 +489,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" OnRowCommand="GridView1_RowCommand"
+                                <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
                                     AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                                     <Columns>
 
@@ -507,28 +506,42 @@
                                             <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
                                             <ItemStyle HorizontalAlign="center"   />
                                         </asp:BoundField>
-                                  
-
+                                        <%--   <asp:BoundField DataField="UtilityName" HeaderText="Utility Name">
+ <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
+ <ItemStyle HorizontalAlign="center"   />
+</asp:BoundField>--%>
                                         <asp:BoundField DataField="WingId" HeaderText="Wing Id">
                                             <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
                                             <ItemStyle HorizontalAlign="center"   />
                                         </asp:BoundField>
-                                       
+                                        <%--          <asp:BoundField DataField="WingName" HeaderText="Wing Name">
+ <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
+ <ItemStyle HorizontalAlign="center"   />
+</asp:BoundField>--%>
                                         <asp:BoundField DataField="ZoneId" HeaderText="Zone Id">
                                             <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
                                             <ItemStyle HorizontalAlign="center"   />
                                         </asp:BoundField>
-                                       
+                                        <%--        <asp:BoundField DataField="ZoneName" HeaderText="Zone Name">
+ <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
+ <ItemStyle HorizontalAlign="center"   />
+</asp:BoundField>--%>
                                         <asp:BoundField DataField="CircleId" HeaderText="Circle Id">
                                             <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
                                             <ItemStyle HorizontalAlign="center"   />
                                         </asp:BoundField>
-                                   
+                                        <%--     <asp:BoundField DataField="CircleName" HeaderText="Circle Name">
+ <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
+ <ItemStyle HorizontalAlign="center"   />
+</asp:BoundField>--%>
                                         <asp:BoundField DataField="DivisionId" HeaderText="Division Id">
                                             <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
                                             <ItemStyle HorizontalAlign="center" Width="28%" />
                                         </asp:BoundField>
-                                     
+                                        <%-- <asp:BoundField DataField="DivisionName" HeaderText="Division Name">
+      <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
+      <ItemStyle HorizontalAlign="center"   />
+ </asp:BoundField>--%>
                                         <asp:BoundField DataField="SubDivision" HeaderText="SubDivision Name">
                                             <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
                                             <ItemStyle HorizontalAlign="center"   CssClass="break-text-10" />
@@ -541,22 +554,6 @@
                                             <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
                                             <ItemStyle HorizontalAlign="center"   />
                                         </asp:BoundField>
-
-                                        <asp:TemplateField HeaderText="Edit">
-                                            <HeaderStyle Width="5%" CssClass="headercolor" />
-                                            <ItemStyle Width="5%" />
-                                            <ItemTemplate>
-                                                <asp:LinkButton runat="server" ID="LinkButton4" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
-                                                    Text="<i class='fa fa-edit' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Select" CommandArgument="<%# Container.DataItemIndex %>" />
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="SubDivision Id" Visible="false">
-                                            <HeaderStyle Width="13%" CssClass="headercolor" />
-                                            <ItemStyle Width="13%" CssClass="text-wrap" />
-                                            <ItemTemplate>
-                                                <asp:Label ID="lblSubDivisionId" runat="server" Text='<%# Eval("Id") %>' CssClass="text-wrap"></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
                                     </Columns>
                                     <FooterStyle BackColor="White" ForeColor="#000066" />
                                     <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

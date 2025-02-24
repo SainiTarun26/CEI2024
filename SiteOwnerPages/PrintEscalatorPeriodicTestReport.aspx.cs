@@ -68,12 +68,41 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     string RegistrationNo = Session["RegistrationNo"].ToString();
                     string TRId = Session["TestReportID"].ToString();
+                    //DataSet ds = CEI.GetDetailsOfLiftRenewalReport(RegistrationNo);
                     DataSet ds = CEI.GetDetailsOfLiftRenewalReport(RegistrationNo, TRId);
 
-                    //txtPrevChallanDate.Text = ds.Tables[0].Rows[0]["PreviousChallanDate"].ToString();
-                    txtLastExpiryDate.Text = ds.Tables[0].Rows[0]["LastExpiryDate"].ToString();
-                    txtLastApprovalDate.Text = ds.Tables[0].Rows[0]["LastApprovalDate"].ToString();
-                    txtDateofErection.Text = ds.Tables[0].Rows[0]["ErectionDate"].ToString();
+                    object previousChallanDateObj = ds.Tables[0].Rows[0]["PreviousChallanDate"];
+                    if (previousChallanDateObj != DBNull.Value)
+                    {
+                        DateTime previousChallanDate = Convert.ToDateTime(previousChallanDateObj);
+                        txtPrevChallanDate.Text = previousChallanDate.ToString("yyyy-MM-dd");
+                    }
+                    else
+                    {
+                        txtPrevChallanDate.Text = string.Empty;
+                    }
+
+                    object LastApprovalDateObj = ds.Tables[0].Rows[0]["LastApprovalDate"];
+                    if (LastApprovalDateObj != DBNull.Value)
+                    {
+                        DateTime LastApproval = Convert.ToDateTime(LastApprovalDateObj);
+                        txtLastApprovalDate.Text = LastApproval.ToString("yyyy-MM-dd");
+                    }
+                    else
+                    {
+                        txtLastApprovalDate.Text = string.Empty;
+                    }
+
+                    object ErectionDateObj = ds.Tables[0].Rows[0]["ErectionDate"];
+                    if (ErectionDateObj != DBNull.Value)
+                    {
+                        DateTime ErectionDate = Convert.ToDateTime(ErectionDateObj);
+                        txtDateofErection.Text = ErectionDate.ToString("yyyy-MM-dd");
+                    }
+                    else
+                    {
+                        txtDateofErection.Text = string.Empty;
+                    }
 
                     txtRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
                     txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
@@ -85,8 +114,7 @@ namespace CEIHaryana.SiteOwnerPages
                     txtDistrictOfTr.Text = ds.Tables[0].Rows[0]["ApplicantDistrict"].ToString();
                     txtEscalatorType.Text = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
                     Session["File"] = ds.Tables[0].Rows[0]["PreviousChallanUpload"].ToString();
-                    txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
-                    txtMemoDate.Text = ds.Tables[0].Rows[0]["MemoDate"].ToString(); 
+
                     GridDocument();
                 }
             }
@@ -121,7 +149,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     if (e.CommandName == "Select")
                     {
-                        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                        fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                         string script = $@"<script>window.open('{fileName}','_blank');</script>";
                         ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                     }
@@ -140,7 +168,7 @@ namespace CEIHaryana.SiteOwnerPages
                     string fileName = Session["File"].ToString();
 
                     string filePath = fileName.Replace("~", "");
-                    filePath = "https://uat.ceiharyana.com" + filePath;
+                    filePath = "https://ceiharyana.com" + filePath;
 
                     string script = $@"<script>window.open('{filePath}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);

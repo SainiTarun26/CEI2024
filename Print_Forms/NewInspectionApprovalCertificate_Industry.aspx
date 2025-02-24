@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NewInspectionApprovalCertificate.aspx.cs" Inherits="CEIHaryana.Print_Forms.NewInspectionApprovalCertificate" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NewInspectionApprovalCertificate_Industry.aspx.cs" Inherits="CEIHaryana.Print_Forms.NewInspectionApprovalCertificate_Industry" %>
 
 <!DOCTYPE html>
 

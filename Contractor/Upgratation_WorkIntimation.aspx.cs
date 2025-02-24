@@ -214,6 +214,14 @@ namespace CEIHaryana.Contractor
                 {
                     OtherPremises.Visible = true;
                 }
+                if (ddlVoltageLevel.SelectedValue == "650V")
+                {
+                    installationType2.Visible = false;
+                }
+                else
+                {
+                    installationType2.Visible = true;
+                }
                 if (dp_Id8 != "")
                 {
                     Installation.Visible = true;
@@ -267,14 +275,14 @@ namespace CEIHaryana.Contractor
                     btnUpdate3.Visible = false;
                     ddlAnyWork.Enabled = false;
                 }
-                if (ddlVoltageLevel.SelectedValue == "650V")
-                {
-                    installationType2.Visible = false;
-                }
-                else
-                {
-                    installationType2.Visible = true;
-                }
+                //if (ddlVoltageLevel.SelectedValue == "650V")
+                //{
+                //    installationType2.Visible = false;
+                //}
+                //else
+                //{
+                //    installationType2.Visible = true;
+                //}
                 string TestReportGenerated = ds.Tables[0].Rows[0]["TestReportGenerated"].ToString();
                 if (TestReportGenerated == "Generated")
                 {

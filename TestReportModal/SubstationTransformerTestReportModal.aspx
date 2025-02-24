@@ -2859,17 +2859,17 @@
                                     <%-- <div class="col-6" id="Div81" runat="server" visible="true">
                                         <asp:Button ID="btnOpenWindow" runat="server" Text="Print" class="btn btn-primary mr-2" OnClientClick="openNewWindow(); return false;" />
                                     </div>--%>
-                                </div>
-                                                                                    </div>
-                        <div class="row" style="margin-top: 30px;">
-                            <%-- id="Contractor3" runat="server" visible="false"--%>
-                            <div class="col-md-12" style="text-align: Center;" runat="server" id="ToOTPVerify" visible="false">
-                                <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="BtnVerify_Click" />
-                                <br />
-                                <label>Submit Will be Enable When You Verify Your Details</label>
-                            </div>
-                        </div>
-                        <%--  <div class="card" id="earthing-card" style="background: #fcfcfc; margin-left: 0px; margin-right: 0px; margin-top: -50px;">
+                                </div>                            
+                    </div>
+                         <div class="row" style="margin-top:30px;" >                                 
+    <%-- id="Contractor3" runat="server" visible="false"--%>
+    <div class="col-md-12" style="text-align: Center;" runat="server" id="ToOTPVerify" visible="false">
+         <asp:Button ID="btnVerify" Text="SendOTP" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="BtnVerify_Click" />
+         <br />
+         <label>Submit Will be Enable When You Verify Your Details</label>
+     </div>
+ </div>
+                    <%--  <div class="card" id="earthing-card" style="background: #fcfcfc; margin-left: 0px; margin-right: 0px; margin-top: -50px;">
                         <div class="row">
                             <div class="col-4">
                                 <label>
@@ -2899,32 +2899,6 @@
             <script src="/Assets/js/todolist.js"></script>
             <script src="/Assets/js/dashboard.js"></script>
             <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
-            <script type="text/javascript">
-                // Function to show the OTP section and focus on the OTP TextBox
-                function showAndFocusOTP() {
-                    // Show the OTP row
-                    document.getElementById('<%= OTP.ClientID %>').style.display = "flex";
-
-                       // Focus on the OTP TextBox
-                       document.getElementById('<%= txtOtp.ClientID %>').focus();
-                }
-
-                // Function to focus on the GridView
-                function focusOnGridView() {
-                    // Focus on the GridView container
-                    const gridContainer = document.getElementById('<%= Grd_Document.ClientID %>');
-
-                    if (gridContainer) {
-                        // Scroll to the GridView if it's not in the viewport
-                        gridContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                        // Focus on the GridView container
-                        gridContainer.focus();
-                    }
-                }
-
-
-            </script>
         </div>
     </form>
 </body>

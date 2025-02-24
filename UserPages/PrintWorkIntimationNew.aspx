@@ -133,11 +133,15 @@
                                         <label for="Name">
                                             Applicant Type:
                                         </label>
-                                        <asp:DropDownList class="form-control select-form select2" disabled AutoPostBack="true" Style="width: 100% !important;" ID="ddlApplicantType" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
+                                        <asp:TextBox class="form-control" ID="txtApplicantType" autocomplete="off" ReadOnly="true" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
+                                            MaxLength="30" Style="margin-left: 18px">
+                                        </asp:TextBox>
+                                        <%--   <asp:DropDownList class="form-control select-form select2" disabled AutoPostBack="true" Style="width: 100% !important;" ID="ddlApplicantType" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                            <asp:ListItem Text="Private/Personal Installation" Value="AT001"></asp:ListItem>
                                            <asp:ListItem Text="Other Department/Organization" Value="AT003"></asp:ListItem>
-                                        </asp:DropDownList>
+                                        </asp:DropDownList>--%>
+
                                     </div>
                                     <div class="col-4" runat="server" id="DivPancard_PanNo" visible="false">
                                         <label for="FatherName">Pan Card:</label>
@@ -155,33 +159,43 @@
 
                                     <div class="col-4" runat="server" id="DivPoweUtility" visible="false">
                                         <label>Name Of Power Utility</label>
-                                        <asp:DropDownList class="form-control  select-form select2" readonly="true" AutoPostBack="true" Style="width: 100% !important;" ID="ddlPoweUtility" TabIndex="2" runat="server">
+                                       <%-- <asp:DropDownList class="form-control  select-form select2" readonly="true" AutoPostBack="true" Style="width: 100% !important;" ID="ddlPoweUtility" TabIndex="2" runat="server">
                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                            <%--<asp:ListItem Text="Supplier Installation" Value="1"></asp:ListItem>--%>
+                                         
                                             <asp:ListItem Text="UHBVN" Value="1"></asp:ListItem>
                                             <asp:ListItem Text="DHBVN" Value="2"></asp:ListItem>
                                             <asp:ListItem Text="HVPNL" Value="3"></asp:ListItem>
                                             <asp:ListItem Text="HPGST" Value="4"></asp:ListItem>
-                                        </asp:DropDownList>
+                                        </asp:DropDownList>--%>
+                                        <asp:TextBox class="form-control" ID="txtUtility" autocomplete="off" ReadOnly="true" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
+                                            MaxLength="30" Style="margin-left: 18px">
+                                        </asp:TextBox>
                                     </div>
 
                                     <div class="col-4" runat="server" id="DivPoweUtilityWing" visible="false">
                                         <label>Type of Wing</label>
-                                        <asp:DropDownList ID="ddlPowerUtilityWing" readonly="true" runat="server" AutoPostBack="true" class="form-control  select-form select2" Style="width: 100% !important;">
+
+                                        <asp:TextBox class="form-control" ID="txtPowerUtility" autocomplete="off" ReadOnly="true" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
+                                            MaxLength="30" Style="margin-left: 18px">
+                                        </asp:TextBox>
+                                       <%-- <asp:DropDownList ID="ddlPowerUtilityWing" readonly="true" runat="server" AutoPostBack="true" class="form-control  select-form select2" Style="width: 100% !important;">
                                             <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                             <asp:ListItem Value="1" Text="Construction Wing"></asp:ListItem>
                                             <asp:ListItem Value="2" Text="Operation Wing"></asp:ListItem>
 
-                                        </asp:DropDownList>
+                                        </asp:DropDownList>--%>
                                     </div>
 
                                     <div class="col-4">
                                         <label>Electrical Installation For</label>
-                                        <asp:DropDownList ID="ddlworktype" TabIndex="3" runat="server" disabled  AutoPostBack="true" class="form-control  select-form select2" OnSelectedIndexChanged="ddlworktype_SelectedIndexChanged" Style="width: 100% !important;">
+                                        <asp:TextBox class="form-control" ID="txtworktype" autocomplete="off" ReadOnly="true" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
+                                            MaxLength="30" Style="margin-left: 18px">
+                                        </asp:TextBox>
+                                      <%--  <asp:DropDownList ID="ddlworktype" TabIndex="3" runat="server" disabled  AutoPostBack="true" class="form-control  select-form select2" OnSelectedIndexChanged="ddlworktype_SelectedIndexChanged" Style="width: 100% !important;">
                                             <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                             <asp:ListItem Value="1" Text="Individual Person"></asp:ListItem>
                                             <asp:ListItem Value="2" Text="Firm/Company"></asp:ListItem>
-                                        </asp:DropDownList>
+                                        </asp:DropDownList>--%>
                                     </div>
 
                                 </div>
@@ -220,8 +234,11 @@
 
                                     <div class="col-4" runat="server">
                                         <label>District:</label>
-                                        <asp:DropDownList class="form-control  select-form select2" disabled runat="server" AutoPostBack="true" ID="ddlDistrict" selectionmode="Multiple" Style="width: 100% !important">
-                                        </asp:DropDownList>
+                                      <%--  <asp:DropDownList class="form-control  select-form select2" disabled runat="server" AutoPostBack="true" ID="ddlDistrict" selectionmode="Multiple" Style="width: 100% !important">
+                                        </asp:DropDownList>--%>
+                                         <asp:TextBox class="form-control" ID="Textdistrict"  ReadOnly="true" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
+                                             MaxLength="30" Style="margin-left: 18px">
+                                     </asp:TextBox>
                                     </div>
 
                                     <div class="col-4" id="pin" visible="false" runat="server">
@@ -250,9 +267,11 @@
                                 <div class="row" style="margin-top: 35px;">
                                     <div class="col-4">
                                         <label>Type of Premises</label>
-
-                                        <asp:DropDownList class="form-control  select-form select2" disabled runat="server" AutoPostBack="true" ID="ddlPremises" TabIndex="10" selectionmode="Multiple" Style="width: 100% !important">
-                                        </asp:DropDownList>
+                                        <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" TabIndex="2"
+                                            MaxLength="30" Style="margin-left: 18px">
+                                        </asp:TextBox>
+                                       <%-- <asp:DropDownList class="form-control  select-form select2" disabled runat="server" AutoPostBack="true" ID="ddlPremises" TabIndex="10" selectionmode="Multiple" Style="width: 100% !important">
+                                        </asp:DropDownList>--%>
                                     </div>
 
                                     <div class="col-4" id="OtherPremises" runat="server">
@@ -262,8 +281,9 @@
 
                                     <div class="col-4">
                                         <label>Highest Voltage Level of Installation</label>
-                                        <asp:DropDownList class="form-control  select-form select2" disabled Style="width: 100% !important;" AutoPostBack="true" ID="ddlVoltageLevel" TabIndex="12" runat="server">
-                                        </asp:DropDownList>
+                                         <asp:TextBox class="form-control" ID="TextVoltage" readonly="true"  onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                       <%-- <asp:DropDownList class="form-control  select-form select2" disabled Style="width: 100% !important;" AutoPostBack="true" ID="ddlVoltageLevel" TabIndex="12" runat="server">
+                                        </asp:DropDownList>--%>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -281,7 +301,8 @@
                                                 </thead>
                                                 <tbody>
                                                     <div id="installationType1" runat="server">
-                                                        <tr>
+                                                        <
+                                                            >
                                                             <td>
                                                                 <div class="col-12">
                                                                     <asp:TextBox class="form-control" ID="txtinstallationType1" ReadOnly="true" Text="Line" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -292,7 +313,7 @@
                                                                     <asp:TextBox class="form-control" ID="txtinstallationNo1" ReadOnly="true"   autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                 </div>
                                                             </td>                                                           
-                                                        </tr>
+                                                        </>
                                                     </div>
                                                     <div id="installationType2" runat="server">
                                                         <tr>
@@ -335,8 +356,10 @@
                                             Select Installation Type
               
                                         </label>
-                                        <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlWorkDetail" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
-                                        </asp:DropDownList>
+                                          <asp:TextBox class="form-control" ID="txtWorkDetail" ReadOnly="true"  placeholder=""  autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                                      <%--  <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlWorkDetail" runat="server" OnSelectedIndexChanged="ddlWorkDetail_SelectedIndexChanged">
+                                        </asp:DropDownList>--%>
                                         <asp:TextBox class="form-control" ID="WorkDetail" autocomplete="off" onkeydown="return preventEnterSubmit(event)" Visible="false" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                     </div>

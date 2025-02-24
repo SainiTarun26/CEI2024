@@ -610,7 +610,7 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="/UserManual/CamScanner 01-13-2025 13.54.pdf" target="_blank">BRAP-2024 Griviance Mechanism</a>
+                                        <a href="/UserManual/BRAP_Griviance.pdf" target="_blank">BRAP-2024 Griviance Mechanism</a>
                                     </li>
                                     <li>
                                         <a href="UserManual/office order 223.pdf" target="_blank">Mendate Regarding high medium low risk profile</a>
@@ -654,7 +654,7 @@
 
                             <li class="dropdown">
                                 <a href="#">
-                                    <span>EODB Dashboard</span>
+                                    <span>EODB Compliance's</span>
                                     <i class="bi bi-chevron-down"></i>
                                 </a>
                                 <ul>
@@ -752,7 +752,7 @@
         <!-- End Hero -->
 
         <main id="main" style="background:#f9f9f9;">
-             <div class="row">
+            <%-- <div class="row">
      <div class="col-md-3"></div>
      <div class="col-md-6">
  <div class="card" style="margin: 10px;
@@ -762,7 +762,7 @@
      </div>
          </div>
      <div class="col-md-3"></div>
-     </div>
+     </div>--%>
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">

@@ -330,10 +330,6 @@ namespace CEIHaryana.SiteOwnerPages
                             case "Other Document":
                                 DocumentId = "14";
                                 break;
-                            case "Copy Of Electricity Bill":
-                                DocumentId = "9";
-                                break;
-
                             default:
                                 DocumentId = string.Empty;
                                 break;
@@ -424,9 +420,6 @@ namespace CEIHaryana.SiteOwnerPages
                                 break;
                             case "Other Document":
                                 DocumentId = "14";
-                                break;
-                            case "Copy Of Electricity Bill":
-                                DocumentId = "9";
                                 break;
                             default:
                                 DocumentId = string.Empty;

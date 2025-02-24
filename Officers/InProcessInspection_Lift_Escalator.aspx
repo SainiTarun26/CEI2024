@@ -517,8 +517,6 @@
             <div class="card-title" style="margin-bottom: 5px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: -10px;">
                 Test Report Detail
             </div>
-<asp:UpdatePanel ID="updPanel" runat="server">
-                  <ContentTemplate>
             <div class="card" style="margin: -11px; margin-top: 15px; padding: 11px; margin-bottom: 20px;" id="DivTestReports" runat="server" visible="false">
                 <div class="col-12" style="padding: 0px;">
                     <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" >
@@ -535,82 +533,6 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:TemplateField HeaderText="View TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report & Attachments" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("RegistrationNo") %>' />
-                                </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
-                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="1st Renewal Date">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                <ItemTemplate>
-                                    <asp:TextBox ID="txtFirstRenewalDate" Type="date" runat="server" class="form-control" onfocus="setMinDate(this)"   AutoPostBack="True" OnTextChanged="txtFirstRenewalDate_TextChanged" ></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfvFirstRenewalDate" runat="server"
-                                        ControlToValidate="txtFirstRenewalDate"
-                                        ErrorMessage="First time Renewal Date is required."
-                                        Display="Dynamic"  ValidationGroup="Submit"
-                                        CssClass="text-danger"></asp:RequiredFieldValidator>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="1st Expiry Date">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                <ItemTemplate>
-                                    <asp:TextBox ID="txtFirstExpiryDate" Type="date" runat="server" class="form-control" onfocus="setMinDate(this)"  ></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfvFirstExpiryDate" runat="server"
-                                        ControlToValidate="txtFirstExpiryDate"
-                                        ErrorMessage="First time Expiry Date is required."
-                                        Display="Dynamic"  ValidationGroup="Submit"
-                                        CssClass="text-danger"></asp:RequiredFieldValidator>
-                                    <asp:CompareValidator ID="cvExpiryDate" runat="server"
-                                      ControlToValidate="txtFirstExpiryDate"
-                                      ControlToCompare="txtFirstRenewalDate"
-                                      Operator="GreaterThan"
-                                      Type="Date"
-                                      ErrorMessage="Expiry date should be greater than Renewal Date."
-                                      Display="Dynamic"
-                                      CssClass="text-danger"
-                                      ValidationGroup="Submit"></asp:CompareValidator>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="2nd Renewal Date">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                <ItemTemplate>
-                                    <asp:TextBox ID="txtSecRenewalDate" Type="date" runat="server" class="form-control" AutoPostBack="true"  OnTextChanged ="txtSecRenewalDate_TextChanged" ></asp:TextBox>
-                                   <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
-
-                                  <%--<asp:CompareValidator ID="cv2ndRenewal" runat="server"
-                                        ControlToValidate="txtSecRenewalDate"
-                                        ControlToCompare="txtFirstExpiryDate"
-                                        Operator="GreaterThan"
-                                        Type="Date"
-                                        ErrorMessage="Second Renewal date should be one day greater than First Expiry Date."
-                                        Display="Dynamic"
-                                        CssClass="text-danger"
-                                        ValidationGroup="Submit"></asp:CompareValidator>--%>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="2nd Expiry Date">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                <ItemTemplate>
-                                    <asp:TextBox ID="txtSecExpiryDate" Type="date" runat="server" class="form-control" ></asp:TextBox>
-                                    <asp:CompareValidator ID="cv2ndExpiry" runat="server"
-                                        ControlToValidate="txtSecExpiryDate"
-                                        ControlToCompare="txtSecRenewalDate"
-                                        Operator="GreaterThan"
-                                        Type="Date"
-                                        ErrorMessage="Second Expiry date should be greater than Second Renewal Date."
-                                        Display="Dynamic"
-                                        CssClass="text-danger"
-                                        ValidationGroup="Submit"></asp:CompareValidator>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-
-
                             <asp:BoundField DataField="TestReportID" HeaderText="TestReportId" Visible="false">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -631,21 +553,21 @@
                                        <asp:Label ID="lblLastApprovalDate" runat="server" Text='<%#Eval("LastApprovalDate") %>'></asp:Label>
                                       <asp:Label ID="LblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
                                      <asp:Label ID="LblMemoNo" runat="server" Text='<%#Eval("MemoNo") %>'></asp:Label>
-                                      <asp:Label ID="LblMemoDate" runat="server" Text='<%#Eval("MemoDate") %>'></asp:Label>
-                                     <asp:Label ID="LblAmount" runat="server" Text='<%#Eval("Amount") %>'></asp:Label>
 
                                 </ItemTemplate>
                             </asp:TemplateField>
-                           
+                            <asp:TemplateField HeaderText="View TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report & Attachments" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("RegistrationNo") %>' />
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                            </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
 
                 </div>
             </div>
-
-                      
-                      </ContentTemplate>
-          </asp:UpdatePanel>
               
             <div class="card" style="margin-top: 15px; padding: 11px; margin-bottom: 20px; margin-left: -15px; margin-right: -15px;" id="DivViewTRinMultipleCaseNew" runat="server" visible="false">
                 <asp:GridView ID="Grid_MultipleInspectionTR" CssClass="table table-bordered table-striped table-responsive" AutoPostBack="true"   runat="server" AutoGenerateColumns="false">
@@ -682,7 +604,7 @@
                                  <asp:Label ID="lblCapacity" runat="server" Text='<%#Eval("Capacity") %>'></asp:Label>
                                  <asp:Label ID="lblWeight" runat="server" Text='<%#Eval("Weight") %>'></asp:Label>
                                   <asp:Label ID="LblErectionDate" runat="server" Text='<%#Eval("ErectionDate") %>'></asp:Label>
-                                  <asp:Label ID="lblAmount" runat="server" Text='<%#Eval("Amount") %>'></asp:Label>
+                                  <%--<asp:Label ID="lblLastApprovalDate" runat="server" Text='<%#Eval("LastApprovalDate") %>'></asp:Label>--%>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="View Test Report & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
@@ -771,7 +693,7 @@
 
                 <div class="col-md-4" id="ApprovalRequired" runat="server" visible="true">
                     <label>
-                        Action<samp style="color: red"> * </samp>
+                        Approval<samp style="color: red"> * </samp>
                     </label>
                     <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -794,9 +716,6 @@
                      <label for="StartDate" id="labelApprovalDate" runat="server">
                     Approval Date<samp style="color: red"> * </samp>                           
                         </label>
-                        <label for="StartDate" id="labelRejectedDate" runat="server">
-                Reject Date<samp style="color: red"> * </samp>                           
-                </label>
                     <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                 </div>
@@ -807,9 +726,6 @@
                     </label>
                     <label for="StartDate" id="AppDate" runat="server">
     Approval Date<samp style="color: red"> * </samp>
-</label>
-                                        <label for="StartDate" id="AppReject" runat="server">
-    Rejected Date<samp style="color: red"> * </samp>
 </label>
                     <asp:TextBox class="form-control" ID="txtDATE" TabIndex="16" autocomplete="off" ReadOnly="true" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
@@ -870,12 +786,6 @@
             </asp:UpdatePanel>--%>
 
     <script type="text/javascript">
-        function alertWithRedirectdata_CheckAlert(Message) {
-            if (confirm(Message)) {
-                // window.location.href = "/Officers/InProcessRequest.aspx";
-            } else {
-            }
-        }
         function alertWithRedirectdata(Message) {
             if (confirm('Inspection Request has been Successfully ' + Message)) {
                 window.location.href = "/Officers/InProcessRequest.aspx";
@@ -979,26 +889,4 @@
             document.getElementById('<%= txtInspectionDate.ClientID %>').setAttribute('max', today);
         };
     </script>
-      <script type="text/javascript">
-          function setMinDate(input) {
-              var today = new Date().toISOString().split('T')[0];
-              input.setAttribute("min", today); // Set minimum date to today
-          }
-                   
-      </script>
-        <%--<script type="text/javascript">
-            function validateDates1() {
-                debugger;
-                var RenewalDate = new Date(document.getElementById('<%=txtFirstRenewalDate.ClientID %>').value);
-               var ExpiryDate = new Date(document.getElementById('<%=txtFirstExpiryDate.ClientID %>').value);
-
-                if (new Date(ExpiryDate) <= new Date(RenewalDate)) {
-               alert('Expiry date should be greater than Renewal Date');
-               document.getElementById('<%=txtFirstRenewalDate.ClientID %>').value = "";
-                }
-            }
-
-        </script>--%>
-  
-
 </asp:Content>

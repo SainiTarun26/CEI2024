@@ -236,7 +236,6 @@
         }
     </style>
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -279,58 +278,44 @@
                                 Style="margin-right: 5px;" AutoPostBack="true" OnTextChanged="txtRegistrationNo_TextChanged"></asp:TextBox>
                             <div class="input-group-append">
                                 <asp:LinkButton ID="lnkbtnSearch" CssClass="btn btn-primary" runat="server" Style="height: 100%; padding: 0px;">
-                                <i class="fa fa-search"></i>
+                <i class="fa fa-search"></i>
                                 </asp:LinkButton>
                             </div>
                         </div>
                         <asp:RequiredFieldValidator ID="RfvtxtRegistrationNo" ControlToValidate="txtRegistrationNo" runat="server"
                             ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="col-md-3" runat="server">
+
+                   <%-- <div class="col-md-2" runat="server">
                         <label>
                             Memo No.<samp style="color: red"> * </samp>
                         </label>
                         <asp:TextBox class="form-control" ID="txtMemoNo" autocomplete="off" runat="server" MaxLength="25" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtMemoNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                    </div>
-                    <div class="col-md-3" runat="server">
-                        <label>
-                            Memo Date<samp style="color: red"> * </samp>
-                        </label>
-                        <asp:TextBox class="form-control" Type="date" ID="txtMemoDate" autocomplete="off" runat="server" MaxLength="25" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ControlToValidate="txtMemoDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                    </div>
-                    <div class="col-md-3" runat="server">
-                        <label>
-                            Date of Erection<samp style="color: red"> * </samp>
-                        </label>
-                        <asp:TextBox type="date" class="form-control" ID="txtDateofErection" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ControlToValidate="txtDateofErection" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                    </div>
-                   </div>
-                <div class="row">
-                    <div class="col-md-3" runat="server">
+                    </div>--%>
+                    <div class="col-md-2" runat="server">
                         <label>
                             Last Approval Date<samp style="color: red"> * </samp>
                         </label>
                         <asp:TextBox type="date" class="form-control" ID="txtLastApprovalDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="txtLastApprovalDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="col-md-3" runat="server">
+                    <div class="col-md-2" runat="server">
                         <label>
-                            Expiry date (Last Challan Deposited)<samp style="color: red"> * </samp>
+                            Previous Challan Date<samp style="color: red"> * </samp>
                         </label>
-                        <asp:TextBox type="date" class="form-control" ID="txtLastexpirydate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RfvtxtLastexpirydate" ControlToValidate="txtLastexpirydate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                        <asp:TextBox type="date" class="form-control" ID="txtPrevChallanDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RfvtxtPrevChallanDate" ControlToValidate="txtPrevChallanDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="col-md-6">
+
+                    <div class="col-md-3">
                         <label class="form-label" for="customFile">
                             Upload Previous Challan<samp style="color: red"> * </samp>
                         </label>
                         <asp:FileUpload ID="customFile" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="customFile" ValidationGroup="Submit" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-                               </div>
+                </div>
             </div>
             <div class="card-title" id="divLiftDetails" runat="server" visible="false" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
                 Lift Details
@@ -342,7 +327,29 @@
                 <ContentTemplate>
                     <div class="card" id="divdetails" runat="server" visible="false" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4" runat="server">
+                                <label id="lblMake" runat="server">
+                                    Make
+                                </label>
+                                <samp style="color: red">* </samp>
+                                <asp:TextBox class="form-control" ID="txtMake" MaxLength="150" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RfvtxtMake" ControlToValidate="txtMake" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="col-md-4" runat="server">
+                                <label>
+                                    Serial No.<samp style="color: red"> * </samp>
+                                </label>
+                                <asp:TextBox class="form-control" ID="txtSerialNo" MaxLength="20" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RfvtxtSerialNo" ControlToValidate="txtSerialNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="col-md-4" runat="server">
+                                <label>
+                                    Date of Erection<samp style="color: red"> * </samp>
+                                </label>
+                                <asp:TextBox type="date" class="form-control" ID="txtDateofErection" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ControlToValidate="txtDateofErection" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="col-md-4">
                                 <label id="lblTypeOfLift" runat="server">
                                     Type of Lift
                                 </label>
@@ -357,31 +364,15 @@
                                     <asp:ListItem Text="Escalator" Value="1" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
                                 </asp:RadioButtonList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ErrorMessage="Choose one" ControlToValidate="RadioBtnEscType" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />
+
                             </div>
-                            <div class="col-md-3" runat="server">
-                                <label id="lblMake" runat="server">
-                                    Make
-                                </label>
-                                <samp style="color: red">* </samp>
-                                <asp:TextBox class="form-control" ID="txtMake" MaxLength="150" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RfvtxtMake" ControlToValidate="txtMake" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                            </div>
-                            <div class="col-md-3" runat="server">
-                                <label>
-                                    Serial No.<samp style="color: red"> * </samp>
-                                </label>
-                                <asp:TextBox class="form-control" ID="txtSerialNo" MaxLength="20" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RfvtxtSerialNo" ControlToValidate="txtSerialNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                            </div>
-                             <div class="col-md-3" runat="server">
+                            <div class="col-md-4" runat="server">
                                 <label>
                                     Type of Control<samp style="color: red"> * </samp>
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtControlType" MaxLength="150" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RfvtxtControlType" ControlToValidate="txtControlType" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-4" runat="server">
                                 <label>
                                     Capacity(Persons)<samp style="color: red"> * </samp>
@@ -403,6 +394,7 @@
                                 <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDistrict" Style="width: 100% !important">
                                 </asp:DropDownList>
                                 <asp:TextBox class="form-control" ID="txtDistrict" Visible="false" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" ReadOnly="true"></asp:TextBox>
+
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator25" ErrorMessage="Required" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                             </div>
                             <div class="col-md-12" runat="server">
@@ -456,7 +448,7 @@
             </div>
             <div class="row" style="margin-top: 25px;">
                 <div class="col-6" style="text-align: end; padding-right: 0px;">
-                    <asp:Button ID="btnSubmit" Text="Save" runat="server" OnClick="btnSubmit_Click" OnClientClick="return validateDates();" ValidationGroup="Submit" class="btn btn-primary mr-2" Style="padding-left: 30px; padding-right: 30px;" />
+                    <asp:Button ID="btnSubmit" Text="Save" runat="server" OnClick="btnSubmit_Click" ValidationGroup="Submit" class="btn btn-primary mr-2" Style="padding-left: 30px; padding-right: 30px;" />
                 </div>
                 <div class="col-6" style="text-align: left; padding-left: 0px;">
                     <asp:Button ID="btnBack" Style="padding-left: 35px; padding-right: 35px;" OnClick="btnBack_Click" Text="Back" runat="server" class="btn btn-primary mr-2" CausesValidation="false" />
@@ -472,19 +464,31 @@
                             </button>
                         </div>
                         <div class="modal-body">
+                            <%-- <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                <ContentTemplate>--%>
                             <div class="row">
                                 <div class="col-md-4" runat="server">
                                     <asp:TextBox class="form-control" ID="txtSearch" autocomplete="off" placeholder="Search" runat="server" Style="margin-left: 18px" onkeyup="Search_Gridview(this)"
                                         onkeydown="SearchOnEnter(event)"></asp:TextBox>
+                                    <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtSearch" runat="server" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                    --%>
                                 </div>
+                                <%-- <div class="col-md-4" style="margin-bottom: auto; padding-left: 0px;">
+                                            <asp:Button ID="btn" Class="btn btn-primary" runat="server" Text="Search" OnClick="btnModalSearch_Click" Style="height: 30px; padding: 0px 15px 0px 15px;" />
+                                        </div>--%>
                             </div>
                             <hr />
                             <div class="row">
                                 <%--Grid to filter record according to Registration No--%>
                                 <div class="col-md-12">
                                     <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" OnRowCommand="GridView1_RowCommand" runat="server" AutoGenerateColumns="false">
+                                        <%--AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging"--%>
                                         <PagerStyle CssClass="pagination-ys" />
                                         <Columns>
+                                            <%--<asp:BoundField DataField="RegistrationNo" HeaderText="Registration No">
+                                                        <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
+                                                        <ItemStyle HorizontalAlign="Left" Width="30%" />
+                                                    </asp:BoundField>--%>
                                             <asp:TemplateField>
                                                 <HeaderStyle Width="10%" CssClass="headercolor" />
                                                 <ItemStyle Width="10%" Font-Bold="true" />
@@ -529,6 +533,8 @@
                                     </asp:GridView>
                                 </div>
                             </div>
+                            <%--   </ContentTemplate>
+                            </asp:UpdatePanel>--%>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
@@ -572,6 +578,7 @@
             }
         }
     </script>
+
     <script type="text/javascript">
         function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode
@@ -690,6 +697,27 @@
             const formattedToday = today.toISOString().split('T')[0];
             const formattedMinDate = minDate.toISOString().split('T')[0];
 
+            // Get the TextBox input and set the min and max attributes
+            const dateInput = document.getElementById('<%= txtLastApprovalDate.ClientID %>');
+            if (dateInput) {
+                dateInput.setAttribute("max", formattedToday); // Disable future dates
+                dateInput.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the current date
+            const today = new Date();
+
+            // Calculate the minimum date (20 years before today)
+            const minDate = new Date();
+            minDate.setFullYear(today.getFullYear() - 20);
+
+            // Format the dates to YYYY-MM-DD
+            const formattedToday = today.toISOString().split('T')[0];
+            const formattedMinDate = minDate.toISOString().split('T')[0];
+
             // Set the date range for txtLastApprovalDate
             const txtLastApprovalDate = document.getElementById('<%= txtLastApprovalDate.ClientID %>');
             if (txtLastApprovalDate) {
@@ -697,11 +725,11 @@
                 txtLastApprovalDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
             }
 
-            // Set the date range for txtLastexpirydate
-            const txtLastexpirydate = document.getElementById('<%= txtLastexpirydate.ClientID %>');
-            if (txtLastexpirydate) {
-                txtLastexpirydate.setAttribute("max", formattedToday); // Disable future dates
-                txtLastexpirydate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
+            // Set the date range for txtPrevChallanDate
+            const txtPrevChallanDate = document.getElementById('<%= txtPrevChallanDate.ClientID %>');
+            if (txtPrevChallanDate) {
+                txtPrevChallanDate.setAttribute("max", formattedToday); // Disable future dates
+                txtPrevChallanDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
             }
         });
     </script>
@@ -729,9 +757,8 @@
 
             // Set date range for all specified TextBoxes
             setDateRange('<%= txtLastApprovalDate.ClientID %>');
-            setDateRange('<%= txtLastexpirydate.ClientID %>');
+            setDateRange('<%= txtPrevChallanDate.ClientID %>');
             setDateRange('<%= txtDateofErection.ClientID %>');
-            setDateRange('<%= txtMemoDate.ClientID %>');
         });
     </script>
     <script type="text/javascript">
@@ -740,55 +767,6 @@
                 window.location.href = "/SiteOwnerPages/LiftPeriodic.aspx";
             } else {
             }
-        }
-    </script>
-    <script type="text/javascript">
-        function validateDates() {
-            var isValid = true;
-
-            // Get all the dates
-            var dateOfErection = document.getElementById('<%= txtDateofErection.ClientID %>').value;
-            var memoDate = document.getElementById('<%= txtMemoDate.ClientID %>').value;
-            var currentDate = new Date();
-            var twentyYearsAgo = new Date();
-            twentyYearsAgo.setFullYear(currentDate.getFullYear() - 20);
-
-            // Function to check if a date is more than 20 years ago
-            function isDateMoreThan20YearsAgo(dateString) {
-                if (!dateString) return false;  // If no date is provided, return false
-                var inputDate = new Date(dateString);
-                return inputDate < twentyYearsAgo;
-            }
-
-            // Check if "Date of Erection" is more than 20 years ago
-            if (isDateMoreThan20YearsAgo(dateOfErection)) {
-                isValid = false;
-                alert("You are not eligible for renewal. As your Erection date is more than 20 years old.");
-                return false;  // Prevent form submission
-            }
-
-            // Check if Date of Erection is smaller than Memo Date
-            if (dateOfErection && memoDate) {
-                var dateErectionObj = new Date(dateOfErection);
-                var dateMemoObj = new Date(memoDate);
-
-                if (dateErectionObj >= dateMemoObj) {
-                    alert("Date of Erection must be smaller than Memo Date.");
-                    isValid = false;
-                }
-            } else {
-                // If either of the dates is missing, show an error
-                alert("Both Date of Erection and Memo Date are required.");
-                isValid = false;
-            }
-
-            // If the validation fails, prevent form submission
-            if (!isValid) {
-                return false;
-            }
-
-            // If all validations pass, allow form submission
-            return true;
         }
     </script>
 </asp:Content>

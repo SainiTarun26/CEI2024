@@ -47,7 +47,7 @@ namespace CEIHaryana.Officers
                         {
                             GetTestReportDataIfPeriodic();
                         }
-                        Page.Session["ClickCount"] = "0";
+
 
 
                     }
@@ -88,13 +88,11 @@ namespace CEIHaryana.Officers
                     txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     //txtAmount.Visible = false;
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                    Session["amount"] = txtAmount.Text;
                     if (txtAmount.Text == "0")
                     {
                         labelApprovalDate.Visible = true;
                         labelInspectionDate.Visible = false;
                         TranscationDetails.Visible = false;
-                        labelRejectedDate.Visible = false;
                     }
                     else
                     {
@@ -102,7 +100,6 @@ namespace CEIHaryana.Officers
                         labelInspectionDate.Visible = true;
                         TranscationDetails.Visible = true;
                         ChallanDate.Visible = false;
-                        labelRejectedDate.Visible = false;
                     }
 
                     //added by aslam on 23 dec 2024 start 
@@ -195,7 +192,6 @@ namespace CEIHaryana.Officers
                             txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
                             txtInspectionDate.Attributes.Add("disabled", "true");
                         }
-                        labelRejectedDate.Visible = false;
                         btnBack.Visible = true;
                         btnSubmit.Visible = false;
                         grd_Documemnts.Columns[4].Visible = false;
@@ -210,8 +206,6 @@ namespace CEIHaryana.Officers
                             txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
                             txtInspectionDate.Attributes.Add("disabled", "true");
                         }
-                        labelRejectedDate.Visible = true;
-                        labelApprovalDate.Visible = false;
                         Rejection.Visible = true;
                         txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                         txtRejectionBasis.Text = ds.Tables[0].Rows[0]["RejctionReasonType"].ToString();
@@ -239,7 +233,7 @@ namespace CEIHaryana.Officers
                         ApprovalRequired.Visible = false;
                         btnSubmit.Visible = false;
                         RejectionBasis.Visible = false;
-                        labelRejectedDate.Visible = false;
+
                         ddlReview.Attributes.Add("disabled", "true");
 
                         divTestReportAttachment.Visible = true;
@@ -267,13 +261,12 @@ namespace CEIHaryana.Officers
                     txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     string SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                    Session["amount"] = txtAmount.Text;
+
                     if (txtAmount.Text == "0")
                     {
                         labelApprovalDate.Visible = true;
                         labelInspectionDate.Visible = false;
                         TranscationDetails.Visible = false;
-                        labelRejectedDate.Visible = false;
                     }
                     else
                     {
@@ -281,7 +274,6 @@ namespace CEIHaryana.Officers
                         labelInspectionDate.Visible = true;
                         TranscationDetails.Visible = true;
                         ChallanDate.Visible = false;
-                        labelRejectedDate.Visible = false;
                     }
                     //added by aslam on 23 dec 2024 start 
                     txtelectrical.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
@@ -469,8 +461,8 @@ namespace CEIHaryana.Officers
                 if (e.CommandName == "Select")
                 {
                     //ID = Session["InspectionId"].ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                     fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -485,391 +477,337 @@ namespace CEIHaryana.Officers
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            int ClickCount = 0;
-            ClickCount = Convert.ToInt32(Session["ClickCount"]);
-            if (ClickCount < 1)
+            //int checksuccessmessage = 0;
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
             {
-                ClickCount = ClickCount + 1;
-                Session["ClickCount"] = ClickCount;
-                //int checksuccessmessage = 0;
-                using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                SqlTransaction transaction = null;
+                try
                 {
-                    SqlTransaction transaction = null;
-                    try
+
+
+                    connection.Open();
+                    if (Session["InProcessInspectionId"].ToString() != null && Session["InProcessInspectionId"].ToString() != "" && Session["StaffID"].ToString() != null)
                     {
+                        ID = Session["InProcessInspectionId"].ToString();
+                        DataSet ds = new DataSet();
+                        ds = CEI.InspectionDataFor_Lift(ID);
+                        Type = ds.Tables[0].Rows[0]["IType"].ToString();
 
-
-                        connection.Open();
-                        if (Session["InProcessInspectionId"].ToString() != null && Session["InProcessInspectionId"].ToString() != "" && Session["StaffID"].ToString() != null)
+                        if (Type == "New")
                         {
-                            ID = Session["InProcessInspectionId"].ToString();
-                            DataSet ds = new DataSet();
-                            ds = CEI.InspectionDataFor_Lift(ID);
-                            Type = ds.Tables[0].Rows[0]["IType"].ToString();
+                            TxtDivision.Text = ds.Tables[0].Rows[0]["Division"].ToString();
+                            txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                            txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
+                            txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                        }
+                        else if (Type == "Periodic")
+                        {
+                            TxtDivision.Text = ds.Tables[0].Rows[0]["Division"].ToString();
+                            txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                            TxtApprovalDate.Text = ds.Tables[0].Rows[0]["LastApprovalDate"].ToString();
+                            txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
+                            txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                           // TxtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
+                        }
 
-                            if (Type == "New")
+
+                        StaffId = Session["StaffID"].ToString();
+                        ID = Session["InProcessInspectionId"].ToString();
+                        string InspectionType = Session["InspectionType"].ToString();
+                        if (Type == "New")
+                        {
+                            DataTable dsVC = CEI.InstallationComponentsforLift_Return(ID);
+                            if (dsVC != null && dsVC.Rows.Count > 0)
                             {
-                                TxtDivision.Text = ds.Tables[0].Rows[0]["Division"].ToString();
-                                txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
-                                txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
-                                txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
-                                txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                            }
-                            else if (Type == "Periodic")
-                            {
-                                TxtDivision.Text = ds.Tables[0].Rows[0]["Division"].ToString();
-                                txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
-                                TxtApprovalDate.Text = ds.Tables[0].Rows[0]["LastApprovalDate"].ToString();
-                                txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
-                                txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
-                                txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-
-                            }
-
-
-                            StaffId = Session["StaffID"].ToString();
-                            ID = Session["InProcessInspectionId"].ToString();
-                            string InspectionType = Session["InspectionType"].ToString();
-                            if (Type == "New")
-                            {
-                                DataTable dsVC = CEI.InstallationComponentsforLift_Return(ID);
-                                if (dsVC != null && dsVC.Rows.Count > 0)
-                                {
-                                    Grid_MultipleInspectionTR.DataSource = dsVC;
-                                    Grid_MultipleInspectionTR.DataBind();
-                                }
-                            }
-                            else
-                            {
-                                DataSet dsVC = CEI.GetDetailsToViewCart_Lift_Escalator_Return(ID);
-
-                                if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
-                                {
-                                    GridView2.DataSource = dsVC;
-                                    GridView2.DataBind();
-                                }
-
-                            }
-                            //string InstallationType = Session["InstallationType"].ToString();
-                            // string Division = Session["Division"].ToString();
-                            String SubmittedDate = Session["lblSubmittedDate"].ToString();
-
-                            if (ddlReview.SelectedValue != null && ddlReview.SelectedValue != "" && ddlReview.SelectedValue != "0")
-                            {
-                                DateTime inspectionDate;
-                                if (!DateTime.TryParse(txtInspectionDate.Text, out inspectionDate))
-                                {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid inspection date.');", true);
-                                    return;
-                                }
-
-                                DateTime submittedDate;
-                                if (!DateTime.TryParse(Session["lblSubmittedDate"].ToString(), out submittedDate))
-                                {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid submitted date.'); window.location='InProcessRequest.aspx';", true);
-                                    return;
-                                }
-
-                                if (inspectionDate < submittedDate)
-                                {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection/Approval date must be greater equal to application requested date.'); window.location='InProcessRequest.aspx';", true);
-                                    return;
-                                }
-
-                                ApprovedorReject = ddlReview.SelectedItem.ToString();
-                                Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text.Trim();
-
-                                //if (Suggestion.Visible == true)
-                                //{
-                                //    Suggestions = string.IsNullOrEmpty(txtSuggestion.Text) ? null : txtSuggestion.Text.Trim();
-                                //}
-
-                                try
-                                {
-                                    CEI.InspectionFinalAction_Lift_Check(ID, StaffId, ApprovedorReject, Reason, txtInspectionDate.Text);
-                                }
-                                catch (Exception ex)
-                                {
-                                    string errorMessage = ex.Message.Replace("'", "\\'");
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata_CheckAlert('" + errorMessage + "');", true);
-                                    ClickCount = ClickCount - 1;
-                                    Session["ClickCount"] = ClickCount;
-                                    return;
-                                }
-
-                                try
-                                {
-                                    //commented 3 dec 2024 for 
-                                    //string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
-                                    //if (reqType == "Industrysdfsdf")
-                                    //{
-                                    //    string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
-                                    //    // string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in/api/project-service-logs-external_UHBVN");
-                                    //    if (serverStatus != "Server is reachable.")
-                                    //    {
-                                    //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
-                                    //        return;
-                                    //    }
-                                    //}
-                                    transaction = connection.BeginTransaction();
-                                    CEI.InspectionFinalAction_Lift(ID, StaffId, ApprovedorReject, Reason, txtInspectionDate.Text, transaction);
-                                    if (ApprovedorReject == "Approved")
-                                    {
-                                        if (InspectionType == "New")
-                                        {
-                                            foreach (GridViewRow row in Grid_MultipleInspectionTR.Rows)
-                                            {
-
-                                                string TestReportId = (row.FindControl("LblTestReportId") as Label)?.Text;
-                                                string InstallationType = (row.FindControl("LblInstallationName") as Label)?.Text;
-                                                string lblMake = (row.FindControl("lblMake") as Label)?.Text;
-                                                string lblLiftSrNo = (row.FindControl("lblLiftSrNo") as Label)?.Text;
-                                                string lblTypeOfLift = (row.FindControl("lblTypeOfLift") as Label)?.Text;
-                                                string lblTypeOfControl = (row.FindControl("lblTypeOfControl") as Label)?.Text;
-                                                string lblCapacity = (row.FindControl("lblCapacity") as Label)?.Text;
-                                                string lblWeight = (row.FindControl("lblWeight") as Label)?.Text;
-                                                string lblAmount = (row.FindControl("lblAmount") as Label)?.Text;
-                                                if (lblAmount == "0.00" || lblAmount == "0")
-                                                {
-                                                    txtTranscationDate.Text = "";
-                                                    txtTransactionId.Text = "";
-
-                                                }
-                                                else
-                                                {
-                                                    txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
-                                                    txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-
-                                                }
-                                                DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
-
-
-                                                CEI.InstallationApproval_Lift_New(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                                 lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text,txtTranscationDate.Text, lblAmount, txtTransactionId.Text, txtTranscationDate.Text, transaction);
-                                                //CEI.UpdateLiftApprovedCertificatedata(ID);
-                                            }
-                                            //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
-
-                                        }
-                                        //if (InspectionType == "Periodic")
-                                        //{
-
-                                        //    foreach (GridViewRow row in GridView2.Rows)
-                                        //    {
-
-                                        //        string TestReportId = (row.FindControl("lblTestReport") as Label)?.Text;
-                                        //        string InstallationType = (row.FindControl("LblInstallationName") as Label)?.Text;
-                                        //        string lblMake = (row.FindControl("lblMake") as Label)?.Text;
-                                        //        string lblLiftSrNo = (row.FindControl("lblLiftSrNo") as Label)?.Text;
-                                        //        string lblTypeOfLift = (row.FindControl("lblTypeOfLift") as Label)?.Text;
-                                        //        string lblTypeOfControl = (row.FindControl("lblTypeOfControl") as Label)?.Text;
-                                        //        string lblCapacity = (row.FindControl("lblCapacity") as Label)?.Text;
-                                        //        string lblWeight = (row.FindControl("lblWeight") as Label)?.Text;
-                                        //        string LblRegistrationNo = (row.FindControl("LblRegistrationNo") as Label)?.Text;
-                                        //        string lblMemoNo = (row.FindControl("lblMemoNo") as Label)?.Text;
-                                        //        string LblAmount = (row.FindControl("LblAmount") as Label)?.Text;
-                                        //        DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
-                                        //        DateTime lblLastApprovalDate = DateTime.Parse((row.FindControl("lblLastApprovalDate") as Label)?.Text);
-                                        //        DateTime LblMemoDate = DateTime.Parse((row.FindControl("LblMemoDate") as Label)?.Text);
-                                        //        if (LblAmount == "0.00" || LblAmount == "0")
-                                        //        {
-                                        //            txtTranscationDate.Text = "";
-                                        //            txtTransactionId.Text = "";
-
-                                        //        }
-                                        //        else
-                                        //        {
-                                        //            txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
-                                        //            txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-
-                                        //        }
-                                        //        // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
-                                        //        CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                        //        lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, txtTranscationDate.Text, lblMemoNo, LblAmount, txtTransactionId.Text, txtTranscationDate.Text, LblMemoDate, transaction);
-
-                                        //    }
-                                        //    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
-
-                                        //}
-
-                                        transaction.Commit();
-                                        CEI.UpdateLiftApprovedCertificatedata(ID);
-                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
-                                    }
-
-                                    else if (ApprovedorReject == "Rejected")
-                                    {
-                                        transaction.Commit();
-                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata2()", true);
-                                    }
-                                    else
-                                    {
-                                        //transaction.Commit();
-                                        ddlReview.Focus();
-                                        return;
-                                    }
-
-                                    //if (ApprovedorReject == "Rejected")
-                                    //{
-                                    //    CEI.InspectionFinalAction_Lift(ID, "", StaffId, InstallationType, InspectionType, ApprovedorReject, Reason, txtInspectionDate.Text, txtChallanDate.Text, txtRegistrationNo.Text, Division);
-                                    //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Request has been Rejected.');", true);
-                                    //}
-                                    Session["InspectionType"] = "";
-                                    Session["InstallationType"] = "";
-                                    Session["amount"] = "";
-                                    //transaction.Commit();
-
-                                    //commented 3 dec 2024 for 
-                                    // checksuccessmessage = 1;
-
-                                    //string actiontype = ApprovedorReject == "Approved" ? "Approved" : "Rejected";
-                                    //    Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype);
-
-                                    //    if (ApiPostformatresult.PremisesType == "Industryasdasda")
-                                    //    {
-                                    //        string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
-
-                                    //        logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                    //            "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
-                                    //            new Industry_Inspection_StageWise_JsonDataFormat_Model
-                                    //            {
-                                    //                actionTaken = ApiPostformatresult.ActionTaken,
-                                    //                commentByUserLogin = ApiPostformatresult.CommentByUserLogin,
-                                    //                //commentDate = ApiPostformatresult.CommentDate,
-                                    //                commentDate = ApiPostformatresult.CommentDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                    //                comments = ApiPostformatresult.Comments,
-                                    //                id = ApiPostformatresult.Id,
-                                    //                projectid = ApiPostformatresult.ProjectId,
-                                    //                serviceid = ApiPostformatresult.ServiceId
-                                    //                //projectid = "245df444-1808-4ff6-8421-cf4a859efb4c",
-                                    //                //serviceid = "e31ee2a6-3b99-4f42-b61d-38cd80be45b6"
-                                    //            },
-                                    //            ApiPostformatresult,
-                                    //            accessToken
-                                    //        );
-
-                                    //        if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
-                                    //        {
-                                    //            throw new Exception(logDetails.ErrorMessage);
-                                    //        }
-
-                                    //        CEI.LogToIndustryApiSuccessDatabase(
-                                    //            logDetails.Url,
-                                    //            logDetails.Method,
-                                    //            logDetails.RequestHeaders,
-                                    //            logDetails.ContentType,
-                                    //            logDetails.RequestBody,
-                                    //            logDetails.ResponseStatusCode,
-                                    //            logDetails.ResponseHeaders,
-                                    //            logDetails.ResponseBody,
-                                    //            new Industry_Api_Post_DataformatModel
-                                    //            {
-                                    //                InspectionId = ApiPostformatresult.InspectionId,
-                                    //                InspectionLogId = ApiPostformatresult.InspectionLogId,
-                                    //                IncomingJsonId = ApiPostformatresult.IncomingJsonId,
-                                    //                ActionTaken = ApiPostformatresult.ActionTaken,
-                                    //                CommentByUserLogin = ApiPostformatresult.CommentByUserLogin,
-                                    //                CommentDate = ApiPostformatresult.CommentDate,
-                                    //                Comments = ApiPostformatresult.Comments,
-                                    //                Id = ApiPostformatresult.Id,
-                                    //                ProjectId = ApiPostformatresult.ProjectId,
-                                    //                ServiceId = ApiPostformatresult.ServiceId,
-                                    //            }
-
-                                    //        );
-                                    //    }
-                                }
-                                //commented 3 dec 2024 for 
-                                //catch (TokenManagerException ex)
-                                //{
-                                //    CEI.LogToIndustryApiErrorDatabase(
-                                //        ex.RequestUrl,
-                                //        ex.RequestMethod,
-                                //        ex.RequestHeaders,
-                                //        ex.RequestContentType,
-                                //        ex.RequestBody,
-                                //        ex.ResponseStatusCode,
-                                //        ex.ResponseHeaders,
-                                //        ex.ResponseBody,
-                                //        new Industry_Api_Post_DataformatModel
-                                //        {
-                                //            InspectionId = ex.InspectionId,
-                                //            InspectionLogId = ex.InspectionLogId,
-                                //            IncomingJsonId = ex.IncomingJsonId,
-                                //            ActionTaken = ex.ActionTaken,
-                                //            CommentByUserLogin = ex.CommentByUserLogin,
-                                //            CommentDate = ex.CommentDate,
-                                //            Comments = ex.Comments,
-                                //            Id = ex.Id,
-                                //            ProjectId = ex.ProjectId,
-                                //            ServiceId = ex.ServiceId,
-                                //        }
-                                //    );
-                                //    string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
-                                //}
-                                //catch (IndustryApiException ex)
-                                //{
-                                //    CEI.LogToIndustryApiErrorDatabase(
-                                //        ex.RequestUrl,
-                                //        ex.RequestMethod,
-                                //        ex.RequestHeaders,
-                                //        ex.RequestContentType,
-                                //        ex.RequestBody,
-                                //        ex.ResponseStatusCode,
-                                //        ex.ResponseHeaders,
-                                //        ex.ResponseBody,
-                                //        new Industry_Api_Post_DataformatModel
-                                //        {
-                                //            InspectionId = ex.InspectionId,
-                                //            InspectionLogId = ex.InspectionLogId,
-                                //            IncomingJsonId = ex.IncomingJsonId,
-                                //            ActionTaken = ex.ActionTaken,
-                                //            CommentByUserLogin = ex.CommentByUserLogin,
-                                //            CommentDate = ex.CommentDate,
-
-                                //            Comments = ex.Comments,
-                                //            Id = ex.Id,
-                                //            ProjectId = ex.ProjectId,
-                                //            ServiceId = ex.ServiceId,
-                                //        }
-                                //    );
-                                //    string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
-                                //}
-                                catch (Exception ex)
-                                {
-                                    // Handle the exception, log it, etc.
-                                    transaction?.Rollback();
-                                    string errorMessage = ex.Message.Replace("'", "\\'");
-                                    ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
-                                }
-                                finally
-                                {
-                                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
-                                    transaction?.Dispose();
-                                    connection.Close();
-                                }
-                            }
-                            else
-                            {
-                                ddlReview.Focus();
-                                return;
+                                Grid_MultipleInspectionTR.DataSource = dsVC;
+                                Grid_MultipleInspectionTR.DataBind();
                             }
                         }
                         else
                         {
-                            Response.Redirect("/Login.aspx");
+                            DataSet dsVC = CEI.GetDetailsToViewCart_Lift_Escalator_Return(ID);
+
+                            if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
+                            {
+                                GridView2.DataSource = dsVC;
+                                GridView2.DataBind();
+                            }
+
+                        }
+                        //string InstallationType = Session["InstallationType"].ToString();
+                        // string Division = Session["Division"].ToString();
+                        String SubmittedDate = Session["lblSubmittedDate"].ToString();
+
+                        if (ddlReview.SelectedValue != null && ddlReview.SelectedValue != "" && ddlReview.SelectedValue != "0")
+                        {
+                            DateTime inspectionDate;
+                            if (!DateTime.TryParse(txtInspectionDate.Text, out inspectionDate))
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid inspection date.');", true);
+                                return;
+                            }
+
+                            DateTime submittedDate;
+                            if (!DateTime.TryParse(Session["lblSubmittedDate"].ToString(), out submittedDate))
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid submitted date.');", true);
+                                return;
+                            }
+
+                            if (inspectionDate < submittedDate)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection/Approval date must be greater equal to application requested date.');", true);
+                                return;
+                            }
+
+                            ApprovedorReject = ddlReview.SelectedItem.ToString();
+                            Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text.Trim();
+
+                            //if (Suggestion.Visible == true)
+                            //{
+                            //    Suggestions = string.IsNullOrEmpty(txtSuggestion.Text) ? null : txtSuggestion.Text.Trim();
+                            //}
+
+                            try
+                            {
+                                //commented 3 dec 2024 for 
+                                //string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
+                                //if (reqType == "Industrysdfsdf")
+                                //{
+                                //    string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
+                                //    // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
+                                //    if (serverStatus != "Server is reachable.")
+                                //    {
+                                //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
+                                //        return;
+                                //    }
+                                //}
+                                transaction = connection.BeginTransaction();
+                                CEI.InspectionFinalAction_Lift(ID, StaffId, ApprovedorReject, Reason, txtInspectionDate.Text, transaction);
+                                if (ApprovedorReject == "Approved")
+                                {
+                                    if (InspectionType == "New")
+                                    {
+                                        foreach (GridViewRow row in Grid_MultipleInspectionTR.Rows)
+                                        {
+
+                                            string TestReportId = (row.FindControl("LblTestReportId") as Label)?.Text;
+                                            string InstallationType = (row.FindControl("LblInstallationName") as Label)?.Text;
+                                            string lblMake = (row.FindControl("lblMake") as Label)?.Text;
+                                            string lblLiftSrNo = (row.FindControl("lblLiftSrNo") as Label)?.Text;
+                                            string lblTypeOfLift = (row.FindControl("lblTypeOfLift") as Label)?.Text;
+                                            string lblTypeOfControl = (row.FindControl("lblTypeOfControl") as Label)?.Text;
+                                            string lblCapacity = (row.FindControl("lblCapacity") as Label)?.Text;
+                                            string lblWeight = (row.FindControl("lblWeight") as Label)?.Text;
+                                            DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
+
+
+                                            CEI.InstallationApproval_Lift_New(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
+                                             lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), transaction);
+
+                                        }
+                                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+
+                                    }
+                                    if (InspectionType == "Periodic")
+                                    {
+                                        foreach (GridViewRow row in GridView2.Rows)
+                                        {
+
+                                            string TestReportId = (row.FindControl("lblTestReport") as Label)?.Text;
+                                            string InstallationType = (row.FindControl("LblInstallationName") as Label)?.Text;
+                                            string lblMake = (row.FindControl("lblMake") as Label)?.Text;
+                                            string lblLiftSrNo = (row.FindControl("lblLiftSrNo") as Label)?.Text;
+                                            string lblTypeOfLift = (row.FindControl("lblTypeOfLift") as Label)?.Text;
+                                            string lblTypeOfControl = (row.FindControl("lblTypeOfControl") as Label)?.Text;
+                                            string lblCapacity = (row.FindControl("lblCapacity") as Label)?.Text;
+                                            string lblWeight = (row.FindControl("lblWeight") as Label)?.Text;
+                                            string LblRegistrationNo = (row.FindControl("LblRegistrationNo") as Label)?.Text;
+                                            string lblMemoNo = (row.FindControl("lblMemoNo") as Label)?.Text;
+                                            DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
+                                            DateTime lblLastApprovalDate = DateTime.Parse((row.FindControl("lblLastApprovalDate") as Label)?.Text);
+
+                                            // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
+                                            CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
+                                             lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate,lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, lblMemoNo, txtTranscationDate.Text, transaction);
+
+                                        }
+                                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+
+                                    }
+
+                                    transaction.Commit();
+                                    CEI.UpdateLiftApprovedCertificatedata(ID);
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                                }
+
+                                else if (ApprovedorReject == "Rejected")
+                                {
+                                    transaction.Commit();
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata2()", true);
+                                }
+                                else
+                                {
+                                    //transaction.Commit();
+                                    ddlReview.Focus();
+                                    return;
+                                }
+
+                                //if (ApprovedorReject == "Rejected")
+                                //{
+                                //    CEI.InspectionFinalAction_Lift(ID, "", StaffId, InstallationType, InspectionType, ApprovedorReject, Reason, txtInspectionDate.Text, txtChallanDate.Text, txtRegistrationNo.Text, Division);
+                                //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection Request has been Rejected.');", true);
+                                //}
+                                Session["InspectionType"] = "";
+                                Session["InstallationType"] = "";
+                                //transaction.Commit();
+
+                                //commented 3 dec 2024 for 
+                                // checksuccessmessage = 1;
+
+                                //string actiontype = ApprovedorReject == "Approved" ? "Approved" : "Rejected";
+                                //    Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype);
+
+                                //    if (ApiPostformatresult.PremisesType == "Industryasdasda")
+                                //    {
+                                //        string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+
+                                //        logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
+                                //            "https://investharyana.in/api/project-service-logs-external_UHBVN",
+                                //            new Industry_Inspection_StageWise_JsonDataFormat_Model
+                                //            {
+                                //                actionTaken = ApiPostformatresult.ActionTaken,
+                                //                commentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                                //                //commentDate = ApiPostformatresult.CommentDate,
+                                //                commentDate = ApiPostformatresult.CommentDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                //                comments = ApiPostformatresult.Comments,
+                                //                id = ApiPostformatresult.Id,
+                                //                projectid = ApiPostformatresult.ProjectId,
+                                //                serviceid = ApiPostformatresult.ServiceId
+                                //                //projectid = "245df444-1808-4ff6-8421-cf4a859efb4c",
+                                //                //serviceid = "e31ee2a6-3b99-4f42-b61d-38cd80be45b6"
+                                //            },
+                                //            ApiPostformatresult,
+                                //            accessToken
+                                //        );
+
+                                //        if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
+                                //        {
+                                //            throw new Exception(logDetails.ErrorMessage);
+                                //        }
+
+                                //        CEI.LogToIndustryApiSuccessDatabase(
+                                //            logDetails.Url,
+                                //            logDetails.Method,
+                                //            logDetails.RequestHeaders,
+                                //            logDetails.ContentType,
+                                //            logDetails.RequestBody,
+                                //            logDetails.ResponseStatusCode,
+                                //            logDetails.ResponseHeaders,
+                                //            logDetails.ResponseBody,
+                                //            new Industry_Api_Post_DataformatModel
+                                //            {
+                                //                InspectionId = ApiPostformatresult.InspectionId,
+                                //                InspectionLogId = ApiPostformatresult.InspectionLogId,
+                                //                IncomingJsonId = ApiPostformatresult.IncomingJsonId,
+                                //                ActionTaken = ApiPostformatresult.ActionTaken,
+                                //                CommentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                                //                CommentDate = ApiPostformatresult.CommentDate,
+                                //                Comments = ApiPostformatresult.Comments,
+                                //                Id = ApiPostformatresult.Id,
+                                //                ProjectId = ApiPostformatresult.ProjectId,
+                                //                ServiceId = ApiPostformatresult.ServiceId,
+                                //            }
+
+                                //        );
+                                //    }
+                            }
+                            //commented 3 dec 2024 for 
+                            //catch (TokenManagerException ex)
+                            //{
+                            //    CEI.LogToIndustryApiErrorDatabase(
+                            //        ex.RequestUrl,
+                            //        ex.RequestMethod,
+                            //        ex.RequestHeaders,
+                            //        ex.RequestContentType,
+                            //        ex.RequestBody,
+                            //        ex.ResponseStatusCode,
+                            //        ex.ResponseHeaders,
+                            //        ex.ResponseBody,
+                            //        new Industry_Api_Post_DataformatModel
+                            //        {
+                            //            InspectionId = ex.InspectionId,
+                            //            InspectionLogId = ex.InspectionLogId,
+                            //            IncomingJsonId = ex.IncomingJsonId,
+                            //            ActionTaken = ex.ActionTaken,
+                            //            CommentByUserLogin = ex.CommentByUserLogin,
+                            //            CommentDate = ex.CommentDate,
+                            //            Comments = ex.Comments,
+                            //            Id = ex.Id,
+                            //            ProjectId = ex.ProjectId,
+                            //            ServiceId = ex.ServiceId,
+                            //        }
+                            //    );
+                            //    string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
+                            //}
+                            //catch (IndustryApiException ex)
+                            //{
+                            //    CEI.LogToIndustryApiErrorDatabase(
+                            //        ex.RequestUrl,
+                            //        ex.RequestMethod,
+                            //        ex.RequestHeaders,
+                            //        ex.RequestContentType,
+                            //        ex.RequestBody,
+                            //        ex.ResponseStatusCode,
+                            //        ex.ResponseHeaders,
+                            //        ex.ResponseBody,
+                            //        new Industry_Api_Post_DataformatModel
+                            //        {
+                            //            InspectionId = ex.InspectionId,
+                            //            InspectionLogId = ex.InspectionLogId,
+                            //            IncomingJsonId = ex.IncomingJsonId,
+                            //            ActionTaken = ex.ActionTaken,
+                            //            CommentByUserLogin = ex.CommentByUserLogin,
+                            //            CommentDate = ex.CommentDate,
+
+                            //            Comments = ex.Comments,
+                            //            Id = ex.Id,
+                            //            ProjectId = ex.ProjectId,
+                            //            ServiceId = ex.ServiceId,
+                            //        }
+                            //    );
+                            //    string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
+                            //}
+                            catch (Exception ex)
+                            {
+                                // Handle the exception, log it, etc.
+                                transaction?.Rollback();
+                                string errorMessage = ex.Message.Replace("'", "\\'");
+                                ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
+                            }
+                            finally
+                            {
+                                //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                                transaction?.Dispose();
+                                connection.Close();
+                            }
+                        }
+                        else
+                        {
+                            ddlReview.Focus();
+                            return;
                         }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        // Handle the outer exception, log it, etc.
-                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An error occurred.');", true);
+                        Response.Redirect("/Login.aspx");
                     }
                 }
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('You double click on Button.'); window.location='InProcessRequest.aspx'", true);
+                catch (Exception ex)
+                {
+                    // Handle the outer exception, log it, etc.
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An error occurred.');", true);
+                }
             }
         }
 
@@ -959,46 +897,16 @@ namespace CEIHaryana.Officers
             if (ddlReview.SelectedValue == "2")
             {
                 Rejection.Visible = true;
-                labelInspectionDate.Visible = false;
-                labelApprovalDate.Visible = false;
-                labelRejectedDate.Visible = true;
             }
             else if (ddlReview.SelectedValue == "1")
             {
-                string amount = Session["amount"].ToString();
-                if (amount != "0" && amount != "0.00")
-                {
-                    labelInspectionDate.Visible = true;
-                    labelApprovalDate.Visible = false;
-                }
-                else
-                {
-                    labelApprovalDate.Visible = true;
-                    labelInspectionDate.Visible = false;
-                }
-                labelRejectedDate.Visible = false;
                 //btnPreview.Visible = true;
                 //ddlSuggestions.Visible = true;
 
                 //Suggestion.Visible = true;
             }
-            else if (ddlReview.SelectedValue == "0")
-            {
-                string amount = Session["amount"].ToString();
-                if (amount != "0" && amount != "0.00")
-                {
-                    labelInspectionDate.Visible = true;
-                    labelApprovalDate.Visible = false;
-                }
-                else
-                {
-                    labelApprovalDate.Visible = true;
-                    labelInspectionDate.Visible = false;
-                }
-                labelRejectedDate.Visible = false;
-
-            }
         }
+
         protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try

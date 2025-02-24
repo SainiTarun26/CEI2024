@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
@@ -29,8 +28,8 @@
     width: 46% !important;
 }*/
         img#Gridview1_ImgSignature_0 {
-            height: 50px;
-            width: 120px;
+            height: 70px;
+            width: 150px;
         }
 
         th {
@@ -101,9 +100,8 @@
         }
 
         p {
-            font-size: 18px;
+            font-size: 21px;
             text-align: justify;
-            margin-bottom: 7px !important;
         }
 
         li {
@@ -127,8 +125,8 @@
 
         hr {
             border: 1px solid black !important;
-            margin-top: -15px;
-            margin-bottom: 10px;
+            margin-top: -10px;
+            margin-bottom: 5px;
         }
 
         img {
@@ -138,19 +136,10 @@
 
         td.textbold {
             font-weight: bold;
-            font-size: 17px !important;
-            padding-top: 5px;
-            padding-bottom: 5px;
-        }
-
-        td {
-            font-size: 17px !important;
-            padding-top: 5px !important;
-            padding-bottom: 5px !important;
         }
 
         span {
-            font-size: 17px !important;
+            font-size: 20px !important;
         }
 
         table.table {
@@ -175,28 +164,6 @@
         td {
             font-size: 21px;
             /*  text-align: center;*/
-        }
-
-        th.headercolor {
-            padding-top: 1px;
-            padding-bottom: 1px;
-            font-size: 17px !important;
-        }
-
-        span#lblAddress1 {
-            font-size: 19px !important;
-        }
-
-        span#lblAdress2 {
-            font-size: 19px !important;
-        }
-
-        span#lblAdress3 {
-            font-size: 19px !important;
-        }
-
-        span#lblEmail {
-            font-size: 19px !important;
         }
     </style>
     <%--<script>
@@ -291,8 +258,8 @@
                                 <%-- <div class="col-1" style="margin-top: auto; margin-bottom: auto;">
                                     <img src="../Assets/haryana.png" height="110" width="auto" />
                                 </div>--%>
-                                <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; margin-top: -15px;">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 18PX;">Office of the                                        
+                                <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX;">Office of the                                        
                                     </h6>
                                     <asp:Label ID="lblAddress1" runat="server" Text="Chief Electrical Inspector to Govt., Haryana" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
                                     <asp:Label ID="lblAdress2" runat="server" Text="SCO 117-118, Sector-17-B, Chandigarh (E-mail: cei_goh@yahoo.com" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
@@ -303,16 +270,16 @@
                                 </div>
                             </div>
                             <hr />
-                            <div class="row" style="margin-bottom: 5PX; margin-top: -10px;">
+                            <div class="row" style="margin-bottom: 15PX;">
                                 <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 17PX; text-align: center;">FORM D [See rule 4 (2)]
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center;">FORM D
                                     </h6>
-                                    <%--<h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center;">[See rule 4 (2)]
-                                    </h6>--%>
-                                    <h6 runat="server" id="txtLift" class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 17PX; text-align: center; text-decoration: underline;">Registration of Lift
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center;">[See rule 4 (2)]
                                     </h6>
-                                    <%--   <h6 runat="server" id="txtEscalator"  class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center; text-decoration: underline;">Registration of Escalator
-                                    </h6> --%>
+                                    <h6 runat="server" id="txtLift" class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center; text-decoration: underline;">Registration of Lift
+                                    </h6>
+                                    <%--   <h6 runat="server" id="txtEscalator"  class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center; text-decoration: underline;">Registration of Escalator--%>
+                                    </h6>
                                 </div>
                             </div>
                             <div class="row">
@@ -341,9 +308,9 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="row" style="margin-bottom: 5PX;">
+                            <div class="row" style="margin-bottom: 15PX;">
                                 <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 17px; text-align: center; text-decoration: underline;">PARTICULARS
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center; text-decoration: underline;">PARTICULARS
                                     </h6>
                                 </div>
                             </div>
@@ -413,7 +380,7 @@
                                     <i>
                                         <asp:Label class="p1" ID="txtSD" runat="server" Text="SD"></asp:Label></i><br />
                                     <%-- <img src="../Assets/Line_Through_Name-removebg-preview.png" width="300" height="90" style="position: fixed; bottom: 140px; margin-left: -300px;" />--%>
-                                    <asp:Image ID="myImage" runat="server" Width="250" Height="75" Style="bottom: 140px; margin-left: -300px; padding-right: 80px;" />
+                                    <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
                                 </div>
                                 <div class="col-7">
                                 </div>
@@ -431,7 +398,7 @@
                                 <div class="col-md-12">
 
 
-                                    <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false"  OnRowDataBound="Gridview1_RowDataBound">
+                                    <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="10" OnRowDataBound="Gridview1_RowDataBound">
                                         <HeaderStyle BackColor="#B7E2F0" />
                                         <Columns>
                                             <asp:TemplateField HeaderText="Id" Visible="False">
@@ -448,18 +415,18 @@
             </ItemTemplate>
         </asp:TemplateField>--%>
                                             <asp:TemplateField HeaderText="Renewal Date">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="headercolor" />
-                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="itemcenter" />
-                                                <HeaderTemplate>
-                                                    Renewal Date
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
-                                                    <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
+    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="headercolor" />
+    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="itemcenter" />
+    <HeaderTemplate>
+        Renewal Date
+    </HeaderTemplate>
+    <ItemTemplate>
+                <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
 
-                                                        <%# Eval("RenewalDate") %>
-                                                    </div>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
+        <%# Eval("RenewalDate") %>
+                    </div>
+    </ItemTemplate>
+</asp:TemplateField>
 
 
 
@@ -468,18 +435,13 @@
                                                 <ItemStyle HorizontalAlign="center" />
                                             </asp:BoundField>
                                             <asp:TemplateField HeaderText="Signature">
-                                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
-                                                <ItemTemplate>
-                                                    <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
-                                                       <%-- <asp:Image ID="ImgSignature" runat="server"
-                                                            ImageUrl='<%# "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) %>' />--%>
-                                                        <asp:Image ID="ImgSignature" runat="server"
-                                                            ImageUrl='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null ? 
-    "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) : "" %>'
-                                                            Visible='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null %>' />
-                                                    </div>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
+    <ItemTemplate>
+        <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
+            <asp:Image ID="ImgSignature" runat="server"
+                ImageUrl='<%# "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) %>' />
+        </div>
+    </ItemTemplate>
+</asp:TemplateField>
 
 
 

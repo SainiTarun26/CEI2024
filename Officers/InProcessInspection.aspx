@@ -267,7 +267,7 @@
                         <asp:TextBox class="form-control" ID="txtInspectionReportID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-md-4" id="InspectionType" runat="server" visible="true">
-                        <label>Type of Inspection</label>
+                        <label>Type of Premises</label>
                         <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-md-4">
@@ -562,7 +562,7 @@
                             <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                         </asp:TemplateField>
-                       <%-- <asp:BoundField DataField="Remarks" HeaderText="Remarks">
+                      <%--  <asp:BoundField DataField="Remarks" HeaderText="Remarks">
                             <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                             <ItemStyle HorizontalAlign="Left" Width="15%" />
                         </asp:BoundField>--%>
@@ -589,7 +589,7 @@
 
                 <div class="col-md-4" id="ApprovalRequired" runat="server" visible="true">
                     <label>
-                        Action<samp style="color: red"> * </samp>
+                        Approval<samp style="color: red"> * </samp>
                     </label>
                     <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -659,8 +659,8 @@
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6" style="text-align: center;">
-                   <asp:Button ID="btnSuggestions" Text="Save Suggestions" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnSuggestions_Click" />
-                <asp:Button ID="btnPreview" Text="Preview" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnPreview_Click" />
+                <asp:Button ID="btnSuggestions" Text="Save Suggestions" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnSuggestions_Click" />  
+                <asp:Button ID="btnPreview" Text="Preview" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnPreview_Click" />             
                 <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
                 <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                  <asp:Button ID="Backbtn" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="Backbtn_Click" Visible="false" />
