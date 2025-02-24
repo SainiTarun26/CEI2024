@@ -171,15 +171,15 @@ namespace CEI_PRoject
         #endregion
         #region Insert Intimtion Data
         public void IntimationDataInsertion(string Id, string ContractorId, string ApplicantTypeCode, string PowerUtility, string PowerUtilityWing, string ZoneName,
-         string CircleName, string DivisionName, string SubDivisionName,
-         string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
-         string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
-         string TypeOfInstallation3, string NumberOfInstallation3,
-         //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
-         //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
-         string Email, string WorkStartDate, string CompletionDate,
-         string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy, string SanctionLoad, string InspectionType, string TotalCapacity,
-         SqlTransaction transaction)
+           string CircleName, string DivisionName, string SubDivisionName,
+           string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
+           string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
+           string TypeOfInstallation3, string NumberOfInstallation3,
+           string TypeOfInstallation4, string NumberOfInstallation4, //string TypeOfInstallation5, string NumberOfInstallation5,
+                                                                     //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
+           string Email, string WorkStartDate, string CompletionDate,
+           string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy, string SanctionLoad, string InspectionType, string TotalCapacity,
+           SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_WorkIntimationRegistration", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -209,8 +209,8 @@ namespace CEI_PRoject
             cmd.Parameters.AddWithValue("@NumberOfInstallation2", String.IsNullOrEmpty(NumberOfInstallation2) ? DBNull.Value : (object)NumberOfInstallation2);
             cmd.Parameters.AddWithValue("@TypeOfInstallation3", String.IsNullOrEmpty(TypeOfInstallation3) ? DBNull.Value : (object)TypeOfInstallation3);
             cmd.Parameters.AddWithValue("@NumberOfInstallation3", String.IsNullOrEmpty(NumberOfInstallation3) ? DBNull.Value : (object)NumberOfInstallation3);
-            //cmd.Parameters.AddWithValue("@TypeOfInstallation4", String.IsNullOrEmpty(TypeOfInstallation4) ? DBNull.Value : (object)TypeOfInstallation4);
-            //cmd.Parameters.AddWithValue("@NumberOfInstallation4", String.IsNullOrEmpty(NumberOfInstallation4) ? DBNull.Value : (object)NumberOfInstallation4);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation4", String.IsNullOrEmpty(TypeOfInstallation4) ? DBNull.Value : (object)TypeOfInstallation4);
+            cmd.Parameters.AddWithValue("@NumberOfInstallation4", String.IsNullOrEmpty(NumberOfInstallation4) ? DBNull.Value : (object)NumberOfInstallation4);
             //cmd.Parameters.AddWithValue("@TypeOfInstallation5", String.IsNullOrEmpty(TypeOfInstallation5) ? DBNull.Value : (object)TypeOfInstallation5);
             //cmd.Parameters.AddWithValue("@NumberOfInstallation5", String.IsNullOrEmpty(NumberOfInstallation5) ? DBNull.Value : (object)NumberOfInstallation5);
             //cmd.Parameters.AddWithValue("@TypeOfInstallation6", String.IsNullOrEmpty(TypeOfInstallation6) ? DBNull.Value : (object)TypeOfInstallation6);
@@ -6359,10 +6359,7 @@ string CreatedBy, string TotalCapacity, string MaxVoltage, int InspectID)
         }
 
 
-        public DataTable SiteOwnerInspectionData_Industries(string SiteOwnerId, string searchText = null)
-        {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerInspectionHistory_Industries", SiteOwnerId, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
-        }
+        
 
         //public DataSet InspectionData_Industries(string Id)
         //{
@@ -9219,6 +9216,32 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallation_Type", CartId);
         }
+
+        //public DataTable SiteOwnerInspectionDataStatus(string SiteOwnerId)
+        //added on 24 feb 2025 to filter district records against a panno by Aslam
+        public DataTable SiteOwnerInspectionDataStatus(string SiteOwnerId, string districtparam)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerInspectionStatus_Industry", SiteOwnerId, districtparam);
+        }
+
+
+        //added on 24 feb 2025 to filter district records against a panno
+        //public DataTable SiteOwnerInspectionData_Industries(string SiteOwnerId, string searchText = null)
+        public DataTable SiteOwnerInspectionData_Industries(string SiteOwnerId, string district, string searchText = null)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerInspectionHistory_Industries", SiteOwnerId, district, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+
+
+        //added on 24 feb 2025 to filter district records against a panno
+        //public DataTable SiteOwnerInspectionData_Industries(string SiteOwnerId)
+        public DataTable SiteOwnerInspectionData_Industries(string SiteOwnerId, string district)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerInspectionHistory_Industries", SiteOwnerId, district);
+        }
+
+
+
     }
 }
 

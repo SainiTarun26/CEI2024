@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using OfficeOpenXml.Packaging.Ionic.Zlib;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -31,7 +32,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
                 //Response.Redirect("/login.aspx");
             }
@@ -40,9 +41,18 @@ namespace CEIHaryana.Industry_Master
         public void BindGrid(string searchText = null)
         {
             string LoginID = string.Empty;
+            string Districtlocalpr = null;
+            //added on 24 feb 2025 to filter district records against a panno
             LoginID = Session["SiteOwnerId_Sld_Indus"].ToString();
+            if (Session["district_Temp"] != null)
+            {
+                Districtlocalpr = Session["district_Temp"].ToString();
+            }
+
             DataTable ds = new DataTable();
-            ds = CEI.SiteOwnerInspectionDataStatus(LoginID);
+            ds = CEI.SiteOwnerInspectionDataStatus(LoginID, Districtlocalpr);
+            //added on 24 feb 2025 to filter district records against a panno
+            //ds = CEI.SiteOwnerInspectionDataStatus(LoginID);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;

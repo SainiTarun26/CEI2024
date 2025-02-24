@@ -1,7 +1,9 @@
 ﻿using CEI_PRoject;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -18,44 +20,55 @@ namespace CEIHaryana.Industry_Master
             {
                 if (!Page.IsPostBack)
                 {
-                    //Session["SiteOwnerId_Sld_Indus"] = "AIEPK0565G";
-                    //Session["district_Temp"] = "Karnal";
                     if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != "" && Convert.ToString(Session["district_Temp"]) != null && Convert.ToString(Session["district_Temp"]) != "")
                     {
                         //Session["SiteOwnerId_Sld_Indus"] = "ABCDG1234G";
                         //Session["district_Temp"] = "Hisar";
                         string District = Session["district_Temp"].ToString();
                         string PanNumber = Session["SiteOwnerId_Sld_Indus"].ToString();
-                        bool panExists = false;
+                        //bool panExists = false;
 
-                        DataSet ds1 = CEI.checkInspection(PanNumber, District);
-                        if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+                        //DataSet ds1 = CEI.checkInspection(PanNumber);
+                        //if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+                        //{
+                        //    panExists = true;
+                        //    string statusType = ds1.Tables[0].Rows[0]["ApplicationStatus"].ToString();
+                        //    string ReasonType = ds1.Tables[0].Rows[0]["ReasonType"].ToString();
+                        //    //if (statusType == "Return")
+                        //    //{
+                        //    //    getWorkIntimationData();
+                        //    //}
+                        //    if(statusType == "Approved" || statusType == "Rejected")
+                        //    {
+                        //        getWorkIntimationData();
+                        //    }
+                        //    else
+                        //    {
+                        //        Response.Redirect("/Industry_Master/NewInstallationStatus.aspx", false);
+                        //    }
+
+
+
+                        //}
+                        //else
+                        //{
+                        //    getWorkIntimationData();
+                        //}
+
+                        // getWorkIntimationData();
+
+                        //Commented on 21 feb 2025 to apply new check 
+
+                        if (Session["SiteOwnerId_Sld_Indus"] != null || Session["district_Temp"] != null)
                         {
-                            panExists = true;
-                            string statusType = ds1.Tables[0].Rows[0]["ApplicationStatus"].ToString();
-                            //string ReasonType = ds1.Tables[0].Rows[0]["ReasonType"].ToString();
-                            //if (statusType == "Return")
-                            //{
-                            //    getWorkIntimationData();
-                            //}
-                            if(statusType == "Approved" || statusType == "Rejected")
+                            if (CheckInspectionStatus())
                             {
-                                getWorkIntimationData();
+                                Response.Redirect("NewInstallationStatus.aspx", false);
+                                return;
                             }
-                            else
-                            {
-                                Response.Redirect("/Industry_Master/NewInstallationStatus.aspx", false);
-                            }
-
-
-
-                        }
-                        else
-                        {
                             getWorkIntimationData();
                         }
 
-                        // getWorkIntimationData();
                     }
                     else
                     {
@@ -147,6 +160,37 @@ namespace CEIHaryana.Industry_Master
         {
             GridView1.PageIndex = e.NewPageIndex;
             getWorkIntimationData();
+        }
+
+        private bool CheckInspectionStatus()
+        {
+            string panNumberlocal = null;
+            string Districtlocal = null;
+
+            if (Session["SiteOwnerId_Sld_Indus"] != null)
+            {
+                panNumberlocal = Session["SiteOwnerId_Sld_Indus"].ToString();
+            }
+            if (Session["district_Temp"] != null)
+            {
+                Districtlocal = Session["district_Temp"].ToString();
+            }
+
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_CheckInspection", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@PANNumber", panNumberlocal);
+                    cmd.Parameters.AddWithValue("@District", Districtlocal);
+
+                    conn.Open();
+
+                    int result = Convert.ToInt32(cmd.ExecuteScalar());
+                    return result == 1;
+                }
+            }
         }
     }
 }

@@ -670,6 +670,7 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl installationType3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl installationType4;
 
         /// <summary>
         /// txtinstallationType3 control.
@@ -679,6 +680,7 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtinstallationType3;
+        protected global::System.Web.UI.WebControls.TextBox txtinstallationType4;
 
         /// <summary>
         /// txtinstallationNo3 control.
@@ -688,6 +690,7 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtinstallationNo3;
+        protected global::System.Web.UI.WebControls.TextBox txtinstallationNo4;
 
         /// <summary>
         /// RequiredFieldValidator18 control.
@@ -706,6 +709,7 @@ namespace CEIHaryana.Contractor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton imgDelete3;
+        protected global::System.Web.UI.WebControls.ImageButton imgDelete4;
 
         /// <summary>
         /// InstallationType control.

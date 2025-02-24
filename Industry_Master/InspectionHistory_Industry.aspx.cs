@@ -40,9 +40,17 @@ namespace CEIHaryana.Industry_Master
         public void BindGrid()
         {
             string LoginID = string.Empty;
+            string Districtlocalpr = null;
+            //added on 24 feb 2025 to filter district records against a panno
             LoginID = Session["SiteOwnerId_Industry"].ToString();
+            if (Session["district_Temp"] != null)
+            {
+                Districtlocalpr = Session["district_Temp"].ToString();
+            }
             DataTable ds = new DataTable();
-            ds = CEI.SiteOwnerInspectionData_Industries(LoginID);
+            //ds = CEI.SiteOwnerInspectionData_Industries(LoginID);
+            //added on 24 feb 2025 to filter district records against a panno
+            ds = CEI.SiteOwnerInspectionData_Industries(LoginID, Districtlocalpr);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;

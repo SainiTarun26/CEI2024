@@ -992,7 +992,7 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-                if (installationType2.Visible == false && installationType3.Visible == false)
+                if (installationType2.Visible == false && installationType3.Visible == false && installationType4.Visible == false)
                 {
                     string script = "alert(\"You can't delete all rows.\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "showalert", script, true);
@@ -1015,11 +1015,38 @@ namespace CEIHaryana.Contractor
                 // Handle exceptions appropriately
             }
         }
+        protected void imgDelete4_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                if (installationType2.Visible == false && installationType3.Visible == false && installationType1.Visible == false)
+                {
+                    string script = "alert(\"You can't delete all rows.\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", script, true);
+                }
+                else
+                {
+                    string valueToAddBack = txtinstallationType1.Text;
+                    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                    {
+                        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                        ddlWorkDetail.Items.Add(newItem);
+                    }
+                    installationType4.Visible = false;
+                    txtinstallationType4.Text = string.Empty;
+                    txtinstallationNo4.Text = string.Empty;
+                }
+            }
+            catch
+            {
+                // Handle exceptions appropriately
+            }
+        }
         protected void imgDelete2_Click(object sender, ImageClickEventArgs e)
         {
             try
             {
-                if (installationType1.Visible == false && installationType3.Visible == false)
+                if (installationType1.Visible == false && installationType3.Visible == false && installationType4.Visible == false)
                 {
                     string script = "alert(\"You can't delete all rows.\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "showalert", script, true);
@@ -1047,7 +1074,7 @@ namespace CEIHaryana.Contractor
         {
             try
             {
-                if (installationType1.Visible == false && installationType2.Visible == false)
+                if (installationType1.Visible == false && installationType2.Visible == false && installationType4.Visible == false)
                 {
                     string script = "alert(\"You can't delete all rows.\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "showalert", script, true);
@@ -1512,6 +1539,8 @@ namespace CEIHaryana.Contractor
                        txtinstallationNo2.Text,
                        txtinstallationType3.Text,
                        txtinstallationNo3.Text,
+                       txtinstallationType4.Text,
+                       txtinstallationNo4.Text,
                        txtEmail.Text,
                        txtStartDate.Text,
                        txtCompletitionDate.Text,
@@ -1542,8 +1571,8 @@ namespace CEIHaryana.Contractor
                             }
                         }
 
-                        TextBox[] typeTextBoxes = { txtinstallationType1, txtinstallationType2, txtinstallationType3 };
-                        TextBox[] noTextBoxes = { txtinstallationNo1, txtinstallationNo2, txtinstallationNo3 };
+                        TextBox[] typeTextBoxes = { txtinstallationType1, txtinstallationType2, txtinstallationType3, txtinstallationType4 };
+                        TextBox[] noTextBoxes = { txtinstallationNo1, txtinstallationNo2, txtinstallationNo3, txtinstallationNo4 };
 
                         for (int i = 0; i < typeTextBoxes.Length; i++)
                         {

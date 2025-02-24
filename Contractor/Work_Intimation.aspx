@@ -711,25 +711,25 @@
                                                             </tr>
                                                         </div>
 
-                                                        <%--    <div id="installationType4" runat="server" visible="False">
+                                                        <div runat="server" id="installationType4">
                                                             <tr>
                                                                 <td>
                                                                     <div class="col-md-12">
-                                                                        <asp:TextBox class="form-control" ID="txtinstallationType4" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationType4" Text="Switching Substation" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="col-md-12">
                                                                         <asp:TextBox class="form-control" ID="txtinstallationNo4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="Max no. of Installations is 25." MaxLength="2" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtinstallationNo4" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="txtinstallationNo4" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                                     </div>
                                                                 </td>
-                                                                <td>
-                                                                    <asp:Button runat="server" ID="btnDelete4" Text="DELETE" CssClass="submit" OnClick="btnDelete4_Click" />
-                                                                </td>
+                                                              <td style="text-align: center !important;">
+                                                                    <asp:ImageButton ID="ImageButton1" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" Height="30" Width="30" OnClick="imgDelete4_Click" runat="server" /></td>
+                                                           </td>
                                                             </tr>
                                                         </div>
-                                                        <div id="installationType5" runat="server" visible="False">
+                                                        <%--    <div id="installationType5" runat="server" visible="False">
                                                             <tr>
                                                                 <td>
                                                                     <div class="col-md-12">

@@ -1069,10 +1069,16 @@ namespace CEIHaryana.Industry_Master
         private bool CheckInspectionStatus()
         {
             string panNumber = null;
+            string Districtlocalpr = null;
+            //added on 24 feb 2025 to filter district records against a panno
 
             if (Session["SiteOwnerId_Industry"] != null)
             {
                 panNumber = Session["SiteOwnerId_Industry"].ToString();
+            }
+            if (Session["district_Temp"] != null)
+            {
+                Districtlocalpr = Session["district_Temp"].ToString();
             }
 
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
@@ -1082,6 +1088,8 @@ namespace CEIHaryana.Industry_Master
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@PANNumber", panNumber);
+                    cmd.Parameters.AddWithValue("@District", Districtlocalpr);
+                    //added on 24 feb 2025 to filter district records against a panno
 
                     conn.Open();
 

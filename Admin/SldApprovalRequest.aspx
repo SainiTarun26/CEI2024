@@ -328,8 +328,7 @@
           </div>
       </div>
   </div>
-                     
-                      
+                                           
                         <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoPostBack="true" AutoGenerateColumns="false"  OnRowCommand="grd_Documemnts_RowCommand"  OnRowDataBound="grd_Documemnts_RowDataBound" AllowPaging="True" PageSize="10"  EnableViewState="true" OnPageIndexChanging="grd_Documemnts_PageIndexChanging">
                             <HeaderStyle BackColor="#B7E2F0" />
                             <Columns>
