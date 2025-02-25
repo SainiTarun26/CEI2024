@@ -4956,7 +4956,7 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
 
                 //logDetails = new IndustryApiLogDetails
                 //{
-                //    Url = "https://investharyana.in/api/getrefresh-token",
+                //    Url = "https://staging.investharyana.in/api/getrefresh-token",
                 //    Method = request.Method,
                 //    RequestHeaders = requestHeaders,
                 //    ContentType = request.ContentType,
