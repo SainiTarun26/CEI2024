@@ -204,22 +204,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label2;
 
         /// <summary>
-        /// UpdatePanel2 control.
+        /// ddlVoltage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-
-        /// <summary>
-        /// DropDownList1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlVoltage;
 
         /// <summary>
         /// RequiredFieldValidator1 control.
@@ -231,13 +222,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
-        /// txtTransformerCapacity control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTransformerCapacity;
+        protected global::System.Web.UI.WebControls.TextBox txtName;
 
         /// <summary>
         /// RequiredFieldValidator2 control.
@@ -249,13 +240,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
-        /// ddltransformerType control.
+        /// ddlBreakerType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddltransformerType;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBreakerType;
 
         /// <summary>
         /// RequiredFieldValidator3 control.
@@ -267,13 +258,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
 
         /// <summary>
-        /// TextBox1 control.
+        /// txtBreakerNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtBreakerNo;
 
         /// <summary>
         /// RequiredFieldValidator4 control.
@@ -285,13 +276,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
 
         /// <summary>
-        /// TextBox2 control.
+        /// txtCapacity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtCapacity;
 
         /// <summary>
         /// RequiredFieldValidator5 control.
@@ -382,6 +373,51 @@ namespace CEIHaryana.Supervisor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl SubstationEarthingDiv;
+
+        /// <summary>
+        /// EarthingSubstation4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EarthingSubstation4;
+
+        /// <summary>
+        /// ddlUsedFor1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlUsedFor1;
+
+        /// <summary>
+        /// RequiredFieldValidator21 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator21;
+
+        /// <summary>
+        /// txtOtherEarthing1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOtherEarthing1;
+
+        /// <summary>
+        /// RequiredFieldValidator99 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator99;
 
         /// <summary>
         /// Check control.

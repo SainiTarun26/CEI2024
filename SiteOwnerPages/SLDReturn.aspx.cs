@@ -179,7 +179,7 @@ namespace CEIHaryana.SiteOwnerPages
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('You double click on Button.'); window.location='SLD_Status.aspx'", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('You double click on Button.'); window.location='SiteOwnerDashboard.aspx'", true);
             }
 
         }

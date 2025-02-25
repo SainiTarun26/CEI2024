@@ -383,10 +383,10 @@
                                 <div class="col-3" id="Div5" runat="server" visible="false">
                                     <label for="Name">
                                Applicant Type <samp style="color: red">* </samp>
-                                      </label>
-                                     <asp:TextBox class="form-control" ID="txtApplicantType" Enabled="false"  onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
-                   <asp:RequiredFieldValidator ID="RequiredFieldValidator106" runat="server" ControlToValidate="txtApplicantType" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
-</div>
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtApplicantType" Enabled="false" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator106" runat="server" ControlToValidate="txtApplicantType" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Length of Line</asp:RequiredFieldValidator>
+                                </div>
                             </div>
                         </div>
                         <div class="row" style="margin-top: 10px;">
@@ -406,61 +406,62 @@
                                     </label>
                                 </div>
                             </div>
-                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                                <ContentTemplate>
+                           
                                     <div class="row">
-                                      <div class="col-3">
-     <label>
-         Voltage Level of Switching Station<samp style="color: red">* </samp>
-     </label>
-     <asp:DropDownList class="form-control  select-form select2" TabIndex="4" runat="server" AutoPostBack="true" ID="DropDownList1" selectionmode="Multiple" Style="width: 100% !important">
-         <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-         <asp:ListItem Value="1" Text="11Kv"></asp:ListItem>
-         <asp:ListItem Value="2" Text="33Kv"></asp:ListItem>
-         <asp:ListItem Value="3" Text="66Kv"></asp:ListItem>
-     </asp:DropDownList>
-     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ForeColor="Red" ControlToValidate="ddltransformerType" runat="server" ErrorMessage="Please SelectTransformerType" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
- </div>
                                         <div class="col-3">
                                             <label>
-                                               Name/Place of Switching Station <samp style="color: red">* </samp>
+                                                Voltage Level of Switching Station<samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerCapacity" MaxLength="5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ForeColor="Red" ControlToValidate="txtTransformerCapacity" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="4" runat="server" AutoPostBack="true" ID="ddlVoltage" selectionmode="Multiple" Style="width: 100% !important">
+                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                <asp:ListItem Value="1" Text="11Kv"></asp:ListItem>
+                                                <asp:ListItem Value="2" Text="33Kv"></asp:ListItem>
+                                                <asp:ListItem Value="3" Text="66Kv"></asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ForeColor="Red" ControlToValidate="ddlVoltage" runat="server" ErrorMessage="Please Select Voltage" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-3">
+                                            <label>
+                                                Name/Place of Switching Station
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtName" MaxLength="5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ForeColor="Red" ControlToValidate="txtName" runat="server" ErrorMessage="Please Enter Switching Name" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                             <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important"> </asp:DropDownList>--%>
                                         </div>
                                         <div class="col-3">
                                             <label>
                                                 Type of Breaker<samp style="color: red">* </samp>
                                             </label>
-                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="4" runat="server" AutoPostBack="true" ID="ddltransformerType" selectionmode="Multiple" Style="width: 100% !important">
+                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="4" runat="server" AutoPostBack="true" ID="ddlBreakerType" selectionmode="Multiple" Style="width: 100% !important">
                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                 <asp:ListItem Value="1" Text="VCB"></asp:ListItem>
                                                 <asp:ListItem Value="2" Text="SF6"></asp:ListItem>
                                                 <asp:ListItem Value="2" Text="Other"></asp:ListItem>
                                             </asp:DropDownList>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ForeColor="Red" ControlToValidate="ddltransformerType" runat="server" ErrorMessage="Please SelectTransformerType" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ForeColor="Red" ControlToValidate="ddlBreakerType" runat="server" ErrorMessage="Please SelectTransformerType" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                         </div>
                                         <div class="col-3">
-    <label>
-       Total No. of Breakers <samp style="color: red">* </samp>
-    </label>
-    <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox1" MaxLength="5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ForeColor="Red" ControlToValidate="txtTransformerCapacity" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-    <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important"> </asp:DropDownList>--%>
-</div>
-                                                                                <div class="col-3">
-    <label>
-       Capacity of Station Transformer(in Kva) <samp style="color: red">* </samp>
-    </label>
-    <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox2" MaxLength="5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ForeColor="Red" ControlToValidate="txtTransformerCapacity" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-    <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important"> </asp:DropDownList>--%>
-</div>
+                                            <label>
+                                                Total No. of Breakers
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtBreakerNo" MaxLength="5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ForeColor="Red" ControlToValidate="txtTransformerCapacity" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                            <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important"> </asp:DropDownList>--%>
+                                        </div>
+                                        <div class="col-3">
+                                            <label>
+                                                Capacity of Station Transformer(in Kva)
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtCapacity" MaxLength="5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ForeColor="Red" ControlToValidate="txtTransformerCapacity" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                            <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important"> </asp:DropDownList>--%>
+                                        </div>
                                     </div>
-                                    
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
+
+                          
                             <div class="row" style="margin-top: 50px;" id="Declaration" runat="server" visible="false">
                                 <div class="col-md-12" style="text-align: center;">
                                     <asp:CheckBox ID="CheckBox2" runat="server" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
@@ -489,15 +490,17 @@
                         </div>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 0px;">
                             <div class="row">
-                            <div class="col-3">
-                                <label for="Name">
-                                    Number of Earthing <samp style="color: red">* </samp>
-                                </label>
-                                <asp:DropDownList class="form-control  select-form select2" TabIndex="14" runat="server" AutoPostBack="true" ID="ddlEarthingsubstation" selectionmode="Multiple" Style="width: 100% !important"> <%--OnSelectedIndexChanged="ddlEarthingsubstation_SelectedIndexChanged"--%>
-                                </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator13" ForeColor="Red" ControlToValidate="ddlEarthingsubstation" runat="server" ErrorMessage="Please Select Earthing No" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
-                            </div>
-                            
+                                <div class="col-3">
+                                    <label for="Name">
+                                        Number of Earthing
+                                        <samp style="color: red">* </samp>
+                                    </label>
+                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="14" runat="server" AutoPostBack="true" ID="ddlEarthingsubstation" selectionmode="Multiple" Style="width: 100% !important">
+                                        <%--OnSelectedIndexChanged="ddlEarthingsubstation_SelectedIndexChanged"--%>
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" ForeColor="Red" ControlToValidate="ddlEarthingsubstation" runat="server" ErrorMessage="Please Select Earthing No" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                </div>
+
                             </div>
                             <div class="table-responsive pt-3" id="SubstationEarthingDiv" runat="server" visible="false">
                                 <table class="table table-bordered table-striped">
@@ -513,8 +516,33 @@
                                             </th>
                                         </tr>
                                     </thead>
-                                    <%--<tbody>
+                                    <tbody>
                                         <div id="EarthingSubstation4" runat="server" visible="false">
+                                            <tr>
+                                                <td>1</td>
+                                                <td>
+                                                    <div class="col-md-12">
+                                                        <asp:DropDownList class="form-control select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlUsedFor1" selectionmode="Multiple" OnSelectedIndexChanged="ddlUsedFor1_SelectedIndexChanged" OnClientClick="showTextboxBasedOnSelection()">
+                                                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                                            <asp:ListItem Value="4" Text="4"></asp:ListItem>
+                                                            <asp:ListItem Value="5" Text="5"></asp:ListItem>
+                                                            <asp:ListItem Value="6" Text="6"></asp:ListItem>
+                                                            <!-- Add all values between 4 and 40 here -->
+                                                            <asp:ListItem Value="40" Text="40"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator21" ForeColor="Red" ControlToValidate="ddlUsedFor1" runat="server" ErrorMessage="Please Select Used For" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-md-12">
+                                                        <asp:TextBox class="form-control" ID="txtOtherEarthing1" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Visible="false" Style="margin-left: 18px"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator99" ForeColor="Red" ControlToValidate="txtOtherEarthing1" runat="server" ErrorMessage="Please Enter Other Earthing" ValidationGroup="Submit" Visible="false"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </div>
+                                    </tbody>
+                                    <%-- <div id="EarthingSubstation4" runat="server" visible="false">
                                             <tr>
                                                 <td>1</td>
                                                 <td>
@@ -1358,8 +1386,6 @@
                             </div>
                         </div>
                     </ContentTemplate>
-                    <Triggers>
-                    </Triggers>
                 </asp:UpdatePanel>
             </div>
         </div>
@@ -1378,6 +1404,27 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
+    <script type="text/javascript">
+        function showTextboxBasedOnSelection() {
+            var dropdown = document.getElementById('<%= ddlUsedFor1.ClientID %>');
+        var selectedValue = parseInt(dropdown.value); // Get the selected value as an integer
+        var txtOtherEarthing1 = document.getElementById('<%= txtOtherEarthing1.ClientID %>');
+        var validator = document.getElementById('<%= RequiredFieldValidator99.ClientID %>');
+
+            // Check if the selected value is between 4 and 40
+            if (selectedValue >= 4 && selectedValue <= 40) {
+                txtOtherEarthing1.style.display = 'block'; // Show textbox
+                validator.style.display = 'block'; // Show validator
+            } else {
+                txtOtherEarthing1.style.display = 'none'; // Hide textbox
+                validator.style.display = 'none'; // Hide validator
+            }
+        }
+
+        window.onload = function () {
+            showTextboxBasedOnSelection();
+        }
+</script>
     <script type="text/javascript">
         function alertWithRedirect() {
             if (confirm('Test report has been submitted and is under review by the Contractor for final submission')) {

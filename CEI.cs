@@ -9280,6 +9280,10 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             }
 
         }
+        public void UpdateApprovalPath(string InspectionId,string ApprovalCertificatePath)
+        {
+             DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateApprovalCertificateOfInspection", InspectionId, ApprovalCertificatePath);
+        }
     }
 }
 
