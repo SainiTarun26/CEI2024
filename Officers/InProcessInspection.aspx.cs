@@ -18,6 +18,7 @@ using System.Reflection.Emit;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 using Label = System.Web.UI.WebControls.Label;
 
 namespace CEIHaryana.Officers
@@ -27,7 +28,7 @@ namespace CEIHaryana.Officers
         CEI CEI = new CEI();
         private static int lineNumber = 0;
         IndustryApiLogDetails logDetails = new IndustryApiLogDetails();
-        private static string ApprovedorReject, Reason, StaffId, Suggestions;
+        private static string ApprovedorReject, Reason, StaffId, Suggestions, ExNotes;
         string Type = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -510,13 +511,17 @@ namespace CEIHaryana.Officers
                                 Suggestions = string.IsNullOrEmpty(txtSuggestion.Text) ? null : txtSuggestion.Text.Trim();
                             }
 
+                            if (ExNote.Visible == true)
+                            {
+                             ExNotes = string.IsNullOrEmpty(txtNote.Text) ? null : txtNote.Text.Trim();
+                            }
                             try
                             {
                                 string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
                                 if (reqType == "Industry")
                                 {
-                                    string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
-                                    // string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in/api/project-service-logs-external_UHBVN");
+                                    string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
+                                    // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
                                     if (serverStatus != "Server is reachable.")
                                     {
                                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
@@ -524,7 +529,7 @@ namespace CEIHaryana.Officers
                                     }
                                 }
 
-                                CEI.InspectionFinalAction(ID, StaffId, ApprovedorReject, Reason, Suggestions, txtInspectionDate.Text);
+                                CEI.InspectionFinalAction_Officer(ID, StaffId, ApprovedorReject, Reason, Suggestions, txtInspectionDate.Text, ExNotes);
                                 if (ApprovedorReject.Trim() == "Approved")
                                 {
                                     CEI.InsertApprovedCertificatedata(ID);
@@ -540,7 +545,7 @@ namespace CEIHaryana.Officers
                                         string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
 
                                         logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                            "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                            "https://investharyana.in/api/project-service-logs-external_UHBVN",
                                             new Industry_Inspection_StageWise_JsonDataFormat_Model
                                             {
                                                 actionTaken = ApiPostformatresult.ActionTaken,
@@ -753,6 +758,7 @@ namespace CEIHaryana.Officers
                         {
                             cmd.Parameters.AddWithValue("@inspectionDate", DBNull.Value);
                         }
+                        cmd.Parameters.AddWithValue("@Note", txtNote.Text.Trim());
                         int x = cmd.ExecuteNonQuery();
                         con.Close();
                         if (x > 0)
@@ -854,11 +860,13 @@ namespace CEIHaryana.Officers
             ddlSuggestions.Visible = false;
             btnPreview.Visible = false;
             btnSuggestions.Visible = false;
+            ExNote.Visible = false;
             Note.Visible = false;
             if (ddlReview.SelectedValue == "2")
             {
                 Rejection.Visible = true;
                 txtSuggestion.Text = "";
+                txtNote.Text = "";
             }
             else if (ddlReview.SelectedValue == "1")
             {
@@ -866,6 +874,7 @@ namespace CEIHaryana.Officers
                 btnSuggestions.Visible = true;
                 ddlSuggestions.Visible = true;
                 Note.Visible = true;
+                ExNote.Visible = true;
                 Suggestion.Visible = true;
             }
         }
@@ -904,6 +913,7 @@ namespace CEIHaryana.Officers
                         {
                             cmd.Parameters.AddWithValue("@inspectionDate", DBNull.Value);
                         }
+                        cmd.Parameters.AddWithValue("@Note", txtNote.Text.Trim());
                         int x = cmd.ExecuteNonQuery();
                         con.Close();
                         if (x > 0)

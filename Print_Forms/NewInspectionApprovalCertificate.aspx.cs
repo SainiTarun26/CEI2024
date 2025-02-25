@@ -102,6 +102,7 @@ namespace CEIHaryana.Print_Forms
                     lblstamp1.Text = dt.Rows[0]["Stamp1"].ToString();
                     lblstamp2.Text = dt.Rows[0]["Stamp2"].ToString();
                     lblstamp3.Text = dt.Rows[0]["Stamp3"].ToString();
+                    lblNote.Text = dt.Rows[0]["Note"].ToString();
                 }
 
                 else
@@ -153,6 +154,7 @@ namespace CEIHaryana.Print_Forms
                     lblstamp1.Text = ds.Tables[0].Rows[0]["Stamp1"].ToString();
                     lblstamp2.Text = ds.Tables[0].Rows[0]["Stamp2"].ToString();
                     lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
+                    lblNote.Text = ds.Tables[0].Rows[0]["Note"].ToString();
                     //CEI.InsertApprovedCertificatedata(ID);
                 }
                 GridBind();

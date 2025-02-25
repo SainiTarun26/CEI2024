@@ -84,6 +84,7 @@ namespace CEIHaryana.Print_Forms
                 lblstamp1.Text = ds.Tables[0].Rows[0]["Stamp1"].ToString();
                 lblstamp2.Text = ds.Tables[0].Rows[0]["Stamp2"].ToString();
                 lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
+                lblNote.Text = ds.Tables[0].Rows[0]["Note"].ToString();
                 GridBind();
             }
             catch (Exception ex)

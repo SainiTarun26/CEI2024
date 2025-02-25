@@ -138,7 +138,7 @@ namespace CEIHaryana.Print_Forms
                     lblstamp3.Visible = true;
                     lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
                 }
-
+                lblNote.Text = ds.Tables[0].Rows[0]["Note"].ToString();
                 string script = "<script type=\"text/javascript\">printDiv('printableDiv');</script>";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "PrintOnLoad", script, false);
 

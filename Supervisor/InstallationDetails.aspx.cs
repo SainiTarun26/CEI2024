@@ -170,6 +170,15 @@ namespace CEIHaryana.Supervisor
                                     //}
                                     Response.Redirect("/Supervisor/GeneratingSetTestReport.aspx", false);
                                 }
+                                else if (lblTyps.Text.Trim() == "Switching Station" || lblTyps.Text.Trim() == "Switching Substation")
+                                {
+                                    //if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                                    //{
+                                    //    Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                                    //    Session["ValueId"] = "True";
+                                    //}
+                                    Response.Redirect("/Supervisor/SwitchingSubstationTestReport.aspx", false);
+                                }
                             }
                             else
                             {
@@ -233,6 +242,15 @@ namespace CEIHaryana.Supervisor
                                 //    Session["ValueId"] = "True";
                                 //}
                                 Response.Redirect("/Supervisor/GeneratingSetTestReport.aspx", false);
+                            }
+                            else if (lblTyps.Text.Trim() == "Switching Station"||lblTyps.Text.Trim() == "Switching Substation")
+                            {
+                                //if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                                //{
+                                //    Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                                //    Session["ValueId"] = "True";
+                                //}
+                                Response.Redirect("/Supervisor/SwitchingSubstationTestReport.aspx", false);
                             }
                         }
 
