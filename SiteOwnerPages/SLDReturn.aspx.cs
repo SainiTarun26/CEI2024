@@ -19,6 +19,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             if (!Page.IsPostBack)
             {
+                Page.Session["ClickCount"] = "0";
 
                 if (Session["SiteOwnerId"] != null)
                 {
@@ -35,8 +36,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
 
-
-            string SiteOwnerId = Session["SiteOwnerId"].ToString();
+            int ClickCount = 0;
+            ClickCount = Convert.ToInt32(Session["ClickCount"]);
+            if (ClickCount < 1)
+            {
+                ClickCount = ClickCount + 1;
+                Session["ClickCount"] = ClickCount;
+                string SiteOwnerId = Session["SiteOwnerId"].ToString();
             string SldId = Session["Sld_id"].ToString();
             int maxFileSize = 2 * 1024 * 1024;
             string filePathInfo = "";
@@ -170,7 +176,11 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 throw new Exception("Please Upload Pdf Files 2 Mb Only");
             }
-
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('You double click on Button.'); window.location='SLD_Status.aspx'", true);
+            }
 
         }
     }
