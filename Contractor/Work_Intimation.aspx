@@ -715,7 +715,7 @@
                                                             <tr>
                                                                 <td>
                                                                     <div class="col-md-12">
-                                                                        <asp:TextBox class="form-control" ID="txtinstallationType4" Text="Switching Substation" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationType4" Text="Switching Station" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                     </div>
                                                                 </td>
                                                                 <td>
