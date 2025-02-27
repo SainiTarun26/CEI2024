@@ -185,6 +185,7 @@ namespace CEIHaryana.SiteOwnerPages
                 if (row != null)
                 {
                     Label lblCategory = (Label)row.FindControl("lblCategory");
+                    Label lblCategoryName = (Label)row.FindControl("lblCategoryName");
                     Label lblApplicant = (Label)row.FindControl("lblApplicant");
                     Label lblVoltageLevel = (Label)row.FindControl("lblVoltageLevel");
                     Label lblDivision = (Label)row.FindControl("lblDivision");
@@ -266,6 +267,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                     // txtInspectionDetails.Text = Session["SiteOwnerId"].ToString() + "-" + lblCategory.Text + "-" + lblVoltageLevel.Text;
                     Session["SelectedCategory"] = lblCategory.Text;
+                    Session["SelectedCategoryName"] = lblCategoryName.Text;
                     Session["SelectedApplicant"] = lblApplicant.Text;
                     Session["SelectedVoltageLevel"] = lblVoltageLevel.Text;
                     Session["SelectedDivision"] = lblDivision.Text;
@@ -753,6 +755,7 @@ namespace CEIHaryana.SiteOwnerPages
             //Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "MyFunction()", true);
             try
             {
+                int checkedCount = 0;
                 bool atLeastOneInspectionChecked = false;
                 foreach (GridViewRow rows in GridView1.Rows)
                 {
@@ -760,21 +763,32 @@ namespace CEIHaryana.SiteOwnerPages
 
                     if (chk != null && chk.Checked)
                     {
+                        checkedCount++;
                         atLeastOneInspectionChecked = true;
-                        break;
+                        //break;
                     }
                 }
                 if (atLeastOneInspectionChecked)
                 {
-                    string lblCategory = string.Empty;
-                    if (Session["InstallationId"].ToString() != "1" || Session["InstallationId"].ToString() != "2" || Session["InstallationId"].ToString() != "3")
+                    string Category;
+
+                    //string lblCategory = string.Empty;
+                    //if (Session["InstallationId"].ToString() != "1" || Session["InstallationId"].ToString() != "2" || Session["InstallationId"].ToString() != "3")
+                    //{
+                    //    lblCategory = "Multiple";
+                    //}
+                    //else
+                    //{
+                    //    lblCategory = Session["SelectedCategory"].ToString().Trim();
+
+                    //}
+                    if (checkedCount == 1)
                     {
-                        lblCategory = "Multiple";
+                        Category = Session["SelectedCategoryName"].ToString().Trim();
                     }
                     else
                     {
-                        lblCategory = Session["SelectedCategory"].ToString().Trim();
-
+                        Category = "Multiple";
                     }
 
                     IntimationId = Session["id"].ToString();
@@ -914,7 +928,7 @@ namespace CEIHaryana.SiteOwnerPages
                         Assigned = dsp.Tables[0].Rows[0]["StaffUserId"].ToString();
                     }
                     InstallationTypeID = Session["InstallationTypeID"].ToString();
-                    InsertFilesIntoDatabase(InstallationTypeID, CreatedBy, txtContact.Text, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), lblCategory.Trim(), lblVoltageLevel.Trim(),
+                    InsertFilesIntoDatabase(InstallationTypeID, CreatedBy, txtContact.Text, ApplicantTypeCode, IntimationId, PremisesType, lblApplicant.Trim(), Category, lblVoltageLevel.Trim(),
                 District, To, PaymentMode, txtDate.Text, txtInspectionRemarks.Text.Trim(), CreatedBy, TotalAmount, Assigned, transcationId, TranscationDate, ChallanAttachment, Convert.ToInt32(InspectionIdClientSideCheckedRow.Value)
                 , kVA.ToString(), DemandNotice, TotalCapacity, MaxVoltage, ServiceType);
                     //Session["PrintInspectionID"] = id.ToString();

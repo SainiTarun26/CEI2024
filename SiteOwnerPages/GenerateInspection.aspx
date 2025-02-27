@@ -306,6 +306,7 @@
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Typs") %>'></asp:Label>
+                                    <asp:Label ID="lblCategoryName" runat="server" Text='<%#Eval("Category") %>'></asp:Label>
                                     <asp:Label ID="lblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
                                     <asp:Label ID="lblIntimationId" runat="server" Text='<%#Eval("Intimations") %>'></asp:Label>
                                     <asp:Label ID="lblVoltageLevel" runat="server" Text='<%#Eval("VoltageLevel") %>'></asp:Label>
