@@ -393,13 +393,13 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl SubstationEarthingDiv;
 
         /// <summary>
-        /// EarthingSubstation4 control.
+        /// EarthingSubstation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EarthingSubstation4;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EarthingSubstation;
 
         /// <summary>
         /// ddlUsedFor1 control.

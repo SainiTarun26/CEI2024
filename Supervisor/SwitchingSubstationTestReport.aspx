@@ -505,14 +505,18 @@
                                         Number of Earthing
                                         <samp style="color: red">* </samp>
                                     </label>
-                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="14" runat="server" AutoPostBack="true" ID="ddlEarthingsubstation" selectionmode="Multiple" Style="width: 100% !important">
+                                    <asp:DropDownList class="form-control  select-form select2" TabIndex="14" runat="server" AutoPostBack="true" ID="ddlEarthingsubstation" OnSelectedIndexChanged="ddlEarthingsubstation_SelectedIndexChanged" selectionmode="Multiple" Style="width: 100% !important">
+                                       <asp:ListItem Value="1" Text="4"></asp:ListItem>
+                                        <asp:ListItem Value="2" Text="5"></asp:ListItem>
+                                        <asp:ListItem Value="3" Text="6"></asp:ListItem>
+                                        <asp:ListItem Value="40" Text="40"></asp:ListItem>
                                         <%--OnSelectedIndexChanged="ddlEarthingsubstation_SelectedIndexChanged"--%>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator13" ForeColor="Red" ControlToValidate="ddlEarthingsubstation" runat="server" ErrorMessage="Please Select Earthing No" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                 </div>
 
                             </div>
-                            <div class="table-responsive pt-3" id="SubstationEarthingDiv" runat="server" visible="false">
+                            <div class="table-responsive pt-3" id="SubstationEarthingDiv" runat="server">
                                 <table class="table table-bordered table-striped">
                                     <thead class="table-dark">
                                         <tr>
@@ -527,7 +531,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <div id="EarthingSubstation4" runat="server" visible="false">
+                                        <div id="EarthingSubstation" runat="server" visible="false">
                                             <tr>
                                                 <td>1</td>
                                                 <td>
@@ -550,6 +554,7 @@
                                                 </td>
                                             </tr>
                                         </div>
+                                        
                                     </tbody>
                                     <%-- <div id="EarthingSubstation4" runat="server" visible="false">
                                             <tr>
@@ -1413,6 +1418,21 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#<%= ddlEarthingsubstation.ClientID %>').change(function () {
+            var selectedValue = parseInt($(this).val()); // Get the selected value
+            $(".earthing-substation").hide(); // Hide all first
+
+            if (selectedValue >= 4 && selectedValue <= 40) {
+                for (var i = 1; i <= selectedValue; i++) {
+                    $("#EarthingSubstation" + i).show(); // Show the required divs
+                }
+            }
+        });
+    });
+    </script>
+
     <script type="text/javascript">
         function showTextboxBasedOnSelection() {
             var dropdown = document.getElementById('<%= ddlUsedFor1.ClientID %>');

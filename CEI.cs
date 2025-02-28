@@ -9284,6 +9284,10 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
              DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateApprovalCertificateOfInspection", InspectionId, ApprovalCertificatePath);
         }
+        public DataSet TotalRequestInspectionForAdmin_SearchCafWithGlobalFilter(string LoginId, string Division, string InstallationType, string searchText)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin_SearchCafWithGlobalFilter", LoginId, Division, InstallationType, searchText);
+        }
     }
 }
 

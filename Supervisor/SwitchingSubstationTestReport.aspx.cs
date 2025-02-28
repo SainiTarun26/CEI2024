@@ -27,5 +27,20 @@ namespace CEIHaryana.Supervisor
                 Response.Redirect("/Login.aspx");
             }
         }
+        protected void ddlEarthingsubstation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EarthingSubstation.Visible = true;
+            int selectedValue = Convert.ToInt32(ddlEarthingsubstation.SelectedValue);
+
+            for (int i = 1; i <= 40; i++)
+            {
+                Control div = FindControl("EarthingSubstation" + i);
+                if (div != null)
+                {
+                    div.Visible = (i <= selectedValue);
+                }
+            }
+        }
+
     }
 }
