@@ -408,6 +408,16 @@
                             </div>
                            
                                     <div class="row">
+                                        
+                                        <div class="col-3">
+                                            <label>
+                                               Serial Number
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSerialNo" MaxLength="5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ForeColor="Red" ControlToValidate="txtSerialNo" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                            <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important"> </asp:DropDownList>--%>
+                                        </div>
                                         <div class="col-3">
                                             <label>
                                                 Voltage Level of Switching Station<samp style="color: red">* </samp>
@@ -447,7 +457,7 @@
                                                 <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtBreakerNo" MaxLength="5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ForeColor="Red" ControlToValidate="txtTransformerCapacity" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ForeColor="Red" ControlToValidate="txtBreakerNo" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                             <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important"> </asp:DropDownList>--%>
                                         </div>
                                         <div class="col-3">
@@ -456,7 +466,7 @@
                                                 <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtCapacity" MaxLength="5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ForeColor="Red" ControlToValidate="txtTransformerCapacity" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ForeColor="Red" ControlToValidate="txtCapacity" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                             <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important"> </asp:DropDownList>--%>
                                         </div>
                                     </div>
@@ -522,12 +532,11 @@
                                                 <td>1</td>
                                                 <td>
                                                     <div class="col-md-12">
-                                                        <asp:DropDownList class="form-control select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlUsedFor1" selectionmode="Multiple" OnSelectedIndexChanged="ddlUsedFor1_SelectedIndexChanged" OnClientClick="showTextboxBasedOnSelection()">
+                                                        <asp:DropDownList class="form-control select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlUsedFor1" selectionmode="Multiple"  OnClientClick="showTextboxBasedOnSelection()">
                                                             <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                             <asp:ListItem Value="4" Text="4"></asp:ListItem>
                                                             <asp:ListItem Value="5" Text="5"></asp:ListItem>
                                                             <asp:ListItem Value="6" Text="6"></asp:ListItem>
-                                                            <!-- Add all values between 4 and 40 here -->
                                                             <asp:ListItem Value="40" Text="40"></asp:ListItem>
                                                         </asp:DropDownList>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator21" ForeColor="Red" ControlToValidate="ddlUsedFor1" runat="server" ErrorMessage="Please Select Used For" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
