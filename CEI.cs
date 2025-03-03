@@ -9288,6 +9288,46 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin_SearchCafWithGlobalFilter", LoginId, Division, InstallationType, searchText);
         }
+        public static int GetAttachmentRowsAffectedCount(int InspectionIdForCount, string cartId)
+        {
+            int count = 0;
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("Sp_CheckRowAffectedInAttachment", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@InspectionId", InspectionIdForCount);
+                    cmd.Parameters.AddWithValue("@CartId", cartId);
+                    con.Open();
+                    count = (int)cmd.ExecuteScalar();
+                }
+            }
+
+            return count;
+        }
+
+
+        public static int GetAttachmentRowsAffectedCount_Industries(int InspectionIdForCount, string cartId)
+        {
+            int count = 0;
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("Sp_CheckRowAffectedInAttachment_Industries", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@InspectionId", InspectionIdForCount);
+                    cmd.Parameters.AddWithValue("@CartId", cartId);
+                    con.Open();
+                    count = (int)cmd.ExecuteScalar();
+                }
+            }
+
+            return count;
+        }
     }
 }
 
