@@ -69,6 +69,8 @@ namespace CEIHaryana.SiteOwnerPages
                 Label lblType = (Label)row.FindControl("lblType");
                 Label LblInspectionType = (Label)row.FindControl("LblInspectionType");
                 Label LblAssignTo = (Label)row.FindControl("LblAssignTo");
+                Label lblApproveDateLabel = row.FindControl("lblApproveDate") as Label;
+                string ApproveDate = lblApproveDateLabel.Text;
                 if (lblType.Text.Trim() == "Line")
                 {
                     Session["LineID"] = lblTestRportId.Text.Trim();
@@ -111,15 +113,22 @@ namespace CEIHaryana.SiteOwnerPages
 
                     if (LblInspectionType.Text == "New")
                     {
-
-                        if (lblType.Text == "Multiple")
+                        if (lblType.Text != "Lift" && lblType.Text != "Escalator" && lblType.Text != "Lift/Escalator" && lblType.Text != "MultiLift" && lblType.Text != "MultiEscalator")
                         {
-                            Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
-                        }
+                            if (ApproveDate != null && DateTime.TryParse(ApproveDate, out DateTime lblApproveDate))
+                            {
+                                DateTime comparisonDate = DateTime.Parse("2024-11-16");
 
-                        else if (lblType.Text != "Lift" && lblType.Text != "Escalator" && lblType.Text != "Lift/Escalator" && lblType.Text != "MultiLift" && lblType.Text != "MultiEscalator")
-                        {
-                            Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                                if (lblApproveDate <= comparisonDate)
+                                {
+                                    Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                                }
+                                else
+                                {
+                                    Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                                }
+
+                            }
                         }
                         else if (lblType.Text == "Lift" || lblType.Text == "Escalator" || lblType.Text == "Lift/Escalator" || lblType.Text == "MultiLift" || lblType.Text == "MultiEscalator")
                         {

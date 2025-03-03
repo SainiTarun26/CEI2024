@@ -218,6 +218,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AboutCEI.aspx" />
+    <Content Include="AddNewPassword.aspx" />
     <Content Include="AdminLogout.aspx" />
     <Content Include="Admin\AcceptedOrRejectedRequest.aspx" />
     <Content Include="Admin\AddContractorDetails.aspx" />
@@ -1804,6 +1805,7 @@
     <Content Include="DataTableJs\bootstrap.min.js" />
     <Content Include="DataTableJs\jquery.js" />
     <Content Include="DataTableJs\jqueryDataTable.js" />
+    <Content Include="ForgetPassword.aspx" />
     <Content Include="Functions.aspx" />
     <Content Include="GenerateCaptcha.aspx" />
     <Content Include="GetPassword.aspx" />
@@ -2015,6 +2017,7 @@
     <Content Include="SiteOwnerPages\SldUpload.aspx" />
     <Content Include="SiteOwnerPages\SubstationHistory.aspx" />
     <Content Include="SiteOwnerPages\SubstationTransformerPeriodic.aspx" />
+    <Content Include="SiteOwnerPages\SwitchingSubstationTestReportPeriodic.aspx" />
     <Content Include="SiteOwnerPages\TestReport.aspx" />
     <Content Include="SiteOwnerPages\TestReportData.aspx" />
     <Content Include="SiteOwnerPages\ViewLiftPeriodicReport.aspx" />
@@ -2097,6 +2100,13 @@
     </Compile>
     <Compile Include="AboutCEI.aspx.designer.cs">
       <DependentUpon>AboutCEI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewPassword.aspx.cs">
+      <DependentUpon>AddNewPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddNewPassword.aspx.designer.cs">
+      <DependentUpon>AddNewPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminLogout.aspx.cs">
       <DependentUpon>AdminLogout.aspx</DependentUpon>
@@ -2570,6 +2580,13 @@
       <DependentUpon>Work_Intimation.aspx</DependentUpon>
     </Compile>
     <Compile Include="DBTask.cs" />
+    <Compile Include="ForgetPassword.aspx.cs">
+      <DependentUpon>ForgetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForgetPassword.aspx.designer.cs">
+      <DependentUpon>ForgetPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Functions.aspx.cs">
       <DependentUpon>Functions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3522,6 +3539,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\SubstationTransformerPeriodic.aspx.designer.cs">
       <DependentUpon>SubstationTransformerPeriodic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\SwitchingSubstationTestReportPeriodic.aspx.cs">
+      <DependentUpon>SwitchingSubstationTestReportPeriodic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\SwitchingSubstationTestReportPeriodic.aspx.designer.cs">
+      <DependentUpon>SwitchingSubstationTestReportPeriodic.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\TestReport.aspx.cs">
       <DependentUpon>TestReport.aspx</DependentUpon>

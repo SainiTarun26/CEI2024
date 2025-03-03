@@ -80,6 +80,8 @@ namespace CEIHaryana.Officers
                     string InstallationType = lblInstallationType.Text.Trim();
                     Label lblApplicationStatus = (Label)row.FindControl("lblApplicationStatus");
                     string ApplicationStatus = lblApplicationStatus.Text;
+                    Label lblApproveDateLabel = row.FindControl("lblApproveDate") as Label;
+                    string ApproveDate = lblApproveDateLabel.Text;
                     Session["InProcessInspectionId"] = id;
 
                     if (e.CommandName == "Select")
@@ -106,21 +108,31 @@ namespace CEIHaryana.Officers
                         if (LblInspectionType.Text == "New")
                         {
                             Session["InProcessInspectionId"] = id;
-                            if (InstallationType == "Multiple")
+                            if (InstallationType != "Lift" && InstallationType != "Escalator" && InstallationType != "Lift/Escalator" && InstallationType != "MultiLift" && InstallationType != "MultiEscalator")
                             {
-                                Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
-                            }
+                                if (ApproveDate != null && DateTime.TryParse(ApproveDate, out DateTime lblApproveDate))
+                                {
+                                    DateTime comparisonDate = DateTime.Parse("2024-11-16");
 
-                            else if (InstallationType != "Lift" && InstallationType != "Escalator" && InstallationType != "Lift/Escalator" && InstallationType != "MultiLift" && InstallationType != "MultiEscalator")
-                            {
-                                Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                                    if (lblApproveDate <= comparisonDate)
+                                    {
+                                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                                    }
+                                    else 
+                                    {
+                                        Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                                    }
+
+                                }
                             }
                             else if (InstallationType == "Lift" || InstallationType == "Escalator" || InstallationType == "Lift/Escalator" || InstallationType == "MultiLift" || InstallationType == "MultiEscalator")
                             {
                                 Session["InProcessInspectionId"] = id;
                                 Response.Redirect("/Officers/Lift_EscelatorApprovaldata.aspx", false);
                             }
+
                         }
+                       
                         else if (LblInspectionType.Text == "Periodic")
                         {
                             Session["InProcessInspectionId"] = id;

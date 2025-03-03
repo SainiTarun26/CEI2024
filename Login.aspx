@@ -705,7 +705,7 @@
                                             </div>
                                             <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
                                                 <div class="col-md-5">
-                                                    <div class="pass-link" style="text-align: initial; font-size: 13px; margin-top: 6px;"><a href="#">Forgot password?</a></div>
+                                                    <div class="pass-link" style="text-align: initial; font-size: 13px; margin-top: 6px;"><a href="ForgetPassword.aspx">Forgot password?</a></div>
                                                 </div>
                                                 <div class="col-md-7">
                                                     <div>

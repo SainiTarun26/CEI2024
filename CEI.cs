@@ -1910,39 +1910,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
         }
 
-        public void InspectionFinalAction(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, string suggestions, string InspectionDate, SqlTransaction transaction)
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand("sp_InspectionApproveReject", transaction.Connection, transaction);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID", InspectionID);
-                cmd.Parameters.AddWithValue("@StaffId", StaffId);
-                cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrReReturn);
-                cmd.Parameters.AddWithValue("@ReasonForRejection", Reason);
-                cmd.Parameters.AddWithValue("@Suggestion", suggestions);
-                //cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
-                DateTime InsDate;
-                if (DateTime.TryParse(InspectionDate, out InsDate) && InsDate != DateTime.MinValue)
-                {
-                    cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
-                }
-                else
-                {
-                    cmd.Parameters.AddWithValue("@InspectionDate", DBNull.Value);
-                }
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-
-                //throw;
-            }
-        }
-
-
-
-
+      
 
         #endregion  
         #region Update Inspection PendingPayment Data
@@ -3896,7 +3864,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
 
 
-        public void InspectionFinalAction(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, string suggestions, string InspectionDate)
+        public void InspectionFinalAction(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, string suggestions, string InspectionDate, string Note)
         {
             try
             {
@@ -3924,6 +3892,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                 {
                     cmd.Parameters.AddWithValue("@InspectionDate", DBNull.Value);
                 }
+                cmd.Parameters.AddWithValue("@Notes", Note);
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
@@ -3934,7 +3903,6 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             }
 
         }
-
         public DataSet checkPreviewInspection(int InspectionId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_checkPreviewInspection", InspectionId);
@@ -9327,6 +9295,41 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             }
 
             return count;
+        }
+        public DataSet CheckUser(string UserId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckUserId", UserId);
+        }
+
+        public DataSet CheckUserEmail(string UserId, string Role, string Email)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDat_UserID", UserId, Role, Email);
+        }
+        public DataSet SavePassword(string UserId, string Password)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SavePassword", UserId, Password);
+        }
+        public string GetPasswordthroughEmail(string Email)
+        {
+            //string mobilenumber = Session["Contact"].ToString();
+            Random random = new Random();
+            int otpInt = random.Next(100000, 999999);
+
+            string otp = otpInt.ToString("D6");
+            //Session["OTP"] = otp;
+
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("haryanacei@gmail.com");
+            mailMessage.To.Add(Email); mailMessage.Subject = "OTP For forget Password";
+            string body = $"Dear Customer,\n\n Your OTP for forget password reset is {otp}. OTPs are confidential - Do not share them with anyone. Thank you for choosing our services. If you need any assistance, feel free to contact our support team.\n\n Best regards,\n\n[CEI Haryana]";
+            mailMessage.Body = body;
+
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.Port = 587;
+            smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
+            smtpClient.EnableSsl = true;
+            smtpClient.Send(mailMessage);
+            return otp;
         }
     }
 }

@@ -174,6 +174,7 @@ input#ContentPlaceHolder1_RadioButtonList1_1 {
                                 <ItemTemplate>
                                     <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
                                      <asp:Label ID="LblInspectionType" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label>
+                                         <asp:Label ID="lblApproveDate" runat="server" Text='<%#Eval("ApprovedDate") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Id" Visible="False">

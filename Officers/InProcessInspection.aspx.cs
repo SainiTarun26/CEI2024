@@ -502,6 +502,12 @@ namespace CEIHaryana.Officers
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be greater equal to application requested date.');", true);
                                 return;
                             }
+                            DateTime serverDate = DateTime.Now.Date;
+                            if (inspectionDate > serverDate)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be less than Today date.');", true);
+                                return;
+                            }
 
                             ApprovedorReject = ddlReview.SelectedItem.ToString();
                             Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text.Trim();
