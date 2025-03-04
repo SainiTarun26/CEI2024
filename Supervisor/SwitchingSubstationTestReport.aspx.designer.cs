@@ -393,13 +393,22 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl SubstationEarthingDiv;
 
         /// <summary>
-        /// EarthingSubstation4 control.
+        /// tbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EarthingSubstation4;
+        protected global::System.Web.UI.HtmlControls.HtmlTable tbl;
+
+        /// <summary>
+        /// EarthingSubstation1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EarthingSubstation1;
 
         /// <summary>
         /// ddlSubstationEarthing1 control.
@@ -474,6 +483,15 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator99;
 
         /// <summary>
+        /// EarthingSubstation2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EarthingSubstation2;
+
+        /// <summary>
         /// ddlSubstationEarthing2 control.
         /// </summary>
         /// <remarks>
@@ -546,6 +564,15 @@ namespace CEIHaryana.Supervisor
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator98;
 
         /// <summary>
+        /// EarthingSubstation3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EarthingSubstation3;
+
+        /// <summary>
         /// ddlSubstationEarthing3 control.
         /// </summary>
         /// <remarks>
@@ -616,6 +643,15 @@ namespace CEIHaryana.Supervisor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator97;
+
+        /// <summary>
+        /// EarthingSubstation4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow EarthingSubstation4;
 
         /// <summary>
         /// Div52 control.

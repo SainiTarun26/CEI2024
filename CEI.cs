@@ -9331,6 +9331,19 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             smtpClient.Send(mailMessage);
             return otp;
         }
+
+        //public string InsertSwitchinData( string Count, string IntimationId, string SerialNoofSwitchingStation, string VoltageLevelofSwitchingStation , string NamePlaceofSwitchingStation,
+        //    string TypeofBreaker, string TotalNoofBreakers, string CapacityofStationTransformerInKva , string NumberofEarthing ,  string CreatedBy)
+        //{
+        //    return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertSwitchingStation",  Count, IntimationId, SerialNoofSwitchingStation,
+        //         VoltageLevelofSwitchingStation, NamePlaceofSwitchingStation,TypeofBreaker, TotalNoofBreakers, CapacityofStationTransformerInKva, NumberofEarthing, CreatedBy);
+        //}
+        //public void InsertSwitchingEarting( string TestReportId, string RowNumber, string EarthingType, string Valueinohms, string UsedFor,
+        //    string OtherEarthing)
+        //{
+        //     DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertSwitchingEarthingData", TestReportId, RowNumber, EarthingType,
+        //         Valueinohms, UsedFor, OtherEarthing, );
+        //}
     }
 }
 
