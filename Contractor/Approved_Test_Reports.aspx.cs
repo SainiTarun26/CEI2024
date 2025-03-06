@@ -128,6 +128,12 @@ namespace CEIHaryana.Contractor
                     linkButton.Visible = false;
                     LinkButton3.Visible = false;
                 }
+                else if (lblTypeOf.Text.Trim() == "Switching Station")
+                {
+
+                    linkButton.Visible = false;
+                    LinkButton3.Visible = true;
+                }
                 else
                 {
                     linkButton.Visible = true;

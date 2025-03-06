@@ -185,13 +185,15 @@ namespace CEIHaryana.Admin
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            int ClickCount = 0;
-            ClickCount = Convert.ToInt32(Session["ClickCount"]);
-            if (ClickCount < 1)
+            if (Convert.ToString(ddlReview.SelectedItem) == "0")
             {
-                ClickCount = ClickCount + 1;
-                Session["ClickCount"] = ClickCount;
-                
+                int ClickCount = 0;
+                ClickCount = Convert.ToInt32(Session["ClickCount"]);
+                if (ClickCount < 1)
+                {
+                    ClickCount = ClickCount + 1;
+                    Session["ClickCount"] = ClickCount;
+
                     int checksuccessmessage = 0;
                     string SLDID = Session["lblSldId"].ToString().Trim();
 
@@ -200,8 +202,8 @@ namespace CEIHaryana.Admin
                     if (reqType == "Industry")
                     {
                         string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
-                    // string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in/api/project-service-logs-external_UHBVN");
-                    if (serverStatus != "Server is reachable.")
+                        // string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in/api/project-service-logs-external_UHBVN");
+                        if (serverStatus != "Server is reachable.")
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
                             return;
@@ -395,11 +397,17 @@ namespace CEIHaryana.Admin
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
                     }
 
-                
+
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('You double click on Button.'); window.location='AdminMaster.aspx'", true);
+                }
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('You double click on Button.'); window.location='AdminMaster.aspx'", true);
+                ddlReview.Focus();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "Please Select Approval Type to Proceed.", true);
             }
         }
     }

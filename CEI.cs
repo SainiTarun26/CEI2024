@@ -9333,7 +9333,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             smtpClient.Send(mailMessage);
             return otp;
         }
-
+        #region navneet 
         public DataSet InsertSwitchinData(string Count, string IntimationId, string SerialNoofSwitchingStation, string VoltageLevelofSwitchingStation, string NamePlaceofSwitchingStation,
             string TypeofBreaker, string TotalNoofBreakers, string CapacityofStationTransformerInKva, string NumberofEarthing, string CreatedBy)
         {
@@ -9354,6 +9354,51 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSwitchingEarthingData", TestReportId);
         }
+        public DataTable GetDocumentlistforSwitching()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDocumentforSwitchingTestReport");
+        }
+        public void UpdateSwitchingifExisting(string ID, string Count)
+        {
+            SqlCommand cmd = new SqlCommand("sp_SwitchongTestReportApprovalifExisting");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Id", ID);
+            cmd.Parameters.AddWithValue("@Count", Count);
+            cmd.Parameters.AddWithValue("@RejectOrApprovedFronContractor", "Submit");
+            // cmd.Parameters.AddWithValue("@ReasonForRejection", ReasonForRejection);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        public void UpdateSwitchingData(string ID, string Count, string ManufacturingReport)
+        {
+            SqlCommand cmd = new SqlCommand("sp_SwitchingTestReportApproval");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Id", ID);
+            cmd.Parameters.AddWithValue("@Count", Count);
+            cmd.Parameters.AddWithValue("@RejectOrApprovedFronContractor", "Submit");
+            cmd.Parameters.AddWithValue("@ManufacturingReport", ManufacturingReport);
+            // cmd.Parameters.AddWithValue("@ReasonForRejection", ReasonForRejection);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        #endregion
         #region neeraj 
         public string SendExistingOTP(string Email, string OTP)
         {
