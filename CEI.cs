@@ -15,6 +15,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Net.Sockets;
 using System.Text;
+using System.Web;
 using System.Web.UI.WebControls;
 using System.Windows.Media.TextFormatting;
 using static System.Net.WebRequestMethods;
@@ -9317,7 +9318,8 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
 
             string otp = otpInt.ToString("D6");
             //Session["OTP"] = otp;
-
+            HttpContext.Current.Session["OTP"] = otp;
+            HttpContext.Current.Session["OTP_ExpireTime"] = DateTime.Now.AddMinutes(10);
             MailMessage mailMessage = new MailMessage();
             mailMessage.From = new MailAddress("haryanacei@gmail.com");
             mailMessage.To.Add(Email); mailMessage.Subject = "OTP For forget Password";
@@ -9332,18 +9334,55 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return otp;
         }
 
-        //public string InsertSwitchinData( string Count, string IntimationId, string SerialNoofSwitchingStation, string VoltageLevelofSwitchingStation , string NamePlaceofSwitchingStation,
-        //    string TypeofBreaker, string TotalNoofBreakers, string CapacityofStationTransformerInKva , string NumberofEarthing ,  string CreatedBy)
-        //{
-        //    return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertSwitchingStation",  Count, IntimationId, SerialNoofSwitchingStation,
-        //         VoltageLevelofSwitchingStation, NamePlaceofSwitchingStation,TypeofBreaker, TotalNoofBreakers, CapacityofStationTransformerInKva, NumberofEarthing, CreatedBy);
-        //}
-        //public void InsertSwitchingEarting( string TestReportId, string RowNumber, string EarthingType, string Valueinohms, string UsedFor,
-        //    string OtherEarthing)
-        //{
-        //     DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertSwitchingEarthingData", TestReportId, RowNumber, EarthingType,
-        //         Valueinohms, UsedFor, OtherEarthing, );
-        //}
+        public DataSet InsertSwitchinData(string Count, string IntimationId, string SerialNoofSwitchingStation, string VoltageLevelofSwitchingStation, string NamePlaceofSwitchingStation,
+            string TypeofBreaker, string TotalNoofBreakers, string CapacityofStationTransformerInKva, string NumberofEarthing, string CreatedBy)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertSwitchingStation", Count, IntimationId, SerialNoofSwitchingStation,
+                 VoltageLevelofSwitchingStation, NamePlaceofSwitchingStation, TypeofBreaker, TotalNoofBreakers, CapacityofStationTransformerInKva, NumberofEarthing, CreatedBy);
+        }
+        public void InsertSwitchingEarting(string TestReportId, int RowNumber, string EarthingType, string Valueinohms, string UsedFor,
+            string OtherEarthing)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertSwitchingEarthingData", TestReportId, RowNumber, EarthingType,
+                Valueinohms, UsedFor, OtherEarthing );
+        }
+        public DataSet SwitchingTestReportData(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SwitchingDataWithId", Id);
+        }
+        public DataSet GetSwitchingEarthingData(string TestReportId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSwitchingEarthingData", TestReportId);
+        }
+        #region neeraj 
+        public string SendExistingOTP(string Email, string OTP)
+        {
+
+            //HttpContext.Current.Session["OTP"] = OTP;
+            //HttpContext.Current.Session["OTP_ExpireTime"] = DateTime.Now.AddMinutes(10);
+
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("haryanacei@gmail.com");
+            mailMessage.To.Add(Email); mailMessage.Subject = "OTP For forget Password";
+            string body = $"Dear Customer,\n\n Your OTP for forget password reset is {OTP}.This OTP will expire in 10 minutes. OTPs are confidential - Do not share them with anyone. Thank you for choosing our services. If you need any assistance, feel free to contact our support team.\n\n Best regards,\n\n[CEI Haryana]";
+            mailMessage.Body = body;
+
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.Port = 587;
+            smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
+            smtpClient.EnableSsl = true;
+            smtpClient.Send(mailMessage);
+            return OTP;
+        }
+        public DataSet SaveIPAdress(string UserId, string OTP, string IpAddress)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SaveOTP", UserId, OTP, IpAddress);
+        }
+        public DataTable GetOTP(string UserId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getOTP", UserId);
+        }
+        #endregion
     }
 }
 

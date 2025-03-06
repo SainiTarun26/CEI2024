@@ -100,6 +100,14 @@ namespace CEIHaryana.Contractor
 
                         Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                     }
+                    else if (lblTypeOf.Text.Trim() == "Switching Station")
+                    {
+
+                        Session["SwitchingSubstationId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                        //Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+
+                        Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
+                    }
 
                     Session["ReasionForRejection"] = ds.Tables[0].Rows[0]["RejectionReasion"].ToString();
 

@@ -13,24 +13,56 @@ namespace CEIHaryana.Supervisor
     public partial class SwitchingSubstationTestReport : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+        string TestRportId =string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
                 if (!IsPostBack)
                 {
-                    txtapplication.Text = Session["ApplicationForTestReport"].ToString().Trim();
-                    txtInstallation.Text = Session["Typs"].ToString().Trim();
-                    txtid.Text = Session["ID"].ToString().Trim();
-                    txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim() + " Out of " + Session["TotalInstallation"].ToString().Trim();
-                    txtApplicantType.Text = Session["ApplicantType"].ToString().Trim();
-                    ddlEarthing();
+                    if (Session["SupervisorID"] != null || Request.Cookies["SupervisorID"] != null)
+                    {
+                        txtapplication.Text = Session["ApplicationForTestReport"].ToString().Trim();
+                        txtInstallation.Text = Session["Typs"].ToString().Trim();
+                        txtid.Text = Session["ID"].ToString().Trim();
+                        txtNOOfInstallation.Text = Session["NoOfInstallations"].ToString().Trim() + " Out of " + Session["TotalInstallation"].ToString().Trim();
+                        txtApplicantType.Text = Session["ApplicantType"].ToString().Trim();
+                        ddlEarthing();
+                        ddlLoadBindVoltage();
+                    }
                 }
             }
             catch
             {
                 Response.Redirect("/Login.aspx");
             }
+        }
+        private void ddlLoadBindVoltage()
+        {
+            string Voltage = string.Empty;
+            DataSet dsVoltage = new DataSet();
+            dsVoltage = CEI.GetddlVoltageLevel();
+            if (dsVoltage.Tables[0].Rows.Count > 3) // Ensure at least 4 records exist
+            {
+                // Skip first 3 records and take the next 40
+                DataTable dtFiltered = dsVoltage.Tables[0].AsEnumerable()
+                                            .Skip(1)  // Skip first 3 records
+                                            .Take(3) // Take the next 40
+                                            .CopyToDataTable();
+                ddlVoltage.DataSource = dtFiltered;
+            }
+            else
+            {
+                // If there are not enough records, bind all data
+                ddlVoltage.DataSource = dsVoltage.Tables[0];
+            }
+            //ddlVoltage.DataSource = dsVoltage;
+            ddlVoltage.DataTextField = "VoltageID";
+            ddlVoltage.DataValueField = "Voltage";
+            ddlVoltage.DataBind();
+            ddlVoltage.Items.Insert(0, new ListItem("Select", "0"));
+            dsVoltage.Clear();
+
         }
         private void ddlEarthing()
         {
@@ -69,7 +101,7 @@ namespace CEIHaryana.Supervisor
 
         protected void ddlEarthingsubstation_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //LineEarthingdiv.Visible = true;
+            SubstationEarthingDiv.Visible = true;
 
             // Store the Earthingtype controls in an array for easier manipulation
             Control[] earthingTypes = { EarthingSubstation1, EarthingSubstation2, EarthingSubstation3, EarthingSubstation4,EarthingSubstation5,EarthingSubstation6,EarthingSubstation7,EarthingSubstation8,EarthingSubstation9,EarthingSubstation10,
@@ -131,21 +163,49 @@ namespace CEIHaryana.Supervisor
 
         protected void BtnSubmitSubstation_Click(object sender, EventArgs e)
         {
-            string count = Session["NoOfInstallations"].ToString().Trim();
-            string CreatedBy = Session["SupervisorID"].ToString().Trim();
-           //string TestRetprtId = CEI.InsertSwitchinData(count, txtid.Text, txtSerialNo.Text, ddlVoltage.SelectedValue.ToString(), txtName.Text, ddlBreakerType.SelectedItem.Text,
-           //     txtBreakerNo.Text, txtCapacity.Text, ddlEarthingsubstation.SelectedItem.Text, CreatedBy);
-            foreach (HtmlTableRow row in tbl.Rows)
+            if (Check.Checked == true)
             {
-                for (int i = 1; i <= 40; i++)
+                string count = Session["NoOfInstallations"].ToString().Trim();
+                string CreatedBy = Session["SupervisorID"].ToString().Trim();
+                string installationNo = Session["IHID"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.InsertSwitchinData(count, txtid.Text, txtSerialNo.Text, ddlVoltage.SelectedValue.ToString(), txtName.Text, ddlBreakerType.SelectedItem.Text,
+                     txtBreakerNo.Text, txtCapacity.Text, ddlEarthingsubstation.SelectedItem.Text, CreatedBy);
+                if (ds != null && ds.Tables.Count > 0)
                 {
-                    DropDownList ddlEarthingType = (DropDownList)row.FindControl("ddlSubstationEarthing" + i);
-                    DropDownList ddlUsedFor = (DropDownList)row.FindControl("ddlUsedFor" + i);
-                    TextBox txtEarthingValue = (TextBox)row.FindControl("txtSubstationEarthing" + i);
-                    TextBox txtOtherEarthing = (TextBox)row.FindControl("txtOtherEarthing" + i);
-                    //CEI.InsertSwitchingEarting();
+                    TestRportId = ds.Tables[0].Rows[0]["TReportID"].ToString();
                 }
+                //int totalRows = Math.Min(tbl.Rows.Count, int.Parse(ddlEarthingsubstation.SelectedItem.Text));
+
+                for (int rowIndex = 1; rowIndex <= 1; rowIndex++)
+                {
+                    HtmlTableRow row = tbl.Rows[rowIndex];
+                    for (int i = 1; i <= int.Parse(ddlEarthingsubstation.SelectedItem.Text); i++)
+                    {
+
+
+                        DropDownList ddlEarthingType = (DropDownList)row.FindControl("ddlSubstationEarthing" + i);
+                        DropDownList ddlUsedFor = (DropDownList)row.FindControl("ddlUsedFor" + i);
+                        TextBox txtEarthingValue = (TextBox)row.FindControl("txtSubstationEarthing" + i);
+                        TextBox txtOtherEarthing = (TextBox)row.FindControl("txtOtherEarthing" + i);
+
+                        CEI.InsertSwitchingEarting(TestRportId, i, ddlEarthingType.SelectedItem.Text, txtEarthingValue.Text, ddlUsedFor.SelectedItem.Text, txtOtherEarthing.Text);
+
+                    }
+                }
+                CEI.UpdateInstallations(installationNo, txtid.Text);
+                Reset();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
             }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('You have to check the declaration first !!!')", true);
+            }
+        }
+        public void Reset()
+        {
+            txtid.Text = ""; txtSerialNo.Text = ""; ddlVoltage.SelectedValue = "0"; txtName.Text = ""; ddlBreakerType.SelectedValue = "0";
+            txtBreakerNo.Text = ""; txtCapacity.Text = ""; ddlEarthingsubstation.SelectedValue = "0";
         }
     }
 }

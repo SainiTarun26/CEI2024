@@ -2052,6 +2052,7 @@
     <Content Include="TestReportModal\LiftTestReportModal.aspx" />
     <Content Include="TestReportModal\LineTestReportModal.aspx" />
     <Content Include="TestReportModal\SubstationTransformerTestReportModal.aspx" />
+    <Content Include="TestReportModal\SwitchingSubstationTestReportModal.aspx" />
     <Content Include="TestReportModel_Industry\GeneratingSetTestReport_Industry.aspx" />
     <Content Include="TestReportModel_Industry\LineTestReport_Industry.aspx" />
     <Content Include="TestReportModel_Industry\SubstationTestReport_Industry.aspx" />
@@ -3791,6 +3792,13 @@
     </Compile>
     <Compile Include="TestReportModal\SubstationTransformerTestReportModal.aspx.designer.cs">
       <DependentUpon>SubstationTransformerTestReportModal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestReportModal\SwitchingSubstationTestReportModal.aspx.cs">
+      <DependentUpon>SwitchingSubstationTestReportModal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestReportModal\SwitchingSubstationTestReportModal.aspx.designer.cs">
+      <DependentUpon>SwitchingSubstationTestReportModal.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestReportModel_Industry\GeneratingSetTestReport_Industry.aspx.cs">
       <DependentUpon>GeneratingSetTestReport_Industry.aspx</DependentUpon>

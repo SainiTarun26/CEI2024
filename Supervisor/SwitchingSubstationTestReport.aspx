@@ -18,6 +18,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
     <script type="text/javascript">
+        function alertWithRedirectdata() {
+            /*if (confirm('Test Report Submitted Successfully')) {*/
+            alert('Test Report Submitted Successfully');
+            window.location.href = "/Supervisor/InstallationDetails.aspx";
+            //} else {
+            //}
+        }
+    </script>
+    <script type="text/javascript">
         function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode
             if (charCode > 31 && (charCode < 48 || charCode > 57)) {
@@ -423,10 +432,7 @@
                                                 Voltage Level of Switching Station<samp style="color: red">* </samp>
                                             </label>
                                             <asp:DropDownList class="form-control  select-form select2" TabIndex="4" runat="server" AutoPostBack="true" ID="ddlVoltage" selectionmode="Multiple" Style="width: 100% !important">
-                                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                                <asp:ListItem Value="1" Text="11Kv"></asp:ListItem>
-                                                <asp:ListItem Value="2" Text="33Kv"></asp:ListItem>
-                                                <asp:ListItem Value="3" Text="66Kv"></asp:ListItem>
+                                               
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ForeColor="Red" ControlToValidate="ddlVoltage" runat="server" ErrorMessage="Please Select Voltage" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                         </div>
@@ -435,7 +441,7 @@
                                                 Name/Place of Switching Station
                                                 <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtName" MaxLength="50" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtName" MaxLength="50" onKeyPress="return alphabetKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ForeColor="Red" ControlToValidate="txtName" runat="server" ErrorMessage="Please Enter Switching Name" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                             <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important"> </asp:DropDownList>--%>
                                         </div>
@@ -512,7 +518,7 @@
                                 </div>
 
                             </div>
-                            <div class="table-responsive pt-3" id="SubstationEarthingDiv" runat="server">
+                            <div class="table-responsive pt-3" id="SubstationEarthingDiv" runat="server" visible="false">
                                 <table id="tbl" runat="server" class="table table-bordered table-striped">
                                     <thead class="table-dark">
                                         <tr>

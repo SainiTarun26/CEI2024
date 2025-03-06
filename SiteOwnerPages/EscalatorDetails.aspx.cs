@@ -319,9 +319,9 @@ namespace CEIHaryana.SiteOwnerPages
                             CreatedBy, ddlContName.SelectedItem.ToString(), txtContName.Text, DateTime.Parse(txtContExp.Text), ddlLicenseNo.SelectedItem.ToString(),
                             txtSupLicenseNo.Text, DateTime.Parse(txtSupExpiryDate.Text)
                         );
-                           // CEI.UpdateLiftTestReportHistory("Escalator", IntimationId, count, CreatedBy);
-                           // CEI.UpdateInstallations(installationNo, IntimationId);
-                            UploadCheckListDocInCollection(IntimationId, count);
+                                    CEI.UpdateLiftTestReportHistory("Escalator", IntimationId, count, CreatedBy);
+                                    CEI.UpdateInstallations(installationNo, IntimationId);
+                                    UploadCheckListDocInCollection(IntimationId, count);
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
 
                         }

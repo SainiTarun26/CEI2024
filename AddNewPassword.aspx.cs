@@ -13,18 +13,33 @@ namespace CEIHaryana
     {
         CEI CEI = new CEI();
         string UserId;
+        string ipaddress;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                txtUserId.Text = Session["UserId_ResetPwd"].ToString();
+                txtNewPassword.Text = "";
+                txtVerifyPassword.Text = "";
+                Session["UserId_ResetPwd"] = "";
+            }
         }
-
+      
         protected void BtnSave_Click(object sender, EventArgs e)
         {
-            UserId = Session["UserId"].ToString();
+            UserId = txtUserId.Text.Trim();
             string NewPassword = txtNewPassword.Text.Trim();
             string ConfirmPassword = txtVerifyPassword.Text.Trim();
-            //string verifyPassword = txtVerifyPassword.Text.Trim();
-            if (NewPassword != ConfirmPassword)
+            if (string.IsNullOrEmpty(txtUserId.Text))
+            {
+                
+                string alertScript = "alert('User does not exist.'); window.location='Login.aspx';";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                return;
+
+
+            }                //string verifyPassword = txtVerifyPassword.Text.Trim();
+            else   if (NewPassword != ConfirmPassword)
             {
 
                 string alertScript = "alert('New passwords do not match with verify password');";
@@ -33,11 +48,11 @@ namespace CEIHaryana
             }
             else
             {
-                DataSet ds1 = CEI.SavePassword(UserId, NewPassword);
-                Session["UserId"] = "";
+                DataSet ds1 = CEI.SavePassword(txtUserId.Text, txtNewPassword.Text);
+                //Session["UserId"] = "";
                 string successScript = "alert('Password Update successfully.'); window.location='Login.aspx';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", successScript, true);
-               
+                return;
             }
         }
     }

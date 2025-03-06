@@ -239,6 +239,14 @@
                 </div>--%>
                 <div id="VerifyOPTdiv" class="otp" runat="server">
                     <p class="sub-title">
+                        User Id
+                 
+                    </p>
+                    <div class="wrapper">
+                        <asp:TextBox class="field 1" ID="txtUserId" runat="server" ReadOnly="true" MaxLength="14" ></asp:TextBox>
+                        
+                    </div>
+                    <p class="sub-title">
                         New Password
                  
                     </p>
