@@ -18,6 +18,10 @@
     <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" />
     <style type="text/css">
+        th.headercolor.textalignCenter {
+    width: 1%;
+    background:#9292cc;
+}
         div#Contractor {
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             margin-left: -25px;
@@ -2044,7 +2048,7 @@
             }
         }
         function openNewWindow() {
-            var newWindow = window.open('../UserPages/PrintSubstationTransformerTestReport.aspx', '_blank');
+            var newWindow = window.open('../UserPages/PrintSwitchingSubstationTestReport.aspx', '_blank');
             newWindow.focus();
             console.log(newWindow);
         }
@@ -2258,41 +2262,42 @@
                                     </label>
                                     <asp:TextBox class="form-control" AutoPostBack="true" ID="txtEarthing" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
-                                            <Columns>
 
-                                                <asp:BoundField DataField="RowNumber" HeaderText="Sr No.">
-                                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
-                                                    <ItemStyle HorizontalAlign="center" />
-                                                </asp:BoundField>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <asp:GridView ID="GridView1" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                                        <Columns>
 
-                                                <asp:BoundField DataField="EarthingType" HeaderText="Earthing Type">
-                                                    <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
-                                                    <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="ValueInOhm" HeaderText="Value in(ohms)">
-                                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
-                                                    <ItemStyle HorizontalAlign="center" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="UsedFor" HeaderText="Used For">
-                                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
-                                                    <ItemStyle HorizontalAlign="center" />
-                                                </asp:BoundField>
+                                            <asp:BoundField DataField="RowNumber" HeaderText="Sr No.">
+                                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
+                                                <ItemStyle HorizontalAlign="center" />
+                                            </asp:BoundField>
 
-                                            </Columns>
-                                            <FooterStyle BackColor="White" ForeColor="#000066" />
-                                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                            <RowStyle ForeColor="#000066" />
-                                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                            <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                        </asp:GridView>
-                                    </div>
+                                            <asp:BoundField DataField="EarthingType" HeaderText="Earthing Type">
+                                                <HeaderStyle HorizontalAlign="Center" CssClass="headercolor textalignCenter" />
+                                                <ItemStyle HorizontalAlign="Center" CssClass="textalignCenter" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="ValueInOhm" HeaderText="Value in(ohms)">
+                                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
+                                                <ItemStyle HorizontalAlign="center" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="UsedFor" HeaderText="Used For">
+                                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor textalignCenter" />
+                                                <ItemStyle HorizontalAlign="center" />
+                                            </asp:BoundField>
+
+                                        </Columns>
+                                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                        <RowStyle ForeColor="#000066" />
+                                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                    </asp:GridView>
                                 </div>
                             </div>
                         </div>

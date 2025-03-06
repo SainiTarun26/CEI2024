@@ -18,6 +18,9 @@
     <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" />
     <style type="text/css">
+        th {
+    background: #9292cc;
+}
         div#Contractor {
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             margin-left: -25px;

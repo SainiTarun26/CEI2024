@@ -193,7 +193,7 @@ namespace CEIHaryana.Admin
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (Convert.ToString(ddlReview.SelectedValue) == "0")
+            if (Convert.ToString(ddlReview.SelectedValue) != "0")
             {
                 int ClickCount = 0;
                 ClickCount = Convert.ToInt32(Session["ClickCount"]);
@@ -379,15 +379,15 @@ namespace CEIHaryana.Admin
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('You double click on Button.'); window.location='AdminMaster.aspx'", true);
                 }
+
+                //string script = $"alert('SLD Document submitted successfully.'); window.location='AdminMaster.aspx';";
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
             }
             else
             {
                 ddlReview.Focus();
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "Please Select Approval Type to Proceed.", true);
             }
-
-            //string script = $"alert('SLD Document submitted successfully.'); window.location='AdminMaster.aspx';";
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
         }
     
     }

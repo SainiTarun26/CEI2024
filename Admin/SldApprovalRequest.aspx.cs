@@ -185,8 +185,30 @@ namespace CEIHaryana.Admin
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (Convert.ToString(ddlReview.SelectedItem) == "0")
+            if (Convert.ToString(ddlReview.SelectedItem) != "Select")
             {
+                if(ddlReview.SelectedItem.ToString() == "Approved")
+                {
+                    if(TxtRemarks.Text == "" || TxtRemarks.Text == null)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please share remarks for Approval.')", true);
+                        return;
+                    }
+                    if(Signature.HasFile == false)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please upload SLD document.')", true);
+                        return;
+                    }
+
+                }
+                if (ddlReview.SelectedItem.ToString() == "Rejected")
+                {
+                    if (TxtRejectionReason.Text == "" || TxtRejectionReason.Text == null)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please share rejection reason.')", true);
+                        return;
+                    }
+                }
                 int ClickCount = 0;
                 ClickCount = Convert.ToInt32(Session["ClickCount"]);
                 if (ClickCount < 1)
@@ -235,7 +257,6 @@ namespace CEIHaryana.Admin
                                 string filePathInfo2 = Server.MapPath("~/Attachment/" + AdminId + "/SLD/" + fileName);
                                 Signature.SaveAs(filePathInfo2);
                                 filePathInfo = path + fileName;
-
                             }
                             catch (Exception ex)
                             {
@@ -247,8 +268,6 @@ namespace CEIHaryana.Admin
                             throw new Exception("Please Upload Pdf Files 2 Mb Only");
                         }
                     }
-                    CEI.SldApprovedByAdmin(SLDID, ddlReview.SelectedItem.ToString(), AdminId, filePathInfo, TxtRemarks.Text.Trim(), TxtRejectionReason.Text.Trim());
-                    checksuccessmessage = 1;
                     try
                     {
                         string actiontype = ddlReview.SelectedItem.Text.ToString() == "Approved" ? "Approved" : "Rejected";
@@ -391,13 +410,19 @@ namespace CEIHaryana.Admin
                         //connection.Close();
                     }
 
+
+                    int x = CEI.SldApprovedByAdmin(SLDID, ddlReview.SelectedItem.ToString(), AdminId, filePathInfo, TxtRemarks.Text.Trim(), TxtRejectionReason.Text.Trim());
+
+                    if (x > 0)
+                    {
+                        checksuccessmessage = 1;
+                    }
+
                     if (checksuccessmessage == 1)
                     {
                         string script = $"alert('SLD Document submitted successfully.'); window.location='AdminMaster.aspx';";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
                     }
-
-
                 }
                 else
                 {

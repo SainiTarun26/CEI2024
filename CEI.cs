@@ -4445,7 +4445,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         //    return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_InsertSdlData", SiteOwnerID, Path, Createdby, SiteOwnerAddress, OwnerName, UserType);
         //}
 
-        public void SldApprovedByAdmin(string SLD_ID, string Status_type, string ActionTaken, string SLDApproved, string Remarks, string Rejection)
+        public int SldApprovedByAdmin(string SLD_ID, string Status_type, string ActionTaken, string SLDApproved, string Remarks, string Rejection)
         {
             SqlConnection con = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -4465,9 +4465,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             cmd.Parameters.AddWithValue("@SLDApproved", SLDApproved);
             cmd.Parameters.AddWithValue("@Remarks", String.IsNullOrEmpty(Remarks) ? DBNull.Value : (object)Remarks);
             cmd.Parameters.AddWithValue("@Rejection", String.IsNullOrEmpty(Rejection) ? DBNull.Value : (object)Rejection);
-            cmd.ExecuteNonQuery();
+            int x = cmd.ExecuteNonQuery();
             con.Close();
-
+            return x;
         }
         public DataTable SldHistoryinIndustry(string SiteOwnerId)
         {

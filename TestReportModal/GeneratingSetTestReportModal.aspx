@@ -17,6 +17,9 @@
     <link rel="shortcut icon" href="images/favicon.png" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" />
     <style type="text/css">
+        th {
+            background: #9292cc;
+        }
         li.tab-content.tab-content-3.typography {
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             border: 8px solid #ced4da !important;

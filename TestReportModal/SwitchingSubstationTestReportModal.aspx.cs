@@ -26,7 +26,7 @@ namespace CEIHaryana.TestReportModal
                     Session["TestReportIds"] = TestReportId;
                     GetSwitchingDetailswithId(TestReportId);
                     GetEarthingData(TestReportId);
-                    Session["SwitchingSubstationId"] = "";
+                    //Session["SwitchingSubstationId"] = "";
                     if (Request.UrlReferrer != null)
                     {
                         Session["PreviousPage"] = Request.UrlReferrer.ToString();
