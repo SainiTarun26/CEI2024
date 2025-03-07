@@ -173,7 +173,7 @@
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server"
                                 ControlToValidate="ddlApplicantType" ErrorMessage="Please Select User Type"
-                                InitialValue="0" Display="Dynamic" ForeColor="Red" />
+                                InitialValue="0" Display="Dynamic" ForeColor="Red" ValidationGroup="Submit" />
                         </div>
                     </div>
                     <div class="form-group row">
@@ -184,7 +184,7 @@
                             <asp:TextBox CssClass="form-control" ID="txtUserId" runat="server"
                                 onkeypress="return validateAlphanumeric(event)"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                                ControlToValidate="txtUserId" ErrorMessage="Please enter UserId"
+                                ControlToValidate="txtUserId" ErrorMessage="Please enter UserId" ValidationGroup="Submit"
                                 Display="Dynamic" ForeColor="Red" />
                         </div>
                     </div>
@@ -197,7 +197,7 @@
                                 onkeyup="return ValidateEmail();" autocomplete="off"></asp:TextBox>
                             <span id="lblError" style="color: red"></span>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server"
-                                ControlToValidate="txtEmail" ErrorMessage="Please Enter Email Id"
+                                ControlToValidate="txtEmail" ErrorMessage="Please Enter Email Id" ValidationGroup="Submit"
                                 Display="Dynamic" ForeColor="Red" />
                         </div>
                     </div>
@@ -212,7 +212,7 @@
                                 MaxLength="6" onkeypress="return isNumberKey(event)"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
                                 ControlToValidate="txtSecurityCode" ErrorMessage="Security Code is Required."
-                                ForeColor="Red" Display="Dynamic" />
+                                ForeColor="Red" Display="Dynamic" ValidationGroup="Submit" />
                         </div>
                         <!-- Captcha Section in UpdatePanel -->
                     </div>
@@ -220,8 +220,7 @@
                             <label class="col-sm-5 col-form-label">Security Code:</label>
                         <div class="col-sm-7">
                             <asp:Image ID="imgCaptcha" runat="server" Height="30px" Width="132px" />
-                            <asp:ImageButton ID="btnRefresh" runat="server" Height="23px" Style="margin-top: 10px;
-    margin-bottom: -7px;"
+                            <asp:ImageButton ID="btnRefresh" runat="server" Height="23px" Style="margin-top: 10px; margin-bottom: -7px;"
                                 ImageUrl="~/Image/Image/refresh.png" OnClick="btnRefresh_Click" CssClass="ml-2" />
                        </div>                   
                         </div>
@@ -231,7 +230,7 @@
                 <!-- Submit Button -->
                 <div class="row justify-content-center" style="margin-bottom:15px;">
                     <div class="col-md-4">
-                        <asp:Button ID="btnSubmit" Text="Submit" runat="server" CssClass="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
+                        <asp:Button ID="btnSubmit" Text="Submit" runat="server" CssClass="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
                     </div>
 
 

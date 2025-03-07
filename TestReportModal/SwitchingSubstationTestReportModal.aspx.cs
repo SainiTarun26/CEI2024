@@ -130,9 +130,13 @@ namespace CEIHaryana.TestReportModal
                 ds = CEI.SwitchingTestReportData(id);
                 lbltestReportId.Text = id;
                 lblReportNo.Text = id;
+                txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 txtInstallation.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
-                txtagency.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+                if (txtName.Text ==""|| txtName.Text == null) 
+                {
+                    txtName.Text = ds.Tables[0].Rows[0]["NameOfAgency"].ToString();
+                }
                 txtPhone.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
                 txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
                 string dp_Id1 = ds.Tables[0].Rows[0]["Permises"].ToString();
