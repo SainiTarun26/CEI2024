@@ -166,9 +166,15 @@ namespace CEIHaryana.TestReportModal
                     txtCompletitionDate.Text = string.Empty;
                 }
 
+                txtSerial.Text = ds.Tables[0].Rows[0]["SerialNoofSwitchingStation"].ToString();
                 txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                 txtSwitchingName.Text = ds.Tables[0].Rows[0]["NamePlaceofSwitchingStation"].ToString();
                 txtBreakerType.Text = ds.Tables[0].Rows[0]["TypeofBreaker"].ToString();
+                if (txtBreakerType.Text =="Other")
+                {
+                    Other.Visible= true;
+                }
+                txtOtherBreakerType.Text = ds.Tables[0].Rows[0]["OtherBreakerType"].ToString();
                 txtTotalBreaker.Text = ds.Tables[0].Rows[0]["TotalNoofBreakers"].ToString();
                 txtCapacity.Text = ds.Tables[0].Rows[0]["CapacityofStationTransformerInKva"].ToString();
                 txtEarthing.Text = ds.Tables[0].Rows[0]["NumberofEarthing"].ToString();
@@ -399,9 +405,7 @@ namespace CEIHaryana.TestReportModal
                         {
                             FinalSubmit.Visible = true;
                             ToOTPVerify.Visible = false;
-                            Session["OTP"] = "";
-                            Session["Email"] = "";
-                            Session["SubstationOtp"] = "";
+
                             //Session["InspectionType"]
                             //GetDocumentUploadData();
                             if (Session["InspectionType"] != null && Session["InspectionType"].ToString() != "Existing")

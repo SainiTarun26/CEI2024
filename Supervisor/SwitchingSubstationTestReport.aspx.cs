@@ -169,7 +169,8 @@ namespace CEIHaryana.Supervisor
                 string CreatedBy = Session["SupervisorID"].ToString().Trim();
                 string installationNo = Session["IHID"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.InsertSwitchinData(count, txtid.Text, txtSerialNo.Text, ddlVoltage.SelectedValue.ToString(), txtName.Text, ddlBreakerType.SelectedItem.Text,
+                ds = CEI.InsertSwitchinData(count, txtid.Text, txtSerialNo.Text, ddlVoltage.SelectedValue.ToString(), txtName.Text, 
+                    ddlBreakerType.SelectedItem.Text, txtOther.Text,
                      txtBreakerNo.Text, txtCapacity.Text, ddlEarthingsubstation.SelectedItem.Text, CreatedBy);
                 if (ds != null && ds.Tables.Count > 0)
                 {
@@ -206,6 +207,19 @@ namespace CEIHaryana.Supervisor
         {
             txtid.Text = ""; txtSerialNo.Text = ""; ddlVoltage.SelectedValue = "0"; txtName.Text = ""; ddlBreakerType.SelectedValue = "0";
             txtBreakerNo.Text = ""; txtCapacity.Text = ""; ddlEarthingsubstation.SelectedValue = "0";
+        }
+
+        protected void ddlBreakerType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlBreakerType.SelectedValue =="3")
+            {
+
+                Other.Visible = true;
+            }
+            else
+            {
+                Other.Visible = false;
+            }
         }
     }
 }

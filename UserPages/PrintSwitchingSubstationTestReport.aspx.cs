@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -92,9 +93,15 @@ namespace CEIHaryana.UserPages
                     txtCompletitionDate.Text = string.Empty;
                 }
 
+                txtSerial.Text = ds.Tables[0].Rows[0]["SerialNoofSwitchingStation"].ToString();
                 txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                 txtSwitchingName.Text = ds.Tables[0].Rows[0]["NamePlaceofSwitchingStation"].ToString();
                 txtBreakerType.Text = ds.Tables[0].Rows[0]["TypeofBreaker"].ToString();
+                if (txtBreakerType.Text == "Other")
+                {
+                    Other.Visible = true;
+                }
+                txtOtherBreakerType.Text = ds.Tables[0].Rows[0]["OtherBreakerType"].ToString();
                 txtTotalBreaker.Text = ds.Tables[0].Rows[0]["TotalNoofBreakers"].ToString();
                 txtCapacity.Text = ds.Tables[0].Rows[0]["CapacityofStationTransformerInKva"].ToString();
                 txtEarthing.Text = ds.Tables[0].Rows[0]["NumberofEarthing"].ToString();

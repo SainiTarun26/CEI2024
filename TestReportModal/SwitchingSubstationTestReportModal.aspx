@@ -2220,6 +2220,12 @@
                         <div class="card" id="test-card" style="background: #fcfcfc; font-size: 22px !important;">
                             <div class="card-title" style="margin-bottom: 1px; font-size: 22px !important;">Test Report Details</div>
                             <div class="row">
+                                <div class="col-4" id="Div" runat="server">
+                                    <label for="Voltage">
+                                        Serial Number 
+                                    </label>
+                                    <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="txtSerial" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
                                 <div class="col-4" id="Div1" runat="server">
                                     <label for="Voltage">
                                         Voltage of Switching Station  
@@ -2237,6 +2243,12 @@
                                         Type of Breaker
                                     </label>
                                     <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="txtBreakerType" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-4" id="Other" runat="server" visible="false">
+                                    <label for="Voltage">
+                                        Other Breaker
+                                    </label>
+                                    <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="txtOtherBreakerType" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                                 <div class="col-4">
                                     <label>

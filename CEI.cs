@@ -9336,10 +9336,10 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         }
         #region navneet 
         public DataSet InsertSwitchinData(string Count, string IntimationId, string SerialNoofSwitchingStation, string VoltageLevelofSwitchingStation, string NamePlaceofSwitchingStation,
-            string TypeofBreaker, string TotalNoofBreakers, string CapacityofStationTransformerInKva, string NumberofEarthing, string CreatedBy)
+            string TypeofBreaker,string OtherBreakerType, string TotalNoofBreakers, string CapacityofStationTransformerInKva, string NumberofEarthing, string CreatedBy)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertSwitchingStation", Count, IntimationId, SerialNoofSwitchingStation,
-                 VoltageLevelofSwitchingStation, NamePlaceofSwitchingStation, TypeofBreaker, TotalNoofBreakers, CapacityofStationTransformerInKva, NumberofEarthing, CreatedBy);
+                 VoltageLevelofSwitchingStation, NamePlaceofSwitchingStation, TypeofBreaker, OtherBreakerType, TotalNoofBreakers, CapacityofStationTransformerInKva, NumberofEarthing, CreatedBy);
         }
         public void InsertSwitchingEarting(string TestReportId, int RowNumber, string EarthingType, string Valueinohms, string UsedFor,
             string OtherEarthing)

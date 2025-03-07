@@ -49,7 +49,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     ddlVoltage.DataSource = dsVoltage;
                     ddlVoltage.DataTextField = "Volts";
-                    ddlVoltage.DataValueField = "Volts";
+                    ddlVoltage.DataValueField = "InVolts";
                     ddlVoltage.DataBind();
                 }
                 ddlVoltage.Items.Insert(0, new ListItem("Select", "0"));
@@ -107,7 +107,7 @@ namespace CEIHaryana.SiteOwnerPages
                 int returnresult = CEI.InsertSwitchingStationData_Existing_HavingPreviousReport(
                     countValue,
                     IntimationId,
-                    ddlVoltage.SelectedItem.ToString(),
+                    ddlVoltage.SelectedValue.ToString(),
                     txtSwitchingStationName.Text,
                     ddlBreakerType.SelectedItem.ToString(),
                     txtOtherbreakerType.Text,

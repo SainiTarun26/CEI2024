@@ -423,7 +423,7 @@
                                                Serial Number
                                                 <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSerialNo" MaxLength="30" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSerialNo" MaxLength="30" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ForeColor="Red" ControlToValidate="txtSerialNo" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                             <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important"> </asp:DropDownList>--%>
                                         </div>
@@ -449,20 +449,28 @@
                                             <label>
                                                 Type of Breaker<samp style="color: red">* </samp>
                                             </label>
-                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="4" runat="server" AutoPostBack="true" ID="ddlBreakerType" selectionmode="Multiple" Style="width: 100% !important">
+                                            <asp:DropDownList class="form-control  select-form select2" TabIndex="4" runat="server" AutoPostBack="true" ID="ddlBreakerType" selectionmode="Multiple" Style="width: 100% !important" OnSelectedIndexChanged="ddlBreakerType_SelectedIndexChanged">
                                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                                 <asp:ListItem Value="1" Text="VCB"></asp:ListItem>
                                                 <asp:ListItem Value="2" Text="SF6"></asp:ListItem>
-                                                <asp:ListItem Value="2" Text="Other"></asp:ListItem>
+                                                <asp:ListItem Value="3" Text="Other"></asp:ListItem>
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ForeColor="Red" ControlToValidate="ddlBreakerType" runat="server" ErrorMessage="Please SelectTransformerType" InitialValue="0" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                        </div>
+                                        <div class="col-3" id="Other" runat="server" visible="false">
+                                            <label>
+                                                Other <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOther" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ForeColor="Red" ControlToValidate="txtBreakerNo" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                            <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important"> </asp:DropDownList>--%>
                                         </div>
                                         <div class="col-3">
                                             <label>
                                                 Total No. of Breakers
                                                 <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtBreakerNo" MaxLength="50" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtBreakerNo" MaxLength="50" onKeyPress="return isNumbeKey(event);" onBlur="validateBreakerNo(this);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ForeColor="Red" ControlToValidate="txtBreakerNo" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                             <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important"> </asp:DropDownList>--%>
                                         </div>
@@ -2268,4 +2276,40 @@
             //}
         }
     </script>
+    <asp:TextBox class="form-control" AutoPostBack="true" ID="TextBox1" MaxLength="3" 
+    onKeyPress="return isNumberKey(event);" 
+    onkeydown="return preventEnterSubmit(event)" 
+    onBlur="validateBreakerNo(this);" 
+    placeholder="" autocomplete="off" TabIndex="3" runat="server" 
+    Style="margin-left: 18px"></asp:TextBox>
+
+<script>
+    function isNumbeKey(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        // Allow only numbers (0-9)
+        if (charCode < 48 || charCode > 57) {
+            return false;
+        }
+        return true;
+    }
+
+    function preventEnterSubmit(evt) {
+        if (evt.key === "Enter") {
+            return false;
+        }
+        return true;
+    }
+
+    function validateBreakerNo(txt) {
+        var value = parseInt(txt.value, 10);
+
+        // Ensure the value is between 1 and 100
+        if (isNaN(value) || value < 1 || value > 100) {
+            alert("Please enter a number between 1 and 100.");
+            txt.value = ''; // Clear the invalid input
+        }
+    }
+
+</script>
+
 </asp:Content>
