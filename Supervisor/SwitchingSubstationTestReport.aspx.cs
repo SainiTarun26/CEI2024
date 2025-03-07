@@ -39,24 +39,10 @@ namespace CEIHaryana.Supervisor
         }
         private void ddlLoadBindVoltage()
         {
-            string Voltage = string.Empty;
+            string Voltage = Session["VoltageLevel"].ToString();
             DataSet dsVoltage = new DataSet();
-            dsVoltage = CEI.GetddlVoltageLevel();
-            if (dsVoltage.Tables[0].Rows.Count > 3) // Ensure at least 4 records exist
-            {
-                // Skip first 3 records and take the next 40
-                DataTable dtFiltered = dsVoltage.Tables[0].AsEnumerable()
-                                            .Skip(1)  // Skip first 3 records
-                                            .Take(3) // Take the next 40
-                                            .CopyToDataTable();
-                ddlVoltage.DataSource = dtFiltered;
-            }
-            else
-            {
-                // If there are not enough records, bind all data
-                ddlVoltage.DataSource = dsVoltage.Tables[0];
-            }
-            //ddlVoltage.DataSource = dsVoltage;
+            dsVoltage = CEI.GetddlVotlageforSwitchingStation(Voltage);
+            ddlVoltage.DataSource = dsVoltage;           
             ddlVoltage.DataTextField = "VoltageID";
             ddlVoltage.DataValueField = "Voltage";
             ddlVoltage.DataBind();

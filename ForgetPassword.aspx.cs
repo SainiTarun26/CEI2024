@@ -127,7 +127,8 @@ namespace CEIHaryana
                             txtUserId.ReadOnly = true;
                             txtEmail.ReadOnly = true;
                             txtSecurityCode.ReadOnly = true;
-                            btnSubmit.Enabled = false;
+                            btnSubmit.Visible = false;
+                           // btnSubmit.Enabled = false;
                             Verify.Visible = true;
                             btnVerify.Visible = true;
                             string otp = CEI.GetPasswordthroughEmail(Email);

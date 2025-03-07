@@ -43,6 +43,10 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         id = Session["GeneratingSetId"].ToString();
                     }
+                    else if (Session["SwitchingSubstationId"] != null && Convert.ToString(Session["SwitchingSubstationId"]) != "")
+                    {
+                        id = Session["SwitchingSubstationId"].ToString();
+                    }
 
                     GetDetailsWithId();
                     GridBind();
@@ -136,6 +140,11 @@ namespace CEIHaryana.SiteOwnerPages
                         else if (Session["GeneratingSetId"] != null && Convert.ToString(Session["GeneratingSetId"]) != "")
                         {
                             txtWorkType.Text = "Generating Set";
+
+                        }
+                        else if (Session["SwitchingSubstationId"] != null && Convert.ToString(Session["SwitchingSubstationId"]) != "")
+                        {
+                            txtWorkType.Text = "Switching Station";
 
                         }
                     }
@@ -955,8 +964,8 @@ namespace CEIHaryana.SiteOwnerPages
                     ID = Session["InspectionId"].ToString();
                     if (e.CommandName == "Select")
                     {
-                       // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                        fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                        // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                         //lblerror.Text = fileName;
                         string script = $@"<script>window.open('{fileName}','_blank');</script>";
                         ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -1141,14 +1150,20 @@ namespace CEIHaryana.SiteOwnerPages
                         Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
 
                     }
+                    else if (LblInstallationName.Text.Trim() == "Switching Station")
+                    {
+                        Session["SwitchingSubstationId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                        Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
+
+                    }
                 }
             }
 
             else if (e.CommandName == "View")
             {
                 string fileName = "";
-               // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 //lblerror.Text = fileName;
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -1157,7 +1172,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 string fileName = "";
                 //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
@@ -1190,6 +1205,10 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                 }
+                else if (installationName == "Switching Station")
+                {
+                    Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
+                }
             }
             catch (Exception ex) { }
         }
@@ -1211,6 +1230,12 @@ namespace CEIHaryana.SiteOwnerPages
                         Grid_MultipleInspectionTR.Columns[6].Visible = false;
                         linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = false;
+                    }
+                    else if (LblInstallationName.Text.Trim() == "Switching Station")
+                    {
+                        Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                        linkButtonInvoice.Visible = false;
+                        LinkButtonReport.Visible = true;
                     }
                     else
                     {

@@ -95,6 +95,11 @@ namespace CEIHaryana.SiteOwnerPages
                         linkButton.Visible = false;
                         LinkButton3.Visible = false;
                     }
+                    else if (lblTypeOf.Text.Trim() == "Switching Station")
+                    {
+                        linkButton.Visible = false;
+                        LinkButton3.Visible = true;
+                    }
                     else
                     {
                         linkButton.Visible = true;
@@ -144,14 +149,30 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     // Find the CheckBox in the current row
                     CheckBox chk = (CheckBox)rows.FindControl("CheckBox1");
+ 
 
                     // Check if the CheckBox is selected
                     if (chk != null && chk.Checked)
                     {
                         // Find the label that holds the 'Typs' value (lblCategory)
                         Label lblTyps = (Label)rows.FindControl("lblCategory");
+                        Label ChecklblIntimationId = (Label)rows.FindControl("lblIntimationId");
+                        int CheckinspectionIdRes = Convert.ToInt32(((HtmlInputHidden)rows.FindControl("InspectionId")).Value.Replace("\r\n", ""));
 
                         string type = lblTyps.Text;
+
+                        //Check Added On $ Feb 2025 To Avoid Multiple Switching Station Selection In Same Inspection 
+                        // Check if the type is "Switching Station" and already exists in the selectedTypes
+                        if (type == "Switching Station" && selectedTypes.Contains("Switching Station"))
+                        //if (type == "Switching Station")
+                        {
+                            chk.Checked = false;
+                            PaymentGridViewBind(ChecklblIntimationId.Text);
+                            GetOtherDetails_ForReturnedInspection(CheckinspectionIdRes);
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert", "alert('Only One Switching Station Can Be Selected In Inspection .');", true);
+                            return;
+                        }
+
                         if (!selectedTypes.Contains(type))
                         {
                             selectedTypes.Add(type);
@@ -297,7 +318,9 @@ namespace CEIHaryana.SiteOwnerPages
 
                     InspectionType = "New";
                     AssigDesignation = lblDesignation.Text;
-                    if (Session["InstallationId"].ToString() == "1" || Session["InstallationId"].ToString() == "2" || Session["InstallationId"].ToString() == "5")
+                    if (Session["InstallationId"].ToString() == "1" || Session["InstallationId"].ToString() == "2" || Session["InstallationId"].ToString() == "5" ||
+                        Session["InstallationId"].ToString() == "11" || Session["InstallationId"].ToString() == "12" || Session["InstallationId"].ToString() == "14" || Session["InstallationId"].ToString() == "16"
+                        )   
                     {
                         PlantLocation = null;
                         //// Session["PlantLocation"] = "";
@@ -439,6 +462,10 @@ namespace CEIHaryana.SiteOwnerPages
                         else if (LblInstallationName.Text == "Generating Set")
                         {
                             InstallationTypeId = "3";
+                        }
+                        else if (LblInstallationName.Text == "Switching Station")
+                        {
+                            InstallationTypeId = "11";
                         }
                         //string InspectionType = "Periodic";
                         //DataTable ds = new DataTable();
@@ -653,15 +680,20 @@ namespace CEIHaryana.SiteOwnerPages
                             //Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
                             Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                             Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
-
+                        }
+                        else if (lblCategory.Text.Trim() == "Switching Station")
+                        {
+                            //Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                            Session["SwitchingSubstationId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                            Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
                         }
                     }
                 }
                 else if (e.CommandName == "View")
                 {
                     string fileName = "";
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                   // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     //lblerror.Text = fileName;
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -1241,8 +1273,8 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     //ID = Session["InspectionId"].ToString();
 
-                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 

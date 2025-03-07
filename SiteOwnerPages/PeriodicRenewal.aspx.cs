@@ -137,7 +137,9 @@ namespace CEIHaryana.SiteOwnerPages
                 GridView1.PageIndex = e.NewPageIndex;
                 GridViewBind();
             }
-            catch { }
+            catch
+            {
+            }
         }
         //////protected void btnSearch_Click(object sender, EventArgs e)
         //////{
@@ -222,6 +224,11 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 Session["GeneratingSetId"] = testReportId;
                 Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
+            }
+            else if (installationtype == "Switching Station")
+            {
+                Session["SwitchingSubstationId"] = testReportId;
+                Response.Write("<script>window.open('/TestReportModal/SwitchingSubstationTestReportModal.aspx','_blank');</script>");
             }
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)

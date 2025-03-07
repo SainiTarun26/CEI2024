@@ -83,6 +83,10 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     Session["GeneratingSetId"] = lblTestRportId.Text.Trim();
                 }
+                else if (lblType.Text.Trim() == "Switching Station")
+                {
+                    Session["SwitchingSubstationId"] = lblTestRportId.Text.Trim();
+                }
                 if (e.CommandName == "Select")
                 {
                     if (lblType.Text.Trim() == "Escalator" || lblType.Text.Trim() == "Lift" || lblType.Text.Trim() == "Lift/Escalator" || lblType.Text.Trim() == "MultiLift" || lblType.Text.Trim() == "MultiEscalator")
