@@ -163,6 +163,10 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             InstallationTypeId = "3";
                         }
+                        else if (LblInstallationName.Text == "Switching Station")
+                        {
+                            InstallationTypeId = "11";
+                        }
                         string InspectionType = "Periodic";
                         DataTable ds = new DataTable();
                         ds = CEI.Payment(LblIntimationId.Text, LblCount.Text, InstallationTypeId, InspectionType);

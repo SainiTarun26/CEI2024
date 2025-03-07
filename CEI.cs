@@ -5607,10 +5607,10 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
         }
 
         public void IntimationDataInsertionBySiteowner(string SiteOwnerId, string ApplicantType, string ApplicantTypeCode, string ContractorType, string PowerUtility, string PowerUtilityWing, string ZoneName,
-                                          string CircleName, string DivisionName, string SubDivisionName, string NameOfOwner, string NameOfAgency, string ContactNo,
-                                          string Address, string District, string Pincode, string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber,
-                                          string TypeOfInstallation2, string NumberOfInstallation2, string TypeOfInstallation3, string NumberOfInstallation3,
-                                          string Email, string Createdby, string SanctionLoad, string InspectionType, string TotalCapacity, string SanctionLoadValue, string SiteOwnerPassword, SqlTransaction transaction)
+                                    string CircleName, string DivisionName, string SubDivisionName, string NameOfOwner, string NameOfAgency, string ContactNo,
+                                    string Address, string District, string Pincode, string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber,
+                                    string TypeOfInstallation2, string NumberOfInstallation2, string TypeOfInstallation3, string NumberOfInstallation3, string TypeOfInstallation4, string NumberOfInstallation4,
+                                    string Email, string Createdby, string SanctionLoad, string InspectionType, string TotalCapacity, string SanctionLoadValue, string SiteOwnerPassword, SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_WorkIntimationRegistrationBySiteOwner", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -5639,6 +5639,8 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             cmd.Parameters.AddWithValue("@NumberOfInstallation2", String.IsNullOrEmpty(NumberOfInstallation2) ? DBNull.Value : (object)NumberOfInstallation2);
             cmd.Parameters.AddWithValue("@TypeOfInstallation3", String.IsNullOrEmpty(TypeOfInstallation3) ? DBNull.Value : (object)TypeOfInstallation3);
             cmd.Parameters.AddWithValue("@NumberOfInstallation3", String.IsNullOrEmpty(NumberOfInstallation3) ? DBNull.Value : (object)NumberOfInstallation3);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation4", String.IsNullOrEmpty(TypeOfInstallation4) ? DBNull.Value : (object)TypeOfInstallation4);
+            cmd.Parameters.AddWithValue("@NumberOfInstallation4", String.IsNullOrEmpty(NumberOfInstallation4) ? DBNull.Value : (object)NumberOfInstallation4);
             cmd.Parameters.AddWithValue("@Email", String.IsNullOrEmpty(Email) ? DBNull.Value : (object)Email);
             cmd.Parameters.AddWithValue("@Createdby", String.IsNullOrEmpty(Createdby) ? DBNull.Value : (object)Createdby);
             cmd.Parameters.AddWithValue("@SanctionLoad", String.IsNullOrEmpty(SanctionLoad) ? DBNull.Value : (object)SanctionLoad);
@@ -5655,7 +5657,6 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             string registrationId = outputParam.Value.ToString();
 
         }
-
         public void AddInstallationsCreatedbySiteOwner(string IntimationId, string Typeofinstallation, int Noofinstallation, string CreatedBy, string TypeOfInspection, SqlTransaction transaction)
         {
             try
@@ -9426,6 +9427,56 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         public DataTable GetOTP(string UserId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getOTP", UserId);
+        }
+        #endregion
+
+        #region Neha 
+        public DataSet GetddlVotlageforSwitchingStation(string Volts)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_VotlageforSwitchingStation", Volts);
+        }
+        public int InsertSwitchingStationData_Existing_HavingPreviousReport(int Count, string IntimationId, string Voltage,
+ string SwitchingStationName, string BreakerType, string OtherbreakerType, string TotalBreakers, int StationTransformerCapacity,
+ string SerialNo, string LastInspectionDate, string ApplicantType, string VoltageLevel, string District, string Division,
+ string Inspectiontype, string CreatedBy)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertSwitchingStationData_Existing_HavingPreviousReport", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@Count", Count);
+                    cmd.Parameters.AddWithValue("@IntimationId", string.IsNullOrEmpty(IntimationId) ? (object)DBNull.Value : IntimationId);
+                    cmd.Parameters.AddWithValue("@StationVoltage", Voltage == "Select" ? (object)DBNull.Value : Voltage);
+                    cmd.Parameters.AddWithValue("@SwitchingStationName", string.IsNullOrEmpty(SwitchingStationName) ? (object)DBNull.Value : SwitchingStationName);
+                    cmd.Parameters.AddWithValue("@BreakerType", BreakerType == "Select" ? (object)DBNull.Value : BreakerType);
+                    cmd.Parameters.AddWithValue("@OtherbreakerType", string.IsNullOrEmpty(OtherbreakerType) ? (object)DBNull.Value : OtherbreakerType);
+                    cmd.Parameters.AddWithValue("@TotalBreakers", string.IsNullOrEmpty(TotalBreakers) ? (object)DBNull.Value : TotalBreakers);
+                    cmd.Parameters.AddWithValue("@StationTransformerCapacity", StationTransformerCapacity);
+                    cmd.Parameters.AddWithValue("@SerialNo", string.IsNullOrEmpty(SerialNo) ? (object)DBNull.Value : SerialNo);
+                    cmd.Parameters.AddWithValue("@LastInspectionDate", string.IsNullOrEmpty(LastInspectionDate) ? (object)DBNull.Value : LastInspectionDate);
+                    cmd.Parameters.AddWithValue("@ApplicantType", string.IsNullOrEmpty(ApplicantType) ? (object)DBNull.Value : ApplicantType);
+                    cmd.Parameters.AddWithValue("@VoltageLevel", string.IsNullOrEmpty(VoltageLevel) ? (object)DBNull.Value : VoltageLevel);
+                    cmd.Parameters.AddWithValue("@District", string.IsNullOrEmpty(District) ? (object)DBNull.Value : District);
+                    cmd.Parameters.AddWithValue("@Division", string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division);
+                    cmd.Parameters.AddWithValue("@Inspectiontype", string.IsNullOrEmpty(Inspectiontype) ? (object)DBNull.Value : Inspectiontype);
+                    cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+
+                    SqlParameter returnStatusParam = new SqlParameter("@ReturnStatus", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(returnStatusParam);
+
+                    // Open the connection and execute the command
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+
+                    // Retrieve the output parameter value
+                    return (int)returnStatusParam.Value;
+                }
+            }
         }
         #endregion
     }

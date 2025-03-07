@@ -834,7 +834,7 @@
                                                             <tr>
                                                                 <td>
                                                                     <div class="col-md-12">
-                                                                        <asp:TextBox class="form-control" ID="txtinstallationType3" Text="Generating Set" ReadOnly="true" onkeydown="return preventEnterSubmit(event)"  autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationType3" Text="Generating Set" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -845,6 +845,23 @@
                                                                 </td>
                                                                 <td style="text-align: center !important;">
                                                                     <asp:ImageButton ID="imgDelete3" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" OnClick="imgDelete3_Click" Height="30" Width="30" runat="server" /></td>
+                                                            </tr>
+                                                        </div>
+                                                        <div id="installationType4" runat="server">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="col-md-12">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationType4" Text="Switching Station" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div style="margin-left: 15px !important; margin-right: 15px !important;">
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="Max no. of Installations is 25." MaxLength="2" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtinstallationNo4" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
+                                                                    </div>
+                                                                </td>
+                                                                <td style="text-align: center !important;">
+                                                                    <asp:ImageButton ID="ImageButton4" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" OnClick="ImageButton4_Click" Height="30" Width="30" runat="server" /></td>
                                                             </tr>
                                                         </div>
                                                     </tbody>

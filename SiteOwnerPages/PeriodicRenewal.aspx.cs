@@ -374,6 +374,30 @@ namespace CEIHaryana.SiteOwnerPages
                                         e.Row.Visible = true;
                                     }
                                 }
+                                if (installationtype == "Switching Station")
+                                {
+                                    Year = inspectionDate.AddYears(1);
+                                    DateTime alertDate = Year.AddDays(-30);
+                                    DateTime currentDate = DateTime.Now;
+                                    remainingDays = (Year - alertDate).Days;
+                                    if (currentDate >= Year)
+                                    {
+                                        remainingDays = (Year - currentDate).Days;
+
+                                    }
+                                    if (currentDate <= Year)
+                                    {
+                                        remainingDays = (Year - currentDate).Days;
+                                    }
+                                    if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
+                                    {
+                                        e.Row.Visible = true;
+                                    }
+                                    else
+                                    {
+                                        e.Row.Visible = true;
+                                    }
+                                }
                                 int dueDateColumnIndex = 10;
                                 e.Row.Cells[dueDateColumnIndex].Text = Year.ToShortDateString();
                                 SetRemainingDaysColumn(e.Row, remainingDays);
@@ -963,6 +987,8 @@ namespace CEIHaryana.SiteOwnerPages
                             txtinstallationNo2.Text.Trim(),
                             txtinstallationType3.Text.Trim(),
                             txtinstallationNo3.Text.Trim(),
+                            txtinstallationType4.Text.Trim(),
+                            txtinstallationNo4.Text.Trim(),
                             txtEmail.Text.Trim(),
                             Id,
                             RadioButtonList2.SelectedValue.ToString(),
@@ -978,8 +1004,8 @@ namespace CEIHaryana.SiteOwnerPages
 
                         if (!string.IsNullOrEmpty(projectId))
                         {
-                            TextBox[] typeTextBoxes = { txtinstallationType2, txtinstallationType3 };
-                            TextBox[] noTextBoxes = { txtinstallationNo2, txtinstallationNo3 };
+                            TextBox[] typeTextBoxes = { txtinstallationType2, txtinstallationType3, txtinstallationType4 };
+                            TextBox[] noTextBoxes = { txtinstallationNo2, txtinstallationNo3, txtinstallationNo4 };
 
                             for (int i = 0; i < typeTextBoxes.Length; i++)
                             {
@@ -1051,7 +1077,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                if (installationType3.Visible == true)
+                if (GetVisibleInstallationCount() > 1)
                 {
                     string valueToAddBack = txtinstallationType2.Text;
 
@@ -1061,26 +1087,21 @@ namespace CEIHaryana.SiteOwnerPages
                         ddlWorkDetail.Items.Add(newItem);
                     }
                     installationType2.Visible = false;
-                    //txtinstallationType2.Text = string.Empty;
                     txtinstallationNo2.Text = string.Empty;
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('One Installation Is Mandatory');", true);
-
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('At least one installation must remain.');", true);
                 }
             }
             catch (Exception ex)
-            {
-                // Handle exceptions appropriately
-            }
+            { }
         }
         protected void imgDelete3_Click(object sender, ImageClickEventArgs e)
         {
-
             try
             {
-                if (installationType2.Visible == true)
+                if (GetVisibleInstallationCount() > 1)
                 {
                     string valueToAddBack = txtinstallationType3.Text;
                     if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
@@ -1089,13 +1110,11 @@ namespace CEIHaryana.SiteOwnerPages
                         ddlWorkDetail.Items.Add(newItem);
                     }
                     installationType3.Visible = false;
-                   // txtinstallationType3.Text = string.Empty;
                     txtinstallationNo3.Text = string.Empty;
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('One Installation Is Mandatory');", true);
-
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('At least one installation must remain.');", true);
                 }
             }
             catch (Exception ex) { }
@@ -1105,16 +1124,51 @@ namespace CEIHaryana.SiteOwnerPages
             try
             {
                 installationType2.Visible = true;
+                installationType4.Visible = true;
                 if (ddlVoltageLevel.SelectedValue == "upto 650 V")
                 {
                     installationType2.Visible = false;
+                    installationType4.Visible = false;
                 }
                 else
                 {
                     installationType2.Visible = true;
+                    installationType4.Visible = true;
                 }
             }
             catch (Exception ex) { }
+        }
+
+        protected void ImageButton4_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                if (GetVisibleInstallationCount() > 1)
+                {
+                    string valueToAddBack = txtinstallationType4.Text;
+                    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
+                    {
+                        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
+                        ddlWorkDetail.Items.Add(newItem);
+                    }
+                    installationType4.Visible = false;
+                    txtinstallationNo4.Text = string.Empty;
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('At least one installation must remain.');", true);
+                }
+            }
+            catch (Exception ex) { }
+        }
+
+        private int GetVisibleInstallationCount()
+        {
+            int count = 0;
+            if (installationType2.Visible) count++;
+            if (installationType3.Visible) count++;
+            if (installationType4.Visible) count++;
+            return count;
         }
     }
 

@@ -388,7 +388,7 @@
                                 Name of Switching Station
                                 <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSwitchingStationName" MaxLength="30" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSwitchingStationName" MaxLength="30"  autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ForeColor="Red" ControlToValidate="txtSwitchingStationName" runat="server" ErrorMessage="Please Enter Name" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                         </div>
                         <div class="col-3">
@@ -409,10 +409,10 @@
                                 Other Breaker type
                                 <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOtherbreakerType" MaxLength="25" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtOtherbreakerType" MaxLength="30" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ForeColor="Red" ControlToValidate="txtOtherbreakerType" runat="server" ErrorMessage="Please Enter Type" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                         </div>
-                    
+
                         <div class="col-3">
                             <label>
                                 Total No. of Breakers
@@ -426,190 +426,215 @@
                                 Capacity of Station Transformer(Kva)
                                 <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtStationTransformerCapacity" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtStationTransformerCapacity" onKeyPress="return isNumberKey(event);" MaxLength="5" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ForeColor="Red" ControlToValidate="txtStationTransformerCapacity" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                         </div>
+                        <div class="col-3">
+                            <label>
+                                Serial no.
+         <samp style="color: red">* </samp>
+                            </label>
+                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSerialNo" onKeyPress="return isNumberKey(event);"  MaxLength="30"  autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" ForeColor="Red" ControlToValidate="txtSerialNo" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                        </div>
                         <div class="col-3" id="Div5" runat="server">
-    <label for="Name">
-        Last inspection issue date <samp style="color: red">* </samp>
-    </label>
-    <asp:TextBox class="form-control" type="date" ReadOnly="false" ID="txtLastInspectionIssueDate" onkeydown="return preventEnterSubmit(event)"  autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ForeColor="Red" ControlToValidate="txtLastInspectionIssueDate" ValidationGroup="Submit" ErrorMessage="Please Select last inspection date"></asp:RequiredFieldValidator>
-</div>
+                            <label for="Name">
+                                Last inspection issue date
+                                <samp style="color: red">* </samp>
+                            </label>
+                            <asp:TextBox class="form-control" type="date" ReadOnly="false" ID="txtLastInspectionIssueDate" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ForeColor="Red" ControlToValidate="txtLastInspectionIssueDate" ValidationGroup="Submit" ErrorMessage="Please Select last inspection date"></asp:RequiredFieldValidator>
+                        </div>
                     </div>
-   
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4" style="text-align: center;">
-                        <asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" />
-                        <%--OnClick="btnSubmit_Click"--%>
-                        <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
-                        <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
+
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4" style="text-align: center;">
+                            <asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
+                            <asp:Button type="submit" ID="btnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
+                            <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
+                        </div>
                     </div>
                 </div>
-                    </div>
                 <div>
                 </div>
             </div>
         </div>
-    <footer class="footer">
-    </footer>
-    <script src="/Assets/js/js/vendor.bundle.base.js"></script>
-    <script src="/Assets/js/chart.js/Chart.min.js"></script>
-    <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>
-    <script src="/Assets/js/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-    <script src="/Assets/js/dataTables.select.min.js"></script>
-    <script src="/Assets/js/off-canvas.js"></script>
-    <script src="/Assets/js/hoverable-collapse.js"></script>
-    <script src="/Assets/js/template.js"></script>
-    <script src="/Assets/js/settings.js"></script>
-    <script src="/Assets/js/todolist.js"></script>
-    <script src="/Assets/js/dashboard.js"></script>
-    <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
-    <script type="text/javascript">
-        function FileName() {
-            var fileInput = document.getElementById('customFile');
-            var selectedFileName = document.getElementById('customFileLocation');
+        <footer class="footer">
+        </footer>
+        <script src="/Assets/js/js/vendor.bundle.base.js"></script>
+        <script src="/Assets/js/chart.js/Chart.min.js"></script>
+        <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>
+        <script src="/Assets/js/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+        <script src="/Assets/js/dataTables.select.min.js"></script>
+        <script src="/Assets/js/off-canvas.js"></script>
+        <script src="/Assets/js/hoverable-collapse.js"></script>
+        <script src="/Assets/js/template.js"></script>
+        <script src="/Assets/js/settings.js"></script>
+        <script src="/Assets/js/todolist.js"></script>
+        <script src="/Assets/js/dashboard.js"></script>
+        <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
+        <script type="text/javascript">
+            function FileName() {
+                var fileInput = document.getElementById('customFile');
+                var selectedFileName = document.getElementById('customFileLocation');
 
-            if (fileInput.files.length > 0) {
-                // Update the TextBox value with the selected file name
-                selectedFileName.value = fileInput.files[0].name;
+                if (fileInput.files.length > 0) {
+                    // Update the TextBox value with the selected file name
+                    selectedFileName.value = fileInput.files[0].name;
+                }
             }
-        }
-    </script>
+        </script>
 
-    <script>
-        function preventEnterSubmit(event) {
-            if (event.keyCode === 13) {
-                event.preventDefault(); // Prevent form submission
-                return false;
+        <script>
+            function preventEnterSubmit(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault(); // Prevent form submission
+                    return false;
+                }
             }
-        }
-    </script>
+        </script>
 
-    <script type="text/javascript">
-        function SelectAllCheckboxes(headerCheckbox) {
-            var checkboxes = document.querySelectorAll('[id*=CheckBox1]');
-            for (var i = 0; i < checkboxes.length; i++) {
-                checkboxes[i].checked = headerCheckbox.checked;
+        <script type="text/javascript">
+            function SelectAllCheckboxes(headerCheckbox) {
+                var checkboxes = document.querySelectorAll('[id*=CheckBox1]');
+                for (var i = 0; i < checkboxes.length; i++) {
+                    checkboxes[i].checked = headerCheckbox.checked;
+                }
             }
-        }
-    </script>
-    <script>
-        $('.select2').select2();
-    </script>
-    <script>
-        $(".chosen-select").chosen({
-            no_results_text: "Oops, nothing found!"
-        })
-    </script>
+        </script>
+        <script>
+            $('.select2').select2();
+        </script>
+        <script>
+            $(".chosen-select").chosen({
+                no_results_text: "Oops, nothing found!"
+            })
+        </script>
 
 
-    <script type="text/javascript">
-        function showHide1() {
+        <script type="text/javascript">
+            function showHide1() {
 
-            let experience = document.getElementById('ddlworktype');
-            if (experience.value == 1) {
-                document.getElementById('individual').style.display = 'block';
-            } else {
-                document.getElementById('individual').style.display = 'none';
+                let experience = document.getElementById('ddlworktype');
+                if (experience.value == 1) {
+                    document.getElementById('individual').style.display = 'block';
+                } else {
+                    document.getElementById('individual').style.display = 'none';
+                }
+                if (experience.value == 1) {
+                    document.getElementById('Agency').style.display = 'block';
+                } else {
+                    document.getElementById('Agency').style.display = 'none';
+                }
             }
-            if (experience.value == 1) {
-                document.getElementById('Agency').style.display = 'block';
-            } else {
-                document.getElementById('Agency').style.display = 'none';
-            }
-        }
-    </script>
-    <script type="text/javascript">
-        function allowAlphabets(event) {
-            var keyCode = event.which || event.keyCode;
+        </script>
+        <script type="text/javascript">
+            function allowAlphabets(event) {
+                var keyCode = event.which || event.keyCode;
 
-            // Allow only alphabetical keys
-            if ((keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122)) {
+                // Allow only alphabetical keys
+                if ((keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122)) {
+                    return true;
+                } else {
+                    event.preventDefault();
+                    return false;
+                }
+            }
+        </script>
+
+        <script type="text/javascript">
+            function restrictInput(event) {
+                var keyCode = event.which || event.keyCode;
+                var inputValue = event.target.value + String.fromCharCode(keyCode);
+
+                // Allow only digits (0-9)
+                if (keyCode < 48 || keyCode > 57) {
+                    event.preventDefault();
+                    return false;
+                }
+
+                // Check if the input value is between 1 and 25
+                var numValue = parseInt(inputValue);
+
+                if (isNaN(numValue) || numValue < 1 || numValue > 25) {
+                    event.preventDefault();
+                    return false;
+                }
+
                 return true;
-            } else {
-                event.preventDefault();
-                return false;
             }
-        }
-    </script>
+        </script>
+        <script type="text/javascript">
+            function alertWithRedirect() {
+                if (confirm('User Created Successfully User Id And password will be sent Via Text Mesaage.')) {
+                    window.location.href = "/Contractor/Work_Intimation.aspx";
+                } else {
+                }
+            }
+        </script>
 
-    <script type="text/javascript">
-        function restrictInput(event) {
-            var keyCode = event.which || event.keyCode;
-            var inputValue = event.target.value + String.fromCharCode(keyCode);
+        <script type="text/javascript">
+            let isCheck = false;
+            function validateInput(event) {
 
-            // Allow only digits (0-9)
-            if (keyCode < 48 || keyCode > 57) {
-                event.preventDefault();
-                return false;
+                var textBox = event.target;
+                var keyCode = event.keyCode || event.which;
+
+
+                if ((keyCode >= 65 && keyCode <= 90) ||
+                    (keyCode >= 48 && keyCode <= 57) ||
+                    keyCode === 8) {
+                    return true;
+                } else if (keyCode >= 97 && keyCode <= 122) {
+
+                    textBox.value += String.fromCharCode(keyCode - 32);
+                    return false;
+                } else {
+                    return false;
+                }
+            }
+            function CheckInput() {
+                if (isCheck) {
+                    return false;
+                }
+                if (Page_ClientValidate()) {
+                    isCheck = true;
+                    return true;
+                } else {
+                    return false;
+                }
             }
 
-            // Check if the input value is between 1 and 25
-            var numValue = parseInt(inputValue);
-
-            if (isNaN(numValue) || numValue < 1 || numValue > 25) {
-                event.preventDefault();
-                return false;
-            }
-
-            return true;
-        }
-    </script>
-    <script type="text/javascript">
-        function alertWithRedirect() {
-            if (confirm('User Created Successfully User Id And password will be sent Via Text Mesaage.')) {
-                window.location.href = "/Contractor/Work_Intimation.aspx";
-            } else {
-            }
-        }
-    </script>
-
-    <script type="text/javascript">
-        let isCheck = false;
-        function validateInput(event) {
-
-            var textBox = event.target;
-            var keyCode = event.keyCode || event.which;
-
-
-            if ((keyCode >= 65 && keyCode <= 90) ||
-                (keyCode >= 48 && keyCode <= 57) ||
-                keyCode === 8) {
+            function preventEnterSubmit(e) {
+                if (e.keyCode === 13) {
+                    e.preventDefault();
+                    return false;
+                }
                 return true;
-            } else if (keyCode >= 97 && keyCode <= 122) {
+            }
+        </script>
+        <script type="text/javascript">
+            window.onload = function () {
+                var today = new Date().toISOString().split('T')[0];
+                document.getElementById('<%= txtLastInspectionIssueDate.ClientID %>').setAttribute('max', today);
+            };
+        </script>
 
-                textBox.value += String.fromCharCode(keyCode - 32);
-                return false;
-            } else {
-                return false;
-            }
-        }
-        function CheckInput() {
-            if (isCheck) {
-                return false;
-            }
-            if (Page_ClientValidate()) {
-                isCheck = true;
-                return true;
-            } else {
-                return false;
-            }
-        }
+        <script type="text/javascript">
+            function alertWithRedirectdataRatingofinstallationPage() {
 
-        function preventEnterSubmit(e) {
-            if (e.keyCode === 13) {
-                e.preventDefault();
-                return false;
+                alert('Rating Of Installation of Switching Station Created Successfully');
+                window.location.href = "/SiteOwnerPages/TestReport.aspx";
+
             }
-            return true;
-        }
-    </script>
-   <script type="text/javascript">
-       window.onload = function () {
-           var today = new Date().toISOString().split('T')[0];
-           document.getElementById('<%= txtLastInspectionIssueDate.ClientID %>').setAttribute('max', today);
-       };
-   </script>
+        </script>
+        <script type="text/javascript">
+            function alertWithRedirectNextProcessExistingPage() {
+
+                alert('Rating Of Installation of Switching Station Created Successfully');
+                window.location.href = "/SiteOwnerPages/PeriodicRenewal.aspx";
+
+            }
+        </script>
 </asp:Content>
