@@ -1102,10 +1102,12 @@ namespace CEIHaryana.Contractor
                 if (ddlVoltageLevel.SelectedValue == "upto 650 V")
                 {
                     installationType2.Visible = false;
+                    installationType4.Visible = false;
                 }
                 else
                 {
                     installationType2.Visible = true;
+                    installationType4.Visible = true;
                 }
                 GetGridData();
             }

@@ -48,8 +48,8 @@ namespace CEIHaryana.SiteOwnerPages
                 if (dsVoltage != null && dsVoltage.Tables.Count > 0)
                 {
                     ddlVoltage.DataSource = dsVoltage;
-                    ddlVoltage.DataTextField = "Volts";
-                    ddlVoltage.DataValueField = "InVolts";
+                    ddlVoltage.DataTextField = "VoltageID";
+                    ddlVoltage.DataValueField = "Voltage";
                     ddlVoltage.DataBind();
                 }
                 ddlVoltage.Items.Insert(0, new ListItem("Select", "0"));

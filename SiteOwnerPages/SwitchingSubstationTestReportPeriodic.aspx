@@ -418,7 +418,7 @@
                                 Total No. of Breakers
                                 <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" AutoPostBack="true" MaxLength="3" ID="txtTotalBreakers" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" AutoPostBack="true" MaxLength="3" ID="txtTotalBreakers" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" Style="margin-left: 18px"  onBlur="validateInput();" ></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ForeColor="Red" ControlToValidate="txtTotalBreakers" runat="server" ErrorMessage="Please Enter No. of Breakers" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                         </div>
                         <div class="col-3">
@@ -426,7 +426,7 @@
                                 Capacity of Station Transformer(Kva)
                                 <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtStationTransformerCapacity" onKeyPress="return isNumberKey(event);" MaxLength="5" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtStationTransformerCapacity" onKeyPress="return isNumberKey(event);" MaxLength="5" autocomplete="off" runat="server" Style="margin-left: 18px" ></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ForeColor="Red" ControlToValidate="txtStationTransformerCapacity" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                         </div>
                         <div class="col-3">
@@ -434,7 +434,7 @@
                                 Serial no.
          <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSerialNo" onKeyPress="return isNumberKey(event);"  MaxLength="30"  autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtSerialNo"   MaxLength="30"  autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator12" ForeColor="Red" ControlToValidate="txtSerialNo" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                         </div>
                         <div class="col-3" id="Div5" runat="server">
@@ -637,4 +637,18 @@
 
             }
         </script>
+
+      <script type="text/javascript">
+
+          function validateInput() {
+              var input = document.getElementById('<%= txtTotalBreakers.ClientID %>').value;
+        var number = parseInt(input, 10);
+
+        // Check if the number is within the range of 1 to 100
+        if (number < 1 || number > 100 || isNaN(number)) {
+            alert("Please enter a number between 1 and 100.");
+            document.getElementById('<%= txtTotalBreakers.ClientID %>').value = ""; // Clear the input
+              }
+          }
+</script>
 </asp:Content>
