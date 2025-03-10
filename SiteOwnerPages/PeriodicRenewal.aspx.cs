@@ -11,6 +11,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Windows.Media;
 using System.Xml.Linq;
@@ -619,6 +620,36 @@ namespace CEIHaryana.SiteOwnerPages
             row.Cells[11].Text = remainingDays.ToString();
 
         }
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            List<string> selectedTypes = new List<string>();
+            Dictionary<string, int> categoryCounts = new Dictionary<string, int>();
+            int switchingStationCount = 0;
+
+            foreach (GridViewRow row in GridView1.Rows)
+            {
+                CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
+                if (chk != null && chk.Checked)
+                {
+                    Label LblInstallationName = (Label)row.FindControl("LblInstallationName");
+                    string InstallationType = LblInstallationName.Text;
+
+                    if (InstallationType == "Switching Station")
+                    {
+                        switchingStationCount++;
+
+                        if (switchingStationCount > 1)
+                        {
+                            chk.Checked = false;
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alert",
+                                "alert('Only one Switching Station can be selected for cart.');", true);
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
         protected void BtnCart_Click(object sender, EventArgs e)
         {
             try
@@ -1102,6 +1133,8 @@ namespace CEIHaryana.SiteOwnerPages
             catch (Exception ex)
             { }
         }
+
+        
         protected void imgDelete3_Click(object sender, ImageClickEventArgs e)
         {
             try

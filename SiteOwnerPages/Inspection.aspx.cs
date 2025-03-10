@@ -969,8 +969,8 @@ namespace CEIHaryana.SiteOwnerPages
                     if (e.CommandName == "Select")
                     {
                        // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                        //lblerror.Text = fileName;
+                      fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                        ///lblerror.Text = fileName;
                         string script = $@"<script>window.open('{fileName}','_blank');</script>";
                         ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                     }
@@ -1159,6 +1159,12 @@ namespace CEIHaryana.SiteOwnerPages
                         Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
 
                     }
+                    else if (LblInstallationName.Text.Trim() == "Switching Station")
+                    {
+                        Session["SwitchingSubstationId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                        Response.Write("<script>window.open('/TestReportModal/SwitchingSubstationTestReportModal.aspx','_blank');</script>");
+
+                    }
                 }
             }
 
@@ -1210,7 +1216,7 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else if (installationName == "Switching Station")
                 {
-                    
+                    Session["SwitchingSubstationId"] = btn.CommandArgument;
                     Response.Write("<script>window.open('/TestReportModal/SwitchingSubstationTestReportModal.aspx','_blank');</script>");
                 }
             }
@@ -1234,6 +1240,12 @@ namespace CEIHaryana.SiteOwnerPages
                         Grid_MultipleInspectionTR.Columns[6].Visible = false;
                         linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = false;
+                    }
+                   else if (LblInstallationName.Text.Trim() == "Switching Station")
+                    {
+                        //Grid_MultipleInspectionTR.Columns[5].Visible = false;
+                        linkButtonInvoice.Visible = false;
+                       
                     }
                     else
                     {
