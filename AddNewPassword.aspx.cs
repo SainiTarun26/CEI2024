@@ -16,15 +16,13 @@ namespace CEIHaryana
         string ipaddress;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                txtUserId.Text = Session["UserId_ResetPwd"].ToString();
-                txtNewPassword.Text = "";
-                txtVerifyPassword.Text = "";
-                Session["UserId_ResetPwd"] = "";
-            }
+            txtUserId.Text = Session["UserId_ResetPwd"].ToString();
+            Session["UserId_ResetPwd"] = "";
+            txtNewPassword.Text = "";
+            txtVerifyPassword.Text = "";
+            //Session["UserId_ResetPwd"] = "";
+
         }
-      
         protected void BtnSave_Click(object sender, EventArgs e)
         {
             UserId = txtUserId.Text.Trim();
@@ -32,14 +30,14 @@ namespace CEIHaryana
             string ConfirmPassword = txtVerifyPassword.Text.Trim();
             if (string.IsNullOrEmpty(txtUserId.Text))
             {
-                
+
                 string alertScript = "alert('User does not exist.'); window.location='Login.aspx';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
                 return;
 
 
             }                //string verifyPassword = txtVerifyPassword.Text.Trim();
-            else   if (NewPassword != ConfirmPassword)
+            else if (NewPassword != ConfirmPassword)
             {
 
                 string alertScript = "alert('New passwords do not match with verify password');";

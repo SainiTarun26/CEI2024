@@ -9258,7 +9258,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin_SearchCafWithGlobalFilter", LoginId, Division, InstallationType, searchText);
         }
-        public static int GetAttachmentRowsAffectedCount(int InspectionIdForCount, string cartId)
+            public static int GetAttachmentRowsAffectedCount(int InspectionIdForCount, string cartId)
         {
             int count = 0;
 
