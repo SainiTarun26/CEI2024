@@ -401,7 +401,7 @@
                                 <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="13%" />
                             </asp:BoundField>--%>
-                              <asp:TemplateField HeaderText="Remarks">
+                              <asp:TemplateField HeaderText="Remarks" runat="server" Visible="false">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkReadMore" runat="server" data-modal="modal1" OnClick="lnkReadMore_Click">Read more</asp:LinkButton>
                                 </ItemTemplate>

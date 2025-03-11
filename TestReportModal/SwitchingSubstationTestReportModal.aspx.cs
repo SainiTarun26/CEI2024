@@ -186,7 +186,9 @@ namespace CEIHaryana.TestReportModal
                 txtSubmitteddate.Text = ds.Tables[0].Rows[0]["WorkIntimationCreatedDate"].ToString();
                 lblIntimationId.Text = ds.Tables[0].Rows[0]["IntimationId"].ToString();
                 lblWorkIntimationId.Text = ds.Tables[0].Rows[0]["IntimationId"].ToString();
+                txtApprovedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();
                 txtSubmittedBy.Text = ds.Tables[0].Rows[0]["ContractorWhoCreated"].ToString();
+                txtTestReportDate.Text = ds.Tables[0].Rows[0]["WorkIntimationCreatedDate"].ToString();
                 txtPreparedby.Text = ds.Tables[0].Rows[0]["SupervisorWhoCreated"].ToString();
 
             }
