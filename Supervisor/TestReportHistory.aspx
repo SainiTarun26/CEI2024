@@ -240,22 +240,22 @@
             background-color: #f9c7c7 !important;
         }
         .card-body {
-     margin-bottom: 11px !important;
-     margin-top: 5px !important;
- }
+            margin-bottom: 11px !important;
+            margin-top: 5px !important;
+        }
 
- .modal {
-     display: none; /* Hidden by default */
-     position: fixed; /* Stay in place */
-     z-index: 1; /* Sit on top */
-     left: 0;
-     top: 0;
-     width: 100%;
-     height: 100%;
-     overflow: auto; /* Enable scroll if needed */
-     background-color: rgb(0,0,0); /* Fallback color */
-     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
- }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
 
  .modal-content {
      background-color: #fefefe;

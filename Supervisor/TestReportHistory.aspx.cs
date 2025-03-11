@@ -134,6 +134,20 @@ namespace CEIHaryana.Supervisor
                                 Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                             }
                         }
+                        else if (lblTypeOf.Text.Trim() == "Switching station")
+                        {
+
+                            //if (lblApproval.Text.Trim() == "Reject")
+                            //{
+                            //    Session["GeneratingSetId"] = id;
+                            //    Response.Redirect("/Supervisor/GeneratingSetTestReport.aspx", false);
+                            //}
+                            //else
+                            //{
+                                Session["SwitchingSubstationId"] = id;
+                                Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
+                           // }
+                        }
 
                     }
                 }

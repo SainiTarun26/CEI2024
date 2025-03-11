@@ -171,6 +171,25 @@
         input#ContentPlaceHolder1_txtagency {
             font-size: 12.5px;
         }
+        input#ContentPlaceHolder1_RdbtnAccptReturn_0 {
+    margin-right: 5px;
+}
+        input#ContentPlaceHolder1_RdbtnAccptReturn_1 {
+    margin-right: 5px;
+}
+        input#ContentPlaceHolder1_RdbtnAccptReturn_2 {
+    margin-right: 5px;
+}
+        input#ContentPlaceHolder1_RadioButtonAction_0 {
+    margin-right: 5px;
+}
+        input#ContentPlaceHolder1_RadioButtonAction_1 {
+    margin-right: 5px;
+}
+        div#ContentPlaceHolder1_DivRejectionReasonType {
+    margin-bottom: 15px !important;
+    margin-top: 15px !important;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -368,7 +387,7 @@
 </div>
         <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivViewCart" runat="server" visible="false">
             <div class="col-12" style="padding: 0px;">
-                <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false">
+                <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" OnRowDataBound="GridView2_RowDataBound" runat="server" AutoGenerateColumns="false">
                     <HeaderStyle BackColor="#B7E2F0" />
                     <Columns>
                         <asp:TemplateField HeaderText="SNo">
@@ -479,7 +498,7 @@
                     <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
                         Action Required
                     </div>
-                    <div class="row">
+                    <div class="row" style="margin-bottom:15px;" >
                         <div class="col-md-12">
                             <asp:RadioButtonList ID="RadioButtonAction" OnSelectedIndexChanged="RadioButtonAction_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                                 <asp:ListItem Text="Process" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
@@ -488,11 +507,9 @@
                             <%--<asp:RequiredFieldValidator ID="rvfRadioButtonList" ErrorMessage="Choose one" ControlToValidate="RadioButtonAction" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />--%>
                         </div>
                     </div>
-                    <div class="row" id="TransferButton" runat="server" visible="false">
+                    <div class="row" id="TransferButton" runat="server" visible="false" style="margin-left: 0px;">
                         <div class="col-md-3" id="ApprovalRequired" runat="server">
-                            <br />
-                            <br />
-                            <label>
+                                                      <label>
                                 Division
                                 <samp style="color: red">* </samp>
                             </label>
@@ -501,9 +518,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="ddlDivisions" runat="server" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                         </div>
                         <div class="col-md-3" id="DivToAssign" runat="server">
-                            <br />
-                            <br />
-                            <label>
+                                                       <label>
                                 To Assign Staff
                                 <samp style="color: red">* </samp>
                             </label>
@@ -512,7 +527,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="ddlToAssign" runat="server" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                         </div>
                     </div>
-                    <div class="row" id="Action" runat="server" visible="false">
+                    <div class="row" id="Action" runat="server" visible="false" style="padding-left: 15px;"> 
                         <asp:RadioButtonList ID="RdbtnAccptReturn" AutoPostBack="true" OnSelectedIndexChanged="RdbtnAccptReturn_SelectedIndexChanged" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                             <asp:ListItem Text="Yes(Accept)" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
                             <asp:ListItem Text="No(Return)" Value="1" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
@@ -520,7 +535,7 @@
                         </asp:RadioButtonList>
                         <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ErrorMessage="Choose one" ControlToValidate="RdbtnAccptReturn" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />--%>
                     </div>
-                    <div class="row" id="Return" runat="server" visible="false">
+                    <div class="row" id="Return" runat="server" visible="false" style="margin-left:0px;">
                         <div class="col-md-6">
                             <label>
                                 Reason Type :        
@@ -638,7 +653,7 @@
 
                     <%--To Reject Inspection Start--%>
 
-                    <div class="col-md-6" visible="false" id="DivRejectionReasonType" runat="server">
+                    <div class="col-md-6" visible="false" id="DivRejectionReasonType" runat="server" style="margin-bottom:10px;">
                         <label>
                             Reason To Reject :
                         </label>

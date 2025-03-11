@@ -1163,6 +1163,32 @@ namespace CEIHaryana.Admin
                 // Log or handle the exception as needed
             }
         }
+
+        protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
+                    if (LblInstallationName.Text.Trim() == "Switching Station")
+                    {
+                        RadioButtonAction.Items.FindByValue("1").Enabled = false;
+                    }
+                    //else
+                    //{
+                    //    RadioButtonAction.Items.FindByValue("1").Enabled = true;
+                    //}
+                }
+                else if (e.Row.RowType == DataControlRowType.Footer)
+                {
+                  
+                }
+            }
+            catch (Exception ex)
+            {}
+        }
+
         private void GridChecklistDocuments()
         {
             try
@@ -1282,6 +1308,11 @@ namespace CEIHaryana.Admin
                         Grid_MultipleInspectionTR.Columns[6].Visible = false;
                         linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = false;
+                    }
+                    else if (LblInstallationName.Text.Trim() == "Switching Station")
+                    {                      
+                        linkButtonInvoice.Visible = false;
+                        RadioButtonAction.Items.FindByValue("1").Enabled = false;
                     }
                     else
                     {

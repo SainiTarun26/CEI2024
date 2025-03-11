@@ -1026,6 +1026,10 @@ namespace CEIHaryana.Admin
                         linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = false;
                     }
+                    else if (LblInstallationName.Text.Trim() == "Switching Station")
+                    {
+                        linkButtonInvoice.Visible = false;
+                    }
                     else
                     {
                         Grid_MultipleInspectionTR.Columns[5].Visible = true;
