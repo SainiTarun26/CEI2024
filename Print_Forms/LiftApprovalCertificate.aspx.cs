@@ -90,7 +90,7 @@ namespace CEIHaryana.Print_Forms
                     lblAddress.Text = dt.Rows[0]["SiteAddress"].ToString();
                     DateTime createdDate1 = Convert.ToDateTime(dt.Rows[0]["ApprovedDate"]);
                     lblInspectionDate.Text = createdDate1.ToString("dd/MM/yyyy");
-
+                    lblOwnerName.Text = dt.Rows[0]["OwnerName"].ToString();
                     lblMakerName.Text = dt.Rows[0]["Maker"].ToString();
                     lblSrNo.Text = dt.Rows[0]["RegistrationSrNo"].ToString();
                     lblTypeOflift.Text = dt.Rows[0]["TypeOfLift"].ToString();
@@ -253,10 +253,17 @@ namespace CEIHaryana.Print_Forms
                 {
                     Label lblTypeOfInspection = e.Row.FindControl("lblTypeOfInspection") as Label;
                     Image ImgSignature = e.Row.FindControl("ImgSignature") as Image;
+
+                    // Ensure controls exist
+                    if (lblTypeOfInspection == null || ImgSignature == null)
+                        return;
+
                     object signatureData = DataBinder.Eval(e.Row.DataItem, "Signature");
-                    if (signatureData != DBNull.Value && signatureData is byte[])
+
+                    if (signatureData != null && signatureData != DBNull.Value && signatureData is byte[])
                     {
                         byte[] signatureBytes = (byte[])signatureData;
+
                         if (signatureBytes.Length > 0)
                         {
                             ImgSignature.Visible = true;
@@ -271,18 +278,22 @@ namespace CEIHaryana.Print_Forms
                     {
                         ImgSignature.Visible = false;
                     }
-                    if (lblTypeOfInspection.Text == "New")
-                    {
-                        ImgSignature.Visible = true;
-                    }
-                    else
-                    {
 
+                    // Ensure "New" type inspections always display the image (even if NULL)
+                    if (lblTypeOfInspection.Text.Trim() == "New")
+                    {
                         ImgSignature.Visible = true;
                     }
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error in GridView1_RowDataBound: " + ex.Message);
             }
+        }
+
+
+       
+
     }
 }

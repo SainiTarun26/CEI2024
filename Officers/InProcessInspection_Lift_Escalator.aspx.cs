@@ -655,10 +655,10 @@ namespace CEIHaryana.Officers
                                                 string lblCapacity = (row.FindControl("lblCapacity") as Label)?.Text;
                                                 string lblWeight = (row.FindControl("lblWeight") as Label)?.Text;
                                                 DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
-
+                                                string lblOwner = (row.FindControl("lblOwner") as Label)?.Text;
 
                                                 CEI.InstallationApproval_Lift_New(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                                  lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), transaction);
+                                                  lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), lblOwner, transaction);
 
                                             }
                                             //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);

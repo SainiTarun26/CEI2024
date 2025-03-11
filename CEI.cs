@@ -8856,7 +8856,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             }
         }
         public void InstallationApproval_Lift_New(string InspectionID, string TestReportId, string InstallationType, string StaffId, string InspectionType, string RegistrationNo, string Division, string Make, string LiftSrNo,
- string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, string SiteAddress, string District, DateTime Current_ChallanDate,
+ string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, string SiteAddress, string District, DateTime Current_ChallanDate, string OwnerName,
  SqlTransaction transaction)
         {
             try
@@ -8888,6 +8888,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                 cmd.Parameters.AddWithValue("@SiteAddress", SiteAddress);
                 cmd.Parameters.AddWithValue("@District", District);
                 cmd.Parameters.AddWithValue("@Current_ChallanDate", Current_ChallanDate);
+                cmd.Parameters.AddWithValue("@OwnerName", OwnerName);
                 cmd.ExecuteNonQuery();
 
             }

@@ -86,7 +86,7 @@ namespace CEIHaryana.Print_Forms
                     lblAddress.Text = dt.Rows[0]["SiteAddress"].ToString();
                     DateTime createdDate1 = Convert.ToDateTime(dt.Rows[0]["ApprovedDate"]);
                     lblInspectionDate.Text = createdDate1.ToString("dd/MM/yyyy");
-
+                    lblOwnerName.Text = dt.Rows[0]["OwnerName"].ToString();
                     lblMakerName.Text = dt.Rows[0]["Maker"].ToString();
                     lblSrNo.Text = dt.Rows[0]["RegistrationSrNo"].ToString();
                     lblTypeOflift.Text = dt.Rows[0]["TypeOfLift"].ToString();
