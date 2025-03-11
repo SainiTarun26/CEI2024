@@ -70,7 +70,7 @@ namespace CEIHaryana.Industry_Master.TestReportModal
                 ddlApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 txtInstallationFor.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                 txtTypeOfControld.Text = ds.Tables[0].Rows[0]["TypeOfControl"].ToString();
-                if (txtInstallationFor.Text == "Firm/Organization/Company/Department")
+                if (txtInstallationFor.Text == "Firm/Company")
                 {
                     agency.Visible = true;
                     individual.Visible = false;

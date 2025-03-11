@@ -299,12 +299,12 @@
                             <div class="row">
                                 <div class="col-12">
                                     <p>
-                                        Under sub-section (2) of section 4 of the Haryana  Lifts and Escalators Act, 2008 (27 of 2008) through
+                                        Under sub-section (2) of section 4 of the Haryana  Lifts and Escalators Act, 2009 (27 of 2009) through
                                         <asp:Label ID="lblCompanyName" Style="font-weight: bold;" runat="server" Text="M/s"></asp:Label>
-                                        is/are hereby registered to work or cause to be worked or allow the working of the lift erected and inspected on<asp:Label ID="lblInspectionDate" Style="font-weight: bold;" runat="server"></asp:Label>
-                                        at the premises of 
+                                        is/are hereby registered to work or cause to be worked or allow the working of the lift erected and inspected on &nbsp;<asp:Label ID="lblInspectionDate" Style="font-weight: bold;" runat="server"></asp:Label>
+                                        at the premises of  <asp:Label Style="font-weight: bold;" ID="lblOwnerName" runat="server"></asp:Label> at
                                         <asp:Label Style="font-weight: bold;" ID="lblAddress" runat="server"></asp:Label>
-                                        subject to the provisions of the Haryana Lift and Escalators Rules, 2008. The perticulars of lift which are given below:-
+                                        subject to the provisions of the Haryana Lift and Escalators Rules, 2009. The perticulars of lift which are given below:-
                                     </p>
                                 </div>
                             </div>
@@ -415,18 +415,18 @@
             </ItemTemplate>
         </asp:TemplateField>--%>
                                             <asp:TemplateField HeaderText="Renewal Date">
-    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="headercolor" />
-    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="itemcenter" />
-    <HeaderTemplate>
-        Renewal Date
-    </HeaderTemplate>
-    <ItemTemplate>
-                <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="itemcenter" />
+                                                <HeaderTemplate>
+                                                    Renewal Date
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
 
-        <%# Eval("RenewalDate") %>
-                    </div>
-    </ItemTemplate>
-</asp:TemplateField>
+                                                        <%# Eval("RenewalDate") %>
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
 
 
 
@@ -436,9 +436,17 @@
                                             </asp:BoundField>
                                             <asp:TemplateField HeaderText="Signature">
     <ItemTemplate>
-        <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
+       <%-- <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
+                <asp:Image ID="ImgSignature" runat="server"
+                ImageUrl='<%# "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) %>' />
+             
+
+                   
+        </div>--%>
+        <div style="display: inline-block; width: 30% !important;">
             <asp:Image ID="ImgSignature" runat="server"
                 ImageUrl='<%# "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) %>' />
+
         </div>
     </ItemTemplate>
 </asp:TemplateField>
@@ -517,4 +525,3 @@
     </form>
 </body>
 </html>
-

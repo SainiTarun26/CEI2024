@@ -7,66 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CEIHaryana.Industry_Master.TestReportModal
+namespace CEIHaryana.Industry_Master.SiteOwnerPages
 {
 
 
-    public partial class LiftPeriodicTestReportModal_IndustryLift
+    public partial class Inspection_Lift_New_IndustryLift
     {
 
         /// <summary>
-        /// form1 control.
+        /// Inspections control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Inspections;
 
         /// <summary>
-        /// BtnBack control.
+        /// txtPremises control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnBack;
-
-        /// <summary>
-        /// btnPrint control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPrint;
-
-        /// <summary>
-        /// divGeneratingSet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divGeneratingSet;
-
-        /// <summary>
-        /// ScriptManager1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
-
-        /// <summary>
-        /// DivSiteOwnerDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivSiteOwnerDetails;
+        protected global::System.Web.UI.WebControls.TextBox txtPremises;
 
         /// <summary>
         /// txtApplicantType control.
@@ -78,246 +42,219 @@ namespace CEIHaryana.Industry_Master.TestReportModal
         protected global::System.Web.UI.WebControls.TextBox txtApplicantType;
 
         /// <summary>
-        /// txtInstallationFor control.
+        /// txtWorkType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInstallationFor;
+        protected global::System.Web.UI.WebControls.TextBox txtWorkType;
 
         /// <summary>
-        /// individual control.
+        /// Type control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl individual;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Type;
 
         /// <summary>
-        /// txtName control.
+        /// txtInspectionType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtName;
+        protected global::System.Web.UI.WebControls.TextBox txtInspectionType;
 
         /// <summary>
-        /// txtAddress control.
+        /// txtApplicationNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAddress;
+        protected global::System.Web.UI.WebControls.TextBox txtApplicationNo;
 
         /// <summary>
-        /// txtState control.
+        /// txtAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtState;
+        protected global::System.Web.UI.WebControls.TextBox txtAmount;
 
         /// <summary>
-        /// txtDistrict control.
+        /// DocumentDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDistrict;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DocumentDiv;
 
         /// <summary>
-        /// txtPin control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPin;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
-        /// txtPhone control.
+        /// GridView2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPhone;
+        protected global::System.Web.UI.WebControls.GridView GridView2;
 
         /// <summary>
-        /// txtEmail control.
+        /// periodicTestReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl periodicTestReport;
 
         /// <summary>
-        /// divLiftDetails control.
+        /// GridViewForPeriodicTestReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divLiftDetails;
+        protected global::System.Web.UI.WebControls.GridView GridViewForPeriodicTestReport;
 
         /// <summary>
-        /// txtRegistrationNo control.
+        /// Div1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRegistrationNo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
 
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// DivViewTRinMultipleCaseNew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivViewTRinMultipleCaseNew;
 
         /// <summary>
-        /// lblMake control.
+        /// Grid_MultipleInspectionTR control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMake;
+        protected global::System.Web.UI.WebControls.GridView Grid_MultipleInspectionTR;
 
         /// <summary>
-        /// txtMake control.
+        /// ApprovalRequired control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMake;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ApprovalRequired;
 
         /// <summary>
-        /// txtSerialNo control.
+        /// ddlReview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSerialNo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlReview;
 
         /// <summary>
-        /// txtPrevChallanDate control.
+        /// RequiredFieldValidator57 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrevChallanDate;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator57;
 
         /// <summary>
-        /// lnkFile control.
+        /// Rejection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkFile;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Rejection;
 
         /// <summary>
-        /// txtLastApprovalDate control.
+        /// txtRejected control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLastApprovalDate;
+        protected global::System.Web.UI.WebControls.TextBox txtRejected;
 
         /// <summary>
-        /// txtDateofErection control.
+        /// RequiredFieldValidator60 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDateofErection;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator60;
 
         /// <summary>
-        /// lblTypeOfLift control.
+        /// Reason control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTypeOfLift;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Reason;
 
         /// <summary>
-        /// txtLiftType control.
+        /// txtReason control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLiftType;
+        protected global::System.Web.UI.WebControls.TextBox txtReason;
 
         /// <summary>
-        /// txtControlType control.
+        /// RequiredFieldValidator3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtControlType;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
 
         /// <summary>
-        /// txtCapacity control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCapacity;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
 
         /// <summary>
-        /// txtWeight control.
+        /// btnBack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtWeight;
-
-        /// <summary>
-        /// txtDistrictOfTr control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDistrictOfTr;
-
-        /// <summary>
-        /// txtSiteAddress control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSiteAddress;
-
-        /// <summary>
-        /// Grd_Document control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView Grd_Document;
+        protected global::System.Web.UI.WebControls.Button btnBack;
     }
 }

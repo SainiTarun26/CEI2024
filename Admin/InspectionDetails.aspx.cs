@@ -40,6 +40,11 @@ namespace CEIHaryana.Admin
                             txtWorkType.Text = "Generating Set";
                             Id = Session["GeneratingSetId"].ToString();
                         }
+                        else if (Session["SwitchingSubstationId"] != null && Convert.ToString(Session["SwitchingSubstationId"]) != "")
+                        {
+                            txtWorkType.Text = "Switching Station";
+                            Id = Session["SwitchingSubstationId"].ToString();
+                        }
 
                         GetDetailsWithId();
 
@@ -285,6 +290,12 @@ namespace CEIHaryana.Admin
                 Session["GeneratingSetId"] = AdminTestReportId;
                 Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
             }
+            else if (txtWorkType.Text.Trim() == "Switching Station")
+            {
+                //Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                Session["SwitchingSubstationId"] = AdminTestReportId;
+                Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
+            }
         }
 
         protected void GridView2_RowDataBound1(object sender, GridViewRowEventArgs e)
@@ -418,6 +429,12 @@ namespace CEIHaryana.Admin
                 {
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                 }
+                else if (installationName == "Switching Station")
+                {
+                    //Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                    Session["SwitchingSubstationId"] = btn.CommandArgument;
+                    Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
+                }
             }
             catch (Exception ex) { }
         }
@@ -514,6 +531,12 @@ namespace CEIHaryana.Admin
                         Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                         Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                     }
+                    else if (LblInstallationName.Text.Trim() == "Switching Station")
+                    {
+                        //Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                        Session["SwitchingSubstationId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                        Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
+                    }
                 }
             }
             else if (e.CommandName == "View")
@@ -555,6 +578,12 @@ namespace CEIHaryana.Admin
                 else if (installationName == "Generating Set")
                 {
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+                }
+                else if (installationName == "Switching Station")
+                {
+                    //Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
+                    Session["SwitchingSubstationId"] = btn.CommandArgument;
+                    Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
                 }
             }
             catch (Exception ex) { }

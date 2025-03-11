@@ -9480,6 +9480,573 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             }
         }
         #endregion
+
+        //Aslam
+        public DataSet SiteIntimations_forLift_IndustryLift(string PANNumber)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationsForSiteOwner_Lift_IndustryLift", PANNumber);
+        }
+
+
+        public DataTable GetDocumentforlift_IndustryLift(string Applicanttype)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDocumentsForLift_IndustryLift", Applicanttype);
+        }
+
+
+        public DataTable InsertNewLiftAttachments_IndustryLift(string InstallationType, string DocumentID, string DocSaveName, string FileName, string FilePath, string CreatedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertLiftNewAttachments_IndustryLift", InstallationType, int.Parse(DocumentID), DocSaveName, FileName, FilePath, CreatedBy);
+        }
+
+
+        public int InsertNewEscalatorData_New_IndustryLift(string count, string IntimationId, string NameandAddressofLocalAgent, string NameofLocalAgent,
+string AddressofLocalAgent, string ContactNoofLocalAgent, DateTime? DateofErection, string Make, string SerialNo, string TypeofEscalatorErected, string ContractSpeedofEscalatorMtrPrSec,
+decimal? ContractLoadofEscalatorInKg, string MaxPersonCapacitywithEscalatorOperator, decimal? WeightofEscalatorCarwithContractLoadInKg, decimal? WeightofCounterWeightInkg,
+decimal? DepthofPitInmm, decimal? TravelDistanceofEscalatorInMtr, decimal? NoofFloorsServedInMtr, decimal? TotalHeadRoomInmm, string TypeOfControl,
+string MakeMainBreaker, string TypeMainBreaker, string PolesMainBreaker, string CurrentRatingInAmps, string BreakingCapacityInKA, string MakeRCCBMainBreaker,
+string PolesRCCBMainBreaker, string CurrentRCCBRatingInAmps, string FaultRCCBCurrentRating, string LoadMakeMainBreaker,
+string LoadTypeMainBreaker, string LoadPolesMainBreaker, string LoadCurrentRatingInAmps, string LoadBreakingCapacityInKA,
+string LoadMakeRCCBMainBreaker, string LoadPolesRCCBMainBreaker,
+string LoadRCCBCurrentRatingInAmps, string LoadRCCBFaultCurrentRating, string ForWholeInstallation, string NeutralandPhaseohms, string EarthandPhasemohms, int? RedPhaseYellowPhaseInMohms, int? RedPhaseBluePhaseInMohms,
+int? YellowPhaseBluePhaseInMohms, int? RedPhaseEarthWireInMohms, int? YellowPhaseEarthWireInMohms, int? BluePhaseEarthWirenMohms, string NumberofEarthing,
+string EarthingType1, decimal? Valueinohms1, string EarthingType2, decimal? Valueinohms2, string EarthingType3, decimal? Valueinohms3, string EarthingType4,
+decimal? Valueinohms4, string EarthingType5,
+decimal? Valueinohms5, string EarthingType6, decimal? Valueinohms6, string EarthingType7, decimal? Valueinohms7, string EarthingType8, decimal? Valueinohms8,
+string EarthingType9, decimal? Valueinohms9,
+string EarthingType10, decimal? Valueinohms10, string CreatedBy, string ContractorName, string ContractorLicenseNumber, DateTime? ContractorLicenseExpiryDate,
+string SupervisorName, string SupervisorLicenseNumber, DateTime? SupervisorLicenseExpiryDate)
+        {
+            return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+                "sp_InsertEscalatorTestReportdata_New_IndustryLift",
+                GetValue(count), GetValue(IntimationId), GetValue(NameandAddressofLocalAgent), GetValue(NameofLocalAgent),
+                GetValue(AddressofLocalAgent), GetValue(ContactNoofLocalAgent), GetValue(DateofErection), GetValue(Make), GetValue(SerialNo),
+                GetValue(TypeofEscalatorErected), GetValue(ContractSpeedofEscalatorMtrPrSec), GetValue(ContractLoadofEscalatorInKg), GetValue(MaxPersonCapacitywithEscalatorOperator),
+                GetValue(WeightofEscalatorCarwithContractLoadInKg), GetValue(WeightofCounterWeightInkg), GetValue(DepthofPitInmm), GetValue(TravelDistanceofEscalatorInMtr),
+                GetValue(NoofFloorsServedInMtr), GetValue(TotalHeadRoomInmm), GetValue(TypeOfControl), GetValue(MakeMainBreaker), GetValue(TypeMainBreaker),
+                GetValue(PolesMainBreaker), GetValue(CurrentRatingInAmps), GetValue(BreakingCapacityInKA), GetValue(MakeRCCBMainBreaker),
+                GetValue(PolesRCCBMainBreaker), GetValue(CurrentRCCBRatingInAmps), GetValue(FaultRCCBCurrentRating), GetValue(LoadMakeMainBreaker),
+                GetValue(LoadTypeMainBreaker), GetValue(LoadPolesMainBreaker), GetValue(LoadCurrentRatingInAmps), GetValue(LoadBreakingCapacityInKA),
+                GetValue(LoadMakeRCCBMainBreaker), GetValue(LoadPolesRCCBMainBreaker), GetValue(LoadRCCBCurrentRatingInAmps), GetValue(LoadRCCBFaultCurrentRating),
+                GetValue(ForWholeInstallation), GetValue(NeutralandPhaseohms), GetValue(EarthandPhasemohms), GetValue(RedPhaseYellowPhaseInMohms),
+                GetValue(RedPhaseBluePhaseInMohms), GetValue(YellowPhaseBluePhaseInMohms), GetValue(RedPhaseEarthWireInMohms), GetValue(YellowPhaseEarthWireInMohms),
+                GetValue(BluePhaseEarthWirenMohms), GetValue(NumberofEarthing), GetValue(EarthingType1), GetValue(Valueinohms1), GetValue(EarthingType2),
+                GetValue(Valueinohms2), GetValue(EarthingType3), GetValue(Valueinohms3), GetValue(EarthingType4), GetValue(Valueinohms4), GetValue(EarthingType5),
+                GetValue(Valueinohms5), GetValue(EarthingType6), GetValue(Valueinohms6), GetValue(EarthingType7), GetValue(Valueinohms7), GetValue(EarthingType8),
+                GetValue(Valueinohms8), GetValue(EarthingType9), GetValue(Valueinohms9), GetValue(EarthingType10), GetValue(Valueinohms10), GetValue(CreatedBy),
+                GetValue(ContractorName), GetValue(ContractorLicenseNumber), GetValue(ContractorLicenseExpiryDate), GetValue(SupervisorName),
+                GetValue(SupervisorLicenseNumber), GetValue(SupervisorLicenseExpiryDate));
+        }
+
+
+        public DataTable UpdateLiftTestReportHistory_IndustryLift(string Type, string ID, string count, string CreatedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_LiftTestReportApproval_IndustryLift", Type, ID, count, CreatedBy);
+        }
+
+        public void UpdateInstallations_IndustryLift(string Id, string IntimationId)
+        {
+            SqlCommand cmd = new SqlCommand("sp_CheckTestReportHistory_IndustryLift");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Id ", Id);
+            cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+        }
+
+        public DataTable GetAttachments_IndustryLift(string TestReportId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAttachments_IndustryLift", TestReportId);
+        }
+
+
+        public DataSet SiteOwnerInstallations_Lift_IndustryLift(string IntimationId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallationForSiteOwner_Lift_IndustryLift", IntimationId);
+        }
+
+        public DataTable DeleteduplicateHistory_IndustryLift(string IntimationId, string CreatedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckDuplicacy_IndustryLift", IntimationId, CreatedBy);
+        }
+
+
+        public DataTable GetApplicantCode_IndustryLift(string Installations)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallationTypeId_IndustryLift", Installations);
+        }
+
+        public void InsertPaymentHistory_Lift_IndustryLift(string IntimationId, int count, int InstallationTypeId, string CreatedBy)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "update_InstallationHistory_NewInspection_IndustryLift", IntimationId, count, InstallationTypeId, CreatedBy);
+        }
+
+        public DataSet ToGetStaffIdforPeriodic_IndustryLift(string Division, string Staff, string District)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetStaffIdforPeriodic_IndustryLift", Division, Staff, District);
+        }
+
+        public void InsertInspectionDataNewCode_New_IndustryLift(string ContactNo, string ApplicantTypeCode, string IntimationId, string ApplicantType, string InstallationType,
+ string District, string Division, string PaymentMode, string InspectionRemarks, string CreatedBy,
+ decimal TotalAmount, string para_Assigned, string transcationId, string TranscationDate, int InspectID,
+ int ServiceType, SqlTransaction transaction
+ )
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertInspectionData_NewCodeForMultiple_New_IndustryLift", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ContactNo ", String.IsNullOrEmpty(ContactNo) ? DBNull.Value : (object)ContactNo);
+            cmd.Parameters.AddWithValue("@ApplicantTypeCode ", ApplicantTypeCode);
+            cmd.Parameters.AddWithValue("@IntimationId ", IntimationId);
+            //cmd.Parameters.AddWithValue("@Inspectiontype ", Inspectiontype);
+            cmd.Parameters.AddWithValue("@ApplicantType ", ApplicantType);
+            cmd.Parameters.AddWithValue("@InstallationType ", InstallationType);
+            cmd.Parameters.AddWithValue("@District ", District);
+            cmd.Parameters.AddWithValue("@Division ", Division);
+            cmd.Parameters.AddWithValue("@PaymentMode ", PaymentMode);
+            cmd.Parameters.AddWithValue("@InspectionRemarks ", InspectionRemarks);
+            cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
+            cmd.Parameters.AddWithValue("@TransactionId ", transcationId);
+            cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
+            cmd.Parameters.AddWithValue("@AssignTo", para_Assigned);
+            cmd.Parameters.AddWithValue("@TransctionDate", TranscationDate);
+            cmd.Parameters.AddWithValue("@InspectID", InspectID);
+            cmd.Parameters.AddWithValue("@ServiceType", ServiceType);
+            outputParam = new SqlParameter("@GeneratedCombinedIdDetails", SqlDbType.NVarChar, 500);
+            outputParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParam);
+            cmd.ExecuteNonQuery();
+        }
+
+        public DataTable Payment_Lift_IndustryLift(string selectedTypeIds, int? LiftQaunatity, int? EscaltorQaunatity)
+        {
+            DataTable result = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("Sp_Calculate_InspectionPayment_Amount_LiftEscaltor_New_IndustryLift", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@InspectionType", "New");
+                command.Parameters.AddWithValue("@InstallationTypeIds", selectedTypeIds);
+                command.Parameters.AddWithValue("@QuantityLift", LiftQaunatity == 0 ? null : LiftQaunatity);
+                command.Parameters.AddWithValue("@QuantityEscalator", EscaltorQaunatity == 0 ? null : EscaltorQaunatity);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(result);
+            }
+
+            return result;
+        }
+
+
+        public DataTable GetDocumentlistfornewInspection_Lift_IndustryLift(string ApplicantType, int InstallationTypeID, string InspectionType, int inspectionIdPrm)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDocumentsForNewMultipleInspection_Lift_IndustryLift", ApplicantType, InstallationTypeID, InspectionType, inspectionIdPrm);
+        }
+
+
+        public int InsertNewLiftData_New_IndustryLift(string count, string IntimationId, string NameandAddressofLocalAgent, string NameofLocalAgent
+        , string AddressofLocalAgent, string ContactNoofLocalAgent, DateTime DateofErection, string TypeofLift, string Make, string SerialNo, string TypeofLiftErected, string ContractSpeedofLiftMtrPrSec
+        , decimal ContractLoadofLiftInKg, string MaxPersonCapacitywithLiftOperator, decimal WeightofLiftCarwithContractLoadInKg, decimal WeightofCounterWeightInkg
+        , decimal DepthofPitInmm, decimal TravelDistanceofLiftInMtr, decimal NoofFloorsServedInMtr, decimal TotalHeadRoomInmm, string TypeOfControl, decimal NoofSuspensionRopes,
+        string DescrptionofSuspensionRopes, decimal SizeofSusspensionRopesInmm, decimal WeightofBeamInkg, decimal SizeofBeamInmm, string MakeMainBreaker,
+        string TypeMainBreaker, string PolesMainBreaker, string CurrentRatingInAmps, string BreakingCapacityInKA, string MakeRCCBMainBreaker,
+        string PolesRCCBMainBreaker, string CurrentRCCBRatingInAmps, string FaultRCCBCurrentRating, string LoadMakeMainBreaker
+        , string LoadTypeMainBreaker, string LoadPolesMainBreaker, string LoadCurrentRatingInAmps, string LoadBreakingCapacityInKA,
+        string LoadMakeRCCBMainBreaker, string LoadPolesRCCBMainBreaker
+        , string LoadRCCBCurrentRatingInAmps, string LoadRCCBFaultCurrentRating, string ForWholeInstallation, string NeutralandPhaseohms, string EarthandPhasemohms, int RedPhaseYellowPhaseInMohms, int RedPhaseBluePhaseInMohms
+        , int YellowPhaseBluePhaseInMohms, int RedPhaseEarthWireInMohms, int YellowPhaseEarthWireInMohms, int BluePhaseEarthWirenMohms, string NumberofEarthing
+        , string EarthingType1, decimal Valueinohms1, string EarthingType2, decimal Valueinohms2, string EarthingType3, decimal Valueinohms3, string EarthingType4,
+        decimal Valueinohms4, string EarthingType5
+        , decimal Valueinohms5, string EarthingType6, decimal Valueinohms6, string EarthingType7, decimal Valueinohms7, string EarthingType8, decimal Valueinohms8,
+        string EarthingType9, decimal Valueinohms9
+        , string EarthingType10, decimal Valueinohms10, string CreatedBy, string ContractorName, string ContractorLicenseNumber, DateTime ContractorLicenseExpiryDate,
+        string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicenseExpiryDate)
+        {
+            return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+                "sp_InsertLiftTestReportdata_New_IndustryLift", count, IntimationId, NameandAddressofLocalAgent, NameofLocalAgent
+    , AddressofLocalAgent, ContactNoofLocalAgent, DateofErection, TypeofLift, Make, SerialNo, TypeofLiftErected, ContractSpeedofLiftMtrPrSec
+    , ContractLoadofLiftInKg, MaxPersonCapacitywithLiftOperator, WeightofLiftCarwithContractLoadInKg, WeightofCounterWeightInkg
+    , DepthofPitInmm, TravelDistanceofLiftInMtr, NoofFloorsServedInMtr, TotalHeadRoomInmm, TypeOfControl, NoofSuspensionRopes, DescrptionofSuspensionRopes
+    , SizeofSusspensionRopesInmm, WeightofBeamInkg, SizeofBeamInmm, MakeMainBreaker, TypeMainBreaker, PolesMainBreaker, CurrentRatingInAmps
+    , BreakingCapacityInKA, MakeRCCBMainBreaker, PolesRCCBMainBreaker, CurrentRCCBRatingInAmps, FaultRCCBCurrentRating, LoadMakeMainBreaker
+    , LoadTypeMainBreaker, LoadPolesMainBreaker, LoadCurrentRatingInAmps, LoadBreakingCapacityInKA, LoadMakeRCCBMainBreaker, LoadPolesRCCBMainBreaker
+    , LoadRCCBCurrentRatingInAmps, LoadRCCBFaultCurrentRating, ForWholeInstallation, NeutralandPhaseohms, EarthandPhasemohms, RedPhaseYellowPhaseInMohms, RedPhaseBluePhaseInMohms
+    , YellowPhaseBluePhaseInMohms, RedPhaseEarthWireInMohms, YellowPhaseEarthWireInMohms, BluePhaseEarthWirenMohms, NumberofEarthing
+    , EarthingType1, Valueinohms1, GetValue(EarthingType2), Valueinohms2, GetValue(EarthingType3), Valueinohms3, GetValue(EarthingType4),
+                Valueinohms4, GetValue(EarthingType5), Valueinohms5, GetValue(EarthingType6), Valueinohms6, GetValue(EarthingType7),
+                Valueinohms7, GetValue(EarthingType8), Valueinohms8, GetValue(EarthingType9), Valueinohms9, GetValue(EarthingType10),
+                Valueinohms10, CreatedBy, ContractorName, ContractorLicenseNumber, ContractorLicenseExpiryDate, SupervisorName, SupervisorLicenseNumber, SupervisorLicenseExpiryDate);
+        }
+
+
+        public int InsertReturnedNewLiftData_New_IndustryLift(string OldTestReportId, string count, string IntimationId, string NameandAddressofLocalAgent, string NameofLocalAgent
+, string AddressofLocalAgent, string ContactNoofLocalAgent, DateTime DateofErection, string TypeofLift, string Make, string SerialNo, string TypeofLiftErected, string ContractSpeedofLiftMtrPrSec
+, decimal ContractLoadofLiftInKg, string MaxPersonCapacitywithLiftOperator, decimal WeightofLiftCarwithContractLoadInKg, decimal WeightofCounterWeightInkg
+, decimal DepthofPitInmm, decimal TravelDistanceofLiftInMtr, decimal NoofFloorsServedInMtr, decimal TotalHeadRoomInmm, string TypeOfControl, decimal NoofSuspensionRopes,
+string DescrptionofSuspensionRopes, decimal SizeofSusspensionRopesInmm, decimal WeightofBeamInkg, decimal SizeofBeamInmm, string MakeMainBreaker,
+string TypeMainBreaker, string PolesMainBreaker, string CurrentRatingInAmps, string BreakingCapacityInKA, string MakeRCCBMainBreaker,
+string PolesRCCBMainBreaker, string CurrentRCCBRatingInAmps, string FaultRCCBCurrentRating, string LoadMakeMainBreaker
+, string LoadTypeMainBreaker, string LoadPolesMainBreaker, string LoadCurrentRatingInAmps, string LoadBreakingCapacityInKA,
+string LoadMakeRCCBMainBreaker, string LoadPolesRCCBMainBreaker
+, string LoadRCCBCurrentRatingInAmps, string LoadRCCBFaultCurrentRating, string ForWholeInstallation, string NeutralandPhaseohms, string EarthandPhasemohms, int RedPhaseYellowPhaseInMohms, int RedPhaseBluePhaseInMohms
+, int YellowPhaseBluePhaseInMohms, int RedPhaseEarthWireInMohms, int YellowPhaseEarthWireInMohms, int BluePhaseEarthWirenMohms, string NumberofEarthing
+, string EarthingType1, decimal Valueinohms1, string EarthingType2, decimal Valueinohms2, string EarthingType3, decimal Valueinohms3, string EarthingType4,
+decimal Valueinohms4, string EarthingType5
+, decimal Valueinohms5, string EarthingType6, decimal Valueinohms6, string EarthingType7, decimal Valueinohms7, string EarthingType8, decimal Valueinohms8,
+string EarthingType9, decimal Valueinohms9
+, string EarthingType10, decimal Valueinohms10, string CreatedBy, string ContractorName, string ContractorLicenseNumber, DateTime ContractorLicenseExpiryDate,
+string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicenseExpiryDate)
+        {
+            return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+                "sp_InsertReturnedLiftTestReportdata_New_IndustryLift", OldTestReportId, count, IntimationId, NameandAddressofLocalAgent, NameofLocalAgent
+, AddressofLocalAgent, ContactNoofLocalAgent, DateofErection, TypeofLift, Make, SerialNo, TypeofLiftErected, ContractSpeedofLiftMtrPrSec
+, ContractLoadofLiftInKg, MaxPersonCapacitywithLiftOperator, WeightofLiftCarwithContractLoadInKg, WeightofCounterWeightInkg
+, DepthofPitInmm, TravelDistanceofLiftInMtr, NoofFloorsServedInMtr, TotalHeadRoomInmm, TypeOfControl, NoofSuspensionRopes, DescrptionofSuspensionRopes
+, SizeofSusspensionRopesInmm, WeightofBeamInkg, SizeofBeamInmm, MakeMainBreaker, TypeMainBreaker, PolesMainBreaker, CurrentRatingInAmps
+, BreakingCapacityInKA, MakeRCCBMainBreaker, PolesRCCBMainBreaker, CurrentRCCBRatingInAmps, FaultRCCBCurrentRating, LoadMakeMainBreaker
+, LoadTypeMainBreaker, LoadPolesMainBreaker, LoadCurrentRatingInAmps, LoadBreakingCapacityInKA, LoadMakeRCCBMainBreaker, LoadPolesRCCBMainBreaker
+, LoadRCCBCurrentRatingInAmps, LoadRCCBFaultCurrentRating, ForWholeInstallation, NeutralandPhaseohms, EarthandPhasemohms, RedPhaseYellowPhaseInMohms, RedPhaseBluePhaseInMohms
+, YellowPhaseBluePhaseInMohms, RedPhaseEarthWireInMohms, YellowPhaseEarthWireInMohms, BluePhaseEarthWirenMohms, NumberofEarthing
+, EarthingType1, Valueinohms1, GetValue(EarthingType2), Valueinohms2, GetValue(EarthingType3), Valueinohms3, GetValue(EarthingType4),
+                Valueinohms4, GetValue(EarthingType5), Valueinohms5, GetValue(EarthingType6), Valueinohms6, GetValue(EarthingType7),
+                Valueinohms7, GetValue(EarthingType8), Valueinohms8, GetValue(EarthingType9), Valueinohms9, GetValue(EarthingType10),
+                Valueinohms10, CreatedBy, ContractorName, ContractorLicenseNumber, ContractorLicenseExpiryDate, SupervisorName, SupervisorLicenseNumber, SupervisorLicenseExpiryDate);
+        }
+
+
+        public void UpdateReturnLiftInspection_IndustryLift(string TestReportId)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateAttachmentStatus_IndustryLift", TestReportId);
+        }
+
+
+        public DataSet GetLiftTestReportModalData_IndustryLift(string Type, string TestReportId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLiftEscalatorDataForSiteowner_IndustryLift", Type, TestReportId);
+        }
+
+
+        public DataTable SiteOwnerInspectionData_IndustryLift(string SiteOwnerId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerInspectionHistory_IndustryLift", SiteOwnerId);
+        }
+        public DataSet GetAttachmentsDatainInspectionForm_IndustryLift(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAttachmentsinInspectionForm_IndustryLift", InspectionId);
+        }
+
+
+        public DataSet GetDetailsToViewCart_Lift_Escalator_IndustryLift(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewCart_Lift_Escalator_IndustryLift", InspectionId);
+        }
+
+        public DataSet InspectionData_Lift_Escalator_IndustryLift(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionData_Lift_Escalator_IndustryLift", Id);
+        }
+
+
+        public DataSet ViewDocuments_ReturnedInspectionLift_Escalator_IndustryLift(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetReturnedInspectionDocuments_Lift_Escalator_IndustryLift", InspectionId);
+        }
+
+
+        public DataSet GetTestReport_Lift_Escalator_IndustryLift(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetTestReport_Lift_Escalator_IndustryLift", Id);
+        }
+
+        public DataSet GetDetailsToViewTRinMultipleCaseNew_IndustryLift(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewMultipleInspectionTR_IndustryLift", InspectionId);
+        }
+
+        public DataSet ApprovalData_Lift_IndustryLift(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DataForApproval_Lift_IndustryLift", Id);
+        }
+
+
+        public DataTable GetInstllationsforSitOwner_IndustryLift(string IntimationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallationsForSiteOwner_IndustryLift", IntimationId);
+        }
+
+        public DataSet IntimationDataforSiteOwner_IndustryLift(string UserId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLiftIntimationsForSiteOwner_IndustryLift", UserId);
+        }
+
+        public DataSet GetDetailsByPanNumberIdLift_IndustryLift(string PANNumber)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsByPanNumberIdLift_IndustryLift", PANNumber);
+        }
+
+
+        public DataTable SiteOwnerReturnedInspection_IndustryLift(string SiteOwnerId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SiteOwnerReturnedInspection_IndustryLift", SiteOwnerId);
+        }
+
+
+        public DataTable GetReturnedInspectionData_IndustryLift(int Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetReturnedInspectionData_IndustryLift", Id);
+        }
+
+
+        public DataTable CheckPeridocReturnValue_IndustryLift(int InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PeriodicCheckReturnValue_IndustryLift", InspectionId);
+        }
+
+
+        public void UpdateReturnLiftInspectionPeriodicStatus_IndustryLift(int InspectionId)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateReturnPeriodicStatus_IndustryLift", InspectionId);
+        }
+
+
+        public int InsertReturnEscalatorData_New_IndustryLift(string OldTestReportId, string count, string IntimationId, string NameandAddressofLocalAgent, string NameofLocalAgent
+, string AddressofLocalAgent, string ContactNoofLocalAgent, DateTime DateofErection, string Make, string SerialNo, string TypeofEscalatorErected, string ContractSpeedofEscalatorMtrPrSec
+, decimal ContractLoadofEscalatorInKg, string MaxPersonCapacitywithEscalatorOperator, decimal WeightofEscalatorCarwithContractLoadInKg, decimal WeightofCounterWeightInkg
+, decimal DepthofPitInmm, decimal TravelDistanceofEscalatorInMtr, decimal NoofFloorsServedInMtr, decimal TotalHeadRoomInmm, string TypeOfControl,
+          string MakeMainBreaker,
+string TypeMainBreaker, string PolesMainBreaker, string CurrentRatingInAmps, string BreakingCapacityInKA, string MakeRCCBMainBreaker,
+string PolesRCCBMainBreaker, string CurrentRCCBRatingInAmps, string FaultRCCBCurrentRating, string LoadMakeMainBreaker
+, string LoadTypeMainBreaker, string LoadPolesMainBreaker, string LoadCurrentRatingInAmps, string LoadBreakingCapacityInKA,
+string LoadMakeRCCBMainBreaker, string LoadPolesRCCBMainBreaker
+, string LoadRCCBCurrentRatingInAmps, string LoadRCCBFaultCurrentRating, string ForWholeInstallation, string NeutralandPhaseohms, string EarthandPhasemohms, int RedPhaseYellowPhaseInMohms, int RedPhaseBluePhaseInMohms
+, int YellowPhaseBluePhaseInMohms, int RedPhaseEarthWireInMohms, int YellowPhaseEarthWireInMohms, int BluePhaseEarthWirenMohms, string NumberofEarthing
+, string EarthingType1, decimal Valueinohms1, string EarthingType2, decimal Valueinohms2, string EarthingType3, decimal Valueinohms3, string EarthingType4,
+decimal Valueinohms4, string EarthingType5
+, decimal Valueinohms5, string EarthingType6, decimal Valueinohms6, string EarthingType7, decimal Valueinohms7, string EarthingType8, decimal Valueinohms8,
+string EarthingType9, decimal Valueinohms9
+, string EarthingType10, decimal Valueinohms10, string CreatedBy, string ContractorName, string ContractorLicenseNumber, DateTime ContractorLicenseExpiryDate,
+string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicenseExpiryDate)
+        {
+            return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+                "sp_InsertReturnEscalatorTestReportdata_New_IndustryLift", OldTestReportId, count, IntimationId, NameandAddressofLocalAgent, NameofLocalAgent
+, GetValue(AddressofLocalAgent), GetValue(ContactNoofLocalAgent), GetValue(DateofErection), Make, SerialNo, TypeofEscalatorErected, ContractSpeedofEscalatorMtrPrSec
+, GetValue(ContractLoadofEscalatorInKg), MaxPersonCapacitywithEscalatorOperator, GetValue(WeightofEscalatorCarwithContractLoadInKg), GetValue(WeightofCounterWeightInkg)
+, DepthofPitInmm, GetValue(TravelDistanceofEscalatorInMtr), GetValue(NoofFloorsServedInMtr), GetValue(TotalHeadRoomInmm), TypeOfControl, MakeMainBreaker, TypeMainBreaker, PolesMainBreaker, CurrentRatingInAmps
+, BreakingCapacityInKA, MakeRCCBMainBreaker, PolesRCCBMainBreaker, CurrentRCCBRatingInAmps, FaultRCCBCurrentRating, LoadMakeMainBreaker
+, LoadTypeMainBreaker, LoadPolesMainBreaker, LoadCurrentRatingInAmps, LoadBreakingCapacityInKA, LoadMakeRCCBMainBreaker, LoadPolesRCCBMainBreaker
+, LoadRCCBCurrentRatingInAmps, LoadRCCBFaultCurrentRating, ForWholeInstallation, GetValue(NeutralandPhaseohms), GetValue(EarthandPhasemohms), GetValue(RedPhaseYellowPhaseInMohms), GetValue(RedPhaseBluePhaseInMohms)
+, GetValue(YellowPhaseBluePhaseInMohms), GetValue(RedPhaseEarthWireInMohms), GetValue(YellowPhaseEarthWireInMohms), GetValue(BluePhaseEarthWirenMohms), NumberofEarthing
+, EarthingType1, Valueinohms1, GetValue(EarthingType2), Valueinohms2, GetValue(EarthingType3), Valueinohms3, GetValue(EarthingType4),
+                Valueinohms4, GetValue(EarthingType5), Valueinohms5, GetValue(EarthingType6), Valueinohms6, GetValue(EarthingType7),
+                Valueinohms7, GetValue(EarthingType8), Valueinohms8, GetValue(EarthingType9), Valueinohms9, GetValue(EarthingType10),
+                Valueinohms10, CreatedBy, ContractorName, ContractorLicenseNumber, ContractorLicenseExpiryDate, SupervisorName, SupervisorLicenseNumber, SupervisorLicenseExpiryDate);
+        }
+
+
+        public DataTable DeletePaymentHistory_IndustryLift(string IntimationId, int count, int InstallationTypeId, string CreatedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DeletePaymentHistory_IndustryLift", IntimationId, count, InstallationTypeId, CreatedBy);
+        }
+
+
+
+        public void IntimationDataInsertion_New_LiftIndustry(string Id, string ContractorId, string ApplicantTypeCode, string PowerUtility, string PowerUtilityWing, string ZoneName,
+ string CircleName, string DivisionName, string SubDivisionName,
+ string ContractorType, string NameOfOwner, string NameOfAgency, string ContactNo, string Address, string District, string Pincode,
+ string PremisesType, string OtherPremises, string VoltageLevel, string PANNumber, string TypeOfInstallation1, string NumberOfInstallation1, string TypeOfInstallation2, string NumberOfInstallation2,
+ string TypeOfInstallation3, string NumberOfInstallation3,
+ //string TypeOfInstallation4, string NumberOfInstallation4, string TypeOfInstallation5, string NumberOfInstallation5,
+ //string TypeOfInstallation6, string NumberOfInstallation6, string TypeOfInstallation7, string NumberOfInstallation7, string TypeOfInstallation8, string NumberOfInstallation8,
+ string Email, string WorkStartDate, string CompletionDate,
+ string AnyWorkIssued, string CopyOfWorkOrder, string CompletionDateasPerOrder, string ApplicantType, string CreatedBy, string SanctionLoad, string InspectionType, string TotalCapacity,
+ SqlTransaction transaction)
+        {
+            SqlCommand cmd = new SqlCommand("sp_WorkIntimationRegistration_LiftIndustry", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Id", Id);
+            cmd.Parameters.AddWithValue("@ContractorId", ContractorId);
+            cmd.Parameters.AddWithValue("@ApplicantTypeCode", ApplicantTypeCode);     //
+            cmd.Parameters.AddWithValue("@ContractorType", ContractorType);
+            cmd.Parameters.AddWithValue("@PowerUtility", PowerUtility == "Select" ? DBNull.Value : (object)PowerUtility);        //*
+            cmd.Parameters.AddWithValue("@PowerUtilityWing", PowerUtilityWing == "Select" ? DBNull.Value : (object)PowerUtilityWing);//*
+            cmd.Parameters.AddWithValue("@ZoneName", ZoneName == "Select" ? DBNull.Value : (object)ZoneName);
+            cmd.Parameters.AddWithValue("@CircleName", CircleName == "Select" ? DBNull.Value : (object)CircleName);
+            cmd.Parameters.AddWithValue("@DivisionName", DivisionName == "Select" ? DBNull.Value : (object)DivisionName);
+            cmd.Parameters.AddWithValue("@SubDivisionName", SubDivisionName == "Select" ? DBNull.Value : (object)SubDivisionName);
+            cmd.Parameters.AddWithValue("@NameOfOwner", String.IsNullOrEmpty(NameOfOwner) ? DBNull.Value : (object)NameOfOwner);
+            cmd.Parameters.AddWithValue("@NameOfAgency", String.IsNullOrEmpty(NameOfAgency) ? DBNull.Value : (object)NameOfAgency);
+            cmd.Parameters.AddWithValue("@ContactNo", String.IsNullOrEmpty(ContactNo) ? DBNull.Value : (object)ContactNo);
+            cmd.Parameters.AddWithValue("@Address", String.IsNullOrEmpty(Address) ? DBNull.Value : (object)Address);
+            cmd.Parameters.AddWithValue("@District", String.IsNullOrEmpty(District) ? DBNull.Value : (object)District);
+            cmd.Parameters.AddWithValue("@Pincode", String.IsNullOrEmpty(Pincode) ? DBNull.Value : (object)Pincode);
+            cmd.Parameters.AddWithValue("@PremisesType", PremisesType);
+            cmd.Parameters.AddWithValue("@OtherPremises", String.IsNullOrEmpty(OtherPremises) ? DBNull.Value : (object)OtherPremises);
+            cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
+            cmd.Parameters.AddWithValue("@PANNumber", String.IsNullOrEmpty(PANNumber) ? DBNull.Value : (object)PANNumber);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation1", TypeOfInstallation1);
+            cmd.Parameters.AddWithValue("@NumberOfInstallation1", NumberOfInstallation1);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation2", String.IsNullOrEmpty(TypeOfInstallation2) ? DBNull.Value : (object)TypeOfInstallation2);
+            cmd.Parameters.AddWithValue("@NumberOfInstallation2", String.IsNullOrEmpty(NumberOfInstallation2) ? DBNull.Value : (object)NumberOfInstallation2);
+            cmd.Parameters.AddWithValue("@TypeOfInstallation3", String.IsNullOrEmpty(TypeOfInstallation3) ? DBNull.Value : (object)TypeOfInstallation3);
+            cmd.Parameters.AddWithValue("@NumberOfInstallation3", String.IsNullOrEmpty(NumberOfInstallation3) ? DBNull.Value : (object)NumberOfInstallation3);
+            //cmd.Parameters.AddWithValue("@TypeOfInstallation4", String.IsNullOrEmpty(TypeOfInstallation4) ? DBNull.Value : (object)TypeOfInstallation4);
+            //cmd.Parameters.AddWithValue("@NumberOfInstallation4", String.IsNullOrEmpty(NumberOfInstallation4) ? DBNull.Value : (object)NumberOfInstallation4);
+            //cmd.Parameters.AddWithValue("@TypeOfInstallation5", String.IsNullOrEmpty(TypeOfInstallation5) ? DBNull.Value : (object)TypeOfInstallation5);
+            //cmd.Parameters.AddWithValue("@NumberOfInstallation5", String.IsNullOrEmpty(NumberOfInstallation5) ? DBNull.Value : (object)NumberOfInstallation5);
+            //cmd.Parameters.AddWithValue("@TypeOfInstallation6", String.IsNullOrEmpty(TypeOfInstallation6) ? DBNull.Value : (object)TypeOfInstallation6);
+            //cmd.Parameters.AddWithValue("@NumberOfInstallation6", String.IsNullOrEmpty(NumberOfInstallation6) ? DBNull.Value : (object)NumberOfInstallation6);
+            //cmd.Parameters.AddWithValue("@TypeOfInstallation7", String.IsNullOrEmpty (TypeOfInstallation7) ? DBNull.Value : (object)TypeOfInstallation7);
+            //cmd.Parameters.AddWithValue("@NumberOfInstallation7", String.IsNullOrEmpty(NumberOfInstallation7) ? DBNull.Value : (object)NumberOfInstallation7);
+            //cmd.Parameters.AddWithValue("@TypeOfInstallation8", String.IsNullOrEmpty(TypeOfInstallation8) ? DBNull.Value : (object)TypeOfInstallation8);
+            //cmd.Parameters.AddWithValue("@NumberOfInstallation8", String.IsNullOrEmpty(NumberOfInstallation8) ? DBNull.Value : (object)NumberOfInstallation8);
+            cmd.Parameters.AddWithValue("@Email", Email);
+            cmd.Parameters.AddWithValue("@WorkStartDate", WorkStartDate);
+            cmd.Parameters.AddWithValue("@CompletionDate", CompletionDate);
+            cmd.Parameters.AddWithValue("@AnyWorkIssued", AnyWorkIssued);
+            cmd.Parameters.AddWithValue("@CopyOfWorkOrder", String.IsNullOrEmpty(CopyOfWorkOrder) ? DBNull.Value : (object)CopyOfWorkOrder);
+            //cmd.Parameters.AddWithValue("@CompletionDateasPerOrder", CompletionDateasPerOrder);
+            DateTime CompletionDateForOrder;
+            if (DateTime.TryParse(CompletionDateasPerOrder, out CompletionDateForOrder) && CompletionDateForOrder != DateTime.MinValue)
+            {
+                cmd.Parameters.AddWithValue("@CompletionDateasPerOrder", CompletionDateForOrder);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@CompletionDateasPerOrder", DBNull.Value);
+            }
+            cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            cmd.Parameters.AddWithValue("@SanctionLoad", SanctionLoad);
+            cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
+            cmd.Parameters.AddWithValue("@TotalCapacity", TotalCapacity);
+            outputParam = new SqlParameter("@RegistrationID", SqlDbType.NVarChar, 50);
+            outputParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParam);
+            cmd.ExecuteNonQuery();
+
+        }
+
+
+        public void AddInstallations_New_IndustryLift(string IntimationId, string Typeofinstallation, int Noofinstallation, string CreatedBy, string TypeOfInspection, SqlTransaction transaction)
+        {
+            SqlCommand cmd = new SqlCommand("sp_InstallationsCount_New_IndustryLift", transaction.Connection, transaction);
+            //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            //cmd.Connection = con;
+            //if (con.State == ConnectionState.Closed)
+            //{
+            //    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            //    con.Open();
+            //}
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@IntimationId ", IntimationId);
+            cmd.Parameters.AddWithValue("@Typeofinstallation", Typeofinstallation);
+            cmd.Parameters.AddWithValue("@Noofinstallation", Noofinstallation);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            cmd.Parameters.AddWithValue("@InspectionType", TypeOfInspection);
+            cmd.ExecuteNonQuery();
+            //con.Close();
+        }
+
+        public DataTable ReturnDocuments_Lift_IndustryLift(int InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetReturnedDocument_IndustryLift", InspectionId);
+        }
+
+
+        public DataTable ReturnInstallations_Lift_IndustryLift(int InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLiftInstallationOfInspection_IndustryLift", InspectionId);
+        }
+
+
+        public DataTable CheckReturnValue_IndustryLift(int InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckReturnValue_IndustryLift", InspectionId);
+        }
+
+        public void UpdateReturnLiftInspection_IndustryLift(int InspectionId, string TransactionId, DateTime TransactionDate, string InspectionRemarks, string ModifiedBy)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateReturnLiftInspection_IndustryLift", InspectionId, TransactionId, TransactionDate, InspectionRemarks, ModifiedBy);
+        }
+
+        public DataSet PeriodicLiftDetailstoPrintFormInspectionDetails_IndustryLift(int ID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PeriodicLiftDetailstoPrintFormInspectionDetails_IndustryLift", ID);
+        }
+
+
+        public DataTable ReturnInstallations_LiftPeriodic_IndustryLift(int InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLiftInstallationOfInspectionPeriodic_IndustryLift", InspectionId);
+        }
+
+        public DataSet DetailstoPrintFormInspectionDetails_IndustryLift(int ID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDetailsforPrintForm_IndustryLift", ID);
+        }
+
+        public DataTable CalculateRows_IndustryLift(string Typeofinstallation, string IntimationId, string InspectionId, string Count)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CalculateRows_IndustryLift", Typeofinstallation, IntimationId, InspectionId, Count);
+        }
+
+        public DataTable PeriodicCalculateRows_IndustryLift(string TestReportId, string InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PeriodicCalculateRows_IndustryLift", TestReportId, InspectionId);
+        }
+
+
+        public DataTable ReturnPayment_Lift_IndustryLift(int InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetReturnInspectionPayment_Lift_IndustryLift", InspectionId);
+        }
+
+        public DataTable ReturnPayment_LiftPeriodic_IndustryLift(int InspectionId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetReturnInspectionPayment_LiftPeriodic_IndustryLift", InspectionId);
+        }
+
+        public void UploadDocumentforLiftReturnedInspectionLift_IndustryLift(string InspectionId, string InstallationType, string DocumentID,
+                       string DocSaveName, string FileName, string FilePath, string CreatedBy)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertInspectionAttachmentsLift_IndustryLift", InspectionId, InstallationType, DocumentID, DocSaveName, FileName, FilePath, CreatedBy);
+        }
+
+
+        public DataSet PrintDetailsFor_LiftCertificate_IndustryLift(string InspectionId, string TestReportId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ApproveCertificate_Lift_Escelator_IndustryLift", InspectionId, TestReportId);
+        }
+
+
+        public DataSet getDataforLift_IndustryLift(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDataForLift_IndustryLift", Id);
+        }
+
+        public DataTable GetLiftCertificateData_IndustryLift(string InspectionId, string TestRportId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLiftApproalHistor_IndustryLift", InspectionId, TestRportId);
+        }
+
+        public void UpdateLiftApprovedCertificatedata_IndustryLift(string InspectionId)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateLiftApprovalInspections_IndustryLift", InspectionId);
+        }
+
+
+
+        //
     }
 }
 

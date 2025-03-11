@@ -128,6 +128,11 @@ namespace CEIHaryana.Admin
             {
                 Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
             }
+            else if (txtWorkType.Text.Trim() == "Switching Station")
+            {
+                Session["SwitchingSubstationId"] = testReportId;
+                Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
+            }
         }
         private void GetData()
         {
@@ -640,6 +645,11 @@ namespace CEIHaryana.Admin
                 {
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                 }
+                else if (installationName == "Switching Station")
+                {
+                    Session["SwitchingSubstationId"] = btn.CommandArgument;
+                    Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
+                }
             }
             catch (Exception ex) { }
         }
@@ -955,6 +965,11 @@ namespace CEIHaryana.Admin
                 {
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                 }
+                else if (installationName == "Switching Station")
+                {
+                    Session["SwitchingSubstationId"] = btn.CommandArgument;
+                    Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
+                }
             }
             catch (Exception ex) { }
         }
@@ -990,6 +1005,11 @@ namespace CEIHaryana.Admin
                     {
                         Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                         Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
+                    }
+                    else if (LblInstallationName.Text.Trim() == "Switching Station")
+                    {
+                        Session["SwitchingSubstationId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                        Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
                     }
                 }
             }

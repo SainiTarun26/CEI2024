@@ -432,6 +432,10 @@
                                  <label>District</label>
                 <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                  </div>
+                <div  id="divusertype"   class="col-md-4" runat="server" visible="true">
+                                 <label>UserType</label>
+                <asp:TextBox class="form-control" ID="txtUserType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                 </div>                  
                     <%--<div class="col-md-4" id="Inspection_Type" runat="server" visible="false">
                         <label>Inspection Type</label>
                         <asp:TextBox class="form-control" ID="TxtInspection" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -596,7 +600,7 @@
                                 <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
                                 <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
                                  <asp:Label ID="LblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
-                                 <asp:Label ID="lblOwner" runat="server" Text='<%#Eval("OwnerName") %>'></asp:Label>
+                                                                  <asp:Label ID="lblOwner" runat="server" Text='<%#Eval("OwnerName") %>'></asp:Label>                       
                                     <asp:Label ID="lblMake" runat="server" Text='<%#Eval("Make") %>'></asp:Label>
                                   <asp:Label ID="lblLiftSrNo" runat="server" Text='<%#Eval("SerialNo") %>'></asp:Label>
                                     <asp:Label ID="lblTypeOfLift" runat="server" Text='<%#Eval("TypeOfLift") %>'></asp:Label>

@@ -114,6 +114,15 @@ namespace CEIHaryana.Industry_Master.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblInspectionDate;
 
         /// <summary>
+        /// lblOwnerName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblOwnerName;
+
+        /// <summary>
         /// lblAddress control.
         /// </summary>
         /// <remarks>

@@ -268,7 +268,7 @@
                                         <%#Container.DataItemIndex+1 %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="InstallationType" HeaderText="Inspection Of Type">
+                                <asp:BoundField DataField="InstallationType" HeaderText="Type of inspection">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
@@ -373,14 +373,14 @@
             <div class="row ">
                 <div class="col-sm-4 col-md-4">
                     <h6 class="card-title fw-semibold mb-4">
-                        <asp:Label ID="Label2" runat="server"></asp:Label>Fees</h6>
+                        <asp:Label ID="Label2" runat="server"></asp:Label>Treasury Challan / GRN Details No</h6>
                 </div>
             </div>
             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;">
                 <div class="row">
                     <div class="col-md-4">
                         <label for="Phone">
-                            Transaction Id<samp style="color: red">* </samp>
+                            GRN Number<samp style="color: red">* </samp>
                         </label>
                         <asp:TextBox class="form-control" ID="txtTransactionId" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtTransactionId" ValidationGroup="Submit" ForeColor="Red">Please Enter TransactionId</asp:RequiredFieldValidator>
