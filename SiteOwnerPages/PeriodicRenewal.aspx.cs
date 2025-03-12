@@ -669,7 +669,6 @@ namespace CEIHaryana.SiteOwnerPages
                             string IntimationId = LblIntimationId.Text;
                             Label lblInspectionId = (Label)row.FindControl("lblInspectionId") as Label;
                             string InspectionId = lblInspectionId.Text;
-                            //int InspectionId = Convert.ToInt32(row.Cells[3].Text);
                             Label LblInstallationType = (Label)row.FindControl("LblInstallationType");
                             string InstallationType = LblInstallationType.Text;
                             Label LblTestReportId = (Label)row.FindControl("LblTestReportId");
@@ -678,8 +677,6 @@ namespace CEIHaryana.SiteOwnerPages
                             string inspectionDate = LblinspectionDate.Text;
                             Label LblinspectionDueDate = (Label)row.FindControl("LblinspectionDueDate");
                             string inspectionDueDate = LblinspectionDueDate.Text;
-                            //Label LblNumberofdays = (Label)row.FindControl("LblNumberofdays");
-                            //string DelayedDays = LblNumberofdays.Text;
                             Label LblVoltage = (Label)row.FindControl("LblVoltage");
                             string Voltage = LblVoltage.Text;
                             Label LblCapacity = (Label)row.FindControl("LblCapacity");
@@ -702,10 +699,14 @@ namespace CEIHaryana.SiteOwnerPages
                             string Count = lblCount.Text;
 
 
-                            CEI.InsertInspectionRenewalData(IntimationId, InspectionId, InstallationType, InstallationName, TestReportId, Count, inspectionDate,
-                                 inspectionDueDate, /*DelayedDays*/ Voltage, Capacity, Address, CompleteAddress, AddressDistrict, OwnerName, District, Division, id, "1");
+                            int result = CEI.InsertInspectionRenewalData(IntimationId, InspectionId, InstallationType, InstallationName, TestReportId, Count, inspectionDate,
+                                  inspectionDueDate,  Voltage, Capacity, Address, CompleteAddress, AddressDistrict, OwnerName, District, Division, id, "1");
 
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                            if (result > 0)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('Already add in cart.');", true);
+                                return;
+                            }
                         }
                     }
                     if (!atLeastOneChecked)
@@ -713,10 +714,15 @@ namespace CEIHaryana.SiteOwnerPages
                         Response.Write("<script>alert('Please select at least one Inspection');</script>");
                         return;
                     }
+
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                 }
             }
             catch (Exception ex)
             {
+                string errorMessage = ex.Message;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
             }
         }
         //protected void ddlNoOfDays_SelectedIndexChanged(object sender, EventArgs e)

@@ -867,6 +867,11 @@ namespace CEIHaryana.Admin
                 {
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                 }
+                else if (installationName == "Switching Station")
+                {
+                    Session["SwitchingSubstationId"] = Session["InspectionTestReportId"].ToString();
+                    Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
+                }
             }
             catch (Exception ex) { }
         }
@@ -1274,6 +1279,11 @@ namespace CEIHaryana.Admin
                         Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                         Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                     }
+                    else if (LblInstallationName.Text.Trim() == "Switching Station")
+                    {
+                        Session["SwitchingSubstationId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                        Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
+                    }
                 }
             }
             else if (e.CommandName == "View")
@@ -1312,7 +1322,7 @@ namespace CEIHaryana.Admin
                     else if (LblInstallationName.Text.Trim() == "Switching Station")
                     {                      
                         linkButtonInvoice.Visible = false;
-                        RadioButtonAction.Items.FindByValue("1").Enabled = false;
+                        RadioButtonAction.Items.FindByValue("1").Enabled    = false;
                     }
                     else
                     {

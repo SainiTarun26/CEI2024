@@ -4011,54 +4011,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         //          }
         //      }
 
-        public void InsertInspectionRenewalData(string IntimationId, string InspectionId, string InstallationType, string InstallationName,
- string TestReportId, string TestReportCount, string InspectionDate, string InspectionDueDate, /*string DelayedDays,*/ string Voltage, string Capacity, string Address, string CompleteAdress,
- string AdressDistrict, string OwnerName, string District, string Division, string CreatedBy, string Status)
-        {
-            try
-            {
-                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
-                {
-                    using (SqlCommand cmd = new SqlCommand("sp_InsertInspectionRenewalData", con))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
-                        cmd.Parameters.AddWithValue("@InspectionId", InspectionId);
-                        cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
-                        cmd.Parameters.AddWithValue("@InstallationName", InstallationName);
-
-                        cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
-                        cmd.Parameters.AddWithValue("@TestReportCount", TestReportCount);
-                        cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
-                        cmd.Parameters.AddWithValue("@InspectionDueDate", InspectionDueDate);
-                        //cmd.Parameters.AddWithValue("@DelayedDays", DelayedDays);
-                        cmd.Parameters.AddWithValue("@Voltage", Voltage);
-                        if (string.IsNullOrWhiteSpace(Capacity))
-                        {
-                            cmd.Parameters.AddWithValue("@Capacity", DBNull.Value);
-                        }
-                        else
-                        {
-                            cmd.Parameters.AddWithValue("@Capacity", Capacity);
-                        }
-                        cmd.Parameters.AddWithValue("@Address", Address);
-                        cmd.Parameters.AddWithValue("@CompleteAdress", CompleteAdress);
-                        cmd.Parameters.AddWithValue("@AdressDistrict", AdressDistrict);
-                        cmd.Parameters.AddWithValue("@OwnerName", OwnerName);
-                        cmd.Parameters.AddWithValue("@District", District);
-                        cmd.Parameters.AddWithValue("@Division", Division);
-                        cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
-                        cmd.Parameters.AddWithValue("@Status", Status);
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
+        
         public DataSet GetAddressToFilterCart(string CreatedBy)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAdressTofilterCart", CreatedBy);
@@ -10047,6 +10000,69 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
 
 
         //
+        public int InsertInspectionRenewalData(string IntimationId, string InspectionId, string InstallationType, string InstallationName,
+     string TestReportId, string TestReportCount, string InspectionDate, string InspectionDueDate, string Voltage,
+     string Capacity, string Address, string CompleteAddress, string AddressDistrict, string OwnerName, string District, string Division,
+     string CreatedBy, string Status)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_InsertInspectionRenewalData", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
+                        cmd.Parameters.AddWithValue("@InspectionId", InspectionId);
+                        cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+                        cmd.Parameters.AddWithValue("@InstallationName", InstallationName);
+                        cmd.Parameters.AddWithValue("@TestReportId", TestReportId);
+                        cmd.Parameters.AddWithValue("@TestReportCount", TestReportCount);
+                        cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
+                        cmd.Parameters.AddWithValue("@InspectionDueDate", InspectionDueDate);
+                        // cmd.Parameters.AddWithValue("@DelayedDays", DelayedDays);
+                        cmd.Parameters.AddWithValue("@Voltage", Voltage);
+
+                        if (string.IsNullOrWhiteSpace(Capacity))
+                        {
+                            cmd.Parameters.AddWithValue("@Capacity", DBNull.Value);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Capacity", Capacity);
+                        }
+
+                        cmd.Parameters.AddWithValue("@Address", Address);
+                        cmd.Parameters.AddWithValue("@CompleteAdress", CompleteAddress);
+                        cmd.Parameters.AddWithValue("@AdressDistrict", AddressDistrict);
+                        cmd.Parameters.AddWithValue("@OwnerName", OwnerName);
+                        cmd.Parameters.AddWithValue("@District", District);
+                        cmd.Parameters.AddWithValue("@Division", Division);
+                        cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                        cmd.Parameters.AddWithValue("@Status", Status);
+
+                        // Add an output parameter to capture the return value from the stored procedure
+                        SqlParameter returnValue = new SqlParameter("@ReturnValue", SqlDbType.Int);
+                        returnValue.Direction = ParameterDirection.ReturnValue;
+                        cmd.Parameters.Add(returnValue);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+
+                        // Return the value of the output parameter
+                        return (int)returnValue.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (optional)
+                // Return a non-zero value to indicate failure
+                return 1; // Indicate an error occurred
+            }
+        }
     }
 }
 
