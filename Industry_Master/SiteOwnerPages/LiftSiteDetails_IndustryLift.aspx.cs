@@ -32,11 +32,11 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                 {
                     if (Session["SiteOwnerId_IndustryLift"] != null || Request.Cookies["SiteOwnerId_IndustryLift"] != null)
                     {
-                        //if (CheckInspectionStatus())
-                        //{
-                        //    Response.Redirect("InspectionHistory_New_IndustryLift.aspx", false);
-                        //    return;
-                        //}
+                        if (CheckInspectionStatus())
+                        {
+                            Response.Redirect("InspectionHistory_New_IndustryLift.aspx", false);
+                            return;
+                        }
                         BindListBoxInstallationType();
                         BindDistrict();
                         GetDetails();
@@ -589,19 +589,26 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
         private bool CheckInspectionStatus()
         {
             string panNumber = null;
+            string Districtlocalpr = null;
 
             if (Session["SiteOwnerId_IndustryLift"] != null)
             {
                 panNumber = Session["SiteOwnerId_IndustryLift"].ToString();
             }
+            if (Session["district_IndustryLift"] != null)
+            {
+                Districtlocalpr = Session["district_IndustryLift"].ToString();
+            }
 
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_CheckAlreadyApplied_NewInspection_IndustryLift", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_CheckAlreadyApplied_LiftNewInspection_Industries", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@PANNumber", panNumber);
+                    cmd.Parameters.AddWithValue("@District", Districtlocalpr);
+                    //added on 24 feb 2025 to filter district records against a panno
 
                     conn.Open();
 
