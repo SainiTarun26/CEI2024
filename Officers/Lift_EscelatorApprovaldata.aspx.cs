@@ -31,7 +31,16 @@ namespace CEIHaryana.Officers
             try
             {
                 string LoginID = string.Empty;
-                LoginID = Session["InProcessInspectionId"].ToString();
+                //Added On 12 mar 2025 to Show Industry cirtificate pages.
+                if (Convert.ToString(Session["InProcessInspectionId"]) != null && Convert.ToString(Session["InProcessInspectionId"]) != string.Empty)
+                {
+                    LoginID = Session["InProcessInspectionId"].ToString();
+                }
+                else if (Convert.ToString(Session["InProcessInspectionId_IndustryLift"]) != null && Convert.ToString(Session["InProcessInspectionId_IndustryLift"]) != string.Empty)
+                {
+                    LoginID = Session["InProcessInspectionId_IndustryLift"].ToString();
+                }
+
                 DataSet ds = new DataSet();
                 ds = CEI.ApprovalData_Lift(LoginID);
                 if (ds != null && ds.Tables.Count > 0)
@@ -68,17 +77,41 @@ namespace CEIHaryana.Officers
                     Label lblID = (Label)row.FindControl("lblID");
                     Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
                      string id = lblID.Text;
-                     string  LoginID = Session["InProcessInspectionId"].ToString();
-                    Session["LiftTestReportID"] = id;
-                    if (lblInstallationType.Text == "Lift")
+
+                    //Added On 12 mar 2025 to Show Industry cirtificate pages.
+                    if (Convert.ToString(Session["InProcessInspectionId"]) != null && Convert.ToString(Session["InProcessInspectionId"]) != string.Empty)
                     {
-                        Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                        string LoginID = Session["InProcessInspectionId"].ToString();
+                        Session["LiftTestReportID"] = id;
+
+                        if (lblInstallationType.Text == "Lift")
+                        {
+                            Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                        }
+                        else
+                        {
+                            Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                        }
                     }
-                    else
+                    else if (Convert.ToString(Session["InProcessInspectionId_IndustryLift"]) != null && Convert.ToString(Session["InProcessInspectionId_IndustryLift"]) != string.Empty)
                     {
-                        Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                        string LoginID = Session["InProcessInspectionId_IndustryLift"].ToString();
+                        Session["LiftTestReportID_IndustryLift"] = id;
+
+                        if (lblInstallationType.Text == "Lift")
+                        {
+                            Response.Redirect("/Industry_Master/Print_Forms/LiftApprovalCertificate_IndustryLift.aspx", false);
+                        }
+                        else
+                        {
+                            Response.Redirect("/Industry_Master/Print_Forms/EscalatorApprovalCertificate_IndustryLift.aspx", false);
+                        }
+
                     }
-                }
+
+
+
+                    }
             }
             catch { }
         }

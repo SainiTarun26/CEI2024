@@ -778,7 +778,7 @@
         });
 
         function alertWithRedirectdata1() {
-            alert('Pan Card Or Service Id Not Found.');
+            alert('Your Session Expired..');
             window.location.href = 'https://staging.investharyana.in/#/';
         }
     </script>

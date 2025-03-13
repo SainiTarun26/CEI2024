@@ -870,13 +870,13 @@ namespace CEIHaryana.Industry_Master
 
                 int checksuccessmessage = 0;
                 int NewPara = 0;
-                if (!string.IsNullOrEmpty(Convert.ToString(Session["IDCart"])))
+                if (!string.IsNullOrEmpty(Convert.ToString(Session["IDCart_Industry"])))
                 {
-                    CartID = Convert.ToString(Session["IDCart"]);
+                    CartID = Convert.ToString(Session["IDCart_Industry"]);
                 }
                 else
                 {
-                    CartID = Convert.ToString(Session["CartID"]);
+                    CartID = Convert.ToString(Session["CartID_Industry"]);
                 }
 
                 if (HF_para_InspectID.Value != null && HF_para_InspectID.Value != "")

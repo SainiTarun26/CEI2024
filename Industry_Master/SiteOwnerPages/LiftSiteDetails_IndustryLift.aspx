@@ -573,7 +573,7 @@
                                                 Name of Owner/ Consumer<samp style="color: red"> * </samp>
                                             </label>
                                             <div class="input-box" style="padding-left: 0px !important;">
-                                                <asp:TextBox class="form-control" ID="txtName" TabIndex="4" MaxLength="50" onkeydown="return preventEnterSubmit(event)" onKeyPress="return alphabetKey(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px; box-shadow: none !important;"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtName" ReadOnly="true" TabIndex="4" MaxLength="50" onkeydown="return preventEnterSubmit(event)" onKeyPress="return alphabetKey(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px; box-shadow: none !important;"></asp:TextBox>
                                             </div>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
                                         </div>
