@@ -719,7 +719,7 @@
                                             <div class="field btn" style="margin-bottom: 10px;">
                                                 <div class="btn-layer"></div>
                                                 <asp:Button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" ID="BtnLogin" runat="server" Text="Sign in" Style="width: 84% !important; margin-left: 24px;"
-                                                    OnClick="BtnLogin_Click" ValidationGroup="Submit"></asp:Button>
+                                                    OnClick="BtnLogin_Click"  OnClientClick="return checkLoginBeforeSubmit();" ValidationGroup="Submit"></asp:Button>
                                             </div>
                                             <div>
                                                 <label id="WrongCredentials" runat="server" visible="false" style="color: red;">
@@ -914,6 +914,50 @@
     <script src="/assetsnew/vendor/php-email-form/validate.js"></script>
     <!-- Template Main JS File -->
     <script src="/assetsnew/js/main.js"></script>
+   <%-- <script>
+        function checkActiveSession() {
+            if (localStorage.getItem("activeSession")) {
+                alert("You are already logged in another tab.");
+                window.location.href = "LogOut.aspx"; // Redirect to logout
+                return false; // Stop further execution
+            } else {
+                localStorage.setItem("activeSession", "true");
+                return true; // Allow login
+            }
+        }
+
+        function clearActiveSession() {
+            localStorage.removeItem("activeSession");
+        }
+    </script>--%>
+
+
+   <script>
+       // Check if user is already logged in another tab
+       if (localStorage.getItem("activeSession")) {
+           alert("You are already logged in another tab.");
+           window.location.href = "LogOut.aspx"; // Redirect back to login
+       } else {
+           // Store login session
+           //localStorage.setItem("activeSession", "true");
+       }
+   </script>
+
+    <script>
+        function checkLoginBeforeSubmit() {
+            // Check if user is already logged in another tab
+            if (localStorage.getItem("activeSession")) {
+                alert("You are already logged in another tab.");
+                window.location.href = "LogOut.aspx";
+                return false; // Prevent form submission
+            } else {
+                // Store active session before login
+                localStorage.setItem("activeSession", "true");
+                return true; // Allow form submission
+            }
+        }
+    </script>
+
     <script>
         const loginText = document.querySelector(".title-text .login");
         const loginForm = document.querySelector("form.login");

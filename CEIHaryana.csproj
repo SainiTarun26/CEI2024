@@ -1937,6 +1937,7 @@
     <Content Include="js2\wizard.js" />
     <Content Include="js2\x-editable.js" />
     <Content Include="Login.aspx" />
+    <Content Include="LogOut.aspx" />
     <Content Include="MultiSelect_Css\mobiscroll.javascript.min.css" />
     <Content Include="MultiSelect_Css\mobiscroll.javascript.min.js" />
     <Content Include="MultiSelect_Css\modal.css" />
@@ -1986,6 +1987,7 @@
     <Content Include="ScriptCalendar\jquery-1.11.0.min.js" />
     <Content Include="ScriptCalendar\jquery-ui.css" />
     <Content Include="ScriptCalendar\jquery-ui.min.js" />
+    <Content Include="SiteOwnerLogout.aspx" />
     <Content Include="SiteOwnerPages\ChallanReport.aspx" />
     <Content Include="SiteOwnerPages\CreateInspectionReport.aspx" />
     <Content Include="SiteOwnerPages\CreateTestReports.aspx" />
@@ -3031,6 +3033,13 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LogOut.aspx.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogOut.aspx.designer.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Model\HttpRequestExampleTesting.cs" />
     <Compile Include="Model\Industry\Cei_IndustryServices_Redirection_IncomingJson_Model.cs" />
     <Compile Include="Model\Industry\IndustryApiException.cs" />
@@ -3344,6 +3353,13 @@
       <DependentUpon>Procedure_For_Registration_Lift_Exclator.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SiteOwnerLogout.aspx.cs">
+      <DependentUpon>SiteOwnerLogout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerLogout.aspx.designer.cs">
+      <DependentUpon>SiteOwnerLogout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteOwnerPages\ChallanReport.aspx.cs">
       <DependentUpon>ChallanReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

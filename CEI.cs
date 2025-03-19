@@ -4115,9 +4115,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ToGetDatafromCart", address, CartId);
         }
 
-        public void InsertInspectinData(string CartId, string TotalCapacity, string MaxVoltage, string InstallationType, string TestRportId,
- string IntimationId, string VoltageLevel, string ApplicantType, string District, string Division, string AssignTo,
- string PaymentMode, int TotalAmount, int status, string CreatedBy, int ServiceType)
+        public void InsertInspectinData(string CartId, string TotalCapacity, string MaxVoltage,
+       string AssignTo, int TotalAmount, string CreatedBy, int ServiceType)
         {
             try
             {
@@ -4130,18 +4129,18 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                         cmd.Parameters.AddWithValue("@CartId", CartId);
                         cmd.Parameters.AddWithValue("@TotalCapacity", TotalCapacity);
                         cmd.Parameters.AddWithValue("@MaxVoltage", MaxVoltage);
-                        cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
-                        cmd.Parameters.AddWithValue("@TestRportId", TestRportId);
-                        cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
-                        cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
-                        cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
-                        cmd.Parameters.AddWithValue("@District", District);
-                        cmd.Parameters.AddWithValue("@Division", Division);
+                        //cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+                        //cmd.Parameters.AddWithValue("@TestRportId", TestRportId);
+                        //cmd.Parameters.AddWithValue("@IntimationId", IntimationId);
+                        //cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
+                        //cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
+                        //cmd.Parameters.AddWithValue("@District", District);
+                        //cmd.Parameters.AddWithValue("@Division", Division);
                         cmd.Parameters.AddWithValue("@AssignTo", AssignTo);
                         //cmd.Parameters.AddWithValue("@ServiceType", ServiceType);
-                        cmd.Parameters.AddWithValue("@PaymentMode", PaymentMode);
+                        //cmd.Parameters.AddWithValue("@PaymentMode", PaymentMode);
                         cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
-                        cmd.Parameters.AddWithValue("@status", status);
+                        //cmd.Parameters.AddWithValue("@status", status);
                         cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
                         cmd.Parameters.AddWithValue("@ServiceType", ServiceType);
                         //cmd.Parameters.AddWithValue("@Status", Status);
@@ -4155,7 +4154,6 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
             }
         }
-
         public DataTable GetAssignInspection(string inspectionId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetAssignToViaInpectionId", inspectionId);

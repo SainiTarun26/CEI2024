@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
+using System.Web.UI;
 
 namespace CEIHaryana
 {
@@ -18,7 +19,15 @@ namespace CEIHaryana
         {
             try
             {
-                // int check = Convert.ToInt32(cei.checkLogin(txtUserID.Text, txtPassword.Text));
+
+                if (Session["Username"] != null)
+                {
+                    string script = "alert(\"You are already logged in another tab\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    Response.Redirect("LogOut.aspx", false);
+
+                    return;
+                }
                 int check = Convert.ToInt32(cei.checkUserLogin(txtUserID.Text, txtPassword.Text));
                 string Status = cei.Status();
                 //if (txtPassword.Text == "123456")
@@ -26,6 +35,9 @@ namespace CEIHaryana
                 //    Session["UserId"] = txtUserID.Text;
                 //    Response.Redirect("/ChangePassword.aspx");
                 //}
+
+
+                Session["Username"] = txtUserID.Text;
                 if (check == 1)
                 {
                     if (txtPassword.Text != "123456")
@@ -407,6 +419,8 @@ namespace CEIHaryana
             }
             catch (Exception ex)
             {
+
+                Session["Username"] = "";
             }
         }
     }

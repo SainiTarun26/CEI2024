@@ -27,21 +27,7 @@ namespace CEIHaryana.SiteOwnerPages
                               PrevIntimationId = string.Empty, PrevVoltageLevel = string.Empty,
                               PrevApplicantType = string.Empty, AssignToOfficer = string.Empty;
 
-        protected void BtnDelete_Click(object sender, EventArgs e)
-        {
-            if (Session["SelectedCartID"] != null)
-            {
-                string SelectedCartID = Session["SelectedCartID"].ToString();
-
-                CEI.ToDeleteCart(SelectedCartID);
-                Response.Redirect("/SiteOwnerPages/PeriodicRenewal.aspx", false);
-                Session["SelectedCartID"] = "";
-            }
-            else
-            {
-                Response.Write("<script>alert('No Cart ID selected.');</script>");
-            }
-        }
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -51,18 +37,19 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                     {
+                        hfOwner.Value = Convert.ToString(Session["SiteOwnerId"]);
                         Page.Session["FinalAmount"] = "0";
                         BindAdress();
                     }
                     else
                     {
-                        Response.Redirect("/login.aspx");
+                        Response.Redirect("/SiteOwnerLogout.aspx", false);
                     }
                 }
             }
             catch
             {
-                Response.Redirect("/login.aspx");
+                 Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
         }
         private void BindAdress()
@@ -71,19 +58,27 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                 {
-                    string CreatedBy = Session["SiteOwnerId"].ToString();
-                    DataSet FilterAddress = new DataSet();
-                    FilterAddress = CEI.GetAddressToFilterCart(CreatedBy);
-                    ddlAddress.DataSource = FilterAddress;
-                    ddlAddress.DataTextField = "AddressText";
-                    ddlAddress.DataValueField = "AddressText";
-                    ddlAddress.DataBind();
-                    ddlAddress.Items.Insert(0, new ListItem("Select", "0"));
-                    FilterAddress.Clear();
+                    if (hfOwner.Value == Convert.ToString(Session["SiteOwnerId"]))
+                    {
+                        string CreatedBy = Session["SiteOwnerId"].ToString();
+                        DataSet FilterAddress = new DataSet();
+                        FilterAddress = CEI.GetAddressToFilterCart(CreatedBy);
+                        ddlAddress.DataSource = FilterAddress;
+                        ddlAddress.DataTextField = "AddressText";
+                        ddlAddress.DataValueField = "AddressText";
+                        ddlAddress.DataBind();
+                        ddlAddress.Items.Insert(0, new ListItem("Select", "0"));
+                        FilterAddress.Clear();
+                    }
+                    else
+                    {
+                        Response.Redirect("/SiteOwnerLogout.aspx", false);
+                    }
                 }
             }
             catch (Exception ex)
             {
+                Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
         }
         protected void ddlAddress_SelectedIndexChanged(object sender, EventArgs e)
@@ -106,27 +101,35 @@ namespace CEIHaryana.SiteOwnerPages
         {
             if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
             {
-                string CreatedBy = Session["SiteOwnerId"].ToString();
-                string[] str = txtAddressFilter.Text.Split('|');
-                string address = str[0].Trim();
-                string CartID = str[1].Trim();
-                Session["SelectedCartID"] = CartID;
-
-                DataSet ds = new DataSet();
-                ds = CEI.ShowDataToCart(address, CartID, CreatedBy);
-                if (ds.Tables.Count > 0)
+                if (hfOwner.Value == Convert.ToString(Session["SiteOwnerId"]))
                 {
-                    GridView1.DataSource = ds;
-                    GridView1.DataBind();
+                    string CreatedBy = Session["SiteOwnerId"].ToString();
+                    string[] str = txtAddressFilter.Text.Split('|');
+                    string address = str[0].Trim();
+                    string CartID = str[1].Trim();
+                    Session["SelectedCartID"] = CartID;
+
+                    DataSet ds = new DataSet();
+                    ds = CEI.ShowDataToCart(address, CartID, CreatedBy);
+                    if (ds.Tables.Count > 0)
+                    {
+                        GridView1.DataSource = ds;
+                        GridView1.DataBind();
+                    }
+                    else
+                    {
+                        GridView1.DataSource = null;
+                        GridView1.DataBind();
+                    }
                 }
                 else
                 {
-                    GridView1.DataSource = null;
-                    GridView1.DataBind();
+                    Response.Redirect("/SiteOwnerLogout.aspx", false);             
                 }
             }
             else
             {
+                Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -362,134 +365,115 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                 {
-
-                    string id = Session["SiteOwnerId"].ToString();
-                    string GrandTotalCapacity = Session["TotalCapacity"].ToString();
-                    string HighestVoltage = Session["HighestVoltage"].ToString();
-
-                    int totalAmount = Convert.ToInt32(Session["FinalAmount"]);
-                    string AssignTo = AssignToOfficer;
-                    string Division = string.Empty;
-                    string District = string.Empty;
-                    string StaffAssignedCount = string.Empty;
-                    string StaffAssigned = string.Empty;
-                    string Assigned = string.Empty;
-                    int ServiceType = 0;
-                    string[] str = txtAddressFilter.Text.Split('|');
-                    string address = str[0].Trim();
-                    string CartID = str[1].Trim();
-
-                    DataSet ds = new DataSet();
-                    ds = CEI.ToGetDatafromCart(address, CartID);
-                    if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                    if (hfOwner.Value == Convert.ToString(Session["SiteOwnerId"]))
                     {
-                        foreach (DataRow row in ds.Tables[0].Rows)
+                        string id = Session["SiteOwnerId"].ToString();
+                        string GrandTotalCapacity = Session["TotalCapacity"].ToString();
+                        string HighestVoltage = Session["HighestVoltage"].ToString();
+
+                        int totalAmount = Convert.ToInt32(Session["FinalAmount"]);
+                        string AssignTo = AssignToOfficer;
+                        string Division = string.Empty;
+                        string District = string.Empty;
+                        string StaffAssignedCount = string.Empty;
+                        string StaffAssigned = string.Empty;
+                        string Assigned = string.Empty;
+                        int ServiceType = 0;
+                        string[] str = txtAddressFilter.Text.Split('|');
+                        string address = str[0].Trim();
+                        string CartID = str[1].Trim();
+
+                        DataSet ds = new DataSet();
+                        ds = CEI.ToGetDatafromCart(address, CartID);
+                        if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                         {
-                            Division = row["Division"].ToString();
-                            District = row["District"].ToString();
+                            foreach (DataRow row in ds.Tables[0].Rows)
+                            {
+                                Division = row["Division"].ToString();
+                                District = row["District"].ToString();
+                            }
                         }
-                    }
-                    ds = CEI.GetStaffAssigned(CartID);
+                        ds = CEI.GetStaffAssigned(CartID);
 
-                    if (ds.Tables.Count > 0 && ds != null)
-                    {
-                        StaffAssignedCount = ds.Tables[0].Rows[0]["AssignedCount"].ToString();
-                    }
+                        if (ds.Tables.Count > 0 && ds != null)
+                        {
+                            StaffAssignedCount = ds.Tables[0].Rows[0]["AssignedCount"].ToString();
+                        }
 
-                    if (StaffAssignedCount == "1")
-                    {
-                        StaffAssigned = "JE";
-                        ServiceType = 2;
-                    }
-                    else if (StaffAssignedCount == "2")
-                    {
-                        StaffAssigned = "AE";
-                        ServiceType = 3;
-                    }
+                        if (StaffAssignedCount == "1")
+                        {
+                            StaffAssigned = "JE";
+                            ServiceType = 2;
+                        }
+                        else if (StaffAssignedCount == "2")
+                        {
+                            StaffAssigned = "AE";
+                            ServiceType = 3;
+                        }
+                        else if (StaffAssignedCount == "3")
+                        {
+                            StaffAssigned = "XEN";
+                            ServiceType = 4;
+                        }
+                        else if (StaffAssignedCount == "4")
+                        {
+                            StaffAssigned = "CEI";
+                            ServiceType = 5;
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('your details or component are wrong')", true);
+                            return;
+                        }
 
-                    else if (StaffAssignedCount == "3")
-                    {
-                        StaffAssigned = "XEN";
-                        ServiceType = 4;
-                    }
-                    else if (StaffAssignedCount == "4")
-                    {
-                        StaffAssigned = "CEI";
-                        ServiceType = 5;
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('your details or component are wrong')", true);
-                        return;
-                    }
+                        DataSet dsp = new DataSet();
+                        dsp = CEI.ToGetStaffIdforPeriodic(Division, StaffAssigned, District);
+                        if (dsp.Tables.Count > 0 && dsp.Tables[0].Rows.Count > 0)
+                        {
+                            Assigned = dsp.Tables[0].Rows[0]["StaffUserId"].ToString();
+                        }
+                        CEI.InsertInspectinData(CartID, GrandTotalCapacity, HighestVoltage, Assigned, totalAmount, id, ServiceType);
 
+                        Session["CartID"] = CartID;
+                        Session["TotalCapacity"] = string.Empty;
+                        Session["HighestVoltage"] = string.Empty;
+                        Session["FinalAmount"] = string.Empty;
 
-                    DataSet dsp = new DataSet();
-                    dsp = CEI.ToGetStaffIdforPeriodic(Division, StaffAssigned, District);
-                    if (dsp.Tables.Count > 0 && dsp.Tables[0].Rows.Count > 0)
-                    {
-                        Assigned = dsp.Tables[0].Rows[0]["StaffUserId"].ToString();
-                    }
-
-
-                    int affectedRows = GetAffectedRowsCount(CartID);
-
-                    if (affectedRows == 1)
-                    {
-                        string InspectionId = PrevInspectionId;
-                        DataSet SInsp = new DataSet();
-                        SInsp = CEI.GetDataForSingleInspection(InspectionId);
-
-                        string InstallationType = SInsp.Tables[0].Rows[0]["InstallationT"].ToString();
-                        string TestRportId = SInsp.Tables[0].Rows[0]["TestRportId"].ToString();
-                        string IntimationId = SInsp.Tables[0].Rows[0]["IntimationId"].ToString();
-                        string VoltageLevel = SInsp.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                        string ApplicantType = SInsp.Tables[0].Rows[0]["ApplicantType"].ToString();
-                        PrevInstallationType = InstallationType;
-                        PrevTestReportId = TestRportId;
-                        PrevIntimationId = IntimationId;
-                        PrevVoltageLevel = VoltageLevel;
-                        PrevApplicantType = ApplicantType;
+                        Response.Redirect("/SiteOwnerPages/ProcessInspectionRenewalCart.aspx", false);
                     }
                     else
                     {
-                        string InspectionId = PrevInspectionId;
-                        DataSet SInsp = new DataSet();
-                        SInsp = CEI.GetDataForSingleInspection(InspectionId);
-                        string IntimationId = SInsp.Tables[0].Rows[0]["IntimationId"].ToString();
-                        string ApplicantType = SInsp.Tables[0].Rows[0]["ApplicantType"].ToString();
-                        PrevInstallationType = "Multiple";
-                        PrevTestReportId = "Multiple";
-                        PrevIntimationId = IntimationId;
-                        PrevVoltageLevel = HighestVoltage;
-                        PrevApplicantType = ApplicantType;
+                        Response.Redirect("/SiteOwnerLogout.aspx", false);
                     }
-
-                    CEI.InsertInspectinData(CartID, GrandTotalCapacity, HighestVoltage, PrevInstallationType, PrevTestReportId,
-              PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, Assigned, "Offline", totalAmount, 1, id, ServiceType);
-
-                    Session["CartID"] = CartID;
-                    Session["IDCart"] = string.Empty;
-                    Session["TotalCapacity"] = string.Empty;
-                    Session["HighestVoltage"] = string.Empty;
-                    Session["FinalAmount"] = string.Empty;
-
-                    Response.Redirect("/SiteOwnerPages/ProcessInspectionRenewalCart.aspx", false);
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Cart Submitted Successfully !!!'); window.location='/SiteOwnerPages/ProcessInspectionRenewalCart.aspx';", true);
                 }
             }
             catch (Exception ex)
             {
+                Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
         }
+        //private int GetAffectedRowsCount(string cartId)
+        //{
+        //    int count = 0;
+        //    count = CEI.GetAffectedRowsCountByCartId(cartId);
 
-        private int GetAffectedRowsCount(string cartId)
+        //    return count;
+        //}
+
+        protected void BtnDelete_Click(object sender, EventArgs e)
         {
-            int count = 0;
-            count = CEI.GetAffectedRowsCountByCartId(cartId);
+            if (Session["SelectedCartID"] != null)
+            {
+                string SelectedCartID = Session["SelectedCartID"].ToString();
 
-            return count;
+                CEI.ToDeleteCart(SelectedCartID);
+                Response.Redirect("/SiteOwnerPages/PeriodicRenewal.aspx", false);
+                Session["SelectedCartID"] = "";
+            }
+            else
+            {
+                Response.Write("<script>alert('No Cart ID selected.');</script>");
+            }
         }
-
     }
 }

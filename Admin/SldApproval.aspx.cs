@@ -195,6 +195,14 @@ namespace CEIHaryana.Admin
         {
             if (Convert.ToString(ddlReview.SelectedValue) != "0")
             {
+                if (ddlReview.SelectedItem.ToString() == "Returned")
+                {
+                    if (TxtRejectionReason.Text == "" || TxtRejectionReason.Text == null)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please share return reason.')", true);
+                        return;
+                    }
+                }
                 int ClickCount = 0;
                 ClickCount = Convert.ToInt32(Session["ClickCount"]);
                 if (ClickCount < 1)
