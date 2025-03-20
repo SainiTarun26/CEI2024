@@ -407,7 +407,7 @@
                             <label>
                                 Document Uploaded for
                             </label>
-                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlDocumentFor" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlDocumentFor_SelectedIndexChanged">
+                            <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlDocumentFor" runat="server" AutoPostBack="true">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="Req_state" Text="Required" ErrorMessage="Required" ControlToValidate="ddlDocumentFor" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                         </div>
@@ -683,7 +683,7 @@
                     </div>
                     <asp:HiddenField ID="hdnId" runat="server" />
                     <asp:HiddenField ID="hdnId2" runat="server" />
-
+                    <asp:HiddenField ID="hfOwner" runat="server" />
                     <asp:HiddenField ID="InspectionIdClientSideCheckedRow" runat="server" />
                     <asp:HiddenField ID="InspectionIdCountClientSideCheckedRow" runat="server" />
                     <div>

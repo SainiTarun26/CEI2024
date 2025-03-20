@@ -16,7 +16,7 @@ namespace CEIHaryana
         }
         protected void btnOk_Click(object sender, EventArgs e)
         {
-            //Session["Username"] = null;
+           Session["Username"] = null;
             Session["AdminID"] = null;
             Session["ContractorID"] = null;
             Session["SupervisorID"] = null;
