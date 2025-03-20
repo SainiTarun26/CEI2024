@@ -107,7 +107,7 @@ namespace CEIHaryana.SiteOwnerPages
                     string[] str = txtAddressFilter.Text.Split('|');
                     string address = str[0].Trim();
                     string CartID = str[1].Trim();
-                    Session["SelectedCartID"] = CartID;
+                    //Session["SelectedCartID"] = CartID;
 
                     DataSet ds = new DataSet();
                     ds = CEI.ShowDataToCart(address, CartID, CreatedBy);
@@ -462,17 +462,31 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void BtnDelete_Click(object sender, EventArgs e)
         {
-            if (Session["SelectedCartID"] != null)
+            string[] str = txtAddressFilter.Text.Split('|');
+            if (str.Length > 1)
             {
-                string SelectedCartID = Session["SelectedCartID"].ToString();
+                string selectedCartID = str[1].Trim();
 
-                CEI.ToDeleteCart(SelectedCartID);
-                Response.Redirect("/SiteOwnerPages/PeriodicRenewal.aspx", false);
-                Session["SelectedCartID"] = "";
+                if (!string.IsNullOrEmpty(selectedCartID))
+                {
+                    try
+                    {
+                        CEI.ToDeleteCart(selectedCartID);
+                        Response.Redirect("/SiteOwnerPages/PeriodicRenewal.aspx", false);
+                    }
+                    catch (Exception ex)
+                    {
+                        Response.Write("<script>alert('An error occurred while deleting the cart.');</script>");
+                    }
+                }
+                else
+                {
+                    Response.Write("<script>alert('No Cart ID selected.');</script>");
+                }
             }
             else
             {
-                Response.Write("<script>alert('No Cart ID selected.');</script>");
+                Response.Write("<script>alert('An error occurred while deleting the cart.');</script>");
             }
         }
     }

@@ -932,17 +932,6 @@
     </script>--%>
 
 
-   <script>
-       // Check if user is already logged in another tab
-       if (localStorage.getItem("activeSession")) {
-           alert("You are already logged in another tab.");
-           window.location.href = "LogOut.aspx"; // Redirect back to login
-       } else {
-           // Store login session
-           //localStorage.setItem("activeSession", "true");
-       }
-   </script>
-
     <script>
         function checkLoginBeforeSubmit() {
             // Check if user is already logged in another tab

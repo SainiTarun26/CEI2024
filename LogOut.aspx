@@ -9,12 +9,23 @@
 <body>
     <form id="form1" runat="server">
         <div>
-             <div class="col-md-12" style="text-align: left;">
-     <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">You are already logged in another tab.</h7>\
-                 <br />
-     <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">Please Click <asp:LinkButton ID="btnOk" runat="server" Text="OK" OnClick="btnOk_Click"></asp:LinkButton> for sign Out</h7>
- </div>
+    <p class="style1">
+        You are already logged in another tab.</p>
+          Click  <asp:LinkButton ID="btnOk" runat="server" Text="OK"  OnClientClick="return checkLoginBeforeSubmit();" OnClick="btnOk_Click"></asp:LinkButton>
+ for sign Out
+        <span class="style2">&nbsp;From Previous Session</span>
+</div>
+        <div>
+           
         </div>
     </form>
+      <script>
+      function checkLoginBeforeSubmit() {
+          // Check if user is already logged in another tab
+          localStorage.removeItem('activeSession');
+          sessionStorage.clear();
+          window.close();
+      }
+      </script>
 </body>
 </html>

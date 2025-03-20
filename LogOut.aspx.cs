@@ -16,33 +16,34 @@ namespace CEIHaryana
         }
         protected void btnOk_Click(object sender, EventArgs e)
         {
+            //Session["Username"] = null;
+            Session["AdminID"] = null;
+            Session["ContractorID"] = null;
+            Session["SupervisorID"] = null;
+            Session["SiteOwnerId"] = null;
+            Session["StaffID"] = null;
+            Session["NewUserId"] = null;
             Session.Abandon();
             Session.Clear();
             Session.RemoveAll();
 
-            if (Request.Cookies["ASP.NET_SessionId"] != null)
-            {
-                HttpCookie sessionCookie = new HttpCookie("ASP.NET_SessionId", "");
-                sessionCookie.Expires = DateTime.Now.AddDays(-30); // Expire the cookie
-                Response.Cookies.Add(sessionCookie);
-            }
-            if (Request.Cookies["UserActiveSession"] != null)
-            {
-                HttpCookie userSessionCookie = new HttpCookie("UserActiveSession", "");
-                userSessionCookie.Expires = DateTime.Now.AddDays(-30);
-                Response.Cookies.Add(userSessionCookie);
-            }
-            Response.Write("<script>localStorage.removeItem('activeSession'); sessionStorage.clear(); window.location='Login.aspx';</script>");
-            Response.End();
-            Process[] AllProcesses = Process.GetProcesses();
-            foreach (var process in AllProcesses)
-            {
-                if (process.MainWindowTitle != "")
-                {
-                     process.Kill();
-                }
-            }
-            Response.Redirect("Login.aspx", false);
+            //if (Request.Cookies["ASP.NET_SessionId"] != null)
+            //{
+            //    HttpCookie sessionCookie = new HttpCookie("ASP.NET_SessionId", "");
+            //    sessionCookie.Expires = DateTime.Now.AddDays(-30); // Expire the cookie
+            //    Response.Cookies.Add(sessionCookie);
+            //}
+            //if (Request.Cookies["UserActiveSession"] != null)
+            //{
+            //    HttpCookie userSessionCookie = new HttpCookie("UserActiveSession", "");
+            //    userSessionCookie.Expires = DateTime.Now.AddDays(-30);
+            //    Response.Cookies.Add(userSessionCookie);
+            //}
+            Response.Write("<script> window.close(); localStorage.removeItem('activeSession'); sessionStorage.clear(); window.close();</script>");
+            Response.Redirect("https://www.google.com", false);
+
+            
+           // Response.Redirect("Login.aspx", false);
             
         }
     }

@@ -29,21 +29,7 @@ namespace CEIHaryana.Industry_Master
                               PrevIntimationId = string.Empty, PrevVoltageLevel = string.Empty,
                               PrevApplicantType = string.Empty, AssignToOfficer = string.Empty;
 
-        protected void BtnDelete_Click(object sender, EventArgs e)
-        {
-            if (Session["SelectedCartID_Industry"] != null)
-            {
-                string SelectedCartID_Industry = Session["SelectedCartID_Industry"].ToString();
-
-                CEI.ToDeleteCart(SelectedCartID_Industry);
-                Response.Redirect("/Industry_Master/PeriodicRenewal_Industry.aspx", false);
-                Session["SelectedCartID_Industry"] = "";
-            }
-            else
-            {
-                Response.Write("<script>alert('No Cart ID selected.');</script>");
-            }
-        }
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -124,7 +110,7 @@ namespace CEIHaryana.Industry_Master
                 string[] str = txtAddressFilter.Text.Split('|');
                 string address = str[0].Trim();
                 string CartID = str[1].Trim();
-                Session["SelectedCartID_Industry"] = CartID;
+                //Session["SelectedCartID_Industry"] = CartID;
                 DataSet ds = new DataSet();
                 ds = CEI.ShowDataToCart_Industries(address, CartID, CreatedBy);
                 if (ds.Tables.Count > 0)
@@ -446,42 +432,48 @@ namespace CEIHaryana.Industry_Master
                     }
 
 
-                    int affectedRows = GetAffectedRowsCount(CartID);
+              //      //int affectedRows = GetAffectedRowsCount(CartID);
 
-                    if (affectedRows == 1)
-                    {
-                        string InspectionId = PrevInspectionId;
-                        DataSet SInsp = new DataSet();
-                        SInsp = CEI.GetDataForSingleInspection_Industries(InspectionId);
+              //      //if (affectedRows == 1)
+              //      //{
+              //      //    string InspectionId = PrevInspectionId;
+              //      //    DataSet SInsp = new DataSet();
+              //      //    SInsp = CEI.GetDataForSingleInspection_Industries(InspectionId);
 
-                        string InstallationType = SInsp.Tables[0].Rows[0]["InstallationT"].ToString();
-                        string TestRportId = SInsp.Tables[0].Rows[0]["TestRportId"].ToString();
-                        string IntimationId = SInsp.Tables[0].Rows[0]["IntimationId"].ToString();
-                        string VoltageLevel = SInsp.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                        string ApplicantType = SInsp.Tables[0].Rows[0]["ApplicantType"].ToString();
-                        PrevInstallationType = InstallationType;
-                        PrevTestReportId = TestRportId;
-                        PrevIntimationId = IntimationId;
-                        PrevVoltageLevel = VoltageLevel;
-                        PrevApplicantType = ApplicantType;
-                    }
-                    else
-                    {
-                        string InspectionId = PrevInspectionId;
-                        DataSet SInsp = new DataSet();
-                        SInsp = CEI.GetDataForSingleInspection_Industries(InspectionId);
-                        string IntimationId = SInsp.Tables[0].Rows[0]["IntimationId"].ToString();
-                        string ApplicantType = SInsp.Tables[0].Rows[0]["ApplicantType"].ToString();
-                        PrevInstallationType = "Multiple";
-                        PrevTestReportId = "Multiple";
-                        PrevIntimationId = IntimationId;
-                        PrevVoltageLevel = HighestVoltage;
-                        PrevApplicantType = ApplicantType;
-                    }
+              //      //    string InstallationType = SInsp.Tables[0].Rows[0]["InstallationT"].ToString();
+              //      //    string TestRportId = SInsp.Tables[0].Rows[0]["TestRportId"].ToString();
+              //      //    string IntimationId = SInsp.Tables[0].Rows[0]["IntimationId"].ToString();
+              //      //    string VoltageLevel = SInsp.Tables[0].Rows[0]["VoltageLevel"].ToString();
+              //      //    string ApplicantType = SInsp.Tables[0].Rows[0]["ApplicantType"].ToString();
+              //      //    PrevInstallationType = InstallationType;
+              //      //    PrevTestReportId = TestRportId;
+              //      //    PrevIntimationId = IntimationId;
+              //      //    PrevVoltageLevel = VoltageLevel;
+              //      //    PrevApplicantType = ApplicantType;
+              //      //}
+              //      //else
+              //      //{
+              //      //    string InspectionId = PrevInspectionId;
+              //      //    DataSet SInsp = new DataSet();
+              //      //    SInsp = CEI.GetDataForSingleInspection_Industries(InspectionId);
+              //      //    string IntimationId = SInsp.Tables[0].Rows[0]["IntimationId"].ToString();
+              //      //    string ApplicantType = SInsp.Tables[0].Rows[0]["ApplicantType"].ToString();
+              //      //    PrevInstallationType = "Multiple";
+              //      //    PrevTestReportId = "Multiple";
+              //      //    PrevIntimationId = IntimationId;
+              //      //    PrevVoltageLevel = HighestVoltage;
+              //      //    PrevApplicantType = ApplicantType;
+              //      //}
 
-                    CEI.InsertInspectinData_Industries(CartID, GrandTotalCapacity, HighestVoltage, PrevInstallationType, PrevTestReportId,
-              PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, Assigned, "Offline", totalAmount, 1, id, ServiceType);
 
+              ////      CEI.InsertInspectinData_Industries(CartID, GrandTotalCapacity, HighestVoltage, PrevInstallationType, PrevTestReportId,
+              ////PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, Assigned, "Offline", totalAmount, 1, id, ServiceType);
+
+
+                    CEI.InsertInspectinData_Industries(CartID, GrandTotalCapacity, HighestVoltage, 
+              Assigned, totalAmount, id, ServiceType);
+
+                   
                     Session["CartID_Industry"] = CartID;
                     Session["IDCart_Industry"] = string.Empty;
                     Session["TotalCapacity_Industry"] = string.Empty;
@@ -499,13 +491,13 @@ namespace CEIHaryana.Industry_Master
             }
         }
 
-        private int GetAffectedRowsCount(string cartId)
-        {
-            int count = 0;
-            count = CEI.GetAffectedRowsCountByCartId_Industries(cartId);
+        //private int GetAffectedRowsCount(string cartId)
+        //{
+        //    int count = 0;
+        //    count = CEI.GetAffectedRowsCountByCartId_Industries(cartId);
 
-            return count;
-        }
+        //    return count;
+        //}
 
         private bool CheckInspectionStatus()
         {
@@ -538,6 +530,48 @@ namespace CEIHaryana.Industry_Master
                     return result == 1;
                 }
             }
+        }
+
+        protected void BtnDelete_Click(object sender, EventArgs e)
+        {
+            string[] str = txtAddressFilter.Text.Split('|');
+            if (str.Length > 1)
+            {
+                string SelectedCartID_Industry = str[1].Trim();
+
+                if (!string.IsNullOrEmpty(SelectedCartID_Industry))
+                {
+                    try
+                    {
+                        CEI.ToDeleteCart(SelectedCartID_Industry);
+                        Response.Redirect("/SiteOwnerPages/PeriodicRenewal.aspx", false);
+                    }
+                    catch (Exception ex)
+                    {
+                        Response.Write("<script>alert('An error occurred while deleting the cart.');</script>");
+                    }
+                }
+                else
+                {
+                    Response.Write("<script>alert('No Cart ID selected.');</script>");
+                }
+            }
+            else
+            {
+                Response.Write("<script>alert('An error occurred while deleting the cart.');</script>");
+            }
+            //if (Session["SelectedCartID_Industry"] != null)
+            //{
+            //    string SelectedCartID_Industry = Session["SelectedCartID_Industry"].ToString();
+
+            //    CEI.ToDeleteCart(SelectedCartID_Industry);
+            //    Response.Redirect("/Industry_Master/PeriodicRenewal_Industry.aspx", false);
+            //    Session["SelectedCartID_Industry"] = "";
+            //}
+            //else
+            //{
+            //    Response.Write("<script>alert('No Cart ID selected.');</script>");
+            //}
         }
     }
 }

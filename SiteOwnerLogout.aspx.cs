@@ -17,7 +17,7 @@ namespace CEIHaryana
             Session["CartID"] = "";
             Session["TotalCapacity"] = "";
             Session["FinalAmount"] = "";
-            Session["SelectedCartID"] = "";
+           // Session["SelectedCartID"] = "";
 
 
             Session["IDCart"] = "";
