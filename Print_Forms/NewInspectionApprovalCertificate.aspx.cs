@@ -96,6 +96,8 @@ namespace CEIHaryana.Print_Forms
                         suggestion4.InnerText = str[3];
                         suggestion4.Visible = true;
                     }
+
+                    LblMonth.Text = dt.Rows[0]["FinalMonth"].ToString();
                     // lblVoltage.Text = ds.Tables[2].Rows[0]["InstallationDetails"].ToString();
                     // Year.Text = dt.Rows[0]["ApprovedYear"].ToString();
                     myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["Signature"]);

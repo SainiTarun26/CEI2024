@@ -269,7 +269,7 @@
                                                         <%#Container.DataItemIndex+1 %>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
+                                                <asp:BoundField DataField="InstallationName" HeaderText="Installation Type">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>
@@ -298,7 +298,7 @@
                                         </div>
 
                                         <p style="margin-left: 8%;">
-                                            Consistent compliance of the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) Regualtions,
+                                            Consistent compliance of the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) Regulations,
  2023 may be ensured in these installations at your end. Please note that it shall be the responsibility of the owner 
 of the electrical installations to maintain and operate the installations in a condition free from danger and as recommended
 by the manufacturer or by the relevant code of practice of the bureau of Indian Standards.
