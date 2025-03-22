@@ -350,7 +350,7 @@ by the manufacturer or by the relevant code of practice of the bureau of Indian 
 
     </div>
     <div class="col-5" style="margin-left: 65%;margin-top:-85px;">
-        <p style="text-align: center; font-weight: bold; bottom: 10PX;">
+        <p style="text-align: center; font-weight: bold; bottom: 10PX;margin-top:100px;">
             <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
             <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
             <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />

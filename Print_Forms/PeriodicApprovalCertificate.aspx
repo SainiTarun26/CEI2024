@@ -126,6 +126,17 @@
             margin-left: 8%;
             width: 92%;
         }
+        @media print {
+    .newdivision {
+        page-break-before: auto; /* Automatically decide if a new page is needed */
+        break-inside: avoid; /* Prevent splitting content inside */
+    }
+}
+
+        .newdivision {
+    padding-left: 15px;
+    padding-right: 15px;
+}
     </style>
 
     <script type="text/javascript">
@@ -290,14 +301,18 @@
                                             The above mentioned installation/s was/were inspected by this Department and the same was/were found generally Complying with the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) 
                                         Regulations, 2023. However it is advised that:-
                                         </p>
-                                        <div style="display: grid; grid-template-rows: auto auto; font-size: 18px; margin-left: 80px;">
+                                        <div style="display: grid; grid-template-rows: auto auto; font-size: 18px; margin-left: 80px;text-align:justify;">
                                             <span id="suggestion1" runat="server"></span>
                                             <span id="suggestion2" runat="server"></span>
                                             <span id="suggestion3" runat="server"></span>
                                             <span id="suggestion4" runat="server" style="margin-bottom: 15px !important;"></span>
                                         </div>
-
-                                        <p style="margin-left: 8%;">
+                                    </p>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="newdivision">
+                                                                    <p style="margin-left: 8%;">
                                             Consistent compliance of the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) Regulations,
  2023 may be ensured in these installations at your end. Please note that it shall be the responsibility of the owner 
 of the electrical installations to maintain and operate the installations in a condition free from danger and as recommended
@@ -315,10 +330,12 @@ by the manufacturer or by the relevant code of practice of the bureau of Indian 
                                             <%--  <p>For Next Inspection shall due in--%>
                                             <%--  <asp:Label ID="NextInspection" runat="server" Text="date"></asp:Label></p>--%>
                                         </p>
-                                    </p>
+                                <div class="row" style="padding-right: 5px !important;">
+                                    <div class="col-md-12" style="padding-left:65px;text-align:justify;">
+                                    <asp:Label ID="lblNote" runat="server"  Style="margin-left:0%;font-size:18px;"></asp:Label>
                                 </div>
-                            </div>
-                            <br />
+                                    </div>
+
                             <div class="row" style="padding-right: 5px !important;">
                                 <div class="col-12" style="text-align: end; padding-left: 10px;">
                                     <%-- <img src="../Assets/Line_Through_Name-removebg-preview.png" width="300" height="90" style="position: fixed; bottom: 140px; margin-left: -300px;" />--%>
@@ -328,17 +345,18 @@ by the manufacturer or by the relevant code of practice of the bureau of Indian 
                             </div>
                             <div class="row">
                                 <div class="col-8" style="text-align:justify;">
-                                             <asp:Label ID="lblNote" runat="server"  Style="margin-left:0%; font-weight:bold;font-size:15px;"></asp:Label>
+<%--                                             <asp:Label ID="lblNote" runat="server"  Style="margin-left:0%; font-weight:bold;font-size:15px;"></asp:Label>--%>
 
                                 </div>
                                 <div class="col-5" style="margin-left: 65%;margin-top:-85px;">
-                                    <p style="text-align: center; font-weight: bold; bottom: 10PX;">
+                                    <p style="text-align: center; font-weight: bold; bottom: 10PX;margin-top:90px;">
                                         <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
                                         <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
                                         <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />
                                     </p>
                                 </div>
                             </div>
+                                </div>
                                                      </div>
                     </div>
                 </div>

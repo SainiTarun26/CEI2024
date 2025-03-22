@@ -55,6 +55,8 @@ namespace CEIHaryana
                             {
                                 Session["AdminID"] = txtUserID.Text;
                                 Session["logintype"] = "Admin";
+                                Response.Cookies["AdminID"].Value = txtUserID.Text;
+                                Response.Cookies["logintype"].Value = "Admin";
                                 Response.Redirect("Admin/AdminMaster.aspx", false);
 
                             }
@@ -85,6 +87,8 @@ namespace CEIHaryana
                                 {
                                     Session["ContractorID"] = txtUserID.Text;
                                     Session["logintype"] = "Contractor";
+                                    Response.Cookies["ContractorID"].Value = txtUserID.Text;
+                                    Response.Cookies["logintype"].Value = "Contractor";
                                     Response.Redirect("Contractor/Work_Intimation.aspx", false);
 
                                 }
@@ -123,6 +127,8 @@ namespace CEIHaryana
                             {
                                 Session["AdminID"] = txtUserID.Text;
                                 Session["logintype"] = "Assistant";
+                                Response.Cookies["AdminID"].Value = txtUserID.Text;
+                                Response.Cookies["logintype"].Value = "Assistant";
                                 Response.Redirect("Admin/AddContractorDetails.aspx", false);
                             }
                         }
@@ -149,6 +155,8 @@ namespace CEIHaryana
                             {
                                 Session["AdminID"] = txtUserID.Text;
                                 Session["logintype"] = "Clerk";
+                                Response.Cookies["AdminID"].Value = txtUserID.Text;
+                                Response.Cookies["logintype"].Value = "Clerk";
 
                                 // Response.Redirect("Admin/AddContractorDetails.aspx", false);
                             }
@@ -177,6 +185,8 @@ namespace CEIHaryana
                             {
                                 Session["AdminID"] = txtUserID.Text;
                                 Session["logintype"] = "SeniorScale";
+                                Response.Cookies["AdminID"].Value = txtUserID.Text;
+                                Response.Cookies["logintype"].Value = "SeniorScale";
                                 Response.Redirect("Admin/AddContractorDetails.aspx", false);
                             }
                         }
@@ -204,6 +214,8 @@ namespace CEIHaryana
                             {
                                 Session["SupervisorID"] = txtUserID.Text;
                                 Session["logintype"] = "Supervisor";
+                                Response.Cookies["SupervisorID"].Value = txtUserID.Text;
+                                Response.Cookies["logintype"].Value = "Supervisor";
                                 Response.Redirect("/Supervisor/IntimationData.aspx", false);
                             }
                         }
@@ -229,6 +241,8 @@ namespace CEIHaryana
                             {
                                 Session["SiteOwnerId"] = txtUserID.Text;
                                 Session["logintype"] = "SiteOwner";
+                                Response.Cookies["SiteOwnerId"].Value = txtUserID.Text;
+                                Response.Cookies["logintype"].Value = "SiteOwner";
                                 Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);
                             }
                         }
@@ -254,6 +268,8 @@ namespace CEIHaryana
                             {
                                 Session["StaffID"] = txtUserID.Text;
                                 Session["logintype"] = "Staff";
+                                Response.Cookies["StaffID"].Value = txtUserID.Text;
+                                Response.Cookies["logintype"].Value = "Staff";
                                 Response.Redirect("Officers/OfficerDashboard.aspx", false);
                             }
                         }
@@ -281,6 +297,8 @@ namespace CEIHaryana
                                 Session["NewUserId"] = txtUserID.Text;
                                 //Session["logintype"] = "NewUser";
                                 Session["logintype"] = "Registered User";
+                                Response.Cookies["NewUserId"].Value = txtUserID.Text;
+                                Response.Cookies["logintype"].Value = "NewUser";
                             }
 
                             DataSet ds = new DataSet();

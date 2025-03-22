@@ -222,15 +222,6 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl suggestion4;
 
         /// <summary>
-        /// myImage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image myImage;
-
-        /// <summary>
         /// lblNote control.
         /// </summary>
         /// <remarks>
@@ -238,6 +229,15 @@ namespace CEIHaryana.Print_Forms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNote;
+
+        /// <summary>
+        /// myImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image myImage;
 
         /// <summary>
         /// lblstamp1 control.

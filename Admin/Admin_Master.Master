@@ -463,19 +463,19 @@
                                     <span class="menu-title">Upload Signature</span>
                                 </a>
                             </li>
-                            <li class="nav-item" id="SLDRequest" runat="server" visible="false">
+                            <li class="nav-item" id="SLDRequest" runat="server">
                                 <a class="nav-link" href="/Admin/SldApproval.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">SLD Request Recevied</span>
                                 </a>
                             </li>
-                            <li class="nav-item" id="SLDApproval" runat="server" visible="false">
+                            <li class="nav-item" id="SLDApproval" runat="server">
                                 <a class="nav-link" href="/Admin/SldApprovalRequest.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">SLD Approval Request</span>
                                 </a>
                             </li>
-                            <li class="nav-item" id="SLDHistory" runat="server" visible="false">
+                            <li class="nav-item" id="SLDHistory" runat="server">
                                 <a class="nav-link" href="/Admin/SLDHistory.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">SLD History</span>

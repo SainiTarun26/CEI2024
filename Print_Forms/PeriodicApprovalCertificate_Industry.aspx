@@ -21,6 +21,15 @@
     <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
     <style>
+                @media print {
+    .newdivision {
+        page-break-before: always;
+    }
+}
+        .newdivision {
+    padding-left: 15px;
+    padding-right: 15px;
+}
         .row {
             padding-left: 25px !important;
             padding-right: 25px !important;
@@ -281,35 +290,46 @@
                                             </Columns>
                                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                                         </asp:GridView>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>     The above mentioned installation/s was/were inspected by this Department and the same was/were found generally compiling with the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) 
-                                        Regulations, 2023. However it is advised that:-</p>
-                                        <div style="display: grid; grid-template-rows: auto auto; font-size: 18px; margin-left: 80px;">
-     <span id="suggestion1" runat="server"></span>
-     <span id="suggestion2" runat="server"></span>
-     <span id="suggestion3" runat="server"></span>
-     <span id="suggestion4" runat="server" style="margin-bottom: 15px !important;"></span>
- </div>
-
-                                        <p>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consistent complicance of the relevant provisions of CEA Regulations, 2010 be ensured in the installation/s at your end and the electrical installation/s be maintained and
-                                            operated in a condition free from danger and as recommended by the Manufacturer or by the relevant code of practice of the Bureau of Indian Standards.
-                                        <br />
-
-
-                                            <br />
-                                            <%-- <div style="display:flex;">
-                                            <span style="font-weight: bold; font-size: 18px; border: none !important;">Note:-</span>&nbsp;
-                                            <p>Further the firm is not absolved of its responsibility to run the D.G sets as per
-                                            running hour restricted in the general classification regarding use the D.g sets in NCR as per latest Directions N0.77 issued on dated
-                                            <asp:Label ID="NoteDate" runat="server" Text="date"></asp:Label></p></div>--%>
-
-                                            <%--  <p>For Next Inspection shall due in--%>
-                                            <%--  <asp:Label ID="NextInspection" runat="server" Text="date"></asp:Label></p>--%>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>
+                                            The above mentioned installation/s was/were inspected by this Department and the same was/were found generally compiling with the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) 
+                                        Regulations, 2023. However it is advised that:-
                                         </p>
+                                        <div style="display: grid; grid-template-rows: auto auto; font-size: 18px; margin-left: 80px;">
+                                            <span id="suggestion1" runat="server"></span>
+                                            <span id="suggestion2" runat="server"></span>
+                                            <span id="suggestion3" runat="server"></span>
+                                            <span id="suggestion4" runat="server" style="margin-bottom: 15px !important;"></span>
+                                        </div>
+
+
                                     </p>
                                 </div>
                             </div>
                             <br />
+                            <div class="newdivision">
+                                <p style="margin-left: 8%;">
+                                    Consistent compliance of the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) Regualtions,
+ 2023 may be ensured in these installations at your end. Please note that it shall be the responsibility of the owner 
+of the electrical installations to maintain and operate the installations in a condition free from danger and as recommended
+by the manufacturer or by the relevant code of practice of the bureau of Indian Standards.
+                                        <br />
+
+
+                                    <br />
+                                    <%-- <div style="display:flex;">
+                                            <span style="font-weight: bold; font-size: 22px; border: none !important;">Note:-</span>&nbsp;
+                                            <p>Further the firm is not absolved of its responsibility to run the D.G sets as per
+                                            running hour restricted in the general classification regarding use the D.g sets in NCR as per latest Directions N0.77 issued on dated
+                                            <asp:Label ID="NoteDate" runat="server" Text="date"></asp:Label></p></div>--%>
+
+                                    <%--  <p>For Next Inspection shall due in--%>
+                                    <%--  <asp:Label ID="NextInspection" runat="server" Text="date"></asp:Label></p>--%>
+                                </p>
+                                <div class="row" style="padding-right: 5px !important;">
+                                    <div class="col-md-12" style="padding-left: 65px; text-align: justify;">
+                                        <asp:Label ID="lblNote" runat="server" Style="margin-left: 0%; font-size: 18px;"></asp:Label>
+ </div>
+     </div>
                             <div class="row" style="padding-right: 5px !important;">
                                 <div class="col-12" style="text-align: end; padding-left: 10px;">
                                     <%-- <img src="../Assets/Line_Through_Name-removebg-preview.png" width="300" height="90" style="position: fixed; bottom: 140px; margin-left: -300px;" />--%>
@@ -317,20 +337,20 @@
                                     <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
                                 </div>
                             </div>
-                             <div class="row">
-     <div class="col-8" style="text-align:justify;">
-                  <asp:Label ID="lblNote" runat="server"  Style="margin-left:0%; font-weight:bold;font-size:15px;"></asp:Label>
+                            <div class="row">
+                                <div class="col-8" style="text-align:justify;">
+<%--                                             <asp:Label ID="lblNote" runat="server"  Style="margin-left:0%; font-weight:bold;font-size:15px;"></asp:Label>--%>
 
-     </div>
-     <div class="col-5" style="margin-left: 65%;margin-top:-85px;">
-         <p style="text-align: center; font-weight: bold; bottom: 10PX;">
-             <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
-             <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
-             <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />
-         </p>
-     </div>
- </div>
-
+                                </div>
+                                <div class="col-5" style="margin-left: 65%;margin-top:-85px;">
+                                    <p style="text-align: center; font-weight: bold; bottom: 10PX;">
+                                        <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
+                                        <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
+                                        <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />
+                                    </p>
+                                </div>
+                            </div>
+                                </div>
                         </div>
                     </div>
                 </div>
