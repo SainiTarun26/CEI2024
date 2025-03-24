@@ -65,7 +65,9 @@ namespace CEIHaryana.Officers
                 }
             }
             catch (Exception ex)
-            {}
+            {
+                Response.Redirect("/OfficerLogout.aspx");
+            }
         }
         protected void GridView3_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {

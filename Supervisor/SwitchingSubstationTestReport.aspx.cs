@@ -34,7 +34,7 @@ namespace CEIHaryana.Supervisor
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/SupervisorLogout.aspx");
             }
         }
         private void ddlLoadBindVoltage()

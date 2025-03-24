@@ -26,7 +26,7 @@ namespace CEIHaryana.Officers
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/OfficerLogout.aspx");
             }
             
         }

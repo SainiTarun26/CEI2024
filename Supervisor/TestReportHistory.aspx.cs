@@ -29,7 +29,7 @@ namespace CEIHaryana.Supervisor
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/SupervisorLogout.aspx");
             }
         }
         public void GridViewBind()

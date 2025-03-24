@@ -29,7 +29,7 @@ namespace CEIHaryana.Supervisor
                     }
                 }
             }
-            catch { }
+            catch {  Response.Redirect("/SupervisorLogout.aspx"); }
         }
         private void getWorkIntimationData()
         {

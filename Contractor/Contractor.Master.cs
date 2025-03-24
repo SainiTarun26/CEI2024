@@ -21,18 +21,18 @@ namespace CEIHaryana.Contractor
                 {
 
                     lblName.Text = Convert.ToString(Session["ContractorID"]);
-                    //txtLoginType.Text = "Contractor";
+                    //txtContractorLogoutType.Text = "Contractor";
                 }
                 else if (Session["ContractorID"] == null)
                 {
                     HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
                     HttpContext.Current.Response.Cache.SetNoStore();
-                    Response.Redirect("/Login.aspx");
+                    Response.Redirect("/ContractorLogout.aspx");
                 }
                 else
                 {
                     Session["ContractorID"] = "";
-                    Response.Redirect("/Login.aspx");
+                    Response.Redirect("/ContractorLogout.aspx");
                 }
                 GetContractorNotifications();
                 GetContractorName();
@@ -45,13 +45,13 @@ namespace CEIHaryana.Contractor
             catch (Exception ex)
             {
                 Session["ContractorID"] = "";
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/ContractorLogout.aspx");
             }
         }
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/ContractorLogout.aspx");
         }
 
         public void GetContractorNotifications()

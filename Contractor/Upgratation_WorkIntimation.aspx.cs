@@ -75,13 +75,13 @@ namespace CEIHaryana.Contractor
                     }
                     else
                     {
-                        Response.Redirect("/Login.aspx");
+                        Response.Redirect("/ContractorLogout.aspx");
                     }
                 }
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/ContractorLogout.aspx");
             }
         }
         protected void GetDetails()

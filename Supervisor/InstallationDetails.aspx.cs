@@ -35,13 +35,13 @@ namespace CEIHaryana.Supervisor
                     }
                     else
                     {
-                        Response.Redirect("/Login.aspx");
+                        Response.Redirect("/SupervisorLogout.aspx");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Response.Redirect("/login.aspx");
+                Response.Redirect("/SupervisorLogout.aspx");
             }
         }
 

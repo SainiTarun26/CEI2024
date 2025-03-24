@@ -28,7 +28,7 @@ namespace CEIHaryana.Contractor
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/ContractorLogout.aspx");
             }
         }
 

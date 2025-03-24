@@ -31,19 +31,19 @@ namespace CEIHaryana.Supervisor
                 {
                     HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
                     HttpContext.Current.Response.Cache.SetNoStore();
-                    Response.Redirect("/Login.aspx");
+                    Response.Redirect("/SupervisorLogout.aspx");
                 }
                 else
                 {
 
                     Session["SupervisorID"] = "";
-                    Response.Redirect("/Login.aspx");
+                    Response.Redirect("/SupervisorLogout.aspx");
                 }
             }
             catch (Exception Ex)
             {
                 Session["SupervisorID"] = "";
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/SupervisorLogout.aspx");
             }
         }
 
@@ -51,8 +51,8 @@ namespace CEIHaryana.Supervisor
         {
             Session.Abandon();
             Response.Cookies["SupervisorID"].Expires = DateTime.Now.AddDays(-1);
-            Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
-            Response.Redirect("/Login.aspx");
+            Response.Cookies["SupervisorLogouttype"].Expires = DateTime.Now.AddDays(-1);
+            Response.Redirect("/SupervisorLogout.aspx");
         }
 
         public void GetSupervisorName()

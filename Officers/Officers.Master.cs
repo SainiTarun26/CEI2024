@@ -23,25 +23,25 @@ namespace CEIHaryana.Officers
                 {
                     HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
                     HttpContext.Current.Response.Cache.SetNoStore();
-                    Response.Redirect("/Login.aspx");
+                    Response.Redirect("/OfficerLogout.aspx");
                 }
                 else
                 {
 
                     Session["StaffID"] = "";
-                    Response.Redirect("/Login.aspx");
+                    Response.Redirect("/OfficerLogout.aspx");
                 }
             }
             catch
             {
                 Session["StaffID"] = "";
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/OfficerLogout.aspx");
             }
         }
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/OfficerLogout.aspx");
         }
 
         protected void BtnChangePassword_Click(object sender, EventArgs e)

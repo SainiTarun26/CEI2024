@@ -78,13 +78,13 @@ namespace CEIHaryana.Contractor
                     }
                     else
                     {
-                        Response.Redirect("/Login.aspx");
+                        Response.Redirect("/ContractorLogout.aspx");
                     }
                 }
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/ContractorLogout.aspx");
             }
         }
         protected void GetDetails()
@@ -1464,7 +1464,7 @@ namespace CEIHaryana.Contractor
 
                     if (Session["ContractorID"] == null)
                     {
-                        Response.Redirect("/Login.aspx", false);
+                        Response.Redirect("/ContractorLogout.aspx", false);
                         return;
                     }
 

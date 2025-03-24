@@ -120,12 +120,12 @@ namespace CEIHaryana.Supervisor
                 }
                 else
                 {
-                    Response.Redirect("/Login.aspx");
+                    Response.Redirect("/SupervisorLogout.aspx");
                 }
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/SupervisorLogout.aspx");
             }
         }
         protected void BtnBack_Click(object sender, EventArgs e)

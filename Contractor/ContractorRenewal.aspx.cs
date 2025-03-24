@@ -97,7 +97,7 @@ namespace CEIHaryana.Contractor
                     DdlDistrict.SelectedValue = District;
                 }
             }
-            catch { }
+            catch { ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('Error in Fetching Details.Please try again later.');", true); }
         }
         private void ddlLoadBindState()
         {

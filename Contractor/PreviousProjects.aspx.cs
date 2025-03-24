@@ -34,7 +34,7 @@ namespace CEIHaryana.Contractor
             }
             catch (Exception ex)
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/ContractorLogout.aspx");
             }
         }
         private void getWorkIntimationData()

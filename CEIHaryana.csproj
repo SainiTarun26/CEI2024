@@ -1576,6 +1576,7 @@
     <Content Include="Assets\new1.gif" />
     <Content Include="Assets\style.css" />
     <Content Include="ChangePassword.aspx" />
+    <Content Include="ContractorLogout.aspx" />
     <Content Include="Contractor\Approved_Test_Reports.aspx" />
     <Content Include="Contractor\Attach_DeAttach_Staff.aspx" />
     <Content Include="Contractor\ContractorRenewal.aspx" />
@@ -1942,6 +1943,7 @@
     <Content Include="MultiSelect_Css\mobiscroll.javascript.min.js" />
     <Content Include="MultiSelect_Css\modal.css" />
     <Content Include="MultiSelect_Css\modal.js" />
+    <Content Include="OfficerLogout.aspx" />
     <Content Include="Officers\AcceptedOrReject.aspx" />
     <Content Include="Officers\ActionTakenInspections.aspx" />
     <Content Include="Officers\ConsolidatedReport.aspx" />
@@ -2046,6 +2048,7 @@
     <Content Include="StaticPage1.aspx" />
     <Content Include="StaticPage2.aspx" />
     <Content Include="StaticPage3.aspx" />
+    <Content Include="SupervisorLogout.aspx" />
     <Content Include="Supervisor\GeneratingSetTestReport.aspx" />
     <Content Include="Supervisor\InstallationDetails.aspx" />
     <Content Include="Supervisor\IntimationData.aspx" />
@@ -2489,6 +2492,13 @@
     </Compile>
     <Compile Include="ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContractorLogout.aspx.cs">
+      <DependentUpon>ContractorLogout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContractorLogout.aspx.designer.cs">
+      <DependentUpon>ContractorLogout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contractor\Approved_Test_Reports.aspx.cs">
       <DependentUpon>Approved_Test_Reports.aspx</DependentUpon>
@@ -3051,6 +3061,13 @@
     <Compile Include="Model\Industry\TokenManagerConst.cs" />
     <Compile Include="Model\Industry\TokenManagerException.cs" />
     <Compile Include="Model\SaralTrackingModal.cs" />
+    <Compile Include="OfficerLogout.aspx.cs">
+      <DependentUpon>OfficerLogout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OfficerLogout.aspx.designer.cs">
+      <DependentUpon>OfficerLogout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Officers\AcceptedOrReject.aspx.cs">
       <DependentUpon>AcceptedOrReject.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3772,6 +3789,13 @@
     </Compile>
     <Compile Include="StaticPage3.aspx.designer.cs">
       <DependentUpon>StaticPage3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SupervisorLogout.aspx.cs">
+      <DependentUpon>SupervisorLogout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SupervisorLogout.aspx.designer.cs">
+      <DependentUpon>SupervisorLogout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Supervisor\GeneratingSetTestReport.aspx.cs">
       <DependentUpon>GeneratingSetTestReport.aspx</DependentUpon>

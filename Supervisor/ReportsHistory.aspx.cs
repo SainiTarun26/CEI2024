@@ -26,7 +26,7 @@ namespace CEIHaryana.Supervisor
             }
             catch
             {
-                Response.Redirect("/login.aspx");
+                Response.Redirect("/SupervisorLogout.aspx");
             }
         }
 
