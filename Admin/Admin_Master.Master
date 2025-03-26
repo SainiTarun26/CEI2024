@@ -501,6 +501,12 @@
                                 </a>
                             </li>
 
+                                                                                    <li class="nav-item">
+                                <a class="nav-link" href="/Admin/Xen_To_XenLiftTransfer_ByAdmin.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Transfer Lift Inspections</span>
+                                </a>
+                            </li>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="/Admin/TransferRequestReport.aspx">

@@ -15,5 +15,17 @@
      <span class="style2">&nbsp;to go Login Page</span>--%>
         </div>
     </form>
+           <script>
+window.onload = function() {
+    checkLoginBeforeSubmit();
+};
+
+        function checkLoginBeforeSubmit() {
+    // Check if user is already logged in another tab
+    localStorage.removeItem('activeSession');
+            sessionStorage.clear();
+            window.location.href = 'Login.aspx';
+}
+            </script>
 </body>
 </html>

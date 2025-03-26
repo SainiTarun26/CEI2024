@@ -265,6 +265,7 @@
     <Content Include="Admin\WorkIntimationDetail.aspx" />
     <Content Include="Admin\ActionInprocessInspection.aspx" />
     <Content Include="Admin\ActionInspectioHistrory.aspx" />
+    <Content Include="Admin\Xen_To_XenLiftTransfer_ByAdmin.aspx" />
     <Content Include="Admin\ZoneMaster.aspx" />
     <Content Include="Application.aspx" />
     <Content Include="applicationtable.aspx" />
@@ -2462,6 +2463,13 @@
     </Compile>
     <Compile Include="Admin\ActionInspectioHistrory.aspx.designer.cs">
       <DependentUpon>ActionInspectioHistrory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Xen_To_XenLiftTransfer_ByAdmin.aspx.cs">
+      <DependentUpon>Xen_To_XenLiftTransfer_ByAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Xen_To_XenLiftTransfer_ByAdmin.aspx.designer.cs">
+      <DependentUpon>Xen_To_XenLiftTransfer_ByAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ZoneMaster.aspx.cs">
       <DependentUpon>ZoneMaster.aspx</DependentUpon>

@@ -90,7 +90,7 @@ namespace CEIHaryana.Supervisor
                         }
                         else
                         {
-                            Response.Redirect("/Supervisor/InstallationDetails.aspx");
+                            Response.Redirect("/Supervisor/InstallationDetails.aspx",false);
                         }
                     }
                 }

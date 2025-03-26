@@ -17,7 +17,6 @@ window.onload = function() {
 };
 
         function checkLoginBeforeSubmit() {
-            debugger;
     // Check if user is already logged in another tab
     localStorage.removeItem('activeSession');
     sessionStorage.clear();

@@ -30,8 +30,8 @@ namespace CEIHaryana
             Session["SwitchingSubstationId"] = "";
             Session.Abandon();
             Session.Clear();
-            string script = "alert('Session has been expired.'); window.location.href='/Login.aspx';";
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "SessionExpired", script, true);
+            //string script = "localStorage.removeItem('activeSession'); sessionStorage.clear(); alert('Session has been expired.'); window.location.href='/Login.aspx';";
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "SessionExpired", script, true);
 
         }
     }

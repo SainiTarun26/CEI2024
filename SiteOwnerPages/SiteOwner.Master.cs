@@ -35,19 +35,19 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
                     HttpContext.Current.Response.Cache.SetNoStore();
-                    Response.Redirect("/Login.aspx");
+                    Response.Redirect("/SiteOwnerLogout.aspx");
                 }
                 else
                 {
 
                     Session["SiteOwnerId"] = "";
-                    Response.Redirect("/Login.aspx");
+                    Response.Redirect("/SiteOwnerLogout.aspx");
                 }
             }
             catch (Exception Ex)
             {
                 Session["SiteOwnerId"] = "";
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/SiteOwnerLogout.aspx");
             }
         }
 
@@ -56,7 +56,7 @@ namespace CEIHaryana.SiteOwnerPages
             Session.Abandon();
             Response.Cookies["SiteOwnerId"].Expires = DateTime.Now.AddDays(-1);
             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/SiteOwnerLogout.aspx");
         }
         public void GetContractorNotifications()
         {

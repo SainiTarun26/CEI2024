@@ -280,15 +280,15 @@
                                             <HeaderStyle BackColor="#B7E2F0" />
                                             <Columns>
                                                 <asp:TemplateField HeaderText="S.No.">
-                                                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                                                    <ItemStyle Width="5%" />
+                                                    <HeaderStyle Width="7%" CssClass="headercolor" />
+                                                    <ItemStyle Width="7%" />
                                                     <ItemTemplate>
                                                         <%#Container.DataItemIndex+1 %>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:BoundField DataField="Typeofinstallation" HeaderText="Installation Type">
-                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                    <HeaderStyle HorizontalAlign="Left" Width="73%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="Left" Width="73%" />
                                                 </asp:BoundField>
                                                 <%-- <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
@@ -299,8 +299,8 @@
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>--%>
                                                 <asp:BoundField DataField="Capacity" HeaderText="Capacity">
-                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                    <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="Left" Width="20%" />
                                                 </asp:BoundField>
 
 
