@@ -52,19 +52,19 @@ namespace CEI_PRoject.ADMIN
                 {
                     HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
                     HttpContext.Current.Response.Cache.SetNoStore();
-                    Response.Redirect("/Login.aspx");
+                    Response.Redirect("/AdminLogout.aspx");
                 }
                 else
                 {
 
                     Session["AdminID"] = "";
-                    Response.Redirect("/Login.aspx");
+                    Response.Redirect("/AdminLogout.aspx");
                 }
             }
             catch (Exception Ex)
             {
                 Session["AdminID"] = "";
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/AdminLogout.aspx");
             }
 
 
@@ -74,7 +74,7 @@ namespace CEI_PRoject.ADMIN
             Session.Abandon();
             Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(-1);
             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/AdminLogout.aspx");
         }
 
         protected void BtnChangePassword_Click(object sender, EventArgs e)
