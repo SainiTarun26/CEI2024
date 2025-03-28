@@ -11,19 +11,18 @@
         <div>
         </div>
     </form>
-        <script>
-window.onload = function() {
-    checkLoginBeforeSubmit();
-};
+              <script>
+                  window.onload = function () {
+                      checkLoginBeforeSubmit();
+                  };
 
-        function checkLoginBeforeSubmit() {
-            debugger;
-    // Check if user is already logged in another tab
-    localStorage.removeItem('activeSession');
-    sessionStorage.clear();
-            window.location.href = 'Login.aspx';
-}
-        </script>
+                  function checkLoginBeforeSubmit() {
+                      // Check if user is already logged in another tab
+                      localStorage.removeItem('activeSession');
+                      sessionStorage.clear();
+                      window.location.href = 'Login.aspx';
+                  }
+              </script>
 
 </body>
 </html>

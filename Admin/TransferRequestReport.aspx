@@ -380,6 +380,13 @@
                                             </asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Installation&#60;br /&#62;Type" Visible="false">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblInstallationFor" runat="server" Text='<%# Eval("Installationfor") %>' CssClass="break-space"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>                                    
                                 </Columns>
                             </asp:GridView>
 
@@ -429,40 +436,40 @@
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
     <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function () {
-        const elements = document.querySelectorAll('.break-text');
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll('.break-text');
 
-        elements.forEach(function (element) {
-            let text = element.innerText;
-            let formattedText = '';
-            let currentIndex = 0;
+            elements.forEach(function (element) {
+                let text = element.innerText;
+                let formattedText = '';
+                let currentIndex = 0;
 
-            while (currentIndex < text.length) {
-                // Take a chunk of up to 20 characters
-                let chunk = text.slice(currentIndex, currentIndex + 20);
+                while (currentIndex < text.length) {
+                    // Take a chunk of up to 20 characters
+                    let chunk = text.slice(currentIndex, currentIndex + 20);
 
-                if (chunk.length < 20) {
-                    // If the chunk is less than 20 characters, add it without breaking
-                    formattedText += chunk;
-                    break; // Exit the loop as we've processed the remaining text
+                    if (chunk.length < 20) {
+                        // If the chunk is less than 20 characters, add it without breaking
+                        formattedText += chunk;
+                        break; // Exit the loop as we've processed the remaining text
+                    }
+
+                    // For chunks of 20 or more characters, try to break at the last whitespace
+                    let breakIndex = chunk.lastIndexOf(" ");
+                    if (breakIndex !== -1) {
+                        // If there's a whitespace, break at that space
+                        formattedText += chunk.slice(0, breakIndex) + '<br>';
+                        currentIndex += breakIndex + 1; // Move past the space
+                    } else {
+                        // Otherwise, break at the 20-character limit
+                        formattedText += chunk + '<br>';
+                        currentIndex += 20;
+                    }
                 }
 
-                // For chunks of 20 or more characters, try to break at the last whitespace
-                let breakIndex = chunk.lastIndexOf(" ");
-                if (breakIndex !== -1) {
-                    // If there's a whitespace, break at that space
-                    formattedText += chunk.slice(0, breakIndex) + '<br>';
-                    currentIndex += breakIndex + 1; // Move past the space
-                } else {
-                    // Otherwise, break at the 20-character limit
-                    formattedText += chunk + '<br>';
-                    currentIndex += 20;
-                }
-            }
-
-            element.innerHTML = formattedText.trim(); // Remove any trailing <br>
+                element.innerHTML = formattedText.trim(); // Remove any trailing <br>
+            });
         });
-    });
     </script>sss
 </asp:Content>
 

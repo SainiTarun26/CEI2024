@@ -21,8 +21,8 @@ namespace CEIHaryana
             Session.Abandon();
             Session.Clear();
             Session.RemoveAll();
-           Response.Write("<script> window.close(); localStorage.removeItem('activeSession'); sessionStorage.clear(); window.close();</script>");
-            Response.Redirect("/Login.aspx", false);
+           //Response.Write("<script> window.close(); localStorage.removeItem('activeSession'); sessionStorage.clear(); window.close();</script>");
+           // Response.Redirect("/Login.aspx", false);
 
 
         }
