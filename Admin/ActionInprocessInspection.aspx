@@ -16,32 +16,31 @@
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-   <!-- Bootstrap CSS -->
-   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-
-   <!-- jQuery -->
-  <%-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
-
-  <%--  <script type="text/javascript" src="../js2/jquery.min.js"></script>
-    <script type="text/javascript" src="../js2/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="../js2/script-multi-form.js"></script>
-    <link href="../css2/datepicker.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="../js2/bootstrap-datepicker.js"></script>--%>
-<!-- Include JavaScript Files -->
- <script type="text/javascript" src="../js2/jquery.min.js"></script>
-    <script type="text/javascript" src="../js2/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="../js2/script-multi-form.js"></script>
-    <link href="../css2/datepicker.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="../js2/bootstrap-datepicker.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            
+            $("#<%= txtInspectionDate.ClientID %>").datepicker({
+            dateFormat: 'dd/mm/yy',  // Customize the format as needed
+            changeMonth: true,
+            changeYear: true,
+            maxDate: 0,
+            yearRange: "1900:2100"
+        });
+    });
+    </script>
     <style>
+             div#ui-datepicker-div
+     {
+position: absolute;
+top: 992.392px !important;
+left: 683.75px !important;
+z-index: 1;
+display: block;
+border:1px solid white;
+     }
          th.headercolor {
             color: white !important;
         }
@@ -473,6 +472,7 @@
                 </div>
                   
             </div>
+              <asp:HiddenField ID="hnSubmittedDate" runat="server" />
                                         <div class="card-title" style="margin-bottom: 5px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: -10px;">
     Test Report Detail
 </div>  
@@ -611,9 +611,9 @@
                         </div>
                         <div class="col-md-4" id="InspectionDate" runat="server">
                             <label for="StartDate">
-                                Inspection Date                           
+                                Inspection Date<samp style="color: red"> * </samp>                           
                             </label>
-                            <asp:TextBox class="form-control" ID="txtInspectionDate" Type="Date" TabIndex="16" autocomplete="off"  min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"  ></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtInspectionDate"  TabIndex="16" autocomplete="off"  min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"  ></asp:TextBox>
 
                           <%--  <input type="date" id="txtInspectionDate" class="form-control" onchange="formatDate(this)" />--%>
                    
@@ -786,30 +786,25 @@
 
 
    <script type="text/javascript">
-       function pageLoad(sender, args) {
-           $(document).ready(function () {
-               debugger;
-               // put all your javascript functions here 
+       $(document).ready(function () {
+           var datePickerElement = $("#<%= txtInspectionDate.ClientID %>");
 
-               $('.input-group.main-date input').datepicker({
-                   format: 'dd/mm/yyyy',
-                   endDate: new Date(),
-                   orientation: "bottom auto",
-                   autoclose: true
-               });
-               $('#txtInspectionDate').datepicker({
-                   minViewMode: 2,
-                   format: 'dd/mm/yyyy',
-                   endDate: new Date(),
-                   autoclose: true
-               });
-               $('#txtInspectionDate').keydown(function () {
-                   //code to not allow any changes to be made to input field
-                   return false;
-               });
-           });
-       }
-    </script>
+        // Initialize the datepicker, but do not show it automatically
+        datePickerElement.datepicker({
+            dateFormat: 'dd/mm/yy',  // Customize the format as needed
+            changeMonth: true,
+            changeYear: true,
+            maxDate: 0,
+            yearRange: "1900:2100",
+            showOn: "focus",  // Only show the datepicker when the input is focused
+        });
+
+        // This ensures the datepicker is hidden initially and only shows when the textbox is clicked
+        datePickerElement.on('focus', function () {
+            $(this).datepicker('show');  // Show datepicker on focus
+        });
+    });
+   </script>
 
     
 </asp:Content>

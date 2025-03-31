@@ -135,6 +135,7 @@
                                     <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
                                     <asp:Label ID="lblRequestStatus" runat="server" Text='<%#Eval("RequestStatus") %>'></asp:Label>
                                     <asp:Label ID="lblTypeOfInspection" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label>
+                                     <asp:Label ID="lblInstallationFor" runat="server" Text='<%#Eval("InstallationFor") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Id" Visible="False">

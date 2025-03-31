@@ -67,53 +67,39 @@ namespace CEIHaryana.Admin
             try
             {
                 if (e.CommandName == "Select")
-                {
-                    Session["LineID"] = "";
-                    Session["SubStationID"] = "";
-                    Session["GeneratingSetId"] = "";
-
+                {                 
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                    Label lblID = (Label)row.FindControl("lblID");
-                    Session["InspectionId"] = lblID.Text;
+                    Label lblID = (Label)row.FindControl("lblID");                  
                     Label lblApproval = (Label)row.FindControl("lblApproval");
-                    Session["Approval"] = lblApproval.Text.Trim();
                     Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
                     string installationType = lblInstallationType.Text.Trim();
                     Label lblTestRportId = (Label)row.FindControl("lblTestRportId");
                     string TestRportId = lblTestRportId.Text.Trim();
                     Label lblRequestStatus = (Label)row.FindControl("lblRequestStatus");
                     Label lblTypeOfInspection = (Label)row.FindControl("lblTypeOfInspection");
-
-
-                    if (installationType.Trim() == "Line")
-                    {
-                        Session["LineID"] = installationType;
-                    }
-                    else if (installationType.Trim() == "Substation Transformer")
-                    {
-                        Session["SubStationID"] = TestRportId;
-                    }
-                    else if (installationType.Trim() == "Generating Set")
-                    {
-                        Session["GeneratingSetId"] = TestRportId;
-                    }
-                    else if (installationType == "Multiple")
-                    {
-                        Session["PeriodicMultiple"] = installationType;
-                    }
+                    Label lblInstallationFor = (Label)row.FindControl("lblInstallationFor");               
                     if (e.CommandName == "Select")
                     {
-                        if (lblRequestStatus != null && lblRequestStatus.Text == "ReSubmit" && lblTypeOfInspection.Text == "New")
+                      
+                        if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
                         {
+                            Session["InspectionId"] = lblID.Text;
+                            Response.Redirect("/Admin/IntimationHistoryForLift.aspx", false);
+                        }
+                        else if (lblRequestStatus != null && lblRequestStatus.Text == "ReSubmit" && lblTypeOfInspection.Text == "New")
+                        {
+                            Session["InspectionId"] = lblID.Text;
                             Response.Redirect("/Admin/ReturnedIntimationForHistory.aspx", false);
                         }
                         else if (lblRequestStatus != null && lblRequestStatus.Text == "ReSubmit" && lblTypeOfInspection.Text == "Periodic")
                         {
+                            Session["InspectionId"] = lblID.Text;
                             Response.Redirect("/Admin/PeriodicReturnedIntimationForHistory.aspx", false);
                         }
-                        else //if (lblRequestStatus != null && lblRequestStatus.Text == "New")
+                        else 
                         {
+                            Session["InspectionId"] = lblID.Text;
                             Response.Redirect("/Admin/IntimationForHistory.aspx", false);
                         }
                     }

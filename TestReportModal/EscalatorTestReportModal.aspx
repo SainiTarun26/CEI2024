@@ -2042,17 +2042,18 @@
     <asp:Button ID="btnPrint" Text="Print" Enabled="true" runat="server" class="btn btn-primary mr-2"
         Style="margin-top: -45px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; right: 10px; z-index: 50;" OnClientClick="openNewWindow(); return false;" />
 </div>
-                    <div class="row" style="margin-bottom: 15PX;">
+                    <div class="row" style="margin-bottom: 5PX !important;">
                         <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 32PX;">Site Details & Test Details (Escalator)</h6>
-                            <div class="row" style="font-size: 18px; font-weight: 600;">
-                                <div class="col-12" style="margin-top: 0px; padding-left: 0px; text-align: center;">
-                                    TestDetailId: (<asp:Label ID="lbltestReportId" runat="server" />) &nbsp;&nbsp;&nbsp;&nbsp;  Intimation Id: (<asp:Label ID="lblWorkIntimationId" runat="server" />)
-                                </div>
-
-                            </div>
+                            
                         </div>
                     </div>
+                    <div class="row" style="font-size: 18px; font-weight: 600;">
+    <div class="col-12" style="margin-top: 0px; padding-left: 0px; text-align: center;">
+        TestDetailId: (<asp:Label ID="lbltestReportId" runat="server" />) &nbsp;&nbsp;&nbsp;&nbsp;  Intimation Id: (<asp:Label ID="lblWorkIntimationId" runat="server" />)
+    </div>
+
+</div>
                     <div class="card-body" id="divGeneratingSet" runat="server" style="margin-top: -30px; margin-bottom: -60px;">
                         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                         <div class="card-body" style="margin-top: -30px;">

@@ -433,9 +433,9 @@ namespace CEI_PRoject
         #endregion
         #region Insert Wireman Data
         public void InserWireManData(string REID, string Name, string Age, string FatherName, string Address, string District, string State, string PinCode, string PhoneNo,
-      string Qualification, string Email, string CertificateOld, string CertificateNew, string DateofIntialissue, string DateofExpiry,
-      string DateofRenewal, string AnyContractor, string AttachedContractorld,
-    string CreatedBy, string UserId, string NewUserId, string IPAddress)
+    string Qualification, string Email, string CertificateOld, string CertificateNew, string DateofIntialissue, string DateofExpiry,
+    string DateofRenewal, string AnyContractor, string AttachedContractorld,
+  string CreatedBy, string UserId, string NewUserId, string IPAddress)
         {
 
             SqlCommand cmd = new SqlCommand("sp_SetWiremanandSuperwiserDetails");
@@ -447,30 +447,6 @@ namespace CEI_PRoject
                 con.Open();
             }
             cmd.CommandType = CommandType.StoredProcedure;
-            #region
-            //cmd.Parameters.AddWithValue("@REID", REID);
-            //cmd.Parameters.AddWithValue("@Name", Name);
-            //cmd.Parameters.AddWithValue("@Age", Age);
-            //cmd.Parameters.AddWithValue("@FatherName", FatherName);
-            //cmd.Parameters.AddWithValue("@Address", Address);
-            //cmd.Parameters.AddWithValue("@District", District);
-            //cmd.Parameters.AddWithValue("@State", State);
-            //cmd.Parameters.AddWithValue("@PinCode", PinCode);
-            //cmd.Parameters.AddWithValue("@PhoneNo", PhoneNo);
-            //cmd.Parameters.AddWithValue("@Qualification", Qualification);
-            //cmd.Parameters.AddWithValue("@Email", Email);
-            //cmd.Parameters.AddWithValue("@CertificateOld", CertificateOld);
-            //cmd.Parameters.AddWithValue("@CertificateNew", CertificateNew);
-            //cmd.Parameters.AddWithValue("@DateofIntialissue", DateofIntialissue);
-            //cmd.Parameters.AddWithValue("@DateofExpiry", DateofExpiry);
-            //cmd.Parameters.AddWithValue("@DateofRenewal", DateofRenewal);
-            //cmd.Parameters.AddWithValue("@AnyContractor", AnyContractor);
-            //cmd.Parameters.AddWithValue("@AttachedContractorld", AttachedContractorld);
-            //cmd.Parameters.AddWithValue("@Category", "Wireman");
-            //cmd.Parameters.AddWithValue("@Createdby", CreatedBy);
-            //cmd.Parameters.AddWithValue("@UserId", UserId);
-            //cmd.Parameters.AddWithValue("@IPAddress", IPAddress);
-            #endregion
             cmd.Parameters.AddWithValue("@REID", REID);
             cmd.Parameters.AddWithValue("@Name", string.IsNullOrEmpty(Name) ? DBNull.Value : (object)Name);
             cmd.Parameters.AddWithValue("@Age", string.IsNullOrEmpty(Age) ? DBNull.Value : (object)Age);
@@ -484,33 +460,9 @@ namespace CEI_PRoject
             cmd.Parameters.AddWithValue("@Email", string.IsNullOrEmpty(Email) ? DBNull.Value : (object)Email);
             cmd.Parameters.AddWithValue("@CertificateOld", string.IsNullOrEmpty(CertificateOld) ? DBNull.Value : (object)CertificateOld);
             cmd.Parameters.AddWithValue("@CertificateNew", string.IsNullOrEmpty(CertificateNew) ? DBNull.Value : (object)CertificateNew);
-            DateTime initialIssueDate;
-            if (DateTime.TryParse(DateofIntialissue, out initialIssueDate) && initialIssueDate != DateTime.MinValue)
-            {
-                cmd.Parameters.AddWithValue("@DateofIntialissue", initialIssueDate);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@DateofIntialissue", DBNull.Value);
-            }
-            DateTime expiryDate;
-            if (DateTime.TryParse(DateofExpiry, out expiryDate) && expiryDate != DateTime.MinValue)
-            {
-                cmd.Parameters.AddWithValue("@DateofExpiry", expiryDate);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@DateofExpiry", DBNull.Value);
-            }
-            DateTime renewalDate;
-            if (DateTime.TryParse(DateofRenewal, out renewalDate) && renewalDate != DateTime.MinValue)
-            {
-                cmd.Parameters.AddWithValue("@DateofRenewal", renewalDate);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@DateofRenewal", DBNull.Value);
-            }
+            cmd.Parameters.AddWithValue("@DateofIntialissue", DateofIntialissue);
+            cmd.Parameters.AddWithValue("@DateofExpiry", DateofExpiry);
+            cmd.Parameters.AddWithValue("@DateofRenewal", DateofRenewal);
             cmd.Parameters.AddWithValue("@AnyContractor", AnyContractor == "Select" ? DBNull.Value : (object)AnyContractor);
             cmd.Parameters.AddWithValue("@AttachedContractorld", string.IsNullOrEmpty(AttachedContractorld) ? DBNull.Value : (object)AttachedContractorld);
             cmd.Parameters.AddWithValue("@Category", "Wireman");

@@ -221,6 +221,8 @@
     <Content Include="AddNewPassword.aspx" />
     <Content Include="AdminLogout.aspx" />
     <Content Include="Admin\AcceptedOrRejectedRequest.aspx" />
+    <Content Include="Admin\Action_InProcessLift_Return.aspx" />
+    <Content Include="Admin\Action_InProcess_Lift.aspx" />
     <Content Include="Admin\AddContractorDetails.aspx" />
     <Content Include="Admin\AddRemoveStaff.aspx" />
     <Content Include="Admin\AddSupervisorDetails.aspx" />
@@ -237,6 +239,7 @@
     <Content Include="Admin\InspectionDetails.aspx" />
     <Content Include="Admin\IntimationForHistory.aspx" />
     <Content Include="Admin\IntimationHistoryForAdmin.aspx" />
+    <Content Include="Admin\IntimationHistoryForLift.aspx" />
     <Content Include="Admin\LiftApprovalData.aspx" />
     <Content Include="Admin\LiftEscalatorData.aspx" />
     <Content Include="Admin\LiftInspectionDetails.aspx" />
@@ -2149,6 +2152,20 @@
     <Compile Include="Admin\AcceptedOrRejectedRequest.aspx.designer.cs">
       <DependentUpon>AcceptedOrRejectedRequest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Action_InProcessLift_Return.aspx.cs">
+      <DependentUpon>Action_InProcessLift_Return.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Action_InProcessLift_Return.aspx.designer.cs">
+      <DependentUpon>Action_InProcessLift_Return.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Action_InProcess_Lift.aspx.cs">
+      <DependentUpon>Action_InProcess_Lift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Action_InProcess_Lift.aspx.designer.cs">
+      <DependentUpon>Action_InProcess_Lift.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AddContractorDetails.aspx.cs">
       <DependentUpon>AddContractorDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2267,6 +2284,13 @@
     </Compile>
     <Compile Include="Admin\IntimationHistoryForAdmin.aspx.designer.cs">
       <DependentUpon>IntimationHistoryForAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\IntimationHistoryForLift.aspx.cs">
+      <DependentUpon>IntimationHistoryForLift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\IntimationHistoryForLift.aspx.designer.cs">
+      <DependentUpon>IntimationHistoryForLift.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\LiftApprovalData.aspx.cs">
       <DependentUpon>LiftApprovalData.aspx</DependentUpon>

@@ -370,8 +370,7 @@ namespace CEIHaryana.Admin
                     {
                         StaffId = Session["AdminID"].ToString();
                         ID = Session["InProcessInspectionId"].ToString();
-                        String SubmittedDate = Session["lblSubmittedDate"].ToString();
-                     
+                        String SubmittedDate = hnSubmittedDate.Value;
                         if (ddlReview.SelectedValue != null && ddlReview.SelectedValue != "" && ddlReview.SelectedValue != "0")
                         {
                             DateTime inspectionDate;
@@ -383,7 +382,7 @@ namespace CEIHaryana.Admin
                             }
 
                             DateTime submittedDate;
-                            if (!DateTime.TryParse(Session["lblSubmittedDate"].ToString(), out submittedDate))
+                            if (!DateTime.TryParse(hnSubmittedDate.Value, out submittedDate))
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid submitted date.');", true);
                                 return;
@@ -395,7 +394,7 @@ namespace CEIHaryana.Admin
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be less than Today date.');", true);
                                 return;
                             }
-                            if (inspectionDate <= submittedDate)
+                            if (inspectionDate < submittedDate)
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be greater than submitted date.');", true);
                                 return;
@@ -428,7 +427,7 @@ namespace CEIHaryana.Admin
                                         return;
                                     }
                                 }
-
+                                txtInspectionDate.Text = DateTime.Parse(txtInspectionDate.Text).ToString("yyyy-MM-dd");
 
                                 CEI.InspectionFinalAction(ID, StaffId, ApprovedorReject, Reason, Suggestions, txtInspectionDate.Text, ExNotes);
                                 if (ApprovedorReject.Trim() == "Approved")
@@ -722,15 +721,9 @@ namespace CEIHaryana.Admin
                             btnPreview.Visible = false;
                             btnSuggestions.Visible = true;
                             if (InspectionType == "New")
-                            {
-                                if (InstallationType == "Multiple")
-                                {
-                                    Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
-                                }
-                                else
-                                {
-                                    Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
-                                }
+                            {                              
+                                Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                                
                             }
                             else
                             {

@@ -773,14 +773,7 @@ namespace CEIHaryana.Officers
                             btnSuggestions.Visible = true;
                             if (InspectionType == "New")
                             {
-                                if (InstallationType == "Multiple")
-                                {
-                                    Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
-                                }
-                                else
-                                {
-                                    Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
-                                }
+                                Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
                             }
                             else
                             {
