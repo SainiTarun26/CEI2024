@@ -28,8 +28,8 @@
     width: 46% !important;
 }*/
         img#Gridview1_ImgSignature_0 {
-            height: 70px;
-            width: 150px;
+            height: 45px;
+            width: 100px;
         }
 
         th {
@@ -87,7 +87,7 @@
             color: #010101;
             margin-bottom: 1.2rem;
             text-transform: capitalize;
-            font-size: 20px;
+             font-size: 18PX;
             font-weight: 600;
         }
 
@@ -100,12 +100,12 @@
         }
 
         p {
-            font-size: 21px;
+            font-size: 20px;
             text-align: justify;
         }
 
         li {
-            font-size: 20px;
+             font-size: 18PX;
         }
 
         .col-2 {
@@ -120,7 +120,7 @@
 
         input {
             border: none;
-            font-size: 20px;
+             font-size: 18PX;
         }
 
         hr {
@@ -139,7 +139,7 @@
         }
 
         span {
-            font-size: 20px !important;
+            font-size: 18px !important;
         }
 
         table.table {
@@ -158,28 +158,19 @@
         th {
             width: 1% !important;
             text-align: center;
-            font-size: 21px;
+            font-size: 18px;
         }
 
         td {
-            font-size: 21px;
+            font-size: 18px;
             /*  text-align: center;*/
         }
+        td {
+    padding-top: 4px !important;
+    padding-bottom: 3px !important;
+}
     </style>
-    <%--<script>
-
-        function
-            printDiv(printableDiv) {
-            var printContents = document.getElementById(printableDiv).innerHTML;
-            var originalContents = document.body.innerHTML;
-
-            document.body.innerHTML = printContents;
-
-            window.print();
-
-            document.body.innerHTML = originalContents;
-        }
-    </script>--%>
+   
     <script type="text/javascript">
         function printDiv(printableDiv) {
             var printContents = document.getElementById(printableDiv).innerHTML;
@@ -187,21 +178,7 @@
 
             document.body.innerHTML = printContents;
             window.print();
-           <%-- window.onafterprint = function () {
-                // Restore original content after printing
-                document.body.innerHTML = originalContents;
-                // Redirect based on session
-
-                var staffId = '<%= Session["StaffID"] %>';
-
-               var siteOwnerId = '<%= Session["SiteOwnerId"] %>';
-
-                if (staffId !== '') {
-                    window.location.href = '/Officers/AcceptedOrReject.aspx';
-                } else if (siteOwnerId !== '') {
-                    window.location.href = '/SiteOwnerPages/InspectionHistory.aspx';
-                }
-            };--%>
+          
         }
 
     </script>
@@ -246,11 +223,11 @@
                 <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
                     <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
                         <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
-                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
+                            Style="margin-top: 5px; margin-bottom: -40px;  font-size: 18PX; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
                     </div>
                     <div class="col-12" style="text-align: initial; margin-top: auto; margin-bottom: auto;">
                         <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2"
-                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;" />
+                            Style="margin-top: 5px; margin-bottom: -40px;  font-size: 18PX; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;" />
                     </div>
                     <div class="card-body">
                         <div id="printableDiv">
@@ -259,7 +236,7 @@
                                     <img src="../Assets/haryana.png" height="110" width="auto" />
                                 </div>--%>
                                 <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX;">Office of the                                        
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 18PX;">Office of the                                        
                                     </h6>
                                     <asp:Label ID="lblAddress1" runat="server" Text="Chief Electrical Inspector to Govt., Haryana" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
                                     <asp:Label ID="lblAdress2" runat="server" Text="SCO 117-118, Sector-17-B, Chandigarh (E-mail: cei_goh@yahoo.com" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
@@ -272,13 +249,13 @@
                             <hr />
                             <div class="row" style="margin-bottom: 15PX;">
                                 <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center;">FORM D
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 18PX; text-align: center;">FORM D
                                     </h6>
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center;">[See rule 4 (2)]
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 18PX; text-align: center;">[See rule 4 (2)]
                                     </h6>
-                                    <h6 runat="server" id="txtLift" class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center; text-decoration: underline;">Registration of Lift
+                                    <h6 runat="server" id="txtLift" class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 18PX; text-align: center; text-decoration: underline;">Registration of Lift
                                     </h6>
-                                    <%--   <h6 runat="server" id="txtEscalator"  class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center; text-decoration: underline;">Registration of Escalator--%>
+                                    <%--   <h6 runat="server" id="txtEscalator"  class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 18PX; text-align: center; text-decoration: underline;">Registration of Escalator--%>
                                     </h6>
                                 </div>
                             </div>
@@ -302,7 +279,9 @@
                                         Under sub-section (2) of section 4 of the Haryana  Lifts and Escalators Act, 2009 (27 of 2009) through
                                         <asp:Label ID="lblCompanyName" Style="font-weight: bold;" runat="server" Text="M/s"></asp:Label>
                                         is/are hereby registered to work or cause to be worked or allow the working of the lift erected and inspected on &nbsp;<asp:Label ID="lblInspectionDate" Style="font-weight: bold;" runat="server"></asp:Label>
-                                        at the premises of  <asp:Label Style="font-weight: bold;" ID="lblOwnerName" runat="server"></asp:Label> at
+                                        at the premises of 
+                                        <asp:Label Style="font-weight: bold;" ID="lblOwnerName" runat="server"></asp:Label>
+                                        at
                                         <asp:Label Style="font-weight: bold;" ID="lblAddress" runat="server"></asp:Label>
                                         subject to the provisions of the Haryana Lift and Escalators Rules, 2009. The perticulars of lift which are given below:-
                                     </p>
@@ -310,7 +289,7 @@
                             </div>
                             <div class="row" style="margin-bottom: 15PX;">
                                 <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX; text-align: center; text-decoration: underline;">PARTICULARS
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 18PX; text-align: center; text-decoration: underline;">PARTICULARS
                                     </h6>
                                 </div>
                             </div>
@@ -376,11 +355,11 @@
                                 </div>
                             </div>
                             <div class="row" style="padding-right: 5px !important;">
-                                <div class="col-12" style="text-align: end; padding-left: 10px; margin-top: -60px;">
+                                <div class="col-12" style="text-align: end;padding-right:100px !important; padding-left: 10px; margin-top: -60px;">
                                     <i>
                                         <asp:Label class="p1" ID="txtSD" runat="server" Text="SD"></asp:Label></i><br />
                                     <%-- <img src="../Assets/Line_Through_Name-removebg-preview.png" width="300" height="90" style="position: fixed; bottom: 140px; margin-left: -300px;" />--%>
-                                    <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
+                                    <asp:Image ID="myImage" runat="server" Width="200" Height="60" Style="bottom: 140px; margin-left: -300px;" />
                                 </div>
                                 <div class="col-7">
                                 </div>
@@ -415,18 +394,18 @@
             </ItemTemplate>
         </asp:TemplateField>--%>
                                             <asp:TemplateField HeaderText="Renewal Date">
-    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="headercolor" />
-    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="itemcenter" />
-    <HeaderTemplate>
-        Renewal Date
-    </HeaderTemplate>
-    <ItemTemplate>
-                <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="itemcenter" />
+                                                <HeaderTemplate>
+                                                    Renewal Date
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
 
-        <%# Eval("RenewalDate") %>
-                    </div>
-    </ItemTemplate>
-</asp:TemplateField>
+                                                        <%# Eval("RenewalDate") %>
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
 
 
 
@@ -434,22 +413,27 @@
                                                 <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
                                                 <ItemStyle HorizontalAlign="center" />
                                             </asp:BoundField>
-                                            <asp:TemplateField HeaderText="Signature">
+                                            <%--     <asp:TemplateField HeaderText="Signature">
     <ItemTemplate>
-       <%-- <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
-                <asp:Image ID="ImgSignature" runat="server"
-                ImageUrl='<%# "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) %>' />
-             
-
-                   
-        </div>--%>
+    
         <div style="display: inline-block; width: 30% !important;">
             <asp:Image ID="ImgSignature" runat="server"
                 ImageUrl='<%# "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) %>' />
           
         </div>
     </ItemTemplate>
-</asp:TemplateField>
+</asp:TemplateField>--%>
+                                            <asp:TemplateField HeaderText="Signature">
+                                                <ItemTemplate>
+                                                    <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
+                                                        <asp:Image ID="ImgSignature" runat="server"
+                                                            ImageUrl='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null 
+                           ? "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) 
+                           : "" %>'
+                                                            Visible='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null %>' />
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
 
 
 
