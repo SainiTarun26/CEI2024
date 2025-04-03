@@ -11,7 +11,7 @@
      <div>
          <p class="style1">
              Log Out Successfull................</p>
-             <span class="style2"><a href="/Login.aspx">Click Here</a></span>
+             <span class="style2"><a href="/SiteOwnerLogout.aspx">Click Here</a></span>
              <span class="style2">&nbsp;to go Login Page</span>
      </div>
  </form>

@@ -1001,7 +1001,7 @@ namespace CEIHaryana.Admin
                                 
                 else
                 {
-                    Response.Redirect("/Login.aspx");
+                    Response.Redirect("/AdminLogout.aspx");
                 }
                
             }

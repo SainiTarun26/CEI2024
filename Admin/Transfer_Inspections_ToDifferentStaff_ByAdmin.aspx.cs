@@ -47,7 +47,7 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-                Response.Redirect("/Login.aspx", false);
+                Response.Redirect("/AdminLogout.aspx", false);
             }
         }
         public void BindDivisions()

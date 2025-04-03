@@ -500,14 +500,15 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
-   <script>
-     
-       // Ensure session is removed when the tab is closed
-       window.addEventListener("beforeunload", function () {
-           localStorage.removeItem("activeSession");
-           sessionStorage.clear(); // Also clear session storage
-       });
-   </script>
+       <script type="text/javascript">
+   window.addEventListener("beforeunload", function () {
+       // Notify the server to clear the session
+       navigator.sendBeacon('AdminLogout.aspx');
 
+       // Clear session storage and local storage
+       sessionStorage.clear();
+       localStorage.removeItem('activeSession');
+   });
+       </script>
 </body>
 </html>

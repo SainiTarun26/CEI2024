@@ -36,13 +36,13 @@ namespace CEIHaryana.Admin
                     {
                         Session["AdminId"] = "";
                         Response.Redirect("/AdminLogout.aspx", false);
-                        // Response.Redirect("/Login.aspx", false);
+                        // Response.Redirect("/AdminLogout.aspx", false);
                     }
                 }
             }
             catch (Exception ex)
             {
-                Response.Redirect("/Login.aspx", false);
+                Response.Redirect("/AdminLogout.aspx", false);
             }
         }
 
@@ -400,7 +400,7 @@ namespace CEIHaryana.Admin
                 }
                 else
                 {
-                    Response.Redirect("/Login.aspx");
+                    Response.Redirect("/AdminLogout.aspx");
                 }
             }
             catch (Exception ex) { }

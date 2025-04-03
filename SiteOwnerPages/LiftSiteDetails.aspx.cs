@@ -349,7 +349,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                         if (Session["SiteOwnerId"] == null)
                         {
-                            Response.Redirect("/Login.aspx", false);
+                            Response.Redirect("/SiteOwnerLogout.aspx", false);
                             return;
                         }
 

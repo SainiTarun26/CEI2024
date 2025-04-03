@@ -25,7 +25,7 @@ namespace CEIHaryana.Admin
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/AdminLogout.aspx");
             }
         }
 

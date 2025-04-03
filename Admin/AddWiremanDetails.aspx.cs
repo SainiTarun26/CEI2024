@@ -66,7 +66,7 @@ namespace CEI_PRoject.Admin
                     {
                         Session["AdminId"] = "";
                         Response.Redirect("/AdminLogout.aspx", false);
-                        // Response.Redirect("/Login.aspx");
+                        // Response.Redirect("/AdminLogout.aspx");
                     }
                 }
 
@@ -74,7 +74,7 @@ namespace CEI_PRoject.Admin
             catch (Exception ex)
             {
 
-                // Response.Redirect("/Login.aspx");
+                // Response.Redirect("/AdminLogout.aspx");
             }
         }
         private void ddlQualificationBind()

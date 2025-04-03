@@ -334,7 +334,7 @@ namespace CEIHaryana
                                 }
                                 else
                                 {
-                                    Response.Redirect("/Login.aspx", false);
+                                    Response.Redirect("/SiteOwnerLogout.aspx", false);
                                 }
                             }
                             else
@@ -369,9 +369,12 @@ namespace CEIHaryana
                     }
                     else
                     {
+                        Session["Username"] = null;
                         txtUserID.Text = "";
                         txtPassword.Text = "";
                         WrongCredentials.Visible = true;
+
+                        Response.Write("<script> window.close(); localStorage.removeItem('activeSession'); sessionStorage.clear(); window.close();</script>");
                         // string script = "alert(\"Your UserName or Password is Invalid.\");";
                         // ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                     }
@@ -381,6 +384,8 @@ namespace CEIHaryana
             {
 
                 Session["Username"] = "";
+                Response.Write("<script> window.close(); localStorage.removeItem('activeSession'); sessionStorage.clear(); window.close();</script>");
+                Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
         }
     }

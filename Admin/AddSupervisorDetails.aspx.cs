@@ -66,14 +66,14 @@ namespace CEI_PRoject.Admin
                         Session["AdminId"] = "";
                         Response.Redirect("/AdminLogout.aspx", false);
 
-                        //Response.Redirect("/Login.aspx");
+                        //Response.Redirect("/AdminLogout.aspx");
                     }
                 }
             }
 
             catch (Exception ex)
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/AdminLogout.aspx");
             }
         }
         private void ddlQualificationBind()
@@ -381,7 +381,7 @@ namespace CEI_PRoject.Admin
                 }
                 else
                 {
-                    Response.Redirect("/Login.aspx", false);
+                    Response.Redirect("/AdminLogout.aspx", false);
                 }
                 Reset();
             }

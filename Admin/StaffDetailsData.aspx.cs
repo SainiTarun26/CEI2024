@@ -97,7 +97,7 @@ namespace CEIHaryana.Admin
             catch (Exception Ex)
             {
                 Session["AdminID"] = "";
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/AdminLogout.aspx");
             }
         }
 

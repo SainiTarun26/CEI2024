@@ -33,7 +33,7 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/AdminLogout.aspx");
             }
 
         }

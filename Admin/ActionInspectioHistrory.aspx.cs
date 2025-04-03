@@ -31,7 +31,7 @@ namespace CEIHaryana.Admin
             }
             catch (Exception)
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/AdminLogout.aspx");
             }
         }
         public void GridBind()

@@ -63,7 +63,7 @@ namespace CEIHaryana.Admin
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/AdminLogout.aspx");
             }
         }
         private void BindSuggestions()
@@ -581,7 +581,7 @@ namespace CEIHaryana.Admin
                     }
                     else
                     {
-                        Response.Redirect("/Login.aspx");
+                        Response.Redirect("/AdminLogout.aspx");
                     }
                 }
                 catch (Exception ex)

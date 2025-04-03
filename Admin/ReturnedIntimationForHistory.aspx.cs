@@ -43,7 +43,7 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-                Response.Redirect("/Login.aspx", false);
+                Response.Redirect("/AdminLogout.aspx", false);
             }
         }
         private void BindDivisions(string District)
@@ -450,7 +450,7 @@ namespace CEIHaryana.Admin
                 }
                 else
                 {
-                    Response.Redirect("/Login.aspx");
+                    Response.Redirect("/AdminLogout.aspx");
                 }
             }
             catch (Exception ex) { }

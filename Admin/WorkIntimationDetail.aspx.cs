@@ -57,13 +57,13 @@ namespace CEIHaryana.Admin
                     {
                         Session["AdminId"] = "";
                         Response.Redirect("/AdminLogout.aspx", false);
-                        //Response.Redirect("/Login.aspx");
+                        //Response.Redirect("/AdminLogout.aspx");
                     }
                 }
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/AdminLogout.aspx");
             }
         }
         protected void GetDetails()

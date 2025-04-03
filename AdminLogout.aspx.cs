@@ -14,8 +14,15 @@ namespace CEIHaryana
             Session["AdminId"] = "";
             Session.Clear();
             Session.Abandon();
+            Session.RemoveAll();
 
-
+            Session["Username"] = null;
+            Session["AdminID"] = null;
+            Session["ContractorID"] = null;
+            Session["SupervisorID"] = null;
+            Session["SiteOwnerId"] = null;
+            Session["StaffID"] = null;
+            Session["NewUserId"] = null;
             Session["ID"] = "";
             Session["LineID"] = "";
             Session["SubStationID"] = "";

@@ -24,7 +24,7 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else
                 {
-                    Response.Redirect("/Login.aspx", false);
+                    Response.Redirect("/SiteOwnerLogout.aspx", false);
                 }
             }
         }
