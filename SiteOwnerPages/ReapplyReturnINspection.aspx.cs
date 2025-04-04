@@ -167,6 +167,11 @@ namespace CEIHaryana.SiteOwnerPages
                         Grid_MultipleInspectionTR.Columns[9].Visible = false;
 
                     }
+                    else if (LblInstallationName.Text.Trim() == "Switching Station")
+                    {
+                        linkButtonInvoice.Visible = false;
+                        UploadInstallaionInvoice.Visible = false;
+                    }
                     else
                     {
                         linkButtonInvoice.Visible = true;
@@ -185,13 +190,40 @@ namespace CEIHaryana.SiteOwnerPages
 
                     if (fileUploadInstallaionInvoice != null && fileUploadManufacturingReport != null)
                     {
-                        fileUploadInstallaionInvoice.Visible = !string.IsNullOrEmpty(returnedReason);
-                        fileUploadManufacturingReport.Visible = !string.IsNullOrEmpty(returnedReason);
+                        //if (LblInstallationName.Text.Trim() == "Switching Station")
+                        //{
+                        //    fileUploadInstallaionInvoice.Visible = string.IsNullOrEmpty(returnedReason);
+                        //    fileUploadManufacturingReport.Visible = !string.IsNullOrEmpty(returnedReason);
+                        //}
+                        //else
+                        //{
+                        //    fileUploadInstallaionInvoice.Visible = !string.IsNullOrEmpty(returnedReason);
+                        //    fileUploadManufacturingReport.Visible = !string.IsNullOrEmpty(returnedReason);
+                        //}
+                        if (string.IsNullOrEmpty(returnedReason))
+                        {
+                            // If returnedReason is null or empty, both should not be visible
+                            fileUploadInstallaionInvoice.Visible = false;
+                            fileUploadManufacturingReport.Visible = false;
+                        }
+                        else
+                        {
+                            if (LblInstallationName.Text.Trim() == "Switching Station")
+                            {
+                                // If returnedReason is not null and not empty
+                                fileUploadInstallaionInvoice.Visible = false; // You can adjust this as needed
+                                fileUploadManufacturingReport.Visible = true;
+                            }
+                            else
+                            {
+                                fileUploadInstallaionInvoice.Visible = true; // You can adjust this as needed
+                                fileUploadManufacturingReport.Visible = true;
+                            }
+                        }
                     }
 
 
                 }
-
             }
             catch (Exception ex)
             { }
@@ -253,6 +285,11 @@ namespace CEIHaryana.SiteOwnerPages
                         Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                         Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
 
+                    }
+                    else if (LblInstallationName.Text.Trim() == "Switching Station")
+                    {
+                        Session["SwitchingSubstationId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
+                        Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
                     }
                 }
             }
@@ -328,9 +365,9 @@ namespace CEIHaryana.SiteOwnerPages
                                             {
                                                 //string FileName1 = Path.GetFileName(fileUploadDoc.PostedFile.FileName);
 
-                                                if (!Directory.Exists(Server.MapPath("/Attachment/" + SiteOwnerID + "/" + InspectionID + "/" + "CheckListDocuments" + "/" )))
+                                                if (!Directory.Exists(Server.MapPath("/Attachment/" + SiteOwnerID + "/" + InspectionID + "/" + "CheckListDocuments" + "/")))
                                                 {
-                                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + InspectionID + "/" + "CheckListDocuments" + "/" )); //removed fileNameWithoutExtension + "/"
+                                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + InspectionID + "/" + "CheckListDocuments" + "/")); //removed fileNameWithoutExtension + "/"
                                                 }
                                                 string path = "";
                                                 path = "/Attachment/" + SiteOwnerID + "/" + InspectionID + "/" + "CheckListDocuments";  //+ "/" + fileNameWithoutExtension
@@ -371,32 +408,66 @@ namespace CEIHaryana.SiteOwnerPages
                                             FileUpload fileUploadInvoice = row.FindControl("FileUploadInstallaionInvoice") as FileUpload;
                                             FileUpload fileUploadReport = row.FindControl("FileUploadManufacturingReport") as FileUpload;
 
-                                            if ((fileUploadInvoice != null && fileUploadInvoice.HasFile) && (fileUploadReport != null && fileUploadReport.HasFile))
+                                            if (LblInstallationName.Text.Trim() == "Switching Station")
                                             {
-
-                                                string CreatedBy = Session["SiteOwnerId"].ToString();
-                                                //string FileName1 = Path.GetFileName(fileUploadInvoice.PostedFile.FileName);
-                                                //string FileName2 = Path.GetFileName(fileUploadReport.PostedFile.FileName);
-
-                                                if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/")))
+                                                if ((fileUploadReport != null && fileUploadReport.HasFile))
                                                 {
-                                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/"));
+
+                                                    string CreatedBy = Session["SiteOwnerId"].ToString();
+
+                                                    if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/")))
+                                                    {
+                                                        Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/"));
+                                                    }
+                                                    string path = "";
+                                                    path = "/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments";//one "/" removed from here
+                                                    string fileName2 = "ManufacturingReport_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                                                    string filePathInfo = Server.MapPath(path + "/" + fileName2);
+
+                                                    fileUploadReport.PostedFile.SaveAs(filePathInfo); // Changed from fileUploadInvoice to fileUploadReport
+
+                                                    // Ensure LblRowid and InspectionID are not null or empty if required
+                                                    if (!string.IsNullOrEmpty(LblRowid.Text) && !string.IsNullOrEmpty(InspectionID))
+                                                    {
+                                                        CEI.InsertReturnedInspectionTRAttachmentsinCaseOfSwitchingStation(LblRowid.Text, InspectionID, path + "/" + fileName2, LblInstallationName.Text, SiteOwnerID, transaction);
+                                                    }
                                                 }
-                                                string path = "";
-                                                path = "/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments";//one "/" removed from here
-                                                string fileName1 = "InstallaionInvoice" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
-                                                string fileName2 = "ManufacturingReport" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
-                                                string filePathInfo = "";
-                                                filePathInfo = Server.MapPath(path + "/" + fileName1);
-                                                fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
-                                                filePathInfo = Server.MapPath(path + "/" + fileName2);
-                                                fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
-                                                CEI.InsertReturnedInspectionTestReportAttachments(LblRowid.Text, InspectionID, path + "/" + fileName1, path + "/" + fileName2, LblInstallationName.Text, SiteOwnerID, transaction);
+                                                else
+                                                {
+                                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please upload all required documents for rows with a Returned Reason.');", true);
+                                                    return;
+                                                }
+
                                             }
                                             else
                                             {
-                                                //throw new Exception("Please Upload  Files in upload section and in .pdf format.");
-                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please upload all required documents for rows with a Returned Reason.');", true);
+                                                if ((fileUploadInvoice != null && fileUploadInvoice.HasFile) && (fileUploadReport != null && fileUploadReport.HasFile))
+                                                {
+
+                                                    string CreatedBy = Session["SiteOwnerId"].ToString();
+                                                    //string FileName1 = Path.GetFileName(fileUploadInvoice.PostedFile.FileName);
+                                                    //string FileName2 = Path.GetFileName(fileUploadReport.PostedFile.FileName);
+
+                                                    if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/")))
+                                                    {
+                                                        Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/"));
+                                                    }
+                                                    string path = "";
+                                                    path = "/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments";//one "/" removed from here
+                                                    string fileName1 = "InstallaionInvoice" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                                                    string fileName2 = "ManufacturingReport" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                                                    string filePathInfo = "";
+                                                    filePathInfo = Server.MapPath(path + "/" + fileName1);
+                                                    fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
+                                                    filePathInfo = Server.MapPath(path + "/" + fileName2);
+                                                    fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
+                                                    CEI.InsertReturnedInspectionTestReportAttachments(LblRowid.Text, InspectionID, path + "/" + fileName1, path + "/" + fileName2, LblInstallationName.Text, SiteOwnerID, transaction);
+                                                }
+                                                else
+                                                {
+                                                    //throw new Exception("Please Upload  Files in upload section and in .pdf format.");
+                                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please upload all required documents for rows with a Returned Reason.');", true);
+                                                }
                                             }
                                         }
                                         else
@@ -421,7 +492,7 @@ namespace CEIHaryana.SiteOwnerPages
                                         string fileName = LblFileName.Text;
                                         string fileNameWithoutExtension = fileName;
                                         int index = fileName.IndexOf(".pdf");
-                                        if (index > 0) 
+                                        if (index > 0)
                                         {
                                             fileNameWithoutExtension = fileName.Substring(0, index);
                                         }
@@ -478,33 +549,68 @@ namespace CEIHaryana.SiteOwnerPages
                                             FileUpload fileUploadInvoice = row.FindControl("FileUploadInstallaionInvoice") as FileUpload;
                                             FileUpload fileUploadReport = row.FindControl("FileUploadManufacturingReport") as FileUpload;
 
-                                            if ((fileUploadInvoice != null && fileUploadInvoice.HasFile) && (fileUploadReport != null && fileUploadReport.HasFile))
+                                            if (LblInstallationName.Text.Trim() == "Switching Station")
                                             {
-
-                                                string CreatedBy = Session["SiteOwnerId"].ToString();
-                                                //string FileName1 = Path.GetFileName(fileUploadInvoice.PostedFile.FileName);
-                                                //string FileName2 = Path.GetFileName(fileUploadReport.PostedFile.FileName);
-
-                                                if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/")))
+                                                if ((fileUploadReport != null && fileUploadReport.HasFile))
                                                 {
-                                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/"));
+
+                                                    string CreatedBy = Session["SiteOwnerId"].ToString();
+
+                                                    if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/")))
+                                                    {
+                                                        Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/"));
+                                                    }
+                                                    string path = "";
+                                                    path = "/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments";//one "/" removed from here
+                                                    string fileName2 = "ManufacturingReport_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                                                    string filePathInfo = Server.MapPath(path + "/" + fileName2);
+
+                                                    fileUploadReport.PostedFile.SaveAs(filePathInfo); // Changed from fileUploadInvoice to fileUploadReport
+
+                                                    // Ensure LblRowid and InspectionID are not null or empty if required
+                                                    if (!string.IsNullOrEmpty(LblRowid.Text) && !string.IsNullOrEmpty(InspectionID))
+                                                    {
+                                                        CEI.InsertReturnedInspectionTRAttachmentsinCaseOfSwitchingStation(LblRowid.Text, InspectionID, path + "/" + fileName2, LblInstallationName.Text, SiteOwnerID, transaction);
+                                                    }
                                                 }
-                                                string path = "";
-                                                path = "/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments";//one "/" removed from here
-                                                string fileName1 = "InstallaionInvoice" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
-                                                string fileName2 = "ManufacturingReport" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
-                                                string filePathInfo = "";
-                                                filePathInfo = Server.MapPath(path + "/" + fileName1);
-                                                fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
-                                                filePathInfo = Server.MapPath(path + "/" + fileName2);
-                                                fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
-                                                CEI.InsertReturnedInspectionTestReportAttachments(LblRowid.Text, InspectionID, path + "/" + fileName1, path + "/" + fileName2, LblInstallationName.Text, SiteOwnerID, transaction);
+                                                else
+                                                {
+                                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please upload all required documents for rows with a Returned Reason.');", true);
+                                                    return;
+                                                }
+
                                             }
                                             else
                                             {
-                                                //throw new Exception("Please Upload  Files in upload section and in .pdf format.");
-                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please upload all required documents for rows with a Returned Reason.');", true);
-                                                return;
+
+                                                if ((fileUploadInvoice != null && fileUploadInvoice.HasFile) && (fileUploadReport != null && fileUploadReport.HasFile))
+                                                {
+
+                                                    string CreatedBy = Session["SiteOwnerId"].ToString();
+                                                    //string FileName1 = Path.GetFileName(fileUploadInvoice.PostedFile.FileName);
+                                                    //string FileName2 = Path.GetFileName(fileUploadReport.PostedFile.FileName);
+
+                                                    if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/")))
+                                                    {
+                                                        Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/"));
+                                                    }
+                                                    string path = "";
+                                                    path = "/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments";//one "/" removed from here
+                                                    string fileName1 = "InstallaionInvoice" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                                                    string fileName2 = "ManufacturingReport" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                                                    string filePathInfo = "";
+                                                    filePathInfo = Server.MapPath(path + "/" + fileName1);
+                                                    fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
+                                                    filePathInfo = Server.MapPath(path + "/" + fileName2);
+                                                    fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
+                                                    CEI.InsertReturnedInspectionTestReportAttachments(LblRowid.Text, InspectionID, path + "/" + fileName1, path + "/" + fileName2, LblInstallationName.Text, SiteOwnerID, transaction);
+                                                }
+                                                else
+                                                {
+                                                    //throw new Exception("Please Upload  Files in upload section and in .pdf format.");
+                                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please upload all required documents for rows with a Returned Reason.');", true);
+                                                    return;
+                                                }
                                             }
                                         }
                                         else
@@ -562,16 +668,31 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 foreach (GridViewRow row in Grid_MultipleInspectionTR.Rows)
                 {
+                    Label LblInstallationName = row.FindControl("LblInstallationName") as Label;
                     string returnedReason = (row.FindControl("LblReturnedReason") as Label)?.Text;
                     FileUpload fileUploadInvoice = row.FindControl("FileUploadInstallaionInvoice") as FileUpload;
                     FileUpload fileUploadReport = row.FindControl("FileUploadManufacturingReport") as FileUpload;
 
-                    if (!string.IsNullOrEmpty(returnedReason) &&
-                        ((fileUploadInvoice == null || !fileUploadInvoice.HasFile) ||
-                         (fileUploadReport == null || !fileUploadReport.HasFile)))
+                    if (LblInstallationName.Text.Trim() == "Switching Station")
                     {
-                        flag = 1;
-                        break;
+                        // Only check the file upload report condition
+                        if (!string.IsNullOrEmpty(returnedReason) &&
+                            (fileUploadReport == null || !fileUploadReport.HasFile))
+                        {
+                            flag = 1;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        // Original check for other cases
+                        if (!string.IsNullOrEmpty(returnedReason) &&
+                            ((fileUploadInvoice == null || !fileUploadInvoice.HasFile) ||
+                             (fileUploadReport == null || !fileUploadReport.HasFile)))
+                        {
+                            flag = 1;
+                            break;
+                        }
                     }
                 }
             }
@@ -591,17 +712,31 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 foreach (GridViewRow row in Grid_MultipleInspectionTR.Rows)
                 {
+                    Label LblInstallationName = row.FindControl("LblInstallationName") as Label;
                     string returnedReason = (row.FindControl("LblReturnedReason") as Label)?.Text;
                     FileUpload fileUploadInvoice = row.FindControl("FileUploadInstallaionInvoice") as FileUpload;
                     FileUpload fileUploadReport = row.FindControl("FileUploadManufacturingReport") as FileUpload;
 
-                    if (!string.IsNullOrEmpty(returnedReason) &&
-                        ((fileUploadInvoice == null || !fileUploadInvoice.HasFile) ||
-                         (fileUploadReport == null || !fileUploadReport.HasFile)))
+                    if (LblInstallationName.Text.Trim() == "Switching Station")
                     {
-
-                        flag = 1;
-                        break;
+                        // Only check the file upload report condition
+                        if (!string.IsNullOrEmpty(returnedReason) &&
+                            (fileUploadReport == null || !fileUploadReport.HasFile))
+                        {
+                            flag = 1;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        // Original check for other cases
+                        if (!string.IsNullOrEmpty(returnedReason) &&
+                            ((fileUploadInvoice == null || !fileUploadInvoice.HasFile) ||
+                             (fileUploadReport == null || !fileUploadReport.HasFile)))
+                        {
+                            flag = 1;
+                            break;
+                        }
                     }
                 }
             }

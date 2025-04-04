@@ -10066,13 +10066,29 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
 
         }
 
-
-
-
-
-
-
         #endregion
+        public void InsertReturnedInspectionTRAttachmentsinCaseOfSwitchingStation(string id, string InspectionID,
+                string ManufacturingReport, string InstallationType, string CreatedBy, SqlTransaction transaction)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertReturnedInspectionTRAttachmentsinCaseOfSwitchingStation", transaction.Connection, transaction))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@InspectionID", InspectionID);
+                    //cmd.Parameters.AddWithValue("@installaionInvoice", installaionInvoice);
+                    cmd.Parameters.AddWithValue("@ManufacturingReport", ManufacturingReport);
+                    cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+                    cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }
 

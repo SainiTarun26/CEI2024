@@ -1187,11 +1187,11 @@ namespace CEIHaryana.Admin
                 }
                 else if (e.Row.RowType == DataControlRowType.Footer)
                 {
-                  
+
                 }
             }
             catch (Exception ex)
-            {}
+            { }
         }
 
         private void GridChecklistDocuments()
@@ -1290,7 +1290,6 @@ namespace CEIHaryana.Admin
             {
                 string fileName = "";
                 //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
@@ -1314,20 +1313,25 @@ namespace CEIHaryana.Admin
                     LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
                     if (LblInstallationName.Text.Trim() == "Line")
                     {
-                        Grid_MultipleInspectionTR.Columns[5].Visible = false;
-                        Grid_MultipleInspectionTR.Columns[6].Visible = false;
+                        //Grid_MultipleInspectionTR.Columns[5].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[7].Visible = false;
+                       // Grid_MultipleInspectionTR.Columns[6].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[8].Visible = false;
                         linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = false;
                     }
                     else if (LblInstallationName.Text.Trim() == "Switching Station")
-                    {                      
+                    {
                         linkButtonInvoice.Visible = false;
-                        RadioButtonAction.Items.FindByValue("1").Enabled    = false;
+                        RadioButtonAction.Items.FindByValue("1").Enabled = false;
+                        ViewState["AllRowsAreLine"] = false;
                     }
                     else
                     {
-                        Grid_MultipleInspectionTR.Columns[5].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                        //Grid_MultipleInspectionTR.Columns[5].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[7].Visible = true;
+                       // Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[8].Visible = true;
                         linkButtonInvoice.Visible = true;
                         LinkButtonReport.Visible = true;
                         ViewState["AllRowsAreLine"] = false;

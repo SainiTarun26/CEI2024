@@ -31,8 +31,17 @@ namespace CEIHaryana.Admin
                 {
                     if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
                     {
-                        GetDetailsWithId();
-                        GetTestReportData();
+                        if (Convert.ToString(Session["InspectionId"]) != null && Convert.ToString(Session["InspectionId"]) != string.Empty)
+                        {
+                            string InspectionId = Convert.ToString(Session["InspectionId"]);
+                            GetDetailsWithId(InspectionId);
+                            GetTestReportData(InspectionId);
+                        }
+                        else
+                        {
+                            Session["InspectionId"] = "";
+                            Response.Redirect("/Admin/IntimationHistoryForAdmin.aspx", false);
+                        }
                     }
                     else
                     {
@@ -57,13 +66,13 @@ namespace CEIHaryana.Admin
             ddlDivisions.Items.Insert(0, new ListItem("Select", "0"));
             ds.Clear();
         }
-        private void GetDetailsWithId()
+        private void GetDetailsWithId(string InspectionId)
         {
             try
             {
-                ID = Session["InspectionId"].ToString();
+                //ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.InspectionData(ID);
+                ds = CEI.InspectionData(InspectionId);
                 if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     Type = ds.Tables[0].Rows[0]["IType"].ToString();
@@ -106,16 +115,17 @@ namespace CEIHaryana.Admin
                         string ReturnedValue = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
                         if (Type == "New")
                         {
-                            GridToViewMultipleCaseNew();
+                            GridToViewMultipleCaseNew(txtInspectionReportId.Text.Trim());
 
                             if (ReturnedValue == "1") //ChecklistDocuments
                             {
                                 grd_Documemnts.Columns[3].Visible = true;
                                 grd_Documemnts.Columns[5].Visible = true;
-
                                 Grid_MultipleInspectionTR.Columns[7].Visible = false;
                                 Grid_MultipleInspectionTR.Columns[8].Visible = false;
-                                Grid_MultipleInspectionTR.Columns[9].Visible = false;
+                                Grid_MultipleInspectionTR.Columns[9].Visible = true;
+                                Grid_MultipleInspectionTR.Columns[10].Visible = true;
+                                Grid_MultipleInspectionTR.Columns[11].Visible = false;
                             }
                             else if (ReturnedValue == "2") //TestReportDocuments
                             {
@@ -125,6 +135,8 @@ namespace CEIHaryana.Admin
                                 Grid_MultipleInspectionTR.Columns[7].Visible = true;
                                 Grid_MultipleInspectionTR.Columns[8].Visible = true;
                                 Grid_MultipleInspectionTR.Columns[9].Visible = true;
+                                Grid_MultipleInspectionTR.Columns[10].Visible = true;
+                                Grid_MultipleInspectionTR.Columns[11].Visible = true;
                             }
                             else if (ReturnedValue == "3") //BothDocuments
                             {
@@ -134,14 +146,16 @@ namespace CEIHaryana.Admin
                                 Grid_MultipleInspectionTR.Columns[7].Visible = true;
                                 Grid_MultipleInspectionTR.Columns[8].Visible = true;
                                 Grid_MultipleInspectionTR.Columns[9].Visible = true;
+                                Grid_MultipleInspectionTR.Columns[10].Visible = true;
+                                Grid_MultipleInspectionTR.Columns[11].Visible = true;
                             }
                         }
                         else
                         {
-                            GetGridNewInspectionMultiple();
+                            GetGridNewInspectionMultiple(txtInspectionReportId.Text.Trim());
                         }
 
-                        GridBindDocument();
+                        GridBindDocument(txtInspectionReportId.Text.Trim());
                         BindDivisions(txtDistrict.Text.Trim());
                         string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
 
@@ -177,15 +191,16 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                string script = "alert('An error occurred, please try again later');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }
-        private void GetGridNewInspectionMultiple()
+        private void GetGridNewInspectionMultiple(string InspectionId)
         {
             try
             {
-                string ID = Session["InspectionId"].ToString();
-                DataSet dsVC = CEI.GetDetailsToViewTRinMultipleCaseNew(ID);
+                //string ID = Session["InspectionId"].ToString();
+                DataSet dsVC = CEI.GetDetailsToViewTRinMultipleCaseNew(InspectionId);
                 if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                 {
                     Grid_MultipleInspectionTR.DataSource = dsVC;
@@ -199,14 +214,19 @@ namespace CEIHaryana.Admin
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+
+                string script = "alert('An error occurred, please try again later');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true); 
+            }
         }
-        private void GridToViewMultipleCaseNew()
+        private void GridToViewMultipleCaseNew(string inspectionReportId)
         {
             try
             {
-                string ID = Session["InspectionId"].ToString();
-                DataTable dsVC = CEI.InstallationComponentsforSiteOwner(ID);
+                //string ID = Session["InspectionId"].ToString();
+                DataTable dsVC = CEI.InstallationComponentsforSiteOwner(inspectionReportId);
 
                 if (dsVC != null && dsVC.Rows.Count > 0)
                 {
@@ -221,7 +241,12 @@ namespace CEIHaryana.Admin
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+
+                string script = "alert('An error occurred, please try again later');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
         }
         protected void btnBack_Click(object sender, EventArgs e)
         {
@@ -233,11 +258,48 @@ namespace CEIHaryana.Admin
             int checksuccessmessage = 0;
             try
             {
-                if (Session["InspectionId"].ToString() != null && Session["InspectionId"].ToString() != "" && Session["AdminID"].ToString() != null)
-                {
+               // if (Session["InspectionId"].ToString() != null && Session["InspectionId"].ToString() != "" && Session["AdminID"].ToString() != null)
+                    if (Session["AdminID"].ToString() != "" && Session["AdminID"].ToString() != null)
+                    {
                     StaffId = Session["AdminID"].ToString();
-                    ID = Session["InspectionId"].ToString();
+                    //ID = Session["InspectionId"].ToString();
+                    ID = txtInspectionReportId.Text.Trim();
                     AssignFrom = Session["AdminID"].ToString();
+
+                    bool isRemarksValid = true;
+                    #region RemarksValidation
+
+                    foreach (GridViewRow row in Grid_TRDocuments.Rows)
+                    {
+                        CheckBox chkSelect = (CheckBox)row.FindControl("chk_Select");
+                        TextBox txtRemarks = (TextBox)row.FindControl("txt_Remarks");
+
+                        if (chkSelect != null && chkSelect.Checked && (txtRemarks == null || string.IsNullOrWhiteSpace(txtRemarks.Text)))
+                        {
+                            isRemarksValid = false;
+                            break;
+                        }
+                    }
+
+                    foreach (GridViewRow row in grd_ChecklistDocumemnts.Rows)
+                    {
+                        CheckBox chkSelect = (CheckBox)row.FindControl("chk_SelectDoc");
+                        TextBox txtRemarks = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
+
+                        if (chkSelect != null && chkSelect.Checked && (txtRemarks == null || string.IsNullOrWhiteSpace(txtRemarks.Text)))
+                        {
+                            isRemarksValid = false;
+                            break;
+                        }
+                    }
+
+                    if (!isRemarksValid)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please fill in remarks for selected rows.');", true);
+                        return;
+                    }
+
+                    #endregion
 
                     if (RadioButtonAction.SelectedValue != "" && RadioButtonAction.SelectedValue != null)
                     {
@@ -256,8 +318,8 @@ namespace CEIHaryana.Admin
                                     string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
                                     if (reqType == "Industry")
                                     {
-                                        string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
-                                        // string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in/api/project-service-logs-external_UHBVN");
+                                        string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
+                                        // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
                                         if (serverStatus != "Server is reachable.")
                                         {
                                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
@@ -274,10 +336,178 @@ namespace CEIHaryana.Admin
 
                                         checksuccessmessage = 1;
                                     }
+                                    //else
+                                    //{
+                                    //    CEI.updateInspectionPeriodic(ID, StaffId, IntimationId, txtWorkType.Text.Trim(), AcceptorReturn, Reason, DdlReturnInPeriodic.SelectedItem.Value);
+
+                                    //    checksuccessmessage = 1;
+                                    //}
                                     else
                                     {
-                                        CEI.updateInspectionPeriodic(ID, StaffId, IntimationId, txtWorkType.Text.Trim(), AcceptorReturn, Reason, DdlReturnInPeriodic.SelectedItem.Value);
+                                        if (InstallType == "New")
+                                        {
+                                            if (RdbtnAccptReturn.SelectedValue == "0")
+                                            {
+                                                CEI.updateInspectionCEI(ID, StaffId, IntimationId, count, txtWorkType.Text.Trim(), AcceptorReturn, Reason, ddlReasonType.SelectedItem.Value);
+                                            }
+                                            else if (RdbtnAccptReturn.SelectedValue == "1")
+                                            {
+                                                SqlTransaction transaction = null;
+                                                try
+                                                {
+                                                    using (SqlConnection connection = new SqlConnection(connectionString))
+                                                    {
+                                                        connection.Open();
+                                                        transaction = connection.BeginTransaction();
+                                                        CEI.UpdateStatusOfReturnedInspection(ID, StaffId, ddlReasonType.SelectedItem.Value, transaction);
 
+                                                        if (ddlReasonType.SelectedItem.Value == "1") // Checklist Documents
+                                                        {
+                                                            bool AtLeastOneChecked = false;
+                                                            foreach (GridViewRow row in grd_ChecklistDocumemnts.Rows)
+                                                            {
+                                                                CheckBox chkChecklist = (CheckBox)row.FindControl("chk_SelectDoc");
+                                                                if (chkChecklist != null && chkChecklist.Checked)
+                                                                {
+                                                                    AtLeastOneChecked = true;
+
+                                                                    Label LabelRowId = (Label)row.FindControl("LabelRowId");
+                                                                    TextBox txt_RemarksforOwnerDoc = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
+                                                                    if (LabelRowId != null && !string.IsNullOrEmpty(txt_RemarksforOwnerDoc.Text))
+                                                                    {
+                                                                        CEI.updateReturnRemarksOnBasesOnChecklistDocuments(ID, LabelRowId.Text, txt_RemarksforOwnerDoc.Text, transaction);
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (AtLeastOneChecked != true)
+                                                            {
+                                                                transaction.Rollback();
+                                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please Tick Atleast One Test Report Before Submit'); ", true);
+                                                                return;
+                                                            }
+                                                        }
+                                                        else if (ddlReasonType.SelectedItem.Value == "2") // Test Report Documents
+                                                        {
+                                                            bool AtLeastOneChecked = false;
+                                                            foreach (GridViewRow row in Grid_TRDocuments.Rows)
+                                                            {
+                                                                CheckBox chk = (CheckBox)row.FindControl("chk_Select");
+                                                                if (chk != null && chk.Checked)
+                                                                {
+                                                                    AtLeastOneChecked = true;
+
+                                                                    Label Labelid = (Label)row.FindControl("Labelid");
+                                                                    Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
+                                                                    TextBox txtRemarks = (TextBox)row.FindControl("txt_Remarks");
+                                                                    if (Labelid != null && !string.IsNullOrEmpty(txtRemarks.Text))
+                                                                    {
+                                                                        CEI.updateReturnRemarksOnBasesOfTrDocuments(ID, LblIntimationId.Text, Labelid.Text, txtRemarks.Text, transaction);
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (!AtLeastOneChecked)
+                                                            {
+                                                                transaction.Rollback();
+                                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please Tick Atleast One Test Report Before Submit'); ", true);
+                                                            }
+                                                        }
+                                                        else if (ddlReasonType.SelectedItem.Value == "3") // Checklist & Test Report Documents
+                                                        {
+                                                            bool isChecklistValid = false;
+                                                            bool isTestReportValid = false;
+                                                            bool allRemarksFilled = true;
+
+                                                            foreach (GridViewRow row in grd_ChecklistDocumemnts.Rows)
+                                                            {
+                                                                CheckBox chkChecklist = (CheckBox)row.FindControl("chk_SelectDoc");
+                                                                TextBox txt_RemarksforOwnerDoc = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
+
+                                                                if (chkChecklist != null && chkChecklist.Checked)
+                                                                {
+                                                                    isChecklistValid = true;
+                                                                    if (txt_RemarksforOwnerDoc == null || string.IsNullOrEmpty(txt_RemarksforOwnerDoc.Text))
+                                                                    {
+                                                                        allRemarksFilled = false;
+                                                                        break;
+                                                                    }
+                                                                }
+                                                            }
+                                                            foreach (GridViewRow row in Grid_TRDocuments.Rows)
+                                                            {
+                                                                CheckBox chk = (CheckBox)row.FindControl("chk_Select");
+                                                                TextBox txtRemarks = (TextBox)row.FindControl("txt_Remarks");
+
+                                                                if (chk != null && chk.Checked)
+                                                                {
+                                                                    isTestReportValid = true;
+
+                                                                    if (txtRemarks == null || string.IsNullOrEmpty(txtRemarks.Text))
+                                                                    {
+                                                                        allRemarksFilled = false;
+                                                                        break;
+                                                                    }
+                                                                }
+                                                            }
+                                                            if (!isChecklistValid || !isTestReportValid)
+                                                            {
+                                                                transaction.Rollback();
+                                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please tick at least one document in both Checklist and Test Report Documents before submitting.');", true);
+                                                                return;
+                                                            }
+                                                            else if (!allRemarksFilled)
+                                                            {
+                                                                transaction.Rollback();
+                                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please ensure all checked rows have remarks filled in.');", true);
+                                                                return;
+                                                            }
+                                                            else
+                                                            {
+                                                                // Process Checklist Documents
+                                                                foreach (GridViewRow row in grd_ChecklistDocumemnts.Rows)
+                                                                {
+                                                                    CheckBox chkChecklist = (CheckBox)row.FindControl("chk_SelectDoc");
+                                                                    if (chkChecklist != null && chkChecklist.Checked)
+                                                                    {
+                                                                        Label LabelRowId = (Label)row.FindControl("LabelRowId");
+                                                                        TextBox txt_RemarksforOwnerDoc = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
+
+                                                                        if (LabelRowId != null && !string.IsNullOrEmpty(txt_RemarksforOwnerDoc.Text))
+                                                                        {
+                                                                            CEI.updateReturnRemarksOnBasesOnChecklistDocuments(ID, LabelRowId.Text, txt_RemarksforOwnerDoc.Text, transaction);
+                                                                        }
+                                                                    }
+                                                                }
+                                                                // Process Test Report Documents
+                                                                foreach (GridViewRow row in Grid_TRDocuments.Rows)
+                                                                {
+                                                                    CheckBox chk = (CheckBox)row.FindControl("chk_Select");
+                                                                    if (chk != null && chk.Checked)
+                                                                    {
+                                                                        Label Labelid = (Label)row.FindControl("Labelid");
+                                                                        Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
+                                                                        TextBox txtRemarks = (TextBox)row.FindControl("txt_Remarks");
+
+                                                                        if (Labelid != null && !string.IsNullOrEmpty(txtRemarks.Text))
+                                                                        {
+                                                                            CEI.updateReturnRemarksOnBasesOfTrDocuments(ID, LblIntimationId.Text, Labelid.Text, txtRemarks.Text, transaction);
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        transaction.Commit();
+                                                    }
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    transaction.Rollback();
+                                                }
+                                            }
+                                        }
+                                        else if (InstallType == "Periodic")
+                                        {
+                                            CEI.updateInspectionPeriodic(ID, StaffId, IntimationId, txtWorkType.Text.Trim(), AcceptorReturn, Reason, DdlReturnInPeriodic.SelectedItem.Value);
+                                        }
                                         checksuccessmessage = 1;
                                     }
                                     string actiontype = AcceptorReturn == "Accepted" ? "InProgress" : "Return";
@@ -480,7 +710,12 @@ namespace CEIHaryana.Admin
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+
+                string script = "alert('An error occurred, please try again later');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
         }
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -489,14 +724,19 @@ namespace CEIHaryana.Admin
             {
                 if (e.CommandName == "Select")
                 {
-                    ID = Session["InspectionId"].ToString();
-                   // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //ID = Session["InspectionId"].ToString();
+                    ID = txtInspectionReportId.Text.Trim();
                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+
+                string script = "alert('An error occurred, please try again later');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
         }
         private void BindDropDownToAssign(string Division)
         {
@@ -511,7 +751,12 @@ namespace CEIHaryana.Admin
                 ddlToAssign.Items.Insert(0, new ListItem("Select", "0"));
                 dsAssign.Clear();
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+
+                string script = "alert('An error occurred, please try again later');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
         }
         protected void ddlDivisions_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -571,15 +816,15 @@ namespace CEIHaryana.Admin
                 btnUpdate.Visible = true;
             }
         }
-        protected void GridBindDocument()
+        protected void GridBindDocument(string InspID)
         {
             try
             {
-                ID = Session["InspectionId"].ToString();
+                //ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 //ds = CEI.ViewDocuments(ID);
 
-                ds = CEI.ViewReturnDocuments(ID);
+                ds = CEI.ViewReturnDocuments(InspID);
                 if (ds.Tables.Count > 0)
                 {
                     grd_Documemnts.DataSource = ds;
@@ -592,15 +837,20 @@ namespace CEIHaryana.Admin
                 }
                 ds.Dispose();
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+
+                string script = "alert('An error occurred, please try again later');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
         }
-        private void GetTestReportData()
+        private void GetTestReportData(string InspectionId)
         {
             try
             {
-                ID = Session["InspectionId"].ToString();
+                //ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReport(ID);
+                ds = CEI.GetTestReport(InspectionId);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {
@@ -614,14 +864,19 @@ namespace CEIHaryana.Admin
                 }
                 ds.Dispose();
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+
+                string script = "alert('An error occurred, please try again later');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
         }
-        private void GridTRDocuments()
+        private void GridTRDocuments(string InspectionId)
         {
             try
             {
-                string ID = Session["InspectionId"].ToString();
-                DataSet dsVC = CEI.SelectRemarksDocumentsattachedinTR(ID);
+                //string ID = Session["InspectionId"].ToString();
+                DataSet dsVC = CEI.SelectRemarksDocumentsattachedinTR(InspectionId);
 
                 if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                 {
@@ -636,15 +891,20 @@ namespace CEIHaryana.Admin
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+
+                string script = "alert('An error occurred, please try again later');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
         }
-        private void GridChecklistDocuments()
+        private void GridChecklistDocuments(string InspectionId)
         {
             try
             {
-                ID = Session["InspectionId"].ToString();
+                //ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.ViewDocuments(ID);
+                ds = CEI.ViewDocuments(InspectionId);
                 if (ds.Tables.Count > 0)
                 {
                     grd_ChecklistDocumemnts.DataSource = ds;
@@ -660,7 +920,11 @@ namespace CEIHaryana.Admin
                 ds.Dispose();
             }
             catch (Exception ex)
-            { }
+            {
+
+                string script = "alert('An error occurred, please try again later');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
         }
         protected void chk_SelectDoc_CheckedChanged(object sender, EventArgs e)
         {
@@ -690,44 +954,105 @@ namespace CEIHaryana.Admin
         }
         protected void ddlReasonType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlReasonType.SelectedValue == "1")
+            if (!string.IsNullOrEmpty(txtInspectionReportId.Text.Trim()))
             {
-                DIV_ChecklistDocuments.Visible = true;
-                Check_ChecklistDocuments.Visible = true;
+                if (ddlReasonType.SelectedValue == "1")
+                {
+                    DIV_ChecklistDocuments.Visible = true;
+                    Check_ChecklistDocuments.Visible = true;
 
-                GridChecklistDocuments();
+                    GridChecklistDocuments(txtInspectionReportId.Text.Trim());
 
-                DIV_TRDocuments.Visible = false;
-                Check_TRDocuments.Visible = false;
-            }
-            else if (ddlReasonType.SelectedValue == "2")
-            {
-                DIV_TRDocuments.Visible = true;
-                Check_TRDocuments.Visible = true;
+                    DIV_TRDocuments.Visible = false;
+                    Check_TRDocuments.Visible = false;
+                }
+                else if (ddlReasonType.SelectedValue == "2")
+                {
+                    DIV_TRDocuments.Visible = true;
+                    Check_TRDocuments.Visible = true;
 
-                GridTRDocuments();
+                    GridTRDocuments(txtInspectionReportId.Text.Trim());
 
-                DIV_ChecklistDocuments.Visible = false;
-                Check_ChecklistDocuments.Visible = false;
-            }
-            else if (ddlReasonType.SelectedValue == "3")
-            {
-                DIV_ChecklistDocuments.Visible = true;
-                Check_ChecklistDocuments.Visible = true;
-                DIV_TRDocuments.Visible = true;
-                Check_TRDocuments.Visible = true;
+                    DIV_ChecklistDocuments.Visible = false;
+                    Check_ChecklistDocuments.Visible = false;
+                }
+                else if (ddlReasonType.SelectedValue == "3")
+                {
+                    DIV_ChecklistDocuments.Visible = true;
+                    Check_ChecklistDocuments.Visible = true;
+                    DIV_TRDocuments.Visible = true;
+                    Check_TRDocuments.Visible = true;
 
-                GridChecklistDocuments();
-                GridTRDocuments();
+                    GridChecklistDocuments(txtInspectionReportId.Text.Trim());
+                    GridTRDocuments(txtInspectionReportId.Text.Trim());
+                }
+                else
+                {
+                    DIV_ChecklistDocuments.Visible = false;
+                    Check_ChecklistDocuments.Visible = false;
+                    DIV_TRDocuments.Visible = false;
+                    Check_TRDocuments.Visible = false;
+                }
             }
             else
             {
-                DIV_ChecklistDocuments.Visible = false;
-                Check_ChecklistDocuments.Visible = false;
-                DIV_TRDocuments.Visible = false;
-                Check_TRDocuments.Visible = false;
+                Response.Redirect("/AdminLogout.aspx", false);
             }
         }
+
+        protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    LinkButton LnkPreviousDocPath = (LinkButton)e.Row.FindControl("LnkPreviousDocPath");
+
+                    // Check if the control is found and CommandArgument is not empty
+                    if (LnkPreviousDocPath != null && !string.IsNullOrWhiteSpace(LnkPreviousDocPath.CommandArgument))
+                    {
+                        LnkPreviousDocPath.Visible = true;
+                        LnkPreviousDocPath.Text = "View Document"; // Set the desired text
+                    }
+                    else
+                    {
+                        LnkPreviousDocPath.Visible = false; // Hide the link if no valid path
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                string script = "alert('An error occurred, please try again later');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+        }
+
+        //protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (e.Row.RowType == DataControlRowType.DataRow)
+        //        {
+        //            LinkButton LnkPreviousDocPath = (LinkButton)e.Row.FindControl("LnkPreviousDocPath");
+
+        //            if (LnkPreviousDocPath != null && LnkPreviousDocPath != "")
+        //            {
+        //                LnkPreviousDocPath.Visible = true;
+        //                LnkPreviousDocPath.Text = "Click here to view document";
+        //            }
+        //            else
+        //            {
+        //                LnkPreviousDocPath.Visible = false;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Consider logging the exception or handling it appropriately
+        //    }
+        //}
+
         protected void lnkRedirect_Click(object sender, EventArgs e)
         {
             LinkButton btn = (LinkButton)(sender);
@@ -784,7 +1109,6 @@ namespace CEIHaryana.Admin
             {
                 string fileName = "";
                 //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
@@ -803,35 +1127,67 @@ namespace CEIHaryana.Admin
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
-                    LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallationInvoice");
-                    LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
-                    LinkButton linkButtonPrevInvoice = (LinkButton)e.Row.FindControl("lnkPrevInstallationInvoice");
-                    LinkButton LinkButtonPrevReport = (LinkButton)e.Row.FindControl("lnkPrevManufacturingReport");
 
-                    if (LblInstallationName.Text.Trim() == "Line")
+                    Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
+                    LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallaionInvoice");
+                    LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
+                    LinkButton lnkPreviousInstallaionInvoice = (LinkButton)e.Row.FindControl("lnkPreviousInstallaionInvoice");
+                    LinkButton lnkPreviosManufacturingReport = (LinkButton)e.Row.FindControl("lnkPreviosManufacturingReport");
+                    if (lnkPreviosManufacturingReport.Text.Trim() == "" || lnkPreviosManufacturingReport == null)
                     {
-                        Grid_MultipleInspectionTR.Columns[5].Visible = false;
-                        Grid_MultipleInspectionTR.Columns[6].Visible = false;
-                        Grid_MultipleInspectionTR.Columns[7].Visible = false;
-                        Grid_MultipleInspectionTR.Columns[8].Visible = false;
-                        linkButtonInvoice.Visible = false;
-                        LinkButtonReport.Visible = false;
-                        linkButtonPrevInvoice.Visible = false;
-                        LinkButtonPrevReport.Visible = false;
+                        lnkPreviosManufacturingReport.Visible = false;
+
                     }
                     else
                     {
-                        Grid_MultipleInspectionTR.Columns[5].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[6].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[7].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[8].Visible = true;
-                        linkButtonInvoice.Visible = true;
+                        lnkPreviosManufacturingReport.Visible = true;
+                        lnkPreviosManufacturingReport.Text = "View Document";
+                    }
+                    if (lnkPreviousInstallaionInvoice.Text.Trim() == "" || lnkPreviousInstallaionInvoice == null)
+                    {
+                        lnkPreviousInstallaionInvoice.Visible = false;
+
+                    }
+                    else
+                    {
+                        lnkPreviousInstallaionInvoice.Visible = true;
+                        lnkPreviousInstallaionInvoice.Text = "View Document";
+                    }
+                    if (LblInstallationName.Text.Trim() == "Line")
+                    {
+                        Grid_MultipleInspectionTR.Columns[9].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[10].Visible = false;
+                        lnkPreviousInstallaionInvoice.Visible = false;
+                        lnkPreviosManufacturingReport.Visible = false;
+                        linkButtonInvoice.Visible = false;
+                        LinkButtonReport.Visible = false;
+                    }
+                    else if (LblInstallationName.Text.Trim() == "Switching Station")
+                    {
+                        Grid_MultipleInspectionTR.Columns[9].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[10].Visible = true;
+                        lnkPreviousInstallaionInvoice.Visible = false;
+                        lnkPreviosManufacturingReport.Visible = true;
+                        linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = true;
-                        linkButtonPrevInvoice.Visible = true;
-                        LinkButtonPrevReport.Visible = true;
                         ViewState["AllRowsAreLine"] = false;
                     }
+                    else
+                    {
+                        Grid_MultipleInspectionTR.Columns[9].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[10].Visible = true;
+                        lnkPreviousInstallaionInvoice.Visible = true;
+                        lnkPreviosManufacturingReport.Visible = true;
+                        linkButtonInvoice.Visible = true;
+                        LinkButtonReport.Visible = true;
+                        ViewState["AllRowsAreLine"] = false;
+                    }
+                    //Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
+                    if (LblInstallationName.Text.Trim() == "Switching Station")
+                    {
+                        RadioButtonAction.Items.FindByValue("1").Enabled = false;
+                    }
+
                 }
                 else if (e.Row.RowType == DataControlRowType.Footer)
                 {
@@ -854,7 +1210,7 @@ namespace CEIHaryana.Admin
             catch (Exception ex)
             { }
         }
-        protected void lnkRedirectTRr_Click1(object sender, EventArgs e)
+        protected void lnkRedirectTR_Click1(object sender, EventArgs e)
         {
             try
             {
@@ -876,7 +1232,12 @@ namespace CEIHaryana.Admin
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+
+                string script = "alert('An error occurred, please try again later');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -887,60 +1248,7 @@ namespace CEIHaryana.Admin
                 {
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                 }
-                string returnBasedValue = DataBinder.Eval(e.Row.DataItem, "ReturnBased")?.ToString();
-
-                // Apply checks based on the value
-                if (!string.IsNullOrEmpty(returnBasedValue))
-                {
-                    if (returnBasedValue == "ChecklistDocuments")
-                    {
-                        GridView Grid_MultipleInspectionTR = e.Row.FindControl("Grid_MultipleInspectionTR") as GridView;
-                        if (Grid_MultipleInspectionTR != null)
-                        {
-                            Grid_MultipleInspectionTR.Columns[6].Visible = false; // "Previous Installaion Invoice"
-                            Grid_MultipleInspectionTR.Columns[7].Visible = false; // "Previous Manufacturing Report"
-                        }
-                        GridView grdDocuments = (GridView)e.Row.FindControl("grd_Documemnts");
-                        if (grdDocuments != null)
-                        {
-                            grdDocuments.Columns[2].Visible = true; // "Previous Documents" column
-                            grdDocuments.Columns[5].Visible = true; // "Return Reason" column
-                        }
-                    }
-                    else if (returnBasedValue == "TestReportDocuments")
-                    {
-                        GridView grdDocuments = (GridView)e.Row.FindControl("grd_Documemnts");
-                        if (grdDocuments != null)
-                        {
-                            grdDocuments.Columns[2].Visible = false; // "Previous Documents" column
-                            grdDocuments.Columns[5].Visible = false; // "Return Reason" column
-                        }
-                        GridView Grid_MultipleInspectionTR = e.Row.FindControl("Grid_MultipleInspectionTR") as GridView;
-                        if (Grid_MultipleInspectionTR != null)
-                        {
-                            Grid_MultipleInspectionTR.Columns[6].Visible = true; // "Previous Installaion Invoice"
-                            Grid_MultipleInspectionTR.Columns[7].Visible = true; // "Previous Manufacturing Report"
-                        }
-                    }
-                    else if (returnBasedValue == "BothDocuments")
-                    {
-                        GridView Grid_MultipleInspectionTR = e.Row.FindControl("Grid_MultipleInspectionTR") as GridView;
-                        if (Grid_MultipleInspectionTR != null)
-                        {
-                            Grid_MultipleInspectionTR.Columns[6].Visible = true; // "Previous Installaion Invoice"
-                            Grid_MultipleInspectionTR.Columns[7].Visible = true; // "Previous Manufacturing Report"
-                        }
-                        GridView grdDocuments = (GridView)e.Row.FindControl("grd_Documemnts");
-                        if (grdDocuments != null)
-                        {
-                            grdDocuments.Columns[2].Visible = true; // "Previous Documents" column
-                            grdDocuments.Columns[5].Visible = true; // "Return Reason" column
-                        }
-                    }
-                    else
-                    {
-                    }
-                }
+                
             }
             if (e.Row.RowType == DataControlRowType.Header)
             {
