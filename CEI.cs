@@ -10089,6 +10089,83 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                 throw;
             }
         }
+
+        #region neeraj 10 april-2025
+        public int InsertDataForCESE(string Name, string PanNo, string Address, string Email, string ContactNo, string District, string MaxVoltage, string CSSE_Certificate, string CreatedBy)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                using (SqlCommand cmd = new SqlCommand("Sp_Register_CESE", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@Name", Name);
+                    cmd.Parameters.AddWithValue("@PanNo", PanNo);
+                    cmd.Parameters.AddWithValue("@Address", Address);
+                    cmd.Parameters.AddWithValue("@Email", Email);
+                    cmd.Parameters.AddWithValue("@ContactNo", ContactNo);
+                    cmd.Parameters.AddWithValue("@District", District);
+                    cmd.Parameters.AddWithValue("@MaxVoltage", MaxVoltage);
+                    cmd.Parameters.AddWithValue("@CSSE_Certificate", CSSE_Certificate);
+                    cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+
+                    con.Open();
+                    int x = cmd.ExecuteNonQuery();
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+        public DataTable GetCESEData()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_CESEData");
+        }
+        public DataTable DeleteCESERecord(string RegistrationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Delete_CESERecord", RegistrationId);
+        }
+        public DataTable GETCESERecord(string RegistrationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GETCESERecord", RegistrationId);
+        }
+        public int UpdateDataForCESE(string RegistrationId, string Name, string PanNo, string Address, string Email, string ContactNo, string District, string MaxVoltage, string CSSE_Certificate, string ModifiedBy)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                using (SqlCommand cmd = new SqlCommand("sp_Update_CESERecord", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@RegistrationId", RegistrationId);
+                    cmd.Parameters.AddWithValue("@Name", Name);
+                    cmd.Parameters.AddWithValue("@PanNo", PanNo);
+                    cmd.Parameters.AddWithValue("@Address", Address);
+                    cmd.Parameters.AddWithValue("@Email", Email);
+                    cmd.Parameters.AddWithValue("@ContactNo", ContactNo);
+                    cmd.Parameters.AddWithValue("@District", District);
+                    cmd.Parameters.AddWithValue("@MaxVoltage", MaxVoltage);
+                    cmd.Parameters.AddWithValue("@CSSE_Certificate", CSSE_Certificate);
+                    cmd.Parameters.AddWithValue("@ModifiedBy", ModifiedBy);
+
+                    con.Open();
+                    int x = cmd.ExecuteNonQuery();
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+        public DataTable checkPanNumber_CESE(string PanNumber)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckCESEPanNumber", PanNumber);
+        }
+        #endregion
     }
 }
 

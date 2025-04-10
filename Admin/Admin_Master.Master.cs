@@ -28,6 +28,7 @@ namespace CEI_PRoject.ADMIN
                             SLDRequest.Visible = false;
                             SLDApproval.Visible = false;
                             SLDHistory.Visible = false;
+                            CESE.Visible = true;
                         }
                         else
                         {
@@ -40,7 +41,7 @@ namespace CEI_PRoject.ADMIN
                             SubDivisionMasterTab.Visible = false;
                             SLDRequest.Visible = true;
                             SLDApproval.Visible = true;
-                            SLDHistory.Visible = true;
+                            SLDHistory.Visible = true; CESE.Visible = false;
                         }
                     }
                     else

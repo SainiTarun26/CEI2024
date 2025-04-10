@@ -559,6 +559,12 @@
                                     <span class="menu-title">Sub DivisionMaster</span>
                                 </a>
                             </li>
+                            <li class="nav-item" id="CESE" runat="server" visible="false">
+                                <a class="nav-link" href="/Admin/CESE_Registration.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">CESE Registration</span>
+                                </a>
+                            </li>
 
                         </ul>
                     </nav>

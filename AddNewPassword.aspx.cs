@@ -16,11 +16,13 @@ namespace CEIHaryana
         string ipaddress;
         protected void Page_Load(object sender, EventArgs e)
         {
-            txtUserId.Text = Session["UserId_ResetPwd"].ToString();
-            Session["UserId_ResetPwd"] = "";
-            txtNewPassword.Text = "";
-            txtVerifyPassword.Text = "";
-            //Session["UserId_ResetPwd"] = "";
+            if (!IsPostBack)
+            {
+                txtUserId.Text = Session["UserId_ResetPwd"].ToString();
+                Session["UserId_ResetPwd"] = "";
+                txtNewPassword.Text = "";
+                txtVerifyPassword.Text = "";
+            }
 
         }
         protected void BtnSave_Click(object sender, EventArgs e)
@@ -36,7 +38,7 @@ namespace CEIHaryana
                 return;
 
 
-            }                //string verifyPassword = txtVerifyPassword.Text.Trim();
+            }               
             else if (NewPassword != ConfirmPassword)
             {
 

@@ -108,10 +108,16 @@ namespace CEIHaryana.Admin
                         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"No Record Found\");", true);
                     }
                 }
+                else
+                {
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Select event not fired\");", true);
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                string script = ex.Message;
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }
 

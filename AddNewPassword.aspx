@@ -628,7 +628,7 @@
             <!-- Submit Button -->
             <div class="row justify-content-center" style="margin-bottom:15px;">
                 <div class="col-md-4">
-                            <asp:Button class="btn btn-primary mr-2" ID="BtnSave" runat="server" Text="Save" ValidationGroup="Submit"  /> <%--OnClick="BtnSave_Click" OnClientClick="return validateForm()"--%>
+                            <asp:Button class="btn btn-primary mr-2" ID="BtnSave" runat="server" Text="Save" ValidationGroup="Submit" OnClick="BtnSave_Click" /> 
                 </div>
 
 
