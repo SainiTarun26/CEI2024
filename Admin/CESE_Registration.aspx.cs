@@ -128,7 +128,7 @@ namespace CEIHaryana.Admin
                                     customFile.SaveAs(fullPath);
 
                                     int x = CEI.InsertDataForCESE(txtName.Text, txtPanNo.Text, txtAddress.Text, txtEmail.Text,
-                                        txtContactNo.Text, ddldistrict.SelectedValue.ToString(), ddlVoltage.SelectedValue.ToString(), filePathInfo, AdminId);
+                                        txtContactNo.Text, ddldistrict.SelectedValue.ToString(), ddlVoltage.SelectedItem.ToString(), filePathInfo, AdminId);
 
                                     if (x > 0)
                                     {
@@ -354,7 +354,7 @@ namespace CEIHaryana.Admin
                                 filePathInfo = hnFile.Value;
                             }
                             int x = CEI.UpdateDataForCESE(hnRegistrationId.Value, txtName.Text, txtPanNo.Text, txtAddress.Text, txtEmail.Text,
-                                    txtContactNo.Text, ddldistrict.SelectedValue.ToString(), ddlVoltage.SelectedValue.ToString(), filePathInfo, AdminId);
+                                    txtContactNo.Text, ddldistrict.SelectedValue.ToString(), ddlVoltage.SelectedItem.ToString(), filePathInfo, AdminId);
 
                             if (x > 0)
                             {
@@ -417,6 +417,19 @@ namespace CEIHaryana.Admin
         {
             hiddenfield.Visible = false;
             CeseCert.Visible = true;
+        }
+
+        protected void txtPanNo_TextChanged(object sender, EventArgs e)
+        {
+            string PANNumber = txtPanNo.Text.Trim();
+            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("^[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}$|^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$");
+            if (!regex.IsMatch(PANNumber))
+            {
+                txtPanNo.Focus();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid PAN/TAN card format. Please enter a valid PAN/TAN number.');", true);
+                txtPanNo.Text = "";
+                return;
+            }
         }
     }
 }

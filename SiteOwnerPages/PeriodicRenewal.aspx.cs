@@ -25,6 +25,8 @@ namespace CEIHaryana.SiteOwnerPages
         private static string Id, ApplicantType, ApplicantCode, Password, EInstallationType;
         string SiteOwnerID = string.Empty;
         string TypeOfInspection = string.Empty;
+
+        private List<string> intimationIds = new List<string>();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -38,14 +40,14 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else
                     {
-                        //Response.Redirect("/login.aspx", false);
+                        Session["SiteOwnerId"] = "";
                         Response.Redirect("/SiteOwnerLogout.aspx", false);
                     }
                 }
             }
             catch
             {
-                //Response.Redirect("/login.aspx", false);
+                Session["SiteOwnerId"] = "";
                 Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
         }
@@ -58,7 +60,7 @@ namespace CEIHaryana.SiteOwnerPages
                 installationType2.Visible = true;
                 if (RadioButtonList1.SelectedValue == "1")
                 {
-                    
+
                     divToShowLabel.Visible = false;
                     DivDetails.Visible = true;
                     btnSubmitInstallation.Visible = true;
@@ -112,52 +114,34 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else
                     {
+                        Session["SiteOwnerId"] = "";
                         Response.Redirect("/SiteOwnerLogout.aspx", false);
                     }
                 }
                 else
                 {
-                    //Response.Redirect("/login.aspx", false);
+                    Session["SiteOwnerId"] = "";
                     Response.Redirect("/SiteOwnerLogout.aspx", false);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                Session["SiteOwnerId"] = "";
                 Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
         }
-        //private void BindInstallationType()
-        //{
-        //    try
-        //    {
-        //        DataSet dsInstallation = new DataSet();
-        //        dsInstallation = CEI.GetInstallationType();
-        //        ddlInstallationType.DataSource = dsInstallation;
-        //        ddlInstallationType.DataTextField = "InstallationType";
-        //        ddlInstallationType.DataValueField = "ID";
-        //        ddlInstallationType.DataBind();
-        //        ddlInstallationType.Items.Insert(0, new ListItem("Select", "0"));
-        //        dsInstallation.Clear();
-        //    }
-        //    catch
-        //    {
-        //    }
-        //}
+
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             try
             {
                 GridView1.PageIndex = e.NewPageIndex;
+                intimationIds.Clear();
                 GridViewBind();
             }
             catch { }
         }
-        //////protected void btnSearch_Click(object sender, EventArgs e)
-        //////{
-        //////    grid.Visible = true;
-        //////    GridViewBind();
-        //////    //BtnCart.Visible = true;
-        //////}
+
         public void GridViewBind()
         {
             if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
@@ -182,18 +166,19 @@ namespace CEIHaryana.SiteOwnerPages
                         GridView1.DataSource = null;
                         GridView1.DataBind();
                         BtnCart.Visible = false;
-                        string script = "alert(\"No Record Found\");";
+                        string script = "alert(\"Test Report is not generated.\");";
                         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                     }
                 }
                 else
                 {
+                    Session["SiteOwnerId"] = "";
                     Response.Redirect("/SiteOwnerLogout.aspx", false);
                 }
             }
             else
             {
-                //Response.Redirect("/login.aspx", false);
+                Session["SiteOwnerId"] = "";
                 Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
         }
@@ -269,6 +254,10 @@ namespace CEIHaryana.SiteOwnerPages
                     Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
                     Label lblVoltage = (Label)e.Row.FindControl("LblVoltage");
                     Label LblInspectionDate = (Label)e.Row.FindControl("LblInspectionDate");
+                    if (LblIntimationId != null && !string.IsNullOrEmpty(LblIntimationId.Text))
+                    {
+                        intimationIds.Add(LblIntimationId.Text.Trim());
+                    }
                     if (LblInspectionDate != null && !string.IsNullOrEmpty(LblInspectionDate.Text))
                     {
                         DateTime inspectionDate;
@@ -471,159 +460,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                     }
 
-                    //DateTime inspectionDate = DateTime.Parse(LblInspectionDate.Text);
-                    //int remainingDays = 0;
-                    //string installationtype = LblInstallationName.Text;
-                    //int voltage;
-                    //DateTime Year = DateTime.MinValue;
-
-                    //if (int.TryParse(lblVoltage.Text, out voltage))
-                    //{
-                    //    if (installationtype == "Line")
-                    //    {
-                    //        if (voltage >= 0 && voltage <= 250)
-                    //        {
-                    //            Year = inspectionDate.AddYears(5);
-                    //            DateTime alertDate = Year.AddDays(-30);
-                    //            DateTime currentDate = DateTime.Now;
-                    //            remainingDays = (Year - alertDate).Days;
-                    //            if (currentDate >= Year)
-                    //            {
-                    //                remainingDays = (Year - currentDate).Days;
-                    //            }
-                    //            if (currentDate <= Year)
-                    //            {
-                    //                remainingDays = (Year - currentDate).Days;
-                    //            }
-                    //            if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
-                    //            {
-                    //                e.Row.Visible = true;
-                    //            }
-                    //            else
-                    //            {
-                    //                e.Row.Visible = false;
-                    //            }
-                    //        }
-                    //        if (voltage >= 250 && voltage <= 650)
-                    //        {
-                    //            Year = inspectionDate.AddYears(3);
-                    //            DateTime alertDate = Year.AddDays(-30);
-                    //            DateTime currentDate = DateTime.Now;
-                    //            remainingDays = (Year - alertDate).Days;
-                    //            if (currentDate >= Year)
-                    //            {
-                    //                remainingDays = (Year - currentDate).Days;
-                    //            }
-                    //            if (currentDate <= Year)
-                    //            {
-                    //                remainingDays = (Year - currentDate).Days;
-                    //            }
-                    //            if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
-                    //            {
-                    //                e.Row.Visible = true;
-                    //            }
-                    //            else
-                    //            {
-                    //                e.Row.Visible = false;
-                    //            }
-                    //        }
-                    //        if (voltage > 650)
-                    //        {
-                    //            Year = inspectionDate.AddYears(1);
-                    //            DateTime alertDate = Year.AddDays(-30);
-                    //            DateTime currentDate = DateTime.Now;
-                    //            remainingDays = (Year - alertDate).Days;
-                    //            if (currentDate >= Year)
-                    //            {
-                    //                remainingDays = (Year - currentDate).Days;
-                    //            }
-                    //            if (currentDate <= Year)
-                    //            {
-                    //                remainingDays = (Year - currentDate).Days;
-                    //            }
-                    //            if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
-                    //            {
-                    //                e.Row.Visible = true;
-                    //            }
-                    //            else
-                    //            {
-                    //                e.Row.Visible = false;
-                    //            }
-                    //        }
-                    //    }
-
-                    //    if (installationtype == "Generating Set")
-                    //    {
-                    //        Year = inspectionDate.AddYears(3);
-                    //        DateTime alertDate = Year.AddDays(-30);
-                    //        DateTime currentDate = DateTime.Now;
-                    //        remainingDays = (Year - alertDate).Days;
-                    //        if (currentDate >= Year)
-                    //        {
-                    //            remainingDays = (Year - currentDate).Days;
-                    //        }
-                    //        if (currentDate <= Year)
-                    //        {
-                    //            remainingDays = (Year - currentDate).Days;
-                    //        }
-                    //        if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
-                    //        {
-                    //            e.Row.Visible = true;
-                    //        }
-                    //        else
-                    //        {
-                    //            e.Row.Visible = false;
-                    //        }
-                    //    }
-                    //    if (installationtype == "Substation Transformer")
-                    //    {
-                    //        Year = inspectionDate.AddYears(1);
-                    //        DateTime alertDate = Year.AddDays(-30);
-                    //        DateTime currentDate = DateTime.Now;
-                    //        remainingDays = (Year - alertDate).Days;
-                    //        if (currentDate >= Year)
-                    //        {
-                    //            remainingDays = (Year - currentDate).Days;
-
-                    //        }
-                    //        if (currentDate <= Year)
-                    //        {
-                    //            remainingDays = (Year - currentDate).Days;
-                    //        }
-                    //        if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
-                    //        {
-                    //            e.Row.Visible = true;
-                    //        }
-                    //        else
-                    //        {
-                    //            e.Row.Visible = false;
-                    //        }
-                    //    }
-                    //    int dueDateColumnIndex = 10;
-                    //    e.Row.Cells[dueDateColumnIndex].Text = Year.ToShortDateString();
-                    //    SetRemainingDaysColumn(e.Row, remainingDays);
-                    //}
-
-
-                    //int numberofdaysColumnIndex = 11;
-                    //TableCell numberofdaysCell = e.Row.Cells[numberofdaysColumnIndex];
-
-                    //int numberofdays;
-                    //if (int.TryParse(numberofdaysCell.Text, out numberofdays))
-                    //{
-                    //    if (numberofdays == 0 || (numberofdays > 0 && numberofdays <= 15))
-                    //    {
-                    //        e.Row.Cells[11].CssClass = "GreenBackground";
-                    //    }
-                    //    else if (numberofdays < 0)
-                    //    {
-                    //        e.Row.Cells[11].CssClass = "OrangeBackground";
-                    //    }
-                    //    else if (numberofdays < 30 && numberofdays > 15)
-                    //    {
-                    //        e.Row.Cells[11].CssClass = "YellowBackground";
-                    //    }
-                    //}
+                 
                     else
                     {
                         e.Row.Cells[11].CssClass = "OrangeBackground";
@@ -631,9 +468,29 @@ namespace CEIHaryana.SiteOwnerPages
 
                     }
                 }
+
             }
             catch (Exception ex)
             { }
+        }
+        protected void GridView1_DataBound(object sender, EventArgs e)
+        {
+            if (intimationIds.Count > 0)
+            {
+                bool allSame = intimationIds.All(id => id == intimationIds[0]);
+
+                if (GridView1.HeaderRow != null)
+                {
+                    CheckBox chkSelectAll = (CheckBox)GridView1.HeaderRow.FindControl("chkSelectAll");
+                    if (chkSelectAll != null)
+                    {
+                        chkSelectAll.Enabled = allSame;
+                    }
+                }
+            }
+
+            // Clear list for next use (important when paging)
+            intimationIds.Clear();
         }
         private void SetRemainingDaysColumn(GridViewRow row, int remainingDays)
         {
@@ -680,6 +537,44 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         string id = Session["SiteOwnerId"].ToString();
                         bool atLeastOneChecked = false;
+                        bool multipleIntimationIDSelected = false;
+                        string selectedIntimationValue = null;
+
+
+                        foreach (GridViewRow row in GridView1.Rows)
+                        {
+                            CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
+                            Label LblIntimationId = (Label)row.FindControl("LblIntimationId") as Label;
+
+                            if (chk != null && LblIntimationId != null)
+                            {
+                                string IbtimationIDValue = LblIntimationId.Text.Trim();
+
+                                 if (chk.Checked)
+                                {
+                                    atLeastOneChecked = true;
+
+                                    // If it's the first selected , save its value
+                                    if (selectedIntimationValue == null)
+                                    {
+                                        selectedIntimationValue = IbtimationIDValue;
+                                    }
+
+                                    if (IbtimationIDValue != selectedIntimationValue)
+                                    {
+                                        multipleIntimationIDSelected = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        //If multiple IntimationID are selected, show an error
+                        if (multipleIntimationIDSelected)
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Please select only checkboxes for the same IntimationId');", true);
+                            return;
+                        }
 
                         foreach (GridViewRow row in GridView1.Rows)
                         {
@@ -744,6 +639,10 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         Response.Redirect("/SiteOwnerLogout.aspx", false);
                     }
+                }
+                else
+                {
+                    Response.Redirect("/SiteOwnerLogout.aspx", false);
                 }
             }
             catch (Exception ex)
@@ -973,7 +872,10 @@ namespace CEIHaryana.SiteOwnerPages
                     OtherPremises.Visible = false;
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                Response.Redirect("/SiteOwnerLogout.aspx", false);
+            }
         }
         protected void btnSubmitInstallation_Click(object sender, EventArgs e)
         {
@@ -1037,16 +939,8 @@ namespace CEIHaryana.SiteOwnerPages
                             CEI.IntimationDataInsertionBySiteowner(
                                 Id,
                                 txtApplicantType.Text.Trim(),
-                                /*ddlApplicantType.SelectedItem.ToString(),*/////------------------------------------
                                 ApplicantCode,
-                                //ddlApplicantType.SelectedValue.ToString(),
-                                txtElecticalInstallation.Text.Trim(),
-                                //ddlPoweUtility.SelectedItem.ToString(),
-                                //DdlWing.SelectedItem.ToString(),
-                                //DdlZone.SelectedItem.ToString(),
-                                //DdlCircle.SelectedItem.ToString(),
-                                //DdlDivision.SelectedItem.ToString(), 
-                                //DdlSubDivision.SelectedItem.ToString(),
+                               txtElecticalInstallation.Text.Trim(),
                                 txtUtilityName.Text.Trim(),
                                 txtWing.Text.Trim(),
                                 txtZone.Text.Trim(),
@@ -1118,13 +1012,13 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else
                 {
+                    Session["SiteOwnerId"] = "";
                     Response.Redirect("/SiteOwnerLogout.aspx", false);
-
                 }
             }
             else
             {
-                // Response.Redirect("/login.aspx", false);
+                Session["SiteOwnerId"] = "";
                 Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
         }
@@ -1185,7 +1079,8 @@ namespace CEIHaryana.SiteOwnerPages
             { }
         }
 
-        
+      
+
         protected void imgDelete3_Click(object sender, ImageClickEventArgs e)
         {
             try

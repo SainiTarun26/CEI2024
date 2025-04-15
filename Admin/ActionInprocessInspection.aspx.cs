@@ -79,9 +79,10 @@ namespace CEIHaryana.Admin
                 ddlSuggestion.Items.Insert(0, new ListItem("Select", "0"));
                 dsSuggestion.Clear();
             }
-            catch
+            catch(Exception ex)
             {
-
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
 
@@ -107,7 +108,11 @@ namespace CEIHaryana.Admin
                 }
                 ds.Dispose();
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
         }
 
         protected void lnkRedirect_Click(object sender, EventArgs e)
@@ -331,6 +336,8 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -351,7 +358,8 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-                // lblerror.Text = ex.Message.ToString()+"---"+ fileName;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
 
@@ -361,8 +369,8 @@ namespace CEIHaryana.Admin
             ClickCount = Convert.ToInt32(Session["ClickCount"]);
             if (ClickCount < 1)
             {
-                ClickCount = ClickCount + 1;
-                Session["ClickCount"] = ClickCount;
+                //ClickCount = ClickCount + 1;
+                //Session["ClickCount"] = ClickCount;
                 int checksuccessmessage = 0;
                 try
                 {
@@ -400,7 +408,8 @@ namespace CEIHaryana.Admin
                                 return;
                             }
 
-
+                            ClickCount = ClickCount + 1;
+                            Session["ClickCount"] = ClickCount;
 
                             ApprovedorReject = ddlReview.SelectedItem.ToString();
                             Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text.Trim();
@@ -586,13 +595,17 @@ namespace CEIHaryana.Admin
                 }
                 catch (Exception ex)
                 {
-                    // Handle the outer exception, log it, etc.
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An error occurred.');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                    return;
 
 
                 }
             }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('You double click on Button.'); window.location='AdminMaster.aspx'", true);
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('You double click on Button.'); window.location='AdminMaster.aspx'", true);
+            }
+           
 
         }
         private void GridToViewCart()
@@ -617,7 +630,8 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-                // Log or handle the exception as needed
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
         protected void lnkRedirect1_Click(object sender, EventArgs e)
@@ -650,7 +664,11 @@ namespace CEIHaryana.Admin
                     Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex) 
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
         }
         protected void ddlSuggestion_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -737,7 +755,8 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-                //throw;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
 
@@ -752,7 +771,7 @@ namespace CEIHaryana.Admin
             {
                 string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
                 Label lblSubmittedDate = (Label)e.Row.FindControl("lblSubmittedDate");
-                Session["lblSubmittedDate"] = lblSubmittedDate.Text;
+                hnSubmittedDate.Value = lblSubmittedDate.Text;
                 if (status == "RETURN")
                 {
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
@@ -820,7 +839,8 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-                //throw;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
 
@@ -849,7 +869,11 @@ namespace CEIHaryana.Admin
 
                 ds.Dispose();
             }
-            catch (Exception ex) { }
+            catch (Exception ex) 
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
         }
 
         protected void btnSuggestions_Click(object sender, EventArgs e)
@@ -902,7 +926,8 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-                //throw;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
 
@@ -935,7 +960,10 @@ namespace CEIHaryana.Admin
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
         }
         protected void lnkRedirectTRr_Click1(object sender, EventArgs e)
         {
@@ -964,7 +992,11 @@ namespace CEIHaryana.Admin
                     Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex) 
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
         }
         protected void Grid_MultipleInspectionTR_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -1052,7 +1084,11 @@ namespace CEIHaryana.Admin
                     }
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
         }
     }
 }

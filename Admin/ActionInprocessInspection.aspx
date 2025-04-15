@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="ActionInprocessInspection.aspx.cs" Inherits="CEIHaryana.Admin.ActionInprocessInspection" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master2.Master" AutoEventWireup="true" CodeBehind="ActionInprocessInspection.aspx.cs" Inherits="CEIHaryana.Admin.ActionInprocessInspection" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
@@ -36,7 +36,7 @@
      {
 position: absolute;
 top: 992.392px !important;
-left: 683.75px !important;
+left: 750.75px !important;
 z-index: 1;
 display: block;
 border:1px solid white;

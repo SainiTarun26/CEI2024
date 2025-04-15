@@ -369,10 +369,12 @@
                                         <div style="text-align: center;">
                     <asp:LinkButton ID="LinkButton1" OnClick="LinkButton1_Click" runat="server">link to apply new intimation for existing Inspection</asp:LinkButton>
                 </div>--%>
-                                     </div>
+                                </div>
                                 <div>
                                     <div class="card" id="grid" runat="server" visible="false" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
-                                        <asp:GridView class="table-responsive table table-striped" ID="GridView1" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" runat="server" DataKeyNames="Id" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
+                                        <asp:GridView class="table-responsive table table-striped" ID="GridView1" OnRowCommand="GridView1_RowCommand"
+                                            OnRowDataBound="GridView1_RowDataBound" OnDataBound="GridView1_DataBound" runat="server" DataKeyNames="Id" Width="100%" AllowPaging="true"
+                                            PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
                                             AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                                             <PagerStyle CssClass="pagination-ys" />
                                             <Columns>
@@ -391,15 +393,19 @@
                                                         <%#Container.DataItemIndex+1 %>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:BoundField DataField="IntimationId" HeaderText="Intimation Id" Visible="false">
+                                                <%-- <asp:BoundField DataField="IntimationId" HeaderText="Intimation Id" Visible="true">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                </asp:BoundField>
+                                                </asp:BoundField>--%>
                                                 <asp:BoundField DataField="Id" HeaderText="Inspection Id" Visible="false">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="TypeOf" HeaderText="Installation Type">
+                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                </asp:BoundField>
+                                                <asp:BoundField DataField="IntimationId" HeaderText="Intimation Id" Visible="true">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>
@@ -605,7 +611,7 @@
                                         </div>
                                         <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="false">
                                             <label for="PanNumber">
-                                               PAN/TAN Number
+                                                PAN/TAN Number
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtPAN" ReadOnly="true" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
@@ -856,7 +862,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div style="margin-left: 15px !important; margin-right: 15px !important;">
-                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" ReadOnly="true" text="1" MaxLength="2" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" ReadOnly="true" Text="1" MaxLength="2" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtinstallationNo4" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                                     </div>
                                                                 </td>
@@ -885,7 +891,7 @@
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <div class="row"  style="margin-bottom:30px;">
+                <div class="row" style="margin-bottom: 30px;">
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: center;">
                         <asp:Button type="submit" ID="btnBack" Visible="false" OnClick="btnBack_Click" Text="Back" runat="server" class="btn btn-primary mr-2" />
@@ -896,7 +902,7 @@
                 </div>
                 <asp:HiddenField ID="HiddenField1" runat="server" />
                 <asp:HiddenField ID="HiddenField2" runat="server" />
-                 <asp:HiddenField ID="hfOwner" runat="server" />
+                <asp:HiddenField ID="hfOwner" runat="server" />
             </div>
         </div>
     </div>
@@ -954,7 +960,7 @@
 
             return true;
         }
- </script>
+    </script>
     <script type="text/javascript">
         function ValidateEmail() {
 

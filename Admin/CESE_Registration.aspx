@@ -368,7 +368,7 @@
                                 Pan No.
                               <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtPanNo" TabIndex="8" onkeydown="return preventEnterSubmit(event)" onkeyup="convertToUpperCase(event)" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtPanNo" TabIndex="8" onkeydown="return preventEnterSubmit(event)" onkeyup="convertToUpperCase(event)" AutoPostBack="true" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px" OnTextChanged="txtPanNo_TextChanged"></asp:TextBox>
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPanNo" ValidationGroup="Submit" ForeColor="Red">Please Enter Pan No.</asp:RequiredFieldValidator>
                         </div>
@@ -496,6 +496,10 @@
                                 </asp:BoundField>
 
                                 <asp:BoundField DataField="District" HeaderText="District">
+                                    <HeaderStyle HorizontalAlign="center" Width="10%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" Width="10%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="MaxVoltage" HeaderText="Voltage Level">
                                     <HeaderStyle HorizontalAlign="center" Width="10%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" Width="10%" />
                                 </asp:BoundField>
