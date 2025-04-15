@@ -381,7 +381,7 @@
                 </div>--%>
                                 <div>
                                     <div class="card" id="grid" runat="server" visible="false" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
-                                        <asp:GridView class="table-responsive table table-striped" ID="GridView1" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" runat="server" DataKeyNames="Id" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
+                                        <asp:GridView class="table-responsive table table-striped" ID="GridView1" OnDataBound="GridView1_DataBound" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" runat="server" DataKeyNames="Id" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
                                             AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                                             <PagerStyle CssClass="pagination-ys" />
                                             <Columns>
@@ -390,7 +390,7 @@
                                                         <asp:CheckBox ID="chkSelectAll" runat="server" Style="text-align: left !important;" />
                                                     </HeaderTemplate>
                                                     <ItemTemplate>
-                                                        <asp:CheckBox ID="CheckBox1" runat="server" HorizontalAlign="center" />
+                                                        <asp:CheckBox ID="CheckBox1"  AutoPostBack="true" OnCheckedChanged="CheckBox1_CheckedChanged" runat="server" HorizontalAlign="center" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="SNo">
@@ -400,15 +400,19 @@
                                                         <%#Container.DataItemIndex+1 %>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:BoundField DataField="IntimationId" HeaderText="Intimation Id" Visible="false">
+                                               <%-- <asp:BoundField DataField="IntimationId" HeaderText="Intimation Id" Visible="false">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                </asp:BoundField>
+                                                </asp:BoundField>--%>
                                                 <asp:BoundField DataField="Id" HeaderText="Inspection Id" Visible="false">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="TypeOf" HeaderText="Installation Type">
+                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                </asp:BoundField>
+                                                  <asp:BoundField DataField="IntimationId" HeaderText="Intimation Id" Visible="true">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>
@@ -827,6 +831,7 @@
                 </div>
                 <asp:HiddenField ID="HiddenField1" runat="server" />
                 <asp:HiddenField ID="HiddenField2" runat="server" />
+                 <asp:HiddenField ID="hfOwner" runat="server" />
             </div>
         </div>
     </div>
