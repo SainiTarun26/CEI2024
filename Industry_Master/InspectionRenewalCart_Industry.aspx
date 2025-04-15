@@ -266,7 +266,6 @@
                                 <Columns>
                                     <asp:TemplateField HeaderText="Id" Visible="False">
                                         <ItemTemplate>
-
                                             <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
                                             <asp:Label ID="LblDivision" runat="server" Text='<%#Eval("Division") %>'></asp:Label>
                                             <asp:Label ID="LblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label>
@@ -274,7 +273,6 @@
                                             <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
                                             <asp:Label ID="LblInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
                                             <asp:Label ID="Lbldesignation" runat="server" Text='<%#Eval("Designation") %>'></asp:Label>
-
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="SNo">
@@ -334,13 +332,13 @@
                             <div class="col-4" style="margin-top: auto;"></div>
                             <div class="col-4" style="margin-top: auto; text-align: end; padding-right: 8px;">
                                 <asp:Button type="submit" ID="BtnDelete" Text="Delete Cart" runat="server" Visible="false" OnClick="BtnDelete_Click" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px; height: 40px;" />
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div>
+                 <asp:HiddenField ID="hfOwner" runat="server" />
             </div>
         </div>
     </div>

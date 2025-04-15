@@ -1869,6 +1869,7 @@
     <Content Include="Industry_Master\TestReportModal\EscalatorTestReportModal_IndustryLift.aspx" />
     <Content Include="Industry_Master\TestReportModal\LiftTestReportModal_IndustryLift.aspx" />
     <Content Include="Industry_Master\TestReport_Industries.aspx" />
+    <Content Include="Industry_Sessions_Clear.aspx" />
     <Content Include="js2\ace.js" />
     <Content Include="js2\alerts.js" />
     <Content Include="js2\avgrund.js" />
@@ -3083,6 +3084,12 @@
     </Compile>
     <Compile Include="Industry_Master\TestReport_Industries.aspx.designer.cs">
       <DependentUpon>TestReport_Industries.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Sessions_Clear.aspx.cs">
+      <DependentUpon>Industry_Sessions_Clear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Sessions_Clear.aspx.designer.cs">
+      <DependentUpon>Industry_Sessions_Clear.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

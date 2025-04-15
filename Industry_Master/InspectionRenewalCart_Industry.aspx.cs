@@ -29,8 +29,7 @@ namespace CEIHaryana.Industry_Master
                               PrevIntimationId = string.Empty, PrevVoltageLevel = string.Empty,
                               PrevApplicantType = string.Empty, AssignToOfficer = string.Empty;
 
-       
-
+      
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -38,8 +37,8 @@ namespace CEIHaryana.Industry_Master
                 if (!Page.IsPostBack)
                 {
                     if (Convert.ToString(Session["SiteOwnerId_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
-
                     {
+                        hfOwner.Value = Convert.ToString(Session["SiteOwnerId_Industry"]);
                         if (CheckInspectionStatus())
                         {
                             Response.Redirect("InspectionHistory_Industry.aspx", false);
@@ -51,13 +50,15 @@ namespace CEIHaryana.Industry_Master
                     }
                     else
                     {
-                        //Response.Redirect("/login.aspx");
+                        Session["SiteOwnerId_Industry"] = "";
+                        Response.Redirect("/Industry_Sessions_Clear.aspx", false);
                     }
                 }
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                Session["SiteOwnerId_Industry"] = "";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://Staging.investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
         }
@@ -67,20 +68,34 @@ namespace CEIHaryana.Industry_Master
             {
                 if (Convert.ToString(Session["SiteOwnerId_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
                 {
-                    string CreatedBy = Session["SiteOwnerId_Industry"].ToString();
-                    DataSet FilterAddress = new DataSet();
-                    FilterAddress = CEI.GetAddressToFilterCart_Industries(CreatedBy);
-                    ddlAddress.DataSource = FilterAddress;
-                    ddlAddress.DataTextField = "AddressText";
-                    ddlAddress.DataValueField = "AddressText";
-                    ddlAddress.DataBind();
-                    ddlAddress.Items.Insert(0, new ListItem("Select", "0"));
-                    FilterAddress.Clear();
+                    if (hfOwner.Value == Convert.ToString(Session["SiteOwnerId_Industry"]))
+                    {
+                        string CreatedBy = Session["SiteOwnerId_Industry"].ToString();
+                        DataSet FilterAddress = new DataSet();
+                        FilterAddress = CEI.GetAddressToFilterCart_Industries(CreatedBy);
+                        ddlAddress.DataSource = FilterAddress;
+                        ddlAddress.DataTextField = "AddressText";
+                        ddlAddress.DataValueField = "AddressText";
+                        ddlAddress.DataBind();
+                        ddlAddress.Items.Insert(0, new ListItem("Select", "0"));
+                        FilterAddress.Clear();
+                    }
+                    else
+                    {
+                        Session["SiteOwnerId_Industry"] = "";
+                        Response.Redirect("/Industry_Sessions_Clear.aspx", false);
+                    }
+                }
+                else
+                {
+                    Session["SiteOwnerId_Industry"] = "";
+                    Response.Redirect("/Industry_Sessions_Clear.aspx", false);
                 }
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                Session["SiteOwnerId_Industry"] = "";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://Staging.investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
         }
@@ -98,7 +113,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://Staging.investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
         }
@@ -106,26 +121,36 @@ namespace CEIHaryana.Industry_Master
         {
             if (Convert.ToString(Session["SiteOwnerId_Industry"]) != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
             {
-                string CreatedBy = Session["SiteOwnerId_Industry"].ToString();
-                string[] str = txtAddressFilter.Text.Split('|');
-                string address = str[0].Trim();
-                string CartID = str[1].Trim();
-                //Session["SelectedCartID_Industry"] = CartID;
-                DataSet ds = new DataSet();
-                ds = CEI.ShowDataToCart_Industries(address, CartID, CreatedBy);
-                if (ds.Tables.Count > 0)
+                if (hfOwner.Value == Convert.ToString(Session["SiteOwnerId_Industry"]))
                 {
-                    GridView1.DataSource = ds;
-                    GridView1.DataBind();
+                    string CreatedBy = Session["SiteOwnerId_Industry"].ToString();
+                    string[] str = txtAddressFilter.Text.Split('|');
+                    string address = str[0].Trim();
+                    string CartID = str[1].Trim();
+                    //Session["SelectedCartID_Industry"] = CartID;
+                    DataSet ds = new DataSet();
+                    ds = CEI.ShowDataToCart_Industries(address, CartID, CreatedBy);
+                    if (ds.Tables.Count > 0)
+                    {
+                        GridView1.DataSource = ds;
+                        GridView1.DataBind();
+                    }
+                    else
+                    {
+                        GridView1.DataSource = null;
+                        GridView1.DataBind();
+                    }
                 }
                 else
                 {
-                    GridView1.DataSource = null;
-                    GridView1.DataBind();
+                    Session["SiteOwnerId_Industry"] = "";
+                    Response.Redirect("/Industry_Sessions_Clear.aspx", false);
                 }
             }
             else
             {
+                Session["SiteOwnerId_Industry"] = "";
+                Response.Redirect("/Industry_Sessions_Clear.aspx", false);
             }
 
         }
@@ -352,7 +377,7 @@ namespace CEIHaryana.Industry_Master
         //    }
         //    catch (Exception ex)
         //    {
-        //        string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
+        //        string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://Staging.investharyana.in/#/';";
         //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
         //    }
         //}
@@ -362,131 +387,138 @@ namespace CEIHaryana.Industry_Master
             {
                 if (Session["SiteOwnerId_Industry"] != null && Convert.ToString(Session["SiteOwnerId_Industry"]) != "")
                 {
-                    string id = Session["SiteOwnerId_Industry"].ToString();
-                    string GrandTotalCapacity = Session["TotalCapacity_Industry"].ToString();
-                    string HighestVoltage = Session["HighestVoltage_Industry"].ToString();
-
-                    int totalAmount = Convert.ToInt32(Session["FinalAmount_Industry"]);
-                    string AssignTo = AssignToOfficer;
-                    string Division = string.Empty;
-                    string District = string.Empty;
-                    string StaffAssignedCount = string.Empty;
-                    string StaffAssigned = string.Empty;
-                    string Assigned = string.Empty;
-                    int ServiceType = 0;
-
-                    string[] str = txtAddressFilter.Text.Split('|');
-                    string address = str[0].Trim();
-                    string CartID = str[1].Trim();
-
-                    DataSet ds = new DataSet();
-                    ds = CEI.ToGetDatafromCart_Industries(address, CartID);
-                    if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                    if (hfOwner.Value == Convert.ToString(Session["SiteOwnerId_Industry"]))
                     {
-                        foreach (DataRow row in ds.Tables[0].Rows)
+                        string id = Session["SiteOwnerId_Industry"].ToString();
+                        string GrandTotalCapacity = Session["TotalCapacity_Industry"].ToString();
+                        string HighestVoltage = Session["HighestVoltage_Industry"].ToString();
+
+                        int totalAmount = Convert.ToInt32(Session["FinalAmount_Industry"]);
+                        string AssignTo = AssignToOfficer;
+                        string Division = string.Empty;
+                        string District = string.Empty;
+                        string StaffAssignedCount = string.Empty;
+                        string StaffAssigned = string.Empty;
+                        string Assigned = string.Empty;
+                        int ServiceType = 0;
+
+                        string[] str = txtAddressFilter.Text.Split('|');
+                        string address = str[0].Trim();
+                        string CartID = str[1].Trim();
+
+                        DataSet ds = new DataSet();
+                        ds = CEI.ToGetDatafromCart_Industries(address, CartID);
+                        if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                         {
-                            Division = row["Division"].ToString();
-                            District = row["District"].ToString();
+                            foreach (DataRow row in ds.Tables[0].Rows)
+                            {
+                                Division = row["Division"].ToString();
+                                District = row["District"].ToString();
+                            }
                         }
-                    }
-                    ds = CEI.GetStaffAssigned_Industries(CartID);
+                        ds = CEI.GetStaffAssigned_Industries(CartID);
 
-                    if (ds.Tables.Count > 0 && ds != null)
-                    {
-                        StaffAssignedCount = ds.Tables[0].Rows[0]["AssignedCount"].ToString();
-                    }
+                        if (ds.Tables.Count > 0 && ds != null)
+                        {
+                            StaffAssignedCount = ds.Tables[0].Rows[0]["AssignedCount"].ToString();
+                        }
 
-                    if (StaffAssignedCount == "1")
-                    {
-                        StaffAssigned = "JE";
-                        ServiceType = 2;
-                    }
-                    else if (StaffAssignedCount == "2")
-                    {
-                        StaffAssigned = "AE";
-                        ServiceType = 3;
-                    }
+                        if (StaffAssignedCount == "1")
+                        {
+                            StaffAssigned = "JE";
+                            ServiceType = 2;
+                        }
+                        else if (StaffAssignedCount == "2")
+                        {
+                            StaffAssigned = "AE";
+                            ServiceType = 3;
+                        }
 
-                    else if (StaffAssignedCount == "3")
-                    {
-                        StaffAssigned = "XEN";
-                        ServiceType = 4;
-                    }
-                    else if (StaffAssignedCount == "4")
-                    {
-                        StaffAssigned = "CEI";
-                        ServiceType = 5;
+                        else if (StaffAssignedCount == "3")
+                        {
+                            StaffAssigned = "XEN";
+                            ServiceType = 4;
+                        }
+                        else if (StaffAssignedCount == "4")
+                        {
+                            StaffAssigned = "CEI";
+                            ServiceType = 5;
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('your details or component are wrong')", true);
+                            return;
+                        }
+
+
+                        DataSet dsp = new DataSet();
+                        dsp = CEI.ToGetStaffIdforPeriodic_Industries(Division, StaffAssigned, District);
+                        if (dsp.Tables.Count > 0 && dsp.Tables[0].Rows.Count > 0)
+                        {
+                            Assigned = dsp.Tables[0].Rows[0]["StaffUserId"].ToString();
+                        }
+
+
+                        //int affectedRows = GetAffectedRowsCount(CartID);
+
+                        //if (affectedRows == 1)
+                        //{
+                        //    string InspectionId = PrevInspectionId;
+                        //    DataSet SInsp = new DataSet();
+                        //    SInsp = CEI.GetDataForSingleInspection_Industries(InspectionId);
+
+                        //    string InstallationType = SInsp.Tables[0].Rows[0]["InstallationT"].ToString();
+                        //    string TestRportId = SInsp.Tables[0].Rows[0]["TestRportId"].ToString();
+                        //    string IntimationId = SInsp.Tables[0].Rows[0]["IntimationId"].ToString();
+                        //    string VoltageLevel = SInsp.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                        //    string ApplicantType = SInsp.Tables[0].Rows[0]["ApplicantType"].ToString();
+                        //    PrevInstallationType = InstallationType;
+                        //    PrevTestReportId = TestRportId;
+                        //    PrevIntimationId = IntimationId;
+                        //    PrevVoltageLevel = VoltageLevel;
+                        //    PrevApplicantType = ApplicantType;
+                        //}
+                        //else
+                        //{
+                        //    string InspectionId = PrevInspectionId;
+                        //    DataSet SInsp = new DataSet();
+                        //    SInsp = CEI.GetDataForSingleInspection_Industries(InspectionId);
+                        //    string IntimationId = SInsp.Tables[0].Rows[0]["IntimationId"].ToString();
+                        //    string ApplicantType = SInsp.Tables[0].Rows[0]["ApplicantType"].ToString();
+                        //    PrevInstallationType = "Multiple";
+                        //    PrevTestReportId = "Multiple";
+                        //    PrevIntimationId = IntimationId;
+                        //    PrevVoltageLevel = HighestVoltage;
+                        //    PrevApplicantType = ApplicantType;
+                        //}
+
+                        CEI.InsertInspectinData_Industries(CartID, GrandTotalCapacity, HighestVoltage,  Assigned, totalAmount, id, ServiceType);
+
+                        Session["CartID_Industry"] = CartID;
+                        Session["IDCart_Industry"] = string.Empty;
+                        Session["TotalCapacity_Industry"] = string.Empty;
+                        Session["HighestVoltage_Industry"] = string.Empty;
+                        Session["FinalAmount_Industry"] = string.Empty;
+
+                        Response.Redirect("/Industry_Master/ProcessInspectionRenewalCart_Industries.aspx", false);
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Cart Submitted Successfully !!!'); window.location='/Industry_Master/ProcessInspectionRenewalCart_Industries.aspx';", true);
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('your details or component are wrong')", true);
-                        return;
+                        Session["SiteOwnerId_Industry"] = "";
+                        Response.Redirect("/Industry_Sessions_Clear.aspx", false);
                     }
-
-
-                    DataSet dsp = new DataSet();
-                    dsp = CEI.ToGetStaffIdforPeriodic_Industries(Division, StaffAssigned, District);
-                    if (dsp.Tables.Count > 0 && dsp.Tables[0].Rows.Count > 0)
-                    {
-                        Assigned = dsp.Tables[0].Rows[0]["StaffUserId"].ToString();
-                    }
-
-
-              //      //int affectedRows = GetAffectedRowsCount(CartID);
-
-              //      //if (affectedRows == 1)
-              //      //{
-              //      //    string InspectionId = PrevInspectionId;
-              //      //    DataSet SInsp = new DataSet();
-              //      //    SInsp = CEI.GetDataForSingleInspection_Industries(InspectionId);
-
-              //      //    string InstallationType = SInsp.Tables[0].Rows[0]["InstallationT"].ToString();
-              //      //    string TestRportId = SInsp.Tables[0].Rows[0]["TestRportId"].ToString();
-              //      //    string IntimationId = SInsp.Tables[0].Rows[0]["IntimationId"].ToString();
-              //      //    string VoltageLevel = SInsp.Tables[0].Rows[0]["VoltageLevel"].ToString();
-              //      //    string ApplicantType = SInsp.Tables[0].Rows[0]["ApplicantType"].ToString();
-              //      //    PrevInstallationType = InstallationType;
-              //      //    PrevTestReportId = TestRportId;
-              //      //    PrevIntimationId = IntimationId;
-              //      //    PrevVoltageLevel = VoltageLevel;
-              //      //    PrevApplicantType = ApplicantType;
-              //      //}
-              //      //else
-              //      //{
-              //      //    string InspectionId = PrevInspectionId;
-              //      //    DataSet SInsp = new DataSet();
-              //      //    SInsp = CEI.GetDataForSingleInspection_Industries(InspectionId);
-              //      //    string IntimationId = SInsp.Tables[0].Rows[0]["IntimationId"].ToString();
-              //      //    string ApplicantType = SInsp.Tables[0].Rows[0]["ApplicantType"].ToString();
-              //      //    PrevInstallationType = "Multiple";
-              //      //    PrevTestReportId = "Multiple";
-              //      //    PrevIntimationId = IntimationId;
-              //      //    PrevVoltageLevel = HighestVoltage;
-              //      //    PrevApplicantType = ApplicantType;
-              //      //}
-
-
-              ////      CEI.InsertInspectinData_Industries(CartID, GrandTotalCapacity, HighestVoltage, PrevInstallationType, PrevTestReportId,
-              ////PrevIntimationId, PrevVoltageLevel, PrevApplicantType, District, Division, Assigned, "Offline", totalAmount, 1, id, ServiceType);
-
-
-                    CEI.InsertInspectinData_Industries(CartID, GrandTotalCapacity, HighestVoltage, 
-              Assigned, totalAmount, id, ServiceType);
-
-                   
-                    Session["CartID_Industry"] = CartID;
-                    Session["IDCart_Industry"] = string.Empty;
-                    Session["TotalCapacity_Industry"] = string.Empty;
-                    Session["HighestVoltage_Industry"] = string.Empty;
-                    Session["FinalAmount_Industry"] = string.Empty;
-
-                    Response.Redirect("/Industry_Master/ProcessInspectionRenewalCart_Industries.aspx", false);
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Cart Submitted Successfully !!!'); window.location='/Industry_Master/ProcessInspectionRenewalCart_Industries.aspx';", true);
+                }
+                else
+                {
+                    Session["SiteOwnerId_Industry"] = "";
+                    Response.Redirect("/Industry_Sessions_Clear.aspx", false);
                 }
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                Session["SiteOwnerId_Industry"] = "";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://Staging.investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
         }
@@ -531,7 +563,7 @@ namespace CEIHaryana.Industry_Master
                 }
             }
         }
-
+        
         protected void BtnDelete_Click(object sender, EventArgs e)
         {
             string[] str = txtAddressFilter.Text.Split('|');
@@ -544,7 +576,7 @@ namespace CEIHaryana.Industry_Master
                     try
                     {
                         CEI.ToDeleteCart(SelectedCartID_Industry);
-                        Response.Redirect("/SiteOwnerPages/PeriodicRenewal.aspx", false);
+                        Response.Redirect("/Industry_Master/PeriodicRenewal_Industry.aspx", false);
                     }
                     catch (Exception ex)
                     {
@@ -560,18 +592,7 @@ namespace CEIHaryana.Industry_Master
             {
                 Response.Write("<script>alert('An error occurred while deleting the cart.');</script>");
             }
-            //if (Session["SelectedCartID_Industry"] != null)
-            //{
-            //    string SelectedCartID_Industry = Session["SelectedCartID_Industry"].ToString();
-
-            //    CEI.ToDeleteCart(SelectedCartID_Industry);
-            //    Response.Redirect("/Industry_Master/PeriodicRenewal_Industry.aspx", false);
-            //    Session["SelectedCartID_Industry"] = "";
-            //}
-            //else
-            //{
-            //    Response.Write("<script>alert('No Cart ID selected.');</script>");
-            //}
         }
+
     }
 }
