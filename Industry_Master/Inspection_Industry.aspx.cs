@@ -937,13 +937,15 @@ namespace CEIHaryana.Industry_Master
                 {
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
+                    statement.Visible = false;
                 }
                 else
                 {
                     GridView1.DataSource = null;
                     GridView1.DataBind();
-                    string script = "alert(\"No Record Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    statement.Visible = true;
+                    //string script = "alert(\"No Record Found\");";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 ds.Dispose();
             }
@@ -962,8 +964,8 @@ namespace CEIHaryana.Industry_Master
                     ID = Session["InspectionId_Industry"].ToString();
                     if (e.CommandName == "Select")
                     {
-                        //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                         fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                        //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                         //lblerror.Text = fileName;
                         string script = $@"<script>window.open('{fileName}','_blank');</script>";
                         ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);

@@ -398,11 +398,7 @@
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Test Report History</span>
                                 </a></li>
-                             <li class="nav-item">
-     <a class="nav-link" href="IntimationDataForPeriodic.aspx">
-         <i class="icon-grid menu-icon"></i>
-         <span class="menu-title">Create Returned <br /> Test Report(Periodic)</span>
-     </a></li>
+              
                           <%-- <li class="nav-item">
                                 <a class="nav-link" href="RenewalCertificateSupervisor.aspx">
                                     <i class="icon-grid menu-icon"></i>
@@ -446,5 +442,15 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
+       <script type="text/javascript">
+   window.addEventListener("beforeunload", function () {
+       // Notify the server to clear the session
+       navigator.sendBeacon('AdminLogout.aspx');
+
+       // Clear session storage and local storage
+       sessionStorage.clear();
+       localStorage.removeItem('activeSession');
+   });
+       </script>
 </body>
 </html>

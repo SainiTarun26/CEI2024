@@ -1167,7 +1167,8 @@ namespace CEIHaryana.Supervisor
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('You have to check the declaration first !!!')", true);
+
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Please Check Declaration To Proceed Further!!!')", true);
                     }
                 }
             }

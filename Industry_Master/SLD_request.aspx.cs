@@ -190,8 +190,7 @@ namespace CEIHaryana.Industry_Master
             ClickCount = Convert.ToInt32(Session["ClickCount"]);
             if (ClickCount < 1)
             {
-                ClickCount = ClickCount + 1;
-                Session["ClickCount"] = ClickCount;
+               
                 int checksuccessmessage = 0;
                 string SiteOwnerId = Session["SiteOwnerId_Sld_Industry"].ToString();
                 string SiteOwnerName = Session["OwnerName"].ToString();
@@ -208,7 +207,8 @@ namespace CEIHaryana.Industry_Master
                     try
                     {
 
-
+                        ClickCount = ClickCount + 1;
+                        Session["ClickCount"] = ClickCount;
                         string FilName = string.Empty;
 
                         FilName = Path.GetFileName(CustomFile.PostedFile.FileName);

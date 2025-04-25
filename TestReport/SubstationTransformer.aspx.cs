@@ -71,7 +71,7 @@ namespace CEIHaryana.TestReport
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/SiteOwnerLogout.aspx");
             }
         }
         protected void BtnBack_Click(object sender, EventArgs e)

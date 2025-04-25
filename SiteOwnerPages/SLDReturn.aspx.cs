@@ -40,8 +40,7 @@ namespace CEIHaryana.SiteOwnerPages
             ClickCount = Convert.ToInt32(Session["ClickCount"]);
             if (ClickCount < 1)
             {
-                ClickCount = ClickCount + 1;
-                Session["ClickCount"] = ClickCount;
+                
                 string SiteOwnerId = Session["SiteOwnerId"].ToString();
             string SldId = Session["Sld_id"].ToString();
             int maxFileSize = 2 * 1024 * 1024;
@@ -105,7 +104,9 @@ namespace CEIHaryana.SiteOwnerPages
                     SqlTransaction transaction = null;
                     try
                     {
-                        connection.Open();
+                            ClickCount = ClickCount + 1;
+                            Session["ClickCount"] = ClickCount;
+                            connection.Open();
 
                         string FilName = string.Empty;
 

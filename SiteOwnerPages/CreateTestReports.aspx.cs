@@ -18,27 +18,50 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (!Page.IsPostBack)
                 {
-                    if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
+                    List<string> sessionKeysToRemove = new List<string>
+                 {
+                  "id","Duplicacy","TotalAmount"
+                 };
+                    ClearSessions(sessionKeysToRemove);
+                    // if (Convert.ToString(Session["SiteOwnerId"]) != null || Request.Cookies["SiteOwnerId"] != null)
+                    if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                     {
+                        string PanNumber = Session["SiteOwnerId"].ToString();
+                        hfOwner.Value = Convert.ToString(Session["SiteOwnerId"]);
+
+
                         getWorkIntimationData();
+                    }
+                    else
+                    {
+                        Session["SiteOwnerId"] = "";
+                        Response.Redirect("/SiteOwnerLogout.aspx", false);
+                        return;
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Response.Redirect("/login.aspx");
+                Session["SiteOwnerId"] = "";
+                Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
         }
+
+        private void ClearSessions(List<string> sessionKeysToRemove)
+        {
+            foreach (string sessionKey in sessionKeysToRemove)
+            {
+                if (Session[sessionKey] != null && Convert.ToString(Session[sessionKey]) != string.Empty)
+                {
+                    Session.Remove(sessionKey);
+                }
+            }
+        }
+
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
             {
-                //if (e.Row.RowType == DataControlRowType.Header)
-                //{
-                //    CheckBox chkSelectAll = (CheckBox)e.Row.FindControl("chkSelectAll");
-                //    chkSelectAll.Attributes.Add("onclick", "SelectAllCheckboxes(this)");
-                //}
-
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
                     int reportTypeColumnIndex = 6;
@@ -48,13 +71,20 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         e.Row.CssClass = "ReturnedRowColor";
                     }
-
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                string script = "alert('An error occurred');";
+                ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, true);
+            }
         }
         private void getWorkIntimationData()
         {
+            if (CheckAndRedirect("SiteOwnerId", "SiteOwnerLogout.aspx"))
+            {
+                return;
+            }
             string Id = Session["SiteOwnerId"].ToString();
 
             DataSet ds = new DataSet();
@@ -71,8 +101,52 @@ namespace CEIHaryana.SiteOwnerPages
                 string script = "alert(\"No Record Found\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
-            
             ds.Dispose();
+        }
+
+        private bool CheckAndRedirect(string sessionKeysCsv, string redirectPage)
+        {
+            List<string> sessionKeys = sessionKeysCsv.Split(',').Select(s => s.Trim()).ToList();
+            string resultPage = CheckSessionsAndRedirect(sessionKeys, redirectPage);
+            if (!string.IsNullOrEmpty(resultPage))
+            {
+                Response.Redirect(resultPage, false);
+                return true;
+            }
+            return false;
+        }
+
+        private string CheckSessionsAndRedirect(List<string> sessionKeysToCheck, string redirectPage)
+        {
+            // List of mandatory session keys to check first
+            List<string> mandatorySessionKeys = new List<string>
+            {
+                "SiteOwnerId"
+            };
+            List<string> allSessionKeysToCheck = mandatorySessionKeys.Concat(sessionKeysToCheck).ToList();
+
+            foreach (string sessionKey in allSessionKeysToCheck)
+            {
+                string sessionValue = Convert.ToString(Session[sessionKey]);
+
+                if (Session[sessionKey] == null || string.IsNullOrEmpty(Convert.ToString(Session[sessionKey])))
+                {
+                    if (mandatorySessionKeys.Contains(sessionKey))
+                    {
+                        return "/SiteOwnerLogout.aspx";
+                    }
+                    else
+                    {
+                        return redirectPage;
+                    }
+                }
+
+                if (sessionKey == "SiteOwnerId" && sessionValue != hfOwner.Value)
+                {
+                    return "/SiteOwnerLogout.aspx"; // Redirect to logout if session value doesn't match hidden field value
+                }
+            }
+            return null;
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -97,10 +171,16 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else
                 {
+                    Session["id"] = "";
+                    Session["Duplicacy"] = "0";
+                    Session["TotalAmount"] = "0";
+                    Response.Redirect("/SiteOwnerPages/CreateTestReports.aspx", false);
                 }
             }
-            catch (Exception)
-            { 
+            catch (Exception ex)
+            {
+                string script = "alert('An error occurred');";
+                ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, true);
             }
         }
     }

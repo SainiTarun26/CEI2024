@@ -29,7 +29,6 @@
     WIDTH: 1%;
     color:white !important;
     font-size:20px;
-    background:#9292cc;
 }
         div#IntimationData {
             background: #ffffff !important;

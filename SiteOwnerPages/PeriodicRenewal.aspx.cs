@@ -11,7 +11,6 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Windows.Media;
 using System.Xml.Linq;
@@ -60,7 +59,6 @@ namespace CEIHaryana.SiteOwnerPages
                 installationType2.Visible = true;
                 if (RadioButtonList1.SelectedValue == "1")
                 {
-
                     divToShowLabel.Visible = false;
                     DivDetails.Visible = true;
                     btnSubmitInstallation.Visible = true;
@@ -130,7 +128,6 @@ namespace CEIHaryana.SiteOwnerPages
                 Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
         }
-
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             try
@@ -228,11 +225,6 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 Session["GeneratingSetId"] = testReportId;
                 Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
-            }
-            else if (installationtype == "Switching Station")
-            {
-                Session["SwitchingSubstationId"] = testReportId;
-                Response.Write("<script>window.open('/TestReportModal/SwitchingSubstationTestReportModal.aspx','_blank');</script>");
             }
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -389,30 +381,6 @@ namespace CEIHaryana.SiteOwnerPages
                                         e.Row.Visible = true;
                                     }
                                 }
-                                if (installationtype == "Switching Station")
-                                {
-                                    Year = inspectionDate.AddYears(1);
-                                    DateTime alertDate = Year.AddDays(-30);
-                                    DateTime currentDate = DateTime.Now;
-                                    remainingDays = (Year - alertDate).Days;
-                                    if (currentDate >= Year)
-                                    {
-                                        remainingDays = (Year - currentDate).Days;
-
-                                    }
-                                    if (currentDate <= Year)
-                                    {
-                                        remainingDays = (Year - currentDate).Days;
-                                    }
-                                    if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
-                                    {
-                                        e.Row.Visible = true;
-                                    }
-                                    else
-                                    {
-                                        e.Row.Visible = true;
-                                    }
-                                }
                                 int dueDateColumnIndex = 10;
                                 e.Row.Cells[dueDateColumnIndex].Text = Year.ToShortDateString();
                                 SetRemainingDaysColumn(e.Row, remainingDays);
@@ -460,7 +428,159 @@ namespace CEIHaryana.SiteOwnerPages
 
                     }
 
-                 
+                    //DateTime inspectionDate = DateTime.Parse(LblInspectionDate.Text);
+                    //int remainingDays = 0;
+                    //string installationtype = LblInstallationName.Text;
+                    //int voltage;
+                    //DateTime Year = DateTime.MinValue;
+
+                    //if (int.TryParse(lblVoltage.Text, out voltage))
+                    //{
+                    //    if (installationtype == "Line")
+                    //    {
+                    //        if (voltage >= 0 && voltage <= 250)
+                    //        {
+                    //            Year = inspectionDate.AddYears(5);
+                    //            DateTime alertDate = Year.AddDays(-30);
+                    //            DateTime currentDate = DateTime.Now;
+                    //            remainingDays = (Year - alertDate).Days;
+                    //            if (currentDate >= Year)
+                    //            {
+                    //                remainingDays = (Year - currentDate).Days;
+                    //            }
+                    //            if (currentDate <= Year)
+                    //            {
+                    //                remainingDays = (Year - currentDate).Days;
+                    //            }
+                    //            if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
+                    //            {
+                    //                e.Row.Visible = true;
+                    //            }
+                    //            else
+                    //            {
+                    //                e.Row.Visible = false;
+                    //            }
+                    //        }
+                    //        if (voltage >= 250 && voltage <= 650)
+                    //        {
+                    //            Year = inspectionDate.AddYears(3);
+                    //            DateTime alertDate = Year.AddDays(-30);
+                    //            DateTime currentDate = DateTime.Now;
+                    //            remainingDays = (Year - alertDate).Days;
+                    //            if (currentDate >= Year)
+                    //            {
+                    //                remainingDays = (Year - currentDate).Days;
+                    //            }
+                    //            if (currentDate <= Year)
+                    //            {
+                    //                remainingDays = (Year - currentDate).Days;
+                    //            }
+                    //            if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
+                    //            {
+                    //                e.Row.Visible = true;
+                    //            }
+                    //            else
+                    //            {
+                    //                e.Row.Visible = false;
+                    //            }
+                    //        }
+                    //        if (voltage > 650)
+                    //        {
+                    //            Year = inspectionDate.AddYears(1);
+                    //            DateTime alertDate = Year.AddDays(-30);
+                    //            DateTime currentDate = DateTime.Now;
+                    //            remainingDays = (Year - alertDate).Days;
+                    //            if (currentDate >= Year)
+                    //            {
+                    //                remainingDays = (Year - currentDate).Days;
+                    //            }
+                    //            if (currentDate <= Year)
+                    //            {
+                    //                remainingDays = (Year - currentDate).Days;
+                    //            }
+                    //            if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
+                    //            {
+                    //                e.Row.Visible = true;
+                    //            }
+                    //            else
+                    //            {
+                    //                e.Row.Visible = false;
+                    //            }
+                    //        }
+                    //    }
+
+                    //    if (installationtype == "Generating Set")
+                    //    {
+                    //        Year = inspectionDate.AddYears(3);
+                    //        DateTime alertDate = Year.AddDays(-30);
+                    //        DateTime currentDate = DateTime.Now;
+                    //        remainingDays = (Year - alertDate).Days;
+                    //        if (currentDate >= Year)
+                    //        {
+                    //            remainingDays = (Year - currentDate).Days;
+                    //        }
+                    //        if (currentDate <= Year)
+                    //        {
+                    //            remainingDays = (Year - currentDate).Days;
+                    //        }
+                    //        if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
+                    //        {
+                    //            e.Row.Visible = true;
+                    //        }
+                    //        else
+                    //        {
+                    //            e.Row.Visible = false;
+                    //        }
+                    //    }
+                    //    if (installationtype == "Substation Transformer")
+                    //    {
+                    //        Year = inspectionDate.AddYears(1);
+                    //        DateTime alertDate = Year.AddDays(-30);
+                    //        DateTime currentDate = DateTime.Now;
+                    //        remainingDays = (Year - alertDate).Days;
+                    //        if (currentDate >= Year)
+                    //        {
+                    //            remainingDays = (Year - currentDate).Days;
+
+                    //        }
+                    //        if (currentDate <= Year)
+                    //        {
+                    //            remainingDays = (Year - currentDate).Days;
+                    //        }
+                    //        if (currentDate >= alertDate || currentDate >= Year || currentDate == alertDate)
+                    //        {
+                    //            e.Row.Visible = true;
+                    //        }
+                    //        else
+                    //        {
+                    //            e.Row.Visible = false;
+                    //        }
+                    //    }
+                    //    int dueDateColumnIndex = 10;
+                    //    e.Row.Cells[dueDateColumnIndex].Text = Year.ToShortDateString();
+                    //    SetRemainingDaysColumn(e.Row, remainingDays);
+                    //}
+
+
+                    //int numberofdaysColumnIndex = 11;
+                    //TableCell numberofdaysCell = e.Row.Cells[numberofdaysColumnIndex];
+
+                    //int numberofdays;
+                    //if (int.TryParse(numberofdaysCell.Text, out numberofdays))
+                    //{
+                    //    if (numberofdays == 0 || (numberofdays > 0 && numberofdays <= 15))
+                    //    {
+                    //        e.Row.Cells[11].CssClass = "GreenBackground";
+                    //    }
+                    //    else if (numberofdays < 0)
+                    //    {
+                    //        e.Row.Cells[11].CssClass = "OrangeBackground";
+                    //    }
+                    //    else if (numberofdays < 30 && numberofdays > 15)
+                    //    {
+                    //        e.Row.Cells[11].CssClass = "YellowBackground";
+                    //    }
+                    //}
                     else
                     {
                         e.Row.Cells[11].CssClass = "OrangeBackground";
@@ -468,7 +588,6 @@ namespace CEIHaryana.SiteOwnerPages
 
                     }
                 }
-
             }
             catch (Exception ex)
             { }
@@ -526,7 +645,6 @@ namespace CEIHaryana.SiteOwnerPages
                 }
             }
         }
-
         protected void BtnCart_Click(object sender, EventArgs e)
         {
             try
@@ -550,7 +668,7 @@ namespace CEIHaryana.SiteOwnerPages
                             {
                                 string IbtimationIDValue = LblIntimationId.Text.Trim();
 
-                                 if (chk.Checked)
+                                if (chk.Checked)
                                 {
                                     atLeastOneChecked = true;
 
@@ -586,6 +704,7 @@ namespace CEIHaryana.SiteOwnerPages
                                 string IntimationId = LblIntimationId.Text;
                                 Label lblInspectionId = (Label)row.FindControl("lblInspectionId") as Label;
                                 string InspectionId = lblInspectionId.Text;
+                                //int InspectionId = Convert.ToInt32(row.Cells[3].Text);
                                 Label LblInstallationType = (Label)row.FindControl("LblInstallationType");
                                 string InstallationType = LblInstallationType.Text;
                                 Label LblTestReportId = (Label)row.FindControl("LblTestReportId");
@@ -594,6 +713,8 @@ namespace CEIHaryana.SiteOwnerPages
                                 string inspectionDate = LblinspectionDate.Text;
                                 Label LblinspectionDueDate = (Label)row.FindControl("LblinspectionDueDate");
                                 string inspectionDueDate = LblinspectionDueDate.Text;
+                                //Label LblNumberofdays = (Label)row.FindControl("LblNumberofdays");
+                                //string DelayedDays = LblNumberofdays.Text;
                                 Label LblVoltage = (Label)row.FindControl("LblVoltage");
                                 string Voltage = LblVoltage.Text;
                                 Label LblCapacity = (Label)row.FindControl("LblCapacity");
@@ -616,14 +737,10 @@ namespace CEIHaryana.SiteOwnerPages
                                 string Count = lblCount.Text;
 
 
-                                int result = CEI.InsertInspectionRenewalData(IntimationId, InspectionId, InstallationType, InstallationName, TestReportId, Count, inspectionDate,
-                                      inspectionDueDate, Voltage, Capacity, Address, CompleteAddress, AddressDistrict, OwnerName, District, Division, id, "1");
+                                CEI.InsertInspectionRenewalData(IntimationId, InspectionId, InstallationType, InstallationName, TestReportId, Count, inspectionDate,
+                                     inspectionDueDate, /*DelayedDays*/ Voltage, Capacity, Address, CompleteAddress, AddressDistrict, OwnerName, District, Division, id, "1");
 
-                                if (result > 0)
-                                {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('Already add in cart.');", true);
-                                    return;
-                                }
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                             }
                         }
                         if (!atLeastOneChecked)
@@ -631,10 +748,7 @@ namespace CEIHaryana.SiteOwnerPages
                             Response.Write("<script>alert('Please select at least one Inspection');</script>");
                             return;
                         }
-
-
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                    }
+                          }
                     else
                     {
                         Response.Redirect("/SiteOwnerLogout.aspx", false);
@@ -648,8 +762,6 @@ namespace CEIHaryana.SiteOwnerPages
             catch (Exception ex)
             {
                 Response.Redirect("/SiteOwnerLogout.aspx", false);
-                //string errorMessage = ex.Message;
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
             }
         }
         //protected void ddlNoOfDays_SelectedIndexChanged(object sender, EventArgs e)
@@ -855,7 +967,6 @@ namespace CEIHaryana.SiteOwnerPages
             }
             else
             {
-                //Response.Redirect("/login.aspx", false);
                 Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
         }
@@ -940,7 +1051,7 @@ namespace CEIHaryana.SiteOwnerPages
                                 Id,
                                 txtApplicantType.Text.Trim(),
                                 ApplicantCode,
-                               txtElecticalInstallation.Text.Trim(),
+                                txtElecticalInstallation.Text.Trim(),
                                 txtUtilityName.Text.Trim(),
                                 txtWing.Text.Trim(),
                                 txtZone.Text.Trim(),
@@ -961,8 +1072,6 @@ namespace CEIHaryana.SiteOwnerPages
                                 txtinstallationNo2.Text.Trim(),
                                 txtinstallationType3.Text.Trim(),
                                 txtinstallationNo3.Text.Trim(),
-                                txtinstallationType4.Text.Trim(),
-                                txtinstallationNo4.Text.Trim(),
                                 txtEmail.Text.Trim(),
                                 Id,
                                 RadioButtonList2.SelectedValue.ToString(),
@@ -978,8 +1087,8 @@ namespace CEIHaryana.SiteOwnerPages
 
                             if (!string.IsNullOrEmpty(projectId))
                             {
-                                TextBox[] typeTextBoxes = { txtinstallationType2, txtinstallationType3, txtinstallationType4 };
-                                TextBox[] noTextBoxes = { txtinstallationNo2, txtinstallationNo3, txtinstallationNo4 };
+                                TextBox[] typeTextBoxes = { txtinstallationType2, txtinstallationType3 };
+                                TextBox[] noTextBoxes = { txtinstallationNo2, txtinstallationNo3 };
 
                                 for (int i = 0; i < typeTextBoxes.Length; i++)
                                 {
@@ -1058,7 +1167,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                if (GetVisibleInstallationCount() > 1)
+                if (installationType3.Visible == true)
                 {
                     string valueToAddBack = txtinstallationType2.Text;
 
@@ -1068,24 +1177,26 @@ namespace CEIHaryana.SiteOwnerPages
                         ddlWorkDetail.Items.Add(newItem);
                     }
                     installationType2.Visible = false;
+                    //txtinstallationType2.Text = string.Empty;
                     txtinstallationNo2.Text = string.Empty;
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('At least one installation must remain.');", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('One Installation Is Mandatory');", true);
+
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                // Handle exceptions appropriately
+            }
         }
-
-      
-
         protected void imgDelete3_Click(object sender, ImageClickEventArgs e)
         {
+
             try
             {
-                if (GetVisibleInstallationCount() > 1)
+                if (installationType2.Visible == true)
                 {
                     string valueToAddBack = txtinstallationType3.Text;
                     if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
@@ -1094,11 +1205,13 @@ namespace CEIHaryana.SiteOwnerPages
                         ddlWorkDetail.Items.Add(newItem);
                     }
                     installationType3.Visible = false;
+                    // txtinstallationType3.Text = string.Empty;
                     txtinstallationNo3.Text = string.Empty;
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('At least one installation must remain.');", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('One Installation Is Mandatory');", true);
+
                 }
             }
             catch (Exception ex) { }
@@ -1108,54 +1221,17 @@ namespace CEIHaryana.SiteOwnerPages
             try
             {
                 installationType2.Visible = true;
-                installationType4.Visible = true;
                 if (ddlVoltageLevel.SelectedValue == "upto 650 V")
                 {
                     installationType2.Visible = false;
-                    installationType4.Visible = false;
                 }
                 else
                 {
                     installationType2.Visible = true;
-                    installationType4.Visible = true;
                 }
             }
             catch (Exception ex) { }
-        }
-
-        protected void ImageButton4_Click(object sender, ImageClickEventArgs e)
-        {
-            try
-            {
-                if (GetVisibleInstallationCount() > 1)
-                {
-                    string valueToAddBack = txtinstallationType4.Text;
-                    if (ddlWorkDetail.Items.FindByValue(valueToAddBack) == null)
-                    {
-                        ListItem newItem = new ListItem(valueToAddBack, valueToAddBack);
-                        ddlWorkDetail.Items.Add(newItem);
-                    }
-                    installationType4.Visible = false;
-                    txtinstallationNo4.Text = string.Empty;
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('At least one installation must remain.');", true);
-                }
-            }
-            catch (Exception ex) { }
-        }
-
-        private int GetVisibleInstallationCount()
-        {
-            int count = 0;
-            if (installationType2.Visible) count++;
-            if (installationType3.Visible) count++;
-            if (installationType4.Visible) count++;
-            return count;
         }
     }
-
-
     #endregion
 }

@@ -36,21 +36,16 @@ namespace CEIHaryana.Admin
         }
         public void GridBind()
         {
-            try
-            {
-                string LoginID = string.Empty;
-                LoginID = Session["AdminId"].ToString();
-                DataSet ds = new DataSet();
-                ds = CEI.InProcessRequest(LoginID);
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
-                ds.Dispose();
-            }
-            catch(Exception ex)
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
-                return;
-            }
+
+            string LoginID = string.Empty;
+            LoginID = Session["AdminId"].ToString();
+            DataSet ds = new DataSet();
+            ds = CEI.InProcessRequest(LoginID);
+
+            GridView1.DataSource = ds;
+            GridView1.DataBind();
+
+            ds.Dispose();
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -62,41 +57,17 @@ namespace CEIHaryana.Admin
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
-                    Label lblInstallationFor = (Label)row.FindControl("lblInstallationFor");
-                    Label lblInspectionCount = (Label)row.FindControl("lblInspectionCount");                  
-                    string id = lblID.Text;                   
+                    string id = lblID.Text;
+                    Session["InProcessInspectionId"] = id;
                     if (e.CommandName == "Select")
                     {
-                        if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
-                        {
-                            if (int.TryParse(lblInspectionCount.Text, out int count) && count > 1)
-                            {
-                                Session["InProcessInspectionId"] = id;
-                                Response.Redirect("/Admin/Action_InProcessLift_Return.aspx", false);
-                                return;
-
-                            }
-                            else
-                            {
-                                Session["InProcessInspectionId"] = id;
-                                Response.Redirect("/Admin/Action_InProcess_Lift.aspx", false);
-                                return;
-                            }
-                        }
-                        else
-                        {
-                            Session["InProcessInspectionId"] = id;
-                            Response.Redirect("/Admin/ActionInprocessInspection.aspx", false);
-                            return;
-                        }
-
+                        Response.Redirect("/Admin/ActionInprocessInspection.aspx", false);
                     }
                 }
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
-                return;
+                //
             }
         }
 
@@ -107,12 +78,7 @@ namespace CEIHaryana.Admin
                 GridView1.PageIndex = e.NewPageIndex;
                 GridBind();
             }
-            catch(Exception ex) 
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
-                return;
-
-            }
+            catch { }
         }
     }
 }

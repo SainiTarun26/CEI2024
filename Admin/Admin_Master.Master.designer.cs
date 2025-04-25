@@ -60,6 +60,24 @@ namespace CEI_PRoject.ADMIN
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
+        /// NewInspectionTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NewInspectionTab;
+
+        /// <summary>
+        /// ActionInprocesstab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ActionInprocesstab;
+
+        /// <summary>
         /// ConsolidatedReport control.
         /// </summary>
         /// <remarks>
@@ -157,15 +175,6 @@ namespace CEI_PRoject.ADMIN
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl SubDivisionMasterTab;
-
-        /// <summary>
-        /// CESE control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CESE;
 
         /// <summary>
         /// LoginType control.

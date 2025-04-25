@@ -6,12 +6,10 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
@@ -299,7 +297,7 @@
                         <div class="row" style="margin-top: -40px !important;">
                             <div class="col-4">
                                 <label>
-                                    GRN Number
+                                  Transaction Id (GRN Number)
                                 </label>
                                 <asp:TextBox ID="txttransactionId" runat="server" ReadOnly="true" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
                             </div>
@@ -320,7 +318,9 @@
                                 </asp:RadioButtonList>
 
                             </div>
-
+                            <asp:HiddenField ID="hnOwnerId" runat="server" />
+                            <asp:HiddenField ID="hnReturnStatus" runat="server" />
+                            <asp:HiddenField ID="hnApplicationStatus" runat="server" />
 
 
                         </div>
@@ -371,7 +371,7 @@
                     </div>
                 </div>
                 <div id="UploadDocuments" runat="server" visible="true">
-                    <h7 class="card-title fw-semibold mb-4">Checklist Document</h7>
+                    <h7 class="card-title fw-semibold mb-4">Checklist Document</h7
                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                         <h7 class="card-title" style="color: #a52a2a; margin-bottom: 5px;">Note: Size of all the Attachments should not be more than 10mb.</h7>
                         <div class="row">
@@ -400,6 +400,7 @@
                                                 <asp:FileUpload ID="FileUpload1" runat="server" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
+                                       
                                         <asp:BoundField DataField="ReturnedReason" HeaderText="Returned Reason">
                                             <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                             <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -533,13 +534,13 @@
             window.location.href = "/Industry_Master/ForNewInspectionRequestPrintForm.aspx";
         }
     </script>
-    <script type="text/javascript">
+   <%-- <script type="text/javascript">
         function alertWithRedirect() {
             if (confirm('Select all PDF files only')) {
             } else {
             }
         }
-    </script>
+    </script>--%>
     <script type="text/javascript">
         function SelectAllCheckboxes(headerCheckbox) {
             var checkboxes = document.querySelectorAll('[id*=CheckBox1]');

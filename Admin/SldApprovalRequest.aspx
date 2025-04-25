@@ -329,7 +329,7 @@
       </div>
   </div>
                                            
-                        <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoPostBack="true" AutoGenerateColumns="false"  OnRowCommand="grd_Documemnts_RowCommand"  OnRowDataBound="grd_Documemnts_RowDataBound" AllowPaging="True" PageSize="10"  EnableViewState="true" OnPageIndexChanging="grd_Documemnts_PageIndexChanging">
+                        <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoPostBack="true" AutoGenerateColumns="false"  OnRowCommand="grd_Documemnts_RowCommand"  OnRowDataBound="grd_Documemnts_RowDataBound" AllowPaging="True" PageSize="50"  EnableViewState="true" OnPageIndexChanging="grd_Documemnts_PageIndexChanging">
                             <HeaderStyle BackColor="#B7E2F0" />
                             <Columns>
                                 <asp:TemplateField ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Middle">
@@ -436,7 +436,7 @@
                         </label>
                         <asp:TextBox class="form-control" ID="TxtRejectionReason" TabIndex="8" onkeydown="return preventEnterSubmit(event)"  MaxLength="200" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         <span id="RejectionReason" style="color: red"></span>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TxtRejectionReason" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TxtRejectionReason" ValidationGroup="Submit" ForeColor="Red">Please Enter Rejection reason for Reject.</asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <div class="row" id="Remarks" runat="server" visible="false">
@@ -447,7 +447,7 @@
                         </label>
                         <asp:TextBox class="form-control" ID="TxtRemarks" TabIndex="8" onkeydown="return preventEnterSubmit(event)"  MaxLength="200" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         <span id="Remark" style="color: red"></span>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TxtRemarks" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TxtRemarks" ValidationGroup="Submit" ForeColor="Red">Please Enter Remarks for Approval.</asp:RequiredFieldValidator>
                     </div>
                 </div>
             </div>

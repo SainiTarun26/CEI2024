@@ -304,8 +304,8 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
+                                    <asp:Label ID="lblCategoryName" runat="server" Text='<%#Eval("Category") %>'></asp:Label>
                                     <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Typs") %>'></asp:Label>
-                                     <asp:Label ID="lblCategoryName" runat="server" Text='<%#Eval("Category") %>'></asp:Label>
                                     <asp:Label ID="lblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
                                     <asp:Label ID="lblIntimationId" runat="server" Text='<%#Eval("Intimations") %>'></asp:Label>
                                     <asp:Label ID="lblVoltageLevel" runat="server" Text='<%#Eval("VoltageLevel") %>'></asp:Label>
@@ -618,7 +618,7 @@
                             <div class="row" style="margin-top: -40px !important;">
                             <div class="col-4">
                                 <label>
-                                    GRN Number<samp style="color: red"> * </samp>
+                                    Transaction Id (GRN Number)<samp style="color: red"> * </samp>
                                 </label>
                                 <asp:TextBox ID="txttransactionId" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
                                 <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Id</asp:RequiredFieldValidator>--%>                            
@@ -656,16 +656,13 @@
                 </div>
                 <div>
 
-                    <%-- <div class="row" style="margin-top: 50px;" id="Declaration" runat="server">
-                        <div class="col-12" style="text-align: center;">
-                            <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="true"
-                                Text="&nbsp;I hereby declare that the information given above and in the enclosed documents is true to the best of my knowledge and belief and nothing has been concealed therein." Font-Size="Medium" Font-Bold="True" />
-                            <br />
-                            <label id="labelVerification" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                Please Verify this.
-                            </label>
-                        </div>
-                    </div>--%>
+                    <div class="row" id="Declaration" runat="server" visible="false" style="margin-left: 1%; margin-bottom: 20px;">
+                        <label style="display: flex; align-items: center;">
+                            <asp:CheckBox ID="Check" runat="server" TabIndex="24" Style="margin-top: -5px;" />
+                            <span style="margin-left: 8px; font-size: 17px; line-height: 20px; margin-top: 9px;">We undertake that we shall maintain and operate all the electrical installations in a condition free from danger and as recommended by the manufacturer and/or by the relevant Code of Practice of the Bureau of Indian Standards.
+                            </span>
+                        </label>
+                    </div>
                     <div class="row">
                         <div class="col-4"></div>
                         <div class="col-4" style="text-align: center;">
@@ -681,6 +678,7 @@
 
                     <asp:HiddenField ID="InspectionIdClientSideCheckedRow" runat="server" />
                     <asp:HiddenField ID="InspectionIdCountClientSideCheckedRow" runat="server" />
+                    <asp:HiddenField ID="hfOwner" runat="server" />
                     <div>
                     </div>
                 </div>
@@ -868,7 +866,7 @@
             var today = new Date().toISOString().split('T')[0];
             document.getElementById('<%= txttransactionDate.ClientID %>').setAttribute('max', today);
         };
-</script>
+    </script>
 </asp:Content>
 
 

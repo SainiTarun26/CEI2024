@@ -234,7 +234,7 @@
                         <asp:TextBox class="form-control" ID="txtSupervisorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-md-4" runat="server">
-                        <label>TransctionId</label>
+                          <label>Transaction Id(GRN Number)</label>
                         <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-md-4" runat="server">
@@ -368,7 +368,7 @@
 </div>
         <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivViewCart" runat="server" visible="false">
             <div class="col-12" style="padding: 0px;">
-                <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" OnRowDataBound="GridView2_RowDataBound" runat="server" AutoGenerateColumns="false">
+                <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false">
                     <HeaderStyle BackColor="#B7E2F0" />
                     <Columns>
                         <asp:TemplateField HeaderText="SNo">

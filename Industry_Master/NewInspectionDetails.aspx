@@ -389,6 +389,11 @@ View Documents
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
+                    <div class="row" id="statement" runat="server" visible="false">
+                        <label for="CompletionDateasperWorkOrder" style="font-size: 16px; font-weight: bold;">
+                            No any Document Attached                                             
+                        </label>
+                    </div>
                 </div>
             </div>
             

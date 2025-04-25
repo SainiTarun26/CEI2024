@@ -27,7 +27,7 @@ namespace CEIHaryana
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/SiteOwnerLogout.aspx");
             }
         }
         public void GetEodb_ServiceInformation_Data()

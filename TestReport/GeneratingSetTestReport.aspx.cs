@@ -72,7 +72,7 @@ namespace CEIHaryana.TestReport
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/SiteOwnerLogout.aspx");
             }
         }
 

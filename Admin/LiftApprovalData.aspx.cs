@@ -20,10 +20,6 @@ namespace CEIHaryana.Admin
                 if (Session["AdminId"] != null && Session["AdminId"].ToString() != "")
                 {
                     GridBind();
-                    if (!IsPostBack && Request.UrlReferrer != null)
-                    {
-                        ViewState["PreviousPageUrl"] = Request.UrlReferrer.ToString();
-                    }
                 }
             }
             
@@ -90,11 +86,7 @@ namespace CEIHaryana.Admin
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            if (ViewState["PreviousPageUrl"] != null)
-            {
-                Response.Redirect(ViewState["PreviousPageUrl"].ToString(), false);
-            }
-
+            Response.Redirect("/Admin/AcceptedOrRejectedRequest.aspx", false);
         }
     }
 }

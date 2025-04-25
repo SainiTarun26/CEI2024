@@ -318,8 +318,8 @@ namespace CEIHaryana.Admin
                                     string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
                                     if (reqType == "Industry")
                                     {
-                                        string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
-                                        // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
+                                        string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
+                                        // string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in/api/project-service-logs-external_UHBVN");
                                         if (serverStatus != "Server is reachable.")
                                         {
                                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
@@ -727,6 +727,7 @@ namespace CEIHaryana.Admin
                     //ID = Session["InspectionId"].ToString();
                     ID = txtInspectionReportId.Text.Trim();
                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                 }
@@ -1108,15 +1109,16 @@ namespace CEIHaryana.Admin
             else if (e.CommandName == "View")
             {
                 string fileName = "";
-                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
             else if (e.CommandName == "ViewInvoice")
             {
                 string fileName = "";
-               // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
@@ -1162,16 +1164,6 @@ namespace CEIHaryana.Admin
                         linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = false;
                     }
-                    else if (LblInstallationName.Text.Trim() == "Switching Station")
-                    {
-                        Grid_MultipleInspectionTR.Columns[9].Visible = true;
-                        Grid_MultipleInspectionTR.Columns[10].Visible = true;
-                        lnkPreviousInstallaionInvoice.Visible = false;
-                        lnkPreviosManufacturingReport.Visible = true;
-                        linkButtonInvoice.Visible = false;
-                        LinkButtonReport.Visible = true;
-                        ViewState["AllRowsAreLine"] = false;
-                    }
                     else
                     {
                         Grid_MultipleInspectionTR.Columns[9].Visible = true;
@@ -1182,11 +1174,7 @@ namespace CEIHaryana.Admin
                         LinkButtonReport.Visible = true;
                         ViewState["AllRowsAreLine"] = false;
                     }
-                    //Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
-                    if (LblInstallationName.Text.Trim() == "Switching Station")
-                    {
-                        RadioButtonAction.Items.FindByValue("1").Enabled = false;
-                    }
+
 
                 }
                 else if (e.Row.RowType == DataControlRowType.Footer)
@@ -1248,7 +1236,60 @@ namespace CEIHaryana.Admin
                 {
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                 }
-                
+                //string returnBasedValue = DataBinder.Eval(e.Row.DataItem, "ReturnBased")?.ToString();
+
+                //// Apply checks based on the value
+                //if (!string.IsNullOrEmpty(returnBasedValue))
+                //{
+                //    if (returnBasedValue == "ChecklistDocuments")
+                //    {
+                //        GridView Grid_MultipleInspectionTR = e.Row.FindControl("Grid_MultipleInspectionTR") as GridView;
+                //        if (Grid_MultipleInspectionTR != null)
+                //        {
+                //            Grid_MultipleInspectionTR.Columns[6].Visible = false; // "Previous Installaion Invoice"
+                //            Grid_MultipleInspectionTR.Columns[7].Visible = false; // "Previous Manufacturing Report"
+                //        }
+                //        GridView grdDocuments = (GridView)e.Row.FindControl("grd_Documemnts");
+                //        if (grdDocuments != null)
+                //        {
+                //            grdDocuments.Columns[2].Visible = true; // "Previous Documents" column
+                //            grdDocuments.Columns[5].Visible = true; // "Return Reason" column
+                //        }
+                //    }
+                //    else if (returnBasedValue == "TestReportDocuments")
+                //    {
+                //        GridView grdDocuments = (GridView)e.Row.FindControl("grd_Documemnts");
+                //        if (grdDocuments != null)
+                //        {
+                //            grdDocuments.Columns[2].Visible = false; // "Previous Documents" column
+                //            grdDocuments.Columns[5].Visible = false; // "Return Reason" column
+                //        }
+                //        GridView Grid_MultipleInspectionTR = e.Row.FindControl("Grid_MultipleInspectionTR") as GridView;
+                //        if (Grid_MultipleInspectionTR != null)
+                //        {
+                //            Grid_MultipleInspectionTR.Columns[6].Visible = true; // "Previous Installaion Invoice"
+                //            Grid_MultipleInspectionTR.Columns[7].Visible = true; // "Previous Manufacturing Report"
+                //        }
+                //    }
+                //    else if (returnBasedValue == "BothDocuments")
+                //    {
+                //        GridView Grid_MultipleInspectionTR = e.Row.FindControl("Grid_MultipleInspectionTR") as GridView;
+                //        if (Grid_MultipleInspectionTR != null)
+                //        {
+                //            Grid_MultipleInspectionTR.Columns[6].Visible = true; // "Previous Installaion Invoice"
+                //            Grid_MultipleInspectionTR.Columns[7].Visible = true; // "Previous Manufacturing Report"
+                //        }
+                //        GridView grdDocuments = (GridView)e.Row.FindControl("grd_Documemnts");
+                //        if (grdDocuments != null)
+                //        {
+                //            grdDocuments.Columns[2].Visible = true; // "Previous Documents" column
+                //            grdDocuments.Columns[5].Visible = true; // "Return Reason" column
+                //        }
+                //    }
+                //    else
+                //    {
+                //    }
+                //}
             }
             if (e.Row.RowType == DataControlRowType.Header)
             {

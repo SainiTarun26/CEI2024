@@ -44,13 +44,13 @@ namespace CEIHaryana.Supervisor
                     }
                     else
                     {
-                        Response.Redirect("/Login.aspx");
+                        Response.Redirect("/SiteOwnerLogout.aspx");
                     }
                 }
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/SiteOwnerLogout.aspx");
             }
         }
 

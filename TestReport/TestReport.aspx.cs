@@ -17,7 +17,7 @@ namespace CEIHaryana.TestReport
             //    }
             //    catch
             //    {Convert(nvarchar(50),
-            //        Response.Redirect("/Login.aspx");
+            //        Response.Redirect("/SiteOwnerLogout.aspx");
             //    }
         }
         //public void RedirectPages()

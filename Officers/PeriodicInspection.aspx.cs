@@ -204,8 +204,8 @@ namespace CEIHaryana.Officers
             {
                 if (e.CommandName == "Select")
                 {
-                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                 }
@@ -234,8 +234,7 @@ namespace CEIHaryana.Officers
             ClickCount = Convert.ToInt32(Session["ClickCount"]);
             if (ClickCount < 1)
             {
-                ClickCount = ClickCount + 1;
-                Session["ClickCount"] = ClickCount;
+               
                 int checksuccessmessage = 0;
                 try
                 {
@@ -248,7 +247,8 @@ namespace CEIHaryana.Officers
                         {
                             AcceptorReturn = RadioButtonList2.SelectedValue == "0" ? "Accepted" : "Return";
                             Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
-
+                            ClickCount = ClickCount + 1;
+                            Session["ClickCount"] = ClickCount;
                             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
 
                             try

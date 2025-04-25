@@ -100,7 +100,7 @@ namespace CEIHaryana.TestReport
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/SiteOwnerLogout.aspx");
             }
 
 
@@ -268,7 +268,7 @@ namespace CEIHaryana.TestReport
             Session.Abandon();
             Response.Cookies["AdminID"].Expires = DateTime.Now.AddDays(-1);
             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/SiteOwnerLogout.aspx");
         }
 
         protected void ddlType_SelectedIndexChanged(object sender, EventArgs e)

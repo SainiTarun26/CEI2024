@@ -282,7 +282,7 @@
                                         at the premises of 
                                         <asp:Label Style="font-weight: bold;" ID="lblOwnerName" runat="server"></asp:Label>
                                         at
-                                        <asp:Label Style="font-weight: bold;" ID="lblAddress" runat="server"></asp:Label>
+                                        <asp:Label Style="font-weight: bold;" ID="lblAddress" runat="server"></asp:Label>, &nbsp;<asp:Label Style="font-weight: bold;" ID="lblDistrict" runat="server"></asp:Label>
                                         subject to the provisions of the Haryana Lift and Escalators Rules, 2009. The perticulars of lift which are given below:-
                                     </p>
                                 </div>
@@ -413,19 +413,10 @@
                                                 <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
                                                 <ItemStyle HorizontalAlign="center" />
                                             </asp:BoundField>
-                                            <%--     <asp:TemplateField HeaderText="Signature">
-    <ItemTemplate>
-    
-        <div style="display: inline-block; width: 30% !important;">
-            <asp:Image ID="ImgSignature" runat="server"
-                ImageUrl='<%# "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) %>' />
-          
-        </div>
-    </ItemTemplate>
-</asp:TemplateField>--%>
+                                            
                                             <asp:TemplateField HeaderText="Signature">
                                                 <ItemTemplate>
-                                                    <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
+                                                    <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 30%; text-align: center !important;">
                                                         <asp:Image ID="ImgSignature" runat="server"
                                                             ImageUrl='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null 
                            ? "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) 

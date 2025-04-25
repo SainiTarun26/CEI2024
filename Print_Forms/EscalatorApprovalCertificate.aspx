@@ -284,7 +284,7 @@
                                         <asp:Label ID="lblCompanyName" Style="font-weight: bold;" runat="server" Text="M/s"></asp:Label>
                                         is/are hereby registered to work or cause to be worked or allow the working of the lift erected and inspected on&nbsp;<asp:Label ID="lblInspectionDate" Style="font-weight: bold;" runat="server"></asp:Label>
                                         at the premises of  <asp:Label Style="font-weight: bold;" ID="lblOwnerName" runat="server"></asp:Label> at
-                                        <asp:Label Style="font-weight: bold;" ID="lblAddress" runat="server"></asp:Label>
+                                        <asp:Label Style="font-weight: bold;" ID="lblAddress" runat="server"></asp:Label>,&nbsp;<asp:Label Style="font-weight: bold;" ID="lblDistrict" runat="server"></asp:Label>
                                         subject to the provisions of the Haryana Lift and Escalators Rules, 2009. The perticulars of Escalators which are given below:-
                                     </p>
                                 </div>
@@ -416,25 +416,17 @@
                                                 <ItemStyle CssClass="center-align" />
                                             </asp:BoundField>
 
-                                          <%--  <asp:TemplateField HeaderText="Signature">
+                                            <asp:TemplateField HeaderText="Signature">
                                                 <ItemTemplate>
-                                                    <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
+                                                    <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 30%; text-align: center !important;">
                                                         <asp:Image ID="ImgSignature" runat="server"
-                                                            ImageUrl='<%# "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) %>' />
+                                                            ImageUrl='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null 
+                           ? "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) 
+                           : "" %>'
+                                                            Visible='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null %>' />
                                                     </div>
                                                 </ItemTemplate>
-                                            </asp:TemplateField>--%>
-                                          <asp:TemplateField HeaderText="Signature">
-    <ItemTemplate>
-        <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
-            <asp:Image ID="ImgSignature" runat="server" 
-                ImageUrl='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null 
-                           ? "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) 
-                           : "" %>' 
-                Visible='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null %>' />
-        </div>
-    </ItemTemplate>
-</asp:TemplateField>
+                                            </asp:TemplateField>
 
 
 

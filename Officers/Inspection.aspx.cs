@@ -352,7 +352,8 @@ namespace CEIHaryana.Officers
                 if (e.CommandName == "Select")
                 {
                     //ID = Session["InspectionId"].ToString();
-                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -395,8 +396,7 @@ namespace CEIHaryana.Officers
             ClickCount = Convert.ToInt32(Session["ClickCount"]);
             if (ClickCount < 1)
             {
-                ClickCount = ClickCount + 1;
-                Session["ClickCount"] = ClickCount;
+                
                 int checksuccessmessage = 0;
                 try
                 {
@@ -450,7 +450,8 @@ namespace CEIHaryana.Officers
                                              RadioButtonList2.SelectedValue == "1" ? "Return" :
                                              RadioButtonList2.SelectedValue == "2" ? "Rejected" : "";
                             Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
-
+                            ClickCount = ClickCount + 1;
+                            Session["ClickCount"] = ClickCount;
                             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
 
                             //SqlTransaction transaction = null;
@@ -996,7 +997,7 @@ namespace CEIHaryana.Officers
             else if (e.CommandName == "View")
             {
                 string fileName = "";
-               //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 //lblerror.Text = fileName;
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
@@ -1005,8 +1006,8 @@ namespace CEIHaryana.Officers
             else if (e.CommandName == "ViewInvoice")
             {
                 string fileName = "";
-                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }

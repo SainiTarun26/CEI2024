@@ -132,6 +132,15 @@ namespace CEIHaryana.Industry_Master
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
+        /// statement control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl statement;
+
+        /// <summary>
         /// Earthing control.
         /// </summary>
         /// <remarks>
@@ -193,5 +202,23 @@ namespace CEIHaryana.Industry_Master
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdnId;
+
+        /// <summary>
+        /// Declaration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Declaration;
+
+        /// <summary>
+        /// Check control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox Check;
     }
 }

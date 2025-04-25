@@ -272,19 +272,11 @@ namespace CEI_PRoject.Admin
                     }
                     if (txtCertificateNew.Text.Trim() != "" && txtCertificateNew.Text.Trim() != "NA")
                     {
-                        UserId = txtCertificateNew.Text.Trim();
-                        if (char.IsDigit(UserId[0]))
-                        {
-                            UserId = "W-" + txtCertificateNew.Text.Trim();
-                        }
+                        UserId = "W-" + txtCertificateNew.Text.Trim();
                     }
                     else
                     {
                         UserId = txtCertifacateOld.Text.Trim();
-                        if (char.IsDigit(UserId[0]))
-                        {
-                            UserId = "W-" + txtCertifacateOld.Text.Trim();
-                        }
                     }
                     if (btnSubmit.Text.Trim() == "Submit")
                     {
@@ -309,28 +301,20 @@ namespace CEI_PRoject.Admin
                             UserId = str[0];
                             if (str[1] == "New")
                             {
-                                if (UserId ==  txtCertificateNew.Text)
+                                if (UserId == "W-" + txtCertificateNew.Text)
                                 {
                                     NewUserID = "";
                                 }
                                 else
                                 {
-                                    NewUserID =  txtCertificateNew.Text;
-                                    if (char.IsDigit(NewUserID[0]))
-                                    {
-                                        NewUserID = "W-" + txtCertificateNew.Text.Trim();
-                                    }
+                                    NewUserID = "W-" + txtCertificateNew.Text;
                                 }
                             }
                             else
                             {
                                 if (txtCertificateNew.Text.Length > 0)
                                 {
-                                    NewUserID =  txtCertificateNew.Text;
-                                    if (char.IsDigit(NewUserID[0]))
-                                    {
-                                        NewUserID = "W-" + txtCertificateNew.Text.Trim();
-                                    }
+                                    NewUserID = "W-" + txtCertificateNew.Text;
                                 }
                                 else
                                 {
@@ -341,10 +325,6 @@ namespace CEI_PRoject.Admin
                                     else
                                     {
                                         NewUserID = txtCertifacateOld.Text;
-                                        if (char.IsDigit(NewUserID[0]))
-                                        {
-                                            NewUserID = "W-" + txtCertifacateOld.Text.Trim();
-                                        }
                                     }
                                 }
                             }
@@ -364,7 +344,7 @@ namespace CEI_PRoject.Admin
                     string Createdby = Convert.ToString(Session["AdminID"]);
                     CEI.InserWireManData(REID, txtName.Text.ToUpper(), txtAge.Text.Trim(), txtFatherName.Text.ToUpper(), txtAddress.Text, ddlDistrict.SelectedItem.ToString(),
                     ddlState.SelectedItem.ToString(), txtPincode.Text.Trim(), txtContect.Text.Trim(), Qualification, txtEmail.Text.Trim(), txtCertifacateOld.Text.Trim(), txtCertificateNew.Text.Trim(),
-                    txtDateInitialIssue.Text, txtDateExpiry.Text, string.IsNullOrEmpty(txtDateRenewal.Text) ? null : txtDateRenewal.Text, ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue,
+                    txtDateInitialIssue.Text, txtDateExpiry.Text, txtDateRenewal.Text, ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue,
                     Createdby, UserId, NewUserID, ipaddress);
 
                     if (btnSubmit.Text == "Update")
@@ -384,8 +364,6 @@ namespace CEI_PRoject.Admin
             }
             catch (Exception Ex)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + Ex.Message.ToString() + "')", true);
-                return;
             }
 
         }

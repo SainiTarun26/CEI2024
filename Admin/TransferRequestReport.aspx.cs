@@ -106,32 +106,22 @@ namespace CEIHaryana.Admin
                 Label lblType = (Label)row.FindControl("lblType");
                 Session["Type"] = lblType.Text;
                 Label lblApplicationStatus = (Label)row.FindControl("lblApplicationStatus");
-                Label lblInstallationFor = (Label)row.FindControl("lblInstallationFor");
                 Session["lblApplicationStatus"] = lblType.Text;
                 string id = lblID.Text;
                 Session["InspectionId"] = id;
 
                 if (lblApplicationStatus.Text == "Approved")
                 {
-                    if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
+                    if (lblType.Text == "New")
                     {
                         Session["InProcessInspectionId"] = id;
-                        Response.Redirect("/Admin/LiftApprovalData.aspx", false);
+                        Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
                     }
                     else
                     {
-                        if (lblType.Text == "New")
-                        {
-                            Session["InProcessInspectionId"] = id;
-                            Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
-                        }
-                        else
-                        {
-                            Session["InProcessInspectionId"] = id;
-                            Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
-                        }
+                        Session["InProcessInspectionId"] = id;
+                        Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
                     }
-
                 }
                 else
                 {
@@ -144,19 +134,11 @@ namespace CEIHaryana.Admin
                 Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblID = (Label)row.FindControl("lblID");
-                Label lblInstallationFor = (Label)row.FindControl("lblInstallationFor");
                 string id = lblID.Text;
                 Session["InspectionId"] = id;
                 if (e.CommandName == "Select")
                 {
-                    if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
-                    {
-                        Response.Redirect("/Admin/LiftInspectionDetails.aspx", false);
-                    }
-                    else
-                    {
-                        Response.Redirect("/Admin/InspectionDetails.aspx", false);
-                    }
+                    Response.Redirect("/Admin/InspectionDetails.aspx", false);
                 }
             }
             else

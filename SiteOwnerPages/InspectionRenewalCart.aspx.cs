@@ -27,8 +27,6 @@ namespace CEIHaryana.SiteOwnerPages
                               PrevIntimationId = string.Empty, PrevVoltageLevel = string.Empty,
                               PrevApplicantType = string.Empty, AssignToOfficer = string.Empty;
 
-       
-
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -43,13 +41,15 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else
                     {
+                        Session["SiteOwnerId"] = "";
                         Response.Redirect("/SiteOwnerLogout.aspx", false);
                     }
                 }
             }
             catch
             {
-                 Response.Redirect("/SiteOwnerLogout.aspx", false);
+                Session["SiteOwnerId"] = "";
+                Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
         }
         private void BindAdress()
@@ -72,12 +72,14 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else
                     {
+                        Session["SiteOwnerId"] = "";
                         Response.Redirect("/SiteOwnerLogout.aspx", false);
                     }
                 }
             }
             catch (Exception ex)
             {
+                Session["SiteOwnerId"] = "";
                 Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
         }
@@ -124,11 +126,13 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else
                 {
-                    Response.Redirect("/SiteOwnerLogout.aspx", false);             
+                    Session["SiteOwnerId"] = "";
+                    Response.Redirect("/SiteOwnerLogout.aspx", false);
                 }
             }
             else
             {
+                Session["SiteOwnerId"] = "";
                 Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
         }
@@ -165,10 +169,6 @@ namespace CEIHaryana.SiteOwnerPages
                         else if (LblInstallationName.Text == "Generating Set")
                         {
                             InstallationTypeId = "3";
-                        }
-                        else if (LblInstallationName.Text == "Switching Station")
-                        {
-                            InstallationTypeId = "11";
                         }
                         string InspectionType = "Periodic";
                         DataTable ds = new DataTable();
@@ -410,6 +410,7 @@ namespace CEIHaryana.SiteOwnerPages
                             StaffAssigned = "AE";
                             ServiceType = 3;
                         }
+
                         else if (StaffAssignedCount == "3")
                         {
                             StaffAssigned = "XEN";
@@ -426,32 +427,39 @@ namespace CEIHaryana.SiteOwnerPages
                             return;
                         }
 
+
                         DataSet dsp = new DataSet();
                         dsp = CEI.ToGetStaffIdforPeriodic(Division, StaffAssigned, District);
                         if (dsp.Tables.Count > 0 && dsp.Tables[0].Rows.Count > 0)
                         {
                             Assigned = dsp.Tables[0].Rows[0]["StaffUserId"].ToString();
                         }
+
                         CEI.InsertInspectinData(CartID, GrandTotalCapacity, HighestVoltage, Assigned, totalAmount, id, ServiceType);
 
                         Session["CartID"] = CartID;
+                        Session["IDCart"] = string.Empty;
                         Session["TotalCapacity"] = string.Empty;
                         Session["HighestVoltage"] = string.Empty;
                         Session["FinalAmount"] = string.Empty;
 
                         Response.Redirect("/SiteOwnerPages/ProcessInspectionRenewalCart.aspx", false);
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Cart Submitted Successfully !!!'); window.location='/SiteOwnerPages/ProcessInspectionRenewalCart.aspx';", true);
                     }
                     else
                     {
+                        Session["SiteOwnerId"] = "";
                         Response.Redirect("/SiteOwnerLogout.aspx", false);
                     }
                 }
             }
             catch (Exception ex)
             {
+                Session["SiteOwnerId"] = "";
                 Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
         }
+
         //private int GetAffectedRowsCount(string cartId)
         //{
         //    int count = 0;
@@ -459,7 +467,6 @@ namespace CEIHaryana.SiteOwnerPages
 
         //    return count;
         //}
-
         protected void BtnDelete_Click(object sender, EventArgs e)
         {
             string[] str = txtAddressFilter.Text.Split('|');
@@ -489,5 +496,6 @@ namespace CEIHaryana.SiteOwnerPages
                 Response.Write("<script>alert('An error occurred while deleting the cart.');</script>");
             }
         }
+
     }
 }

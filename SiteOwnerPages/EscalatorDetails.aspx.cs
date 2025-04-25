@@ -73,7 +73,7 @@ namespace CEIHaryana.SiteOwnerPages
             catch (Exception ex)
             {
                 // lblerror.Text = ex.Message.ToString()+"---"+ fileName;
-            }
+            } 
         }
         private void GetDocumentforlift()
         {
@@ -319,9 +319,9 @@ namespace CEIHaryana.SiteOwnerPages
                             CreatedBy, ddlContName.SelectedItem.ToString(), txtContName.Text, DateTime.Parse(txtContExp.Text), ddlLicenseNo.SelectedItem.ToString(),
                             txtSupLicenseNo.Text, DateTime.Parse(txtSupExpiryDate.Text)
                         );
-                                    CEI.UpdateLiftTestReportHistory("Escalator", IntimationId, count, CreatedBy);
-                                    CEI.UpdateInstallations(installationNo, IntimationId);
-                                    UploadCheckListDocInCollection(IntimationId, count);
+                            CEI.UpdateLiftTestReportHistory("Escalator", IntimationId, count, CreatedBy);
+                            CEI.UpdateInstallations(installationNo, IntimationId);
+                            UploadCheckListDocInCollection(IntimationId, count);
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
 
                         }
@@ -390,7 +390,8 @@ namespace CEIHaryana.SiteOwnerPages
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Please Check declaration first');", true);
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Please Check Declaration To Proceed Further!!!')", true);
 
             }
         }

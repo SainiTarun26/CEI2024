@@ -108,7 +108,7 @@
                     </div>
                     <table class="table table-responsive">
                         <asp:GridView class="table-responsive table table-striped tale-hover" ID="GridView1" runat="server" Width="100%" OnPageIndexChanging="GridView1_PageIndexChanging"
-                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="10" BorderWidth="1px" BorderColor="#dbddff">
+                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="20" BorderWidth="1px" BorderColor="#dbddff">
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
@@ -116,7 +116,13 @@
                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-
+                                <asp:TemplateField HeaderText="SNo">
+                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                    <ItemStyle Width="5%" />
+                                    <ItemTemplate>
+                                        <%#Container.DataItemIndex+1 %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <%--   <asp:BoundField DataField="SNo" HeaderText="SNo">
                                 <HeaderStyle HorizontalAlign="center" Width="5%" />
                                 <ItemStyle HorizontalAlign="center" Width="5%" />

@@ -11,45 +11,51 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-
-
 namespace CEIHaryana.Industry_Master
 {
     public partial class ReapplyReturnInspectionForNew : System.Web.UI.Page
     {
-        CEI CEI = new CEI();
-        string ReturnType, SiteOwnerID;
+        CEI CEI = new CEI();       
         IndustryApiLogDetails logDetails = new IndustryApiLogDetails();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-              
-                string SiteOwnerID = Session["SiteOwnerId_Sld_Indus"].ToString();
-                if (Session["InspId"] != null && !string.IsNullOrEmpty(Session["InspId"].ToString()))
+                if (!IsPostBack)
                 {
-                    GetInspectionDetails();
-                    GridToViewTRinMultipleCaseNew();
-                    GridBindDocument();
-                    GetInspectionData();
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata_InvalidSession();", true);
-                }
+                    hnOwnerId.Value = "";
+                    hnReturnStatus.Value = "";
+                    if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && !string.IsNullOrEmpty(Convert.ToString(Session["SiteOwnerId_Sld_Indus"]).ToString()) && Convert.ToString(Session["InspId"]) != null && !string.IsNullOrEmpty(Convert.ToString(Session["InspId"]).ToString()))
+                    {
+                        hnOwnerId.Value = Session["SiteOwnerId_Sld_Indus"].ToString();
+                        txtInspectionId.Text = Session["InspId"].ToString();
+                        GetInspectionDetails(txtInspectionId.Text);
+                        GridToViewTRinMultipleCaseNew(txtInspectionId.Text);
+                        GridBindDocument(txtInspectionId.Text);
+                        GetInspectionData(txtInspectionId.Text);
+                        //Session["InspId"] = "";
+                        Page.Session["ClickCount"] = "0";
+                        Session["LineID"] = "";
+                        Session["SubStationID"] = "";
+                        Session["GeneratingSetId"] = "";
+                    }
+                    else
+                    {
+                        Session["SiteOwnerId_Sld_Indus"] = "";
+                        Response.Redirect("/Industry_Sessions_Clear.aspx", false);
+                    }
+                }               
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
             }
 
         }
-        private void GetInspectionDetails()
+        private void GetInspectionDetails(string ID)
         {
             try
             {
-                ID = Session["InspId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.GetInspectionReport_Industry(ID);
 
@@ -60,35 +66,32 @@ namespace CEIHaryana.Industry_Master
                 txtMaxVoltage.Text = ds.Tables[0].Rows[0]["MaxVoltage"].ToString();
                 txtCapacity.Text = ds.Tables[0].Rows[0]["TotalCapacity"].ToString();
                 txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                Session["ApplicationStatus"] = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
-               
+                hnApplicationStatus.Value = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();           
                 txttransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                 txttransactionDate.Text = ds.Tables[0].Rows[0]["TransctionDate"].ToString();
-                ReturnType = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
-                Session["ReturnType"] = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
-                if (ReturnType != null && ReturnType == "1")
+                hnReturnStatus.Value = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
+                if (hnReturnStatus.Value != null && hnReturnStatus.Value == "1")
                 {
                     Grid_MultipleInspectionTR.Columns[5].Visible = false;
                     Grid_MultipleInspectionTR.Columns[6].Visible = false;
-                    Grid_MultipleInspectionTR.Columns[7].Visible = false;
-                    //Grid_MultipleInspectionTR.Columns[8].Visible = false;
+                    Grid_MultipleInspectionTR.Columns[7].Visible = false;                   
                 }
-                else if (ReturnType != null && ReturnType == "2")
+                else if (hnReturnStatus.Value != null && hnReturnStatus.Value == "2")
                 {
                     grd_Documemnts.Columns[3].Visible = false;
                     grd_Documemnts.Columns[4].Visible = false;
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+            }
         }
-        private void GridToViewTRinMultipleCaseNew()
+        private void GridToViewTRinMultipleCaseNew(string ID)
         {
             try
-            {
-                string ID = Session["InspId"].ToString();
+            {                
                 DataSet dsVC = CEI.GetDetailsToViewTRinMultipleCaseNew_Industry(ID);
-
                 if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                 {
                     Grid_MultipleInspectionTR.DataSource = dsVC;
@@ -103,13 +106,14 @@ namespace CEIHaryana.Industry_Master
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+            }
         }
-        protected void GridBindDocument()
+        protected void GridBindDocument(string ID)
         {
             try
-            {
-                ID = Session["InspId"].ToString();
+            {              
                 DataSet ds = new DataSet();
                 ds = CEI.ViewDocuments_ForNewIndustry(ID);
                 if (ds.Tables.Count > 0)
@@ -127,13 +131,14 @@ namespace CEIHaryana.Industry_Master
                 ds.Dispose();
             }
             catch (Exception ex)
-            { }
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+            }
         }
-        private void GetInspectionData()
+        private void GetInspectionData(string ID)
         {
             try
-            {
-                ID = Session["InspId"].ToString();
+            {              
                 DataSet ds = new DataSet();
                 ds = CEI.GetInspectionReport_Industry(ID);
                 string TestRportId = string.Empty;
@@ -151,7 +156,10 @@ namespace CEIHaryana.Industry_Master
                 }
                 ds.Dispose();
             }
-            catch { }
+            catch(Exception ex) 
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+            }
         }
 
         protected void Grid_MultipleInspectionTR_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -172,6 +180,8 @@ namespace CEIHaryana.Industry_Master
                         LinkButtonReport.Visible = false;
                         UploadInstallaionInvoice.Visible = false;
                         UploadManufacturingReport.Visible = false;
+                        Grid_MultipleInspectionTR.Columns[8].Visible = false;
+                        Grid_MultipleInspectionTR.Columns[9].Visible = false;
                     }
                     else
                     {
@@ -179,6 +189,8 @@ namespace CEIHaryana.Industry_Master
                         LinkButtonReport.Visible = true;
                         UploadInstallaionInvoice.Visible = true;
                         UploadManufacturingReport.Visible = true;
+                        Grid_MultipleInspectionTR.Columns[8].Visible = true;
+                        Grid_MultipleInspectionTR.Columns[9].Visible = true;
                     }
                     var returnedReason = DataBinder.Eval(e.Row.DataItem, "ReturnedReason") as string;
 
@@ -194,12 +206,22 @@ namespace CEIHaryana.Industry_Master
 
             }
             catch (Exception ex)
-            { }
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+            }
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Industry_Master/NewInstallationStatus.aspx", false);
+            if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) == hnOwnerId.Value)
+            {
+                Response.Redirect("/Industry_Master/NewInstallationStatus.aspx", false);
+            }
+            else
+            {
+                Session["SiteOwnerId_Sld_Indus"] = "";
+                Response.Redirect("/Industry_Sessions_Clear.aspx", false);
+            }          
         }
 
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -210,14 +232,16 @@ namespace CEIHaryana.Industry_Master
                 {
                     if (e.CommandName == "Select")
                     {
+                        //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                         fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                        //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                         string script = $@"<script>window.open('{fileName}','_blank');</script>";
                         ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                     }
                 }
                 catch (Exception ex)
-                { }
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                }
             }
         }
 
@@ -263,16 +287,16 @@ namespace CEIHaryana.Industry_Master
             else if (e.CommandName == "View")
             {
                 string fileName = "";
-               // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
             else if (e.CommandName == "ViewInvoice")
             {
                 string fileName = "";
+                // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-               // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
@@ -283,422 +307,475 @@ namespace CEIHaryana.Industry_Master
         {
             try
             {
-                int checksuccessmessage = 0;
-                if (Convert.ToString(Session["InspId"]) != null && Convert.ToString(Session["InspId"]) != "" && Session["SiteOwnerId_Sld_Indus"] != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != "")
+                int Count = Convert.ToInt32(CEI.ToChecktheCountOfReturnedInspection(Convert.ToInt32(txtInspectionId.Text)));
+                if (Count == 0)
                 {
-                    ID = Session["InspId"].ToString();
-                    SiteOwnerID = Session["SiteOwnerId_Sld_Indus"].ToString();
-
-                    if (INgridfileuploadValidation()) //check validation for document
+                    if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) == hnOwnerId.Value && txtInspectionId.Text != null && !string.IsNullOrEmpty(txtInspectionId.Text))
                     {
-                        SqlTransaction transaction = null;
-                        try
+                        int ClickCount = 0;
+                        ClickCount = Convert.ToInt32(Session["ClickCount"]);
+                        if (ClickCount < 1)
                         {
-                            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
-                            using (SqlConnection connection = new SqlConnection(connectionString))
+                            int checksuccessmessage = 0;
+                            string SiteOwnerID = hnOwnerId.Value;
+
+                            if (INgridfileuploadValidation(hnReturnStatus.Value)) //check validation for document
                             {
-                                connection.Open();
-                                transaction = connection.BeginTransaction();
-
-                                CEI.UpdateReturnedInspectionReportIndustry(ID, SiteOwnerID, transaction);
-                                if (Convert.ToString(Session["ReturnType"]) == "1") //Update Checklist Documents
+                                string ReturnType = hnReturnStatus.Value;
+                                if (ReturnType == "1")
                                 {
-
                                     foreach (GridViewRow row in grd_Documemnts.Rows)
                                     {
-                                        Label LblInstallationType = (Label)row.FindControl("LblInstallationType");
-                                        Label LblDocumentID = (Label)row.FindControl("LblDocumentID");
-                                        Label LblDocumentName = (Label)row.FindControl("LblDocumentName");
-                                        Label LblFileName = (Label)row.FindControl("LblFileName");
-                                        Label LblReturnedReason = (Label)row.FindControl("LblReturnedReason");
+                                        FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
+                                        Label lblDocumentName = (Label)row.FindControl("lblDocumentName");
 
-                                        string fileName = LblFileName.Text;
-                                        string fileNameWithoutExtension = fileName;
-                                        int index = fileName.IndexOf(".pdf");
-                                        if (index > 0)
+                                        if (lblDocumentName != null && lblDocumentName.Text.Trim() == "Other Document")
                                         {
-                                            fileNameWithoutExtension = fileName.Substring(0, index);
-                                        }
-                                        if (!string.IsNullOrEmpty(LblReturnedReason.Text))
-                                        {
-                                            //FileUpload1
-                                            string returnedReason = (row.FindControl("LblReturnedReason") as Label)?.Text;
-                                            FileUpload fileUploadDoc = row.FindControl("FileUpload1") as FileUpload;
-
-                                            if ((fileUploadDoc != null && fileUploadDoc.HasFile))
+                                            if (fileUpload != null && fileUpload.HasFile)
                                             {
-                                                //string FileName1 = Path.GetFileName(fileUploadDoc.PostedFile.FileName);
-
-                                                if (!Directory.Exists(Server.MapPath("/Attachment/" + SiteOwnerID + "/" + ID + "/" + "CheckListDocuments" + "/")))
-                                                {
-                                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + ID + "/" + "CheckListDocuments" + "/")); //removed fileNameWithoutExtension + "/"
-                                                }
-                                                string path = "";
-                                                path = "/Attachment/" + SiteOwnerID + "/" + ID + "/" + "CheckListDocuments";  //+ "/" + fileNameWithoutExtension
-                                                string fileName1 = fileNameWithoutExtension + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
-                                                string filePathInfo = "";
-                                                filePathInfo = Server.MapPath(path + "/" + fileName1);
-                                                fileUploadDoc.PostedFile.SaveAs(filePathInfo);
-                                                CEI.UploadDocumentforReturnedInspection_Industry(ID, LblInstallationType.Text, LblDocumentID.Text, LblDocumentName.Text, LblFileName.Text, path + "/" + fileName1, SiteOwnerID, transaction);
-
-                                            }
-                                            else
-                                            {
-                                                //throw new Exception("Please Upload  Files in upload section and in .pdf format.");
-                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please upload all required documents for rows with a Returned Reason.');", true);
-                                                return;
-                                            }
-                                        }
-                                       
-
-                                    }
-
-                                }
-                                else if (Convert.ToString(Session["ReturnType"]) == "2" && Convert.ToString(Session["ReturnType"]) != null) //Update TestReport Documents
-                                {
-                                    foreach (GridViewRow row in Grid_MultipleInspectionTR.Rows)
-                                    {
-
-                                        Label LblRowid = (Label)row.FindControl("LblRowid");
-                                        Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
-                                        Label LblInstallationName = (Label)row.FindControl("LblInstallationName");
-                                        Label LblTestReportCount = (Label)row.FindControl("LblTestReportCount");
-                                        Label LblInspectionId = (Label)row.FindControl("LblInspectionId");
-                                        Label LblTestReportId = (Label)row.FindControl("LblTestReportId");
-                                        Label LblinstallaionInvoicePath = (Label)row.FindControl("LblinstallaionInvoicePath");
-                                        Label LblManufacturingReportPath = (Label)row.FindControl("LblManufacturingReportPath");
-
-                                        Label LblReturnedReason = (Label)row.FindControl("LblReturnedReason");
-                                        if (!string.IsNullOrEmpty(LblReturnedReason.Text))
-                                        {
-                                            string returnedReason = (row.FindControl("ReturnedReason") as Label)?.Text;
-                                            FileUpload fileUploadInvoice = row.FindControl("FileUploadInstallaionInvoice") as FileUpload;
-                                            FileUpload fileUploadReport = row.FindControl("FileUploadManufacturingReport") as FileUpload;
-
-                                            if ((fileUploadInvoice != null && fileUploadInvoice.HasFile) && (fileUploadReport != null && fileUploadReport.HasFile))
-                                            {
-
-                                                string CreatedBy = Session["SiteOwnerId_Sld_Indus"].ToString();
-                                                // string FileName1 = Path.GetFileName(fileUploadInvoice.PostedFile.FileName);
-                                                // string FileName2 = Path.GetFileName(fileUploadReport.PostedFile.FileName);
-
-                                                if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/")))
-                                                {
-                                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/"));
-                                                }
-                                                string path = "";
-                                                path = "/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments";//one "/" removed from here
-                                                string fileName1 = "InstallaionInvoice" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
-                                                string fileName2 = "ManufacturingReport" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
-                                                string filePathInfo = "";
-                                                string filePatnInfo1 = "";
-                                                filePathInfo = Server.MapPath(path + "/" + fileName1);
-                                                fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
-                                                filePatnInfo1 = Server.MapPath(path + "/" + fileName2);
-                                                fileUploadReport.PostedFile.SaveAs(filePatnInfo1);
-                                                CEI.InsertReturnedInspectionTestReportAttachments_Industry(LblRowid.Text, ID, path + "/" + fileName1, path + "/" + fileName2, LblInstallationName.Text, SiteOwnerID, transaction);
-                                            }
-                                            else
-                                            {
-                                                //throw new Exception("Please Upload  Files in upload section and in .pdf format.");
-                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please upload all required documents for rows with a Returned Reason.');", true);
-                                                return;
+                                                ValidatePdfFile(fileUpload);
                                             }
                                         }
                                         else
                                         {
-                                            //Remark is Blank
+                                            if (fileUpload.HasFile)
+                                            {
+                                                ValidatePdfFile(fileUpload);
+                                            }
+
                                         }
-
                                     }
-
                                 }
-                                else if (Convert.ToString(Session["ReturnType"]) == "3" && Convert.ToString(Session["ReturnType"]) != null) //Update both Documents
+                                else if (ReturnType == "2")
+                                {
+                                    foreach (GridViewRow row in Grid_MultipleInspectionTR.Rows)
+                                    {
+                                        FileUpload fileUploadInvoice = (FileUpload)row.FindControl("FileUploadInstallaionInvoice");
+                                        FileUpload fileUploadManufacturing = (FileUpload)row.FindControl("FileUploadManufacturingReport");
+                                        if (fileUploadInvoice.HasFile && fileUploadManufacturing.HasFile)
+                                        {
+                                            ValidatePdfFile(fileUploadInvoice);
+                                            ValidatePdfFile(fileUploadManufacturing);
+                                        }
+                                    }
+                                }
+                                else
                                 {
                                     foreach (GridViewRow row in grd_Documemnts.Rows)
                                     {
-                                        Label LblInstallationType = (Label)row.FindControl("LblInstallationType");
-                                        Label LblDocumentID = (Label)row.FindControl("LblDocumentID");
-                                        Label LblDocumentName = (Label)row.FindControl("LblDocumentName");
-                                        Label LblFileName = (Label)row.FindControl("LblFileName");
-                                        Label LblReturnedReason = (Label)row.FindControl("LblReturnedReason");
-                                        string fileName = LblFileName.Text;
-                                        string fileNameWithoutExtension = fileName;
-                                        int index = fileName.IndexOf(".pdf");
-                                        if (index > 0)
-                                        {
-                                            fileNameWithoutExtension = fileName.Substring(0, index);
-                                        }
-                                        if (!string.IsNullOrEmpty(LblReturnedReason.Text))
-                                        {
-                                            string returnedReason = (row.FindControl("LblReturnedReason") as Label)?.Text;
-                                            FileUpload fileUploadDoc = row.FindControl("FileUpload1") as FileUpload;
+                                        FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
+                                        Label lblDocumentName = (Label)row.FindControl("lblDocumentName");
 
-                                            if ((fileUploadDoc != null && fileUploadDoc.HasFile))
+                                        if (lblDocumentName != null && lblDocumentName.Text.Trim() == "Other Document")
+                                        {
+                                            if (fileUpload != null && fileUpload.HasFile)
                                             {
-                                                //string FileName1 = Path.GetFileName(fileUploadDoc.PostedFile.FileName);
-
-                                                if (!Directory.Exists(Server.MapPath("/Attachment/" + SiteOwnerID + "/" + ID + "/" + "CheckListDocuments" + "/")))
-                                                {
-                                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + ID + "/" + "CheckListDocuments" + "/")); //removed fileNameWithoutExtension + "/"
-                                                }
-                                                string path = "";
-                                                path = "/Attachment/" + SiteOwnerID + "/" + ID + "/" + "CheckListDocuments";  //+ "/" + fileNameWithoutExtension
-                                                string fileName1 = fileNameWithoutExtension + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
-                                                string filePathInfo = "";
-                                                //string filePathInfo1 = "";
-                                                filePathInfo = Server.MapPath(path + "/" + fileName1);
-                                                fileUploadDoc.PostedFile.SaveAs(filePathInfo);
-                                                CEI.UploadDocumentforReturnedInspection_Industry(ID, LblInstallationType.Text, LblDocumentID.Text, LblDocumentName.Text, LblFileName.Text, path + "/" + fileName1, SiteOwnerID, transaction);
+                                                ValidatePdfFile(fileUpload);
                                             }
-                                            else
+                                        }
+                                        else
+                                        {
+                                            if (fileUpload.HasFile)
                                             {
-                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please upload all required documents for rows with a Returned Reason.');", true);
-                                                return; // Stops further processing if validation fails
+                                                ValidatePdfFile(fileUpload);
                                             }
                                         }
                                     }
-
-                                    // Process the second GridView
                                     foreach (GridViewRow row in Grid_MultipleInspectionTR.Rows)
                                     {
-                                        Label LblRowid = (Label)row.FindControl("LblRowid");
-                                        Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
-                                        Label LblInstallationName = (Label)row.FindControl("LblInstallationName");
-                                        Label LblTestReportCount = (Label)row.FindControl("LblTestReportCount");
-                                        Label LblInspectionId = (Label)row.FindControl("LblInspectionId");
-                                        Label LblTestReportId = (Label)row.FindControl("LblTestReportId");
-                                        Label LblinstallaionInvoicePath = (Label)row.FindControl("LblinstallaionInvoicePath");
-                                        Label LblManufacturingReportPath = (Label)row.FindControl("LblManufacturingReportPath");
-
-                                        Label LblReturnedReason = (Label)row.FindControl("LblReturnedReason");
-
-                                        if (!string.IsNullOrEmpty(LblReturnedReason.Text))
+                                        FileUpload fileUploadInvoice = (FileUpload)row.FindControl("FileUploadInstallaionInvoice");
+                                        FileUpload fileUploadManufacturing = (FileUpload)row.FindControl("FileUploadManufacturingReport");
+                                        if (fileUploadInvoice.HasFile && fileUploadManufacturing.HasFile)
                                         {
-                                            string returnedReason = (row.FindControl("ReturnedReason") as Label)?.Text;
-                                            FileUpload fileUploadInvoice = row.FindControl("FileUploadInstallaionInvoice") as FileUpload;
-                                            FileUpload fileUploadReport = row.FindControl("FileUploadManufacturingReport") as FileUpload;
-
-                                            if ((fileUploadInvoice != null && fileUploadInvoice.HasFile) && (fileUploadReport != null && fileUploadReport.HasFile))
-                                            {
-
-                                                string CreatedBy = Session["SiteOwnerId_Sld_Indus"].ToString();
-                                                //string FileName1 = Path.GetFileName(fileUploadInvoice.PostedFile.FileName);
-                                                //string FileName2 = Path.GetFileName(fileUploadReport.PostedFile.FileName);
-
-                                                if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/")))
-                                                {
-                                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/"));
-                                                }
-                                                string path = "";
-                                                path = "/Attachment/" + CreatedBy + "/" + LblInspectionId.Text + "/" + "TestReportDocuments";//one "/" removed from here
-                                                string fileName1 = "InstallaionInvoice" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
-                                                string fileName2 = "ManufacturingReport" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
-                                                string filePathInfo = "";
-                                                string filePathInfo1 = "";
-                                                filePathInfo = Server.MapPath(path + "/" + fileName1);
-                                                fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
-                                                filePathInfo1 = Server.MapPath(path + "/" + fileName2);
-                                                fileUploadReport.PostedFile.SaveAs(filePathInfo1);
-                                                CEI.InsertReturnedInspectionTestReportAttachments_Industry(LblRowid.Text, ID, path + "/" + fileName1, path + "/" + fileName2, LblInstallationName.Text, SiteOwnerID, transaction);
-                                            }
-                                            else
-                                            {
-                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please upload all required documents for rows with a Returned Reason.');", true);
-                                                return; // Stops further processing if validation fails
-                                            }
+                                            ValidatePdfFile(fileUploadInvoice);
+                                            ValidatePdfFile(fileUploadManufacturing);
                                         }
                                     }
                                 }
-
-                                transaction.Commit();
-                                //string Projectid = Session["projectid_New_Temp"].ToString();
-                                //string ServiceId = Session["Serviceid_New_Temp"].ToString();
-                                 SiteOwnerID = Session["SiteOwnerId_Sld_Indus"].ToString();
-                                string InspectionId = Session["InspId"].ToString();
-                                string ActionStatus = Session["ApplicationStatus"].ToString();
-                                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Inspection Request Re-Submitted Successfully, forwarding to concerned officer..');", true);
-                                //Response.Redirect("/Industry_Master/NewInstallationStatus.aspx", false);
-
-
-
-
-                                checksuccessmessage = 1;
+                                SqlTransaction transaction = null;
                                 try
                                 {
-                                    //string actiontype = para_InspectID == 0 ? "Submit" : "ReSubmit";
-                                    string actiontype = "ReSubmit";
-
-                                    List<Industry_Api_Post_DataformatModel> ApiPostformatResults = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(InspectionId), actiontype, Session["projectid_New_Temp"].ToString(), Session["Serviceid_New_Temp"].ToString(), Session["SiteOwnerId_Sld_Indus"].ToString());
-                                    foreach (var ApiPostformatresult in ApiPostformatResults)
+                                    ClickCount = ClickCount + 1;
+                                    Session["ClickCount"] = ClickCount;
+                                    string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+                                    using (SqlConnection connection = new SqlConnection(connectionString))
                                     {
-                                        if (ApiPostformatresult.PremisesType == "Industry")
+                                        connection.Open();
+                                        transaction = connection.BeginTransaction();
+
+                                        CEI.UpdateReturnedInspectionReportIndustry(txtInspectionId.Text, SiteOwnerID, transaction);
+                                        if (Convert.ToString(ReturnType) == "1") //Update Checklist Documents
                                         {
-                                            // string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
-                                            string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
-                                            // string accessToken = "dfsfdsfsfsdf";
 
-                                            logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                                          "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
-                                                          new Industry_Inspection_StageWise_JsonDataFormat_Model
-                                                          {
-                                                              actionTaken = ApiPostformatresult.ActionTaken,
-                                                              commentByUserLogin = ApiPostformatresult.CommentByUserLogin,
-                                                              //commentDate = ApiPostformatresult.CommentDate,
-                                                              commentDate = ApiPostformatresult.CommentDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                                              comments = ApiPostformatresult.Comments,
-                                                              id = ApiPostformatresult.Id,
-                                                              projectid = ApiPostformatresult.ProjectId,
-                                                              serviceid = ApiPostformatresult.ServiceId
-                                                              //projectid = "245df444-1808-4ff6-8421-cf4a859efb4c",
-                                                              //serviceid = "e31ee2a6-3b99-4f42-b61d-38cd80be45b6"
-                                                          }, ApiPostformatresult, accessToken);
-
-                                            if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
+                                            foreach (GridViewRow row in grd_Documemnts.Rows)
                                             {
-                                                throw new Exception(logDetails.ErrorMessage);
+                                                Label LblInstallationType = (Label)row.FindControl("LblInstallationType");
+                                                Label LblDocumentID = (Label)row.FindControl("LblDocumentID");
+                                                Label LblDocumentName = (Label)row.FindControl("LblDocumentName");
+                                                Label LblFileName = (Label)row.FindControl("LblFileName");
+                                                Label LblReturnedReason = (Label)row.FindControl("LblReturnedReason");
+                                                string fileName = LblFileName.Text;
+                                                string fileNameWithoutExtension = fileName;
+                                                int index = fileName.IndexOf(".pdf");
+                                                if (index > 0)
+                                                {
+                                                    fileNameWithoutExtension = fileName.Substring(0, index);
+                                                }
+                                                if (!string.IsNullOrEmpty(LblReturnedReason.Text))
+                                                {
+                                                    //FileUpload1
+                                                    string returnedReason = (row.FindControl("LblReturnedReason") as Label)?.Text;
+                                                    FileUpload fileUploadDoc = row.FindControl("FileUpload1") as FileUpload;
+
+                                                    if ((fileUploadDoc != null && fileUploadDoc.HasFile))
+                                                    {
+                                                        //string FileName1 = Path.GetFileName(fileUploadDoc.PostedFile.FileName);
+
+                                                        if (!Directory.Exists(Server.MapPath("/Attachment/" + SiteOwnerID + "/" + txtInspectionId.Text + "/" + "CheckListDocuments" + "/")))
+                                                        {
+                                                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + txtInspectionId.Text + "/" + "CheckListDocuments" + "/")); //removed fileNameWithoutExtension + "/"
+                                                        }
+                                                        string path = "";
+                                                        path = "/Attachment/" + SiteOwnerID + "/" + txtInspectionId.Text + "/" + "CheckListDocuments";  //+ "/" + fileNameWithoutExtension
+                                                        string fileName1 = fileNameWithoutExtension + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                                                        string filePathInfo = "";
+                                                        filePathInfo = Server.MapPath(path + "/" + fileName1);
+                                                        fileUploadDoc.PostedFile.SaveAs(filePathInfo);
+                                                        CEI.UploadDocumentforReturnedInspection_Industry(txtInspectionId.Text, LblInstallationType.Text, LblDocumentID.Text, LblDocumentName.Text, LblFileName.Text, path + "/" + fileName1, SiteOwnerID, transaction);
+
+                                                    }
+                                                    else
+                                                    {
+                                                        //throw new Exception("Please Upload  Files in upload section and in .pdf format.");
+                                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please upload all required documents for rows with a Returned Reason.');", true);
+                                                        return;
+                                                    }
+                                                }
+
+
                                             }
 
-
-                                            CEI.LogToIndustryApiSuccessDatabase(
-                                            logDetails.Url,
-                                            logDetails.Method,
-                                            logDetails.RequestHeaders,
-                                            logDetails.ContentType,
-                                            logDetails.RequestBody,
-                                            logDetails.ResponseStatusCode,
-                                            logDetails.ResponseHeaders,
-                                            logDetails.ResponseBody,
-
-                                            new Industry_Api_Post_DataformatModel
+                                        }
+                                        else if (Convert.ToString(ReturnType) == "2" && Convert.ToString(ReturnType) != null) //Update TestReport Documents
+                                        {
+                                            foreach (GridViewRow row in Grid_MultipleInspectionTR.Rows)
                                             {
-                                                InspectionId = ApiPostformatresult.InspectionId,
-                                                InspectionLogId = ApiPostformatresult.InspectionLogId,
-                                                IncomingJsonId = ApiPostformatresult.IncomingJsonId,
-                                                ActionTaken = ApiPostformatresult.ActionTaken,
-                                                CommentByUserLogin = ApiPostformatresult.CommentByUserLogin,
-                                                CommentDate = ApiPostformatresult.CommentDate,
 
-                                                Comments = ApiPostformatresult.Comments,
-                                                Id = ApiPostformatresult.Id,
-                                                ProjectId = ApiPostformatresult.ProjectId,
-                                                ServiceId = ApiPostformatresult.ServiceId,
+                                                Label LblRowid = (Label)row.FindControl("LblRowid");
+                                                Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
+                                                Label LblInstallationName = (Label)row.FindControl("LblInstallationName");
+                                                Label LblTestReportCount = (Label)row.FindControl("LblTestReportCount");
+                                                Label LblInspectionId = (Label)row.FindControl("LblInspectionId");
+                                                Label LblTestReportId = (Label)row.FindControl("LblTestReportId");
+                                                Label LblinstallaionInvoicePath = (Label)row.FindControl("LblinstallaionInvoicePath");
+                                                Label LblManufacturingReportPath = (Label)row.FindControl("LblManufacturingReportPath");
+
+                                                Label LblReturnedReason = (Label)row.FindControl("LblReturnedReason");
+                                                if (!string.IsNullOrEmpty(LblReturnedReason.Text))
+                                                {
+                                                    string returnedReason = (row.FindControl("ReturnedReason") as Label)?.Text;
+                                                    FileUpload fileUploadInvoice = row.FindControl("FileUploadInstallaionInvoice") as FileUpload;
+                                                    FileUpload fileUploadReport = row.FindControl("FileUploadManufacturingReport") as FileUpload;
+
+                                                    if ((fileUploadInvoice != null && fileUploadInvoice.HasFile) && (fileUploadReport != null && fileUploadReport.HasFile))
+                                                    {
+                                                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/")))
+                                                        {
+                                                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/"));
+                                                        }
+                                                        string path = "";
+                                                        path = "/Attachment/" + SiteOwnerID + "/" + LblInspectionId.Text + "/" + "TestReportDocuments";//one "/" removed from here
+                                                        string fileName1 = "InstallaionInvoice" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                                                        string fileName2 = "ManufacturingReport" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                                                        string filePathInfo = "";
+                                                        string filePatnInfo1 = "";
+                                                        filePathInfo = Server.MapPath(path + "/" + fileName1);
+                                                        fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
+                                                        filePatnInfo1 = Server.MapPath(path + "/" + fileName2);
+                                                        fileUploadReport.PostedFile.SaveAs(filePatnInfo1);
+                                                        CEI.InsertReturnedInspectionTestReportAttachments_Industry(LblRowid.Text, txtInspectionId.Text, path + "/" + fileName1, path + "/" + fileName2, LblInstallationName.Text, SiteOwnerID, transaction);
+                                                    }
+                                                    else
+                                                    {
+                                                        //throw new Exception("Please Upload  Files in upload section and in .pdf format.");
+                                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please upload all required documents.');", true);
+                                                        return;
+                                                    }
+                                                }
+
                                             }
 
-                                        );
+                                        }
+                                        else if (Convert.ToString(ReturnType) == "3" && Convert.ToString(ReturnType) != null) //Update both Documents
+                                        {
+                                            foreach (GridViewRow row in grd_Documemnts.Rows)
+                                            {
+                                                Label LblInstallationType = (Label)row.FindControl("LblInstallationType");
+                                                Label LblDocumentID = (Label)row.FindControl("LblDocumentID");
+                                                Label LblDocumentName = (Label)row.FindControl("LblDocumentName");
+                                                Label LblFileName = (Label)row.FindControl("LblFileName");
+                                                Label LblReturnedReason = (Label)row.FindControl("LblReturnedReason");
+                                                string fileName = LblFileName.Text;
+                                                string fileNameWithoutExtension = fileName;
+                                                int index = fileName.IndexOf(".pdf");
+                                                if (index > 0)
+                                                {
+                                                    fileNameWithoutExtension = fileName.Substring(0, index);
+                                                }
+                                                if (!string.IsNullOrEmpty(LblReturnedReason.Text))
+                                                {
+                                                    string returnedReason = (row.FindControl("LblReturnedReason") as Label)?.Text;
+                                                    FileUpload fileUploadDoc = row.FindControl("FileUpload1") as FileUpload;
+
+                                                    if ((fileUploadDoc != null && fileUploadDoc.HasFile))
+                                                    {
+                                                        //string FileName1 = Path.GetFileName(fileUploadDoc.PostedFile.FileName);
+
+                                                        if (!Directory.Exists(Server.MapPath("/Attachment/" + SiteOwnerID + "/" + txtInspectionId.Text + "/" + "CheckListDocuments" + "/")))
+                                                        {
+                                                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + txtInspectionId.Text + "/" + "CheckListDocuments" + "/")); //removed fileNameWithoutExtension + "/"
+                                                        }
+                                                        string path = "";
+                                                        path = "/Attachment/" + SiteOwnerID + "/" + txtInspectionId.Text + "/" + "CheckListDocuments";  //+ "/" + fileNameWithoutExtension
+                                                        string fileName1 = fileNameWithoutExtension + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                                                        string filePathInfo = "";
+                                                        //string filePathInfo1 = "";
+                                                        filePathInfo = Server.MapPath(path + "/" + fileName1);
+                                                        fileUploadDoc.PostedFile.SaveAs(filePathInfo);
+                                                        CEI.UploadDocumentforReturnedInspection_Industry(txtInspectionId.Text, LblInstallationType.Text, LblDocumentID.Text, LblDocumentName.Text, LblFileName.Text, path + "/" + fileName1, SiteOwnerID, transaction);
+                                                    }
+                                                    else
+                                                    {
+                                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please upload all required documents.');", true);
+                                                        return; // Stops further processing if validation fails
+                                                    }
+                                                }
+                                            }
+
+                                            // Process the second GridView
+                                            foreach (GridViewRow row in Grid_MultipleInspectionTR.Rows)
+                                            {
+                                                Label LblRowid = (Label)row.FindControl("LblRowid");
+                                                Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
+                                                Label LblInstallationName = (Label)row.FindControl("LblInstallationName");
+                                                Label LblTestReportCount = (Label)row.FindControl("LblTestReportCount");
+                                                Label LblInspectionId = (Label)row.FindControl("LblInspectionId");
+                                                Label LblTestReportId = (Label)row.FindControl("LblTestReportId");
+                                                Label LblinstallaionInvoicePath = (Label)row.FindControl("LblinstallaionInvoicePath");
+                                                Label LblManufacturingReportPath = (Label)row.FindControl("LblManufacturingReportPath");
+
+                                                Label LblReturnedReason = (Label)row.FindControl("LblReturnedReason");
+
+                                                if (!string.IsNullOrEmpty(LblReturnedReason.Text))
+                                                {
+                                                    string returnedReason = (row.FindControl("ReturnedReason") as Label)?.Text;
+                                                    FileUpload fileUploadInvoice = row.FindControl("FileUploadInstallaionInvoice") as FileUpload;
+                                                    FileUpload fileUploadReport = row.FindControl("FileUploadManufacturingReport") as FileUpload;
+
+                                                    if ((fileUploadInvoice != null && fileUploadInvoice.HasFile) && (fileUploadReport != null && fileUploadReport.HasFile))
+                                                    {
+                                                        if (!Directory.Exists(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/")))
+                                                        {
+                                                            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + LblInspectionId.Text + "/" + "TestReportDocuments" + "/"));
+                                                        }
+                                                        string path = "";
+                                                        path = "/Attachment/" + SiteOwnerID + "/" + LblInspectionId.Text + "/" + "TestReportDocuments";//one "/" removed from here
+                                                        string fileName1 = "InstallaionInvoice" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                                                        string fileName2 = "ManufacturingReport" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                                                        string filePathInfo = "";
+                                                        string filePathInfo1 = "";
+                                                        filePathInfo = Server.MapPath(path + "/" + fileName1);
+                                                        fileUploadInvoice.PostedFile.SaveAs(filePathInfo);
+                                                        filePathInfo1 = Server.MapPath(path + "/" + fileName2);
+                                                        fileUploadReport.PostedFile.SaveAs(filePathInfo1);
+                                                        CEI.InsertReturnedInspectionTestReportAttachments_Industry(LblRowid.Text, txtInspectionId.Text, path + "/" + fileName1, path + "/" + fileName2, LblInstallationName.Text, SiteOwnerID, transaction);
+                                                    }
+                                                    else
+                                                    {
+                                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please upload all required documents.');", true);
+                                                        return; // Stops further processing if validation fails
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        transaction.Commit();
+                                        string ActionStatus = hnApplicationStatus.Value;
+                                        checksuccessmessage = 1;
+                                        try
+                                        {
+                                            //string actiontype = para_InspectID == 0 ? "Submit" : "ReSubmit";
+                                            string actiontype = "ReSubmit";
+
+                                            List<Industry_Api_Post_DataformatModel> ApiPostformatResults = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(txtInspectionId.Text), actiontype, Session["projectid_New_Temp"].ToString(), Session["Serviceid_New_Temp"].ToString(), hnOwnerId.Value);
+                                            foreach (var ApiPostformatresult in ApiPostformatResults)
+                                            {
+                                                if (ApiPostformatresult.PremisesType == "Industry")
+                                                {
+                                                    // string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                                                    string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                                                    // string accessToken = "dfsfdsfsfsdf";
+
+                                                    logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
+                                                                  "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                                                  new Industry_Inspection_StageWise_JsonDataFormat_Model
+                                                                  {
+                                                                      actionTaken = ApiPostformatresult.ActionTaken,
+                                                                      commentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                                                                      //commentDate = ApiPostformatresult.CommentDate,
+                                                                      commentDate = ApiPostformatresult.CommentDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                                                      comments = ApiPostformatresult.Comments,
+                                                                      id = ApiPostformatresult.Id,
+                                                                      projectid = ApiPostformatresult.ProjectId,
+                                                                      serviceid = ApiPostformatresult.ServiceId
+                                                                      //projectid = "245df444-1808-4ff6-8421-cf4a859efb4c",
+                                                                      //serviceid = "e31ee2a6-3b99-4f42-b61d-38cd80be45b6"
+                                                                  }, ApiPostformatresult, accessToken);
+
+                                                    if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
+                                                    {
+                                                        throw new Exception(logDetails.ErrorMessage);
+                                                    }
+
+
+                                                    CEI.LogToIndustryApiSuccessDatabase(
+                                                    logDetails.Url,
+                                                    logDetails.Method,
+                                                    logDetails.RequestHeaders,
+                                                    logDetails.ContentType,
+                                                    logDetails.RequestBody,
+                                                    logDetails.ResponseStatusCode,
+                                                    logDetails.ResponseHeaders,
+                                                    logDetails.ResponseBody,
+
+                                                    new Industry_Api_Post_DataformatModel
+                                                    {
+                                                        InspectionId = ApiPostformatresult.InspectionId,
+                                                        InspectionLogId = ApiPostformatresult.InspectionLogId,
+                                                        IncomingJsonId = ApiPostformatresult.IncomingJsonId,
+                                                        ActionTaken = ApiPostformatresult.ActionTaken,
+                                                        CommentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                                                        CommentDate = ApiPostformatresult.CommentDate,
+
+                                                        Comments = ApiPostformatresult.Comments,
+                                                        Id = ApiPostformatresult.Id,
+                                                        ProjectId = ApiPostformatresult.ProjectId,
+                                                        ServiceId = ApiPostformatresult.ServiceId,
+                                                    }
+
+                                                );
+
+                                                }
+                                            }
+                                        }
+                                        catch (TokenManagerException ex)
+                                        {
+                                            CEI.LogToIndustryApiErrorDatabase(
+                                                ex.RequestUrl,
+                                                ex.RequestMethod,
+                                                ex.RequestHeaders,
+                                                ex.RequestContentType,
+                                                ex.RequestBody,
+                                                ex.ResponseStatusCode,
+                                                ex.ResponseHeaders,
+                                                ex.ResponseBody,
+                                                new Industry_Api_Post_DataformatModel
+                                                {
+                                                    InspectionId = ex.InspectionId,
+                                                    InspectionLogId = ex.InspectionLogId,
+                                                    IncomingJsonId = ex.IncomingJsonId,
+                                                    ActionTaken = ex.ActionTaken,
+                                                    CommentByUserLogin = ex.CommentByUserLogin,
+                                                    CommentDate = ex.CommentDate,
+                                                    Comments = ex.Comments,
+                                                    Id = ex.Id,
+                                                    ProjectId = ex.ProjectId,
+                                                    ServiceId = ex.ServiceId,
+                                                }
+                                            );
+                                            string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
+                                            // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                                            // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+                                            //   ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
+                                        }
+                                        catch (IndustryApiException ex)
+                                        {
+                                            CEI.LogToIndustryApiErrorDatabase(
+                                                ex.RequestUrl,
+                                                ex.RequestMethod,
+                                                ex.RequestHeaders,
+                                                ex.RequestContentType,
+                                                ex.RequestBody,
+                                                ex.ResponseStatusCode,
+                                                ex.ResponseHeaders,
+                                                ex.ResponseBody,
+                                                new Industry_Api_Post_DataformatModel
+                                                {
+                                                    InspectionId = ex.InspectionId,
+                                                    InspectionLogId = ex.InspectionLogId,
+                                                    IncomingJsonId = ex.IncomingJsonId,
+                                                    ActionTaken = ex.ActionTaken,
+                                                    CommentByUserLogin = ex.CommentByUserLogin,
+                                                    CommentDate = ex.CommentDate,
+
+                                                    Comments = ex.Comments,
+                                                    Id = ex.Id,
+                                                    ProjectId = ex.ProjectId,
+                                                    ServiceId = ex.ServiceId,
+                                                }
+                                            );
+                                        }
+                                        finally
+                                        {
+                                            if (checksuccessmessage == 1)
+                                            {
+                                                string script = $"alert('Inspection Request Re-Submitted Successfully, forwarding to concerned officer..'); window.location='/Industry_Master/NewInstallationStatus.aspx';";
+                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "AlertRedirect", script, true);
+
+                                            }
 
                                         }
                                     }
-                                }
-                                catch (TokenManagerException ex)
-                                {
-                                    CEI.LogToIndustryApiErrorDatabase(
-                                        ex.RequestUrl,
-                                        ex.RequestMethod,
-                                        ex.RequestHeaders,
-                                        ex.RequestContentType,
-                                        ex.RequestBody,
-                                        ex.ResponseStatusCode,
-                                        ex.ResponseHeaders,
-                                        ex.ResponseBody,
-                                        new Industry_Api_Post_DataformatModel
-                                        {
-                                            InspectionId = ex.InspectionId,
-                                            InspectionLogId = ex.InspectionLogId,
-                                            IncomingJsonId = ex.IncomingJsonId,
-                                            ActionTaken = ex.ActionTaken,
-                                            CommentByUserLogin = ex.CommentByUserLogin,
-                                            CommentDate = ex.CommentDate,
-                                            Comments = ex.Comments,
-                                            Id = ex.Id,
-                                            ProjectId = ex.ProjectId,
-                                            ServiceId = ex.ServiceId,
-                                        }
-                                    );
-                                    string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
-                                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
-                                    //   ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
-                                }
-                                catch (IndustryApiException ex)
-                                {
-                                    CEI.LogToIndustryApiErrorDatabase(
-                                        ex.RequestUrl,
-                                        ex.RequestMethod,
-                                        ex.RequestHeaders,
-                                        ex.RequestContentType,
-                                        ex.RequestBody,
-                                        ex.ResponseStatusCode,
-                                        ex.ResponseHeaders,
-                                        ex.ResponseBody,
-                                        new Industry_Api_Post_DataformatModel
-                                        {
-                                            InspectionId = ex.InspectionId,
-                                            InspectionLogId = ex.InspectionLogId,
-                                            IncomingJsonId = ex.IncomingJsonId,
-                                            ActionTaken = ex.ActionTaken,
-                                            CommentByUserLogin = ex.CommentByUserLogin,
-                                            CommentDate = ex.CommentDate,
-
-                                            Comments = ex.Comments,
-                                            Id = ex.Id,
-                                            ProjectId = ex.ProjectId,
-                                            ServiceId = ex.ServiceId,
-                                        }
-                                    );
-
-                                    //   string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
-
-                                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.ResponseBody.ToString() + "')", true);
-                                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{errorMessage}')", true);
                                 }
                                 catch (Exception ex)
                                 {
 
-                                    //Commented below to raise errors as per backend
-                                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please fill All details carefully')", true);
-                                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('" + ex.Message.ToString() + "')", true);
+                                    transaction.Rollback();
                                 }
-                                finally
-                                {
-                                    if (checksuccessmessage == 1)
-                                    {
-                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Inspection Request Re-Submitted Successfully, forwarding to concerned officer..');", true);
-                                        Response.Redirect("/Industry_Master/NewInstallationStatus.aspx", false);
-                                    }
-
-                                }
-
-
-
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please upload all required documents.');", true);
 
                             }
                         }
-                        catch (Exception ex)
+                        else
                         {
-
-                            transaction.Rollback();
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('You double click on Button.'); window.location='NewInstallationStatus.aspx'", true);
                         }
                     }
                     else
                     {
-                        // Response.Write("<script>alert('Please upload all required documents for rows with a Returned Reason.');</script>");
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Please upload all required documents for rows with a Returned Reason.');", true);
+                        Session["SiteOwnerId_Sld_Indus"] = "";
+                        Response.Redirect("/Industry_Sessions_Clear.aspx", false);
                     }
-
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Your inspection is not in Return status, so you can't allow to Re-submit the inspection.');", true);
                 }
             }
             catch (Exception ex)
             {
-
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
 
-        private bool INgridfileuploadValidation()
+        private bool INgridfileuploadValidation(string ReturnType)
         {
             int flag = 0;
-            if (Convert.ToString(Session["ReturnType"]) != null && Convert.ToString(Session["ReturnType"]) == "1")
+            if (Convert.ToString(ReturnType) != null && Convert.ToString(ReturnType) == "1")
             {
                 foreach (GridViewRow row in grd_Documemnts.Rows)
                 {
@@ -714,7 +791,7 @@ namespace CEIHaryana.Industry_Master
                 }
             }
             else
-            if (Convert.ToString(Session["ReturnType"]) != null && Convert.ToString(Session["ReturnType"]) == "2")
+            if (Convert.ToString(ReturnType) != null && Convert.ToString(ReturnType) == "2")
             {
                 foreach (GridViewRow row in Grid_MultipleInspectionTR.Rows)
                 {
@@ -732,7 +809,7 @@ namespace CEIHaryana.Industry_Master
                 }
             }
             else
-            if (Convert.ToString(Session["ReturnType"]) != null && Convert.ToString(Session["ReturnType"]) == "3")
+            if (Convert.ToString(ReturnType) != null && Convert.ToString(ReturnType) == "3")
             {
                 foreach (GridViewRow row in grd_Documemnts.Rows)
                 {
@@ -778,7 +855,22 @@ namespace CEIHaryana.Industry_Master
             }
         }
 
+        private void ValidatePdfFile(FileUpload fileUpload)
+        {
 
+            string fileExtension = Path.GetExtension(fileUpload.FileName).ToLower();
+            if (fileExtension != ".pdf")
+            {
+                throw new Exception("Please upload PDF files only.");
+
+            }
+
+            if (fileUpload.PostedFile.ContentLength > 1048576)
+            {
+                throw new Exception("Please upload PDF files less than 1 MB only.");
+
+            }
+        }
         protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)

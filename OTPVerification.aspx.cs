@@ -31,7 +31,7 @@ namespace CEIHaryana
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/SiteOwnerLogout.aspx");
             }
         }
         //protected void GenerateOTP(object sender, EventArgs e)

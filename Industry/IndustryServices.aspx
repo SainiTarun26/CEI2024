@@ -118,6 +118,24 @@
             font-weight: 900;
         }
     </style>
+
+    <script>
+        window.onload = function () {
+            checkLoginBeforeSubmit();
+        };
+
+        function checkLoginBeforeSubmit() {
+            if (localStorage.getItem("activeSession")) {
+                alert("You are already logged in another tab.");
+                window.location.href = "/LogOut_Industry.aspx";
+                return false;
+            } else {
+                localStorage.setItem("activeSession", "true");
+                return true;
+            }
+        }
+</script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -261,6 +279,7 @@
         <script src="/js2/file-upload.js"></script>
         <script src="/js2/typeahead.js"></script>
         <script src="/js2/select2.js"></script>
+
                  <script type="text/javascript">
                      function alertWithRedirectdata1() {
                          alert('Pan Card Or Service Id Not Found.');

@@ -20,12 +20,20 @@ namespace CEIHaryana.Industry_Master
             {
                 if (!Page.IsPostBack)
                 {
+                    //Added On 3 apl 2025  List of session keys to remove for this page
+                    List<string> sessionKeysToRemove = new List<string>
+                    {
+                        "id","Duplicacy1","TotalAmount1"
+                    };
+                    ClearSessions(sessionKeysToRemove);
+
                     if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != "" && Convert.ToString(Session["district_Temp"]) != null && Convert.ToString(Session["district_Temp"]) != "")
                     {
                         //Session["SiteOwnerId_Sld_Indus"] = "ABCDG1234G";
                         //Session["district_Temp"] = "Hisar";
                         string District = Session["district_Temp"].ToString();
                         string PanNumber = Session["SiteOwnerId_Sld_Indus"].ToString();
+                        hfOwner.Value = Convert.ToString(Session["SiteOwnerId_Sld_Indus"]);
                         //bool panExists = false;
 
                         //DataSet ds1 = CEI.checkInspection(PanNumber);
@@ -72,19 +80,30 @@ namespace CEIHaryana.Industry_Master
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata_InvalidSession();", true);
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata_InvalidSession();", true);
+                        //Commented On 3 Apl 2025 By Aslam
+                        Response.Redirect("/Industry_Sessions_Clear.aspx", false);
+                        return;
                         //Response.Redirect("SLD_Status.aspx");
                     }
                 }
             }
             catch(Exception ex)
             {
-                Response.Redirect("/login.aspx",false);
+                // Response.Redirect("/login.aspx",false);
+                //Commented On 3 Apl 2025 By Aslam
+                Response.Redirect("/Industry_Sessions_Clear.aspx", false);
+                return;
             }
 
         }
         private void getWorkIntimationData(string searchText = null)
         {
+            //Added on 3 apl 2025  Method to Check If Any of Neccessary Session is Empty then redirect to Corresponding page
+            if (CheckAndRedirect("SiteOwnerId_Sld_Indus", "Industry_Sessions_Clear.aspx"))
+            {
+                return;
+            }
             string Id = Session["SiteOwnerId_Sld_Indus"].ToString();
             string District = Session["district_Temp"].ToString();
             DataSet ds = new DataSet();
@@ -191,6 +210,68 @@ namespace CEIHaryana.Industry_Master
                     return result == 1;
                 }
             }
+        }
+
+
+        //Added on 3 apl 2025
+        // Method to clear List Of session variables On Page Load Inside IsNotPost
+        private void ClearSessions(List<string> sessionKeysToRemove)
+        {
+            foreach (string sessionKey in sessionKeysToRemove)
+            {
+                if (Session[sessionKey] != null && Convert.ToString(Session[sessionKey]) != string.Empty)
+                {
+                    Session.Remove(sessionKey);
+                }
+            }
+        }
+
+        //Added on 3 apl 2025
+        // Method to Check If Any of Neccessary Session is Empty then redirect to Corresponding page
+        private string CheckIndustrySessionsAndRedirect(List<string> sessionKeysToCheck, string redirectPage)
+        {
+            // List of mandatory session keys to check first
+            List<string> mandatorySessionKeys = new List<string>
+            {
+                "SiteOwnerId_Sld_Indus","district_Temp","Serviceid_New_Temp","projectid_New_Temp"
+            };
+            List<string> allSessionKeysToCheck = mandatorySessionKeys.Concat(sessionKeysToCheck).ToList();
+
+            foreach (string sessionKey in allSessionKeysToCheck)
+            {
+                string sessionValue = Convert.ToString(Session[sessionKey]);
+
+                if (Session[sessionKey] == null || string.IsNullOrEmpty(Convert.ToString(Session[sessionKey])))
+                {
+                    if (mandatorySessionKeys.Contains(sessionKey))
+                    {
+                        return "/Industry_Sessions_Clear.aspx";
+                    }
+                    else
+                    {
+                        return redirectPage;
+                    }
+                }
+
+                if (sessionKey == "SiteOwnerId_Sld_Indus" && sessionValue != hfOwner.Value)
+                {
+                    return "/Industry_Sessions_Clear.aspx"; // Redirect to logout if session value doesn't match hidden field value
+                }
+            }
+            return null;
+        }
+
+        //Added on 3 apl 2025
+        private bool CheckAndRedirect(string sessionKeysCsv, string redirectPage)
+        {
+            List<string> sessionKeys = sessionKeysCsv.Split(',').Select(s => s.Trim()).ToList();
+            string resultPage = CheckIndustrySessionsAndRedirect(sessionKeys, redirectPage);
+            if (!string.IsNullOrEmpty(resultPage))
+            {
+                Response.Redirect(resultPage, false);
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -72,12 +72,12 @@
             color: #010101;
             margin-bottom: 1.2rem;
             text-transform: capitalize;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 600;
         }
 
         u {
-            font-size: 18px;
+            font-size: 22px;
         }
 
         input#txtInstallationType {
@@ -85,12 +85,12 @@
         }
 
         p {
-            font-size: 18px;
+            font-size: 20px;
             text-align: justify;
         }
 
         li {
-            font-size: 18px;
+            font-size: 20px;
         }
 
         .col-2 {
@@ -99,7 +99,7 @@
 
         textarea {
             font-weight: bold;
-            font-size: 18px;
+            font-size: 22px;
             border: none !important;
         }
 
@@ -195,14 +195,14 @@
     <form id="form1" runat="server">
         <div>
             <div class="content-wrapper">
-                <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 18px; border-radius: 5px !important">
+                <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
                     <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
                         <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
-                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 18px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
+                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
                     </div>
                     <div class="col-12" style="text-align: initial; margin-top: auto; margin-bottom: auto;">
                         <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2"
-                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 18px; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;" />
+                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;" />
                     </div>
 
 
@@ -214,12 +214,12 @@
                                     <img src="../Assets/haryana.png" height="110" width="auto" />
                                 </div>
                                 <div class="col-sm-11" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 18px;">Office of the                                        
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX;">Office of the                                        
                                     </h6>
-                                    <asp:Label ID="lblAddress1" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 18px; text-align: center;"></asp:Label><br />
-                                    <asp:Label ID="lblAdress2" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 18px; text-align: center;"></asp:Label><br />
-                                    <asp:Label ID="lblAdress3" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 18px; text-align: center;"></asp:Label><br />
-                                    <asp:Label ID="lblEmail" runat="server" Visible="false" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 18px; text-align: center;"></asp:Label><br />
+                                    <asp:Label ID="lblAddress1" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
+                                    <asp:Label ID="lblAdress2" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
+                                    <asp:Label ID="lblAdress3" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
+                                    <asp:Label ID="lblEmail" runat="server" Visible="false" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
                                 </div>
                             </div>
                             <hr />
@@ -229,8 +229,8 @@
                                 </div>
                                 <div class="col-2">
                                     <br />
-                                    <asp:TextBox ID="TxtName" runat="server" Columns="70"></asp:TextBox>
-                                    <asp:TextBox ID="TextAdress" runat="server" Columns="70"></asp:TextBox>
+                                    <asp:TextBox ID="TxtName" runat="server" Columns="80"></asp:TextBox>
+                                    <asp:TextBox ID="TextAdress" runat="server" Columns="80"></asp:TextBox>
                                     <asp:TextBox ID="TextLocation" runat="server" Columns="70"></asp:TextBox>
                                 </div>
                             </div>
@@ -240,13 +240,13 @@
                                 </div>
                                 <div class="col-7">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label" runat="server" Text="Memo No." Style="font-size: 18px;"></asp:Label>
+                                        <asp:Label ID="label" runat="server" Text="Memo No." Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="TxtMemo" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label2" runat="server" Text="Dated:" Style="font-size: 18px;"></asp:Label>
+                                        <asp:Label ID="label2" runat="server" Text="Dated:" Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="TxtDate" runat="server" Style="width: 100%;"></asp:TextBox>
                                     </div>
                                 </div>
@@ -258,7 +258,7 @@
                                 </div>
                                 <div class="col-10" style="text-align: justify;">
                                     <%--                                    <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" Rows="3" Columns="65" Text="Inspection of HT Installations comprising of 1x250 KVA Transformer under Central Electricity Authority (Measures Relating to safety & Electric Supply) Regulations, 2023.)"></asp:TextBox>--%>
-                                    <span style="font-weight: bold; font-size: 18px; border: none !important;">Inspection of
+                                    <span style="font-weight: bold; font-size: 22px; border: none !important;">Inspection of
                                         <asp:Label ID="lblCapacity" runat="server"></asp:Label><asp:Label ID="lblType" runat="server"></asp:Label>
                                         under Central Electricity Authority (Measures Relating to safety & Electric Supply) Regulations, 2023.)
                                     </span>
@@ -270,7 +270,7 @@
                                 </div>
                                 <div class="col-2">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label1" runat="server" Text="Reference your application No. " Style="font-size: 18px;"></asp:Label>
+                                        <asp:Label ID="label1" runat="server" Text="Reference your application No. " Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="TxtReferenceNo" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
@@ -298,7 +298,7 @@
                                         <br />
                                         <%--                                        <asp:TextBox ID="txtSuggestion" runat="server" ReadOnly="true" TextMode="MultiLine" Rows="9" onkeyup="countLines(this)" Columns="89" Style="font-weight:400;margin-left: 9%;"></asp:TextBox>--%>
                                         <%-- <asp:BulletedList ID="BulletedList1" runat="server"></asp:BulletedList>--%>
-                                        <div style="display: grid; grid-template-rows: auto auto; font-size: 18px; margin-left: 80px;">
+                                        <div style="display: grid; grid-template-rows: auto auto; font-size: 20px; margin-left: 80px;">
                                             <span id="suggestion1" runat="server"></span>
                                             <span id="suggestion2" runat="server"></span>
                                             <span id="suggestion3" runat="server"></span>
@@ -328,25 +328,23 @@
                                     <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="position: fixed; bottom: 140px; margin-left: -300px;" />
                                 </div>
                             </div>
-                                                                                   <div class="row">
-    <div class="col-8" style="text-align:justify;">
-                 <asp:Label ID="lblNote" runat="server" Text="" Style="margin-left:0%; font-weight:bold;font-size:15px;"></asp:Label>
-
-    </div>
-    <div class="col-5" style="margin-left: 65%;margin-top:-85px;">
-        <p style="text-align: center; font-weight: bold; bottom: 10PX;">
-            <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
-            <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
-            <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />
-        </p>
-    </div>
-</div>
+                            <div class="row">
+                                <div class="col-8">
+                                </div>
+                                <div class="col-4">
+                                    <p style="text-align: center; font-weight: bold; position: fixed; bottom: 10PX; margin-left: 30px;">
+                                        <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
+                                        <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
+                                        <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />
+                                    </p>
+                                </div>
+                            </div>
                             <%--                            <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Payment Details</u></h6>--%>
                             <%--<div id="Earthing" runat="server" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                 <div class="row">
                                     <div class="col-4">
                                         <label for="Name">
-                                            Transaction ID(UTRN):
+                                            Transaction ID (GRN Number):
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtUTRN" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                             MaxLength="30" Style="margin-left: 18px;">

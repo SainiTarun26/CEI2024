@@ -18,9 +18,10 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                GetContractorNotifications();
-                if (Convert.ToString(Session["SiteOwnerId"]) != null || Convert.ToString(Session["SiteOwnerId"]) != string.Empty || Request.Cookies["SiteOwnerId"] != null)
+                //GetContractorNotifications();
+                if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != string.Empty && Request.Cookies["SiteOwnerId"] != null)
                 {
+                    GetContractorNotifications();
                     if (Request.Cookies["SiteOwnerId"] != null)
                     {
 

@@ -21,9 +21,6 @@
     <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
     <style>
-        td {
-    padding: 5px 5px 5px 10px !important;
-}
         /*@media print {
         #lowerdiv {
             page-break-before: always;
@@ -48,9 +45,7 @@
             border: solid 1px black;
             PADDING: 10PX;
         }
-        td{
-            padding:5px 5px 5px 5px;
-        }
+
         input#txtInstallationType {
             font-size: 25px !important;
             font-weight: 700;
@@ -90,12 +85,12 @@
             color: #010101;
             margin-bottom: 1.2rem;
             text-transform: capitalize;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 600;
         }
 
         u {
-            font-size: 18px;
+            font-size: 22px;
         }
 
         input#txtInstallationType {
@@ -103,13 +98,13 @@
         }
 
         p {
-            font-size: 18px;
+            font-size: 20px;
             text-align: justify;
             margin-left: 8%;
         }
 
         li {
-            font-size: 18px;
+            font-size: 20px;
         }
 
         .col-2 {
@@ -118,7 +113,7 @@
 
         textarea {
             /*font-weight: bold;*/
-            font-size: 18px;
+            font-size: 22px;
             border: none !important;
         }
 
@@ -153,14 +148,7 @@
         });
 
     </script>
-    <%--<script type="text/javascript">
-        function printDiv(printableDiv) {
-            var printContents = document.getElementById(printableDiv).innerHTML;
-            var originalContents = document.body.innerHTML;
-            document.body.innerHTML = printContents;
-            window.print();
-        }
-    </script>--%>
+
 
     <script>
         // Detect when the print dialog is closed (whether by printing or canceling)
@@ -181,14 +169,14 @@
     <form id="form1" runat="server">
         <div>
             <div class="content-wrapper">
-                <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 18px; border-radius: 5px !important">
+                <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
                     <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
                         <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2" OnClientClick="printDiv('printableDiv');" Visible="false"
-                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 18px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" />
+                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" />
                     </div>
                     <div class="col-12" style="text-align: initial; margin-top: auto; margin-bottom: auto;">
                         <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" Visible="false"
-                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 18px; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;" />
+                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;" />
                     </div>
 
 
@@ -200,12 +188,12 @@
                                     <img src="../Assets/haryana.png" height="110" width="auto" />
                                 </div>
                                 <div class="col-sm-11" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 18px;">Office of the                                        
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX;">Office of the                                        
                                     </h6>
-                                    <asp:Label ID="lblAddress1" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 18px; text-align: center;"></asp:Label><br />
-                                    <asp:Label ID="lblAdress2" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 18px; text-align: center;"></asp:Label><br />
-                                    <asp:Label ID="lblAdress3" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 18px; text-align: center;"></asp:Label><br />
-                                    <asp:Label ID="lblAdress4" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 18px; text-align: center;"></asp:Label><br />
+                                    <asp:Label ID="lblAddress1" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
+                                    <asp:Label ID="lblAdress2" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
+                                    <asp:Label ID="lblAdress3" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
+                                    <asp:Label ID="lblAdress4" runat="server" Text="Label" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
 
                                 </div>
                             </div>
@@ -216,8 +204,8 @@
                                 </div>
                                 <div class="col-2">
                                     <br />
-                                    <asp:TextBox ID="TxtName" runat="server" Columns="70" Style="font-weight:700;"></asp:TextBox>
-                                    <asp:TextBox ID="TextAdress" runat="server" Columns="70" Style="font-weight:700;"></asp:TextBox>
+                                    <asp:TextBox ID="TxtName" runat="server" Columns="80" Style="font-weight:700;"></asp:TextBox>
+                                    <asp:TextBox ID="TextAdress" runat="server" Columns="80" Style="font-weight:700;"></asp:TextBox>
                                     <asp:TextBox ID="TextLocation" runat="server" Columns="70" Style="font-weight:700;"></asp:TextBox>
                                 </div>
                             </div>
@@ -227,13 +215,13 @@
                                 </div>
                                 <div class="col-4">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="ApplicationNo" runat="server" Text="Reference your application no. :" Style="font-size: 18px;"></asp:Label>
+                                        <asp:Label ID="ApplicationNo" runat="server" Text="Application No. :" Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="txtApplicationNo" runat="server"></asp:TextBox>
                                     </div>
                                 </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label4" runat="server" Text="Dated:" Style="font-size: 18px; font-weight:400;"></asp:Label>
+                                        <asp:Label ID="label4" runat="server" Text="Application Date:" Style="font-size: 20px; font-weight:400;"></asp:Label>
                                         <asp:TextBox ID="txtCreatedDate" runat="server" Style="width: 100%;"></asp:TextBox>
                                     </div>
                                 </div>
@@ -243,13 +231,13 @@
                                 </div>
                                 <div class="col-4">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label" runat="server" Text="Memo No. H.T.I / :" Style="font-size: 18px;"></asp:Label>
+                                        <asp:Label ID="label" runat="server" Text="Memo No. H.T.I :" Style="font-size: 20px;"></asp:Label>
                                         <asp:TextBox ID="TxtMemo" runat="server"></asp:TextBox>
                                     </div>
                                 </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <div class="col-2" style="text-align: end; padding-right: 0px; margin-left: 12%;">
                                     <div style="white-space: nowrap;">
-                                        <asp:Label ID="label2" runat="server" Text="Dated:" Style="font-size: 18px; font-weight:400;"></asp:Label>
+                                        <asp:Label ID="label2" runat="server" Text="Approval Date:" Style="font-size: 20px; font-weight:400;"></asp:Label>
                                         <asp:TextBox ID="txtMemoDate" runat="server" Style="width: 100%;"></asp:TextBox>
                                     </div>
                                 </div>
@@ -262,7 +250,7 @@
                                 </div>
                                 <div class="col-10" style="text-align: justify;">
 
-                                    <span style="font-weight: bold; font-size: 18px; border: none !important;">Inspection of the following installation/s
+                                    <span style="font-weight: bold; font-size: 22px; border: none !important;">Inspection of the following installation/s
                                     <%--    <asp:Label ID="lblVoltage" runat="server"></asp:Label>--%>
                                         under Central Electricity Authority (Measures relating to
                                         Safety and Electric supply) Regulations, 2023.
@@ -280,15 +268,15 @@
                                             <HeaderStyle BackColor="#B7E2F0" />
                                             <Columns>
                                                 <asp:TemplateField HeaderText="S.No.">
-                                                    <HeaderStyle Width="7%" CssClass="headercolor" />
-                                                    <ItemStyle Width="7%" />
+                                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                    <ItemStyle Width="5%" />
                                                     <ItemTemplate>
                                                         <%#Container.DataItemIndex+1 %>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:BoundField DataField="Typeofinstallation" HeaderText="Installation Type">
-                                                    <HeaderStyle HorizontalAlign="Left" Width="73%" CssClass="headercolor" />
-                                                    <ItemStyle HorizontalAlign="Left" Width="73%" />
+                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>
                                                 <%-- <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
@@ -299,8 +287,8 @@
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>--%>
                                                 <asp:BoundField DataField="Capacity" HeaderText="Capacity">
-                                                    <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor" />
-                                                    <ItemStyle HorizontalAlign="Left" Width="20%" />
+                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>
 
 
@@ -311,7 +299,7 @@
                                             The above mentioned installation/s was/were inspected by this Department and the same was/were found generally complying with the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) 
                                         Regulations, 2023. However, it is advised that:-
                                         </p>
-                                        <div style="display: grid; grid-template-rows: auto auto; font-size: 18px; margin-left: 80px;">
+                                        <div style="display: grid; grid-template-rows: auto auto; font-size: 20px; margin-left: 80px;">
                                             <span id="suggestion1" runat="server"></span>
                                             <span id="suggestion2" runat="server"></span>
                                             <span id="suggestion3" runat="server"></span>
@@ -326,14 +314,14 @@
                                 <p style="margin-left:10%;">
                                     <%--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--%>
                                             Approval for energization of the subject cited installation/s is/are hereby accorded subject to consistent
-compliance of the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) Regualtions,
+compliance of the relevant provisions of CEA (Measures Relating to Safety and Electric Supply) Regulations,
  2023 may be ensured in these installations at your end. Please note that it shall be the responsibility of the owner 
 of the electrical installations to maintain and operate the installations in a condition free from danger and as recommended
 by the manufacturer or by the relevant code of practice of the bureau of Indian Standards.
 <br />
                                     </p>
                                 
-                                <div id="lowerdiv" style="margin-top:18px;">
+                                <div id="lowerdiv" style="margin-top:20px;">
     <p style="margin-left:10%;">
         Your next inspection shall fall due in the month of
         <asp:Label ID="LblMonth" runat="server" ></asp:Label>
@@ -344,19 +332,16 @@ by the manufacturer or by the relevant code of practice of the bureau of Indian 
             <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
         </div>
     </div>
-         <div class="row">
-    <div class="col-8" style="text-align:justify;">
-                 <asp:Label ID="lblNote" runat="server" Text="Label" Style="margin-left:0%; font-weight:bold;font-size:15px;"></asp:Label>
-
+    <div class="row">
+        <div class="col-7"></div>
+        <div class="col-5" style="margin-left: 65%;">
+            <p style="text-align: center; font-weight: bold; bottom: 10PX;">
+                <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
+                <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
+                <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />
+            </p>
+        </div>
     </div>
-    <div class="col-5" style="margin-left: 65%;margin-top:-85px;">
-        <p style="text-align: center; font-weight: bold; bottom: 10PX;margin-top:100px;">
-            <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />
-            <asp:Label ID="lblstamp2" runat="server" Text="Label"></asp:Label><br />
-            <asp:Label ID="lblstamp3" runat="server" Text="Label"></asp:Label><br />
-        </p>
-    </div>
-</div>
 </div>
 
                             </div>

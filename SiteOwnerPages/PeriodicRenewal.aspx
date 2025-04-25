@@ -372,9 +372,7 @@
                                 </div>
                                 <div>
                                     <div class="card" id="grid" runat="server" visible="false" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
-                                        <asp:GridView class="table-responsive table table-striped" ID="GridView1" OnRowCommand="GridView1_RowCommand"
-                                            OnRowDataBound="GridView1_RowDataBound" OnDataBound="GridView1_DataBound" runat="server" DataKeyNames="Id" Width="100%" AllowPaging="true"
-                                            PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
+                                        <asp:GridView class="table-responsive table table-striped" ID="GridView1" OnDataBound="GridView1_DataBound" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" runat="server" DataKeyNames="Id" Width="100%"
                                             AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                                             <PagerStyle CssClass="pagination-ys" />
                                             <Columns>
@@ -383,7 +381,7 @@
                                                         <asp:CheckBox ID="chkSelectAll" runat="server" Style="text-align: left !important;" />
                                                     </HeaderTemplate>
                                                     <ItemTemplate>
-                                                        <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="true" OnCheckedChanged="CheckBox1_CheckedChanged" HorizontalAlign="center" />
+                                                        <asp:CheckBox ID="CheckBox1" AutoPostBack="true" OnCheckedChanged="CheckBox1_CheckedChanged" runat="server" HorizontalAlign="center" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="SNo">
@@ -393,7 +391,7 @@
                                                         <%#Container.DataItemIndex+1 %>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <%-- <asp:BoundField DataField="IntimationId" HeaderText="Intimation Id" Visible="true">
+                                                <%-- <asp:BoundField DataField="IntimationId" HeaderText="Intimation Id" Visible="false">
                                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                                 </asp:BoundField>--%>
@@ -851,23 +849,6 @@
                                                                 </td>
                                                                 <td style="text-align: center !important;">
                                                                     <asp:ImageButton ID="imgDelete3" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" OnClick="imgDelete3_Click" Height="30" Width="30" runat="server" /></td>
-                                                            </tr>
-                                                        </div>
-                                                        <div id="installationType4" runat="server">
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="col-md-12">
-                                                                        <asp:TextBox class="form-control" ID="txtinstallationType4" Text="Switching Station" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div style="margin-left: 15px !important; margin-right: 15px !important;">
-                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" ReadOnly="true" Text="1" MaxLength="2" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtinstallationNo4" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
-                                                                    </div>
-                                                                </td>
-                                                                <td style="text-align: center !important;">
-                                                                    <asp:ImageButton ID="ImageButton4" ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" OnClick="ImageButton4_Click" Height="30" Width="30" runat="server" /></td>
                                                             </tr>
                                                         </div>
                                                     </tbody>

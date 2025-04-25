@@ -34,11 +34,6 @@ namespace CEIHaryana.Industry_Master
                 Session["SiteOwnerId_Sld_Industry"] = null;
                 Session["Serviceid_Sld_Indus"] = null;
                 Session["projectid_Sld_Indus"] = null;
-
-                //LiftNew Session Making Null 
-                Session["SiteOwnerId_IndustryLift"] = null;
-                Session["Serviceid_IndustryLift"] = null;
-                Session["projectid_IndustryLift"] = null;
             }
 
         }
@@ -47,7 +42,7 @@ namespace CEIHaryana.Industry_Master
         //{
         //    Session.Abandon();
         //    Response.Cookies["SiteOwnerId_Industry"].Expires = DateTime.Now.AddDays(-1);
-        //    Response.Redirect("/Login.aspx");
+        //    Response.Redirect("/SiteOwnerLogout.aspx");
         //}
     }
 }

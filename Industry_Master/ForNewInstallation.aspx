@@ -296,6 +296,7 @@
                          <label for="Phone" style="font-weight: bold; font-size: 20px;">
                                      Please verify that the PAN number entered in the CAF matches with the PAN number given to the contractor.
                              </label>
+                             <asp:HiddenField ID="hfOwner" runat="server" />
                             </div>
 
                     </div>
@@ -351,4 +352,7 @@
              window.location.href = 'https://staging.investharyana.in/#/';
          }
      </script>
+
+         
+
 </asp:Content>

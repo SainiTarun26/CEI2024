@@ -231,6 +231,11 @@
         .col-4 {
             margin-bottom: 15px;
         }
+.form-control:disabled, .form-control[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+    font-size: 1rem !important;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -298,7 +303,7 @@
                         <div class="row" style="margin-top: -40px !important;">
                             <div class="col-4">
                                 <label>
-                                    Transaction Id
+                                     Transaction ID(GRN Number)
                                 </label>
                                 <asp:TextBox ID="txttransactionId" runat="server" ReadOnly="true" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
                             </div>
@@ -320,7 +325,10 @@
 
                             </div>
 
-
+                            <div class="col-4" style="text-align: center;">  
+                                <asp:HiddenField ID="hnOwnerId" runat="server" />
+                                <asp:HiddenField ID="hnReturnStatus" runat="server" />
+                            </div>
 
                         </div>
                     </div>

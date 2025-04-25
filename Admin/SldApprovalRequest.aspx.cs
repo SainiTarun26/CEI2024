@@ -213,8 +213,7 @@ namespace CEIHaryana.Admin
                 ClickCount = Convert.ToInt32(Session["ClickCount"]);
                 if (ClickCount < 1)
                 {
-                    ClickCount = ClickCount + 1;
-                    Session["ClickCount"] = ClickCount;
+                    
 
                     int checksuccessmessage = 0;
                     string SLDID = Session["lblSldId"].ToString().Trim();
@@ -242,6 +241,8 @@ namespace CEIHaryana.Admin
                         {
                             try
                             {
+                                ClickCount = ClickCount + 1;
+                                Session["ClickCount"] = ClickCount;
                                 string FilName = string.Empty;
                                 FilName = Path.GetFileName(Signature.PostedFile.FileName);
 

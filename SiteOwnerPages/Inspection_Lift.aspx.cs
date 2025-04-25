@@ -259,7 +259,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
-
+                    statement.Visible = false;
                     if (!hasLinkInAnyRow)
                     {
                         GridView1.Columns[4].Visible = false; // Hide the "Previous Documents" column
@@ -274,6 +274,7 @@ namespace CEIHaryana.SiteOwnerPages
                     DocumentDiv.Visible = false;
                     GridView1.DataSource = null;
                     GridView1.DataBind();
+                    statement.Visible = true;
                     //string script = "alert(\"No Documnet Found\");";
                     //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
@@ -292,10 +293,10 @@ namespace CEIHaryana.SiteOwnerPages
                
                     if (e.CommandName == "Select")
                     {
-                        //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                        //lblerror.Text = fileName;
-                        string script = $@"<script>window.open('{fileName}','_blank');</script>";
+                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    //lblerror.Text = fileName;
+                    string script = $@"<script>window.open('{fileName}','_blank');</script>";
                         ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                     }
                     else
@@ -449,7 +450,7 @@ namespace CEIHaryana.SiteOwnerPages
         //    else if (e.CommandName == "ViewInvoice")
         //    {
         //        string fileName = "";
-        //        //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+        //        //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
         //        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
         //        string script = $@"<script>window.open('{fileName}','_blank');</script>";
         //        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);

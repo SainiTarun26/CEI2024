@@ -366,7 +366,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
 
             string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
-            // string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in/api/project-service-logs-external_UHBVN");
+            // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
             if (serverStatus != "Server is reachable.")
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
@@ -1094,7 +1094,7 @@ namespace CEIHaryana.SiteOwnerPages
         //        projectid = "projectid",
         //        serviceid = "serviceid"
         //    };
-        //    string url = "https://staging.investharyana.in/api/project-service-logs-external_UHBVN";
+        //    string url = "https://investharyana.in/api/project-service-logs-external_UHBVN";
         //    CEI.Post_Industry_Inspection_StageWise_JsonData(url, inputObject);
 
         //}
@@ -1110,7 +1110,7 @@ namespace CEIHaryana.SiteOwnerPages
         //        projectid = "projectid",
         //        serviceid = "serviceid"
         //    };
-        //    string url = "https://staging.investharyana.in/api/project-service-logs-external_UHBVN";
+        //    string url = "https://investharyana.in/api/project-service-logs-external_UHBVN";
         //    Industry_Inspection_StageWise_ReturnedJsonDataFormat_ViewModel response = CEI.Post_Industry_Inspection_StageWise_JsonData(url, inputObject);
 
         //    if (response.StatusCode == HttpStatusCode.OK)

@@ -178,8 +178,8 @@ namespace CEIHaryana.Contractor
                     string dp_Id11 = ds.Tables[0].Rows[0]["NumberOfInstallation2"].ToString();
                     string dp_Id12 = ds.Tables[0].Rows[0]["TypeOfInstallation3"].ToString();
                     string dp_Id13 = ds.Tables[0].Rows[0]["NumberOfInstallation3"].ToString();
-                    string dp_Id14 = ds.Tables[0].Rows[0]["TypeOfInstallation4"].ToString();
-                    string dp_Id15 = ds.Tables[0].Rows[0]["NumberOfInstallation4"].ToString();
+                    //string dp_Id14 = ds.Tables[0].Rows[0]["TypeOfInstallation4"].ToString();
+                    //string dp_Id15 = ds.Tables[0].Rows[0]["NumberOfInstallation4"].ToString();
                     //string dp_Id16 = ds.Tables[0].Rows[0]["TypeOfInstallation5"].ToString();
                     //string dp_Id17 = ds.Tables[0].Rows[0]["NumberOfInstallation5"].ToString();
                     //string dp_Id18 = ds.Tables[0].Rows[0]["TypeOfInstallation6"].ToString();
@@ -242,18 +242,19 @@ namespace CEIHaryana.Contractor
                         //  Installation.Visible = false;
                         installationType3.Visible = false;
                     }
-                    if (dp_Id14 != "")
-                    {
-                        Installation.Visible = true;
-                        installationType4.Visible = true;
-                        txtinstallationType4.Text = dp_Id14;
-                        txtinstallationNo4.Text = dp_Id15;
-                    }
-                    else
-                    {
-                        installationType3.Visible = false;
-                    }
+                    //if (dp_Id14 != "")
+                    //{
+                        //Installation.Visible = true;
+                        //installationType4.Visible = true;
+                        //txtinstallationType4.Text = dp_Id14;
+                        //txtinstallationNo4.Text = dp_Id15;
+                    //}
+                    //else
+                    //{
 
+                    //    //  Installation.Visible = false;
+                    //    installationType4.Visible = false;
+                    //}
                     //if (dp_Id16 != "")
                     //{
                     //    Installation.Visible = true;

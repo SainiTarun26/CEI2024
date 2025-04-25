@@ -187,7 +187,7 @@
                                 <div class="row">
                                     <div class="col-4">
                                         <label for="Name">
-                                            Transaction ID(UTRN):
+                                            Transaction ID (GRN Number):
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtUTRN" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                             MaxLength="30" Style="margin-left: 18px;">

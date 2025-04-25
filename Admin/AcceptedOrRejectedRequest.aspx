@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="AcceptedOrRejectedRequest.aspx.cs" Inherits="CEIHaryana.Admin.AcceptedOrRejectedRequest" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -94,41 +95,48 @@
         td {
             text-align: center;
         }
+
         .form-group label {
             font-size: 16px;
         }
-       .form-control {
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    margin-left: 0px !important;
-    height: 30px !important;
-}
+
+        .form-control {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            margin-left: 0px !important;
+            height: 30px !important;
+        }
+
         th.textjustify {
-    text-align: justify;
-}
+            text-align: justify;
+        }
+
         td.textjustify {
-    text-align: justify;
-}
+            text-align: justify;
+        }
+
         td.owner-name {
-    text-align: justify;
-}
-        th{
+            text-align: justify;
+        }
+
+        th {
             background: #9292cc;
         }
-               input#ContentPlaceHolder1_RadioButtonList1_0 {
-    margin-right: 7px;
-}
-input#ContentPlaceHolder1_RadioButtonList1_1 {
-    margin-left: 10px;
-    margin-right: 7px;
-}
 
+        input#ContentPlaceHolder1_RadioButtonList1_0 {
+            margin-right: 7px;
+        }
+
+        input#ContentPlaceHolder1_RadioButtonList1_1 {
+            margin-left: 10px;
+            margin-right: 7px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
-               
+
                 <div class="row ">
                     <div class="col-sm-4 col-md-4">
                         <h6 class="card-title fw-semibold mb-4">
@@ -137,69 +145,69 @@ input#ContentPlaceHolder1_RadioButtonList1_1 {
                     <div class="col-sm-6 col-md-6"></div>
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                                  <div class="row" style="margin-bottom:-20px;">
-    <div class="col-4">
-        <div class="form-group row">
-            <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
-            <div class="col-sm-9" style="margin-left: -35px;">
-                <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
-            </div>
-        </div>
-    </div>
-             <div class="col-4" style="text-align:center;">
-        <div style="display: inline-block;margin-left: -55px;">
-                <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
-    <asp:ListItem Text="Lift/Escalator" Value="1"></asp:ListItem>
-    <asp:ListItem Text="Line/Substration/Generating Set" Value="0"></asp:ListItem>
-</asp:RadioButtonList>
-</div>
-     </div>
-    <div class="col-4">
-        <div class="form-group row">
-            <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Division:</label>
-            <div class="col-sm-9" style="margin-left:0px;">
-                <asp:DropDownList ID="ddldivision" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddldivision_SelectedIndexChanged" class="form-control  select-form select2" Style="width: 100% !important;padding-top: 3px;
-   font-size: 16px !important;">
-                </asp:DropDownList>
-            </div>
-        </div>
-    </div>
-</div>
+                    <div class="row" style="margin-bottom: -20px;">
+                        <div class="col-4">
+                            <div class="form-group row">
+                                <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
+                                <div class="col-sm-9" style="margin-left: -35px;">
+                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4" style="text-align: center;">
+                            <div style="display: inline-block; margin-left: -55px;">
+                                <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+                                    <asp:ListItem Text="Lift/Escalator" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="Line/Substration/Generating Set" Value="0"></asp:ListItem>
+                                </asp:RadioButtonList>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group row">
+                                <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Division:</label>
+                                <div class="col-sm-9" style="margin-left: 0px;">
+                                    <asp:DropDownList ID="ddldivision" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddldivision_SelectedIndexChanged" class="form-control  select-form select2" Style="width: 100% !important; padding-top: 3px; font-size: 16px !important;">
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
-                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
-                        AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" OnRowDataBound="GridView1_RowDataBound" PageSize="100" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
-                        <Columns>
-                            <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
-                                     <asp:Label ID="LblInspectionType" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label>
-                                         <asp:Label ID="lblApproveDate" runat="server" Text='<%#Eval("ApprovedDate") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle Width="5%" CssClass="headercolor" />
-                                <ItemStyle Width="5%" />
-                                <ItemTemplate>
-                                    <%#Container.DataItemIndex+1 %>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField>
-                                    <HeaderStyle Width="35%" CssClass="headercolor"/>
-                                    <ItemStyle Width="35%" />
-                                    <HeaderTemplate>
-                                       Inspection<br />Id
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                           <%-- <asp:TemplateField>
+                            <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
+                                AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" OnRowDataBound="GridView1_RowDataBound" PageSize="500" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
+                                <Columns>
+                                    <asp:TemplateField HeaderText="Id" Visible="False">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblApproveDate" runat="server" Text='<%#Eval("ApprovedDate") %>'></asp:Label>
+                                            <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
+                                            <asp:Label ID="LblInspectionType" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Id" Visible="False">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="SNo">
+                                        <HeaderStyle Width="5%" CssClass="headercolor" />
+                                        <ItemStyle Width="5%" />
+                                        <ItemTemplate>
+                                            <%#Container.DataItemIndex+1 %>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField>
+                                        <HeaderStyle Width="35%" CssClass="headercolor" />
+                                        <ItemStyle Width="35%" />
+                                        <HeaderTemplate>
+                                            Inspection<br />
+                                            Id
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <%-- <asp:TemplateField>
                                 <HeaderStyle Width="35%" CssClass="headercolor" />
                                 <ItemStyle Width="35%" />
                                 <HeaderTemplate>
@@ -209,28 +217,28 @@ input#ContentPlaceHolder1_RadioButtonList1_1 {
                                     <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>--%>
-                             <%-- <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
+                                    <%-- <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="28%" />
                             </asp:BoundField>--%>
-                           <asp:TemplateField HeaderText="Owner Name">
-    <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor textjustify" />
-    <ItemStyle HorizontalAlign="center" Width="28%"  CssClass="textjustify" />
-    <ItemTemplate>
-        <asp:Label ID="lblOwnerName" runat="server" Text='<%# Eval("OwnerName") %>' CssClass="break-text-10"></asp:Label>
-    </ItemTemplate>
-</asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Owner Name">
+                                        <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor textjustify" />
+                                        <ItemStyle HorizontalAlign="center" Width="28%" CssClass="textjustify" />
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblOwnerName" runat="server" Text='<%# Eval("OwnerName") %>' CssClass="break-text-10"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
 
 
-                            <asp:TemplateField HeaderText="Contractor Name">
-    <HeaderStyle HorizontalAlign="center" Width="32%" CssClass="headercolor textjustify" />
-    <ItemStyle HorizontalAlign="center" Width="32%" cssclass="textjustify"/>
-    <ItemTemplate>
-        <asp:Label ID="lblContractorName" runat="server" Text='<%# Eval("ContractorName") %>' CssClass="break-text-10"></asp:Label>
-    </ItemTemplate>
-</asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Contractor Name">
+                                        <HeaderStyle HorizontalAlign="center" Width="32%" CssClass="headercolor textjustify" />
+                                        <ItemStyle HorizontalAlign="center" Width="32%" CssClass="textjustify" />
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblContractorName" runat="server" Text='<%# Eval("ContractorName") %>' CssClass="break-text-10"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
 
-                          <%--  <asp:TemplateField HeaderText="Applicant&#60;br /&#62;Type">
+                                    <%--  <asp:TemplateField HeaderText="Applicant&#60;br /&#62;Type">
     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
     <ItemStyle HorizontalAlign="center" Width="15%" />
     <ItemTemplate>
@@ -238,56 +246,57 @@ input#ContentPlaceHolder1_RadioButtonList1_1 {
     </ItemTemplate>
 </asp:TemplateField>--%>
 
-                           <asp:TemplateField HeaderText="Installation&#60;br /&#62;Type" Visible ="false">
-    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-    <ItemStyle HorizontalAlign="center" Width="15%" />
-    <ItemTemplate>
-        <asp:Label ID="lblInstallationFor" runat="server" Text='<%# Eval("Installationfor") %>' CssClass="break-space"></asp:Label>
-    </ItemTemplate>
-</asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Installation&#60;br /&#62;Type" Visible="false">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblInstallationFor" runat="server" Text='<%# Eval("Installationfor") %>' CssClass="break-space"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
 
-                            <asp:BoundField DataField="RequestDate" HeaderText="Request Date">
-    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-    <ItemStyle HorizontalAlign="center" Width="15%" />
-</asp:BoundField>
+                                    <asp:BoundField DataField="RequestDate" HeaderText="Request Date">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
 
-                            <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                             <asp:TemplateField HeaderText="">
-    <HeaderTemplate>
-        <div class="headercolor" style="text-align:center; width:100%;">Inspection<br />Type</div>
-    </HeaderTemplate>
-    <ItemTemplate>
-        <%# Eval("TypeOfInspection") %>
-    </ItemTemplate>
-    <HeaderStyle HorizontalAlign="center" Width="15%" />
-    <ItemStyle HorizontalAlign="center" Width="15%" />
-</asp:TemplateField>
+                                    <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                    <asp:TemplateField HeaderText="">
+                                        <HeaderTemplate>
+                                            <div class="headercolor" style="text-align: center; width: 100%;">Inspection<br />
+                                                Type</div>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <%# Eval("TypeOfInspection") %>
+                                        </ItemTemplate>
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:TemplateField>
 
-                            <asp:TemplateField>
-                                <HeaderStyle Width="10%" CssClass="headercolor" />
-                                <ItemStyle Width="10%" />
-                                <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server" Visible="false"
-                                        Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
-                                </asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                        <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                        <RowStyle ForeColor="#000066" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#00547E" />
-                    </asp:GridView>
-                </div>
-                </div>
+                                    <asp:TemplateField>
+                                        <HeaderStyle Width="10%" CssClass="headercolor" />
+                                        <ItemStyle Width="10%" />
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server" Visible="false"
+                                                Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
+                                            </asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                                <FooterStyle BackColor="White" ForeColor="#000066" />
+                                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                <RowStyle ForeColor="#000066" />
+                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                <SortedDescendingHeaderStyle BackColor="#00547E" />
+                            </asp:GridView>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -323,7 +332,7 @@ input#ContentPlaceHolder1_RadioButtonList1_1 {
                 Search_Gridview(document.getElementById('txtSearch'));
             }
         }
-</script>
+    </script>
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function () {
             const elements = document.querySelectorAll('.break-text-10');

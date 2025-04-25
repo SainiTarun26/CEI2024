@@ -87,8 +87,7 @@ namespace CEIHaryana.SiteOwnerPages
             ClickCount = Convert.ToInt32(Session["ClickCount"]);
             if (ClickCount < 1)
             {
-                ClickCount = ClickCount + 1;
-                Session["ClickCount"] = ClickCount;
+               
 
                 string SiteOwnerId = Session["SiteOwnerId"].ToString();
                 string SiteOwnerName = Session["OwnerName"].ToString();
@@ -104,6 +103,8 @@ namespace CEIHaryana.SiteOwnerPages
                         SqlTransaction transaction = null;
                         try
                         {
+                            ClickCount = ClickCount + 1;
+                            Session["ClickCount"] = ClickCount;
                             connection.Open();
 
                             string FilName = string.Empty;

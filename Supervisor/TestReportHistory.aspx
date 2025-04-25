@@ -240,22 +240,22 @@
             background-color: #f9c7c7 !important;
         }
         .card-body {
-            margin-bottom: 11px !important;
-            margin-top: 5px !important;
-        }
+     margin-bottom: 11px !important;
+     margin-top: 5px !important;
+ }
 
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
+ .modal {
+     display: none; /* Hidden by default */
+     position: fixed; /* Stay in place */
+     z-index: 1; /* Sit on top */
+     left: 0;
+     top: 0;
+     width: 100%;
+     height: 100%;
+     overflow: auto; /* Enable scroll if needed */
+     background-color: rgb(0,0,0); /* Fallback color */
+     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+ }
 
  .modal-content {
      background-color: #fefefe;
@@ -313,7 +313,7 @@
                             </div>
                         </div>
                     </div>
-                    <asp:GridView class="table-responsive table table-striped table-hover" OnRowDataBound="GridView1_RowDataBound" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging"
+                    <asp:GridView class="table-responsive table table-striped table-hover" OnRowDataBound="GridView1_RowDataBound" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="50" OnPageIndexChanging="GridView1_PageIndexChanging"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                         <PagerStyle CssClass="pagination-ys" />
                          <Columns>
@@ -354,7 +354,7 @@
                                 <HeaderStyle Width="24%" CssClass="headercolor" />
                                 <ItemStyle Width="24%" />
                                 <HeaderTemplate>
-                                    Test Report Id
+                                    TestReport Id
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Intimations") %> ' CommandName="Select"><%#Eval("Intimations") %></asp:LinkButton>
@@ -375,7 +375,7 @@
                             </asp:BoundField>
                             <asp:BoundField DataField="Name" HeaderText="Owner Name">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="break-text-10" />
                             </asp:BoundField>
                             <asp:BoundField DataField="District" HeaderText="District">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
@@ -385,7 +385,7 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Approval" HeaderText="Approval Status">
+                            <asp:BoundField DataField="Approval" HeaderText="Status">
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>
@@ -393,19 +393,8 @@
                                 <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="12%" />
                             </asp:BoundField>
-                          <%--  <asp:BoundField DataField="ContractorRemarksForSuprvisor" HeaderText="Remarks">
-                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="12%" />
-                            </asp:BoundField>--%>
-                            <%--<asp:BoundField DataField="CreatedDate1" HeaderText="Created Date">
-                                <HeaderStyle HorizontalAlign="center" Width="13%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="13%" />
-                            </asp:BoundField>--%>
-                              <asp:TemplateField HeaderText="Remarks" runat="server" Visible="false">
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="lnkReadMore" runat="server" data-modal="modal1" OnClick="lnkReadMore_Click">Read more</asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                         
+                             
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -517,4 +506,40 @@
              });
          });
      </script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll('.break-text-10');
+
+            elements.forEach(function (element) {
+                let text = element.innerText;
+                let formattedText = '';
+                let currentIndex = 0;
+
+                while (currentIndex < text.length) {
+                    // Take a chunk of up to 20 characters
+                    let chunk = text.slice(currentIndex, currentIndex + 30);
+
+                    if (chunk.length < 30) {
+                        // If the chunk is less than 20 characters, add it without breaking
+                        formattedText += chunk;
+                        break; // Exit the loop as we've processed the remaining text
+                    }
+
+                    // For chunks of 20 or more characters, try to break at the last whitespace
+                    let breakIndex = chunk.lastIndexOf(" ");
+                    if (breakIndex !== -1) {
+                        // If there's a whitespace, break at that space
+                        formattedText += chunk.slice(0, breakIndex) + '<br>';
+                        currentIndex += breakIndex + 1; // Move past the space
+                    } else {
+                        // Otherwise, break at the 20-character limit
+                        formattedText += chunk + '<br>';
+                        currentIndex += 30;
+                    }
+                }
+
+                element.innerHTML = formattedText.trim(); // Remove any trailing <br>
+            });
+        });
+</script>
 </asp:Content>

@@ -43,10 +43,10 @@ namespace CEIHaryana.Print_Forms
                 lblAdress2.Text = ds.Tables[0].Rows[0]["Header2"].ToString();
                 lblAdress3.Text = ds.Tables[0].Rows[0]["Header3"].ToString();
                 lblAdress4.Text = ds.Tables[0].Rows[0]["Header4"].ToString();
-                TxtName.Text = ds.Tables[0].Rows[0]["SiteOwnerName"].ToString();
-                TextAdress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+                TxtName.Text = ds.Tables[0].Rows[0]["SiteOwnerName"].ToString().ToUpper();
+                TextAdress.Text = ds.Tables[0].Rows[0]["Address"].ToString().ToUpper();
                 string locationValue = ds.Tables[0].Rows[0]["location"].ToString();
-                string Location = "Dist - " + locationValue;
+                string Location = "Dist - " + locationValue.ToUpper();
                 TextLocation.Text = Location;
                 txtApplicationNo.Text = ds.Tables[0].Rows[0]["ReferenceNo"].ToString();
                 txtCreatedDate.Text = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
@@ -77,18 +77,18 @@ namespace CEIHaryana.Print_Forms
                     suggestion4.InnerText = str[3];
                     suggestion4.Visible = true;
                 }
-                LblMonth.Text = ds.Tables[0].Rows[0]["FinalMonth"].ToString();
-                // lblVoltage.Text = ds.Tables[2].Rows[0]["InstallationDetails"].ToString();
-                // Year.Text = ds.Tables[1].Rows[0]["ApprovedYear"].ToString();
+                LblMonth.Text = ds.Tables[0].Rows[0]["FinalMonth"].ToString();                
                 myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])ds.Tables[0].Rows[0]["Signature"]);
                 lblstamp1.Text = ds.Tables[0].Rows[0]["Stamp1"].ToString();
                 lblstamp2.Text = ds.Tables[0].Rows[0]["Stamp2"].ToString();
                 lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
-                lblNote.Text = ds.Tables[0].Rows[0]["Note"].ToString();
                 GridBind();
             }
             catch (Exception ex)
-            { }
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
         }
 
 

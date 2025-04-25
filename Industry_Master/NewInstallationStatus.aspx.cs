@@ -88,6 +88,8 @@ namespace CEIHaryana.Industry_Master
                 Label lblType = (Label)row.FindControl("lblType");
                 Label LblInspectionType = (Label)row.FindControl("LblInspectionType");
                 Label LblAssignTo = (Label)row.FindControl("LblAssignTo");
+                Label lblApproveDateLabel = row.FindControl("lblApproveDate") as Label;
+                string ApproveDate = lblApproveDateLabel.Text;
                 if (lblType.Text.Trim() == "Line")
                 {
                     Session["LineID"] = lblTestRportId.Text.Trim();
@@ -120,14 +122,19 @@ namespace CEIHaryana.Industry_Master
                 {
                     if (LblInspectionType.Text == "New")
                     {
-                        if (lblType.Text == "Multiple")
+                        if (ApproveDate != null && DateTime.TryParse(ApproveDate, out DateTime lblApproveDate))
                         {
+                            DateTime comparisonDate = DateTime.Parse("2024-11-16");
 
-                            Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate_Industry.aspx", false);
-                        }
-                        else
-                        {
-                            Response.Redirect("/Print_Forms/PrintCertificate1_Industry.aspx", false);
+                            if (lblApproveDate <= comparisonDate)
+                            {
+                                Response.Redirect("/Print_Forms/PrintCertificate1_Industry.aspx", false);
+                            }
+                            else
+                            {
+                                Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate_Industry.aspx", false);
+                            }
+
                         }
                     }
                 }

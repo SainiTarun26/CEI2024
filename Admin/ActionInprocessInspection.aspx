@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master2.Master" AutoEventWireup="true" CodeBehind="ActionInprocessInspection.aspx.cs" Inherits="CEIHaryana.Admin.ActionInprocessInspection" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="ActionInprocessInspection.aspx.cs" Inherits="CEIHaryana.Admin.ActionInprocessInspection" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
@@ -16,35 +16,7 @@
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />    
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            
-            $("#<%= txtInspectionDate.ClientID %>").datepicker({
-            dateFormat: 'dd/mm/yy',  // Customize the format as needed
-            changeMonth: true,
-            changeYear: true,
-            maxDate: 0,
-            yearRange: "1900:2100"
-        });
-    });
-    </script>
     <style>
-             div#ui-datepicker-div
-     {
-position: absolute;
-top: 992.392px !important;
-left: 750.75px !important;
-z-index: 1;
-display: block;
-border:1px solid white;
-     }
-         th.headercolor {
-            color: white !important;
-        }
-
         .multiselect {
             width: 100%;
         }
@@ -237,39 +209,7 @@ border:1px solid white;
         }
         a {
     text-decoration: none;
-           }
-         .modal1 {
-            display: none; /* Hidden by default */
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.4);
-      
-        }
-   
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
-        input#ContentPlaceHolder1_BtnAddSuggestion {
-            padding-top: 2px;
-            padding-bottom: 2px;
-        }
-         input#ContentPlaceHolder1_BtnAddSuggestion {
-     padding-top: 2px;
-     padding-bottom: 2px;
- }
-
-
+}
     </style>
     <script type="text/javascript">
         function alertWithRedirectdata(Message) {
@@ -367,7 +307,7 @@ border:1px solid white;
             </div>
             <div class="row card" style="padding-top: 10px;">
                 <div class="col-12">
-                    <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand"  AutoGenerateColumns="false" >
+                    <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" >
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
                             <asp:TemplateField HeaderText="SNo">
@@ -472,7 +412,6 @@ border:1px solid white;
                 </div>
                   
             </div>
-              <asp:HiddenField ID="hnSubmittedDate" runat="server" />
                                         <div class="card-title" style="margin-bottom: 5px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: -10px;">
     Test Report Detail
 </div>  
@@ -595,8 +534,8 @@ border:1px solid white;
             <div class="col-md-4">
                 <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
             </div>
-           <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>--%>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
                     <div class="row">
                         <div class="col-md-4" id="ApprovalRequired" runat="server" visible="true">
                             <label>
@@ -611,31 +550,9 @@ border:1px solid white;
                         </div>
                         <div class="col-md-4" id="InspectionDate" runat="server">
                             <label for="StartDate">
-                                Inspection Date<samp style="color: red"> * </samp>                           
+                                Inspection Date                           
                             </label>
-                            <asp:TextBox class="form-control" ID="txtInspectionDate"  TabIndex="16" autocomplete="off"  min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"  ></asp:TextBox>
-
-                          <%--  <input type="date" id="txtInspectionDate" class="form-control" onchange="formatDate(this)" />--%>
-                   
-                        
-
-                        </div>
-                     
-                 <%--     <div class="col-md-4" id="InspectionDate" runat="server">
-   <label for="StartDate">Inspection Date</label>
- <%--  <asp:TextBox CssClass="form-control" ID="txtInspectionDate" TabIndex="16" 
-       autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                          <asp:TextBox CssClass="form-control" ID="txtInspectionDate" runat="server" autocomplete="off"></asp:TextBox>
-</div>
-             --%>  
-                        <div class="row">
-                            <div class="col-12" id="ExNote" runat="server" visible="false" style="margin-bottom: 25px;">
-                                <label>
-                                    Note :
-                                </label>
-                                <asp:TextBox class="form-control" ID="txtNote" autocomplete="off" TabIndex="7" MaxLength="500" TextMode="MultiLine" Rows="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-                            </div>
+                            <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
                         <div class="row">
                             <div class="col-12" id="Rejection" runat="server" visible="false">
@@ -646,7 +563,7 @@ border:1px solid white;
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
                         </div>
-                        <%--<div class="col-12" id="ddlSuggestions" visible="false" runat="server" style="width: 98% !important;">
+                        <div class="col-12" id="ddlSuggestions" visible="false" runat="server" style="width: 98% !important;">
                             <label>Select Suggestion</label>
                             <asp:DropDownList ID="ddlSuggestion" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSuggestion_SelectedIndexChanged">
                                 <asp:ListItem Text="--Select--" Value="-1"></asp:ListItem>
@@ -657,154 +574,85 @@ border:1px solid white;
                                 <asp:ListItem Text="Proper Earthing fencing ,if metallic,of at least 1.8-meter height be provided in front of the transformer room with gate opening outwards." Value="5"></asp:ListItem>
                                 <asp:ListItem Text="Earth mats be provided in front of all electrical panels." Value="6"></asp:ListItem>
                             </asp:DropDownList>
-                        </div>--%>
-                        <div class="row" id="ddlSuggestions" visible="false" runat="server">
-                            <div class="col-6">
-
-                              <%--  <label>
-                                    Suggestions :
-                                </label>--%>
-                                <asp:DropDownList ID="ddlSuggestion" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSuggestion_SelectedIndexChanged" Style="width: 100%;">
-                                </asp:DropDownList>
-
-                            </div>
-                            <div class="col-6">
-                                <asp:Button ID="BtnAddSuggestion" Text="Add Suggestion" runat="server" class="btn btn-primary mr-2" OnClientClick="$('#modal1').modal('show'); return false;" />
-                            </div>
-                        </div>
-                        <div id="Note" runat="server" visible="false">
-                            <label>
-                                <span style="color: red;">NOTE:</span>&nbsp;YOU CAN NOT GIVE MORE THAN 4 SUGGESTIONS.   
-                            </label>
-
-
                         </div>
                         <div class="row">
                             <div class="col-12" id="Suggestion" runat="server" visible="false">
                                 <label>
-                                    Suggestions
+                                    Suggestions<%--<samp style="color: red"> * </samp>--%>
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtSuggestion" TextMode="MultiLine" Rows="2" MaxLength="1000" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             </div>
                         </div>
                     </div>
-              <%--  </ContentTemplate>
-            </asp:UpdatePanel>--%>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
         <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6" style="text-align: center;">
-                <asp:Button ID="btnSuggestions" Text="Save Suggestions" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnSuggestions_Click" />  
-                    <asp:Button ID="btnPreview" Text="Preview" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnPreview_Click" /> 
-            <%--    <asp:Button ID="btnPreview" Text="Preview" runat="server"  class="btn btn-primary mr-2" OnClick="btnPreview_Click" />--%>
+            <div class="col-md-4"></div>
+            <div class="col-md-4" style="text-align: center;">
+                <asp:Button ID="btnPreview" Text="Preview" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnPreview_Click" />
                 <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
                 <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
             </div>
         </div>
-        <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="updatePasswordModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="updatePasswordModalLabel">Suggestion</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <label>
-                            Suggestion<samp style="color: red"> * </samp>
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtSugg" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <asp:Button ID="btnSugg" runat="server" CssClass="btn btn-primary" Text="Add Suggestion" OnClick="btnSugg_Click" />
-  <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
-            </div>
-        </div>
     </div>
-</div>
-    </div>
-     <script>
-         function closeModal() {
-             $('#modal1').modal('hide');
-         }
-     </script>
-   <script type="text/javascript">
-       window.onload = (event) => {
-           initMultiselect();
-       };
+   
+    <script type="text/javascript">
+        window.onload = (event) => {
+            initMultiselect();
+        };
 
-       function initMultiselect() {
-           checkboxStatusChange();
+        function initMultiselect() {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('<%= txtInspectionDate.ClientID %>').setAttribute('max', today);
+            checkboxStatusChange();
 
-           document.addEventListener("click", function (evt) {
-               var flyoutElement = document.getElementById('myMultiselect'),
-                   targetElement = evt.target; // clicked element
+            document.addEventListener("click", function (evt) {
+                var flyoutElement = document.getElementById('myMultiselect'),
+                    targetElement = evt.target; // clicked element
+                do {
+                    if (targetElement == flyoutElement) {
+                        // This is a click inside. Do nothing, just return.
+                        //console.log('click inside');
+                        return;
+                    }
+                    // Go up the DOM
+                    targetElement = targetElement.parentNode;
+                } while (targetElement);
 
-               do {
-                   if (targetElement == flyoutElement) {
-                       // This is a click inside. Do nothing, just return.
-                       //console.log('click inside');
-                       return;
-                   }
+                // This is a click outside.
+                toggleCheckboxArea(true);
+                //console.log('click outside');
+            });
+        }
+        //function checkboxStatusChange() {
+        //    var multiselect = document.getElementById("mySelectLabel");
+        //    var multiselectOption = multiselect.getElementsByTagName('option')[0];
+        //    var values = [];
+        //    var checkboxes = document.getElementById("mySelectOptions");
+        //    var checkedCheckboxes = checkboxes.querySelectorAll('input[type=checkbox]:checked');
+        //    for (const item of checkedCheckboxes) {
+        //        var checkboxValue = item.getAttribute('value');
+        //        values.push(checkboxValue);
+        //    }
+        //    var dropdownValue = "Nothing is selected";
+        //    if (values.length > 0) {
+        //        dropdownValue = values.join(', ');
+        //    }
+        //    multiselectOption.innerText = dropdownValue;
+        //}
 
-                   // Go up the DOM
-                   targetElement = targetElement.parentNode;
-               } while (targetElement);
+        function toggleCheckboxArea(onlyHide = false) {
+            var checkboxes = document.getElementById("mySelectOptions");
+            var displayValue = checkboxes.style.display;
 
-               // This is a click outside.
-               toggleCheckboxArea(true);
-               //console.log('click outside');
-           });
-       }
-
-     
-
-       function toggleCheckboxArea(onlyHide = false) {
-           var checkboxes = document.getElementById("mySelectOptions");
-           var displayValue = checkboxes.style.display;
-
-           if (displayValue != "block") {
-               if (onlyHide == false) {
-                   checkboxes.style.display = "block";
-               }
-           } else {
-               checkboxes.style.display = "none";
-           }
-       }
-   </script>
-      <script type="text/javascript">
-          window.onload = function () {
-              var today = new Date().toISOString().split('T')[0];
-              document.getElementById('<%= txtInspectionDate.ClientID %>').setAttribute('max', today);
-          };
-      </script>
-
-
-   <script type="text/javascript">
-       $(document).ready(function () {
-           var datePickerElement = $("#<%= txtInspectionDate.ClientID %>");
-
-        // Initialize the datepicker, but do not show it automatically
-        datePickerElement.datepicker({
-            dateFormat: 'dd/mm/yy',  // Customize the format as needed
-            changeMonth: true,
-            changeYear: true,
-            maxDate: 0,
-            yearRange: "1900:2100",
-            showOn: "focus",  // Only show the datepicker when the input is focused
-        });
-
-        // This ensures the datepicker is hidden initially and only shows when the textbox is clicked
-        datePickerElement.on('focus', function () {
-            $(this).datepicker('show');  // Show datepicker on focus
-        });
-    });
-   </script>
-
-    
+            if (displayValue != "block") {
+                if (onlyHide == false) {
+                    checkboxes.style.display = "block";
+                }
+            } else {
+                checkboxes.style.display = "none";
+            }
+        }
+    </script>
 </asp:Content>

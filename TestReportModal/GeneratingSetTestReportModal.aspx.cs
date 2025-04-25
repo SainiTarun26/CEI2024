@@ -152,7 +152,7 @@ namespace CEIHaryana.TestReportModal
             }
             catch (Exception ex)
             {
-                Response.Redirect("/Login.aspx", false);
+                Response.Redirect("/SiteOwnerLogout.aspx", false);
 
             }
         }

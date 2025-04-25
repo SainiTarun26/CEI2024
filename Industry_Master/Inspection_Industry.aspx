@@ -228,7 +228,7 @@
                     <div class="col-12">
                         <div class="card-title">Document Attachments</div>
                         <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
-                            AutoGenerateColumns="false" AllowPaging="true" OnRowCommand="GridView1_RowCommand"
+                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"
                             PageSize="20">
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
@@ -272,6 +272,11 @@
                                 </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
+                        <div class="row" id="statement" runat="server" visible="false">
+                            <label for="CompletionDateasperWorkOrder" style="font-size: 16px; font-weight: bold;">
+                                No any Document Attached                                             
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -280,7 +285,7 @@
                 <div class="row" style="padding-top: 10px;">
                     <div class="col-12">
                         <div class="card-title">Inspection Details</div>
-                        <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView2_RowDataBound" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                        <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView2_RowDataBound" AutoGenerateColumns="false">
                             <HeaderStyle BackColor="#B7E2F0" />
                             <Columns>
                                 <asp:TemplateField HeaderText="SNo">

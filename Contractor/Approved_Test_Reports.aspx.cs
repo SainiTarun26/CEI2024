@@ -100,19 +100,12 @@ namespace CEIHaryana.Contractor
                         Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                         Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                     }
-                    else if (lblTypeOf.Text.Trim() == "Switching Station")
-                    {
-
-                        Session["SwitchingSubstationId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
-                        //Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
-
-                        Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
-                    }
+                   
                 }
                 else if (e.CommandName == "View")
                 {
                     string fileName = "";
-                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     //lblerror.Text = fileName;
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
@@ -136,12 +129,7 @@ namespace CEIHaryana.Contractor
                     linkButton.Visible = false;
                     LinkButton3.Visible = false;
                 }
-                else if (lblTypeOf.Text.Trim() == "Switching Station")
-                {
-
-                    linkButton.Visible = false;
-                    LinkButton3.Visible = true;
-                }
+                
                 else
                 {
                     linkButton.Visible = true;

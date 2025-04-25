@@ -235,7 +235,7 @@ namespace CEIHaryana.Officers
             {
                 if (e.CommandName == "Select")
                 {
-                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -265,8 +265,7 @@ namespace CEIHaryana.Officers
             ClickCount = Convert.ToInt32(Session["ClickCount"]);
             if (ClickCount < 1)
             {
-                ClickCount = ClickCount + 1;
-                Session["ClickCount"] = ClickCount;
+                
                 int checksuccessmessage = 0;
                 try
                 {
@@ -282,7 +281,8 @@ namespace CEIHaryana.Officers
                                              RadioButtonList2.SelectedValue == "1" ? "Return" :
                                              RadioButtonList2.SelectedValue == "2" ? "Rejected" : "";
                             Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
-
+                            ClickCount = ClickCount + 1;
+                            Session["ClickCount"] = ClickCount;
                             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
 
                             try
@@ -290,7 +290,7 @@ namespace CEIHaryana.Officers
                                 //string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
                                 //if (reqType == "Industry")
                                 //{
-                                //    string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
+                                //    string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
                                 //    if (serverStatus != "Server is reachable.")
                                 //    {
                                 //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
@@ -321,7 +321,7 @@ namespace CEIHaryana.Officers
                                 //{
                                 //    string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
                                 //    logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                //                   "https://investharyana.in/api/project-service-logs-external_UHBVN",
+                                //                   "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
                                 //                   new Industry_Inspection_StageWise_JsonDataFormat_Model
                                 //                   {
                                 //                       actionTaken = ApiPostformatresult.ActionTaken,

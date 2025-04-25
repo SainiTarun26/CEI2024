@@ -548,7 +548,7 @@
                         <div class="row" style="margin-top: -40px !important;">
                             <div class="col-4">
                                 <label>
-                                    Transaction Id<samp style="color: red"> * </samp>
+                                      Transaction ID(GRN Number)<samp style="color: red"> * </samp>
                                 </label>
                                 <asp:TextBox ID="txttransactionId" runat="server" MaxLength="20" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
                                 <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Id</asp:RequiredFieldValidator>--%>
@@ -585,7 +585,13 @@
                     </div>
                 </div>
                 <div>
-
+                    <div class="row" id="Declaration" runat="server" visible="false" style="margin-left: 1%; margin-bottom: 20px;">
+                        <label style="display: flex; align-items: center;">
+                            <asp:CheckBox ID="Check" runat="server" TabIndex="24" Style="margin-top: -5px;" />
+                            <span style="margin-left: 8px; font-size: 17px; line-height: 20px; margin-top: 9px;">We undertake that we shall maintain and operate all the electrical installations in a condition free from danger and as recommended by the manufacturer and/or by the relevant Code of Practice of the Bureau of Indian Standards.
+                            </span>
+                        </label>
+                    </div>
                    
                     <div class="row">
                         <div class="col-4"></div>

@@ -64,13 +64,14 @@ namespace CEIHaryana.Print_Forms
                     lblAdress2.Text = dt.Rows[0]["Header2"].ToString();
                     lblAdress3.Text = dt.Rows[0]["Header3"].ToString();
                     lblAdress4.Text = dt.Rows[0]["Header4"].ToString();
-                    TxtName.Text = dt.Rows[0]["OwnerName"].ToString();
-                    TextAdress.Text = dt.Rows[0]["Location"].ToString();
-                    TextLocation.Text = dt.Rows[0]["CompleteAdress"].ToString();
+                    TxtName.Text = dt.Rows[0]["OwnerName"].ToString().ToUpper();
+                    TextAdress.Text = dt.Rows[0]["Location"].ToString().ToUpper();
+                    TextLocation.Text = dt.Rows[0]["CompleteAdress"].ToString().ToUpper();
                     txtApplicationNo.Text = dt.Rows[0]["ReferenceNo"].ToString();
                     txtCreatedDate.Text = dt.Rows[0]["CreatedDate"].ToString();
                     TxtMemo.Text = dt.Rows[0]["MemoNo"].ToString();
                     txtMemoDate.Text = dt.Rows[0]["ApprovedDate"].ToString();
+                    LblMonth.Text = dt.Rows[0]["FinalMonth"].ToString();
                     string[] str = dt.Rows[0]["Suggestion"].ToString().Split('\n');
                     suggestion1.Visible = false;
                     suggestion2.Visible = false;
@@ -95,16 +96,11 @@ namespace CEIHaryana.Print_Forms
                     {
                         suggestion4.InnerText = str[3];
                         suggestion4.Visible = true;
-                    }
-
-                    LblMonth.Text = dt.Rows[0]["FinalMonth"].ToString();
-                    // lblVoltage.Text = ds.Tables[2].Rows[0]["InstallationDetails"].ToString();
-                    // Year.Text = dt.Rows[0]["ApprovedYear"].ToString();
+                    }                  
                     myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["Signature"]);
                     lblstamp1.Text = dt.Rows[0]["Stamp1"].ToString();
                     lblstamp2.Text = dt.Rows[0]["Stamp2"].ToString();
                     lblstamp3.Text = dt.Rows[0]["Stamp3"].ToString();
-                    lblNote.Text = dt.Rows[0]["Note"].ToString();
                 }
 
                 else
@@ -115,10 +111,10 @@ namespace CEIHaryana.Print_Forms
                     lblAdress2.Text = ds.Tables[0].Rows[0]["Header2"].ToString();
                     lblAdress3.Text = ds.Tables[0].Rows[0]["Header3"].ToString();
                     lblAdress4.Text = ds.Tables[0].Rows[0]["Header4"].ToString();
-                    TxtName.Text = ds.Tables[0].Rows[0]["SiteOwnerName"].ToString();
-                    TextAdress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
+                    TxtName.Text = ds.Tables[0].Rows[0]["SiteOwnerName"].ToString().ToUpper();
+                    TextAdress.Text = ds.Tables[0].Rows[0]["Address"].ToString().ToUpper();
                     string locationValue = ds.Tables[0].Rows[0]["location"].ToString();
-                    string Location = "Dist - " + locationValue;
+                    string Location = "Dist - " + locationValue.ToUpper();
                     TextLocation.Text = Location;
                     txtApplicationNo.Text = ds.Tables[0].Rows[0]["ReferenceNo"].ToString();
                     txtCreatedDate.Text = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
@@ -149,20 +145,19 @@ namespace CEIHaryana.Print_Forms
                         suggestion4.InnerText = str[3];
                         suggestion4.Visible = true;
                     }
-                    LblMonth.Text = ds.Tables[0].Rows[0]["FinalMonth"].ToString();
-                    // lblVoltage.Text = ds.Tables[2].Rows[0]["InstallationDetails"].ToString();
-                    // Year.Text = ds.Tables[1].Rows[0]["ApprovedYear"].ToString();
+                    LblMonth.Text = ds.Tables[0].Rows[0]["FinalMonth"].ToString();                  
                     myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])ds.Tables[0].Rows[0]["Signature"]);
                     lblstamp1.Text = ds.Tables[0].Rows[0]["Stamp1"].ToString();
                     lblstamp2.Text = ds.Tables[0].Rows[0]["Stamp2"].ToString();
-                    lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
-                    lblNote.Text = ds.Tables[0].Rows[0]["Note"].ToString();
-                    //CEI.InsertApprovedCertificatedata(ID);
+                    lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();                   
                 }
                 GridBind();
             }
             catch (Exception ex)
-            { }
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
         }
 
         protected void GridBind()
@@ -197,7 +192,8 @@ namespace CEIHaryana.Print_Forms
             }
             catch (Exception ex)
             {
-                //throw;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
 

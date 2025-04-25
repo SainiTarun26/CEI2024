@@ -40,11 +40,6 @@ namespace CEIHaryana.Admin
                             txtWorkType.Text = "Generating Set";
                             Id = Session["GeneratingSetId"].ToString();
                         }
-                        else if (Session["SwitchingSubstationId"] != null && Convert.ToString(Session["SwitchingSubstationId"]) != "")
-                        {
-                            txtWorkType.Text = "Switching Station";
-                            Id = Session["SwitchingSubstationId"].ToString();
-                        }
 
                         GetDetailsWithId();
 
@@ -211,8 +206,8 @@ namespace CEIHaryana.Admin
                 if (e.CommandName == "Select")
                 {
                     ID = Session["InspectionId"].ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                  // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -289,12 +284,6 @@ namespace CEIHaryana.Admin
             {
                 Session["GeneratingSetId"] = AdminTestReportId;
                 Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
-            }
-            else if (txtWorkType.Text.Trim() == "Switching Station")
-            {
-                //Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
-                Session["SwitchingSubstationId"] = AdminTestReportId;
-                Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
             }
         }
 
@@ -429,12 +418,6 @@ namespace CEIHaryana.Admin
                 {
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                 }
-                else if (installationName == "Switching Station")
-                {
-                    //Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
-                    Session["SwitchingSubstationId"] = btn.CommandArgument;
-                    Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
-                }
             }
             catch (Exception ex) { }
         }
@@ -480,10 +463,6 @@ namespace CEIHaryana.Admin
                         Grid_MultipleInspectionTR.Columns[6].Visible = false;
                         linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = false;
-                    }
-                    else if (LblInstallationName.Text.Trim() == "Switching Station")
-                    {
-                        linkButtonInvoice.Visible = false;
                     }
                     else
                     {
@@ -531,19 +510,13 @@ namespace CEIHaryana.Admin
                         Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                         Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                     }
-                    else if (LblInstallationName.Text.Trim() == "Switching Station")
-                    {
-                        //Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
-                        Session["SwitchingSubstationId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
-                        Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
-                    }
                 }
             }
             else if (e.CommandName == "View")
             {
                 string fileName = "";
+                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 //lblerror.Text = fileName;
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -551,8 +524,8 @@ namespace CEIHaryana.Admin
             else if (e.CommandName == "ViewInvoice")
             {
                 string fileName = "";
+                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-               // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
@@ -578,12 +551,6 @@ namespace CEIHaryana.Admin
                 else if (installationName == "Generating Set")
                 {
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
-                }
-                else if (installationName == "Switching Station")
-                {
-                    //Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["ID"].ToString();
-                    Session["SwitchingSubstationId"] = btn.CommandArgument;
-                    Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
                 }
             }
             catch (Exception ex) { }

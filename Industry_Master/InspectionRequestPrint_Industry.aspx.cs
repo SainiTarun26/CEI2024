@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using Org.BouncyCastle.Asn1.X509.Qualified;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -46,13 +47,15 @@ namespace CEIHaryana.Industry_Master
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
+                statement.Visible = false;
             }
             else
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-                string script = "alert(\"No Record Found\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                statement.Visible = true;
+                //string script = "alert(\"No Record Found\");";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             ds.Dispose();
         }

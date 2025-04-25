@@ -46,7 +46,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-                string script = "alert(\"No Record Found\");";
+                string script = "alert(\"No Record Found for Inspections\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             ds.Dispose();
@@ -68,7 +68,7 @@ namespace CEIHaryana.SiteOwnerPages
                 Label lblTestRportId = (Label)row.FindControl("lblTestRportId");
                 Label lblType = (Label)row.FindControl("lblType");
                 Label LblInspectionType = (Label)row.FindControl("LblInspectionType");
-                Label LblAssignTo = (Label)row.FindControl("LblAssignTo");
+                Label LblAssignTo = (Label)row.FindControl("LblAssignTo"); 
                 Label lblApproveDateLabel = row.FindControl("lblApproveDate") as Label;
                 string ApproveDate = lblApproveDateLabel.Text;
                 if (lblType.Text.Trim() == "Line")
@@ -82,10 +82,6 @@ namespace CEIHaryana.SiteOwnerPages
                 else if (lblType.Text.Trim() == "Generating Set")
                 {
                     Session["GeneratingSetId"] = lblTestRportId.Text.Trim();
-                }
-                else if (lblType.Text.Trim() == "Switching Station")
-                {
-                    Session["SwitchingSubstationId"] = lblTestRportId.Text.Trim();
                 }
                 if (e.CommandName == "Select")
                 {
@@ -117,28 +113,30 @@ namespace CEIHaryana.SiteOwnerPages
 
                     if (LblInspectionType.Text == "New")
                     {
-                        if (lblType.Text != "Lift" && lblType.Text != "Escalator" && lblType.Text != "Lift/Escalator" && lblType.Text != "MultiLift" && lblType.Text != "MultiEscalator")
-                        {
-                            if (ApproveDate != null && DateTime.TryParse(ApproveDate, out DateTime lblApproveDate))
+
+                        
+                            if (lblType.Text != "Lift" && lblType.Text != "Escalator" && lblType.Text != "Lift/Escalator" && lblType.Text != "MultiLift" && lblType.Text != "MultiEscalator")
                             {
-                                DateTime comparisonDate = DateTime.Parse("2024-11-16");
-
-                                if (lblApproveDate <= comparisonDate)
+                                if (ApproveDate != null && DateTime.TryParse(ApproveDate, out DateTime lblApproveDate))
                                 {
-                                    Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
-                                }
-                                else
-                                {
-                                    Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
-                                }
+                                    DateTime comparisonDate = DateTime.Parse("2024-11-16");
 
+                                    if (lblApproveDate <= comparisonDate)
+                                    {
+                                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                                    }
+                                    else
+                                    {
+                                        Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                                    }
+
+                                }
                             }
-                        }
-                        else if (lblType.Text == "Lift" || lblType.Text == "Escalator" || lblType.Text == "Lift/Escalator" || lblType.Text == "MultiLift" || lblType.Text == "MultiEscalator")
-                        {
+                            else if (lblType.Text == "Lift" || lblType.Text == "Escalator" || lblType.Text == "Lift/Escalator" || lblType.Text == "MultiLift" || lblType.Text == "MultiEscalator")
+                            {
 
-                            Response.Redirect("/SiteOwnerPages/LiftApprovalData.aspx", false);
-                        }
+                                Response.Redirect("/SiteOwnerPages/LiftApprovalData.aspx", false);
+                            }
                     }
                     else if (LblInspectionType.Text == "Periodic")
                     {

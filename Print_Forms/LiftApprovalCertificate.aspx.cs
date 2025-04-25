@@ -21,8 +21,7 @@ namespace CEIHaryana.Print_Forms
                 try
                 {
                     if (!IsPostBack)
-                    {
-                       
+                    {                      
                          if (Session["SiteOwnerId"] != null || Convert.ToString(Session["SiteOwnerId"]) != string.Empty)
                         {
                             GetData();
@@ -39,13 +38,18 @@ namespace CEIHaryana.Print_Forms
                         {
                             GetData();
                         }
-
-
+                        else
+                        {
+                            Session["SiteOwnerId"] = "";
+                            Session["AdminId"] = "";
+                            Session["StaffID"] = "";
+                            Response.Redirect("/LogOut.aspx", false);
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    Response.Redirect("/Login.aspx");
+                    Response.Redirect("/SiteOwnerLogout.aspx");
                 }
             }
 
@@ -71,8 +75,7 @@ namespace CEIHaryana.Print_Forms
                 {
                     lblAddress1.Text = dt.Rows[0]["Header1"].ToString();
                     lblAdress2.Text = dt.Rows[0]["Header2"].ToString();
-                    lblAdress3.Text = dt.Rows[0]["Header3"].ToString();
-                    //lblEmail.Text = dt.Rows[0]["Header4"].ToString();
+                    lblAdress3.Text = dt.Rows[0]["Header3"].ToString();                   
                     if (string.IsNullOrEmpty(dt.Rows[0]["Header4"].ToString()))
                     {
                         lblEmail.Visible = false;
@@ -82,11 +85,8 @@ namespace CEIHaryana.Print_Forms
                         lblEmail.Visible = true;
                         lblEmail.Text = dt.Rows[0]["Header4"].ToString();
                     }
-
-
                     lblRegNo.Text = dt.Rows[0]["RegistrationNo"].ToString();
                     lblCompanyName.Text = dt.Rows[0]["Maker"].ToString();
-
                     lblAddress.Text = dt.Rows[0]["SiteAddress"].ToString();
                     DateTime createdDate1 = Convert.ToDateTime(dt.Rows[0]["ApprovedDate"]);
                     lblInspectionDate.Text = createdDate1.ToString("dd/MM/yyyy");
@@ -94,11 +94,12 @@ namespace CEIHaryana.Print_Forms
                     lblMakerName.Text = dt.Rows[0]["Maker"].ToString();
                     lblSrNo.Text = dt.Rows[0]["RegistrationSrNo"].ToString();
                     lblTypeOflift.Text = dt.Rows[0]["TypeOfLift"].ToString();
-
+                    lblDistrict.Text = dt.Rows[0]["District"].ToString().Trim().ToUpper();
                     lblTypeControl.Text = dt.Rows[0]["TypeOfControl"].ToString();
                     lblCapacity.Text = dt.Rows[0]["Capacity"].ToString();
                     lblMemoNo.Text = dt.Rows[0]["MemoNo"].ToString();
-                    lblErectionDate.Text = dt.Rows[0]["ErectionDate"].ToString();
+                    DateTime ErectedDate = Convert.ToDateTime(dt.Rows[0]["ErectionDate"]);
+                    lblErectionDate.Text = ErectedDate.ToString("dd/MM/yyyy");
                     DateTime createdDate = Convert.ToDateTime(dt.Rows[0]["CreatedDate"]);
                     lblDated.Text = createdDate.ToString("dd/MM/yyyy");
                     string dp_Id6 = dt.Rows[0]["TypeOfInspection"].ToString();
@@ -114,8 +115,7 @@ namespace CEIHaryana.Print_Forms
                     }
                     myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["Signature"]);
                     lblstamp1.Text = dt.Rows[0]["Stamp1"].ToString();
-                    lblstamp2.Text = dt.Rows[0]["Stamp2"].ToString();
-                    //lblstamp3.Text = dt.Rows[0]["Stamp3"].ToString();
+                    lblstamp2.Text = dt.Rows[0]["Stamp2"].ToString();                 
                     if (string.IsNullOrEmpty(dt.Rows[0]["Stamp3"].ToString()))
                     {
                         lblstamp3.Visible = false;
@@ -125,77 +125,10 @@ namespace CEIHaryana.Print_Forms
                         lblstamp3.Visible = true;
                         lblstamp3.Text = dt.Rows[0]["Stamp3"].ToString();
                     }
-
                 }
-                else
-                {
-                    DataSet ds = new DataSet();
-                    ds = CEI.PrintDetailsFor_LiftCertificate(InspectionId, ID);
-                    lblAddress1.Text = ds.Tables[0].Rows[0]["Header1"].ToString();
-                    lblAdress2.Text = ds.Tables[0].Rows[0]["Header2"].ToString();
-                    lblAdress3.Text = ds.Tables[0].Rows[0]["Header3"].ToString();
-                    //lblEmail.Text = ds.Tables[0].Rows[0]["Header4"].ToString();
-                    if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Header4"].ToString()))
-                    {
-                        lblEmail.Visible = false;
-                    }
-                    else
-                    {
-                        lblEmail.Visible = true;
-                        lblEmail.Text = ds.Tables[0].Rows[0]["Header4"].ToString();
-                    }
-
-
-                    lblRegNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
-                    lblCompanyName.Text = ds.Tables[0].Rows[0]["Maker"].ToString();
-
-                    lblAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
-                    DateTime createdDate1 = Convert.ToDateTime(ds.Tables[0].Rows[0]["ApprovedDate"]);
-                    lblInspectionDate.Text = createdDate1.ToString("dd/MM/yyyy");
-
-                    lblMakerName.Text = ds.Tables[0].Rows[0]["Maker"].ToString();
-                    lblSrNo.Text = ds.Tables[0].Rows[0]["RegistrationSrNo"].ToString();
-                    lblTypeOflift.Text = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
-
-                    lblTypeControl.Text = ds.Tables[0].Rows[0]["TypeOfControl"].ToString();
-                    lblCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
-                    lblMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
-                    lblErectionDate.Text = ds.Tables[0].Rows[0]["ErectionDate"].ToString();
-                    DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["CreatedDate"]);
-                    lblDated.Text = createdDate.ToString("dd/MM/yyyy");
-                    string dp_Id6 = ds.Tables[0].Rows[0]["TypeOfInspection"].ToString();
-                    if (dp_Id6 == "Periodic")
-                    {
-                        txtSD.Visible = true;
-                        myImage.Visible = false;
-                    }
-                    else
-                    {
-                        txtSD.Visible = false;
-
-                    }
-                    myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])ds.Tables[0].Rows[0]["Signature"]);
-                    lblstamp1.Text = ds.Tables[0].Rows[0]["Stamp1"].ToString();
-                    lblstamp2.Text = ds.Tables[0].Rows[0]["Stamp2"].ToString();
-                    //lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
-                    if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Stamp3"].ToString()))
-                    {
-                        lblstamp3.Visible = false;
-                    }
-                    else
-                    {
-                        lblstamp3.Visible = true;
-                        lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
-                    }
-
-                    //CEI.UpdateLiftApprovedCertificatedata(InspectionId);
-                }
+               
                 GridBind();
-                //Session["StaffID"] = "";
-                //Session["SiteOwnerId"] = "";
-                //Session["AdminId"] = "";
-                //Session["InProcessInspectionId"] = "";
-                // Session["InspectionId"]= "";
+              
                 string script = "<script type=\"text/javascript\">printDiv('printableDiv');</script>";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "PrintOnLoad", script, false);
 
@@ -203,7 +136,8 @@ namespace CEIHaryana.Print_Forms
 
             catch (Exception ex)
             {
-                throw;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
 
         }
@@ -211,18 +145,7 @@ namespace CEIHaryana.Print_Forms
         {
             try
             {
-                ID = Session["LiftTestReportID"].ToString();
-                //if (Session["InProcessInspectionId"] != null)
-                //{
-                //    ID = Session["InProcessInspectionId"].ToString();
-                //}
-                //else if (Session["InspectionId"] != null)
-                //{
-                //   // ID = Session["InspectionId"].ToString();
-                //    ID = Session["LiftTestReportID"].ToString();
-
-                //}
-                //ID = Session["InspectionId"].ToString();
+                ID = Session["LiftTestReportID"].ToString();            
                 DataSet ds = new DataSet();
                 ds = CEI.getDataforLift(ID);
                 if (ds.Tables.Count > 0)
@@ -234,17 +157,18 @@ namespace CEIHaryana.Print_Forms
                 {
                     Gridview1.DataSource = null;
                     Gridview1.DataBind();
-                    //string script = "alert(\"No Record Found\");";
-                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                   
                 }
                 ds.Dispose();
             }
             catch (Exception ex)
             {
-                //throw;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
 
+      
         protected void Gridview1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
@@ -258,21 +182,22 @@ namespace CEIHaryana.Print_Forms
                     if (lblTypeOfInspection == null || ImgSignature == null)
                         return;
 
+                    // Get the Signature value safely
                     object signatureData = DataBinder.Eval(e.Row.DataItem, "Signature");
 
-                    if (signatureData != null && signatureData != DBNull.Value && signatureData is byte[])
-                    {
-                        byte[] signatureBytes = (byte[])signatureData;
+                    // Debugging - Log what type of data is retrieved
+                    System.Diagnostics.Debug.WriteLine($"Signature Type: {signatureData?.GetType().FullName}");
 
-                        if (signatureBytes.Length > 0)
-                        {
-                            ImgSignature.Visible = true;
-                            ImgSignature.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String(signatureBytes);
-                        }
-                        else
-                        {
-                            ImgSignature.Visible = false;
-                        }
+                    if (signatureData == DBNull.Value || signatureData == null)
+                    {
+                        // If the signature is NULL, display an empty image (or leave it hidden)
+                        ImgSignature.ImageUrl = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="; // 1x1 transparent GIF
+                        ImgSignature.Visible = true; // Or false if you don't want empty images
+                    }
+                    else if (signatureData is byte[] signatureBytes && signatureBytes.Length > 0)
+                    {
+                        ImgSignature.Visible = true;
+                        ImgSignature.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String(signatureBytes);
                     }
                     else
                     {
@@ -288,12 +213,11 @@ namespace CEIHaryana.Print_Forms
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("Error in GridView1_RowDataBound: " + ex.Message);
+                System.Diagnostics.Debug.WriteLine("Error in GridView1_RowDataBound: " + ex.ToString());
             }
         }
 
 
-       
 
     }
 }

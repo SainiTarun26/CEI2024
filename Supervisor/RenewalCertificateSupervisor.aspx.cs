@@ -435,7 +435,7 @@ namespace CEIHaryana.Supervisor
                     else
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Some Error Occured,Please Login Again');", true);
-                        Response.Redirect("/Login.aspx");
+                        Response.Redirect("/SiteOwnerLogout.aspx");
                     }
                 }
                 else
@@ -447,7 +447,7 @@ namespace CEIHaryana.Supervisor
             catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Some Error Occured,Please Login Again');", true);
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/SiteOwnerLogout.aspx");
             }
         }
 

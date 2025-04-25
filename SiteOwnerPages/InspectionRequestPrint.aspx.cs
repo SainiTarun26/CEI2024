@@ -21,58 +21,79 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (!Page.IsPostBack)
                 {
-                    if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
+                    if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != string.Empty)
                     {
-                        GetDetailstoPrint();
-                        BindAttachmentGrid();
+                        //string siteOwnerId = Session["SiteOwnerId"] as string;
+                        string ID = Session["InspectionId"] as string ?? Session["PrintInspectionID"] as string;
+
+                        if (!string.IsNullOrEmpty(ID))
+                        {
+                            GetDetailstoPrint(ID);
+                        }
+                        else
+                        {
+                            Session["InspectionId"] = "";
+                            Session["PrintInspectionID"] = "";
+                            Response.Redirect("SiteOwnerPages/InspectionHistory.aspx", false);
+                        }
+                    }
+                    else
+                    {
+                        Session["SiteOwnerId"] = "";
+                        Response.Redirect("SiteOwnerPages/CreateTestReports.aspx", false);
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Response.Redirect("/login.aspx");
+                Session["InspectionId"] = "";
+                Session["PrintInspectionID"] = "";
+                string script = "alert('An error occurred');";
+                ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, true);
             }
         }
 
-        private void BindAttachmentGrid()
+        private void BindAttachmentGrid(string InspID)
         {
-            string GetAttachedDocuments = ID.ToString();
+            //string GetAttachedDocuments = ID.ToString();
             DataSet ds = new DataSet();
-            ds = CEI.GetAttachmentsDatainInspectionForm(GetAttachedDocuments);
+            ds = CEI.GetAttachmentsDatainInspectionForm(InspID);
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
+                statement.Visible = false;
             }
             else
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-                string script = "alert(\"No Record Found\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                statement.Visible = true;
+                //string script = "alert(\"No Record Found\");";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             ds.Dispose();
         }
 
-        private void GetDetailstoPrint()
+        private void GetDetailstoPrint(string InspectionID)
         {
-            if (Session["InspectionId"] != null && !string.IsNullOrEmpty(Session["InspectionId"].ToString()))
+            try
             {
-                ID = Session["InspectionId"].ToString();
-               
-            }
-            else if (Session["PrintInspectionID"] != null && !string.IsNullOrEmpty(Session["PrintInspectionID"].ToString()))
-            {
-                ID = Session["PrintInspectionID"].ToString();
-            }
+                //if (Session["InspectionId"] != null && !string.IsNullOrEmpty(Session["InspectionId"].ToString()))
+                //{
+                //    ID = Session["InspectionId"].ToString();
+                //}
+                //else if (Session["PrintInspectionID"] != null && !string.IsNullOrEmpty(Session["PrintInspectionID"].ToString()))
+                //{
+                //    ID = Session["PrintInspectionID"].ToString();
+                //}
 
-            if (!string.IsNullOrEmpty(ID))
-            {
+                //if (!string.IsNullOrEmpty(ID))
+                //{
                 DataSet ds = new DataSet();
-                ds = CEI.DetailstoPrintFormInspectionDetails(int.Parse(ID));
+                ds = CEI.DetailstoPrintFormInspectionDetails(int.Parse(InspectionID));
                 txtInstallationType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-                txtReqNumber.Text = ID.ToString(); 
-                //txtTestReportNo.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                txtReqNumber.Text = InspectionID.ToString();
                 txtTestReportNo.Text = ds.Tables[0].Rows[0]["TestReportNo"].ToString();
                 txtName.Text = ds.Tables[0].Rows[0]["SiteOwnerName"].ToString();
                 txtIntimationId.Text = ds.Tables[0].Rows[0]["IntimationId"].ToString();
@@ -81,8 +102,6 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     Premises.Visible = false;
                 }
-               
-
                 txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                 txtApplicant.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
@@ -92,15 +111,23 @@ namespace CEIHaryana.SiteOwnerPages
                 txtPaymentAmount.Text = ds.Tables[0].Rows[0]["PaymentAmount"].ToString();
                 txtSubmissionDate.Text = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
                 txtRTSDueDate.Text = ds.Tables[0].Rows[0]["RTSDueDate"].ToString();
+
+                BindAttachmentGrid(InspectionID);
             }
-            //Session["PrintInspectionID"] = "";
-            //Session["InspectionId"] = "";
+            catch (Exception ex)
+            {
+                Session["InspectionId"] = "";
+                Session["PrintInspectionID"] = "";
+                string script = "alert('An error occurred');";
+                ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, true);
+            }
         }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
             Session["PrintInspectionID"] = "";
             Session["InspectionId"] = "";
-            Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);           
+            Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);
         }
     }
 }

@@ -41,7 +41,7 @@ namespace CEIHaryana.Supervisor
         {
             string Voltage = Session["VoltageLevel"].ToString();
             DataSet dsVoltage = new DataSet();
-            dsVoltage = CEI.GetddlVotlageforSwitchingStation(Voltage);
+            //dsVoltage = CEI.GetddlVotlageforSwitchingStation(Voltage);
             ddlVoltage.DataSource = dsVoltage;           
             ddlVoltage.DataTextField = "VoltageID";
             ddlVoltage.DataValueField = "Voltage";
@@ -155,9 +155,9 @@ namespace CEIHaryana.Supervisor
                 string CreatedBy = Session["SupervisorID"].ToString().Trim();
                 string installationNo = Session["IHID"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.InsertSwitchinData(count, txtid.Text, txtSerialNo.Text, ddlVoltage.SelectedValue.ToString(), txtName.Text, 
-                    ddlBreakerType.SelectedItem.Text, txtOther.Text,
-                     txtBreakerNo.Text, txtCapacity.Text, ddlEarthingsubstation.SelectedItem.Text, CreatedBy);
+                //ds = CEI.InsertSwitchinData(count, txtid.Text, txtSerialNo.Text, ddlVoltage.SelectedValue.ToString(), txtName.Text, 
+                //    ddlBreakerType.SelectedItem.Text, txtOther.Text,
+                //     txtBreakerNo.Text, txtCapacity.Text, ddlEarthingsubstation.SelectedItem.Text, CreatedBy);
                 if (ds != null && ds.Tables.Count > 0)
                 {
                     TestRportId = ds.Tables[0].Rows[0]["TReportID"].ToString();
@@ -176,7 +176,7 @@ namespace CEIHaryana.Supervisor
                         TextBox txtEarthingValue = (TextBox)row.FindControl("txtSubstationEarthing" + i);
                         TextBox txtOtherEarthing = (TextBox)row.FindControl("txtOtherEarthing" + i);
 
-                        CEI.InsertSwitchingEarting(TestRportId, i, ddlEarthingType.SelectedItem.Text, txtEarthingValue.Text, ddlUsedFor.SelectedItem.Text, txtOtherEarthing.Text);
+                        //CEI.InsertSwitchingEarting(TestRportId, i, ddlEarthingType.SelectedItem.Text, txtEarthingValue.Text, ddlUsedFor.SelectedItem.Text, txtOtherEarthing.Text);
 
                     }
                 }

@@ -266,6 +266,7 @@
                 </div>
             </div>
         </div>
+         <asp:HiddenField ID="hfOwner" runat="server" />
     </div>
     <script type="text/javascript">
         function Search_Gridview(strKey) {

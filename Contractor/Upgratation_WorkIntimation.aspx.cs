@@ -71,12 +71,19 @@ namespace CEIHaryana.Contractor
                             Session["UpdationId"] = Session["id"];
                             Session["PrintIntimationId"] = Session["id"];
                             Session["id"] = "";
+
+                            //Added By Aslam 22 apl 2025 to Remove industry if private and individual selection is done In Powerutility also remove
+                            HideIndustry_PremisesOption();
                         }
                     }
                     else
                     {
                         Response.Redirect("/ContractorLogout.aspx");
                     }
+                }
+                else
+                {
+                    HideIndustry_PremisesOption();
                 }
             }
             catch
@@ -385,9 +392,27 @@ namespace CEIHaryana.Contractor
                     individual.Visible = true;
                     agency.Visible = false;
                 }
+                //Added By Aslam 22 apl 2025 to Remove industry if private and individual selection is done In Powerutility also remove
+                HideIndustry_PremisesOption();
             }
             catch { }
 
+        }
+
+        //Added By Aslam 22 apl 2025 to Remove industry if private and individual selection is done In Powerutility also remove
+        private void HideIndustry_PremisesOption()
+        {
+            if ((ddlApplicantType.SelectedIndex == 1 && ddlworktype.Visible && ddlworktype.SelectedIndex == 1) || (!ddlworktype.Visible && ddlApplicantType.SelectedIndex == 1) || (ddlApplicantType.SelectedIndex == 3 && ddlworktype.Visible && ddlworktype.SelectedIndex == 1) || (!ddlworktype.Visible && ddlApplicantType.SelectedIndex == 3) || ddlApplicantType.SelectedIndex == 2)
+            {
+                foreach (ListItem item in ddlPremises.Items)
+                {
+                    if (item.Value == "4")
+                    {
+                        item.Attributes.Add("style", "display:none");
+                        break;
+                    }
+                }
+            }
         }
         protected void ddlworktype_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -779,6 +804,8 @@ namespace CEIHaryana.Contractor
             {
                 DivOtherDepartment.Visible = true;
             }
+            //Added By Aslam 22 apl 2025 to Remove industry if private and individual selection is done In Powerutility also remove
+            HideIndustry_PremisesOption();
         }
         protected void btnDelete1_Click(object sender, EventArgs e)
         {

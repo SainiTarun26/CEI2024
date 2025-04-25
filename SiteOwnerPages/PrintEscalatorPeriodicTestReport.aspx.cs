@@ -149,6 +149,7 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     if (e.CommandName == "Select")
                     {
+                        //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                         fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                         string script = $@"<script>window.open('{fileName}','_blank');</script>";
                         ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -168,6 +169,7 @@ namespace CEIHaryana.SiteOwnerPages
                     string fileName = Session["File"].ToString();
 
                     string filePath = fileName.Replace("~", "");
+                    //filePath = "https://uat.ceiharyana.com" + filePath;
                     filePath = "https://uat.ceiharyana.com" + filePath;
 
                     string script = $@"<script>window.open('{filePath}','_blank');</script>";

@@ -110,7 +110,7 @@
                         </div>
                     </div>
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server"
-                        Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
+                        Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="500" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
                             <asp:TemplateField HeaderText="SNo">
@@ -135,7 +135,6 @@
                                     <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
                                     <asp:Label ID="lblRequestStatus" runat="server" Text='<%#Eval("RequestStatus") %>'></asp:Label>
                                     <asp:Label ID="lblTypeOfInspection" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label>
-                                     <asp:Label ID="lblInstallationFor" runat="server" Text='<%#Eval("InstallationFor") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Id" Visible="False">

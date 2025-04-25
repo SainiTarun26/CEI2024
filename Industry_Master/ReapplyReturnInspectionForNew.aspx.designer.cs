@@ -159,6 +159,33 @@ namespace CEIHaryana.Industry_Master
         protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList2;
 
         /// <summary>
+        /// hnOwnerId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hnOwnerId;
+
+        /// <summary>
+        /// hnReturnStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hnReturnStatus;
+
+        /// <summary>
+        /// hnApplicationStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hnApplicationStatus;
+
+        /// <summary>
         /// GridView2 control.
         /// </summary>
         /// <remarks>

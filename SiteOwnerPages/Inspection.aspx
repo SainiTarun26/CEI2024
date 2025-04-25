@@ -161,12 +161,41 @@
             background: #9292cc;
             color: white;
         }
+        h6#maincard {
+    font-size: 20px !important;
+    color: #010101;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+        h7#maincard1 {
+    font-size: 18px !important;
+    color: #010101;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+       div#ContentPlaceHolder1_Div1{
+           margin-left:0px;
+       }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="content-wrapper">
-        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; background:white; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                   <div class="row">
+     <div class="col-md-12" style="text-align: center;">
+         <h6 class="card-title fw-semibold mb-4" id="maincard" style="font-size: 22px;">Inspection History
+         </h6>
+     </div>
+ </div>
+            <div class="row">
+    <div class="col-12">
+        <h7 class="card-title fw-semibold mb-4" id="maincard1" style="font-size: 18px !important;">SiteOwner Details</h7>
+    </div>
+</div>
+            
+            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+
             <div class="row">
                 <div class="col-4" id="Inspections" runat="server" visible="false">
                     <label>
@@ -206,6 +235,14 @@
                     <asp:TextBox class="form-control" ID="txtApplicationNo" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
             </div>
+            </div>
+            <div class="row">
+    <div class="col-12">
+        <h7 class="card-title fw-semibold mb-4" id="maincard1" style="font-size: 18px !important;">Documents Attached</h7>
+    </div>
+</div>
+                                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+
             <div class="row">
                 <div class="col-12">
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
@@ -242,12 +279,26 @@
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
+                    <div class="row" id="statement" runat="server" visible="false">
+                        <label for="CompletionDateasperWorkOrder" style="font-size: 16px; font-weight: bold;">
+                            No any Document Attached                                             
+                        </label>
+                    </div>
                 </div>
             </div>
-            <div class="row card" style="padding-top: 10px;">
+            </div>
+            <div class="row">
+    <div class="col-12">
+        <h7 class="card-title fw-semibold mb-4" id="maincard1" style="font-size: 18px !important;">Inspection Details</h7>
+    </div>
+</div>
+                                                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+
+                                                        <div class="row">
+           
                 <div class="col-12">
 
-                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="GridView1_RowCommand" onRowDataBound="GridView2_RowDataBound" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="GridView1_RowCommand" onRowDataBound="GridView2_RowDataBound" AutoGenerateColumns="false">
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
                             <asp:TemplateField HeaderText="SNo">
@@ -304,15 +355,19 @@
                     </asp:GridView>
 
                 </div>
-            </div>
-
+                                                            </div>
+            
+</div>
              <div class="row" id="Div1" runat="server" visible="False">
-     <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
+     <div class="card-title" style="font-size: 18px !important;
+color: #010101;
+text-transform: capitalize;
+font-weight: 700;">
          Test Reports & Documents Attached in Test Reports
      </div>
  </div>
 
-             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivViewTRinMultipleCaseNew" runat="server" visible="false">
+             <div class="card"  style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;" id="DivViewTRinMultipleCaseNew" runat="server" visible="false">
      <div class="col-12" style="padding: 0px;">
          <asp:GridView ID="Grid_MultipleInspectionTR" CssClass="table table-bordered table-striped table-responsive" OnRowDataBound="Grid_MultipleInspectionTR_RowDataBound" OnRowCommand="Grid_MultipleInspectionTR_RowCommand" runat="server" AutoGenerateColumns="false">
              <HeaderStyle BackColor="#B7E2F0" />

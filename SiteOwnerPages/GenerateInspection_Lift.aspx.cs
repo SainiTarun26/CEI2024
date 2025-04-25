@@ -286,7 +286,7 @@ namespace CEIHaryana.SiteOwnerPages
                     PaymentDetails.Visible = true;
                     btnSubmit.Visible = true;
                     btnReset.Visible = true;
-                    
+                    Declaration.Visible = true;
                     //PlantLocationRoofTop = null;
                     //PlantLocationGroundMounted = null;
                     GetDocumentUploadData(ApplicantTypeCode,InspectionType,inspectionIdRes);
@@ -420,64 +420,71 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     if (atLeastOneInspectionChecked)
                     {
-                        string lblCategory = string.Empty;
-                        
-                        if (hdnInstallationType.Value != null && hdnInstallationType.Value != "")
+                        if (Check.Checked == true)
                         {
-                            lblCategory = hdnInstallationType.Value;
-                        }
-                        else
-                        {
-                            return;
-                        }
+                            string lblCategory = string.Empty;
 
-                        IntimationId = Session["IntimationId_LiftEscalator"].ToString();
-
-                        //string lblApplicant = Session["SelectedApplicant"].ToString().Trim();
-                        //string lblVoltageLevel = Session["SelectedVoltageLevel"].ToString().Trim();
-                        //string lblDivision = Session["SelectedDivision"].ToString().Trim();
-                        //string lblDistrict = Session["SelectedDistrict"].ToString().Trim();
-
-                        string District = HdnDistrict.Value;
-                        //string 
-                        ApplicantType = HdnApplicantType.Value;
-                        string Division = HdnDivision.Value;
-                        string transcationId = string.Empty;
-                        string TranscationDate = string.Empty;
-                        decimal TotalAmount = Convert.ToDecimal(Session["Amount"]);                       
-                        string Assigned = string.Empty;
-                        string InstallationTypeID = string.Empty;
-                     
-                        if (ChallanDetail.Visible == true)
-                        {
-                            if (txttransactionId.Text != "")
+                            if (hdnInstallationType.Value != null && hdnInstallationType.Value != "")
                             {
-                                transcationId = txttransactionId.Text.Trim();
-                                TranscationDate = string.IsNullOrEmpty(txttransactionDate.Text) ? null : txttransactionDate.Text;
+                                lblCategory = hdnInstallationType.Value;
                             }
                             else
                             {
-                                txttransactionDate.Focus();
-                                txttransactionId.Focus();
                                 return;
                             }
+
+                            IntimationId = Session["IntimationId_LiftEscalator"].ToString();
+
+                            //string lblApplicant = Session["SelectedApplicant"].ToString().Trim();
+                            //string lblVoltageLevel = Session["SelectedVoltageLevel"].ToString().Trim();
+                            //string lblDivision = Session["SelectedDivision"].ToString().Trim();
+                            //string lblDistrict = Session["SelectedDistrict"].ToString().Trim();
+
+                            string District = HdnDistrict.Value;
+                            //string 
+                            ApplicantType = HdnApplicantType.Value;
+                            string Division = HdnDivision.Value;
+                            string transcationId = string.Empty;
+                            string TranscationDate = string.Empty;
+                            decimal TotalAmount = Convert.ToDecimal(Session["Amount"]);
+                            string Assigned = string.Empty;
+                            string InstallationTypeID = string.Empty;
+
+                            if (ChallanDetail.Visible == true)
+                            {
+                                if (txttransactionId.Text != "")
+                                {
+                                    transcationId = txttransactionId.Text.Trim();
+                                    TranscationDate = string.IsNullOrEmpty(txttransactionDate.Text) ? null : txttransactionDate.Text;
+                                }
+                                else
+                                {
+                                    txttransactionDate.Focus();
+                                    txttransactionId.Focus();
+                                    return;
+                                }
+                            }
+                            if (RadioButtonList2.SelectedValue != null)
+                            {
+                                PaymentMode = RadioButtonList2.SelectedItem.ToString();
+                            }
+                            //StaffAssigned = "XEN";
+                            ServiceType = 4;
+                            DataSet dsp = new DataSet();
+                            dsp = CEI.ToGetStaffIdforPeriodic(Division, "XEN", District);
+                            if (dsp.Tables.Count > 0 && dsp.Tables[0].Rows.Count > 0)
+                            {
+                                Assigned = dsp.Tables[0].Rows[0]["StaffUserId"].ToString();
+                            }
+                            InstallationTypeID = "10";//Session["InstallationTypeID"].ToString();
+                            InsertFilesIntoDatabase(InstallationTypeID, CreatedBy, txtContact.Text, ApplicantTypeCode, IntimationId, ApplicantType, lblCategory.Trim(),
+                        District, Division, PaymentMode, txtInspectionRemarks.Text.Trim(), CreatedBy, TotalAmount, Assigned, transcationId, TranscationDate, Convert.ToInt32(InspectionIdClientSideCheckedRow.Value),
+                        ServiceType);
                         }
-                        if (RadioButtonList2.SelectedValue != null)
+                        else
                         {
-                            PaymentMode = RadioButtonList2.SelectedItem.ToString();
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Please accept declaration first to proceed.')", true);
                         }
-                        //StaffAssigned = "XEN";
-                        ServiceType = 4;
-                        DataSet dsp = new DataSet();
-                        dsp = CEI.ToGetStaffIdforPeriodic(Division, "XEN", District);
-                        if (dsp.Tables.Count > 0 && dsp.Tables[0].Rows.Count > 0)
-                        {
-                            Assigned = dsp.Tables[0].Rows[0]["StaffUserId"].ToString();
-                        }
-                        InstallationTypeID = "10";//Session["InstallationTypeID"].ToString();
-                        InsertFilesIntoDatabase(InstallationTypeID, CreatedBy, txtContact.Text, ApplicantTypeCode, IntimationId, ApplicantType, lblCategory.Trim(),
-                    District, Division, PaymentMode, txtInspectionRemarks.Text.Trim(), CreatedBy, TotalAmount, Assigned, transcationId, TranscationDate, Convert.ToInt32(InspectionIdClientSideCheckedRow.Value),
-                    ServiceType);
                     }
                     else
                     {
@@ -692,8 +699,14 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     GridViewPayment.DataSource = null;
                     GridViewPayment.DataBind();
-                    string script = "alert(\"Please Fill the Form first for knowing Payment \");";
+                    string script = "alert(\"Please Check atleast one CheckBox. \");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "serverscript", script, true);
+                    UploadDocuments.Visible = false;
+                    FeesDetails.Visible = false;
+                    PaymentDetails.Visible = false;
+                    btnSubmit.Visible = false;
+                    btnReset.Visible = false;
+                    Declaration.Visible = false;
                 }
                 dsa.Dispose();
             }
@@ -739,8 +752,9 @@ namespace CEIHaryana.SiteOwnerPages
                 if (e.CommandName == "Select")
                 {
                
-                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                   fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 

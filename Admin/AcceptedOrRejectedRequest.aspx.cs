@@ -103,9 +103,9 @@ namespace CEIHaryana.Admin
                 Label lblApproval = (Label)row.FindControl("lblApproval");
                 Session["Approval"] = lblApproval.Text.Trim();
                 Label lblInstallationFor = (Label)row.FindControl("lblInstallationFor");
-                string id = lblID.Text;
                 Label lblApproveDateLabel = row.FindControl("lblApproveDate") as Label;
                 string ApproveDate = lblApproveDateLabel.Text;
+                string id = lblID.Text;
                 Session["InspectionId"] = id;
                 if (e.CommandName == "Select")
                 {
@@ -157,7 +157,7 @@ namespace CEIHaryana.Admin
                         }
                         else if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
                         {
-                            Response.Redirect("/Admin/LiftApprovalData.aspx", false);
+                            Response.Redirect("/Admin/LiftEscalatorData.aspx", false);
                         }
 
                     }

@@ -18,7 +18,6 @@ using System.Reflection.Emit;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Xml.Linq;
 using Label = System.Web.UI.WebControls.Label;
 
 namespace CEIHaryana.Officers
@@ -28,8 +27,9 @@ namespace CEIHaryana.Officers
         CEI CEI = new CEI();
         private static int lineNumber = 0;
         IndustryApiLogDetails logDetails = new IndustryApiLogDetails();
-        private static string ApprovedorReject, Reason, StaffId, Suggestions, ExNotes;
+        private static string ApprovedorReject, Reason, StaffId, Suggestions;
         string Type = string.Empty;
+        string Status= string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -219,7 +219,7 @@ namespace CEIHaryana.Officers
                     }
                     //btnBack.Visible = true;
                     //Backbtn.Visible = false;
-                    string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
+                     Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
 
                     if (Status == "Approved")
                     {
@@ -240,9 +240,10 @@ namespace CEIHaryana.Officers
                         Grid_MultipleInspectionTR.Columns[7].Visible = false;
                         if (!string.IsNullOrEmpty(SiteInspectionDate))
                         {
-                            InspectionDate.Visible = true;
-                            txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
-                            txtInspectionDate.Attributes.Add("disabled", "true");
+                            InspectionDate.Visible = false;
+                            InsDate.Visible = true;
+                            string Date = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
+                            TXTDate.Text = DateTime.Parse(Date).ToString("yyyy-MM-dd");
                         }
                         //btnBack.Visible = true;
                         btnSubmit.Visible = false;
@@ -256,9 +257,10 @@ namespace CEIHaryana.Officers
                         Grid_MultipleInspectionTR.Columns[7].Visible = false;
                         if (!string.IsNullOrEmpty(SiteInspectionDate))
                         {
-                            InspectionDate.Visible = true;
-                            txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
-                            txtInspectionDate.Attributes.Add("disabled", "true");
+                            InspectionDate.Visible = false;
+                            InsDate.Visible = true;
+                            string Date = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
+                            TXTDate.Text = DateTime.Parse(Date).ToString("yyyy-MM-dd");
                         }
                         Rejection.Visible = true;
                         txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
@@ -371,9 +373,10 @@ namespace CEIHaryana.Officers
                         GridView1.Columns[7].Visible = false;
                         if (!string.IsNullOrEmpty(SiteInspectionDate))
                         {
-                            InspectionDate.Visible = true;
-                            txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
-                            txtInspectionDate.Attributes.Add("disabled", "true");
+                            InspectionDate.Visible = false;
+                            InsDate.Visible = true;
+                            string Date = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
+                            TXTDate.Text = DateTime.Parse(Date).ToString("yyyy-MM-dd");
                         }
                         btnSubmit.Visible = false;
                     }
@@ -386,9 +389,10 @@ namespace CEIHaryana.Officers
                         GridView1.Columns[7].Visible = false;
                         if (!string.IsNullOrEmpty(SiteInspectionDate))
                         {
-                            InspectionDate.Visible = true;
-                            txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
-                            txtInspectionDate.Attributes.Add("disabled", "true");
+                            InspectionDate.Visible = false;
+                            InsDate.Visible = true;
+                            string Date = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
+                            TXTDate.Text = DateTime.Parse(Date).ToString("yyyy-MM-dd");
                         }
                         Rejection.Visible = true;
                         txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
@@ -450,8 +454,9 @@ namespace CEIHaryana.Officers
                 if (e.CommandName == "Select")
                 {
                     //ID = Session["InspectionId"].ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                     //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -470,8 +475,6 @@ namespace CEIHaryana.Officers
             ClickCount = Convert.ToInt32(Session["ClickCount"]);
             if (ClickCount < 1)
             {
-                ClickCount = ClickCount + 1;
-                Session["ClickCount"] = ClickCount;
                 int checksuccessmessage = 0;
                 try
                 {
@@ -502,13 +505,11 @@ namespace CEIHaryana.Officers
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be greater equal to application requested date.');", true);
                                 return;
                             }
-                            DateTime serverDate = DateTime.Now.Date;
-                            if (inspectionDate > serverDate)
-                            {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be less than Today date.');", true);
-                                return;
-                            }
 
+                            // For Double Click ----------
+                            ClickCount = ClickCount + 1;
+                            Session["ClickCount"] = ClickCount;
+                            // End ----------------------
                             ApprovedorReject = ddlReview.SelectedItem.ToString();
                             Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text.Trim();
 
@@ -517,17 +518,13 @@ namespace CEIHaryana.Officers
                                 Suggestions = string.IsNullOrEmpty(txtSuggestion.Text) ? null : txtSuggestion.Text.Trim();
                             }
 
-                            if (ExNote.Visible == true)
-                            {
-                             ExNotes = string.IsNullOrEmpty(txtNote.Text) ? null : txtNote.Text.Trim();
-                            }
                             try
                             {
                                 string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
                                 if (reqType == "Industry")
                                 {
-                                    string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
-                                    // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
+                                    string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
+                                    // string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in/api/project-service-logs-external_UHBVN");
                                     if (serverStatus != "Server is reachable.")
                                     {
                                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
@@ -535,7 +532,7 @@ namespace CEIHaryana.Officers
                                     }
                                 }
 
-                                CEI.InspectionFinalAction_Officer(ID, StaffId, ApprovedorReject, Reason, Suggestions, txtInspectionDate.Text, ExNotes);
+                                CEI.InspectionFinalAction(ID, StaffId, ApprovedorReject, Reason, Suggestions, txtInspectionDate.Text);
                                 if (ApprovedorReject.Trim() == "Approved")
                                 {
                                     CEI.InsertApprovedCertificatedata(ID);
@@ -551,7 +548,7 @@ namespace CEIHaryana.Officers
                                         string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
 
                                         logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                            "https://investharyana.in/api/project-service-logs-external_UHBVN",
+                                            "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
                                             new Industry_Inspection_StageWise_JsonDataFormat_Model
                                             {
                                                 actionTaken = ApiPostformatresult.ActionTaken,
@@ -685,7 +682,7 @@ namespace CEIHaryana.Officers
                     }
                     else
                     {
-                        Response.Redirect("/Login.aspx");
+                        Response.Redirect("/OfficerLogout.aspx");
                     }
                 }
                 catch (Exception ex)
@@ -764,7 +761,6 @@ namespace CEIHaryana.Officers
                         {
                             cmd.Parameters.AddWithValue("@inspectionDate", DBNull.Value);
                         }
-                        cmd.Parameters.AddWithValue("@Note", txtNote.Text.Trim());
                         int x = cmd.ExecuteNonQuery();
                         con.Close();
                         if (x > 0)
@@ -773,7 +769,14 @@ namespace CEIHaryana.Officers
                             btnSuggestions.Visible = true;
                             if (InspectionType == "New")
                             {
-                                Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                                if (InstallationType == "Multiple")
+                                {
+                                    Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                                }
+                                else
+                                {
+                                    Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                                }
                             }
                             else
                             {
@@ -859,13 +862,11 @@ namespace CEIHaryana.Officers
             ddlSuggestions.Visible = false;
             btnPreview.Visible = false;
             btnSuggestions.Visible = false;
-            ExNote.Visible = false;
             Note.Visible = false;
             if (ddlReview.SelectedValue == "2")
             {
                 Rejection.Visible = true;
                 txtSuggestion.Text = "";
-                txtNote.Text = "";
             }
             else if (ddlReview.SelectedValue == "1")
             {
@@ -873,7 +874,6 @@ namespace CEIHaryana.Officers
                 btnSuggestions.Visible = true;
                 ddlSuggestions.Visible = true;
                 Note.Visible = true;
-                ExNote.Visible = true;
                 Suggestion.Visible = true;
             }
         }
@@ -912,7 +912,6 @@ namespace CEIHaryana.Officers
                         {
                             cmd.Parameters.AddWithValue("@inspectionDate", DBNull.Value);
                         }
-                        cmd.Parameters.AddWithValue("@Note", txtNote.Text.Trim());
                         int x = cmd.ExecuteNonQuery();
                         con.Close();
                         if (x > 0)
@@ -1179,7 +1178,8 @@ namespace CEIHaryana.Officers
             else if (e.CommandName == "View")
             {
                 string fileName = "";
-               // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 //lblerror.Text = fileName;
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
@@ -1188,8 +1188,9 @@ namespace CEIHaryana.Officers
             else if (e.CommandName == "ViewInvoice")
             {
                 string fileName = "";
-               fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }

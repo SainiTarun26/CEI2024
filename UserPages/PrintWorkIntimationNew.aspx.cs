@@ -151,8 +151,9 @@ namespace CEIHaryana.UserPages
             if (Session["File"].ToString() != "" && Session["File"].ToString() != null)
             {
                 string fileName = Session["File"].ToString();
+                //string filePath = "https://uat.ceiharyana.com" + fileName;
                 string filePath = "https://uat.ceiharyana.com" + fileName;
-          
+                
                 string script = $@"<script>window.open('{filePath}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 

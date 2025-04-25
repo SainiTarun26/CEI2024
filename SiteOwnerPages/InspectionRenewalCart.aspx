@@ -342,9 +342,9 @@
                 </div>
             </div>
             <div>
+               <asp:HiddenField ID="hfOwner" runat="server" />
             </div>
         </div>
-        <asp:HiddenField ID="hfOwner" runat="server" />
     </div>
     <footer class="footer">
     </footer>

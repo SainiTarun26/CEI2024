@@ -108,7 +108,7 @@ namespace CEIHaryana
                         else
                         {
                             Session["ContractorID"] = txtUserID.Text;
-                            Response.Redirect("/ChangePassword.aspx");
+                            Response.Redirect("/ChangePassword.aspx", false);
                         }
                     }
                     else if (check == 3)

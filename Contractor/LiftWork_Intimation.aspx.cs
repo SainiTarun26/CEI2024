@@ -57,13 +57,13 @@ namespace CEIHaryana.Contractor
                     }
                     else
                     {
-                        Response.Redirect("/Login.aspx");
+                        Response.Redirect("/SiteOwnerLogout.aspx");
                     }
                 }
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/SiteOwnerLogout.aspx");
             }
         }
         public void GetGridData()
@@ -472,8 +472,9 @@ namespace CEIHaryana.Contractor
             if (Session["File"].ToString() != "" && Session["File"].ToString() != null)
             {
                 string fileName = Session["File"].ToString();
-                string filePath = "https://uat.ceiharyana.com" + fileName;
-
+                //string filePath = "https://uat.ceiharyana.com" + fileName;
+                 string filePath = "https://uat.ceiharyana.com" + fileName;
+                
                 //if (System.IO.File.Exists(filePath))
                 //{                
                 string script = $@"<script>window.open('{filePath}','_blank');</script>";
@@ -611,7 +612,7 @@ namespace CEIHaryana.Contractor
 
                     if (Session["ContractorID"] == null)
                     {
-                        Response.Redirect("/Login.aspx", false);
+                        Response.Redirect("/SiteOwnerLogout.aspx", false);
                         return;
                     }
 
@@ -662,45 +663,45 @@ namespace CEIHaryana.Contractor
                    Debug.WriteLine("Before IntimationDataInsertion");
                    Debug.WriteLine($"ContractorID: {ContractorID}, ApplicantTypeCode: {ddlApplicantType.SelectedValue}, PowerUtility: {ddlPoweUtility.SelectedItem?.ToString()}");
 
-                   //CEI.IntimationDataInsertion(
-                   //  UpdationId,
-                   // ContractorID,
-                   // ddlApplicantType.SelectedValue,
-                   // ddlPoweUtility.SelectedItem?.ToString(),
-                   // DdlWing.SelectedItem?.ToString(),
-                   // DdlZone.SelectedItem?.ToString(),
-                   // DdlCircle.SelectedItem?.ToString(),
-                   // DdlDivision.SelectedItem?.ToString(),
-                   // DdlSubDivision.SelectedItem?.ToString(),
-                   // ddlworktype.SelectedItem?.ToString(),
-                   // txtName.Text,
-                   // txtagency.Text,
-                   // txtPhone.Text,
-                   // txtAddress.Text,
-                   // ddlDistrict.SelectedItem?.ToString(),
-                   // txtPin.Text,
-                   // ddlPremises.SelectedItem?.ToString(),
-                   // txtOtherPremises.Text,
-                   // "upto 650 V",
-                   // Pan_TanNumber,
-                   // txtinstallationType1.Text,
-                   // txtinstallationNo1.Text,
-                   // txtinstallationType2.Text,
-                   // txtinstallationNo2.Text,
-                   // txtinstallationType3.Text,
-                   // txtinstallationNo3.Text,
-                   // txtEmail.Text,
-                   // txtStartDate.Text,
-                   // txtCompletitionDate.Text,
-                   // ddlAnyWork.SelectedItem?.ToString(),
-                   // filePathInfo,
-                   // txtCompletionDateAPWO.Text,
-                   // ddlApplicantType.SelectedItem?.ToString(),
-                   // ContractorID,
-                   // "",
-                   //  "",
-                   //  "",
-                   // transaction);
+                   CEI.IntimationDataInsertion(
+                     UpdationId,
+                    ContractorID,
+                    ddlApplicantType.SelectedValue,
+                    ddlPoweUtility.SelectedItem?.ToString(),
+                    DdlWing.SelectedItem?.ToString(),
+                    DdlZone.SelectedItem?.ToString(),
+                    DdlCircle.SelectedItem?.ToString(),
+                    DdlDivision.SelectedItem?.ToString(),
+                    DdlSubDivision.SelectedItem?.ToString(),
+                    ddlworktype.SelectedItem?.ToString(),
+                    txtName.Text,
+                    txtagency.Text,
+                    txtPhone.Text,
+                    txtAddress.Text,
+                    ddlDistrict.SelectedItem?.ToString(),
+                    txtPin.Text,
+                    ddlPremises.SelectedItem?.ToString(),
+                    txtOtherPremises.Text,
+                    "upto 650 V",
+                    Pan_TanNumber,
+                    txtinstallationType1.Text,
+                    txtinstallationNo1.Text,
+                    txtinstallationType2.Text,
+                    txtinstallationNo2.Text,
+                    txtinstallationType3.Text,
+                    txtinstallationNo3.Text,
+                    txtEmail.Text,
+                    txtStartDate.Text,
+                    txtCompletitionDate.Text,
+                    ddlAnyWork.SelectedItem?.ToString(),
+                    filePathInfo,
+                    txtCompletionDateAPWO.Text,
+                    ddlApplicantType.SelectedItem?.ToString(),
+                    ContractorID,
+                    "",
+                     "",
+                     "",
+                    transaction);
 
                     TypeOfInspection = ddlInspectionType.SelectedValue.ToString();
                     //Debug.WriteLine("After IntimationDataInsertion");

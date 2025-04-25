@@ -43,7 +43,6 @@ namespace CEIHaryana.Supervisor
         }
         private void getWorkIntimationData()
         {
-            try { 
             DataTable ds = new DataTable();
             string Id = Session["SupervisorID"].ToString();
             ds = cei.WorkIntimationDataforSupervisor(Id);
@@ -60,62 +59,43 @@ namespace CEIHaryana.Supervisor
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             ds.Dispose();
-            }
-            catch
-            {
-                Response.Redirect("/SupervisorLogout.aspx");
-            }
         }
-
+       
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            try
+            if (e.CommandName == "Select")
             {
-                if (e.CommandName == "Select")
-                {
 
-                    Control ctrl = e.CommandSource as Control;
-                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                    Label lblID = (Label)row.FindControl("lblID");
-                    Session["id"] = lblID.Text;
-                    //ClientScript.RegisterStaxrtupScript(this.GetType(), "Pop", "showModal();", true);
-                    //    GetDetails();
-                    Label lblStartdateasinWI = (Label)row.FindControl("lblStartdateasinWI");
-                    if (DateTime.TryParse(lblStartdateasinWI.Text, out DateTime startDate))
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                Label lblID = (Label)row.FindControl("lblID");
+                Session["id"] = lblID.Text;
+                //ClientScript.RegisterStaxrtupScript(this.GetType(), "Pop", "showModal();", true);
+                //    GetDetails();
+                Label lblStartdateasinWI = (Label)row.FindControl("lblStartdateasinWI");               
+                if (DateTime.TryParse(lblStartdateasinWI.Text, out DateTime startDate))
+                {
+                    if (startDate > DateTime.Today)
                     {
-                        if (startDate > DateTime.Today)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "ValidationDate", "alert('You cannot create a test report for future installations.');", true);
-                        }
-                        else
-                        {
-                            Response.Redirect("/Supervisor/InstallationDetails.aspx",false);
-                        }
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ValidationDate", "alert('You cannot create a test report for future installations.');", true);
+                    }
+                    else
+                    {
+                        Response.Redirect("/Supervisor/InstallationDetails.aspx");
                     }
                 }
-                else
-                {
-                    getWorkIntimationData();
-
-                }
             }
-            catch
+            else
             {
-                Response.Redirect("/SupervisorLogout.aspx");
+                getWorkIntimationData();
+
             }
         }
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            try
-            {
-                GridView1.PageIndex = e.NewPageIndex;
+            GridView1.PageIndex = e.NewPageIndex;
             getWorkIntimationData();
-            }
-            catch
-            {
-                Response.Redirect("/SupervisorLogout.aspx");
-            }
         }
 
         protected void GetDetails()
@@ -166,9 +146,7 @@ namespace CEIHaryana.Supervisor
 
         protected void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                string searhterm = txtSearch.Text.Trim();
+            string searhterm = txtSearch.Text.Trim();
             string LoginId = string.Empty;
             LoginId = Session["SupervisorID"].ToString();
 
@@ -183,11 +161,6 @@ namespace CEIHaryana.Supervisor
             {
                 string script = "alert(\"No Record Match\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "Server Script", script, true);
-                }
-            }
-            catch
-            {
-                Response.Redirect("/SupervisorLogout.aspx");
             }
         }
 

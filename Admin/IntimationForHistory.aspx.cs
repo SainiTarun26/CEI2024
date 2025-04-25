@@ -867,11 +867,6 @@ namespace CEIHaryana.Admin
                 {
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                 }
-                else if (installationName == "Switching Station")
-                {
-                    Session["SwitchingSubstationId"] = Session["InspectionTestReportId"].ToString();
-                    Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
-                }
             }
             catch (Exception ex) { }
         }
@@ -883,8 +878,8 @@ namespace CEIHaryana.Admin
                 if (e.CommandName == "Select")
                 {
                     ID = Session["InspectionId"].ToString();
-                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -1168,32 +1163,6 @@ namespace CEIHaryana.Admin
                 // Log or handle the exception as needed
             }
         }
-
-        protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            try
-            {
-                if (e.Row.RowType == DataControlRowType.DataRow)
-                {
-                    Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
-                    if (LblInstallationName.Text.Trim() == "Switching Station")
-                    {
-                        RadioButtonAction.Items.FindByValue("1").Enabled = false;
-                    }
-                    //else
-                    //{
-                    //    RadioButtonAction.Items.FindByValue("1").Enabled = true;
-                    //}
-                }
-                else if (e.Row.RowType == DataControlRowType.Footer)
-                {
-
-                }
-            }
-            catch (Exception ex)
-            { }
-        }
-
         private void GridChecklistDocuments()
         {
             try
@@ -1279,18 +1248,13 @@ namespace CEIHaryana.Admin
                         Session["GeneratingSetId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
                         Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                     }
-                    else if (LblInstallationName.Text.Trim() == "Switching Station")
-                    {
-                        Session["SwitchingSubstationId"] = ds.Tables[0].Rows[0]["TestReportId"].ToString();
-                        Response.Redirect("/TestReportModal/SwitchingSubstationTestReportModal.aspx", false);
-                    }
                 }
             }
             else if (e.CommandName == "View")
             {
                 string fileName = "";
                 fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
@@ -1320,12 +1284,6 @@ namespace CEIHaryana.Admin
                         Grid_MultipleInspectionTR.Columns[8].Visible = false;
                         linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = false;
-                    }
-                    else if (LblInstallationName.Text.Trim() == "Switching Station")
-                    {
-                        linkButtonInvoice.Visible = false;
-                        RadioButtonAction.Items.FindByValue("1").Enabled = false;
-                        ViewState["AllRowsAreLine"] = false;
                     }
                     else
                     {

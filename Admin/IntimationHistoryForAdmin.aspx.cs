@@ -67,39 +67,53 @@ namespace CEIHaryana.Admin
             try
             {
                 if (e.CommandName == "Select")
-                {                 
+                {
+                    Session["LineID"] = "";
+                    Session["SubStationID"] = "";
+                    Session["GeneratingSetId"] = "";
+
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                    Label lblID = (Label)row.FindControl("lblID");                  
+                    Label lblID = (Label)row.FindControl("lblID");
+                    Session["InspectionId"] = lblID.Text;
                     Label lblApproval = (Label)row.FindControl("lblApproval");
+                    Session["Approval"] = lblApproval.Text.Trim();
                     Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
                     string installationType = lblInstallationType.Text.Trim();
                     Label lblTestRportId = (Label)row.FindControl("lblTestRportId");
                     string TestRportId = lblTestRportId.Text.Trim();
                     Label lblRequestStatus = (Label)row.FindControl("lblRequestStatus");
                     Label lblTypeOfInspection = (Label)row.FindControl("lblTypeOfInspection");
-                    Label lblInstallationFor = (Label)row.FindControl("lblInstallationFor");               
+
+
+                    if (installationType.Trim() == "Line")
+                    {
+                        Session["LineID"] = installationType;
+                    }
+                    else if (installationType.Trim() == "Substation Transformer")
+                    {
+                        Session["SubStationID"] = TestRportId;
+                    }
+                    else if (installationType.Trim() == "Generating Set")
+                    {
+                        Session["GeneratingSetId"] = TestRportId;
+                    }
+                    else if (installationType == "Multiple")
+                    {
+                        Session["PeriodicMultiple"] = installationType;
+                    }
                     if (e.CommandName == "Select")
                     {
-                      
-                        if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
+                        if (lblRequestStatus != null && lblRequestStatus.Text == "ReSubmit" && lblTypeOfInspection.Text == "New")
                         {
-                            Session["InspectionId"] = lblID.Text;
-                            Response.Redirect("/Admin/IntimationHistoryForLift.aspx", false);
-                        }
-                        else if (lblRequestStatus != null && lblRequestStatus.Text == "ReSubmit" && lblTypeOfInspection.Text == "New")
-                        {
-                            Session["InspectionId"] = lblID.Text;
                             Response.Redirect("/Admin/ReturnedIntimationForHistory.aspx", false);
                         }
                         else if (lblRequestStatus != null && lblRequestStatus.Text == "ReSubmit" && lblTypeOfInspection.Text == "Periodic")
                         {
-                            Session["InspectionId"] = lblID.Text;
                             Response.Redirect("/Admin/PeriodicReturnedIntimationForHistory.aspx", false);
                         }
-                        else 
+                        else //if (lblRequestStatus != null && lblRequestStatus.Text == "New")
                         {
-                            Session["InspectionId"] = lblID.Text;
                             Response.Redirect("/Admin/IntimationForHistory.aspx", false);
                         }
                     }
@@ -108,16 +122,10 @@ namespace CEIHaryana.Admin
                         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"No Record Found\");", true);
                     }
                 }
-                else
-                {
-
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Select event not fired\");", true);
-                }
             }
             catch (Exception ex)
             {
-                string script = ex.Message;
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                Console.WriteLine(ex.Message);
             }
         }
 

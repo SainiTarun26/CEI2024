@@ -118,13 +118,13 @@
                         </div>
                     </div>
                     <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%"
-    AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" AllowPaging="true" PageSize="10" OnRowDataBound="GridView1_RowDataBound" BorderWidth="1px" BorderColor="#dbddff">
+    AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" AllowPaging="true" PageSize="50" OnRowDataBound="GridView1_RowDataBound" BorderWidth="1px" BorderColor="#dbddff">
     <PagerStyle CssClass="pagination-ys" />
     <Columns>
         <asp:TemplateField HeaderText="Id" Visible="False">
             <ItemTemplate>
                 <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
-                <asp:Label ID="LblInspectionType" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label>
+                <asp:Label ID="LblInspectionType" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label> 
                 <asp:Label ID="lblApproveDate" runat="server" Text='<%#Eval("ApprovedDate") %>'></asp:Label>
                 <%-- <asp:Label ID="LblAssignTo" runat="server" Text='<%#Eval("AssignTo") %>'></asp:Label>--%>
             </ItemTemplate>

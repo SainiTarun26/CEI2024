@@ -124,7 +124,7 @@
                         </div>
 
                         <div class="col-6">
-                            <label>Transaction Id<samp style="color: red"> * </samp></label>
+                            <label>  Transaction ID(GRN Number)<samp style="color: red"> * </samp></label>
                             <asp:TextBox ID="txttransactionId" runat="server" class="form-control" onkeydown="return SearchOnEnter(event);" Font-Size="12px" onkeyup="Search_Gridview(this)" Style="height: 30px;"></asp:TextBox><br />
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>

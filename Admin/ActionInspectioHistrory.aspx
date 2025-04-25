@@ -119,13 +119,11 @@
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging"
-                        AutoGenerateColumns="false" AllowPaging="true" PageSize="20" BorderWidth="1px" BorderColor="#dbddff">
+                        AutoGenerateColumns="false" AllowPaging="true" PageSize="500" BorderWidth="1px" BorderColor="#dbddff">
                         <Columns>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
-                                     <asp:Label ID="lblInstallationFor" runat="server" Text='<%#Eval("Installationfor") %>'></asp:Label>
-                                     <asp:Label ID="lblInspectionCount" runat="server" Text='<%#Eval("InspectionCount") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="SNo">

@@ -42,7 +42,7 @@ namespace CEIHaryana.Industry
                 'cafType': 'Type1'
             }";
 
-
+            
             string url = "https://uat.ceiharyana.com/Industry/Industry.aspx"; // Replace with your actual URL
           //  string url = "https://localhost:44393/Industry/Industry.aspx"; // Replace with your actual URL
 

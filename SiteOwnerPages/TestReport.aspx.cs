@@ -115,29 +115,25 @@ namespace CEIHaryana.SiteOwnerPages
                             Session["NoOfInstallations"] = lblNoOfInstallations.Text.Trim();
                             Session["NoOfInstallation"] = lblNoOfInstallations.Text.Trim();
                             Label lblTotalInstallation = (Label)row.FindControl("lblTotalInstallation");
-                            Session["TotalInstallation"] = lblTotalInstallation.Text.Trim();
+                            Session["TotalInstallation"] = lblNoOfInstallations.Text.Trim();
                             Label lblID = (Label)row.FindControl("lblID");
                             Session["IHID"] = lblID.Text.Trim();
                             Session["IHIDs"] = lblID.Text.Trim();                           //////////////
                             Label lblVoltageLevel = (Label)row.FindControl("lblVoltageLevel");
                             Session["VoltageLevel"] = lblVoltageLevel.Text.Trim();
                             DataSet ds = new DataSet();
-                        //ds = CEI.GetData(lblTyps.Text.Trim(), lblIntimations.Text.Trim(), lblNoOfInstallations.Text.Trim());
-
-                        if (lblTyps.Text.Trim() == "Substation Transformer")
-                        {
-
-                            Response.Redirect("/SiteOwnerPages/SubstationTransformerPeriodic.aspx", false);
-                        }
-                        else if (lblTyps.Text.Trim() == "Generating Set")
-                        {
-                            Response.Redirect("/SiteOwnerPages/generatingsetPeriodic.aspx", false);
-                        }
-                        else if (lblTyps.Text.Trim() == "Switching Station")
-                        {
-                            Response.Redirect("/SiteOwnerPages/SwitchingSubstationTestReportPeriodic.aspx", false);
-                        }
-
+                            //ds = CEI.GetData(lblTyps.Text.Trim(), lblIntimations.Text.Trim(), lblNoOfInstallations.Text.Trim());
+                           
+                            if (lblTyps.Text.Trim() == "Substation Transformer")
+                            {
+ 
+                                Response.Redirect("/SiteOwnerPages/SubstationTransformerPeriodic.aspx", false);
+                            }
+                            else if (lblTyps.Text.Trim() == "Generating Set")
+                            {
+                                Response.Redirect("/SiteOwnerPages/generatingsetPeriodic.aspx", false);
+                            }
+                       
                     }
                     else
                     {

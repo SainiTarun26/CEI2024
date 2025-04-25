@@ -117,77 +117,84 @@
                         </div>
                     </div>
                     <table class="table table-responsive">
-                        <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="10"
-                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
-                            <PagerStyle CssClass="pagination-ys" />
-                            <Columns>
-                                <asp:TemplateField HeaderText="Id" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
+                      <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="50"
+       AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
+       <PagerStyle CssClass="pagination-ys" />
+       <Columns>
+           <asp:TemplateField HeaderText="SNo">
+               <HeaderStyle Width="5%" CssClass="headercolor" />
+               <ItemStyle Width="5%" />
+               <ItemTemplate>
+                   <%#Container.DataItemIndex+1 %>
+               </ItemTemplate>
+           </asp:TemplateField>
+           <asp:TemplateField HeaderText="Id" Visible="False">
+               <ItemTemplate>
+                   <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+               </ItemTemplate>
+           </asp:TemplateField>
 
-                                <asp:TemplateField>
-                                    <HeaderStyle Width="10%" CssClass="headercolor" />
-                                    <ItemStyle Width="10%" />
-                                    <HeaderTemplate>
-                                        IntimationId
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:BoundField DataField="Name" HeaderText="Site Owner Name">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="ContactNo" HeaderText="Site Owner Contact">
-                                    <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="center" Width="12%" />
-                                </asp:BoundField>
+           <asp:TemplateField>
+               <HeaderStyle Width="10%" CssClass="headercolor" />
+               <ItemStyle Width="10%" />
+               <HeaderTemplate>
+                   IntimationId
+               </HeaderTemplate>
+               <ItemTemplate>
+                   <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
+               </ItemTemplate>
+           </asp:TemplateField>
+           <asp:BoundField DataField="Name" HeaderText="Site Owner Name">
+               <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+               <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="break-text-10" />
+           </asp:BoundField>
+           <asp:BoundField DataField="ContactNo" HeaderText="Owner Contact">
+               <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+               <ItemStyle HorizontalAlign="center" Width="12%" />
+           </asp:BoundField>
 
-                                <asp:BoundField DataField="Voltage" HeaderText="Voltage Level">
-                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="center" Width="15%" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="CreatedDate1" HeaderText="Request Date">
-                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="center" Width="15%" />
-                                </asp:BoundField>
+           <asp:BoundField DataField="Voltage" HeaderText="Voltage Level">
+               <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+               <ItemStyle HorizontalAlign="center" Width="15%" />
+           </asp:BoundField>
+           <asp:BoundField DataField="CreatedDate1" HeaderText="Request Date">
+               <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+               <ItemStyle HorizontalAlign="center" Width="15%" />
+           </asp:BoundField>
 
-                                <%-- <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
-                                    <HeaderStyle HorizotalAlign="center" Width="13%" />
-                                    <ItemStyle HorizontalAlign="center" Width="13%" />
-                                </asp:BoundField>--%>
-                                <asp:TemplateField>
+           <%-- <asp:BoundField DataField="CompletionDate1" HeaderText="Completion Date">
+               <HeaderStyle HorizotalAlign="center" Width="13%" />
+               <ItemStyle HorizontalAlign="center" Width="13%" />
+           </asp:BoundField>--%>
+           <asp:TemplateField>
 
-                                    <HeaderStyle Width="10%" CssClass="headercolor" />
+               <HeaderStyle Width="10%" CssClass="headercolor" />
 
-                                    <ItemStyle Width="10%" />
+               <ItemStyle Width="10%" />
 
-                                    <ItemTemplate>
+               <ItemTemplate>
 
-                                        <asp:LinkButton runat="server" ID="LnkBtn4" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
-                                            Text="<i class='fa fa-edit' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>" />
+                   <asp:LinkButton runat="server" ID="LnkBtn4" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
+                       Text="<i class='fa fa-edit' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>" />
 
-                                        <%-- <asp:LinkButton runat="server" ID="LinkButton5" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
+                   <%-- <asp:LinkButton runat="server" ID="LinkButton5" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
 
-                     Text="<i class='fa fa-duotone fa-trash'></i>" CommandName="Drop" CommandArgument="<%# Container.DataItemIndex %>" CssClass='redButton btn-danger' />--%>
-                                    </ItemTemplate>
+Text="<i class='fa fa-duotone fa-trash'></i>" CommandName="Drop" CommandArgument="<%# Container.DataItemIndex %>" CssClass='redButton btn-danger' />--%>
+               </ItemTemplate>
 
-                                </asp:TemplateField>
+           </asp:TemplateField>
 
-                            </Columns>
-                            <FooterStyle BackColor="White" ForeColor="#000066" />
-                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                            <RowStyle ForeColor="#000066" />
-                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                            <SortedDescendingHeaderStyle BackColor="#00547E" />
-                        </asp:GridView>
+       </Columns>
+       <FooterStyle BackColor="White" ForeColor="#000066" />
+       <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+       <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+       <RowStyle ForeColor="#000066" />
+       <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+       <SortedAscendingCellStyle BackColor="#F1F1F1" />
+       <SortedAscendingHeaderStyle BackColor="#007DBB" />
+       <SortedDescendingCellStyle BackColor="#CAC9C9" />
+       <SortedDescendingHeaderStyle BackColor="#00547E" />
+   </asp:GridView>
                     </table>
                 </div>
             </div>
@@ -225,5 +232,41 @@
                 Search_Gridview(document.getElementById('txtSearch'));
             }
         }
-    </script>
+    </script
+            < script type = "text/javascript" >
+                document.addEventListener("DOMContentLoaded", function () {
+                    const elements = document.querySelectorAll('.break-text-10');
+
+                    elements.forEach(function (element) {
+                        let text = element.innerText;
+                        let formattedText = '';
+                        let currentIndex = 0;
+
+                        while (currentIndex < text.length) {
+                            // Take a chunk of up to 20 characters
+                            let chunk = text.slice(currentIndex, currentIndex + 30);
+
+                            if (chunk.length < 30) {
+                                // If the chunk is less than 20 characters, add it without breaking
+                                formattedText += chunk;
+                                break; // Exit the loop as we've processed the remaining text
+                            }
+
+                            // For chunks of 20 or more characters, try to break at the last whitespace
+                            let breakIndex = chunk.lastIndexOf(" ");
+                            if (breakIndex !== -1) {
+                                // If there's a whitespace, break at that space
+                                formattedText += chunk.slice(0, breakIndex) + '<br>';
+                                currentIndex += breakIndex + 1; // Move past the space
+                            } else {
+                                // Otherwise, break at the 20-character limit
+                                formattedText += chunk + '<br>';
+                                currentIndex += 30;
+                            }
+                        }
+
+                        element.innerHTML = formattedText.trim(); // Remove any trailing <br>
+                    });
+                });
+</script>
 </asp:Content>

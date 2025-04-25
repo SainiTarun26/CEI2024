@@ -171,7 +171,7 @@ input#ContentPlaceHolder1_RadioButtonList1_1 {
                             <div class="col-md-12">
                         <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
                             AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging"
-                            AllowPaging="true" PageSize="100" BorderWidth="1px" BorderColor="#dbddff">
+                            AllowPaging="true" PageSize="500" BorderWidth="1px" BorderColor="#dbddff">
                             <Columns>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>

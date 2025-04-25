@@ -51,7 +51,7 @@ namespace CEIHaryana.Supervisor
         {
             Session.Abandon();
             Response.Cookies["SupervisorID"].Expires = DateTime.Now.AddDays(-1);
-            Response.Cookies["SupervisorLogouttype"].Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
             Response.Redirect("/SupervisorLogout.aspx");
         }
 

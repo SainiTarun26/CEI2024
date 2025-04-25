@@ -12,7 +12,8 @@ namespace CEIHaryana.Model.Industry
     public class TokenManagerConst
     {
         private static readonly string clientId = "KarLGm7E";
-        private static readonly string clientSecret = "mON0xp";
+         private static readonly string clientSecret = "mON0xp";  //TestServer Token Commented on 24 jan 2025 
+		//private static readonly string clientSecret = "H5cWdzDv";
         private static readonly string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
 
         public static string GetAccessToken(Industry_Api_Post_DataformatModel ApiPostformatresult)
