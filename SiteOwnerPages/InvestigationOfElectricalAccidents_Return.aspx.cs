@@ -401,6 +401,26 @@ namespace CEIHaryana.SiteOwnerPages
                 // throw;
             }
         }
+        protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName == "Select")
+                {
+                    //string fileNames = e.CommandArgument.ToString();
+                    //string folderPath = Server.MapPath(fileNames);
+
+                    string fileNames = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    string script = $@"<script>window.open('{fileNames}','_blank');</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             if ((Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != ""))
