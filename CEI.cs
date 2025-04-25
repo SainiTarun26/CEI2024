@@ -9897,7 +9897,13 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             }
         }
 
-#endregion
+        #endregion
+        #region aslam 25-april-2025
+        public DataSet TotalRequestInspectionForStaff_SearchCafWithGlobalFilter(string LoginId, string Division, string InstallationType, string searchText)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForStaff_SearchCafWithGlobalFilter", LoginId, Division, InstallationType, searchText);
+        }
+        #endregion
     }
 }
 

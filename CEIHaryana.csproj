@@ -1942,9 +1942,11 @@
     <Content Include="Officers\InProcessRequest.aspx" />
     <Content Include="Officers\InProcess_Returned_Inspection_Lift_Escalator.aspx" />
     <Content Include="Officers\Inspection.aspx" />
+    <Content Include="Officers\InspectionDetails.aspx" />
     <Content Include="Officers\Inspection_Lift_Escalator.aspx" />
     <Content Include="Officers\InstallationIntimationDetails.aspx" />
     <Content Include="Officers\Investigation_of_Electrical_Accidents_officer.aspx" />
+    <Content Include="Officers\LiftInspectionDetails.aspx" />
     <Content Include="Officers\Lift_EscelatorApprovaldata.aspx" />
     <Content Include="Officers\NewApplications.aspx" />
     <Content Include="Officers\OfficerDashboard.aspx" />
@@ -1958,6 +1960,7 @@
     <Content Include="Officers\Self_CertificationActionView.aspx" />
     <Content Include="Officers\Self_CertificationStatus.aspx" />
     <Content Include="Officers\TotalRequest.aspx" />
+    <Content Include="Officers\TotalRequestInspectionForOfficer_SearchWithCafId.aspx" />
     <Content Include="OTPVerification.aspx" />
     <Content Include="OurOnlineServices.aspx" />
     <Content Include="PaymentPage.aspx" />
@@ -3053,6 +3056,13 @@
     <Compile Include="Officers\Inspection.aspx.designer.cs">
       <DependentUpon>Inspection.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Officers\InspectionDetails.aspx.cs">
+      <DependentUpon>InspectionDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\InspectionDetails.aspx.designer.cs">
+      <DependentUpon>InspectionDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Officers\Inspection_Lift_Escalator.aspx.cs">
       <DependentUpon>Inspection_Lift_Escalator.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3073,6 +3083,13 @@
     </Compile>
     <Compile Include="Officers\Investigation_of_Electrical_Accidents_officer.aspx.designer.cs">
       <DependentUpon>Investigation_of_Electrical_Accidents_officer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\LiftInspectionDetails.aspx.cs">
+      <DependentUpon>LiftInspectionDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\LiftInspectionDetails.aspx.designer.cs">
+      <DependentUpon>LiftInspectionDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\Lift_EscelatorApprovaldata.aspx.cs">
       <DependentUpon>Lift_EscelatorApprovaldata.aspx</DependentUpon>
@@ -3171,6 +3188,13 @@
     </Compile>
     <Compile Include="Officers\TotalRequest.aspx.designer.cs">
       <DependentUpon>TotalRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\TotalRequestInspectionForOfficer_SearchWithCafId.aspx.cs">
+      <DependentUpon>TotalRequestInspectionForOfficer_SearchWithCafId.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\TotalRequestInspectionForOfficer_SearchWithCafId.aspx.designer.cs">
+      <DependentUpon>TotalRequestInspectionForOfficer_SearchWithCafId.aspx</DependentUpon>
     </Compile>
     <Compile Include="OTPVerification.aspx.cs">
       <DependentUpon>OTPVerification.aspx</DependentUpon>
