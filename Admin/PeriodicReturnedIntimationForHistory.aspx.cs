@@ -30,7 +30,16 @@ namespace CEIHaryana.Admin
                 {
                     if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
                     {
-                        GetDetailsWithId();
+                        if (Convert.ToString(Session["InspectionId"]) != null && Convert.ToString(Session["InspectionId"]) != string.Empty)
+                        {
+                            String InspectionID = Convert.ToString(Session["InspectionId"]);
+                            GetDetailsWithId(InspectionID);
+                        }
+                        else
+                        {
+                            Session["InspectionId"] = "";
+                            Response.Redirect("/Admin/IntimationHistoryForAdmin.aspx", false);
+                        }
                     }
                     else
                     {
@@ -46,11 +55,11 @@ namespace CEIHaryana.Admin
             }
         }
 
-        private void GetTestReportDataIfPeriodic()
+        private void GetTestReportDataIfPeriodic(string ID)
         {
             try
             {
-                ID = Session["InspectionId"].ToString();
+                //ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.GetTestReportDataIfPeriodic(ID);
                 string TestReportId = string.Empty;
@@ -68,75 +77,71 @@ namespace CEIHaryana.Admin
                 }
                 ds.Dispose();
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            { 
+                Response.Redirect("/AdminLogout.aspx", false); 
+            }
         }
-        private void BindDivisions(string District)
-        {
-            DataSet ds = new DataSet();
-            ds = CEI.GetDivisionData(District);
-            ddlDivisions.DataSource = ds;
-            ddlDivisions.DataTextField = "District";
-            ddlDivisions.DataValueField = "District";
-            ddlDivisions.DataBind();
-            ddlDivisions.Items.Insert(0, new ListItem("Select", "0"));
-            ds.Clear();
-        }
-        private void GetDetailsWithId()
+        ////private void BindDivisions(string District)
+        ////{
+        ////    DataSet ds = new DataSet();
+        ////    ds = CEI.GetDivisionData(District);
+        ////    ddlDivisions.DataSource = ds;
+        ////    ddlDivisions.DataTextField = "District";
+        ////    ddlDivisions.DataValueField = "District";
+        ////    ddlDivisions.DataBind();
+        ////    ddlDivisions.Items.Insert(0, new ListItem("Select", "0"));
+        ////    ds.Clear();
+        ////}
+        private void GetDetailsWithId(string ID)
         {
             try
             {
-                ID = Session["InspectionId"].ToString();
-
+               //// ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.InspectionData(ID);
                 if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     Type = ds.Tables[0].Rows[0]["IType"].ToString();
-
-                    if (Type == "Periodic")
-                    {
+                    lbltype.Text = ds.Tables[0].Rows[0]["IType"].ToString();
+                    //if (Type == "Periodic")
+                    //{
                         txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
                         txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                         txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                         txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
                         txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
                         txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                        txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-
+                        //txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                         txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                         ContractorName.Visible = false;
                         SupervisorName.Visible = false;
                         LineVoltage.Visible = false;
-
                         txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                         txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                         txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                         TypeOfInspection.Visible = false;
-
-                        txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
-                        txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
-                        txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
-                        txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-                        txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                        txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
-                        txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
-                        ContractorName.Visible = false;
-                        SupervisorName.Visible = false;
-                        LineVoltage.Visible = false;
-
-                        txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                        txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
-                        txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                        TypeOfInspection.Visible = false;
+                        //txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
+                        //txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                        //txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                        //txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                        //txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                        //txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                        //txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                        //ContractorName.Visible = false;
+                        //SupervisorName.Visible = false;
+                        //LineVoltage.Visible = false;
+                        //txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                        //txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                        //txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                        //TypeOfInspection.Visible = false;
                         TRAttached.Visible = true;
                         TRAttachedGrid.Visible = true;
                         IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
-
-                        GridBindDocumentPeriodic();
-                        GetTestReportDataIfPeriodic();
-                        GridToViewCart();
-
-                        BindDivisions(txtDistrict.Text.Trim());
+                        GridBindDocumentPeriodic(txtInspectionReportId.Text.Trim());
+                        GetTestReportDataIfPeriodic(txtInspectionReportId.Text.Trim());
+                        GridToViewCart(txtInspectionReportId.Text.Trim());
+                        ////BindDivisions(txtDistrict.Text.Trim());
                         string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                         if (Status.Trim() == "InProcess")
                         {
@@ -154,7 +159,6 @@ namespace CEIHaryana.Admin
                             Return.Visible = true;
                             txtRejected.Text = ds.Tables[0].Rows[0]["ReturnRemarks"].ToString();
                             txtRejected.Attributes.Add("disabled", "true");
-
                             btnBack.Visible = true;
                             btnUpdate.Visible = false;
                         }
@@ -165,12 +169,17 @@ namespace CEIHaryana.Admin
                             btnBack.Visible = true;
                             btnUpdate.Visible = false;
                         }
-                    }
+                    //}
+                }
+                else
+                {
+                    Session["InspectionId"] = "";
+                    Response.Redirect("/Admin/IntimationHistoryForAdmin.aspx", false);
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                Response.Redirect("/AdminLogout.aspx", false);
             }
         }
         protected void btnBack_Click(object sender, EventArgs e)
@@ -187,13 +196,11 @@ namespace CEIHaryana.Admin
                 {
                     StaffId = Session["AdminID"].ToString();
                     ID = Session["InspectionId"].ToString();
-                    AssignFrom = Session["AdminID"].ToString();
-
-                    if (RadioButtonAction.SelectedValue != "" && RadioButtonAction.SelectedValue != null)
-                    {
-                        if (RadioButtonAction.SelectedValue == "0")
-                        {
-
+                    //// AssignFrom = Session["AdminID"].ToString();
+                    ////if (RadioButtonAction.SelectedValue != "" && RadioButtonAction.SelectedValue != null)
+                    ////{
+                    ////    if (RadioButtonAction.SelectedValue == "0")
+                    ////    {
                             if (RdbtnAccptReturn.SelectedValue != "" && RdbtnAccptReturn.SelectedValue != null)
                             {
                                 AcceptorReturn = RdbtnAccptReturn.SelectedValue == "0" ? "Accepted" : "Return";
@@ -217,7 +224,6 @@ namespace CEIHaryana.Admin
                                     DataSet ds = new DataSet();
                                     ds = CEI.GetTypeOfInspection(ID);
                                     InstallType = ds.Tables[0].Rows[0]["TypeOfInspection"].ToString();
-
                                     if (RdbtnAccptReturn.SelectedValue == "2")
                                     {
                                         CEI.UpdateInspectionRejection(ID, StaffId, ddlRejectionReasonType.SelectedItem.ToString(), Reason);
@@ -341,7 +347,6 @@ namespace CEIHaryana.Admin
 
                                     string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
                                 }
-
                                 catch (Exception ex)
                                 {
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Enter valid reason for your action.');", true);
@@ -372,46 +377,47 @@ namespace CEIHaryana.Admin
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please select an Action for Inspection');", true);
                             }
-                        }
-                        else
-                        {
-                            if (ddlToAssign.SelectedValue != null && ddlToAssign.SelectedValue != "0")
-                            {
-                                StaffTo = ddlToAssign.SelectedValue;
-                                CEI.UpdateInspectionDataOnAction(ID, StaffTo, AssignFrom);
-
-                                ddlDivisions.SelectedIndex = 0;
-                                ddlToAssign.SelectedIndex = 0;
-                                string script = $"alert('Inspection sent to {StaffTo} successfully.'); window.location='IntimationHistoryForAdmin.aspx';";
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
-                            }
-                            else
-                            {
-                                ddlToAssign.Focus();
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", "alert('Select Staff before save');", true);
-                                return;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please select the Process or Transfer');", true);
-                    }
+                    ////    }
+                    ////    else
+                    ////    {
+                    ////        if (ddlToAssign.SelectedValue != null && ddlToAssign.SelectedValue != "0")
+                    ////        {
+                    ////            StaffTo = ddlToAssign.SelectedValue;
+                    ////            CEI.UpdateInspectionDataOnAction(ID, StaffTo, AssignFrom);
+                    ////            ddlDivisions.SelectedIndex = 0;
+                    ////            ddlToAssign.SelectedIndex = 0;
+                    ////            string script = $"alert('Inspection sent to {StaffTo} successfully.'); window.location='IntimationHistoryForAdmin.aspx';";
+                    ////            ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                    ////        }
+                    ////        else
+                    ////        {
+                    ////            ddlToAssign.Focus();
+                    ////            ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", "alert('Select Staff before save');", true);
+                    ////            return;
+                    ////        }
+                    ////    }
+                    ////}
+                    ////else
+                    ////{
+                    ////    ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please select the Process or Transfer');", true);
+                    ////}
                 }
                 else
                 {
                     Response.Redirect("/AdminLogout.aspx");
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                Response.Redirect("/AdminLogout.aspx", false);
+            }
         }
-        private void GridToViewCart()
+        private void GridToViewCart(string ID)
         {
             try
             {
-                string ID = Session["InspectionId"].ToString();
+                //string ID = Session["InspectionId"].ToString();
                 DataSet dsVC = CEI.GetDetailsToViewCart(ID);
-
                 if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                 {
                     GridView2.DataSource = dsVC;
@@ -424,20 +430,19 @@ namespace CEIHaryana.Admin
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                Response.Redirect("/AdminLogout.aspx", false);
+            }
         }
         protected void lnkRedirect1_Click(object sender, EventArgs e)
         {
             try
             {
                 LinkButton btn = (LinkButton)(sender);
-
                 GridViewRow row = (GridViewRow)btn.NamingContainer;
                 Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
                 string installationName = lblInstallationName.Text.Trim();
-
                 Session["InspectionTestReportId"] = btn.CommandArgument;
-
                 if (installationName == "Line")
                 {
                     Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
@@ -451,7 +456,10 @@ namespace CEIHaryana.Admin
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex) 
+            {
+                Response.Redirect("/AdminLogout.aspx", false); 
+            }
         }
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -468,31 +476,33 @@ namespace CEIHaryana.Admin
                 }
             }
             catch (Exception ex)
-            { }
-        }
-        private void BindDropDownToAssign(string Division)
-        {
-            try
             {
-                DataSet dsAssign = new DataSet();
-                dsAssign = CEI.DdlToStaffAssign(Division);
-                ddlToAssign.DataSource = dsAssign;
-                ddlToAssign.DataTextField = "Staff";
-                ddlToAssign.DataValueField = "StaffUserId";
-                ddlToAssign.DataBind();
-                ddlToAssign.Items.Insert(0, new ListItem("Select", "0"));
-                dsAssign.Clear();
-            }
-            catch (Exception ex)
-            { }
-        }
-        protected void ddlDivisions_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ddlDivisions.SelectedValue != "" && ddlDivisions.SelectedValue != null)
-            {
-                BindDropDownToAssign(ddlDivisions.SelectedValue);
+                Response.Redirect("/AdminLogout.aspx", false);
             }
         }
+        ////private void BindDropDownToAssign(string Division)
+        ////{
+        ////    try
+        ////    {
+        ////        DataSet dsAssign = new DataSet();
+        ////        dsAssign = CEI.DdlToStaffAssign(Division);
+        ////        ddlToAssign.DataSource = dsAssign;
+        ////        ddlToAssign.DataTextField = "Staff";
+        ////        ddlToAssign.DataValueField = "StaffUserId";
+        ////        ddlToAssign.DataBind();
+        ////        ddlToAssign.Items.Insert(0, new ListItem("Select", "0"));
+        ////        dsAssign.Clear();
+        ////    }
+        ////    catch (Exception ex)
+        ////    { }
+        ////}
+        ////protected void ddlDivisions_SelectedIndexChanged(object sender, EventArgs e)
+        ////{
+        ////    if (ddlDivisions.SelectedValue != "" && ddlDivisions.SelectedValue != null)
+        ////    {
+        ////        BindDropDownToAssign(ddlDivisions.SelectedValue);
+        ////    }
+        ////}
         protected void RdbtnAccptReturn_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnUpdate.Visible = true;
@@ -501,7 +511,6 @@ namespace CEIHaryana.Admin
                 Return.Visible = true;
                 DivReason.Visible = true;
                 DivRejectionReasonType.Visible = false;
-
             }
             else if (RdbtnAccptReturn.SelectedValue == "2") //Reject
             {
@@ -513,34 +522,33 @@ namespace CEIHaryana.Admin
             {
                 DivRejectionReasonType.Visible = false;
                 DivReason.Visible = false;
-
                 Return.Visible = false;
             }
         }
-        protected void RadioButtonAction_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (RadioButtonAction.SelectedValue == "1") //Transfer
-            {
-                TransferButton.Visible = true;
-                btnUpdate.Visible = true;
-                Action.Visible = false;
-                Return.Visible = false;
-                DivReason.Visible = false;
-                DivRejectionReasonType.Visible = false;
-            }
-            else if (RadioButtonAction.SelectedValue == "0") //Process
-            {
-                TransferButton.Visible = false;
-                Action.Visible = true;
-                Return.Visible = false;
-                btnUpdate.Visible = true;
-            }
-        }
-        protected void GridBindDocumentPeriodic()
+        ////protected void RadioButtonAction_SelectedIndexChanged(object sender, EventArgs e)
+        ////{
+        ////    if (RadioButtonAction.SelectedValue == "1") //Transfer
+        ////    {
+        ////        TransferButton.Visible = true;
+        ////        btnUpdate.Visible = true;
+        ////        Action.Visible = false;
+        ////        Return.Visible = false;
+        ////        DivReason.Visible = false;
+        ////        DivRejectionReasonType.Visible = false;
+        ////    }
+        ////    else if (RadioButtonAction.SelectedValue == "0") //Process
+        ////    {
+        ////        TransferButton.Visible = false;
+        ////        Action.Visible = true;
+        ////        Return.Visible = false;
+        ////        btnUpdate.Visible = true;
+        ////    }
+        ////}
+        protected void GridBindDocumentPeriodic(string ID)
         {
             try
             {
-                ID = Session["InspectionId"].ToString();
+                //ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.ViewReturnDocumentsForPeriodic(ID);
                 if (ds.Tables.Count > 0)
@@ -555,7 +563,10 @@ namespace CEIHaryana.Admin
                 }
                 ds.Dispose();
             }
-            catch (Exception ex) { }
+            catch (Exception ex) 
+            {
+                Response.Redirect("/AdminLogout.aspx", false);
+            }
         }
         protected void lnkRedirectTRr_Click1(object sender, EventArgs e)
         {
@@ -579,7 +590,10 @@ namespace CEIHaryana.Admin
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                Response.Redirect("/AdminLogout.aspx", false);
+            }
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {

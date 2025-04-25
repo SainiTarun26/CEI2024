@@ -38,9 +38,9 @@
             return (allow.indexOf(String.fromCharCode(k)) != -1);
         }
     </script>
-    <script type="text/javascript">
+  <%--  <script type="text/javascript">
         function validateDropdowns(sender, args) {
-            <%--var ddlReview = document.getElementById('<%= ddlReview.ClientID %>');--%>
+           
             var ddlToAssign = document.getElementById('<%= ddlToAssign.ClientID %>');
 
             // var selectedValueReview = ddlReview.options[ddlReview.selectedIndex].value;
@@ -49,7 +49,7 @@
             // Check if either dropdown has a selected value
             args.IsValid = selectedValueToAssign !== "0";
         }
-    </script>
+    </script>--%>
     <script type="text/javascript">   
         function alertWithRedirectdata() {
 
@@ -175,16 +175,26 @@
         .red-text {
             color: red;
         }
+        input#ContentPlaceHolder1_RdbtnAccptReturn_0 {
+    margin-right: 5px;
+}
+        input#ContentPlaceHolder1_RdbtnAccptReturn_1 {
+    margin-right: 5px;
+}
+        input#ContentPlaceHolder1_RdbtnAccptReturn_2 {
+    margin-right: 5px;
+}
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px;background:white; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
-                Inspection Detail
+                Inspection Detail (<asp:Label runat="server" ID="lbltype"></asp:Label>&nbsp;Inspection) 
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+            <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                 <div class="row">
                     <div class="col-md-4">
                         <label>
@@ -223,7 +233,7 @@
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
                 Site Owner Details
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+            <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                 <div class="row">
                     <div class="col-md-4" runat="server">
                         <label>SiteOwner Name</label>
@@ -262,6 +272,7 @@
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
                 Documents Attached
             </div>
+            <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <div class="row">
                 <div class="col-12">
                     <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" onrowdatabound="grd_Documemnts_RowDataBound" AutoGenerateColumns="false">
@@ -307,17 +318,19 @@
                     </asp:GridView>
                 </div>
             </div>
-            <div class="row" style="margin-bottom: 25px;">
-                <div class="col-md-4">
-                    <asp:TextBox ID="txtTestReportId" class="form-control" Visible="false" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                <div class="row">
+    <div class="col-md-4">
+        <asp:TextBox ID="txtTestReportId" class="form-control" Visible="false" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+    </div>
+</div>
+
                 </div>
-            </div>
             <div class="row" id="TRAttached" runat="server" visible="true">
-                <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
-                    Inspection Detail
-                </div>
-            </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="TRAttachedGrid" runat="server" visible="true">
+    <div class="card-title" style="margin-bottom: 5px; margin-top: 0px; font-size: 17px; font-weight: 600; margin-left: 5px;">
+        Inspection Detail
+    </div>
+</div>
+            <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;" id="TRAttachedGrid" runat="server" visible="true">
                 <div class="col-12" style="padding: 0px;">
                     <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false">
                         <HeaderStyle BackColor="#B7E2F0" />
@@ -416,11 +429,11 @@
                 </div>
             </div>--%>
             <div class="row" id="Div1" runat="server" visible="true">
-                <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
+                <div class="card-title" style="margin-bottom: 5px; margin-top: 0px; font-size: 17px; font-weight: 600; margin-left: 5px;">
                     Test Report Detail
                 </div>
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivTRinMultipleCaseNew" runat="server" visible="false">
+            <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;" id="DivTRinMultipleCaseNew" runat="server" visible="false">
                 <div class="col-12" style="padding: 0px;">
                     <asp:GridView ID="Grid_MultipleInspectionTR" CssClass="table table-bordered table-striped table-responsive" OnRowDataBound="Grid_MultipleInspectionTR_RowDataBound" OnRowCommand="Grid_MultipleInspectionTR_RowCommand" runat="server" AutoGenerateColumns="false">
                         <HeaderStyle BackColor="#B7E2F0" />
@@ -453,7 +466,7 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Capacity" HeaderText="Capacity(In KVA)">
+                            <asp:BoundField DataField="CapacityWithValue" HeaderText="Capacity">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
@@ -506,14 +519,13 @@
                         <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
                             Action Required
                         </div>
-                        <div class="row">
+                       <%-- <div class="row">
                             <div class="col-md-12">
                                 <asp:RadioButtonList ID="RadioButtonAction" OnSelectedIndexChanged="RadioButtonAction_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                                     <asp:ListItem Text="Process" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
                                     <asp:ListItem Text="Transfer" Value="1" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
                                 </asp:RadioButtonList>
-                                <%--  <asp:RequiredFieldValidator ID="rvfRadioButtonList" ErrorMessage="Choose one" ControlToValidate="RadioButtonAction" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />--%>
-                            </div>
+                              </div>
                         </div>
                         <div class="row" id="TransferButton" runat="server" visible="false">
                             <div class="col-md-3" id="ApprovalRequired" runat="server">
@@ -534,8 +546,8 @@
                                 <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlToAssign" selectionmode="Multiple" Style="width: 100% !important;">
                                 </asp:DropDownList>
                             </div>
-                        </div>
-                        <div class="row" id="Action" runat="server" visible="false">
+                        </div>--%>
+                        <div class="row" id="Action" runat="server" visible="true">
                             <asp:RadioButtonList ID="RdbtnAccptReturn" AutoPostBack="true" OnSelectedIndexChanged="RdbtnAccptReturn_SelectedIndexChanged" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                                 <asp:ListItem Text="Yes(Accept)" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
                                 <asp:ListItem Text="No(Return)" Value="1" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>

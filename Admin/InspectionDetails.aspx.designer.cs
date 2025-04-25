@@ -33,6 +33,15 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.Label lbltype;
 
         /// <summary>
+        /// Div4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div4;
+
+        /// <summary>
         /// txtInspectionReportId control.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace CEIHaryana.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDistrict;
+
+        /// <summary>
+        /// Div3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div3;
 
         /// <summary>
         /// txtSiteOwnerName control.
@@ -177,6 +195,15 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.TextBox txtLineVoltage;
 
         /// <summary>
+        /// Div2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div2;
+
+        /// <summary>
         /// grd_Documemnts control.
         /// </summary>
         /// <remarks>
@@ -256,6 +283,15 @@ namespace CEIHaryana.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView Grid_MultipleInspectionTR;
+
+        /// <summary>
+        /// lblGridMultipleInspectionTR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblGridMultipleInspectionTR;
 
         /// <summary>
         /// txtApplicationStatus control.

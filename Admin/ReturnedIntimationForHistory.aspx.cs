@@ -55,17 +55,17 @@ namespace CEIHaryana.Admin
                 Response.Redirect("/AdminLogout.aspx", false);
             }
         }
-        private void BindDivisions(string District)
-        {
-            DataSet ds = new DataSet();
-            ds = CEI.GetDivisionData(District);
-            ddlDivisions.DataSource = ds;
-            ddlDivisions.DataTextField = "District";
-            ddlDivisions.DataValueField = "District";
-            ddlDivisions.DataBind();
-            ddlDivisions.Items.Insert(0, new ListItem("Select", "0"));
-            ds.Clear();
-        }
+        ////private void BindDivisions(string District)
+        ////{
+        ////    DataSet ds = new DataSet();
+        ////    ds = CEI.GetDivisionData(District);
+        ////    ddlDivisions.DataSource = ds;
+        ////    ddlDivisions.DataTextField = "District";
+        ////    ddlDivisions.DataValueField = "District";
+        ////    ddlDivisions.DataBind();
+        ////    ddlDivisions.Items.Insert(0, new ListItem("Select", "0"));
+        ////    ds.Clear();
+        ////}
         private void GetDetailsWithId(string InspectionId)
         {
             try
@@ -76,7 +76,7 @@ namespace CEIHaryana.Admin
                 if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     Type = ds.Tables[0].Rows[0]["IType"].ToString();
-
+                    lbltype.Text = ds.Tables[0].Rows[0]["IType"].ToString();
                     if (Type == "New")
                     {
                         txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
@@ -156,7 +156,7 @@ namespace CEIHaryana.Admin
                         }
 
                         GridBindDocument(txtInspectionReportId.Text.Trim());
-                        BindDivisions(txtDistrict.Text.Trim());
+                        ////BindDivisions(txtDistrict.Text.Trim());
                         string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
 
                         if (Status.Trim() == "InProcess")
@@ -301,10 +301,10 @@ namespace CEIHaryana.Admin
 
                     #endregion
 
-                    if (RadioButtonAction.SelectedValue != "" && RadioButtonAction.SelectedValue != null)
-                    {
-                        if (RadioButtonAction.SelectedValue == "0")
-                        {
+                    ////if (RadioButtonAction.SelectedValue != "" && RadioButtonAction.SelectedValue != null)
+                    ////{
+                        ////if (RadioButtonAction.SelectedValue == "0")
+                        ////{
 
                             if (RdbtnAccptReturn.SelectedValue != "" && RdbtnAccptReturn.SelectedValue != null)
                             {
@@ -652,31 +652,31 @@ namespace CEIHaryana.Admin
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please select an Action for Inspection');", true);
                             }
-                        }
-                        else
-                        {
-                            if (ddlToAssign.SelectedValue != null && ddlToAssign.SelectedValue != "0")
-                            {
-                                StaffTo = ddlToAssign.SelectedValue;
-                                CEI.UpdateInspectionDataOnAction(ID, StaffTo, AssignFrom);
+                        ////}
+                        ////else
+                        ////{
+                        ////    if (ddlToAssign.SelectedValue != null && ddlToAssign.SelectedValue != "0")
+                        ////    {
+                        ////        StaffTo = ddlToAssign.SelectedValue;
+                        ////        CEI.UpdateInspectionDataOnAction(ID, StaffTo, AssignFrom);
 
-                                ddlDivisions.SelectedIndex = 0;
-                                ddlToAssign.SelectedIndex = 0;
-                                string script = $"alert('Inspection sent to {StaffTo} successfully.'); window.location='IntimationHistoryForAdmin.aspx';";
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
-                            }
-                            else
-                            {
-                                ddlToAssign.Focus();
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", "alert('Select Staff before save');", true);
-                                return;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please select the Process or Transfer');", true);
-                    }
+                        ////        ddlDivisions.SelectedIndex = 0;
+                        ////        ddlToAssign.SelectedIndex = 0;
+                        ////        string script = $"alert('Inspection sent to {StaffTo} successfully.'); window.location='IntimationHistoryForAdmin.aspx';";
+                        ////        ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                        ////    }
+                        ////    else
+                        ////    {
+                        ////        ddlToAssign.Focus();
+                        ////        ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", "alert('Select Staff before save');", true);
+                        ////        return;
+                        ////    }
+                        ////}
+                    ////}
+                    ////else
+                    ////{
+                    ////    ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please select the Process or Transfer');", true);
+                    ////}
                 }
                 else
                 {
@@ -739,33 +739,33 @@ namespace CEIHaryana.Admin
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }
-        private void BindDropDownToAssign(string Division)
-        {
-            try
-            {
-                DataSet dsAssign = new DataSet();
-                dsAssign = CEI.DdlToStaffAssign(Division);
-                ddlToAssign.DataSource = dsAssign;
-                ddlToAssign.DataTextField = "Staff";
-                ddlToAssign.DataValueField = "StaffUserId";
-                ddlToAssign.DataBind();
-                ddlToAssign.Items.Insert(0, new ListItem("Select", "0"));
-                dsAssign.Clear();
-            }
-            catch (Exception ex)
-            {
+        ////private void BindDropDownToAssign(string Division)
+        ////{
+        ////    try
+        ////    {
+        ////        DataSet dsAssign = new DataSet();
+        ////        dsAssign = CEI.DdlToStaffAssign(Division);
+        ////        ddlToAssign.DataSource = dsAssign;
+        ////        ddlToAssign.DataTextField = "Staff";
+        ////        ddlToAssign.DataValueField = "StaffUserId";
+        ////        ddlToAssign.DataBind();
+        ////        ddlToAssign.Items.Insert(0, new ListItem("Select", "0"));
+        ////        dsAssign.Clear();
+        ////    }
+        ////    catch (Exception ex)
+        ////    {
 
-                string script = "alert('An error occurred, please try again later');";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
-        }
-        protected void ddlDivisions_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ddlDivisions.SelectedValue != "" && ddlDivisions.SelectedValue != null)
-            {
-                BindDropDownToAssign(ddlDivisions.SelectedValue);
-            }
-        }
+        ////        string script = "alert('An error occurred, please try again later');";
+        ////        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+        ////    }
+        ////}
+        ////protected void ddlDivisions_SelectedIndexChanged(object sender, EventArgs e)
+        ////{
+        ////    if (ddlDivisions.SelectedValue != "" && ddlDivisions.SelectedValue != null)
+        ////    {
+        ////        BindDropDownToAssign(ddlDivisions.SelectedValue);
+        ////    }
+        ////}
         protected void RdbtnAccptReturn_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnUpdate.Visible = true;
@@ -800,23 +800,23 @@ namespace CEIHaryana.Admin
                 Check_TRDocuments.Visible = false;
             }
         }
-        protected void RadioButtonAction_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (RadioButtonAction.SelectedValue == "1")
-            {
-                TransferButton.Visible = true;
-                btnUpdate.Visible = true;
-                Action.Visible = false;
-                Return.Visible = false;
-            }
-            else
-            {
-                TransferButton.Visible = false;
-                Action.Visible = true;
-                Return.Visible = false;
-                btnUpdate.Visible = true;
-            }
-        }
+        ////protected void RadioButtonAction_SelectedIndexChanged(object sender, EventArgs e)
+        ////{
+        ////    if (RadioButtonAction.SelectedValue == "1")
+        ////    {
+        ////        TransferButton.Visible = true;
+        ////        btnUpdate.Visible = true;
+        ////        Action.Visible = false;
+        ////        Return.Visible = false;
+        ////    }
+        ////    else
+        ////    {
+        ////        TransferButton.Visible = false;
+        ////        Action.Visible = true;
+        ////        Return.Visible = false;
+        ////        btnUpdate.Visible = true;
+        ////    }
+        ////}
         protected void GridBindDocument(string InspID)
         {
             try
@@ -1196,7 +1196,9 @@ namespace CEIHaryana.Admin
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                Response.Redirect("/AdminLogout.aspx", false);
+            }
         }
         protected void lnkRedirectTR_Click1(object sender, EventArgs e)
         {
