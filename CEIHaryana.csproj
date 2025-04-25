@@ -1930,6 +1930,7 @@
     <Content Include="MultiSelect_Css\modal.js" />
     <Content Include="OfficerLogout.aspx" />
     <Content Include="Officers\AcceptedOrReject.aspx" />
+    <Content Include="Officers\ActionOnSelfCertification.aspx" />
     <Content Include="Officers\ActionTakenInspections.aspx" />
     <Content Include="Officers\ConsolidatedReport.aspx" />
     <Content Include="Officers\DistrictData.aspx" />
@@ -1948,6 +1949,10 @@
     <Content Include="Officers\ReturnedInspections.aspx" />
     <Content Include="Officers\Returned_Inspection_Lift_Escalator.aspx" />
     <Content Include="Officers\Returned_PeriodicInspection_Lift_Escalator.aspx" />
+    <Content Include="Officers\Self-CertificateRequest.aspx" />
+    <Content Include="Officers\SelfCertificationofInstallations.aspx" />
+    <Content Include="Officers\Self_CertificationActionView.aspx" />
+    <Content Include="Officers\Self_CertificationStatus.aspx" />
     <Content Include="Officers\TotalRequest.aspx" />
     <Content Include="OTPVerification.aspx" />
     <Content Include="OurOnlineServices.aspx" />
@@ -2017,8 +2022,12 @@
     <Content Include="SiteOwnerPages\ProcessInspectionRenewalCart.aspx" />
     <Content Include="SiteOwnerPages\RatingOfInstallations.aspx" />
     <Content Include="SiteOwnerPages\ReapplyReturnINspection.aspx" />
+    <Content Include="SiteOwnerPages\Reapply_SelfCertification.aspx" />
     <Content Include="SiteOwnerPages\ReturnInspections.aspx" />
     <Content Include="SiteOwnerPages\ReturnLiftInspections.aspx" />
+    <Content Include="SiteOwnerPages\SelfCertificateDetails.aspx" />
+    <Content Include="SiteOwnerPages\SelfCertification.aspx" />
+    <Content Include="SiteOwnerPages\SelfCertificationStatus.aspx" />
     <Content Include="SiteOwnerPages\SiteOwnerDashboard.aspx" />
     <Content Include="SiteOwnerPages\SldHistory.aspx" />
     <Content Include="SiteOwnerPages\SLDReturn.aspx" />
@@ -2028,6 +2037,7 @@
     <Content Include="SiteOwnerPages\TestReport.aspx" />
     <Content Include="SiteOwnerPages\TestReportData.aspx" />
     <Content Include="SiteOwnerPages\ViewLiftPeriodicReport.aspx" />
+    <Content Include="SiteOwnerPages\ViewSelfCertificationData.aspx" />
     <Content Include="StateLicensingBoard.aspx" />
     <Content Include="StaticPage1.aspx" />
     <Content Include="StaticPage2.aspx" />
@@ -2951,6 +2961,13 @@
     <Compile Include="Officers\AcceptedOrReject.aspx.designer.cs">
       <DependentUpon>AcceptedOrReject.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Officers\ActionOnSelfCertification.aspx.cs">
+      <DependentUpon>ActionOnSelfCertification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\ActionOnSelfCertification.aspx.designer.cs">
+      <DependentUpon>ActionOnSelfCertification.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Officers\ActionTakenInspections.aspx.cs">
       <DependentUpon>ActionTakenInspections.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3083,6 +3100,34 @@
     </Compile>
     <Compile Include="Officers\Returned_PeriodicInspection_Lift_Escalator.aspx.designer.cs">
       <DependentUpon>Returned_PeriodicInspection_Lift_Escalator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\Self-CertificateRequest.aspx.cs">
+      <DependentUpon>Self-CertificateRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\Self-CertificateRequest.aspx.designer.cs">
+      <DependentUpon>Self-CertificateRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\SelfCertificationofInstallations.aspx.cs">
+      <DependentUpon>SelfCertificationofInstallations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\SelfCertificationofInstallations.aspx.designer.cs">
+      <DependentUpon>SelfCertificationofInstallations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\Self_CertificationActionView.aspx.cs">
+      <DependentUpon>Self_CertificationActionView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\Self_CertificationActionView.aspx.designer.cs">
+      <DependentUpon>Self_CertificationActionView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\Self_CertificationStatus.aspx.cs">
+      <DependentUpon>Self_CertificationStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\Self_CertificationStatus.aspx.designer.cs">
+      <DependentUpon>Self_CertificationStatus.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\TotalRequest.aspx.cs">
       <DependentUpon>TotalRequest.aspx</DependentUpon>
@@ -3547,6 +3592,13 @@
     <Compile Include="SiteOwnerPages\ReapplyReturnINspection.aspx.designer.cs">
       <DependentUpon>ReapplyReturnINspection.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SiteOwnerPages\Reapply_SelfCertification.aspx.cs">
+      <DependentUpon>Reapply_SelfCertification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\Reapply_SelfCertification.aspx.designer.cs">
+      <DependentUpon>Reapply_SelfCertification.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteOwnerPages\ReturnInspections.aspx.cs">
       <DependentUpon>ReturnInspections.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3560,6 +3612,27 @@
     </Compile>
     <Compile Include="SiteOwnerPages\ReturnLiftInspections.aspx.designer.cs">
       <DependentUpon>ReturnLiftInspections.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\SelfCertificateDetails.aspx.cs">
+      <DependentUpon>SelfCertificateDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\SelfCertificateDetails.aspx.designer.cs">
+      <DependentUpon>SelfCertificateDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\SelfCertification.aspx.cs">
+      <DependentUpon>SelfCertification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\SelfCertification.aspx.designer.cs">
+      <DependentUpon>SelfCertification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\SelfCertificationStatus.aspx.cs">
+      <DependentUpon>SelfCertificationStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\SelfCertificationStatus.aspx.designer.cs">
+      <DependentUpon>SelfCertificationStatus.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\SiteOwner.Master.cs">
       <DependentUpon>SiteOwner.Master</DependentUpon>
@@ -3630,6 +3703,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\ViewLiftPeriodicReport.aspx.designer.cs">
       <DependentUpon>ViewLiftPeriodicReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ViewSelfCertificationData.aspx.cs">
+      <DependentUpon>ViewSelfCertificationData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ViewSelfCertificationData.aspx.designer.cs">
+      <DependentUpon>ViewSelfCertificationData.aspx</DependentUpon>
     </Compile>
     <Compile Include="StateLicensingBoard.aspx.cs">
       <DependentUpon>StateLicensingBoard.aspx</DependentUpon>

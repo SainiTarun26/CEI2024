@@ -427,6 +427,18 @@
                                         Returned Request</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Officers/Self-CertificateRequest.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Self-Certificate</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Officers/Self_CertificationStatus.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Self-Certificate Status</span>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <div class="main-panel">

@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="SelfCertification.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.SelfCertification" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="SelfCertificateDetails.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.SelfCertificateDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -277,7 +276,8 @@
         }
 
         th.headercolor {
-            width: 28% !important;
+            width: 1% !important;
+            color:white;
         }
 
         th {
@@ -363,6 +363,21 @@
             max-width: 1300px !important;
             margin-left: 19%;
         }
+
+        input#ContentPlaceHolder1_btnaccept {
+            margin-left: 25px;
+            margin-right: 5px;
+        }
+
+        input#ContentPlaceHolder1_btnreject {
+            margin-left: 70px;
+            margin-right: 5px;
+        }
+
+        input#ContentPlaceHolder1_btnacknowledge {
+            margin-left: 70px;
+            margin-right: 5px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -375,6 +390,65 @@
                         <div class="col-md-12" style="text-align: center;">
                             <h6 class="card-title fw-semibold mb-4" id="maincard" style="font-size: 22px;">SELF CERTIFICATION FOR ELECTRICAL INSTALLATIONS
                             </h6>
+                        </div>
+                    </div>
+                    <div id="Div1" visible="true" runat="server">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h7 class="card-title fw-semibold mb-4" id="maincard1" style="font-size: 18px !important;">Personal Information</h7>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4"></div>
+                                <div class="col-sm-4" style="text-align: center;">
+                                    <label id="Label1" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                                        Data Updated Successfully !!!.
+                                    </label>
+                                    <label id="Label2" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                                        Data Saved Successfully !!!.
+                                    </label>
+                                </div>
+                            </div>
+                         
+                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+
+
+
+                                <div class="row" style="margin-top: 15px;">
+                                    <div class="col-md-4">
+                                        <asp:HiddenField ID="hnOwnerId" runat="server" />
+                                        <asp:HiddenField ID="hnSc_Id" runat="server" />
+                                        <label>
+                                            Name<samp style="color: red">* </samp>
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtName" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>
+                                            PAN Card No.<samp style="color: red">* </samp>
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtPanNo" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>
+                                            District<samp style="color: red">* </samp>
+                                        </label>
+                                        <asp:TextBox class="form-control" ID="txtDistrict" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                    </div>
+
+                                </div>
+                                <div>
+                                </div>
+                            </div>
+
+                            <asp:HiddenField ID="HiddenField2" runat="server" />
+                            <div>
+                            </div>
                         </div>
                     </div>
                     <div id="DivPeriodicRenewal" visible="true" runat="server">
@@ -395,183 +469,181 @@
                                     </label>
                                 </div>
                             </div>
-                       
+                         
                             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
 
 
-                                  <asp:HiddenField ID="hdnOwnerId" runat="server" />
+
                                 <div class="row" style="margin-top: 15px;">
-                                    <div class="col-md-8">
-                                        <label>Installation Type<samp style="color: red">* </samp>
+                                    <div class="col-md-6">
+                                        <label>
+                                            Installation Type<samp style="color: red">* </samp>
                                         </label>
                                         <div style="display: flex; align-items: center; gap: 15px; margin-left: 18px; flex-wrap: wrap;">
                                             <label>
-                                                <asp:CheckBox ID="chkLineOption" runat="server" />
+                                                <asp:CheckBox ID="chkLine" runat="server" Enabled="false" />
                                                 Line</label>
                                             <label>
-                                                <asp:CheckBox ID="chkGeneratedOption" runat="server" />
+                                                <asp:CheckBox ID="chkGenerater" runat="server" Enabled="false" />
                                                 Generating Set</label>
                                             <label>
-                                                <asp:CheckBox ID="chkSubstationOption" runat="server" />
+                                                <asp:CheckBox ID="chkSubstation" runat="server" Enabled="false" />
                                                 Substation Transformer</label>
-                                            
+                                            <label>
+                                                <asp:CheckBox ID="chkSwitching" runat="server" Enabled="false" />
+                                                Switching Station</label>
                                             <br>
                                             <label>
-                                                <asp:CheckBox ID="chkSwitchingOption" runat="server" />
-                                                Switching Station</label>
-                                            <label>
-                                                <asp:CheckBox ID="chkSolarOption" runat="server" />
+                                                <asp:CheckBox ID="chkSolar" runat="server" Enabled="false" />
                                                 Solar</label>
                                             <label>
-                                                <asp:CheckBox ID="chkOtherOption" runat="server" AutoPostBack="true" OnCheckedChanged="chkOtherOption_CheckedChanged" />
+                                                <asp:CheckBox ID="chkOther" runat="server" Enabled="false" />
                                                 Other</label>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4" id="OtherInstallation" runat="server" visible="false">
+                                    <div class="col-md-3" id="OtherInstallation" runat="server" visible="false">
                                         <label>
                                             Other Installation Type<samp style="color: red">* </samp>
                                         </label>
-                                        <asp:TextBox class="form-control" ID="txtOtherInstallation" TabIndex="8" onkeydown="return preventEnterSubmit(event)"  MaxLength="20" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>                                
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtOtherInstallation" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control" ID="txtOtherInstallation" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <label>
                                             Max Voltage Level(Kv)<samp style="color: red">* </samp>
                                         </label>
-                                        <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlVoltage" TabIndex="2" runat="server">
-                                        </asp:DropDownList>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" Text="Please Select Division name" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltage" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                        <asp:TextBox class="form-control" ID="txtVoltage" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
 
                                 </div>
                                 <div>
                                 </div>
                             </div>
+                            <asp:HiddenField ID="hnFile" runat="server" />
                            
-                            
                             <div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> 
-            <div id="DocumentChecklist" visible="true" runat="server" style="padding: 25px !important; padding-top: 0px !important; margin-right: 15px; margin-left: 15px; padding-bottom: 0px !important; margin-top: -20px;">
-                <div class="row">
+            </div>
+            <div id="Document_List" runat="server" style="padding: 25px !important; padding-top: 0px !important; margin-right: 15px; margin-left: 15px; padding-bottom: 0px !important; margin-top: -20px;">
+                <div class="row" style="margin-top: 40px;">
                     <div class="col-md-12">
-                        <h4 class="card-title fw-semibold mb-4" id="maincard2">Document Checklist <span style="color: red;font-size:15px;"><strong>(NOTE:</strong> Only one among Form I / Form II / Form III is mandatory; others are optional.)</span>
-                        </h4>
-
+                        <h7 class="card-title fw-semibold mb-4" id="maincard4">
+                            Document Checklist
+                        </h7>
                     </div>
                 </div>
+                                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px !important; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
 
-                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px !important; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                    <table class="table table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th style="width: 1%;">S.No.</th>
-                                <th style="width: 50%;">Name</th>
-                                <th style="width: 20%;">Document Sample</th>
-                                <th style="width: 100%;">Upload Document</th>
+                <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false">
+                    <HeaderStyle BackColor="#B7E2F0" />
+                    <Columns>
+                        <asp:TemplateField HeaderText="SNo">
+                            <HeaderStyle Width="5%" CssClass="headercolor" />
+                            <ItemStyle Width="5%" />
+                            <ItemTemplate>
+                                <%#Container.DataItemIndex+1 %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="Documents_Name" HeaderText="Documents Name">
+                            <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
+                            <ItemStyle HorizontalAlign="Left" Width="25%" />
+                        </asp:BoundField>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="text-align: center;">1</td>
-                                <td>FORM I.
-                                </td>
-                                <td style="text-align: center;">
-                                    <asp:HyperLink ID="lnkForm1" runat="server" NavigateUrl="~/Downloads/WI%20SATBIR%20YADAV%20SOLAR%20275KWP.pdf" Text="Document Sample" Target="_blank" />
-                                </td>
-                                <td>
-                                    <asp:FileUpload ID="FileUploadForm1" runat="server" CssClass="form-control"
-                                        Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                                        ControlToValidate="FileUploadForm1" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">2</td>
-                                <td>FORM II.
-                                </td>
-                                <td style="text-align: center;">
-                                    <asp:HyperLink ID="lnkForm2" runat="server" NavigateUrl="/documents/sample.pdf" Text="Document Sample" Target="_blank" />
-                                </td>
-                                <td>
-                                    <asp:FileUpload ID="FileUploadForm2" runat="server" CssClass="form-control"
-                                        Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
-
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
-                                        ControlToValidate="FileUploadForm2" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">3</td>
-                                <td>FORM III.
-                                </td>
-                                <td style="text-align: center;">
-                                    <asp:HyperLink ID="lnkForm3" runat="server" NavigateUrl="~/documents/sample.pdf" Text="Document Sample" Target="_blank" />
-                                </td>
-                                <td>
-                                    <asp:FileUpload ID="FileUploadForm3" runat="server" CssClass="form-control"
-                                        Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
-
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
-                                        ControlToValidate="FileUploadForm3" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">4</td>
-                                <td>Demand Notice/Electricity Bill.<samp style="color: red">* </samp>
-                                </td>
-                                <td>&nbsp;</td>
-                                <td>
-                                    <asp:FileUpload ID="FileDemandNotice" runat="server" CssClass="form-control"
-                                        Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
-
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
-                                        ControlToValidate="FileDemandNotice" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;">4</td>
-                                <td>Other Document.
-                                </td>
-                                <td>&nbsp;</td>
-                                <td>
-                                    <asp:FileUpload ID="FileUploadOther" runat="server" CssClass="form-control"
-                                        Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
-
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
-                                        ControlToValidate="FileUploadOther" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-
-                                </td>
-
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                        <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("Document_Path") %>' CommandName="Select">View Document </asp:LinkButton>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                            <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                        </asp:TemplateField>
+                    </Columns>
+                    <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
+                </asp:GridView>
+                                    </div>
             </div>
-        
+
+    
+                      <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px !important;margin-left: 40px;
+    margin-right: 40px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+
+      <div class="row" style="margin-bottom: 15px;">
+          <div class="col-md-4">
+              <label>
+                  Application Status<samp style="color: red">* </samp>
+              </label>
+              <asp:TextBox class="form-control" ID="txtStatus" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-md-6" id="Document" runat="server" visible="false" style="margin-top: auto;">
+              <label>Supporting Document:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" OnClick="lnkFile_Click" Text="Open Document" />
+          </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 15px;">
+
+          <div class="col-md-12" style="margin-bottom: 15px;" id="Suggestion" runat="server" visible="false">
+              <label>
+                  Suggestion/Note<samp style="color: red">* </samp>
+              </label>
+              <asp:TextBox
+                  class="form-control"
+                  ID="txtSuggestion"
+                  TabIndex="8"
+                  TextMode="MultiLine"
+                  ReadOnly="true"
+                  onkeydown="return preventEnterSubmit(event)"
+                  MaxLength="50"
+                  autocomplete="off"
+                  Rows="2"
+                  Columns="50"
+                  runat="server"
+                  Style="margin-left: 18px">
+              </asp:TextBox>
+
+          </div>
+          <div class="col-md-12" id="Remarks" runat="server" visible ="false">
+              <label>
+                  Remarks<samp style="color: red">* </samp>
+              </label>
+              <asp:TextBox
+                  class="form-control"
+                  ID="txtRemarks"
+                  TabIndex="8"
+                  TextMode="MultiLine"
+                  ReadOnly="true"
+                  onkeydown="return preventEnterSubmit(event)"
+                  MaxLength="50"
+                  autocomplete="off"
+                  Rows="2"
+                  Columns="50"
+                  runat="server"
+                  Style="margin-left: 18px">
+              </asp:TextBox>
+
+          </div>
+      </div>
+
+  </div>
+                 
+
             <div id="Div2" visible="true" runat="server" style="padding: 25px !important; padding-top: 0px !important; margin-right: 15px; margin-left: 15px;">
 
                 <div class="row">
                     <div class="col-md-12" style="text-align: center;">
-                        <asp:Button ID="btnSubmit" runat="server" Class="btn btn-primary" Text="Submit" OnClick="btnSubmit_Click" />
+                        <asp:Button ID="btnBack" runat="server" Class="btn btn-primary" OnClick="btnBack_Click" Text="Back" />
                     </div>
                 </div>
             </div>
             <asp:Label ID="lblError" runat="server" />
 
+            </div>
+         
         </div>
     </div>
 
@@ -589,46 +661,8 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
-    <script type="text/javascript">
-        function FileName() {
-            var fileInput = document.getElementById('customFile');
-            var selectedFileName = document.getElementById('customFileLocation');
-
-            if (fileInput.files.length > 0) {
-                // Update the TextBox value with the selected file name
-                selectedFileName.value = fileInput.files[0].name;
-            }
-        }
-    </script>
-    <script type="text/javascript">
-        function alertWithRedirect() {
-            if (confirm('User Created Successfully User Id And password will be sent Via Text Mesaage.')) {
-                window.location.href = "/Contractor/Work_Intimation.aspx";
-            } else {
-            }
-        }
-    </script>
-    <script type="text/javascript">
-        function restrictInput(event) {
-            var keyCode = event.which || event.keyCode;
-            var inputValue = event.target.value + String.fromCharCode(keyCode);
-
-            // Allow only digits (0-9)
-            if (keyCode < 48 || keyCode > 57) {
-                event.preventDefault();
-                return false;
-            }
-
-            // Check if the input value is between 1 and 25
-            var numValue = parseInt(inputValue);
-
-            if (isNaN(numValue) || numValue < 1 || numValue > 25) {
-                event.preventDefault();
-                return false;
-            }
-
-            return true;
-        }
-    </script>
+   
+  
+  
 </asp:Content>
 

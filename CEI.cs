@@ -9381,6 +9381,184 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             }
         }
         #endregion
+
+        #region neeraj new process 25-april-2025
+        public string InsertDataForCS(string OwnerName, string District, string Line_Installation, string Generating_Installation, string Substation_Installation, string Switching_Installation, string Solar_Installation, string Other_Installation, string OtherInsatallationType, string MaxVoltage, string AssignTo, string CreatedBy, SqlTransaction transaction)
+        {
+            try
+            {
+                SqlParameter outputParam = new SqlParameter("@SC_ID", SqlDbType.NVarChar, 50)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                using (SqlCommand cmd = new SqlCommand("Sp_InsertSelfCertificationData", transaction.Connection, transaction))
+
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@OwnerName", OwnerName);
+                    cmd.Parameters.AddWithValue("@District", District);
+                    cmd.Parameters.AddWithValue("@Line", String.IsNullOrEmpty(Line_Installation) ? DBNull.Value : (object)Line_Installation);
+                    cmd.Parameters.AddWithValue("@Generating", String.IsNullOrEmpty(Generating_Installation) ? DBNull.Value : (object)Generating_Installation);
+                    cmd.Parameters.AddWithValue("@Substation", String.IsNullOrEmpty(Substation_Installation) ? DBNull.Value : (object)Substation_Installation);
+                    cmd.Parameters.AddWithValue("@Switching", String.IsNullOrEmpty(Switching_Installation) ? DBNull.Value : (object)Switching_Installation);
+                    cmd.Parameters.AddWithValue("@Solar", String.IsNullOrEmpty(Solar_Installation) ? DBNull.Value : (object)Solar_Installation);
+                    cmd.Parameters.AddWithValue("@Other", String.IsNullOrEmpty(Other_Installation) ? DBNull.Value : (object)Other_Installation);
+                    cmd.Parameters.AddWithValue("@OtherInsatallationType", String.IsNullOrEmpty(OtherInsatallationType) ? DBNull.Value : (object)OtherInsatallationType);
+                    cmd.Parameters.AddWithValue("@Volatage", MaxVoltage);
+                    cmd.Parameters.AddWithValue("@AssignTo", AssignTo);
+                    cmd.Parameters.AddWithValue("@CreatedBy", String.IsNullOrEmpty(CreatedBy) ? DBNull.Value : (object)CreatedBy);
+                    cmd.Parameters.Add(outputParam);
+                    cmd.ExecuteNonQuery();
+                    string SC_ID = outputParam.Value?.ToString();
+                    return SC_ID;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public DataTable GetAssignTo_CS(string PanNumber)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAssignFor_Cs", PanNumber);
+        }
+
+        public DataTable GetSelfCertificateRequest_Officer(string StaffId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSelfCertificationRequest", StaffId);
+        }
+        public DataTable GetSelfCertificateData_Officer(string SC_ID)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSelfCertificationData", SC_ID);
+        }
+
+
+        public int InsertApprovalDataForCS(string SC_Id, string AcceptedOrRejected, string StaffId, string Remarks, string Suggestions, string Support_Document)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                using (SqlCommand cmd = new SqlCommand("Sp_ApproveSelfCertificateByOfficer", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@SC_ID", SC_Id);
+                    cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrRejected);
+                    cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                    cmd.Parameters.AddWithValue("@Remarks", String.IsNullOrEmpty(Remarks) ? DBNull.Value : (object)Remarks);
+                    cmd.Parameters.AddWithValue("@Suggestions", String.IsNullOrEmpty(Suggestions) ? DBNull.Value : (object)Suggestions);
+                    cmd.Parameters.AddWithValue("@Support_Document", String.IsNullOrEmpty(Support_Document) ? DBNull.Value : (object)Support_Document);
+                    con.Open();
+                    int x = cmd.ExecuteNonQuery();
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+
+
+        public int InsertDocumentForCS(string SC_Id, string Document_Id, string Documents_Name, string Document_Path, string SiteOwnerId, SqlTransaction transaction)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertSC_Documents", transaction.Connection, transaction))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@SC_ID", SC_Id);
+                    cmd.Parameters.AddWithValue("@Document_Id", Document_Id);
+                    cmd.Parameters.AddWithValue("@Documents_Name", Documents_Name);
+                    cmd.Parameters.AddWithValue("@Document_Path", String.IsNullOrEmpty(Document_Path) ? DBNull.Value : (object)Document_Path);
+                    cmd.Parameters.AddWithValue("@CreatedBy", String.IsNullOrEmpty(SiteOwnerId) ? DBNull.Value : (object)SiteOwnerId);
+                    int x = cmd.ExecuteNonQuery();
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+        public DataTable GetDocument_Officer(string ScId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSelfCertificateDocuments", ScId);
+        }
+        public DataTable GetStatusSC(string StaffId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SelfCertificateStatus", StaffId);
+        }
+        public DataTable GetSelfCertificateData(string ScId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ViewSCData", ScId);
+        }
+        public DataTable GetSelfCertificateStatus(string OwnerId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckSelfCertificate", OwnerId);
+        }
+        public DataTable GetStatusSC_Owner(string OwnerId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SelfCertificateStatus_Owner", OwnerId);
+        }
+
+        public DataTable GetDocument_Owner(string ScId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetDocument_SiteOwner", ScId);
+        }
+
+
+        public void UpdateDocumentForCS(string SC_Id, string Document_Id, string Documents_Name, string Document_Path, string SiteOwnerId, SqlTransaction transaction)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_UpdateSCDocuments", transaction.Connection, transaction))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@SC_ID", SC_Id);
+                    cmd.Parameters.AddWithValue("@Document_Id", Document_Id);
+                    cmd.Parameters.AddWithValue("@Documents_Name", Documents_Name);
+                    cmd.Parameters.AddWithValue("@Document_Path", String.IsNullOrEmpty(Document_Path) ? DBNull.Value : (object)Document_Path);
+                    cmd.Parameters.AddWithValue("@OwnerId", String.IsNullOrEmpty(SiteOwnerId) ? DBNull.Value : (object)SiteOwnerId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
+        public int UpdateSCStatus(string ScId, string OwnerId, SqlTransaction transaction)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_UpdateSCStatus", transaction.Connection, transaction))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@SC_ID", ScId);
+                    cmd.Parameters.AddWithValue("@OwnerId", OwnerId);
+                    int x = cmd.ExecuteNonQuery();
+                    return x;
+                }
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public DataSet GetReturnSCDouments(string ScId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetViewSCReturnDocuments", ScId);
+        }
+        public DataTable GetSelfCertificateDataReapply(string ScId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ViewSCDataOnReturn", ScId);
+        }
+        #endregion
     }
 }
 
