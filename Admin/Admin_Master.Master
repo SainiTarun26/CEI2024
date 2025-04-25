@@ -559,7 +559,12 @@
                                     <span class="menu-title">Sub DivisionMaster</span>
                                 </a>
                             </li>
-
+                            <li class="nav-item" id="Li1" runat="server">
+                                <a class="nav-link" href="/Admin/AccidentialReports_Admin.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Accidential Reports</span>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <div class="main-panel">

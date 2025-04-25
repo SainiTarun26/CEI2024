@@ -221,6 +221,7 @@
     <Content Include="AddNewPassword.aspx" />
     <Content Include="AdminLogout.aspx" />
     <Content Include="Admin\AcceptedOrRejectedRequest.aspx" />
+    <Content Include="Admin\AccidentialReports_Admin.aspx" />
     <Content Include="Admin\AddContractorDetails.aspx" />
     <Content Include="Admin\AddRemoveStaff.aspx" />
     <Content Include="Admin\AddSupervisorDetails.aspx" />
@@ -237,6 +238,7 @@
     <Content Include="Admin\InspectionDetails.aspx" />
     <Content Include="Admin\IntimationForHistory.aspx" />
     <Content Include="Admin\IntimationHistoryForAdmin.aspx" />
+    <Content Include="Admin\Investigation_of_Electrical_Accidents_officer_Admin.aspx" />
     <Content Include="Admin\LiftApprovalData.aspx" />
     <Content Include="Admin\LiftEscalatorData.aspx" />
     <Content Include="Admin\LiftInspectionDetails.aspx" />
@@ -1930,6 +1932,7 @@
     <Content Include="MultiSelect_Css\modal.js" />
     <Content Include="OfficerLogout.aspx" />
     <Content Include="Officers\AcceptedOrReject.aspx" />
+    <Content Include="Officers\AccidentialReports.aspx" />
     <Content Include="Officers\ActionOnSelfCertification.aspx" />
     <Content Include="Officers\ActionTakenInspections.aspx" />
     <Content Include="Officers\ConsolidatedReport.aspx" />
@@ -1941,6 +1944,7 @@
     <Content Include="Officers\Inspection.aspx" />
     <Content Include="Officers\Inspection_Lift_Escalator.aspx" />
     <Content Include="Officers\InstallationIntimationDetails.aspx" />
+    <Content Include="Officers\Investigation_of_Electrical_Accidents_officer.aspx" />
     <Content Include="Officers\Lift_EscelatorApprovaldata.aspx" />
     <Content Include="Officers\NewApplications.aspx" />
     <Content Include="Officers\OfficerDashboard.aspx" />
@@ -1980,6 +1984,7 @@
     <Content Include="ScriptCalendar\jquery-ui.css" />
     <Content Include="ScriptCalendar\jquery-ui.min.js" />
     <Content Include="SiteOwnerLogout.aspx" />
+    <Content Include="SiteOwnerPages\AccidentialHistory_SiteOwner.aspx" />
     <Content Include="SiteOwnerPages\ChallanReport.aspx" />
     <Content Include="SiteOwnerPages\CreateInspectionReport.aspx" />
     <Content Include="SiteOwnerPages\CreateTestReports.aspx" />
@@ -2002,6 +2007,9 @@
     <Content Include="SiteOwnerPages\InspectionsDetails.aspx" />
     <Content Include="SiteOwnerPages\Inspection_Industry.aspx" />
     <Content Include="SiteOwnerPages\Inspection_Lift.aspx" />
+    <Content Include="SiteOwnerPages\InvestigationOfElectricalAccidents.aspx" />
+    <Content Include="SiteOwnerPages\InvestigationOfElectricalAccidents_Return.aspx" />
+    <Content Include="SiteOwnerPages\Investigation_of_Electrical_Accidents_SiteOwner_History.aspx" />
     <Content Include="SiteOwnerPages\LiftApprovalData.aspx" />
     <Content Include="SiteOwnerPages\LiftDetails.aspx" />
     <Content Include="SiteOwnerPages\LiftInstallationDetails.aspx" />
@@ -2139,6 +2147,13 @@
     <Compile Include="Admin\AcceptedOrRejectedRequest.aspx.designer.cs">
       <DependentUpon>AcceptedOrRejectedRequest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\AccidentialReports_Admin.aspx.cs">
+      <DependentUpon>AccidentialReports_Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AccidentialReports_Admin.aspx.designer.cs">
+      <DependentUpon>AccidentialReports_Admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AddContractorDetails.aspx.cs">
       <DependentUpon>AddContractorDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2264,6 +2279,13 @@
     </Compile>
     <Compile Include="Admin\IntimationHistoryForAdmin.aspx.designer.cs">
       <DependentUpon>IntimationHistoryForAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Investigation_of_Electrical_Accidents_officer_Admin.aspx.cs">
+      <DependentUpon>Investigation_of_Electrical_Accidents_officer_Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Investigation_of_Electrical_Accidents_officer_Admin.aspx.designer.cs">
+      <DependentUpon>Investigation_of_Electrical_Accidents_officer_Admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\LiftApprovalData.aspx.cs">
       <DependentUpon>LiftApprovalData.aspx</DependentUpon>
@@ -2961,6 +2983,13 @@
     <Compile Include="Officers\AcceptedOrReject.aspx.designer.cs">
       <DependentUpon>AcceptedOrReject.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Officers\AccidentialReports.aspx.cs">
+      <DependentUpon>AccidentialReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\AccidentialReports.aspx.designer.cs">
+      <DependentUpon>AccidentialReports.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Officers\ActionOnSelfCertification.aspx.cs">
       <DependentUpon>ActionOnSelfCertification.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3037,6 +3066,13 @@
     </Compile>
     <Compile Include="Officers\InstallationIntimationDetails.aspx.designer.cs">
       <DependentUpon>InstallationIntimationDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\Investigation_of_Electrical_Accidents_officer.aspx.cs">
+      <DependentUpon>Investigation_of_Electrical_Accidents_officer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\Investigation_of_Electrical_Accidents_officer.aspx.designer.cs">
+      <DependentUpon>Investigation_of_Electrical_Accidents_officer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\Lift_EscelatorApprovaldata.aspx.cs">
       <DependentUpon>Lift_EscelatorApprovaldata.aspx</DependentUpon>
@@ -3298,6 +3334,13 @@
     <Compile Include="SiteOwnerLogout.aspx.designer.cs">
       <DependentUpon>SiteOwnerLogout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SiteOwnerPages\AccidentialHistory_SiteOwner.aspx.cs">
+      <DependentUpon>AccidentialHistory_SiteOwner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\AccidentialHistory_SiteOwner.aspx.designer.cs">
+      <DependentUpon>AccidentialHistory_SiteOwner.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteOwnerPages\ChallanReport.aspx.cs">
       <DependentUpon>ChallanReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3451,6 +3494,27 @@
     </Compile>
     <Compile Include="SiteOwnerPages\Inspection_Lift.aspx.designer.cs">
       <DependentUpon>Inspection_Lift.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\InvestigationOfElectricalAccidents.aspx.cs">
+      <DependentUpon>InvestigationOfElectricalAccidents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\InvestigationOfElectricalAccidents.aspx.designer.cs">
+      <DependentUpon>InvestigationOfElectricalAccidents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\InvestigationOfElectricalAccidents_Return.aspx.cs">
+      <DependentUpon>InvestigationOfElectricalAccidents_Return.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\InvestigationOfElectricalAccidents_Return.aspx.designer.cs">
+      <DependentUpon>InvestigationOfElectricalAccidents_Return.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\Investigation_of_Electrical_Accidents_SiteOwner_History.aspx.cs">
+      <DependentUpon>Investigation_of_Electrical_Accidents_SiteOwner_History.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\Investigation_of_Electrical_Accidents_SiteOwner_History.aspx.designer.cs">
+      <DependentUpon>Investigation_of_Electrical_Accidents_SiteOwner_History.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\LiftApprovalData.aspx.cs">
       <DependentUpon>LiftApprovalData.aspx</DependentUpon>

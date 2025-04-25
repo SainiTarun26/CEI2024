@@ -24,13 +24,27 @@ namespace CEIHaryana.SiteOwnerPages
                     GetContractorNotifications();
                     if (Request.Cookies["SiteOwnerId"] != null)
                     {
-
+                        DataSet ds = new DataSet();
+                        ds = CEI.GetDataAtSiteOwnerPowerutility(Convert.ToString(Session["SiteOwnerId"]));
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            powerutilitySiteowner1.Visible = true;
+                            powerutilitySiteowner2.Visible = true;
+                        }
                         lblName.Text = Request.Cookies["SiteOwnerId"].Value;
                     }
                     else
                     {
+                        DataSet ds = new DataSet();
+                        ds = CEI.GetDataAtSiteOwnerPowerutility(Convert.ToString(Session["SiteOwnerId"]));
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            powerutilitySiteowner1.Visible = true;
+                            powerutilitySiteowner2.Visible = true;
+                        }
                         lblName.Text = Convert.ToString(Session["SiteOwnerId"]);
                     }
+
                 }
                 else if (Session["SiteOwnerId"] == null)
                 {

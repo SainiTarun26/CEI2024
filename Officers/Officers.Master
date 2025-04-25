@@ -439,6 +439,13 @@
                                     <span class="menu-title">Self-Certificate Status</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Officers/AccidentialReports.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Accidential<br />
+                                        Reports</span>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <div class="main-panel">

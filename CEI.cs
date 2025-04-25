@@ -9558,7 +9558,346 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ViewSCDataOnReturn", ScId);
         }
-        #endregion
+        #endregion]
+
+        #region gurmeet new process 25-april-2025
+        public DataSet GetDataAtSiteOwnerPowerutility(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSiteOwnerPowerUtility", Id);
+        }
+
+        public int InsertHumanData(string Name, string FatherName, string Gender,
+        string Age, string FatelType, string PersonCategory, string FullAddress, string CreatedBy, long TempUniqueId //int TempUniqueId
+        )
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("InsertHumanVictimDetails", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@TempId", TempUniqueId);
+                        cmd.Parameters.AddWithValue("@NameOfVictim", Name);
+                        cmd.Parameters.AddWithValue("@FatherNameOrSpouseName", FatherName);
+                        cmd.Parameters.AddWithValue("@Gender", Gender);
+                        cmd.Parameters.AddWithValue("@ApproximateAge", Age);
+                        cmd.Parameters.AddWithValue("@FatalOrNonfatal", FatelType);
+                        cmd.Parameters.AddWithValue("@Categoryofperson", PersonCategory);
+                        cmd.Parameters.AddWithValue("@FullPostalAddress", FullAddress);
+                        cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                        //// Add an output parameter to capture the return value from the stored procedure
+                        //SqlParameter returnValue = new SqlParameter("@ReturnValue", SqlDbType.Int);
+                        //returnValue.Direction = ParameterDirection.ReturnValue;
+                        //cmd.Parameters.Add(returnValue);
+                        con.Open();
+                        int x = cmd.ExecuteNonQuery();
+                        con.Close();
+                        ////Return the value of the output parameter
+                        //return (int)returnValue.Value;
+                        return x;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (optional)
+                // Return a non-zero value to indicate failure
+                //return 0; // Indicate an error occurred
+                throw;
+            }
+        }
+
+        public int InsertAnimalData(string DescriptionAnimal, int Number, string OwnerName,
+        string OwnerAddress, string FatelType, string CreatedBy, long TempUniqueId//string TempUniqueId
+            )
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("Insert_DetailsOfAnimalVictims", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@TempId", TempUniqueId);
+                        cmd.Parameters.AddWithValue("@DescriptionOfAnimal", DescriptionAnimal);
+                        cmd.Parameters.AddWithValue("@Number", Number);
+                        cmd.Parameters.AddWithValue("@NameOfOwner", OwnerName);
+                        cmd.Parameters.AddWithValue("@AddressOfOwner", OwnerAddress);
+                        cmd.Parameters.AddWithValue("@FatalOrNonFatal", FatelType);
+                        cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                        con.Open();
+                        int x = cmd.ExecuteNonQuery();
+                        con.Close();
+                        return x;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0; // Indicate an error occurred
+            }
+        }
+
+        public DataTable GetDataAnimalAccident(string TempId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetAccidentAnimalDetails", TempId);
+        }
+        public DataTable GetDataHumanAccident(string TempId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetAccidentHumanDetails", TempId);
+        }
+        public int InsertAccidentData(string UtilityName, string ZoneName, string CircleName, string DivisionName, string SubDivision, string AssignedOfficer,
+            string AccidentDate, string AccidentTime, string District, string Thana, string Tehsil, string Village_City_Town, string VoltageLevel,
+            string ElectricalEquipment, string SerialNo_Name, int? ComponentId,//string InCaseOtherElectricalEquipment, 
+            string Premises, string InCaseOfOtherPremises, string CreatedBy, long TempUniqueId, //string TempUniqueId,
+            SqlTransaction transaction
+        )
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertElectricalAccidentDetails", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@TempId", TempUniqueId);
+            cmd.Parameters.AddWithValue("@NameOfUtility", UtilityName);
+            cmd.Parameters.AddWithValue("@NameofZone", ZoneName);
+            cmd.Parameters.AddWithValue("@NameOfCircle", CircleName);
+            cmd.Parameters.AddWithValue("@NameOfDivision", DivisionName);
+            cmd.Parameters.AddWithValue("@NameOfSubDivision", SubDivision);
+            cmd.Parameters.AddWithValue("@AssignedOfficer", AssignedOfficer);
+            cmd.Parameters.AddWithValue("@DateOfAccident", AccidentDate);
+            cmd.Parameters.AddWithValue("@TimeOfAccident", AccidentTime);
+            cmd.Parameters.AddWithValue("@District", District);
+            cmd.Parameters.AddWithValue("@Thana", Thana);
+            cmd.Parameters.AddWithValue("@Tehsil", Tehsil);
+            cmd.Parameters.AddWithValue("@VillageCityTown", Village_City_Town);
+            cmd.Parameters.AddWithValue("@VoltageLevelOnWhichAccidentOccurred", VoltageLevel);
+            cmd.Parameters.AddWithValue("@ElectricalEquipmentOfAccident", ElectricalEquipment);
+            cmd.Parameters.AddWithValue("@SerialNoName", SerialNo_Name);
+            cmd.Parameters.AddWithValue("@ComponentID", ComponentId == 0 ? (object)DBNull.Value : ComponentId);
+            //cmd.Parameters.AddWithValue("@InCaseOfOtherElectricalEquipment", InCaseOtherElectricalEquipment);
+            cmd.Parameters.AddWithValue("@PremisesOfAccident", Premises);
+            cmd.Parameters.AddWithValue("@InCaseOfOtherPremises", GetValue(InCaseOfOtherPremises));
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            //outputParam = new SqlParameter("@GeneratedCombinedIdDetails", SqlDbType.NVarChar, 500);
+            //outputParam.Direction = ParameterDirection.Output;
+            //cmd.Parameters.Add(outputParam);
+            int x = cmd.ExecuteNonQuery();
+            return x;
+        }
+        public string InsertDocumentData(long TempUniqueId, string DocumentName, string IsDocumentUpload, string Reason, string FileName,
+         string DocumentPath, string CreatedBy, SqlTransaction transaction)
+        {
+            try
+            {
+                //using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                //{
+                //    using (SqlCommand cmd = new SqlCommand("Insert_DetailsOfAnimalVictims", con))
+                //    {
+                SqlCommand cmd = new SqlCommand("Sp_insertAccidentDocument", transaction.Connection, transaction);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@TempId", TempUniqueId);
+                cmd.Parameters.AddWithValue("@DocumentName", DocumentName);
+                cmd.Parameters.AddWithValue("@IsDocumentUpload", IsDocumentUpload);
+                cmd.Parameters.AddWithValue("@Reason", GetValue(Reason));
+                cmd.Parameters.AddWithValue("@FileName", GetValue(FileName));
+                cmd.Parameters.AddWithValue("@DocumentPath", GetValue(DocumentPath));
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                outputParam = new SqlParameter("@Ret_DocumentID", SqlDbType.Int);
+                outputParam.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(outputParam);
+                //con.Open();
+                cmd.ExecuteNonQuery();
+                //int x = cmd.ExecuteNonQuery();
+                //con.Close();
+                //return x;
+                string RetVal = cmd.Parameters["@Ret_DocumentID"].Value.ToString();
+                cmd.Parameters.Clear();
+                return RetVal;
+                //}
+                // }
+            }
+            catch (Exception ex)
+            {
+                return null; // Indicate an error occurred
+            }
+        }
+        public DataSet GetinstallationsForAccident(string District, string VoltageLevel, string InstallationType)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSiteInstallation_For_Accident", District, VoltageLevel, InstallationType);
+        }
+        public DataTable FetchOfficerFor_Accidental(string District, string Designation)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetOfficer_forAccidentReport", District, Designation);
+        }
+        public DataTable GetAccidentialReports_forOfficer(string LoginId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAccidentialReports_forOfficer", LoginId);
+        }
+        public DataTable GetAccidentReportData(int Accident_ID)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAccidentialReportData", Accident_ID);
+        }
+        public DataSet ViewDocumentsAccidentApplication(string TempId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAccidentialAttachmentsForOfficer", TempId);
+        }
+        public int AccidentAction(int AccidentID, string ActionType, string Remarks, string OfficerId)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_AccidentAction", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ID", AccidentID);
+                        cmd.Parameters.AddWithValue("@Action", ActionType);
+                        cmd.Parameters.AddWithValue("@Remarks", Remarks);
+                        cmd.Parameters.AddWithValue("@StaffId", OfficerId);
+                        con.Open();
+                        int x = cmd.ExecuteNonQuery();
+                        con.Close();
+                        return x;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+                //return 0; 
+            }
+        }
+        public DataTable GetAccidentialReports_forAdmin()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAccidentialReports_forAdmin");
+        }
+        public DataTable GetAccidential_HistoryForSiteowner(string Loginid)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAccidential_forsiteowner", Loginid);
+        }
+        public DataTable GetHumanAccident_singledata(int TempId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetAccident_specificHumanData", TempId);
+        }
+        public DataTable GetAnimalAccident_singledata(string TempId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetAccident_specificAnimalData", TempId);
+        }
+        public int UpdateAnimalData(string DescriptionAnimal, int Number, string OwnerName,
+        string OwnerAddress, string CreatedBy, int Id
+        )
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("Update_DetailsOfAnimalVictims", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@Id", Id);
+                        cmd.Parameters.AddWithValue("@DescriptionOfAnimal", DescriptionAnimal);
+                        cmd.Parameters.AddWithValue("@Number", Number);
+                        cmd.Parameters.AddWithValue("@NameOfOwner", OwnerName);
+                        cmd.Parameters.AddWithValue("@AddressOfOwner", OwnerAddress);
+                        cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                        con.Open();
+                        int x = cmd.ExecuteNonQuery();
+                        con.Close();
+                        return x;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0; // Indicate an error occurred
+            }
+        }
+
+        public int UpdateHumanData(string Name, string FatherName, string Gender,
+        string Age, string PersonCategory, string FullAddress, string CreatedBy, int Id
+        )
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("UpdateHumanVictimDetails", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@Id", Id);
+                        cmd.Parameters.AddWithValue("@NameOfVictim", Name);
+                        cmd.Parameters.AddWithValue("@FatherNameOrSpouseName", FatherName);
+                        cmd.Parameters.AddWithValue("@Gender", Gender);
+                        cmd.Parameters.AddWithValue("@ApproximateAge", Age);
+                        cmd.Parameters.AddWithValue("@Categoryofperson", PersonCategory);
+                        cmd.Parameters.AddWithValue("@FullPostalAddress", FullAddress);
+                        cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                        con.Open();
+                        int x = cmd.ExecuteNonQuery();
+                        con.Close();
+                        //return (int)returnValue.Value;
+                        return x;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (optional)
+                // Return a non-zero value to indicate failure
+                return 0; // Indicate an error occurred
+            }
+        }
+
+        public int UpdateDocumentData(int Id, long TempUniqueId, string DocumentName, string FileName,
+         string DocumentPath, string CreatedBy, SqlTransaction transaction)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("Sp_UpdateAccidentDocument", transaction.Connection, transaction);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", Id);
+                cmd.Parameters.AddWithValue("@TempId", TempUniqueId);
+                cmd.Parameters.AddWithValue("@DocumentName", DocumentName);
+                //cmd.Parameters.AddWithValue("@IsDocumentUpload", IsDocumentUpload);
+                //cmd.Parameters.AddWithValue("@Reason", GetValue(Reason));
+                cmd.Parameters.AddWithValue("@FileName", GetValue(FileName));
+                cmd.Parameters.AddWithValue("@DocumentPath", GetValue(DocumentPath));
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                int x = cmd.ExecuteNonQuery();
+                //con.Close();
+                return x;
+                cmd.Parameters.Clear();
+                // return RetVal;              
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+        public void UpdateAccidentData(int AccidentId, long TempUniqueId, string AccidentDate, string AccidentTime, string District, string Thana,
+            string Tehsil, string Village_City_Town, string CreatedBy, SqlTransaction transaction)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("sp_UpdateElectricalAccidentDetails", transaction.Connection, transaction);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", AccidentId);
+                cmd.Parameters.AddWithValue("@DateOfAccident", AccidentDate);
+                cmd.Parameters.AddWithValue("@TimeOfAccident", AccidentTime);
+                cmd.Parameters.AddWithValue("@District", District);
+                cmd.Parameters.AddWithValue("@Thana", Thana);
+                cmd.Parameters.AddWithValue("@Tehsil", Tehsil);
+                cmd.Parameters.AddWithValue("@VillageCityTown", Village_City_Town);
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+#endregion
     }
 }
 

@@ -473,11 +473,23 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                             <a class="nav-link" href="/SiteOwnerPages/SelfCertification.aspx">
-                                 <i class="icon-layout menu-icon"></i>
-                                 <span class="menu-title">Self-Certification</span>
-                             </a>
-</li>
+                                <a class="nav-link" href="/SiteOwnerPages/SelfCertification.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Self-Certification</span>
+                                </a>
+                            </li>
+                            <li class="nav-item" runat="server" id="powerutilitySiteowner1" visible="false">
+                                <a class="nav-link" href="/SiteOwnerPages/InvestigationOfElectricalAccidents.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Accident</span>
+                                </a>
+                            </li>
+                            <li class="nav-item" runat="server" id="powerutilitySiteowner2" visible="false">
+                                <a class="nav-link" href="/SiteOwnerPages/AccidentialHistory_SiteOwner.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Accident History</span>
+                                </a>
+                            </li>
                             <%--<li class="nav-item">
                                 <a class="nav-link" href="/SiteOwnerPages/CreateTestReport_Lift.aspx">
                                     <i class="icon-layout menu-icon"></i>                                  
