@@ -30,6 +30,7 @@ namespace CEI_PRoject.ADMIN
                             SLDHistory.Visible = false;
                             NewInspectionTab.Visible = false;
                             ActionInprocesstab.Visible = false;
+                            CESE.Visible = true;
                         }
                         else
                         {
@@ -45,6 +46,7 @@ namespace CEI_PRoject.ADMIN
                             SLDHistory.Visible = true;
                             NewInspectionTab.Visible = true;
                             ActionInprocesstab.Visible = true;
+                            CESE.Visible = false;
                         }
                     }
                     else
