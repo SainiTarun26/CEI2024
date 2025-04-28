@@ -229,6 +229,7 @@
     <Content Include="Admin\AdminDashboard.aspx" />
     <Content Include="Admin\AdminMaster.aspx" />
     <Content Include="Admin\AllTestReports.aspx" />
+    <Content Include="Admin\CESE_Registration.aspx" />
     <Content Include="Admin\ChangeStaff.aspx" />
     <Content Include="Admin\CircleMaster.aspx" />
     <Content Include="Admin\Consolidated_Report.aspx" />
@@ -2219,6 +2220,13 @@
     </Compile>
     <Compile Include="Admin\AllTestReports.aspx.designer.cs">
       <DependentUpon>AllTestReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CESE_Registration.aspx.cs">
+      <DependentUpon>CESE_Registration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CESE_Registration.aspx.designer.cs">
+      <DependentUpon>CESE_Registration.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ChangeStaff.aspx.cs">
       <DependentUpon>ChangeStaff.aspx</DependentUpon>

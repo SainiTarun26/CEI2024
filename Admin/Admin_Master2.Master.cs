@@ -6,7 +6,7 @@ namespace CEI_PRoject.ADMIN
 {
     public partial class Admin_Master2 : System.Web.UI.MasterPage
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e) 
         {
             try
             {

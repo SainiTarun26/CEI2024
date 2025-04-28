@@ -18,7 +18,7 @@ namespace CEIHaryana.Admin
     public partial class CESE_Registration : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e) 
         {
             try
             {

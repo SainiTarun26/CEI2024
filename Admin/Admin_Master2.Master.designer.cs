@@ -9,7 +9,7 @@
 
 namespace CEI_PRoject.ADMIN
 {
-
+     
 
     public partial class Admin_Master2
     {
