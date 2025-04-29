@@ -30,6 +30,7 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             powerutilitySiteowner1.Visible = true;
                             powerutilitySiteowner2.Visible = true;
+                            SelfCertification.Visible = false;
                         }
                         lblName.Text = Request.Cookies["SiteOwnerId"].Value;
                     }
@@ -41,6 +42,7 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             powerutilitySiteowner1.Visible = true;
                             powerutilitySiteowner2.Visible = true;
+                            SelfCertification.Visible = false;
                         }
                         lblName.Text = Convert.ToString(Session["SiteOwnerId"]);
                     }

@@ -201,8 +201,10 @@ namespace CEIHaryana.SiteOwnerPages
                         }
 
                         transaction.Commit();
-                        string script = $"alert('SELF CERTIFICATION Successfuly Re-Submit!!.'); window.location='SiteOwnerDashboard.aspx';";
+                        //string script = $"alert('SELF CERTIFICATION Successfuly Re-Submit!!.'); window.location='SiteOwnerDashboard.aspx';";
+                        string script = $"alert('SELF CERTIFICATION Successfuly Re-Submit!!.'); window.location='InspectionHistory.aspx';";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+
                         return;
 
                     }
