@@ -168,19 +168,22 @@
     </script>
     <style>
         th.headercolor.thname {
-    width: 43% !important;
-    text-align:justify;
-}
+            width: 43% !important;
+            text-align: justify;
+        }
+
         th.headercolor.thname1 {
-    width: 3% !important;
-    text-align:justify;
-}
+            width: 3% !important;
+            text-align: justify;
+        }
+
         th.headercolor.tdwidth {
             width: 1% !important;
         }
+
         th.headercolor.tdwidth2 {
-    width: 5% !important;
-}
+            width: 5% !important;
+        }
 
 
         .highlight-dropdown {
@@ -368,7 +371,7 @@
 
         .headercolor {
             background-color: #9292cc;
-            color:white !important;
+            color: white !important;
         }
 
         th {
@@ -416,7 +419,7 @@
         }
 
         th.headercolor {
-            width:1% !important;
+            width: 1% !important;
             text-align: center;
         }
 
@@ -503,25 +506,28 @@
             max-width: 1300px !important;
             margin-left: 19%;
         }
-                svg.svg-inline--fa.fa-edit.fa-w-18 {
-    color: white !important;
-    background: green;
-    padding: 4px 5px 3px 5px;
-    border-radius: 5px;
-    font-size:22px;
-}
-                svg.svg-inline--fa.fa-edit.fa-w-18 {
-    color: white !important;
-    background: green;
-    padding: 4px 5px 3px 5px;
-    border-radius: 5px;
-    font-size:22px;
-    transform: scale(1.05);
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
+
+        svg.svg-inline--fa.fa-edit.fa-w-18 {
+            color: white !important;
+            background: green;
+            padding: 4px 5px 3px 5px;
+            border-radius: 5px;
+            font-size: 22px;
+        }
+
+        svg.svg-inline--fa.fa-edit.fa-w-18 {
+            color: white !important;
+            background: green;
+            padding: 4px 5px 3px 5px;
+            border-radius: 5px;
+            font-size: 22px;
+            transform: scale(1.05);
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+
         ::before {
-    color: white !important;
-}
+            color: white !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -614,7 +620,7 @@
                     </div>
                 </div>
             </div>
-           <%-- <div id="DivAccidentInvestigationDetails" visible="true" runat="server" style="padding-left: 40px; padding-right: 40px;">
+            <%-- <div id="DivAccidentInvestigationDetails" visible="true" runat="server" style="padding-left: 40px; padding-right: 40px;">
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: center;">
@@ -799,14 +805,22 @@
                                         <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor tdwidth2" />
                                         <ItemStyle HorizontalAlign="center" Width="15%" />
                                     </asp:BoundField>
+                                    <asp:BoundField DataField="FatherNameOrSpouseName" HeaderText="Father Name">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Gender" HeaderText="Gender">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
                                     <asp:TemplateField HeaderText="Action">
                                         <HeaderStyle HorizontalAlign="center" Width="25%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="center" VerticalAlign="Middle" Width="25%" Font-Bold="true" />
                                         <ItemTemplate>
                                             <%--OnClientClick="openModalHuman(); return false;"--%>
                                             <asp:LinkButton ID="LnkEditHuman" runat="server" CommandArgument=' <%#Eval("Id") %> ' OnClick="LnkEditHuman_Click" CommandName="EditHuman"><i class="fa fa-edit"></i></asp:LinkButton>
-                                       
-                                            </ItemTemplate>
+
+                                        </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
@@ -830,11 +844,15 @@
                                     </asp:BoundField>
                                     <asp:BoundField DataField="Type" HeaderText="Fatal/Nonfatal">
                                         <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="center"/>
+                                        <ItemStyle HorizontalAlign="center" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="Description" HeaderText="Description">
                                         <HeaderStyle HorizontalAlign="center" CssClass="headercolor tdwidth2" />
-                                        <ItemStyle HorizontalAlign="center"/>
+                                        <ItemStyle HorizontalAlign="center" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="AddressOfOwner" HeaderText="AddressOfOwner">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
                                     </asp:BoundField>
                                     <asp:TemplateField HeaderText="Action">
                                         <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
@@ -926,7 +944,7 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtPostalAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="HumanSubmit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
-                                <div class="row">                                 
+                                <div class="row">
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -1048,7 +1066,7 @@
                             <asp:TemplateField HeaderText="File Upload">
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
                                 <ItemTemplate>
-                                   <%-- <input type="hidden" id="DocumentID" runat="server" value='<%# Eval("Id") %>' />
+                                    <%-- <input type="hidden" id="DocumentID" runat="server" value='<%# Eval("Id") %>' />
                                      <input type="hidden" id="HdnDocumentName" runat="server" value='<%# Eval("DocumentName") %>' />--%>
                                     <asp:HiddenField ID="HdnDocumentID" runat="server" Value='<%# Eval("Id") %>' />
                                     <asp:HiddenField ID="HdnDocumentName" runat="server" Value='<%# Eval("DocumentName") %>' />

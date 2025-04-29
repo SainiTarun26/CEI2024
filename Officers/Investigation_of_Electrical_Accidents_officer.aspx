@@ -101,14 +101,17 @@
     <script type="text/javascript"></script>
     <style>
         div#ContentPlaceHolder1_Div1 {
-    margin-top: 20px;
-}
+            margin-top: 20px;
+        }
+
         span#ContentPlaceHolder1_lblSerialNO {
-    font-size: 0.875rem;
-}
+            font-size: 0.875rem;
+        }
+
         span#ContentPlaceHolder1_LblLineName {
-    font-size: 0.875rem;
-}
+            font-size: 0.875rem;
+        }
+
         th.headercolor.tdwidth {
             width: 1% !important;
         }
@@ -600,19 +603,19 @@
                             </label>
                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtPermises" MaxLength="20" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
-                       
+
 
                         <div class="col-md-4" id="Div1" runat="server" visible="true">
                             <asp:Label ID="lblSerialNO" runat="server" Visible="true">
                                 Serial No.
-                            </asp:Label>    
+                            </asp:Label>
                             <asp:Label ID="LblLineName" runat="server" Visible="false">
                                 Line Name
                             </asp:Label>
                             <asp:TextBox class="form-control" ID="txtSerialNo" ReadOnly="true" autocomplete="off" MaxLength="20" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator47" runat="server" ControlToValidate="txtSerialNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                         </div>
-                       <%-- <div class="col-md-4" id="Div2" runat="server" visible="true">
+                        <%-- <div class="col-md-4" id="Div2" runat="server" visible="true">
                             <label>
                                 Voltage Level
                             </label>
@@ -667,6 +670,14 @@
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
+                            <asp:BoundField DataField="FatherNameOrSpouseName" HeaderText="Father Name">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Gender" HeaderText="Gender">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
                         </Columns>
                     </asp:GridView>
                     <div class="row" id="Animal_Div" runat="server">
@@ -695,6 +706,10 @@
                             <asp:BoundField DataField="Number" HeaderText="Number">
                                 <HeaderStyle HorizontalAlign="center" Width="25%" CssClass="headercolor tdwidth" />
                                 <ItemStyle HorizontalAlign="center" Width="25" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="AddressOfOwner" HeaderText="AddressOfOwner">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
                         </Columns>
                     </asp:GridView>
@@ -790,7 +805,7 @@
                     </div>
                 </div>
             </div>
-            <div id="DocumentInCaseofAmimal" visible="true" runat="server" style="padding: 25px !important; padding-top: 0px !important; margin-right: 15px; margin-left: 15px;padding-bottom:0px !important;">
+            <div id="DocumentInCaseofAmimal" visible="true" runat="server" style="padding: 25px !important; padding-top: 0px !important; margin-right: 15px; margin-left: 15px; padding-bottom: 0px !important;">
                 <div class="row">
                     <div class="col-md-12">
                         <h7 class="card-title fw-semibold mb-4" id="maincard">
@@ -862,7 +877,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row" style="margin-top: 0px;margin-bottom: 15px;">
+            <div class="row" style="margin-top: 0px; margin-bottom: 15px;">
                 <div class="col-md-12" style="text-align: center;">
 
                     <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" ValidationGroup="Submit" Class="btn btn-primary" Text="Submit" />
@@ -974,7 +989,7 @@
             </div>
         </div>
     </div>
-  <%--  </div>--%>
+    <%--  </div>--%>
     <footer class="footer">
     </footer>
     <script src="/Assets/js/js/vendor.bundle.base.js"></script>
@@ -1117,6 +1132,6 @@
                 $('#equipmentModal').modal('show'); // Open modal
             }
         }
-</script>
+    </script>
 </asp:Content>
 

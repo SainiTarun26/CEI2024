@@ -655,7 +655,15 @@
                             <asp:BoundField DataField="Category" HeaderText="Category">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>                           
+                            </asp:BoundField>
+                            <asp:BoundField DataField="FatherNameOrSpouseName" HeaderText="Father Name">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Gender" HeaderText="Gender">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
                         </Columns>
                     </asp:GridView>
                     <div class="row" id="Animal_Div" runat="server">
@@ -684,7 +692,11 @@
                             <asp:BoundField DataField="Number" HeaderText="Number">
                                 <HeaderStyle HorizontalAlign="center" Width="25%" CssClass="headercolor tdwidth" />
                                 <ItemStyle HorizontalAlign="center" Width="25" />
-                            </asp:BoundField>                            
+                            </asp:BoundField>
+                            <asp:BoundField DataField="AddressOfOwner" HeaderText="AddressOfOwner">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
                         </Columns>
                     </asp:GridView>
                 </div>
@@ -1099,5 +1111,5 @@
                 $('#equipmentModal').modal('show'); // Open modal
             }
         }
-</script>
+    </script>
 </asp:Content>

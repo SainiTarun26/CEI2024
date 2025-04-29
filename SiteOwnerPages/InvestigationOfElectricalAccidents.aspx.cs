@@ -121,32 +121,32 @@ namespace CEIHaryana.SiteOwnerPages
                     //if (HdnField_Document10.Value == "1"){ allMandatoryUploaded = false; errorMessage += "Other document.<br>"; }
                     //Check non-mandatory documents (if 'No' is selected, reason must be provided)
 
-                    if (RadioButtonList4.SelectedValue == "1" && string.IsNullOrEmpty(txtReason4.Text))
+                    if (RadioButtonList4.SelectedValue == "1" && (string.IsNullOrEmpty(txtReason4.Text) || HdnField_Document4.Value != "1"))
                     {
                         allReasonsProvided = false;
                         errorMessage += "Reason for not uploading Statement of eyewitness is required.<br>";
                     }
-                    if (RadioButtonList5.SelectedValue == "1" && string.IsNullOrEmpty(txtReason5.Text))
+                    if (RadioButtonList5.SelectedValue == "1" && (string.IsNullOrEmpty(txtReason5.Text)|| HdnField_Document5.Value != "1"))
                     {
                         allReasonsProvided = false;
                         errorMessage += "Reason for not uploading Post-mortem report is required.<br>";
                     }
-                    if (RadioButtonList6.SelectedValue == "1" && string.IsNullOrEmpty(txtReason6.Text))
+                    if (RadioButtonList6.SelectedValue == "1" && (string.IsNullOrEmpty(txtReason6.Text) || HdnField_Document6.Value != "1"))
                     {
                         allReasonsProvided = false;
                         errorMessage += "Reason for not uploading FIR is required.<br>";
                     }
-                    if (RadioButtonList7.SelectedValue == "1" && string.IsNullOrEmpty(txtReason7.Text))
+                    if (RadioButtonList7.SelectedValue == "1" && string.IsNullOrEmpty(txtReason7.Text) && HdnField_Document7.Value != "1")
                     {
                         allReasonsProvided = false;
                         errorMessage += "Reason for not uploading Sketch of accidental site is required.<br>";
                     }
-                    if (RadioButtonList8.SelectedValue == "1" && string.IsNullOrEmpty(txtReason8.Text))
+                    if (RadioButtonList8.SelectedValue == "1" && string.IsNullOrEmpty(txtReason8.Text) && HdnField_Document8.Value != "1")
                     {
                         allReasonsProvided = false;
                         errorMessage += "Reason for not uploading Other documents is required.<br>";
                     }
-                    if (RadioButtonList9.SelectedValue == "1" && string.IsNullOrEmpty(txtReason9.Text)) 
+                    if (RadioButtonList9.SelectedValue == "1" && string.IsNullOrEmpty(txtReason9.Text) && HdnField_Document9.Value != "1") 
                     {   
                         allReasonsProvided = false;
                         errorMessage += "Reason for not uploading Other documents is required.<br>";
@@ -234,7 +234,7 @@ namespace CEIHaryana.SiteOwnerPages
                             int x = CEI.InsertAccidentData(txtUtility.Text.Trim(), txtZone.Text.Trim(), txtCircle.Text.Trim(), txtDivision.Text.Trim(),
                                 txtSubdivision.Text.Trim(), AssignedOfficer, txtAccidentDate.Text.Trim(), txtAccidentTime.Text.Trim(), ddlDistrict.SelectedItem.Text, txtThana.Text.Trim(),
                                 txtTehsil.Text.Trim(), txtVillageCityTown.Text.Trim(), ddlVoltageLevel.SelectedItem.Text, ddlElectricalEquipment.SelectedItem.Text,
-                                txtSerialNo.Text.Trim(), ComponentId,
+                                txtSerialNo.Text.Trim(),txtVoltageLevelAccident.Text.Trim(), ComponentId,
                                 //txtOtherCaseElectricalEquipment.Text.Trim(),
                                 ddlPremises.SelectedItem.Text, txtOtherPremsesCase.Text.Trim(),
                                 Convert.ToString(Session["SiteOwnerId"]), (long)Session["TempUniqueId"], transaction

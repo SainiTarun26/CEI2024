@@ -9648,11 +9648,11 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetAccidentHumanDetails", TempId);
         }
         public int InsertAccidentData(string UtilityName, string ZoneName, string CircleName, string DivisionName, string SubDivision, string AssignedOfficer,
-            string AccidentDate, string AccidentTime, string District, string Thana, string Tehsil, string Village_City_Town, string VoltageLevel,
-            string ElectricalEquipment, string SerialNo_Name, int? ComponentId,//string InCaseOtherElectricalEquipment, 
-            string Premises, string InCaseOfOtherPremises, string CreatedBy, long TempUniqueId, //string TempUniqueId,
-            SqlTransaction transaction
-        )
+      string AccidentDate, string AccidentTime, string District, string Thana, string Tehsil, string Village_City_Town, string VoltageLevel,
+      string ElectricalEquipment, string SerialNo_Name, string ComponentVoltageLevel, int? ComponentId,//string InCaseOtherElectricalEquipment, 
+      string Premises, string InCaseOfOtherPremises, string CreatedBy, long TempUniqueId, //string TempUniqueId,
+      SqlTransaction transaction
+  )
         {
             SqlCommand cmd = new SqlCommand("sp_InsertElectricalAccidentDetails", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -9672,6 +9672,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             cmd.Parameters.AddWithValue("@VoltageLevelOnWhichAccidentOccurred", VoltageLevel);
             cmd.Parameters.AddWithValue("@ElectricalEquipmentOfAccident", ElectricalEquipment);
             cmd.Parameters.AddWithValue("@SerialNoName", SerialNo_Name);
+            cmd.Parameters.AddWithValue("@ComponentVoltageLevel", ComponentVoltageLevel);
             cmd.Parameters.AddWithValue("@ComponentID", ComponentId == 0 ? (object)DBNull.Value : ComponentId);
             //cmd.Parameters.AddWithValue("@InCaseOfOtherElectricalEquipment", InCaseOtherElectricalEquipment);
             cmd.Parameters.AddWithValue("@PremisesOfAccident", Premises);

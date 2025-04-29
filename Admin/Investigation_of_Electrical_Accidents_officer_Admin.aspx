@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="Investigation_of_Electrical_Accidents_officer_Admin.aspx.cs" Inherits="CEIHaryana.Admin.Investigation_of_Electrical_Accidents_officer_Admin" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -100,14 +101,17 @@
     <script type="text/javascript"></script>
     <style>
         div#ContentPlaceHolder1_Div1 {
-    margin-top: 20px;
-}
+            margin-top: 20px;
+        }
+
         span#ContentPlaceHolder1_lblSerialNO {
-    font-size: 0.875rem;
-}
+            font-size: 0.875rem;
+        }
+
         span#ContentPlaceHolder1_LblLineName {
-    font-size: 0.875rem;
-}
+            font-size: 0.875rem;
+        }
+
         th.headercolor.tdwidth {
             width: 1% !important;
         }
@@ -599,19 +603,19 @@
                             </label>
                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtPermises" MaxLength="20" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
-                       
+
 
                         <div class="col-md-4" id="Div1" runat="server" visible="true">
                             <asp:Label ID="lblSerialNO" runat="server" Visible="true">
                                 Serial No.
-                            </asp:Label>    
+                            </asp:Label>
                             <asp:Label ID="LblLineName" runat="server" Visible="false">
                                 Line Name
                             </asp:Label>
                             <asp:TextBox class="form-control" ID="txtSerialNo" ReadOnly="true" autocomplete="off" MaxLength="20" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator47" runat="server" ControlToValidate="txtSerialNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                         </div>
-                       <%-- <div class="col-md-4" id="Div2" runat="server" visible="true">
+                        <%-- <div class="col-md-4" id="Div2" runat="server" visible="true">
                             <label>
                                 Voltage Level
                             </label>
@@ -666,6 +670,14 @@
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
+                            <asp:BoundField DataField="FatherNameOrSpouseName" HeaderText="Father Name">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Gender" HeaderText="Gender">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
                         </Columns>
                     </asp:GridView>
                     <div class="row" id="Animal_Div" runat="server">
@@ -694,6 +706,10 @@
                             <asp:BoundField DataField="Number" HeaderText="Number">
                                 <HeaderStyle HorizontalAlign="center" Width="25%" CssClass="headercolor tdwidth" />
                                 <ItemStyle HorizontalAlign="center" Width="25" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="AddressOfOwner" HeaderText="AddressOfOwner">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
                         </Columns>
                     </asp:GridView>
@@ -800,7 +816,7 @@
 
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px !important; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
 
-                
+
                     <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" OnRowDataBound="grd_Documemnts_RowDataBound" AutoGenerateColumns="false">
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
@@ -814,7 +830,7 @@
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblIsDocumentUpload" runat="server" Text='<%#Eval("IsDocumentUpload") %>'></asp:Label>
-                                
+
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
@@ -843,8 +859,8 @@
                             <label>
                                 Action
                             </label>
-                        
-                                                        <asp:TextBox class="form-control" ID="txtaction" ReadOnly="true" autocomplete="off" MaxLength="450" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                            <asp:TextBox class="form-control" ID="txtaction" ReadOnly="true" autocomplete="off" MaxLength="450" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                         </div>
                         <div class="col-md-8">
@@ -859,9 +875,6 @@
             </div>
             <div class="row" style="margin-top: 30px;">
                 <div class="col-md-12" style="text-align: center;">
-
-               
-
                 </div>
             </div>
         </div>
@@ -969,7 +982,7 @@
             </div>
         </div>
     </div>
-  <%--  </div>--%>
+    <%--  </div>--%>
     <footer class="footer">
     </footer>
     <script src="/Assets/js/js/vendor.bundle.base.js"></script>
@@ -1112,6 +1125,6 @@
                 $('#equipmentModal').modal('show'); // Open modal
             }
         }
-</script>
+    </script>
 </asp:Content>
 
