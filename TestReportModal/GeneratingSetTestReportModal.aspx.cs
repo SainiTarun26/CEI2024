@@ -640,7 +640,7 @@ namespace CEIHaryana.TestReportModal
                         CEI.InsertExistingInspectionData(lbltestReportId.Text, lblIntimationId.Text, txtTestReportCount.Text, txtApplicantType.Text, "Generating Set", txtVoltagelevel.Text.Trim(),
                            txtDistrict.Text, txtDivision.Text, TxtPremises.Text, ContractorId);
                     }
-                    if (Session["GSInspectionType"] != null && Session["GSInspectionType"].ToString() != "Existing")
+                    if (Session["GSInspectionType"] != null && Session["GSInspectionType"].ToString() != "Existing" && txtApplicantType.Text.Trim()!="Power Utility")
                     {
                         bool isValid = true;
                         int rowIndex = 0;
@@ -825,7 +825,7 @@ namespace CEIHaryana.TestReportModal
                         {
                             Contractor2.Visible = true;
                             Contractor3.Visible = false;
-                            if (Session["GSInspectionType"] != null && Session["GSInspectionType"].ToString() != "Existing")
+                            if (Session["GSInspectionType"] != null && Session["GSInspectionType"].ToString() != "Existing"&&txtApplicantType.Text.Trim() != "Power Utility")
                             {
                                 GetDocumentUploadData();
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "focusGridView", "focusOnGridView();", true);

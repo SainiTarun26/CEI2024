@@ -1045,7 +1045,7 @@ namespace CEIHaryana.Officers
                         lnkPreviousInstallaionInvoice.Visible = true;
                         lnkPreviousInstallaionInvoice.Text = "View Document";
                     }
-                    if (LblInstallationName.Text.Trim() == "Line")
+                    if (LblInstallationName.Text.Trim() == "Line" || lnkPreviousInstallaionInvoice.Text.Trim() == "")
                     {
                         lnkPreviousInstallaionInvoice.Visible = false;
                         lnkPreviosManufacturingReport.Visible = false;

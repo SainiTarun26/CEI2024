@@ -167,12 +167,15 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
+                   // Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
                     LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallaionInvoice");
                     LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
                     FileUpload UploadInstallaionInvoice = (FileUpload)e.Row.FindControl("FileUploadInstallaionInvoice");
                     FileUpload UploadManufacturingReport = (FileUpload)e.Row.FindControl("FileUploadManufacturingReport");
-                    if (LblInstallationName.Text.Trim() == "Line")
+                    //Only Condition Changed By Navneet 30-april-2025 
+                    //if (LblInstallationName.Text.Trim() == "Line")
+                    //{
+                    if (LinkButtonReport.CommandArgument.ToString() == null || LinkButtonReport.CommandArgument.ToString() == "" || linkButtonInvoice.CommandArgument.ToString() == null)
                     {
                         linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = false;

@@ -673,7 +673,7 @@ namespace CEIHaryana.TestReportModal
                            txtDistrict.Text, txtDivision.Text, TxtPremises.Text, ContractorId);
 
                     }
-                    if (Session["InspectionType"] != null && Session["InspectionType"].ToString() != "Existing")
+                    if (Session["InspectionType"] != null && Session["InspectionType"].ToString() != "Existing" && txtApplicantType.Text.Trim() != "Power Utility")
                     {
                         bool isValid = true;
                         int rowIndex = 0; // Counter to track iteration
@@ -858,7 +858,7 @@ namespace CEIHaryana.TestReportModal
 
                             //Session["InspectionType"]
                             //GetDocumentUploadData();
-                            if (Session["InspectionType"] != null && Session["InspectionType"].ToString() != "Existing")
+                            if (Session["InspectionType"] != null && Session["InspectionType"].ToString() != "Existing" && txtApplicantType.Text.Trim() != "Power Utility")
                             {
                                 GetDocumentUploadData();
                                 Session["SubstationOtp"] = null;

@@ -1112,9 +1112,10 @@ namespace CEIHaryana.Officers
                         lnkPreviousInstallaionInvoice.Visible = true;
                         lnkPreviousInstallaionInvoice.Text = "View Document";
                     }
-                    if (LblInstallationName.Text.Trim() == "Line")
+                    //if (LblInstallationName.Text.Trim() == "Line")
+                    //{ changed condition only by navneet 30-april-2025
+                    if (LblInstallationName.Text.Trim() == "Line" || lnkPreviousInstallaionInvoice.Text.Trim() == "")
                     {
-
                         lnkPreviousInstallaionInvoice.Visible = false;
                         lnkPreviosManufacturingReport.Visible = false;
                         linkButtonInvoice.Visible = false;

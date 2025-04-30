@@ -116,7 +116,8 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         e.Row.CssClass = "ReturnedRowColor";
                     }
-                    if (lblTypeOf.Text.Trim() == "Line")
+                    //Only Condition Changed By Navneet 30-april-2025 
+                    if (linkButton.CommandArgument.ToString()==null|| linkButton.CommandArgument.ToString() == ""|| LinkButton3.CommandArgument.ToString() == null)
                     {
                         linkButton.Visible = false;
                         LinkButton3.Visible = false;

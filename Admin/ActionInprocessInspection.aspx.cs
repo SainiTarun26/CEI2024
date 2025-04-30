@@ -862,10 +862,13 @@ namespace CEIHaryana.Admin
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
+                   // Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
                     LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallaionInvoice");
                     LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
-                    if (LblInstallationName.Text.Trim() == "Line")
+                    //Only Condition Changed By Navneet 30-april-2025 
+                    //if (LblInstallationName.Text.Trim() == "Line")
+                    //{
+                    if (LinkButtonReport.CommandArgument.ToString() == null || LinkButtonReport.CommandArgument.ToString() == "" || linkButtonInvoice.CommandArgument.ToString() == null)
                     {
                         Grid_MultipleInspectionTR.Columns[5].Visible = false;
                         Grid_MultipleInspectionTR.Columns[6].Visible = false;
