@@ -56,7 +56,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-                string script = "alert(\"No Record Found\");";
+                string script = "alert(\"Yet no work intimation is Submitted/Pending.\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             ds.Dispose();

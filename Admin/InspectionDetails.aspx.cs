@@ -302,15 +302,18 @@ namespace CEIHaryana.Admin
                 ds = CEI.ViewDocuments(ID);
                 if (ds.Tables.Count > 0)
                 {
+                    Lblgrd_Documemnts.Visible = false;
                     grd_Documemnts.DataSource = ds;
                     grd_Documemnts.DataBind();
                 }
                 else
                 {
+                    Lblgrd_Documemnts.Visible = true;
+                    Lblgrd_Documemnts.Text = "NA";
                     grd_Documemnts.DataSource = null;
                     grd_Documemnts.DataBind();
-                    string script = "alert(\"No Record Found for document\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    // string script = "alert(\"No Record Found for document\");";
+                    // ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 ds.Dispose();
             }

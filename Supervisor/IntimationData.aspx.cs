@@ -55,7 +55,7 @@ namespace CEIHaryana.Supervisor
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-                string script = "alert(\"No Record Found\");";
+                string script = "alert(\"There is no pending work intimation found.\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             ds.Dispose();

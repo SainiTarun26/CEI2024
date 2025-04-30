@@ -280,6 +280,7 @@
                         </asp:GridView>
                     </div>
                 </div>
+                <asp:Label ID="Lblgrd_Documemnts" runat="server"></asp:Label>
             </div>
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
                 Inspection Details

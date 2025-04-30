@@ -57,7 +57,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-                string script = "alert(\"No Record Found\");";
+                string script = "alert(\"All test reports of given installation is Generated.Please initiate with diffrent intimation.\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             ds.Dispose();

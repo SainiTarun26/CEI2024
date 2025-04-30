@@ -46,7 +46,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-                string script = "alert(\"No Record Found for Inspections\");";
+                string script = "alert(\"Yet no Inspection is submitted.\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             ds.Dispose();
