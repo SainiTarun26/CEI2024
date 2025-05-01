@@ -29,7 +29,7 @@ namespace CEIHaryana.SiteOwnerPages
                         if (dt.Rows.Count > 0 && dt.Rows != null)
                         {
                             string ApplicationStatus = dt.Rows[0]["ApplicationStatus"].ToString();
-                            if (ApplicationStatus != null && ApplicationStatus != string.Empty)
+                            if (ApplicationStatus != null && ApplicationStatus != string.Empty && ApplicationStatus != "Rejected")
                             {
                                 Response.Redirect("/SiteOwnerPages/SelfCertificationStatus.aspx", false);
                             }
