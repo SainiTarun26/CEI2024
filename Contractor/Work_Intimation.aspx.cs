@@ -1593,5 +1593,15 @@ namespace CEIHaryana.Contractor
                 }
             }
         }
+        protected void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
+        {   
+            string selected = ddlDistrict.SelectedItem.Text.ToLower();
+            if (selected.Contains("gurugram-i") || selected.Contains("gurugram-ii"))
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowPopup",
+                    "setTimeout(function() { document.getElementById('gurugramModal').style.display = 'block'; }, 100);", true);
+            }
+        }
+
     }
 }

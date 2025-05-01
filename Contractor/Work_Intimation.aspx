@@ -293,6 +293,42 @@
             .input-box:focus-within {
                 border-color: #777;
             }
+
+
+   .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 1000;
+        padding-top: 100px; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+        background-color: #fff;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 400px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover {
+        color: red;
+    }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -545,7 +581,7 @@
                                                 District
                                                 <samp style="color: red">* </samp>
                                             </label>
-                                            <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDistrict" TabIndex="6" selectionmode="Multiple" Style="width: 100% !important">
+                                            <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDistrict" TabIndex="6" selectionmode="Multiple" Style="width: 100% !important" OnSelectedIndexChanged="ddlDistrict_SelectedIndexChanged">
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator25" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                         </div>
@@ -979,6 +1015,23 @@
                 </div>
             </div>
         </div>
+
+
+
+        <!-- Modal HTML -->
+<div id="gurugramModal" class="modal" runat="server" ClientIDMode="Static">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span> 
+        <h3>Attention</h3>
+        <p>
+            Please select <strong>Gurugram 1</strong> if the installation falls under the jurisdiction of 
+            <strong>SE(OP)Circle, DHBVN, Gurugram 1</strong>, or select <strong>Gurugram 2</strong> 
+            if it falls under <strong>SE(OP)Circle, DHBVN, Gurugram 2</strong>.
+        </p>
+    </div>
+</div>
+
+
     </div>
     <footer class="footer">
     </footer>
@@ -1353,4 +1406,22 @@
             return true;
         }
     </script>
+
+   <script>
+       document.addEventListener('DOMContentLoaded', function () {
+           var modal = document.getElementById('gurugramModal');
+           var closeBtn = document.getElementById('closeModal'); // now it will work
+           closeBtn.onclick = function () {
+               modal.style.display = "none";
+           }
+           window.onclick = function (event) {
+               if (event.target === modal) {
+                   modal.style.display = "none";
+               }
+           }
+       });
+</script>
+
+
+
 </asp:Content>
