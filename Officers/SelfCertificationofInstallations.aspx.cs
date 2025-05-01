@@ -62,7 +62,10 @@ namespace CEIHaryana.Officers
                     DataTable dt = CEI.GetSelfCertificateData_Officer(ScId);
                     txtName.Text = dt.Rows[0]["OwnerName"].ToString();
                     txtPanNo.Text = dt.Rows[0]["CreatedBy"].ToString();
-                    txtDistrict.Text = dt.Rows[0]["District"].ToString();                   
+                    txtDistrict.Text = dt.Rows[0]["District"].ToString();
+                    txtAddress.Text = dt.Rows[0]["Address"].ToString();
+                    txtEmail.Text = dt.Rows[0]["Email"].ToString();
+                    txtContact.Text = dt.Rows[0]["ContactNo"].ToString();
                     chkLine.Checked = dt.Rows[0]["Line"].ToString() == "1";
                     chkGenerater.Checked = dt.Rows[0]["Generating"].ToString() == "1";
                     chkSubstation.Checked = dt.Rows[0]["Substation"].ToString() == "1";

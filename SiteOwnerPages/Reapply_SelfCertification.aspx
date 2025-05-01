@@ -402,7 +402,7 @@
                                  <asp:HiddenField ID="hnScId" runat="server" />
                                 <div class="row" style="margin-top: 15px;">
                                     <div class="col-md-8">
-                                        <label>Installation Type<samp style="color: red">* </samp>
+                                        <label>Installation Type 
                                         </label>
                                         <div style="display: flex; align-items: center; gap: 15px; margin-left: 18px; flex-wrap: wrap;">
                                             <label>
@@ -430,14 +430,14 @@
 
                                     <div class="col-md-3" id="OtherInstallation" runat="server" visible="false">
                                         <label>
-                                            Other Installation Type<samp style="color: red">* </samp>
+                                            Other Installation Type 
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtOtherInstallation" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                     </div>
                                     <div class="col-md-4">
                                         <label>
-                                            Max Voltage Level(Kv)<samp style="color: red">* </samp>
+                                            Max Voltage Level(Kv) 
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtVoltage" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>

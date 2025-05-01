@@ -418,7 +418,7 @@
                      <asp:HiddenField ID="hnStaffId" runat="server" />
                      <asp:HiddenField ID="hnSc_Id" runat="server" />
                      <label>
-              Name<samp style="color: red">* </samp>
+                    Name
                    </label>
                      <asp:TextBox class="form-control" ID="txtName" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)"  MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -427,16 +427,40 @@
 
                  <div class="col-md-4">
                      <label>
-                         PAN Card No.<samp style="color: red">* </samp>
+                         PAN Card No.
                      </label>
                      <asp:TextBox class="form-control" ID="txtPanNo" TabIndex="8" readonly="true" onkeydown="return preventEnterSubmit(event)"  MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                    
                  </div>
                  <div class="col-md-4">
                      <label>
-                         District<samp style="color: red">* </samp>
+                         District
                      </label>
                      <asp:TextBox class="form-control" ID="txtDistrict" TabIndex="8" readonly="true" onkeydown="return preventEnterSubmit(event)"  MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                 </div>
+                       </div>
+             <div class="row" style="margin-top: 15px;">
+                 <div class="col-md-6">
+                     <label>
+                         Address
+                     </label>
+                     <asp:TextBox class="form-control" ID="txtAddress" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+
+                 </div>
+
+                 <div class="col-md-3">
+                     <label>
+                         Email ID.
+                     </label>
+                     <asp:TextBox class="form-control" ID="txtEmail" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                 </div>
+                 <div class="col-md-3">
+                     <label>
+                         Phone Number
+                     </label>
+                     <asp:TextBox class="form-control" ID="txtContact" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                  </div>
 
              </div>
@@ -475,7 +499,7 @@
 
                                 <div class="row" style="margin-top: 15px;">
                                     <div class="col-md-6">
-                                        <label>Installation Type<samp style="color: red">* </samp>
+                                        <label>Installation Type
                                         </label>
                                         <div style="display: flex; align-items: center; gap: 15px; margin-left: 18px; flex-wrap: wrap;">
                                             <label>
@@ -502,14 +526,14 @@
 
                                     <div class="col-md-3" id="OtherInstallation" runat="server" visible="false">
                                         <label>
-                                            Other Installation Type<samp style="color: red">* </samp>
+                                            Other Installation Type
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtOtherInstallation" TabIndex="8" readonly="true" onkeydown="return preventEnterSubmit(event)"  MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     
                                     </div>
                                     <div class="col-md-3">
                                         <label>
-                                            Max Voltage Level(Kv)<samp style="color: red">* </samp>
+                                            Max Voltage Level(Kv)
                                         </label>
                                          <asp:TextBox class="form-control" ID="txtVoltage" TabIndex="8" readonly="true" onkeydown="return preventEnterSubmit(event)"  MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>

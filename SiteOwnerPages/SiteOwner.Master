@@ -472,8 +472,8 @@
                                     <span class="menu-title">Return Inspection</span>
                                 </a>
                             </li>
-                           <li class="nav-item" runat="server" id="SelfCertification" visible="true">
-                                <a class="nav-link" href="/SiteOwnerPages/SelfCertification.aspx" >
+                            <li class="nav-item" runat="server" id="SelfCertification" visible="true">
+                                <a class="nav-link" href="/SiteOwnerPages/SelfCertification.aspx">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Self-Certification</span>
                                 </a>

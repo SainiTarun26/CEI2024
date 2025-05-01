@@ -420,7 +420,7 @@
                                         <asp:HiddenField ID="hnOwnerId" runat="server" />
                                         <asp:HiddenField ID="hnSc_Id" runat="server" />
                                         <label>
-                                            Name<samp style="color: red">* </samp>
+                                            Name
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtName" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -429,14 +429,14 @@
 
                                     <div class="col-md-4">
                                         <label>
-                                            PAN Card No.<samp style="color: red">* </samp>
+                                            PAN Card No.
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtPanNo" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                     </div>
                                     <div class="col-md-4">
                                         <label>
-                                            District<samp style="color: red">* </samp>
+                                            District
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtDistrict" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
@@ -477,7 +477,7 @@
                                 <div class="row" style="margin-top: 15px;">
                                     <div class="col-md-6">
                                         <label>
-                                            Installation Type<samp style="color: red">* </samp>
+                                            Installation Type
                                         </label>
                                         <div style="display: flex; align-items: center; gap: 15px; margin-left: 18px; flex-wrap: wrap;">
                                             <label>
@@ -504,14 +504,14 @@
 
                                     <div class="col-md-3" id="OtherInstallation" runat="server" visible="false">
                                         <label>
-                                            Other Installation Type<samp style="color: red">* </samp>
+                                            Other Installation Type
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtOtherInstallation" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                                     </div>
                                     <div class="col-md-3">
                                         <label>
-                                            Max Voltage Level(Kv)<samp style="color: red">* </samp>
+                                            Max Voltage Level(Kv)
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtVoltage" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
@@ -573,7 +573,7 @@
       <div class="row" style="margin-bottom: 15px;">
           <div class="col-md-4">
               <label>
-                  Application Status<samp style="color: red">* </samp>
+                  Application Status
               </label>
               <asp:TextBox class="form-control" ID="txtStatus" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
           </div>
@@ -589,7 +589,7 @@
 
           <div class="col-md-12" style="margin-bottom: 15px;" id="Suggestion" runat="server" visible="false">
               <label>
-                  Suggestion/Note<samp style="color: red">* </samp>
+                  Suggestion/Note
               </label>
               <asp:TextBox
                   class="form-control"
@@ -609,7 +609,7 @@
           </div>
           <div class="col-md-12" id="Remarks" runat="server" visible ="false">
               <label>
-                  Remarks<samp style="color: red">* </samp>
+                  Remarks
               </label>
               <asp:TextBox
                   class="form-control"

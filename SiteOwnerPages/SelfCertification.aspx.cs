@@ -140,7 +140,7 @@ namespace CEIHaryana.SiteOwnerPages
                                 if (x > 0)
                                 {
                                     transaction.Commit();
-                                    string script = $"alert('SELF CERTIFICATION Successfuly Submit!!.'); window.location='InspectionHistory.aspx';";
+                                    string script = $"alert('SELF CERTIFICATION Successfuly Submit!!.'); window.location='SelfCertificationStatus.aspx';";
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
                                     return;
                                 }
