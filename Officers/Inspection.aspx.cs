@@ -61,7 +61,9 @@ namespace CEIHaryana.Officers
             {
                 ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReportDataIfPeriodic(ID);
+                // comment by gurmeet1 may 2025
+                //ds = CEI.GetTestReportDataIfPeriodic(ID);
+                ds = CEI.GetInspectionHistoryLogs(ID);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {
@@ -186,8 +188,9 @@ namespace CEIHaryana.Officers
                     //{
                     TRAttached.Visible = true;
                     TRAttachedGrid.Visible = true;
-                    GridView1.Columns[7].Visible = false;
-                    GridView1.Columns[5].Visible = false;
+                    // comment by gurmeet1 may 2025
+                    //  GridView1.Columns[7].Visible = false;
+                    //  GridView1.Columns[5].Visible = false;
                     //}
                     //else
                     //{
@@ -379,7 +382,10 @@ namespace CEIHaryana.Officers
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                // comment by gurmeet1 may 2025
+                //string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                string status = DataBinder.Eval(e.Row.DataItem, "ActionDate").ToString();
+
                 if (status == "RETURN")
                 {
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
@@ -1111,7 +1117,9 @@ namespace CEIHaryana.Officers
             {
                 ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReport(ID);
+                // comment by gurmeet1 may 2025
+                //ds = CEI.GetTestReport(ID);
+                ds = CEI.GetInspectionHistoryLogs(ID);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {

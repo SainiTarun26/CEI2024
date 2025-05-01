@@ -89,7 +89,9 @@ namespace CEIHaryana.Officers
             {
                 ID = Session["InProcessInspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReportDataIfPeriodic(ID);
+               // comment by gurmeet1 may 2025
+                //ds = CEI.GetTestReportDataIfPeriodic(ID);
+                ds = CEI.GetInspectionHistoryLogs(ID);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {
@@ -343,9 +345,9 @@ namespace CEIHaryana.Officers
                     SupervisorEmail.Visible = false;
                     string SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
                     grd_Documemnts.Columns[1].Visible = true;
-
-                    GridView1.Columns[5].Visible = false;
-                    GridView1.Columns[3].Visible = false;
+                    // comment by gurmeet1 may 2025
+                    // GridView1.Columns[5].Visible = false; comment by gurmeet1 may
+                    //GridView1.Columns[3].Visible = false;
 
                     DivTestReports.Visible = true;
                     GridToViewTestReports();
@@ -369,8 +371,9 @@ namespace CEIHaryana.Officers
                         ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
                         ddlReview.Attributes.Add("disabled", "true");
                         txtSuggestion.Attributes.Add("disabled", "true");
-                        GridView1.Columns[5].Visible = false;
-                        GridView1.Columns[7].Visible = false;
+                        // comment by gurmeet1 may 2025
+                        //GridView1.Columns[5].Visible = false; by gurmeet
+                        //GridView1.Columns[7].Visible = false;
                         if (!string.IsNullOrEmpty(SiteInspectionDate))
                         {
                             InspectionDate.Visible = false;
@@ -385,8 +388,9 @@ namespace CEIHaryana.Officers
                         btnBack.Visible = false;
                         Backbtn.Visible = true;
                         InspectionDate.Visible = false;
-                        GridView1.Columns[5].Visible = false;
-                        GridView1.Columns[7].Visible = false;
+                        // comment by gurmeet1 may 2025
+                        //GridView1.Columns[5].Visible = false;
+                        //GridView1.Columns[7].Visible = false;
                         if (!string.IsNullOrEmpty(SiteInspectionDate))
                         {
                             InspectionDate.Visible = false;
@@ -404,8 +408,9 @@ namespace CEIHaryana.Officers
                     }
                     if (Status == "Return")
                     {
-                        GridView1.Columns[5].Visible = false;
-                        GridView1.Columns[7].Visible = false;
+                        // comment by gurmeet1 may 2025
+                        //GridView1.Columns[5].Visible = false;
+                        //GridView1.Columns[7].Visible = false;
                         btnBack.Visible = false;
                         Backbtn.Visible = true;
                         InspectionDate.Visible = false;
@@ -801,7 +806,10 @@ namespace CEIHaryana.Officers
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                // comment by gurmeet1 may 2025
+                //string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                string status = DataBinder.Eval(e.Row.DataItem, "ActionDate").ToString();
+
                 Label lblSubmittedDate = (Label)e.Row.FindControl("lblSubmittedDate");
                 Session["lblSubmittedDate"] = lblSubmittedDate.Text;
                 if (status == "RETURN")
@@ -1080,7 +1088,9 @@ namespace CEIHaryana.Officers
             {
                 ID = Session["InProcessInspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReport(ID);
+                // comment by gurmeet1 may 2025
+                //ds = CEI.GetTestReport(ID);
+                ds = CEI.GetInspectionHistoryLogs(ID);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {
