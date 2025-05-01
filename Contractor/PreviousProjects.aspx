@@ -232,8 +232,8 @@ Text="<i class='fa fa-duotone fa-trash'></i>" CommandName="Drop" CommandArgument
                 Search_Gridview(document.getElementById('txtSearch'));
             }
         }
-    </script
-            < script type = "text/javascript" >
+    </script>
+            <script type = "text/javascript" >
                 document.addEventListener("DOMContentLoaded", function () {
                     const elements = document.querySelectorAll('.break-text-10');
 

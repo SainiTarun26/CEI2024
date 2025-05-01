@@ -280,8 +280,9 @@ namespace CEIHaryana.Admin
         protected void GridView2_RowDataBound1(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+            {   string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
+                //commented Condition only by gurmeet 1May
+                //string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
                 if (status == "RETURN")
                 {
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
@@ -328,7 +329,9 @@ namespace CEIHaryana.Admin
             try
             {
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReport(InspectionId);
+                //commet by gurmeet 29 aprail
+              //  ds = CEI.GetTestReport(InspectionId);
+                ds = CEI.GetInspectionHistoryLogs(InspectionId);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
@@ -413,7 +416,9 @@ namespace CEIHaryana.Admin
             try
             {
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReportDataIfPeriodic(InspectionId);
+                //commented Condition only by gurmeet 1May
+                //ds = CEI.GetTestReportDataIfPeriodic(InspectionId);
+                ds = CEI.GetInspectionHistoryLogs(InspectionId);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
@@ -443,10 +448,13 @@ namespace CEIHaryana.Admin
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-                    Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
+                   // Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
                     LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallaionInvoice");
                     LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
-                    if (LblInstallationName.Text.Trim() == "Line")
+                    //Only Condition Changed By Navneet 30-april-2025 
+                    //if (LblInstallationName.Text.Trim() == "Line")
+                    //{
+                    if (LinkButtonReport.CommandArgument.ToString() == null || LinkButtonReport.CommandArgument.ToString() == "" || linkButtonInvoice.CommandArgument.ToString() == null)
                     {
                         Grid_MultipleInspectionTR.Columns[5].Visible = false;
                         Grid_MultipleInspectionTR.Columns[6].Visible = false;

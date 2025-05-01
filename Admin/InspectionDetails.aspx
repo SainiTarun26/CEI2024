@@ -297,26 +297,34 @@
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="Installationfor" HeaderText="Installation Type">
+                            <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Status" HeaderText="Status">
+                            <asp:BoundField DataField="ActionTaken" HeaderText="Status">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:TemplateField HeaderText="View Test Reports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" Visible="false">
+                            <%-- <asp:TemplateField HeaderText="View Test Reports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" Visible="false">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkRedirect" runat="server" Text="View Test Report" OnClick="lnkRedirect_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                            </asp:TemplateField>
-                            <asp:BoundField DataField="SubmittedDate" HeaderText="Submitted Date">
+                            </asp:TemplateField>--%>
+                            <%-- <asp:BoundField DataField="SubmittedDate" HeaderText="Submitted Date">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="InspectionRemarks" HeaderText="Inspection Remarks">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>--%>
+                            <asp:BoundField DataField="ActionDate" HeaderText="ActionDate">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
@@ -324,11 +332,11 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="ReasonForReturn" HeaderText="Return Reason">
+                            <%-- <asp:BoundField DataField="ReasonForReturn" HeaderText="Return Reason">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="ReturnBased" HeaderText="Return Based">
+                            </asp:BoundField>--%>
+                            <asp:BoundField DataField="Remarks" HeaderText="Remarks">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>

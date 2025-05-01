@@ -92,7 +92,9 @@ namespace CEIHaryana.Admin
             {
                 //ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReportDataIfPeriodic(ID);
+                //commented Condition only by gurmeet 1May
+                //ds = CEI.GetTestReportDataIfPeriodic(ID);
+                ds = CEI.GetInspectionHistoryLogs(ID);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {
@@ -989,7 +991,9 @@ namespace CEIHaryana.Admin
             {
                 //ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReport(ID);
+                //commented Condition only by gurmeet 1May
+                //ds = CEI.GetTestReport(ID);
+                ds = CEI.GetInspectionHistoryLogs(ID);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {
@@ -1058,9 +1062,12 @@ namespace CEIHaryana.Admin
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            if (e.Row.RowType == DataControlRowType.DataRow) 
             {
-                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                //commented Condition only by gurmeet 1May
+                //string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
+
                 if (status == "RETURN")
                 {
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
@@ -1266,7 +1273,7 @@ namespace CEIHaryana.Admin
                     {
                         //Grid_MultipleInspectionTR.Columns[5].Visible = false;
                         Grid_MultipleInspectionTR.Columns[7].Visible = false;
-                        // Grid_MultipleInspectionTR.Columns[6].Visible = false;
+                       // Grid_MultipleInspectionTR.Columns[6].Visible = false;
                         Grid_MultipleInspectionTR.Columns[8].Visible = false;
                         linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = false;
@@ -1275,7 +1282,7 @@ namespace CEIHaryana.Admin
                     {
                         //Grid_MultipleInspectionTR.Columns[5].Visible = true;
                         Grid_MultipleInspectionTR.Columns[7].Visible = true;
-                        // Grid_MultipleInspectionTR.Columns[6].Visible = true;
+                       // Grid_MultipleInspectionTR.Columns[6].Visible = true;
                         Grid_MultipleInspectionTR.Columns[8].Visible = true;
                         linkButtonInvoice.Visible = true;
                         LinkButtonReport.Visible = true;

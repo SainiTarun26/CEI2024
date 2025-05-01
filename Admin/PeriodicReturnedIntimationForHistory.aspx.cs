@@ -61,7 +61,9 @@ namespace CEIHaryana.Admin
             {
                 //ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReportDataIfPeriodic(ID);
+                //commented Condition only by gurmeet 1May
+                //ds = CEI.GetTestReportDataIfPeriodic(ID);
+                ds = CEI.GetInspectionHistoryLogs(ID);
                 string TestReportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {
@@ -599,7 +601,10 @@ namespace CEIHaryana.Admin
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                //commented Condition only by gurmeet 1May
+                //string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
+
                 if (status == "RETURN")
                 {
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;

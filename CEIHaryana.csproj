@@ -4502,6 +4502,7 @@
     <Content Include="Industry_Master\SLD.Master" />
     <Content Include="Officers\Officers.Master" />
     <Content Include="Admin\Admin_Master2.Master" />
+    <Content Include="Admin\SRS disconnection of supply.docx" />
     <None Include="packages.config" />
     <Content Include="Supervisor\Supervisor.Master" />
     <Content Include="TestReport\TestReport.Master" />

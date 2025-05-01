@@ -9981,6 +9981,12 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckCESEPanNumber", PanNumber);
         }
         #endregion
+        #region gurmeet 1-may-2025
+        public DataSet GetInspectionHistoryLogs(string Id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionHistoryLogs", Convert.ToInt32(Id));
+        }
+        #endregion
     }
 }
 
