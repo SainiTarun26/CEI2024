@@ -1022,7 +1022,7 @@
 <div id="gurugramModal" class="modal" runat="server" ClientIDMode="Static">
     <div class="modal-content">
         <span class="close" id="closeModal">&times;</span> 
-        <h3>Attention</h3>
+        <h3>Alert</h3>
         <p>
             Please select <strong>Gurugram 1</strong> if the installation falls under the jurisdiction of 
             <strong>SE(OP)Circle, DHBVN, Gurugram 1</strong>, or select <strong>Gurugram 2</strong> 
