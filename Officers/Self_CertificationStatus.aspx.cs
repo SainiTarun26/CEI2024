@@ -54,7 +54,7 @@ namespace CEIHaryana.Officers
                 {
                     GridView1.DataSource = null;
                     GridView1.DataBind();
-                    string script = "alert(\"No Record Found\");";
+                    string script = "alert(\"No Self-Certification requests have been submitted by any Site Owner.\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 dt.Dispose();

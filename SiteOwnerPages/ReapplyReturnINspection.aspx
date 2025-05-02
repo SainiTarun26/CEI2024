@@ -347,27 +347,31 @@
                                             <%#Container.DataItemIndex+1 %>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:BoundField DataField="Id" HeaderText="Inspection Id">
+                                 <%--   <asp:BoundField DataField="Id" HeaderText="Inspection Id">
                                         <HeaderStyle HorizontalAlign="Left" Width="22%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="22%" />
-                                    </asp:BoundField>
-                                    <asp:BoundField DataField="Installationfor" HeaderText="Installation Type">
+                                    </asp:BoundField>--%>
+                                    <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
                                         <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="15%" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="Status" HeaderText="Status">
+                                    <asp:BoundField DataField="ActionTaken" HeaderText="Status">
                                         <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="15%" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="SubmittedDate" HeaderText="Submitted Date">
+                                    <asp:BoundField DataField="ActionDate" HeaderText="ActionDate">
                                         <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="15%" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="ApplicationStatus" HeaderText="Application Status">
+                                    <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
                                         <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="center" Width="15%" CssClass="red-text" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="InspectionRemarks" HeaderText="Inspection Remarks">
+                                    <asp:BoundField DataField="ReturnDate" HeaderText="ReturnDate">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                     <asp:BoundField DataField="Remarks" HeaderText="Remarks">
                                         <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="center" Width="15%" />
                                     </asp:BoundField>

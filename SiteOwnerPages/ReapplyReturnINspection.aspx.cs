@@ -140,7 +140,9 @@ namespace CEIHaryana.SiteOwnerPages
             try
             {
                 DataSet ds = new DataSet();
-                ds = CEI.GetInspectionReport(InspectionID);
+                //commented by Gurmeet 02-may-2025
+                //ds = CEI.GetInspectionReport(InspectionID);
+                ds = CEI.GetInspectionHistoryLogs(InspectionID);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {

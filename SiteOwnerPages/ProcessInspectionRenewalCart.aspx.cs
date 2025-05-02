@@ -84,7 +84,9 @@ namespace CEIHaryana.SiteOwnerPages
             try
             {
                 DataSet ds = new DataSet();
-                ds = CEI.ToViewInspectionDetails(NewInspectionId);
+                //commented by Gurmeet 02-may-2025
+                //ds = CEI.ToViewInspectionDetails(NewInspectionId);
+                ds = CEI.GetInspectionHistoryLogs(NewInspectionId);
                 if (ds != null && ds.Tables.Count > 0)
                 {
                     GridView3.DataSource = ds;

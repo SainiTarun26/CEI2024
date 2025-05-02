@@ -157,7 +157,9 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReportDataIfPeriodic(ID);
+                //commented by Gurmeet 02-may-2025
+                //ds = CEI.GetTestReportDataIfPeriodic(ID);
+                ds = CEI.GetInspectionHistoryLogs(ID);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {
@@ -270,8 +272,9 @@ namespace CEIHaryana.SiteOwnerPages
 
                         voltagelevel.Visible = false;
                         Type.Visible = false;
-                        GridView2.Columns[3].Visible = false;
-                        GridView2.Columns[5].Visible = false;
+                        //commented by Gurmeet 02-may-2025
+                        // GridView2.Columns[3].Visible = false;
+                        // GridView2.Columns[5].Visible = false;
 
                         DivViewCart.Visible = true;
                         GridToViewCart();
@@ -981,7 +984,9 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReport(ID);
+                //commented by Gurmeet 02-may-2025
+                //ds = CEI.GetTestReport(ID);
+                ds = CEI.GetInspectionHistoryLogs(ID);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {
@@ -1005,7 +1010,9 @@ namespace CEIHaryana.SiteOwnerPages
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                //string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
+
                 if (status == "RETURN")
                 {
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
