@@ -357,7 +357,7 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="ActionTaken" HeaderText="Status">
+                            <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
@@ -387,10 +387,10 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="ReturnDate" HeaderText="Return Date">
+                           <%-- <asp:BoundField DataField="ReturnDate" HeaderText="Return Date">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
+                            </asp:BoundField>--%>
                             <asp:BoundField DataField="Remarks" HeaderText="Remarks" Visible="false">
                                 <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="25%" />

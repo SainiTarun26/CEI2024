@@ -424,7 +424,8 @@ namespace CEIHaryana.Admin
                 {
                     GridView2.DataSource = ds;
                     GridView2.DataBind();
-                    GridView2.Columns[3].Visible = false;
+                    //commented by gurmeet 2-may-2025
+                    //GridView2.Columns[3].Visible = false;
                 }
                 else
                 {
