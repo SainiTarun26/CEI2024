@@ -30,58 +30,77 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (!IsPostBack)
                 {
-                    if (Session["LineID"] != null && Convert.ToString(Session["LineID"]) != "")
+                    if (Convert.ToString(Session["InspectionId"]) != null && Convert.ToString(Session["InspectionId"]) != "")
                     {
-                        id = Session["LineID"].ToString();
+                        //if (Session["LineID"] != null && Convert.ToString(Session["LineID"]) != "")
+                        //{
+                        //    id = Session["LineID"].ToString();
+                        //}
+                        //else if (Session["SubStationID"] != null && Convert.ToString(Session["SubStationID"]) != "")
+                        //{
+                        //    id = Session["SubStationID"].ToString();
+                        //}
+                        //else if (Session["GeneratingSetId"] != null && Convert.ToString(Session["GeneratingSetId"]) != "")
+                        //{
+                        //    id = Session["GeneratingSetId"].ToString();
+                        //}
+                        string ID = Convert.ToString(Session["InspectionId"]);
+                        GetDetailsWithId(ID);
+                        GridBind(ID);
 
-                    }
-                    else if (Session["SubStationID"] != null && Convert.ToString(Session["SubStationID"]) != "")
-                    {
-                        id = Session["SubStationID"].ToString();
-                    }
-                    else if (Session["GeneratingSetId"] != null && Convert.ToString(Session["GeneratingSetId"]) != "")
-                    {
-                        id = Session["GeneratingSetId"].ToString();
-                    }
-
-                    GetDetailsWithId();
-                    GridBind();
-
-                    if (IType == "New")
-                    {
-                        GetTestReportData();
-                    }
-                    else if (IType == "Periodic")
-                    {
-                        GetTestReportDataIfPeriodic();
-                    }
-
-                    //GetTestReportData();
-
-                    Session["PreviousPage"] = "";
-                    if (Convert.ToString(Session["Type"]) != null && Convert.ToString(Session["Type"]) != "")
-                    {
-                        if (Convert.ToString(Session["Type"]) == "Line" || Convert.ToString(Session["Type"]) == "Generating Set")
+                        if (IType == "New")
                         {
-                            string voltage = txtVoltage.Text;
-                            string voltagePart = voltage.Substring(0, voltage.Length - 2);
-                            int.TryParse(voltagePart, out int voltageLevel);
+                            GetTestReportData(ID);
+                        }
+                        else if (IType == "Periodic")
+                        {
+                            GetTestReportDataIfPeriodic(ID);
+                        }
 
-                            if (voltageLevel <= 415)
+                        //GetTestReportData();
+
+                        Session["PreviousPage"] = "";
+                        if (Convert.ToString(Session["Type"]) != null && Convert.ToString(Session["Type"]) != "")
+                        {
+                            if (Convert.ToString(Session["Type"]) == "Line" || Convert.ToString(Session["Type"]) == "Generating Set")
                             {
-                                if (DateTime.Now.Subtract(inspectionCreatedDate).TotalDays >= 1095)
+                                string voltage = txtVoltage.Text;
+                                string voltagePart = voltage.Substring(0, voltage.Length - 2);
+                                int.TryParse(voltagePart, out int voltageLevel);
+
+                                if (voltageLevel <= 415)
                                 {
-                                    string script = "alert(\" Now You Can edit this inspection because your 3 years time period is complete for update\");";
-                                    ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                                    btnSubmit.Visible = true;
-                                    Edit = true;
-                                    //RejectedColumn.Visible = true;
+                                    if (DateTime.Now.Subtract(inspectionCreatedDate).TotalDays >= 1095)
+                                    {
+                                        string script = "alert(\" Now You Can edit this inspection because your 3 years time period is complete for update\");";
+                                        ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                                        btnSubmit.Visible = true;
+                                        Edit = true;
+                                        //RejectedColumn.Visible = true;
+                                    }
+                                    else
+                                    {
+                                        string script = "alert(\"You Can't edit this inspection before 3 years\");";
+                                        ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                                        btnSubmit.Visible = false;
+                                    }
                                 }
                                 else
                                 {
-                                    string script = "alert(\"You Can't edit this inspection before 3 years\");";
-                                    ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                                    btnSubmit.Visible = false;
+                                    if (DateTime.Now.Subtract(inspectionCreatedDate).TotalDays >= 365)
+                                    {
+                                        string script = "alert(\"Now You Can edit this inspection because your annual time period is completed\");";
+                                        ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                                        btnSubmit.Visible = true;
+                                        Edit = true;
+                                        //RejectedColumn.Visible = true;
+                                    }
+                                    else
+                                    {
+                                        string script = "alert(\"You Can't edit this inspection before 1 year\");";
+                                        ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
+                                        btnSubmit.Visible = false;
+                                    }
                                 }
                             }
                             else
@@ -92,11 +111,10 @@ namespace CEIHaryana.SiteOwnerPages
                                     ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
                                     btnSubmit.Visible = true;
                                     Edit = true;
-                                    //RejectedColumn.Visible = true;
                                 }
                                 else
                                 {
-                                    string script = "alert(\"You Can't edit this inspection before 1 year\");";
+                                    string script = "alert(\"You Can't edit inspection before 1 year\");";
                                     ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
                                     btnSubmit.Visible = false;
                                 }
@@ -104,58 +122,39 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                         else
                         {
-                            if (DateTime.Now.Subtract(inspectionCreatedDate).TotalDays >= 365)
+                            if (Session["LineID"] != null && Convert.ToString(Session["LineID"]) != "")
                             {
-                                string script = "alert(\"Now You Can edit this inspection because your annual time period is completed\");";
-                                ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                                btnSubmit.Visible = true;
-                                Edit = true;
-
+                                txtWorkType.Text = "Line";
                             }
-                            else
+                            else if (Session["SubStationID"] != null && Convert.ToString(Session["SubStationID"]) != "")
                             {
-                                string script = "alert(\"You Can't edit inspection before 1 year\");";
-                                ScriptManager.RegisterStartupScript(this, GetType(), "abc", script, true);
-                                btnSubmit.Visible = false;
+                                txtWorkType.Text = "Substation Transformer";
+                            }
+                            else if (Session["GeneratingSetId"] != null && Convert.ToString(Session["GeneratingSetId"]) != "")
+                            {
+                                txtWorkType.Text = "Generating Set";
                             }
                         }
+                        // Visibilty();
                     }
-                    else
-                    {
-                        if (Session["LineID"] != null && Convert.ToString(Session["LineID"]) != "")
-                        {
-                            txtWorkType.Text = "Line";
-
-                        }
-                        else if (Session["SubStationID"] != null && Convert.ToString(Session["SubStationID"]) != "")
-                        {
-
-                            txtWorkType.Text = "Substation Transformer";
-
-                        }
-                        else if (Session["GeneratingSetId"] != null && Convert.ToString(Session["GeneratingSetId"]) != "")
-                        {
-                            txtWorkType.Text = "Generating Set";
-
-                        }
-                    }
-
-                    // Visibilty();
+                }
+                else
+                {
+                    Session["InspectionId"] = "";
+                    Response.Redirect("InspectionHistory.aspx", false);
                 }
             }
             catch (Exception ex)
             {
-                //
+                Session["InspectionId"] = "";
+                Response.Redirect("InspectionHistory.aspx", false);
             }
-
-
         }
-
-        private void GetTestReportDataIfPeriodic()
+        private void GetTestReportDataIfPeriodic(string ID)
         {
             try
             {
-                ID = Session["InspectionId"].ToString();
+                //ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 //commented by Gurmeet 02-may-2025
                 //ds = CEI.GetTestReportDataIfPeriodic(ID);
@@ -163,172 +162,175 @@ namespace CEIHaryana.SiteOwnerPages
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {
+                    LblGridView2.Visible = false;
                     GridView2.DataSource = ds;
                     GridView2.DataBind();
                 }
                 else
                 {
+                    LblGridView2.Visible = true;
+                    LblGridView2.InnerText = "NA";
                     GridView2.DataSource = null;
                     GridView2.DataBind();
-                    string script = "alert(\"No Record Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    //string script = "alert(\"No Record Found\");";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 ds.Dispose();
             }
-            catch { }
+            catch
+            {
+                Session["InspectionId"] = "";
+                Response.Redirect("InspectionHistory.aspx", false);
+            }
         }
-
-        public void GetDetailsWithId()
+        public void GetDetailsWithId(string ID)
         {
             try
             {
-                if (Session["InspectionId"] != null && !string.IsNullOrEmpty(Session["InspectionId"].ToString()))
+                ////if (Session["InspectionId"] != null && !string.IsNullOrEmpty(Session["InspectionId"].ToString()))
+                ////{
+                ////ID = Session["InspectionId"].ToString();
+                DataSet ds = new DataSet();
+                ds = CEI.InspectionData(ID);
+
+                IType = ds.Tables[0].Rows[0]["IType"].ToString();
+
+                if (IType == "New")
                 {
-                    ID = Session["InspectionId"].ToString();
-                    DataSet ds = new DataSet();
-                    ds = CEI.InspectionData(ID);
+                    txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                    txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                    Session["TestReport"] = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                    txtApplicationNo.Text = ds.Tables[0].Rows[0]["InspectionReportID"].ToString();
 
-                    IType = ds.Tables[0].Rows[0]["IType"].ToString();
+                    string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
+                    DateTime.TryParse(createdDate, out inspectionCreatedDate);
+                    string InspectionType = ds.Tables[0].Rows[0]["IType"].ToString();
 
-                    if (IType == "New")
+                    voltagelevel.Visible = true;
+                    Type.Visible = true;
+                    txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                    txtInspectionType.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+
+                    string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
+                    if (Status == "Rejected")
                     {
-                        txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
-                        txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
-                        txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-                        Session["TestReport"] = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-                        txtApplicationNo.Text = ds.Tables[0].Rows[0]["InspectionReportID"].ToString();
+                        Rejection.Visible = true;
+                        txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                        ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
 
-                        string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
-                        DateTime.TryParse(createdDate, out inspectionCreatedDate);
-                        string InspectionType = ds.Tables[0].Rows[0]["IType"].ToString();
-
-                        voltagelevel.Visible = true;
-                        Type.Visible = true;
-                        txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                        txtInspectionType.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
-
-                        string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
-                        if (Status == "Rejected")
-                        {
-                            Rejection.Visible = true;
-                            txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
-                            ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
-
-                            ddlReview.Attributes.Add("disabled", "true");
-                            txtRejected.Attributes.Add("disabled", "true");
-                            btnBack.Visible = true;
-                            btnSubmit.Visible = false;
-                        }
-                        if (Status == "Return")
-                        {
-                            ApprovalRequired.Visible = false;
-                            btnSubmit.Visible = false;
-
-                            //buttonSubmit.Visible = true;
-                            //Remarks.Visible = true;
-
-                            //Rejection.Visible = true;
-                            //txtRejected.Text = ds.Tables[0].Rows[0]["ReturnRemarks"].ToString();
-                            //ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
-                            //ApprovedReject.Visible = true;
-                            //ApprovalRequired.Visible = false;
-                            ddlReview.Attributes.Add("disabled", "true");
-                            //txtRejected.Attributes.Add("disabled", "true");
-                        }
-                        string Reason = ds.Tables[0].Rows[0]["ReasonType"].ToString();
-
-                        GridToViewTRinMultipleCaseNew();
-
-                        Div1.Visible = true;
-                        DivViewTRinMultipleCaseNew.Visible = true;
-
-                        //if (Reason == "1")
-                        //{
-                        //    buttonSubmit.Visible = false;
-                        //    Remarks.Visible = false;
-
-                        //}
-                        //if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["RemarkForContractor"].ToString()))
-                        //{
-                        //    // If not null or empty, disable the textbox
-                        //    txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
-                        //    txtOwnerRemarks.Enabled = false;
-                        //    buttonSubmit.Visible = false;
-                        //}
+                        ddlReview.Attributes.Add("disabled", "true");
+                        txtRejected.Attributes.Add("disabled", "true");
+                        btnBack.Visible = true;
+                        btnSubmit.Visible = false;
                     }
-                    else if (IType == "Periodic")
+                    if (Status == "Return")
                     {
-                        txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
-                        txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
-                        txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-                        Session["TestReport"] = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-                        txtApplicationNo.Text = ds.Tables[0].Rows[0]["InspectionReportID"].ToString();
+                        ApprovalRequired.Visible = false;
+                        btnSubmit.Visible = false;
 
-                        ReturnedBased = ds.Tables[0].Rows[0]["ReasonType"].ToString();
+                        //buttonSubmit.Visible = true;
+                        //Remarks.Visible = true;
 
-                        string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
-                        DateTime.TryParse(createdDate, out inspectionCreatedDate);
-                        string InspectionType = ds.Tables[0].Rows[0]["IType"].ToString();
-
-                        voltagelevel.Visible = false;
-                        Type.Visible = false;
-                        //commented by Gurmeet 02-may-2025
-                        // GridView2.Columns[3].Visible = false;
-                        // GridView2.Columns[5].Visible = false;
-
-                        DivViewCart.Visible = true;
-                        GridToViewCart();
-
-                        string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
-                        if (Status == "Rejected")
-                        {
-                            Rejection.Visible = true;
-                            txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
-                            ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
-                            ddlReview.Attributes.Add("disabled", "true");
-                            txtRejected.Attributes.Add("disabled", "true");
-                            btnBack.Visible = true;
-                            btnSubmit.Visible = false;
-                        }
-                        if (Status == "Return")
-                        {
-                            ApprovalRequired.Visible = false;
-                            btnSubmit.Visible = false;
-
-                            //buttonSubmit.Visible = true;
-                            //Remarks.Visible = true;
-                            ddlReview.Attributes.Add("disabled", "true");
-
-                            if (ReturnedBased == "1")
-                            {
-                                btnResubmit.Visible = true;
-                            }
-                            else
-                            {
-                                btnResubmit.Visible = false;
-                            }
-                        }
-                        string Reason = ds.Tables[0].Rows[0]["ReasonType"].ToString();
-                        //if (Reason == "1")
-                        //{
-                        //    buttonSubmit.Visible = false;
-                        //    Remarks.Visible = false;
-
-                        //}
-                        //if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["RemarkForContractor"].ToString()))
-                        //{
-                        //    txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
-                        //    txtOwnerRemarks.Enabled = false;
-                        //    buttonSubmit.Visible = false;
-                        //}
+                        //Rejection.Visible = true;
+                        //txtRejected.Text = ds.Tables[0].Rows[0]["ReturnRemarks"].ToString();
+                        //ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
+                        //ApprovedReject.Visible = true;
+                        //ApprovalRequired.Visible = false;
+                        ddlReview.Attributes.Add("disabled", "true");
+                        //txtRejected.Attributes.Add("disabled", "true");
                     }
+                    string Reason = ds.Tables[0].Rows[0]["ReasonType"].ToString();
+
+                    GridToViewTRinMultipleCaseNew(ID);
+
+                    Div1.Visible = true;
+                    DivViewTRinMultipleCaseNew.Visible = true;
+                    //if (Reason == "1")
+                    //{
+                    //    buttonSubmit.Visible = false;
+                    //    Remarks.Visible = false;
+                    //}
+                    //if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["RemarkForContractor"].ToString()))
+                    //{
+                    //    // If not null or empty, disable the textbox
+                    //    txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
+                    //    txtOwnerRemarks.Enabled = false;
+                    //    buttonSubmit.Visible = false;
+                    //}
                 }
+                else if (IType == "Periodic")
+                {
+                    txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                    txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                    Session["TestReport"] = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                    txtApplicationNo.Text = ds.Tables[0].Rows[0]["InspectionReportID"].ToString();
+
+                    ReturnedBased = ds.Tables[0].Rows[0]["ReasonType"].ToString();
+
+                    string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
+                    DateTime.TryParse(createdDate, out inspectionCreatedDate);
+                    string InspectionType = ds.Tables[0].Rows[0]["IType"].ToString();
+
+                    voltagelevel.Visible = false;
+                    Type.Visible = false;
+                    //commented by Gurmeet 02-may-2025
+                    // GridView2.Columns[3].Visible = false;
+                    // GridView2.Columns[5].Visible = false;
+
+                    DivViewCart.Visible = true;
+                    GridToViewCart();
+                    string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
+                    if (Status == "Rejected")
+                    {
+                        Rejection.Visible = true;
+                        txtRejected.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
+                        ddlReview.SelectedIndex = ddlReview.Items.IndexOf(ddlReview.Items.FindByText(Status));
+                        ddlReview.Attributes.Add("disabled", "true");
+                        txtRejected.Attributes.Add("disabled", "true");
+                        btnBack.Visible = true;
+                        btnSubmit.Visible = false;
+                    }
+                    if (Status == "Return")
+                    {
+                        ApprovalRequired.Visible = false;
+                        btnSubmit.Visible = false;
+
+                        //buttonSubmit.Visible = true;
+                        //Remarks.Visible = true;
+                        ddlReview.Attributes.Add("disabled", "true");
+
+                        if (ReturnedBased == "1")
+                        {
+                            btnResubmit.Visible = true;
+                        }
+                        else
+                        {
+                            btnResubmit.Visible = false;
+                        }
+                    }
+                    string Reason = ds.Tables[0].Rows[0]["ReasonType"].ToString();
+                    //if (Reason == "1")
+                    //{
+                    //    buttonSubmit.Visible = false;
+                    //    Remarks.Visible = false;
+                    //}
+                    //if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["RemarkForContractor"].ToString()))
+                    //{
+                    //    txtOwnerRemarks.Text = ds.Tables[0].Rows[0]["RemarkForContractor"].ToString();
+                    //    txtOwnerRemarks.Enabled = false;
+                    //    buttonSubmit.Visible = false;
+                    //}
+                }
+                ////}
             }
             catch (Exception ex)
             {
+                Session["InspectionId"] = "";
+                Response.Redirect("InspectionHistory.aspx", false);
             }
         }
-
         private void GridToViewCart()
         {
             try
@@ -338,23 +340,26 @@ namespace CEIHaryana.SiteOwnerPages
 
                 if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                 {
+                    LblGridView3.Visible = false;
                     GridView3.DataSource = dsVC;
                     GridView3.DataBind();
                 }
                 else
                 {
+                    LblGridView3.Visible = true;
+                    LblGridView3.InnerText = "NA";
                     GridView3.DataSource = null;
                     GridView3.DataBind();
-                    string script = "alert('No Record Found');";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    //string script = "alert('No Record Found');";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
             }
             catch (Exception ex)
             {
-                // Log or handle the exception as needed
+                Session["InspectionId"] = "";
+                Response.Redirect("InspectionHistory.aspx", false);
             }
         }
-
         protected void lnkRedirect_Click(object sender, EventArgs e)
         {
             LinkButton lnkRedirect = (LinkButton)sender;
@@ -375,7 +380,6 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["GeneratingSetId"] = testReportId;
                 Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
             }
-
         }
         #region
         //protected void lnkDocument_Click(object sender, EventArgs e)
@@ -568,24 +572,19 @@ namespace CEIHaryana.SiteOwnerPages
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             //bool allFilesArePDF = true;
-
             //for (int i = 1; i <= 15; i++)
             //{
             //    FileUpload fileUploadControl = (FileUpload)FindControl("FileUpload" + i);
-
             //    if (fileUploadControl.HasFile)
             //    {
             //        string fileExtension = System.IO.Path.GetExtension(fileUploadControl.FileName);
-
             //        if (fileExtension.ToLower() != ".pdf")
             //        {
             //            allFilesArePDF = false;
             //            break;
-
             //        }
             //    }
             //}
-
             //if (allFilesArePDF)
             //{
             if (Session["SiteOwnerId"] != null)
@@ -632,14 +631,11 @@ namespace CEIHaryana.SiteOwnerPages
                             {
                                 Assign = "JE";
                             }
-
                         }
                     }
-
                     else if (input.EndsWith("v", StringComparison.OrdinalIgnoreCase))
                     {
                         Assign = "JE";
-
                     }
                 }
                 else
@@ -663,14 +659,11 @@ namespace CEIHaryana.SiteOwnerPages
                                 Assign = "SDO";
                             }
                         }
-
                     }
                     else if (input.EndsWith("MVA", StringComparison.OrdinalIgnoreCase))
                     {
                         Assign = "Admin@123";
-
                     }
-
                 }
                 #region Upload documents
                 //if (LineSubstationSupplier.Visible == true)
@@ -682,7 +675,6 @@ namespace CEIHaryana.SiteOwnerPages
                 //        {
                 //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/RequestLetterFromConcernedOfficer/"));
                 //        }
-
                 //        string ext = FileUpload1.PostedFile.FileName.Split('.')[1];
                 //        string path = "";
                 //        path = "/Attachment/" + id + "/RequestLetterFromConcernedOfficer/";
@@ -699,7 +691,6 @@ namespace CEIHaryana.SiteOwnerPages
                 //        {
                 //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/ManufacturingTestReportOfEqipment/"));
                 //        }
-
                 //        string ext = FileUpload2.PostedFile.FileName.Split('.')[1];
                 //        string path = "";
                 //        path = "/Attachment/" + id + "/ManufacturingTestReportOfEqipment/";
@@ -719,7 +710,6 @@ namespace CEIHaryana.SiteOwnerPages
                 //        {
                 //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramOfLine/"));
                 //        }
-
                 //        string ext = FileUpload3.PostedFile.FileName.Split('.')[1];
                 //        string path = "";
                 //        path = "/Attachment/" + id + "/SingleLineDiagramOfLine/";
@@ -739,7 +729,6 @@ namespace CEIHaryana.SiteOwnerPages
                 //        {
                 //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/DemandNoticeOfLine/"));
                 //        }
-
                 //        string ext = FileUpload12.PostedFile.FileName.Split('.')[1];
                 //        string path = "";
                 //        path = "/Attachment/" + id + "/DemandNoticeOfLine/";
@@ -759,7 +748,6 @@ namespace CEIHaryana.SiteOwnerPages
                 //        {
                 //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/CopyOfNoticeIssuedByUHBVNorDHBVN/"));
                 //        }
-
                 //        string ext = FileUpload4.PostedFile.FileName.Split('.')[1];
                 //        string path = "";
                 //        path = "/Attachment/" + id + "/CopyOfNoticeIssuedByUHBVNorDHBVN/";
@@ -776,7 +764,6 @@ namespace CEIHaryana.SiteOwnerPages
                 //        {
                 //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceOfTransferOfPersonalSubstation/"));
                 //        }
-
                 //        string ext = FileUpload5.PostedFile.FileName.Split('.')[1];
                 //        string path = "";
                 //        path = "/Attachment/" + id + "/InvoiceOfTransferOfPersonalSubstation/";
@@ -793,7 +780,6 @@ namespace CEIHaryana.SiteOwnerPages
                 //        {
                 //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/ManufacturingTestCertificateOfTransformer/"));
                 //        }
-
                 //        string ext = FileUpload6.PostedFile.FileName.Split('.')[1];
                 //        string path = "";
                 //        path = "/Attachment/" + id + "/ManufacturingTestCertificateOfTransformer/";
@@ -810,7 +796,6 @@ namespace CEIHaryana.SiteOwnerPages
                 //        {
                 //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/SingleLineDiagramofTransformer/"));
                 //        }
-
                 //        string ext = FileUpload7.PostedFile.FileName.Split('.')[1];
                 //        string path = "";
                 //        path = "/Attachment/" + id + "/SingleLineDiagramofTransformer/";
@@ -827,7 +812,6 @@ namespace CEIHaryana.SiteOwnerPages
                 //        {
                 //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceoffireExtinguisheratSite/"));
                 //        }
-
                 //        string ext = FileUpload8.PostedFile.FileName.Split('.')[1];
                 //        string path = "";
                 //        path = "/Attachment/" + id + "/InvoiceoffireExtinguisheratSite/";
@@ -847,7 +831,6 @@ namespace CEIHaryana.SiteOwnerPages
                 //        {
                 //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceOfDGSetOfGeneratingSet/"));
                 //        }
-
                 //        string ext = FileUpload9.PostedFile.FileName.Split('.')[1];
                 //        string path = "";
                 //        path = "/Attachment/" + id + "/InvoiceOfDGSetOfGeneratingSet/";
@@ -864,7 +847,6 @@ namespace CEIHaryana.SiteOwnerPages
                 //        {
                 //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/ManufacturingCerificateOfDGSet/"));
                 //        }
-
                 //        string ext = FileUpload10.PostedFile.FileName.Split('.')[1];
                 //        string path = "";
                 //        path = "/Attachment/" + id + "/ManufacturingCerificateOfDGSet/";
@@ -881,7 +863,6 @@ namespace CEIHaryana.SiteOwnerPages
                 //        {
                 //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/InvoiceOfExptinguisherOrApparatusAtsite/"));
                 //        }
-
                 //        string ext = FileUpload13.PostedFile.FileName.Split('.')[1];
                 //        string path = "";
                 //        path = "/Attachment/" + id + "/InvoiceOfExptinguisherOrApparatusAtsite/";
@@ -898,7 +879,6 @@ namespace CEIHaryana.SiteOwnerPages
                 //        {
                 //            Directory.CreateDirectory(Server.MapPath("~/Attachment/" + id + "/StructureStabilityResolvedByAuthorizedEngineer/"));
                 //        }
-
                 //        string ext = FileUpload11.PostedFile.FileName.Split('.')[1];
                 //        string path = "";
                 //        path = "/Attachment/" + id + "/StructureStabilityResolvedByAuthorizedEngineer/";
@@ -910,36 +890,35 @@ namespace CEIHaryana.SiteOwnerPages
                 //    }
                 //}
                 #endregion
-
                 ID = Session["InspectionId"].ToString();
                 CEI.UpdateInspectionData(ID, id, txtPremises.Text, txtApplicantType.Text, txtWorkType.Text, txtVoltage.Text, flpPhotourl, flpPhotourl,
                   flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8,
                   flpPhotourl9, flpPhotourl10, flpPhotourl11, flpPhotourl12, Assign, CreatedBy);
-
             }
             else
             {
                 Response.Redirect("/login.aspx");
             }
         }
-        protected void GridBind()
+        protected void GridBind(string ID)
         {
             try
             {
-                ID = Session["InspectionId"].ToString();
+                //// ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.ViewDocuments(ID);
-                if (ds.Tables.Count > 0)
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
+                    statement.Visible = false;
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
-                    statement.Visible = false;
                 }
                 else
                 {
+                    statement.Visible = true;
+                    statement.InnerText = "Documents Not Uploaded by User.";
                     GridView1.DataSource = null;
                     GridView1.DataBind();
-                    statement.Visible = true;
                     //string script = "alert(\"No Record Found\");";
                     //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
@@ -947,7 +926,8 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch (Exception ex)
             {
-                //throw;
+                Session["InspectionId"] = "";
+                Response.Redirect("InspectionHistory.aspx", false);
             }
         }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -968,34 +948,36 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else
                     {
-
                     }
                 }
-
             }
             catch (Exception ex)
             {
-                // lblerror.Text = ex.Message.ToString()+"---"+ fileName;
+                Session["InspectionId"] = "";
+                Response.Redirect("Inspection.aspx", false);
             }
         }
-        private void GetTestReportData()
+        private void GetTestReportData(string ID)
         {
             try
             {
-                ID = Session["InspectionId"].ToString();
+                //ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 //commented by Gurmeet 02-may-2025
                 //ds = CEI.GetTestReport(ID);
                 ds = CEI.GetInspectionHistoryLogs(ID);
                 string TestRportId = string.Empty;
-                if (ds != null && ds.Tables.Count > 0)
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     //TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                    LblGridView2.Visible = false;
                     GridView2.DataSource = ds;
                     GridView2.DataBind();
                 }
                 else
                 {
+                    LblGridView2.Visible = true;
+                    LblGridView2.InnerText = "NA";
                     GridView2.DataSource = null;
                     GridView2.DataBind();
                     string script = "alert(\"No Record Found\");";
@@ -1004,7 +986,11 @@ namespace CEIHaryana.SiteOwnerPages
                 //Session["TestRportId"] = TestRportId;
                 ds.Dispose();
             }
-            catch { }
+            catch
+            {
+                Session["InspectionId"] = "";
+                Response.Redirect("InspectionHistory.aspx", false);
+            }
         }
         protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -1024,7 +1010,6 @@ namespace CEIHaryana.SiteOwnerPages
                 e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
             }
         }
-
         protected void buttonSubmit_Click(object sender, EventArgs e)
         {
             string TestReportId = Session["TestReport"].ToString();
@@ -1046,7 +1031,6 @@ namespace CEIHaryana.SiteOwnerPages
             try
             {
                 LinkButton btn = (LinkButton)(sender);
-
                 GridViewRow row = (GridViewRow)btn.NamingContainer;
                 Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
                 string installationName = lblInstallationName.Text.Trim();
@@ -1064,7 +1048,6 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     Session["SubStationID"] = testReportId;
                     Response.Write("<script>window.open('/TestReportModal/SubstationTransformerTestReportModal.aspx','_blank');</script>");
-
                 }
                 else if (installationName == "Generating Set")
                 {
@@ -1072,9 +1055,12 @@ namespace CEIHaryana.SiteOwnerPages
                     Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                Session["InspectionId"] = "";
+                Response.Redirect("InspectionHistory.aspx", false);
+            }
         }
-
         protected void btnResubmit_Click(object sender, EventArgs e)
         {
             ID = Session["InspectionId"].ToString();
@@ -1086,33 +1072,34 @@ namespace CEIHaryana.SiteOwnerPages
             Session["CartID"] = string.Empty;
             Response.Redirect("/SiteOwnerPages/ProcessInspectionRenewalCart.aspx", false);
         }
-
-        private void GridToViewTRinMultipleCaseNew()
+        private void GridToViewTRinMultipleCaseNew(string ID)
         {
             try
             {
-                string ID = Session["InspectionId"].ToString();
+                //string ID = Session["InspectionId"].ToString();
                 DataSet dsVC = CEI.GetDetailsToViewTRinMultipleCaseNew(ID);
-
                 if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                 {
+                    LblGrid_MultipleInspectionTR.Visible = false;
                     Grid_MultipleInspectionTR.DataSource = dsVC;
                     Grid_MultipleInspectionTR.DataBind();
                 }
                 else
                 {
+                    LblGrid_MultipleInspectionTR.Visible = true;
+                    LblGrid_MultipleInspectionTR.InnerText = "NA";
                     Grid_MultipleInspectionTR.DataSource = null;
                     Grid_MultipleInspectionTR.DataBind();
-                    string script = "alert('No Record Found');";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    //string script = "alert('No Record Found');";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
             }
             catch (Exception ex)
             {
-                // Log or handle the exception as needed
+                Session["InspectionId"] = "";
+                Response.Redirect("InspectionHistory.aspx", false);
             }
         }
-
         protected void Grid_MultipleInspectionTR_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string Count = string.Empty;
@@ -1152,7 +1139,6 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                 }
             }
-
             else if (e.CommandName == "View")
             {
                 string fileName = "";
@@ -1170,13 +1156,9 @@ namespace CEIHaryana.SiteOwnerPages
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
-
-
         }
-
         protected void lnkRedirectTR_Click1(object sender, EventArgs e)
         {
-
             try
             {
                 LinkButton btn = (LinkButton)(sender);
@@ -1186,7 +1168,6 @@ namespace CEIHaryana.SiteOwnerPages
                 string installationName = lblInstallationName.Text.Trim();
 
                 Session["InspectionTestReportId"] = btn.CommandArgument;
-
                 if (installationName == "Line")
                 {
                     Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
@@ -1200,18 +1181,19 @@ namespace CEIHaryana.SiteOwnerPages
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                Session["InspectionId"] = "";
+                Response.Redirect("InspectionHistory.aspx", false);
+            }
         }
-
-
         protected void Grid_MultipleInspectionTR_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-
-                   // Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
+                    // Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
                     LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallaionInvoice");
                     LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
                     //Only Condition Changed By Navneet 30-april-2025 
@@ -1235,7 +1217,8 @@ namespace CEIHaryana.SiteOwnerPages
             }
             catch (Exception ex)
             {
-
+                Session["InspectionId"] = "";
+                Response.Redirect("InspectionHistory.aspx", false);
             }
         }
     }
