@@ -282,7 +282,10 @@ namespace CEIHaryana.Officers
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                //commented by gurmeet 5-may-2025
+                //string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
+
                 if (status == "RETURN")
                 {
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
@@ -661,7 +664,9 @@ namespace CEIHaryana.Officers
             {
                 ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReport_Lift_Escalator(ID);
+                //commented by gurmeet 5-may-2025
+                //ds = CEI.GetTestReport_Lift_Escalator(ID);
+                ds = CEI.GetInspectionHistoryLogs(ID);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {

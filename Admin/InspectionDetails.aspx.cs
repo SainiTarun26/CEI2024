@@ -301,7 +301,7 @@ namespace CEIHaryana.Admin
                 //ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.ViewDocuments(ID);
-                if (ds.Tables.Count > 0)
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     Lblgrd_Documemnts.Visible = false;
                     grd_Documemnts.DataSource = ds;
@@ -310,7 +310,7 @@ namespace CEIHaryana.Admin
                 else
                 {
                     Lblgrd_Documemnts.Visible = true;
-                    Lblgrd_Documemnts.Text = "NA";
+                    Lblgrd_Documemnts.Text = "Documents Not Uploaded by User.";
                     grd_Documemnts.DataSource = null;
                     grd_Documemnts.DataBind();
                     // string script = "alert(\"No Record Found for document\");";

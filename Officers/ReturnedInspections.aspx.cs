@@ -452,7 +452,7 @@ namespace CEIHaryana.Officers
                 //string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
                 string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
 
-                if (status == "RETURN")
+                if (status == "Return")
                 {
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                 }

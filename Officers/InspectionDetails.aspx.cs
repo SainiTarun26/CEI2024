@@ -260,7 +260,9 @@ namespace CEIHaryana.Officers
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                //commented by gurmeet 5-may-2025
                 string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                //string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
                 if (status == "RETURN")
                 {
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
@@ -302,8 +304,11 @@ namespace CEIHaryana.Officers
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
-                if (status == "RETURN")
+                //commented by gurmeet 5-may-2025
+                // string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
+
+                if (status == "Return")
                 {
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                 }
@@ -354,7 +359,10 @@ namespace CEIHaryana.Officers
             try
             {
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReport(InspectionId);
+                //commented by gurmeet 5-may-2025
+                //ds = CEI.GetTestReport(InspectionId);
+                ds = CEI.GetInspectionHistoryLogs(InspectionId);
+
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
@@ -437,15 +445,17 @@ namespace CEIHaryana.Officers
         {
             try
             {
+                //commented by gurmeet 5-may-2025
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReportDataIfPeriodic(InspectionId);
+                //ds = CEI.GetTestReportDataIfPeriodic(InspectionId);
+                ds = CEI.GetInspectionHistoryLogs(InspectionId);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
 
                     GridView2.DataSource = ds;
                     GridView2.DataBind();
-                    GridView2.Columns[3].Visible = false;
+                   // GridView2.Columns[3].Visible = false;
                 }
                 else
                 {

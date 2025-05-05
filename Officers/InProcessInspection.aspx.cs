@@ -808,11 +808,11 @@ namespace CEIHaryana.Officers
             {
                 // comment by gurmeet1 may 2025
                 //string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
-                string status = DataBinder.Eval(e.Row.DataItem, "ActionDate").ToString();
+                string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
 
                 Label lblSubmittedDate = (Label)e.Row.FindControl("lblSubmittedDate");
                 Session["lblSubmittedDate"] = lblSubmittedDate.Text;
-                if (status == "RETURN")
+                if (status == "Return")
                 {
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                 }
