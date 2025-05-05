@@ -186,18 +186,19 @@
                     <h6 class="card-title fw-semibold mb-4" id="maincard" style="font-size: 22px;">Inspection History</h6>
                 </div>
             </div>
+
             <div class="row">
-                <div class="col-12">
+                <div class="col-md-12">
                     <h7 class="card-title fw-semibold mb-4" id="maincard1" style="font-size: 18px !important;">SiteOwner Details</h7>
                 </div>
             </div>
             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                 <div class="row">
-                    <div class="col-4" id="Inspections" runat="server" visible="false">
-                        <label>
-                            Type of Inspection
-                        </label>
+
+                    <div class="col-md-4">
+                        <label>Type of Inspection</label>
                         <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                     </div>
                     <div class="col-4">
                         <label>
@@ -226,8 +227,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <h7 class="card-title fw-semibold mb-4" id="maincard1" style="font-size: 18px !important;">Documents Attached</h7>
+                <div class="col-md-12">
+                    <h6 class="card-title fw-semibold mb-4" id="maincard" style="font-size: 18px !important; margin-bottom: 0px !important;">Documents Attached</h6>
                 </div>
             </div>
             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -247,6 +248,9 @@
                                         <asp:Label ID="lblID1" runat="server" Text='<%#Eval("DocumentID") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+
+
+
                                 <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -273,8 +277,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <h7 class="card-title fw-semibold mb-4" id="maincard1" style="font-size: 18px !important;">Inspection Details</h7>
+                <div class="col-md-12">
+                    <h6 class="card-title fw-semibold mb-4" id="maincard" style="font-size: 18px !important; margin-bottom: 0px !important;">Inspection Details</h6>
                 </div>
             </div>
             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -317,7 +321,7 @@
                                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
-                              <%--  <asp:BoundField DataField="ReturnDate" HeaderText="ReturnDate">
+                                <%--  <asp:BoundField DataField="ReturnDate" HeaderText="ReturnDate">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>--%>
@@ -337,7 +341,7 @@
                 </div>
             </div>
             <div class="row" id="Div1" runat="server" visible="False">
-                <div class="card-title" style="font-size: 18px !important; color: #010101; text-transform: capitalize; font-weight: 700;">
+                <div class="card-title" style="font-size: 18px !important; color: #010101; text-transform: capitalize; font-weight: 700; margin-bottom: 0px !important;">
                     Test Reports & Documents Attached in Test Reports
                 </div>
             </div>
@@ -414,6 +418,7 @@
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                 </div>
+
                 <div class="col-12" style="text-align: center" id="Rejection" runat="server" visible="false">
                     <label>
                         Reason For Rejection                          
@@ -421,8 +426,18 @@
                     <asp:TextBox class="form-control" ID="txtRejected" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                 </div>
+
+
+
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivViewCart" runat="server" visible="false">
+            <div class="row" id="Div2" runat="server" visible="False" style="margin-left: 0px !important;">
+                <div class="card-title" style="font-size: 18px !important; color: #010101; text-transform: capitalize; font-weight: 700; margin-bottom: 0px !important;">
+                    Test Report Details
+                </div>
+            </div>
+            <div class="card-body" id="DivViewCart" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+
+                <%--      <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivViewCart" runat="server" visible="false">--%>
                 <div class="col-12" style="padding: 0px;">
                     <asp:GridView ID="GridView3" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false">
                         <HeaderStyle BackColor="#B7E2F0" />
