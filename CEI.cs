@@ -2053,14 +2053,14 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             //Session["OTP"] = otp;
 
             MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress("haryanacei@gmail.com");
+            mailMessage.From = new MailAddress("ceiharyana58@gmail.com");
             mailMessage.To.Add(Email); mailMessage.Subject = "OTP For Test Report";
             string body = $"Dear Customer,\n\n" + otp + " is the OTP for your request send to CEI Department, HRY.OTPs are SECRET.DO NOT share OTP with anyone.Thank you for choosing our services. If you have any questions or need further assistance, please feel free to contact our support team.\n\n Best regards,\n\n[CEI Haryana]";
             mailMessage.Body = body;
 
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
             smtpClient.Port = 587;
-            smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
+            smtpClient.Credentials = new NetworkCredential("ceiharyana58@gmail.com", "hztpndeqdowygdim");
             smtpClient.EnableSsl = true;
             smtpClient.Send(mailMessage);
             return otp;
@@ -2068,14 +2068,14 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         public void NewCredentialsthroughEmail(string Email)
         {
             MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress("haryanacei@gmail.com");
+            mailMessage.From = new MailAddress("ceiharyana58@gmail.com");
             mailMessage.To.Add(Email);
             mailMessage.Subject = "Credentials";
             string body = $"Dear Customer,\n\nWe are pleased to inform you that your account has been successfully created. Your user ID is the first 4 characters of your name combined with your date of birth.\n\nThank you for choosing our services. If you have any questions or need further assistance, please feel free to contact our support team.\n\nBest regards,\n[CEI Haryana]";
             mailMessage.Body = body;
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
             smtpClient.Port = 587;
-            smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
+            smtpClient.Credentials = new NetworkCredential("ceiharyana58@gmail.com", "hztpndeqdowygdim");
             smtpClient.EnableSsl = true;
 
             smtpClient.Send(mailMessage);
@@ -2085,13 +2085,13 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
 
             MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress("haryanacei@gmail.com");
+            mailMessage.From = new MailAddress("ceiharyana58@gmail.com");
             mailMessage.To.Add(Email); mailMessage.Subject = "Your Site Owner ID and Password";
             string body = $"Dear Customer,\n\nWe are pleased to inform you that your account has been successfully created. Your user id is {pan} and Password is 123456 Visit Website http://ceiharyana.com/ \n\nThank you for choosing our services. If you have any questions or need further assistance, please feel free to contact our support team.\n\nBest regards,\n[CEI Haryana]"; ;
             mailMessage.Body = body;
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
             smtpClient.Port = 587;
-            smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
+            smtpClient.Credentials = new NetworkCredential("ceiharyana58@gmail.com", "hztpndeqdowygdim");
             smtpClient.EnableSsl = true;
 
             smtpClient.Send(mailMessage);
@@ -3075,14 +3075,14 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             //Session["OTP"] = otp;
 
             MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress("haryanacei@gmail.com");
+            mailMessage.From = new MailAddress("ceiharyana58@gmail.com");
             mailMessage.To.Add(Email); mailMessage.Subject = "Contractor Login OTP";
             string body = $"Dear Customer,\n\n" + otp + " is the OTP for your request send to the Contractor.OTPs are SECRET.DO NOT share OTP with anyone.Thank you for choosing our services. If you have any questions or need further assistance, please feel free to contact our support team.\n\n Best regards,\n\n[CEI Haryana]";
             mailMessage.Body = body;
 
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
             smtpClient.Port = 587;
-            smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
+            smtpClient.Credentials = new NetworkCredential("ceiharyana58@gmail.com", "hztpndeqdowygdim");
             smtpClient.EnableSsl = true;
 
             smtpClient.Send(mailMessage);
@@ -7335,14 +7335,14 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
         public void ResetMessagethroughEmail(string Email, string Subject, string Message)
         {
             MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress("haryanacei@gmail.com");
+            mailMessage.From = new MailAddress("ceiharyana58@gmail.com");
             mailMessage.To.Add(Email);
             mailMessage.Subject = Subject;
             string body = $"Dear Customer,\n\n {Message}";
             mailMessage.Body = body;
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
             smtpClient.Port = 587;
-            smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
+            smtpClient.Credentials = new NetworkCredential("ceiharyana58@gmail.com", "hztpndeqdowygdim");
             smtpClient.EnableSsl = true;
             smtpClient.Send(mailMessage);
         }
@@ -7636,7 +7636,7 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
             MailMessage mailMessage = new MailMessage();
 
             // Set the 'From' email address
-            mailMessage.From = new MailAddress("haryanacei@gmail.com");
+            mailMessage.From = new MailAddress("ceiharyana58@gmail.com");
 
             // Set the 'To' recipient
             mailMessage.To.Add(Email);
@@ -7657,7 +7657,7 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
             // Set up the SMTP client
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
             smtpClient.Port = 587;
-            smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
+            smtpClient.Credentials = new NetworkCredential("ceiharyana58@gmail.com", "hztpndeqdowygdim");
             smtpClient.EnableSsl = true;
 
             // Send the email
@@ -9319,14 +9319,14 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             HttpContext.Current.Session["OTP"] = otp;
             HttpContext.Current.Session["OTP_ExpireTime"] = DateTime.Now.AddMinutes(10);
             MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress("haryanacei@gmail.com");
+            mailMessage.From = new MailAddress("ceiharyana58@gmail.com");
             mailMessage.To.Add(Email); mailMessage.Subject = "OTP For forget Password";
             string body = $"Dear Customer,\n\n Your OTP for forget password reset is {otp}. OTPs are confidential - Do not share them with anyone. Thank you for choosing our services. If you need any assistance, feel free to contact our support team.\n\n Best regards,\n\n[CEI Haryana]";
             mailMessage.Body = body;
 
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
             smtpClient.Port = 587;
-            smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
+            smtpClient.Credentials = new NetworkCredential("ceiharyana58@gmail.com", "hztpndeqdowygdim");
             smtpClient.EnableSsl = true;
             smtpClient.Send(mailMessage);
             return otp;
@@ -9346,14 +9346,14 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             //HttpContext.Current.Session["OTP_ExpireTime"] = DateTime.Now.AddMinutes(10);
 
             MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress("haryanacei@gmail.com");
+            mailMessage.From = new MailAddress("ceiharyana58@gmail.com");
             mailMessage.To.Add(Email); mailMessage.Subject = "OTP For forget Password";
             string body = $"Dear Customer,\n\n Your OTP for forget password reset is {OTP}.This OTP will expire in 10 minutes. OTPs are confidential - Do not share them with anyone. Thank you for choosing our services. If you need any assistance, feel free to contact our support team.\n\n Best regards,\n\n[CEI Haryana]";
             mailMessage.Body = body;
 
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
             smtpClient.Port = 587;
-            smtpClient.Credentials = new NetworkCredential("haryanacei@gmail.com", "httnrdifrwgfnzrv");
+            smtpClient.Credentials = new NetworkCredential("ceiharyana58@gmail.com", "hztpndeqdowygdim");
             smtpClient.EnableSsl = true;
             smtpClient.Send(mailMessage);
             return OTP;
