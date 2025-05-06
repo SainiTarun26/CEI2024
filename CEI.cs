@@ -8173,42 +8173,6 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDataForLift", Id);
         }
 
-        public void InspectionFinalAction_Lift(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, /*string MemoNo,*/ string InspectionDate, SqlTransaction transaction)
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand("sp_InspectionApproveReject_Lift_Escelater", transaction.Connection, transaction);
-                //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                //cmd.Connection = con;
-                if (transaction.Connection.State == ConnectionState.Closed)
-                {
-                    transaction.Connection.Open();
-                }
-
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID", InspectionID);
-                cmd.Parameters.AddWithValue("@StaffId", StaffId);
-                cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrReReturn);
-                cmd.Parameters.AddWithValue("@ReasonForRejection", Reason);
-                //cmd.Parameters.AddWithValue("@MemoNo", MemoNo);
-                //cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
-                DateTime InsDate;
-                if (DateTime.TryParse(InspectionDate, out InsDate) && InsDate != DateTime.MinValue)
-                {
-                    cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
-                }
-                else
-                {
-                    cmd.Parameters.AddWithValue("@InspectionDate", DBNull.Value);
-                }
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-
-                //throw;
-            }
-        }
         public DataSet ViewReturnDocuments_Lift(string InspectionId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetOfficersReturnDocumentHistory_Lift", InspectionId);
@@ -8887,49 +8851,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                 //throw;
             }
         }
-        public void InstallationApproval_Lift_New(string InspectionID, string TestReportId, string InstallationType, string StaffId, string InspectionType, string RegistrationNo, string Division, string Make, string LiftSrNo,
-   string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, string SiteAddress, string District, DateTime Current_ChallanDate, string OwnerName,
-   SqlTransaction transaction)
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand("sp_LiftInstallationApproved", transaction.Connection, transaction);
-
-                //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                //cmd.Connection = con;
-                if (transaction.Connection.State == ConnectionState.Closed)
-                {
-                    transaction.Connection.Open();
-                }
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID", InspectionID);
-                cmd.Parameters.AddWithValue("@Lift_Escelator_Id", TestReportId);
-                cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
-                cmd.Parameters.AddWithValue("@StaffId", StaffId);
-                cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
-                cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
-                cmd.Parameters.AddWithValue("@Division", Division);
-                cmd.Parameters.AddWithValue("@Make", Make);
-                cmd.Parameters.AddWithValue("@LiftSrNo", LiftSrNo);
-                cmd.Parameters.AddWithValue("@TypeOfLift", TypeOfLift);
-                cmd.Parameters.AddWithValue("@TypeOfControl", TypeOfControl);
-                cmd.Parameters.AddWithValue("@Capacity", Capacity);
-                cmd.Parameters.AddWithValue("@Weight", Weight);
-                cmd.Parameters.AddWithValue("@ErectionDate", DateOfErection);
-
-                cmd.Parameters.AddWithValue("@SiteAddress", SiteAddress);
-                cmd.Parameters.AddWithValue("@District", District);
-                cmd.Parameters.AddWithValue("@Current_ChallanDate", Current_ChallanDate);
-                cmd.Parameters.AddWithValue("@OwnerName", OwnerName);
-                cmd.ExecuteNonQuery();
-
-            }
-            catch (Exception ex)
-            {
-
-                //throw;
-            }
-        }
+       
 
         public void UploadDocumentforLiftReturnedInspectionLift(string InspectionId, string InstallationType, string DocumentID,
                                string DocSaveName, string FileName, string FilePath, string CreatedBy)
@@ -9986,6 +9908,88 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionHistoryLogs", Convert.ToInt32(Id));
         }
+        #endregion
+        #region neeraj Changed on 6-may-2025 update
+        public int InspectionFinalAction_Lift(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, string InspectionDate, SqlTransaction transaction)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("sp_InspectionApproveReject_Lift_Escelater", transaction.Connection, transaction);
+
+                if (transaction.Connection.State == ConnectionState.Closed)
+                {
+                    transaction.Connection.Open();
+                }
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", InspectionID);
+                cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrReReturn);
+                cmd.Parameters.AddWithValue("@ReasonForRejection", Reason);
+
+                DateTime InsDate;
+                if (DateTime.TryParse(InspectionDate, out InsDate) && InsDate != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@InspectionDate", DBNull.Value);
+                }
+                int y = cmd.ExecuteNonQuery();
+                return y;
+            }
+            catch (Exception ex)
+            {
+
+                return 0;
+            }
+        }
+        public int InstallationApproval_Lift_New(string InspectionID, string TestReportId, string InstallationType, string StaffId, string InspectionType, string RegistrationNo, string Division, string Make, string LiftSrNo,
+ string TypeOfLift, string TypeOfControl, string Capacity, string Weight, DateTime DateOfErection, string SiteAddress, string District, DateTime Current_ChallanDate, string OwnerName,
+ SqlTransaction transaction)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("sp_LiftInstallationApproved", transaction.Connection, transaction);
+
+                //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                //cmd.Connection = con;
+                if (transaction.Connection.State == ConnectionState.Closed)
+                {
+                    transaction.Connection.Open();
+                }
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", InspectionID);
+                cmd.Parameters.AddWithValue("@Lift_Escelator_Id", TestReportId);
+                cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+                cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
+                cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
+                cmd.Parameters.AddWithValue("@Division", Division);
+                cmd.Parameters.AddWithValue("@Make", Make);
+                cmd.Parameters.AddWithValue("@LiftSrNo", LiftSrNo);
+                cmd.Parameters.AddWithValue("@TypeOfLift", TypeOfLift);
+                cmd.Parameters.AddWithValue("@TypeOfControl", TypeOfControl);
+                cmd.Parameters.AddWithValue("@Capacity", Capacity);
+                cmd.Parameters.AddWithValue("@Weight", Weight);
+                cmd.Parameters.AddWithValue("@ErectionDate", DateOfErection);
+
+                cmd.Parameters.AddWithValue("@SiteAddress", SiteAddress);
+                cmd.Parameters.AddWithValue("@District", District);
+                cmd.Parameters.AddWithValue("@Current_ChallanDate", Current_ChallanDate);
+                cmd.Parameters.AddWithValue("@OwnerName", OwnerName);
+                int x = cmd.ExecuteNonQuery();
+                return x;
+
+            }
+            catch (Exception ex)
+            {
+
+                return 0;
+            }
+        }
+
         #endregion
     }
 }

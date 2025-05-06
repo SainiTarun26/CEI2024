@@ -32,6 +32,8 @@ namespace CEIHaryana.Officers
             IndustryApiLogDetails logDetails = new IndustryApiLogDetails();
             private static string ApprovedorReject, Reason, StaffId, Suggestions;
             string Type = string.Empty;
+        //added x and y for checking status by neeraj on 6-May-2025
+        int x = 0;int y = 0;
             protected void Page_Load(object sender, EventArgs e)
             {
                 try
@@ -509,11 +511,11 @@ namespace CEIHaryana.Officers
                 {
                     if (e.CommandName == "Select")
                     {
-                    //ID = Session["InspectionId"].ToString();
+                        //ID = Session["InspectionId"].ToString();
                     //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    string script = $@"<script>window.open('{fileName}','_blank');</script>";
+                        string script = $@"<script>window.open('{fileName}','_blank');</script>";
                         ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
                     }
@@ -532,7 +534,7 @@ namespace CEIHaryana.Officers
             ClickCount = Convert.ToInt32(Session["ClickCount"]);
             if (ClickCount < 1)
             {
-                
+               
                 using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
                 {
                     SqlTransaction transaction = null;
@@ -543,7 +545,6 @@ namespace CEIHaryana.Officers
                         connection.Open();
                         if (Session["InProcessInspectionId"].ToString() != null && Session["InProcessInspectionId"].ToString() != "" && Session["StaffID"].ToString() != null)
                         {
-
                             ID = Session["InProcessInspectionId"].ToString();
                             DataSet ds = new DataSet();
                             ds = CEI.InspectionDataFor_Lift(ID);
@@ -638,11 +639,13 @@ namespace CEIHaryana.Officers
                                     //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
                                     //        return;
                                     //    }
-                                    //}
+                                    //}InspectionFinalAction_Lift
                                     transaction = connection.BeginTransaction();
-                                    CEI.InspectionFinalAction_Lift(ID, StaffId, ApprovedorReject, Reason,  txtInspectionDate.Text, transaction);
+                                  
+                                    y =    CEI.InspectionFinalAction_Lift(ID, StaffId, ApprovedorReject, Reason,  txtInspectionDate.Text, transaction);
                                     if (ApprovedorReject == "Approved")
                                     {
+                                        
                                         if (InspectionType == "New")
                                         {
                                             foreach (GridViewRow row in Grid_MultipleInspectionTR.Rows)
@@ -659,10 +662,11 @@ namespace CEIHaryana.Officers
                                                 DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
                                                 string lblOwner = (row.FindControl("lblOwner") as Label)?.Text;
 
-                                                CEI.InstallationApproval_Lift_New(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
+                                                x += CEI.InstallationApproval_Lift_New(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
                                                   lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), lblOwner, transaction);
-
+                                               
                                             }
+                                           
                                             //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
 
                                         }
@@ -692,10 +696,19 @@ namespace CEIHaryana.Officers
                                             //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
 
                                         }
-
-                                        transaction.Commit();
-                                        CEI.UpdateLiftApprovedCertificatedata(ID);
-                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                                        if (x > 0 && y >0)
+                                        {
+                                            transaction.Commit();
+                                            CEI.UpdateLiftApprovedCertificatedata(ID);
+                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                                        }
+                                        else
+                                        {
+                                            transaction?.Rollback();
+                                            string alertScript = "alert('Please try again.');";
+                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                                            return;
+                                        }
                                     }
                                     else if (ApprovedorReject == "Rejected")
                                     {

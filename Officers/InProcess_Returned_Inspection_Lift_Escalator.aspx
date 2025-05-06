@@ -789,7 +789,7 @@ Approval Date<samp style="color: red"> * </samp>
     <script type="text/javascript">
         function alertWithRedirectdata(Message) {
             if (confirm('Inspection Request has been Successfully ' + Message)) {
-                window.location.href = "/Officers/InProcessRequest.aspx";
+                window.location.href = "/Officers/AcceptedOrReject.aspx";
             } else {
             }
         }
@@ -797,7 +797,7 @@ Approval Date<samp style="color: red"> * </samp>
      <script type="text/javascript">
  function alertWithRedirectdata2() {
      if (confirm('Inspection Request has been Rejected.')) {
-         window.location.href = "/Officers/InProcessRequest.aspx";
+         window.location.href = "/Officers/AcceptedOrReject.aspx";
      } else {
      }
  }
