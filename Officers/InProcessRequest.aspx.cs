@@ -109,9 +109,6 @@ namespace CEIHaryana.Officers
             }
         }
 
-        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-
-        }
+  
     }
 }
