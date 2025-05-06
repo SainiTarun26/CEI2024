@@ -313,7 +313,7 @@
         margin: auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 400px;
+        width: 54%; 
         border-radius: 8px;
         text-align: center;
     }
