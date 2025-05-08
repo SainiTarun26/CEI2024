@@ -393,22 +393,22 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.TextBox txtInspectionDate;
 
         /// <summary>
-        /// InsDate control.
+        /// ExNote control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl InsDate;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ExNote;
 
         /// <summary>
-        /// TXTDate control.
+        /// txtNote control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TXTDate;
+        protected global::System.Web.UI.WebControls.TextBox txtNote;
 
         /// <summary>
         /// Rejection control.

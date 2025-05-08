@@ -612,13 +612,15 @@
                     <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                 </div>
-                <div class="col-md-4" id="InsDate" runat="server" visible="false">
-                    <label for="StartDate">
-                        Inspection Date<samp style="color: red"> * </samp>
-                    </label>
-                    <asp:TextBox class="form-control" ID="TXTDate" TabIndex="16" autocomplete="off" ReadOnly="true" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-                </div>
+                  <div class="row">
+      <div class="col-12" id="ExNote" runat="server" visible="false" style="margin-bottom:25px;">
+          <label>
+              Note
+          </label>
+          <asp:TextBox class="form-control" ID="txtNote" autocomplete="off" TabIndex="7" MaxLength="500" TextMode="MultiLine" Rows="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+        
+      </div>
+  </div>
                 <div class="row">
                     <div class="col-12" id="Rejection" runat="server" visible="false">
                         <label>

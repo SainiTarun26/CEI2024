@@ -1,6 +1,7 @@
 ﻿using AjaxControlToolkit;
 using CEI_PRoject;
 using CEIHaryana.Model.Industry;
+using iText.StyledXmlParser.Jsoup.Nodes;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ using System.Reflection.Emit;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 using Label = System.Web.UI.WebControls.Label;
 
 namespace CEIHaryana.Admin
@@ -25,7 +27,7 @@ namespace CEIHaryana.Admin
         CEI CEI = new CEI();
         private static int lineNumber = 0;
         IndustryApiLogDetails logDetails = new IndustryApiLogDetails();
-        private static string ApprovedorReject, Reason, StaffId, Suggestions;
+        private static string ApprovedorReject, Reason, StaffId, Suggestions, ExNotes;
         string Type = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,7 +39,8 @@ namespace CEIHaryana.Admin
                     {
                         lineNumber = 0;
                         GetData();
-
+                        //Changes of neeraj Suggestions Merged on 8-May-2025
+                        BindSuggestions();
                         if (Type == "New")
                         {
                             GetTestReportData();
@@ -51,8 +54,11 @@ namespace CEIHaryana.Admin
                             Session["AdminId"] = "";
                             Response.Redirect("/AdminLogout.aspx", false);
                         }
+
                         //GetTestReportData();
                         btnPreview.Visible = false;
+                        //Changes of neeraj Suggestions Merged on 8-May-2025
+                        btnSuggestions.Visible = false;
                         Page.Session["ClickCount"] = "0";
                     }
                 }
@@ -62,6 +68,29 @@ namespace CEIHaryana.Admin
                 Response.Redirect("/AdminLogout.aspx");
             }
         }
+
+        //Changes of neeraj Suggestions Merged on 8-May-2025
+        private void BindSuggestions()
+        {
+            try
+            {
+                DataSet dsSuggestion = new DataSet();
+                dsSuggestion = CEI.GetSuggestions();
+                ddlSuggestion.DataSource = dsSuggestion;
+                ddlSuggestion.DataTextField = "Suggestions";
+                ddlSuggestion.DataValueField = "Suggestions";
+                ddlSuggestion.DataBind();
+                ddlSuggestion.Items.Insert(0, new ListItem("Select", "0"));
+                dsSuggestion.Clear();
+            }
+            catch(Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
+        }
+        //
+
         private void GetTestReportDataIfPeriodic()
         {
             try
@@ -86,10 +115,18 @@ namespace CEIHaryana.Admin
                 }
                 ds.Dispose();
             }
-            catch (Exception ex) { }
+
+            //Changes of neeraj Suggestions Merged on 8-May-2025
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
         }
+
         protected void lnkRedirect_Click(object sender, EventArgs e)
         {
+
             LinkButton lnkRedirect = (LinkButton)sender;
             string testReportId = lnkRedirect.CommandArgument;
             Session["InspectionTestReportId"] = testReportId;
@@ -105,7 +142,7 @@ namespace CEIHaryana.Admin
             {
                 Response.Write("<script>window.open('/TestReportModal/GeneratingSetTestReportModal.aspx','_blank');</script>");
             }
-        }
+            }
         private void GetData()
         {
             try
@@ -121,6 +158,7 @@ namespace CEIHaryana.Admin
                     txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
+                    Session["InstallationType"] = txtWorkType.Text;
                     if (txtWorkType.Text == "Line")
                     {
                         Capacity.Visible = false;
@@ -215,6 +253,7 @@ namespace CEIHaryana.Admin
                     InspectionType.Visible = false;
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
+                    Session["InstallationType"] = txtWorkType.Text;
                     if (txtWorkType.Text == "Line")
                     {
                         Capacity.Visible = false;
@@ -242,7 +281,7 @@ namespace CEIHaryana.Admin
                     grd_Documemnts.Columns[1].Visible = true;
 
                     //GridView1.Columns[5].Visible = false; commet by gurmeet 29 aprail
-                    // GridView1.Columns[3].Visible = false;
+                   // GridView1.Columns[3].Visible = false;
 
                     GridBindDocument();
                     DivTestReports.Visible = true;
@@ -301,6 +340,10 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
+
+                //Changes of neeraj Suggestions Merged on 8-May-2025
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -312,22 +355,29 @@ namespace CEIHaryana.Admin
                 {
                     //ID = Session["InspectionId"].ToString();
                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
                 }
+
             }
             catch (Exception ex)
             {
-                // lblerror.Text = ex.Message.ToString()+"---"+ fileName;
+
+                //Changes of neeraj Suggestions Merged on 8-May-2025
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
+
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             int ClickCount = 0;
             ClickCount = Convert.ToInt32(Session["ClickCount"]);
             if (ClickCount < 1)
             {
+                //ClickCount = ClickCount + 1;
+                //Session["ClickCount"] = ClickCount;
                 int checksuccessmessage = 0;
                 try
                 {
@@ -335,11 +385,13 @@ namespace CEIHaryana.Admin
                     {
                         StaffId = Session["AdminID"].ToString();
                         ID = Session["InProcessInspectionId"].ToString();
-                        String SubmittedDate = Session["lblSubmittedDate"].ToString();
 
+                        //Changes of neeraj with Suggestions Merged on 8-May-2025
+                        String SubmittedDate = hnSubmittedDate.Value;
                         if (ddlReview.SelectedValue != null && ddlReview.SelectedValue != "" && ddlReview.SelectedValue != "0")
                         {
                             DateTime inspectionDate;
+
                             if (!DateTime.TryParse(txtInspectionDate.Text, out inspectionDate))
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid inspection date.');", true);
@@ -347,12 +399,21 @@ namespace CEIHaryana.Admin
                             }
 
                             DateTime submittedDate;
-                            if (!DateTime.TryParse(Session["lblSubmittedDate"].ToString(), out submittedDate))
+
+                            //Changes of neeraj with Suggestions Merged on 8-May-2025
+                            if (!DateTime.TryParse(hnSubmittedDate.Value, out submittedDate))
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid submitted date.');", true);
                                 return;
                             }
 
+                            //Changes of neeraj with Suggestions Merged on 8-May-2025
+                            DateTime serverDate = DateTime.Now.Date;
+                            if (inspectionDate > serverDate)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be less than Today date.');", true);
+                                return;
+                            }
                             if (inspectionDate < submittedDate)
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be greater than submitted date.');", true);
@@ -361,6 +422,7 @@ namespace CEIHaryana.Admin
 
                             ClickCount = ClickCount + 1;
                             Session["ClickCount"] = ClickCount;
+
                             ApprovedorReject = ddlReview.SelectedItem.ToString();
                             Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text.Trim();
 
@@ -369,21 +431,29 @@ namespace CEIHaryana.Admin
                                 Suggestions = string.IsNullOrEmpty(txtSuggestion.Text) ? null : txtSuggestion.Text.Trim();
                             }
 
+                            //Changes of neeraj Notes Merged on 8-May-2025
+                            if (ExNote.Visible == true)
+                            {
+                                ExNotes = string.IsNullOrEmpty(txtNote.Text) ? null : txtNote.Text.Trim();
+                            }
+
                             try
                             {
                                 string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
                                 if (reqType == "Industry")
                                 {
-                                string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
-                                // string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in/api/project-service-logs-external_UHBVN");
+                                    string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
+                                    // string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in/api/project-service-logs-external_UHBVN");
                                     if (serverStatus != "Server is reachable.")
                                     {
                                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
                                         return;
                                     }
                                 }
+                                //Changes of neeraj Notes Merged on 8-May-2025
+                                txtInspectionDate.Text = DateTime.Parse(txtInspectionDate.Text).ToString("yyyy-MM-dd");
 
-                                CEI.InspectionFinalAction(ID, StaffId, ApprovedorReject, Reason, Suggestions, txtInspectionDate.Text);
+                                CEI.InspectionFinalAction(ID, StaffId, ApprovedorReject, Reason, Suggestions, txtInspectionDate.Text, ExNotes);
                                 if (ApprovedorReject.Trim() == "Approved")
                                 {
                                     CEI.InsertApprovedCertificatedata(ID);
@@ -399,7 +469,7 @@ namespace CEIHaryana.Admin
                                         string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
 
                                         logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                        "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                            "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
                                             new Industry_Inspection_StageWise_JsonDataFormat_Model
                                             {
                                                 actionTaken = ApiPostformatresult.ActionTaken,
@@ -444,9 +514,11 @@ namespace CEIHaryana.Admin
                                                 ProjectId = ApiPostformatresult.ProjectId,
                                                 ServiceId = ApiPostformatresult.ServiceId,
                                             }
+
                                         );
                                     }
                                 }
+
                                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
                             }
                             catch (TokenManagerException ex)
@@ -523,6 +595,7 @@ namespace CEIHaryana.Admin
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
                                 }
                             }
+
                         }
                         else
                         {
@@ -537,14 +610,18 @@ namespace CEIHaryana.Admin
                 }
                 catch (Exception ex)
                 {
-                    // Handle the outer exception, log it, etc.
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An error occurred.');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                    return;
+
+
                 }
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('You double click on Button.'); window.location='InspectionHistory_Industry.aspx'", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('You double click on Button.'); window.location='AdminMaster.aspx'", true);
             }
+           
+
         }
         private void GridToViewCart()
         {
@@ -568,7 +645,8 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-                // Log or handle the exception as needed
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
         protected void lnkRedirect1_Click(object sender, EventArgs e)
@@ -576,11 +654,13 @@ namespace CEIHaryana.Admin
             try
             {
                 LinkButton btn = (LinkButton)(sender);
+
                 GridViewRow row = (GridViewRow)btn.NamingContainer;
                 Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
                 string installationName = lblInstallationName.Text.Trim();
 
                 Session["InspectionTestReportId"] = btn.CommandArgument;
+
                 if (installationName == "Line")
                 {
                     Response.Redirect("/TestReportModal/LineTestReportModal.aspx", false);
@@ -594,10 +674,21 @@ namespace CEIHaryana.Admin
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                 }
             }
-            catch (Exception ex) { }
+
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
         }
         protected void ddlSuggestion_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            //Changes of neeraj Suggestions Merged on 8-May-2025
+            if (string.IsNullOrEmpty(txtSuggestion.Text) || txtSuggestion.Text == "\r\n")
+            {
+                lineNumber = 0;
+            }
             if (lineNumber == 0)
             {
                 lineNumber = 1;
@@ -607,10 +698,17 @@ namespace CEIHaryana.Admin
                 lineNumber++;
             }
             string selectedItemText = ddlSuggestion.SelectedItem.Text;
+            if (lineNumber > 4)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Suggestion can\'t be more than 4 suggestions.');", true);
+                return;
+
+            }
             txtSuggestion.Text += lineNumber + ". " + selectedItemText + "\n";
             ddlSuggestion.Items.Remove(ddlSuggestion.SelectedItem);
             //lineNumber++;
         }
+
         protected void btnPreview_Click(object sender, EventArgs e)
         {
             try
@@ -621,6 +719,10 @@ namespace CEIHaryana.Admin
                     {
                         ID = Session["InProcessInspectionId"].ToString();
                         string InspectionType = Session["InspectionType"].ToString();
+
+                        //Changes of neeraj Suggestions Merged on 8-May-2025
+                        string InstallationType = Session["InstallationType"].ToString();
+
 
                         SqlCommand cmd = new SqlCommand("Sp_insertTempInspection");
                         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -644,15 +746,19 @@ namespace CEIHaryana.Admin
                         {
                             cmd.Parameters.AddWithValue("@inspectionDate", DBNull.Value);
                         }
+
+                        //Changes of neeraj Suggestions Merged on 8-May-2025
+                        cmd.Parameters.AddWithValue("@Note", txtNote.Text.Trim());
                         int x = cmd.ExecuteNonQuery();
                         con.Close();
                         if (x > 0)
                         {
                             btnPreview.Visible = false;
-
+                            btnSuggestions.Visible = true;
                             if (InspectionType == "New")
-                            {
+                            {                              
                                 Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                                
                             }
                             else
                             {
@@ -666,13 +772,16 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-                //throw;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
+
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Admin/ActionInspectioHistrory.aspx", false);
         }
+
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -681,35 +790,53 @@ namespace CEIHaryana.Admin
                 //string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
                 string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
                 Label lblSubmittedDate = (Label)e.Row.FindControl("lblSubmittedDate");
-                Session["lblSubmittedDate"] = lblSubmittedDate.Text;
+                hnSubmittedDate.Value = lblSubmittedDate.Text;
                 if (status == "RETURN")
                 {
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                 }
+
             }
+
+
             if (e.Row.RowType == DataControlRowType.Header)
             {
+
                 //e.Row.Cells[2].BackColor = System.Drawing.Color.Blue;
                 e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
             }
         }
+
         protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            //Changes of neeraj Suggestions Merged on 8-May-2025
             Rejection.Visible = false;
             Suggestion.Visible = false;
             ddlSuggestions.Visible = false;
             btnPreview.Visible = false;
+            btnSuggestions.Visible = false;
             if (ddlReview.SelectedValue == "2")
             {
                 Rejection.Visible = true;
+                txtSuggestion.Text = "";
+                txtNote.Text = "";
+                ExNote.Visible = false;
+                btnPreview.Visible = false;
+                btnSuggestions.Visible = false;
+                Note.Visible = false;
             }
             else if (ddlReview.SelectedValue == "1")
             {
+                btnSuggestions.Visible = true;
                 btnPreview.Visible = true;
+                Note.Visible = true;
+                ExNote.Visible = true;
                 ddlSuggestions.Visible = true;
                 Suggestion.Visible = true;
             }
         }
+
         protected void GridBindDocument()
         {
             try
@@ -733,9 +860,11 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-                //throw;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
+
         private void GetTestReportData()
         {
             try
@@ -760,10 +889,81 @@ namespace CEIHaryana.Admin
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 //Session["TestRportId"] = TestRportId;
+
                 ds.Dispose();
             }
-            catch (Exception ex) { }
+            catch (Exception ex) 
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
         }
+
+        //Changes of neeraj Suggestions Merged on 8-May-2025
+        protected void btnSuggestions_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ddlReview.SelectedValue == "1")
+                {
+                    if (Session["InProcessInspectionId"].ToString() != null && Session["InProcessInspectionId"].ToString() != "")
+                    {
+                        ID = Session["InProcessInspectionId"].ToString();
+                        string InspectionType = Session["InspectionType"].ToString();
+                        string InstallationType = Session["InstallationType"].ToString();
+
+
+                        SqlCommand cmd = new SqlCommand("Sp_insertTempInspection");
+                        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                        cmd.Connection = con;
+                        if (con.State == ConnectionState.Closed)
+                        {
+                            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                            con.Open();
+                        }
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@inspectionId", ID);
+                        cmd.Parameters.AddWithValue("@suggestion", txtSuggestion.Text.Trim());
+                        cmd.Parameters.AddWithValue("@ReasionRejection", txtRejected.Text == null ? null : txtRejected.Text);
+                        cmd.Parameters.AddWithValue("@InspectionType", InspectionType);
+                        DateTime initialIssueDate;
+                        if (DateTime.TryParse(txtInspectionDate.Text, out initialIssueDate) && initialIssueDate != DateTime.MinValue)
+                        {
+                            cmd.Parameters.AddWithValue("@inspectionDate", initialIssueDate);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@inspectionDate", DBNull.Value);
+                        }
+                        cmd.Parameters.AddWithValue("@Note", txtNote.Text.Trim());
+                        int x = cmd.ExecuteNonQuery();
+                        con.Close();
+                        if (x > 0)
+                        {
+                            btnPreview.Visible = true;
+                            btnSuggestions.Visible = true;
+                        }
+
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
+        }
+
+        protected void btnSugg_Click(object sender, EventArgs e)
+        {
+            CEI.InsertSuggestions(txtSugg.Text.Trim());
+            txtSugg.Text = "";
+            BindSuggestions();
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Suggestion Submitted Successfully.');", true);
+        }
+
+      //
         private void GetGridNewInspectionMultiple()
         {
             try
@@ -784,7 +984,10 @@ namespace CEIHaryana.Admin
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
         }
         protected void lnkRedirectTRr_Click1(object sender, EventArgs e)
         {
@@ -849,14 +1052,12 @@ namespace CEIHaryana.Admin
             {
                 string fileName = "";
                 fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
             else if (e.CommandName == "ViewInvoice")
             {
                 string fileName = "";
-                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -890,7 +1091,11 @@ namespace CEIHaryana.Admin
                     }
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
         }
     }
 }

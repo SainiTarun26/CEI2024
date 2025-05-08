@@ -96,7 +96,7 @@ namespace CEIHaryana.Industry_Master
                     else
                     {
 
-                        Response.Redirect("/Print_Forms/PeriodicApprovalCertificate_Industry.aspx", false);
+                        Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
                     }
                 }
             }

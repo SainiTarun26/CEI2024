@@ -329,8 +329,10 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-8">
-                                </div>
+                                  <div class="col-8" style="text-align:justify;">
+                 <asp:Label ID="lblNote" runat="server" Text="" Style="margin-left:0%; font-weight:bold;font-size:15px;"></asp:Label>
+
+    </div>
                                 <div class="col-4">
                                     <p style="text-align: center; font-weight: bold; position: fixed; bottom: 10PX; margin-left: 30px;">
                                         <asp:Label ID="lblstamp1" runat="server" Text="Label"></asp:Label><br />

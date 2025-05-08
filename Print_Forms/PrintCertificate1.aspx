@@ -329,7 +329,9 @@
                                 </div>
                             </div>
                            <div class="row">
-    <div class="col-7">
+   <div class="col-8" style="text-align:justify;">
+                 <asp:Label ID="lblNote" runat="server" Text="Label" Style="margin-left:0%; font-weight:bold;font-size:15px;"></asp:Label>
+
     </div>
     <div class="col-5" style="margin-left:65%;">
         <p style="text-align: center; font-weight: bold; bottom: 10PX;">

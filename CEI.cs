@@ -1911,39 +1911,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
 
         }
 
-        public void InspectionFinalAction(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, string suggestions, string InspectionDate, SqlTransaction transaction)
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand("sp_InspectionApproveReject", transaction.Connection, transaction);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID", InspectionID);
-                cmd.Parameters.AddWithValue("@StaffId", StaffId);
-                cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrReReturn);
-                cmd.Parameters.AddWithValue("@ReasonForRejection", Reason);
-                cmd.Parameters.AddWithValue("@Suggestion", suggestions);
-                //cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
-                DateTime InsDate;
-                if (DateTime.TryParse(InspectionDate, out InsDate) && InsDate != DateTime.MinValue)
-                {
-                    cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
-                }
-                else
-                {
-                    cmd.Parameters.AddWithValue("@InspectionDate", DBNull.Value);
-                }
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-
-                //throw;
-            }
-        }
-
-
-
-
+      
 
         #endregion  
         #region Update Inspection PendingPayment Data
@@ -9988,6 +9956,88 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
 
                 return 0;
             }
+        }
+
+        #endregion
+
+        #region Neeraj Changes 8 may of notes
+        public void InspectionFinalAction(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, string suggestions, string InspectionDate, string Note)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("sp_InspectionApproveReject");
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                cmd.Connection = con;
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", InspectionID);
+                cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrReReturn);
+                cmd.Parameters.AddWithValue("@ReasonForRejection", Reason);
+                cmd.Parameters.AddWithValue("@Suggestion", suggestions);
+                //cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
+                DateTime InsDate;
+                if (DateTime.TryParse(InspectionDate, out InsDate) && InsDate != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@InspectionDate", DBNull.Value);
+                }
+                cmd.Parameters.AddWithValue("@Notes", Note);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+
+                //throw;
+            }
+
+        }
+        public void InspectionFinalAction_Officer(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, string suggestions, string InspectionDate, string Note)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("sp_InspectionApproveReject_Officer");
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                cmd.Connection = con;
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", InspectionID);
+                cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrReReturn);
+                cmd.Parameters.AddWithValue("@ReasonForRejection", Reason);
+                cmd.Parameters.AddWithValue("@Suggestion", suggestions);
+                //cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
+                DateTime InsDate;
+                if (DateTime.TryParse(InspectionDate, out InsDate) && InsDate != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@InspectionDate", DBNull.Value);
+                }
+                cmd.Parameters.AddWithValue("@Notes", Note);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+
+                //throw;
+            }
+
         }
 
         #endregion
