@@ -116,17 +116,19 @@ namespace CEIHaryana.Admin
                 Response.Redirect("/AdminLogout.aspx", false);
             }
         }
-        ////private void BindDivisions(string District)
-        ////{
-        ////    DataSet ds = new DataSet();
-        ////    ds = CEI.GetDivisionData(District);
-        ////    ddlDivisions.DataSource = ds;
-        ////    ddlDivisions.DataTextField = "District";
-        ////    ddlDivisions.DataValueField = "District";
-        ////    ddlDivisions.DataBind();
-        ////    ddlDivisions.Items.Insert(0, new ListItem("Select", "0"));
-        ////    ds.Clear();
-        ////}
+        //Uncommented by neha 8-may
+        private void BindDivisions(string District)
+        {
+            DataSet ds = new DataSet();
+            ds = CEI.GetDivisionData(District);
+            ddlDivisions.DataSource = ds;
+            ddlDivisions.DataTextField = "District";
+            ddlDivisions.DataValueField = "District";
+            ddlDivisions.DataBind();
+            ddlDivisions.Items.Insert(0, new ListItem("Select", "0"));
+            ds.Clear();
+        }
+        //
         private void GetDetailsWithId(string ID)
         {
             try
@@ -172,7 +174,8 @@ namespace CEIHaryana.Admin
 
                         GetGridNewInspectionMultiple(ID);
                         GridBindDocument(ID);
-                        ////BindDivisions(txtDistrict.Text.Trim());
+                        //Uncommented by neha 8-may
+                        BindDivisions(txtDistrict.Text.Trim());
                         string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                         if (Status.Trim() == "InProcess")
                         {
@@ -253,7 +256,8 @@ namespace CEIHaryana.Admin
                         GridBindDocument(ID);
                         DivViewCart.Visible = true;
                         GridToViewCart(ID);
-                        ////BindDivisions(txtDistrict.Text.Trim());
+                        //Uncommented by neha 8-may
+                        BindDivisions(txtDistrict.Text.Trim());
                         string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                         if (Status.Trim() == "InProcess")
                         {
@@ -366,10 +370,11 @@ namespace CEIHaryana.Admin
 
                     #endregion
 
-                    ////if (RadioButtonAction.SelectedValue != "" && RadioButtonAction.SelectedValue != null)
-                    ////{
-                    ////    if (RadioButtonAction.SelectedValue == "0")
-                    ////    {
+                    //Uncommented by neha 8-may
+                    if (RadioButtonAction.SelectedValue != "" && RadioButtonAction.SelectedValue != null)
+                    {
+                        if (RadioButtonAction.SelectedValue == "0")
+                        {
                             if (RdbtnAccptReturn.SelectedValue != "" && RdbtnAccptReturn.SelectedValue != null)
                             {
                                 AcceptorReturn = RdbtnAccptReturn.SelectedValue == "0" ? "Accepted" : "Return";
@@ -740,47 +745,49 @@ namespace CEIHaryana.Admin
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please select an Action for Inspection');", true);
                             }
-                    ////    }
-                    ////    else
-                    ////    {
-                    ////        if (ddlToAssign.SelectedValue != null && ddlToAssign.SelectedValue != "0")
-                    ////        {
-                    ////            try
-                    ////            {
-                    ////            StaffTo = ddlToAssign.SelectedValue;
-                    ////            int x = CEI.UpdateInspectionDataOnAction(ID, StaffTo, AssignFrom);
-                    ////            if (x > 0)
-                    ////            {
-                    ////                    ddlDivisions.SelectedIndex = 0;
-                    ////                    ddlToAssign.SelectedIndex = 0;
-                    ////                    Session["InspectionId"] = "";
-                    ////                    string script = $"alert('Inspection sent to {StaffTo} successfully.'); window.location='IntimationHistoryForAdmin.aspx';";
-                    ////                    ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
-                    ////            }
-                    ////            }
-                    ////            catch (Exception ex)
-                    ////            {
-                    ////                Session["Type"] = null;
-                    ////                Session["Type"] = "";
-                    ////                //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "'); window.location.href = '/Admin/Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx';", true);
-                    ////                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
-                    ////                return;
-                    ////            }
-                    ////        }
-                    ////        else
-                    ////        {
-                    ////            ddlToAssign.Focus();
-                    ////            ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", "alert('Select Staff before save');", true);
-                    ////            return;
-                    ////        }
-                    ////    }
-                    ////}
-                    ////else
-                    ////{
-                    ////    ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please select the Process or Transfer');", true);
-                    ////}
+
+                            //Uncommented by neha 8-may
+                        }
+                        else
+                        {
+                            if (ddlToAssign.SelectedValue != null && ddlToAssign.SelectedValue != "0")
+                            {
+                                try
+                                {
+                                    StaffTo = ddlToAssign.SelectedValue;
+                                    int x = CEI.UpdateInspectionDataOnAction(ID, StaffTo, AssignFrom);
+                                    if (x > 0)
+                                    {
+                                        ddlDivisions.SelectedIndex = 0;
+                                        ddlToAssign.SelectedIndex = 0;
+                                        Session["InspectionId"] = "";
+                                        string script = $"alert('Inspection sent to {StaffTo} successfully.'); window.location='IntimationHistoryForAdmin.aspx';";
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    Session["Type"] = null;
+                                    Session["Type"] = "";
+                                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "'); window.location.href = '/Admin/Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx';", true);
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                ddlToAssign.Focus();
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", "alert('Select Staff before save');", true);
+                                return;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please select the Process or Transfer');", true);
+                    }
                 }
-                else
+                        else
                 {
                     Response.Redirect("/AdminLogout.aspx");
                 }
@@ -867,31 +874,34 @@ namespace CEIHaryana.Admin
                 Response.Redirect("/AdminLogout.aspx", false);
             }
         }
-        ////private void BindDropDownToAssign(string Division)
-        ////{
-        ////    try
-        ////    {
-        ////        DataSet dsAssign = new DataSet();
-        ////        dsAssign = CEI.DdlToStaffAssign(Division);
-        ////        ddlToAssign.DataSource = dsAssign;
-        ////        ddlToAssign.DataTextField = "Staff";
-        ////        ddlToAssign.DataValueField = "StaffUserId";
-        ////        ddlToAssign.DataBind();
-        ////        ddlToAssign.Items.Insert(0, new ListItem("Select", "0"));
-        ////        dsAssign.Clear();
-        ////    }
-        ////    catch (Exception ex)
-        ////    {
-        ////        //msg.Text = ex.Message;
-        ////    }
-        ////}
-        ////protected void ddlDivisions_SelectedIndexChanged(object sender, EventArgs e)
-        ////{
-        ////    if (ddlDivisions.SelectedValue != "" && ddlDivisions.SelectedValue != null)
-        ////    {
-        ////        BindDropDownToAssign(ddlDivisions.SelectedValue);
-        ////    }
-        ////}
+
+        //Uncommented by neha 8-may
+        private void BindDropDownToAssign(string Division)
+        {
+            try
+            {
+                DataSet dsAssign = new DataSet();
+                dsAssign = CEI.DdlToStaffAssign(Division);
+                ddlToAssign.DataSource = dsAssign;
+                ddlToAssign.DataTextField = "Staff";
+                ddlToAssign.DataValueField = "StaffUserId";
+                ddlToAssign.DataBind();
+                ddlToAssign.Items.Insert(0, new ListItem("Select", "0"));
+                dsAssign.Clear();
+            }
+            catch (Exception ex)
+            {
+                //msg.Text = ex.Message;
+            }
+        }
+        //
+        protected void ddlDivisions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlDivisions.SelectedValue != "" && ddlDivisions.SelectedValue != null)
+            {
+                BindDropDownToAssign(ddlDivisions.SelectedValue);
+            }
+        }
         protected void RdbtnAccptReturn_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnUpdate.Visible = true;
@@ -939,25 +949,28 @@ namespace CEIHaryana.Admin
                 Check_TRDocuments.Visible = false;
             }
         }
-        ////protected void RadioButtonAction_SelectedIndexChanged(object sender, EventArgs e)
-        ////{
-        ////    if (RadioButtonAction.SelectedValue == "1")
-        ////    {
-        ////        // BindDivisions();
-        ////        TransferButton.Visible = true;
-        ////        btnUpdate.Visible = true;
-        ////        Action.Visible = false;
-        ////        Return.Visible = false;
-        ////        //btnAction.Visible = false;
-        ////    }
-        ////    else
-        ////    {
-        ////        TransferButton.Visible = false;
-        ////        Action.Visible = true;
-        ////        Return.Visible = false;
-        ////        btnUpdate.Visible = true;
-        ////    }
-        ////}
+
+        //Uncommented by neha 8-may
+        protected void RadioButtonAction_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (RadioButtonAction.SelectedValue == "1")
+            {
+                // BindDivisions();
+                TransferButton.Visible = true;
+                btnUpdate.Visible = true;
+                Action.Visible = false;
+                Return.Visible = false;
+                //btnAction.Visible = false;
+            }
+            else
+            {
+                TransferButton.Visible = false;
+                Action.Visible = true;
+                Return.Visible = false;
+                btnUpdate.Visible = true;
+            }
+        }
+        //
         protected void GridBindDocument(string ID)
         {
             try

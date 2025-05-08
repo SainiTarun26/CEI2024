@@ -37,7 +37,8 @@
             return (allow.indexOf(String.fromCharCode(k)) != -1);
         }
     </script>
-    <%-- <script type="text/javascript">
+    <%--//Script uncommented by neha--%>
+     <script type="text/javascript">
         function validateDropdowns(sender, args) {
             var ddlToAssign = document.getElementById('<%= ddlToAssign.ClientID %>');
             // var selectedValueReview = ddlReview.options[ddlReview.selectedIndex].value;
@@ -45,7 +46,8 @@
             // Check if either dropdown has a selected value
             args.IsValid = selectedValueToAssign !== "0";
         }
-    </script>--%>
+    </script>
+    <%--//--%>
     <script type="text/javascript">   
         function alertWithRedirectdata() {
 
@@ -497,7 +499,7 @@
                         <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
                             Action Required
                         </div>
-                        <%--  <div class="row">
+                          <div class="row">
                             <div class="col-md-12">
                                 <asp:RadioButtonList ID="RadioButtonAction" OnSelectedIndexChanged="RadioButtonAction_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                                     <asp:ListItem Text="Process" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
@@ -528,8 +530,8 @@
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="ddlToAssign" runat="server" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
-                        </div>--%>
-                        <div class="row" id="Action" runat="server" visible="true" style="padding-left: 20px;">
+                        </div>
+                        <div class="row" id="Action" runat="server" visible="false" style="padding-left: 20px;">
                             <asp:RadioButtonList ID="RdbtnAccptReturn" AutoPostBack="true" OnSelectedIndexChanged="RdbtnAccptReturn_SelectedIndexChanged" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                                 <asp:ListItem Text="Yes(Accept)" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
                                 <asp:ListItem Text="No(Return)" Value="1" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
