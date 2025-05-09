@@ -65,23 +65,28 @@ namespace CEIHaryana.Admin
                 //ds = CEI.GetTestReportDataIfPeriodic(ID);
                 ds = CEI.GetInspectionHistoryLogs(ID);
                 string TestReportId = string.Empty;
-                if (ds != null && ds.Tables.Count > 0)
+                //Added if and else Condition by neha 9-May-2025
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                //if (ds != null && ds.Tables.Count > 0)
                 {
+                    LblGridView1.Visible = false;
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
                 }
                 else
                 {
+                    LblGridView1.Visible = true;
+                    LblGridView1.Text = "NA";
                     GridView1.DataSource = null;
                     GridView1.DataBind();
-                    string script = "alert(\"No Record Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    //string script = "alert(\"No Record Found\");";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 ds.Dispose();
             }
             catch (Exception ex)
-            { 
-                Response.Redirect("/AdminLogout.aspx", false); 
+            {
+                Response.Redirect("/AdminLogout.aspx", false);
             }
         }
         //Uncommented by neha 8-may
@@ -101,79 +106,81 @@ namespace CEIHaryana.Admin
         {
             try
             {
-               //// ID = Session["InspectionId"].ToString();
+                //// ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.InspectionData(ID);
-                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                //Added if and else Condition by neha 9-May-2025
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                //if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     Type = ds.Tables[0].Rows[0]["IType"].ToString();
                     lbltype.Text = ds.Tables[0].Rows[0]["IType"].ToString();
                     //if (Type == "Periodic")
                     //{
-                        txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
-                        txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
-                        txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
-                        txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-                        txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
-                        txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                        //txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-                        txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
-                        ContractorName.Visible = false;
-                        SupervisorName.Visible = false;
-                        LineVoltage.Visible = false;
-                        txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                        txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
-                        txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                        TypeOfInspection.Visible = false;
-                        //txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
-                        //txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
-                        //txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
-                        //txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-                        //txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                        //txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
-                        //txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
-                        //ContractorName.Visible = false;
-                        //SupervisorName.Visible = false;
-                        //LineVoltage.Visible = false;
-                        //txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                        //txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
-                        //txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                        //TypeOfInspection.Visible = false;
-                        TRAttached.Visible = true;
-                        TRAttachedGrid.Visible = true;
-                        IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
-                        GridBindDocumentPeriodic(txtInspectionReportId.Text.Trim());
-                        GetTestReportDataIfPeriodic(txtInspectionReportId.Text.Trim());
-                        GridToViewCart(txtInspectionReportId.Text.Trim());
+                    txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
+                    txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                    txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                    txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                    txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                    txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                    //txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                    txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                    ContractorName.Visible = false;
+                    SupervisorName.Visible = false;
+                    LineVoltage.Visible = false;
+                    txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                    txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                    TypeOfInspection.Visible = false;
+                    //txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
+                    //txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                    //txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                    //txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                    //txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
+                    //txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
+                    //txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                    //ContractorName.Visible = false;
+                    //SupervisorName.Visible = false;
+                    //LineVoltage.Visible = false;
+                    //txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                    //txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    //txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                    //TypeOfInspection.Visible = false;
+                    TRAttached.Visible = true;
+                    TRAttachedGrid.Visible = true;
+                    IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
+                    GridBindDocumentPeriodic(txtInspectionReportId.Text.Trim());
+                    GetTestReportDataIfPeriodic(txtInspectionReportId.Text.Trim());
+                    GridToViewCart(txtInspectionReportId.Text.Trim());
                     //Uncommented by neha 8-may
                     BindDivisions(txtDistrict.Text.Trim());
-                        string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
-                        if (Status.Trim() == "InProcess")
-                        {
-                            RdbtnAccptReturn.SelectedIndex = RdbtnAccptReturn.Items.IndexOf(RdbtnAccptReturn.Items.FindByValue("0"));
-                            RdbtnAccptReturn.Attributes.Add("disabled", "true");
-                            RdbtnAccptReturn.Enabled = false;
-                            btnBack.Visible = true;
-                            btnUpdate.Visible = false;
-                        }
-                        else if (Status.Trim() == "Return")
-                        {
-                            RdbtnAccptReturn.SelectedIndex = RdbtnAccptReturn.Items.IndexOf(RdbtnAccptReturn.Items.FindByValue("1"));
-                            RdbtnAccptReturn.Attributes.Add("disabled", "true");
-                            RdbtnAccptReturn.Enabled = false;
-                            Return.Visible = true;
-                            txtRejected.Text = ds.Tables[0].Rows[0]["ReturnRemarks"].ToString();
-                            txtRejected.Attributes.Add("disabled", "true");
-                            btnBack.Visible = true;
-                            btnUpdate.Visible = false;
-                        }
-                        else if (Status.Trim() == "Approved" || Status.Trim() == "Rejected")
-                        {
-                            RdbtnAccptReturn.Enabled = false;
-                            txtRejected.Attributes.Add("disabled", "true");
-                            btnBack.Visible = true;
-                            btnUpdate.Visible = false;
-                        }
+                    string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
+                    if (Status.Trim() == "InProcess")
+                    {
+                        RdbtnAccptReturn.SelectedIndex = RdbtnAccptReturn.Items.IndexOf(RdbtnAccptReturn.Items.FindByValue("0"));
+                        RdbtnAccptReturn.Attributes.Add("disabled", "true");
+                        RdbtnAccptReturn.Enabled = false;
+                        btnBack.Visible = true;
+                        btnUpdate.Visible = false;
+                    }
+                    else if (Status.Trim() == "Return")
+                    {
+                        RdbtnAccptReturn.SelectedIndex = RdbtnAccptReturn.Items.IndexOf(RdbtnAccptReturn.Items.FindByValue("1"));
+                        RdbtnAccptReturn.Attributes.Add("disabled", "true");
+                        RdbtnAccptReturn.Enabled = false;
+                        Return.Visible = true;
+                        txtRejected.Text = ds.Tables[0].Rows[0]["ReturnRemarks"].ToString();
+                        txtRejected.Attributes.Add("disabled", "true");
+                        btnBack.Visible = true;
+                        btnUpdate.Visible = false;
+                    }
+                    else if (Status.Trim() == "Approved" || Status.Trim() == "Rejected")
+                    {
+                        RdbtnAccptReturn.Enabled = false;
+                        txtRejected.Attributes.Add("disabled", "true");
+                        btnBack.Visible = true;
+                        btnUpdate.Visible = false;
+                    }
                     //}
                 }
                 else
@@ -411,7 +418,7 @@ namespace CEIHaryana.Admin
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please select the Process or Transfer');", true);
                     }//
                 }
-                        else
+                else
                 {
                     Response.Redirect("/AdminLogout.aspx");
                 }
@@ -429,11 +436,15 @@ namespace CEIHaryana.Admin
                 DataSet dsVC = CEI.GetDetailsToViewCart(ID);
                 if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                 {
+                    //Added if and else Condition by neha 9-May-2025
+                    LblGridView2.Visible = false;
                     GridView2.DataSource = dsVC;
                     GridView2.DataBind();
                 }
                 else
                 {
+                    LblGridView2.Visible = true;
+                    LblGridView2.Text = "NA";
                     GridView2.DataSource = null;
                     GridView2.DataBind();
                 }
@@ -465,9 +476,9 @@ namespace CEIHaryana.Admin
                     Response.Redirect("/TestReportModal/GeneratingSetTestReportModal.aspx", false);
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                Response.Redirect("/AdminLogout.aspx", false); 
+                Response.Redirect("/AdminLogout.aspx", false);
             }
         }
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -563,20 +574,25 @@ namespace CEIHaryana.Admin
             {
                 //ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
+                //Added if and else Condition by neha 9-May-2025s
                 ds = CEI.ViewReturnDocumentsForPeriodic(ID);
-                if (ds.Tables.Count > 0)
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                //if (ds.Tables.Count > 0)
                 {
+                    Lblgrd_Documemnts.Visible = false;
                     grd_Documemnts.DataSource = ds;
                     grd_Documemnts.DataBind();
                 }
                 else
                 {
+                    Lblgrd_Documemnts.Visible = true;
+                    Lblgrd_Documemnts.Text = "NA";
                     grd_Documemnts.DataSource = null;
                     grd_Documemnts.DataBind();
                 }
                 ds.Dispose();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Response.Redirect("/AdminLogout.aspx", false);
             }

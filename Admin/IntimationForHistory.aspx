@@ -300,6 +300,7 @@
                             </Columns>
                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                         </asp:GridView>
+                         <asp:Label ID="Lblgrd_Documemnts" runat="server"></asp:Label>
                     </div>
                 </div>
                 <%-- <div class="row" style="margin-bottom: 25px;">
@@ -314,7 +315,7 @@
                 </div>
             </div>
             <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; border-radius: 10px; margin-top: 10px;"
-                id="TRAttachedGrid" runat="server" visible="true">
+                id="TRAttachedGrid" runat="server" >
                 <div class="col-12" style="padding: 0px;">
                     <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false">
                         <HeaderStyle BackColor="#B7E2F0" />
@@ -377,6 +378,7 @@
                         </Columns>
                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                     </asp:GridView>
+                     <asp:Label ID="LblGridView1" runat="server"></asp:Label>
                 </div>
             </div>
             <div class="row" id="Div1" runat="server" visible="true" style="margin-top: 10px;">
@@ -429,6 +431,7 @@
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
+                    <asp:Label ID="LblGridView2" runat="server"></asp:Label>
                 </div>
             </div>
             <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;"
@@ -491,6 +494,7 @@
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
+                    <asp:Label ID="LblGrid_MultipleInspectionTR" runat="server"></asp:Label>
                 </div>
             </div>
             <asp:UpdatePanel ID="updatepanel1" runat="server">

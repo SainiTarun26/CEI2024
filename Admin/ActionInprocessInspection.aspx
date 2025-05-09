@@ -35,8 +35,8 @@
              div#ui-datepicker-div
      {
 position: absolute;
-top: 992.392px !important;
-left: 750.75px !important;
+top: 1216.392px !important;
+    left: 687.75px !important;
 z-index: 1;
 display: block;
 border:1px solid white;
@@ -268,7 +268,9 @@ border:1px solid white;
      padding-top: 2px;
      padding-bottom: 2px;
  }
-
+th.headercolor.thwidth {
+    width: 1%;
+}
 
     </style>
     <script type="text/javascript">
@@ -413,12 +415,12 @@ border:1px solid white;
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
                             <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
                                 <%-- <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
@@ -439,20 +441,20 @@ border:1px solid white;
                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                 </asp:TemplateField>--%>
                             <asp:BoundField DataField="ActionDate" HeaderText="ActionDate">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
                             <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
-                           <%-- <asp:BoundField DataField="ReturnDate" HeaderText="Return Date">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            <%--<asp:BoundField DataField="ReturnDate" HeaderText="Return Date">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left"  />
                             </asp:BoundField>--%>
-                            <asp:BoundField DataField="Remarks" HeaderText="Remarks" Visible="false">
-                                    <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="25%" />
+                            <asp:BoundField DataField="Remarks" HeaderText="Remarks" >
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor thwidth" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
                            <%-- <asp:BoundField DataField="ReturnBased" HeaderText="Return Based">
                                     <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
@@ -612,7 +614,7 @@ border:1px solid white;
                             <label for="StartDate">
                                 Inspection Date<samp style="color: red"> * </samp>                           
                             </label>
-                            <asp:TextBox class="form-control" ID="txtInspectionDate"  TabIndex="16" autocomplete="off"  min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"  ></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtInspectionDate" MaxLength="10"  TabIndex="16" autocomplete="off"  min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"  ></asp:TextBox>
 
                           <%--  <input type="date" id="txtInspectionDate" class="form-control" onchange="formatDate(this)" />--%>
                    

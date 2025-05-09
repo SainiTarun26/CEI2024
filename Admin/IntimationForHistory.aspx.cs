@@ -96,17 +96,22 @@ namespace CEIHaryana.Admin
                 //ds = CEI.GetTestReportDataIfPeriodic(ID);
                 ds = CEI.GetInspectionHistoryLogs(ID);
                 string TestRportId = string.Empty;
-                if (ds != null && ds.Tables.Count > 0)
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                //if (ds != null && ds.Tables.Count > 0)
                 {
+                    //Added if and else Condition by neha 9-May-2025
+                    LblGridView1.Visible = false;
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
                 }
                 else
                 {
+                    LblGridView1.Visible = true;
+                    LblGridView1.Text = "NA";
                     GridView1.DataSource = null;
                     GridView1.DataBind();
-                    string script = "alert(\"No Record Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    //string script = "alert(\"No Record Found\");";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 ds.Dispose();
             }
@@ -136,8 +141,10 @@ namespace CEIHaryana.Admin
                //// ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.InspectionData(ID);
-                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                //if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
+                    //Added if and else Condition by neha 9-May-2025
                     Type = ds.Tables[0].Rows[0]["IType"].ToString();
                     lbltype.Text = ds.Tables[0].Rows[0]["IType"].ToString();
                     Session["Type"] = Type;
@@ -302,15 +309,20 @@ namespace CEIHaryana.Admin
                 DataSet dsVC = CEI.GetDetailsToViewTRinMultipleCaseNew(ID);
                 if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                 {
+
+                    //Added if and else Condition by neha 9-May-2025
+                    LblGrid_MultipleInspectionTR.Visible = false;
                     Grid_MultipleInspectionTR.DataSource = dsVC;
                     Grid_MultipleInspectionTR.DataBind();
                 }
                 else
                 {
+                    LblGrid_MultipleInspectionTR.Visible = true;
+                    LblGrid_MultipleInspectionTR.Text = "NA";
                     Grid_MultipleInspectionTR.DataSource = null;
                     Grid_MultipleInspectionTR.DataBind();
-                    string script = "alert('No Record Found');";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    //string script = "alert('No Record Found');";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
             }
             catch (Exception ex)
@@ -806,13 +818,18 @@ namespace CEIHaryana.Admin
             {
                 //string ID = Session["InspectionId"].ToString();
                 DataSet dsVC = CEI.GetDetailsToViewCart(ID);
+
+                //Added if and else Condition by neha 9-May-2025
                 if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                 {
+                    LblGridView2.Visible = false;
                     GridView2.DataSource = dsVC;
                     GridView2.DataBind();
                 }
                 else
                 {
+                    LblGridView2.Visible = true;
+                    LblGridView2.Text = "NA";
                     GridView2.DataSource = null;
                     GridView2.DataBind();
                     //string script = "alert('No Record Found');";
@@ -978,13 +995,19 @@ namespace CEIHaryana.Admin
                 //ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.ViewDocuments(ID);
-                if (ds.Tables.Count > 0)
+
+                //Added if and else Condition by neha 9-May-2025
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                //if (ds.Tables.Count > 0)
                 {
+                    Lblgrd_Documemnts.Visible = false;
                     grd_Documemnts.DataSource = ds;
                     grd_Documemnts.DataBind();
                 }
                 else
                 {
+                    Lblgrd_Documemnts.Visible = true;
+                    Lblgrd_Documemnts.Text = "NA";
                     grd_Documemnts.DataSource = null;
                     grd_Documemnts.DataBind();
                     // string script = "alert(\"No Record Found for document\");";
@@ -1006,15 +1029,21 @@ namespace CEIHaryana.Admin
                 DataSet ds = new DataSet();
                 //commented Condition only by gurmeet 1May
                 //ds = CEI.GetTestReport(ID);
+
+                //Added if and else Condition by neha 9-May-2025
                 ds = CEI.GetInspectionHistoryLogs(ID);
                 string TestRportId = string.Empty;
-                if (ds != null && ds.Tables.Count > 0)
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                //if (ds != null && ds.Tables.Count > 0)
                 {
+                    LblGridView1.Visible = false;
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
                 }
                 else
                 {
+                    LblGridView1.Visible = true;
+                    LblGridView1.Text = "NA";
                     GridView1.DataSource = null;
                     GridView1.DataBind();
                     //string script = "alert(\"No Record Found\");";
@@ -1170,7 +1199,10 @@ namespace CEIHaryana.Admin
                 ////ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.ViewDocuments(ID);
-                if (ds.Tables.Count > 0)
+
+                //Added if and else Condition by neha 9-May-2025
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                //if (ds.Tables.Count > 0)
                 {
                     grd_ChecklistDocumemnts.DataSource = ds;
                     grd_ChecklistDocumemnts.DataBind();
@@ -1234,7 +1266,8 @@ namespace CEIHaryana.Admin
                 IntimationId = LblIntimationId.Text.Trim();
                 DataSet ds = new DataSet();
                 ds = CEI.GetData(LblInstallationName.Text.Trim(), IntimationId, Count);
-                if (ds.Tables[0].Rows.Count > 0)
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                //if (ds.Tables[0].Rows.Count > 0)
                 {
                     if (LblInstallationName.Text.Trim() == "Line")
                     {

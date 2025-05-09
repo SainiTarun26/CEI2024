@@ -204,24 +204,27 @@ namespace CEIHaryana.Admin
             {
                 //string ID = Session["InspectionId"].ToString();
                 DataSet dsVC = CEI.GetDetailsToViewTRinMultipleCaseNew(InspectionId);
+                //Added if and else Condition by neha 9-May-2025
                 if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                 {
+                    LblGrid_MultipleInspectionTR.Visible = false;
                     Grid_MultipleInspectionTR.DataSource = dsVC;
                     Grid_MultipleInspectionTR.DataBind();
                 }
                 else
                 {
+                    LblGrid_MultipleInspectionTR.Visible = true;
+                    LblGrid_MultipleInspectionTR.Text = "NA";
                     Grid_MultipleInspectionTR.DataSource = null;
                     Grid_MultipleInspectionTR.DataBind();
-                    string script = "alert('No Record Found');";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    //string script = "alert('No Record Found');";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
             }
             catch (Exception ex)
             {
-
                 string script = "alert('An error occurred, please try again later');";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true); 
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }
         private void GridToViewMultipleCaseNew(string inspectionReportId)
@@ -231,17 +234,21 @@ namespace CEIHaryana.Admin
                 //string ID = Session["InspectionId"].ToString();
                 DataTable dsVC = CEI.InstallationComponentsforSiteOwner(inspectionReportId);
 
+                //Added if and else Condition by neha 9-May-2025
                 if (dsVC != null && dsVC.Rows.Count > 0)
                 {
+                    LblGrid_MultipleInspectionTR.Visible = false;
                     Grid_MultipleInspectionTR.DataSource = dsVC;
                     Grid_MultipleInspectionTR.DataBind();
                 }
                 else
                 {
+                    LblGrid_MultipleInspectionTR.Visible = true;
+                    LblGrid_MultipleInspectionTR.Text = "NA";
                     Grid_MultipleInspectionTR.DataSource = null;
                     Grid_MultipleInspectionTR.DataBind();
-                    string script = "alert('No Record Found');";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    //string script = "alert('No Record Found');";
+                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
             }
             catch (Exception ex)
@@ -261,9 +268,9 @@ namespace CEIHaryana.Admin
             int checksuccessmessage = 0;
             try
             {
-               // if (Session["InspectionId"].ToString() != null && Session["InspectionId"].ToString() != "" && Session["AdminID"].ToString() != null)
-                    if (Session["AdminID"].ToString() != "" && Session["AdminID"].ToString() != null)
-                    {
+                // if (Session["InspectionId"].ToString() != null && Session["InspectionId"].ToString() != "" && Session["AdminID"].ToString() != null)
+                if (Session["AdminID"].ToString() != "" && Session["AdminID"].ToString() != null)
+                {
                     StaffId = Session["AdminID"].ToString();
                     //ID = Session["InspectionId"].ToString();
                     ID = txtInspectionReportId.Text.Trim();
@@ -309,9 +316,8 @@ namespace CEIHaryana.Admin
                     {
                         if (RadioButtonAction.SelectedValue == "0")
                         {
-                    //
-    
-                    if (RdbtnAccptReturn.SelectedValue != "" && RdbtnAccptReturn.SelectedValue != null)
+                            //
+                            if (RdbtnAccptReturn.SelectedValue != "" && RdbtnAccptReturn.SelectedValue != null)
                             {
                                 AcceptorReturn = RdbtnAccptReturn.SelectedValue == "0" ? "Accepted" : "Return";
                                 Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text;
@@ -344,7 +350,6 @@ namespace CEIHaryana.Admin
                                     //else
                                     //{
                                     //    CEI.updateInspectionPeriodic(ID, StaffId, IntimationId, txtWorkType.Text.Trim(), AcceptorReturn, Reason, DdlReturnInPeriodic.SelectedItem.Value);
-
                                     //    checksuccessmessage = 1;
                                     //}
                                     else
@@ -623,10 +628,8 @@ namespace CEIHaryana.Admin
                                             ServiceId = ex.ServiceId,
                                         }
                                     );
-
                                     string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
                                 }
-
                                 catch (Exception ex)
                                 {
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Enter valid reason for your action.');", true);
@@ -686,7 +689,7 @@ namespace CEIHaryana.Admin
                     }
                     //
                 }
-                        else
+                else
                 {
                     Response.Redirect("/AdminLogout.aspx");
                 }
@@ -720,7 +723,6 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-
                 string script = "alert('An error occurred, please try again later');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
@@ -742,7 +744,6 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-
                 string script = "alert('An error occurred, please try again later');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
@@ -838,13 +839,18 @@ namespace CEIHaryana.Admin
                 //ds = CEI.ViewDocuments(ID);
 
                 ds = CEI.ViewReturnDocuments(InspID);
-                if (ds.Tables.Count > 0)
+                //Added if and else Condition by neha 9-May-2025
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                //if (ds.Tables.Count > 0)
                 {
+                    Lblgrd_Documemnts.Visible = false;
                     grd_Documemnts.DataSource = ds;
                     grd_Documemnts.DataBind();
                 }
                 else
                 {
+                    Lblgrd_Documemnts.Visible = true;
+                    Lblgrd_Documemnts.Text = "NA";
                     grd_Documemnts.DataSource = null;
                     grd_Documemnts.DataBind();
                 }
@@ -852,7 +858,6 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-
                 string script = "alert('An error occurred, please try again later');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
@@ -867,13 +872,18 @@ namespace CEIHaryana.Admin
                 // ds = CEI.GetTestReport(InspectionId);
                 ds = CEI.GetInspectionHistoryLogs(InspectionId);
                 string TestRportId = string.Empty;
-                if (ds != null && ds.Tables.Count > 0)
+                //Added if and else Condition by neha 9-May-2025
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                //if (ds != null && ds.Tables.Count > 0)
                 {
+                    LblGridView1.Visible = false;
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
                 }
                 else
                 {
+                    LblGridView1.Visible = true;
+                    LblGridView1.Text = "NA";
                     GridView1.DataSource = null;
                     GridView1.DataBind();
                 }
@@ -881,7 +891,6 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-
                 string script = "alert('An error occurred, please try again later');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
@@ -908,7 +917,6 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-
                 string script = "alert('An error occurred, please try again later');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
@@ -936,7 +944,6 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-
                 string script = "alert('An error occurred, please try again later');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
@@ -948,7 +955,6 @@ namespace CEIHaryana.Admin
             TextBox txtRemarks = (TextBox)row.FindControl("txt_RemarksforOwnerDoc");
 
             txtRemarks.Enabled = chkBox.Checked;
-
             if (!chkBox.Checked)
             {
                 txtRemarks.Text = string.Empty;
@@ -961,7 +967,6 @@ namespace CEIHaryana.Admin
             TextBox txtRemarks1 = (TextBox)row.FindControl("txt_Remarks");
 
             txtRemarks1.Enabled = chkBox.Checked;
-
             if (!chkBox.Checked)
             {
                 txtRemarks1.Text = string.Empty;
@@ -1014,7 +1019,6 @@ namespace CEIHaryana.Admin
                 Response.Redirect("/AdminLogout.aspx", false);
             }
         }
-
         protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             try
@@ -1037,7 +1041,6 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-
                 string script = "alert('An error occurred, please try again later');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
@@ -1050,7 +1053,6 @@ namespace CEIHaryana.Admin
         //        if (e.Row.RowType == DataControlRowType.DataRow)
         //        {
         //            LinkButton LnkPreviousDocPath = (LinkButton)e.Row.FindControl("LnkPreviousDocPath");
-
         //            if (LnkPreviousDocPath != null && LnkPreviousDocPath != "")
         //            {
         //                LnkPreviousDocPath.Visible = true;
@@ -1143,7 +1145,6 @@ namespace CEIHaryana.Admin
             {
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
-
                     Label LblInstallationName = (Label)e.Row.FindControl("LblInstallationName");
                     LinkButton linkButtonInvoice = (LinkButton)e.Row.FindControl("lnkInstallaionInvoice");
                     LinkButton LinkButtonReport = (LinkButton)e.Row.FindControl("lnkManufacturingReport");
@@ -1152,7 +1153,6 @@ namespace CEIHaryana.Admin
                     if (lnkPreviosManufacturingReport.Text.Trim() == "" || lnkPreviosManufacturingReport == null)
                     {
                         lnkPreviosManufacturingReport.Visible = false;
-
                     }
                     else
                     {
@@ -1162,7 +1162,6 @@ namespace CEIHaryana.Admin
                     if (lnkPreviousInstallaionInvoice.Text.Trim() == "" || lnkPreviousInstallaionInvoice == null)
                     {
                         lnkPreviousInstallaionInvoice.Visible = false;
-
                     }
                     else
                     {
@@ -1190,8 +1189,6 @@ namespace CEIHaryana.Admin
                         LinkButtonReport.Visible = true;
                         ViewState["AllRowsAreLine"] = false;
                     }
-
-
                 }
                 else if (e.Row.RowType == DataControlRowType.Footer)
                 {
@@ -1240,7 +1237,6 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-
                 string script = "alert('An error occurred, please try again later');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
@@ -1257,7 +1253,6 @@ namespace CEIHaryana.Admin
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                 }
                 //string returnBasedValue = DataBinder.Eval(e.Row.DataItem, "ReturnBased")?.ToString();
-
                 //// Apply checks based on the value
                 //if (!string.IsNullOrEmpty(returnBasedValue))
                 //{

@@ -222,6 +222,15 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.GridView grd_Documemnts;
 
         /// <summary>
+        /// Lblgrd_Documemnts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lblgrd_Documemnts;
+
+        /// <summary>
         /// TRAttached control.
         /// </summary>
         /// <remarks>
@@ -249,6 +258,15 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
+        /// LblGridView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblGridView1;
+
+        /// <summary>
         /// Div2 control.
         /// </summary>
         /// <remarks>
@@ -274,6 +292,15 @@ namespace CEIHaryana.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView2;
+
+        /// <summary>
+        /// LblGridView2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblGridView2;
 
         /// <summary>
         /// updatepanel1 control.

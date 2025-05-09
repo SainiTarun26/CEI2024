@@ -293,7 +293,8 @@
                             </asp:TemplateField>
                         </Columns>
                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
-                    </asp:GridView>
+                    </asp:GridView>                   
+                        <asp:Label ID="Lblgrd_Documemnts" runat="server"></asp:Label>
                 </div>
                 <%--<div class="row" style="margin-bottom: 25px;">
       <div class="col-md-4">
@@ -353,7 +354,8 @@
                             </asp:BoundField>
                         </Columns>
                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
-                    </asp:GridView>
+                    </asp:GridView>                  
+                        <asp:Label ID="LblGridView1" runat="server"></asp:Label>
                 </div>
             </div>
             <div class="row" id="Div2" runat="server" visible="true">
@@ -405,6 +407,7 @@
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
+                     <asp:Label ID="LblGridView2" runat="server"></asp:Label>
                 </div>
             </div>
             <asp:UpdatePanel ID="updatepanel1" runat="server">
