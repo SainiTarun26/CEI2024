@@ -596,8 +596,6 @@ th.headercolor.thwidth {
             <div class="col-md-4">
                 <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
             </div>
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-md-4" id="ApprovalRequired" runat="server" visible="true">
                             <label>
@@ -689,8 +687,6 @@ th.headercolor.thwidth {
                             </div>
                         </div>
                     </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
         </div>
         <div class="row">
             <div class="col-md-3"></div>

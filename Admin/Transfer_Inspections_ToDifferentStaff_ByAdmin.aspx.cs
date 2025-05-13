@@ -520,8 +520,20 @@ namespace CEIHaryana.Admin
             }
         }
 
-
-
-
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Select")
+            {
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                Label lblInspectionId = (Label)row.FindControl("lblInspectionId");                      
+                if (e.CommandName == "Select")
+                {
+                    Session["InspectionId"] = lblInspectionId.Text;
+                    Response.Redirect("/Admin/InspectionDetails.aspx", false);
+                    
+                }
+            }
+            }
     }
 }

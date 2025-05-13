@@ -18,7 +18,7 @@
     <style>
         th {
             width: 1%;
-            background: #639fc2;
+            background: #639fc2 !important;
         }
 
             th.headercolor {
@@ -139,7 +139,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
-        <div class="card-body" id="CardId" runat="server" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+        <div class="card-body" id="CardId" runat="server" style="background:white;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <div class="card-title" style="margin-bottom: 20px; margin-top: 05px; font-size: 17px; font-weight: 600; margin-left: 5px; text-align: center; font-size: 20px !important;">
                 Transfer Lift Inspections
             </div>
@@ -150,6 +150,8 @@
                     </asp:RadioButtonList>
                 </div>
             </div>--%>
+                        <div class="card" style="background:white;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+
             <div class="row" id="TransferButton" runat="server" visible="true" style="margin-top: -50px;">
                 <div class="col-md-4" id="ApprovalRequired" runat="server">
                     <br />
@@ -205,7 +207,7 @@
 
                     <%-- Add GridView Here --%>
 
-                    <asp:GridView ID="GridView1" OnRowDataBound="GridView1_RowDataBound" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                    <asp:GridView ID="GridView1" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                         <Columns>
                             <asp:TemplateField ItemStyle-HorizontalAlign="left" ItemStyle-VerticalAlign="Middle">
                                 <HeaderTemplate>
@@ -216,9 +218,20 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-                            <asp:TemplateField HeaderText="InspectionId"  ItemStyle-Width="30%">
+                            <asp:TemplateField HeaderText="InspectionId"  ItemStyle-Width="30%" Visible="false">
                                 <ItemTemplate>
                                     <asp:Label ID="lblInspectionId" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField>
+                                <HeaderStyle Width="35%" CssClass="headercolor" />
+                                <ItemStyle Width="35%" />
+                                <HeaderTemplate>
+                                    InspectionId                                    
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="District"  ItemStyle-Width="30%">
@@ -286,7 +299,7 @@
                     </div>
                 </div>
             </div>
-
+</div>
         </div>
     </div>
 

@@ -496,6 +496,12 @@
                                     <span class="menu-title">Accident History</span>
                                 </a>
                             </li>
+                            <li class="nav-item" runat="server">
+                                <a class="nav-link" href="/SiteOwnerPages/Work_Intimation_Cinema_Video_Talkies.aspx">
+                                    <i class="icon-layout menu-icon"></i>
+                                    <span class="menu-title">Cinema Intimation</span>
+                                </a>
+                            </li>
                             <%--<li class="nav-item">
                                 <a class="nav-link" href="/SiteOwnerPages/CreateTestReport_Lift.aspx">
                                     <i class="icon-layout menu-icon"></i>                                  

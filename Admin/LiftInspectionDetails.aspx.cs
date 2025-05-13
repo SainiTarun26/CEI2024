@@ -18,63 +18,71 @@ namespace CEIHaryana.Admin
         string Type = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["AdminId"] != null && Session["AdminId"].ToString() != "")
+            if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != "")
             {
-                GetData();
-                //if (Type == "New")
-                //{
-                //    GetTestReportData();
-
-                //}
-                //else if (Type == "Periodic")
-                //{
-                //    GetTestReportDataIfPeriodic();
-                //}
-
+                if (Convert.ToString(Session["InspectionId"]) != null && Convert.ToString(Session["InspectionId"]) != "")
+                {
+                    String InspectionID = Convert.ToString(Session["InspectionId"]);
+                    GetData(InspectionID);
+                    GetTestReportData(InspectionID);
+                    //if (Type == "New")
+                    //{
+                    //    GetTestReportData();
+                    //}
+                    //else if (Type == "Periodic")
+                    //{
+                    //    GetTestReportDataIfPeriodic();
+                    //}
+                }
+                else
+                {
+                    Session["InspectionId"] = "";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "scriptMessage", "alert('An Error occured.');", true);
+                }
+            }
+            else
+            {
+                Session["AdminId"] = "";
+                Response.Redirect("/AdminLogout.aspx", false);
             }
         }
-        private void GetData()
+        private void GetData(string ID)
         {
             try
             {
-                ID = Session["InspectionId"].ToString();
+                //ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.InspectionDataFor_Lift(ID);
                 Type = ds.Tables[0].Rows[0]["IType"].ToString();
                 lblInspectionType.Text = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                 lblInstallation.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
-
                 if (Type == "New")
                 {
                     txtInspectionReportID.Text = ds.Tables[0].Rows[0]["Id"].ToString();
-
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
                     Session["InstallationType"] = txtWorkType.Text;
-
                     txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                     txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
+                    txtContactNo.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+                    txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                     txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                     string SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
                     Session["InspectionType"] = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                     string ReturnValu = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
-                    GridBindDocument();
+                    GridBindDocument(ID);
                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                     txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
-                    //txtAmount.Visible = false;
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                     if (txtAmount.Text == "0")
                     {
-                      
                         TranscationDetails.Visible = false;
                     }
                     else
                     {
-                       
                         TranscationDetails.Visible = true;
-                        
                     }
-               
+
                     txtelectrical.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                     if (ds.Tables[0].Rows[0]["ContractorType"].ToString() == "Firm/Company")
                     {
@@ -82,12 +90,9 @@ namespace CEIHaryana.Admin
                         individual.Visible = false;
                         txtagency.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                         txtagency.ReadOnly = true;
-
                         DivOtherDepartment.Visible = true;
                         DivPancard_TanNo.Visible = false;
                         txtTanNumber.Text = ds.Tables[0].Rows[0]["PanOrTan"].ToString();
-
-
                     }
                     else if (ds.Tables[0].Rows[0]["ContractorType"].ToString() == "Individual Person")
                     {
@@ -97,20 +102,17 @@ namespace CEIHaryana.Admin
                         DivOtherDepartment.Visible = false;
                         txtPAN.Text = ds.Tables[0].Rows[0]["PanOrTan"].ToString();
                     }
-                   
+
                     string Division = ds.Tables[0].Rows[0]["Division"].ToString();
-                  
                     DivViewTRinMultipleCaseNew.Visible = true;
-                    GridToViewMultipleCaseNew();
+                    GridToViewMultipleCaseNew(ID);
                     if (ReturnValu == "1")
                     {
                         grd_Documemnts.Columns[3].Visible = true;
                         //grd_Documemnts.Columns[4].Visible = true;
-                    
                     }
                     else if (ReturnValu == "3")
                     {
-                        
                         grd_Documemnts.Columns[3].Visible = true;
                         //grd_Documemnts.Columns[4].Visible = true;
                         Grid_MultipleInspectionTR.Columns[5].Visible = true;
@@ -121,32 +123,25 @@ namespace CEIHaryana.Admin
                     }
                     else if (ReturnValu == "2")
                     {
-
                         grd_Documemnts.Columns[3].Visible = false;
                         //grd_Documemnts.Columns[4].Visible = false;
-                       
                     }
                     else
                     {
                         grd_Documemnts.Columns[3].Visible = true;
-                       // grd_Documemnts.Columns[4].Visible = false;
-                      
+                        // grd_Documemnts.Columns[4].Visible = false;
                     }
 
-                   txtAction.Text = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
+                    txtAction.Text = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                     Session["ApplicationStatus"] = txtAction.Text;
-
-                    if(txtAction.Text == "Return")
-                    {
-                        GetTestReportData_Return();
-                    }
-                    else
-                    {
-                        GetTestReportData();
-                    }
-
-
-
+                    ////if (txtAction.Text == "Return")
+                    ////{
+                    ////    GetTestReportData_Return(ID);
+                    ////}
+                    ////else
+                    ////{
+                    ////    GetTestReportData(ID);
+                    ////}
                 }
                 else if (Type == "Periodic")
                 {
@@ -156,7 +151,7 @@ namespace CEIHaryana.Admin
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
                     Session["InstallationType"] = txtWorkType.Text;
-                   txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                    txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                     txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
@@ -166,11 +161,9 @@ namespace CEIHaryana.Admin
                     }
                     else
                     {
-                      
                         TranscationDetails.Visible = true;
-                        
                     }
-                
+
                     txtelectrical.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                     if (ds.Tables[0].Rows[0]["ContractorType"].ToString() == "Firm/Company")
                     {
@@ -178,12 +171,9 @@ namespace CEIHaryana.Admin
                         individual.Visible = false;
                         txtagency.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                         txtagency.ReadOnly = true;
-
                         DivOtherDepartment.Visible = true;
                         DivPancard_TanNo.Visible = false;
                         txtTanNumber.Text = ds.Tables[0].Rows[0]["PanOrTan"].ToString();
-
-
                     }
                     else if (ds.Tables[0].Rows[0]["ContractorType"].ToString() == "Individual Person")
                     {
@@ -193,148 +183,162 @@ namespace CEIHaryana.Admin
                         DivOtherDepartment.Visible = false;
                         txtPAN.Text = ds.Tables[0].Rows[0]["PanOrTan"].ToString();
                     }
-                   
                     Session["InspectionType"] = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                     string Division = ds.Tables[0].Rows[0]["Division"].ToString();
-                   
                     Address.Visible = true;
                     txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
-
+                    txtContactNo.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+                    txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                     string SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
                     grd_Documemnts.Columns[1].Visible = true;
-
                     GridView1.Columns[5].Visible = false;
                     GridView1.Columns[3].Visible = false;
-
                     DivTestReports.Visible = true;
-                    GridToViewTestReports();
-
-                    GridBindDocument();
-
-                   txtAction.Text = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
+                    GridToViewTestReports(ID);
+                    GridBindDocument(ID);
+                    txtAction.Text = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                     Session["ApplicationStatus"] = txtAction.Text;
-                    if (txtAction.Text == "Return")
-                    {
-                        GetTestReportDataIfPeriodic_Return();
-                    }
-                    else
-                    {
-                        GetTestReportDataIfPeriodic();
-                    }
-
-
+                    ////if (txtAction.Text == "Return")
+                    ////{
+                    ////    GetTestReportDataIfPeriodic_Return(ID);
+                    ////}
+                    ////else
+                    ////{
+                    ////    GetTestReportDataIfPeriodic(ID);
+                    ////}
                 }
             }
             catch (Exception ex)
             {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "scriptMessage", "alert('An Error occured.');", true);
             }
         }
-        private void GetTestReportDataIfPeriodic()
-        {
-            try
-            {
-                ID = Session["InspectionId"].ToString();
-                DataSet ds = new DataSet();
-                ds = CEI.GetTestReportDataIfPeriodic_Lift(ID);
-                string TestRportId = string.Empty;
-                if (ds != null && ds.Tables.Count > 0)
-                {
-                    GridView1.DataSource = ds;
-                    GridView1.DataBind();
-                }
-                else
-                {
-                    GridView1.DataSource = null;
-                    GridView1.DataBind();
-                    string script = "alert(\"No Record Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                }
-                ds.Dispose();
-            }
-            catch (Exception ex) { }
-        }
+        //private void GetTestReportDataIfPeriodic(string ID)
+        //{
+        //    try
+        //    {
+        //        ////ID = Session["InspectionId"].ToString();
+        //        DataSet ds = new DataSet();
+        //        ////ds = CEI.GetTestReportDataIfPeriodic_Lift(ID);
+        //        ////string TestRportId = string.Empty;
+        //        ds = CEI.GetInspectionHistoryLogs(ID);
+        //        if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+        //        {
+        //            LblGridView1.Visible = false;
+        //            GridView1.DataSource = ds;
+        //            GridView1.DataBind();
+        //        }
+        //        else
+        //        {
+        //            LblGridView1.Visible = true;
+        //            LblGridView1.Text = "NA";
+        //            GridView1.DataSource = null;
+        //            GridView1.DataBind();
+        //            ////string script = "alert(\"No Record Found\");";
+        //            ////ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+        //        }
+        //        ds.Dispose();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "scriptMessage", "alert('An Error occured.');", true);
+        //    }
+        //}
 
-        private void GetTestReportDataIfPeriodic_Return()
+        //private void GetTestReportDataIfPeriodic_Return(string ID)
+        //{
+        //    try
+        //    {
+        //        ////ID = Session["InspectionId"].ToString();
+        //        DataSet ds = new DataSet();
+        //        ////ds = CEI.GetTestReportDataIfPeriodicLift_Return(ID);
+        //        ////string TestRportId = string.Empty;
+        //        ds = CEI.GetInspectionHistoryLogs(ID);
+        //        if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+        //        ////if (ds != null && ds.Tables.Count > 0)
+        //        {
+        //            LblGridView1.Visible = false;
+        //            GridView1.DataSource = ds;
+        //            GridView1.DataBind();
+        //        }
+        //        else
+        //        {
+        //            LblGridView1.Visible = true;
+        //            LblGridView1.Text = "NA";
+        //            GridView1.DataSource = null;
+        //            GridView1.DataBind();
+        //            //string script = "alert(\"No Record Found\");";
+        //            //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+        //        }
+        //        ds.Dispose();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "scriptMessage", "alert('An Error occured.');", true);
+        //    }
+        //}
+        private void GridToViewTestReports(string ID)
         {
             try
             {
-                ID = Session["InspectionId"].ToString();
-                DataSet ds = new DataSet();
-                ds = CEI.GetTestReportDataIfPeriodicLift_Return(ID);
-                string TestRportId = string.Empty;
-                if (ds != null && ds.Tables.Count > 0)
-                {
-                    GridView1.DataSource = ds;
-                    GridView1.DataBind();
-                }
-                else
-                {
-                    GridView1.DataSource = null;
-                    GridView1.DataBind();
-                    string script = "alert(\"No Record Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                }
-                ds.Dispose();
-            }
-            catch (Exception ex) { }
-        }
-        private void GridToViewTestReports()
-        {
-            try
-            {
-                string ID = Session["InspectionId"].ToString();
+                ////string ID = Session["InspectionId"].ToString();
                 DataSet dsVC = CEI.GetDetailsToViewCart_Lift_Escalator(ID);
-
                 if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
                 {
+                    LblGridView2.Visible = false;
                     GridView2.DataSource = dsVC;
                     GridView2.DataBind();
                 }
                 else
                 {
+                    LblGridView2.Visible = true;
+                    LblGridView2.Text = "NA";
                     GridView2.DataSource = null;
                     GridView2.DataBind();
-                    string script = "alert('No Record Found');";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    ////string script = "alert('No Record Found');";
+                    ////ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
             }
             catch (Exception ex)
             {
-               
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "scriptMessage", "alert('An Error occured.');", true);
             }
         }
+        //private void GetTestReportData_Return(string ID)
+        //{
+        //    try
+        //    {
+        //        ////ID = Session["InspectionId"].ToString();
+        //        DataSet ds = new DataSet();
+        //        ////ds = CEI.GetTestReportLift_Return(ID);
+        //        ////string TestRportId = string.Empty;
+        //        ds = CEI.GetInspectionHistoryLogs(ID);
+        //        if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+        //        ////if (ds != null && ds.Tables.Count > 0)
+        //        {
+        //            LblGridView1.Visible = false;
+        //            //TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+        //            GridView1.DataSource = ds;
+        //            GridView1.DataBind();
+        //        }
+        //        else
+        //        {
+        //            LblGridView1.Visible = true;
+        //            LblGridView1.Text = "NA";
+        //            GridView1.DataSource = null;
+        //            GridView1.DataBind();
+        //            ////string script = "alert(\"No Record Found\");";
+        //            ////ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+        //        }
+        //        //Session["TestRportId"] = TestRportId;
 
-       
-
-        private void GetTestReportData_Return()
-        {
-            try
-            {
-                ID = Session["InspectionId"].ToString();
-                DataSet ds = new DataSet();
-                ds = CEI.GetTestReportLift_Return(ID);
-                string TestRportId = string.Empty;
-                if (ds != null && ds.Tables.Count > 0)
-                {
-                    //TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-                    GridView1.DataSource = ds;
-                    GridView1.DataBind();
-                }
-                else
-                {
-                    GridView1.DataSource = null;
-                    GridView1.DataBind();
-                    string script = "alert(\"No Record Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                }
-                //Session["TestRportId"] = TestRportId;
-
-                ds.Dispose();
-            }
-            catch (Exception ex) { }
-        }
-
-
+        //        ds.Dispose();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "scriptMessage", "alert('An Error occured.');", true);
+        //    }
+        //}
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string fileName = "";
@@ -343,17 +347,15 @@ namespace CEIHaryana.Admin
                 if (e.CommandName == "Select")
                 {
                     //ID = Session["InspectionId"].ToString();
-                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-
                 }
-
             }
             catch (Exception ex)
             {
-                // lblerror.Text = ex.Message.ToString()+"---"+ fileName;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "scriptMessage", "alert('An Error occured.');", true);
             }
         }
 
@@ -361,20 +363,17 @@ namespace CEIHaryana.Admin
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
-                Label lblSubmittedDate = (Label)e.Row.FindControl("lblSubmittedDate");
-                Session["lblSubmittedDate"] = lblSubmittedDate.Text;
+                string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
+                //Label lblSubmittedDate = (Label)e.Row.FindControl("lblSubmittedDate");
+                //Session["lblSubmittedDate"] = lblSubmittedDate.Text;
                 if (status == "RETURN")
                 {
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                 }
-
             }
-
 
             if (e.Row.RowType == DataControlRowType.Header)
             {
-
                 //e.Row.Cells[2].BackColor = System.Drawing.Color.Blue;
                 e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
             }
@@ -404,136 +403,148 @@ namespace CEIHaryana.Admin
                         Response.Redirect("/TestReportModal/EscalatorPeriodicTestReportModal.aspx", false);
                     }
                 }
-
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "scriptMessage", "alert('An Error occured.');", true);
+            }
         }
 
-        private void GridToViewMultipleCaseNew()
+        private void GridToViewMultipleCaseNew(string ID)
         {
             try
             {
-                string ID = Session["InspectionId"].ToString();
+                ////string ID = Session["InspectionId"].ToString();
                 DataTable dsVC = CEI.InstallationComponentsforLift(ID);
 
                 if (dsVC != null && dsVC.Rows.Count > 0)
                 {
+                    LblGrid_MultipleInspectionTR.Visible = false;
                     Grid_MultipleInspectionTR.DataSource = dsVC;
                     Grid_MultipleInspectionTR.DataBind();
                 }
                 else
                 {
+                    LblGrid_MultipleInspectionTR.Visible = true;
+                    LblGrid_MultipleInspectionTR.Text = "NA";
                     Grid_MultipleInspectionTR.DataSource = null;
                     Grid_MultipleInspectionTR.DataBind();
-                    string script = "alert('No Record Found');";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    ////string script = "alert('No Record Found');";
+                    ////ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
             }
             catch (Exception ex)
             {
-                // Log or handle the exception as needed
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "scriptMessage", "alert('An Error occured.');", true);
             }
         }
 
-        protected void GridBindDocument()
+        protected void GridBindDocument(string ID)
         {
             try
             {
-                ID = Session["InspectionId"].ToString();
+                ////ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
                 ds = CEI.ViewReturnDocuments_Lift(ID);
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
+                    Lblgrd_Documemnts.Visible = false;
                     grd_Documemnts.DataSource = ds;
                     grd_Documemnts.DataBind();
-                    statement.Visible = false;
+                    ////statement.Visible = false;
                 }
                 else
                 {
+                    Lblgrd_Documemnts.Visible = true;
+                    Lblgrd_Documemnts.Text = "NA";
                     grd_Documemnts.DataSource = null;
                     grd_Documemnts.DataBind();
                     //string script = "alert(\"No Record Found\");";
                     //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                    statement.Visible = true;
+                    ////statement.Visible = true;
                 }
                 ds.Dispose();
             }
             catch (Exception ex)
             {
-                //throw;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "scriptMessage", "alert('An Error occured.');", true);
             }
         }
-        private void GetTestReportData()
+        private void GetTestReportData(string ID)
         {
             try
             {
-                ID = Session["InspectionId"].ToString();
+                ////ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReport_Lift(ID);
-                string TestRportId = string.Empty;
-                if (ds != null && ds.Tables.Count > 0)
+                ////ds = CEI.GetTestReport_Lift(ID);
+                ds = CEI.GetInspectionHistoryLogs(ID);
+                ////string TestRportId = string.Empty;
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                ////if (ds != null && ds.Tables.Count > 0)
                 {
+                    LblGridView1.Visible = false;
                     //TestRportId = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
-
                 }
                 else
                 {
+                    LblGridView1.Visible = true;
+                    LblGridView1.Text = "NA";
                     GridView1.DataSource = null;
                     GridView1.DataBind();
-
-                    string script = "alert(\"No Record Found\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    ////string script = "alert(\"No Record Found\");";
+                    ////ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 //Session["TestRportId"] = TestRportId;
-
                 ds.Dispose();
-            }
-            catch (Exception ex) { }
-        }
-
-        private void GridToViewTRinMultipleCaseNew()
-        {
-            try
-            {
-                string ID = Session["InspectionId"].ToString();
-                DataSet dsVC = CEI.GetDetailsToViewTRinMultipleCaseNew(ID);
-
-                if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
-                {
-                    Grid_MultipleInspectionTR.DataSource = dsVC;
-                    Grid_MultipleInspectionTR.DataBind();
-                }
-                else
-                {
-                    Grid_MultipleInspectionTR.DataSource = null;
-                    Grid_MultipleInspectionTR.DataBind();
-                    string script = "alert('No Record Found');";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                }
             }
             catch (Exception ex)
             {
-                // Log or handle the exception as needed
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "scriptMessage", "alert('An Error occured.');", true);
             }
         }
 
+        //private void GridToViewTRinMultipleCaseNew()
+        //{
+        //    try
+        //    {
+        //        string ID = Session["InspectionId"].ToString();
+        //        DataSet dsVC = CEI.GetDetailsToViewTRinMultipleCaseNew(ID);
+        //        if (dsVC != null && dsVC.Tables.Count > 0 && dsVC.Tables[0].Rows.Count > 0)
+        //        {
+        //            Grid_MultipleInspectionTR.DataSource = dsVC;
+        //            Grid_MultipleInspectionTR.DataBind();
+        //        }
+        //        else
+        //        {
+        //            Grid_MultipleInspectionTR.DataSource = null;
+        //            Grid_MultipleInspectionTR.DataBind();
+        //            string script = "alert('No Record Found');";
+        //            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log or handle the exception as needed
+        //    }
+        //}
+
         protected void Grid_MultipleInspectionTR_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            string Count = string.Empty;
-            string IntimationId = string.Empty;
+            ////string Count = string.Empty;
+            ////string IntimationId = string.Empty;
             if (e.CommandName == "Select")
             {
                 Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label LblInstallationName = (Label)row.FindControl("LblInstallationName");
-                Label LblTestReportCount = (Label)row.FindControl("LblTestReportCount");
+                ////Label LblTestReportCount = (Label)row.FindControl("LblTestReportCount");
                 //IntimationId = Session["id"].ToString();
-                Count = LblTestReportCount.Text.Trim();
+                ////Count = LblTestReportCount.Text.Trim();
 
-                Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
-                IntimationId = LblIntimationId.Text.Trim();
+                ////Label LblIntimationId = (Label)row.FindControl("LblIntimationId");
+                ////IntimationId = LblIntimationId.Text.Trim();
                 Label LblTestReportId = (Label)row.FindControl("LblTestReportId");
                 //DataSet ds = new DataSet();
                 //ds = CEI.GetData(LblInstallationName.Text.Trim(), IntimationId, Count);
@@ -553,14 +564,13 @@ namespace CEIHaryana.Admin
                         Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
                     }
                 }
-               
             }
 
             //else if (e.CommandName == "View")
             //{
             //    string fileName = "";
-            //    // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-            //    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+            //    // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+            //    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
             //    //lblerror.Text = fileName;
             //    string script = $@"<script>window.open('{fileName}','_blank');</script>";
             //    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -568,19 +578,16 @@ namespace CEIHaryana.Admin
             //else if (e.CommandName == "ViewInvoice")
             //{
             //    string fileName = "";
-            //    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-            //    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+            //    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+            //    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
             //    string script = $@"<script>window.open('{fileName}','_blank');</script>";
             //    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             //}
-            GetData();
-
-
+            ////GetData();
         }
 
         protected void lnkRedirectTR_Click1(object sender, EventArgs e)
         {
-
             try
             {
                 LinkButton btn = (LinkButton)(sender);
@@ -603,16 +610,16 @@ namespace CEIHaryana.Admin
                         Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
                     }
                 }
-
-               
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "scriptMessage", "alert('An Error occured.');", true);
+            }
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Admin/AdminMaster.aspx", false);
-           
         }
     }
 }
