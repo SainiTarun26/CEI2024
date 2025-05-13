@@ -58,14 +58,31 @@ namespace CEIHaryana.Officers
                     txtCircle.Text = ds.Rows[0]["NameOfCircle"].ToString();                                        
                     txtDivision.Text = ds.Rows[0]["NameOfDivision"].ToString();
                     txtAccidentDate.Text = ds.Rows[0]["DateOfAccident"].ToString();
-                    txtAccidentTime.Text = ds.Rows[0]["TimeOfAccident"].ToString();
+                    string TimeofAccident= ds.Rows[0]["TimeOfAccident"].ToString();
+                    if (!string.IsNullOrEmpty(TimeofAccident))
+                    {
+                        txtAccidentTime.Text = ds.Rows[0]["TimeOfAccident"].ToString();
+                    }
+                    else
+                    {
+                        DivAccidentTime.Visible = false;
+                    }
                     txtDistrict.Text = ds.Rows[0]["District"].ToString();
                     txtThana.Text = ds.Rows[0]["Thana"].ToString();
                     txtTehsil.Text = ds.Rows[0]["Tehsil"].ToString();
                     txtVillageCityTown.Text = ds.Rows[0]["VillageCityTown"].ToString();
                     txtVoltageLevel.Text = ds.Rows[0]["VoltageLevelOnWhichAccidentOccurred"].ToString();
-                    txtElectricalEquipment.Text = ds.Rows[0]["ElectricalEquipmentOfAccident"].ToString();
-                    txtSerialNo.Text = ds.Rows[0]["SerialNo/Name"].ToString();                    
+                    //txtElectricalEquipment.Text = ds.Rows[0]["ElectricalEquipmentOfAccident"].ToString();
+                    string ElectricalEquipment = ds.Rows[0]["ElectricalEquipmentOfAccident"].ToString();
+                    if (ElectricalEquipment == "Other")
+                    {
+                        txtElectricalEquipment.Text = ds.Rows[0]["InCaseOfOther"].ToString();
+                    }
+                    else
+                    {
+                        txtElectricalEquipment.Text = ds.Rows[0]["ElectricalEquipmentOfAccident"].ToString();
+                    }
+                    //txtSerialNo.Text = ds.Rows[0]["SerialNo/Name"].ToString();                    
                     string permises = ds.Rows[0]["PremisesOfAccident"].ToString();
                     if (permises !="Other")
                     {                      
@@ -98,18 +115,20 @@ namespace CEIHaryana.Officers
                     }
                     else if (ApplicationStatus == "ReSubmit" || ApplicationStatus == "Submit")
                     {
+                        
                         int RequestNo = Convert.ToInt16(ds.Rows[0]["RequestNo"]);
                         if (RequestNo >1)
                         {
                             ListItem Returnitem = ddlAction.Items.FindByText("Return");
                             ddlAction.Items.Remove(Returnitem);
+
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-
+                throw;
             }
         }
 

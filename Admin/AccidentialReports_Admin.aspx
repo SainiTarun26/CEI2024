@@ -85,10 +85,34 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+       <div class="row" style="margin-bottom: -25px;margin-top: 15px; margin-left: 5px;">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="search" class="col-md-1 col-form-label" style="margin-top: 3px; padding: 0px;">Search:</label>
+                                <div class="col-md-6" style="margin-left: -10px;">
+                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Search by Id, District, NameofSubdivision" class="form-control" Font-Size="12px" onkeydown="return SearchOnEnter(event);" Style="height: 28px;"></asp:TextBox><br />
+                                    <%--onkeyup="Search_Gridview(this)"--%>
+                                </div>
+                                <div class="col-md-2">
+                                    <asp:Button ID="btnSearch" runat="server" class="btn btn-primary" OnClick="btnSearch_Click" Text="Search" Style="padding-top: 1px; padding-bottom: 1px;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <asp:Button ID="btnReset" runat="server" class="btn btn-primary" Text="Reset" OnClick="btnReset_Click" Style="padding-top: 1px; padding-bottom: 1px; padding-left: 17px; padding-right: 17px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
         <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%"
-            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
+            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="500" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
             <PagerStyle CssClass="pagination-ys" />
             <Columns>
+                 <asp:TemplateField HeaderText="SNo">
+                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                    <ItemStyle Width="5%" />
+                    <ItemTemplate>
+                        <%#Container.DataItemIndex+1 %>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Id" Visible="False">
                     <ItemTemplate>
                         <asp:Label ID="AccidentId" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
@@ -112,7 +136,7 @@
                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                     <ItemStyle HorizontalAlign="center" Width="15%" />
                 </asp:BoundField>
-                <asp:BoundField DataField="ElectricalEquipmentOfAccident" HeaderText="ElectricalEquipment">
+                <asp:BoundField DataField="ElectricalEquipmentOfAccident" HeaderText="Type of Apparatus">
                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                     <ItemStyle HorizontalAlign="center" Width="15%" />
                 </asp:BoundField>
@@ -122,7 +146,7 @@
                 </asp:BoundField>
                 <asp:BoundField DataField="AssignedOfficer" HeaderText="AssignedOfficer">
                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                    <ItemStyle HorizontalAlign="center" Width="15%" Font-Bold="true" />
+                    <ItemStyle HorizontalAlign="center" Width="15%"  />
                 </asp:BoundField>
             </Columns>
             <FooterStyle BackColor="White" ForeColor="#000066" />

@@ -544,7 +544,7 @@
                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtAccidentDate" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtAccidentDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" runat="server" id="DivAccidentTime">
                             <label>
                                 Time of Accident
                             </label>
@@ -605,14 +605,14 @@
                         </div>
 
 
-                        <div class="col-md-4" id="Div1" runat="server" visible="true">
-                            <asp:Label ID="lblSerialNO" runat="server" Visible="true">
+                        <div class="col-md-4" id="Div1" runat="server" visible="false">
+                            <asp:Label ID="lblSerialNO" runat="server" Visible="false">
                                 Serial No.
                             </asp:Label>
                             <asp:Label ID="LblLineName" runat="server" Visible="false">
                                 Line Name
                             </asp:Label>
-                            <asp:TextBox class="form-control" ID="txtSerialNo" ReadOnly="true" autocomplete="off" MaxLength="20" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtSerialNo" Visible="false" ReadOnly="true" autocomplete="off" MaxLength="20" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator47" runat="server" ControlToValidate="txtSerialNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                         </div>
                         <%-- <div class="col-md-4" id="Div2" runat="server" visible="true">
@@ -863,7 +863,7 @@
                             <asp:TextBox class="form-control" ID="txtaction" ReadOnly="true" autocomplete="off" MaxLength="450" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8" >
                             <label>
                                 Remarks
                             </label>

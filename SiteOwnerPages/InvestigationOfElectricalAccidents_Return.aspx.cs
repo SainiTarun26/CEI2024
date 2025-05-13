@@ -77,10 +77,17 @@ namespace CEIHaryana.SiteOwnerPages
                     txtTehsil.Text = ds.Rows[0]["Tehsil"].ToString();
                     txtVillageCityTown.Text = ds.Rows[0]["VillageCityTown"].ToString();
                     txtVoltageLevel.Text = ds.Rows[0]["VoltageLevelOnWhichAccidentOccurred"].ToString();
-                    txtElectricalEquipment.Text = ds.Rows[0]["ElectricalEquipmentOfAccident"].ToString();
+                    string ElectricalEquipment = ds.Rows[0]["ElectricalEquipmentOfAccident"].ToString();
+                    if (ElectricalEquipment == "Other")
+                    {
+                        txtElectricalEquipment.Text = ds.Rows[0]["InCaseOfOther"].ToString();
+                    }
+                    else
+                    {
+                        txtElectricalEquipment.Text = ds.Rows[0]["ElectricalEquipmentOfAccident"].ToString();
+                    }
 
-
-                    txtSerialNo.Text = ds.Rows[0]["SerialNo/Name"].ToString();
+                    //txtSerialNo.Text = ds.Rows[0]["SerialNo/Name"].ToString();
                     string permises = ds.Rows[0]["PremisesOfAccident"].ToString();
                     if (permises != "Other")
                     {
@@ -171,7 +178,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
 
                 DataSet ds = new DataSet();
-                ds = CEI.ViewDocumentsAccidentApplication(TempId);
+                ds = CEI.ViewDocumentsAccidentApplicationForReturn(TempId);
                 if (ds.Tables.Count > 0 && ds != null)
                 {
                     grd_Documemnts.DataSource = ds;
@@ -427,12 +434,20 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 
                 string CreatedBy, documentName = string.Empty;
-                int DocumentId = 0;
+                int DocumentNameId, DocumentId = 0;
                 CreatedBy = Convert.ToString(Session["SiteOwnerId"]);
                 if (Hdn_TempId.Value == null || Hdn_TempId.Value == "")
                 {
                     return;
                 }
+
+                if (IsValidAccidentDateTime())
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                   "alert('future time is not allowed please select time correctly');", true);
+                    return;
+                }
+
                 long TempId = Convert.ToInt64(Hdn_TempId.Value);
                 using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
                 {
@@ -444,12 +459,19 @@ namespace CEIHaryana.SiteOwnerPages
 
                         foreach (GridViewRow rows in grd_Documemnts.Rows)
                         {
+                            
                             FileUpload Fileuploadcontrol = (FileUpload)rows.FindControl("FileUpload1");
                             HiddenField Hdn_DocumentID = (HiddenField)rows.FindControl("HdnDocumentID");
                             HiddenField HdnDocumentName = (HiddenField)rows.FindControl("HdnDocumentName");
-                                                        
+                            HiddenField HdnDocumentNameId = (HiddenField)rows.FindControl("HdnDocumentNameID");
+
                             documentName = HdnDocumentName.Value;
-                            DocumentId=Convert.ToInt32(Hdn_DocumentID.Value);
+                            if (string.IsNullOrEmpty(Hdn_DocumentID.Value))
+                            {
+                                Hdn_DocumentID.Value = "10";
+                            }
+                            DocumentId =Convert.ToInt32(Hdn_DocumentID.Value);
+                            DocumentNameId= Convert.ToInt32(HdnDocumentNameId.Value);
                             if (Fileuploadcontrol.HasFile && Fileuploadcontrol != null)
                             {
                                 if (Path.GetExtension(Fileuploadcontrol.FileName).ToLower() == ".pdf" && Fileuploadcontrol.PostedFile.ContentLength <= 1048576)
@@ -463,7 +485,7 @@ namespace CEIHaryana.SiteOwnerPages
                                     fileName = $"{documentName}_{DateTime.Now:yyyyMMddHHmmssFFF}.pdf";           // Generate file path and name
                                     dbPath = $"/Attachment/{TempId}/{CreatedBy}/{fileName}";
                                     fullPath = Path.Combine(directoryPath, fileName);
-                                    int x = CEI.UpdateDocumentData(DocumentId,TempId, documentName, fileName, dbPath, CreatedBy, Transaction);
+                                    int x = CEI.UpdateDocumentData(DocumentId,TempId, DocumentNameId, documentName, fileName, dbPath, CreatedBy, Transaction);
                                     Fileuploadcontrol.PostedFile.SaveAs(fullPath);
                                 }
                                 else
@@ -497,6 +519,22 @@ namespace CEIHaryana.SiteOwnerPages
 
             }
 
+        }
+        private bool IsValidAccidentDateTime()
+        {
+            DateTime accidentDate, accidentTime;
+
+            if (DateTime.TryParse(txtAccidentDate.Text, out accidentDate) &&
+                TimeSpan.TryParse(txtAccidentTime.Text, out TimeSpan timePart))
+            {
+                DateTime fullAccidentDateTime = accidentDate.Date.Add(timePart);
+                if (accidentDate.Date == DateTime.Today && fullAccidentDateTime > DateTime.Now)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

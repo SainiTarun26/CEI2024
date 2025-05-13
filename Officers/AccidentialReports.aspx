@@ -84,53 +84,80 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-    <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%"
-        AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"  BorderWidth="1px" BorderColor="#dbddff">
-        <PagerStyle CssClass="pagination-ys" />
-        <Columns>
-            <asp:TemplateField HeaderText="Id" Visible="False">
-                <ItemTemplate>
-                    <asp:Label ID="AccidentId" runat="server" Text='<%#Eval("Id") %>'></asp:Label>                   
-                </ItemTemplate>
-            </asp:TemplateField>                   
-            <asp:TemplateField>
-                <HeaderStyle Width="10%" CssClass="headercolor" />
-                <ItemStyle Width="10%" Font-Bold="true" />
-                <HeaderTemplate>
-                    Accident ID 
-                </HeaderTemplate>
-                <ItemTemplate>
-                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:BoundField DataField="NameOfSubDivision" HeaderText="Name Of SubDivision">
-                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                <ItemStyle HorizontalAlign="center" Width="15%" />
-            </asp:BoundField>
-            <asp:BoundField DataField="District" HeaderText="District">
-                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                <ItemStyle HorizontalAlign="center" Width="15%" />
-            </asp:BoundField>
-            <asp:BoundField DataField="ElectricalEquipmentOfAccident" HeaderText="ElectricalEquipment" >
-                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                <ItemStyle HorizontalAlign="center" Width="15%" />
-            </asp:BoundField>
-            <asp:BoundField DataField="ApplicationStatus" HeaderText="ApplicationStatus">
-                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                <ItemStyle HorizontalAlign="center" Width="15%" Font-Bold="true" />
-            </asp:BoundField>            
-          
-           </Columns>
-        <FooterStyle BackColor="White" ForeColor="#000066" />
-        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-        <RowStyle ForeColor="#000066" />
-        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-        <SortedDescendingHeaderStyle BackColor="#00547E" />
-    </asp:GridView>
-          </div>
+    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+       <div class="row" style="margin-bottom: -25px;margin-top: 15px; margin-left: 5px;">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="search" class="col-md-1 col-form-label" style="margin-top: 3px; padding: 0px;">Search:</label>
+                                <div class="col-md-6" style="margin-left: -10px;">
+                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Search by Id, District ,NameofSubdivision" class="form-control" Font-Size="12px" onkeydown="return SearchOnEnter(event);" Style="height: 28px;"></asp:TextBox><br />
+                                    <%--onkeyup="Search_Gridview(this)"--%>
+                                </div>
+                                <div class="col-md-2">
+                                    <asp:Button ID="btnSearch" runat="server" class="btn btn-primary" OnClick="btnSearch_Click" Text="Search" Style="padding-top: 1px; padding-bottom: 1px;" />
+                                </div>
+                                <div class="col-md-2">
+                                    <asp:Button ID="btnReset" runat="server" class="btn btn-primary" Text="Reset" OnClick="btnReset_Click" Style="padding-top: 1px; padding-bottom: 1px; padding-left: 17px; padding-right: 17px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%"
+            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="500" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
+            <PagerStyle CssClass="pagination-ys" />
+            <Columns>
+                <asp:TemplateField HeaderText="SNo">
+                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                    <ItemStyle Width="5%" />
+                    <ItemTemplate>
+                        <%#Container.DataItemIndex+1 %>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Id" Visible="False">
+                    <ItemTemplate>
+                        <asp:Label ID="AccidentId" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <HeaderStyle Width="10%" CssClass="headercolor" />
+                    <ItemStyle Width="10%" Font-Bold="true" />
+                    <HeaderTemplate>
+                        Accident ID 
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField DataField="NameOfSubDivision" HeaderText="Name Of SubDivision">
+                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                </asp:BoundField>
+                <asp:BoundField DataField="District" HeaderText="District">
+                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                </asp:BoundField>
+                <asp:BoundField DataField="ElectricalEquipmentOfAccident" HeaderText="Type of Apparatus">
+                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                </asp:BoundField>
+                <asp:BoundField DataField="ApplicationStatus" HeaderText="ApplicationStatus">
+                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                    <ItemStyle HorizontalAlign="center" Width="15%" Font-Bold="true" />
+                </asp:BoundField>
+                <asp:BoundField DataField="SubmittedDate" HeaderText="SubmitedDate">
+                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                </asp:BoundField>
+            </Columns>
+            <FooterStyle BackColor="White" ForeColor="#000066" />
+            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+            <RowStyle ForeColor="#000066" />
+            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+            <SortedDescendingHeaderStyle BackColor="#00547E" />
+        </asp:GridView>
+    </div>
 </asp:Content>

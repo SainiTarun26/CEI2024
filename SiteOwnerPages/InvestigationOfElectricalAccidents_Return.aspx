@@ -736,18 +736,18 @@
                             <label>
                                 Voltage Level
                             </label>
-                            <asp:TextBox class="form-control" ID="txtVoltageLevelAccident" ReadOnly="true" autocomplete="off" MaxLength="20" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtVoltageLevelAccident" Visible="false" ReadOnly="true" autocomplete="off" MaxLength="20" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator51" runat="server" ControlToValidate="txtVoltageLevelAccident" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                         </div>
 
-                        <div class="col-md-4" id="Div1" runat="server" visible="true">
-                            <asp:Label ID="lblSerialNO" runat="server" Visible="true" Style="margin-bottom: 8px !important;">
+                        <div class="col-md-4" id="Div1" runat="server" visible="false">
+                            <asp:Label ID="lblSerialNO" runat="server" Visible="false" Style="margin-bottom: 8px !important;">
          Serial No.
                             </asp:Label>
                             <asp:Label ID="LblLineName" runat="server" Visible="false" Style="margin-bottom: 8px !important;">
          Line Name
                             </asp:Label>
-                            <asp:TextBox class="form-control" ID="txtSerialNo" ReadOnly="true" autocomplete="off" MaxLength="20" runat="server" Style="margin-left: 18px; margin-top: 7px !important;"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtSerialNo" Visible="false" ReadOnly="true" autocomplete="off" MaxLength="20" runat="server" Style="margin-left: 18px; margin-top: 7px !important;"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator47" runat="server" ControlToValidate="txtSerialNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-md-4">
@@ -1046,6 +1046,8 @@
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblIsDocumentUpload" runat="server" Text='<%#Eval("IsDocumentUpload") %>'></asp:Label>
+                                    <asp:Label ID="LblDocumentId" runat="server" Text='<%#Eval("DocumentId") %>'></asp:Label>
+
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
@@ -1069,6 +1071,7 @@
                                     <%-- <input type="hidden" id="DocumentID" runat="server" value='<%# Eval("Id") %>' />
                                      <input type="hidden" id="HdnDocumentName" runat="server" value='<%# Eval("DocumentName") %>' />--%>
                                     <asp:HiddenField ID="HdnDocumentID" runat="server" Value='<%# Eval("Id") %>' />
+                                    <asp:HiddenField ID="HdnDocumentNameID" runat="server" value='<%# Eval("DocumentId") %>' />
                                     <asp:HiddenField ID="HdnDocumentName" runat="server" Value='<%# Eval("DocumentName") %>' />
                                     <asp:FileUpload ID="FileUpload1" runat="server" />
                                 </ItemTemplate>

@@ -29,9 +29,10 @@ namespace CEIHaryana.SiteOwnerPages
                         HdnUser.Value = UserId;
                         GetDetails(UserId);
                         BindDistrict();
-                        ddlLoadBindVoltage();
+                        ddlLoadBindVoltage();                       
                         Page.Session["FlagHuman"] = 0;
                         Page.Session["FlagAnimal"] = 0;
+                        Session["TempUniqueId"] = null;
                     }
                     else
                     {                        
@@ -66,8 +67,7 @@ namespace CEIHaryana.SiteOwnerPages
                    }
             }
             else
-            {
-                //Response.Redirect("/login.aspx", false);
+            {               
                 Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
         }
@@ -89,11 +89,7 @@ namespace CEIHaryana.SiteOwnerPages
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
-            {
-            //    if (Convert.ToString(Session["TempUniqueId"]) == null || Convert.ToString(Session["TempUniqueId"]) == "")
-            //    {
-            //        GenerateUniqueTempId();
-            //    }
+            {            
                 if (Convert.ToString(Session["TempUniqueId"]) != null && Convert.ToString(Session["TempUniqueId"]) != "")
                 {             
                     //hdnFieldGridView
@@ -103,14 +99,38 @@ namespace CEIHaryana.SiteOwnerPages
                         "alert('Please add Animal/Human Details before submiting the form');", true);
                        return;
                     }
+                    if (IsValidAccidentDateTime())
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                       "alert('future time is not allowed please select time correctly');", true);
+                        return;
+                    }
 
                     #region document validation
                     bool allMandatoryUploaded = true;
                     bool allReasonsProvided = true;
                     string errorMessage = "";                   
                     // Check mandatory documents
-                    if(HdnField_Document1.Value != "1") { allMandatoryUploaded = false; errorMessage += "Form A is required.<br>"; }                            
-                    if(HdnField_Document2.Value != "1") { allMandatoryUploaded = false; errorMessage += "Investigation/Narrative report of concerned Xen is required.<br>"; }
+                    if(HdnField_Document1.Value != "1") { allMandatoryUploaded = false; errorMessage += "Form A is required.<br>"; }
+                    if (hdnfieldDocument_mandtry.Value=="1")
+                    {
+                        
+                        if (HdnField_Document2.Value != "1" && RadioButtonList2.SelectedValue == "0") { allMandatoryUploaded = false; errorMessage += "Details Investigation/Narrative report of the concerned Xen.<br>"; }
+                    }
+                    else
+                    {                        
+                        if (RadioButtonList2.SelectedValue == "0" && HdnField_Document2.Value != "1")
+                        {
+                            allMandatoryUploaded = false; errorMessage += "Details Investigation/Narrative report of the concerned Xen.please upload because you select yes.<br>";
+                            
+                        }
+                        if (RadioButtonList2.SelectedValue == "1" && (string.IsNullOrEmpty(txtReason2.Text) || HdnField_Document2.Value != "1"))
+                        {
+                            allReasonsProvided = false;
+                            errorMessage += "Reason Details Investigation/Narrative report of the concerned Xen.<br>";
+                        }
+                    }
+                    
                     if(HdnField_Document3.Value != "1") { allMandatoryUploaded = false; errorMessage += "Details Investigation/Narrative report of the concerned SDO is required.<br>"; }
                     if(HdnField_Document4.Value != "1" && RadioButtonList4.SelectedValue =="0")  { allMandatoryUploaded = false; errorMessage += "Statements of the concerned JE/ALM/LM/AFM/FM is required.<br>"; }
                     if(HdnField_Document5.Value != "1" && RadioButtonList5.SelectedValue == "0") { allMandatoryUploaded = false; errorMessage += "Statement of eyewitness is required.<br>"; }
@@ -120,51 +140,61 @@ namespace CEIHaryana.SiteOwnerPages
                     if(HdnField_Document9.Value != "1" && RadioButtonList9.SelectedValue == "0") { allMandatoryUploaded = false; errorMessage += "Photographs of accidental site.<br>"; }
                     //if (HdnField_Document10.Value == "1"){ allMandatoryUploaded = false; errorMessage += "Other document.<br>"; }
                     //Check non-mandatory documents (if 'No' is selected, reason must be provided)
+                    
 
                     if (RadioButtonList4.SelectedValue == "1" && (string.IsNullOrEmpty(txtReason4.Text) || HdnField_Document4.Value != "1"))
                     {
                         allReasonsProvided = false;
-                        errorMessage += "Reason for not uploading Statement of eyewitness is required.<br>";
+                        errorMessage += "Reason Statements of the concerned JE/ALM/LM/AFM/FM.<br>";
                     }
                     if (RadioButtonList5.SelectedValue == "1" && (string.IsNullOrEmpty(txtReason5.Text)|| HdnField_Document5.Value != "1"))
                     {
                         allReasonsProvided = false;
-                        errorMessage += "Reason for not uploading Post-mortem report is required.<br>";
+                        errorMessage += "Reason Statement of eyewitness.<br>";
                     }
                     if (RadioButtonList6.SelectedValue == "1" && (string.IsNullOrEmpty(txtReason6.Text) || HdnField_Document6.Value != "1"))
                     {
                         allReasonsProvided = false;
+                        errorMessage += "Post-mortem report/Medical report.<br>";
+                    }
+                    if (RadioButtonList7.SelectedValue == "1" && (string.IsNullOrEmpty(txtReason7.Text) || HdnField_Document7.Value != "1"))
+                    {
+                        allReasonsProvided = false;
                         errorMessage += "Reason for not uploading FIR is required.<br>";
                     }
-                    if (RadioButtonList7.SelectedValue == "1" && string.IsNullOrEmpty(txtReason7.Text) && HdnField_Document7.Value != "1")
+                    if (RadioButtonList8.SelectedValue == "1" && ( string.IsNullOrEmpty(txtReason8.Text) || HdnField_Document8.Value != "1"))
                     {
                         allReasonsProvided = false;
-                        errorMessage += "Reason for not uploading Sketch of accidental site is required.<br>";
+                        errorMessage += "Sketch of accidental site.<br>";
                     }
-                    if (RadioButtonList8.SelectedValue == "1" && string.IsNullOrEmpty(txtReason8.Text) && HdnField_Document8.Value != "1")
-                    {
-                        allReasonsProvided = false;
-                        errorMessage += "Reason for not uploading Other documents is required.<br>";
-                    }
-                    if (RadioButtonList9.SelectedValue == "1" && string.IsNullOrEmpty(txtReason9.Text) && HdnField_Document9.Value != "1") 
+                    if (RadioButtonList9.SelectedValue == "1" && (string.IsNullOrEmpty(txtReason9.Text) || HdnField_Document9.Value != "1") )
                     {   
                         allReasonsProvided = false;
-                        errorMessage += "Reason for not uploading Other documents is required.<br>";
+                        errorMessage += "Photographs of accidental site.<br>";
                     }
 
                     if (!allMandatoryUploaded || !allReasonsProvided)
                     {
+                        string[] lines = errorMessage.Split(new string[] { "<br>" }, StringSplitOptions.RemoveEmptyEntries);
+                        string formattedMessage = "";
+                        for (int i = 0; i < lines.Length; i++)
+                        {
+                            formattedMessage += $"{i + 1}. {lines[i].Trim()}\\n";
+                        }
+
+                        string script = $"alert('{formattedMessage}');";
+                        ClientScript.RegisterStartupScript(this.GetType(), "alertMessage", script, true);
                         //lblError.Text = errorMessage;
                         //lblError.ForeColor = System.Drawing.Color.Red;
                         //return;
                         // Add validation error messages dynamically
-                        CustomValidator customValidator = new CustomValidator
-                        {
-                            IsValid = false,
-                            ErrorMessage = errorMessage,
-                            Display = ValidatorDisplay.None
-                        };
-                        Page.Validators.Add(customValidator);
+                        //CustomValidator customValidator = new CustomValidator
+                        //{
+                        //    IsValid = false,
+                        //    ErrorMessage = errorMessage,
+                        //    Display = ValidatorDisplay.None
+                        //};
+                        //Page.Validators.Add(customValidator);
                         return;
                     }
 
@@ -177,7 +207,7 @@ namespace CEIHaryana.SiteOwnerPages
                         bool isValid = int.TryParse(HdnField_PopUp_InstallationId.Value.Trim(), out ComponentId);
                         if (!isValid)
                         {                            
-                            ComponentId = 0; // Set a default value
+                            ComponentId = 0; //Set a default value
                         }
                     }
 
@@ -185,6 +215,7 @@ namespace CEIHaryana.SiteOwnerPages
                     string Designation = "";
                     string AssignedOfficer = "";
                    
+                    //Assigend offer logic
                     if (hdnFieldGridView.Value == "1") //human
                     {
                         foreach (GridViewRow Rows in HumanGridView.Rows)
@@ -211,8 +242,8 @@ namespace CEIHaryana.SiteOwnerPages
                             return;
                         }
                         AssignedOfficer = dt.Rows[0]["StaffUserID"].ToString();
-                    }
-                    else if (hdnFieldGridView.Value == "2" ) //animal
+                    }     
+                    else if (hdnFieldGridView.Value == "2") // for Animal
                     {
                         Designation = "JE";
                         DataTable dt = new DataTable();
@@ -234,8 +265,8 @@ namespace CEIHaryana.SiteOwnerPages
                             int x = CEI.InsertAccidentData(txtUtility.Text.Trim(), txtZone.Text.Trim(), txtCircle.Text.Trim(), txtDivision.Text.Trim(),
                                 txtSubdivision.Text.Trim(), AssignedOfficer, txtAccidentDate.Text.Trim(), txtAccidentTime.Text.Trim(), ddlDistrict.SelectedItem.Text, txtThana.Text.Trim(),
                                 txtTehsil.Text.Trim(), txtVillageCityTown.Text.Trim(), ddlVoltageLevel.SelectedItem.Text, ddlElectricalEquipment.SelectedItem.Text,
-                                txtSerialNo.Text.Trim(),txtVoltageLevelAccident.Text.Trim(), ComponentId,
-                                //txtOtherCaseElectricalEquipment.Text.Trim(),
+                                //txtSerialNo.Text.Trim(),txtVoltageLevelAccident.Text.Trim(), ComponentId,
+                                txtOtherCaseElectricalEquipment.Text.Trim(),
                                 ddlPremises.SelectedItem.Text, txtOtherPremsesCase.Text.Trim(),
                                 Convert.ToString(Session["SiteOwnerId"]), (long)Session["TempUniqueId"], transaction
                                 );
@@ -258,7 +289,6 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             transaction.Rollback();
                         }
-
                     }
                 }
             }
@@ -294,7 +324,7 @@ namespace CEIHaryana.SiteOwnerPages
                                     txtDescriptionAnimal.Text = ""; txtOwnerName.Text = "";
                                     txtAddressofOwner.Text = ""; ddlFatelTypeAnimal.SelectedIndex = 0; txtNumber.Text = "";
 
-                                    ScriptManager.RegisterStartupScript(this, GetType(), "hideModalScript", "hideModal('animalModal');", true);
+                                    //ScriptManager.RegisterStartupScript(this, GetType(), "hideModalScript", "hideModal('animalModal');", true);
                                     AnimalGridViewBind(Convert.ToString(Session["TempUniqueId"]));
                                 }
                                 else
@@ -336,12 +366,17 @@ namespace CEIHaryana.SiteOwnerPages
                                    );
                                 if (x > 0)
                                 {
+                                    hdnfieldDocument_mandtry.Value = "1";
                                     hdnFieldGridView.Value = "1";
                                     txtHumanName.Text = ""; txtHumanFatherName.Text = ""; ddlGender.SelectedIndex = 0; ddlPersonCategory.SelectedIndex = 0;
                                     txtAge.Text = ""; ddlFatelNonFatelHuman.SelectedIndex = 0; txtPostalAddress.Text = "";
 
-                                    ScriptManager.RegisterStartupScript(this, GetType(), "hideModalScript", "hideModal('humanModal');", true);
+                                    //ScriptManager.RegisterStartupScript(this, GetType(), "hideModalScript", "hideModal('humanModal');", true);
                                     HumanGridViewBind(Convert.ToString(Session["TempUniqueId"]));
+
+                                    RadioButtonList2.Enabled = false;
+                                    RadioButtonList2.SelectedValue = "0";
+                                    //txtReason2.Visible = false;
                                 }
                                 else
                                 {
@@ -366,12 +401,16 @@ namespace CEIHaryana.SiteOwnerPages
             if (ds.Rows.Count > 0 && ds != null)
             {
                 AnimalGridView.DataSource = ds;
-                AnimalGridView.DataBind();              
+                AnimalGridView.DataBind();
+                GridView_animalPopUp.DataSource = ds;
+                GridView_animalPopUp.DataBind();
             }
             else
             {
                 AnimalGridView.DataSource = null;
-                AnimalGridView.DataBind();              
+                AnimalGridView.DataBind();
+                GridView_animalPopUp.DataSource = null;
+                GridView_animalPopUp.DataBind();
             }
         }
         public void HumanGridViewBind(string TempId)
@@ -382,11 +421,15 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 HumanGridView.DataSource = ds;
                 HumanGridView.DataBind();
+                GridView_humanPopUp.DataSource = ds;
+                GridView_humanPopUp.DataBind();
             }
             else
             {
                 HumanGridView.DataSource = null;
                 HumanGridView.DataBind();
+                GridView_humanPopUp.DataSource = null;
+                GridView_humanPopUp.DataBind();
             }
         }
        
@@ -428,7 +471,7 @@ namespace CEIHaryana.SiteOwnerPages
             }
             return true;
         }       
-        private string SaveDocumentWithTransaction(FileUpload fileUpload,Button uploadbutton, LinkButton deleteButton, LinkButton tickButton, string documentName,string IsDocumentUpload,string Reason)
+        private string SaveDocumentWithTransaction(FileUpload fileUpload,Button uploadbutton, int DocumentId, LinkButton deleteButton, LinkButton tickButton, string documentName,string IsDocumentUpload,string Reason)
         {
             string fileName = ""; string dbPath = ""; string fullPath ="";
 
@@ -462,7 +505,7 @@ namespace CEIHaryana.SiteOwnerPages
                 if (string.IsNullOrEmpty(Reason))
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
-                        "alert('Please Give Reason);", true);                    
+                        "alert('Please give reason');", true);                                   
                     return null;
                 }
             }
@@ -474,7 +517,7 @@ namespace CEIHaryana.SiteOwnerPages
                     connection.Open();
                     transaction = connection.BeginTransaction();
                                                          
-                    string documentId = CEI.InsertDocumentData(TempUniqueId, documentName,IsDocumentUpload, Reason, fileName, dbPath, CreatedBy, transaction);
+                    string documentId = CEI.InsertDocumentData(TempUniqueId, documentName, DocumentId, IsDocumentUpload, Reason, fileName, dbPath, CreatedBy, transaction);
                     if (!string.IsNullOrEmpty(documentId))
                     {                        
                         deleteButton.CommandArgument = documentId; //bind document id for deleting that reocord
@@ -522,8 +565,9 @@ namespace CEIHaryana.SiteOwnerPages
                     connection.Open();
                     transaction = connection.BeginTransaction();                    
                     string documentPath = null;
-                    using (SqlCommand cmd = new SqlCommand("SELECT DocumentPath FROM tbl_AcidentDocumentsDetails WHERE Id = @DocumentId", connection, transaction))
+                    using (SqlCommand cmd = new SqlCommand("sp_GetDocumentPathByIdAccident", connection, transaction))
                     {
+                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@DocumentId", documentId);
                         object result = cmd.ExecuteScalar();
                         if (result != null)
@@ -532,8 +576,9 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     }
                     // Delete from the database
-                    using (SqlCommand cmd = new SqlCommand("DELETE FROM tbl_AcidentDocumentsDetails WHERE Id = @DocumentId", connection, transaction))
+                    using (SqlCommand cmd = new SqlCommand("sp_DeleteDocumentByIdAccident", connection, transaction))
                     {
+                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@DocumentId", documentId);
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected == 0)
@@ -705,7 +750,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             if (IsSessionValid())
             {
-              string Result =  SaveDocumentWithTransaction(FileUpload1, btnupload1, lnkBtnDelete1, lnkBtnTick, "Reporting electrical accidents-Form A","Yes","");
+              string Result =  SaveDocumentWithTransaction(FileUpload1, btnupload1,1,lnkBtnDelete1, lnkBtnTick, "Reporting electrical accidents-Form A","Yes","");
                 if (Result != null && Result !="")
                 {
                     HdnField_Document1.Value = "1";
@@ -715,61 +760,47 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 Response.Redirect("/SiteOwnerLogout.aspx", false);
             }         
-        }      
-        protected void lnkBtnDelete1_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-              bool IsDelete= DeleteDocumentWithTransaction(fileId, lnkBtnDelete1,lnkBtnTick,FileUpload1, btnupload1);
-              if (IsDelete)
-              {
-                  HdnField_Document1.Value = "0";
-              }
-            }            
-            //int x = CEI.DeleteDocumentWithTransaction(int DocumentId,string CreatedBy);
-            //if (x > 0)
-            //{
-            //    FileUpload1.Visible = true;
-            //    btnupload1.Visible = true;
-            //    lnkBtnDelete1.Visible = false;
-            //    lnkBtnTick.Visible = false;
-            //}                       
         }
         protected void btnupload2_Click(object sender, EventArgs e)
         {
-            if (IsSessionValid())
+            if (RadioButtonList4.SelectedValue == "0" || RadioButtonList4.SelectedValue == "1")
             {
-                string Result = SaveDocumentWithTransaction(FileUpload2, btnupload2, lnkBtnDelete2, lnkBtn_Tick2, "Details Investigation_Narrative Xen Report", "Yes","");
-                if (Result != null && Result != "")
+                if (IsSessionValid())
                 {
-                    HdnField_Document2.Value = "1";
+                    string Result = SaveDocumentWithTransaction(FileUpload2, btnupload2, 2, lnkBtnDelete2, lnkBtn_Tick2, "Details Investigation_Narrative Xen Report", RadioButtonList2.SelectedItem.Text, txtReason2.Text.Trim());
+                    if (Result != null && Result != "")
+                    {
+                        HdnField_Document2.Value = "1";
+                        RadioButtonList2.Enabled = false;
+                        if (RadioButtonList2.SelectedValue == "0")
+                        {
+                           // txtReason2.Visible = false;
+                        }
+                        else
+                        {
+                            txtReason2.ReadOnly = true;
+                            lnkBtn_Tick2.Visible = false;
+                        }
+                    }
+                }
+                else
+                {
+                    Response.Redirect("/SiteOwnerLogout.aspx", false);
                 }
             }
             else
             {
-                Response.Redirect("/SiteOwnerLogout.aspx", false);
-            }
-        }
-        protected void lnkBtnDelete2_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-               bool IsDelete= DeleteDocumentWithTransaction(fileId, lnkBtnDelete2, lnkBtn_Tick2, FileUpload2, btnupload2);
-               if (IsDelete)
-               {
-                   HdnField_Document2.Value = "0";
-               }
-            }
+                ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                        "alert('Please Select Yes/No ');", true);
+                RadioButtonList4.Focus();
+                return;
+            }            
         }
         protected void btnupload3_Click(object sender, EventArgs e)
         {
             if (IsSessionValid())
             {   
-                string Result = SaveDocumentWithTransaction(FileUpload3, btnupload3, lnkBtnDelete3, lnkBtn_Tick3, "Details Investigation Report SDO", "Yes", "");
+                string Result = SaveDocumentWithTransaction(FileUpload3, btnupload3,3, lnkBtnDelete3, lnkBtn_Tick3, "Details Investigation Report SDO", "Yes", "");
                 if (Result != null && Result != "")
                 {
                     HdnField_Document3.Value = "1";
@@ -779,20 +810,6 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 Response.Redirect("/SiteOwnerLogout.aspx", false);
             }
-        }
-        protected void lnkBtnDelete3_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-               bool IsDelete= DeleteDocumentWithTransaction(fileId, lnkBtnDelete3, lnkBtn_Tick3, FileUpload3, btnupload3);
-                if (IsDelete)
-                {
-                    HdnField_Document3.Value = "0";
-                    
-                }
-            }
         }       
         protected void btnupload4_Click(object sender, EventArgs e)
         {
@@ -800,22 +817,20 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (IsSessionValid())
                 {
-                   string Result= SaveDocumentWithTransaction(FileUpload4, btnupload4, lnkBtnDelete4, lnkBtn_Tick4, "Statements of the concerned JE_ALM_LM_AFM_FM", RadioButtonList4.SelectedItem.Text, txtReason4.Text.Trim());                   
+                   string Result= SaveDocumentWithTransaction(FileUpload4, btnupload4,4, lnkBtnDelete4, lnkBtn_Tick4, "Statements of the concerned JE_ALM_LM_AFM_FM", RadioButtonList4.SelectedItem.Text, txtReason4.Text.Trim());                   
                    if (Result != null && Result != "")
                    {
                         HdnField_Document4.Value = "1";
                         RadioButtonList4.Enabled = false;
                         if (RadioButtonList4.SelectedValue == "0")
                         {
-                            txtReason4.Visible = false;
+                            //txtReason4.Visible = false;
                         }
                         else
                         {
                             txtReason4.ReadOnly = true;
                             lnkBtn_Tick4.Visible = false;
-                        }
-                        
-                       
+                        }                                               
                    }
                 }
                 else
@@ -830,57 +845,21 @@ namespace CEIHaryana.SiteOwnerPages
                 RadioButtonList4.Focus();
                 return;
             }
-        }
-        protected void lnkBtnDelete4_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-               bool IsDelete= DeleteDocumentWithTransaction(fileId, lnkBtnDelete4, lnkBtn_Tick4, FileUpload4, btnupload4);
-                if (IsDelete)
-                {
-                    HdnField_Document4.Value = "0";
-                    txtReason4.ReadOnly = false;
-                    txtReason4.Text = "";
-                    txtReason5.Visible = true;
-                    RadioButtonList4.ClearSelection();
-                    RadioButtonList4.Enabled = true;
-                }
-            }
-        }
-        protected void lnkBtnDelete5_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-               bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkBtnDelete5, lnkBtn_Tick5, FileUpload5, btnupload5);
-               if (IsDelete)
-               {
-                    HdnField_Document5.Value = "0";
-                    txtReason5.ReadOnly = false;
-                    txtReason5.Text = "";
-                    txtReason5.Visible = true;
-                    RadioButtonList5.ClearSelection();
-                    RadioButtonList5.Enabled = true;
-                }
-            }
-        }
+        }            
         protected void btnupload5_Click(object sender, EventArgs e)
         {
             if (RadioButtonList5.SelectedValue == "0" || RadioButtonList5.SelectedValue == "1")
             {
                 if (IsSessionValid())
                 {
-                    string Result= SaveDocumentWithTransaction(FileUpload5, btnupload5, lnkBtnDelete5, lnkBtn_Tick5, "Statement of eyewitness", RadioButtonList5.SelectedItem.Text, txtReason5.Text.Trim());
+                    string Result= SaveDocumentWithTransaction(FileUpload5, btnupload5,5, lnkBtnDelete5, lnkBtn_Tick5, "Statement of eyewitness", RadioButtonList5.SelectedItem.Text, txtReason5.Text.Trim());
                     if (Result != null && Result != "")
                     {
                         HdnField_Document5.Value = "1";
                         RadioButtonList5.Enabled = false;
                         if (RadioButtonList5.SelectedValue == "0")
                         {                            
-                            txtReason5.Visible = false;
+                            //txtReason5.Visible = false;
                         }
                         else
                         {
@@ -908,14 +887,14 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (IsSessionValid())
                 {
-                    string Result = SaveDocumentWithTransaction(FileUpload6, btnupload6, lnkBtnDelete6, lnkBtn_Tick6, "Post-mortem report_Medical report", RadioButtonList6.SelectedItem.Text, txtReason6.Text.Trim());
+                    string Result = SaveDocumentWithTransaction(FileUpload6, btnupload6,6, lnkBtnDelete6, lnkBtn_Tick6, "Post-mortem report_Medical report", RadioButtonList6.SelectedItem.Text, txtReason6.Text.Trim());
                     if (Result != null && Result != "")
                     {
                         HdnField_Document6.Value = "1";
                         RadioButtonList6.Enabled = false;
                         if (RadioButtonList6.SelectedValue == "0")
                         {
-                            txtReason6.Visible = false;
+                            //txtReason6.Visible = false;
                         }
                         else
                         {
@@ -936,39 +915,21 @@ namespace CEIHaryana.SiteOwnerPages
                 RadioButtonList6.Focus();
                 return;
             }
-        }
-        protected void lnkBtnDelete6_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkBtnDelete6, lnkBtn_Tick6, FileUpload6, btnupload6);
-                if (IsDelete)
-                {
-                    //HdnField_Document10.Value = "0";
-                    txtReason6.ReadOnly = false;
-                    txtReason6.Text = "";
-                    txtReason6.Visible = true;
-                    RadioButtonList6.ClearSelection();
-                    RadioButtonList6.Enabled = true;
-                }
-            }
-        }
+        }       
         protected void btnupload7_Click(object sender, EventArgs e)
         {
             if (RadioButtonList7.SelectedValue == "0" || RadioButtonList7.SelectedValue == "1")
             {
                 if (IsSessionValid())
                 {
-                    string Result = SaveDocumentWithTransaction(FileUpload7, btnupload7, lnkBtnDelete7, lnkBtn_Tick7, "FIR", RadioButtonList7.SelectedItem.Text, txtReason7.Text.Trim());
+                    string Result = SaveDocumentWithTransaction(FileUpload7, btnupload7,7, lnkBtnDelete7, lnkBtn_Tick7, "FIR", RadioButtonList7.SelectedItem.Text, txtReason7.Text.Trim());
                     if (Result != null && Result != "")
                     {
                         HdnField_Document7.Value = "1";
                         RadioButtonList7.Enabled = false;
                         if (RadioButtonList7.SelectedValue == "0")
                         {
-                            txtReason7.Visible = false;
+                            //txtReason7.Visible = false;
                         }
                         else
                         {
@@ -989,57 +950,21 @@ namespace CEIHaryana.SiteOwnerPages
                 RadioButtonList7.Focus();
                 return;
             }
-        }
-        protected void lnkBtnDelete7_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkBtnDelete7, lnkBtn_Tick7, FileUpload7, btnupload7);
-                if (IsDelete)
-                {
-                    HdnField_Document7.Value = "0";
-                    txtReason7.ReadOnly = false;
-                    txtReason7.Text = "";
-                    txtReason7.Visible = true;
-                    RadioButtonList7.ClearSelection();
-                    RadioButtonList7.Enabled = true;
-                }
-            }
-        }
-        protected void lnkBtnDelete8_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkBtnDelete8, lnkBtn_Tick8, FileUpload8, btnupload8);
-                if (IsDelete)
-                {
-                    HdnField_Document8.Value = "0";
-                    txtReason8.ReadOnly = false;
-                    txtReason8.Text = "";
-                    txtReason8.Visible = true;
-                    RadioButtonList8.ClearSelection();
-                    RadioButtonList8.Enabled = true;
-                }
-            }
-        }
+        }      
         protected void btnupload8_Click(object sender, EventArgs e)
         {
             if (RadioButtonList8.SelectedValue == "0" || RadioButtonList8.SelectedValue == "1")
             {
                 if (IsSessionValid())
                 {
-                    string Result = SaveDocumentWithTransaction(FileUpload8, btnupload8, lnkBtnDelete8, lnkBtn_Tick8, "Sketch of accidental site", RadioButtonList8.SelectedItem.Text, txtReason8.Text.Trim());
+                    string Result = SaveDocumentWithTransaction(FileUpload8, btnupload8,8, lnkBtnDelete8, lnkBtn_Tick8, "Sketch of accidental site", RadioButtonList8.SelectedItem.Text, txtReason8.Text.Trim());
                     if (Result != null && Result != "")
                     {
                         HdnField_Document8.Value = "1";
                         RadioButtonList8.Enabled = false;
                         if (RadioButtonList8.SelectedValue == "0")
                         {
-                            txtReason8.Visible = false;
+                            //txtReason8.Visible = false;
                         }
                         else
                         {
@@ -1067,7 +992,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (IsSessionValid())
                 {
-                    string Result = SaveDocumentWithTransaction(FileUpload9, btnupload9, lnkBtnDelete9, lnkBtn_Tick9, "Photographs of accidental site", RadioButtonList9.SelectedItem.Text, txtReason9.Text.Trim());
+                    string Result = SaveDocumentWithTransaction(FileUpload9, btnupload9,9, lnkBtnDelete9, lnkBtn_Tick9, "Photographs of accidental site", RadioButtonList9.SelectedItem.Text, txtReason9.Text.Trim());
                     if (Result != null && Result != "")
                     {
                         //HdnField_Document10.Value = "1";
@@ -1075,7 +1000,7 @@ namespace CEIHaryana.SiteOwnerPages
                         RadioButtonList9.Enabled = false;
                         if (RadioButtonList9.SelectedValue == "0")
                         {
-                            txtReason9.Visible = false;
+                            //txtReason9.Visible = false;
                         }
                         else
                         {
@@ -1096,39 +1021,21 @@ namespace CEIHaryana.SiteOwnerPages
                 RadioButtonList9.Focus();
                 return;
             }
-        }
-        protected void lnkBtnDelete9_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkBtnDelete9, lnkBtn_Tick9, FileUpload9, btnupload9);
-                if (IsDelete)
-                {
-                    HdnField_Document9.Value = "0";
-                    txtReason9.ReadOnly = false;
-                    txtReason9.Text = "";
-                    txtReason9.Visible = true;
-                    RadioButtonList9.ClearSelection();
-                    RadioButtonList9.Enabled = true;
-                }
-            }
-        }
+        }     
         protected void btnupload10_Click(object sender, EventArgs e)
         {
             if (RadioButtonList10.SelectedValue == "0" || RadioButtonList10.SelectedValue == "1")
             {
                 if (IsSessionValid())
                 {
-                    string Result = SaveDocumentWithTransaction(FileUpload10, btnupload10, lnkBtnDelete10, lnkBtn_Tick10, "Other document", RadioButtonList10.SelectedItem.Text, txtReason10.Text.Trim());
+                    string Result = SaveDocumentWithTransaction(FileUpload10, btnupload10,10, lnkBtnDelete10, lnkBtn_Tick10, "Other document", RadioButtonList10.SelectedItem.Text, txtReason10.Text.Trim());
                     if (Result != null && Result != "")
                     {
                         //HdnField_Document10.Value = "1";
                         RadioButtonList10.Enabled = false;
                         if (RadioButtonList10.SelectedValue == "0")
                         {
-                            txtReason10.Visible = false;
+                            //txtReason10.Visible = false;
                         }
                         else
                         {
@@ -1150,6 +1057,170 @@ namespace CEIHaryana.SiteOwnerPages
                 return;
             }
         }
+        protected void lnkBtnDelete1_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkBtnDelete1, lnkBtnTick, FileUpload1, btnupload1);
+                if (IsDelete)
+                {
+                    HdnField_Document1.Value = "0";
+                }
+            }                                 
+        }
+        protected void lnkBtnDelete2_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkBtnDelete2, lnkBtn_Tick2, FileUpload2, btnupload2);
+                if (IsDelete)
+                {
+                    HdnField_Document2.Value = "0";
+                    txtReason2.ReadOnly = false;
+                    txtReason2.Text = "";
+                    //txtReason2.Visible = false;
+                    RadioButtonList2.ClearSelection();
+                    RadioButtonList2.Enabled = true;
+                    RadioButtonList2.SelectedValue = "0";
+                }
+            }
+        }
+        protected void lnkBtnDelete3_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkBtnDelete3, lnkBtn_Tick3, FileUpload3, btnupload3);
+                if (IsDelete)
+                {
+                    HdnField_Document3.Value = "0";
+
+                }
+            }
+        }
+        protected void lnkBtnDelete4_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkBtnDelete4, lnkBtn_Tick4, FileUpload4, btnupload4);
+                if (IsDelete)
+                {
+                    HdnField_Document4.Value = "0";
+                    txtReason4.ReadOnly = false;
+                    txtReason4.Text = "";
+                    //txtReason4.Visible = false;
+                    RadioButtonList4.ClearSelection();
+                    RadioButtonList4.Enabled = true;
+                    RadioButtonList4.SelectedValue = "0";
+                }
+            }
+        }
+        protected void lnkBtnDelete5_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkBtnDelete5, lnkBtn_Tick5, FileUpload5, btnupload5);
+                if (IsDelete)
+                {
+                    HdnField_Document5.Value = "0";
+                    txtReason5.ReadOnly = false;
+                    txtReason5.Text = "";
+                    //txtReason5.Visible = false;
+                    RadioButtonList5.ClearSelection();
+                    RadioButtonList5.Enabled = true;
+                    RadioButtonList5.SelectedValue = "0";
+                }
+            }
+        }
+        protected void lnkBtnDelete6_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkBtnDelete6, lnkBtn_Tick6, FileUpload6, btnupload6);
+                if (IsDelete)
+                {
+                    //HdnField_Document10.Value = "0";
+                    txtReason6.ReadOnly = false;
+                    txtReason6.Text = "";
+                    //txtReason6.Visible = false;
+                    RadioButtonList6.ClearSelection();
+                    RadioButtonList6.Enabled = true;
+                    RadioButtonList6.SelectedValue = "0";
+
+                }
+            }
+        }
+        protected void lnkBtnDelete7_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkBtnDelete7, lnkBtn_Tick7, FileUpload7, btnupload7);
+                if (IsDelete)
+                {
+                    HdnField_Document7.Value = "0";
+                    txtReason7.ReadOnly = false;
+                    txtReason7.Text = "";
+                    //txtReason7.Visible = false;
+                    RadioButtonList7.ClearSelection();
+                    RadioButtonList7.Enabled = true;
+                    RadioButtonList4.SelectedValue = "0";
+
+                }
+            }
+        }
+        protected void lnkBtnDelete8_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkBtnDelete8, lnkBtn_Tick8, FileUpload8, btnupload8);
+                if (IsDelete)
+                {
+                    HdnField_Document8.Value = "0";
+                    txtReason8.ReadOnly = false;
+                    txtReason8.Text = "";
+                    //txtReason8.Visible = false;
+                    RadioButtonList8.ClearSelection();
+                    RadioButtonList8.Enabled = true;
+                    RadioButtonList8.SelectedValue = "0";
+
+                }
+            }
+        }
+        protected void lnkBtnDelete9_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkBtnDelete9, lnkBtn_Tick9, FileUpload9, btnupload9);
+                if (IsDelete)
+                {
+                    HdnField_Document9.Value = "0";
+                    txtReason9.ReadOnly = false;
+                    txtReason9.Text = "";
+                    //txtReason9.Visible = false;
+                    RadioButtonList9.ClearSelection();
+                    RadioButtonList9.Enabled = true;
+                    RadioButtonList9.SelectedValue = "0";
+
+                }
+            }
+        }
         protected void lnkBtnDelete10_Click(object sender, EventArgs e)
         {
             LinkButton btn = (LinkButton)sender;
@@ -1162,9 +1233,11 @@ namespace CEIHaryana.SiteOwnerPages
                     //HdnField_Document10.Value = "0";
                     txtReason10.ReadOnly = false;
                     txtReason10.Text = "";
-                    txtReason10.Visible = true;
+                   // txtReason10.Visible = false;
                     RadioButtonList10.ClearSelection();
                     RadioButtonList10.Enabled = true;
+                    RadioButtonList10.SelectedValue = "0";
+
                 }
             }
         }
@@ -1175,40 +1248,48 @@ namespace CEIHaryana.SiteOwnerPages
         {
             Div_ElectricalEquipment.Visible = false;
             txtOtherCaseElectricalEquipment.Visible = false;
-            if (!string.IsNullOrEmpty(ddlDistrict.SelectedValue) && ddlDistrict.SelectedValue != "0" &&
-                !string.IsNullOrEmpty(ddlVoltageLevel.SelectedValue) && ddlVoltageLevel.SelectedValue != "0")
-            {               
-                txtVoltage_Popup.Text = ddlVoltageLevel.SelectedItem.Text;
-                txtVoltage_Popup.ReadOnly = true;
-                txtDistrict_Popup.Text =ddlDistrict.SelectedItem.Text;
-                txtDistrict_Popup.ReadOnly = true;
-                txtElectricalEquiment_Popup.Text =ddlElectricalEquipment.SelectedItem.Text;
-                txtElectricalEquiment_Popup.ReadOnly = true;
-                BindInstallation_Site(txtDistrict_Popup.Text, txtVoltage_Popup.Text, txtElectricalEquiment_Popup.Text);
-                string script = "$(document).ready(function() { $('#equipmentModal').modal('show'); });";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showModal", script, true);               
-            }
-            else
+            if (ddlElectricalEquipment.SelectedValue == "7")
             {
-                ddlElectricalEquipment.SelectedIndex = 0;
-                if ((string.IsNullOrEmpty(ddlDistrict.SelectedValue) || ddlDistrict.SelectedValue == "0") && (string.IsNullOrEmpty(ddlVoltageLevel.SelectedValue) || ddlVoltageLevel.SelectedValue == "0"))
-                {
-                    ddlDistrict.Style["border"] = "2px solid red";                  
-                    ddlVoltageLevel.Style["border"] = "2px solid red";
-                    ddlVoltageLevel.Focus();
-                    ddlDistrict.Focus();
-                }
-                else if (string.IsNullOrEmpty(ddlDistrict.SelectedValue) || ddlDistrict.SelectedValue == "0")
-                {
-                    ddlDistrict.Style["border"] = "2px solid red";
-                    ddlDistrict.Focus();
-                }
-                else if (string.IsNullOrEmpty(ddlVoltageLevel.SelectedValue) || ddlVoltageLevel.SelectedValue == "0")
-                {
-                    ddlVoltageLevel.Style["border"] = "2px solid red";
-                    ddlVoltageLevel.Focus();
-                }
-            }            
+                Div_ElectricalEquipment.Visible = true;
+                txtOtherCaseElectricalEquipment.Text = "";
+                txtOtherCaseElectricalEquipment.Visible = true;
+            }
+            //
+            //
+            //if (!string.IsNullOrEmpty(ddlDistrict.SelectedValue) && ddlDistrict.SelectedValue != "0" &&
+            //    !string.IsNullOrEmpty(ddlVoltageLevel.SelectedValue) && ddlVoltageLevel.SelectedValue != "0")
+            //{               
+            //    txtVoltage_Popup.Text = ddlVoltageLevel.SelectedItem.Text;
+            //    txtVoltage_Popup.ReadOnly = true;
+            //    txtDistrict_Popup.Text =ddlDistrict.SelectedItem.Text;
+            //    txtDistrict_Popup.ReadOnly = true;
+            //    txtElectricalEquiment_Popup.Text =ddlElectricalEquipment.SelectedItem.Text;
+            //    txtElectricalEquiment_Popup.ReadOnly = true;
+            //    //BindInstallation_Site(txtDistrict_Popup.Text, txtVoltage_Popup.Text, txtElectricalEquiment_Popup.Text);
+            //    //string script = "$(document).ready(function() { $('#equipmentModal').modal('show'); });";
+            //    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showModal", script, true);               
+            //}
+            //else
+            //{
+            //    ddlElectricalEquipment.SelectedIndex = 0;
+            //    if ((string.IsNullOrEmpty(ddlDistrict.SelectedValue) || ddlDistrict.SelectedValue == "0") && (string.IsNullOrEmpty(ddlVoltageLevel.SelectedValue) || ddlVoltageLevel.SelectedValue == "0"))
+            //    {
+            //        ddlDistrict.Style["border"] = "2px solid red";                  
+            //        ddlVoltageLevel.Style["border"] = "2px solid red";
+            //        ddlVoltageLevel.Focus();
+            //        ddlDistrict.Focus();
+            //    }
+            //    else if (string.IsNullOrEmpty(ddlDistrict.SelectedValue) || ddlDistrict.SelectedValue == "0")
+            //    {
+            //        ddlDistrict.Style["border"] = "2px solid red";
+            //        ddlDistrict.Focus();
+            //    }
+            //    else if (string.IsNullOrEmpty(ddlVoltageLevel.SelectedValue) || ddlVoltageLevel.SelectedValue == "0")
+            //    {
+            //        ddlVoltageLevel.Style["border"] = "2px solid red";
+            //        ddlVoltageLevel.Focus();
+            //    }
+            //}            
         }
         protected void ddlPremises_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1270,7 +1351,7 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void ddlVoltageLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlElectricalEquipment.SelectedIndex = 0;
+            //ddlElectricalEquipment.SelectedIndex = 0;
             //ddlElectricalEquipment.Items.Clear();
         }
 
@@ -1289,13 +1370,13 @@ namespace CEIHaryana.SiteOwnerPages
                     Label lblId = (Label)row.FindControl("LblID");
                     if (lblInstallationType.Text == "Line")
                     {
-                        LblLineName.Visible = true;
-                        lblSerialNO.Visible = false;
+                        //LblLineName.Visible = true;
+                        //lblSerialNO.Visible = false;
                     }
-                    txtSerialNo.Text = lblserialNo.Text;
-                    txtSerialNo.ReadOnly = true;
-                    txtVoltageLevelAccident.Text = lblVoltage.Text;
-                    txtVoltageLevelAccident.ReadOnly = true;
+                    //txtSerialNo.Text = lblserialNo.Text;
+                    //txtSerialNo.ReadOnly = true;
+                    //txtVoltageLevelAccident.Text = lblVoltage.Text;
+                    //txtVoltageLevelAccident.ReadOnly = true;
                     HdnField_PopUp_InstallationId.Value = lblId.Text;
                     break; 
                 }
@@ -1304,20 +1385,24 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void btn_NotFound_Click(object sender, EventArgs e)
         {
-            txtSerialNo.Text = "";
-            txtSerialNo.ReadOnly = false;
-            txtVoltageLevelAccident.Text = "";
-            txtVoltageLevelAccident.ReadOnly = false;            
+            //txtSerialNo.Text = "";
+            //txtSerialNo.ReadOnly = false;
+            //txtVoltageLevelAccident.Text = "";
+            //txtVoltageLevelAccident.ReadOnly = false;            
         }
 
         protected void btnHuman_Click(object sender, EventArgs e)
         {
-            Session["FlagHuman"] = 1;            
+            Session["FlagHuman"] = 1;
+            HumanGridViewBind(Convert.ToString(Session["TempUniqueId"]));
+            ScriptManager.RegisterStartupScript(this, GetType(), "ModalScript", "openHumanModal();", true);
         }
 
         protected void btnAnimal_Click(object sender, EventArgs e)
         {
-            Session["FlagAnimal"] = 1;            
+            Session["FlagAnimal"] = 1;
+            AnimalGridViewBind(Convert.ToString(Session["TempUniqueId"]));
+            ScriptManager.RegisterStartupScript(this, GetType(), "ModalScript", "openAnimalModal();", true);
         }
 
 
@@ -1325,18 +1410,19 @@ namespace CEIHaryana.SiteOwnerPages
         public static void SetSessionValue(string key)
         {
             HttpContext.Current.Session[key] = "1";
+
             //Session["FlagHuman"] = 1;
         }
 
         protected void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlVoltageLevel.SelectedIndex = 0;
-            ddlElectricalEquipment.SelectedIndex = 0;
+            //ddlVoltageLevel.SelectedIndex = 0;
+            //ddlElectricalEquipment.SelectedIndex = 0;
             //ddlElectricalEquipment.Items.Clear();           
-            txtSerialNo.Text = "";
-            txtSerialNo.ReadOnly = false;
-            txtVoltageLevelAccident.Text = "";
-            txtVoltageLevelAccident.ReadOnly = false;
+            //txtSerialNo.Text = "";
+            //txtSerialNo.ReadOnly = false;
+            //txtVoltageLevelAccident.Text = "";
+            //txtVoltageLevelAccident.ReadOnly = false;
         }
 
         public void Reset()
@@ -1344,8 +1430,109 @@ namespace CEIHaryana.SiteOwnerPages
             txtUtility.Text = ""; txtZone.Text = ""; txtCircle.Text = ""; txtDivision.Text = "";
             txtSubdivision.Text = ""; txtAccidentDate.Text = ""; txtAccidentTime.Text = ""; ddlDistrict.SelectedIndex = 0; txtThana.Text = "";
             txtTehsil.Text = ""; txtVillageCityTown.Text = ""; ddlVoltageLevel.SelectedIndex = 0; ddlElectricalEquipment.SelectedIndex = 0;
-            txtSerialNo.Text = "";
+            //txtSerialNo.Text = "";
             ddlPremises.SelectedIndex = 0; txtOtherPremsesCase.Text = "";
         }
+
+        protected void LnkDeleteHuman_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton lnkbtnhuman = (LinkButton)sender;
+                int HumanId = Convert.ToInt32(lnkbtnhuman.CommandArgument);
+                if (GridView_humanPopUp.Rows.Count <= 1)
+                {
+                    RadioButtonList2.Enabled = true;
+                    RadioButtonList2.SelectedValue = "0";
+                    //txtReason2.Visible = false;
+                    hdnfieldDocument_mandtry.Value = "0";
+                }
+
+                CEI.DeleteHumanRecord(HumanId);
+                if (GridView_humanPopUp.Rows.Count <= 1)
+                {
+                    hdnfieldDocument_mandtry.Value = "0";
+                    if (hdnFieldGridView.Value == "1")     // this check for identify there is must one victime details added
+                    {
+                        hdnFieldGridView.Value = "0";
+                    }
+                    
+                }
+                HumanGridViewBind(Convert.ToString(Session["TempUniqueId"]));
+                ScriptManager.RegisterStartupScript(this, GetType(), "ModalScript", "openModalHuman();", true);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
+           
+        }
+
+        protected void LnkDeleteAnimal_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton lnkbtnAnimal = (LinkButton)sender;
+                int AnimalId = Convert.ToInt32(lnkbtnAnimal.CommandArgument);                
+                CEI.DeleteAnimalRecord(AnimalId);
+                if (GridView_animalPopUp.Rows.Count <= 1)
+                {
+                    //hdnfieldDocument_mandtry.Value = "0";
+                    if (hdnFieldGridView.Value == "2")     // this check for identify there is must one victime details added
+                    {
+                        hdnFieldGridView.Value = "0";
+                    }
+
+                }
+                AnimalGridViewBind(Convert.ToString(Session["TempUniqueId"]));
+                ScriptManager.RegisterStartupScript(this, GetType(), "ModalScript", "openModal();", true);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
+        }
+        //protected void txtAccidentDate_TextChanged(object sender, EventArgs e)
+        //{
+        //    LimitAccidentTimeIfToday();
+        //}
+        private void LimitAccidentTimeIfToday()
+        {
+            DateTime selectedDate;
+            if (DateTime.TryParse(txtAccidentDate.Text, out selectedDate))
+            {
+                DateTime today = DateTime.Today;
+                if (selectedDate.Date == today)
+                {                    
+                    string maxTime = DateTime.Now.ToString("HH:mm");
+                    txtAccidentTime.Attributes["max"] = maxTime;
+                }
+                else
+                {
+                    txtAccidentTime.Attributes.Remove("max");
+                }
+            }
+        }
+        private bool IsValidAccidentDateTime()
+        {
+            DateTime accidentDate, accidentTime;
+
+            if (DateTime.TryParse(txtAccidentDate.Text, out accidentDate) &&
+                TimeSpan.TryParse(txtAccidentTime.Text, out TimeSpan timePart))
+            {
+                DateTime fullAccidentDateTime = accidentDate.Date.Add(timePart);
+                if (accidentDate.Date == DateTime.Today && fullAccidentDateTime > DateTime.Now)
+                {
+                    return true; 
+                }
+            }
+
+            return false;
+        }
+
     }
 }

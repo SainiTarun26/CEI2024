@@ -9450,15 +9450,15 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         }
         #endregion]
 
-        #region gurmeet new process 25-april-2025
+        #region gurmeet new process 25-april-2025 CHANGED ON 13-MAY
         public DataSet GetDataAtSiteOwnerPowerutility(string Id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSiteOwnerPowerUtility", Id);
         }
 
         public int InsertHumanData(string Name, string FatherName, string Gender,
-        string Age, string FatelType, string PersonCategory, string FullAddress, string CreatedBy, long TempUniqueId //int TempUniqueId
-        )
+         string Age, string FatelType, string PersonCategory, string FullAddress, string CreatedBy, long TempUniqueId //int TempUniqueId
+         )
         {
             try
             {
@@ -9539,7 +9539,8 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         }
         public int InsertAccidentData(string UtilityName, string ZoneName, string CircleName, string DivisionName, string SubDivision, string AssignedOfficer,
       string AccidentDate, string AccidentTime, string District, string Thana, string Tehsil, string Village_City_Town, string VoltageLevel,
-      string ElectricalEquipment, string SerialNo_Name, string ComponentVoltageLevel, int? ComponentId,//string InCaseOtherElectricalEquipment, 
+      string ElectricalEquipment, //string SerialNo_Name, string ComponentVoltageLevel, int? ComponentId,
+      string InCaseOtherElectricalEquipment,
       string Premises, string InCaseOfOtherPremises, string CreatedBy, long TempUniqueId, //string TempUniqueId,
       SqlTransaction transaction
   )
@@ -9554,17 +9555,17 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             cmd.Parameters.AddWithValue("@NameOfSubDivision", SubDivision);
             cmd.Parameters.AddWithValue("@AssignedOfficer", AssignedOfficer);
             cmd.Parameters.AddWithValue("@DateOfAccident", AccidentDate);
-            cmd.Parameters.AddWithValue("@TimeOfAccident", AccidentTime);
+            cmd.Parameters.AddWithValue("@TimeOfAccident", GetValue(AccidentTime));
             cmd.Parameters.AddWithValue("@District", District);
             cmd.Parameters.AddWithValue("@Thana", Thana);
             cmd.Parameters.AddWithValue("@Tehsil", Tehsil);
             cmd.Parameters.AddWithValue("@VillageCityTown", Village_City_Town);
             cmd.Parameters.AddWithValue("@VoltageLevelOnWhichAccidentOccurred", VoltageLevel);
-            cmd.Parameters.AddWithValue("@ElectricalEquipmentOfAccident", ElectricalEquipment);
-            cmd.Parameters.AddWithValue("@SerialNoName", SerialNo_Name);
-            cmd.Parameters.AddWithValue("@ComponentVoltageLevel", ComponentVoltageLevel);
-            cmd.Parameters.AddWithValue("@ComponentID", ComponentId == 0 ? (object)DBNull.Value : ComponentId);
-            //cmd.Parameters.AddWithValue("@InCaseOfOtherElectricalEquipment", InCaseOtherElectricalEquipment);
+            cmd.Parameters.AddWithValue("@ElectricalEquipmentOfAccident", GetValue(ElectricalEquipment));
+            // cmd.Parameters.AddWithValue("@SerialNoName", SerialNo_Name);
+            // cmd.Parameters.AddWithValue("@ComponentVoltageLevel", ComponentVoltageLevel);
+            // cmd.Parameters.AddWithValue("@ComponentID", ComponentId == 0 ? (object)DBNull.Value : ComponentId);
+            cmd.Parameters.AddWithValue("@InCaseOfOtherElectricalEquipment", InCaseOtherElectricalEquipment);
             cmd.Parameters.AddWithValue("@PremisesOfAccident", Premises);
             cmd.Parameters.AddWithValue("@InCaseOfOtherPremises", GetValue(InCaseOfOtherPremises));
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
@@ -9574,7 +9575,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             int x = cmd.ExecuteNonQuery();
             return x;
         }
-        public string InsertDocumentData(long TempUniqueId, string DocumentName, string IsDocumentUpload, string Reason, string FileName,
+        public string InsertDocumentData(long TempUniqueId, string DocumentName, int DocumentId, string IsDocumentUpload, string Reason, string FileName,
          string DocumentPath, string CreatedBy, SqlTransaction transaction)
         {
             try
@@ -9587,6 +9588,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@TempId", TempUniqueId);
                 cmd.Parameters.AddWithValue("@DocumentName", DocumentName);
+                cmd.Parameters.AddWithValue("@DocumentId", DocumentId);
                 cmd.Parameters.AddWithValue("@IsDocumentUpload", IsDocumentUpload);
                 cmd.Parameters.AddWithValue("@Reason", GetValue(Reason));
                 cmd.Parameters.AddWithValue("@FileName", GetValue(FileName));
@@ -9630,6 +9632,11 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         public DataSet ViewDocumentsAccidentApplication(string TempId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAccidentialAttachmentsForOfficer", TempId);
+        }
+
+        public DataSet ViewDocumentsAccidentApplicationForReturn(string TempId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAccidentialAttachmentsForReturn", TempId);
         }
         public int AccidentAction(int AccidentID, string ActionType, string Remarks, string OfficerId)
         {
@@ -9739,7 +9746,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             }
         }
 
-        public int UpdateDocumentData(int Id, long TempUniqueId, string DocumentName, string FileName,
+        public int UpdateDocumentData(int Id, long TempUniqueId, int DocumentNameId, string DocumentName, string FileName,
          string DocumentPath, string CreatedBy, SqlTransaction transaction)
         {
             try
@@ -9748,6 +9755,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Id", Id);
                 cmd.Parameters.AddWithValue("@TempId", TempUniqueId);
+                cmd.Parameters.AddWithValue("@DocumentNameId", DocumentNameId);
                 cmd.Parameters.AddWithValue("@DocumentName", DocumentName);
                 //cmd.Parameters.AddWithValue("@IsDocumentUpload", IsDocumentUpload);
                 //cmd.Parameters.AddWithValue("@Reason", GetValue(Reason));
@@ -9755,10 +9763,10 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                 cmd.Parameters.AddWithValue("@DocumentPath", GetValue(DocumentPath));
                 cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
                 int x = cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
                 //con.Close();
                 return x;
-                cmd.Parameters.Clear();
-                // return RetVal;              
+
             }
             catch (Exception ex)
             {
@@ -9774,18 +9782,50 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Id", AccidentId);
                 cmd.Parameters.AddWithValue("@DateOfAccident", AccidentDate);
-                cmd.Parameters.AddWithValue("@TimeOfAccident", AccidentTime);
+                cmd.Parameters.AddWithValue("@TimeOfAccident", GetValue(AccidentTime));
                 cmd.Parameters.AddWithValue("@District", District);
                 cmd.Parameters.AddWithValue("@Thana", Thana);
                 cmd.Parameters.AddWithValue("@Tehsil", Tehsil);
                 cmd.Parameters.AddWithValue("@VillageCityTown", Village_City_Town);
                 cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
                 cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
             }
             catch (Exception ex)
             {
                 throw;
             }
+        }
+
+        public int DeleteHumanRecord(int HumanId)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("Sp_deleteHumanRecord", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@HumanId", HumanId);
+                        con.Open();
+                        int x = cmd.ExecuteNonQuery();
+                        con.Close();
+                        return x;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        public void DeleteAnimalRecord(int AnimalId)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_deleteAnimalRecord", AnimalId);
+        }
+        public DataTable SearchAccidentialReports(string SearchText, string CreatedBy, String officer)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_SearchingAccidential", SearchText, CreatedBy, officer);
         }
 
         #endregion

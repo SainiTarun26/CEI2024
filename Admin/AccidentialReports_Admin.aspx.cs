@@ -58,5 +58,56 @@ namespace CEIHaryana.Admin
 
             }
         }
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {               
+                    GridView1.PageIndex = e.NewPageIndex;
+                    BindGrid();
+                         
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                string textsearch = txtSearch.Text.Trim();
+                if (!string.IsNullOrEmpty(textsearch))
+                {
+                    DataTable searchResult = new DataTable();
+                    searchResult = CEI.SearchAccidentialReports(textsearch, null, null);
+                    if (searchResult.Rows.Count > 0)
+                    {
+                        GridView1.DataSource = searchResult;
+                        GridView1.DataBind();
+                    }
+                    else
+                    {
+                        GridView1.DataSource = null;
+                        GridView1.DataBind();
+                    }
+                }
+                else
+                {
+                    txtSearch.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+        }
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            txtSearch.Text = "";
+            BindGrid();
+        }
     }
 }

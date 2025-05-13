@@ -8,7 +8,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" integrity="sha512-P9pgMgcSNlLb4Z2WAB2sH5KBKGnBfyJnq+bhcfLCFusrRc4XdXrhfDluBl/usq75NF5gTDIMcwI1GaG5gju+Mw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+   <%-- <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>--%>
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
     <script type="text/javascript">
 
 
@@ -34,7 +35,7 @@
             k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
             return (allow.indexOf(String.fromCharCode(k)) != -1);
         }
-        function checkDistrictSelection() {
+        <%--function checkDistrictSelection() {
 
             var districtDropdown = document.getElementById('<%= ddlDistrict.ClientID %>');
             var equipmentDropdown = document.getElementById('<%= ddlElectricalEquipment.ClientID %>');
@@ -51,7 +52,7 @@
                 districtDropdown.classList.remove("highlight-dropdown");
                 return true;
             }
-        }
+        }--%>
         function FileName() {
             var fileInput = document.getElementById('customFile');
             var selectedFileName = document.getElementById('customFileLocation');
@@ -123,6 +124,12 @@
             });
         }
 
+        function openHumanModal() {
+            $('#humanModal').modal('show');
+        }
+        function openAnimalModal() {
+            $('#animalModal').modal('show');
+        }
 
         function toggleFileUpload(radioBtn, txtreason, fileupload) {
             //console.log("TextBox ID: " + textBoxId); // Log the textBoxId to see the full ID
@@ -525,6 +532,26 @@
         a#ContentPlaceHolder1_lnkBtn_Tick10 {
             margin-right: 56px;
         }
+         svg.svg-inline--fa.fa-trash.fa-w-18 {
+            color: white !important;
+            background: red;
+            padding: 4px 5px 3px 5px;
+            border-radius: 5px;
+            font-size: 22px;
+        }
+
+        svg.svg-inline--fa.fa-trash.fa-w-18 {
+            color: white !important;
+            background: red;
+            padding: 4px 5px 3px 5px;
+            border-radius: 5px;
+            font-size: 22px;
+            transform: scale(1.05);
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+        a#ContentPlaceHolder1_lnkBtn_Tick2 {
+    margin-left: -60px;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -643,24 +670,24 @@
                     <div class="row">
                         <div class="col-md-4">
                             <label>
-                                Date of Accident<samp style="color: red">*</samp>
+                                Date of Accident<samp style="color: red">*</samp> <%--AutoPostBack="true" OnTextChanged="txtAccidentDate_TextChanged"--%>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtAccidentDate" Type="date" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtAccidentDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                            <asp:TextBox class="form-control" ID="txtAccidentDate" Type="date"  autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtAccidentDate" ErrorMessage="RequiredFieldValidator"  ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-md-4">
                             <label>
-                                Time of Accident<samp style="color: red">*</samp>
+                                Time of Accident<%--<samp style="color: red">*</samp>--%>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtAccidentTime" Type="time" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtAccidentTime" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                            <asp:TextBox class="form-control" ID="txtAccidentTime" Type="time" autocomplete="off" onfocus="updateTimeMaxLimit()" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtAccidentTime" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>--%>
                         </div>
 
                         <div class="col-md-4">
                             <label>
                                 District<samp style="color: red">*</samp>
                             </label>
-                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" OnSelectedIndexChanged="ddlDistrict_SelectedIndexChanged"
+                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="false" OnSelectedIndexChanged="ddlDistrict_SelectedIndexChanged"
                                 runat="server" ID="ddlDistrict" TabIndex="6" selectionmode="Multiple" Style="width: 100% !important">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
@@ -695,7 +722,7 @@
                             <label>
                                 Voltage Level on which accident occurred<samp style="color: red">*</samp>
                             </label>
-                            <asp:DropDownList class="form-control select-form select2" runat="server" ID="ddlVoltageLevel" AutoPostBack="true" OnSelectedIndexChanged="ddlVoltageLevel_SelectedIndexChanged" TabIndex="6" Style="width: 100% !important">
+                            <asp:DropDownList class="form-control select-form select2" runat="server" ID="ddlVoltageLevel" AutoPostBack="false" OnSelectedIndexChanged="ddlVoltageLevel_SelectedIndexChanged" TabIndex="6" Style="width: 100% !important">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5"
                                 Text="Required"
@@ -720,6 +747,10 @@
                                 <asp:ListItem Text="Line" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="Substation Transformer" Value="2"></asp:ListItem>
                                 <asp:ListItem Text="Generating Set" Value="3"></asp:ListItem>
+                                <asp:ListItem Text="Lift" Value="4"></asp:ListItem>
+                                <asp:ListItem Text="Escalator" Value="5"></asp:ListItem>
+                                <asp:ListItem Text="Switching Station" Value="6"></asp:ListItem>
+                                <asp:ListItem Text="Other" Value="7"></asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator7"
                                 Text="Required"
@@ -738,25 +769,25 @@
                             <asp:TextBox class="form-control" ID="txtOtherCaseElectricalEquipment" MaxLength="20" autocomplete="off" Visible="false" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtOtherCaseElectricalEquipment" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-md-4" id="Div2" runat="server" visible="true">
+                       <%-- <div class="col-md-4" id="Div2" runat="server" visible="true">
                             <label>
-                                Voltage Level<samp style="color: red">*</samp>
+                                Voltage Level
                             </label>
                             <asp:TextBox class="form-control" ID="txtVoltageLevelAccident" autocomplete="off" MaxLength="10" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator51" runat="server" ControlToValidate="txtVoltageLevelAccident" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
-                        </div>
+                        </div>--%>
 
-                        <div class="col-md-4" id="Div1" runat="server" visible="true">
-                            <asp:Label ID="lblSerialNO" runat="server" Visible="true" Style="margin-bottom: 8px !important;">
-                         Serial No.<samp style="color: red">*</samp>
+<%--                        <div class="col-md-4" id="Div1" runat="server" visible="true" style="margin-top:25px;">
+                            <asp:Label ID="lblSerialNO" runat="server" Visible="true" Style="margin-bottom: 8px !important;font-size:0.875rem;">
+                         Serial No.
                             </asp:Label>
-                            <asp:Label ID="LblLineName" runat="server" Visible="false" Style="margin-bottom: 8px !important;">
-                         Line Name<samp style="color: red">*</samp>
+                            <asp:Label ID="LblLineName" runat="server" Visible="false" Style="margin-bottom: 8px !important;font-size:0.875rem;">
+                         Line Name
                             </asp:Label>
                             <asp:TextBox class="form-control" ID="txtSerialNo" autocomplete="off" MaxLength="20" runat="server" Style="margin-left: 18px; margin-top: 7px !important;"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator47" runat="server" ControlToValidate="txtSerialNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
-                        </div>
-                        <div class="col-md-4">
+                        </div>--%>
+                        <div class="col-md-4" >
 
                             <label>
                                 Premises where accident occurred<samp style="color: red">*</samp>
@@ -773,7 +804,7 @@
 
                         <div class="col-md-4" id="Div_OtherPremisesCase" runat="server" visible="false">
                             <label>
-                                In Case of Other
+                                In Case of Other Premises <samp style="color: red">*</samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtOtherPremsesCase" autocomplete="off" MaxLength="20" Visible="false" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtOtherPremsesCase" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
@@ -781,7 +812,7 @@
                     </div>
                 </div>
                 <%--  </ContentTemplate>
-</asp:UpdatePanel>--%>
+               </asp:UpdatePanel>--%>
                 <div class="row">
                 </div>
             </div>
@@ -794,11 +825,11 @@
                     </div>
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px !important; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                    <div class="row" style="margin-top: -10px; margin-bottom: 10px;">
+                    <div class="row" style="margin-top: -10px; margin-bottom: 10px;"><%--OnClientClick="openModalHuman(); return false;"--%>
                         <div class="col-md-12">
-                            <asp:LinkButton ID="btnHuman" class="btn btn-primary" runat="server" OnClick="btnHuman_Click" OnClientClick="openModalHuman(); return false;">Add Human Details</asp:LinkButton>
+                            <asp:LinkButton ID="btnHuman" class="btn btn-primary" runat="server" OnClick="btnHuman_Click" >Add Human Details</asp:LinkButton>
                             <%-- --%>
-                            <asp:LinkButton ID="btnAnimal" CssClass="btn btn-primary" runat="server" OnClick="btnAnimal_Click" OnClientClick="openModal(); return false;"> Add Animal Details   <%----%>
+                            <asp:LinkButton ID="btnAnimal" CssClass="btn btn-primary" runat="server" OnClick="btnAnimal_Click" > Add Animal Details   <%--OnClientClick="openModal(); return false;"ssssss--%>
                             </asp:LinkButton>
 
                         </div>
@@ -955,14 +986,57 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtPostalAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="HumanSubmit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <%-- Add GridView Here --%>
+                                <%--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
+                                <div class="row" style="margin-bottom:15px;">
+                                    <div class="col-md-12" style="text-align:end;">
+                                <asp:Button ID="btnHumanSubmit" runat="server" Class="btn btn-primary" ValidationGroup="HumanSubmit" OnClick="btnHumanSubmit_Click" Text="Submit" />
+                           </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <%-- Add GridView Here --%>
+                                     <asp:GridView ID="GridView_humanPopUp" runat="server" AutoGenerateColumns="false" class="table-responsive table table-hover table-striped">
+                                <Columns>
+                                    <asp:BoundField DataField="Name" HeaderText="Name">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Age" HeaderText="Age">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor tdwidth" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Type" HeaderText="Fatal/Nonfatal">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor tdwidth2" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Category" HeaderText="Category">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="FatherNameOrSpouseName" HeaderText="Father Name">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Gender" HeaderText="Gender">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                      <asp:TemplateField HeaderText="Action">
+                                        <HeaderStyle HorizontalAlign="center" Width="25%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" VerticalAlign="Middle" Width="25%" Font-Bold="true" />
+                                        <ItemTemplate>         <%--   OnClick="LnkDeleteHuman_Click"--%>                              
+                                            <asp:LinkButton ID="LnkDeleteHuman" runat="server" CommandArgument=' <%#Eval("Id") %> ' OnClick="LnkDeleteHuman_Click"  CommandName="DeleteHuman"><i class="fa fa-trash"></i></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+                                </div>
+                                    </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                               <%-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <asp:Button ID="btnHumanSubmit" runat="server" Class="btn btn-primary" ValidationGroup="HumanSubmit" OnClick="btnHumanSubmit_Click" Text="Submit" />
-                            </div>
+                           --%> </div>
                         </div>
                     </div>
                 </div>
@@ -1019,14 +1093,52 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator22" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlFatelTypeAnimal" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="AnimalSubmit" ForeColor="Red" />
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <%-- Add GridView Here --%>
+                                <div class="row" style="margin-bottom:15px;">
+                                    <div class="col-md-12" style="text-align:end;">
+                                   <asp:Button ID="btnAnimalSave" runat="server" Class="btn btn-primary" ValidationGroup="AnimalSubmit" OnClick="btnAnimalSave_Click" Text="Submit" />
+
+                                    </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <%-- Add GridView Here --%>
+                                      <asp:GridView ID="GridView_animalPopUp" runat="server" AutoGenerateColumns="false" Width="100%" class="table-responsive table table-hover table-striped">
+                                <Columns>
+                                    <asp:BoundField DataField="NameOfOwner" HeaderText="Name Of Owner">
+                                        <HeaderStyle HorizontalAlign="center" Width="25%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="25%" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Description" HeaderText="Description">
+                                        <HeaderStyle HorizontalAlign="center" Width="25%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="25%" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Type" HeaderText="Fatal/Nonfatal">
+                                        <HeaderStyle HorizontalAlign="center" Width="25%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="25%" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Number" HeaderText="Number">
+                                        <HeaderStyle HorizontalAlign="center" Width="25%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="25" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="AddressOfOwner" HeaderText="AddressOfOwner">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
+                                   <asp:TemplateField HeaderText="Action">
+                                        <HeaderStyle HorizontalAlign="center" Width="25%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" VerticalAlign="Middle" Width="25%" Font-Bold="true" />
+                                        <ItemTemplate>         <%--   OnClick="LnkDeleteHuman_Click"--%>                              
+                                            <asp:LinkButton ID="LnkDeleteAnimal" runat="server" CommandArgument=' <%#Eval("Id") %> ' OnClick="LnkDeleteAnimal_Click"  CommandName="DeleteAnimal"><i class="fa fa-trash"></i></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+                                </div>
+                                    </div>
                             </div>
-                            <div class="modal-footer">
+                            <%--<div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <asp:Button ID="btnAnimalSave" runat="server" Class="btn btn-primary" ValidationGroup="AnimalSubmit" OnClick="btnAnimalSave_Click" Text="Submit" />
-                            </div>
+                            </div>--%>
                         </div>
                     </div>
                 </div>
@@ -1040,7 +1152,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h7 class="card-title fw-semibold mb-4" id="maincard">
-                            Document Checklist
+                            Document Checklist &nbsp;&nbsp;<span style="color:green;font-size: 13px;">(Note* :  click on Upload/Save button after uploading document/enter text.)</span>
                         </h7>
                     </div>
                 </div>
@@ -1052,7 +1164,7 @@
                                     <tr>
                                         <th style="width: 1%;">S.No.</th>
                                         <th style="width: 1%;">Name</th>
-                                        <th style="width: 1%;">Want to Upload Document</th>
+                                        <th style="width: 1%;">Document Available</th>
                                         <th style="width: 100%;">Upload Document</th>
                                         <th style="width: 1%;">Action</th>
                                     </tr>
@@ -1109,7 +1221,7 @@
                                         <td>Details Investigation/Narrative report of the concerned Xen.<samp style="color: red">* </samp>
                                         </td>
                                         <td>
-                                            <asp:RadioButtonList ID="RadioButtonList2" Enabled="false" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                                            <asp:RadioButtonList ID="RadioButtonList2"  runat="server" RepeatDirection="Horizontal" TabIndex="25">
                                                 <asp:ListItem Text="Yes" Value="0" Selected="True" style="margin-left: 10px;"></asp:ListItem>
                                                 <asp:ListItem Text="No" Value="1" style="margin-left: 10px;"></asp:ListItem>
                                             </asp:RadioButtonList></td>
@@ -1118,16 +1230,19 @@
                                                 Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server"
                                                 ControlToValidate="FileUpload2" ErrorMessage="Required" ValidationGroup="SubmitUpload2" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                           <asp:TextBox class="form-control" ID="txtReason2" placeholder="Please enter reason" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator45" runat="server" ControlToValidate="txtReason2" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitUpload2" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                                          
                                             <asp:LinkButton ID="lnkBtn_Tick2" runat="server" Visible="false" CssClass="btn btn-success">
-                                    <i class="fa fa-check"></i> <!-- Font Awesome cross icon -->
+                                            <i class="fa fa-check"></i> <!-- Font Awesome cross icon -->
                                             </asp:LinkButton>
                                         </td>
                                         <td>
-                                            <asp:Button ID="btnupload2" runat="server" Text="Upload" OnClick="btnupload2_Click" ValidationGroup="SubmitUpload2" class="btn btn-primary" />
+                                            <asp:Button ID="btnupload2" runat="server" Text="Upload" OnClick="btnupload2_Click"  class="btn btn-primary" />
                                             <asp:LinkButton ID="lnkBtnDelete2" runat="server" Visible="false" OnClick="lnkBtnDelete2_Click" CssClass="btn btn-danger">
                                      <i class="fa fa-times"></i> <!-- Font Awesome cross icon -->
                                             </asp:LinkButton>
-
+                                            <asp:HiddenField id="hdnfieldDocument_mandtry" runat="server" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -1163,7 +1278,7 @@
                                         <td>
                                             <div style="margin-top: 0px;">
                                                 <asp:RadioButtonList ID="RadioButtonList4" runat="server" RepeatDirection="Horizontal" TabIndex="25" data-reasonid="txtReason4" data-fileuploadid="FileUpload4" onchange='<%= "toggleFileUpload(this, \"" + txtReason4.ClientID + "\", \"" + FileUpload4.ClientID + "\")" %>'>
-                                                    <asp:ListItem Text="Yes" Value="0" style="margin-left: 10px;"></asp:ListItem>
+                                                    <asp:ListItem Text="Yes" Value="0" Selected="True" style="margin-left: 10px;"></asp:ListItem>
                                                     <asp:ListItem Text="No" Value="1" style="margin-left: 10px;"></asp:ListItem>
                                                 </asp:RadioButtonList>
                                                 <asp:RequiredFieldValidator runat="server" ID="rvfRadioButtonList4" ControlToValidate="RadioButtonList4" ForeColor="Red" Display="Dynamic" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
@@ -1179,10 +1294,10 @@
                                                 Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator37" runat="server"
                                                 ControlToValidate="FileUpload4" ErrorMessage="Required" ValidationGroup="SubmitUpload4" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                            <asp:TextBox class="form-control" ID="txtReason4" autocomplete="off" data-reasonbox="<%= txtReason4.ClientID %>" MaxLength="50" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtReason4" placeholder="Enter reason"  autocomplete="off" data-reasonbox="<%= txtReason4.ClientID %>" MaxLength="50" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtReason4" ErrorMessage="RequiredFieldValidator" ValidationGroup="BtnUpload4" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                             <asp:LinkButton ID="lnkBtn_Tick4" Visible="false" runat="server" CssClass="btn btn-success">
-                                 <i class="fa fa-check"></i> <!-- Font Awesome cross icon -->
+                                                 <i class="fa fa-check"></i> <!-- Font Awesome cross icon -->
                                             </asp:LinkButton>
                                         </td>
                                         <td>
@@ -1199,7 +1314,7 @@
                                         <td style="padding-top: 0px !important;">&nbsp;<div style="margin-top: 0px;">
                                             <asp:RadioButtonList ID="RadioButtonList5" runat="server" RepeatDirection="Horizontal" TabIndex="25" data-reasonid="txtReason5" data-fileuploadid="FileUpload5"
                                                 onchange='<%= "toggleFileUpload(this, \"" + txtReason5.ClientID + "\", \"" + FileUpload5.ClientID + "\")" %>'>
-                                                <asp:ListItem Text="Yes" Value="0" style="margin-left: 10px;"></asp:ListItem>
+                                                <asp:ListItem Text="Yes" Value="0" Selected="True" style="margin-left: 10px;"></asp:ListItem>
                                                 <asp:ListItem Text="No" Value="1" style="margin-left: 10px;"></asp:ListItem>
                                             </asp:RadioButtonList>
                                             <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator25" ControlToValidate="RadioButtonList5" ForeColor="Red" Display="Dynamic" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
@@ -1210,7 +1325,7 @@
                                                 Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator38" runat="server"
                                                 ControlToValidate="FileUpload5" ErrorMessage="Required" ValidationGroup="SubmitUpload5" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                            <asp:TextBox class="form-control" ID="txtReason5" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtReason5" placeholder="Please enter reason" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="txtReason5" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitUpload5" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                             <asp:LinkButton ID="lnkBtn_Tick5" Visible="false" runat="server" CssClass="btn btn-success">
                                      <i class="fa fa-check"></i> <!-- Font Awesome cross icon -->
@@ -1234,7 +1349,7 @@
                                             <%--<asp:RadioButtonList ID="RadioButtonList6" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25" OnSelectedIndexChanged="RadioButtonList6_SelectedIndexChanged">--%>
                                             <asp:RadioButtonList ID="RadioButtonList6" runat="server" RepeatDirection="Horizontal" TabIndex="25" data-reasonid="txtReason6" data-fileuploadid="FileUpload6"
                                                 onchange='<%= "toggleFileUpload(this, \"" + txtReason6.ClientID + "\", \"" + FileUpload6.ClientID + "\")" %>'>
-                                                <asp:ListItem Text="Yes" Value="0" style="margin-left: 10px;"></asp:ListItem>
+                                                <asp:ListItem Text="Yes" Value="0" Selected="True" style="margin-left: 10px;"></asp:ListItem>
                                                 <asp:ListItem Text="No" Value="1" style="margin-left: 10px;"></asp:ListItem>
                                             </asp:RadioButtonList>
                                             <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator32" ControlToValidate="RadioButtonList6" ForeColor="Red" Display="Dynamic" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
@@ -1245,7 +1360,7 @@
                                                 Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator39" runat="server"
                                                 ControlToValidate="FileUpload6" ErrorMessage="Required" ValidationGroup="SubmitUpload6" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                            <asp:TextBox class="form-control" ID="txtReason6" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtReason6" placeholder="Please enter reason" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ControlToValidate="txtReason6" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitUpload6" ForeColor="Red">Required</asp:RequiredFieldValidator>
 
                                             <asp:LinkButton ID="lnkBtn_Tick6" Visible="false" runat="server" CssClass="btn btn-success">
@@ -1267,7 +1382,7 @@
                                             <%--<asp:RadioButtonList ID="RadioButtonList7" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25" OnSelectedIndexChanged="RadioButtonList7_SelectedIndexChanged">--%>
                                             <asp:RadioButtonList ID="RadioButtonList7" runat="server" RepeatDirection="Horizontal" TabIndex="25" data-reasonid="txtReason7" data-fileuploadid="FileUpload7"
                                                 onchange='<%= "toggleFileUpload(this, \"" + txtReason7.ClientID + "\", \"" + FileUpload7.ClientID + "\")" %>'>
-                                                <asp:ListItem Text="Yes" Value="0" style="margin-left: 10px;"></asp:ListItem>
+                                                <asp:ListItem Text="Yes" Value="0" Selected="True" style="margin-left: 10px;"></asp:ListItem>
                                                 <asp:ListItem Text="No" Value="1" style="margin-left: 10px;"></asp:ListItem>
                                             </asp:RadioButtonList>
                                             <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator34" ControlToValidate="RadioButtonList7" ForeColor="Red" Display="Dynamic" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
@@ -1279,11 +1394,11 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator40" runat="server"
                                                 ControlToValidate="FileUpload7" ErrorMessage="Required" ValidationGroup="SubmitUpload7" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
 
-                                            <asp:TextBox class="form-control" ID="txtReason7" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtReason7" placeholder="Please enter reason" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="txtReason7" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitUpload7" ForeColor="Red">Required</asp:RequiredFieldValidator>
 
                                             <asp:LinkButton ID="lnkBtn_Tick7" Visible="false" runat="server" CssClass="btn btn-success">
-                                     <i class="fa fa-check"></i> <!-- Font Awesome cross icon -->
+                                     <i class="fa fa-check"></i> 
                                             </asp:LinkButton>
                                         </td>
                                         <td>
@@ -1302,7 +1417,7 @@
                                                 <%--<asp:RadioButtonList ID="RadioButtonList8" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25" OnSelectedIndexChanged="RadioButtonList8_SelectedIndexChanged">--%>
                                                 <asp:RadioButtonList ID="RadioButtonList8" runat="server" RepeatDirection="Horizontal" TabIndex="25" data-reasonid="txtReason8" data-fileuploadid="FileUpload8"
                                                     onchange='<%= "toggleFileUpload(this, \"" + txtReason8.ClientID + "\", \"" + FileUpload8.ClientID + "\")" %>'>
-                                                    <asp:ListItem Text="Yes" Value="0" style="margin-left: 10px;"></asp:ListItem>
+                                                    <asp:ListItem Text="Yes" Value="0" Selected="True" style="margin-left: 10px;"></asp:ListItem>
                                                     <asp:ListItem Text="No" Value="1" style="margin-left: 10px;"></asp:ListItem>
                                                 </asp:RadioButtonList>
                                                 <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator43" ControlToValidate="RadioButtonList8" ForeColor="Red" Display="Dynamic" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
@@ -1314,7 +1429,7 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator41" runat="server"
                                                 ControlToValidate="FileUpload8" ErrorMessage="Required" ValidationGroup="SubmitUpload8" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
 
-                                            <asp:TextBox class="form-control" ID="txtReason8" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtReason8" placeholder="Please enter reason" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator46" runat="server" ControlToValidate="txtReason8" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitUpload8" ForeColor="Red">Required</asp:RequiredFieldValidator>
 
                                             <asp:LinkButton ID="lnkBtn_Tick8" Visible="false" runat="server" CssClass="btn btn-success">
@@ -1337,7 +1452,7 @@
                                                 <%-- <asp:RadioButtonList ID="RadioButtonList9" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25" OnSelectedIndexChanged="RadioButtonList9_SelectedIndexChanged">--%>
                                                 <asp:RadioButtonList ID="RadioButtonList9" runat="server" RepeatDirection="Horizontal" TabIndex="25" data-reasonid="txtReason9" data-fileuploadid="FileUpload9"
                                                     onchange='<%= "toggleFileUpload(this, \"" + txtReason9.ClientID + "\", \"" + FileUpload9.ClientID + "\")" %>'>
-                                                    <asp:ListItem Text="Yes" Value="0" style="margin-left: 10px;"></asp:ListItem>
+                                                    <asp:ListItem Text="Yes" Value="0" Selected="True" style="margin-left: 10px;"></asp:ListItem>
                                                     <asp:ListItem Text="No" Value="1" style="margin-left: 10px;"></asp:ListItem>
                                                 </asp:RadioButtonList>
                                                 <asp:RequiredFieldValidator runat="server" ID="RequiredFieldValidator44" ControlToValidate="RadioButtonList9" ForeColor="Red" Display="Dynamic" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
@@ -1349,7 +1464,7 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server"
                                                 ControlToValidate="FileUpload9" ErrorMessage="Required" ValidationGroup="SubmitUpload9" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
 
-                                            <asp:TextBox class="form-control" ID="txtReason9" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtReason9" placeholder="Please enter reason" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="txtReason9" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitUpload9" ForeColor="Red">Required</asp:RequiredFieldValidator>
 
                                             <asp:LinkButton ID="lnkBtn_Tick9" Visible="false" runat="server" CssClass="btn btn-success">
@@ -1357,7 +1472,7 @@
                                             </asp:LinkButton>
                                         </td>
                                         <td>
-                                            <asp:Button ID="btnupload9" runat="server" Text="Upload" OnClick="btnupload9_Click" class="btn btn-primary" />
+                                            <asp:Button ID="btnupload9" runat="server" Text="Upload"  OnClick="btnupload9_Click" class="btn btn-primary" />
                                             <asp:LinkButton ID="lnkBtnDelete9" Visible="false" runat="server" OnClick="lnkBtnDelete9_Click" CssClass="btn btn-danger">
                                  <i class="fa fa-times"></i> <!-- Font Awesome cross icon -->
                                             </asp:LinkButton>
@@ -1383,15 +1498,15 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator42" runat="server"
                                                 ControlToValidate="FileUpload10" ErrorMessage="Required" ValidationGroup="SubmitUpload10" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
 
-                                            <asp:TextBox class="form-control" ID="txtReason10" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" ControlToValidate="txtReason10" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitUpload10" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                                            <asp:TextBox class="form-control" ID="txtReason10" placeholder="Please enter reason" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" ControlToValidate="txtReason10" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitUpload10" ForeColor="Red">Required</asp:RequiredFieldValidator>--%>
 
                                             <asp:LinkButton ID="lnkBtn_Tick10" Visible="false" runat="server" CssClass="btn btn-success">
                                    <i class="fa fa-check"></i> <!-- Font Awesome cross icon -->
                                             </asp:LinkButton>
                                         </td>
                                         <td>
-                                            <asp:Button ID="btnupload10" runat="server" Text="Upload" OnClick="btnupload10_Click" ValidationGroup="SubmitUpload10" class="btn btn-primary" />
+                                            <asp:Button ID="btnupload10" runat="server" Text="Upload" OnClick="btnupload10_Click"  class="btn btn-primary" />
                                             <asp:LinkButton ID="lnkBtnDelete10" runat="server" Visible="false" OnClick="lnkBtnDelete10_Click" CssClass="btn btn-danger">
                                     <i class="fa fa-times"></i> <!-- Font Awesome cross icon -->
                                             </asp:LinkButton>
@@ -1423,6 +1538,17 @@
                         <asp:PostBackTrigger ControlID="btnupload8" />
                         <asp:PostBackTrigger ControlID="btnupload9" />
                         <asp:PostBackTrigger ControlID="btnupload10" />
+                        
+                        <asp:PostBackTrigger ControlID="lnkBtnDelete1" />
+                        <asp:PostBackTrigger ControlID="lnkBtnDelete2" />
+                        <asp:PostBackTrigger ControlID="lnkBtnDelete3" />
+                        <asp:PostBackTrigger ControlID="lnkBtnDelete4" />
+                        <asp:PostBackTrigger ControlID="lnkBtnDelete5" />
+                        <asp:PostBackTrigger ControlID="lnkBtnDelete6" />
+                        <asp:PostBackTrigger ControlID="lnkBtnDelete7" />
+                        <asp:PostBackTrigger ControlID="lnkBtnDelete8" />
+                        <asp:PostBackTrigger ControlID="lnkBtnDelete9" />
+                        <asp:PostBackTrigger ControlID="lnkBtnDelete10" />
                     </Triggers>
                 </asp:UpdatePanel>
                 <div class="row">
@@ -1544,9 +1670,9 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script type="text/javascript"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <%-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
     <script>
-        function toggleFileUpload(radioBtn, txtReasonId, fileUploadId) {
+        function toggleFileUpload(radioBtn, txtReasonId, fileUploadId, buttonID) {
 
             var txtReason = document.getElementById(txtReasonId);
             var fileUpload = document.getElementById(fileUploadId);
@@ -1555,21 +1681,36 @@
             //var fileUploadId = row.find("[data-fileupload]").attr("data-fileupload");
             //var reasonTextBoxId = row.find("[data-reasonbox]").attr("data-reasonbox");
             //var tickButtonId = row.find("[data-tickbutton]").attr("data-tickbutton");
+            debugger;
             if (selectedValue === "1") { // "No" selected
+                
                 $("#" + fileUploadId).hide();
                 $("#" + txtReasonId).show();
+                //$("#" + txtReason).show();
+                $('#' + buttonID).val('Save');
+                //console.log(txtReason);
             } else {  //"Yes" selected
                 $("#" + fileUploadId).show();
                 $("#" + txtReasonId).hide();
+                $('#' + buttonID).val('Upload');
             }
         }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var radioButtonList = document.getElementById('<%= RadioButtonList2.ClientID %>');
+            radioButtonList.addEventListener('change', function () {
+                var txtReasonId = '<%= txtReason2.ClientID %>';
+                var fileUploadId = '<%= FileUpload2.ClientID %>';
+                toggleFileUpload(this, txtReasonId, fileUploadId, '<%= btnupload2.ClientID %>');                
+            });
+        });
 
         document.addEventListener("DOMContentLoaded", function () {
             var radioButtonList = document.getElementById('<%= RadioButtonList4.ClientID %>');
             radioButtonList.addEventListener('change', function () {
                 var txtReasonId = '<%= txtReason4.ClientID %>';
                 var fileUploadId = '<%= FileUpload4.ClientID %>';
-                toggleFileUpload(this, txtReasonId, fileUploadId);
+                toggleFileUpload(this, txtReasonId, fileUploadId, '<%= btnupload4.ClientID %>');
                 //var radioButtonLists = document.querySelectorAll('[id$="RadioButtonList"]');             
                 //radioButtonLists.forEach(function (radioButtonList) {
                 //    radioButtonList.addEventListener('change', function () {                        
@@ -1584,7 +1725,7 @@
             radioButtonList.addEventListener('change', function () {
                 var txtReasonId = '<%= txtReason5.ClientID %>';
                 var fileUploadId = '<%= FileUpload5.ClientID %>';
-                toggleFileUpload(this, txtReasonId, fileUploadId);
+                toggleFileUpload(this, txtReasonId, fileUploadId, '<%= btnupload5.ClientID %>');
             });
         });
         document.addEventListener("DOMContentLoaded", function () {
@@ -1592,7 +1733,7 @@
             radioButtonList.addEventListener('change', function () {
                 var txtReasonId = '<%= txtReason6.ClientID %>';
                 var fileUploadId = '<%= FileUpload6.ClientID %>';
-                toggleFileUpload(this, txtReasonId, fileUploadId);
+                toggleFileUpload(this, txtReasonId, fileUploadId, '<%= btnupload6.ClientID %>');
             });
         });
         document.addEventListener("DOMContentLoaded", function () {
@@ -1600,7 +1741,7 @@
             radioButtonList.addEventListener('change', function () {
                 var txtReasonId = '<%= txtReason7.ClientID %>';
                 var fileUploadId = '<%= FileUpload7.ClientID %>';
-                toggleFileUpload(this, txtReasonId, fileUploadId);
+                toggleFileUpload(this, txtReasonId, fileUploadId, '<%= btnupload7.ClientID %>');
             });
         });
         document.addEventListener("DOMContentLoaded", function () {
@@ -1608,7 +1749,7 @@
             radioButtonList.addEventListener('change', function () {
                 var txtReasonId = '<%= txtReason8.ClientID %>';
                 var fileUploadId = '<%= FileUpload8.ClientID %>';
-                toggleFileUpload(this, txtReasonId, fileUploadId);
+                toggleFileUpload(this, txtReasonId, fileUploadId, '<%= btnupload8.ClientID %>');
             });
         });
         document.addEventListener("DOMContentLoaded", function () {
@@ -1616,7 +1757,7 @@
             radioButtonList.addEventListener('change', function () {
                 var txtReasonId = '<%= txtReason9.ClientID %>';
                 var fileUploadId = '<%= FileUpload9.ClientID %>';
-                toggleFileUpload(this, txtReasonId, fileUploadId);
+                toggleFileUpload(this, txtReasonId, fileUploadId, '<%= btnupload9.ClientID %>');
             });
         });
         document.addEventListener("DOMContentLoaded", function () {
@@ -1624,13 +1765,12 @@
             radioButtonList.addEventListener('change', function () {
                 var txtReasonId = '<%= txtReason10.ClientID %>';
                 var fileUploadId = '<%= FileUpload10.ClientID %>';
-                toggleFileUpload(this, txtReasonId, fileUploadId);
+                toggleFileUpload(this, txtReasonId, fileUploadId, '<%= btnupload10.ClientID %>');
             });
         });
     </script>
     <script type="text/javascript">
         function checkRadioBtn(id) {
-
             var gv = document.getElementById('<%=GrdView_InstallationList.ClientID %>');
             for (var i = 1; i < gv.rows.length; i++) {
                 var radioBtn = gv.rows[i].cells[0].getElementsByTagName("input");
@@ -1679,33 +1819,195 @@
         }
     </script>
 
-    <%--   <script type="text/javascript">
-            window.onload = function () {
-                var today = new Date().toISOString().split('T')[0];
-                document.getElementById('<%= txtAccidentTime.ClientID %>').setAttribute('max', today);
-            };
-        </script>--%>
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $('#<%= txtReason2.ClientID %>').hide(); // Hides the textbox
+          $('#<%= txtReason4.ClientID %>').hide(); // Hides the textbox
+          $('#<%= txtReason5.ClientID %>').hide();
+          $('#<%= txtReason6.ClientID %>').hide();
+          $('#<%= txtReason7.ClientID %>').hide();
+          $('#<%= txtReason8.ClientID %>').hide();
+          $('#<%= txtReason9.ClientID %>').hide();
+          $('#<%= txtReason10.ClientID %>').hide();
 
+         <%-- var radiovalue4 = document.querySelector('input[name="<%= RadioButtonList4.UniqueID %>"]:checked');
+          var radiovalue5 = document.querySelector('input[name="<%= RadioButtonList5.UniqueID %>"]:checked');
+          var radiovalue6 = document.querySelector('input[name="<%= RadioButtonList5.UniqueID %>"]:checked');
+          var radiovalue7 = document.querySelector('input[name="<%= RadioButtonList5.UniqueID %>"]:checked');
+          var radiovalue8 = document.querySelector('input[name="<%= RadioButtonList5.UniqueID %>"]:checked');
+          var radiovalue9 = document.querySelector('input[name="<%= RadioButtonList5.UniqueID %>"]:checked');
+          var radiovalue10 = document.querySelector('input[name="<%= RadioButtonList5.UniqueID %>"]:checked');
+          if (radiovalue4) {              
+              if (radiovalue4.value == 1) {
+                  $('#<%= txtReason4.ClientID %>').show();
+                  $('#<%= FileUpload4.ClientID %>').hide();
+              }
+              else {
+                  $('#<%= txtReason4.ClientID %>').hide();
+              }
+          }
+          if (radiovalue5) {
+              if (radiovalue5.value == 1) {
+                  $('#<%= txtReason5.ClientID %>').show();
+                  $('#<%= FileUpload5.ClientID %>').hide();
+              }
+              else {
+                  $('#<%= txtReason5.ClientID %>').hide();
+              }
+          }--%>
+
+          CheckRadiobuttonvalue('<%=RadioButtonList2.UniqueID%>', '<%=txtReason2.ClientID%>', '<%=FileUpload2.ClientID %>', '<%= btnupload2.ClientID %>');
+          CheckRadiobuttonvalue('<%=RadioButtonList4.UniqueID%>', '<%=txtReason4.ClientID%>', '<%=FileUpload4.ClientID %>','<%= btnupload4.ClientID %>');
+          CheckRadiobuttonvalue('<%=RadioButtonList5.UniqueID%>', '<%=txtReason5.ClientID%>', '<%=FileUpload5.ClientID %>','<%= btnupload5.ClientID %>');
+          CheckRadiobuttonvalue('<%=RadioButtonList6.UniqueID%>', '<%=txtReason6.ClientID%>', '<%=FileUpload6.ClientID %>','<%= btnupload6.ClientID %>');
+          CheckRadiobuttonvalue('<%=RadioButtonList7.UniqueID%>', '<%=txtReason7.ClientID%>', '<%=FileUpload7.ClientID %>','<%= btnupload7.ClientID %>');
+          CheckRadiobuttonvalue('<%=RadioButtonList8.UniqueID%>', '<%=txtReason8.ClientID%>', '<%=FileUpload8.ClientID %>','<%= btnupload8.ClientID %>');
+          CheckRadiobuttonvalue('<%=RadioButtonList9.UniqueID%>', '<%=txtReason9.ClientID%>', '<%=FileUpload9.ClientID %>','<%= btnupload9.ClientID %>');
+          CheckRadiobuttonvalue('<%=RadioButtonList10.UniqueID%>', '<%=txtReason10.ClientID%>', '<%=FileUpload10.ClientID %>', '<%= btnupload10.ClientID %>');
+          function CheckRadiobuttonvalue(radiobuttonID, textboxID, fileuploadID,buttonId) {
+              var radiobutton = document.querySelector('input[name="' + radiobuttonID + '"]:checked');
+              debugger;
+              if (radiobutton) {
+                  if (radiobutton.value == 1) {                      
+                      $('#' + textboxID).show();
+                      $('#' + fileuploadID).hide();
+                      $('#' + buttonId).val('Save');
+                  }
+                  else {
+                      $('#' + textboxID).hide();
+                      $('#' + fileuploadID).show();
+                      $('#' + buttonId).val('Upload');
+                  }
+              }
+              //else {
+              //        $('#' + textboxID).hide();
+              //        $('#' + fileuploadID).show();
+              //    }
+              //}
+          }
+    });
+  </script>
 
     <script>
-        function showModalBasedOnSelection(dropdown) {
-            var selectedText = dropdown.options[dropdown.selectedIndex].text;
-            if (dropdown.value !== "0") {
-                document.getElementById("modalContent").innerText = "You have selected: " + selectedText;
-                $('#equipmentModal').modal('show'); // Open modal
-            }
-        }
+        //function showModalBasedOnSelection(dropdown) {
+        //    var selectedText = dropdown.options[dropdown.selectedIndex].text;
+        //    if (dropdown.value !== "0") {
+        //        document.getElementById("modalContent").innerText = "You have selected: " + selectedText;
+        //        $('#equipmentModal').modal('show'); // Open modal
+        //    }
+        //}
     </script>
     <script type="text/javascript">
         window.onload = function () {
             var today = new Date().toISOString().split('T')[0];
             var dateInput = document.getElementById('<%= txtAccidentDate.ClientID %>');
+            var timeInput = document.getElementById('<%= txtAccidentTime.ClientID %>');
             if (dateInput) {
                 dateInput.max = today;
+
+                //var now = new Date();
+                //var hh = String(now.getHours()).padStart(2, '0');
+                //var mm = String(now.getMinutes()).padStart(2, '0');
+                //var maxTime = `${hh}:${mm}`;
+                //timeInput.value = maxTime;
             }
         };
     </script>
+<%-- <script type="text/javascript">
+     document.addEventListener("DOMContentLoaded", function () {
+         var dateInput = document.getElementById('<%= txtAccidentDate.ClientID %>');
+        var timeInput = document.getElementById('<%= txtAccidentTime.ClientID %>');
 
+        if (dateInput && timeInput) {
+            timeInput.addEventListener("focus", function () {
+                var selectedDate = dateInput.value;
+                var today = new Date().toISOString().split('T')[0];
+                debugger;
+
+                function getCurrentTime() {
+                    var now = new Date();
+                    var hh = String(now.getHours()).padStart(2, '0');
+                    var mm = String(now.getMinutes()).padStart(2, '0');
+                    return `${hh}:${mm}`;
+                }
+
+                if (selectedDate === today) {
+                    var now = new Date();
+                    //var hh = String(now.getHours()).padStart(2, '0');
+                    //var mm = String(now.getMinutes()).padStart(2, '0');
+                    //var maxTime = `${hh}:${mm}`;
+                    //timeInput.max = maxTime;
+
+                    if (selectedDate === today) {
+                        var maxTime = getCurrentTime();
+                        timeInput.setAttribute("max", maxTime);
+                    } else {
+                        timeInput.removeAttribute("max");
+                    }
+                    // Optional: Clamp current time if it's over
+                   // if (timeInput.value && timeInput.value > maxTime) {
+                        timeInput.value = maxTime;
+                   // }
+                } else {
+                    timeInput.removeAttribute("max");
+                }
+            });
+        }
+    });
+ </script>--%>
+ <%--   <script type="text/javascript">
+        function updateTimeMaxLimit() {
+            var dateInput = document.getElementById('<%= txtAccidentDate.ClientID %>');
+        var timeInput = document.getElementById('<%= txtAccidentTime.ClientID %>');
+            debugger;
+            if (!dateInput.value) {
+                timeInput.removeAttribute('max');
+                return; // Exit early if date is not selected
+            }
+            var selectedDate = new Date(dateInput.value);
+            var today = new Date();
+
+            var selectedDateStr = selectedDate.toISOString().split('T')[0];
+            var todayStr = today.toISOString().split('T')[0];
+
+            if (selectedDateStr === todayStr) {
+                var hours = today.getHours().toString().padStart(2, '0');
+                var minutes = today.getMinutes().toString().padStart(2, '0');
+                timeInput.max = `${hours}:${minutes}`;
+            } else {
+                timeInput.removeAttribute('max');
+            }
+        }
+
+        // Optional: run once on page load
+        window.onload = updateTimeMaxLimit;
+    </script>--%>
+
+    <script type="text/javascript">
+        function updateTimeMaxLimit() {
+            var dateInput = document.getElementById('<%= txtAccidentDate.ClientID %>');
+        var timeInput = document.getElementById('<%= txtAccidentTime.ClientID %>');
+
+            if (!dateInput.value) {
+                timeInput.removeAttribute("max");
+                return;
+            }
+
+            var selectedDate = new Date(dateInput.value);
+            var today = new Date();
+            
+            if (selectedDate.toDateString() === today.toDateString()) {
+                // Get current time in HH:mm format
+                var hours = today.getHours().toString().padStart(2, '0');
+                var minutes = today.getMinutes().toString().padStart(2, '0');
+                var currentTime = hours + ":" + minutes;
+
+                timeInput.setAttribute("max", currentTime);
+            } else {
+                timeInput.removeAttribute("max");
+            }
+        }
+    </script>
 
 </asp:Content>
 

@@ -60,5 +60,73 @@ namespace CEIHaryana.Officers
 
             }
         }
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+               
+                if (Session["StaffID"] != null && Session["StaffID"].ToString() != "")
+                {
+                    GridView1.PageIndex = e.NewPageIndex;
+                    BindGrid(Convert.ToString(Session["StaffID"]));
+                }
+                else
+                {
+                    Response.Redirect("/Logout.aspx", false);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Session["StaffID"] != null && Session["StaffID"].ToString() != "")
+                {
+                    string textsearch = txtSearch.Text.Trim();
+                    if (!string.IsNullOrEmpty(textsearch))
+                    {
+                        DataTable searchResult = new DataTable();
+                        searchResult = CEI.SearchAccidentialReports(textsearch, null, Convert.ToString(Session["StaffID"]));
+                        if (searchResult.Rows.Count > 0)
+                        {
+                            GridView1.DataSource = searchResult;
+                            GridView1.DataBind();
+                        }
+                        else
+                        {
+                            GridView1.DataSource = null;
+                            GridView1.DataBind();
+                        }
+                    }
+                    else
+                    {
+                        txtSearch.Focus();
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+        }
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            if (Session["StaffID"] != null && Session["StaffID"].ToString() != "")
+            {
+                txtSearch.Text = "";
+                BindGrid(Convert.ToString(Session["StaffID"]));
+            }
+        }
     }
 }
