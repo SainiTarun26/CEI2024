@@ -295,40 +295,44 @@
             }
 
 
-   .modal {
-        display: none; 
-        position: fixed; 
-        z-index: 1000;
-        padding-top: 100px; 
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%; 
-        overflow: auto; 
-        background-color: rgba(0,0,0,0.5);
-    }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
 
-    .modal-content {
-        background-color: #fff;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 54%; 
-        border-radius: 8px;
-        text-align: center;
-    }
+        .modal-content {
+            background-color: #fff;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 54%;
+            border-radius: 8px;
+            text-align: center;
+            margin-left: 30% !important;
+        }
 
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-    }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-    .close:hover {
-        color: red;
-    }
+            .close:hover {
+                color: red;
+            }
+            span#closeModal {
+    text-align: end;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -398,11 +402,11 @@
 
                                         <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="false">
                                             <label for="PanNumber">
-                                                 PAN/TAN Number
+                                                PAN/TAN Number
                                             <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtPAN" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" OnTextChanged="txtPAN_TextChanged" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                           <%-- <asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPAN" ValidationExpression="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ValidationGroup="Submit"
+                                            <%-- <asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPAN" ValidationExpression="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" ValidationGroup="Submit"
                                                 ErrorMessage="Enter a valid PAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />--%>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtPAN" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                         </div>
@@ -413,7 +417,7 @@
                                             <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtTanNumber" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" OnTextChanged="txtTanNumber_TextChanged" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                           <%-- <asp:RegularExpressionValidator ID="revTANNumber" runat="server" ControlToValidate="txtTanNumber" ValidationExpression="[A-Za-z]{4}[0-9]{5}[A-Za-z]" ValidationGroup="Submit"
+                                            <%-- <asp:RegularExpressionValidator ID="revTANNumber" runat="server" ControlToValidate="txtTanNumber" ValidationExpression="[A-Za-z]{4}[0-9]{5}[A-Za-z]" ValidationGroup="Submit"
                                                 ErrorMessage="Enter a valid TAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />--%>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtTanNumber" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                         </div>
@@ -1020,16 +1024,18 @@
 
         <!-- Modal HTML -->
 <div id="gurugramModal" class="modal" runat="server" ClientIDMode="Static">
-    <div class="modal-content">
-        <span class="close" id="closeModal">&times;</span> 
-        <h3>Alert</h3>
-        <p>
-            Please select <strong>Gurugram 1</strong> if the installation falls under the jurisdiction of 
-            <strong>SE(OP)Circle, DHBVN, Gurugram 1</strong>, or select <strong>Gurugram 2</strong> 
-            if it falls under <strong>SE(OP)Circle, DHBVN, Gurugram 2</strong>.
-        </p>
-    </div>
-</div>
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+ <!-- Modal HTML alert added by Aslam 15-may-2025-->              
+  <h3>Alert</h3>
+                <p>
+                    Please select <strong>Gurugram 1</strong> if the installation falls under the jurisdiction of 
+            <strong>SE(OP)Circle, DHBVN, Gurugram 1</strong>,<br />
+                    or select <strong>Gurugram 2</strong>
+                    if it falls under <strong>SE(OP)Circle, DHBVN, Gurugram 2</strong>.
+                </p>
+            </div>
+        </div>
 
 
     </div>
@@ -1407,20 +1413,20 @@
         }
     </script>
 
-   <script>
-       document.addEventListener('DOMContentLoaded', function () {
-           var modal = document.getElementById('gurugramModal');
-           var closeBtn = document.getElementById('closeModal'); // now it will work
-           closeBtn.onclick = function () {
-               modal.style.display = "none";
-           }
-           window.onclick = function (event) {
-               if (event.target === modal) {
-                   modal.style.display = "none";
-               }
-           }
-       });
-</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var modal = document.getElementById('gurugramModal');
+            var closeBtn = document.getElementById('closeModal'); // now it will work
+            closeBtn.onclick = function () {
+                modal.style.display = "none";
+            }
+            window.onclick = function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
+    </script>
 
 
 

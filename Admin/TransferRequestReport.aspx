@@ -385,6 +385,15 @@
                                             </asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Installation&#60;br /&#62;Type" Visible="false">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                        <ItemTemplate>
+                                           <%-- Templatefield added by aslam on 15-may-2025--%>
+                                            <asp:Label ID="lblInstallationFor" runat="server" Text='<%# Eval("Installationfor") %>' CssClass="break-space"></asp:Label>
+                                            <asp:Label ID="lblUserTypes" runat="server" Text='<%# Eval("UserType") %>' CssClass="break-space"></asp:Label>
+                                        </ItemTemplate>                                        
+                                    </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
 

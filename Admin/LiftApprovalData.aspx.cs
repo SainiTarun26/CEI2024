@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace CEIHaryana.Admin
 {
-    
+
     public partial class LiftApprovalData : System.Web.UI.Page
     {
         CEI CEI = new CEI();
@@ -20,9 +20,16 @@ namespace CEIHaryana.Admin
                 if (Session["AdminId"] != null && Session["AdminId"].ToString() != "")
                 {
                     GridBind();
+
+                    //Added by aslam 15-may-2025
+                    if (!IsPostBack && Request.UrlReferrer != null)
+                    {
+                        ViewState["PreviousPageUrl"] = Request.UrlReferrer.ToString();
+                    }
+                    //
                 }
             }
-            
+
 
         }
 
@@ -54,7 +61,6 @@ namespace CEIHaryana.Admin
                 // throw;
             }
 
-
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -78,7 +84,7 @@ namespace CEIHaryana.Admin
                     {
                         Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
                     }
-                    
+
                 }
             }
             catch { }
@@ -86,7 +92,12 @@ namespace CEIHaryana.Admin
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Admin/AcceptedOrRejectedRequest.aspx", false);
+            //Added by aslam 15-may-2025
+            if (ViewState["PreviousPageUrl"] != null)
+            {
+                Response.Redirect(ViewState["PreviousPageUrl"].ToString(), false);
+            }
+            //
         }
     }
 }

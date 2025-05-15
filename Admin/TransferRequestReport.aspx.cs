@@ -107,6 +107,7 @@ namespace CEIHaryana.Admin
                 Session["Type"] = lblType.Text;
                 Label lblApplicationStatus = (Label)row.FindControl("lblApplicationStatus");
                 Label lblInstallationFor = (Label)row.FindControl("lblInstallationFor");
+
                 Session["lblApplicationStatus"] = lblType.Text;
                 string id = lblID.Text;
                 Session["InspectionId"] = id;
@@ -145,6 +146,9 @@ namespace CEIHaryana.Admin
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblID = (Label)row.FindControl("lblID");
                 Label lblInstallationFor = (Label)row.FindControl("lblInstallationFor");
+          //Added by aslam 15-may-2025
+                Label lblUserType = (Label)row.FindControl("lblUserTypes");
+               //
                 string id = lblID.Text;
                 Session["InspectionId"] = id;
                 if (e.CommandName == "Select")
