@@ -91,12 +91,12 @@ namespace CEIHaryana.Industry_Master
                     if (LblInspectionType.Text == "New")
                     {
 
-                        Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                        Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate_Industry.aspx", false);
                     }
                     else
                     {
 
-                        Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
+                        Response.Redirect("/Print_Forms/PeriodicApprovalCertificate_Industry.aspx", false);
                     }
                 }
             }
