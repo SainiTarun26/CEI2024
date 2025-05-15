@@ -141,7 +141,7 @@
                  <%#Container.DataItemIndex+1 %>
              </ItemTemplate>
          </asp:TemplateField>
-         <asp:BoundField DataField="SLD_ID" HeaderText="SLD Id" Visible="false">
+         <asp:BoundField DataField="SLD_ID" HeaderText="SLD Id">
              <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
              <ItemStyle HorizontalAlign="center" Width="15%" />
          </asp:BoundField>
