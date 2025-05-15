@@ -86,7 +86,10 @@ namespace CEIHaryana.Officers
                     //txtSiteOwnerContact.Text = ds.Tables[0].Rows[0]["SiteownerContactNumber"].ToString();
                     //txtContractorName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
                     //txtContractorPhoneNo.Text = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
-
+                    /// Added by Neha on 15-05 frontend also
+                    txtContactNo.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString(); // Added by Neha on 15-05
+                    txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString(); // Added by Neha on 15-05
+                    ///
                     //txtContractorEmail.Text = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
                     //txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
                     //txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();
@@ -302,7 +305,7 @@ namespace CEIHaryana.Officers
             ClickCount = Convert.ToInt32(Session["ClickCount"]);
             if (ClickCount < 1)
             {
-               
+
                 int checksuccessmessage = 0;
                 try
                 {

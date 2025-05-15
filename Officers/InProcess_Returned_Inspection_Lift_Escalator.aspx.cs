@@ -82,6 +82,10 @@ namespace CEIHaryana.Officers
                    
                     txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                     txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
+                    // Added by Neha on 15-05
+                    txtContact.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString(); // Added by Neha on 15-05
+                    txtOwnerDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString(); // Added by Neha on 15-05
+                    //
                     txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                     string SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
                     Session["InspectionType"] = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
@@ -310,7 +314,10 @@ namespace CEIHaryana.Officers
                     Address.Visible = true;
                     txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
 
-                   
+                    // Added by Neha on 15-05 frontend also
+                    txtContact.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString(); // Added by Neha on 15-05
+                    txtOwnerDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString(); // Added by Neha on 15-05
+                    //
                     grd_Documemnts.Columns[1].Visible = true;
 
                     GridView1.Columns[5].Visible = false;

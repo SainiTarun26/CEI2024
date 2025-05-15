@@ -236,13 +236,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+        <div class="card-body" style="background:white;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <%-- <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
              <asp:UpdatePanel ID="UpdatePanel1" runat="server"></asp:UpdatePanel>--%>
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
                 Inspection/SiteOwner  Detail (<asp:Label ID="lblInspectionType" runat="server" Text="Label"></asp:Label>-<asp:Label ID="lblInstallation" runat="server" Text="Label"></asp:Label>)
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
                 <div class="row">
                     <div class="col-md-4" runat="server">
                         <label>Inspection Application No</label>
@@ -276,36 +276,47 @@
                         <asp:TextBox class="form-control" ID="txtTanNumber" ReadOnly="true" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
 
-                    <div class="col-md-4" style="margin-top: -10px;">
+                    <div class="col-md-4" >
                         <label>
                             Type of Applicant
                         </label>
                         <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                     <div class="col-md-4" style="margin-top: -10px;">
+                     <div class="col-md-4" >
                         <label>
                             Electrical Installation For
                         </label>
                         <asp:TextBox class="form-control" ID="txtelectrical" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
+                                         <div class="col-md-4"  >
+    <label>
+       Contact No.
+    </label>
+    <asp:TextBox class="form-control" ID="txtContactNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+</div>
                     <div class="col-md-4" id="Installation" runat="server" visible="false">
                         <label>
                             Type of Installation
                         </label>
                         <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px" Visible="false"></asp:TextBox>
                     </div>
-                    <div class="col-md-12" id="OwnerAddress" visible="true" runat="server">
+                    <div class="col-md-8" id="OwnerAddress" visible="true" runat="server">
                         <label>Address</label>
                         <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-
+                                         <div class="col-md-4"  >
+    <label>
+        District
+    </label>
+    <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+</div>
                 </div>
             </div>
             <div id="TranscationDetails" runat="server">
                 <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-top: 20px; font-weight: 600; margin-left: -10px; margin-bottom: 20px;">
                     Transaction Details
                 </div>
-                <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+                <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
                     <div class="row">
                         <div class="col-md-4" runat="server">
                             <label>Transaction ID(GRN Number)</label>
@@ -323,11 +334,11 @@
                 </div>
             </div>
             <div class="row" id="TRAttached" runat="server" visible="true">
-                <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
+                <div class="card-title" style="margin-bottom: 20px; font-size: 17px; font-weight: 600; margin-left: 5px;">
                     Inspection Details
                 </div>
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="TRAttachedGrid" runat="server" visible="true">
+            <div class="card" style="margin: -11px; padding: 11px;padding:10px 10px 0px 10px !important; margin-bottom: 20px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" id="TRAttachedGrid" runat="server" visible="true">
                 <div class="col-12" style="padding: 0px;">
                     <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
                         <HeaderStyle BackColor="#B7E2F0" />
@@ -404,11 +415,11 @@
                 </div>
             </div>
             <div class="row" id="Div1" runat="server" visible="true">
-                <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
+                <div class="card-title" style="margin-bottom: 20px; font-size: 17px; font-weight: 600; margin-left: 5px;">
                     Test Reports & Documents Attached in Test Reports
                 </div>
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivViewTRinMultipleCaseNew" runat="server" visible="false">
+            <div class="card" style="margin: -11px; padding: 11px;padding:10px 10px 0px 10px !important;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 20px;" id="DivViewTRinMultipleCaseNew" runat="server" visible="false">
                 <div class="col-12" style="padding: 0px;">
                     <asp:GridView ID="Grid_MultipleInspectionTR" CssClass="table table-bordered table-striped table-responsive" OnRowDataBound="Grid_MultipleInspectionTR_RowDataBound" runat="server" AutoGenerateColumns="false">
                         <HeaderStyle BackColor="#B7E2F0" />
@@ -450,7 +461,7 @@
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
                 Documents Attached (In CheckList)
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+            <div class="card" style="margin: -11px; padding: 11px;padding:10px 10px 0px 10px !important; margin-bottom: 20px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
                 <div class="row">
                     <div class="col-md-12">
                         <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">

@@ -175,37 +175,40 @@
             padding-right: 30px !important;
         }
 
-                        .input-box {
-       display: flex;
-       align-items: center;
-       max-width: 300px;
-       background: #fff;
-       border: 1px solid #a0a0a0;
-       border-radius: 4px;
-       padding-left: 0.5rem;
-       overflow: hidden;
-       font-family: sans-serif;
-   }
+        .input-box {
+            display: flex;
+            align-items: center;
+            max-width: 300px;
+            background: #fff;
+            border: 1px solid #a0a0a0;
+            border-radius: 4px;
+            padding-left: 0.5rem;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
 
-       .input-box .prefix {
-           font-weight: 300;
-           font-size: 14px;
-           color: black;
-       }
+            .input-box .prefix {
+                font-weight: 300;
+                font-size: 14px;
+                color: black;
+            }
 
-       .input-box input {
-           flex-grow: 1;
-           font-size: 14px;
-           background: #fff;
-           border: none;
-           outline: none;
-           padding: 0.5rem;
-       }
+            .input-box input {
+                flex-grow: 1;
+                font-size: 14px;
+                background: #fff;
+                border: none;
+                outline: none;
+                padding: 0.5rem;
+            }
 
-       .input-box:focus-within {
-           border-color: #777;
-       }
+            .input-box:focus-within {
+                border-color: #777;
+            }
 
+        div#ContentPlaceHolder1_DivViewTRinMultipleCaseNew {
+            padding: 10px 10px 0px 10px !important;
+        }
     </style>
 
     <script type="text/javascript">
@@ -237,11 +240,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+        <div class="card-body" style="background: white; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
                 Inspection/SiteOwner  Detail (<asp:Label ID="lblInspectionType" runat="server" Text="Label"></asp:Label>-<asp:Label ID="lblInstallation" runat="server" Text="Label"></asp:Label>)
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
                 <div class="row">
                     <div class="col-md-4" runat="server">
                         <label>Inspection Application No</label>
@@ -251,7 +254,7 @@
                         <label>Owner Name</label>
                         <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
- <div class="col-md-4" id="agency" runat="server" visible="false">
+                    <div class="col-md-4" id="agency" runat="server" visible="false">
                         <label for="agency">
                             Name of Firm/ Org./ Company/ Department
                         </label>
@@ -270,22 +273,28 @@
 
                     <div class="col-md-4" runat="server" id="DivOtherDepartment" visible="false">
                         <label for="TanNumber">
-                           PAN/TAN Number
+                            PAN/TAN Number
                         </label>
                         <asp:TextBox class="form-control" ID="txtTanNumber" ReadOnly="true" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
 
-                    <div class="col-md-4" style="margin-top: -10px;">
+                    <div class="col-md-4">
                         <label>
                             Type of Applicant
                         </label>
                         <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                                         <div class="col-md-4" style="margin-top: -10px;">
+                    <div class="col-md-4">
                         <label>
                             Electrical Installation For
                         </label>
                         <asp:TextBox class="form-control" ID="txtelectrical" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4">
+                        <label>
+                            Contact No.
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtContactNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-md-4" id="InstallationType" runat="server" visible="false">
                         <label>
@@ -297,13 +306,19 @@
                         <label>Address</label>
                         <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
+                    <div class="col-md-4">
+                        <label>
+                            District
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
                 </div>
             </div>
             <div id="TranscationDetails" runat="server">
                 <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-top: 20px; font-weight: 600; margin-left: -10px; margin-bottom: 20px;">
                     Transaction Details
                 </div>
-                <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+                <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
                     <div class="row">
                         <div class="col-md-4" runat="server">
                             <label>Transaction ID(GRN Number)</label>
@@ -325,11 +340,40 @@
                     Inspection Details
                 </div>
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="TRAttachedGrid" runat="server" visible="true">
+            <div class="card" style="margin: -11px; padding: 11px; padding: 10px 10px 0px 10px !important; margin-bottom: 20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" id="TRAttachedGrid" runat="server" visible="true">
                 <div class="col-12" style="padding: 0px;">
                     <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
+                            <asp:TemplateField HeaderText="SNo">
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                <ItemStyle Width="5%" />
+                                <ItemTemplate>
+                                    <%#Container.DataItemIndex+1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ActionDate" HeaderText="ActionDate">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Remarks" HeaderText="Remarks">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                        </Columns>
+                        <%--  <Columns>
                             <asp:TemplateField HeaderText="SNo">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
@@ -372,17 +416,17 @@
                                     <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                        </Columns>
+                        </Columns>--%>
                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                     </asp:GridView>
                 </div>
             </div>
             <div class="row" id="Div1" runat="server" visible="true">
-                <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
+                <div class="card-title" style="margin-bottom: 20px; padding: 10px 10px 0px 10px !important; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
                     Test Reports & Documents Attached in Test Reports
                 </div>
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivViewTRinMultipleCaseNew" runat="server" visible="false">
+            <div class="card" style="margin: -11px; padding: 11px; padding: 10px 10px 0px 10px; margin-bottom: 20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" id="DivViewTRinMultipleCaseNew" runat="server" visible="false">
                 <div class="col-12" style="padding: 0px;">
                     <asp:GridView ID="Grid_MultipleInspectionTR" CssClass="table table-bordered table-striped table-responsive" OnRowDataBound="Grid_MultipleInspectionTR_RowDataBound" runat="server" AutoGenerateColumns="false">
                         <HeaderStyle BackColor="#B7E2F0" />
@@ -408,17 +452,17 @@
                                     <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("Count") %>'></asp:Label>
                                     <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
                                     <asp:Label ID="LblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
-                                     <asp:Label ID="LblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
-                                     <asp:Label ID="LblOldTestReportId" runat="server" Text='<%#Eval("OldTestReportId") %>'></asp:Label>
+                                    <asp:Label ID="LblTestReportId" runat="server" Text='<%#Eval("TestReportId") %>'></asp:Label>
+                                    <asp:Label ID="LblOldTestReportId" runat="server" Text='<%#Eval("OldTestReportId") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Current TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-    <ItemTemplate>
-        <asp:LinkButton ID="lnkRedirectTR" runat="server" Text="View Test Report & Attachments" OnClick="lnkRedirectNewTR_Click1" CommandName="Select" CommandArgument='<%# Eval("TestReportId") %>' />
-    </ItemTemplate>
-    <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
-    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-</asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkRedirectTR" runat="server" Text="View Test Report & Attachments" OnClick="lnkRedirectNewTR_Click1" CommandName="Select" CommandArgument='<%# Eval("TestReportId") %>' />
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="Previous TestReports & Attachments" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkRedirectTR1" runat="server" Text="View Test Report & Attachments" OnClick="lnkRedirectPreviousTR_Click" CommandName="Select" CommandArgument='<%# Eval("OldTestReportId") %>' />
@@ -440,7 +484,7 @@
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
                 Documents Attached (In CheckList)
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+            <div class="card" style="padding: 10px 10px 0px 10px !important; margin: -11px; padding: 11px; margin-bottom: 20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
                 <div class="row">
                     <div class="col-md-12">
                         <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" OnRowDataBound="grd_Documemnts_RowDataBound" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
@@ -461,13 +505,13 @@
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
-                                  <asp:TemplateField HeaderText="Current Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-      <ItemTemplate>
-          <asp:LinkButton ID="LnkDocumemtPathNew" runat="server" CommandArgument='<%# Bind("CurrentDocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
-      </ItemTemplate>
-      <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
-      <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-  </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Current Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LnkDocumemtPathNew" runat="server" CommandArgument='<%# Bind("CurrentDocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
+                                    </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Previous Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("PreviousDocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
@@ -476,7 +520,7 @@
                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                 </asp:TemplateField>
 
-                               <%-- <asp:TemplateField HeaderText="Current Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <%-- <asp:TemplateField HeaderText="Current Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LnkDocumemtPathNew" runat="server" CommandArgument='<%# Bind("CurrentDocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
                                     </ItemTemplate>
@@ -484,11 +528,11 @@
                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                 </asp:TemplateField>--%>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
-    <ItemTemplate>
-        <asp:Label ID="LblCurrentDocument" runat="server" Text='<%#Eval("CurrentDocumentPath") %>'></asp:Label>
-        <asp:Label ID="LblPreviousDocument" runat="server" Text='<%#Eval("PreviousDocumentPath") %>'></asp:Label>
-    </ItemTemplate>
-</asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:Label ID="LblCurrentDocument" runat="server" Text='<%#Eval("CurrentDocumentPath") %>'></asp:Label>
+                                        <asp:Label ID="LblPreviousDocument" runat="server" Text='<%#Eval("PreviousDocumentPath") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                         </asp:GridView>
@@ -515,7 +559,8 @@
                     <div class="row">
                         <div class="col-md-6" id="Rejection" runat="server" visible="false">
                             <label>
-                                Reason Type<samp style="color: red"> * </samp>:
+                                Reason Type<samp style="color: red"> * </samp>
+                                :
                             </label>
                             <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlReasonType" AutoPostBack="true" runat="server">
                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>

@@ -62,6 +62,11 @@ namespace CEIHaryana.Officers
                     lblInstallation.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
                     txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                     txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
+                    /// Added by Neha on 15-05 frontend also
+                    txtContactNo.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString(); // Added by Neha on 15-05
+                    txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString(); // Added by Neha on 15-05
+                    //
+
                     txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                     txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
@@ -543,7 +548,7 @@ namespace CEIHaryana.Officers
                 if (installationName == "Escalator")
                 {
                     Session["EscalatorTestReportID"] = LblOldTestReportId.Text;
-                     url = "/TestReportModal/EscalatorTestReportModal.aspx";
+                    url = "/TestReportModal/EscalatorTestReportModal.aspx";
                 }
                 string script = $@"<script>window.open('{url}', '_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenLiftTestReportInNewTab", script);
@@ -569,7 +574,7 @@ namespace CEIHaryana.Officers
                 if (installationName == "Lift")
                 {
                     Session["LiftTestReportID"] = LblTestReportId.Text;
-                   url = "/TestReportModal/LiftTestReportModal.aspx";
+                    url = "/TestReportModal/LiftTestReportModal.aspx";
                 }
                 if (installationName == "Escalator")
                 {
@@ -630,7 +635,7 @@ namespace CEIHaryana.Officers
                 }
             }
             catch (Exception ex)
-            {}
+            { }
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
@@ -669,7 +674,9 @@ namespace CEIHaryana.Officers
             {
                 ID = Session["InspectionId"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReport_Lift_EscalatorIfReturned(ID);
+                ds = CEI.GetInspectionHistoryLogs(ID);
+                // Added by Neha on 15-05
+                //ds = CEI.GetTestReport_Lift_EscalatorIfReturned(ID);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {
