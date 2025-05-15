@@ -15,6 +15,12 @@
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
+    <!-- For Font Awesome 5 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+
+<!-- Or Font Awesome 6 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
         .pagination-ys {
@@ -89,6 +95,9 @@
         table#ContentPlaceHolder1_GridView1 {
             margin-top: -6px !important;
         }
+        td.aligncenter {
+    text-align: center;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -170,7 +179,7 @@
 
                <HeaderStyle Width="10%" CssClass="headercolor" />
 
-               <ItemStyle Width="10%" />
+               <ItemStyle Width="10%" CssClass="aligncenter"/>
 
                <ItemTemplate>
 
