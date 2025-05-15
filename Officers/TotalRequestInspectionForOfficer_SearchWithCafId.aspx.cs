@@ -52,8 +52,9 @@ namespace CEIHaryana.Officers
                 LoginId = Convert.ToString(Session["StaffID"]);
                 string id = ddldivision.SelectedValue.ToString();
                 string InstallationType = RadioButtonList1.SelectedValue.ToString();
+                string UserType = RadioButtonList2.SelectedValue.ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.TotalRequestInspectionForStaff_SearchCafWithGlobalFilter(LoginId, id, InstallationType, searchText);
+                ds = CEI.TotalRequestInspectionForStaff_SearchCafWithGlobalFilter(LoginId, id, InstallationType, searchText, UserType);
                 if (ds.Tables.Count > 0)
                 {
                     GridView1.DataSource = ds;
@@ -153,6 +154,12 @@ namespace CEIHaryana.Officers
             {
                 GridBind();
             }
+        }
+
+        protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string InstallationType = RadioButtonList2.SelectedValue.ToString();
+            GridBind();
         }
         //public void divisionWise()
         //{

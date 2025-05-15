@@ -9083,10 +9083,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ShowPendingDivisionDaysDataForOfficer", dated, Division, District);
         }
-        public DataSet TotalRequestInspectionForAdmin_SearchCafWithGlobalFilter(string LoginId, string Division, string InstallationType, string searchText)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin_SearchCafWithGlobalFilter", LoginId, Division, InstallationType, searchText);
-        }
+      
         #region aslam xen transfer
         public DataSet InspectionLiftGridDataList_Admin(string ddlDivisions, string staff, string district)
         {
@@ -9829,12 +9826,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         }
 
         #endregion
-        #region aslam 25-april-2025
-        public DataSet TotalRequestInspectionForStaff_SearchCafWithGlobalFilter(string LoginId, string Division, string InstallationType, string searchText)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForStaff_SearchCafWithGlobalFilter", LoginId, Division, InstallationType, searchText);
-        }
-        #endregion
+     
         #region neeraj 10 april-2025
         public int InsertDataForCESE(string Name, string PanNo, string Address, string Email, string ContactNo, string District, string MaxVoltage, string CSSE_Certificate, string CreatedBy)
         {
@@ -10096,6 +10088,17 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
 
                 return null;
             }
+        }
+        #endregion
+        #region aslam changed on  15-may-2025
+        public DataSet TotalRequestInspectionForStaff_SearchCafWithGlobalFilter(string LoginId, string Division, string InstallationType, string searchText, string userType)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForStaff_SearchCafWithGlobalFilter", LoginId, Division, InstallationType, searchText, userType);
+        }
+
+        public DataSet TotalRequestInspectionForAdmin_SearchCafWithGlobalFilter(string LoginId, string Division, string InstallationType, string searchText, string userType)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin_SearchCafWithGlobalFilter", LoginId, Division, InstallationType, searchText, userType);
         }
         #endregion
     }

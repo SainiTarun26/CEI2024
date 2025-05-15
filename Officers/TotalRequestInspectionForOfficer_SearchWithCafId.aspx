@@ -116,6 +116,16 @@ input#ContentPlaceHolder1_RadioButtonList1_1 {
     margin-left: 10px;
     margin-right: 7px;
 }
+input#ContentPlaceHolder1_RadioButtonList2_1 {
+    margin-left: 10px;
+    margin-right: 7px;
+}
+input#ContentPlaceHolder1_RadioButtonList2_0 {
+    margin-right: 7px;
+}
+body{
+    zoom:90%;
+}
     </style>
 
 </asp:Content>
@@ -132,35 +142,62 @@ input#ContentPlaceHolder1_RadioButtonList1_1 {
 
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                     <div class="row" style="margin-bottom:-30px;">
-     <div class="col-4">
-         <div class="form-group row">
-             <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
-             <div class="col-sm-9" style="margin-left: -35px;">
-<%--                 <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="15px" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)"></asp:TextBox><br />--%>
-                     <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Search Minimum 4 characters Also (Caf Id)" class="form-control" Font-Size="15px" AutoPostBack="false" style="width: 110%;" oninput="triggerTextChanged()" OnTextChanged="txtSearch_TextChanged" ></asp:TextBox> <br />
-                      
-             </div>
-         </div>
-     </div>
-     <div class="col-4" style="text-align:center;">
-        <div style="display: inline-block;margin-left: -55px;">
-                   <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
-    <asp:ListItem Text="Lift/Escalator" Value="1"></asp:ListItem>
-    <asp:ListItem Text="Line/Substration/Generating Set" Value="0"></asp:ListItem>
-</asp:RadioButtonList>
+                                          <div class="row align-items-center" style="margin-bottom: 15px;">
+
+    <!-- Search Box -->
+    <div class="col-md-3">
+        <div class="form-group d-flex align-items-center mb-0">
+            <label for="search" class="mr-2 mb-0" style="white-space: nowrap;">Search:</label>
+            <asp:TextBox ID="txtSearch" runat="server"
+                         PlaceHolder="Search Minimum 4 characters Also (Caf Id)"
+                         class="form-control"
+                         Font-Size="15px"
+                         AutoPostBack="false"
+                         oninput="triggerTextChanged()"
+                         OnTextChanged="txtSearch_TextChanged"
+                         style="width: 100%; min-width: 180px;" />
+        </div>
+    </div>
+
+    <!-- Radio Button List 1 -->
+    <div class="col-md-4 text-center" style="padding-top:15px;">
+        <asp:RadioButtonList ID="RadioButtonList1"
+                             AutoPostBack="true"
+                             runat="server"
+                             RepeatDirection="Horizontal"
+                             OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged"
+                             CssClass="d-inline-block">
+            <asp:ListItem Text="Lift/Escalator" Value="1" />
+            <asp:ListItem Text="Line/Substration/Generating Set" Value="0" />
+        </asp:RadioButtonList>
+    </div>
+
+    <!-- Radio Button List 2 -->
+    <div class="col-md-2" style="padding-top:15px;">
+        <asp:RadioButtonList ID="RadioButtonList2"
+                             AutoPostBack="true"
+                             runat="server"
+                             RepeatDirection="Horizontal"
+                             CssClass="d-inline-block" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged">
+            <asp:ListItem Text="Industry" Value="Industry" Selected="True" />
+            <asp:ListItem Text="Non-Industry" Value="NonIndustry" />
+        </asp:RadioButtonList>
+    </div>
+
+    <!-- Division Dropdown -->
+    <div class="col-md-3">
+        <div class="form-group d-flex align-items-center mb-0">
+            <label for="ddldivision" class="mr-2 mb-0" style="white-space: nowrap;">Division:</label>
+            <asp:DropDownList ID="ddldivision"
+                              runat="server"
+                              AutoPostBack="true"
+                              OnSelectedIndexChanged="ddldivision_SelectedIndexChanged"
+                              class="form-control select2"
+                              style="width: 100%; min-width: 160px; height: 30px;" />
+        </div>
+    </div>
+
 </div>
-     </div>
-     <div class="col-4">
-         <div class="form-group row">
-             <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Division:</label>
-             <div class="col-sm-9">
-                 <asp:DropDownList ID="ddldivision" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddldivision_SelectedIndexChanged" class="form-control  select-form select2" Style="width: 100% !important; height: 25px;">
-                 </asp:DropDownList>
-             </div>
-         </div>
-     </div>
- </div>
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="100" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                         <Columns>

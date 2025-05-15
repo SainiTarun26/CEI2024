@@ -51,8 +51,9 @@ namespace CEIHaryana.Admin
                 LoginId = Convert.ToString(Session["AdminId"]);
                 string id = ddldivision.SelectedValue.ToString();
                 string InstallationType = RadioButtonList1.SelectedValue.ToString();
+                string UserType = RadioButtonList2.SelectedValue.ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.TotalRequestInspectionForAdmin_SearchCafWithGlobalFilter(LoginId, id, InstallationType, searchText);
+                ds = CEI.TotalRequestInspectionForAdmin_SearchCafWithGlobalFilter(LoginId, id, InstallationType, searchText, UserType);
                 if (ds.Tables.Count > 0)
                 {
                     GridView1.DataSource = ds;
@@ -152,6 +153,12 @@ namespace CEIHaryana.Admin
             {
                 GridBind();
             }
+        }
+
+        protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string InstallationType = RadioButtonList2.SelectedValue.ToString();
+            GridBind();
         }
         //public void divisionWise()
         //{
