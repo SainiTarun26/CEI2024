@@ -1082,7 +1082,21 @@ namespace CEIHaryana.Officers
                         LinkButtonReport.Visible = true;
                         ViewState["AllRowsAreLine"] = false;
                     }
+                    //Conditionadded by navneet 15-may-2025
+                    if (linkButtonInvoice.Text.Trim() == "" || linkButtonInvoice.Text.Trim() == null)
+                    {
+                        linkButtonInvoice.Visible = false;
+                        LinkButtonReport.Visible = false;
+                    }
+                    else
+                    {
 
+                        linkButtonInvoice.Visible = true;
+                        LinkButtonReport.Visible = true;
+                        linkButtonInvoice.Text = "View Document";
+                        LinkButtonReport.Text = "View Document";
+                    }
+                    //
 
                 }
                 else

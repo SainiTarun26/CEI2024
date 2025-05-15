@@ -293,8 +293,8 @@ namespace CEIHaryana.SiteOwnerPages
                
                     if (e.CommandName == "Select")
                     {
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://election.safedotesolution.com" + e.CommandArgument.ToString();
+                    // fileName = "https://election.safedotesolution.com" + e.CommandArgument.ToString();
                     //lblerror.Text = fileName;
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                         ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -316,7 +316,9 @@ namespace CEIHaryana.SiteOwnerPages
             try
             {
                 DataSet ds = new DataSet();
-                ds = CEI.GetTestReport_Lift_Escalator(InspectionId);
+                //Changed by gurmeet 15-may-2025
+                //ds = CEI.GetTestReport_Lift_Escalator(InspectionId);
+                ds = CEI.GetInspectionHistoryLogs(InspectionId);
                 string TestRportId = string.Empty;
                 if (ds != null && ds.Tables.Count > 0)
                 {
@@ -338,7 +340,8 @@ namespace CEIHaryana.SiteOwnerPages
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+                //Change status to action taken by gurmeet 15-may-2025
+                string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
                 if (status == "RETURN")
                 {
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
@@ -441,8 +444,8 @@ namespace CEIHaryana.SiteOwnerPages
         //    else if (e.CommandName == "View")
         //    {
         //        string fileName = "";
-        //        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-        //        //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+        //        fileName = "https://election.safedotesolution.com" + e.CommandArgument.ToString();
+        //        //fileName = "https://election.safedotesolution.com" + e.CommandArgument.ToString();
         //        //lblerror.Text = fileName;
         //        string script = $@"<script>window.open('{fileName}','_blank');</script>";
         //        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -450,8 +453,8 @@ namespace CEIHaryana.SiteOwnerPages
         //    else if (e.CommandName == "ViewInvoice")
         //    {
         //        string fileName = "";
-        //        //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-        //        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+        //        //fileName = "https://election.safedotesolution.com" + e.CommandArgument.ToString();
+        //        fileName = "https://election.safedotesolution.com" + e.CommandArgument.ToString();
         //        string script = $@"<script>window.open('{fileName}','_blank');</script>";
         //        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
         //    }
