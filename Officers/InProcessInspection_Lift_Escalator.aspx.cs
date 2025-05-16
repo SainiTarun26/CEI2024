@@ -602,7 +602,7 @@ namespace CEIHaryana.Officers
                             }
                             //string InstallationType = Session["InstallationType"].ToString();
                             // string Division = Session["Division"].ToString();
-                            String SubmittedDate = Session["lblSubmittedDate"].ToString();
+                            String SubmittedDated = "";//Session["lblSubmittedDate"].ToString();
 
                             if (ddlReview.SelectedValue != null && ddlReview.SelectedValue != "" && ddlReview.SelectedValue != "0")
                             {
@@ -612,14 +612,25 @@ namespace CEIHaryana.Officers
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid inspection date.');", true);
                                     return;
                                 }
-
+                      
+                                foreach (GridViewRow row in GridView1.Rows)
+                                {
+                                    if (row.RowType == DataControlRowType.DataRow)
+                                    {
+                                        string status = row.Cells[2].Text.Trim();
+                                        Label lblSubmittedDate = (Label)row.FindControl("lblSubmittedDate");
+                                        if (lblSubmittedDate != null && status == "Submit")
+                                        {
+                                          SubmittedDated = lblSubmittedDate.Text;
+                                        }
+                                    }
+                                }
                                 DateTime submittedDate;
-                                if (!DateTime.TryParse(Session["lblSubmittedDate"].ToString(), out submittedDate))
+                                if (!DateTime.TryParse(SubmittedDated, out submittedDate))
                                 {
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid submitted date.');", true);
                                     return;
                                 }
-
                                 if (inspectionDate.Date < submittedDate.Date)
                                 {
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection/Approval date must be greater equal to application requested date.');", true);
@@ -641,8 +652,8 @@ namespace CEIHaryana.Officers
                                     //string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
                                     //if (reqType == "Industrysdfsdf")
                                     //{
-                                    //    string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
-                                    //    // string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in/api/project-service-logs-external_UHBVN");
+                                    //    string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
+                                    //    // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
                                     //    if (serverStatus != "Server is reachable.")
                                     //    {
                                     //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
@@ -928,28 +939,30 @@ namespace CEIHaryana.Officers
             }
             catch { }
         }
-        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
-                Label lblSubmittedDate = (Label)e.Row.FindControl("lblSubmittedDate");
-                Session["lblSubmittedDate"] = lblSubmittedDate.Text;
-                if (status == "RETURN")
-                {
-                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
-                }
+        //protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    if (e.Row.RowType == DataControlRowType.DataRow)
+        //    {
+        //        //string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+        //        string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
 
-            }
+        //        Label lblSubmittedDate = (Label)e.Row.FindControl("lblSubmittedDate");
+        //        Session["lblSubmittedDate"] = lblSubmittedDate.Text;
+        //        if (status == "RETURN")
+        //        {
+        //            e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+        //        }
+
+        //    }
 
 
-            if (e.Row.RowType == DataControlRowType.Header)
-            {
+        //    if (e.Row.RowType == DataControlRowType.Header)
+        //    {
 
-                //e.Row.Cells[2].BackColor = System.Drawing.Color.Blue;
-                e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
-            }
-        }
+        //        //e.Row.Cells[2].BackColor = System.Drawing.Color.Blue;
+        //        e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
+        //    }
+        //}
         protected void lnkRedirect1_Click(object sender, EventArgs e)
         {
             try

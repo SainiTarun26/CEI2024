@@ -429,12 +429,18 @@
 
                                     </div>
                                     <div class="row" id="row2">
-                                       <div class="col-md-4" runat="server">
-     <label for="Pin">Type of Application</label>
-   <asp:TextBox class="form-control" ID="txtApplicantType" TabIndex="1" ReadOnly="true" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                           
-  <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Text="Please Select District" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                         </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                Inspection Type
+                         <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlInspectionType" TabIndex="2" runat="server">
+                                                <asp:ListItem Text="New Inspection" Value="New"></asp:ListItem>
+                                                <asp:ListItem Text="Existing Inspection" Value="Existing"></asp:ListItem>
+                                            </asp:DropDownList>
+                                              <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Inspection Type" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlInspectionType" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                       
+                                        </div>
                                         <div class="col-md-8">
                                             <label for="Address">
                                                 Address of Site(Preferred As Per Demand Notice of Utility or Electricity Bill)
@@ -493,7 +499,7 @@
                                                             <tr>
                                                                 <td>
                                                                     <div class="col-md-12">
-                                                                        <asp:TextBox class="form-control" ID="txtinstallationType1" ReadOnly="false" Text="" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationType1" TabIndex="8" ReadOnly="false" Text="" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtinstallationType1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Type Of Installation</asp:RequiredFieldValidator>
                                                                       
                                                                         </div>
@@ -501,7 +507,7 @@
                                                                 <td>
                                                                     <div class="col-md-12">
 
-                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo1" TabIndex="13" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="Max no. of Installations is 20." MaxLength="2" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtinstallationNo1" TabIndex="9" onkeydown="return preventEnterSubmit(event)" onKeyPress="return restrictInput(event)" placeholder="Max no. of Installations is 20." MaxLength="2" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtinstallationNo1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Number Of Installation</asp:RequiredFieldValidator>
                                                                         <%--  <p style="color:red; margin-bottom: 0px; margin-top: -12px; font-weight: 600;
                                                                                 font-size: 12px;">Max no. of Installations is only 25.</p>--%>

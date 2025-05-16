@@ -61,9 +61,8 @@ namespace CEIHaryana.SiteOwnerPages
             DataSet ds = new DataSet();
             ds = CEI.GetDetailsByPanNumberIdLift(SiteOwnerId);
             if (ds.Tables[0].Rows.Count > 0)
-            {            
-                
-                txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+            {
+
                 txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
                 string district = ds.Tables[0].Rows[0]["District"].ToString();
                 ddlDistrict.SelectedIndex = ddlDistrict.Items.IndexOf(ddlDistrict.Items.FindByText(district));
@@ -71,7 +70,7 @@ namespace CEIHaryana.SiteOwnerPages
             }
             else
             {
-                
+
             }
 
         }
@@ -87,7 +86,7 @@ namespace CEIHaryana.SiteOwnerPages
                     transaction = connection.BeginTransaction();
                     SiteOwnerId = Session["SiteOwnerId"].ToString();
                     //will return single value only if wants to return more than You have to change executescalar to executenonquery
-                    string IntimationI = CEI.InsetCinemaData(SiteOwnerId, ddlDistrict.SelectedItem?.ToString(), txtAddress.Text, txtPin.Text, txtinstallationType1.Text, txtinstallationNo1.Text);
+                    string IntimationI = CEI.InsetCinemaData(SiteOwnerId, ddlInspectionType.SelectedItem?.ToString(), ddlDistrict.SelectedItem?.ToString(), txtAddress.Text, txtPin.Text, txtinstallationType1.Text, txtinstallationNo1.Text);
                     if (IntimationI != null)
                     {
                         string installationType = txtinstallationType1.Text;
@@ -102,12 +101,20 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     }
                     transaction.Commit();
+
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Data Saved Successfully');", true);
                 }
                 catch
                 {
                     transaction?.Rollback();
                 }
             }
+        }
+        protected void Reset()
+        {
+            GetDetails();
+            txtinstallationType1.Text = "";
+            txtinstallationNo1.Text = "";
         }
     }
 }

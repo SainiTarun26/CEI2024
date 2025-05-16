@@ -10075,12 +10075,12 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         #endregion
 
         #region navneet cinema 13-May-2025
-        public string InsetCinemaData(string Pannumber,string District, string Address, string Pincode, string TypeOfInstallation1, string NumberOfInstallation1)
+        public string InsetCinemaData(string Pannumber,string InspectionType, string District, string Address, string Pincode, string TypeOfInstallation1, string NumberOfInstallation1)
         {
             try
             {
 
-                object result =  DBTask.ExecuteScalar(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspertCinemaIntimation", Pannumber, District, Address, Pincode, TypeOfInstallation1, NumberOfInstallation1);
+                object result =  DBTask.ExecuteScalar(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspertCinemaIntimation", Pannumber, InspectionType, District, Address, Pincode, TypeOfInstallation1, NumberOfInstallation1);
                 return result != null ? result.ToString() : null;
             }
             catch (Exception ex)
