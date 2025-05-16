@@ -469,7 +469,7 @@
                 <div class="card row" style="padding: 10px 10px 0px 10px !important; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 10px; margin-left: 0px !important; padding-left: 0px !important; padding-right: 0px !important;">
 
 
-                    <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false">
+                    <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server"  OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false">
                         <HeaderStyle BackColor="#B7E2F0" />
                         <%-- <Columns>
                             <asp:TemplateField HeaderText="SNo">
@@ -553,6 +553,11 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
+                             <asp:TemplateField HeaderText="Id" Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblSubmittedDate" runat="server" Text='<%#Eval("ActionTaken") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                         </Columns>
                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                     </asp:GridView>
