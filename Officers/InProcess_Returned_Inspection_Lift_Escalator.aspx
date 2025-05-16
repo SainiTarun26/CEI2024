@@ -553,9 +553,14 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
+                             <asp:TemplateField HeaderText="Status" Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("ActionTaken") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                              <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblSubmittedDate" runat="server" Text='<%#Eval("ActionTaken") %>'></asp:Label>
+                                    <asp:Label ID="lblSubmittedDate" runat="server" Text='<%#Eval("ActionDate") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

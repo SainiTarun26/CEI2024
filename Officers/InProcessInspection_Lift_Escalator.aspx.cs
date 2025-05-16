@@ -521,9 +521,9 @@ namespace CEIHaryana.Officers
                 if (e.CommandName == "Select")
                 {
                     //ID = Session["InspectionId"].ToString();
-                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -617,9 +617,10 @@ namespace CEIHaryana.Officers
                                 {
                                     if (row.RowType == DataControlRowType.DataRow)
                                     {
-                                        string status = row.Cells[2].Text.Trim();
+                                        //string status = row.Cells[2].Text.Trim();
+                                        Label lblstatus = (Label)row.FindControl("lblStatus");
                                         Label lblSubmittedDate = (Label)row.FindControl("lblSubmittedDate");
-                                        if (lblSubmittedDate != null && status == "Submit")
+                                        if (lblSubmittedDate != null && lblstatus.Text == "Submit")
                                         {
                                           SubmittedDated = lblSubmittedDate.Text;
                                         }
@@ -765,7 +766,7 @@ namespace CEIHaryana.Officers
                                     //        string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
 
                                     //        logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                    //            "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                    //            "https://investharyana.in/api/project-service-logs-external_UHBVN",
                                     //            new Industry_Inspection_StageWise_JsonDataFormat_Model
                                     //            {
                                     //                actionTaken = ApiPostformatresult.ActionTaken,
@@ -1276,8 +1277,8 @@ namespace CEIHaryana.Officers
             //else if (e.CommandName == "View")
             //{
             //    string fileName = "";
-            //    // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-            //    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+            //    // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+            //    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
             //    //lblerror.Text = fileName;
             //    string script = $@"<script>window.open('{fileName}','_blank');</script>";
             //    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -1285,8 +1286,8 @@ namespace CEIHaryana.Officers
             //else if (e.CommandName == "ViewInvoice")
             //{
             //    string fileName = "";
-            //    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-            //    //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+            //    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+            //    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
             //    string script = $@"<script>window.open('{fileName}','_blank');</script>";
             //    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             //}
