@@ -569,7 +569,7 @@ namespace CEIHaryana.Officers
                                 return;
                             }
 
-                            if (inspectionDate < submittedDate)
+                            if (inspectionDate.Date < submittedDate.Date)
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection/Approval date must be greater equal to application requested date.');", true);
                                 return;

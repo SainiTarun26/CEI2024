@@ -414,7 +414,7 @@ namespace CEIHaryana.Admin
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be less than Today date.');", true);
                                 return;
                             }
-                            if (inspectionDate < submittedDate)
+                            if (inspectionDate.Date < submittedDate.Date)
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be greater than submitted date.');", true);
                                 return;

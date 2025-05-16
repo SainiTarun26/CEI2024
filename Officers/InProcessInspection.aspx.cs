@@ -506,7 +506,7 @@ namespace CEIHaryana.Officers
                                 return;
                             }
 
-                            if (inspectionDate < submittedDate)
+                            if (inspectionDate.Date < submittedDate.Date)
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be greater equal to application requested date.');", true);
                                 return;
@@ -1073,6 +1073,7 @@ namespace CEIHaryana.Officers
                         lnkPreviosManufacturingReport.Visible = false;
                         linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = false;
+                        linkButtonInvoice.Text = "";
                     }
                     else
                     {

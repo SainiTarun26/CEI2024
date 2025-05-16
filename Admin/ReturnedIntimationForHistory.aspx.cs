@@ -1169,8 +1169,7 @@ namespace CEIHaryana.Admin
                         lnkPreviousInstallaionInvoice.Text = "View Document";
                     }
                     //if (LblInstallationName.Text.Trim() == "Line")
-                    //{ changed condition only by navneet 30-april-2025
-                    if (LblInstallationName.Text.Trim() == "Line" || lnkPreviousInstallaionInvoice.Text.Trim() == "")
+                    if (LblInstallationName.Text.Trim() == "Line")
                     {
                         Grid_MultipleInspectionTR.Columns[9].Visible = false;
                         Grid_MultipleInspectionTR.Columns[10].Visible = false;
@@ -1178,6 +1177,7 @@ namespace CEIHaryana.Admin
                         lnkPreviosManufacturingReport.Visible = false;
                         linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = false;
+                        linkButtonInvoice.Text = "";
                     }
                     else
                     {
@@ -1189,6 +1189,21 @@ namespace CEIHaryana.Admin
                         LinkButtonReport.Visible = true;
                         ViewState["AllRowsAreLine"] = false;
                     }
+                    //Conditionadded by navneet 15-may-2025
+                    if (linkButtonInvoice.Text.Trim() == "" || linkButtonInvoice.Text.Trim() == null)
+                    {
+                        linkButtonInvoice.Visible = false;
+                        LinkButtonReport.Visible = false;
+                    }
+                    else
+                    {
+
+                        linkButtonInvoice.Visible = true;
+                        LinkButtonReport.Visible = true;
+                        linkButtonInvoice.Text = "View Document";
+                        LinkButtonReport.Text = "View Document";
+                    }
+                    //
                 }
                 else if (e.Row.RowType == DataControlRowType.Footer)
                 {
