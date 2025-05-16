@@ -21,14 +21,14 @@
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
     <style>
         th {
-            width: 1%;
+           
             background: #639fc2;
         }
 
             th.headercolor {
                 background: #9292cc;
                 color: white;
-                width: 1%;
+               width:30%;
             }
 
         .submit {
@@ -138,6 +138,12 @@
         th {
     background: #9292cc;
 }
+        th.thwidth {
+    width: 1%;
+}
+        th.thwidth1 {
+    width: 35%;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -212,6 +218,7 @@
                     <asp:GridView ID="GridView1" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand" class="table-responsive table table-hover table-striped" runat="server" Width="100%" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                         <Columns>
                             <asp:TemplateField ItemStyle-HorizontalAlign="left" ItemStyle-VerticalAlign="Middle">
+                                <HeaderStyle cssclass="thwidth"/>
                                 <HeaderTemplate>
                                     <%--<asp:CheckBox ID="chkSelectAll" runat="server" CssClass="header-checkbox" />--%>
                                 </HeaderTemplate>
@@ -227,8 +234,8 @@
                             </asp:TemplateField>
 
                             <asp:TemplateField>
-                                <HeaderStyle Width="35%" CssClass="headercolor" />
-                                <ItemStyle Width="35%" />
+                                <HeaderStyle CssClass="headercolor" />
+                                <ItemStyle />
                                 <HeaderTemplate>
                                     InspectionId                                    
                                 </HeaderTemplate>
@@ -237,6 +244,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="District">
+                                 <HeaderStyle cssclass="thwidth1"/>
                                 <ItemTemplate>
                                     <asp:Label ID="lblDistrict" runat="server" Text='<%#Eval("District") %>'></asp:Label>
                                 </ItemTemplate>
@@ -370,8 +378,8 @@
                 return false;
             }
 
-            var fileSize = customFile.files[0].size; 
-            if (fileSize > 2 * 1024 * 1024) { 
+            var fileSize = customFile.files[0].size;
+            if (fileSize > 2 * 1024 * 1024) {
                 alert("File size should not exceed 2MB.");
                 return false;
             }
