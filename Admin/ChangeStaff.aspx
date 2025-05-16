@@ -56,6 +56,7 @@
         th.headercolor {
             background: #9292cc;
             color: white;
+            width:1% !important;
         }
 
         .submit {
@@ -229,8 +230,8 @@
                                 <HeaderStyle BackColor="#B7E2F0" />
                                 <Columns>
                                     <asp:TemplateField Visible="false">
-                                        <HeaderStyle Width="5%" CssClass="headercolor" />
-                                        <ItemStyle Width="5%" />
+                                        <HeaderStyle CssClass="headercolor" />
+                                        <ItemStyle />
                                         <HeaderTemplate>
                                             <asp:CheckBox ID="chkSelectAll" runat="server" Style="text-align: left !important;" />
                                         </HeaderTemplate>
@@ -239,31 +240,31 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="SNo">
-                                        <HeaderStyle Width="5%" CssClass="headercolor" />
-                                        <ItemStyle Width="5%" />
+                                        <HeaderStyle CssClass="headercolor" />
+                                        <ItemStyle />
                                         <ItemTemplate>
                                             <%#Container.DataItemIndex+1 %>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:BoundField DataField="HeadOffice" HeaderText="HeadOffice">
-                                        <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                        <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="Left" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="AreaCovered" HeaderText="District">
-                                        <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                        <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="Left" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="Staff" HeaderText="Staff">
-                                        <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                        <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="Left" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="StaffUserID" HeaderText="StaffUserID">
-                                        <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                        <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="Left" />
                                     </asp:BoundField>
                                     <asp:TemplateField Visible="false">
-                                        <HeaderStyle Width="10%" CssClass="headercolor" />
-                                        <ItemStyle Width="10%" CssClass="text-wrap" />
+                                        <HeaderStyle CssClass="headercolor" />
+                                        <ItemStyle CssClass="text-wrap" />
                                         <ItemTemplate>
                                             <asp:Label ID="LblDivision" runat="server" Text='<%# Eval("HeadOffice") %>' CssClass="text-wrap"></asp:Label>
                                             <asp:Label ID="LblDistrict" runat="server" Text='<%# Eval("AreaCovered") %>' CssClass="text-wrap"></asp:Label>

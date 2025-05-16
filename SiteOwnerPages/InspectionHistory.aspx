@@ -88,6 +88,9 @@
         .ReturnedRowColor {
             background-color: #f9c7c7 !important;
         }
+        th.headercolor {
+    width: 1% !important;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -155,24 +158,24 @@
             </ItemTemplate>
         </asp:TemplateField>
         <%--  <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
-                <HeaderStyle HorizontalAlign="Left" Width="15%" />
-                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                <HeaderStyle HorizontalAlign="Left"  />
+                <ItemStyle HorizontalAlign="Left"  />
             </asp:BoundField>--%>
         <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" />
+            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="center" />
         </asp:BoundField>
         <asp:BoundField DataField="TypeOfInspection" HeaderText="Inspection Type">
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" />
+            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="center" />
         </asp:BoundField>
         <asp:BoundField DataField="ApplicantType" HeaderText="Applicant Type" Visible="false">
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" />
+            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="center" />
         </asp:BoundField>
         <%--<asp:TemplateField HeaderText="Voltage ">
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" />
+            <HeaderStyle HorizontalAlign="center"  CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="center"  />
             <ItemTemplate>
                 <div>
                     <%# Eval("VoltageLevel") %>
@@ -180,26 +183,28 @@
             </ItemTemplate>
         </asp:TemplateField>--%>
         <asp:BoundField DataField="ApplicationStatus" HeaderText="Status" >
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" Font-Bold="true" />
+            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="center" Font-Bold="true" />
         </asp:BoundField>
         <asp:BoundField DataField="CreatedDate1" HeaderText="Created Date">
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" />
+            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="center"  />
         </asp:BoundField>
         <asp:TemplateField HeaderText="RTS Due Date">
+             <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
             <ItemTemplate>
                 <asp:Label ID="lblFinalExpectedApprovalDate" runat="server" Text='<%#Eval("FinalExpectedApprovalDate") %>'></asp:Label>
             </ItemTemplate>
         </asp:TemplateField>
       <%--  <asp:BoundField DataField="FinalExpectedApprovalDate" HeaderText="Expected Approval Date" Visible="false">
-            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-            <ItemStyle HorizontalAlign="center" Width="15%" />
+            <HeaderStyle HorizontalAlign="center"  CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="center"  />
         </asp:BoundField>--%>
         <asp:TemplateField>
             <HeaderTemplate>
                 <asp:Label ID="lblHeader" runat="server" Text="Form" CssClass="headercolor" />
             </HeaderTemplate>
+             <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
             <ItemStyle Width="10%" />
             <ItemTemplate>
                 <div style="text-align: center;">
@@ -213,6 +218,7 @@
             <HeaderTemplate>
                 <asp:Label ID="lblHeader" runat="server" Text="Certificate" CssClass="headercolor" />
             </HeaderTemplate>
+             <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
             <ItemStyle Width="10%" />
             <ItemTemplate>
                 <div style="text-align: center;">

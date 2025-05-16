@@ -37,6 +37,7 @@
 
         th.headercolor {
             color: white !important;
+            width:1% !important;
         }
 
         .multiselect {
@@ -291,6 +292,9 @@
         .card-title {
             margin-left: 1px !important;
         }
+        th.headercolor.tdwidth {
+    width: 6% !important;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -401,31 +405,31 @@
                             <HeaderStyle BackColor="#B7E2F0" />
                             <Columns>
                                 <asp:TemplateField HeaderText="SNo">
-                                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                                    <ItemStyle Width="5%" />
+                                    <HeaderStyle CssClass="headercolor" />
+                                    <ItemStyle />
                                     <ItemTemplate>
                                         <%#Container.DataItemIndex+1 %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="ActionDate" HeaderText="ActionDate">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="Remarks" HeaderText="Remarks">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor tdwidth" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
                             </Columns>
                             <%-- <Columns>

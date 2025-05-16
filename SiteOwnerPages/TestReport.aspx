@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="TestReport.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.TestReport" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -92,6 +93,10 @@
         .ReturnedRowColor {
             background-color: #f9c7c7 !important;
         }
+
+        th.headercolor {
+            width: 1% !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -122,8 +127,8 @@
                         </div>
                     </div>
                     <table class="table table-responsive">
-                        <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="25" 
-                         OnRowCommand="GridView1_RowCommand"   AutoGenerateColumns="false"  BorderWidth="1px" BorderColor="#dbddff">
+                        <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" AllowPaging="true" PageSize="25"
+                            OnRowCommand="GridView1_RowCommand" AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
 
@@ -158,7 +163,7 @@
                                         <asp:Label ID="lblIHID" runat="server" Text='<%#Eval("IHID") %>'></asp:Label>
                                         <%-- <asp:Label ID="Label1" runat="server" Text='<%#Eval("IHID") %>'></asp:Label>--%>
                                         <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status") %>'></asp:Label>
-                                      
+
 
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -173,26 +178,26 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="Typs" HeaderText="Installations Type">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="NoOfInstallations" HeaderText="Installations">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="history" HeaderText="Test Report Status">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="Status" HeaderText="Approval Status">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="InspectionType" HeaderText="Inspection Type">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
-                              
+
                             </Columns>
                             <FooterStyle BackColor="White" ForeColor="#000066" />
                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
