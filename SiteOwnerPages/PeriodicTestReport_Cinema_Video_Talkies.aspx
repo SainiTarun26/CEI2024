@@ -351,25 +351,25 @@
                                     <label for="Name">
                                         Work Intimation Id.<samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtWorkintimation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%;"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtWorkintimation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="width: 100%;"></asp:TextBox>
                                 </div>
                                 <div class="col-md-3" id="Div10" runat="server">
                                     <label for="Name">
                                         Type of Installation<samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%;"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="width: 100%;"></asp:TextBox>
                                 </div>
                                 <div class="col-md-3" id="Div2" runat="server">
                                     <label for="Name">
                                         Name of Cinema/Video Talkies<samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtNameOfCinema" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%;"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtNameOfCinema" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="width: 100%;"></asp:TextBox>
                                 </div>
                                 <div class="col-md-3" id="Div12" runat="server">
                                     <label for="Name">
                                         No of Installations<samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtNOOfInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%;"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtNOOfInstallation" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="width: 100%;"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -386,28 +386,22 @@
                                             Name of Screen
                                             <samp style="color: red">* </samp>
                                         </label>
-                                        <asp:TextBox class="form-control" ID="TxtAgentName" onpaste="preventPaste(event)" autocomplete="off" MaxLength="50" onKeyPress="return alphabetKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TxtAgentName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Local Agent Name</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control" ID="txtScreenName" onpaste="preventPaste(event)" autocomplete="off" MaxLength="50" onKeyPress="return alphabetKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtScreenName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Details</asp:RequiredFieldValidator>
                                     </div>
                                     <div class="col-md-4" runat="server" id="Contact">
                                         <label for="Name">
                                             Serial No.<samp style="color: red">* </samp>
                                         </label>
-                                        <asp:TextBox class="form-control" ID="txtAgentPhone" onpaste="preventPaste(event)" autocomplete="off" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="10" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2"
-                                            runat="server" ErrorMessage="Enter valid Phone number" ControlToValidate="txtAgentPhone" ForeColor="Red" SetFocusOnError="true" ValidationGroup="Submit"
-                                            ValidationExpression="^\d{10}$"></asp:RegularExpressionValidator>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtAgentPhone" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Local Agent Contact</asp:RequiredFieldValidator>
+                                        <asp:TextBox class="form-control" ID="txtSerialNo" onpaste="preventPaste(event)" autocomplete="off" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="10" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtSerialNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Details</asp:RequiredFieldValidator>
                                     </div>
                                     <div class="col-md-4" runat="server" id="Div1">
                                         <label for="Name">
                                             Size of Screen<samp style="color: red">* </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtScreenSize" onpaste="preventPaste(event)" autocomplete="off" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="10" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1"
-                                            runat="server" ErrorMessage="Enter valid Phone number" ControlToValidate="txtAgentPhone" ForeColor="Red" SetFocusOnError="true" ValidationGroup="Submit"
-                                            ValidationExpression="^\d{10}$"></asp:RegularExpressionValidator>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtAgentPhone" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Local Agent Contact</asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtScreenSize" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Details</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
                                 <div class="row" style="margin-top: 10px;">
@@ -416,7 +410,7 @@
                                             Last Inspection Date<samp style="color: red">* </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtLastInspdate" onpaste="preventPaste(event)" autocomplete="off" type="date" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TxtAgentName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Local Agent Name</asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtLastInspdate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Details</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
                             </div>
@@ -435,13 +429,15 @@ Site tests done are found to be in order and it is electrically safe to operate 
                     <div class="col-md-4">
                     </div>
                     <div class="col-md-4" style="text-align: center;">
-                        <asp:Button ID="BtnBack" runat="server" Text="Back" class="btn btn-primary mr-2" />
+                        <asp:Button ID="BtnBack" runat="server" Text="Back" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
                         <asp:Button ID="btnSubmit" Text="Submit" runat="server" OnClick="btnSubmit_Click" class="btn btn-primary mr-2" ValidationGroup="Submit" />
                     </div>
                     <div class="col-md-4">
                         <asp:HiddenField ID="hdn" Value="0" runat="server" />
                     </div>
                 </div>
+                <asp:HiddenField ID="HiddenField1" runat="server" />
+                <asp:HiddenField ID="HFrowID" runat="server" />
             </div>
         </div>
     </div>
@@ -492,20 +488,16 @@ Site tests done are found to be in order and it is electrically safe to operate 
         }
     </script>
     <script type="text/javascript">
-        function alertWithRedirect() {
-            if (confirm('Test report has been submitted and is under review by the Contractor for final submission')) {
-                window.location.href = "/SiteOwnerPages/IntimationData.aspx";
-            } else {
-            }
+        function alertWithRedirectToinstallationPage() {
+            alert('Test Report Created Successfully');
+            window.location.href = "/SiteOwnerPages/CinemaInstallationComponentDetails.aspx";
         }
     </script>
     <script type="text/javascript">
-        function alertWithRedirectdata() {
-            /*if (confirm('Test Report Submitted Successfully')) {*/
-            alert('Test Report Submitted Successfully');
-            window.location.href = "/SiteOwnerPages/LiftIntimations.aspx";
-            //} else {
-            //}
+        function alertWithRedirectNextProcess() {
+            alert('Test Report Created Successfully');
+            window.location.href = "/SiteOwnerPages/CinemaIntimationDetails.aspx";
+
         }
     </script>
     <script type="text/javascript">
@@ -526,27 +518,6 @@ Site tests done are found to be in order and it is electrically safe to operate 
         function preventPaste(event) {
             event.preventDefault(); // Block the paste action
             alert("Pasting is not allowed in this field."); // Notify the user
-        }
-    </script>
-    <script type="text/javascript">
-        function isvalidphoneno() {
-            var Phone1 = document.getElementById("<%=txtAgentPhone.ClientID %>");
-            phoneNo = Phone1.value;
-            var lblErrorContect = document.getElementById("lblErrorContect");
-            lblErrorContect.innerHTML = "";
-            var expr = /^[6-9]\d{9}$/;
-            if (phoneNo == "") {
-                lblErrorContect.innerHTML = "Please Enter Contact Number" + "\n";
-                return false;
-            }
-            else if (expr.test(phoneNo)) {
-                lblErrorContect.innerHTML = "";
-                return true;
-            }
-            else {
-                lblErrorContect.innerHTML = "Invalid Contact Number" + "\n";
-                return false;
-            }
         }
     </script>
 </asp:Content>

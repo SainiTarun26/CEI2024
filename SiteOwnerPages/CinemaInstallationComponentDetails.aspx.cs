@@ -15,55 +15,73 @@ namespace CEIHaryana.SiteOwnerPages
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-            getWorkIntimationData();
+            try
+            {
+                if (!Page.IsPostBack)
+                {
+                    if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
+                    {
+                        if (Convert.ToString(Session["IntimationId"]) != null && Convert.ToString(Session["IntimationId"]) != "")
+                        {
+                            String IntimationId = Convert.ToString(Session["IntimationId"]);
+                            getWorkIntimationData(IntimationId);
+                        }
+                        else
+                        {
+                            Response.Redirect("CinemaIntimationDetails.aspx", false);
+                        }
+                    }
+                    else
+                    {
+                        Response.Redirect("LogOut.aspx", false);
+                    }
+                }
+            }
+            catch
+            {
+                Session["SiteOwnerId"] = "";
+                Response.Redirect("LogOut.aspx", false);
+            }
         }
 
-        private void getWorkIntimationData()
+        private void getWorkIntimationData(string IntimationId)
         {
-            string Id = Session["id"].ToString();
-
-            DataTable ds = new DataTable();
-            ds = CEI.GetCinemaInstallationDetails(Id);
-            if (ds.Rows.Count > 0)
+            DataTable dt = new DataTable();
+            dt = CEI.GetCinemaInstallationDetails(IntimationId);
+            if (dt != null && dt.Rows.Count > 0)
             {
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
+                LblGridView1.Visible = false;
+                GridView1.DataSource = dt;
             }
             else
             {
+                LblGridView1.Visible = true;
+                LblGridView1.Text = "There is no pending Installations for Test Report";
                 GridView1.DataSource = null;
-                GridView1.DataBind();
-                string script = "alert(\"All test reports of given installation is Generated.Please initiate with different intimation.\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
-            ds.Dispose();
+
+            GridView1.DataBind();
+            dt.Dispose();
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
             {
-                if (Session["SiteOwnerId"] != null || Request.Cookies["SiteOwnerId"] != null)
+                if (e.CommandName == "Select")
                 {
-                    if (e.CommandName == "Select")
-                    {
-                        Control ctrl = e.CommandSource as Control;
-                        GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                        Label lblID = (Label)row.FindControl("lblID");
-                        Session["id"] = lblID.Text;
+                    Control ctrl = e.CommandSource as Control;
+                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                    Label lblID = (Label)row.FindControl("lblID");
+                    Session["id"] = lblID.Text;
 
-                        Response.Redirect("/SiteOwnerPages/PeriodicTestReport_Cinema_Video_Talkies.aspx", false);
-                    }
-                    else
-                    {
-                    }
-                }
-                else
-                {
+                    Response.Redirect("/SiteOwnerPages/PeriodicTestReport_Cinema_Video_Talkies.aspx", false);
                 }
             }
             catch (Exception)
-            { }
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('An Error occured.');", true);
+            }
         }
     }
 }

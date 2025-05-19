@@ -118,76 +118,81 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-responsive">
-                        <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%"
-                            AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand">
-                            <PagerStyle CssClass="pagination-ys" />
-                            <Columns>
-                                <asp:TemplateField HeaderText="SNo">
-                                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                                    <ItemStyle Width="5%" />
-                                    <ItemTemplate>
-                                        <%#Container.DataItemIndex+1 %>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Id" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblIntimations" runat="server" Text='<%#Eval("Intimations") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Id" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblID" runat="server" Text='<%#Eval("Ids") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Id" Visible="False">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblTyps" runat="server" Text='<%#Eval("Typs") %>'></asp:Label>
-                                        <asp:Label ID="lblhistory" runat="server" Text='<%#Eval("history") %>'></asp:Label>
-                                        <asp:Label ID="lblNoOfInstallations" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
-                                        <asp:Label ID="lblTotalInstallation" runat="server" Text='<%#Eval("TotalNumberOfInstallation") %>'></asp:Label>
-                                        <asp:Label ID="lblIHID" runat="server" Text='<%#Eval("IHID") %>'></asp:Label>
-                                        <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status") %>'></asp:Label>
-                                        <asp:Label ID="lblApplicant" runat="server" Text='<%#Eval("ApplicantType") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Application">
-                                    <HeaderStyle Width="25%" CssClass="headercolor" />
-                                    <ItemStyle Width="25%" />
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblApllication" runat="server" Visible="false" Text='<%#Eval("Apllication") %>'></asp:Label>
-                                        <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("Apllication") %> '
-                                            CommandName="Select"><%#Eval("Apllication") %></asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:BoundField DataField="Typs" HeaderText="Installations Type">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="NoOfInstallations" HeaderText="Installations">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="history" HeaderText="Test Report Status">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="Status" HeaderText="Approval Status">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                </asp:BoundField>
-                            </Columns>
-                            <FooterStyle BackColor="White" ForeColor="#000066" />
-                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                            <RowStyle ForeColor="#000066" />
-                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                            <SortedDescendingHeaderStyle BackColor="#00547E" />
-                        </asp:GridView>
-                    </table>
+                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;">
+                        <div class="row" style="margin-bottom: -30px;">
+                            <div class="col-md-12">
+                                <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%"
+                                    AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand">
+                                    <PagerStyle CssClass="pagination-ys" />
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="SNo">
+                                            <HeaderStyle Width="5%" CssClass="headercolor" />
+                                            <ItemStyle Width="5%" />
+                                            <ItemTemplate>
+                                                <%#Container.DataItemIndex+1 %>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Id" Visible="False">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblIntimations" runat="server" Text='<%#Eval("Intimations") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Id" Visible="False">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblID" runat="server" Text='<%#Eval("Ids") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Id" Visible="False">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblTyps" runat="server" Text='<%#Eval("Typs") %>'></asp:Label>
+                                                <asp:Label ID="lblhistory" runat="server" Text='<%#Eval("history") %>'></asp:Label>
+                                                <asp:Label ID="lblNoOfInstallations" runat="server" Text='<%#Eval("NoOfInstallations") %>'></asp:Label>
+                                                <asp:Label ID="lblTotalInstallation" runat="server" Text='<%#Eval("TotalNumberOfInstallation") %>'></asp:Label>
+                                                <asp:Label ID="lblIHID" runat="server" Text='<%#Eval("IHID") %>'></asp:Label>
+                                                <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status") %>'></asp:Label>
+                                                <asp:Label ID="lblApplicant" runat="server" Text='<%#Eval("ApplicantType") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Application">
+                                            <HeaderStyle Width="25%" CssClass="headercolor" />
+                                            <ItemStyle Width="25%" />
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblApllication" runat="server" Visible="false" Text='<%#Eval("Apllication") %>'></asp:Label>
+                                                <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("Apllication") %> '
+                                                    CommandName="Select"><%#Eval("Apllication") %></asp:LinkButton>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:BoundField DataField="Typs" HeaderText="Installations Type">
+                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="NoOfInstallations" HeaderText="Installations">
+                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="history" HeaderText="Test Report Status">
+                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="Status" HeaderText="Approval Status">
+                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                        </asp:BoundField>
+                                    </Columns>
+                                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                    <RowStyle ForeColor="#000066" />
+                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                </asp:GridView>
+                                <asp:Label ID="LblGridView1" runat="server" Text="Label"></asp:Label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

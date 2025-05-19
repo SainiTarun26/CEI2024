@@ -20,36 +20,42 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (!Page.IsPostBack)
                 {
-                    if (Session["SiteOwnerId"] != null && Session["SiteOwnerId"].ToString() != "")
+                    if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                     {
-                        getWorkIntimationData();
+                        String SiteOwnerId = Convert.ToString(Session["SiteOwnerId"]);
+                        getWorkIntimationData(SiteOwnerId);
+                    }
+                    else
+                    {
+                        Response.Redirect("LogOut.aspx", false);
                     }
                 }
             }
             catch
             {
-
+                Session["SiteOwnerId"] = "";
+                Response.Redirect("LogOut.aspx", false);
             }
         }
 
-        private void getWorkIntimationData()
+        private void getWorkIntimationData(string OwnerID)
         {
-            DataTable ds = new DataTable();
-            string Id = Session["SiteOwnerId"].ToString();
-            ds = CEI.GetCinemaTalkiesWorkIntimationData(Id);
-            if (ds.Rows.Count > 0)
+            DataTable dt = new DataTable();
+            dt = CEI.GetCinemaTalkiesWorkIntimationData(OwnerID);
+            if (dt != null && dt.Rows.Count > 0)
             {
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
+                LblGridView1.Visible = false;
+                GridView1.DataSource = dt;
             }
             else
             {
+                LblGridView1.Visible = true;
+                LblGridView1.Text = "There is no pending work intimation found.";
                 GridView1.DataSource = null;
-                GridView1.DataBind();
-                string script = "alert(\"There is no pending work intimation found.\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
-            ds.Dispose();
+
+            GridView1.DataBind();
+            dt.Dispose();
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -59,13 +65,9 @@ namespace CEIHaryana.SiteOwnerPages
                 Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblID = (Label)row.FindControl("lblID");
-                Session["id"] = lblID.Text;
+                Session["IntimationId"] = lblID.Text;
 
                 Response.Redirect("/SiteOwnerPages/CinemaInstallationComponentDetails.aspx", false);
-            }
-            else
-            {
-                getWorkIntimationData();
             }
         }
     }

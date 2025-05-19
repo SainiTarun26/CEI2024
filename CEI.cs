@@ -10114,6 +10114,42 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetCinemaIntimationComponentdetails", Id);
         }
+        public int InsertDataOfCinema_Talkies_TestReport_Periodic(string IntimationId, string Count, string NameOfScreen, string SerialNo,
+       string SizeOfScreen, string LastInspectionDate, string installationNo, string CreatedBy)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand("Sp_InsertDataOfCinema_Talkies_TestReport_Periodic", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@IntimationId", (object)IntimationId ?? DBNull.Value);
+
+                // Convert Count to int
+                if (int.TryParse(Count, out int countVal))
+                    cmd.Parameters.AddWithValue("@Count", countVal);
+                else
+                    cmd.Parameters.AddWithValue("@Count", DBNull.Value);
+                cmd.Parameters.AddWithValue("@NameOfScreen", (object)NameOfScreen ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@SerialNo", (object)SerialNo ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@SizeOfScreen", (object)SizeOfScreen ?? DBNull.Value);
+                if (DateTime.TryParse(LastInspectionDate, out DateTime inspectionDate))
+                    cmd.Parameters.AddWithValue("@LastInspectionDate", inspectionDate);
+                else
+                    cmd.Parameters.AddWithValue("@LastInspectionDate", DBNull.Value);
+                cmd.Parameters.AddWithValue("@Rowid", installationNo);
+
+                cmd.Parameters.AddWithValue("@CreatedBy", (object)CreatedBy ?? DBNull.Value);
+                SqlParameter returnStatusParam = new SqlParameter("@ReturnStatus", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(returnStatusParam);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return (int)returnStatusParam.Value;
+            }
+        }
         #endregion
         #region aslam code lift industry_19M-May-2025
         public DataSet SiteIntimations_forLift_IndustryLift(string PANNumber)
