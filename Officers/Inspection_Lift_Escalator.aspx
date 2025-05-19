@@ -164,7 +164,6 @@
         th.headercolor {
             background: #9292cc;
             color: white;
-            width:1% !important;
         }
 
         table#ContentPlaceHolder1_RadioButtonList2 {
@@ -206,9 +205,6 @@
        .input-box:focus-within {
            border-color: #777;
        }
-       th.headercolor.thwidth {
-    width: 7% !important;
-}
     </style>
 
     <script type="text/javascript">
@@ -314,6 +310,11 @@
     </label>
     <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
 </div>
+
+                    <div class="col-md-12" id="Usertype" visible="true" runat="server">
+                        <label>UserType</label>
+                        <asp:TextBox class="form-control" ID="txtUserType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
                 </div>
             </div>
             <div id="TranscationDetails" runat="server">
@@ -348,31 +349,31 @@
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
                             <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle CssClass="headercolor" />
-                                <ItemStyle />
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                <ItemStyle Width="5%" />
                                 <ItemTemplate>
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
-                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" />
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
-                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" />
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="ActionDate" HeaderText="ActionDate" >
-                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" />
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
                             <%--<asp:BoundField DataField="Status" HeaderText="Status">
                              <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                              <ItemStyle HorizontalAlign="Left" Width="15%" />
                          </asp:BoundField>--%>
                             <asp:BoundField DataField="AssignTo" HeaderText="AssignTo" >
-                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" />
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
                             <%-- <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                              <ItemTemplate>                                
@@ -393,8 +394,8 @@
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>--%>
                             <asp:BoundField DataField="Remarks" HeaderText="Remarks">
-                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor thwidth" />
-                                <ItemStyle HorizontalAlign="Left" />
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
                          <%--   <asp:BoundField DataField="TotalAmount" HeaderText="Fees Amount">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />

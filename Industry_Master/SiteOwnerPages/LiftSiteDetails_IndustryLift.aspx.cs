@@ -43,7 +43,7 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -293,7 +293,7 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
 
         protected void Submit_Click(object sender, EventArgs e)
         {
-            btnSubmit.Attributes.Add("onclick", "this.disabled = true;");            
+            btnSubmit.Attributes.Add("onclick", "this.disabled = true;");
             string email = txtEmail.Text.Trim();
             string emailPattern = @"^[^\s@]+@[^\s@]+\.[^\s@]+$"; // Regex for email
             ApplicantTypeCode = Session["ApplicantTypeCode_IndustryLift"].ToString();
@@ -395,7 +395,7 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                          txtAddress.Text,
                          divGurugramSelection.Visible == false ? txtDistrict.Text : ddlGurugram.SelectedValue,
                          txtPin.Text,
-                         "",
+                         "Industry",
                          "",
                          "",
                          SiteOwnerId,
@@ -608,7 +608,7 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@PANNumber", panNumber);
                     cmd.Parameters.AddWithValue("@District", Districtlocalpr);
-                    //added on 24 feb 2025 to filter district records against a panno
+                    //added to filter district records against a panno                    
 
                     conn.Open();
 

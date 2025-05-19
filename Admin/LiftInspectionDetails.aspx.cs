@@ -56,6 +56,8 @@ namespace CEIHaryana.Admin
                 Type = ds.Tables[0].Rows[0]["IType"].ToString();
                 lblInspectionType.Text = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                 lblInstallation.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
+                hdnUserType.Value = ds.Tables[0].Rows[0]["UserType"].ToString();
+                //usertype added by aslam 19-may-2025
                 if (Type == "New")
                 {
                     txtInspectionReportID.Text = ds.Tables[0].Rows[0]["Id"].ToString();
@@ -389,19 +391,42 @@ namespace CEIHaryana.Admin
                 string installationName = lblInstallationName.Text.Trim();
                 Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
                 Label LblTestReportId = (Label)row.FindControl("lblTestReport");
-                Session["RegistrationNo"] = LblRegistrationNo.Text;
-                Session["TestReportID"] = LblTestReportId.Text;
+
 
                 if (lblInstallationName != null)
                 {
-                    if (lblInstallationName.Text == "Lift")
+                    #region aslam code lift industry_19M-May-2025
+                    if (hdnUserType.Value != "Industry")
                     {
-                        Response.Redirect("/TestReportModal/LiftPeriodicTestReportModal.aspx", false);
+                        Session["RegistrationNo"] = LblRegistrationNo.Text;
+                        Session["TestReportID"] = LblTestReportId.Text;
+                        #endregion
+                        if (lblInstallationName.Text == "Lift")
+                        {
+                            Response.Redirect("/TestReportModal/LiftPeriodicTestReportModal.aspx", false);
+                        }
+                        else if (lblInstallationName.Text == "Escalator")
+                        {
+                            Response.Redirect("/TestReportModal/EscalatorPeriodicTestReportModal.aspx", false);
+                        }
                     }
-                    else if (lblInstallationName.Text == "Escalator")
+
+                    #region aslam code lift industry_19M-May-2025
+                    else if (hdnUserType.Value == "Industry")
                     {
-                        Response.Redirect("/TestReportModal/EscalatorPeriodicTestReportModal.aspx", false);
+                        Session["RegistrationNo_IndustryLift"] = LblRegistrationNo.Text;
+                        Session["TestReportID_IndustryLift"] = LblTestReportId.Text;
+
+                        if (lblInstallationName.Text == "Lift")
+                        {
+                            Response.Redirect("/Industry_Master/TestReportModal/LiftPeriodicTestReportModal_IndustryLift.aspx", false);
+                        }
+                        else if (lblInstallationName.Text == "Escalator")
+                        {
+                            Response.Redirect("/Industry_Master/TestReportModal/EscalatorPeriodicTestReportModal_IndustryLift.aspx", false);
+                        }
                     }
+                    #endregion
                 }
             }
             catch (Exception ex)
@@ -551,21 +576,43 @@ namespace CEIHaryana.Admin
                 //if (ds.Tables[0].Rows.Count > 0)
                 //{
 
+                #region aslam code lift industry_19M-May-2025
+                Session["LiftTestReportID"] = null;
+                Session["LiftTestReportID_IndustryLift"] = null;
+                Session["EscalatorTestReportID"] = null;
+                Session["EscalatorTestReportID_IndustryLift"] = null;
+
                 if (LblInstallationName != null)
                 {
                     if (LblInstallationName.Text == "Lift")
                     {
-                        Session["LiftTestReportID"] = LblTestReportId.Text;
-                        Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                        if (hdnUserType.Value != "Industry")
+                        {
+                            Session["LiftTestReportID"] = LblTestReportId.Text;
+                            Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                        }
+                        else if (hdnUserType.Value == "Industry")
+                        {
+                            Session["LiftTestReportID_IndustryLift"] = LblTestReportId.Text;
+                            Response.Redirect("/Industry_Master/TestReportModal/LiftTestReportModal_IndustryLift.aspx", false);
+                        }
                     }
                     else if (LblInstallationName.Text == "Escalator")
                     {
-                        Session["EscalatorTestReportID"] = LblTestReportId.Text;
-                        Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
+                        if (hdnUserType.Value != "Industry")
+                        {
+                            Session["EscalatorTestReportID"] = LblTestReportId.Text;
+                            Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
+                        }
+                        else if (hdnUserType.Value == "Industry")
+                        {
+                            Session["EscalatorTestReportID_IndustryLift"] = LblTestReportId.Text;
+                            Response.Redirect("/Industry_Master/TestReportModal/EscalatorTestReportModal_IndustryLift.aspx", false);
+                        }
                     }
                 }
             }
-
+            #endregion
             //else if (e.CommandName == "View")
             //{
             //    string fileName = "";
@@ -597,19 +644,42 @@ namespace CEIHaryana.Admin
                 string installationName = lblInstallationName.Text.Trim();
                 Label LblTestReportId = (Label)row.FindControl("LblTestReportId");
 
+                #region aslam code lift industry_19M-May-2025
+                Session["LiftTestReportID"] = null;
+                Session["LiftTestReportID_IndustryLift"] = null;
+                Session["EscalatorTestReportID"] = null;
+                Session["EscalatorTestReportID_IndustryLift"] = null;
+
                 if (lblInstallationName != null)
                 {
                     if (lblInstallationName.Text == "Lift")
                     {
-                        Session["LiftTestReportID"] = LblTestReportId.Text;
-                        Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                        if (hdnUserType.Value != "Industry")
+                        {
+                            Session["LiftTestReportID"] = LblTestReportId.Text;
+                            Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                        }
+                        else if (hdnUserType.Value == "Industry")
+                        {
+                            Session["LiftTestReportID_IndustryLift"] = LblTestReportId.Text;
+                            Response.Redirect("/Industry_Master/TestReportModal/LiftTestReportModal_IndustryLift.aspx", false);
+                        }
                     }
                     else if (lblInstallationName.Text == "Escalator")
                     {
-                        Session["EscalatorTestReportID"] = LblTestReportId.Text;
-                        Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
+                        if (hdnUserType.Value != "Industry")
+                        {
+                            Session["EscalatorTestReportID"] = LblTestReportId.Text;
+                            Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
+                        }
+                        else if (hdnUserType.Value == "Industry")
+                        {
+                            Session["EscalatorTestReportID_IndustryLift"] = LblTestReportId.Text;
+                            Response.Redirect("/Industry_Master/TestReportModal/EscalatorTestReportModal_IndustryLift.aspx", false);
+                        }
                     }
                 }
+                #endregion
             }
             catch (Exception ex)
             {

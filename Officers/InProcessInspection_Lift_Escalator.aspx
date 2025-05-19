@@ -455,6 +455,10 @@
                         <div id="District" class="col-md-4" runat="server" visible="false">
                             <label>District</label>
                             <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                 </div>
+                <div  id="divusertype"   class="col-md-4" runat="server" visible="true">
+                                 <label>UserType</label>
+                <asp:TextBox class="form-control" ID="txtUserType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>       
                         </div>
                         <%--<div class="col-md-4" id="Inspection_Type" runat="server" visible="false">
                         <label>Inspection Type</label>

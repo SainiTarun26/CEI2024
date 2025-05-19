@@ -25,19 +25,21 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                         loginTypeLabel.Text = "Supervisor / Create New Test Report / Installation Details";
                     }
 
-                    if (Session["SiteOwnerId_IndustryLift"] != null || Request.Cookies["SiteOwnerId_IndustryLift"] != null)
+                    if (Session["SiteOwnerId_IndustryLift"] != null)
                     {
                         getWorkIntimationData();
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata1();", true);
+                        Response.Redirect("/Industry_Sessions_Clear.aspx", false);
+                        return;
                     }
                 }
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata1();", true);
+                        Response.Redirect("/Industry_Sessions_Clear.aspx", false);
+                        return;
             }
         }
 

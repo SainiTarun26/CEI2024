@@ -26,7 +26,7 @@ namespace CEIHaryana.Admin
                     {
                         ViewState["PreviousPageUrl"] = Request.UrlReferrer.ToString();
                     }
-                    //
+                    //                    
                 }
             }
 
@@ -73,17 +73,42 @@ namespace CEIHaryana.Admin
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
                     Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
+                    //labe added by aslam 19-may-2025
+                    Label lblblUserType = row.FindControl("lblUserType") as Label;
                     string id = lblID.Text;
                     string InspectionId = Session["InspectionId"].ToString();
-                    Session["LiftTestReportID"] = id;
-                    if(lblInstallationType.Text == "Lift")
+
+                    #region aslam code lift industry_19M-May-2025
+                    Session["LiftTestReportID_IndustryLift"] = null;
+                    Session["LiftTestReportID"] = null;
+                    if (lblblUserType.Text != "Industry")
                     {
-                        Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                        #endregion
+                        Session["LiftTestReportID"] = id;
+                        if (lblInstallationType.Text == "Lift")
+                        {
+                            Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                        }
+                        else
+                        {
+                            Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                        }
                     }
-                    else
+
+                    #region aslam code lift industry_19M-May-2025
+                    else if (lblblUserType.Text == "Industry")
                     {
-                        Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                        Session["LiftTestReportID_IndustryLift"] = id;
+                        if (lblInstallationType.Text == "Lift")
+                        {
+                            Response.Redirect("/Industry_Master/Print_Forms/LiftApprovalCertificate_IndustryLift.aspx", false);
+                        }
+                        else
+                        {
+                            Response.Redirect("/Industry_Master/Print_Forms/EscalatorApprovalCertificate_IndustryLift.aspx", false);
+                        }
                     }
+                    #endregion
 
                 }
             }

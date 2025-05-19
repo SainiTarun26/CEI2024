@@ -56,7 +56,7 @@
                 alert('Your Session Expired..');
                 window.location.href = 'https://staging.investharyana.in/#/';
             }
-        </script>
+        </script>    
 </head>
 <body>
     <form id="form1" runat="server" autocomplete="off">
@@ -74,8 +74,8 @@
                                 <span style="font-size: 15px; font-weight: bold;">
                                     <i class="fas fa-phone-alt"></i>Helpdesk No. :- Gajendra - 9639543027
                                 </span>
-                            </li>
-
+                            </li>                        
+                        
                             <li class="nav-item dropdown">
 
                                 <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
@@ -320,15 +320,15 @@
                     </div>
                     <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #263247;">
                         <ul class="nav">
-
+                    
                             <li class="nav-item">
                                 <a class="nav-link" href="/Industry_Master/SiteOwnerPages/InspectionHistory_New_IndustryLift.aspx">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Installations Status</span>
                                 </a>
                             </li>
-
-                            <li class="nav-item">
+                           
+                                                    <li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 576 512">
                                         <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
@@ -352,7 +352,7 @@
                                     <span class="menu-title">Return Inspection</span>
                                 </a>
                             </li>
-
+                       
                         </ul>
                     </nav>
                     <div class="main-panel">
@@ -375,7 +375,5 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
-
-
 </body>
 </html>

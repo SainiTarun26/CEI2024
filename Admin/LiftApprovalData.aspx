@@ -208,6 +208,7 @@
      <ItemTemplate>
          <asp:Label ID="lblID" runat="server" Text='<%#Eval("Lift_Escelator_Id") %>'></asp:Label>
           <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
+                   <asp:Label ID="lblUserType" runat="server" Text='<%#Eval("UserType") %>'></asp:Label>
          
      </ItemTemplate>
  </asp:TemplateField>

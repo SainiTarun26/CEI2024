@@ -420,7 +420,7 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Please Check declaration first');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Please Check Declaration To Proceed Further!!!')", true);
 
             }
         }

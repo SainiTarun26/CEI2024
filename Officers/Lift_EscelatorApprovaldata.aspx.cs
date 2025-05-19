@@ -24,14 +24,26 @@ namespace CEIHaryana.Officers
                 }
 
             }
-           
+
         }
         public void GridBind()
         {
             try
             {
                 string LoginID = string.Empty;
-                LoginID = Session["InProcessInspectionId"].ToString();
+                #region aslam code changed by aslam 19-May-2025
+
+                //Added On 12 may 2025 to Show Industry cirtificate pages.
+                if (Convert.ToString(Session["InProcessInspectionId"]) != null && Convert.ToString(Session["InProcessInspectionId"]) != string.Empty)
+                {
+                    LoginID = Session["InProcessInspectionId"].ToString();
+                }
+                else if (Convert.ToString(Session["InProcessInspectionId_IndustryLift"]) != null && Convert.ToString(Session["InProcessInspectionId_IndustryLift"]) != string.Empty)
+                {
+                    LoginID = Session["InProcessInspectionId_IndustryLift"].ToString();
+                }
+                #endregion
+
                 DataSet ds = new DataSet();
                 ds = CEI.ApprovalData_Lift(LoginID);
                 if (ds != null && ds.Tables.Count > 0)
@@ -67,17 +79,46 @@ namespace CEIHaryana.Officers
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
                     Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
-                     string id = lblID.Text;
-                     string  LoginID = Session["InProcessInspectionId"].ToString();
-                    Session["LiftTestReportID"] = id;
-                    if (lblInstallationType.Text == "Lift")
+                    string id = lblID.Text;
+                    #region aslam code changed by aslam 19-May-2025
+
+                    //Added On 12 may 2025 to Show Industry cirtificate pages.
+                    if (Convert.ToString(Session["InProcessInspectionId"]) != null && Convert.ToString(Session["InProcessInspectionId"]) != string.Empty)
                     {
-                        Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                        #endregion
+                        string LoginID = Session["InProcessInspectionId"].ToString();
+                        Session["LiftTestReportID"] = id;
+
+                        if (lblInstallationType.Text == "Lift")
+                        {
+                            Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                        }
+                        else
+                        {
+                            Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                        }
                     }
-                    else
+                    #region aslam code changed by aslam 19-May-2025
+
+                    else if (Convert.ToString(Session["InProcessInspectionId_IndustryLift"]) != null && Convert.ToString(Session["InProcessInspectionId_IndustryLift"]) != string.Empty)
                     {
-                        Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                        string LoginID = Session["InProcessInspectionId_IndustryLift"].ToString();
+                        Session["LiftTestReportID_IndustryLift"] = id;
+
+                        if (lblInstallationType.Text == "Lift")
+                        {
+                            Response.Redirect("/Industry_Master/Print_Forms/LiftApprovalCertificate_IndustryLift.aspx", false);
+                        }
+                        else
+                        {
+                            Response.Redirect("/Industry_Master/Print_Forms/EscalatorApprovalCertificate_IndustryLift.aspx", false);
+                        }
+
                     }
+                    #endregion
+
+
+
                 }
             }
             catch { }

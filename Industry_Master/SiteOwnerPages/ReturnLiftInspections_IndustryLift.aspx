@@ -590,7 +590,7 @@
                                 <div class="row" style="margin-top: -40px !important;">
                                     <div class="col-4">
                                         <label>
-                                            Transaction Id<samp style="color: red"> * </samp>
+                                             Transaction ID(GRN Number)<samp style="color: red"> * </samp>
                                         </label>
                                         <asp:TextBox ID="txttransactionId" runat="server" class="form-control" MaxLength="20" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
                                         <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Id</asp:RequiredFieldValidator>--%>

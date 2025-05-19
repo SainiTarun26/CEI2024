@@ -59,10 +59,10 @@ namespace CEIHaryana.Officers
             catch (Exception ex)
             {
 
-               // throw;
+                // throw;
             }
 
-           
+
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -81,6 +81,8 @@ namespace CEIHaryana.Officers
                     Label lblApplicationStatus = (Label)row.FindControl("lblApplicationStatus");
                     string ApplicationStatus = lblApplicationStatus.Text;
                     Label lblApproveDateLabel = row.FindControl("lblApproveDate") as Label;
+                    // code changed by aslam 19M-May-2025
+                    Label lblblUserType = row.FindControl("lblUserType") as Label;//
                     string ApproveDate = lblApproveDateLabel.Text;
                     Session["InProcessInspectionId"] = id;
 
@@ -130,11 +132,25 @@ namespace CEIHaryana.Officers
                             {
                                 Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
                             }
+                            #region aslam code changed by aslam 19M-May-2025
                             else if (InstallationType == "Lift" || InstallationType == "Escalator" || InstallationType == "Lift/Escalator" || InstallationType == "MultiLift" || InstallationType == "MultiEscalator")
                             {
-                                Session["InProcessInspectionId"] = id;
+                                if (lblblUserType.Text != "Industry")
+                                {
+                                    Session["InProcessInspectionId"] = id;
+                                    Session["InProcessInspectionId_IndustryLift"] = null;
+
+                                }
+                                else if (lblblUserType.Text == "Industry")
+                                {
+                                    Session["InProcessInspectionId_IndustryLift"] = id;
+                                    Session["InProcessInspectionId"] = null;
+
+                                }
                                 Response.Redirect("/Officers/Lift_EscelatorApprovaldata.aspx", false);
+
                             }
+                            #endregion
                         }
                         else if (LblInspectionType.Text == "Periodic")
                         {
@@ -171,7 +187,7 @@ namespace CEIHaryana.Officers
             }
             catch (Exception ex)
             {
-            
+
             }
         }
 

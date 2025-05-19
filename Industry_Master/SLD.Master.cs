@@ -26,6 +26,12 @@ namespace CEIHaryana.Industry_Master
                 Session["SiteOwnerId_Industry"] = null;
                 Session["Serviceid_pd_Indus"] = null;
                 Session["projectid_pd_Indus"] = null;
+                #region code by aslam, 19-may-2025
+                //LiftNew Session Making Null 
+                Session["SiteOwnerId_IndustryLift"] = null;
+                Session["Serviceid_IndustryLift"] = null;
+                Session["projectid_IndustryLift"] = null;
+                #endregion
             }
         }
 

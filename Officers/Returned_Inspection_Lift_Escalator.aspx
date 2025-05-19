@@ -312,6 +312,10 @@
                         </label>
                         <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
+                    <div class="col-md-12" id="Usertype" visible="true" runat="server">
+                        <label>UserType</label>
+                        <asp:TextBox class="form-control" ID="txtUserType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>                     
                 </div>
             </div>
             <div id="TranscationDetails" runat="server">

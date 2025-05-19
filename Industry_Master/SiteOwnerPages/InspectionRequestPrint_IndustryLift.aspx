@@ -77,6 +77,9 @@
         input#txtInstallationType {
             border-bottom: 0px solid !important;
         }
+        input#txtInstallationType {
+    font-size: 16px !important;            
+        }
     </style>
     <script>
         function
@@ -213,13 +216,18 @@
                                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                     <SortedDescendingHeaderStyle BackColor="#00547E" />
                                 </asp:GridView>
+                                <div class="row" id="statement" runat="server" visible="false">
+                                    <label for="CompletionDateasperWorkOrder" style="font-size: 16px; font-weight: bold;">
+                                      No any Document Attached                                             
+                                    </label>
+                                </div>                                
                             </div>
                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Payment Details</u></h6>
                             <div id="Earthing" runat="server" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                 <div class="row">
                                     <div class="col-4">
                                         <label for="Name">
-                                            Transaction ID(UTRN):
+                                            Transaction ID (GRN Number):
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtUTRN" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px;">
                                         </asp:TextBox>
@@ -254,6 +262,14 @@
                                         </asp:TextBox>
                                     </div>
                                 </div>
+                                
+                                <div class="row" id="Declaration" runat="server" visible="true" style="margin-left: 1%; margin-bottom: 20px;">
+                                    <label style="display: flex; align-items: center;">
+                                        <asp:CheckBox ID="Check" Enabled="false" runat="server" Checked="true" TabIndex="24" Style="margin-top: -5px;" />
+                                        <span style="margin-left: 8px; font-size: 16px; line-height: 20px; margin-top: 10px; padding-right: 1%;">We undertake that we shall maintain and operate all the electrical installations in a condition free from danger and as recommended by the manufacturer and/or by the relevant Code of Practice of the Bureau of Indian Standards.
+                                        </span>
+                                    </label>
+                                </div>                                
                                 <div class="row" style="margin-top: 25px; margin-left: 0px !important; text-align: center !important;">
                                     <div class="col-12" style="text-align: center !important;">
                                         <p style="color: red; font-weight: bold;">Note: This RTS due date is valid only if all the documents and information of this application is correct in all the aspects. "</p>

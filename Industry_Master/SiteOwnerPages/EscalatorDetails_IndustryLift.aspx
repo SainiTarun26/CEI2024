@@ -1229,10 +1229,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="margin-top: 50px;" id="Declaration" visible="false" runat="server">
+                <div class="row" style="margin-top: 50px;" id="Declaration" Visible="false" runat="server">
                     <%--  <div class="col-2"></div>--%>
-                    <div class="col-md-12" style="text-align: center;">
-                        <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="true" Text="&nbsp;I hereby declare that all information submitted as part of the form is true to my knowledge." Font-Size="Medium" Font-Bold="True" />
+                    <div class="col-md-12">
+                        <asp:CheckBox ID="CheckBox1" runat="server"  AutoPostBack="true" Text="&nbsp;This is to certify that the electrical installation is complete in all respects and the work has been carried out
+conforming to the CEA (Measures relating to Safety & Electric Supply) Regulation, 2023 and relevant standards. The
+Site tests done are found to be in order and it is electrically safe to operate the apparatus free from any danger.
+" Font-Size="Medium" Font-Bold="True" />
                         <br />
                         <label id="labelVerification" runat="server" visible="false" style="color: red; font-size: 1.125rem">
                             Please Verify this.
@@ -1251,13 +1254,33 @@
                     </div>
                 </div>
 
-                <div class="row" style="margin-left: 1%; margin-bottom: 20px;" id="CheckDeclaration" runat="server" visible="false">
+                <%--<div class="row" style="margin-left: 1%; margin-bottom: 20px;" id="CheckDeclaration" runat="server" visible="true">
                     <asp:CheckBox ID="Check" runat="server" TabIndex="24" />&nbsp;
                         
                             <text>
-                                I hereby declare that the information furnished in the application is correct.
-                       
+                              This is to certify that the electrical installation is complete in all respects and the work has been carried out
+conforming to the CEA (Measures relating to Safety & Electric Supply) Regulation, 2023 and relevant standards. The
+Site tests done are found to be in order and it is electrically safe to operate the apparatus free from any danger. 
                             </text>
+                </div>--%>
+                                <%--<div class="row" id="CheckDeclaration" runat="server" visible="false" style="margin-left: 1%; margin-bottom: 20px;">
+    <label style="display: flex; align-items: center;">
+        <asp:CheckBox ID="Check" runat="server" TabIndex="24" style=" margin-top: -5px;"/>
+        <span style="margin-left: 8px;font-size:13px; line-height: 20px; margin-top: 9px;padding-right: 1%;">
+                               This is to certify that the electrical installation is complete in all respects and the work has been carried out
+conforming to the CEA (Measures relating to Safety & Electric Supply) Regulation, 2023 and relevant standards. The
+Site tests done are found to be in order and it is electrically safe to operate the apparatus free from any danger.        </span>
+    </label>
+</div>--%>
+
+                                                                        <div class="row" id="CheckDeclaration" runat="server" Visible="false" style="margin-left: 1%; margin-bottom: 20px;">
+    <label style="display: flex; align-items: center;">
+        <asp:CheckBox ID="Check" runat="server" TabIndex="24" style=" margin-top: -5px;"/>
+        <span style="margin-left: 8px;font-size:13px; line-height: 20px; margin-top: 9px;padding-right: 1%;">
+                               This is to certify that the electrical installation is complete in all respects and the work has been carried out
+conforming to the CEA (Measures relating to Safety & Electric Supply) Regulation, 2023 and relevant standards. The
+Site tests done are found to be in order and it is electrically safe to operate the apparatus free from any danger.        </span>
+    </label>
                 </div>
 
                 <div class="row">

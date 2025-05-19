@@ -131,6 +131,7 @@
                                     <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("Installationfor") %>'></asp:Label>
                                     <asp:Label ID="lblApplicationStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label> 
                                     <asp:Label ID="lblApproveDate" runat="server" Text='<%#Eval("ApprovedDate") %>'></asp:Label>
+                                    <asp:Label ID="lblUserType" runat="server" Text='<%#Eval("UserType") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="SNo">
@@ -300,6 +301,6 @@
                 element.innerHTML = formattedText.trim(); // Remove any trailing <br>
             });
         });
-</script>
+    </script>
 </asp:Content>
 

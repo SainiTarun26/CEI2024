@@ -130,6 +130,7 @@ namespace CEIHaryana.Officers
                 Type = ds.Tables[0].Rows[0]["IType"].ToString();
                 lblInspectionType.Text = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                 lblInstallation.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
+                txtUserType.Text = ds.Tables[0].Rows[0]["UserType"].ToString();
 
                 if (Type == "New")
                 {
@@ -522,8 +523,6 @@ namespace CEIHaryana.Officers
                 {
                     //ID = Session["InspectionId"].ToString();
                     //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-                    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileName}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
@@ -538,7 +537,7 @@ namespace CEIHaryana.Officers
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            //int checksuccessmessage = 0;
+            int checksuccessmessage = 0;
             int ClickCount = 0;
             ClickCount = Convert.ToInt32(Session["ClickCount"]);
             if (ClickCount < 1)
@@ -612,7 +611,6 @@ namespace CEIHaryana.Officers
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid inspection date.');", true);
                                     return;
                                 }
-                      
                                 foreach (GridViewRow row in GridView1.Rows)
                                 {
                                     if (row.RowType == DataControlRowType.DataRow)
@@ -631,7 +629,7 @@ namespace CEIHaryana.Officers
                                 {
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid submitted date.');", true);
                                     return;
-                                }
+                                }                      
                                 if (inspectionDate.Date < submittedDate.Date)
                                 {
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection/Approval date must be greater or equal to the last action date of application.');", true);
@@ -656,21 +654,22 @@ namespace CEIHaryana.Officers
 
                                 try
                                 {
-                                    //commented 3 dec 2024 for 
-                                    //string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
-                                    //if (reqType == "Industrysdfsdf")
-                                    //{
-                                    //    string serverStatus = CEI.CheckServerStatus("https://investharyana.in");
-                                    //    // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
-                                    //    if (serverStatus != "Server is reachable.")
-                                    //    {
-                                    //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
-                                    //        return;
-                                    //    }
-                                    //}InspectionFinalAction_Lift
+                                    //uncommented 19 may for 
+                                    #region aslam code changed by aslam 19-May-2025
+                                    string reqType = CEI.GetIndustry_RequestType_New(Convert.ToInt32(ID));
+                                    if (reqType == "Industry")
+                                    {
+                                        string serverStatus = CEI.CheckServerStatus("https://staging.investharyana.in");
+                                        // string serverStatus = CEI.CheckServerStatus("https://investharyana.in/api/project-service-logs-external_UHBVN");
+                                        if (serverStatus != "Server is reachable.")
+                                        {
+                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('HEPC Server Is Not Responding . Please Try After Some Time')", true);
+                                            return;
+                                        }
+                                    }
+                                    #endregion
                                     transaction = connection.BeginTransaction();
-
-                                    y =    CEI.InspectionFinalAction_Lift(ID, StaffId, ApprovedorReject, Reason,  txtInspectionDate.Text, transaction);
+                                    y = CEI.InspectionFinalAction_Lift(ID, StaffId, ApprovedorReject, Reason, txtInspectionDate.Text, transaction);
                                     if (ApprovedorReject == "Approved")
                                     {
 
@@ -691,7 +690,7 @@ namespace CEIHaryana.Officers
                                                 string lblOwner = (row.FindControl("lblOwner") as Label)?.Text;
 
                                                 x += CEI.InstallationApproval_Lift_New(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                                  lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), lblOwner, transaction);
+                                                      lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), lblOwner, transaction);
 
                                             }
 
@@ -724,11 +723,11 @@ namespace CEIHaryana.Officers
                                             //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
 
                                         }
-                                        if (x > 0 && y >0)
+                                        if (x > 0 && y > 0)
                                         {
                                             transaction.Commit();
                                             CEI.UpdateLiftApprovedCertificatedata(ID);
-                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                                            //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
                                         }
                                         else
                                         {
@@ -741,7 +740,7 @@ namespace CEIHaryana.Officers
                                     else if (ApprovedorReject == "Rejected")
                                     {
                                         transaction.Commit();
-                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata2()", true);
+                                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata2()", true);
                                     }
 
 
@@ -762,122 +761,127 @@ namespace CEIHaryana.Officers
                                     Session["InstallationType"] = "";
                                     //transaction.Commit();
 
-                                    //commented 3 dec 2024 for 
-                                    // checksuccessmessage = 1;
+                                    //uncommented 19-May-2025 for 
+                                    #region aslam code changed by aslam 19M-May-2025
 
-                                    //string actiontype = ApprovedorReject == "Approved" ? "Approved" : "Rejected";
-                                    //    Industry_Api_Post_DataformatModel ApiPostformatresult = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype);
+                                    checksuccessmessage = 1;
 
-                                    //    if (ApiPostformatresult.PremisesType == "Industryasdasda")
-                                    //    {
-                                    //        string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                                    string actiontype = ApprovedorReject == "Approved" ? "Approved" : "Rejected";
 
-                                    //        logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
-                                    //            "https://investharyana.in/api/project-service-logs-external_UHBVN",
-                                    //            new Industry_Inspection_StageWise_JsonDataFormat_Model
-                                    //            {
-                                    //                actionTaken = ApiPostformatresult.ActionTaken,
-                                    //                commentByUserLogin = ApiPostformatresult.CommentByUserLogin,
-                                    //                //commentDate = ApiPostformatresult.CommentDate,
-                                    //                commentDate = ApiPostformatresult.CommentDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                    //                comments = ApiPostformatresult.Comments,
-                                    //                id = ApiPostformatresult.Id,
-                                    //                projectid = ApiPostformatresult.ProjectId,
-                                    //                serviceid = ApiPostformatresult.ServiceId
-                                    //                //projectid = "245df444-1808-4ff6-8421-cf4a859efb4c",
-                                    //                //serviceid = "e31ee2a6-3b99-4f42-b61d-38cd80be45b6"
-                                    //            },
-                                    //            ApiPostformatresult,
-                                    //            accessToken
-                                    //        );
+                                    List<Industry_Api_Post_DataformatModel> ApiPostformatResults = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype);
+                                    foreach (var ApiPostformatresult in ApiPostformatResults)
+                                    {
+                                        if (ApiPostformatresult.PremisesType == "Industryasdasda")
+                                        {
+                                            string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
+                                            logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(
+                                                "https://staging.investharyana.in/api/project-service-logs-external_UHBVN",
+                                                new Industry_Inspection_StageWise_JsonDataFormat_Model
+                                                {
+                                                    actionTaken = ApiPostformatresult.ActionTaken,
+                                                    commentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                                                    //commentDate = ApiPostformatresult.CommentDate,
+                                                    commentDate = ApiPostformatresult.CommentDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                                    comments = ApiPostformatresult.Comments,
+                                                    id = ApiPostformatresult.Id,
+                                                    projectid = ApiPostformatresult.ProjectId,
+                                                    serviceid = ApiPostformatresult.ServiceId
+                                                    //projectid = "245df444-1808-4ff6-8421-cf4a859efb4c",
+                                                    //serviceid = "e31ee2a6-3b99-4f42-b61d-38cd80be45b6"
+                                                },
+                                                ApiPostformatresult,
+                                                accessToken
+                                            );
 
-                                    //        if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
-                                    //        {
-                                    //            throw new Exception(logDetails.ErrorMessage);
-                                    //        }
+                                            if (!string.IsNullOrEmpty(logDetails.ErrorMessage))
+                                            {
+                                                throw new Exception(logDetails.ErrorMessage);
+                                            }
 
-                                    //        CEI.LogToIndustryApiSuccessDatabase(
-                                    //            logDetails.Url,
-                                    //            logDetails.Method,
-                                    //            logDetails.RequestHeaders,
-                                    //            logDetails.ContentType,
-                                    //            logDetails.RequestBody,
-                                    //            logDetails.ResponseStatusCode,
-                                    //            logDetails.ResponseHeaders,
-                                    //            logDetails.ResponseBody,
-                                    //            new Industry_Api_Post_DataformatModel
-                                    //            {
-                                    //                InspectionId = ApiPostformatresult.InspectionId,
-                                    //                InspectionLogId = ApiPostformatresult.InspectionLogId,
-                                    //                IncomingJsonId = ApiPostformatresult.IncomingJsonId,
-                                    //                ActionTaken = ApiPostformatresult.ActionTaken,
-                                    //                CommentByUserLogin = ApiPostformatresult.CommentByUserLogin,
-                                    //                CommentDate = ApiPostformatresult.CommentDate,
-                                    //                Comments = ApiPostformatresult.Comments,
-                                    //                Id = ApiPostformatresult.Id,
-                                    //                ProjectId = ApiPostformatresult.ProjectId,
-                                    //                ServiceId = ApiPostformatresult.ServiceId,
-                                    //            }
+                                            CEI.LogToIndustryApiSuccessDatabase(
+                                                logDetails.Url,
+                                                logDetails.Method,
+                                                logDetails.RequestHeaders,
+                                                logDetails.ContentType,
+                                                logDetails.RequestBody,
+                                                logDetails.ResponseStatusCode,
+                                                logDetails.ResponseHeaders,
+                                                logDetails.ResponseBody,
+                                                new Industry_Api_Post_DataformatModel
+                                                {
+                                                    InspectionId = ApiPostformatresult.InspectionId,
+                                                    InspectionLogId = ApiPostformatresult.InspectionLogId,
+                                                    IncomingJsonId = ApiPostformatresult.IncomingJsonId,
+                                                    ActionTaken = ApiPostformatresult.ActionTaken,
+                                                    CommentByUserLogin = ApiPostformatresult.CommentByUserLogin,
+                                                    CommentDate = ApiPostformatresult.CommentDate,
+                                                    Comments = ApiPostformatresult.Comments,
+                                                    Id = ApiPostformatresult.Id,
+                                                    ProjectId = ApiPostformatresult.ProjectId,
+                                                    ServiceId = ApiPostformatresult.ServiceId,
+                                                }
 
-                                    //        );
-                                    //    }
+                                            );
+                                        }
+                                    }
                                 }
                                 //commented 3 dec 2024 for 
-                                //catch (TokenManagerException ex)
-                                //{
-                                //    CEI.LogToIndustryApiErrorDatabase(
-                                //        ex.RequestUrl,
-                                //        ex.RequestMethod,
-                                //        ex.RequestHeaders,
-                                //        ex.RequestContentType,
-                                //        ex.RequestBody,
-                                //        ex.ResponseStatusCode,
-                                //        ex.ResponseHeaders,
-                                //        ex.ResponseBody,
-                                //        new Industry_Api_Post_DataformatModel
-                                //        {
-                                //            InspectionId = ex.InspectionId,
-                                //            InspectionLogId = ex.InspectionLogId,
-                                //            IncomingJsonId = ex.IncomingJsonId,
-                                //            ActionTaken = ex.ActionTaken,
-                                //            CommentByUserLogin = ex.CommentByUserLogin,
-                                //            CommentDate = ex.CommentDate,
-                                //            Comments = ex.Comments,
-                                //            Id = ex.Id,
-                                //            ProjectId = ex.ProjectId,
-                                //            ServiceId = ex.ServiceId,
-                                //        }
-                                //    );
-                                //    string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
-                                //}
-                                //catch (IndustryApiException ex)
-                                //{
-                                //    CEI.LogToIndustryApiErrorDatabase(
-                                //        ex.RequestUrl,
-                                //        ex.RequestMethod,
-                                //        ex.RequestHeaders,
-                                //        ex.RequestContentType,
-                                //        ex.RequestBody,
-                                //        ex.ResponseStatusCode,
-                                //        ex.ResponseHeaders,
-                                //        ex.ResponseBody,
-                                //        new Industry_Api_Post_DataformatModel
-                                //        {
-                                //            InspectionId = ex.InspectionId,
-                                //            InspectionLogId = ex.InspectionLogId,
-                                //            IncomingJsonId = ex.IncomingJsonId,
-                                //            ActionTaken = ex.ActionTaken,
-                                //            CommentByUserLogin = ex.CommentByUserLogin,
-                                //            CommentDate = ex.CommentDate,
+                                catch (TokenManagerException ex)
+                                {
+                                    CEI.LogToIndustryApiErrorDatabase(
+                                        ex.RequestUrl,
+                                        ex.RequestMethod,
+                                        ex.RequestHeaders,
+                                        ex.RequestContentType,
+                                        ex.RequestBody,
+                                        ex.ResponseStatusCode,
+                                        ex.ResponseHeaders,
+                                        ex.ResponseBody,
+                                        new Industry_Api_Post_DataformatModel
+                                        {
+                                            InspectionId = ex.InspectionId,
+                                            InspectionLogId = ex.InspectionLogId,
+                                            IncomingJsonId = ex.IncomingJsonId,
+                                            ActionTaken = ex.ActionTaken,
+                                            CommentByUserLogin = ex.CommentByUserLogin,
+                                            CommentDate = ex.CommentDate,
+                                            Comments = ex.Comments,
+                                            Id = ex.Id,
+                                            ProjectId = ex.ProjectId,
+                                            ServiceId = ex.ServiceId,
+                                        }
+                                    );
+                                    string errorMessage = CEI.IndustryTokenApiReturnedErrorMessage(ex);
+                                }
+                                catch (IndustryApiException ex)
+                                {
+                                    CEI.LogToIndustryApiErrorDatabase(
+                                        ex.RequestUrl,
+                                        ex.RequestMethod,
+                                        ex.RequestHeaders,
+                                        ex.RequestContentType,
+                                        ex.RequestBody,
+                                        ex.ResponseStatusCode,
+                                        ex.ResponseHeaders,
+                                        ex.ResponseBody,
+                                        new Industry_Api_Post_DataformatModel
+                                        {
+                                            InspectionId = ex.InspectionId,
+                                            InspectionLogId = ex.InspectionLogId,
+                                            IncomingJsonId = ex.IncomingJsonId,
+                                            ActionTaken = ex.ActionTaken,
+                                            CommentByUserLogin = ex.CommentByUserLogin,
+                                            CommentDate = ex.CommentDate,
 
-                                //            Comments = ex.Comments,
-                                //            Id = ex.Id,
-                                //            ProjectId = ex.ProjectId,
-                                //            ServiceId = ex.ServiceId,
-                                //        }
-                                //    );
-                                //    string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
-                                //}
+                                            Comments = ex.Comments,
+                                            Id = ex.Id,
+                                            ProjectId = ex.ProjectId,
+                                            ServiceId = ex.ServiceId,
+                                        }
+                                    );
+                                    string errorMessage = CEI.IndustryApiReturnedErrorMessage(ex);
+                                }
+                                #endregion
                                 catch (Exception ex)
                                 {
                                     // Handle the exception, log it, etc.
@@ -887,7 +891,7 @@ namespace CEIHaryana.Officers
                                 }
                                 finally
                                 {
-                                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
                                     transaction?.Dispose();
                                     connection.Close();
                                 }
@@ -1246,18 +1250,39 @@ namespace CEIHaryana.Officers
                 //ds = CEI.GetData(LblInstallationName.Text.Trim(), IntimationId, Count);
                 //if (ds.Tables[0].Rows.Count > 0)
                 //{
+                #region aslam code changed by aslam 19-May-2025
 
-                if (LblInstallationName != null)
+                if (txtUserType.Text == "Industry")
                 {
-                    if (LblInstallationName.Text == "Lift")
+                    if (LblInstallationName != null)
                     {
-                        Session["LiftTestReportID"] = LblTestReportId.Text;
-                        Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                        if (LblInstallationName.Text == "Lift")
+                        {
+                            Session["LiftTestReportID_IndustryLift"] = LblTestReportId.Text;
+                            Response.Redirect("/Industry_Master/TestReportModal/LiftTestReportModal_IndustryLift.aspx", false);
+                        }
+                        else if (LblInstallationName.Text == "Escalator")
+                        {
+                            Session["EscalatorTestReportID_IndustryLift"] = LblTestReportId.Text;
+                            Response.Redirect("/Industry_Master/TestReportModal/EscalatorTestReportModal_IndustryLift.aspx", false);
+                        }
                     }
-                    else if (LblInstallationName.Text == "Escalator")
+                }
+                else if (txtUserType.Text != "Industry")
+                {
+                    #endregion
+                    if (LblInstallationName != null)
                     {
-                        Session["EscalatorTestReportID"] = LblTestReportId.Text;
-                        Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
+                        if (LblInstallationName.Text == "Lift")
+                        {
+                            Session["LiftTestReportID"] = LblTestReportId.Text;
+                            Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                        }
+                        else if (LblInstallationName.Text == "Escalator")
+                        {
+                            Session["EscalatorTestReportID"] = LblTestReportId.Text;
+                            Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
+                        }
                     }
                 }
                 // Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
@@ -1285,7 +1310,7 @@ namespace CEIHaryana.Officers
             //{
             //    string fileName = "";
             //    // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
-            //    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+            //    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
             //    //lblerror.Text = fileName;
             //    string script = $@"<script>window.open('{fileName}','_blank');</script>";
             //    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -1293,7 +1318,7 @@ namespace CEIHaryana.Officers
             //else if (e.CommandName == "ViewInvoice")
             //{
             //    string fileName = "";
-            //    fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+            //    fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
             //    //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
             //    string script = $@"<script>window.open('{fileName}','_blank');</script>";
             //    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -1314,18 +1339,40 @@ namespace CEIHaryana.Officers
                 Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
                 string installationName = lblInstallationName.Text.Trim();
                 Label LblTestReportId = (Label)row.FindControl("LblTestReportId");
+                #region aslam code changed by aslam 19-May-2025
 
-                if (lblInstallationName != null)
+                if (txtUserType.Text == "Industry")
                 {
-                    if (lblInstallationName.Text == "Lift")
+                    if (lblInstallationName != null)
                     {
-                        Session["LiftTestReportID"] = LblTestReportId.Text;
-                        Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                        if (lblInstallationName.Text == "Lift")
+                        {
+                            Session["LiftTestReportID_IndustryLift"] = LblTestReportId.Text;
+                            Response.Redirect("/Industry_Master/TestReportModal/LiftTestReportModal_IndustryLift.aspx", false);
+                        }
+                        else if (lblInstallationName.Text == "Escalator")
+                        {
+                            Session["EscalatorTestReportID_IndustryLift"] = LblTestReportId.Text;
+                            Response.Redirect("/Industry_Master/TestReportModal/EscalatorTestReportModal_IndustryLift.aspx", false);
+                        }
                     }
-                    else if (lblInstallationName.Text == "Escalator")
+                }
+                
+                else if (txtUserType.Text != "Industry")
+                {
+                    #endregion
+                    if (lblInstallationName != null)
                     {
-                        Session["EscalatorTestReportID"] = LblTestReportId.Text;
-                        Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
+                        if (lblInstallationName.Text == "Lift")
+                        {
+                            Session["LiftTestReportID"] = LblTestReportId.Text;
+                            Response.Redirect("/TestReportModal/LiftTestReportModal.aspx", false);
+                        }
+                        else if (lblInstallationName.Text == "Escalator")
+                        {
+                            Session["EscalatorTestReportID"] = LblTestReportId.Text;
+                            Response.Redirect("/TestReportModal/EscalatorTestReportModal.aspx", false);
+                        }
                     }
                 }
 

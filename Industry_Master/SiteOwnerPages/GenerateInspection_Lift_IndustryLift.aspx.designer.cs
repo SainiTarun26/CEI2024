@@ -258,6 +258,24 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
         protected global::System.Web.UI.WebControls.TextBox txtInspectionRemarks;
 
         /// <summary>
+        /// Declaration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Declaration;
+
+        /// <summary>
+        /// Check control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox Check;
+
+        /// <summary>
         /// btnSubmit control.
         /// </summary>
         /// <remarks>

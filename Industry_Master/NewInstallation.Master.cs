@@ -15,7 +15,7 @@ namespace CEIHaryana.Industry_Master
         }
         protected void Page_Init(object sender, EventArgs e)
         {
-            if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != string.Empty )
+            if (Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != null && Convert.ToString(Session["SiteOwnerId_Sld_Indus"]) != string.Empty)
             {
                 //Periodic Session Making Null 
                 Session["SiteOwnerId_Industry"] = null;
@@ -27,6 +27,12 @@ namespace CEIHaryana.Industry_Master
                 Session["SiteOwnerId_Sld_Industry"] = null;
                 Session["Serviceid_Sld_Indus"] = null;
                 Session["projectid_Sld_Indus"] = null;
+#region code by aslam, 19-may-2025
+                //LiftNew Session Making Null 
+                Session["SiteOwnerId_IndustryLift"] = null;
+                Session["Serviceid_IndustryLift"] = null;
+                Session["projectid_IndustryLift"] = null;
+                #endregion
             }
 
         }

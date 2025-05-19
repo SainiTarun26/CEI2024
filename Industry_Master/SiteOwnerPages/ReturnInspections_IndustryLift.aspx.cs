@@ -40,7 +40,7 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
-                string script = "alert(\"No Record Found\");";
+                string script = "alert(\"There is no returned inspection exist for this user.\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             ds.Dispose();

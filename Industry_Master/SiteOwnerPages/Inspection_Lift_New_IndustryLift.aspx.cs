@@ -260,7 +260,7 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                 {
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
-
+                    statement.Visible = false;
                     if (!hasLinkInAnyRow)
                     {
                         GridView1.Columns[4].Visible = false; // Hide the "Previous Documents" column
@@ -275,6 +275,7 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                     DocumentDiv.Visible = false;
                     GridView1.DataSource = null;
                     GridView1.DataBind();
+                    statement.Visible = true;
                     //string script = "alert(\"No Documnet Found\");";
                     //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
