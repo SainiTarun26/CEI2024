@@ -2034,6 +2034,8 @@
     <Content Include="SiteOwnerPages\InspectionsDetails.aspx" />
     <Content Include="SiteOwnerPages\Inspection_Industry.aspx" />
     <Content Include="SiteOwnerPages\Inspection_Lift.aspx" />
+    <Content Include="SiteOwnerPages\Intimation_Cinema_History.aspx" />
+    <Content Include="SiteOwnerPages\Intimation_Cinema_HistoryGridView.aspx" />
     <Content Include="SiteOwnerPages\InvestigationOfElectricalAccidents.aspx" />
     <Content Include="SiteOwnerPages\InvestigationOfElectricalAccidents_Return.aspx" />
     <Content Include="SiteOwnerPages\Investigation_of_Electrical_Accidents_SiteOwner_History.aspx" />
@@ -3720,6 +3722,20 @@
     </Compile>
     <Compile Include="SiteOwnerPages\Inspection_Lift.aspx.designer.cs">
       <DependentUpon>Inspection_Lift.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\Intimation_Cinema_History.aspx.cs">
+      <DependentUpon>Intimation_Cinema_History.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\Intimation_Cinema_History.aspx.designer.cs">
+      <DependentUpon>Intimation_Cinema_History.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\Intimation_Cinema_HistoryGridView.aspx.cs">
+      <DependentUpon>Intimation_Cinema_HistoryGridView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\Intimation_Cinema_HistoryGridView.aspx.designer.cs">
+      <DependentUpon>Intimation_Cinema_HistoryGridView.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\InvestigationOfElectricalAccidents.aspx.cs">
       <DependentUpon>InvestigationOfElectricalAccidents.aspx</DependentUpon>

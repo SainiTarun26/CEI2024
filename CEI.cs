@@ -10679,6 +10679,16 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         }
 
         #endregion
+        #region Navneet 19-may-2025 Cinema
+        public DataTable GetCinemaIntimationHistory(string Createdby)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetCinemaIntimationHistory", Createdby);
+        }
+        public DataSet GetCinemaIntimationHistoryById(string ID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationDataForHistory", ID);
+        }
+        #endregion
     }
 }
 
