@@ -508,14 +508,14 @@ namespace CEIHaryana.Officers
 
                             if (inspectionDate.Date < submittedDate.Date)
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be greater Or Equal to application requested date.');", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be greater or equal to the last action date of application.');", true);
                                 return;
                             }
                             //Changes by Neeraj merged on 8 may
                             DateTime serverDate = DateTime.Now.Date;
-                            if (inspectionDate > serverDate)
+                            if (inspectionDate.Date > serverDate.Date)
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be less than Today date.');", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be less than or equal to current date.');", true);
                                 return;
                             }
 

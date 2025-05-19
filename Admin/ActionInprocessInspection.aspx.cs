@@ -409,14 +409,14 @@ namespace CEIHaryana.Admin
 
                             //Changes of neeraj with Suggestions Merged on 8-May-2025
                             DateTime serverDate = DateTime.Now.Date;
-                            if (inspectionDate > serverDate)
+                            if (inspectionDate.Date > serverDate.Date)
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be less than Today date.');", true);
                                 return;
                             }
                             if (inspectionDate.Date < submittedDate.Date)
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be greater Or Equal To submitted date.');", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be greater or equal to the last action date of application.');", true);
                                 return;
                             }
 

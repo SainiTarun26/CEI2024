@@ -86,7 +86,7 @@ namespace CEIHaryana.SiteOwnerPages
                     transaction = connection.BeginTransaction();
                     SiteOwnerId = Session["SiteOwnerId"].ToString();
                     //will return single value only if wants to return more than You have to change executescalar to executenonquery
-                    string IntimationI = CEI.InsetCinemaData(SiteOwnerId, ddlInspectionType.SelectedItem?.ToString(), ddlDistrict.SelectedItem?.ToString(), txtAddress.Text, txtPin.Text, txtinstallationType1.Text, txtinstallationNo1.Text);
+                    string IntimationI = CEI.InsetCinemaData(SiteOwnerId, ddlInspectionType.SelectedValue?.ToString(), ddlDistrict.SelectedItem?.ToString(), txtAddress.Text, txtPin.Text, txtinstallationType1.Text, txtinstallationNo1.Text);
                     if (IntimationI != null)
                     {
                         string installationType = txtinstallationType1.Text;
