@@ -404,7 +404,7 @@ th.headercolor.thwidth {
                     Inspection Details
                 </div>
                 <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-left: 10px !important; width: 98%; margin-right: 0px !important; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                    <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false">
+                    <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server"  OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false">
                             <HeaderStyle BackColor="#B7E2F0" />
                             <Columns>
                                 <asp:TemplateField HeaderText="SNo">

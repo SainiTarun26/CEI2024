@@ -572,10 +572,7 @@ namespace CEIHaryana.Officers
                                         //string status = row.Cells[2].Text.Trim();
                                         Label lblstatus = (Label)row.FindControl("lblStatus");
                                         Label lblSubmittedDate = (Label)row.FindControl("lblSubmittedDate");
-                                        if (lblSubmittedDate != null && lblstatus.Text == "Submit")
-                                        {
-                                            SubmittedDated = lblSubmittedDate.Text;
-                                        }
+                                        SubmittedDated = lblSubmittedDate.Text;
                                     }
                                 }
 
@@ -588,7 +585,15 @@ namespace CEIHaryana.Officers
 
                                 if (inspectionDate.Date < submittedDate.Date)
                                 {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection/Approval date must be greater equal to application requested date.');", true);
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection/Approval date must be greater or equal to the last action date of application.');", true);
+                                    return;
+                                }
+
+                                //Server date condition added by gurmeet as per instructions from Vinod Sir on 19-May-2025
+                                DateTime serverDate = DateTime.Now.Date;
+                                if (inspectionDate.Date > serverDate.Date)
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be less than or equal to current date.');", true);
                                     return;
                                 }
 

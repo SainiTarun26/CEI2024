@@ -277,23 +277,26 @@ namespace CEIHaryana.Admin
                 return;
             }
         }
-        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
-                Label lblSubmittedDate = (Label)e.Row.FindControl("lblSubmittedDate");
-                hnSubmittedDate.Value = lblSubmittedDate.Text;
-                if (status == "RETURN")
-                {
-                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
-                }
-            }
-            if (e.Row.RowType == DataControlRowType.Header)
-            {
-                e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
-            }
-        }
+
+        //Changed by gurmeet 19-May-2025
+        //protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    if (e.Row.RowType == DataControlRowType.DataRow)
+        //    {
+        //        string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+        //        Label lblSubmittedDate = (Label)e.Row.FindControl("lblSubmittedDate");
+        //        hnSubmittedDate.Value = lblSubmittedDate.Text;
+        //        if (status == "RETURN")
+        //        {
+        //            e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+        //        }
+        //    }
+        //    if (e.Row.RowType == DataControlRowType.Header)
+        //    {
+        //        e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
+        //    }
+        //}
+        //
         protected void lnkRedirect1_Click(object sender, EventArgs e)
         {
             try
@@ -493,12 +496,23 @@ namespace CEIHaryana.Admin
                                     }
 
                                 }
-                                
-                                String SubmittedDate = hnSubmittedDate.Value;
+
+                                String SubmittedDated = "";// hnSubmittedDate.Value;
 
                                 if (ddlReview.SelectedValue != null && ddlReview.SelectedValue != "" && ddlReview.SelectedValue != "0")
-                                {
-                                    DateTime inspectionDate;
+                            {
+                                //Changed by gurmeet 19-May-2025
+                                foreach (GridViewRow row in GridView1.Rows)
+                                   {
+                                       if (row.RowType == DataControlRowType.DataRow)
+                                       {                                           
+                                           Label lblSubmittedDate = (Label)row.FindControl("lblSubmittedDate");
+                                           SubmittedDated = lblSubmittedDate.Text;
+                                       }
+                                   }
+
+                                //Changed by gurmeet 19-May-2025
+                                DateTime inspectionDate;
                                     if (!DateTime.TryParse(txtInspectionDate.Text, out inspectionDate))
                                     {
                                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid inspection date.');", true);
@@ -506,7 +520,7 @@ namespace CEIHaryana.Admin
                                     }
 
                                     DateTime submittedDate;
-                                    if (!DateTime.TryParse(hnSubmittedDate.Value, out submittedDate))
+                                    if (!DateTime.TryParse(SubmittedDated, out submittedDate))
                                     {
                                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid submitted date.');", true);
                                         return;
@@ -514,11 +528,18 @@ namespace CEIHaryana.Admin
 
                                     if (inspectionDate < submittedDate)
                                     {
-                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection/Approval date must be greater equal to application requested date.');", true);
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection/Approval date must be greater or equal to the last action date of application.');", true);
                                         return;
                                     }
 
-                                    ApprovedorReject = ddlReview.SelectedItem.ToString();
+                                DateTime serverDate = DateTime.Now.Date;
+                                if (inspectionDate.Date > serverDate.Date)
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be less than Today date.');", true);
+                                    return;
+                                }
+
+                                ApprovedorReject = ddlReview.SelectedItem.ToString();
                                     Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text.Trim();
 
 

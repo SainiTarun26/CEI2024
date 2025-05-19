@@ -387,9 +387,20 @@ namespace CEIHaryana.Admin
                         ID = Session["InProcessInspectionId"].ToString();
 
                         //Changes of neeraj with Suggestions Merged on 8-May-2025
-                        String SubmittedDate = hnSubmittedDate.Value;
+                        String SubmittedDated = "";// hnSubmittedDate.Value;
                         if (ddlReview.SelectedValue != null && ddlReview.SelectedValue != "" && ddlReview.SelectedValue != "0")
                         {
+                            //Commented by gurmeet 19-May-2025
+                            foreach (GridViewRow row in GridView1.Rows)
+                            {
+                                if (row.RowType == DataControlRowType.DataRow)
+                                {                                   
+                                    //Label lblstatus = (Label)row.FindControl("lblStatus");
+                                    Label lblSubmittedDate = (Label)row.FindControl("lblSubmittedDate");
+                                    SubmittedDated = lblSubmittedDate.Text;
+                                }
+                            }
+                            //
                             DateTime inspectionDate;
 
                             if (!DateTime.TryParse(txtInspectionDate.Text, out inspectionDate))
@@ -401,7 +412,7 @@ namespace CEIHaryana.Admin
                             DateTime submittedDate;
 
                             //Changes of neeraj with Suggestions Merged on 8-May-2025
-                            if (!DateTime.TryParse(hnSubmittedDate.Value, out submittedDate))
+                            if (!DateTime.TryParse(SubmittedDated, out submittedDate))
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid submitted date.');", true);
                                 return;
@@ -416,9 +427,9 @@ namespace CEIHaryana.Admin
                             }
                             if (inspectionDate.Date < submittedDate.Date)
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be greater or equal to the last action date of application.');", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection/Approval date must be greater or equal to the last action date of application.');", true);
                                 return;
-                            }
+                            }                           
 
                             ClickCount = ClickCount + 1;
                             Session["ClickCount"] = ClickCount;
@@ -781,32 +792,29 @@ namespace CEIHaryana.Admin
         {
             Response.Redirect("/Admin/ActionInspectioHistrory.aspx", false);
         }
+        //Commented by gurmeet 19-May-2025
+        //protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    if (e.Row.RowType == DataControlRowType.DataRow)
+        //    {
+        //        //commented Condition only by gurmeet 1May
+        //        //string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+        //        string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
+        //        Label lblSubmittedDate = (Label)e.Row.FindControl("lblSubmittedDate");
+        //        hnSubmittedDate.Value = lblSubmittedDate.Text;
+        //        if (status == "RETURN")
+        //        {
+        //            e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+        //        }
 
-        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                //commented Condition only by gurmeet 1May
-                //string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
-                string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
-                Label lblSubmittedDate = (Label)e.Row.FindControl("lblSubmittedDate");
-                hnSubmittedDate.Value = lblSubmittedDate.Text;
-                if (status == "RETURN")
-                {
-                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
-                }
-
-            }
-
-
-            if (e.Row.RowType == DataControlRowType.Header)
-            {
-
-                //e.Row.Cells[2].BackColor = System.Drawing.Color.Blue;
-                e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
-            }
-        }
-
+        //    }
+        //    if (e.Row.RowType == DataControlRowType.Header)
+        //    {
+        //        //e.Row.Cells[2].BackColor = System.Drawing.Color.Blue;
+        //        e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
+        //    }
+        //}
+        //
         protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
         {
 

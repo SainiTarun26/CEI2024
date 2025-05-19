@@ -488,10 +488,22 @@ namespace CEIHaryana.Officers
                     {
                         StaffId = Session["StaffID"].ToString();
                         ID = Session["InProcessInspectionId"].ToString();
-                        String SubmittedDate = Session["lblSubmittedDate"].ToString();
+                        String SubmittedDated = "";// Session["lblSubmittedDate"].ToString();
 
                         if (ddlReview.SelectedValue != null && ddlReview.SelectedValue != "" && ddlReview.SelectedValue != "0")
                         {
+                            //Changed By Gurmeet 19-may-2025
+                            foreach (GridViewRow row in GridView1.Rows)
+                            {
+                                if (row.RowType == DataControlRowType.DataRow)
+                                {
+                                    //string status = row.Cells[2].Text.Trim();
+                                   // Label lblstatus = (Label)row.FindControl("lblStatus");
+                                    Label lblSubmittedDate = (Label)row.FindControl("lblSubmittedDate");
+                                    SubmittedDated = lblSubmittedDate.Text;
+                                }
+                            }
+                            //
                             DateTime inspectionDate;
                             if (!DateTime.TryParse(txtInspectionDate.Text, out inspectionDate))
                             {
@@ -500,7 +512,7 @@ namespace CEIHaryana.Officers
                             }
 
                             DateTime submittedDate;
-                            if (!DateTime.TryParse(Session["lblSubmittedDate"].ToString(), out submittedDate))
+                            if (!DateTime.TryParse(SubmittedDated, out submittedDate))
                             {
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid submitted date.');", true);
                                 return;
@@ -810,33 +822,36 @@ namespace CEIHaryana.Officers
         {
             Response.Redirect("/Officers/InProcessRequest.aspx", false);
         }
-        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                // comment by gurmeet1 may 2025
-                //string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
-                string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
+        //Changed By Gurmeet 19-may-2025
 
-                Label lblSubmittedDate = (Label)e.Row.FindControl("lblSubmittedDate");
-                Session["lblSubmittedDate"] = lblSubmittedDate.Text;
+        //protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    if (e.Row.RowType == DataControlRowType.DataRow)
+        //    {
+        //        // comment by gurmeet1 may 2025
+        //        //string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+        //        string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
 
-                //Changes by Neeraj merged on 8 may
-                if (status == "RETURN")
-                {
-                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
-                }
+        //        Label lblSubmittedDate = (Label)e.Row.FindControl("lblSubmittedDate");
+        //        Session["lblSubmittedDate"] = lblSubmittedDate.Text;
 
-            }
+        //        //Changes by Neeraj merged on 8 may
+        //        if (status == "RETURN")
+        //        {
+        //            e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+        //        }
+
+        //    }
 
 
-            if (e.Row.RowType == DataControlRowType.Header)
-            {
+        //    if (e.Row.RowType == DataControlRowType.Header)
+        //    {
 
-                //e.Row.Cells[2].BackColor = System.Drawing.Color.Blue;
-                e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
-            }
-        }
+        //        //e.Row.Cells[2].BackColor = System.Drawing.Color.Blue;
+        //        e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
+        //    }
+        //}
+        //
         protected void lnkRedirect1_Click(object sender, EventArgs e)
         {
             try
