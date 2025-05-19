@@ -10101,6 +10101,20 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin_SearchCafWithGlobalFilter", LoginId, Division, InstallationType, searchText, userType);
         }
         #endregion
+        #region neha code of Cinema 19-may-2025
+        public DataTable GetCinemaTalkiesWorkIntimationData(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetCinemaTalkiesWorkIntimationData", Id);
+        }
+        public DataTable GetCinemaInstallationDetails(string IntimationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetCinemaInstallationDetails", IntimationId);
+        }
+        public DataTable GetCinemaIntimationComponentdetails(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetCinemaIntimationComponentdetails", Id);
+        }
+        #endregion
     }
 }
 
