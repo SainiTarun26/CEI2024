@@ -345,7 +345,7 @@
                                 <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">Intimation/Installation Details</h7>
                             </div>
                         </div>
-                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; background: #d4d7ec; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 0px;">
+                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; background: #d4d7ec;padding-bottom:20px !important; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-top: 10px; padding-bottom: 0px;">
                             <div class="row">
                                 <div class="col-md-3" id="Div8" runat="server">
                                     <label for="Name">
@@ -378,7 +378,7 @@
                                 <h7 class="card-title fw-semibold mb-4" style="font-size: 20px !important;">Installation Details</h7>
                             </div>
                         </div>
-                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-bottom: 0px !important;">
+                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px; padding-bottom: 20px !important;">
                             <div>
                                 <div class="row" style="margin-top: 10px;">
                                     <div class="col-md-4" id="Name" runat="server" visible="True" style="top: 0px !important;">
