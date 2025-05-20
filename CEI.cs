@@ -10159,25 +10159,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetails_ForCinemaTalkies", address, OwnerId);
         }
-        public DataTable Payment_CinemaInspection(string InspectionType, int Qaunatity)
-        {
-            DataTable result = new DataTable();
-
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand("Sp_Calculate_CinemaInspectionPayment", connection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@InspectionType", InspectionType);
-                command.Parameters.AddWithValue("@InstallationTypeId", 11);
-                command.Parameters.AddWithValue("@Quantity", Qaunatity);
-
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                adapter.Fill(result);
-            }
-
-            return result;
-        }
+     
         #endregion
         #region aslam code lift industry_19M-May-2025
         public DataSet SiteIntimations_forLift_IndustryLift(string PANNumber)
@@ -10818,6 +10800,27 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         public DataSet GetDetailsToViewCinemaTestReport(string InspectionId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewCinemaTestReport", InspectionId);
+        }
+        #endregion
+        #region gurmeet 20-May-2025
+        public DataTable Payment_CinemaInspection(string InspectionType, int Qaunatity)
+        {
+            DataTable result = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("Sp_Calculate_CinemaInspectionPayment", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@InspectionType", InspectionType);
+                command.Parameters.AddWithValue("@InstallationTypeId", 11);
+                command.Parameters.AddWithValue("@Quantity", Qaunatity);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(result);
+            }
+
+            return result;
         }
         #endregion
     }

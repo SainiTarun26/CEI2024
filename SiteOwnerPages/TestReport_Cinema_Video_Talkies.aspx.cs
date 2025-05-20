@@ -29,7 +29,7 @@ namespace CEIHaryana.SiteOwnerPages
                             {
                                 txtWorkintimation.Text = dt.Rows[0]["IntimationId"].ToString();
                                 txtInstallation.Text = dt.Rows[0]["InstallationType"].ToString();
-                                txtNameOfCinema.Text = dt.Rows[0]["InstallationType"].ToString();
+                                txtNameOfCinemas.Text = dt.Rows[0]["InstallationType"].ToString();
                                 txtNOOfInstallation.Text = dt.Rows[0]["InstallationNo"].ToString();
                                 HiddenField1.Value = dt.Rows[0]["Count"].ToString();
                             }
