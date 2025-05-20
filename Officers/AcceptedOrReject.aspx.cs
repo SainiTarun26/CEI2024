@@ -21,9 +21,7 @@ namespace CEIHaryana.Officers
                 {
                     if (Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty)
                     {
-                        //Null by   neeraj on 20-May-2025                        
-                        Session["ApprovalCertificate"] = "";
-                        //
+                        
                         GridBind();
                     }
                     else
@@ -63,7 +61,8 @@ namespace CEIHaryana.Officers
             catch (Exception ex)
             {
 
-                // throw;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
 
 
@@ -184,8 +183,25 @@ namespace CEIHaryana.Officers
                         else if (LblInspectionType.Text == "Periodic")
                         {
                             Session["InProcessInspectionId"] = id;
-
-                            if (InstallationType != "Lift" && InstallationType != "Escalator" && InstallationType != "Lift/Escalator" && InstallationType != "MultiLift" && InstallationType != "MultiEscalator")
+                            #region added by  neeraj on 20-May-2025         
+                            if (InstallationType == "Cinema/Videos Talkis")
+                            {
+                                string fileName = lblApproveCertificate.Text;
+                                string folderPath = Server.MapPath(fileName);
+                                string filePath = Path.Combine(folderPath);
+                                if (System.IO.File.Exists(filePath))
+                                {
+                                    string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                                }
+                                else
+                                {
+                                    string errorMessage = "An error occurred: " + "Loading failed Please try Again later";
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+                                }
+                            }
+                            #endregion
+                            else if (InstallationType != "Lift" && InstallationType != "Escalator" && InstallationType != "Lift/Escalator" && InstallationType != "MultiLift" && InstallationType != "MultiEscalator")
                             {
                                 Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
                             }
@@ -202,7 +218,9 @@ namespace CEIHaryana.Officers
 
             catch (Exception ex)
             {
-                //
+                //alert by  neeraj on 20-May-2025         
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
 
@@ -216,7 +234,9 @@ namespace CEIHaryana.Officers
             }
             catch (Exception ex)
             {
-
+                //alert by  neeraj on 20-May-2025   
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
 
