@@ -1,32 +1,40 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="OfficerDashboard.aspx.cs" Inherits="CEIHaryana.Officers.OfficerDashboard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>Dashboard</title>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="au theme template">
+<meta name="author" content="Hau Nguyen">
+<meta name="keywords" content="CEI cei haryana">
 
-    <!-- Fontfaces CSS-->
-    <link href="/Dashboard_Css/css/font-face.css" rel="stylesheet" media="all">
-    <link href="/Dashboard_Css/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="/Dashboard_Css/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-    <link href="/Dashboard_Css/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.2/font/bootstrap-icons.min.css" integrity="sha512-D1liES3uvDpPrgk7vXR/hR/sukGn7EtDWEyvpdLsyalQYq6v6YUsTUJmku7B4rcuQ21rf0UTksw2i/2Pdjbd3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Bootstrap CSS-->
-    <link href="/Dashboard_Css/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Title Page-->
+<title>Dashboard</title>
 
-    <!-- Vendor CSS-->
-    <link href="/Dashboard_Css/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="/Dashboard_Css/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="/Dashboard_Css/vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="/Dashboard_Css/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="/Dashboard_Css/vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="/Dashboard_Css/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="/Dashboard_Css/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
-    <!-- Example using CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Fontfaces CSS-->
+<link href="/Dashboard_Css/css/font-face.css" rel="stylesheet" media="all">
+<link href="/Dashboard_Css/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+<link href="/Dashboard_Css/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+<link href="/Dashboard_Css/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.2/font/bootstrap-icons.min.css" />
+<!-- Bootstrap CSS-->
+<link href="/Dashboard_Css/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+<!-- Vendor CSS-->
+<link href="/Dashboard_Css/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+<link href="/Dashboard_Css/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+<link href="/Dashboard_Css/vendor/wow/animate.css" rel="stylesheet" media="all">
+<link href="/Dashboard_Css/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+<link href="/Dashboard_Css/vendor/slick/slick.css" rel="stylesheet" media="all">
+<link href="/Dashboard_Css/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+<link href="/Dashboard_Css/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+<!-- Example using CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-    <!-- Main CSS-->
-    <link href="/Dashboard_Css/css/theme.css" rel="stylesheet" media="all">
+<!-- Main CSS-->
+<link href="/Dashboard_Css/css/theme.css" rel="stylesheet" media="all">
     <style type="text/css">
         canvas#myDoughnutChart {
             height: 240px !important;
@@ -908,6 +916,24 @@
             <%-- </div>--%>
         </div>
     </div>
+      <script src="/Dashboard_Css/vendor/jquery-3.2.1.min.js"></script>
+  <!-- Bootstrap JS-->
+  <script src="/Dashboard_Css/vendor/bootstrap-4.1/popper.min.js"></script>
+
+  <!-- Vendor JS       -->
+  <script src="/Dashboard_Css/vendor/slick/slick.min.js">    </script>
+  <script src="/Dashboard_Css/vendor/wow/wow.min.js"></script>
+  <script src="/Dashboard_Css/vendor/animsition/animsition.min.js"></script>
+  <script src="/Dashboard_Css/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">    </script>
+  <script src="/Dashboard_Css/vendor/counter-up/jquery.waypoints.min.js"></script>
+  <script src="/Dashboard_Css/vendor/counter-up/jquery.counterup.min.js">    </script>
+  <script src="/Dashboard_Css/vendor/circle-progress/circle-progress.min.js"></script>
+  <script src="/Dashboard_Css/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+  <script src="/Dashboard_Css/vendor/chartjs/Chart.bundle.min.js"></script>
+  <script src="/Dashboard_Css/vendor/select2/select2.min.js">    </script>
+
+  <!-- Main JS-->
+  <script src="/Dashboard_Css/js/main.js"></script>
     <script>
 
         function printDiv2(printableDiv2) {

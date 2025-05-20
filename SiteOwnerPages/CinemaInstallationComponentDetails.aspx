@@ -151,6 +151,7 @@
                                                 <asp:Label ID="lblIHID" runat="server" Text='<%#Eval("IHID") %>'></asp:Label>
                                                 <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status") %>'></asp:Label>
                                                 <asp:Label ID="lblApplicant" runat="server" Text='<%#Eval("ApplicantType") %>'></asp:Label>
+                                                <asp:Label ID="lblInspectionType" runat="server" Text='<%#Eval("InspectionType") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Application">

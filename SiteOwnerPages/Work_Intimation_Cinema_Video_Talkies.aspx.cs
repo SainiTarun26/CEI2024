@@ -97,13 +97,14 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             for (int j = 0; j < installationNo; j++)
                             {
-                                CEI.AddInstallations(IntimationI, installationType, installationNo, SiteOwnerId, "New", transaction);
+                                CEI.AddInstallations(IntimationI, installationType, installationNo, SiteOwnerId, ddlInspectionType.SelectedValue?.ToString(), transaction);
                             }
                         }
                     }
                     transaction.Commit();
 
-                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Data Saved Successfully');", true);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "successful",
+                "alert('Data Saved Successfully'); window.location.href = 'CinemaIntimationDetails.aspx'; ", true);
                 }
                 catch
                 {

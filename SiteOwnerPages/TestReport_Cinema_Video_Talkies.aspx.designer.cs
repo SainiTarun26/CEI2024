@@ -11,7 +11,7 @@ namespace CEIHaryana.SiteOwnerPages
 {
 
 
-    public partial class TestReport__Cinema_Video_Talkies
+    public partial class TestReport_Cinema_Video_Talkies
     {
 
         /// <summary>
@@ -60,13 +60,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div8;
 
         /// <summary>
-        /// txtapplication control.
+        /// txtWorkintimation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtapplication;
+        protected global::System.Web.UI.WebControls.TextBox txtWorkintimation;
 
         /// <summary>
         /// RequiredFieldValidator34 control.
@@ -114,13 +114,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div2;
 
         /// <summary>
-        /// TextBox2 control.
+        /// txtNameOfCinemas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtNameOfCinemas;
 
         /// <summary>
         /// RequiredFieldValidator5 control.
@@ -168,13 +168,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Name;
 
         /// <summary>
-        /// TxtAgentName control.
+        /// txtNameOfCinema control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtAgentName;
+        protected global::System.Web.UI.WebControls.TextBox txtNameOfCinema;
 
         /// <summary>
         /// RequiredFieldValidator2 control.
@@ -195,22 +195,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Contact;
 
         /// <summary>
-        /// txtAgentPhone control.
+        /// txtSerialNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAgentPhone;
-
-        /// <summary>
-        /// RegularExpressionValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
+        protected global::System.Web.UI.WebControls.TextBox txtSerialNo;
 
         /// <summary>
         /// RequiredFieldValidator1 control.
@@ -231,22 +222,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
 
         /// <summary>
-        /// TextBox1 control.
+        /// txtScreenSize control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
-
-        /// <summary>
-        /// RegularExpressionValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+        protected global::System.Web.UI.WebControls.TextBox txtScreenSize;
 
         /// <summary>
         /// RequiredFieldValidator3 control.
@@ -256,24 +238,6 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
-
-        /// <summary>
-        /// Attachments control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Attachments;
-
-        /// <summary>
-        /// Grd_Document control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView Grd_Document;
 
         /// <summary>
         /// Declaration control.
@@ -339,12 +303,39 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.CheckBox Check;
 
         /// <summary>
-        /// hdn control.
+        /// BtnBack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdn;
+        protected global::System.Web.UI.WebControls.Button BtnBack;
+
+        /// <summary>
+        /// btnSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
+
+        /// <summary>
+        /// HiddenField1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
+
+        /// <summary>
+        /// HFrowID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HFrowID;
     }
 }

@@ -73,9 +73,19 @@ namespace CEIHaryana.SiteOwnerPages
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
+                    Label lblInspectionType = (Label)row.FindControl("lblInspectionType");
                     Session["id"] = lblID.Text;
+                    #region Navneet 20-may-2025 added only new condition
+                    if (lblInspectionType.Text.Trim() == "New")
+                    {
+                        Response.Redirect("TestReport_Cinema_Video_Talkies.aspx", false);
 
-                    Response.Redirect("/SiteOwnerPages/PeriodicTestReport_Cinema_Video_Talkies.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("/SiteOwnerPages/PeriodicTestReport_Cinema_Video_Talkies.aspx", false);
+                    }
+                    #endregion
                 }
             }
             catch (Exception)

@@ -257,22 +257,27 @@ backgroundColor: 'rgba(255, 99, 71, 0.8)',
             {
             }
         }
+        #region Navneet Changed on 20-may-2025
         private void BindDoughnutChart()
         {
             string LoginId = Session["StaffID"].ToString();
             DataSet ds = new DataSet();
             ds = cei.OfficerDashboardDaughnutChart(LoginId);
+            string approvedCount = ds.Tables[0].Rows[0]["AcceptedCount"].ToString();
+            string RejectedCount = ds.Tables[0].Rows[0]["RejectedCount"].ToString();
+            string ReturnCount = ds.Tables[0].Rows[0]["ReturnCount"].ToString();
+            string Initiated = ds.Tables[0].Rows[0]["NewApplicationCount"].ToString();
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 DataTable dt = ds.Tables[0];
 
-                var labelsValues = new[] { "New Applications", "In Process", "Accepted", "Rejected" };
-                var labels = new[] { "Percentage_NewApplication", "Percentage_Inprocess", "Percentage_Accepted", "Percentage_Rejected" };
+                var labelsValues = new[] { "New Applications", "In Process", "Accepted", "Rejected", "Returned" };
+                var HoverValues = new[] { "New Applications" + " (" + Initiated + ")", "In Process" + " (" + In_process.Text + ")", "Accepted" + " (" + approvedCount + ")", "Rejected" + " (" + RejectedCount + ")", "Returned" + " (" + ReturnCount + ")" };
+                var labels = new[] { "Percentage_NewApplication", "Percentage_Inprocess", "Percentage_Accepted", "Percentage_Rejected", "Percentage_Return" };
 
                 // Extract values from the DataTable
                 var values = labels.Select(label => Convert.ToInt32(dt.Rows[0][label])).ToArray();
-
-                string[] backgroundColors = { "#fc7c56", "#eb1386", "#3d9c5c", "#f71d05" }; // Customize colors here
+                string[] backgroundColors = { "#fc7c56", "#eb1386", "#3d9c5c", "#f71d05", "#ADD8E6" }; // Customize colors here
                 var percentages = labels.Select(label => Convert.ToDouble(dt.Rows[0][label])).ToArray();
                 // Build the JavaScript code
                 string script = $@"var ctx = document.getElementById('myDoughnutChart').getContext('2d');
@@ -280,6 +285,7 @@ var myDoughnutChart = new Chart(ctx, {{
     type: 'doughnut',
     data: {{
         labels: {Newtonsoft.Json.JsonConvert.SerializeObject(labelsValues)},
+        labelsWrite: {Newtonsoft.Json.JsonConvert.SerializeObject(HoverValues)},
         datasets: [
             {{
                 data: {Newtonsoft.Json.JsonConvert.SerializeObject(percentages)}, // Use percentages here
@@ -301,7 +307,7 @@ var myDoughnutChart = new Chart(ctx, {{
                 label: function(tooltipItem, data) {{
                     var dataset = data.datasets[tooltipItem.datasetIndex];
                     var currentValue = dataset.data[tooltipItem.index];
-                    return data.labels[tooltipItem.index] + ': ' + currentValue + '%'; // Display percentage
+                    return data.labelsWrite[tooltipItem.index] + ': ' + currentValue + '%'; // Display percentage
                 }}
             }}
         }},
@@ -332,6 +338,7 @@ var myDoughnutChart = new Chart(ctx, {{
             {
             }
         }
+        #endregion
         private void OfficersGridBind()
         {
             LoginId = Session["StaffID"].ToString();

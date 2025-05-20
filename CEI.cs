@@ -10724,6 +10724,10 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationDataForHistory", ID);
         }
+        public void InsertDataOfCinema_New(string IntimationId,string Count, string NameOfScreen, string SerialNo,string SizeOfScreen,string CreatedBy)
+        {
+             DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_InsertDataOfCinema_Talkies_TestReport_New", IntimationId, Count, NameOfScreen, SerialNo, SizeOfScreen, CreatedBy);
+        }
         #endregion
     }
 }
