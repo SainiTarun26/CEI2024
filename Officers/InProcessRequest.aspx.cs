@@ -92,8 +92,13 @@ namespace CEIHaryana.Officers
                         //{
                         //    Response.Redirect("/Officers/InProcessInspection_Lift_Escalator.aspx", false);
                         //    return;
-                        //}
-
+                        //} else if condition added by neeraj on 20-may-2025
+                        else if (lblInstallationfor.Text.Trim() == "Cinema/Videos Talkis")
+                        {
+                            Response.Redirect("/Officers/ActionForCinemaVideo_Talkies.aspx", false);
+                            return;
+                        }
+                        //
                         else
                         {
                             Response.Redirect("/Officers/InProcessInspection.aspx", false);

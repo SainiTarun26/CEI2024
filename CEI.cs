@@ -10757,6 +10757,69 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
              DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_InsertDataOfCinema_Talkies_TestReport_New", IntimationId, Count, NameOfScreen, SerialNo, SizeOfScreen, CreatedBy);
         }
         #endregion
+        #region neeraj cinema 20-May-2025
+        public DataTable GetSiteOwnerData_Cinema(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDataForCinemaVideo", Id);
+        }
+
+        public int InspectionActionCinema(string InspectionID, string StaffId, string AcceptedOrReject, string Reason, string Remarks, string InspectionDate, SqlTransaction transaction)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ActionApproveRejectCinema", transaction.Connection, transaction))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", InspectionID);
+                    cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                    cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrReject);
+                    cmd.Parameters.AddWithValue("@ReasonForRejection", String.IsNullOrEmpty(Reason) ? DBNull.Value : (object)Reason);
+                    cmd.Parameters.AddWithValue("@Remarks", String.IsNullOrEmpty(Remarks) ? DBNull.Value : (object)Remarks);
+                    DateTime InsDate;
+                    if (DateTime.TryParse(InspectionDate, out InsDate) && InsDate != DateTime.MinValue)
+                    {
+                        cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@InspectionDate", DBNull.Value);
+                    };
+                    int x = cmd.ExecuteNonQuery();
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return 0;
+            }
+
+        }
+
+        public int InsertApprovedCertificatedataCinema(string InspectionId, string ApprovalCertificate, SqlTransaction transaction)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertApprovedCertificatedata", transaction.Connection, transaction))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@InspectionId", InspectionId);
+                    cmd.Parameters.AddWithValue("@ApprovalCertificate", ApprovalCertificate);
+                    int x = cmd.ExecuteNonQuery();
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public DataSet GetDetailsToViewCinemaTestReport(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewCinemaTestReport", InspectionId);
+        }
+        #endregion
     }
 }
 

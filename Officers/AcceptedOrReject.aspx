@@ -131,7 +131,10 @@
                                     <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("Installationfor") %>'></asp:Label>
                                     <asp:Label ID="lblApplicationStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label> 
                                     <asp:Label ID="lblApproveDate" runat="server" Text='<%#Eval("ApprovedDate") %>'></asp:Label>
+                                     <%--       lblUserType Added by aslam 19-May-2025--%>
                                     <asp:Label ID="lblUserType" runat="server" Text='<%#Eval("UserType") %>'></asp:Label>
+                             <%--       lblApproveCertificate Added by neeraj 20-May-2025--%>
+                                      <asp:Label ID="lblApproveCertificate" runat="server" Text='<%# Eval("ApprovalCertificate") %>' CssClass="break-text"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="SNo">

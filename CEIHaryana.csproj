@@ -1955,6 +1955,7 @@
     <Content Include="OfficerLogout.aspx" />
     <Content Include="Officers\AcceptedOrReject.aspx" />
     <Content Include="Officers\AccidentialReports.aspx" />
+    <Content Include="Officers\ActionForCinemaVideo_Talkies.aspx" />
     <Content Include="Officers\ActionOnSelfCertification.aspx" />
     <Content Include="Officers\ActionTakenInspections.aspx" />
     <Content Include="Officers\ConsolidatedReport.aspx" />
@@ -3183,6 +3184,13 @@
     </Compile>
     <Compile Include="Officers\AccidentialReports.aspx.designer.cs">
       <DependentUpon>AccidentialReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\ActionForCinemaVideo_Talkies.aspx.cs">
+      <DependentUpon>ActionForCinemaVideo_Talkies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\ActionForCinemaVideo_Talkies.aspx.designer.cs">
+      <DependentUpon>ActionForCinemaVideo_Talkies.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\ActionOnSelfCertification.aspx.cs">
       <DependentUpon>ActionOnSelfCertification.aspx</DependentUpon>

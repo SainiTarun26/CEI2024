@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -20,6 +21,9 @@ namespace CEIHaryana.Officers
                 {
                     if (Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty)
                     {
+                        //Null by   neeraj on 20-May-2025                        
+                        Session["ApprovalCertificate"] = "";
+                        //
                         GridBind();
                     }
                     else
@@ -84,6 +88,9 @@ namespace CEIHaryana.Officers
                     // code changed by aslam 19M-May-2025
                     Label lblblUserType = row.FindControl("lblUserType") as Label;//
                     string ApproveDate = lblApproveDateLabel.Text;
+                    //lblApproveCertificate added by neeraj on 20-may-2025
+                    Label lblApproveCertificate = row.FindControl("lblApproveCertificate") as Label;
+                    string ApproveCertificate = lblApproveCertificate.Text;
                     Session["InProcessInspectionId"] = id;
 
                     if (e.CommandName == "Select")
@@ -100,6 +107,11 @@ namespace CEIHaryana.Officers
                                 Response.Redirect("/Officers/InProcessInspection_Lift_Escalator.aspx", false);
                             }
                         }
+                        //elseif condition of cinema added by neeraj on 20-may-2025
+                        else if (InstallationType == "Cinema/Videos Talkis")
+                        {
+                            Response.Redirect("/Officers/ActionForCinemaVideo_Talkies.aspx", false);
+                        }//
                         else
                         {
                             Response.Redirect("/Officers/InProcessInspection.aspx", false);
@@ -109,8 +121,25 @@ namespace CEIHaryana.Officers
                     {
                         if (LblInspectionType.Text == "New")
                         {
-                            Session["InProcessInspectionId"] = id;
-                            if (InstallationType != "Lift" && InstallationType != "Escalator" && InstallationType != "Lift/Escalator" && InstallationType != "MultiLift" && InstallationType != "MultiEscalator")
+                            Session["InProcessInspectionId"] = id; //if condion of cinema added by neeraj on 20-may-2025
+                            if (InstallationType == "Cinema/Videos Talkis")
+                            {
+                                string fileName = lblApproveCertificate.Text;
+                                string folderPath = Server.MapPath(fileName);
+                                string filePath = Path.Combine(folderPath);
+                                if (System.IO.File.Exists(filePath))
+                                {
+                                    string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                                }
+                                else
+                                {
+                                    string errorMessage = "An error occurred: " + "Loading failed Please try Again later";
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+                                }
+                            }
+                            //
+                           else if (InstallationType != "Lift" && InstallationType != "Escalator" && InstallationType != "Lift/Escalator" && InstallationType != "MultiLift" && InstallationType != "MultiEscalator" && InstallationType != "Cinema/Videos Talkis")
                             {
                                 Session["InProcessInspectionId"] = id;
                                 if (ApproveDate != null && DateTime.TryParse(ApproveDate, out DateTime lblApproveDate))
