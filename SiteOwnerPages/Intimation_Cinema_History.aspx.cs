@@ -98,9 +98,7 @@ namespace CEIHaryana.SiteOwnerPages
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Session["id"] = "";
-            Session["id"] = null;
-            Response.Redirect("PreviousProjects.aspx");
+            Response.Redirect("Intimation_Cinema_HistoryGridView.aspx");
         }
     }
 }

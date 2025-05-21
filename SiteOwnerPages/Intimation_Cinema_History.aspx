@@ -209,7 +209,6 @@
                   
                                 </div>
             
-                <h7 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important;">Work Schedule</h7>
                 
                 <div>
                      

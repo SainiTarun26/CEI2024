@@ -18,7 +18,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 if (!Page.IsPostBack)
                 {
-                    if (Session["SiteOwnerId"] != null && Session["SiteOwnerId"].ToString() != "")
+                    if (Session["   "] != null && Session["SiteOwnerId"].ToString() != "")
                     {
                         getWorkIntimationData();
                     }
