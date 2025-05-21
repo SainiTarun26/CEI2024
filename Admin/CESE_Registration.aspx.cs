@@ -17,6 +17,7 @@ namespace CEIHaryana.Admin
 {
     public partial class CESE_Registration : System.Web.UI.Page
     {
+        //Page created by neeraj on may2025
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e) 
         {
@@ -232,6 +233,7 @@ namespace CEIHaryana.Admin
                         hiddenfield.Visible = true;
                         txtPanNo.ReadOnly = true;
                         DataTable dt = new DataTable();
+
                         dt = CEI.GETCESERecord(hnRegistrationId.Value);
                         if (dt.Rows.Count > 0)
                         {
@@ -239,11 +241,11 @@ namespace CEIHaryana.Admin
                             txtPanNo.Text = dt.Rows[0]["PanNo"].ToString();
                             txtAddress.Text = dt.Rows[0]["Address"].ToString();
                             txtEmail.Text = dt.Rows[0]["Email"].ToString();
-                            txtContactNo.Text = dt.Rows[0]["ContactNo"].ToString();
+                            txtContactNo.Text = dt.Rows[0]["ContactNo"].ToString();                        
+                            string Voltage = dt.Rows[0]["MaxVoltage"].ToString();
+                            ddlVoltage.SelectedIndex = ddlVoltage.Items.IndexOf(ddlVoltage.Items.FindByValue(Voltage));      
                             string District = dt.Rows[0]["District"].ToString();
                             ddldistrict.SelectedIndex = ddldistrict.Items.IndexOf(ddldistrict.Items.FindByText(District));
-                            string Voltage = dt.Rows[0]["MaxVoltage"].ToString();
-                            ddlVoltage.SelectedIndex = ddlVoltage.Items.IndexOf(ddlVoltage.Items.FindByText(Voltage));
                             hnFile.Value = dt.Rows[0]["CSSE_Certificate"].ToString();
                         }
                     }
@@ -312,61 +314,101 @@ namespace CEIHaryana.Admin
                 {
                     if (hnRegistrationId.Value != null && hnRegistrationId.Value != string.Empty)
                     {
-                    if (Convert.ToString(ddldistrict.SelectedValue) != "0")
+                    if (Convert.ToString(ddldistrict.SelectedValue) != "0" && ddldistrict.SelectedValue != null && ddldistrict.SelectedValue !=string.Empty)
                     {
-                        if (Convert.ToString(ddlVoltage.SelectedValue) != "0")
+                        if (Convert.ToString(ddlVoltage.SelectedValue) != "0" && ddlVoltage.SelectedValue != null && ddlVoltage.SelectedValue != string.Empty)
                         {
-                            string AdminId = hnOwnerId.Value;
-                            string[] allowedExtensions = { ".pdf" };
-                            int maxFileSize = 1 * 1024 * 1024;
-                            string filePathInfo = "";
-                            if (customFile.HasFile)
+                            if (txtName.Text != null && txtName.Text != string.Empty)
                             {
-                                if (customFile.PostedFile.ContentLength <= maxFileSize)
+                                if (txtAddress.Text != null && txtAddress.Text != string.Empty)
                                 {
-                                    string ext = Path.GetExtension(customFile.FileName).ToLower();
-                                    if (!allowedExtensions.Contains(ext))
+                                    if (txtContactNo != null && txtContactNo.Text != string.Empty)
                                     {
-                                        throw new Exception("Only PDF files are allowed.");
-                                    }
+                                        if (txtEmail.Text != null && txtEmail.Text != string.Empty)
+                                        {
+                                            string AdminId = hnOwnerId.Value;
+                                            string[] allowedExtensions = { ".pdf" };
+                                            int maxFileSize = 1 * 1024 * 1024;
+                                            string filePathInfo = "";
+                                            if (customFile.HasFile)
+                                            {
+                                                if (customFile.PostedFile.ContentLength <= maxFileSize)
+                                                {
+                                                    string ext = Path.GetExtension(customFile.FileName).ToLower();
+                                                    if (!allowedExtensions.Contains(ext))
+                                                    {
+                                                        throw new Exception("Only PDF files are allowed.");
+                                                    }
 
-                                    string directoryPath = Server.MapPath("~/Attachment/CESE-Certificate/" + txtPanNo.Text);
-                                    if (!Directory.Exists(directoryPath))
-                                    {
-                                        Directory.CreateDirectory(directoryPath);
+                                                    string directoryPath = Server.MapPath("~/Attachment/CESE-Certificate/" + txtPanNo.Text);
+                                                    if (!Directory.Exists(directoryPath))
+                                                    {
+                                                        Directory.CreateDirectory(directoryPath);
+                                                    }
+                                                    string fileName = "CESE-Certificate" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
+                                                    string fullPath = Path.Combine(directoryPath, fileName);
+                                                    filePathInfo = "/Attachment/CESE-Certificate/" + txtPanNo.Text + "/" + fileName;
+                                                    customFile.SaveAs(fullPath);
+                                                }
+                                                else
+                                                {
+
+                                                    string alertScript = "alert('Please upload PDF file under 1MB.');";
+                                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                                                    return;
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                filePathInfo = hnFile.Value;
+                                            }
+                                            int x = CEI.UpdateDataForCESE(hnRegistrationId.Value, txtName.Text, txtPanNo.Text, txtAddress.Text, txtEmail.Text,
+                                                    txtContactNo.Text, ddldistrict.SelectedValue.ToString(), ddlVoltage.SelectedItem.ToString(), filePathInfo, AdminId);
+
+                                            if (x > 0)
+                                            {
+                                                string script = $"alert('Registration updated Succesffuly!!.'); window.location='AdminMaster.aspx';";
+                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                                            }
+                                            else
+                                            {
+                                                string alertScript = "alert('Please try again.');";
+                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                                                return;
+
+                                            }
+                                        }
+                                        else
+                                        {
+                                            txtEmail.Focus();
+                                            string alertScript = "alert('Please provide Email Id to Proceed.');";
+                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                                            return;
+                                        }
                                     }
-                                    string fileName = "CESE-Certificate" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
-                                    string fullPath = Path.Combine(directoryPath, fileName);
-                                    filePathInfo = "/Attachment/CESE-Certificate/" + txtPanNo.Text + "/" + fileName;
-                                    customFile.SaveAs(fullPath);
+                                    else
+                                    {
+                                        txtContactNo.Focus();
+                                        string alertScript = "alert('Please provide ContactNo to Proceed.');";
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                                        return;
+                                    }
                                 }
                                 else
-                                {                                 
-                                
-                                    string alertScript = "alert('Please upload PDF file under 1MB.');";
+                                {
+                                    txtAddress.Focus();
+                                    string alertScript = "alert('Please Enter address to Proceed.');";
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
                                     return;
                                 }
-
                             }
                             else
                             {
-                                filePathInfo = hnFile.Value;
-                            }
-                            int x = CEI.UpdateDataForCESE(hnRegistrationId.Value, txtName.Text, txtPanNo.Text, txtAddress.Text, txtEmail.Text,
-                                    txtContactNo.Text, ddldistrict.SelectedValue.ToString(), ddlVoltage.SelectedItem.ToString(), filePathInfo, AdminId);
-
-                            if (x > 0)
-                            {
-                                string script = $"alert('Registration updated Succesffuly!!.'); window.location='AdminMaster.aspx';";
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
-                            }
-                            else
-                            {                                         
-                                string alertScript = "alert('Please try again.');";
+                                txtName.Focus();
+                                string alertScript = "alert('Please Enter Name to Proceed.');";
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
                                 return;
-                          
                             }
                         }
                         else
