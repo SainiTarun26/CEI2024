@@ -106,7 +106,11 @@ namespace CEIHaryana.Admin
                 Session["InspectionId"] = id;
                 if (e.CommandName == "Select")
                 {
-                    if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
+                    if (lblInstallationFor.Text == "Cinema_Videos Talkies")
+                    {
+                        Response.Redirect("/Admin/CinemaInspectionDetails.aspx", false);
+                    }
+                    else if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
                     {
                         Response.Redirect("/Admin/LiftInspectionDetails.aspx", false);
                     }

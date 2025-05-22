@@ -188,23 +188,27 @@
             </div>
 
             <div class="row">
-                <div class="col-md-12">
-                    <h7 class="card-title fw-semibold mb-4" id="maincard1" style="font-size: 18px !important;">SiteOwner Details</h7>
-                </div>
+                   <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
+       Inspection Details (<asp:Label ID="lblInspectionType" runat="server"  style="font-size: 17px;"></asp:Label>)
+   </div>
             </div>
             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                 <div class="row">
 
-                    <div class="col-md-4">
+                    <div class="col-md-4" id="Premise" runat="server" visible="false">
                         <label>Type of Inspection</label>
                         <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                     </div>
-                    <div class="col-4">
+                    <div class="col-4"  id="Applicant" runat="server" visible="false">
                         <label>
                             Type of Applicant
                         </label>
                         <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label for="Pin">Application No.</label>
+                        <asp:TextBox class="form-control" ID="txtApplicationNo" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-4">
                         <label>
@@ -220,9 +224,11 @@
                         <label for="Pin">InspectionType</label>
                         <asp:TextBox class="form-control" ID="txtInspectionType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
-                        <label for="Pin">Application No.</label>
-                        <asp:TextBox class="form-control" ID="txtApplicationNo" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    <div class="col-4">
+                        <label>
+                        Total  Amount
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                 </div>
             </div>

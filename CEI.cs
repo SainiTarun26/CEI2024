@@ -10805,6 +10805,11 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewCinemaTestReport", InspectionId);
         }
+        //Added on 22-may-2025
+        public DataTable GetSiteOwnerData_CinemaOfficer(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDataCinemaVideoSiteOwner", Id);
+        }
         #endregion
         #region gurmeet 20-May-2025
         public DataTable Payment_CinemaInspection(string InspectionType, int Qaunatity)

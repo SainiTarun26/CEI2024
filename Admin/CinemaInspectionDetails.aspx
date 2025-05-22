@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" AutoEventWireup="true" CodeBehind="ActionForCinemaVideo_Talkies.aspx.cs" Inherits="CEIHaryana.Officers.ActionForCinemaVideo_Talkies" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="CinemaInspectionDetails.aspx.cs" Inherits="CEIHaryana.Admin.CinemaInspectionDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -330,7 +329,7 @@
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
             <div class="card-title" style="margin-top: -15px; margin-bottom: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
-                Inspection/SiteOwner Detail (<asp:Label ID="lblInspectionType" runat="server" Text="Label"></asp:Label>-<asp:Label ID="lblUserType" runat="server" Text="Label"></asp:Label>-<asp:Label ID="lblInstallation" runat="server" Text="Label"></asp:Label>)
+                Inspection/SiteOwner Detail (<asp:Label ID="lblInspectionType" runat="server" Text="Label"></asp:Label>-<asp:Label ID="lblInstallation" runat="server" Text="Label"></asp:Label>)
             </div>
             <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                 <div class="row">
@@ -459,7 +458,7 @@
 
             </div>
             <div class="card-title" id="DivTestReports" runat="server" visible="false" style="margin-bottom: 5px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: -10px;">
-               Screen Details
+                Screen Details
             </div>
             <div class="card" id="New" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;" runat="server" visible="false">
                 <div class="col-12" style="padding: 0px;">
@@ -528,59 +527,7 @@
                 </div>
                 <asp:Label ID="Lblgrd_Documemnts" runat="server"></asp:Label>
             </div>
-            <div class="row">
-
-                <div class="row" style="margin-left: 0px;">
-                    <div class="col-md-4" id="ApprovalRequired" runat="server" visible="false">
-                        <label>
-                            Approval<samp style="color: red"> * </samp>
-                        </label>
-                       <div class="custom-dropdown">
-    <asp:DropDownList CssClass="form-control select-form select2 styled-ddl" runat="server" AutoPostBack="true" ID="ddlReview" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
-        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-        <asp:ListItem Text="Approved" Value="1"></asp:ListItem>
-        <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
-    </asp:DropDownList>
-</div>
-
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                    </div>
-                    <div class="col-md-3" id="InspectionDate" runat="server" visible="false">
-                        <label for="StartDate">
-                            Inspection Date<samp style="color: red"> * </samp>
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtInspectionDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please enter Inspection Date that should be greater than Request Date."></asp:RequiredFieldValidator>
-                    </div>
-                    <div class="col-md-5" id="Document" runat="server" visible="false">
-                        <label>Approval Certificate<samp style="color: red"> * </samp>
-                        </label>
-                        <asp:FileUpload ID="FileApprovalCertificate" runat="server" CssClass="form-control"
-                            Style="margin-left: 18px; padding: 2px; font-size: 15px; padding-left: 10px;" accept=".pdf" />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
-                            ControlToValidate="FileApprovalCertificate" ErrorMessage="Please Upload Approval Certificate" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-
-                    </div>
-                </div>
-                <div class="row" style="margin-left: 0px;">
-                    <div class="col-12" id="ReMark" runat="server" visible="false">
-                        <label>
-                            Remarks<samp style="color: red"> * </samp>
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtRemarks" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRemarks" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please provide remarks."></asp:RequiredFieldValidator>
-                    </div>
-                </div>
-                <div class="row" style="margin-left: 0px;">
-                    <div class="col-12" id="Rejection" runat="server" visible="false">
-                        <label>
-                            Reason<samp style="color: red"> * </samp>
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtRejectReason" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtRejectReason" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Provide reason for reject."></asp:RequiredFieldValidator>
-                    </div>
-                </div>
-            </div>
+          
             <div class="row" id="ApproveOrReject" runat="server" visible="false" style="margin-left: 0px !important;">
                 <div class="col-4">
                     <label>
@@ -594,13 +541,13 @@
                     </label>
                     <asp:TextBox class="form-control" ID="txtInspection" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
-                <div class="col-12" id="AppRemarks" runat="server" visible="false">
+                <div class="col-12" id="AppRemarks" runat="server" Visible="false">
                     <label>
                         Remarks
                     </label>
                     <asp:TextBox class="form-control" ID="txtRemarksApprove" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                 </div>
-                <div class="col-12" id="ReReason" runat="server" visible="false">
+                <div class="col-12" id="ReReason" runat="server" visible="false" >
                     <label>
                         Reason
                     </label>
@@ -609,11 +556,11 @@
             </div>
             <div class="col-md-12" style="text-align: center;margin-top:25px;">
 
-                <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" Visible="true" />
+               
                 <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
 
             </div>
-            <asp:HiddenField ID="hdnStaffId" runat="server" />
+            <asp:HiddenField ID="hdnAdminId" runat="server" />
          
 
 
@@ -667,11 +614,7 @@
             }
         }
     </script>
-    <script type="text/javascript">
-        window.onload = function () {
-            var today = new Date().toISOString().split('T')[0];
-            document.getElementById('<%= txtInspectionDate.ClientID %>').setAttribute('max', today);
-        };
-    </script>
+   
 
 </asp:Content>
+

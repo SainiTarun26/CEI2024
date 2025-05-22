@@ -93,7 +93,7 @@ namespace CEIHaryana.Officers
                         //    Response.Redirect("/Officers/InProcessInspection_Lift_Escalator.aspx", false);
                         //    return;
                         //} else if condition added by neeraj on 20-may-2025
-                        else if (lblInstallationfor.Text.Trim() == "Cinema/Videos Talkis")
+                        else if (lblInstallationfor.Text.Trim() == "Cinema_Videos Talkies")
                         {
                             Response.Redirect("/Officers/ActionForCinemaVideo_Talkies.aspx", false);
                             return;
@@ -110,7 +110,8 @@ namespace CEIHaryana.Officers
             }
             catch (Exception ex) 
             {
-            //
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
 

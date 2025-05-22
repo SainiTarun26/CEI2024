@@ -211,13 +211,9 @@ namespace CEIHaryana.SiteOwnerPages
 
                     string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
                     DateTime.TryParse(createdDate, out inspectionCreatedDate);
-                    string InspectionType = ds.Tables[0].Rows[0]["IType"].ToString();
-
-                    voltagelevel.Visible = true;
-                    Type.Visible = true;
-                    txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                    txtInspectionType.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
-
+                    lblInspectionType.Text = ds.Tables[0].Rows[0]["IType"].ToString();
+                    txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();                  
+                    txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();                  
                     string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                     if (Status == "Rejected")
                     {
@@ -267,6 +263,7 @@ namespace CEIHaryana.SiteOwnerPages
                 }
                 else if (IType == "Periodic")
                 {
+
                     txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
@@ -274,10 +271,12 @@ namespace CEIHaryana.SiteOwnerPages
                     txtApplicationNo.Text = ds.Tables[0].Rows[0]["InspectionReportID"].ToString();
 
                     ReturnedBased = ds.Tables[0].Rows[0]["ReasonType"].ToString();
-
+                    //Added By neeraj 22-May-2025
+                    txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                    //
                     string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
                     DateTime.TryParse(createdDate, out inspectionCreatedDate);
-                    string InspectionType = ds.Tables[0].Rows[0]["IType"].ToString();
+                    lblInspectionType.Text = ds.Tables[0].Rows[0]["IType"].ToString();
 
                     voltagelevel.Visible = false;
                     Type.Visible = false;

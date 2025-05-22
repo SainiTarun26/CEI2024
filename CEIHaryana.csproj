@@ -233,6 +233,7 @@
     <Content Include="Admin\AllTestReports.aspx" />
     <Content Include="Admin\CESE_Registration.aspx" />
     <Content Include="Admin\ChangeStaff.aspx" />
+    <Content Include="Admin\CinemaInspectionDetails.aspx" />
     <Content Include="Admin\CircleMaster.aspx" />
     <Content Include="Admin\Consolidated_Report.aspx" />
     <Content Include="Admin\DistrictData.aspx" />
@@ -2029,6 +2030,7 @@
     <Content Include="SiteOwnerPages\GeneratingSet.aspx" />
     <Content Include="SiteOwnerPages\GeneratingsetPeriodic.aspx" />
     <Content Include="SiteOwnerPages\Inspection.aspx" />
+    <Content Include="SiteOwnerPages\InspectionDetailsCinema.aspx" />
     <Content Include="SiteOwnerPages\InspectionHistory.aspx" />
     <Content Include="SiteOwnerPages\InspectionHistory_Industry.aspx" />
     <Content Include="SiteOwnerPages\InspectionRenewalCart.aspx" />
@@ -2282,6 +2284,13 @@
     </Compile>
     <Compile Include="Admin\ChangeStaff.aspx.designer.cs">
       <DependentUpon>ChangeStaff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CinemaInspectionDetails.aspx.cs">
+      <DependentUpon>CinemaInspectionDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CinemaInspectionDetails.aspx.designer.cs">
+      <DependentUpon>CinemaInspectionDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\CircleMaster.aspx.cs">
       <DependentUpon>CircleMaster.aspx</DependentUpon>
@@ -3693,6 +3702,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\Inspection.aspx.designer.cs">
       <DependentUpon>Inspection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\InspectionDetailsCinema.aspx.cs">
+      <DependentUpon>InspectionDetailsCinema.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\InspectionDetailsCinema.aspx.designer.cs">
+      <DependentUpon>InspectionDetailsCinema.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\InspectionHistory.aspx.cs">
       <DependentUpon>InspectionHistory.aspx</DependentUpon>

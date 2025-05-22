@@ -129,7 +129,7 @@
                 <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
                 <asp:Label ID="LblInspectionType" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label> 
                 <asp:Label ID="lblApproveDate" runat="server" Text='<%#Eval("ApprovedDate") %>'></asp:Label>
-                <%-- <asp:Label ID="LblAssignTo" runat="server" Text='<%#Eval("AssignTo") %>'></asp:Label>--%>
+                <asp:Label ID="lblApproveCertificate" runat="server" Text='<%# Eval("ApprovalCertificate") %>' CssClass="break-text"></asp:Label>
             </ItemTemplate>
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Id" Visible="False">

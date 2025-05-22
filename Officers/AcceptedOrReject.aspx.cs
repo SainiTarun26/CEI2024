@@ -107,7 +107,7 @@ namespace CEIHaryana.Officers
                             }
                         }
                         //elseif condition of cinema added by neeraj on 20-may-2025
-                        else if (InstallationType == "Cinema/Videos Talkis")
+                        else if (InstallationType == "Cinema_Videos Talkies")
                         {
                             Response.Redirect("/Officers/ActionForCinemaVideo_Talkies.aspx", false);
                         }//
@@ -121,7 +121,7 @@ namespace CEIHaryana.Officers
                         if (LblInspectionType.Text == "New")
                         {
                             Session["InProcessInspectionId"] = id; //if condion of cinema added by neeraj on 20-may-2025
-                            if (InstallationType == "Cinema/Videos Talkis")
+                            if (InstallationType == "Cinema_Videos Talkies")
                             {
                                 string fileName = lblApproveCertificate.Text;
                                 string folderPath = Server.MapPath(fileName);
@@ -156,10 +156,7 @@ namespace CEIHaryana.Officers
 
                                 }
                             }
-                            else if (InstallationType != "Lift" && InstallationType != "Escalator" && InstallationType != "Lift/Escalator" && InstallationType != "MultiLift" && InstallationType != "MultiEscalator")
-                            {
-                                Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
-                            }
+                         
                             #region aslam code changed by aslam 19M-May-2025
                             else if (InstallationType == "Lift" || InstallationType == "Escalator" || InstallationType == "Lift/Escalator" || InstallationType == "MultiLift" || InstallationType == "MultiEscalator")
                             {
@@ -184,7 +181,7 @@ namespace CEIHaryana.Officers
                         {
                             Session["InProcessInspectionId"] = id;
                             #region added by  neeraj on 20-May-2025         
-                            if (InstallationType == "Cinema/Videos Talkis")
+                            if (InstallationType == "Cinema_Videos Talkies")
                             {
                                 string fileName = lblApproveCertificate.Text;
                                 string folderPath = Server.MapPath(fileName);

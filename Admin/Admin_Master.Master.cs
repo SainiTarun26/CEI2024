@@ -10,8 +10,9 @@ namespace CEI_PRoject.ADMIN
         {
             try
             {
-                if (Convert.ToString(Session["AdminID"]) != null || Convert.ToString(Session["AdminID"]) != string.Empty || Request.Cookies["AdminID"] != null)
-                {
+                //Changed By neeraj 22-May-2025
+                if (Convert.ToString(Session["AdminID"]) != null && Convert.ToString(Session["AdminID"]) != string.Empty && Request.Cookies["AdminID"] != null)
+                {//
                     if (Request.Cookies["AdminID"] != null)
                     {
 

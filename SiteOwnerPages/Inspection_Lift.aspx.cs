@@ -103,8 +103,8 @@ namespace CEIHaryana.SiteOwnerPages
                 ds = CEI.InspectionData_Lift_Escalator(ID);
 
                 IType = ds.Tables[0].Rows[0]["IType"].ToString();
-                txtInspectionType.Text = ds.Tables[0].Rows[0]["IType"].ToString();
-                txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                lblInspectionType.Text = ds.Tables[0].Rows[0]["IType"].ToString();
+                //txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
                 string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
                 DateTime.TryParse(createdDate, out inspectionCreatedDate);

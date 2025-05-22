@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -71,6 +72,10 @@ namespace CEIHaryana.SiteOwnerPages
                 Label LblAssignTo = (Label)row.FindControl("LblAssignTo"); 
                 Label lblApproveDateLabel = row.FindControl("lblApproveDate") as Label;
                 string ApproveDate = lblApproveDateLabel.Text;
+                //Added By neeraj 22-May-2025
+                Label lblApproveCertificate = row.FindControl("lblApproveCertificate") as Label;
+                string ApproveCertificate = lblApproveCertificate.Text;
+                //
                 if (lblType.Text.Trim() == "Line")
                 {
                     Session["LineID"] = lblTestRportId.Text.Trim();
@@ -89,6 +94,11 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         Response.Redirect("/SiteOwnerPages/Inspection_Lift.aspx", false);
                     }
+                    //Added By neeraj 22-May-2025
+                    else if (lblType.Text.Trim() == "Cinema_Videos Talkies")
+                    {
+                        Response.Redirect("/SiteOwnerPages/InspectionDetailsCinema.aspx", false);
+                    }//
                     else
                     {
                         Response.Redirect("/SiteOwnerPages/Inspection.aspx", false);
@@ -113,9 +123,25 @@ namespace CEIHaryana.SiteOwnerPages
 
                     if (LblInspectionType.Text == "New")
                     {
-
-                        
-                            if (lblType.Text != "Lift" && lblType.Text != "Escalator" && lblType.Text != "Lift/Escalator" && lblType.Text != "MultiLift" && lblType.Text != "MultiEscalator")
+                        //Added By neeraj 22-May-2025
+                        if (lblType.Text == "Cinema_Videos Talkies")
+                        {
+                            string fileName = lblApproveCertificate.Text;
+                            string folderPath = Server.MapPath(fileName);
+                            string filePath = Path.Combine(folderPath);
+                            if (System.IO.File.Exists(filePath))
+                            {
+                                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                            }
+                            else
+                            {
+                                string errorMessage = "An error occurred: " + "Loading failed Please try Again later";
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+                            }
+                        }
+                        //
+                       else  if (lblType.Text != "Lift" && lblType.Text != "Escalator" && lblType.Text != "Lift/Escalator" && lblType.Text != "MultiLift" && lblType.Text != "MultiEscalator")
                             {
                                 if (ApproveDate != null && DateTime.TryParse(ApproveDate, out DateTime lblApproveDate))
                                 {
@@ -140,7 +166,24 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     else if (LblInspectionType.Text == "Periodic")
                     {
-                        if (lblType.Text != "Lift" && lblType.Text != "Escalator" && lblType.Text != "Lift/Escalator" && lblType.Text != "MultiLift" && lblType.Text != "MultiEscalator")
+                        //Added By neeraj 22-May-2025
+                        if (lblType.Text == "Cinema_Videos Talkies")
+                        {
+                            string fileName = lblApproveCertificate.Text;
+                            string folderPath = Server.MapPath(fileName);
+                            string filePath = Path.Combine(folderPath);
+                            if (System.IO.File.Exists(filePath))
+                            {
+                                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                            }
+                            else
+                            {
+                                string errorMessage = "An error occurred: " + "Loading failed Please try Again later";
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+                            }
+                        }//
+                        else  if (lblType.Text != "Lift" && lblType.Text != "Escalator" && lblType.Text != "Lift/Escalator" && lblType.Text != "MultiLift" && lblType.Text != "MultiEscalator")
                         {
                             Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
                         }

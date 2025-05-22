@@ -176,11 +176,11 @@
     <div class="content-wrapper">
         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
-                Inspection Details
+                Inspection Details(<asp:Label ID="lblInspectionType" runat="server"  Text="Label" style="font-size: 17px;"></asp:Label>)
             </div>
             <div class="card" style="padding-top: 10px; padding-left: 15px; padding-right: 15px;">
                 <div class="row">
-                    <div class="col-4" id="Inspections" runat="server" visible="false">
+                   <%-- <div class="col-4" id="Inspections" runat="server" visible="false">
                         <label>
                             Type of Inspection
                     <samp style="color: red">* </samp>
@@ -195,6 +195,10 @@
                         </label>
                         <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
+                    </div>--%>
+                    <div class="col-4" runat="server">
+                        <label for="Pin">Application No.</label>
+                        <asp:TextBox class="form-control" ID="txtApplicationNo" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-4">
                         <label>
@@ -203,15 +207,12 @@
                         <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                     </div>
-                    <div class="col-4" id="Type" runat="server">
+                  <%--  <div class="col-4" id="Type" runat="server">
                         <label for="Pin">InspectionType</label>
                         <asp:TextBox class="form-control" ID="txtInspectionType" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                    </div>
-                    <div class="col-4" runat="server">
-                        <label for="Pin">Application No.</label>
-                        <asp:TextBox class="form-control" ID="txtApplicationNo" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
+                    </div>--%>
+                   
                     <div class="col-4" runat="server">
                         <label for="Pin">Total Amount</label>
                         <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -293,7 +294,7 @@
             <div class="card" style="padding-top: 10px;">
                 <div class="col-12">
 
-                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView2_RowDataBound" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server"  OnRowDataBound="GridView2_RowDataBound" AutoGenerateColumns="false" >
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
                             <asp:TemplateField HeaderText="SNo">
