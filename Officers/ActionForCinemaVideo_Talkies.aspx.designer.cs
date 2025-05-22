@@ -33,6 +33,15 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.Label lblInspectionType;
 
         /// <summary>
+        /// lblUserType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUserType;
+
+        /// <summary>
         /// lblInstallation control.
         /// </summary>
         /// <remarks>

@@ -78,7 +78,9 @@ namespace CEIHaryana.Officers
                     txtRemarksApprove.Text = dt.Rows[0]["Suggestion"].ToString();
                     txtReasonReject.Text = dt.Rows[0]["ReasonForRejection"].ToString();
                     lblInspectionType.Text = dt.Rows[0]["TypeOfInspection"].ToString();                   
-                    lblInstallation.Text = dt.Rows[0]["InstallationType"].ToString();                                     
+                    lblInstallation.Text = dt.Rows[0]["InstallationType"].ToString();
+                    //added by neeraj 22-may-2025
+                    lblUserType.Text = dt.Rows[0]["UserType"].ToString();//
                     txtApplicationStatus.Text = dt.Rows[0]["ApplicationStatus"].ToString();
                     {
                         if(txtApplicationStatus.Text == "InProcess")
