@@ -10159,7 +10159,11 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetails_ForCinemaTalkies", address, OwnerId);
         }
-     
+        //22-MAY-2025
+        public DataSet GetDataCinemaVideoTalkiesTestReport(string testReportId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataCinemaVideoTalkiesTestReport", testReportId);
+        }
         #endregion
         #region aslam code lift industry_19M-May-2025
         public DataSet SiteIntimations_forLift_IndustryLift(string PANNumber)

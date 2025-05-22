@@ -243,7 +243,7 @@ namespace CEIHaryana.Admin
                             txtEmail.Text = dt.Rows[0]["Email"].ToString();
                             txtContactNo.Text = dt.Rows[0]["ContactNo"].ToString();                        
                             string Voltage = dt.Rows[0]["MaxVoltage"].ToString();
-                            ddlVoltage.SelectedIndex = ddlVoltage.Items.IndexOf(ddlVoltage.Items.FindByValue(Voltage));      
+                            ddlVoltage.SelectedIndex = ddlVoltage.Items.IndexOf(ddlVoltage.Items.FindByText(Voltage));
                             string District = dt.Rows[0]["District"].ToString();
                             ddldistrict.SelectedIndex = ddldistrict.Items.IndexOf(ddldistrict.Items.FindByText(District));
                             hnFile.Value = dt.Rows[0]["CSSE_Certificate"].ToString();
