@@ -265,7 +265,7 @@ namespace CEIHaryana.SiteOwnerPages
                             }
                         }
                     }
-                    decimal TotalAmount = Convert.ToDecimal(Session["Amount"]);                    
+                    decimal TotalAmount = Convert.ToDecimal(Session["CinemaAmount"]);                    
                     DataTable dt = new DataTable();
                     dt = CEI.FetchOfficerFor_Accidental(District, "XEN");
                     if (dt == null || dt.Rows.Count < 0)
