@@ -14,7 +14,6 @@ namespace CEIHaryana.Officers
 {
     public partial class PeriodicInspection_Cinema_Talkies : System.Web.UI.Page
     {
-        //Page Created By aslam 23-May-2025
         CEI CEI = new CEI();
         private static int count;
         private static string IntimationId, AcceptorReturn, Reason, StaffId;
@@ -32,7 +31,7 @@ namespace CEIHaryana.Officers
                 {
                     RadioButtonList2.Items[1].Enabled = false;
                     hdnStaffId.Value = "";
-                    Session["InspectionId"] = "1001893";
+                    //Session["InspectionId"] = "1001893";
                     //Session["InspectionId"] = "1001894";
                     if (Convert.ToString(Session["StaffID"]) != null && Convert.ToString(Session["StaffID"]) != string.Empty && Convert.ToString(Session["InspectionId"]) != null && Convert.ToString(Session["InspectionId"]) != string.Empty)
                     {
