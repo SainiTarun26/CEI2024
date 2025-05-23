@@ -208,7 +208,7 @@ namespace CEIHaryana.SiteOwnerPages
         private void GetDocumentUploadData(string ApplicantType, string InspectionType)
         {
             DataTable ds = new DataTable();
-            ds = CEI.GetDocumentlistfornewInspection_Cinema(ApplicantType, 11, InspectionType, 0);
+            ds = CEI.GetDocumentlistfornewInspection_Cinema(ApplicantType, 19, InspectionType, 0);
             if (ds.Rows.Count > 0)
             {
                 UploadDocuments.Visible = true;
@@ -290,7 +290,7 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         PaymentMode = RadioButtonList2.SelectedItem.ToString();
                     }
-                    InstallationTypeID = "11";
+                    InstallationTypeID = "19";
                     IntstallationType = "Cinema_Videos Talkies";
                     InsertFilesIntoDatabase(InstallationTypeID, ApplicantTypeCode, IntimationId, ApplicantType, IntstallationType,
                     District, Division, PaymentMode, CreatedBy, TotalAmount, AssignedOfficer, transcationId, TranscationDate);
@@ -360,9 +360,8 @@ namespace CEIHaryana.SiteOwnerPages
                            Label lblIntimationId = (Label)rows.FindControl("lblIntimationId");
                            Label lblInspectionId = (Label)rows.FindControl("lblInspectionId"); 
                            Label lblTestReportCount = (Label)rows.FindControl("LblTestReportCount");
-                           Label lblTypeofinstallation = (Label)rows.FindControl("LblTypeofinstallation");
                            OldInspectionId = lblInspectionId.Text;
-                           CEI.UpdateInstallationHistory_ForPeriodicCinema(lblTestReportCount.Text,OldInspectionId, lblIntimationId.Text, para_CreatedByy, NewInspectionId, lblTypeofinstallation.Text);
+                           CEI.UpdateInstallationHistory_ForPeriodicCinema(lblTestReportCount.Text,OldInspectionId, lblIntimationId.Text, para_CreatedByy, NewInspectionId);
                        }
                    }
                     

@@ -15,7 +15,6 @@ namespace CEIHaryana.SiteOwnerPages
 {
     public partial class Generate_inspection_Cinema_Video_Talkies : System.Web.UI.Page
     {
-        //Created By  gurmeet  23-May-2025
         CEI CEI = new CEI();
         int inspectionIdRes,inspectionCountRes = 0;       
         private static string ApplicantTypeCode, id, Category, Count, PaymentMode, InstallationId, IntstallationType,
@@ -138,13 +137,15 @@ namespace CEIHaryana.SiteOwnerPages
                     {
                         //CEI.InsertPaymentHistory_Lift(id, int.Parse(lblNoOfInstallations.Text), 11,//int.Parse(InstallationId),
                         //    CreatedBy);
-                        CEI.InsertPaymentHistory_Lift(lblIntimationId.Text, int.Parse(lblNoOfInstallations.Text), 11,//int.Parse(InstallationId),
+                        CEI.update_InstallationHistory_NewInspection_Cinema(lblIntimationId.Text, int.Parse(lblNoOfInstallations.Text), 19,//int.Parse(InstallationId),
                             CreatedBy);
                     }
                     else
                     {
                         //CEI.DeletePaymentHistory(id, int.Parse(lblNoOfInstallations.Text), int.Parse(InstallationId), CreatedBy);
-                        CEI.DeletePaymentHistory(lblIntimationId.Text, int.Parse(lblNoOfInstallations.Text), 11, CreatedBy);
+                       // CEI.DeletePaymentHistory(lblIntimationId.Text, int.Parse(lblNoOfInstallations.Text), 11, CreatedBy);
+                        CEI.DeletePaymentHistory(lblIntimationId.Text, int.Parse(lblNoOfInstallations.Text), 19, CreatedBy);
+
                     }
                     InspectionType = "New";                           
                     UploadDocuments.Visible = true;
@@ -178,8 +179,8 @@ namespace CEIHaryana.SiteOwnerPages
                     Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
                     //if (lblCategory.Text.Trim() == "Lift")
                     //{
-                    Session["TestReportId"] = lblTestReportId.Text;
-                    Response.Redirect("/SiteOwnerPages/Cinema_Video_Talkies_TestReport_Modal.aspx", false);
+                       Session["TestReportId"] = lblTestReportId.Text;
+                       Response.Redirect("/SiteOwnerPages/Cinema_Video_Talkies_TestReport_Modal.aspx", false);
                     //}                    
                 }
             }
@@ -201,7 +202,8 @@ namespace CEIHaryana.SiteOwnerPages
         private void GetDocumentUploadData(string ApplicantType, string InspectionType, int inspectionIdPrm)
         {
             DataTable ds = new DataTable();
-            ds = CEI.GetDocumentlistfornewInspection_Cinema(ApplicantType, 11, "New", inspectionIdPrm);
+           // ds = CEI.GetDocumentlistfornewInspection_Cinema(ApplicantType, 11, "New", inspectionIdPrm);
+            ds = CEI.GetDocumentlistfornewInspection_Cinema(ApplicantType, 19, "New", inspectionIdPrm);
             if (ds.Rows.Count > 0)
             {
                 Grd_Document.DataSource = ds;
@@ -306,7 +308,8 @@ namespace CEIHaryana.SiteOwnerPages
                                 PaymentMode = RadioButtonList2.SelectedItem.ToString();
                             }
 
-                            InstallationTypeID = "11";
+                            //InstallationTypeID = "11";
+                            InstallationTypeID = "19";
                             IntstallationType = "Cinema_Videos Talkies";
                             InsertFilesIntoDatabase(InstallationTypeID, CreatedBy, txtContact.Text, ApplicantTypeCode, IntimationId, ApplicantType, IntstallationType,
                             District, Division, PaymentMode, txtInspectionRemarks.Text.Trim(), CreatedBy, TotalAmount, AssignedOfficer, transcationId, TranscationDate, Convert.ToInt32(InspectionIdClientSideCheckedRow.Value) );

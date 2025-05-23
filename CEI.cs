@@ -10835,7 +10835,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                 SqlCommand command = new SqlCommand("Sp_Calculate_CinemaInspectionPayment", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@InspectionType", InspectionType);
-                command.Parameters.AddWithValue("@InstallationTypeId", 11);
+                command.Parameters.AddWithValue("@InstallationTypeId", 19);
                 command.Parameters.AddWithValue("@Quantity", Qaunatity);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -10901,14 +10901,17 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             cmd.Parameters.Add(outputParam);
             cmd.ExecuteNonQuery();
         }
-        public DataSet UpdateInstallationHistory_ForPeriodicCinema(string TestReportCount, string OldInspectionId, string IntimationId, string CreatedBy, string NewInspectionId, string TypeOfInstallation)
+        public DataSet UpdateInstallationHistory_ForPeriodicCinema(string TestReportCount, string OldInspectionId, string IntimationId, string CreatedBy, string NewInspectionId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateInstallationHistory_Inspection_forPeriodicCinema", TestReportCount, Convert.ToInt32(OldInspectionId), IntimationId, CreatedBy, Convert.ToInt32(NewInspectionId), TypeOfInstallation);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateInstallationHistory_Inspection_forPeriodicCinema", TestReportCount, Convert.ToInt32(OldInspectionId), IntimationId, CreatedBy, Convert.ToInt32(NewInspectionId));
         }
-
-        #endregion
-        #region Aslam 23-May-2025 cinema
-        public DataTable GetInspectionOfficerOwnerData_Cinema(string Id)
+        public void update_InstallationHistory_NewInspection_Cinema(string IntimationId, int count, int InstallationTypeId, string CreatedBy)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "update_InstallationHistory_NewInspection_Cinema", IntimationId, count, InstallationTypeId, CreatedBy);
+        }
+            #endregion
+            #region Aslam 23-May-2025 cinema
+            public DataTable GetInspectionOfficerOwnerData_Cinema(string Id)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionOfficerOwnerData_Cinema", Id);
         }
