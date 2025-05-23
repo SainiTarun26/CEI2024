@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -324,8 +325,32 @@ namespace CEIHaryana.Admin
                                 {
                                     if (txtContactNo != null && txtContactNo.Text != string.Empty)
                                     {
+                                        if (!Regex.IsMatch(txtName.Text.Trim(), @"^[A-Za-z]+$"))
+                                        {
+                                            txtName.Focus();
+                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('Please enter a valid name.');", true);
+                                            return;
+                                        }
+                                         if (!Regex.IsMatch(txtAddress.Text.Trim(), @"^[A-Za-z0-9\W_]+$"))
+                                        {
+                                            txtAddress.Focus();
+                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('Please enter address.');", true);
+                                            return;
+                                        }
+                                        if (!Regex.IsMatch(txtContactNo.Text, @"^[6-9]\d{9}$"))
+                                        {
+                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('Please enter a valid Contact No.');", true);
+                                            return;
+                                        }
                                         if (txtEmail.Text != null && txtEmail.Text != string.Empty)
                                         {
+                                            if (!Regex.IsMatch(txtEmail.Text, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
+                                            {
+                                                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('Please enter a valid email.');", true);
+                                                return;
+                                            }
+
+                                       
                                             string AdminId = hnOwnerId.Value;
                                             string[] allowedExtensions = { ".pdf" };
                                             int maxFileSize = 1 * 1024 * 1024;
