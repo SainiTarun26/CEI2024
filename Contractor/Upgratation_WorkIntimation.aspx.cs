@@ -318,6 +318,8 @@ namespace CEIHaryana.Contractor
         {
             try
             {
+                //Added by aslam on 23 may 2025 to Rebind Premises 
+                ddlLoadBindPremises();//
 
                 string PANNumber = txtPAN.Text.Trim();
 
@@ -392,6 +394,8 @@ namespace CEIHaryana.Contractor
                     individual.Visible = true;
                     agency.Visible = false;
                 }
+                //Added by aslam on 23 may 2025 to Rebind Premises 
+                ddlLoadBindPremises();//
                 //Added By Aslam 22 apl 2025 to Remove industry if private and individual selection is done In Powerutility also remove
                 HideIndustry_PremisesOption();
             }
@@ -409,6 +413,13 @@ namespace CEIHaryana.Contractor
                     if (item.Value == "4")
                     {
                         item.Attributes.Add("style", "display:none");
+
+                        //Added by aslam on 23 may 2025 If this option is selected, clear the selection  
+                        if (item.Selected)
+                        {
+                            ddlPremises.SelectedIndex = -1; // Clear the selected value
+                        }
+                        //
                         break;
                     }
                 }
@@ -747,6 +758,9 @@ namespace CEIHaryana.Contractor
         }
         protected void ddlWorkDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Added On 23 may 2025 to Rebind Premises 
+            ddlLoadBindPremises();
+
             DivOtherDepartment.Visible = false;
             DivPancard_TanNo.Visible = false;
             //PowerUtility.Visible = false;

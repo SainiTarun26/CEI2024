@@ -101,6 +101,22 @@ namespace CEIHaryana.Officers
 
                     }
 
+ #region Added By Aslam 23-May-2025 For Cinema For New And Periodic New Records.
+                    //if (lblInstallationfor.Text.Trim() == "Cinema/Videos Talkis")
+                    if (lblInstallationfor.Text.Trim() == "Cinema_Videos Talkies")
+                    {
+                        if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "New")
+                        {
+                            Response.Redirect("/Officers/Inspection_Cinema_Talkies.aspx", false);
+                            return;
+                        }
+                        else if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "Periodic")
+                        {
+                            Response.Redirect("/Officers/PeriodicInspection_Cinema_Talkies.aspx", false);
+                            return;
+                        }
+                    }
+                    #endregion
 
                     if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "New")
                     {

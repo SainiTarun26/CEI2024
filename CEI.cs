@@ -10074,22 +10074,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
 
         #endregion
 
-        #region navneet cinema 13-May-2025
-        public string InsetCinemaData(string Pannumber,string InspectionType, string District, string Address, string Pincode, string TypeOfInstallation1, string NumberOfInstallation1)
-        {
-            try
-            {
-
-                object result =  DBTask.ExecuteScalar(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspertCinemaIntimation", Pannumber, InspectionType, District, Address, Pincode, TypeOfInstallation1, NumberOfInstallation1);
-                return result != null ? result.ToString() : null;
-            }
-            catch (Exception ex)
-            {
-
-                return null;
-            }
-        }
-        #endregion
+      
         #region aslam changed on  15-may-2025
         public DataSet TotalRequestInspectionForStaff_SearchCafWithGlobalFilter(string LoginId, string Division, string InstallationType, string searchText, string userType)
         {
@@ -10099,70 +10084,6 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         public DataSet TotalRequestInspectionForAdmin_SearchCafWithGlobalFilter(string LoginId, string Division, string InstallationType, string searchText, string userType)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin_SearchCafWithGlobalFilter", LoginId, Division, InstallationType, searchText, userType);
-        }
-        #endregion
-        #region neha code of Cinema 19-may-2025
-        public DataTable GetCinemaTalkiesWorkIntimationData(string Id)
-        {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetCinemaTalkiesWorkIntimationData", Id);
-        }
-        public DataTable GetCinemaInstallationDetails(string IntimationId)
-        {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetCinemaInstallationDetails", IntimationId);
-        }
-        public DataTable GetCinemaIntimationComponentdetails(string Id)
-        {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetCinemaIntimationComponentdetails", Id);
-        }
-        public int InsertDataOfCinema_Talkies_TestReport_Periodic(string IntimationId, string Count, string NameOfScreen, string SerialNo,
-       string SizeOfScreen, string LastInspectionDate, string installationNo, string CreatedBy)
-        {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
-            using (SqlCommand cmd = new SqlCommand("Sp_InsertDataOfCinema_Talkies_TestReport_Periodic", con))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@IntimationId", (object)IntimationId ?? DBNull.Value);
-
-                // Convert Count to int
-                if (int.TryParse(Count, out int countVal))
-                    cmd.Parameters.AddWithValue("@Count", countVal);
-                else
-                    cmd.Parameters.AddWithValue("@Count", DBNull.Value);
-                cmd.Parameters.AddWithValue("@NameOfScreen", (object)NameOfScreen ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@SerialNo", (object)SerialNo ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@SizeOfScreen", (object)SizeOfScreen ?? DBNull.Value);
-                if (DateTime.TryParse(LastInspectionDate, out DateTime inspectionDate))
-                    cmd.Parameters.AddWithValue("@LastInspectionDate", inspectionDate);
-                else
-                    cmd.Parameters.AddWithValue("@LastInspectionDate", DBNull.Value);
-                cmd.Parameters.AddWithValue("@Rowid", installationNo);
-
-                cmd.Parameters.AddWithValue("@CreatedBy", (object)CreatedBy ?? DBNull.Value);
-                SqlParameter returnStatusParam = new SqlParameter("@ReturnStatus", SqlDbType.Int)
-                {
-                    Direction = ParameterDirection.Output
-                };
-                cmd.Parameters.Add(returnStatusParam);
-
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
-                return (int)returnStatusParam.Value;
-            }
-        }
-        public DataSet GetSiteAddress_ForCinemaTalkies(string OwnerId)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSiteAddress_ForCinemaTalkies", OwnerId);
-        }
-
-        public DataSet GetDetails_ForCinemaTalkies(string address, string OwnerId)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetails_ForCinemaTalkies", address, OwnerId);
-        }
-        //22-MAY-2025
-        public DataSet GetDataCinemaVideoTalkiesTestReport(string testReportId)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataCinemaVideoTalkiesTestReport", testReportId);
         }
         #endregion
         #region aslam code lift industry_19M-May-2025
@@ -10729,7 +10650,22 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         }
 
         #endregion
+        #region Cinema
         #region Navneet 19-may-2025 Cinema
+        public string InsetCinemaData(string Pannumber, string InspectionType, string District, string Address, string Pincode, string TypeOfInstallation1, string NumberOfInstallation1)
+        {
+            try
+            {
+
+                object result = DBTask.ExecuteScalar(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspertCinemaIntimation", Pannumber, InspectionType, District, Address, Pincode, TypeOfInstallation1, NumberOfInstallation1);
+                return result != null ? result.ToString() : null;
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
         public DataTable GetCinemaIntimationHistory(string Createdby)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetCinemaIntimationHistory", Createdby);
@@ -10811,7 +10747,71 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDataCinemaVideoSiteOwner", Id);
         }
         #endregion
-     
+
+        #region neha code of Cinema 19-may-2025
+        public DataTable GetCinemaTalkiesWorkIntimationData(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetCinemaTalkiesWorkIntimationData", Id);
+        }
+        public DataTable GetCinemaInstallationDetails(string IntimationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetCinemaInstallationDetails", IntimationId);
+        }
+        public DataTable GetCinemaIntimationComponentdetails(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetCinemaIntimationComponentdetails", Id);
+        }
+        public int InsertDataOfCinema_Talkies_TestReport_Periodic(string IntimationId, string Count, string NameOfScreen, string SerialNo,
+       string SizeOfScreen, string LastInspectionDate, string installationNo, string CreatedBy)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand("Sp_InsertDataOfCinema_Talkies_TestReport_Periodic", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@IntimationId", (object)IntimationId ?? DBNull.Value);
+
+                // Convert Count to int
+                if (int.TryParse(Count, out int countVal))
+                    cmd.Parameters.AddWithValue("@Count", countVal);
+                else
+                    cmd.Parameters.AddWithValue("@Count", DBNull.Value);
+                cmd.Parameters.AddWithValue("@NameOfScreen", (object)NameOfScreen ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@SerialNo", (object)SerialNo ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@SizeOfScreen", (object)SizeOfScreen ?? DBNull.Value);
+                if (DateTime.TryParse(LastInspectionDate, out DateTime inspectionDate))
+                    cmd.Parameters.AddWithValue("@LastInspectionDate", inspectionDate);
+                else
+                    cmd.Parameters.AddWithValue("@LastInspectionDate", DBNull.Value);
+                cmd.Parameters.AddWithValue("@Rowid", installationNo);
+
+                cmd.Parameters.AddWithValue("@CreatedBy", (object)CreatedBy ?? DBNull.Value);
+                SqlParameter returnStatusParam = new SqlParameter("@ReturnStatus", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(returnStatusParam);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return (int)returnStatusParam.Value;
+            }
+        }
+        public DataSet GetSiteAddress_ForCinemaTalkies(string OwnerId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSiteAddress_ForCinemaTalkies", OwnerId);
+        }
+
+        public DataSet GetDetails_ForCinemaTalkies(string address, string OwnerId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetails_ForCinemaTalkies", address, OwnerId);
+        }
+        //22-MAY-2025
+        public DataSet GetDataCinemaVideoTalkiesTestReport(string testReportId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataCinemaVideoTalkiesTestReport", testReportId);
+        }
+        #endregion
         #region gurmeet Cinema 23-May-2025
         public DataSet SiteOwnerInstallations_Cinema(string IntimationId)
         {
@@ -10906,6 +10906,66 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateInstallationHistory_Inspection_forPeriodicCinema", TestReportCount, Convert.ToInt32(OldInspectionId), IntimationId, CreatedBy, Convert.ToInt32(NewInspectionId), TypeOfInstallation);
         }
 
+        #endregion
+        #region Aslam 23-May-2025 cinema
+        public DataTable GetInspectionOfficerOwnerData_Cinema(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionOfficerOwnerData_Cinema", Id);
+        }
+
+        public DataSet ViewDocuments_Cinema(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDocuments_Cinema", InspectionId);
+        }
+
+
+        public DataSet GetDetailsToViewCinemaTestReportOfficer(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewCinemaTestReportOfficer", InspectionId);
+        }
+
+
+        public DataSet UpdateInspectionRejection_Cinema(string ID, string StaffId, string RejctionReasonType, string ReasonForRejection)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionRejection_Cinema", ID, StaffId, RejctionReasonType, ReasonForRejection);
+        }
+
+        public DataTable InspectionAccepted_Cinema(string ID, string StaffId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionAccepted_Cinema", ID, StaffId);
+        }
+
+        public DataTable GetPeriodicInspectionOfficerOwnerData_Cinema(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionOfficerOwnerData_Periodic_Cinema", Id);
+        }
+
+        public DataSet ViewDocuments_Periodic_Cinema(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDocuments_Periodic_Cinema", InspectionId);
+        }
+
+        public DataSet GetPeriodicDetailsToViewCinemaTestReportOfficer(string InspectionId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewCinemaTestReportOfficer_Periodic", InspectionId);
+        }
+
+        public DataSet UpdateInspectionRejection_Periodic_Cinema(string ID, string StaffId, string RejctionReasonType, string ReasonForRejection)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionRejection_Periodic_Cinema", ID, StaffId, RejctionReasonType, ReasonForRejection);
+        }
+
+        public DataTable InspectionAccepted_Periodic_Cinema(string ID, string StaffId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionAccepted_Periodic_Cinema", ID, StaffId);
+        }
+
+
+
+
+
+
+        #endregion
         #endregion
     }
 }

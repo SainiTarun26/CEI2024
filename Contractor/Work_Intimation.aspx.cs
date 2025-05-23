@@ -309,6 +309,9 @@ namespace CEIHaryana.Contractor
         {
             try
             {
+                //Added by aslam on 23 may 2025 to Rebind Premises 
+                ddlLoadBindPremises();
+                //
                 string PANNumber = txtPAN.Text.Trim();
                 System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("^[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}$|^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$");
                 if (!regex.IsMatch(PANNumber))
@@ -382,6 +385,8 @@ namespace CEIHaryana.Contractor
                     individual.Visible = true;
                     agency.Visible = false;
                 }
+                //Added by aslam on 23 may 2025 to Rebind Premises 
+                ddlLoadBindPremises();
                 //Added By Aslam 22 apl 2025 to Remove industry if private and individual selection is done In Powerutility also remove
                 HideIndustry_PremisesOption();
             }
@@ -402,8 +407,16 @@ namespace CEIHaryana.Contractor
                     if (item.Value == "4")
                     {
                         item.Attributes.Add("style", "display:none");
+
+                        //Added by aslam on 22 may 2025 If this option is selected, clear the selection 
+                        if (item.Selected)
+                        {
+                            ddlPremises.SelectedIndex = -1; // Clear the selected value
+                        }
+                        //
                         break;
                     }
+
                 }
             }
         }
@@ -706,6 +719,9 @@ namespace CEIHaryana.Contractor
         }
         protected void ddlWorkDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Added By Aslam On 23 may 2025 to Rebind Premises 
+            ddlLoadBindPremises();
+            //
             ddlworktype.SelectedIndex = 0;
             DivOtherDepartment.Visible = false;
             DivPancard_TanNo.Visible = false;
@@ -1091,6 +1107,9 @@ namespace CEIHaryana.Contractor
         {
             try
             {
+                //Added by aslam On 23 may 2025 to Rebind Premises 
+                ddlLoadBindPremises();
+                //
                 string TANNumber = txtTanNumber.Text.Trim();
                 //System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}");
                 System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex("^[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}$|^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$");
@@ -1594,7 +1613,7 @@ namespace CEIHaryana.Contractor
             }
         }
         protected void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
-        {   
+        {
             string selected = ddlDistrict.SelectedItem.Text.ToLower();
             if (selected.Contains("gurugram-i") || selected.Contains("gurugram-ii"))
             {
@@ -1602,6 +1621,5 @@ namespace CEIHaryana.Contractor
                     "setTimeout(function() { document.getElementById('gurugramModal').style.display = 'block'; }, 100);", true);
             }
         }
-
     }
 }

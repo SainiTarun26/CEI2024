@@ -1967,6 +1967,7 @@
     <Content Include="Officers\InProcess_Returned_Inspection_Lift_Escalator.aspx" />
     <Content Include="Officers\Inspection.aspx" />
     <Content Include="Officers\InspectionDetails.aspx" />
+    <Content Include="Officers\Inspection_Cinema_Talkies.aspx" />
     <Content Include="Officers\Inspection_Lift_Escalator.aspx" />
     <Content Include="Officers\InstallationIntimationDetails.aspx" />
     <Content Include="Officers\Investigation_of_Electrical_Accidents_officer.aspx" />
@@ -1975,6 +1976,7 @@
     <Content Include="Officers\NewApplications.aspx" />
     <Content Include="Officers\OfficerDashboard.aspx" />
     <Content Include="Officers\PeriodicInspection.aspx" />
+    <Content Include="Officers\PeriodicInspection_Cinema_Talkies.aspx" />
     <Content Include="Officers\PeriodicInspection_Lift_Escalator.aspx" />
     <Content Include="Officers\ReturnedInspections.aspx" />
     <Content Include="Officers\Returned_Inspection_Lift_Escalator.aspx" />
@@ -3277,6 +3279,13 @@
     <Compile Include="Officers\InspectionDetails.aspx.designer.cs">
       <DependentUpon>InspectionDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Officers\Inspection_Cinema_Talkies.aspx.cs">
+      <DependentUpon>Inspection_Cinema_Talkies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\Inspection_Cinema_Talkies.aspx.designer.cs">
+      <DependentUpon>Inspection_Cinema_Talkies.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Officers\Inspection_Lift_Escalator.aspx.cs">
       <DependentUpon>Inspection_Lift_Escalator.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3339,6 +3348,13 @@
     </Compile>
     <Compile Include="Officers\PeriodicInspection.aspx.designer.cs">
       <DependentUpon>PeriodicInspection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\PeriodicInspection_Cinema_Talkies.aspx.cs">
+      <DependentUpon>PeriodicInspection_Cinema_Talkies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\PeriodicInspection_Cinema_Talkies.aspx.designer.cs">
+      <DependentUpon>PeriodicInspection_Cinema_Talkies.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\PeriodicInspection_Lift_Escalator.aspx.cs">
       <DependentUpon>PeriodicInspection_Lift_Escalator.aspx</DependentUpon>
