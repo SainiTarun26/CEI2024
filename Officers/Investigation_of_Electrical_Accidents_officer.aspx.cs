@@ -13,6 +13,7 @@ namespace CEIHaryana.Officers
 {
     public partial class Investigation_of_Electrical_Accidents_officer : System.Web.UI.Page
     {
+        //Page created by gurmeet
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,18 +30,18 @@ namespace CEIHaryana.Officers
                         }
                         else
                         {
-                            Response.Redirect("/Officers/AccidentialReports.aspx",false); //for reinitlization session
+                            Response.Redirect("/Officers/AccidentialReports.aspx", false); //for reinitlization session
                         }
                     }
                     else
                     {
-                        Response.Redirect("/Logout.aspx",false);
+                        Response.Redirect("/Logout.aspx", false);
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Response.Redirect("/Logout.aspx",false);
+                Response.Redirect("/Logout.aspx", false);
             }
         }
 
@@ -55,10 +56,10 @@ namespace CEIHaryana.Officers
                     txtUtility.Text = ds.Rows[0]["NameOfUtility"].ToString();
                     txtSubdivision.Text = ds.Rows[0]["NameOfSubDivision"].ToString();
                     txtZone.Text = ds.Rows[0]["NameofZone"].ToString();
-                    txtCircle.Text = ds.Rows[0]["NameOfCircle"].ToString();                                        
+                    txtCircle.Text = ds.Rows[0]["NameOfCircle"].ToString();
                     txtDivision.Text = ds.Rows[0]["NameOfDivision"].ToString();
                     txtAccidentDate.Text = ds.Rows[0]["DateOfAccident"].ToString();
-                    string TimeofAccident= ds.Rows[0]["TimeOfAccident"].ToString();
+                    string TimeofAccident = ds.Rows[0]["TimeOfAccident"].ToString();
                     if (!string.IsNullOrEmpty(TimeofAccident))
                     {
                         txtAccidentTime.Text = ds.Rows[0]["TimeOfAccident"].ToString();
@@ -84,40 +85,40 @@ namespace CEIHaryana.Officers
                     }
                     //txtSerialNo.Text = ds.Rows[0]["SerialNo/Name"].ToString();                    
                     string permises = ds.Rows[0]["PremisesOfAccident"].ToString();
-                    if (permises !="Other")
-                    {                      
+                    if (permises != "Other")
+                    {
                         txtPermises.Text = permises;
                     }
                     else
                     {
-                        txtPermises.Text= ds.Rows[0]["InCaseOfOtherPremises"].ToString();                        
+                        txtPermises.Text = ds.Rows[0]["InCaseOfOtherPremises"].ToString();
                     }
                     string TempId = ds.Rows[0]["TempId"].ToString();
                     AnimalGridViewBind(TempId);
                     HumanGridViewBind(TempId);
                     GridBindDocument(TempId);
-                    string ApplicationStatus= ds.Rows[0]["ApplicationStatus"].ToString();
-                    if (ApplicationStatus == "Report Issued" || ApplicationStatus == "Return" ||  ApplicationStatus == "Reject")
+                    string ApplicationStatus = ds.Rows[0]["ApplicationStatus"].ToString();
+                    if (ApplicationStatus == "Report Issued" || ApplicationStatus == "Return" || ApplicationStatus == "Reject")
                     {
-                        string Remarks= ds.Rows[0]["Remarks"].ToString();
+                        string Remarks = ds.Rows[0]["Remarks"].ToString();
                         if (!string.IsNullOrEmpty(Remarks))
                         {
                             txtRemarks.Text = Remarks;
                             txtRemarks.ReadOnly = true;
-                        }                        
+                        }
                         if (ApplicationStatus == "Report Issued")
                         {
                             ApplicationStatus = "Approved";
-                        }                        
+                        }
                         ddlAction.SelectedIndex = ddlAction.Items.IndexOf(ddlAction.Items.FindByText(ApplicationStatus));
                         ddlAction.Attributes.Add("disabled", "true");
                         btnSubmit.Visible = false;
                     }
                     else if (ApplicationStatus == "ReSubmit" || ApplicationStatus == "Submit")
                     {
-                        
+
                         int RequestNo = Convert.ToInt16(ds.Rows[0]["RequestNo"]);
-                        if (RequestNo >1)
+                        if (RequestNo > 1)
                         {
                             ListItem Returnitem = ddlAction.Items.FindByText("Return");
                             ddlAction.Items.Remove(Returnitem);
@@ -170,7 +171,7 @@ namespace CEIHaryana.Officers
         {
             try
             {
-                
+
                 DataSet ds = new DataSet();
                 ds = CEI.ViewDocumentsAccidentApplication(TempId);
                 if (ds.Tables.Count > 0)
@@ -182,7 +183,7 @@ namespace CEIHaryana.Officers
                 {
                     grd_Documemnts.DataSource = null;
                     grd_Documemnts.DataBind();
-                    
+
                 }
                 ds.Dispose();
             }
@@ -193,7 +194,7 @@ namespace CEIHaryana.Officers
             }
         }
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
-        {            
+        {
             try
             {
                 if (e.CommandName == "Select")
@@ -202,7 +203,7 @@ namespace CEIHaryana.Officers
                     //string folderPath = Server.MapPath(fileNames);
                     //string filePath = Path.Combine(folderPath);
 
-                   string fileNames = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    string fileNames = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileNames}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -210,7 +211,7 @@ namespace CEIHaryana.Officers
             }
             catch (Exception ex)
             {
-                
+
             }
         }
 
@@ -220,22 +221,39 @@ namespace CEIHaryana.Officers
             {
                 if (Session["Accident_ID"].ToString() != null && Session["Accident_ID"].ToString() != "" && Session["StaffID"].ToString() != null)
                 {
+                    string AlertMessage = string.Empty;
                     string OfficerId = Session["StaffID"].ToString();
                     int AccidentID = Convert.ToInt32(Session["Accident_ID"]);
                     if (ddlAction.SelectedValue != "0" && ddlAction.SelectedValue != null)
                     {
                         if ((ddlAction.SelectedValue == "2" || ddlAction.SelectedValue == "3") && string.IsNullOrEmpty(txtRemarks.Text))
                         {
+
                             txtRemarks.Focus();
                             return;
+                        }
+                        if (ddlAction.SelectedValue == "1")
+                        {
+                            AlertMessage = "Application approved and report issued to the user.";
+                        }
+                        else if (ddlAction.SelectedValue == "2")
+                        {
+                            AlertMessage = "Application returned to the concerned site owner";
+                        }
+                        else
+                        {
+                            AlertMessage = "Application has been rejected.";
                         }
 
                         int x = CEI.AccidentAction(AccidentID, ddlAction.SelectedItem.Text, txtRemarks.Text.Trim(), OfficerId);
                         if (x > 0)
                         {
                             ScriptManager.RegisterStartupScript(this, GetType(), "successful",
-                               "alert('Action take successfully '); window.location.href = '/Officers/AccidentialReports.aspx'; ", true);
-                           // Response.Redirect("/Officers/AccidentialReports.aspx", false);
+                            "alert(' " + AlertMessage + "'); window.location.href = '/Officers/AccidentialReports.aspx';",
+                            true);
+                            //ScriptManager.RegisterStartupScript(this, GetType(), "successful",
+                            //   "alert('{AlertMessage}'); window.location.href = '/Officers/AccidentialReports.aspx'; ", true);
+                            //// Response.Redirect("/Officers/AccidentialReports.aspx", false);
                         }
                     }
                 }
@@ -249,7 +267,7 @@ namespace CEIHaryana.Officers
             {
                 throw;
             }
-            
+
         }
 
         protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)

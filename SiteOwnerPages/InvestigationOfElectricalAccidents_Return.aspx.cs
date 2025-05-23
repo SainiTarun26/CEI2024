@@ -18,6 +18,7 @@ using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.SiteOwnerPages
 {
+    //Created By  gurmeet  23-May-2025
     public partial class InvestigationOfElectricalAccidents_Return : System.Web.UI.Page
     {
         CEI CEI = new CEI();
@@ -431,8 +432,7 @@ namespace CEIHaryana.SiteOwnerPages
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             if ((Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != ""))
-            {
-                
+            {                
                 string CreatedBy, documentName = string.Empty;
                 int DocumentNameId, DocumentId = 0;
                 CreatedBy = Convert.ToString(Session["SiteOwnerId"]);
@@ -502,7 +502,7 @@ namespace CEIHaryana.SiteOwnerPages
                         
                         Transaction.Commit();
                         ScriptManager.RegisterStartupScript(this, GetType(), "successful",
-                                "alert('Successfully Updated'); window.location.href = '/SiteOwnerPages/AccidentialHistory_SiteOwner.aspx'; ", true);
+                                "alert('Accident Investigation report Updated successfully'); window.location.href = '/SiteOwnerPages/AccidentialHistory_SiteOwner.aspx'; ", true);
                     }
                     catch (Exception ex)
                     {

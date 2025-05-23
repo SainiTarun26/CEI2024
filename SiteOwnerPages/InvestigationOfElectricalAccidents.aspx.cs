@@ -15,6 +15,7 @@ namespace CEIHaryana.SiteOwnerPages
 {
     public partial class InvestigationOfElectricalAccidents : System.Web.UI.Page
     {
+        //Created By  gurmeet  23-May-2025
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -277,7 +278,7 @@ namespace CEIHaryana.SiteOwnerPages
                                 Session["TempUniqueId"] = null;
                                 Reset();
                                 ScriptManager.RegisterStartupScript(this, GetType(), "successful",
-                                 "alert('successfully added'); window.location.href = '/SiteOwnerPages/AccidentialHistory_SiteOwner.aspx'; ", true);
+                                 "alert('Accident Investigation report submitted successfully'); window.location.href = '/SiteOwnerPages/AccidentialHistory_SiteOwner.aspx'; ", true);
                                 //Response.Redirect("/SiteOwnerPages/AccidentialHistory_SiteOwner.aspx", false);
                             }
                             else
@@ -320,7 +321,11 @@ namespace CEIHaryana.SiteOwnerPages
                                     );
                                 if (x > 0)
                                 {
-                                    hdnFieldGridView.Value = "2";
+                                    if (hdnFieldGridView.Value != "1")
+                                    {
+                                        hdnFieldGridView.Value = "2";
+                                    }
+                                    //hdnFieldGridView.Value = "2";
                                     txtDescriptionAnimal.Text = ""; txtOwnerName.Text = "";
                                     txtAddressofOwner.Text = ""; ddlFatelTypeAnimal.SelectedIndex = 0; txtNumber.Text = "";
 

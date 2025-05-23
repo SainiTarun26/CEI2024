@@ -664,29 +664,29 @@
                                 District
                             </label>
                             <asp:DropDownList class="form-control  select-form select2"
-                                runat="server" ID="ddlDistrict" TabIndex="6" selectionmode="Multiple" Style="width: 100% !important">
+                                runat="server" ID="ddlDistrict" TabIndex="6" Enabled="false" selectionmode="Multiple" Style="width: 100% !important">
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                            <asp:RequiredFieldValidator  ID="RequiredFieldValidator2" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                         </div>
                         <div class="col-md-4">
                             <label>
                                 Thana
                             </label>
-                            <asp:TextBox class="form-control" ID="txtThana" onpaste="return false;" autocomplete="off" MaxLength="100" onKeyPress="return alphabetKey(event)" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtThana" ReadOnly="true" onpaste="return false;" autocomplete="off" MaxLength="100" onKeyPress="return alphabetKey(event)" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtThana" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-md-4">
                             <label>
                                 Tehsil
                             </label>
-                            <asp:TextBox class="form-control" ID="txtTehsil" onpaste="return false;" autocomplete="off" onKeyPress="return alphabetKey(event)" MaxLength="100" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtTehsil" ReadOnly="true" onpaste="return false;" autocomplete="off" onKeyPress="return alphabetKey(event)" MaxLength="100" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtTehsil" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-md-4">
                             <label>
                                 Village /City / Town
                             </label>
-                            <asp:TextBox class="form-control" ID="txtVillageCityTown" MaxLength="100" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtVillageCityTown" ReadOnly="true" MaxLength="100" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtVillageCityTown" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                         </div>
                     </div>

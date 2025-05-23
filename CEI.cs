@@ -10811,7 +10811,20 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInspectionDataCinemaVideoSiteOwner", Id);
         }
         #endregion
-        #region gurmeet 20-May-2025
+     
+        #region gurmeet Cinema 23-May-2025
+        public DataSet SiteOwnerInstallations_Cinema(string IntimationId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInstallationForSiteOwner_CinemaVideosTalkis", IntimationId);
+        }
+        public DataTable GetDocumentlistfornewInspection_Cinema(string ApplicantType, int InstallationTypeID, string InspectionType, int inspectionIdPrm)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDocumentsForNewMultipleInspection_Cinema", ApplicantType, InstallationTypeID, InspectionType, inspectionIdPrm);
+        }
+        public DataSet SiteIntimations_forCinemaTalkis(string SiteOwnerID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetIntimationsForSiteOwner_CinemaVideosTalkis", SiteOwnerID);
+        }
         public DataTable Payment_CinemaInspection(string InspectionType, int Qaunatity)
         {
             DataTable result = new DataTable();
@@ -10831,6 +10844,68 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
 
             return result;
         }
+        public void InsertInspectionDataNewCode_CinemaVideoTalkis(string ContactNo, string ApplicantTypeCode, string IntimationId, string ApplicantType, string InstallationType,
+         string District, string Division, string PaymentMode, string InspectionRemarks, string CreatedBy,
+         decimal TotalAmount, string para_Assigned, string transcationId, string TranscationDate, int InspectID,
+         SqlTransaction transaction
+         )
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertInspectionData_NewCodeForCinemaVideoTalkis", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ContactNo ", String.IsNullOrEmpty(ContactNo) ? DBNull.Value : (object)ContactNo);
+            cmd.Parameters.AddWithValue("@ApplicantTypeCode ", ApplicantTypeCode);
+            cmd.Parameters.AddWithValue("@IntimationId ", IntimationId);
+            cmd.Parameters.AddWithValue("@ApplicantType ", ApplicantType);
+            cmd.Parameters.AddWithValue("@InstallationType ", InstallationType);
+            cmd.Parameters.AddWithValue("@District ", District);
+            cmd.Parameters.AddWithValue("@Division ", Division);
+            cmd.Parameters.AddWithValue("@PaymentMode ", PaymentMode);
+            cmd.Parameters.AddWithValue("@InspectionRemarks ", InspectionRemarks);
+            cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
+            cmd.Parameters.AddWithValue("@TransactionId ", transcationId);
+            cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
+            cmd.Parameters.AddWithValue("@AssignTo", para_Assigned);
+            cmd.Parameters.AddWithValue("@TransctionDate", TranscationDate);
+            cmd.Parameters.AddWithValue("@InspectID", InspectID);
+            //cmd.Parameters.AddWithValue("@ServiceType", ServiceType);
+            outputParam = new SqlParameter("@GeneratedCombinedIdDetails", SqlDbType.NVarChar, 500);
+            outputParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParam);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void InsertInspectionDataNewCode_CinemaVideoTalkis(string ApplicantTypeCode, string IntimationId, string ApplicantType, string InstallationType,
+                 string District, string Division, string PaymentMode, string CreatedBy,
+                 decimal TotalAmount, string para_Assigned, string transcationId, string TranscationDate,
+                 SqlTransaction transaction
+                 )
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertInspectionData_PeriodicCodeForCinemaVideoTalkis", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ApplicantTypeCode ", ApplicantTypeCode);
+            cmd.Parameters.AddWithValue("@IntimationId ", IntimationId);
+            cmd.Parameters.AddWithValue("@ApplicantType ", ApplicantType);
+            cmd.Parameters.AddWithValue("@InstallationType ", InstallationType);
+            cmd.Parameters.AddWithValue("@District ", District);
+            cmd.Parameters.AddWithValue("@Division ", Division);
+            cmd.Parameters.AddWithValue("@PaymentMode ", PaymentMode);
+            //cmd.Parameters.AddWithValue("@InspectionRemarks ", InspectionRemarks);
+            cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
+            cmd.Parameters.AddWithValue("@TransactionId ", transcationId);
+            cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
+            cmd.Parameters.AddWithValue("@AssignTo", para_Assigned);
+            cmd.Parameters.AddWithValue("@TransctionDate", TranscationDate);
+            //cmd.Parameters.AddWithValue("@InspectID", InspectID);           
+            outputParam = new SqlParameter("@GeneratedCombinedIdDetails", SqlDbType.NVarChar, 500);
+            outputParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParam);
+            cmd.ExecuteNonQuery();
+        }
+        public DataSet UpdateInstallationHistory_ForPeriodicCinema(string TestReportCount, string OldInspectionId, string IntimationId, string CreatedBy, string NewInspectionId, string TypeOfInstallation)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateInstallationHistory_Inspection_forPeriodicCinema", TestReportCount, Convert.ToInt32(OldInspectionId), IntimationId, CreatedBy, Convert.ToInt32(NewInspectionId), TypeOfInstallation);
+        }
+
         #endregion
     }
 }

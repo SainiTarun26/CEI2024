@@ -60,13 +60,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
-        /// Div1 control.
+        /// Div_feesDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div_feesDetails;
 
         /// <summary>
         /// GridViewPayment control.
@@ -76,6 +76,24 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewPayment;
+
+        /// <summary>
+        /// UploadDocuments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UploadDocuments;
+
+        /// <summary>
+        /// Grd_Document control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView Grd_Document;
 
         /// <summary>
         /// PaymentDetails control.
@@ -132,13 +150,22 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvRbList;
 
         /// <summary>
-        /// txtInspectionRemarks control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInspectionRemarks;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
+
+        /// <summary>
+        /// InspectionIdClientSideCheckedRow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField InspectionIdClientSideCheckedRow;
 
         /// <summary>
         /// HFOwnerID control.

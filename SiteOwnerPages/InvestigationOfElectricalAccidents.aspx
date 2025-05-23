@@ -677,9 +677,9 @@
                         </div>
                         <div class="col-md-4">
                             <label>
-                                Time of Accident<%--<samp style="color: red">*</samp>--%>
+                                Time of Accident<%--<samp style="color: red">*</samp>--   onfocus="updateTimeMaxLimit()" --%>
                             </label>
-                            <asp:TextBox class="form-control" ID="txtAccidentTime" Type="time" autocomplete="off" onfocus="updateTimeMaxLimit()" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtAccidentTime" Type="time" autocomplete="off"  runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtAccidentTime" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>--%>
                         </div>
 
@@ -1198,7 +1198,7 @@
                                                 Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator33" runat="server"
                                                 ControlToValidate="FileUpload1" ErrorMessage="Required" ValidationGroup="SubmitUpload1" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                            <asp:LinkButton ID="lnkBtnTick" Visible="false" runat="server" CssClass="btn btn-success">
+                                            <asp:LinkButton ID="lnkBtnTick" Visible="false" Enabled="false" runat="server" CssClass="btn btn-success">
                                      <i class="fa fa-check"></i> <!-- Font Awesome cross icon --> </asp:LinkButton>
                                         </td>
                                         <td>
@@ -1233,13 +1233,13 @@
                                            <asp:TextBox class="form-control" ID="txtReason2" placeholder="Please enter reason" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator45" runat="server" ControlToValidate="txtReason2" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitUpload2" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                           
-                                            <asp:LinkButton ID="lnkBtn_Tick2" runat="server" Visible="false" CssClass="btn btn-success">
+                                            <asp:LinkButton ID="lnkBtn_Tick2" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success">
                                             <i class="fa fa-check"></i> <!-- Font Awesome cross icon -->
                                             </asp:LinkButton>
                                         </td>
                                         <td>
                                             <asp:Button ID="btnupload2" runat="server" Text="Upload" OnClick="btnupload2_Click"  class="btn btn-primary" />
-                                            <asp:LinkButton ID="lnkBtnDelete2" runat="server" Visible="false" OnClick="lnkBtnDelete2_Click" CssClass="btn btn-danger">
+                                            <asp:LinkButton ID="lnkBtnDelete2" runat="server"  Visible="false" OnClick="lnkBtnDelete2_Click" CssClass="btn btn-danger">
                                      <i class="fa fa-times"></i> <!-- Font Awesome cross icon -->
                                             </asp:LinkButton>
                                             <asp:HiddenField id="hdnfieldDocument_mandtry" runat="server" />
@@ -1259,7 +1259,7 @@
                                                 Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator36" runat="server"
                                                 ControlToValidate="FileUpload3" ErrorMessage="Required" ValidationGroup="SubmitUpload3" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                            <asp:LinkButton ID="lnkBtn_Tick3" runat="server" Visible="false" CssClass="btn btn-success">
+                                            <asp:LinkButton ID="lnkBtn_Tick3" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success">
                                     <i class="fa fa-check"></i> <!-- Font Awesome cross icon -->
                                             </asp:LinkButton>
                                         </td>
@@ -1294,9 +1294,9 @@
                                                 Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator37" runat="server"
                                                 ControlToValidate="FileUpload4" ErrorMessage="Required" ValidationGroup="SubmitUpload4" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                            <asp:TextBox class="form-control" ID="txtReason4" placeholder="Enter reason"  autocomplete="off" data-reasonbox="<%= txtReason4.ClientID %>" MaxLength="50" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtReason4" placeholder="Please Enter reason"  autocomplete="off" data-reasonbox="<%= txtReason4.ClientID %>" MaxLength="50" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtReason4" ErrorMessage="RequiredFieldValidator" ValidationGroup="BtnUpload4" ForeColor="Red">Required</asp:RequiredFieldValidator>
-                                            <asp:LinkButton ID="lnkBtn_Tick4" Visible="false" runat="server" CssClass="btn btn-success">
+                                            <asp:LinkButton ID="lnkBtn_Tick4" Enabled="false" Visible="false" runat="server" CssClass="btn btn-success">
                                                  <i class="fa fa-check"></i> <!-- Font Awesome cross icon -->
                                             </asp:LinkButton>
                                         </td>
@@ -1327,7 +1327,7 @@
                                                 ControlToValidate="FileUpload5" ErrorMessage="Required" ValidationGroup="SubmitUpload5" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                             <asp:TextBox class="form-control" ID="txtReason5" placeholder="Please enter reason" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="txtReason5" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitUpload5" ForeColor="Red">Required</asp:RequiredFieldValidator>
-                                            <asp:LinkButton ID="lnkBtn_Tick5" Visible="false" runat="server" CssClass="btn btn-success">
+                                            <asp:LinkButton ID="lnkBtn_Tick5" Enabled="false" Visible="false" runat="server" CssClass="btn btn-success">
                                      <i class="fa fa-check"></i> <!-- Font Awesome cross icon -->
                                             </asp:LinkButton>
                                         </td>
@@ -1363,7 +1363,7 @@
                                             <asp:TextBox class="form-control" ID="txtReason6" placeholder="Please enter reason" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ControlToValidate="txtReason6" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitUpload6" ForeColor="Red">Required</asp:RequiredFieldValidator>
 
-                                            <asp:LinkButton ID="lnkBtn_Tick6" Visible="false" runat="server" CssClass="btn btn-success">
+                                            <asp:LinkButton ID="lnkBtn_Tick6" Enabled="false" Visible="false" runat="server" CssClass="btn btn-success">
                                       <i class="fa fa-check"></i> <!-- Font Awesome cross icon -->
                                             </asp:LinkButton>
                                         </td>
@@ -1397,7 +1397,7 @@
                                             <asp:TextBox class="form-control" ID="txtReason7" placeholder="Please enter reason" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="txtReason7" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitUpload7" ForeColor="Red">Required</asp:RequiredFieldValidator>
 
-                                            <asp:LinkButton ID="lnkBtn_Tick7" Visible="false" runat="server" CssClass="btn btn-success">
+                                            <asp:LinkButton ID="lnkBtn_Tick7" Enabled="false" Visible="false" runat="server" CssClass="btn btn-success">
                                      <i class="fa fa-check"></i> 
                                             </asp:LinkButton>
                                         </td>
@@ -1432,7 +1432,7 @@
                                             <asp:TextBox class="form-control" ID="txtReason8" placeholder="Please enter reason" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator46" runat="server" ControlToValidate="txtReason8" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitUpload8" ForeColor="Red">Required</asp:RequiredFieldValidator>
 
-                                            <asp:LinkButton ID="lnkBtn_Tick8" Visible="false" runat="server" CssClass="btn btn-success">
+                                            <asp:LinkButton ID="lnkBtn_Tick8" Enabled="false" Visible="false" runat="server" CssClass="btn btn-success">
                                     <i class="fa fa-check"></i> <!-- Font Awesome cross icon -->
                                             </asp:LinkButton>
                                         </td>
@@ -1467,7 +1467,7 @@
                                             <asp:TextBox class="form-control" ID="txtReason9" placeholder="Please enter reason" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="txtReason9" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitUpload9" ForeColor="Red">Required</asp:RequiredFieldValidator>
 
-                                            <asp:LinkButton ID="lnkBtn_Tick9" Visible="false" runat="server" CssClass="btn btn-success">
+                                            <asp:LinkButton ID="lnkBtn_Tick9" Enabled="false" Visible="false" runat="server" CssClass="btn btn-success">
                                  <i class="fa fa-check"></i> <!-- Font Awesome cross icon -->
                                             </asp:LinkButton>
                                         </td>
@@ -1501,8 +1501,8 @@
                                             <asp:TextBox class="form-control" ID="txtReason10" placeholder="Please enter reason" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" ControlToValidate="txtReason10" ErrorMessage="RequiredFieldValidator" ValidationGroup="SubmitUpload10" ForeColor="Red">Required</asp:RequiredFieldValidator>--%>
 
-                                            <asp:LinkButton ID="lnkBtn_Tick10" Visible="false" runat="server" CssClass="btn btn-success">
-                                   <i class="fa fa-check"></i> <!-- Font Awesome cross icon -->
+                                            <asp:LinkButton ID="lnkBtn_Tick10" Enabled="false" Visible="false" runat="server" CssClass="btn btn-success">
+                                         <i class="fa fa-check"></i> <!-- Font Awesome cross icon -->
                                             </asp:LinkButton>
                                         </td>
                                         <td>
@@ -1697,6 +1697,7 @@
         }
 
         document.addEventListener("DOMContentLoaded", function () {
+            debugger;
             var radioButtonList = document.getElementById('<%= RadioButtonList2.ClientID %>');
             radioButtonList.addEventListener('change', function () {
                 var txtReasonId = '<%= txtReason2.ClientID %>';
@@ -1821,6 +1822,7 @@
 
   <script type="text/javascript">
       $(document).ready(function () {
+          debugger;
           $('#<%= txtReason2.ClientID %>').hide(); // Hides the textbox
           $('#<%= txtReason4.ClientID %>').hide(); // Hides the textbox
           $('#<%= txtReason5.ClientID %>').hide();
@@ -1983,7 +1985,7 @@
         window.onload = updateTimeMaxLimit;
     </script>--%>
 
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         function updateTimeMaxLimit() {
             var dateInput = document.getElementById('<%= txtAccidentDate.ClientID %>');
         var timeInput = document.getElementById('<%= txtAccidentTime.ClientID %>');
@@ -2007,7 +2009,7 @@
                 timeInput.removeAttribute("max");
             }
         }
-    </script>
+    </script>--%>
 
 </asp:Content>
 
