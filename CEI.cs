@@ -10739,7 +10739,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
 
         public DataSet GetDetailsToViewCinemaTestReport(string InspectionId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewCinemaTestReport", InspectionId);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsToViewCinemaTestReportAll", InspectionId);
         }
         //Added on 22-may-2025
         public DataTable GetSiteOwnerData_CinemaOfficer(string Id)
