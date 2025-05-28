@@ -10962,13 +10962,54 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionAccepted_Periodic_Cinema", ID, StaffId);
         }
-
-
-
-
-
-
         #endregion
+        #endregion
+        #region neha Lift Periodic 28-May-2025
+        public DataTable ToCheckDatesForLiftRenewal(DateTime lastExpiryDate, DateTime memoDate)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToCheckDatesForLiftRenewal", lastExpiryDate, memoDate);
+        }
+        public string InsertPeriodicLiftData(string InstallationType, string RegistrationNo, string LastExpiryDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
+string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string MemoNo, string MemoDate, string SiteAddress, string CreatedBy, SqlTransaction transaction)
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertPeriodicLiftData", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
+            cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
+            cmd.Parameters.AddWithValue("@LastExpiryDate", LastExpiryDate);
+            cmd.Parameters.AddWithValue("@PreviousChallanUpload", PreviousChallanUpload);
+            cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate);
+            cmd.Parameters.AddWithValue("@ErectionDate", ErectionDate);
+            cmd.Parameters.AddWithValue("@Make", Make);
+            cmd.Parameters.AddWithValue("@SerialNo", SerialNo);
+            cmd.Parameters.AddWithValue("@TypeOfLift", TypeOfLift);
+            cmd.Parameters.AddWithValue("@TypeOfControl", TypeOfControl);
+            cmd.Parameters.AddWithValue("@Capacity", Capacity);
+            cmd.Parameters.AddWithValue("@Weight", Weight);
+            cmd.Parameters.AddWithValue("@ApplicantDistrict", ApplicantDistrict);
+            cmd.Parameters.AddWithValue("@MemoNo", MemoNo);
+            cmd.Parameters.AddWithValue("@MemoDate", MemoDate);
+            cmd.Parameters.AddWithValue("@SiteAddress", SiteAddress);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            SqlParameter outputParam = new SqlParameter("@GeneratedTestReportID", SqlDbType.NVarChar, 50);
+            outputParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(outputParam);
+
+            // Execute the command
+            cmd.ExecuteNonQuery();
+            string TRID = cmd.Parameters["@GeneratedTestReportID"].Value.ToString();
+            return TRID;
+        }
+        public DataTable InsertReturnPeriodicLiftData(string TestReportId, string InstallationType, string RegistrationNo, string LastExpiryDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
+    string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string MemoNo, string MemoDate, string SiteAddress, int InspectionID, string CreatedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertPeriodicReturnData", TestReportId, InstallationType, RegistrationNo, LastExpiryDate, PreviousChallanUpload, LastApprovalDate, ErectionDate, Make,
+ SerialNo, TypeOfLift, TypeOfControl, Capacity, Weight, ApplicantDistrict, MemoNo, MemoDate, SiteAddress, InspectionID, CreatedBy);
+        }
+        public DataSet GetRenewalLiftData(string Type, string RegistrationNo)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPeriodicRenewalData", Type, RegistrationNo);
+        }
         #endregion
     }
 }

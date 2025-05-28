@@ -391,7 +391,7 @@
                                         <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/PeriodicRenewal.aspx">Periodic Renewal</a></li>
                                         <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/InspectionRenewalCart.aspx">Renewal Cart</a></li>
                                         <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/RatingOfInstallations.aspx">Rating Of Installations</a></li>
-                                   <%--<li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/LiftPeriodic.aspx">Periodic Renewal<br/> Of Lift/Escalator</a></li>--%>
+                                   <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/LiftPeriodic.aspx">Periodic Renewal<br/> Of Lift/Escalator</a></li>
                                         </ul>
                                 </div>
                             </li>

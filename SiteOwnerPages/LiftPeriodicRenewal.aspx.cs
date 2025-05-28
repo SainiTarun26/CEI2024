@@ -23,6 +23,7 @@ namespace CEIHaryana.SiteOwnerPages
 {
     public partial class LiftPeriodicRenewal : System.Web.UI.Page
     {
+        //Page Created By Neha 
         CEI CEI = new CEI();
         string TRID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
@@ -42,7 +43,6 @@ namespace CEIHaryana.SiteOwnerPages
                                 if (Session["InstallTypePass"].ToString() == "Lift")
                                 {
                                     ddlInstallationType.SelectedValue = "1";
-
                                 }
                                 else
                                 {
@@ -52,7 +52,6 @@ namespace CEIHaryana.SiteOwnerPages
                                 txtRegistrationNo.Enabled = false;
                                 ddlInstallationType.Enabled = false;
                             }
-                            //ddlInstallationType.SelectedValue = "1";
                             txtRegistrationNo.Text = Session["RegistrationNosessionPass"].ToString();
                         }
                     }
@@ -114,7 +113,6 @@ namespace CEIHaryana.SiteOwnerPages
         {
             GetApplicantType();
             string ApplicantType = Session["ApplicantTypeID"].ToString();
-            // int InstallationTypeID = "4";
             int InstallationTypeID = 0;
             string InspectionType = "Periodic";
             string InstallationType = Session["InstallationType"].ToString();
@@ -147,7 +145,6 @@ namespace CEIHaryana.SiteOwnerPages
         {
             SqlTransaction transaction = null;
             SqlConnection connection = null;
-
             try
             {
                 string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
@@ -157,142 +154,152 @@ namespace CEIHaryana.SiteOwnerPages
 
                 if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                 {
-                    String SiteOwnerID = Session["SiteOwnerId"].ToString();
-                    string filePathInfo = "";
+                    DateTime lastExpiryDate = Convert.ToDateTime(txtLastexpirydate.Text);
+                    DateTime memoDate = Convert.ToDateTime(txtMemoDate.Text);
 
-                    if (customFile.HasFile && customFile.PostedFile != null)
+                    // Call the date validation method
+                    if (ToCheckDatesForLiftRenewal(lastExpiryDate, memoDate))
                     {
-                        string fileExtension = Path.GetExtension(customFile.PostedFile.FileName).ToLower();
+                        String SiteOwnerID = Session["SiteOwnerId"].ToString();
+                        string filePathInfo = "";
 
-                        // Validate file size and type
-                        if (customFile.PostedFile.ContentLength <= 1048576 && fileExtension == ".pdf")
+                        if (customFile.HasFile && customFile.PostedFile != null)
                         {
-                            string fileName = "PreviousChallan" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + fileExtension;
-                            string directoryPath = Server.MapPath($"~/Attachment/{SiteOwnerID}/{txtRegistrationNo.Text}/PreviousChallan/");
+                            string fileExtension = Path.GetExtension(customFile.PostedFile.FileName).ToLower();
 
-                            if (!Directory.Exists(directoryPath))
+                            // Validate file size and type
+                            if (customFile.PostedFile.ContentLength <= 1048576 && fileExtension == ".pdf")
                             {
-                                Directory.CreateDirectory(directoryPath);
-                            }
+                                string fileName = "PreviousChallan" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + fileExtension;
+                                string directoryPath = Server.MapPath($"~/Attachment/{SiteOwnerID}/{txtRegistrationNo.Text}/PreviousChallan/");
 
-                            string filePathInfo2 = Path.Combine(directoryPath, fileName);
-                            customFile.SaveAs(filePathInfo2);
+                                if (!Directory.Exists(directoryPath))
+                                {
+                                    Directory.CreateDirectory(directoryPath);
+                                }
 
-                            filePathInfo = $"~/Attachment/{SiteOwnerID}/{txtRegistrationNo.Text}/PreviousChallan/{fileName}";
-                        }
-                        else
-                        {
-                            ClientScript.RegisterStartupScript(this.GetType(), "Error", "alert('Please upload a PDF file that is no larger than 1 MB.');", true);
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        ClientScript.RegisterStartupScript(this.GetType(), "Error", "alert('Please select a file to upload.');", true);
-                        return;
-                    }
-                    string districtValue = string.Empty;
-                    string Type = string.Empty;
+                                string filePathInfo2 = Path.Combine(directoryPath, fileName);
+                                customFile.SaveAs(filePathInfo2);
 
-                    if (ddlDistrict.Visible)
-                    {
-                        districtValue = ddlDistrict.SelectedItem.ToString();
-                    }
-                    else
-                    {
-                        districtValue = txtDistrict.Text;
-                    }
-                    if (RadioBtnType.Visible)
-                    {
-                        Type = RadioBtnType.SelectedItem.Text;
-                    }
-                    else if (RadioBtnEscType.Visible)
-                    {
-                        Type = RadioBtnEscType.SelectedItem.Text;
-                    }
-
-                    decimal weight = 0.0m;
-
-                    // Attempt to parse the weight value
-                    if (decimal.TryParse(txtWeight.Text, out weight))
-                    {
-                        if (Session["ReturnedValue"].ToString() != "1")
-                        {
-                            TRID = CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
-                                             txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, SiteOwnerID, transaction);
-
-                        }
-                        else
-                        {
-                            string TestReportId = Session["EscalatorTestReportID"].ToString();
-                            int InspectionId = int.Parse(Session["InspectionId"].ToString());
-                            DataTable dt = new DataTable();
-                            dt = CEI.InsertReturnPeriodicLiftData(TestReportId, ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtPrevChallanDate.Text, filePathInfo,  txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
-                                              txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtSiteAddress.Text, InspectionId, SiteOwnerID);
-                            TRID = dt.Rows[0]["TestReportId"].ToString();
-                        }
-                    }
-                    // Upload Attachments
-                    bool allDocumentsUploaded = true;
-                    foreach (GridViewRow row in Grd_Document.Rows)
-                    {
-                        Label LblDocumentID = (Label)row.FindControl("LblDocumentID");
-                        Label LblDocumentName = (Label)row.FindControl("LblDocumentName");
-                        Label LblShortName = (Label)row.FindControl("LblShortName");
-
-                        string fileName = LblShortName.Text;
-                        string fileNameWithoutExtension = fileName;
-                        int index = fileName.IndexOf(".pdf");
-                        if (index > 0)
-                        {
-                            fileNameWithoutExtension = fileName.Substring(0, index);
-                        }
-
-                        FileUpload fileUploadDoc1 = row.FindControl("FileUpload1") as FileUpload;
-
-                        if (fileUploadDoc1 != null)
-                        {
-                            if (!fileUploadDoc1.HasFile)
-                            {
-                                allDocumentsUploaded = false;
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", "alert('Please upload the document: " + LblDocumentName.Text + "');", true);
-                                return;
+                                filePathInfo = $"~/Attachment/{SiteOwnerID}/{txtRegistrationNo.Text}/PreviousChallan/{fileName}";
                             }
                             else
                             {
-                                if (!Directory.Exists(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + txtRegistrationNo.Text + "/" + "CheckListDocuments" + "/")))
-                                {
-                                    Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + txtRegistrationNo.Text + "/" + "CheckListDocuments" + "/"));
-                                }
-
-                                string path = "/Attachment/" + SiteOwnerID + "/" + txtRegistrationNo.Text + "/" + "CheckListDocuments";
-                                string fileName1 = fileNameWithoutExtension + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
-                                string filePathInfo1 = Server.MapPath(path + "/" + fileName1);
-                                fileUploadDoc1.PostedFile.SaveAs(filePathInfo1);
-
-                                CEI.UploadDocumentforLiftPeriodic(TRID, txtRegistrationNo.Text, ddlInstallationType.SelectedItem.ToString(), LblDocumentID.Text,
-                                                                 LblDocumentName.Text, fileName, path + "/" + fileName1, SiteOwnerID, transaction);
+                                ClientScript.RegisterStartupScript(this.GetType(), "Error", "alert('Please upload a PDF file that is no larger than 1 MB.');", true);
+                                return;
                             }
                         }
+                        else
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "Error", "alert('Please select a file to upload.');", true);
+                            return;
+                        }
+                        string districtValue = string.Empty;
+                        string Type = string.Empty;
+
+                        if (ddlDistrict.Visible)
+                        {
+                            districtValue = ddlDistrict.SelectedItem.ToString();
+                        }
+                        else
+                        {
+                            districtValue = txtDistrict.Text;
+                        }
+                        if (RadioBtnType.Visible)
+                        {
+                            Type = RadioBtnType.SelectedItem.Text;
+                        }
+                        else if (RadioBtnEscType.Visible)
+                        {
+                            Type = RadioBtnEscType.SelectedItem.Text;
+                        }
+
+                        decimal weight = 0.0m;
+
+                        // Attempt to parse the weight value
+                        if (decimal.TryParse(txtWeight.Text, out weight))
+                        {
+
+                            if (Session["ReturnedValue"].ToString() != "1")
+                            {
+                                TRID = CEI.InsertPeriodicLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtLastexpirydate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
+                                                 txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtMemoNo.Text, txtMemoDate.Text, txtSiteAddress.Text, SiteOwnerID, transaction);
+                            }
+                            else
+                            {
+                                string TestReportId = Session["EscalatorTestReportID"].ToString();
+                                int InspectionId = int.Parse(Session["InspectionId"].ToString());
+                                DataTable dt = new DataTable();
+                                dt = CEI.InsertReturnPeriodicLiftData(TestReportId, ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtLastexpirydate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
+                                                     txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight, districtValue, txtMemoNo.Text, txtMemoDate.Text, txtSiteAddress.Text, InspectionId, SiteOwnerID);
+                                TRID = dt.Rows[0]["TestReportId"].ToString();
+                            }
+                        }
+                        // Upload Attachments
+                        bool allDocumentsUploaded = true;
+                        foreach (GridViewRow row in Grd_Document.Rows)
+                        {
+                            Label LblDocumentID = (Label)row.FindControl("LblDocumentID");
+                            Label LblDocumentName = (Label)row.FindControl("LblDocumentName");
+                            Label LblShortName = (Label)row.FindControl("LblShortName");
+
+                            string fileName = LblShortName.Text;
+                            string fileNameWithoutExtension = fileName;
+                            int index = fileName.IndexOf(".pdf");
+                            if (index > 0)
+                            {
+                                fileNameWithoutExtension = fileName.Substring(0, index);
+                            }
+
+                            FileUpload fileUploadDoc1 = row.FindControl("FileUpload1") as FileUpload;
+
+                            if (fileUploadDoc1 != null)
+                            {
+                                if (!fileUploadDoc1.HasFile)
+                                {
+                                    allDocumentsUploaded = false;
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", "alert('Please upload the document: " + LblDocumentName.Text + "');", true);
+                                    return;
+                                }
+                                else
+                                {
+                                    if (!Directory.Exists(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + txtRegistrationNo.Text + "/" + "CheckListDocuments" + "/")))
+                                    {
+                                        Directory.CreateDirectory(Server.MapPath("~/Attachment/" + SiteOwnerID + "/" + txtRegistrationNo.Text + "/" + "CheckListDocuments" + "/"));
+                                    }
+
+                                    string path = "/Attachment/" + SiteOwnerID + "/" + txtRegistrationNo.Text + "/" + "CheckListDocuments";
+                                    string fileName1 = fileNameWithoutExtension + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                                    string filePathInfo1 = Server.MapPath(path + "/" + fileName1);
+                                    fileUploadDoc1.PostedFile.SaveAs(filePathInfo1);
+
+                                    CEI.UploadDocumentforLiftPeriodic(TRID, txtRegistrationNo.Text, ddlInstallationType.SelectedItem.ToString(), LblDocumentID.Text,
+                                                                     LblDocumentName.Text, fileName, path + "/" + fileName1, SiteOwnerID, transaction);
+                                }
+                            }
+                        }
+
+                        if (!allDocumentsUploaded)
+                        {
+                            return;
+                        }
+
+                        transaction.Commit();
+                        if (Session["ReturnedValue"].ToString() != "1")
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithReturnRedirectdata();", true);
+                        }
+                        Reset();
                     }
 
-                    if (!allDocumentsUploaded)
-                    {
-                        return;
-                    }
-
-                    transaction.Commit();
-                    if (Session["ReturnedValue"].ToString() != "1")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                    }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithReturnRedirectdata();", true);
+                        Response.Write("<script>alert('The date (month and day) of the FirstExpiryDate from Memo Date must match the Last Expiry Date.');</script>");
                     }
-
-
-                    Reset();
                 }
             }
             catch (Exception ex)
@@ -325,9 +332,10 @@ namespace CEIHaryana.SiteOwnerPages
             ddlDistrict.Visible = true;
             txtDistrict.Visible = false;
             txtDateofErection.ReadOnly = false;
-            //txtMemoNo.ReadOnly = false;
+            txtMemoNo.ReadOnly = false;
+            txtMemoDate.ReadOnly = false;
             txtLastApprovalDate.ReadOnly = false;
-            txtPrevChallanDate.ReadOnly = false;
+            txtLastexpirydate.ReadOnly = false;
 
             txtMake.Text = "";
             txtSerialNo.Text = "";
@@ -336,13 +344,14 @@ namespace CEIHaryana.SiteOwnerPages
             txtControlType.Text = "";
             txtCapacity.Text = "";
             txtWeight.Text = "";
-            txtSiteAddress.Text = "";         
+            txtSiteAddress.Text = "";
             ddlDistrict.ClearSelection();
             txtDistrict.Text = "";
             txtDateofErection.Text = "";
-            //txtMemoNo.Text = "";
+            txtMemoNo.Text = "";
+            txtMemoDate.Text = "";
             txtLastApprovalDate.Text = "";
-            txtPrevChallanDate.Text = "";
+            txtLastexpirydate.Text = "";
         }
 
         protected void ddlInstallationType_SelectedIndexChanged(object sender, EventArgs e)
@@ -398,7 +407,8 @@ namespace CEIHaryana.SiteOwnerPages
         {
             string CreatedBy = Session["SiteOwnerId"].ToString();
             DataSet ds = new DataSet();
-            ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text.Trim(), CreatedBy);
+            //ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text.Trim(), CreatedBy);
+            ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text.Trim());
             if (ds.Tables[0].Rows.Count > 0 && ds != null)
             {
                 txtMake.ReadOnly = true;
@@ -412,13 +422,14 @@ namespace CEIHaryana.SiteOwnerPages
                 ddlDistrict.Visible = false;
                 txtDistrict.Visible = true;
                 txtDateofErection.ReadOnly = true;
-                //txtMemoNo.ReadOnly = true;
+                txtMemoNo.ReadOnly = true;
+                txtMemoDate.ReadOnly = true;
                 txtLastApprovalDate.ReadOnly = true;
-                txtPrevChallanDate.ReadOnly = true;
+                txtLastexpirydate.ReadOnly = true;
                 txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
                 txtSerialNo.Text = ds.Tables[0].Rows[0]["LiftSrNo"].ToString();
                 //txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
-                
+
                 string typeOfLift = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
 
                 if (ddlInstallationType.SelectedItem.Text == "Lift")
@@ -465,41 +476,50 @@ namespace CEIHaryana.SiteOwnerPages
                     txtLastApprovalDate.Text = "";
                 }
                 DateTime PrevChallanDate;
-                if (DateTime.TryParse(ds.Tables[0].Rows[0]["Previous_ChallanDate"].ToString(), out PrevChallanDate))
+                // if (DateTime.TryParse(ds.Tables[0].Rows[0]["Previous_ChallanDate"].ToString(), out PrevChallanDate))
+                if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastTransactionDate"].ToString(), out PrevChallanDate))
                 {
-                    txtPrevChallanDate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
+                    txtLastexpirydate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
                 }
                 else
                 {
-                    txtPrevChallanDate.Text = "";
+                    txtLastexpirydate.Text = "";
                 }
+
                 txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                 txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
+                txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
+                DateTime MemoDate;
+                if (DateTime.TryParse(ds.Tables[0].Rows[0]["MemoDate"].ToString(), out MemoDate))
+                {
+                    txtMemoDate.Text = MemoDate.ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    txtMemoDate.Text = "";
+                }
             }
             else
             {
-
                 Reset();
             }
-
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Select")
             {
-
                 Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
                 string RegistrationNo = LblRegistrationNo.Text;
-                string CreatedBy = Session["SiteOwnerId"].ToString();
+                //string CreatedBy = Session["SiteOwnerId"].ToString();
                 //txtRegistrationNo.Text = RegistrationNo;
                 DataSet ds = new DataSet();
-                ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), RegistrationNo, CreatedBy);
+                //ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), RegistrationNo, CreatedBy);
+                ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), RegistrationNo);
                 if (ds.Tables[0].Rows.Count > 0 && ds != null)
                 {
-
                     txtMake.ReadOnly = true;
                     txtSerialNo.ReadOnly = true;
                     RadioBtnType.Enabled = false;
@@ -511,12 +531,13 @@ namespace CEIHaryana.SiteOwnerPages
                     ddlDistrict.Visible = false;
                     txtDistrict.Visible = true;
                     txtDateofErection.ReadOnly = true;
-                    //txtMemoNo.ReadOnly = true;
+                    txtMemoNo.ReadOnly = true;
+                    txtMemoDate.ReadOnly = true;
                     txtLastApprovalDate.ReadOnly = true;
-                    txtPrevChallanDate.ReadOnly = true;
+                    txtLastexpirydate.ReadOnly = true;
                     txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
                     txtSerialNo.Text = ds.Tables[0].Rows[0]["LiftSrNo"].ToString();
-                   // txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
+                    // txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
                     string typeOfLift = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
 
                     if (ddlInstallationType.SelectedItem.Text == "Lift")
@@ -563,17 +584,29 @@ namespace CEIHaryana.SiteOwnerPages
                         txtLastApprovalDate.Text = "";
                     }
                     DateTime PrevChallanDate;
-                    if (DateTime.TryParse(ds.Tables[0].Rows[0]["Previous_ChallanDate"].ToString(), out PrevChallanDate))
+                    //if (DateTime.TryParse(ds.Tables[0].Rows[0]["Previous_ChallanDate"].ToString(), out PrevChallanDate))
+                    if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastTransactionDate"].ToString(), out PrevChallanDate))
                     {
-                        txtPrevChallanDate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
+                        txtLastexpirydate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
                     }
                     else
                     {
-                        txtPrevChallanDate.Text = "";
+                        txtLastexpirydate.Text = "";
                     }
+
                     txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                     txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
                     txtRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
+                    txtMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
+                    DateTime MemoDate;
+                    if (DateTime.TryParse(ds.Tables[0].Rows[0]["MemoDate"].ToString(), out MemoDate))
+                    {
+                        txtMemoDate.Text = MemoDate.ToString("yyyy-MM-dd");
+                    }
+                    else
+                    {
+                        txtMemoDate.Text = "";
+                    }
                 }
                 else
                 {
@@ -581,21 +614,25 @@ namespace CEIHaryana.SiteOwnerPages
                 }
             }
         }
-        //protected void btnModalSearch_Click(object sender, EventArgs e)
-        //{
-        //    DataSet ds = new DataSet();
-        //    ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtSearch.Text.Trim());
-        //    if (ds.Tables.Count > 0)
-        //    {
-        //        GridView1.DataSource = ds;
-        //        GridView1.DataBind();
-        //    }
-        //    else
-        //    {
-        //        string alertScript = "alert('The  Registration number is Not In Our Database. Please provide a different Registration number.');";
-        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-        //    }
-        //}
 
+        protected bool ToCheckDatesForLiftRenewal(DateTime lastExpiryDate, DateTime memoDate)
+        {
+            try
+            {
+                CEI.ToCheckDatesForLiftRenewal(lastExpiryDate, memoDate);
+                return true; 
+            }
+            catch (SqlException ex)
+            {
+               foreach (SqlError error in ex.Errors)
+                {
+                    if (error.Number == 50000 && error.Message.Contains("The date (month and day) of the FirstExpiryDate from Memo Date must match the Last Expiry Date"))
+                    {
+                       return false;
+                    }
+                }
+                throw new Exception("An unexpected error occurred during the date validation.", ex);
+            }
+        }
     }
 }
