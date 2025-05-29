@@ -430,7 +430,7 @@
                                             <samp style="color: red">* </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtNameOfCinema" onpaste="preventPaste(event)" autocomplete="off" MaxLength="50" onKeyPress="return alphabetKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtNameOfCinema" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Local Agent Name</asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtNameOfCinema" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                         <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
                                     </div>
 
@@ -441,7 +441,7 @@
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
                                         <asp:TextBox class="form-control" ID="txtSerialNo" onpaste="preventPaste(event)" autocomplete="off" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="10" placeholder="" TabIndex="4" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                        
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtSerialNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Local Agent Contact</asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtSerialNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                     </div>
                                     <div class="col-md-4" runat="server" id="Div1">
                                         <label for="Name">
@@ -450,7 +450,7 @@
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
                                         <asp:TextBox class="form-control" ID="txtScreenSize" onpaste="preventPaste(event)" autocomplete="off" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="10" placeholder="" TabIndex="4" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                        
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtScreenSize" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Local Agent Contact</asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtScreenSize" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                     </div>
 
                                 </div>
@@ -509,8 +509,8 @@ Site tests done are found to be in order and it is electrically safe to operate 
                     <div class="col-md-4">
                     </div>
                     <div class="col-md-4" style="text-align: center;">
-     <asp:Button ID="BtnBack" runat="server" Text="Back" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
      <asp:Button ID="btnSubmit" Text="Submit" runat="server" OnClick="btnSubmit_Click" class="btn btn-primary mr-2" ValidationGroup="Submit" />
+     <asp:Button ID="BtnBack" runat="server" Text="Back" class="btn btn-primary mr-2" OnClick="BtnBack_Click" />
  </div>
                     <div class="col-md-4">
                         <asp:HiddenField ID="HiddenField1" runat="server" />
