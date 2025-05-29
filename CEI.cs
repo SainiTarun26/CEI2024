@@ -8027,37 +8027,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetApplicantTypeForLift", Id);
         }
-        public string InsertPeriodicLiftData(string InstallationType, string RegistrationNo, string PreviousChallanDate, string PreviousChallanUpload,  string LastApprovalDate, string ErectionDate, string Make,
-   string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string SiteAddress, string CreatedBy, SqlTransaction transaction)
-        {
-            SqlCommand cmd = new SqlCommand("sp_InsertPeriodicLiftData", transaction.Connection, transaction);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
-            cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
-            cmd.Parameters.AddWithValue("@PreviousChallanDate", PreviousChallanDate);
-            cmd.Parameters.AddWithValue("@PreviousChallanUpload", PreviousChallanUpload);
-            //cmd.Parameters.AddWithValue("@MemoNo", MemoNo);
-            cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate); //MemoDate
-            cmd.Parameters.AddWithValue("@ErectionDate", ErectionDate);
-            cmd.Parameters.AddWithValue("@Make", Make);
-            cmd.Parameters.AddWithValue("@SerialNo", SerialNo);
-            cmd.Parameters.AddWithValue("@TypeOfLift", TypeOfLift);
-            cmd.Parameters.AddWithValue("@TypeOfControl", TypeOfControl);
-            cmd.Parameters.AddWithValue("@Capacity", Capacity);
-            cmd.Parameters.AddWithValue("@Weight", Weight);
-            cmd.Parameters.AddWithValue("@ApplicantDistrict", ApplicantDistrict);
-            cmd.Parameters.AddWithValue("@SiteAddress", SiteAddress);
-            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
-            SqlParameter outputParam = new SqlParameter("@GeneratedTestReportID", SqlDbType.NVarChar, 50);
-            outputParam.Direction = ParameterDirection.Output;
-            cmd.Parameters.Add(outputParam);
-
-            // Execute the command
-            cmd.ExecuteNonQuery();
-            string TRID = cmd.Parameters["@GeneratedTestReportID"].Value.ToString();
-            return TRID;
-        }
-        public void UploadDocumentforLiftPeriodic(string TRID, string RegistrationNo, string InstallationType, string DocumentID, string DocSaveName, string FileName, string FilePath, string CreatedBy, SqlTransaction transaction)
+       public void UploadDocumentforLiftPeriodic(string TRID, string RegistrationNo, string InstallationType, string DocumentID, string DocSaveName, string FileName, string FilePath, string CreatedBy, SqlTransaction transaction)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -8358,30 +8328,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_TohandleUncheckedCheckbox", RegistrationNo, CreatedBy);
         }
-        public void InsertPeriodicLiftData(string InstallationType, string RegistrationNo, string PreviousChallanDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
- string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, string Weight, string ApplicantDistrict, string SiteAddress, string CreatedBy, SqlTransaction transaction)
-        {
-            SqlCommand cmd = new SqlCommand("sp_InsertPeriodicLiftData", transaction.Connection, transaction);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@InstallationType", InstallationType);
-            cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
-            cmd.Parameters.AddWithValue("@PreviousChallanDate", PreviousChallanDate);
-            cmd.Parameters.AddWithValue("@PreviousChallanUpload", PreviousChallanUpload);
-            cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate);
-            cmd.Parameters.AddWithValue("@ErectionDate", ErectionDate);
-            cmd.Parameters.AddWithValue("@Make", Make);
-            cmd.Parameters.AddWithValue("@SerialNo", SerialNo);
-            cmd.Parameters.AddWithValue("@TypeOfLift", TypeOfLift);
-            cmd.Parameters.AddWithValue("@TypeOfControl", TypeOfControl);
-            cmd.Parameters.AddWithValue("@Capacity", Capacity);
-            cmd.Parameters.AddWithValue("@Weight", Weight);
-            cmd.Parameters.AddWithValue("@ApplicantDistrict", ApplicantDistrict);
-            cmd.Parameters.AddWithValue("@SiteAddress", SiteAddress);
-            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
-            cmd.ExecuteNonQuery();
-        }
-
-
+     
         ////Aslam
 
         public List<Industry_Api_Post_DataformatModel> GetIndustry_OutgoingRequestFormat_Sld(int _inspectionIdparams, string _actionType, string _projectId = null, string _serviceId = null, string _PanNo = null)
@@ -8660,12 +8607,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                 Valueinohms10, CreatedBy, ContractorName, ContractorLicenseNumber, ContractorLicenseExpiryDate, SupervisorName, SupervisorLicenseNumber, SupervisorLicenseExpiryDate);
         }
 
-        public DataTable InsertReturnPeriodicLiftData(string TestReportId, string InstallationType, string RegistrationNo, string PreviousChallanDate, string PreviousChallanUpload,  string LastApprovalDate, string ErectionDate, string Make,
-  string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string SiteAddress, int InspectionID, string CreatedBy)
-        {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertPeriodicReturnData", TestReportId, InstallationType, RegistrationNo, PreviousChallanDate, PreviousChallanUpload, LastApprovalDate, ErectionDate, Make,
- SerialNo, TypeOfLift, TypeOfControl, Capacity, Weight, ApplicantDistrict, SiteAddress, InspectionID, CreatedBy);
-        }
+       
 
         public DataTable CheckPeridocReturnValue(int InspectionId)
         {
