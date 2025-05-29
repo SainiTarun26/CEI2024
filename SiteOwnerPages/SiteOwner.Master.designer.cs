@@ -105,6 +105,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl powerutilitySiteowner2;
 
         /// <summary>
+        /// Cinema_Sidebar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Cinema_Sidebar;
+
+        /// <summary>
         /// DisconnectionRequest control.
         /// </summary>
         /// <remarks>

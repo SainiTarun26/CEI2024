@@ -35,7 +35,8 @@ namespace CEIHaryana.SiteOwnerPages
                             //Added by  neeraj 29-May-2025
                             DisconnectionRequest.Visible = true;
                             DisconnectionStatus.Visible = true;
-                            //
+                            //Added by gurmeet 29-May-2025
+                            Cinema_Sidebar.Visible = false;
                         }
                         lblName.Text = Request.Cookies["SiteOwnerId"].Value;
                     }
@@ -52,7 +53,8 @@ namespace CEIHaryana.SiteOwnerPages
                             //Added by neeraj 29-May-2025
                             DisconnectionRequest.Visible = true;
                             DisconnectionStatus.Visible = true;
-                            //
+                            //Added by gurmeet 29-May-2025
+                            Cinema_Sidebar.Visible = false;
                         }
                         lblName.Text = Convert.ToString(Session["SiteOwnerId"]);
                     }
