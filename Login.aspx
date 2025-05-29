@@ -670,7 +670,8 @@
                                 <h1>Welcome to
               <span>CEI, Haryana</span>
                                 </h1>
-                                <h2>SCO NO 117-118, TOP FLOOR, SECTOR 17-B, CHANDIGARH</h2>
+                                <h2 style="margin-bottom:0px;">SCO NO 117-118, TOP FLOOR, SECTOR 17-B, CHANDIGARH</h2>
+                                <p style="font-weight:600;">Email:- cei_goh@yahoo.com &nbsp;&nbsp;&nbsp;&nbsp; Phone No.:- 01722704090</p>
                                 <!-- <div class="d-flex">
         <a href="#about" class="btn-get-started scrollto">Get Started</a>
         <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>

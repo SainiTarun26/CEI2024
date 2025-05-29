@@ -236,6 +236,8 @@
     <Content Include="Admin\CinemaInspectionDetails.aspx" />
     <Content Include="Admin\CircleMaster.aspx" />
     <Content Include="Admin\Consolidated_Report.aspx" />
+    <Content Include="Admin\DisconnectionRequest.aspx" />
+    <Content Include="Admin\DisconnectionSupplyView.aspx" />
     <Content Include="Admin\DistrictData.aspx" />
     <Content Include="Admin\Division.aspx" />
     <Content Include="Admin\InProcessRequest.aspx" />
@@ -1960,6 +1962,9 @@
     <Content Include="Officers\ActionOnSelfCertification.aspx" />
     <Content Include="Officers\ActionTakenInspections.aspx" />
     <Content Include="Officers\ConsolidatedReport.aspx" />
+    <Content Include="Officers\DisconnectionNotice.aspx" />
+    <Content Include="Officers\DisConnectionNoticeView.aspx" />
+    <Content Include="Officers\DisconnectionRequest.aspx" />
     <Content Include="Officers\DistrictData.aspx" />
     <Content Include="Officers\InProcessInspection.aspx" />
     <Content Include="Officers\InProcessInspection_Lift_Escalator.aspx" />
@@ -2024,6 +2029,8 @@
     <Content Include="SiteOwnerPages\CreateTestReports_Industry.aspx" />
     <Content Include="SiteOwnerPages\CreateTestReport_Lift.aspx" />
     <Content Include="SiteOwnerPages\Create_Test_Report_Cinema_Video_Talkies.aspx" />
+    <Content Include="SiteOwnerPages\DisconnectionStatus.aspx" />
+    <Content Include="SiteOwnerPages\DSCRequest.aspx" />
     <Content Include="SiteOwnerPages\EscalatorDetails.aspx" />
     <Content Include="SiteOwnerPages\EscalatorDetailsOld.aspx" />
     <Content Include="SiteOwnerPages\ExistingInspectionData.aspx" />
@@ -2087,6 +2094,7 @@
     <Content Include="SiteOwnerPages\TestReport.aspx" />
     <Content Include="SiteOwnerPages\TestReportData.aspx" />
     <Content Include="SiteOwnerPages\TestReport_Cinema_Video_Talkies.aspx" />
+    <Content Include="SiteOwnerPages\ViewDisconnectionDetails.aspx" />
     <Content Include="SiteOwnerPages\ViewLiftPeriodicReport.aspx" />
     <Content Include="SiteOwnerPages\ViewSelfCertificationData.aspx" />
     <Content Include="SiteOwnerPages\Work_Intimation_Cinema_Video_Talkies.aspx" />
@@ -2309,6 +2317,20 @@
     </Compile>
     <Compile Include="Admin\Consolidated_Report.aspx.designer.cs">
       <DependentUpon>Consolidated_Report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DisconnectionRequest.aspx.cs">
+      <DependentUpon>DisconnectionRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DisconnectionRequest.aspx.designer.cs">
+      <DependentUpon>DisconnectionRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DisconnectionSupplyView.aspx.cs">
+      <DependentUpon>DisconnectionSupplyView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DisconnectionSupplyView.aspx.designer.cs">
+      <DependentUpon>DisconnectionSupplyView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\DistrictData.aspx.cs">
       <DependentUpon>DistrictData.aspx</DependentUpon>
@@ -3230,6 +3252,27 @@
     <Compile Include="Officers\ConsolidatedReport.aspx.designer.cs">
       <DependentUpon>ConsolidatedReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Officers\DisconnectionNotice.aspx.cs">
+      <DependentUpon>DisconnectionNotice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\DisconnectionNotice.aspx.designer.cs">
+      <DependentUpon>DisconnectionNotice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\DisConnectionNoticeView.aspx.cs">
+      <DependentUpon>DisConnectionNoticeView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\DisConnectionNoticeView.aspx.designer.cs">
+      <DependentUpon>DisConnectionNoticeView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\DisconnectionRequest.aspx.cs">
+      <DependentUpon>DisconnectionRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\DisconnectionRequest.aspx.designer.cs">
+      <DependentUpon>DisconnectionRequest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Officers\DistrictData.aspx.cs">
       <DependentUpon>DistrictData.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3664,6 +3707,20 @@
     </Compile>
     <Compile Include="SiteOwnerPages\Create_Test_Report_Cinema_Video_Talkies.aspx.designer.cs">
       <DependentUpon>Create_Test_Report_Cinema_Video_Talkies.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\DisconnectionStatus.aspx.cs">
+      <DependentUpon>DisconnectionStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\DisconnectionStatus.aspx.designer.cs">
+      <DependentUpon>DisconnectionStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\DSCRequest.aspx.cs">
+      <DependentUpon>DSCRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\DSCRequest.aspx.designer.cs">
+      <DependentUpon>DSCRequest.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\EscalatorDetails.aspx.cs">
       <DependentUpon>EscalatorDetails.aspx</DependentUpon>
@@ -4112,6 +4169,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\TestReport_Cinema_Video_Talkies.aspx.designer.cs">
       <DependentUpon>TestReport_Cinema_Video_Talkies.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ViewDisconnectionDetails.aspx.cs">
+      <DependentUpon>ViewDisconnectionDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ViewDisconnectionDetails.aspx.designer.cs">
+      <DependentUpon>ViewDisconnectionDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\ViewLiftPeriodicReport.aspx.cs">
       <DependentUpon>ViewLiftPeriodicReport.aspx</DependentUpon>

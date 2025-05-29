@@ -10953,6 +10953,175 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPeriodicRenewalData", Type, RegistrationNo);
         }
         #endregion
+        #region Neeraj 29-May-2025
+        public DataTable GetUtilityName_Disconnection()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getUtilityName_Disconnection");
+        }
+        public DataTable GetWingName_Disconnection(string id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetWingName_Disconnection", id);
+        }
+        public string InsertDataForDisconnection(string SubDivisionId, string Owner_FirmName, string PanNo, string AccountNo, string ContactNo, string Category, string OtherCategory, string SanctionLoad, string AssignTo, string Remarks, string CreatedBy, SqlTransaction transaction)
+        {
+            try
+            {
+                SqlParameter outputParam = new SqlParameter("@ApplicationNo", SqlDbType.NVarChar, 50)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                using (SqlCommand cmd = new SqlCommand("sp_Insert_Data_Disconnection", transaction.Connection, transaction))
+
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@SubDivisionId", SubDivisionId);
+                    cmd.Parameters.AddWithValue("@Owner_FirmName", Owner_FirmName);
+                    cmd.Parameters.AddWithValue("@PanNo", PanNo);
+                    cmd.Parameters.AddWithValue("@AccountNo", AccountNo);
+                    cmd.Parameters.AddWithValue("@ContactNo", ContactNo);
+                    cmd.Parameters.AddWithValue("@Category", Category);
+                    cmd.Parameters.AddWithValue("@OtherCategory", String.IsNullOrEmpty(OtherCategory) ? DBNull.Value : (object)OtherCategory);
+                    cmd.Parameters.AddWithValue("@SanctionLoad", SanctionLoad);
+                    cmd.Parameters.AddWithValue("@AssignTo", AssignTo);
+                    cmd.Parameters.AddWithValue("@Remarks", Remarks);
+                    cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                    cmd.Parameters.Add(outputParam);
+                    cmd.ExecuteNonQuery();
+                    string Id = outputParam.Value?.ToString();
+                    return Id;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public int InsertDocumentDisconnectionOfSupply(string Id, string Document_Id, string Documents_Name, string Document_Path, string OwnerId, SqlTransaction transaction)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_InsertDocument_DisconnectionSupply", transaction.Connection, transaction))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ApplicationNo", Id);
+                    cmd.Parameters.AddWithValue("@Document_Id", Document_Id);
+                    cmd.Parameters.AddWithValue("@DocumentName", Documents_Name);
+                    cmd.Parameters.AddWithValue("@Document_Path", String.IsNullOrEmpty(Document_Path) ? DBNull.Value : (object)Document_Path);
+                    cmd.Parameters.AddWithValue("@CreatedBy", String.IsNullOrEmpty(OwnerId) ? DBNull.Value : (object)OwnerId);
+                    int x = cmd.ExecuteNonQuery();
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public DataTable GetDisconnectionRequest()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDisconnectionRequest");
+        }
+        public DataTable GetDisconnectionDoc_CEI(string ApplicationNo)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDisconnectionDocuments", ApplicationNo);
+        }
+        public DataTable GetAssignTo_DSC(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAssignFor_DSC", Id);
+        }
+        public void DSCEmailApprove(string Email)
+        {
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("ceiharyana58@gmail.com");
+            mailMessage.To.Add(Email);
+            mailMessage.Subject = "Disconnection Request";
+            string body = $"Dear Customer,\n\nWe are pleased to inform you that user request has been submitted successfully.\n\nThank you for choosing our services. If you have any questions or need further assistance, please feel free to contact our support team.\n\nBest regards,\n[CEI Haryana]";
+            mailMessage.Body = body;
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.Port = 587;
+            smtpClient.Credentials = new NetworkCredential("ceiharyana58@gmail.com", "hztpndeqdowygdim");
+            smtpClient.EnableSsl = true;
+
+            smtpClient.Send(mailMessage);
+        }
+        public DataTable GetUtilityDetails(string ApplicationNo)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDscDetails_Utility", ApplicationNo);
+        }
+        public DataTable GetDSCDetails(string ApplicationNo)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsofDSC", ApplicationNo);
+        }
+        public DataTable GetDisconnectionRequest_Owner(string AssignTo)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDisconnectionRequest_Owner", AssignTo);
+        }
+        public int InsertApprovalDataForDisconnection(string ApplicationNo, string OwnerId, string Action, string OwnerRemarks, string Suggestions, string ActionReport, string OtherDocument)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                using (SqlCommand cmd = new SqlCommand("sp_ApprovalForDisconnection", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ApplicationNo", ApplicationNo);
+                    cmd.Parameters.AddWithValue("@OwnerId", OwnerId);
+                    cmd.Parameters.AddWithValue("@Action", Action);
+                    cmd.Parameters.AddWithValue("@OwnerRemarks", OwnerRemarks);
+                    cmd.Parameters.AddWithValue("@Suggestions", String.IsNullOrEmpty(Suggestions) ? DBNull.Value : (object)Suggestions);
+                    cmd.Parameters.AddWithValue("@ActionReport", ActionReport);
+                    cmd.Parameters.AddWithValue("@OtherDocument", String.IsNullOrEmpty(OtherDocument) ? DBNull.Value : (object)OtherDocument);
+                    con.Open();
+                    int x = cmd.ExecuteNonQuery();
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+        public DataTable GetDisconnectionStatus_Owner(string AssignTo)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDisconnectionRequestStatus_Owner", AssignTo);
+        }
+        public DataTable GetDisconnectionRequestOfficer(string StaffId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDisconnectionRequest_Officer", StaffId);
+        }
+        public DataTable SearchNameDisconnection(string OwnerName)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetOwnerDetailsDissconnection", OwnerName);
+        }
+        public DataTable GetDivisionName(string StaffId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "get_Division_Disconnection", StaffId);
+        }
+
+        public DataSet GetZoneName_Disconnection(string UtilityId, string WingId, string AreaCode)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getZoneName_Disconnection", UtilityId, WingId, AreaCode);
+        }
+        public DataSet GetCircleName_Disconnection(string UtilityId, string WingId, string ZoneId, string AreaCode)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getCircles_Disconnection", UtilityId, WingId, ZoneId, AreaCode);
+        }
+        public DataSet GetDivisionName_Disconnection(string UtilityId, string WingId, string ZoneId, string Circle, string AreaCode)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDivision_Disconnection", UtilityId, WingId, ZoneId, Circle, AreaCode);
+        }
+        public DataSet GetSubDivisionName_Disconnection(string UtilityId, string WingId, string ZoneId, string Circle, string DivisionId, string AreaCode)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getSub_Divisions_Disconnection", UtilityId, WingId, ZoneId, Circle, DivisionId, AreaCode);
+        }
+        public DataTable GetOfficerDisconnection(string StaffId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "getAssignDisconnectionOfficer", StaffId);
+        }
+        #endregion
     }
 }
 

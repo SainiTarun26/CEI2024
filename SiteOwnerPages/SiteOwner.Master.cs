@@ -32,6 +32,10 @@ namespace CEIHaryana.SiteOwnerPages
                             powerutilitySiteowner2.Visible = true;
                             SelfCertification.Visible = false;
                             SelfStatus.Visible = false;
+                            //Added by  neeraj 29-May-2025
+                            DisconnectionRequest.Visible = true;
+                            DisconnectionStatus.Visible = true;
+                            //
                         }
                         lblName.Text = Request.Cookies["SiteOwnerId"].Value;
                     }
@@ -45,6 +49,10 @@ namespace CEIHaryana.SiteOwnerPages
                             powerutilitySiteowner2.Visible = true;
                             SelfCertification.Visible = false;
                             SelfStatus.Visible = false;
+                            //Added by neeraj 29-May-2025
+                            DisconnectionRequest.Visible = true;
+                            DisconnectionStatus.Visible = true;
+                            //
                         }
                         lblName.Text = Convert.ToString(Session["SiteOwnerId"]);
                     }
