@@ -421,7 +421,15 @@
                                         <samp style="color: red">* </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtEmail" TabIndex="9" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                            <span id="lblError" style="color: red"></span>
+                            <asp:RegularExpressionValidator
+                                ID="revEmail"
+                                runat="server"
+                                ControlToValidate="txtEmail" ValidationGroup="Submit"
+                                ErrorMessage="Please enter a valid email address."
+                                ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                                Display="Dynamic"
+                                ForeColor="Red">
+                            </asp:RegularExpressionValidator>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtEmail" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Email Id</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-md-4" id="CeseCert" runat="server" visible="false">
