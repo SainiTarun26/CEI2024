@@ -2020,6 +2020,7 @@
     <Content Include="ScriptCalendar\jquery-ui.min.js" />
     <Content Include="SiteOwnerLogout.aspx" />
     <Content Include="SiteOwnerPages\AccidentialHistory_SiteOwner.aspx" />
+    <Content Include="SiteOwnerPages\ActionForDsc.aspx" />
     <Content Include="SiteOwnerPages\ChallanReport.aspx" />
     <Content Include="SiteOwnerPages\CinemaInstallationComponentDetails.aspx" />
     <Content Include="SiteOwnerPages\CinemaIntimationDetails.aspx" />
@@ -3645,6 +3646,13 @@
     </Compile>
     <Compile Include="SiteOwnerPages\AccidentialHistory_SiteOwner.aspx.designer.cs">
       <DependentUpon>AccidentialHistory_SiteOwner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ActionForDsc.aspx.cs">
+      <DependentUpon>ActionForDsc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteOwnerPages\ActionForDsc.aspx.designer.cs">
+      <DependentUpon>ActionForDsc.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteOwnerPages\ChallanReport.aspx.cs">
       <DependentUpon>ChallanReport.aspx</DependentUpon>

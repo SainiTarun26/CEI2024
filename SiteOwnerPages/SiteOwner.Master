@@ -505,17 +505,18 @@
                                     <span class="menu-title">Cinema/Video Talkies</span>
                                     <i class="menu-arrow"></i>
                                 </a>
-                               <div class="collapse"  runat="server" id="Cinema_Sidebar">
+                                <div class="collapse" runat="server" id="Cinema_Sidebar">
                                     <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/Work_Intimation_Cinema_Video_Talkies.aspx">Intimation</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/Intimation_Cinema_HistoryGridView.aspx">Intimation History</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/CinemaIntimationDetails.aspx">Test Report</a></li>
-                                   <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/Create_Test_Report_Cinema_Video_Talkies.aspx">New Inspection</a></li>
-                                   <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/PeriodicRenewalInspection_Cinema_Video_Talkies.aspx">Periodic Inspection Cinema</a></li>
-                               </ul>
+                                        <li class="nav-item"><a class="nav-link" href="Work_Intimation_Cinema_Video_Talkies.aspx">Intimation</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="Intimation_Cinema_HistoryGridView.aspx">Intimation History</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="CinemaIntimationDetails.aspx">Test Report</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="Create_Test_Report_Cinema_Video_Talkies.aspx">New Inspection</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="PeriodicRenewalInspection_Cinema_Video_Talkies.aspx">Periodic Inspection Cinema</a></li>
+                                    </ul>
 
-                               </div>
+                                </div>
                             </li>
+
                             <li class="nav-item" runat="server" id="DisconnectionRequest" visible="false">
                                 <a class="nav-link" href="/SiteOwnerPages/DSCRequest.aspx">
                                     <i class="icon-layout menu-icon"></i>

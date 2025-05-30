@@ -181,8 +181,10 @@ namespace CEIHaryana.Admin
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-
-            string email = txtEmail.Text.Trim();
+            //Only try and exception in catch added by navneet 30-May-2025
+            try
+            {
+                string email = txtEmail.Text.Trim();
             if (email.Contains("@"))
             {
                 UserId = email.Split('@')[0];
@@ -205,6 +207,12 @@ namespace CEIHaryana.Admin
                 Reset();
                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Sub-Division name Submitted Successfully !!!');", true);
                 GridBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('This EmailId Already Exists. Please use another one !!!');", true);
+
             }
         }
         protected void Reset()
