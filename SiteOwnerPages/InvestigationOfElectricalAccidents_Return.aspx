@@ -57,6 +57,11 @@
                 return true;
             }
         }
+        function disableFutureDates() {
+            debugger;
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('<%=txtAccidentDate.ClientID %>').setAttribute('max', today);
+             }
         function FileName() {
             var fileInput = document.getElementById('customFile');
             var selectedFileName = document.getElementById('customFileLocation');
@@ -648,7 +653,7 @@
                             <label>
                                 Date of Accident
                             </label>
-                            <asp:TextBox class="form-control" ID="txtAccidentDate" Type="date" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtAccidentDate" Type="date" autocomplete="off" onfocus="disableFutureDates()" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtAccidentDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                         </div>
                         <div class="col-md-4">
@@ -1115,7 +1120,12 @@
     <script src="/Assets/js/settings.js"></script>
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+        function disableFutureDates() {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('<%=txtAccidentDate.ClientID %>').setAttribute('max', today);
+         }
+    </script>
     <%-- <script>
         function toggleFileUpload(radioBtn, txtReasonId, fileUploadId) {
 

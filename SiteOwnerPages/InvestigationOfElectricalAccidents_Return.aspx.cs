@@ -432,91 +432,99 @@ namespace CEIHaryana.SiteOwnerPages
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             if ((Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != ""))
-            {                
-                string CreatedBy, documentName = string.Empty;
-                int DocumentNameId, DocumentId = 0;
-                CreatedBy = Convert.ToString(Session["SiteOwnerId"]);
-                if (Hdn_TempId.Value == null || Hdn_TempId.Value == "")
+            {
+                if (Page.IsValid)
                 {
-                    return;
-                }
-
-                if (IsValidAccidentDateTime())
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
-                   "alert('future time is not allowed please select time correctly');", true);
-                    return;
-                }
-
-                long TempId = Convert.ToInt64(Hdn_TempId.Value);
-                using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
-                {
-                    SqlTransaction Transaction = null;
-                    try
+                    if (txtAccidentDate.Text == null || txtAccidentDate.Text == "")
                     {
-                        connection.Open();
-                        Transaction = connection.BeginTransaction();
+                        ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                       "alert('enter date');", true);
+                        return;
+                    }
+                    string CreatedBy, documentName = string.Empty;
+                    int DocumentNameId, DocumentId = 0;
+                    CreatedBy = Convert.ToString(Session["SiteOwnerId"]);
+                    if (Hdn_TempId.Value == null || Hdn_TempId.Value == "")
+                    {
+                        return;
+                    }
 
-                        foreach (GridViewRow rows in grd_Documemnts.Rows)
+                    if (IsValidAccidentDateTime())
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                       "alert('future time is not allowed please select time correctly');", true);
+                        return;
+                    }
+
+                    long TempId = Convert.ToInt64(Hdn_TempId.Value);
+                    using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                    {
+                        SqlTransaction Transaction = null;
+                        try
                         {
-                            
-                            FileUpload Fileuploadcontrol = (FileUpload)rows.FindControl("FileUpload1");
-                            HiddenField Hdn_DocumentID = (HiddenField)rows.FindControl("HdnDocumentID");
-                            HiddenField HdnDocumentName = (HiddenField)rows.FindControl("HdnDocumentName");
-                            HiddenField HdnDocumentNameId = (HiddenField)rows.FindControl("HdnDocumentNameID");
+                            connection.Open();
+                            Transaction = connection.BeginTransaction();
 
-                            documentName = HdnDocumentName.Value;
-                            if (string.IsNullOrEmpty(Hdn_DocumentID.Value))
+                            foreach (GridViewRow rows in grd_Documemnts.Rows)
                             {
-                                Hdn_DocumentID.Value = "10";
-                            }
-                            DocumentId =Convert.ToInt32(Hdn_DocumentID.Value);
-                            DocumentNameId= Convert.ToInt32(HdnDocumentNameId.Value);
-                            if (Fileuploadcontrol.HasFile && Fileuploadcontrol != null)
-                            {
-                                if (Path.GetExtension(Fileuploadcontrol.FileName).ToLower() == ".pdf" && Fileuploadcontrol.PostedFile.ContentLength <= 1048576)
+
+                                FileUpload Fileuploadcontrol = (FileUpload)rows.FindControl("FileUpload1");
+                                HiddenField Hdn_DocumentID = (HiddenField)rows.FindControl("HdnDocumentID");
+                                HiddenField HdnDocumentName = (HiddenField)rows.FindControl("HdnDocumentName");
+                                HiddenField HdnDocumentNameId = (HiddenField)rows.FindControl("HdnDocumentNameID");
+
+                                documentName = HdnDocumentName.Value;
+                                if (string.IsNullOrEmpty(Hdn_DocumentID.Value))
                                 {
-                                    string fileName = ""; string dbPath = ""; string fullPath = "";
-                                    string directoryPath = Server.MapPath($"~/Attachment/{TempId}/{CreatedBy}/");
-                                    if (!Directory.Exists(directoryPath))
+                                    Hdn_DocumentID.Value = "10";
+                                }
+                                DocumentId = Convert.ToInt32(Hdn_DocumentID.Value);
+                                DocumentNameId = Convert.ToInt32(HdnDocumentNameId.Value);
+                                if (Fileuploadcontrol.HasFile && Fileuploadcontrol != null)
+                                {
+                                    if (Path.GetExtension(Fileuploadcontrol.FileName).ToLower() == ".pdf" && Fileuploadcontrol.PostedFile.ContentLength <= 1048576)
                                     {
-                                        Directory.CreateDirectory(directoryPath);
+                                        string fileName = ""; string dbPath = ""; string fullPath = "";
+                                        string directoryPath = Server.MapPath($"~/Attachment/{TempId}/{CreatedBy}/");
+                                        if (!Directory.Exists(directoryPath))
+                                        {
+                                            Directory.CreateDirectory(directoryPath);
+                                        }
+                                        fileName = $"{documentName}_{DateTime.Now:yyyyMMddHHmmssFFF}.pdf";           // Generate file path and name
+                                        dbPath = $"/Attachment/{TempId}/{CreatedBy}/{fileName}";
+                                        fullPath = Path.Combine(directoryPath, fileName);
+                                        int x = CEI.UpdateDocumentData(DocumentId, TempId, DocumentNameId, documentName, fileName, dbPath, CreatedBy, Transaction);
+                                        Fileuploadcontrol.PostedFile.SaveAs(fullPath);
                                     }
-                                    fileName = $"{documentName}_{DateTime.Now:yyyyMMddHHmmssFFF}.pdf";           // Generate file path and name
-                                    dbPath = $"/Attachment/{TempId}/{CreatedBy}/{fileName}";
-                                    fullPath = Path.Combine(directoryPath, fileName);
-                                    int x = CEI.UpdateDocumentData(DocumentId,TempId, DocumentNameId, documentName, fileName, dbPath, CreatedBy, Transaction);
-                                    Fileuploadcontrol.PostedFile.SaveAs(fullPath);
-                                }
-                                else
-                                {
-                                    throw new Exception("Please check Pdf and size of Pdf");                                    
-                                }
+                                    else
+                                    {
+                                        throw new Exception("Please check Pdf and size of Pdf");
+                                    }
 
+                                }
                             }
-                        }
 
-                        int Accident_ID = Convert.ToInt32(Session["Accident_IdReturn_siteowner"]);
-                        CEI.UpdateAccidentData(Accident_ID, TempId, txtAccidentDate.Text,txtAccidentTime.Text,ddlDistrict.SelectedItem.Text,txtThana.Text.Trim(),txtTehsil.Text.Trim(),
-                            txtVillageCityTown.Text.Trim(),CreatedBy,Transaction);
-                        
-                        Transaction.Commit();
-                        ScriptManager.RegisterStartupScript(this, GetType(), "successful",
-                                "alert('Accident Investigation report Updated successfully'); window.location.href = '/SiteOwnerPages/AccidentialHistory_SiteOwner.aspx'; ", true);
-                    }
-                    catch (Exception ex)
-                    {
-                        Transaction?.Rollback();
-                        string errorMessage = ex.Message.Replace("'", "\\'");
-                        ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
-                    }
-                    finally
-                    {
-                        Transaction?.Dispose();
-                        connection.Close();
+                            int Accident_ID = Convert.ToInt32(Session["Accident_IdReturn_siteowner"]);
+                            CEI.UpdateAccidentData(Accident_ID, TempId, txtAccidentDate.Text, txtAccidentTime.Text, ddlDistrict.SelectedItem.Text, txtThana.Text.Trim(), txtTehsil.Text.Trim(),
+                                txtVillageCityTown.Text.Trim(), CreatedBy, Transaction);
+
+                            Transaction.Commit();
+                            ScriptManager.RegisterStartupScript(this, GetType(), "successful",
+                                    "alert('Accident Investigation report Updated successfully'); window.location.href = '/SiteOwnerPages/AccidentialHistory_SiteOwner.aspx'; ", true);
+                        }
+                        catch (Exception ex)
+                        {
+                            Transaction?.Rollback();
+                            string errorMessage = ex.Message.Replace("'", "\\'");
+                            ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
+                        }
+                        finally
+                        {
+                            Transaction?.Dispose();
+                            connection.Close();
+                        }
                     }
                 }
-
             }
 
         }
