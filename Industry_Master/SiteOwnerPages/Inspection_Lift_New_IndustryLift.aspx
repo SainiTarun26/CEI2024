@@ -176,11 +176,11 @@
     <div class="content-wrapper">
         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
-                Inspection Details
+                Inspection Details(<asp:Label ID="lblInspectionType" runat="server"  Text="Label" style="font-size: 17px;"></asp:Label>)
             </div>
             <div class="card" style="padding-top: 10px; padding-left: 15px; padding-right: 15px;">
                 <div class="row">
-                    <div class="col-4" id="Inspections" runat="server" visible="false">
+                   <%-- <div class="col-4" id="Inspections" runat="server" visible="false">
                         <label>
                             Type of Inspection
                     <samp style="color: red">* </samp>
@@ -194,7 +194,10 @@
                             Type of Applicant
                         </label>
                         <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
+                    </div>--%>
+                    <div class="col-4" runat="server">
+                        <label for="Pin">Application No.</label>
+                        <asp:TextBox class="form-control" ID="txtApplicationNo" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-4">
                         <label>
@@ -203,15 +206,12 @@
                         <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                     </div>
-                    <div class="col-4" id="Type" runat="server">
+                  <%--  <div class="col-4" id="Type" runat="server">
                         <label for="Pin">InspectionType</label>
                         <asp:TextBox class="form-control" ID="txtInspectionType" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                    </div>
-                    <div class="col-4" runat="server">
-                        <label for="Pin">Application No.</label>
-                        <asp:TextBox class="form-control" ID="txtApplicationNo" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
+                    </div>--%>
+
                     <div class="col-4" runat="server">
                         <label for="Pin">Total Amount</label>
                         <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -285,11 +285,15 @@
                 </div>
             </div>
 
-
+            <div class="row">
+                <div class="col-md-12">
+                    <h6 class="card-title fw-semibold mb-4" id="maincard" style="font-size: 18px !important; margin-bottom: 10px !important;">Inspection Details</h6>
+                </div>
+            </div>
             <div class="card" style="padding-top: 10px;">
                 <div class="col-12">
 
-                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView2_RowDataBound" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server"  OnRowDataBound="GridView2_RowDataBound" AutoGenerateColumns="false" >
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
                             <asp:TemplateField HeaderText="SNo">
@@ -299,11 +303,11 @@
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="Installationfor" HeaderText="Installation Type">
+                            <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Status" HeaderText="Status">
+                            <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
@@ -312,35 +316,35 @@
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>--%>
 
-                            <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" Visible="false">
+                           <%-- <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" Visible="false">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkRedirect" runat="server" Text="View Test Report" OnClick="lnkRedirect_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                            </asp:TemplateField>
-                            <asp:BoundField DataField="SubmittedDate" HeaderText="Submitted Date">
+                            </asp:TemplateField>--%>
+                            <asp:BoundField DataField="ActionDate" HeaderText="ActionDate">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="InspectionRemarks" HeaderText="Inspection Remarks">
+                            <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
 
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="ReturnDate" HeaderText="Return Date">
+                            <asp:BoundField DataField="Remarks" HeaderText="Remarks">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
 
-                            <asp:BoundField DataField="ReasonForReturn" HeaderText="Return Reason">
+                           <%-- <asp:BoundField DataField="ReasonForReturn" HeaderText="Return Reason">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="ReturnBased" HeaderText="Return Based">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
+                            </asp:BoundField>--%>
                         </Columns>
                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                     </asp:GridView>
@@ -490,7 +494,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> 
     </div>
 
 

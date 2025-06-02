@@ -157,13 +157,13 @@
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
-                            <asp:TemplateField HeaderText="Voltage ">
+                          <%--  <asp:TemplateField HeaderText="Voltage ">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                                 <ItemTemplate>
                                     <div><%# Eval("VoltageLevel") %></div>
                                 </ItemTemplate>
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
                             <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" Font-Bold="true" />
