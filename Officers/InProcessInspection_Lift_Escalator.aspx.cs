@@ -618,10 +618,11 @@ namespace CEIHaryana.Officers
                                         //string status = row.Cells[2].Text.Trim();
                                         Label lblstatus = (Label)row.FindControl("lblStatus");
                                         Label lblSubmittedDate = (Label)row.FindControl("lblSubmittedDate");
-                                        if (lblSubmittedDate != null && lblstatus.Text == "Submit")
-                                        {
-                                          SubmittedDated = lblSubmittedDate.Text;
-                                        }
+                                        SubmittedDated = lblSubmittedDate.Text;     //added by gurmeet to take last action date O 2-JUNE-2025
+                                        //if (lblSubmittedDate != null && lblstatus.Text == "Submit")
+                                        //{
+                                        //  SubmittedDated = lblSubmittedDate.Text;
+                                        //}
                                     }
                                 }
                                 DateTime submittedDate;
