@@ -772,7 +772,7 @@ namespace CEIHaryana.Officers
                                     List<Industry_Api_Post_DataformatModel> ApiPostformatResults = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(ID), actiontype);
                                     foreach (var ApiPostformatresult in ApiPostformatResults)
                                     {
-                                        if (ApiPostformatresult.PremisesType == "Industryasdasda")
+                                        if (ApiPostformatresult.PremisesType == "Industry")
                                         {
                                             string accessToken = TokenManagerConst.GetAccessToken(ApiPostformatresult);
                                             logDetails = CEI.Post_Industry_Inspection_StageWise_JsonData(

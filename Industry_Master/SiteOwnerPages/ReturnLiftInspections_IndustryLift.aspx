@@ -601,7 +601,8 @@
                                         </label>
                                         <asp:TextBox ID="txttransactionDate" onfocus="disableFutureDates()" min='0000-01-01' onkeydown="return false;" max='9999-01-01' TextMode="Date" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
                                         <asp:TextBox ID="txtReturntransactionDate" onfocus="disableFutureDates()" Visible="false" onkeydown="return false;" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
-                                           <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Date</asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Date</asp:RequiredFieldValidator>
+
                                     </div>
                                     <div class="col-4" style="margin-top: auto; margin-bottom: auto;">
                                         <label style="margin-top: 25px !important;">
@@ -649,5 +650,47 @@
             // Set the max attribute of the txtDateofIntialissue TextBox to today's date
             document.getElementById('<%=txttransactionDate.ClientID %>').setAttribute('max', today);
         }
+
+        let isSubmitting = false;
+
+        function validateFileUpload() {
+            var transactionIdControl = document.getElementById('<%= txttransactionId.ClientID %>');
+<%--            var transactionDateControl = document.getElementById('<%= txttransactionDate.ClientID %>');--%>
+            var inspectionRemarksControl = document.getElementById('<%= txtInspectionRemarks.ClientID %>');
+
+            var transactionId = transactionIdControl ? transactionIdControl.value.trim() : '';
+/*            var transactionDate = transactionDateControl ? transactionDateControl.value.trim() : '';*/
+            var inspectionRemarks = inspectionRemarksControl ? inspectionRemarksControl.value.trim() : '';
+
+            if (transactionId === '') {
+                alert('Please Enter Transaction ID.');
+                return false;
+            }
+
+            //if (transactionDate === '') {
+            //    alert('Please Enter Transaction Date.');
+            //    return false;
+            //}
+
+            if (inspectionRemarks === '') {
+                alert('Please Enter Inspection Remarks');
+                return false;
+            }
+
+            if (typeof isSubmitting !== 'undefined' && isSubmitting) {
+                return false;
+            }
+
+            if (typeof Page_ClientValidate === 'function' && Page_ClientValidate()) {
+                isSubmitting = true;
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+
+
     </script>
 </asp:Content>

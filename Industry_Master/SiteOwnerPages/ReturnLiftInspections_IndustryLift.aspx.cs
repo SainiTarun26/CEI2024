@@ -196,6 +196,7 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
             }
             else
             {
+                txttransactionDate.Text = dataTable.Rows[0]["TransctionDate"].ToString();
 
             }
 
@@ -646,6 +647,24 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+
+            if (txtReturntransactionDate.Visible)
+            {
+                if (string.IsNullOrWhiteSpace(txtReturntransactionDate.Text))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please enter Return Transaction Date.');", true);
+                    return;
+                }
+            }
+            else if (txttransactionDate.Visible)
+            {
+                if (string.IsNullOrWhiteSpace(txttransactionDate.Text))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please enter Transaction Date.');", true);
+                    return;
+                }
+            }
+
             int checksuccessmessage = 0;
             if (Convert.ToString(Session["SiteOwnerId_IndustryLift"]) != null && Convert.ToString(Session["IntimationId_LiftEscalator_IndustryLift"]) != null)
             {
