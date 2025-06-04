@@ -55,7 +55,7 @@ namespace CEIHaryana.Officers
                 {
                     GridView1.DataSource = null;
                     GridView1.DataBind();
-                    string script = "alert(\"No Record Found\");";
+                    string script = "alert(\"No any request submitted for disconnection yet.\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
                 dt.Dispose();
