@@ -556,13 +556,13 @@
                             </label>
                             <asp:DropDownList ID="ddlAction" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlAction_SelectedIndexChanged" CssClass="form-control select-form select2" Style="width: 100% !important;" TabIndex="2">
                                 <asp:ListItem Text="Select" Value="Select"></asp:ListItem>
-                                <asp:ListItem Text="Yes" Value="Approved"></asp:ListItem>
-                                <asp:ListItem Text="No" Value="Rejected"></asp:ListItem>
+                                <asp:ListItem Text="Approved" Value="Approved"></asp:ListItem>
+                                <asp:ListItem Text="Rejected" Value="Rejected"></asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" Text="Please Select  any Action to proceed" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAction" runat="server" InitialValue="Select" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                        </div>                        
+                        </div>
                     </div>
-                   <%-- </ContentTemplate></asp:UpdatePanel>--%>
+                    <%-- </ContentTemplate></asp:UpdatePanel>--%>
                     <div class="row">
                             <div class="col-md-4">
         <label>
