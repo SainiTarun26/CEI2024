@@ -95,7 +95,7 @@ namespace CEIHaryana.Officers
                 else
                 {
 
-                    CEI.UpdateXenVerificationstatus(txtApplicationId.Text, StaffID, ddlcorrection.SelectedItem.Text, RadioButtonList1.SelectedItem.Text, txtRemarks.Text, txtCorrectionRemarks.Text, txtDate.Text, "Verified");
+                    CEI.UpdateXenVerificationstatus(txtApplicationId.Text, StaffID, ddlcorrection.SelectedItem.Text, RadioButtonList1.SelectedValue.ToString(), txtRemarks.Text, txtCorrectionRemarks.Text,null, "Verified");
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata2();", true);
                 }
             }
@@ -124,11 +124,17 @@ namespace CEIHaryana.Officers
             if (RadioButtonList1.SelectedValue.Trim()== "Reject")
             {
                 RejectionRemarks.Visible= true;
+                AcceptedLabel.Visible= false;
+                NeedCorrection.Visible= false;
+                VerificationDate.Visible= false;
             }
             else
             {
 
                 RejectionRemarks.Visible = false;
+                AcceptedLabel.Visible = true;
+                NeedCorrection.Visible = true;
+                VerificationDate.Visible = true;
             }
         }
     }

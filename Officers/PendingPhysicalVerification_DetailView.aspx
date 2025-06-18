@@ -306,6 +306,17 @@
         th {
             width: 1%;
         }
+        input#ContentPlaceHolder1_RadioButtonList1_0 {
+    margin-right: 10px;
+}
+        input#ContentPlaceHolder1_RadioButtonList1_1 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+        th {
+    color: white !important;
+    background:#9292cc !important;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -379,19 +390,47 @@
 
                                 <asp:BoundField DataField="ActionDate" HeaderText="Action Date" DataFormatString="{0:dd-MMM-yy}" />
                             </Columns>
+                        <FooterStyle BackColor="White" ForeColor="#000066" />
+ <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+ <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+ <RowStyle ForeColor="#000066" />
+ <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+ <SortedAscendingCellStyle BackColor="#F1F1F1" />
+ <SortedAscendingHeaderStyle BackColor="#007DBB" />
+ <SortedDescendingCellStyle BackColor="#CAC9C9" />
+ <SortedDescendingHeaderStyle BackColor="#00547E" />
                         </asp:GridView>
                     </div>
 
                 </div>
             </div>
 
+             <div class="card-title" style="margin-top: 15px; margin-bottom: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
+    Action
+ </div>
 
-
-
+               <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
 
             <div class="row">
-                
-                <div class="col-md-4">
+                  <div class="col-md-3">
+      <label>
+          Action
+      </label>
+
+      <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" TabIndex="4" AutoPostBack="true" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+          <asp:ListItem Value="Accept" Selected="True">Accept</asp:ListItem>
+          <asp:ListItem Value="Reject">Not Recommend</asp:ListItem>
+      </asp:RadioButtonList>
+  </div>
+                  <div class="col-md-9" runat="server" id="RejectionRemarks" visible="false">
+      <label>
+         Rejection Remarks
+      </label>
+      
+       <asp:TextBox class="form-control" ID="txtRemarks" TabIndex="5" MaxLength="500" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+ 
+  </div>
+                <div class="col-md-3" style="margin-top: 15px;" id="VerificationDate" runat="server">
                     <label>
                         Physical Verification Date 
                     </label>
@@ -399,7 +438,7 @@
                       <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
 
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3" style="margin-top: 15px;" id="NeedCorrection" runat="server">
                     <label>
                         Correction Needed?
                     </label>
@@ -411,7 +450,7 @@
 
                 </div>
                 
-                <div class="col-md-4" runat="server" id="Correction" visible="false">
+                <div class="col-md-6" runat="server" id="Correction" visible="false" style="margin-top: 15px;">
                     <label>
                         Correction Remarks
                     </label>
@@ -419,33 +458,23 @@
                       <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtCorrectionRemarks" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
 
                 </div>
-            </div>
            
-            <div class="row">
-                <div class="col-md-4">
-                    <label>
-                        Action
-                    </label>
-
-                    <asp:RadioButtonList ID="RadioButtonList1" runat="server" CssClass="form-control" RepeatDirection="Horizontal" TabIndex="4" AutoPostBack="true" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
-                        <asp:ListItem Value="Accept" Selected="True">Accept</asp:ListItem>
-                        <asp:ListItem Value="Reject">Not Recommend</asp:ListItem>
-                    </asp:RadioButtonList>
-                </div>
-                <div class="col-md-8" runat="server" id="RejectionRemarks" visible="false">
-                    <label>
-                       Rejection Remarks
-                    </label>
-                    
-                     <asp:TextBox class="form-control" ID="txtRemarks" TabIndex="5" TextMode="MultiLine" MaxLength="500" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
- 
-                </div>
+              
+              
             </div>
+                    </div>
             <div class="row" style="margin-top: 25px;">
                 <div class="col-md-4"></div>
                 <div class="col-md-4" style="text-align: center;">
 
-                    <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
+                    <asp:Button ID="btnSubmit" Text="Proceed" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
+                </div>
+            </div>
+            <div class="row" id="AcceptedLabel" runat="server">
+                <div class="col-md-12" style="text-align:center;">
+                     <label>
+    To Generate Appointment Letter Kindly Proceed.
+ </label>
                 </div>
             </div>
         </div>

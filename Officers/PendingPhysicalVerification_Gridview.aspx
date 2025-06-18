@@ -175,6 +175,8 @@
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="ApplicationStatus">
+                                  <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+  <ItemStyle HorizontalAlign="center" Width="15%" />
                                 <ItemTemplate>
                                     <asp:Label ID="lblApplicationStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
                                 </ItemTemplate>
