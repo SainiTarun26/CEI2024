@@ -1818,6 +1818,8 @@
     <Content Include="DataTableJs\bootstrap.min.js" />
     <Content Include="DataTableJs\jquery.js" />
     <Content Include="DataTableJs\jqueryDataTable.js" />
+    <Content Include="DealingHand\CommentByDealingHand.aspx" />
+    <Content Include="DealingHand\ViewData.aspx" />
     <Content Include="ForgetPassword.aspx" />
     <Content Include="Functions.aspx" />
     <Content Include="GenerateCaptcha.aspx" />
@@ -2002,6 +2004,9 @@
     <Content Include="Periodic_Industry\Print_PeriodicIndustry.aspx" />
     <Content Include="Periodic_Industry\RenewalPerodicIndustry.aspx" />
     <Content Include="Periodic_Industry\ViewPerodicRequest.aspx" />
+    <Content Include="Print_Forms\Certificate_of_Competency.aspx" />
+    <Content Include="Print_Forms\Certificate_of_wireman_Permit.aspx" />
+    <Content Include="Print_Forms\Contractor_Licence_New_Certificate.aspx" />
     <Content Include="Print_Forms\EscalatorApprovalCertificate.aspx" />
     <Content Include="Print_Forms\InspectionRequestPrint.aspx" />
     <Content Include="Print_Forms\LiftApprovalCertificate.aspx" />
@@ -2106,6 +2111,8 @@
     <Content Include="StaticPage1.aspx" />
     <Content Include="StaticPage2.aspx" />
     <Content Include="StaticPage3.aspx" />
+    <Content Include="Superintendent\CommentForRequest.aspx" />
+    <Content Include="Superintendent\UserDetails.aspx" />
     <Content Include="SupervisorLogout.aspx" />
     <Content Include="Supervisor\GeneratingSetTestReport.aspx" />
     <Content Include="Supervisor\InstallationDetails.aspx" />
@@ -2759,6 +2766,27 @@
       <DependentUpon>Work_Intimation.aspx</DependentUpon>
     </Compile>
     <Compile Include="DBTask.cs" />
+    <Compile Include="DealingHand\CommentByDealingHand.aspx.cs">
+      <DependentUpon>CommentByDealingHand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DealingHand\CommentByDealingHand.aspx.designer.cs">
+      <DependentUpon>CommentByDealingHand.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DealingHand\DealingHand.Master.cs">
+      <DependentUpon>DealingHand.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DealingHand\DealingHand.Master.designer.cs">
+      <DependentUpon>DealingHand.Master</DependentUpon>
+    </Compile>
+    <Compile Include="DealingHand\ViewData.aspx.cs">
+      <DependentUpon>ViewData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DealingHand\ViewData.aspx.designer.cs">
+      <DependentUpon>ViewData.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ForgetPassword.aspx.cs">
       <DependentUpon>ForgetPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3543,6 +3571,27 @@
     <Compile Include="Periodic_Industry\ViewPerodicRequest.aspx.designer.cs">
       <DependentUpon>ViewPerodicRequest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Print_Forms\Certificate_of_Competency.aspx.cs">
+      <DependentUpon>Certificate_of_Competency.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print_Forms\Certificate_of_Competency.aspx.designer.cs">
+      <DependentUpon>Certificate_of_Competency.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print_Forms\Certificate_of_wireman_Permit.aspx.cs">
+      <DependentUpon>Certificate_of_wireman_Permit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print_Forms\Certificate_of_wireman_Permit.aspx.designer.cs">
+      <DependentUpon>Certificate_of_wireman_Permit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print_Forms\Contractor_Licence_New_Certificate.aspx.cs">
+      <DependentUpon>Contractor_Licence_New_Certificate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print_Forms\Contractor_Licence_New_Certificate.aspx.designer.cs">
+      <DependentUpon>Contractor_Licence_New_Certificate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Print_Forms\EscalatorApprovalCertificate.aspx.cs">
       <DependentUpon>EscalatorApprovalCertificate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4258,6 +4307,27 @@
     <Compile Include="StaticPage3.aspx.designer.cs">
       <DependentUpon>StaticPage3.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Superintendent\CommentForRequest.aspx.cs">
+      <DependentUpon>CommentForRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Superintendent\CommentForRequest.aspx.designer.cs">
+      <DependentUpon>CommentForRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Superintendent\Superintendent.Master.cs">
+      <DependentUpon>Superintendent.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Superintendent\Superintendent.Master.designer.cs">
+      <DependentUpon>Superintendent.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Superintendent\UserDetails.aspx.cs">
+      <DependentUpon>UserDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Superintendent\UserDetails.aspx.designer.cs">
+      <DependentUpon>UserDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SupervisorLogout.aspx.cs">
       <DependentUpon>SupervisorLogout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4926,6 +4996,7 @@
     <Content Include="Officers\Officers.Master" />
     <Content Include="Admin\Admin_Master2.Master" />
     <Content Include="Industry_Master\NewLift_Industry.Master" />
+    <Content Include="DealingHand\DealingHand.Master" />
     <None Include="packages.config" />
     <Content Include="Supervisor\Supervisor.Master" />
     <Content Include="TestReport\TestReport.Master" />
@@ -4952,6 +5023,7 @@
     <Content Include="UserManual\USERmanualContractor.pdf" />
     <Content Include="UserManual\USERmanualSiteowner.pdf" />
     <Content Include="UserManual\USERmanualSupervisor.pdf" />
+    <Content Include="Superintendent\Superintendent.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

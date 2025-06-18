@@ -11203,6 +11203,100 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         }
 
         #endregion
+        #region neeraj Physicalverification 18-June-2025
+        public DataTable BindDataForDealingHand(string Category = null, string District = null, string Status = null, string Name = null)
+        {
+            return DBTask.ExecuteDataTable(
+         ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+         "sp_GetDetailsForDealingHand",
+         Category == "Select" ? (object)DBNull.Value : Category,
+         District == "Select" ? (object)DBNull.Value : District,
+         Status == "Select" ? (object)DBNull.Value : Status,
+         string.IsNullOrWhiteSpace(Name) ? (object)DBNull.Value : Name
+     );
+        }
+        public DataTable GETUserDetails(string applicationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsofUser", applicationId);
+        }
+        public int InsertDealingHandComment(string ApplicationId, string Id, string DealingHandComment)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                using (SqlCommand cmd = new SqlCommand("sp_InsertDealingHandRemarks", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ApplicationId", ApplicationId);
+                    cmd.Parameters.AddWithValue("@Id", Id);
+                    cmd.Parameters.AddWithValue("@DealingHandComment", DealingHandComment);
+                    con.Open();
+                    int x = cmd.ExecuteNonQuery();
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public DataTable UserDetailsAfterComment(string applicationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsofUserAfterComment", applicationId);
+        }
+        public DataTable GETComments(string applicationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetCommentsfromLog", applicationId);
+        }
+        public int InsertSuperidentantComment(string ApplicationId, string Id, string Sup_Comment, string AssignTo)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                using (SqlCommand cmd = new SqlCommand("sp_InsertSuperidentantComments", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ApplicationId", ApplicationId);
+                    cmd.Parameters.AddWithValue("@Id", Id);
+                    cmd.Parameters.AddWithValue("@SuperidentantComment", Sup_Comment);
+                    cmd.Parameters.AddWithValue("@AssignTo", AssignTo);
+                    con.Open();
+                    int x = cmd.ExecuteNonQuery();
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public DataTable GetCertificateDataCon_Sup_Wir(string ApplicationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ApprovalCertificateData", ApplicationId);
+        }
+        public DataTable GetPatnersDetails(string RegistrationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPatnersDetails", RegistrationId);
+        }
+        public DataTable GetSupWiremanDetails(string RegistrationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSup_WiremanDetails", RegistrationId);
+        }
+        public DataSet getDataLicence(string ApplicationId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorRenewalDetails", ApplicationId);
+        }
+        public DataTable GETActiveSuperident(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getSuperidentActive", Id);
+        }
+        public DataTable GETAssign()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAssignTo");
+        }
+        #endregion
     }
 }
 

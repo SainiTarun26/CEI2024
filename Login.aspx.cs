@@ -367,6 +367,62 @@ namespace CEIHaryana
 
                         }
                     }
+                    //11 and 12 added by neeraj on 18-june-2025
+                    else if (check == 11)
+                    {
+                        if (txtPassword.Text != "123456")
+                        {
+                            if (chkSignedin.Checked == true)
+                            {
+                                Session["DealingHandId"] = txtUserID.Text;
+                                Session["logintype"] = "DealingHand";
+                                Response.Cookies["DealingHandId"].Value = txtUserID.Text;
+                                Response.Cookies["logintype"].Value = "DealingHand";
+                                Response.Redirect("DealingHand/ViewData.aspx", false);
+                            }
+                            else
+                            {
+                                Session["DealingHandId"] = txtUserID.Text;
+                                Session["logintype"] = "DealingHand";
+                                Response.Cookies["DealingHandId"].Value = txtUserID.Text;
+                                Response.Cookies["logintype"].Value = "DealingHand";
+                                Response.Redirect("DealingHand/ViewData.aspx", false);
+                            }
+                        }
+                        else
+                        {
+                            Session["DealingHandId"] = txtUserID.Text;
+                            Response.Redirect("/ChangePassword.aspx", false);
+                        }
+                    }
+                    else if (check == 12)
+                    {
+                        if (txtPassword.Text != "123456")
+                        {
+                            if (chkSignedin.Checked == true)
+                            {
+                                Session["SuperidentId"] = txtUserID.Text;
+                                Session["logintype"] = "Superintendent";
+                                Response.Cookies["SuperidentId"].Value = txtUserID.Text;
+                                Response.Cookies["logintype"].Value = "Superintendent";
+                                Response.Redirect("Superintendent/UserDetails.aspx", false);
+                            }
+                            else
+                            {
+                                Session["SuperidentId"] = txtUserID.Text;
+                                Session["logintype"] = "Superintendent";
+                                Response.Cookies["SuperidentId"].Value = txtUserID.Text;
+                                Response.Cookies["logintype"].Value = "Superintendent";
+                                Response.Redirect("Superintendent/UserDetails.aspx", false);
+                            }
+                        }
+                        else
+                        {
+                            Session["SuperidentId"] = txtUserID.Text;
+                            Response.Redirect("/ChangePassword.aspx", false);
+                        }
+                    }
+                    //
                     else
                     {
                         Session["Username"] = null;
