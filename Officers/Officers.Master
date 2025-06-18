@@ -471,6 +471,14 @@
                                     <span class="menu-title">PendingPhysicalVerificationRequest </span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Officers/Pending_Final_Recommendations_List.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                   <span class="menu-title">Pending Final<br />
+             Recommendations
+  </span>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <div class="main-panel">

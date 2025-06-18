@@ -594,6 +594,13 @@
                                     <span class="menu-title">NewApplcations</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/Pending_Licence_Approval_Cei_List.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                     <span class="menu-title">Pending Licence<br /> 
+                                      Approval  </span>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <div class="main-panel">

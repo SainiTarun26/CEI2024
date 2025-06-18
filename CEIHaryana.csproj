@@ -252,6 +252,8 @@
     <Content Include="Admin\NewApplications_Licence.aspx" />
     <Content Include="Admin\NewRequestInspectionForAdmin.aspx" />
     <Content Include="Admin\NoticeForDisconnection.aspx" />
+    <Content Include="Admin\Pending_Licence_Approval_Cei.aspx" />
+    <Content Include="Admin\Pending_Licence_Approval_Cei_List.aspx" />
     <Content Include="Admin\PeriodicReturnedIntimationForHistory.aspx" />
     <Content Include="Admin\Projects.aspx" />
     <Content Include="Admin\RegistrationDetailsAll.aspx" />
@@ -1987,6 +1989,8 @@
     <Content Include="Officers\OfficerDashboard.aspx" />
     <Content Include="Officers\PendingPhysicalVerification_DetailView.aspx" />
     <Content Include="Officers\PendingPhysicalVerification_Gridview.aspx" />
+    <Content Include="Officers\Pending_Final_Recommendations.aspx" />
+    <Content Include="Officers\Pending_Final_Recommendations_List.aspx" />
     <Content Include="Officers\PeriodicInspection.aspx" />
     <Content Include="Officers\PeriodicInspection_Cinema_Talkies.aspx" />
     <Content Include="Officers\PeriodicInspection_Lift_Escalator.aspx" />
@@ -2446,6 +2450,20 @@
     </Compile>
     <Compile Include="Admin\NoticeForDisconnection.aspx.designer.cs">
       <DependentUpon>NoticeForDisconnection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Pending_Licence_Approval_Cei.aspx.cs">
+      <DependentUpon>Pending_Licence_Approval_Cei.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Pending_Licence_Approval_Cei.aspx.designer.cs">
+      <DependentUpon>Pending_Licence_Approval_Cei.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Pending_Licence_Approval_Cei_List.aspx.cs">
+      <DependentUpon>Pending_Licence_Approval_Cei_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Pending_Licence_Approval_Cei_List.aspx.designer.cs">
+      <DependentUpon>Pending_Licence_Approval_Cei_List.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\PeriodicReturnedIntimationForHistory.aspx.cs">
       <DependentUpon>PeriodicReturnedIntimationForHistory.aspx</DependentUpon>
@@ -3457,6 +3475,20 @@
     </Compile>
     <Compile Include="Officers\PendingPhysicalVerification_Gridview.aspx.designer.cs">
       <DependentUpon>PendingPhysicalVerification_Gridview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\Pending_Final_Recommendations.aspx.cs">
+      <DependentUpon>Pending_Final_Recommendations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\Pending_Final_Recommendations.aspx.designer.cs">
+      <DependentUpon>Pending_Final_Recommendations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\Pending_Final_Recommendations_List.aspx.cs">
+      <DependentUpon>Pending_Final_Recommendations_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\Pending_Final_Recommendations_List.aspx.designer.cs">
+      <DependentUpon>Pending_Final_Recommendations_List.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\PeriodicInspection.aspx.cs">
       <DependentUpon>PeriodicInspection.aspx</DependentUpon>

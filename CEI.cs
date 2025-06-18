@@ -11122,27 +11122,6 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateXenVerificationstatus", registrationId, userid, XenAdvisedCorrection, XenRecomendation, RejectionRemarks_XEN, XenCorrectionNote, PhysicalVerificationDate, ApplicationStatus);
         }
         #endregion
-        #region  aslam 18-June-2025
-        public DataSet Get_Licence_ApplicationLogDetails(string applicationId)
-        {
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand("sp_Get_Licence_Application_LogDetails", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ApplicationId", applicationId);
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataSet ds = new DataSet();
-                    da.Fill(ds);
-                    return ds;
-                }
-            }
-        }
-        public DataSet Licence_XenfinalRecommend_GetHeaderDetails(string Lic_ApplicationId)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Licence_XenfinalRecommend_GetHeaderDetails", Lic_ApplicationId);
-        }
-        #endregion
         #region Neha New registration 18-June-2025
         public int CheckAadharExist(string aadhar)
         {
@@ -11881,6 +11860,95 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             byte[] bytes = Encoding.UTF8.GetBytes(randomUniqueNumber);
             return Convert.ToBase64String(bytes).Replace("=", "").Replace("+", "").Replace("/", "");
         }
+        #endregion
+
+        #region aslam new regitration 18-June-2025
+        public DataSet Licence_XenfinalRecommend_GetHeaderDetails(string licApplicationId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Licence_XenfinalRecommend_GetHeaderDetails", licApplicationId);
+        }
+
+        public int Insert_Licence_XenFinalRecommendation(string applicationId, string remarks, string actionTaken, string actionTakenBy)
+        {
+            int result = 0;
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_Licence_XenfinalRecommend_SaveDetails", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ApplicationId", applicationId);
+                    cmd.Parameters.AddWithValue("@Remarks", remarks);
+                    cmd.Parameters.AddWithValue("@ActionTaken", actionTaken);
+                    cmd.Parameters.AddWithValue("@ActionTakenBy", actionTakenBy);
+
+                    SqlParameter returnParam = new SqlParameter();
+                    returnParam.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(returnParam);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    result = (int)returnParam.Value;
+                }
+            }
+            return result;
+        }
+
+        public DataSet Get_Licence_ApplicationLogDetails(string applicationId)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_Get_Licence_Application_LogDetails", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ApplicationId", applicationId);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+                    return ds;
+                }
+            }
+        }
+
+        public DataSet Licence_Cei_Approval_GetHeaderDetails(string licApplicationId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Licence_Cei_Approval_GetHeaderDetails", licApplicationId);
+        }
+
+        public int Insert_Licence_CeiApprovalRejection(string applicationId, string remarks, string actionTaken, string actionTakenBy)
+        {
+            int result = 0;
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_Licence_CeiApprovalRejection_Save", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ApplicationId", applicationId);
+                    cmd.Parameters.AddWithValue("@Remarks", remarks);
+                    cmd.Parameters.AddWithValue("@ActionTaken", actionTaken);
+                    cmd.Parameters.AddWithValue("@ActionTakenBy", actionTakenBy);
+
+                    SqlParameter returnParam = new SqlParameter();
+                    returnParam.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(returnParam);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    result = (int)returnParam.Value;
+                }
+            }
+            return result;
+        }
+        public DataSet Licence_Xen_Pending_FinalRecommendationList()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_PendingLicence_LetterIssued_Applications");
+        }
+
+        public DataSet Licence_CEI_Pending_FinalRecommendationList()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_PendingLicence_Verified_Applications");
+        }
+
+
         #endregion
     }
 }
