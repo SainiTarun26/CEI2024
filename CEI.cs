@@ -11297,6 +11297,45 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAssignTo");
         }
         #endregion
+        #region navneet 18-June-2025 License
+        public DataSet GetdataforXenletter(string registrationId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetdataforXenletter", registrationId);
+        }
+        public DataTable GetPendingPhysicalVerification_Gridview()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPendingPhysicalVerification_Gridview");
+        }
+        public void AddXenVerifiedLetter(string registrationId, string userid, string XenVerifiedLetterPath)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AddXenVerifiedLetter", registrationId, userid, XenVerifiedLetterPath);
+        }
+        public void UpdateXenVerificationstatus(string registrationId, string userid, string XenAdvisedCorrection, string XenRecomendation, string RejectionRemarks_XEN, string XenCorrectionNote, string PhysicalVerificationDate, string ApplicationStatus)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateXenVerificationstatus", registrationId, userid, XenAdvisedCorrection, XenRecomendation, RejectionRemarks_XEN, XenCorrectionNote, PhysicalVerificationDate, ApplicationStatus);
+        }
+        #endregion
+        #region  aslam 18-June-2025
+        public DataSet Get_Licence_ApplicationLogDetails(string applicationId)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_Get_Licence_Application_LogDetails", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ApplicationId", applicationId);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+                    return ds;
+                }
+            }
+        }
+        public DataSet Licence_XenfinalRecommend_GetHeaderDetails(string Lic_ApplicationId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Licence_XenfinalRecommend_GetHeaderDetails", Lic_ApplicationId);
+        }
+#endregion
     }
 }
 

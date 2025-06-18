@@ -1985,9 +1985,12 @@
     <Content Include="Officers\Lift_EscelatorApprovaldata.aspx" />
     <Content Include="Officers\NewApplications.aspx" />
     <Content Include="Officers\OfficerDashboard.aspx" />
+    <Content Include="Officers\PendingPhysicalVerification_DetailView.aspx" />
+    <Content Include="Officers\PendingPhysicalVerification_Gridview.aspx" />
     <Content Include="Officers\PeriodicInspection.aspx" />
     <Content Include="Officers\PeriodicInspection_Cinema_Talkies.aspx" />
     <Content Include="Officers\PeriodicInspection_Lift_Escalator.aspx" />
+    <Content Include="Officers\PhysicalVerification_Letter_Request.aspx" />
     <Content Include="Officers\ReturnedInspections.aspx" />
     <Content Include="Officers\Returned_Inspection_Lift_Escalator.aspx" />
     <Content Include="Officers\Returned_PeriodicInspection_Lift_Escalator.aspx" />
@@ -2019,6 +2022,7 @@
     <Content Include="Print_Forms\PrintCertificate2.aspx" />
     <Content Include="Print_Forms\PrintCertificate3.aspx" />
     <Content Include="Print_Forms\PrintCertificate4.aspx" />
+    <Content Include="Print_Forms\VerificationLetter.aspx" />
     <Content Include="Procedure_for_Electrical _Installation.aspx" />
     <Content Include="Procedure_for_grant_of_approval.aspx" />
     <Content Include="Procedure_For_Registration_Lift_Exclator.aspx" />
@@ -3438,6 +3442,20 @@
     <Compile Include="Officers\Officers.Master.designer.cs">
       <DependentUpon>Officers.Master</DependentUpon>
     </Compile>
+    <Compile Include="Officers\PendingPhysicalVerification_DetailView.aspx.cs">
+      <DependentUpon>PendingPhysicalVerification_DetailView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\PendingPhysicalVerification_DetailView.aspx.designer.cs">
+      <DependentUpon>PendingPhysicalVerification_DetailView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\PendingPhysicalVerification_Gridview.aspx.cs">
+      <DependentUpon>PendingPhysicalVerification_Gridview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\PendingPhysicalVerification_Gridview.aspx.designer.cs">
+      <DependentUpon>PendingPhysicalVerification_Gridview.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Officers\PeriodicInspection.aspx.cs">
       <DependentUpon>PeriodicInspection.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3458,6 +3476,13 @@
     </Compile>
     <Compile Include="Officers\PeriodicInspection_Lift_Escalator.aspx.designer.cs">
       <DependentUpon>PeriodicInspection_Lift_Escalator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\PhysicalVerification_Letter_Request.aspx.cs">
+      <DependentUpon>PhysicalVerification_Letter_Request.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\PhysicalVerification_Letter_Request.aspx.designer.cs">
+      <DependentUpon>PhysicalVerification_Letter_Request.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\ReturnedInspections.aspx.cs">
       <DependentUpon>ReturnedInspections.aspx</DependentUpon>
@@ -3675,6 +3700,13 @@
     </Compile>
     <Compile Include="Print_Forms\PrintCertificate4.aspx.designer.cs">
       <DependentUpon>PrintCertificate4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print_Forms\VerificationLetter.aspx.cs">
+      <DependentUpon>VerificationLetter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print_Forms\VerificationLetter.aspx.designer.cs">
+      <DependentUpon>VerificationLetter.aspx</DependentUpon>
     </Compile>
     <Compile Include="Procedure_for_Electrical _Installation.aspx.cs">
       <DependentUpon>Procedure_for_Electrical _Installation.aspx</DependentUpon>
