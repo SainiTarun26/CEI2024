@@ -582,6 +582,17 @@
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Status Of Disconnection<br /> Notice</span>
                                 </a>
+                            </li><li class="nav-item">
+                                <a class="nav-link" href="/Admin/Committee_Details.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Committee</span>
+                                </a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="/Admin/NewApplications_Licence.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">NewApplcations</span>
+                                </a>
                             </li>
                         </ul>
                     </nav>

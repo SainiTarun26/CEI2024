@@ -11122,6 +11122,87 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "getAssignDisconnectionOfficer", StaffId);
         }
         #endregion
+
+        #region Gurmeet Committe 18-June-2025
+        public DataTable GetCommiteMembers()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetails_CommitteMembers");
+        }
+        public DataTable GetCommitteeDetails()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetCommitteeDetails");
+        }
+        public string InsertCommitteDetail(string committeeId, int numberofmembers, string createdby, SqlTransaction transaction)
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertCommitteeMaster", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@CommitteeId", committeeId);
+            cmd.Parameters.AddWithValue("@NumberOfMembers", numberofmembers);
+            cmd.Parameters.AddWithValue("@CreatedBy", createdby);
+            cmd.Parameters.Add("@NewCommitteeID", SqlDbType.NVarChar, 20).Direction = ParameterDirection.Output;
+            cmd.ExecuteNonQuery();
+            string newCommitteeId = cmd.Parameters["@NewCommitteeID"].Value.ToString();
+            return newCommitteeId;
+        }
+
+        public void InsertCommitteMembersDetail(string CommitteeId, string MemberName, string designation, string DivisionName, string StaffUserId, string createdby, SqlTransaction transaction)
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertCommitteeMember", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@CommitteeID", CommitteeId);
+            cmd.Parameters.AddWithValue("@MemberName", MemberName);
+            cmd.Parameters.AddWithValue("@Designation", designation);
+            cmd.Parameters.AddWithValue("@Division", DivisionName);
+            cmd.Parameters.AddWithValue("@StaffUserId", StaffUserId);
+            cmd.Parameters.AddWithValue("@CreatedBy", createdby);
+            cmd.ExecuteNonQuery();
+        }
+        public DataTable GetCommitteeMemebersDetails(string CommitteeId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetCommitteeMembers", CommitteeId);
+        }
+        public int DeleteCommitteeMember(string MemberId)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("Sp_DeleteCommitteeMember", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@MemberId", Convert.ToInt32(MemberId));
+                        con.Open();
+                        int x = cmd.ExecuteNonQuery();
+                        con.Close();
+                        return x;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+        public DataTable GetNewLicenceApplicationForCEI(string Categary, string RegistrtaiionNo, String Name)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_GetFreshLicenceApplicationForCEI", Categary, string.IsNullOrEmpty(RegistrtaiionNo) ? null : RegistrtaiionNo, string.IsNullOrEmpty(Name) ? null : Name);
+        }
+
+        public void InsertNewLicenceApplicationFromCEI(string RegistrationNo, string CommitteeId, string Categary, string CreatedBy, SqlTransaction transaction)
+        {
+            SqlCommand cmd = new SqlCommand("sp_Insert_Licence_Application", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.Parameters.AddWithValue("@ApplicationId", ApplicationID);
+            cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
+            cmd.Parameters.AddWithValue("@CommitteeId", CommitteeId);
+            cmd.Parameters.AddWithValue("@Categary", Categary);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            cmd.ExecuteNonQuery();
+        }
+
+        #endregion
     }
 }
 

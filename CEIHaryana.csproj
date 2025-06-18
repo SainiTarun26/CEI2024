@@ -235,6 +235,7 @@
     <Content Include="Admin\ChangeStaff.aspx" />
     <Content Include="Admin\CinemaInspectionDetails.aspx" />
     <Content Include="Admin\CircleMaster.aspx" />
+    <Content Include="Admin\Committee_Details.aspx" />
     <Content Include="Admin\Consolidated_Report.aspx" />
     <Content Include="Admin\DisconnectionRequest.aspx" />
     <Content Include="Admin\DisconnectionSupplyView.aspx" />
@@ -248,6 +249,7 @@
     <Content Include="Admin\LiftApprovalData.aspx" />
     <Content Include="Admin\LiftEscalatorData.aspx" />
     <Content Include="Admin\LiftInspectionDetails.aspx" />
+    <Content Include="Admin\NewApplications_Licence.aspx" />
     <Content Include="Admin\NewRequestInspectionForAdmin.aspx" />
     <Content Include="Admin\NoticeForDisconnection.aspx" />
     <Content Include="Admin\PeriodicReturnedIntimationForHistory.aspx" />
@@ -2313,6 +2315,13 @@
     <Compile Include="Admin\CircleMaster.aspx.designer.cs">
       <DependentUpon>CircleMaster.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Committee_Details.aspx.cs">
+      <DependentUpon>Committee_Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Committee_Details.aspx.designer.cs">
+      <DependentUpon>Committee_Details.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Consolidated_Report.aspx.cs">
       <DependentUpon>Consolidated_Report.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2403,6 +2412,13 @@
     </Compile>
     <Compile Include="Admin\LiftInspectionDetails.aspx.designer.cs">
       <DependentUpon>LiftInspectionDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\NewApplications_Licence.aspx.cs">
+      <DependentUpon>NewApplications_Licence.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\NewApplications_Licence.aspx.designer.cs">
+      <DependentUpon>NewApplications_Licence.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\NewRequestInspectionForAdmin.aspx.cs">
       <DependentUpon>NewRequestInspectionForAdmin.aspx</DependentUpon>
