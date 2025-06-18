@@ -32,6 +32,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
+        input#Button9 {
+            padding: 10px;
+            border-radius: 10px;
+        }
+
         .btn-success {
             color: #fff;
             background-color: #57B657;
@@ -706,7 +711,7 @@
                                                                 <div id="imagePreview" style="margin-top: 10px;"></div>
                                                                 <asp:LinkButton ID="lnkbtn_Save7" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i></asp:LinkButton>
                                                             </td>
-                                                            <td  style="text-align: center !important;">
+                                                            <td style="text-align: center !important;">
                                                                 <asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="Upload" class="btn btn-primary" />
                                                                 <asp:LinkButton ID="lnkbtn_Delete7" OnClick="lnkbtn_Delete7_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
                                                             </td>
@@ -730,20 +735,23 @@
                                                             </td>
                                                         </tr>
 
-                                                         <tr>
-     <td style="text-align: justify;">Whether adequate drawing office facilities for prepration of drawings, blue prints etc. is available (in case of above 650Volt.)(<span style="color: red;">★</span>)
-     </td>
-     <td style="text-align: center !important;">
-         <asp:FileUpload ID="FileUpload9" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="FileUpload4" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-         <asp:LinkButton ID="lnkbtn_Save9" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
-         </asp:LinkButton>
-     </td>
-     <td style="text-align: center !important;">
-         <asp:Button ID="Button9" runat="server" OnClick="Button9_Click" Text="Upload" class="btn btn-primary" />
-         <asp:LinkButton ID="lnkbtn_Delete9" OnClick="lnkbtn_Delete9_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
-     </td>
- </tr>
+                                                        <tr>
+                                                            <td style="text-align: justify;">
+                                                                <p>Whether adequate drawing office facilities for prepration of drawings, blue prints etc.</p>
+
+                                                                <p>is available (in case of above 650Volt.)(<span style="color: red;">★</span>)</p>
+                                                            </td>
+                                                            <td style="text-align: center !important;">
+                                                                <asp:FileUpload ID="FileUpload9" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="FileUpload4" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:LinkButton ID="lnkbtn_Save9" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                            <td style="text-align: center !important;">
+                                                                <asp:Button ID="Button9" runat="server" OnClick="Button9_Click" Text="Upload" class="btn btn-primary" />
+                                                                <asp:LinkButton ID="lnkbtn_Delete9" OnClick="lnkbtn_Delete9_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
                                                         <asp:HiddenField ID="HiddenField5" runat="server" />
                                                     </tbody>
                                                 </table>
@@ -769,9 +777,9 @@
                                 <asp:HiddenField ID="HdnField_Document4" runat="server" />
                                 <asp:HiddenField ID="HdnField_Document5" runat="server" />
                                 <asp:HiddenField ID="HdnField_Document6" runat="server" />
-                                 <asp:HiddenField ID="HdnField_Document7" runat="server" />
- <asp:HiddenField ID="HdnField_Document8" runat="server" />
-                                 <asp:HiddenField ID="HdnField_Document9" runat="server" />
+                                <asp:HiddenField ID="HdnField_Document7" runat="server" />
+                                <asp:HiddenField ID="HdnField_Document8" runat="server" />
+                                <asp:HiddenField ID="HdnField_Document9" runat="server" />
                             </div>
                         </div>
                         <div class="col-md-1"></div>
