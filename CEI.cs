@@ -2678,191 +2678,8 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDataForInspection", Inspectiontype, IntimationId, Count);
         }
 
-        public void InsertnewUseQualification(string UserId, string UniversityName10th, string PassingYear10th, string MarksObtained10th, string MarksMax10th, string Percentage10th,
-              string Name12ITIDiploma, string UniversityName12thorITI, string PassingYear12thorITI, string MarksObtained12thorITI, string MarksMax12thorITI, string Percentage12thorITI,
-              string NameofDiplomaDegree, string UniversityNameDiplomaorDegree, string PassingYearDiplomaorDegree, string MarksObtainedDiplomaorDegree, string MarksMaxDiplomaorDegree, string PercentageDiplomaorDegree,
-              string NameofDegree, string UniversityNamePG, string PassingYearPG, string MarksObtainedPG, string MarksMaxPG, string PercentagePG,
-              string NameofMasters, string MastersUniversityName, string MastersPassingYear, string MasterMarksObtained, string MastersMarksMax, string MatersPercentage,
-              string IsCertificateofCompetency, string CertificateofCompetency1, string PermitNo1, string IssuingAuthority1, string IssueDate1, string ExpiryDate,
-              string EmployedPermanent, string PermanentEmployerName, string PostDescription, string FromDate, string ToDate,
-              string Experience, string TraningUnder, string ExperienceEmployerName, string ExperiencePostDescription, string ExperienceFromDate, string ExperienceToDate,
-              string Experience1, string TraningUnder1, string ExperienceEmployerName1, string ExperiencePostDescription1, string ExperienceFromDate1, string ExperienceToDate1,
-              string Experience2, string TraningUnder2, string ExperienceEmployerName2, string ExperiencePostDescription2, string ExperienceFromDate2, string ExperienceToDate2,
-              string Experience3, string TraningUnder3, string ExperienceEmployerName3, string ExperiencePostDescription3, string ExperienceFromDate3, string ExperienceToDate3,
-              string Experience4, string TraningUnder4, string ExperienceEmployerName4, string ExperiencePostDescription4, string ExperienceFromDate4, string ExperienceToDate4,
-              string TotalExperience, string RetiredEngineer
-              )
-        {
-            SqlCommand cmd = new SqlCommand("sp_InsertUserQualification");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            cmd.Connection = con;
-            if (con.State == ConnectionState.Closed)
-            {
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                con.Open();
-            }
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@UserId", UserId);
-            cmd.Parameters.AddWithValue("@UniversityName10th", UniversityName10th);
-            cmd.Parameters.AddWithValue("@PassingYear10th", PassingYear10th);
-            cmd.Parameters.AddWithValue("@MarksObtained10th", MarksObtained10th);
-            cmd.Parameters.AddWithValue("@MarksMax10th", MarksMax10th);
-            cmd.Parameters.AddWithValue("@Percentage10th", Percentage10th);
-
-            cmd.Parameters.AddWithValue("@Name12ITIDiploma", Name12ITIDiploma);
-            cmd.Parameters.AddWithValue("@UniversityName12thorITI", UniversityName12thorITI);
-            cmd.Parameters.AddWithValue("@PassingYear12thorITI", PassingYear12thorITI);
-            cmd.Parameters.AddWithValue("@MarksObtained12thorITI", MarksObtained12thorITI);
-            cmd.Parameters.AddWithValue("@MarksMax12thorITI", MarksMax12thorITI);
-            cmd.Parameters.AddWithValue("@Percentage12thorITI", Percentage12thorITI);
-
-            cmd.Parameters.AddWithValue("@NameofDiplomaDegree", NameofDiplomaDegree);
-            cmd.Parameters.AddWithValue("@UniversityNameDiplomaorDegree", UniversityNameDiplomaorDegree);
-            cmd.Parameters.AddWithValue("@PassingYearDiplomaorDegree", PassingYearDiplomaorDegree);
-            cmd.Parameters.AddWithValue("@MarksObtainedDiplomaorDegree", MarksObtainedDiplomaorDegree);
-            cmd.Parameters.AddWithValue("@MarksMaxDiplomaorDegree", MarksMaxDiplomaorDegree);
-            cmd.Parameters.AddWithValue("@PercentageDiplomaorDegree", PercentageDiplomaorDegree);
-
-            cmd.Parameters.AddWithValue("@NameofDegree", NameofDegree);
-            cmd.Parameters.AddWithValue("@UniversityNamePG", UniversityNamePG);
-            cmd.Parameters.AddWithValue("@PassingYearPG", PassingYearPG);
-            cmd.Parameters.AddWithValue("@MarksObtainedPG", MarksObtainedPG);
-            cmd.Parameters.AddWithValue("@MarksMaxPG", MarksMaxPG);
-            cmd.Parameters.AddWithValue("@PercentagePG", PercentagePG);
-
-            cmd.Parameters.AddWithValue("@NameofMasters", NameofMasters);
-            cmd.Parameters.AddWithValue("@MastersUniversityName", MastersUniversityName);
-            cmd.Parameters.AddWithValue("@MastersPassingYear", MastersPassingYear);
-            cmd.Parameters.AddWithValue("@MasterMarksObtained", MasterMarksObtained);
-            cmd.Parameters.AddWithValue("@MastersMarksMax", MastersMarksMax);
-            cmd.Parameters.AddWithValue("@MastersPercentage", MatersPercentage);
-
-            cmd.Parameters.AddWithValue("@IsCertificateofCompetency", IsCertificateofCompetency);
-            cmd.Parameters.AddWithValue("@CertificateofCompetency1", CertificateofCompetency1);
-            cmd.Parameters.AddWithValue("@PermitNo1", PermitNo1);
-            cmd.Parameters.AddWithValue("@IssuingAuthority1", IssuingAuthority1);
-            cmd.Parameters.AddWithValue("@IssueDate1", IssueDate1);
-            cmd.Parameters.AddWithValue("@ExpiryDate1", ExpiryDate);
-            //cmd.Parameters.AddWithValue("@CertificateofCompetency2", CertificateofCompetency2);
-            //cmd.Parameters.AddWithValue("@PermitNo2", PermitNo2);
-            //cmd.Parameters.AddWithValue("@IssuingAuthority2", IssuingAuthority2);
-            //cmd.Parameters.AddWithValue("@IssueDate2", IssueDate2);
-            cmd.Parameters.AddWithValue("@EmployedPermanent", EmployedPermanent);
-            cmd.Parameters.AddWithValue("@EmployerName", PermanentEmployerName);
-            cmd.Parameters.AddWithValue("@PostDescription", PostDescription);
-            cmd.Parameters.AddWithValue("@FromDate", FromDate);
-            cmd.Parameters.AddWithValue("@ToDate", ToDate);
-
-            cmd.Parameters.AddWithValue("@ExperiencedIn", Experience);
-            cmd.Parameters.AddWithValue("@TrainingUnder", TraningUnder);
-            cmd.Parameters.AddWithValue("@ExperienceEmployerName", ExperienceEmployerName);
-            cmd.Parameters.AddWithValue("@ExperiencePostDescription", ExperiencePostDescription);
-            cmd.Parameters.AddWithValue("@ExperienceFromDate", ExperienceFromDate);
-            cmd.Parameters.AddWithValue("@ExperienceToDate", ExperienceToDate);
-
-            cmd.Parameters.AddWithValue("@ExperiencedIn1", Experience1);
-            cmd.Parameters.AddWithValue("@TrainingUnder1", TraningUnder1);
-            cmd.Parameters.AddWithValue("@ExperienceEmployerName1", ExperienceEmployerName1);
-            cmd.Parameters.AddWithValue("@ExperiencePostDescription1", ExperiencePostDescription1);
-            cmd.Parameters.AddWithValue("@ExperienceFromDate1", ExperienceFromDate1);
-            cmd.Parameters.AddWithValue("@ExperienceToDate1", ExperienceToDate1);
-
-            cmd.Parameters.AddWithValue("@ExperiencedIn2", Experience2);
-            cmd.Parameters.AddWithValue("@TrainingUnder2", TraningUnder2);
-            cmd.Parameters.AddWithValue("@ExperienceEmployerName2", ExperienceEmployerName2);
-            cmd.Parameters.AddWithValue("@ExperiencePostDescription2", ExperienceEmployerName2);
-            cmd.Parameters.AddWithValue("@ExperienceFromDate2 ", ExperienceFromDate2);
-            cmd.Parameters.AddWithValue("@ExperienceToDate2 ", ExperienceToDate2);
-
-            cmd.Parameters.AddWithValue("@ExperiencedIn3", Experience3);
-            cmd.Parameters.AddWithValue("@TrainingUnder3", TraningUnder3);
-            cmd.Parameters.AddWithValue("@ExperienceEmployerName3", ExperienceEmployerName3);
-            cmd.Parameters.AddWithValue("@ExperiencePostDescription3", ExperiencePostDescription3);
-            cmd.Parameters.AddWithValue("@ExperienceFromDate3 ", ExperienceFromDate3);
-            cmd.Parameters.AddWithValue("@ExperienceToDate3 ", ExperienceToDate3);
-
-            cmd.Parameters.AddWithValue("@ExperiencedIn4", Experience4);
-            cmd.Parameters.AddWithValue("@TrainingUnder4", TraningUnder4);
-            cmd.Parameters.AddWithValue("@ExperienceEmployerName4", ExperienceEmployerName4);
-            cmd.Parameters.AddWithValue("@ExperiencePostDescription4", ExperiencePostDescription4);
-            cmd.Parameters.AddWithValue("@ExperienceFromDate4 ", ExperienceFromDate4);
-            cmd.Parameters.AddWithValue("@ExperienceToDate4 ", ExperienceToDate4);
-
-            cmd.Parameters.AddWithValue("@TotalExperience ", TotalExperience);
-            cmd.Parameters.AddWithValue("@RetiredEngineer", RetiredEngineer);
-            //cmd.Parameters.AddWithValue("@ExperienceEmployerName1", txtEmployer.Text);
-            //cmd.Parameters.AddWithValue("@ExperiencePostDescription1", txtDescript.Text);
-            //cmd.Parameters.AddWithValue("@ExperienceFromDate1", txtFrm1.Text);
-            //cmd.Parameters.AddWithValue("@ExperienceToDate1", txtToDate.Text);
-            //cmd.Parameters.AddWithValue("@RetiredEmployerName", RetiredEmployerName);
-            //cmd.Parameters.AddWithValue("@RetiredPostDescription", RetiredPostDescription);
-            //cmd.Parameters.AddWithValue("@RetiredFromDate", RetiredFromDate);
-            //cmd.Parameters.AddWithValue("@RetiredToDate", RetiredToDate);
-            cmd.ExecuteNonQuery();
-            con.Close();
-        }
-        #region Contractor Application Form Data
-        public void ContractorApplicationData(string GSTNumber, string StyleOfCompany, string CompanyRegisterdOffice, string CompanyPartnerOrDirector,
-              string CompanyPenalities, string LibraryAvailable, string AgentName, string ManufacturingFirmOrProductionUnit, string ContractorLicencePreviouslyGranted,
-             string NameOfIssuingAuthority, string DateOfBirth, string DateOfLicenseExpiring, string ContractorLicencePreviouslyGrantedWithSameName,
-             string LicenseNoIfYes, string DateoFIssue, string CreatedBy)
-        {
-            SqlCommand cmd = new SqlCommand("sp_SetContractorApplicationFormData");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            cmd.Connection = con;
-            if (con.State == ConnectionState.Closed)
-            {
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                con.Open();
-            }
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@GSTNumber", GSTNumber);
-            cmd.Parameters.AddWithValue("StyleOfCompany", StyleOfCompany);
-            cmd.Parameters.AddWithValue("@CompanyRegisterdOffice", CompanyRegisterdOffice);
-            cmd.Parameters.AddWithValue("@CompanyPartnerOrDirector", CompanyPartnerOrDirector);
-            cmd.Parameters.AddWithValue("@CompanyPenalities", CompanyPenalities);
-            cmd.Parameters.AddWithValue("@LibraryAvailable", LibraryAvailable);
-            cmd.Parameters.AddWithValue("@AgentName", AgentName);
-            cmd.Parameters.AddWithValue("@ManufacturingFirmOrProductionUnit", ManufacturingFirmOrProductionUnit);
-            cmd.Parameters.AddWithValue("@ContractorLicencePreviouslyGranted", ContractorLicencePreviouslyGranted);
-            cmd.Parameters.AddWithValue("@NameOfIssuingAuthority", NameOfIssuingAuthority);
-            cmd.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
-            cmd.Parameters.AddWithValue("@DateOfLicenseExpiring", DateOfLicenseExpiring);
-            cmd.Parameters.AddWithValue("@ContractorLicencePreviouslyGrantedWithSameName", ContractorLicencePreviouslyGrantedWithSameName);
-            cmd.Parameters.AddWithValue("@LicenseNoIfYes", LicenseNoIfYes);
-            cmd.Parameters.AddWithValue("@DateoFIssue", DateoFIssue);
-            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
-            cmd.ExecuteNonQuery();
-            con.Close();
-
-        }
-        public void ContractorPartners(string TypeOfAuthority, string Name, string Address, string State, string District, string Pincode, string CreatedBy)
-        {
-            SqlCommand cmd = new SqlCommand("sp_ContractorPartners");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            cmd.Connection = con;
-            if (con.State == ConnectionState.Closed)
-            {
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                con.Open();
-            }
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@TypeOfAuthority", TypeOfAuthority);
-            cmd.Parameters.AddWithValue("@Name", Name);
-            cmd.Parameters.AddWithValue("@Address", Address);
-            cmd.Parameters.AddWithValue("@State", State);
-            cmd.Parameters.AddWithValue("@District", District);
-            cmd.Parameters.AddWithValue("@Pincode", Pincode);
-            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
-
-            cmd.ExecuteNonQuery();
-            con.Close();
-
-        }
-
-        #endregion
+     
+       
 
         #region Insert ApplicationLift And Esculator
         public void InsertListAndEscalators(string UserId, string ApplicantType, string ApplicantName, string ApplicantContact, string ApplicantOfficeAdd,
@@ -2922,10 +2739,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             con.Close();
         }
         #endregion
-        public DataTable GetPartnersDirectorDate(string CreatedBy)
-        {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PartnersDirectorData", CreatedBy);
-        }
+      
         public DataSet GetWorkIntimationDataForPrint(string REID)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_WorkIntimationData_ForPrint", REID);
@@ -2974,11 +2788,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_LiftEsculatorDocuments", flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, REID);
         }
 
-        public DataTable ContractorBasicInformation(string UserId)
-        {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorBasicInformation", UserId);
-
-        }
+       
         public DataSet QualificationData(string LoginId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetRegistrationForm", LoginId);
@@ -3025,10 +2835,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             con.Close();
         }
 
-        public DataTable GetContractorTeam(string CreatedBy)
-        {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorTeam", CreatedBy);
-        }
+     
         #endregion
 
 
@@ -11335,7 +11142,746 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Licence_XenfinalRecommend_GetHeaderDetails", Lic_ApplicationId);
         }
-#endregion
+        #endregion
+        #region Neha New registration 18-June-2025
+        public int CheckAadharExist(string aadhar)
+        {
+            int count = 0;
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                SqlCommand cmd = new SqlCommand("sp_CheckAadhar", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@aadhar", aadhar);
+
+                con.Open();
+                object result = cmd.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    count = Convert.ToInt32(result);
+                }
+            }
+            return count;
+        }
+
+
+        public void InserNewUserData(string ApplicationFor, string Name, string Age, string CalculatedAge, string FatherName,
+           string gender, string aadhar, string Address, string District, string State, string PinCode, string PhoneNo, string Email,
+           string Category, string CreatedBy, string UserId,
+           string CommunicationAddress, string CommState, string CommDistrict, string CommPin, string Password, string IPAddress, string RandomUniqueNumber)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("sp_NewUserRegistration");
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                cmd.Connection = con;
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@ApplicationFor", ApplicationFor);
+                cmd.Parameters.AddWithValue("@Name", Name);
+                //cmd.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
+                cmd.Parameters.AddWithValue("@Age", Age);
+                cmd.Parameters.AddWithValue("@CalculatedAge", CalculatedAge);
+                cmd.Parameters.AddWithValue("@FatherName", FatherName);
+                cmd.Parameters.AddWithValue("@Gender", gender);
+                cmd.Parameters.AddWithValue("@Aadhar", aadhar);
+                cmd.Parameters.AddWithValue("@Address", Address);
+                cmd.Parameters.AddWithValue("@District", District);
+                cmd.Parameters.AddWithValue("@State", State);
+                cmd.Parameters.AddWithValue("@PinCode", PinCode);
+                cmd.Parameters.AddWithValue("@PhoneNo", PhoneNo);
+                cmd.Parameters.AddWithValue("@Email", Email);
+                cmd.Parameters.AddWithValue("@Category", Category);
+                cmd.Parameters.AddWithValue("@Createdby", CreatedBy);
+                cmd.Parameters.AddWithValue("@UserId", UserId);
+                cmd.Parameters.AddWithValue("@CommunicationAddress", CommunicationAddress);
+                cmd.Parameters.AddWithValue("@CommState", CommState);
+                cmd.Parameters.AddWithValue("@CommDistrict", CommDistrict);
+                cmd.Parameters.AddWithValue("@CommPin", CommPin);
+                cmd.Parameters.AddWithValue("@Password", Password);
+                cmd.Parameters.AddWithValue("@IPAddres", IPAddress);
+                cmd.Parameters.AddWithValue("@RandomUniqueNumber", RandomUniqueNumber);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+
+
+        public void ToActivateAndVerifyEmail(string Email, string RandomUniqueNumber)
+        {
+            string encryptedNumber = EncryptRandomNumber(RandomUniqueNumber);
+            // string activationLink = $"https://ceiharyana.com/ToVerifyRegistration.aspx?id={encryptedNumber}&email={HttpUtility.UrlEncode(Email)}";
+            string activationLink = $"https://uat.ceiharyana.com/ToVerifyRegistration.aspx?id={encryptedNumber}&email={HttpUtility.UrlEncode(Email)}";
+
+
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("ceiharyana58@gmail.com");
+            mailMessage.To.Add(Email);
+            mailMessage.Subject = "Account Activation - CEI Haryana";
+
+            string body = $"Dear Customer,\n\n" +
+                $"We are pleased to inform you that your account has been successfully created.\n\n" +
+                $"Please activate your account by clicking the link below:\n{activationLink}\n\n" +
+                $"Thank you for choosing our services. If you have any questions or need further assistance, please contact our support team.\n\n" +
+                $"Best regards,\nCEI Haryana";
+
+            mailMessage.Body = body;
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential("ceiharyana58@gmail.com", "hztpndeqdowygdim"),
+                EnableSsl = true
+            };
+
+            smtpClient.Send(mailMessage);
+        }
+
+
+
+        public DataTable GetNewAccountCredentials(string RandomUniqueNumber)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetNewAccountCredentials", RandomUniqueNumber);
+        }
+
+
+
+        public void NewAccountCredentialsthroughEmail(string Email, string UserId, string Password)
+        {
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("ceiharyana58@gmail.com");
+            mailMessage.To.Add(Email);
+            mailMessage.Subject = "Your CEI Haryana Account Credentials";
+
+            string body = $"Dear Customer,\n\n" +
+                          $"We are pleased to inform you that your account has been successfully created.\n\n" +
+                          $"Your User ID is: {UserId}\n" +
+                          $"Your Password is: {Password}\n\n" +
+                          "Please change your password after first login for security reasons.\n\n" +
+                          "Thank you for choosing our services.\n\n" +
+                          "Best regards,\nCEI Haryana";
+
+            mailMessage.Body = body;
+            mailMessage.IsBodyHtml = false;
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.Port = 587;
+            smtpClient.Credentials = new NetworkCredential("ceiharyana58@gmail.com", "hztpndeqdowygdim");
+            smtpClient.EnableSsl = true;
+
+            smtpClient.Send(mailMessage);
+        }
+
+
+
+        public DataTable Getdetailsofuser(string UserId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetails", UserId);
+        }
+
+        public void InsertnewUseQualification(string UserId, string UniversityName10th, int PassingYear10th, string MarksObtained10th, string MarksMax10th, string Percentage10th,
+        string Name12ITIDiploma, string UniversityName12thorITI, int PassingYear12thorITI, string MarksObtained12thorITI, string MarksMax12thorITI, string Percentage12thorITI,
+        string NameofDiplomaDegree, string UniversityNameDiplomaorDegree, int PassingYearDiplomaorDegree, string MarksObtainedDiplomaorDegree, string MarksMaxDiplomaorDegree, string PercentageDiplomaorDegree,
+        string NameofDegree, string UniversityNamePG, int PassingYearPG, string MarksObtainedPG, string MarksMaxPG, string PercentagePG,
+        string NameofMasters, string MastersUniversityName, int MastersPassingYear, string MasterMarksObtained, string MastersMarksMax, string MatersPercentage,
+        string IsCertificateofCompetency, string CertificateofCompetency1, string PermitNo1, string IssuingAuthority1, string IssueDate1, string ExpiryDate,
+        string EmployedPermanent, string PermanentEmployerName, string PostDescription, string FromDate, string ToDate,
+        string WiremanExperience, string WiremanTrainingUnder, string WiremannameofEmployer, string WiremanPostDescription, string WiremanExperienceFromDate, string WiremanExperienceToDate,
+        string Experience, string TraningUnder, string ExperienceEmployerName, string ExperiencePostDescription, string ExperienceFromDate, string ExperienceToDate,
+        string Experience1, string TraningUnder1, string ExperienceEmployerName1, string ExperiencePostDescription1, string ExperienceFromDate1, string ExperienceToDate1,
+        string Experience2, string TraningUnder2, string ExperienceEmployerName2, string ExperiencePostDescription2, string ExperienceFromDate2, string ExperienceToDate2,
+        string Experience3, string TraningUnder3, string ExperienceEmployerName3, string ExperiencePostDescription3, string ExperienceFromDate3, string ExperienceToDate3,
+        string Experience4, string TraningUnder4, string ExperienceEmployerName4, string ExperiencePostDescription4, string ExperienceFromDate4, string ExperienceToDate4,
+        string Experience5, string TraningUnder5, string ExperienceEmployerName5, string ExperiencePostDescription5, string ExperienceFromDate5, string ExperienceToDate5,
+        string Experience6, string TraningUnder6, string ExperienceEmployerName6, string ExperiencePostDescription6, string ExperienceFromDate6, string ExperienceToDate6,
+        string Experience7, string TraningUnder7, string ExperienceEmployerName7, string ExperiencePostDescription7, string ExperienceFromDate7, string ExperienceToDate7,
+        string Experience8, string TraningUnder8, string ExperienceEmployerName8, string ExperiencePostDescription8, string ExperienceFromDate8, string ExperienceToDate8,
+        string Experience9, string TraningUnder9, string ExperienceEmployerName9, string ExperiencePostDescription9, string ExperienceFromDate9, string ExperienceToDate9,
+        string TotalExperience, string RetiredEngineer, string RetiredEmployerName, string RetiredPostDescription, string RetiredFromDate, string RetiredToDate
+        )
+        {
+            SqlCommand cmd = new SqlCommand("sp_InsertUserQualification");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@UserId", UserId);
+            cmd.Parameters.AddWithValue("@UniversityName10th", UniversityName10th);
+            cmd.Parameters.AddWithValue("@PassingYear10th", PassingYear10th);
+            cmd.Parameters.AddWithValue("@MarksObtained10th", MarksObtained10th);
+            cmd.Parameters.AddWithValue("@MarksMax10th", MarksMax10th);
+            cmd.Parameters.AddWithValue("@Percentage10th", Percentage10th);
+
+            cmd.Parameters.AddWithValue("@Name12ITIDiploma", Name12ITIDiploma);
+            cmd.Parameters.AddWithValue("@UniversityName12thorITI", UniversityName12thorITI);
+            cmd.Parameters.AddWithValue("@PassingYear12thorITI", PassingYear12thorITI);
+            cmd.Parameters.AddWithValue("@MarksObtained12thorITI", MarksObtained12thorITI);
+            cmd.Parameters.AddWithValue("@MarksMax12thorITI", MarksMax12thorITI);
+            cmd.Parameters.AddWithValue("@Percentage12thorITI", Percentage12thorITI);
+
+
+            cmd.Parameters.AddWithValue("@NameofDiplomaDegree", NameofDiplomaDegree == "Select" ? null : NameofDiplomaDegree);
+            cmd.Parameters.AddWithValue("@UniversityNameDiplomaorDegree", UniversityNameDiplomaorDegree == "Select" ? null : UniversityNameDiplomaorDegree);
+            cmd.Parameters.AddWithValue("@PassingYearDiplomaorDegree", PassingYearDiplomaorDegree);
+            cmd.Parameters.AddWithValue("@MarksObtainedDiplomaorDegree", String.IsNullOrEmpty(MarksObtainedDiplomaorDegree) ? null : MarksObtainedDiplomaorDegree);
+            cmd.Parameters.AddWithValue("@MarksMaxDiplomaorDegree", String.IsNullOrEmpty(MarksMaxDiplomaorDegree) ? null : MarksMaxDiplomaorDegree);
+            cmd.Parameters.AddWithValue("@PercentageDiplomaorDegree", String.IsNullOrEmpty(PercentageDiplomaorDegree) ? null : PercentageDiplomaorDegree);
+
+
+            cmd.Parameters.AddWithValue("@NameofDegree", NameofDegree == "Select" ? null : NameofDegree);
+            cmd.Parameters.AddWithValue("@UniversityNamePG", String.IsNullOrEmpty(UniversityNamePG) ? null : UniversityNamePG);
+            cmd.Parameters.AddWithValue("@PassingYearPG", PassingYearPG);
+            cmd.Parameters.AddWithValue("@MarksObtainedPG", String.IsNullOrEmpty(MarksObtainedPG) ? null : MarksObtainedPG);
+            cmd.Parameters.AddWithValue("@MarksMaxPG", String.IsNullOrEmpty(MarksMaxPG) ? null : MarksMaxPG);
+            cmd.Parameters.AddWithValue("@PercentagePG", String.IsNullOrEmpty(PercentagePG) ? null : PercentagePG);
+
+
+            cmd.Parameters.AddWithValue("@NameofMasters", NameofMasters == "Select" ? null : NameofMasters);
+            cmd.Parameters.AddWithValue("@MastersUniversityName", String.IsNullOrEmpty(MastersUniversityName) ? null : MastersUniversityName);
+            cmd.Parameters.AddWithValue("@MastersPassingYear", MastersPassingYear);
+            cmd.Parameters.AddWithValue("@MasterMarksObtained", String.IsNullOrEmpty(MasterMarksObtained) ? null : MasterMarksObtained);
+            cmd.Parameters.AddWithValue("@MastersMarksMax", String.IsNullOrEmpty(MastersMarksMax) ? null : MastersMarksMax);
+            cmd.Parameters.AddWithValue("@MastersPercentage", String.IsNullOrEmpty(MatersPercentage) ? null : MatersPercentage);
+
+            cmd.Parameters.AddWithValue("@IsCertificateofCompetency", IsCertificateofCompetency);
+            cmd.Parameters.AddWithValue("@CertificateofCompetency1", String.IsNullOrEmpty(CertificateofCompetency1) ? null : CertificateofCompetency1);
+            cmd.Parameters.AddWithValue("@PermitNo1", String.IsNullOrEmpty(PermitNo1) ? null : PermitNo1);
+            cmd.Parameters.AddWithValue("@IssuingAuthority1", String.IsNullOrEmpty(IssuingAuthority1) ? null : IssuingAuthority1);
+            if (string.IsNullOrWhiteSpace(IssueDate1))
+            {
+                cmd.Parameters.AddWithValue("@IssueDate1", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@IssueDate1", Convert.ToDateTime(IssueDate1).Date);
+            }
+            if (string.IsNullOrWhiteSpace(ExpiryDate))
+            {
+                cmd.Parameters.AddWithValue("@ExpiryDate1", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExpiryDate1", Convert.ToDateTime(ExpiryDate).Date);
+            }
+
+            cmd.Parameters.AddWithValue("@EmployedPermanent", EmployedPermanent);
+            cmd.Parameters.AddWithValue("@EmployerName", String.IsNullOrEmpty(PermanentEmployerName) ? null : PermanentEmployerName);
+            cmd.Parameters.AddWithValue("@PostDescription", String.IsNullOrEmpty(PostDescription) ? null : PostDescription);
+            if (string.IsNullOrWhiteSpace(FromDate))
+            {
+                cmd.Parameters.AddWithValue("@FromDate", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@FromDate", Convert.ToDateTime(FromDate).Date);
+            }
+            if (string.IsNullOrWhiteSpace(ToDate))
+            {
+                cmd.Parameters.AddWithValue("@ToDate", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ToDate", Convert.ToDateTime(ToDate).Date);
+            }
+
+
+            cmd.Parameters.AddWithValue("@WiremanExperience", WiremanExperience == "Select" ? null : WiremanExperience);
+            cmd.Parameters.AddWithValue("@WiremanTrainingUnder", WiremanTrainingUnder == "Select" ? null : WiremanTrainingUnder);
+            cmd.Parameters.AddWithValue("@WiremannameofEmployer", String.IsNullOrEmpty(WiremannameofEmployer) ? null : WiremannameofEmployer);
+            cmd.Parameters.AddWithValue("@WiremanPostDescription", String.IsNullOrEmpty(WiremanPostDescription) ? null : WiremanPostDescription);
+
+            if (string.IsNullOrWhiteSpace(WiremanExperienceFromDate))
+            {
+                cmd.Parameters.AddWithValue("@WiremanExperienceFromDate", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@WiremanExperienceFromDate", Convert.ToDateTime(WiremanExperienceFromDate).Date);
+            }
+            if (string.IsNullOrWhiteSpace(WiremanExperienceToDate))
+            {
+                cmd.Parameters.AddWithValue("@WiremanExperienceToDate", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@WiremanExperienceToDate", Convert.ToDateTime(WiremanExperienceToDate).Date);
+            }
+
+
+            cmd.Parameters.AddWithValue("@ExperiencedIn", Experience == "Select" ? null : Experience);
+            cmd.Parameters.AddWithValue("@TrainingUnder", TraningUnder == "Select" ? null : TraningUnder);
+            cmd.Parameters.AddWithValue("@ExperienceEmployerName", String.IsNullOrEmpty(ExperienceEmployerName) ? null : ExperienceEmployerName);
+            cmd.Parameters.AddWithValue("@ExperiencePostDescription", String.IsNullOrEmpty(ExperiencePostDescription) ? null : ExperiencePostDescription);
+            if (string.IsNullOrWhiteSpace(ExperienceFromDate))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate", Convert.ToDateTime(ExperienceFromDate).Date);
+            }
+            if (string.IsNullOrWhiteSpace(ExperienceToDate))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate", Convert.ToDateTime(ExperienceToDate).Date);
+            }
+
+            cmd.Parameters.AddWithValue("@ExperiencedIn1", Experience1 == "Select" ? null : Experience1);
+            cmd.Parameters.AddWithValue("@TrainingUnder1", TraningUnder1 == "Select" ? null : TraningUnder1);
+            cmd.Parameters.AddWithValue("@ExperienceEmployerName1", String.IsNullOrEmpty(ExperienceEmployerName1) ? null : ExperienceEmployerName1);
+            cmd.Parameters.AddWithValue("@ExperiencePostDescription1", String.IsNullOrEmpty(ExperiencePostDescription1) ? null : ExperiencePostDescription1);
+            if (string.IsNullOrWhiteSpace(ExperienceFromDate1))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate1", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate1", Convert.ToDateTime(ExperienceFromDate1).Date);
+            }
+            if (string.IsNullOrWhiteSpace(ExperienceToDate1))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate1", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate1", Convert.ToDateTime(ExperienceToDate1).Date);
+            }
+            cmd.Parameters.AddWithValue("@ExperiencedIn2", Experience2 == "Select" ? (object)DBNull.Value : Experience2);
+            //cmd.Parameters.AddWithValue("@ExperiencedIn2", Experience2 == "Select" ? null : Experience2);
+            cmd.Parameters.AddWithValue("@TrainingUnder2", TraningUnder2 == "Select" ? (object)DBNull.Value : TraningUnder2);
+            cmd.Parameters.AddWithValue("@ExperienceEmployerName2", String.IsNullOrEmpty(ExperienceEmployerName2) ? (object)DBNull.Value : ExperienceEmployerName2);
+            cmd.Parameters.AddWithValue("@ExperiencePostDescription2", String.IsNullOrEmpty(ExperiencePostDescription2) ? (object)DBNull.Value : ExperiencePostDescription2);
+            if (string.IsNullOrWhiteSpace(ExperienceFromDate2))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate2", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate2", Convert.ToDateTime(ExperienceFromDate2).Date);
+            }
+            if (string.IsNullOrWhiteSpace(ExperienceToDate2))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate2", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate2", Convert.ToDateTime(ExperienceToDate2).Date);
+            }
+
+            cmd.Parameters.AddWithValue("@ExperiencedIn3", Experience3 == "Select" ? (object)DBNull.Value : Experience3);
+            cmd.Parameters.AddWithValue("@TrainingUnder3", TraningUnder3 == "Select" ? (object)DBNull.Value : TraningUnder3);
+            cmd.Parameters.AddWithValue("@ExperienceEmployerName3", String.IsNullOrEmpty(ExperienceEmployerName3) ? (object)DBNull.Value : ExperienceEmployerName3);
+            cmd.Parameters.AddWithValue("@ExperiencePostDescription3", String.IsNullOrEmpty(ExperiencePostDescription3) ? (object)DBNull.Value : ExperiencePostDescription3);
+            if (string.IsNullOrWhiteSpace(ExperienceFromDate3))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate3", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate3", Convert.ToDateTime(ExperienceFromDate3).Date);
+            }
+            if (string.IsNullOrWhiteSpace(ExperienceToDate3))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate3", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate3", Convert.ToDateTime(ExperienceToDate3).Date);
+            }
+
+            cmd.Parameters.AddWithValue("@ExperiencedIn4", Experience4 == "Select" ? (object)DBNull.Value : Experience4);
+            cmd.Parameters.AddWithValue("@TrainingUnder4", TraningUnder4 == "Select" ? (object)DBNull.Value : TraningUnder4);
+            cmd.Parameters.AddWithValue("@ExperienceEmployerName4", String.IsNullOrEmpty(ExperienceEmployerName4) ? (object)DBNull.Value : ExperienceEmployerName4);
+            cmd.Parameters.AddWithValue("@ExperiencePostDescription4", String.IsNullOrEmpty(ExperiencePostDescription4) ? (object)DBNull.Value : ExperiencePostDescription4);
+            if (string.IsNullOrWhiteSpace(ExperienceFromDate4))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate4", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate4", Convert.ToDateTime(ExperienceFromDate4).Date);
+            }
+            if (string.IsNullOrWhiteSpace(ExperienceToDate4))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate4", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate4", Convert.ToDateTime(ExperienceToDate4).Date);
+            }
+
+            cmd.Parameters.AddWithValue("@ExperiencedIn5", Experience5 == "Select" ? (object)DBNull.Value : Experience5);
+            cmd.Parameters.AddWithValue("@TrainingUnder5", TraningUnder5 == "Select" ? (object)DBNull.Value : TraningUnder5);
+            cmd.Parameters.AddWithValue("@ExperienceEmployerName5", String.IsNullOrEmpty(ExperienceEmployerName5) ? (object)DBNull.Value : ExperienceEmployerName5);
+            cmd.Parameters.AddWithValue("@ExperiencePostDescription5", String.IsNullOrEmpty(ExperiencePostDescription5) ? (object)DBNull.Value : ExperiencePostDescription5);
+            if (string.IsNullOrWhiteSpace(ExperienceFromDate5))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate5", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate5", Convert.ToDateTime(ExperienceFromDate5).Date);
+            }
+            if (string.IsNullOrWhiteSpace(ExperienceToDate5))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate5", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate5", Convert.ToDateTime(ExperienceToDate5).Date);
+            }
+
+            cmd.Parameters.AddWithValue("@ExperiencedIn6", Experience6 == "Select" ? (object)DBNull.Value : Experience6);
+            cmd.Parameters.AddWithValue("@TrainingUnder6", TraningUnder6 == "Select" ? (object)DBNull.Value : TraningUnder6);
+            cmd.Parameters.AddWithValue("@ExperienceEmployerName6", String.IsNullOrEmpty(ExperienceEmployerName6) ? (object)DBNull.Value : ExperienceEmployerName6);
+            cmd.Parameters.AddWithValue("@ExperiencePostDescription6", String.IsNullOrEmpty(ExperiencePostDescription6) ? (object)DBNull.Value : ExperiencePostDescription6);
+
+            if (string.IsNullOrWhiteSpace(ExperienceFromDate6))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate6", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate6", Convert.ToDateTime(ExperienceFromDate6).Date);
+            }
+            if (string.IsNullOrWhiteSpace(ExperienceToDate6))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate6", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate6", Convert.ToDateTime(ExperienceToDate6).Date);
+            }
+
+            cmd.Parameters.AddWithValue("@ExperiencedIn7", Experience7 == "Select" ? (object)DBNull.Value : Experience7);
+            cmd.Parameters.AddWithValue("@TrainingUnder7", TraningUnder7 == "Select" ? (object)DBNull.Value : TraningUnder7);
+            cmd.Parameters.AddWithValue("@ExperienceEmployerName7", String.IsNullOrEmpty(ExperienceEmployerName7) ? (object)DBNull.Value : ExperienceEmployerName7);
+            cmd.Parameters.AddWithValue("@ExperiencePostDescription7", String.IsNullOrEmpty(ExperiencePostDescription7) ? (object)DBNull.Value : ExperiencePostDescription7);
+            if (string.IsNullOrWhiteSpace(ExperienceFromDate7))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate7", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate7", Convert.ToDateTime(ExperienceFromDate7).Date);
+            }
+            if (string.IsNullOrWhiteSpace(ExperienceToDate7))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate7", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate7", Convert.ToDateTime(ExperienceToDate7).Date);
+            }
+
+            cmd.Parameters.AddWithValue("@ExperiencedIn8", Experience8 == "Select" ? (object)DBNull.Value : Experience8);
+            cmd.Parameters.AddWithValue("@TrainingUnder8", TraningUnder8 == "Select" ? (object)DBNull.Value : TraningUnder8);
+            cmd.Parameters.AddWithValue("@ExperienceEmployerName8", String.IsNullOrEmpty(ExperienceEmployerName8) ? (object)DBNull.Value : ExperienceEmployerName8);
+            cmd.Parameters.AddWithValue("@ExperiencePostDescription8", String.IsNullOrEmpty(ExperiencePostDescription8) ? (object)DBNull.Value : ExperiencePostDescription8);
+            if (string.IsNullOrWhiteSpace(ExperienceFromDate8))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate8", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate8", Convert.ToDateTime(ExperienceFromDate8).Date);
+            }
+            if (string.IsNullOrWhiteSpace(ExperienceToDate8))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate8", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate8", Convert.ToDateTime(ExperienceToDate8).Date);
+            }
+
+            cmd.Parameters.AddWithValue("@ExperiencedIn9", Experience9 == "Select" ? (object)DBNull.Value : Experience9);
+            cmd.Parameters.AddWithValue("@TrainingUnder9", TraningUnder9 == "Select" ? (object)DBNull.Value : TraningUnder9);
+            cmd.Parameters.AddWithValue("@ExperienceEmployerName9", String.IsNullOrEmpty(ExperienceEmployerName9) ? (object)DBNull.Value : ExperienceEmployerName9);
+            cmd.Parameters.AddWithValue("@ExperiencePostDescription9", String.IsNullOrEmpty(ExperiencePostDescription9) ? (object)DBNull.Value : ExperiencePostDescription9);
+            if (string.IsNullOrWhiteSpace(ExperienceFromDate9))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate9", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceFromDate9", Convert.ToDateTime(ExperienceFromDate9).Date);
+            }
+            if (string.IsNullOrWhiteSpace(ExperienceToDate9))
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate9", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ExperienceToDate9", Convert.ToDateTime(ExperienceToDate9).Date);
+            }
+
+            cmd.Parameters.AddWithValue("@TotalExperience ", TotalExperience);
+            cmd.Parameters.AddWithValue("@RetiredEngineer", RetiredEngineer);
+            cmd.Parameters.AddWithValue("@RetiredEmployerName", String.IsNullOrEmpty(RetiredEmployerName) ? (object)DBNull.Value : RetiredEmployerName);
+            cmd.Parameters.AddWithValue("@RetiredPostDescription", String.IsNullOrEmpty(RetiredPostDescription) ? (object)DBNull.Value : RetiredPostDescription);
+            if (string.IsNullOrWhiteSpace(RetiredFromDate))
+            {
+                cmd.Parameters.AddWithValue("@RetiredFromDate", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@RetiredFromDate", Convert.ToDateTime(RetiredFromDate).Date);
+            }
+            if (string.IsNullOrWhiteSpace(RetiredToDate))
+            {
+                cmd.Parameters.AddWithValue("@RetiredToDate", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@RetiredToDate", Convert.ToDateTime(RetiredToDate).Date);
+            }
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+
+
+
+        public int GetContractorPartnerCount(string CreatedBy)
+        {
+            int count = 0;
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                SqlCommand cmd = new SqlCommand("Sp_GetContractorPartnerCount", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+
+                con.Open();
+                object result = cmd.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    count = Convert.ToInt32(result);
+                }
+            }
+            return count;
+        }
+
+
+        public DataTable ContractorBasicInformation(string UserId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorBasicInformation", UserId);
+
+        }
+
+
+        public DataTable DeleteContractorPartner(int Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DeleteContractorPartner", Id);
+        }
+
+
+        public DataTable GetPartnersDirectorDate(string CreatedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PartnersDirectorData", CreatedBy);
+        }
+
+
+
+        public void ContractorApplicationData(string GSTNumber, string StyleOfCompany, string CompanyRegisterdOffice, string CompanyPartnerOrDirector,
+       string LibraryAvailable, string AgentName, string ManufacturingFirmOrProductionUnit, string ContractorLicencePreviouslyGranted,
+     string NameOfIssuingAuthority, string IssuedateOtherState, string DateOfLicenseExpiring, string WorkPermitUndertaken, string ContractorLicencePreviouslyGrantedWithSameName,
+     string LicenseNoIfYes, string DateoFIssue, string DoCompanyHavePenalties, string Penalities, string CreatedBy)
+        {
+            SqlCommand cmd = new SqlCommand("sp_SetContractorApplicationFormData");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@GSTNumber", GSTNumber);
+            cmd.Parameters.AddWithValue("StyleOfCompany", StyleOfCompany);
+            cmd.Parameters.AddWithValue("@CompanyRegisterdOffice", CompanyRegisterdOffice);
+            cmd.Parameters.AddWithValue("@CompanyPartnerOrDirector", CompanyPartnerOrDirector);
+            cmd.Parameters.AddWithValue("@LibraryAvailable", LibraryAvailable);
+            cmd.Parameters.AddWithValue("@AgentName", AgentName);
+            cmd.Parameters.AddWithValue("@ManufacturingFirmOrProductionUnit", ManufacturingFirmOrProductionUnit);
+            cmd.Parameters.AddWithValue("@ContractorLicencePreviouslyGranted", ContractorLicencePreviouslyGranted);
+            cmd.Parameters.AddWithValue("@NameOfIssuingAuthority", NameOfIssuingAuthority);
+            cmd.Parameters.AddWithValue("@IssuedateOtherState", IssuedateOtherState);
+            cmd.Parameters.AddWithValue("@DateOfLicenseExpiring", DateOfLicenseExpiring);
+            cmd.Parameters.AddWithValue("@DetailOfWorkPermit", WorkPermitUndertaken);
+
+            cmd.Parameters.AddWithValue("@ContractorLicencePreviouslyGrantedWithSameName", ContractorLicencePreviouslyGrantedWithSameName);
+            cmd.Parameters.AddWithValue("@LicenseNoIfYes", LicenseNoIfYes);
+            cmd.Parameters.AddWithValue("@DateoFIssue", DateoFIssue);
+            cmd.Parameters.AddWithValue("@DoCompanyHavePenalties", DoCompanyHavePenalties);
+            cmd.Parameters.AddWithValue("@Penalities", Penalities);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+        }
+
+        public void ContractorPartners(string TypeOfAuthority, string Name, string Address, string State, string District, string Pincode, string CreatedBy)
+        {
+            SqlCommand cmd = new SqlCommand("sp_ContractorPartners");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@TypeOfAuthority", TypeOfAuthority);
+            cmd.Parameters.AddWithValue("@Name", Name);
+            cmd.Parameters.AddWithValue("@Address", Address);
+            cmd.Parameters.AddWithValue("@State", State);
+            cmd.Parameters.AddWithValue("@District", District);
+            cmd.Parameters.AddWithValue("@Pincode", Pincode);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+        }
+
+
+
+        public DataTable GetContractorTeam(string CreatedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorTeam", CreatedBy);
+        }
+
+        public DataTable SearchLicenseDetails(string selectedSearchBy, string searchValue, string employerType)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetValidLicenseDetails", selectedSearchBy, searchValue, employerType);
+        }
+
+        public int GetContractorTeamCount(string CreatedBy)
+        {
+            int count = 0;
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                SqlCommand cmd = new SqlCommand("Sp_GetContractorTeamCount", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
+                object result = cmd.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    count = Convert.ToInt32(result);
+                }
+            }
+            return count;
+        }
+
+
+
+        public int InsertContractorTeam(string Name, string TypeofEmployee, string LicenseNo, DateTime issueDate, DateTime Validity, string CreatedBy)
+        {
+            int RowAffected;
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("Sp_InsertContractorTeam");
+            cmd.Connection = con;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                con.Open();
+            }
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Name", Name);
+            cmd.Parameters.AddWithValue("@TypeOfEmployee", TypeofEmployee);
+            cmd.Parameters.AddWithValue("@LicenseNo", LicenseNo);
+            cmd.Parameters.AddWithValue("@LicenseIssueDate", issueDate);
+            cmd.Parameters.AddWithValue("@LicenseValidity", Validity);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            RowAffected = cmd.ExecuteNonQuery();
+            con.Close();
+
+            return RowAffected;
+        }
+
+
+
+        public DataTable DeleteContractorTeam(int Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DeleteContractorTeam", Id);
+        }
+
+        public DataSet ToGetNewUserDetails(string UserId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetNewUserDetails", UserId);
+        }
+
+
+        public string InsertDocumentOfNewUserApplication(long TempUniqueId, string DocumentName, int DocumentId, string FileName,
+      string DocumentPath, string Utrn, string challandate, string CreatedBy, SqlTransaction transaction)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("Sp_InsertDocumentOfNewUserApplication", transaction.Connection, transaction);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@TempId", TempUniqueId);
+                cmd.Parameters.AddWithValue("@DocumentName", DocumentName);
+                cmd.Parameters.AddWithValue("@DocumentId", DocumentId);
+
+                cmd.Parameters.AddWithValue("@FileName", GetValue(FileName));
+                cmd.Parameters.AddWithValue("@DocumentPath", GetValue(DocumentPath));
+
+                cmd.Parameters.AddWithValue("@UtrnNo", String.IsNullOrEmpty(Utrn) ? DBNull.Value : (object)Utrn);
+                DateTime ChallanDate;
+                if (DateTime.TryParse(challandate, out ChallanDate) && ChallanDate != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@challandate", ChallanDate.Date); // .Date ensures time = 00:00:00
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@challandate", DBNull.Value);
+                }
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                outputParam = new SqlParameter("@Ret_DocumentID", SqlDbType.Int);
+                outputParam.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(outputParam);
+                cmd.ExecuteNonQuery();
+                string RetVal = cmd.Parameters["@Ret_DocumentID"].Value.ToString();
+                cmd.Parameters.Clear();
+                return RetVal;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public DataSet ToSaveDocumentsdataofNewregistration(string UniqueNumber, string UserId, string UserType)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ToSaveDocumentsdataofNewregistration", UniqueNumber, UserId, UserType);
+        }
+        private string EncryptRandomNumber(string randomUniqueNumber)
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(randomUniqueNumber);
+            return Convert.ToBase64String(bytes).Replace("=", "").Replace("+", "").Replace("/", "");
+        }
+        #endregion
     }
 }
 

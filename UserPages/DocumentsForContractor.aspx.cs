@@ -1,16 +1,24 @@
 ﻿using CEI_PRoject;
+using iText.Forms.Form.Element;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Button = System.Web.UI.WebControls.Button;
 
 namespace CEIHaryana.UserPages
 {
     public partial class DocumentsForContractor : System.Web.UI.Page
     {
+        //Page settd by neha 18-June-2025
         string REID = string.Empty;
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
@@ -19,357 +27,661 @@ namespace CEIHaryana.UserPages
             {
                 if (!IsPostBack)
                 {
-                    //if (Session["ContractorID"] != null)
-                    //{
+                    if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != "")
+                    {
+                        string UserID = Session["ContractorID"].ToString();
+                        HdnUserId.Value = UserID;
 
-                    //}
-                    //else
-                    //{
-                    //    Response.Redirect("/Login.aspx");
-                    //}
+                        DetailsforDocuments(UserID);
+                    }
 
                 }
             }
-            catch 
+            catch (Exception ex)
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/LogOut.aspx", false);
             }
         }
 
+        private void DetailsforDocuments(string userID)
+        {
+            DataSet ds = CEI.ToGetNewUserDetails(userID);
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                string Age = ds.Tables[0].Rows[0]["AgeInYears"].ToString();
+                HdnAge.Value = Age;
+            }
+            else
+            {
+            }
+            int ageValue;
+            if (int.TryParse(HdnAge.Value, out ageValue))
+            {
+                if (ageValue > 55)
+                {
+                    Medicalfitness.Visible = true;
+                    Hdn_medicalcertificatevisible.Value = "yes";
+                }
+                else
+                {
+                    Medicalfitness.Visible = false;
+                    Hdn_medicalcertificatevisible.Value = "";
+                }
+            }
+        }
+
+        private string SaveDocumentWithTransaction(FileUpload fileUpload, Button uploadbutton, int DocumentId, LinkButton deleteButton, LinkButton tickButton, string documentName, string Utrn, string challandate)
+        {
+            string fileName = ""; string dbPath = ""; string fullPath = "";
+
+            string CreatedBy = Convert.ToString(HdnUserId.Value);
+            long TempUniqueId = (long)Session["TempUniqueId"];
+            string DocumentNametoSave = documentName.Replace(" ", "_").Replace("/", "_");
+
+            if (!fileUpload.HasFile || !IsValidPdf(fileUpload))
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "UploadError", "alert('Please upload a valid PDF file (Max: 1MB)');", true);
+                fileUpload.Focus();
+                return null;
+            }
+            // Ensure directory exists
+            string directoryPath = Server.MapPath($"~/Attachment/{TempUniqueId}/{CreatedBy}/");
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+            // Generate file path and name
+            fileName = $"{DocumentNametoSave}_{DateTime.Now:yyyyMMddHHmmssFFF}.pdf";
+            dbPath = $"/Attachment/{TempUniqueId}/{CreatedBy}/{fileName}";
+            fullPath = Path.Combine(directoryPath, fileName);
+
+            // Save the uploaded file to the server folder
+            fileUpload.SaveAs(fullPath);
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                SqlTransaction transaction = null;
+                try
+                {
+                    connection.Open();
+                    transaction = connection.BeginTransaction();
+
+                    string documentId = CEI.InsertDocumentOfNewUserApplication(TempUniqueId, documentName, DocumentId, fileName, dbPath, Utrn, challandate, CreatedBy, transaction);
+                    if (!string.IsNullOrEmpty(documentId))
+                    {
+                        deleteButton.CommandArgument = documentId;
+                        fileUpload.Visible = false;
+                        uploadbutton.Visible = false;
+                        deleteButton.Visible = true;
+                        tickButton.Visible = true;
+                        transaction.Commit();
+                        return documentId;
+                    }
+                    else
+                    {
+                        transaction.Rollback();
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    transaction?.Rollback();
+                    string errorMessage = ex.Message.Replace("'", "\\'");
+                    ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
+                    return null;
+                }
+                finally
+                {
+                    transaction?.Dispose();
+                    connection.Close();
+                }
+            }
+        }
+
+        private bool IsValidPdf(FileUpload fileUpload)
+        {
+            if (!fileUpload.HasFile)
+            {
+                return false;
+            }
+            if (Path.GetExtension(fileUpload.FileName).ToLower() != ".pdf")
+            {
+                return false;
+            }
+            if (fileUpload.PostedFile.ContentLength > 1048576)   // Check file size (1 MB = 1048576 bytes)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool IsSessionValid()
+        {
+            if (!string.IsNullOrEmpty(Convert.ToString(HdnUserId.Value)))
+            {
+                if (string.IsNullOrEmpty(Convert.ToString(Session["TempUniqueId"])))
+                {
+                    GenerateUniqueTempId();
+                }
+                return true;
+            }
+            return false;
+        }
+
+        private void GenerateUniqueTempId()
+        {
+            Random rnd = new Random();
+            int randomNumber = rnd.Next(1000000000, int.MaxValue);
+            string currentDate = DateTime.Now.ToString("ddMMyyyy");
+
+            string combined = randomNumber.ToString() + currentDate; // "127878893816042025"
+            long finalNumber = long.Parse(combined); // Convert to long
+            Session["TempUniqueId"] = finalNumber;
+        }
+
+        private bool DeleteDocumentWithTransaction(int documentId, LinkButton deleteButton, LinkButton tickButton, FileUpload fileUpload, Button uploadButton)
+        {
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                SqlTransaction transaction = null;
+                try
+                {
+                    connection.Open();
+                    transaction = connection.BeginTransaction();
+                    string documentPath = null;
+                    using (SqlCommand cmd = new SqlCommand("sp_GetDocumentPathOfNewUser", connection, transaction))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@DocumentId", documentId);
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            documentPath = result.ToString();
+                        }
+                    }
+                    // Delete from the database
+                    using (SqlCommand cmd = new SqlCommand("sp_DeleteDocumentOfNewUser", connection, transaction))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@DocumentId", documentId);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected == 0)
+                        {
+                            transaction.Rollback();
+                            return false;
+                        }
+                    }
+                    // Delete from the server
+                    if (!string.IsNullOrEmpty(documentPath))
+                    {
+                        string fullPath = Server.MapPath(documentPath);
+                        if (File.Exists(fullPath))
+                        {
+                            File.Delete(fullPath);
+                        }
+                    }
+                    transaction.Commit();
+                    // Reset UI Elements
+                    fileUpload.Visible = true;
+                    uploadButton.Visible = true;
+                    deleteButton.Visible = false;
+                    tickButton.Visible = false;
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    transaction?.Rollback();
+                    string errorMessage = ex.Message.Replace("'", "\\'");
+                    ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
+                    return false;
+                }
+                finally
+                {
+                    transaction?.Dispose();
+                    connection.Close();
+                }
+            }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload1, Button1, 1, lnkbtn_Delete1, lnkbtn_Save1, "Last Three Year Income Tax Returns and Balance Sheet", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document1.Value = "1";
+                    lnkbtn_Delete1.Visible = true;
+                    lnkbtn_Save1.Visible = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void lnkbtn_Delete1_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete1, lnkbtn_Save1, FileUpload1, Button1);
+                if (IsDelete)
+                {
+                    HdnField_Document1.Value = "0";
+                }
+            }
+        }
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload2, Button2, 2, lnkbtn_Delete2, lnkbtn_Save2, "Id Proof", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document2.Value = "1";
+                    lnkbtn_Delete2.Visible = true;
+                    lnkbtn_Save2.Visible = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void lnkbtn_Delete2_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete2, lnkbtn_Save2, FileUpload2, Button2);
+                if (IsDelete)
+                {
+                    HdnField_Document2.Value = "0";
+                }
+            }
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload3, Button3, 3, lnkbtn_Delete3, lnkbtn_Save3, "Calibration Certificate from NABL or Government testing laboratory respect of electrical equipment’s invoices", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document3.Value = "1";
+                    lnkbtn_Delete3.Visible = true;
+                    lnkbtn_Save3.Visible = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void lnkbtn_Delete3_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete3, lnkbtn_Save3, FileUpload3, Button3);
+                if (IsDelete)
+                {
+                    HdnField_Document3.Value = "0";
+                }
+            }
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload4, Button4, 4, lnkbtn_Delete4, lnkbtn_Save4, "Copy of Annexure 3 & 5", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document4.Value = "1";
+                    lnkbtn_Delete4.Visible = true;
+                    lnkbtn_Save4.Visible = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void lnkbtn_Delete4_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete4, lnkbtn_Save4, FileUpload4, Button4);
+                if (IsDelete)
+                {
+                    HdnField_Document4.Value = "0";
+                }
+            }
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload5, Button5, 5, lnkbtn_Delete5, lnkbtn_Save5, "Medical fitness certificate from Government/Government approved Hospital in case he is above 55 years of age on the date of submission of application", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document5.Value = "1";
+                    lnkbtn_Delete5.Visible = true;
+                    lnkbtn_Save5.Visible = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void lnkbtn_Delete5_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete5, lnkbtn_Save5, FileUpload5, Button5);
+                if (IsDelete)
+                {
+                    HdnField_Document5.Value = "0";
+                }
+            }
+        }
+
+        protected void Button6_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                if (string.IsNullOrWhiteSpace(txtUtrNo.Text) || string.IsNullOrWhiteSpace(txtdate.Text))
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "Validation", "alert('UTR No. and Date are required.');", true);
+                    return;
+                }
+                string Result = SaveDocumentWithTransaction(FileUpload6, Button6, 6, lnkbtn_Delete6, lnkbtn_Save6, "Copy of treasury challan of fees deposited in any treasury of Haryana", txtUtrNo.Text, txtdate.Text);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document6.Value = "1";
+                    lnkbtn_Delete6.Visible = true;
+                    lnkbtn_Save6.Visible = true;
+                    txtdate.ReadOnly = true;
+                    txtUtrNo.ReadOnly = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void lnkbtn_Delete6_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete6, lnkbtn_Save6, FileUpload6, Button6);
+                if (IsDelete)
+                {
+                    HdnField_Document6.Value = "0";
+                    txtdate.ReadOnly = false;
+                    txtUtrNo.ReadOnly = false;
+                }
+            }
+        }
         protected void btnNext_Click(object sender, EventArgs e)
         {
             try
             {
-                if (Session["ContractorID"] != null)
+                if (Convert.ToString(HdnUserId.Value) != null && Convert.ToString(HdnUserId.Value) != "")
                 {
-                    REID = Session["ContractorID"].ToString();
-                }
-                string FileName = string.Empty;
-                string flpPhotourl = string.Empty;
-                string flpPhotourl1 = string.Empty;
-                string flpPhotourl2 = string.Empty;
-                string flpPhotourl3 = string.Empty;
-                string flpPhotourl4 = string.Empty;
-                string flpPhotourl6 = string.Empty;
-                string flpPhotourl5 = string.Empty;
-                string flpPhotourl7 = string.Empty;
-                string flpPhotourl8 = string.Empty;
-                string flpPhotourl9 = string.Empty;
-                string flpPhotourl10 = string.Empty;
-                int maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
-                if (IncomeTax.PostedFile.FileName.Length > 0)
-                {
-                    if (IncomeTax.PostedFile.ContentLength > maxFileSize)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Income Tax document must be a PDF file with a maximum size of 2MB.')", true);
-                        return;
-                    }
 
-                    FileName = Path.GetFileName(IncomeTax.PostedFile.FileName);
-                    if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/IncomeTax/")))
-                    {
-                        Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/IncomeTax/"));
-                    }
+                    bool allMandatoryUploaded = true;
+                    string errorMessage = "";
 
-                    string ext = Path.GetExtension(IncomeTax.PostedFile.FileName).ToLower();
-                    if (ext != ".pdf")
+                    if (HdnField_Document1.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Last Three Year Income Tax Returns and Balance Sheet.<br>"; }
+                    if (HdnField_Document2.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Id proof.<br>"; }
+                    if (HdnField_Document3.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Calibration Certificate from NABL or Government testing laboratory respect of electrical equipment’s invoices.<br>"; }
+                    if (HdnField_Document4.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of Annexure 3 & 5.<br>"; }
+                    if (Convert.ToString(Hdn_medicalcertificatevisible.Value) == "yes" && Convert.ToString(Hdn_medicalcertificatevisible.Value) != "")
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Income Tax document must be a PDF file.')", true);
-                        return;
+                        if (HdnField_Document5.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Medical fitness certificate (for age > 55).<br>"; }
                     }
+                    if (HdnField_Document6.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of treasury challan of fees deposited in any treasury of Haryana.<br>"; }
 
-                    string path = "/Attachment/" + REID + "/IncomeTax/";
-
-                    string fileName = "IncomeTax" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                    string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/IncomeTax/" + fileName);
-                    IncomeTax.PostedFile.SaveAs(filePathInfo2);
-                    flpPhotourl = path + fileName;
-
-
-                }
-                if (Pan.PostedFile.FileName.Length > 0)
-                {
-                    if (Pan.PostedFile.ContentLength > maxFileSize)
+                    if (!allMandatoryUploaded)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Pan Card document must be a PDF file with a maximum size of 2MB.')", true);
-                        return;
-                    }
-                    FileName = Path.GetFileName(Pan.PostedFile.FileName);
-                    if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Pan/")))
-                    {
-                        Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Pan/"));
-                    }
-                    string ext = Path.GetExtension(Pan.PostedFile.FileName).ToLower();
-                    if (ext != ".pdf")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Pan Card document must be a PDF file.')", true);
-                        return;
-                    }
-
-                    string path = "/Attachment/" + REID + "/Pan/";
-                    string fileName = "Pan" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-
-                    //string ext = Pan.PostedFile.FileName.Split('.')[1];                
-
-                    string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Pan/" + fileName);
-                    Pan.PostedFile.SaveAs(filePathInfo2);
-                    flpPhotourl1 = path + fileName;
-
-                }
-                if (Aadhaar.PostedFile.FileName.Length > 0)
-                {
-                    if (Aadhaar.PostedFile.ContentLength > maxFileSize)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Aadhaar card must be a PDF file with a maximum size of 2MB.')", true);
-                        return;
-                    }
-                    FileName = Path.GetFileName(Aadhaar.PostedFile.FileName);
-                    if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Aadhaar/")))
-                    {
-                        Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Aadhaar/"));
-                    }
-                    string ext = Path.GetExtension(Aadhaar.PostedFile.FileName).ToLower();
-                    if (ext != ".pdf")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Aadhaar card must be a PDF file.')", true);
-                        return;
-                    }
-                    //string ext = Aadhaar.PostedFile.FileName.Split('.')[1];
-                    string path = "/Attachment/" + REID + "/Aadhaar/";
-                    string fileName = "Aadhaar " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                    string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/Aadhaar/" + fileName);
-                    Aadhaar.PostedFile.SaveAs(filePathInfo2);
-                    flpPhotourl2 = path + fileName;
-                }
-
-                if (Age.PostedFile.FileName.Length > 0)
-                {
-                    if (Age.PostedFile.ContentLength > maxFileSize)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Age Certificate must be a PDF file with a maximum size of 2MB.')", true);
-                        return;
-                    }
-                    FileName = Path.GetFileName(Age.PostedFile.FileName);
-                    if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AgeProof/")))
-                    {
-                        Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AgeProof/"));
-                    }
-
-                    string ext = Path.GetExtension(Age.PostedFile.FileName).ToLower();
-                    if (ext != ".pdf")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert(' Age Certificate must be a PDF file.')", true);
-                        return;
-                    }
-                    //string ext = Age.PostedFile.FileName.Split('.')[1];
-                    string path = "/Attachment/" + REID + "/AgeProof/";
-                    string fileName = "AgeProof " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                    string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AgeProof/" + fileName);
-                    Age.PostedFile.SaveAs(filePathInfo2);
-                    flpPhotourl3 = path + fileName;
-                }
-
-                if (Calibration.PostedFile.FileName.Length > 0)
-                {
-                    if (Calibration.PostedFile.ContentLength > maxFileSize)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Calibration Certificate must be a PDF file with a maximum size of 2MB.')", true);
-                        return;
-                    }
-                    FileName = Path.GetFileName(Calibration.PostedFile.FileName);
-                    if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/CalibrationCertificate/")))
-                    {
-                        Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/CalibrationCertificate/"));
-                    }
-                    string ext = Path.GetExtension(Calibration.PostedFile.FileName).ToLower();
-                    if (ext != ".pdf")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Calibration Certificate must be a PDF file.')", true);
-                        return;
-                    }
-                    //string ext = Calibration.PostedFile.FileName.Split('.')[1];
-                    string path = "/Attachment/" + REID + "/CalibrationCertificate/";
-                    string fileName = "CalibrationCertificate " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                    string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/CalibrationCertificate/" + fileName);
-                    Calibration.PostedFile.SaveAs(filePathInfo2);
-                    flpPhotourl4 = path + fileName;
-                }
-                if (Annexure.PostedFile.FileName.Length > 0)
-                {
-                    if (Annexure.PostedFile.ContentLength > maxFileSize)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Copy of Annexure 3 & 5 must be a PDF file with a maximum size of 2MB.')", true);
-                        return;
-                    }
-                    FileName = Path.GetFileName(Annexure.PostedFile.FileName);
-                    if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AnnexureProof/")))
-                    {
-                        Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AnnexureProof/"));
-                    }
-                    string ext = Path.GetExtension(Annexure.PostedFile.FileName).ToLower();
-                    if (ext != ".pdf")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Copy of Annexure 3 & 5 must be a PDF file.')", true);
-                        return;
-                    }
-                    //string ext = Annexure.PostedFile.FileName.Split('.')[1];
-                    string path = "/Attachment/" + REID + "/AnnexureProof/";
-                    string fileName = "AnnexureProof  " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                    string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/AnnexureProof/" + fileName);
-                    Annexure.PostedFile.SaveAs(filePathInfo2);
-                    flpPhotourl5 = path + fileName;
-                }
-                if (Status.PostedFile.FileName.Length > 0)
-                {
-                    if (Status.PostedFile.ContentLength > maxFileSize)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('status of the firm/company must be a PDF file with a maximum size of 2MB.')", true);
-                        return;
-                    }
-                    FileName = Path.GetFileName(Status.PostedFile.FileName);
-                    if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/StatusProof/")))
-                    {
-                        Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/StatusProof/"));
-                    }
-                    string ext = Path.GetExtension(Status.PostedFile.FileName).ToLower();
-                    if (ext != ".pdf")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('status of the firm/company must be a PDF file.')", true);
-                        return;
-                    }
-                    //string ext = Status.PostedFile.FileName.Split('.')[1];
-                    string path = "/Attachment/" + REID + "/StatusProof/";
-                    string fileName = "StatusProof  " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                    string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/StatusProof/" + fileName);
-                    Status.PostedFile.SaveAs(filePathInfo2);
-                    flpPhotourl6 = path + fileName;
-                }
-
-                if (WorkOutHry.PostedFile.FileName.Length > 0)
-                {
-                    if (WorkOutHry.PostedFile.ContentLength > maxFileSize)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('works carried out in Haryana must be a PDF file with a maximum size of 2MB.')", true);
-                        return;
-                    }
-                    FileName = Path.GetFileName(WorkOutHry.PostedFile.FileName);
-                    if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/WorkOutHry/")))
-                    {
-                        Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/WorkOutHry/"));
-                    }
-                    string ext = Path.GetExtension(WorkOutHry.PostedFile.FileName).ToLower();
-                    if (ext != ".pdf")
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('works carried out in Haryana must be a PDF file.')", true);
-                        return;
-                    }
-                    //string ext = WorkOutHry.PostedFile.FileName.Split('.')[1];
-                    string path = "/Attachment/" + REID + "/WorkOutHry/";
-                    string fileName = "WorkOutHry  " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                    string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/WorkOutHry/" + fileName);
-                    WorkOutHry.PostedFile.SaveAs(filePathInfo2);
-                    flpPhotourl7 = path + fileName;
-                }
-                if (WorkPermitted.Visible == true)
-                {
-                    if (WorkPermitted.PostedFile.FileName.Length > 0)
-                    {
-                        if (WorkPermitted.PostedFile.ContentLength > maxFileSize)
+                        string[] lines = errorMessage.Split(new string[] { "<br>" }, StringSplitOptions.RemoveEmptyEntries);
+                        string formattedMessage = "";
+                        for (int i = 0; i < lines.Length; i++)
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Details of works permitted must be a PDF file with a maximum size of 2MB.')", true);
-                            return;
+                            formattedMessage += $"{i + 1}. {lines[i].Trim()}\\n";
                         }
-                        FileName = Path.GetFileName(WorkPermitted.PostedFile.FileName);
-                        if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/WorkPermittedCertificate/")))
-                        {
-                            Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/WorkPermittedCertificate/"));
-                        }
-                        string ext = Path.GetExtension(WorkPermitted.PostedFile.FileName).ToLower();
-                        if (ext != ".pdf")
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert(' Details of works permitted must be a PDF file.')", true);
-                            return;
-                        }
-                        //string ext = WorkPermitted.PostedFile.FileName.Split('.')[1];
-                        string path = "/Attachment/" + REID + "/WorkPermittedCertificate/";
-                        string fileName = "WorkPermittedCertificate  " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                        string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/WorkPermittedCertificate/" + fileName);
-                        WorkPermitted.PostedFile.SaveAs(filePathInfo2);
-                        flpPhotourl8 = path + fileName;
+
+                        string script = $"alert('{formattedMessage}');";
+                        ClientScript.RegisterStartupScript(this.GetType(), "alertMessage", script, true);
+
+                        return;
                     }
-                }
-                if (CopyOfLibrary.Visible == true)
-                {
-                    if (CopyOfLibrary.PostedFile.FileName.Length > 0)
+
+                    string UniqueNumber = Session["TempUniqueId"].ToString().Trim();
+                    if (Convert.ToString(UniqueNumber) != null && Convert.ToString(UniqueNumber) != "")
                     {
-                        if (CopyOfLibrary.PostedFile.ContentLength > maxFileSize)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Copy of Elibrary/library asper ANNEXURE 2 must be a PDF file with a maximum size of 2MB.')", true);
-                            return;
-                        }
-                        FileName = Path.GetFileName(CopyOfLibrary.PostedFile.FileName);
-                        if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/CopyOfLibraryProof/")))
-                        {
-                            Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/CopyOfLibraryProof/"));
-                        }
-                        string ext = Path.GetExtension(CopyOfLibrary.PostedFile.FileName).ToLower();
-                        if (ext != ".pdf")
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Copy of Elibrary/library asper ANNEXURE 2 must be a PDF file.')", true);
-                            return;
-                        }
-                        //string ext = CopyOfLibrary.PostedFile.FileName.Split('.')[1];
-                        string path = "/Attachment/" + REID + "/CopyOfLibraryProof/";
-                        string fileName = "CopyOfLibraryProof  " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                        string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/CopyOfLibraryProof/" + fileName);
-                        CopyOfLibrary.PostedFile.SaveAs(filePathInfo2);
-                        flpPhotourl9 = path + fileName;
-                    }
+                        CEI.ToSaveDocumentsdataofNewregistration(UniqueNumber, HdnUserId.Value,"Contractor");
 
+                       
+                        Session["TempUniqueId"] = "";
+                        Session["TempUniqueId"] = null;
+                       
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "if (confirm('New User Registration Process completed successfully.')) { window.location.href = '/Login.aspx'; }", true);
+
+                    }
                 }
-                if (GrantedLicense.Visible == true)
+                else
                 {
-                    if (GrantedLicense.PostedFile.FileName.Length > 0)
-                    {
-                        if (GrantedLicense.PostedFile.ContentLength > maxFileSize)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Copy of Previously Granted Contractor License must be a PDF file with a maximum size of 2MB.')", true);
-                            return;
-                        }
-                        FileName = Path.GetFileName(GrantedLicense.PostedFile.FileName);
-                        if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/GrantedLicenseProof/")))
-                        {
-                            Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/GrantedLicenseProof/"));
-                        }
-                        string ext = Path.GetExtension(GrantedLicense.PostedFile.FileName).ToLower();
-                        if (ext != ".pdf")
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert(' Copy of Previously Granted Contractor License must be a PDF file.')", true);
-                            return;
-                        }
-                        //string ext = GrantedLicense.PostedFile.FileName.Split('.')[1];
-                        string path = "/Attachment/" + REID + "/GrantedLicenseProof/";
-                        string fileName = "GrantedLicenseProof  " + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
-                        string filePathInfo2 = HttpContext.Current.Server.MapPath("~/Attachment/" + REID + "/GrantedLicenseProof/" + fileName);
-                        GrantedLicense.PostedFile.SaveAs(filePathInfo2);
-                        flpPhotourl10 = path + fileName;
-                    }
-
+                    Response.Redirect("/LogOut.aspx", false);
                 }
-                CEI.DocumentsForContactor(flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, flpPhotourl7, flpPhotourl8, flpPhotourl9, flpPhotourl10, REID);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Documents Added Successfully !!!')", true);
-
-
-                Response.Redirect("/Contractor/Work_Intimation.aspx", false);
             }
-            catch (Exception ex) { }
+            catch (Exception)
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
         }
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(-1);
-            Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
             Response.Redirect("/Login.aspx");
+        }
+
+        private string SaveDocumentWithTransactionIfPhoto(FileUpload fileUpload, Button uploadbutton, int DocumentId, LinkButton deleteButton, string documentName, string Utrn, string challandate)
+        {
+            string fileName = ""; string dbPath = ""; string fullPath = "";
+
+            string CreatedBy = Convert.ToString(HdnUserId.Value);
+            long TempUniqueId = (long)Session["TempUniqueId"];
+            string DocumentNametoSave = documentName.Replace(" ", "_").Replace("/", "_");
+
+            if (!fileUpload.HasFile || !IsValidPhoto(fileUpload))
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "UploadError", "alert('Please upload a valid image file (.jpg, .jpeg, .png) (Max: 1MB)');", true);
+                fileUpload.Focus();
+                return null;
+            }
+
+            // Ensure directory exists
+            string directoryPath = Server.MapPath($"~/Attachment/{TempUniqueId}/{CreatedBy}/");
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            // Get extension and generate file name accordingly
+            string extension = Path.GetExtension(fileUpload.FileName).ToLower();
+            fileName = $"{DocumentNametoSave}_{DateTime.Now:yyyyMMddHHmmssFFF}{extension}";
+            dbPath = $"/Attachment/{TempUniqueId}/{CreatedBy}/{fileName}";
+            fullPath = Path.Combine(directoryPath, fileName);
+
+            // Save image file
+            fileUpload.SaveAs(fullPath);
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                SqlTransaction transaction = null;
+                try
+                {
+                    connection.Open();
+                    transaction = connection.BeginTransaction();
+
+                    string documentId = CEI.InsertDocumentOfNewUserApplication(TempUniqueId, documentName, DocumentId, fileName, dbPath, Utrn, challandate, CreatedBy, transaction);
+                    if (!string.IsNullOrEmpty(documentId))
+                    {
+                        deleteButton.CommandArgument = documentId;
+                        fileUpload.Visible = false;
+                        uploadbutton.Visible = false;
+                        deleteButton.Visible = true;
+                        //tickButton.Visible = true;
+                        transaction.Commit();
+                        return documentId;
+                    }
+                    else
+                    {
+                        transaction.Rollback();
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    transaction?.Rollback();
+                    string errorMessage = ex.Message.Replace("'", "\\'");
+                    ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
+                    return null;
+                }
+                finally
+                {
+                    transaction?.Dispose();
+                    connection.Close();
+                }
+            }
+        }
+
+        private bool IsValidPhoto(FileUpload fileUpload)
+        {
+            if (!fileUpload.HasFile) return false;
+
+            string ext = Path.GetExtension(fileUpload.FileName).ToLower();
+            if (ext != ".jpg" && ext != ".jpeg" && ext != ".png") return false;
+
+            if (fileUpload.PostedFile.ContentLength > 1048576) return false; // 1MB
+
+            return true;
+        }
+        protected void Button7_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransactionIfPhoto(FileUpload7, Button7, 7, lnkbtn_Delete7, "Candidate Image", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document7.Value = "1";
+                    lnkbtn_Delete7.Visible = true;
+                    lnkbtn_Save7.Visible = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void lnkbtn_Delete7_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete7, lnkbtn_Save7, FileUpload7, Button7);
+                if (IsDelete)
+                {
+                    HdnField_Document7.Value = "0";
+                }
+            }
+        }
+
+        protected void Button8_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransactionIfPhoto(FileUpload8, Button8, 8, lnkbtn_Delete8, "Candidate Signature", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document8.Value = "1";
+                    lnkbtn_Delete8.Visible = true;
+                    lnkbtn_Save8.Visible = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void lnkbtn_Delete8_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete8, lnkbtn_Save8, FileUpload8, Button8);
+                if (IsDelete)
+                {
+                    HdnField_Document8.Value = "0";
+                }
+            }
+        }
+
+        protected void Button9_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload9, Button9, 9, lnkbtn_Delete9, lnkbtn_Save9, "Whether blue prints is available", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document9.Value = "1";
+                    lnkbtn_Delete9.Visible = true;
+                    lnkbtn_Save9.Visible = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void lnkbtn_Delete9_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete9, lnkbtn_Save9, FileUpload9, Button9);
+                if (IsDelete)
+                {
+                    HdnField_Document9.Value = "0";
+                }
+            }
         }
     }
 }

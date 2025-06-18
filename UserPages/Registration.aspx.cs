@@ -4,8 +4,10 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Net.Mail;
 using System.Net;
+using System.Net.Mail;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -14,6 +16,7 @@ namespace CEIHaryana.UserPages
     public partial class Registration : System.Web.UI.Page
     {
 
+        //Page settd by neha 18-June-2025
         string REID = string.Empty;
         CEI CEI = new CEI();
         string ipaddress;
@@ -24,100 +27,33 @@ namespace CEIHaryana.UserPages
                 if (!IsPostBack)
                 {
                     ddlLoadBindState();
-                    ddlLoadBindState1();
-                    if (Convert.ToString(Session["RegistrationID"]) == null || Convert.ToString(Session["RegistrationID"]) == "")
-                    {
-
-                    }
-                    else
-                    {
-                        REID = Session["RegistrationID"].ToString();
-                        hdnId.Value = REID;
-                        btnNext.Text = "Update";
-                        GetUserRegistartionData();
-                    }
-
+                    ddlLoadBindState1();                 
                 }
             }
             catch
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/Login.aspx", false);
             }
         }
         #region GetIP
         protected void GetIP()
         {
-
             ipaddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
             if (ipaddress == "" || ipaddress == null)
                 ipaddress = Request.ServerVariables["REMOTE_ADDR"];
         }
         #endregion
-        protected void GetUserRegistartionData()
-        {
-            REID = Session["RegistrationID"].ToString();
-            hdnId.Value = REID;
-
-            SqlCommand cmd = new SqlCommand("sp_GetUserRegistrationData");
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@id", REID);
-            cmd.Connection = con;
-            using (SqlDataAdapter adp = new SqlDataAdapter(cmd))
-            {
-                DataSet ds = new DataSet();
-                adp.Fill(ds);
-                string dp_Id = ds.Tables[0].Rows[0]["Category"].ToString();
-
-                //selectedFileName1.Text = ds.Tables[0].Rows[0]["UploadPhoto"].ToString();
-                //uploadedImage1.ImageUrl = ds.Tables[0].Rows[0]["UploadPhoto"].ToString();
-                //uploadedImage.ImageUrl = ds.Tables[0].Rows[0]["UploadSignature"].ToString();
-                //selectedFileName.Text = ds.Tables[0].Rows[0]["UploadSignature"].ToString();
-
-
-                txtName.Text = ds.Tables[0].Rows[0]["Name"].ToString();
-                txtFatherNmae.Text = ds.Tables[0].Rows[0]["FatherName"].ToString();
-                txtAadhaar.Text = ds.Tables[0].Rows[0]["AdhaarNo"].ToString();
-                string dp_Id1 = ds.Tables[0].Rows[0]["Gender"].ToString();
-                string dp_Id2 = ds.Tables[0].Rows[0]["DOB"].ToString();
-                txtCommunicationAddress.Text = ds.Tables[0].Rows[0]["CommunicationAddress"].ToString();
-                string dp_Id3 = ds.Tables[0].Rows[0]["CommunicationState"].ToString();
-                string dp_Id4 = ds.Tables[0].Rows[0]["DistrictCommunication"].ToString();
-                txtPinCode.Text = ds.Tables[0].Rows[0]["CommunicationPin"].ToString();
-                string dp_Id6 = ds.Tables[0].Rows[0]["PermanentState"].ToString();
-                txtPermanentAddress.Text = ds.Tables[0].Rows[0]["PermanentAddress"].ToString();
-                string dp_Id7 = ds.Tables[0].Rows[0]["PermanentDistrict"].ToString();
-                txtPin.Text = ds.Tables[0].Rows[0]["PermanentPin"].ToString();
-                txtphone.Text = ds.Tables[0].Rows[0]["PhoneNo"].ToString();
-                ddlLoadBindState();
-                ddlLoadBindState1();
-                ddlLoadBindDistrict(dp_Id3);
-                ddlLoadBindDistrict1(dp_Id6);
-                ddlDistrict.SelectedValue = dp_Id4;
-                ddlDistrict1.SelectedValue = dp_Id7;
-                ddlState1.SelectedIndex = ddlState.Items.IndexOf(ddlState.Items.FindByText(dp_Id3));
-                ddlState.SelectedIndex = ddlState.Items.IndexOf(ddlState.Items.FindByText(dp_Id6));
-                txtEmail.Text = ds.Tables[0].Rows[0]["EmailId"].ToString();
-                txtDOB.Text = DateTime.Parse(dp_Id2).ToString("yyyy-MM-dd");
-                ddlcategory.SelectedIndex = ddlcategory.Items.IndexOf(ddlcategory.Items.FindByText(dp_Id));
-                ddlGender.SelectedIndex = ddlGender.Items.IndexOf(ddlGender.Items.FindByText(dp_Id1));
-            }
-        }
         protected void btnNext_Click(object sender, EventArgs e)
         {
             try
             {
                 if (txtPassword.Text == txtConfirmPswrd.Text)
                 {
-
                     string Category = string.Empty;
                     string name = txtName.Text;
                     string dob = txtDOB.Text;
-
                     string firstNamePart = name.Length >= 4 ? name.Substring(0, 4) : name;
-
                     string numericDOB = new string(dob.Where(char.IsDigit).ToArray());
-
                     string userId = $"{firstNamePart}{numericDOB}";
 
                     if (ddlcategory.SelectedValue == "1")
@@ -128,53 +64,84 @@ namespace CEIHaryana.UserPages
                     {
                         Category = "Supervisor";
                     }
-                    else if (ddlcategory.SelectedValue == "4")
-                    {
-                        Category = "Lift";
-                    }
+                    //else if (ddlcategory.SelectedValue == "4")
+                    //{
+                    //    Category = "Lift";
+                    //}
                     else
                     {
                         Category = "Contractor";
                     }
-                    Session["InsertedCategory"] = Category;
+                    //Session["InsertedCategory"] = Category;
                     GetIP();
-                    
-                        DataSet ds1 = new DataSet();
-                        ds1 = CEI.checkAadharexist(txtAadhaar.Text);
-                       
-                            if (ds1.Tables[0].Rows.Count > 0)
-                            {
-                                //string alertScript = "alert('The Aadhar number is already in use.Please Register with a different Aadhar number.');";
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "AadharAlert();", true);
-                                return;
-                            }
-                            else
-                            {
-                                Session["InsertedCategory"] = Category;
-                                GetIP();
-                                CEI.InserNewUserData(ddlcategory.SelectedItem.ToString(), txtName.Text, txtDOB.Text, txtyears.Text, txtFatherNmae.Text,
-                                ddlGender.SelectedItem.ToString(), txtAadhaar.Text.Trim(), txtPermanentAddress.Text, ddlDistrict.SelectedItem.ToString(),
-                                ddlState.SelectedItem.ToString(), txtPinCode.Text, txtphone.Text,
-                                txtEmail.Text, Category, userId, userId, txtCommunicationAddress.Text, ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(),
-                                txtPin.Text, txtConfirmPswrd.Text, ipaddress);
-                                CEI.NewCredentialsthroughEmail(txtEmail.Text);
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                                // Response.Redirect("Qualification.aspx",false);
-                            }
-                        
-                    
+
+                    int Aadhar = CEI.CheckAadharExist(txtAadhaar.Text.Trim());
+
+                    if (Aadhar > 0)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "AadharAlert();", true);
+                        return;
+                    }
+                    else
+                    {
+                        if (Convert.ToString(hdnrandomNumber.Value) == null || Convert.ToString(hdnrandomNumber.Value) == "")
+                        {
+                            GenerateUniquerandomNumber();
+                        }
+                        if (Convert.ToString(hdnrandomNumber.Value) != null && Convert.ToString(hdnrandomNumber.Value) != "")
+                        {
+                            string RandomUniqueNumber = hdnrandomNumber.Value;
+                            //Session["InsertedCategory"] = Category;
+                            GetIP();
+                            CEI.InserNewUserData(ddlcategory.SelectedItem.ToString(), txtName.Text, txtDOB.Text, txtyears.Text, txtFatherNmae.Text,
+                            ddlGender.SelectedItem.ToString(), txtAadhaar.Text.Trim(), txtPermanentAddress.Text, ddlDistrict.SelectedItem.ToString(),
+                            ddlState.SelectedItem.ToString(), txtPinCode.Text, txtphone.Text,
+                            txtEmailID.Text, Category, userId, userId, txtCommunicationAddress.Text, ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(),
+                            txtPin.Text, txtConfirmPswrd.Text, ipaddress, RandomUniqueNumber);
+                            //CEI.NewCredentialsthroughEmail(txtEmailID.Text);
+                            CEI.ToActivateAndVerifyEmail(txtEmailID.Text, RandomUniqueNumber);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                        }
+                    }
+
                 }
                 else
                 {
-                    // Passwords do not match, show an alert
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Passwords do not match. Please enter the same passwords.');", true);
                 }
             }
             catch (Exception ex)
             {
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Passwords do not match. Please Add same Passwords');", true);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('An error occurred:');", true);
                 return;
+            }
+        }
+
+        private void GenerateUniquerandomNumber()
+        {
+            Random rnd = new Random();
+            int randomNumber = rnd.Next(1000000000, int.MaxValue);
+
+            // Get current date-time string
+            string currentDate = DateTime.Now.ToString("ddMMyyyyHHmmss");
+
+            // Combine them
+            string combined = randomNumber.ToString() + currentDate;
+
+            // Encrypt-like hash using SHA256
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(combined));
+
+                // Convert to alphanumeric string (Base64 or Hex — here, Hex)
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in hashBytes)
+                {
+                    sb.Append(b.ToString("x2")); // hex format
+                }
+
+                string uniqueAlphanumeric = sb.ToString().Substring(0, 30); // Get first 30 chars
+                hdnrandomNumber.Value = uniqueAlphanumeric;
             }
         }
 
@@ -192,9 +159,7 @@ namespace CEIHaryana.UserPages
                 dsState.Clear();
             }
             catch (Exception)
-            {
-                //msg.Text = ex.Message;
-            }
+            { }
         }
         private void ddlLoadBindDistrict(string state)
         {
@@ -210,9 +175,7 @@ namespace CEIHaryana.UserPages
                 dsDistrict.Clear();
             }
             catch (Exception)
-            {
-                //msg.Text = ex.Message;
-            }
+            { }
         }
         private void ddlLoadBindState1()
         {
@@ -228,9 +191,7 @@ namespace CEIHaryana.UserPages
                 dsState.Clear();
             }
             catch (Exception)
-            {
-                //msg.Text = ex.Message;
-            }
+            { }
         }
         private void ddlLoadBindDistrict1(string state)
         {
@@ -246,9 +207,7 @@ namespace CEIHaryana.UserPages
                 dsDistrict.Clear();
             }
             catch (Exception)
-            {
-                //msg.Text = ex.Message;
-            }
+            { }
         }
         protected void txtDOB_TextChanged(object sender, EventArgs e)
         {
@@ -257,42 +216,30 @@ namespace CEIHaryana.UserPages
                 DateTime selectedDOB;
                 if (DateTime.TryParse(txtDOB.Text, out selectedDOB))
                 {
-
                     DateTime currentDate = DateTime.Now;
-
-
                     int ageDiff = currentDate.Year - selectedDOB.Year;
-
                     if (ageDiff < 18)
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('You must be at least 18 years old.');", true);
-
                         txtDOB.Text = "";
-
                         CalculatedDatey.Visible = false;
                     }
                     else if (ageDiff > 65)
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "ShowAlert", "alert('You are not eligble to fill this form.');", true);
-
                         txtDOB.Text = "";
-
                         CalculatedDatey.Visible = false;
                     }
                     else
                     {
                         if (DateTime.TryParseExact(txtDOB.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out DateTime dobDate))
                         {
-
                             if (dobDate > currentDate)
                             {
-
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid Date !!!')", true);
                                 txtDOB.Text = "";
-
                                 CalculatedDatey.Visible = false;
                             }
-
                             else
                             {
                                 TimeSpan ageDifference = currentDate - selectedDOB;
@@ -302,7 +249,6 @@ namespace CEIHaryana.UserPages
 
                                 string ageString = $"{ageYear} Years - {ageMonth} Months - {ageDay} Days";
                                 txtyears.Text = ageString;
-
                                 CalculatedDatey.Visible = true;
                             }
                         }
@@ -311,11 +257,8 @@ namespace CEIHaryana.UserPages
             }
             else
             {
-                //CalculatedDate.Visible = false;
-                //CalculatedDateM.Visible = false;
                 CalculatedDatey.Visible = false;
             }
-
         }
 
         protected void ddlState_SelectedIndexChanged(object sender, EventArgs e)
@@ -324,14 +267,12 @@ namespace CEIHaryana.UserPages
             {
                 ddlLoadBindDistrict(ddlState.SelectedItem.ToString());
             }
-
             ddlLoadBindDistrict(ddlState.SelectedItem.ToString());
         }
 
         protected void ddlState1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlLoadBindDistrict1(ddlState1.SelectedItem.ToString());
-
         }
 
         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
@@ -366,21 +307,44 @@ namespace CEIHaryana.UserPages
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/Login.aspx", false);
         }
 
         protected void ddlcategory_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Reset();
             if (ddlcategory.SelectedValue == "3")
             {
-                contractor.Visible = true;
                 WireSup.Visible = false;
+                contractor.Visible = true;
             }
             else
             {
                 contractor.Visible = false;
                 WireSup.Visible = true;
             }
+        }
+
+        private void Reset()
+        {
+            txtName.Text = "";
+            txtFatherNmae.Text = "";
+            txtAadhaar.Text = "";
+            ddlGender.SelectedValue = "0";
+            txtDOB.Text = "";
+            txtCommunicationAddress.Text = "";
+            ddlState1.SelectedIndex = 0;
+            ddlDistrict1.SelectedIndex = 0;
+            txtPinCode.Text = "";
+            txtphone.Text = "";
+            txtPassword.Text = "";
+            txtPermanentAddress.Text = "";
+            ddlState.SelectedIndex = 0;
+            ddlDistrict.SelectedIndex = 0;
+            txtPin.Text = "";
+            txtEmailID.Text = "";
+            txtConfirmPswrd.Text = "";
+            txtDOB.Text = "";
         }
     }
 }

@@ -2177,6 +2177,7 @@
     <Content Include="UserPages\Qualification.aspx" />
     <Content Include="UserPages\Registration.aspx" />
     <Content Include="UserPages\SiteOwnerRegistration.aspx" />
+    <Content Include="UserPages\User_Profile_Create.aspx" />
     <Content Include="VerifyCertificate.aspx" />
     <Content Include="Web.config" />
     <Content Include="Wiremen\CertificateRenewal.aspx" />
@@ -4793,6 +4794,13 @@
     </Compile>
     <Compile Include="UserPages\SiteOwnerRegistration.aspx.designer.cs">
       <DependentUpon>SiteOwnerRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\User_Profile_Create.aspx.cs">
+      <DependentUpon>User_Profile_Create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\User_Profile_Create.aspx.designer.cs">
+      <DependentUpon>User_Profile_Create.aspx</DependentUpon>
     </Compile>
     <Compile Include="VerifyCertificate.aspx.cs">
       <DependentUpon>VerifyCertificate.aspx</DependentUpon>
