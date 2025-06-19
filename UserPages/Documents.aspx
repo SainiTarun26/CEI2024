@@ -633,16 +633,16 @@
                                                                             <label for="State1">
                                                                                 UTR No.<samp style="color: red">* </samp>
                                                                             </label>
-                                                                            <asp:TextBox class="form-control" ID="txtUtrNo" MaxLength="50" autocomplete="off" runat="server" ReadOnly="false" Style="margin-bottom: 15px;"> </asp:TextBox>
+                                                                            <asp:TextBox class="form-control" ID="txtUtrNo" MaxLength="50" autocomplete="off" runat="server" Style="margin-bottom: 15px;"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtUtrNo" ValidationGroup="Submit" ForeColor="Red">Enter UTR No.</asp:RequiredFieldValidator>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="State1">
+                                                                            <label>
                                                                                 Date<samp style="color: red">* </samp>
                                                                             </label>
-                                                                            <asp:TextBox class="form-control" Type="date" ID="txtdate" MaxLength="50" autocomplete="off" runat="server" ReadOnly="FALSE" Style="margin-bottom: 15px;"> </asp:TextBox>
+                                                                            <asp:TextBox class="form-control" Type="date" ID="txtdate" onchange="validateDate()" autocomplete="off" runat="server" Style="margin-bottom: 15px;"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtdate" ValidationGroup="Submit" ForeColor="Red">Enter Date</asp:RequiredFieldValidator>
                                                                         </div>
                                                                     </div>
@@ -698,6 +698,17 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-left: 5px;">
+                                            <div class="col-md-12">
+                                                <div class="form-check">
+                                                    <asp:CheckBox ID="chkDeclaration" runat="server" CssClass="form-check-input" Style="padding: 0px 4px 15px 1px !important; border: 0px solid black !important; margin-top: .1em !important;" />
+                                                    <label class="form-check-label" for="<%= chkDeclaration.ClientID %>" style="margin-left: 0px;">
+                                                        I hereby declare that the information furnished in this application is correct, that all registers and books as prescribed under the licensing conditions of Haryana are being duly maintained, and that I am authorized to sign this application as the contractor or on behalf of the contractor.
+       
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row" style="margin-top: 15px;">
@@ -827,6 +838,25 @@
                     }, 50);
                 };
                 reader.readAsDataURL(file);
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        function validateDate() {
+            var ClnDate = document.getElementById('<%=txtdate.ClientID %>');
+
+            var today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            if (ClnDate.value) {
+                var ChallanDate = new Date(ClnDate.value);
+                if (ChallanDate > today) {
+                    alert('Challan Date cannot be a future date.');
+                    ClnDate.value = '';
+                    ClnDate.focus();
+                    return;
+                }
             }
         }
     </script>

@@ -551,50 +551,57 @@ namespace CEIHaryana.UserPages
             {
                 if (Convert.ToString(HdnUserId.Value) != null && Convert.ToString(HdnUserId.Value) != "")
                 {
-                    bool allMandatoryUploaded = true;
-                    string errorMessage = "";
+                    if (chkDeclaration.Checked == true)
+                    {
+                        bool allMandatoryUploaded = true;
+                        string errorMessage = "";
 
-                    if (HdnField_Document2.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Matriculation certificate indicating date of birth.<br>"; }
-                    if (HdnField_Document3.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Residence Proof.<br>"; }
-                    if (HdnField_Document4.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Identity Proof.<br>"; }
-                    if (HdnField_Document5.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Degree/Diploma in Electrical Engineering/Electrical and Electronics Engineering or its equivalent.<br>"; }
-                    if (HdnField_Document6.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
-                    if (Convert.ToString(Hdn_medicalcertificatevisible.Value) == "yes" && Convert.ToString(Hdn_medicalcertificatevisible.Value) != "")
-                    {
-                        if (HdnField_Document8.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Medical fitness certificate (for age > 55).<br>"; }
-                    }
-                    if (Convert.ToString(Hdn_retirementcertificatevisible.Value) == "yes" && Convert.ToString(Hdn_retirementcertificatevisible.Value) != "")
-                    {
-                        if (HdnField_Document9.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of retirement orders.<br>"; }
-                    }
-                    if (Convert.ToString(Hdn_Apprenticecertificatevisible.Value) == "yes" && Convert.ToString(Hdn_Apprenticecertificatevisible.Value) != "")
-                    {
-                        if (HdnField_Document10.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Apprentice Certificate.<br>"; }
-                    }
-                    if (HdnField_Document11.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of treasury challan.<br>"; }
-                    if (HdnField_Document12.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Image.<br>"; }
-                    if (HdnField_Document13.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Signature.<br>"; }
-                    if (!allMandatoryUploaded)
-                    {
-                        string[] lines = errorMessage.Split(new string[] { "<br>" }, StringSplitOptions.RemoveEmptyEntries);
-                        string formattedMessage = "";
-                        for (int i = 0; i < lines.Length; i++)
+                        if (HdnField_Document2.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Matriculation certificate indicating date of birth.<br>"; }
+                        if (HdnField_Document3.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Residence Proof.<br>"; }
+                        if (HdnField_Document4.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Identity Proof.<br>"; }
+                        if (HdnField_Document5.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Degree/Diploma in Electrical Engineering/Electrical and Electronics Engineering or its equivalent.<br>"; }
+                        if (HdnField_Document6.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
+                        if (Convert.ToString(Hdn_medicalcertificatevisible.Value) == "yes" && Convert.ToString(Hdn_medicalcertificatevisible.Value) != "")
                         {
-                            formattedMessage += $"{i + 1}. {lines[i].Trim()}\\n";
+                            if (HdnField_Document8.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Medical fitness certificate (for age > 55).<br>"; }
                         }
+                        if (Convert.ToString(Hdn_retirementcertificatevisible.Value) == "yes" && Convert.ToString(Hdn_retirementcertificatevisible.Value) != "")
+                        {
+                            if (HdnField_Document9.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of retirement orders.<br>"; }
+                        }
+                        if (Convert.ToString(Hdn_Apprenticecertificatevisible.Value) == "yes" && Convert.ToString(Hdn_Apprenticecertificatevisible.Value) != "")
+                        {
+                            if (HdnField_Document10.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Apprentice Certificate.<br>"; }
+                        }
+                        if (HdnField_Document11.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of treasury challan.<br>"; }
+                        if (HdnField_Document12.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Image.<br>"; }
+                        if (HdnField_Document13.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Signature.<br>"; }
+                        if (!allMandatoryUploaded)
+                        {
+                            string[] lines = errorMessage.Split(new string[] { "<br>" }, StringSplitOptions.RemoveEmptyEntries);
+                            string formattedMessage = "";
+                            for (int i = 0; i < lines.Length; i++)
+                            {
+                                formattedMessage += $"{i + 1}. {lines[i].Trim()}\\n";
+                            }
 
-                        string script = $"alert('{formattedMessage}');";
-                        ClientScript.RegisterStartupScript(this.GetType(), "alertMessage", script, true);
-                        return;
+                            string script = $"alert('{formattedMessage}');";
+                            ClientScript.RegisterStartupScript(this.GetType(), "alertMessage", script, true);
+                            return;
+                        }
+                        string UniqueNumber = Session["TempUniqueId"].ToString().Trim();
+                        if (Convert.ToString(UniqueNumber) != null && Convert.ToString(UniqueNumber) != "")
+                        {
+                            CEI.ToSaveDocumentsdataofNewregistration(UniqueNumber, HdnUserId.Value, HdnUserType.Value);
+                            Session["TempUniqueId"] = "";
+                            Session["TempUniqueId"] = null;
+                            // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "if (confirm('New User Registration Process completed successfully.')) { window.location.href = '/Login.aspx'; }", true);
+                        }
                     }
-                    string UniqueNumber = Session["TempUniqueId"].ToString().Trim();
-                    if (Convert.ToString(UniqueNumber) != null && Convert.ToString(UniqueNumber) != "")
+                    else
                     {
-                        CEI.ToSaveDocumentsdataofNewregistration(UniqueNumber, HdnUserId.Value, HdnUserType.Value);
-                        Session["TempUniqueId"] = "";
-                        Session["TempUniqueId"] = null;
-                        // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "if (confirm('New User Registration Process completed successfully.')) { window.location.href = '/Login.aspx'; }", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Please accept declaration first to proceed.')", true);
                     }
                 }
                 else

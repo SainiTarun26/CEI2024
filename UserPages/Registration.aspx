@@ -388,12 +388,6 @@
         }
     </style>
     <script type="text/javascript">
-        //function alertWithRedirectdata() {
-        //    if (confirm('Registration Successfull Your UserId Will be sent through email Login For Further process')) {
-        //        window.location.href = "/Login.aspx";
-        //    } else {
-        //    }
-        //}
         function alertWithRedirectdata() {
             if (confirm('Registration Successfull Please Activate your Account through given Email ID.')) {
                 window.location.href = "/Login.aspx";
@@ -558,7 +552,7 @@
                                                                         Nationality
                                                                 <samp style="color: red">* </samp>
                                                                     </label>
-                                                                    <asp:TextBox class="form-control" ID="txtNationality" runat="server" TabIndex="2" placeholder="INDIA" disabled MaxLength="30"> </asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtNationality" runat="server" TabIndex="2" placeholder="INDIA" readonly="true" MaxLength="30"> </asp:TextBox>
                                                                 </div>
                                                                 <asp:UpdatePanel ID="UpdatePanelCalculatedYears" runat="server">
                                                                     <ContentTemplate>

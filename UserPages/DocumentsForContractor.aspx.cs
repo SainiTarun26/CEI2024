@@ -448,46 +448,55 @@ namespace CEIHaryana.UserPages
             {
                 if (Convert.ToString(HdnUserId.Value) != null && Convert.ToString(HdnUserId.Value) != "")
                 {
-
-                    bool allMandatoryUploaded = true;
-                    string errorMessage = "";
-
-                    if (HdnField_Document1.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Last Three Year Income Tax Returns and Balance Sheet.<br>"; }
-                    if (HdnField_Document2.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Id proof.<br>"; }
-                    if (HdnField_Document3.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Calibration Certificate from NABL or Government testing laboratory respect of electrical equipment’s invoices.<br>"; }
-                    if (HdnField_Document4.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of Annexure 3 & 5.<br>"; }
-                    if (Convert.ToString(Hdn_medicalcertificatevisible.Value) == "yes" && Convert.ToString(Hdn_medicalcertificatevisible.Value) != "")
+                    if (chkDeclaration.Checked == true)
                     {
-                        if (HdnField_Document5.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Medical fitness certificate (for age > 55).<br>"; }
-                    }
-                    if (HdnField_Document6.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of treasury challan of fees deposited in any treasury of Haryana.<br>"; }
+                        bool allMandatoryUploaded = true;
+                        string errorMessage = "";
 
-                    if (!allMandatoryUploaded)
-                    {
-                        string[] lines = errorMessage.Split(new string[] { "<br>" }, StringSplitOptions.RemoveEmptyEntries);
-                        string formattedMessage = "";
-                        for (int i = 0; i < lines.Length; i++)
+                        if (HdnField_Document1.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Last Three Year Income Tax Returns and Balance Sheet.<br>"; }
+                        if (HdnField_Document2.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Id proof.<br>"; }
+                        if (HdnField_Document3.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Calibration Certificate from NABL or Government testing laboratory respect of electrical equipment’s invoices.<br>"; }
+                        if (HdnField_Document4.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of Annexure 3 & 5.<br>"; }
+                        if (Convert.ToString(Hdn_medicalcertificatevisible.Value) == "yes" && Convert.ToString(Hdn_medicalcertificatevisible.Value) != "")
                         {
-                            formattedMessage += $"{i + 1}. {lines[i].Trim()}\\n";
+                            if (HdnField_Document5.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Medical fitness certificate (for age > 55).<br>"; }
+                        }
+                        if (HdnField_Document6.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of treasury challan of fees deposited in any treasury of Haryana.<br>"; }
+                        if (HdnField_Document7.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Image.<br>"; }
+                        if (HdnField_Document8.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Signature.<br>"; }
+                        if (HdnField_Document9.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload blue prints Drawing.<br>"; }
+
+                        if (!allMandatoryUploaded)
+                        {
+                            string[] lines = errorMessage.Split(new string[] { "<br>" }, StringSplitOptions.RemoveEmptyEntries);
+                            string formattedMessage = "";
+                            for (int i = 0; i < lines.Length; i++)
+                            {
+                                formattedMessage += $"{i + 1}. {lines[i].Trim()}\\n";
+                            }
+
+                            string script = $"alert('{formattedMessage}');";
+                            ClientScript.RegisterStartupScript(this.GetType(), "alertMessage", script, true);
+
+                            return;
                         }
 
-                        string script = $"alert('{formattedMessage}');";
-                        ClientScript.RegisterStartupScript(this.GetType(), "alertMessage", script, true);
+                        string UniqueNumber = Session["TempUniqueId"].ToString().Trim();
+                        if (Convert.ToString(UniqueNumber) != null && Convert.ToString(UniqueNumber) != "")
+                        {
+                            CEI.ToSaveDocumentsdataofNewregistration(UniqueNumber, HdnUserId.Value, "Contractor");
 
-                        return;
+
+                            Session["TempUniqueId"] = "";
+                            Session["TempUniqueId"] = null;
+
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "if (confirm('New User Registration Process completed successfully.')) { window.location.href = '/Login.aspx'; }", true);
+
+                        }
                     }
-
-                    string UniqueNumber = Session["TempUniqueId"].ToString().Trim();
-                    if (Convert.ToString(UniqueNumber) != null && Convert.ToString(UniqueNumber) != "")
+                    else
                     {
-                        CEI.ToSaveDocumentsdataofNewregistration(UniqueNumber, HdnUserId.Value,"Contractor");
-
-                       
-                        Session["TempUniqueId"] = "";
-                        Session["TempUniqueId"] = null;
-                       
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "if (confirm('New User Registration Process completed successfully.')) { window.location.href = '/Login.aspx'; }", true);
-
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Please accept declaration first to proceed.')", true);
                     }
                 }
                 else

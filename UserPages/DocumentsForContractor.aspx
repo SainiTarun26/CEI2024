@@ -671,7 +671,7 @@
                                                                                 UTR No.<samp style="color: red">* </samp>
                                                                             </label>
 
-                                                                            <asp:TextBox class="form-control" ID="txtUtrNo" MaxLength="50" autocomplete="off" runat="server" ReadOnly="false" Style="margin-bottom: 15px;"> </asp:TextBox>
+                                                                            <asp:TextBox class="form-control" ID="txtUtrNo" MaxLength="50" autocomplete="off" runat="server" Style="margin-bottom: 15px;"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtUtrNo" ValidationGroup="Submit" ForeColor="Red">Enter UTR No.</asp:RequiredFieldValidator>
                                                                         </div>
                                                                     </div>
@@ -681,7 +681,7 @@
                                                                                 Date<samp style="color: red">* </samp>
                                                                             </label>
 
-                                                                            <asp:TextBox class="form-control" Type="date" ID="txtdate" MaxLength="50" autocomplete="off" runat="server" ReadOnly="FALSE" Style="margin-bottom: 15px;"> </asp:TextBox>
+                                                                            <asp:TextBox class="form-control" Type="date" ID="txtdate" MaxLength="50" autocomplete="off" runat="server" Onchange="validateDate()"  Style="margin-bottom: 15px;"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtdate" ValidationGroup="Submit" ForeColor="Red">Enter Date</asp:RequiredFieldValidator>
                                                                         </div>
                                                                     </div>
@@ -743,7 +743,7 @@
                                                             </td>
                                                             <td style="text-align: center !important;">
                                                                 <asp:FileUpload ID="FileUpload9" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="FileUpload4" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="FileUpload9" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 <asp:LinkButton ID="lnkbtn_Save9" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
                                                                 </asp:LinkButton>
                                                             </td>
@@ -752,9 +752,18 @@
                                                                 <asp:LinkButton ID="lnkbtn_Delete9" OnClick="lnkbtn_Delete9_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
                                                             </td>
                                                         </tr>
-                                                        <asp:HiddenField ID="HiddenField5" runat="server" />
                                                     </tbody>
                                                 </table>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-left: 5px;">
+                                            <div class="col-md-12">
+                                                <div class="form-check">
+                                                    <asp:CheckBox ID="chkDeclaration" runat="server" CssClass="form-check-input" Style="padding: 0px 4px 15px 1px !important; border: 0px solid black !important; margin-top: .1em !important;" />
+                                                    <label class="form-check-label" for="<%= chkDeclaration.ClientID %>" style="margin-left: 0px;">
+                                                        I hereby declare that the information furnished in this application is correct.
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row" style="margin-top: 15px;">
@@ -828,84 +837,7 @@
     <script src="/js2/select2.js"></script>
 
 
-    <%--    <script type="text/javascript">
-        function IncomeTaxDialog() {
-            // Open the file dialog using the hidden input field
-            document.getElementById('IncomeTax').click();
-        }
-
-        // This function is called when a file is selected for Income Tax
-        function IncomeTaxDialogName() {
-            var IncomeTax = document.getElementById('IncomeTax');
-            var selectedFileName = document.getElementById('<%= txtIncomeTax.ClientID %>');
-
-            if (IncomeTax.files.length > 0) {
-                // Update the TextBox value with the selected file name
-                selectedFileName.value = IncomeTax.files[0].name;
-            }
-        }
-
-        function idproofDialog() {
-            document.getElementById('idproof').click();
-        }
-
-        function idproofName() {
-            var fileInput = document.getElementById('idproof');
-            var selectedFileName = document.getElementById('txtidproof');
-
-            if (fileInput.files.length > 0) {
-                // Update the TextBox value with the selected file name
-                selectedFileName.value = fileInput.files[0].name;
-            }
-        }
-
-        function CalibrationDialog() {
-            // Open the file dialog using the hidden input field
-            document.getElementById('Calibration').click();
-        }
-
-        // This function is called when a file is selected
-        function CalibrationDialogName() {
-            var fileInput = document.getElementById('Calibration');
-            var selectedFileName = document.getElementById('txtCalibrationCertificate');
-
-            if (fileInput.files.length > 0) {
-                // Update the TextBox value with the selected file name
-                selectedFileName.value = fileInput.files[0].name;
-            }
-        }
-
-
-        function AnnexureDialog() {
-            // Open the file dialog using the hidden input field
-            document.getElementById('Annexure').click();
-        }
-
-        // This function is called when a file is selected
-        function AnnexureName() {
-            var fileInput = document.getElementById('Annexure');
-            var selectedFileName = document.getElementById('<%= txtAnnexure.ClientID %>');
-
-            if (fileInput.files.length > 0) {
-                // Update the TextBox value with the selected file name
-                selectedFileName.value = fileInput.files[0].name;
-            }
-        }
-
-        function ChallanDialog() {
-            document.getElementById('Challan').click();
-        }
-
-        function ChallanName() {
-            var fileInput = document.getElementById('Challan');
-            var seletedFileName = document.getElementById('<%= txtChallan.ClientID %>');
-            if (fileInput.files.length > 0) {
-                seletedFileName.value = fileInput.files[0].name;
-            }
-
-        }
-
-    </script>--%>
+   
     <script type="text/javascript">
         function previewImage(input, targetDivId) {
             const previewDiv = document.getElementById(targetDivId);
@@ -960,6 +892,24 @@
             }
         }
     </script>
+     <script type="text/javascript">
+         function validateDate() {
+             var ClnDate = document.getElementById('<%=txtdate.ClientID %>');
+
+             var today = new Date();
+             today.setHours(0, 0, 0, 0);
+
+             if (ClnDate.value) {
+                 var ChallanDate = new Date(ClnDate.value);
+                 if (ChallanDate > today) {
+                     alert('Challan Date cannot be a future date.');
+                     ClnDate.value = '';
+                     ClnDate.focus();
+                     return;
+                 }
+             }
+         }
+     </script>
 </body>
 </html>
 

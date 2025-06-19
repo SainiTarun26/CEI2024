@@ -1187,7 +1187,8 @@
                                                                                             <!-- Modal Header -->
                                                                                             <div class="modal-header">
                                                                                                 <h3 class="modal-title">Director Details</h3>
-                                                                                                <button type="button" class="btn-close" id="btnModalClose" aria-label="Close"></button>
+                                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
                                                                                             </div>
                                                                                             <!-- Modal body -->
                                                                                             <div class="modal-body">
@@ -1458,7 +1459,7 @@
                                                                         <label id="Labe20" runat="server" visible="true">
                                                                             Date of Issue<samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtLicenseIssue" placeholder="dd/mm/yyyy" runat="server" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtLicenseIssue" Onchange="validateDate()" placeholder="dd/mm/yyyy" runat="server" AutoPostBack="true"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtLicenseIssue"
                                                                             CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                     </div>
@@ -1486,7 +1487,7 @@
                                                                         <label>
                                                                             Date of Issue<samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtIssuedateOtherState" placeholder="dd/mm/yyyy" runat="server" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true" onchange="validateDates1()"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtIssuedateOtherState" Onchange="validateDate1()"  placeholder="dd/mm/yyyy" runat="server" AutoPostBack="true" > </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtIssuedateOtherState"
                                                                             CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                     </div>
@@ -1494,7 +1495,7 @@
                                                                         <label id="Label7" runat="server" visible="true">
                                                                             Date of License Expiry<samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtLicenseExpiry" placeholder="dd/mm/yyyy" runat="server" MaxLength="10" min='0000-01-01' max='9999-01-01' AutoPostBack="true" onchange="validateDates1()"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtLicenseExpiry" placeholder="dd/mm/yyyy" runat="server" AutoPostBack="true" onchange="validateDates1()"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtLicenseExpiry"
                                                                             CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                     </div>
@@ -2589,5 +2590,42 @@
             }
         }
 </script>
+
+       <script type="text/javascript">
+           function validateDate() {
+               var ClnDate = document.getElementById('<%=txtLicenseIssue.ClientID %>');
+
+               var today = new Date();
+               today.setHours(0, 0, 0, 0);
+
+               if (ClnDate.value) {
+                   var ChallanDate = new Date(ClnDate.value);
+                   if (ChallanDate > today) {
+                       alert('Issue Date cannot be a future date.');
+                       ClnDate.value = '';
+                       ClnDate.focus();
+                       return;
+                   }
+               }
+           }
+       </script>
+      <script type="text/javascript">
+          function validateDate1() {
+              var ClnDate = document.getElementById('<%=txtIssuedateOtherState.ClientID %>');
+
+              var today = new Date();
+              today.setHours(0, 0, 0, 0);
+
+              if (ClnDate.value) {
+                  var ChallanDate = new Date(ClnDate.value);
+                  if (ChallanDate > today) {
+                      alert('Issue Date cannot be a future date.');
+                      ClnDate.value = '';
+                      ClnDate.focus();
+                      return;
+                  }
+              }
+          }
+      </script>
 </body>
 </html>

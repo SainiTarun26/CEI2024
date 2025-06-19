@@ -600,6 +600,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.LinkButton lnkbtn_Delete13;
 
         /// <summary>
+        /// chkDeclaration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkDeclaration;
+
+        /// <summary>
         /// btnNext control.
         /// </summary>
         /// <remarks>
