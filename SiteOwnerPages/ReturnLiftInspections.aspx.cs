@@ -196,7 +196,7 @@ namespace CEIHaryana.SiteOwnerPages
 
             }
 
-                    
+
         }
             protected void Grd_Document_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -663,7 +663,8 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     if (date==""|| date ==null)
                     {
-                        date = "1899-09-09";
+                        throw new Exception("Please add transaction Date");
+                        //  date = "1899-09-09";
                     }
                         DataTable ds = new DataTable();
                         if (Session["TypeOfInspection"].ToString() == "New" && Session["ReturnedValue"].ToString() == "1")

@@ -12,12 +12,13 @@ namespace CEIHaryana.Print_Forms
 {
     public partial class Certificate_of_Competency : System.Web.UI.Page
     {
+        //page created By neeraj 19-June-2025
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                Session["Application_Id"] = "App-102";
+               // Session["Application_Id"] = "App-102";
                 if (Convert.ToString(Session["Application_Id"]) != null && Convert.ToString(Session["Application_Id"]) != string.Empty)
                 {
                     hdnApplicationId.Value = Session["Application_Id"].ToString();

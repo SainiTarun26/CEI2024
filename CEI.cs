@@ -7408,35 +7408,42 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
         //CreatedByNavneet 13-11-2024
         public void RejectMessagethroughEmail(string Email, string CcEmail, string Subject, string Message)
         {
-            MailMessage mailMessage = new MailMessage();
-
-            // Set the 'From' email address
-            mailMessage.From = new MailAddress("ceiharyana58@gmail.com");
-
-            // Set the 'To' recipient
-            mailMessage.To.Add(Email);
-
-            // Optionally, set the 'Cc' recipient
-            if (!string.IsNullOrEmpty(CcEmail))
+            try
             {
-                mailMessage.CC.Add(CcEmail);  // Add the CC recipient if provided
+                MailMessage mailMessage = new MailMessage();
+
+                // Set the 'From' email address
+                mailMessage.From = new MailAddress("ceiharyana58@gmail.com");
+
+                // Set the 'To' recipient
+                mailMessage.To.Add(Email);
+
+                // Optionally, set the 'Cc' recipient
+                if (!string.IsNullOrEmpty(CcEmail))
+                {
+                    mailMessage.CC.Add(CcEmail);  // Add the CC recipient if provided
+                }
+
+                // Set the email subject
+                mailMessage.Subject = Subject;
+
+                // Set the email body
+                string body = $"Dear Customer,\n\n{Message}";
+                mailMessage.Body = body;
+
+                // Set up the SMTP client
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+                smtpClient.Port = 587;
+                smtpClient.Credentials = new NetworkCredential("ceiharyana58@gmail.com", "hztpndeqdowygdim");
+                smtpClient.EnableSsl = true;
+
+                // Send the email
+                smtpClient.Send(mailMessage);
             }
+            catch
+            {
 
-            // Set the email subject
-            mailMessage.Subject = Subject;
-
-            // Set the email body
-            string body = $"Dear Customer,\n\n{Message}";
-            mailMessage.Body = body;
-
-            // Set up the SMTP client
-            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
-            smtpClient.Port = 587;
-            smtpClient.Credentials = new NetworkCredential("ceiharyana58@gmail.com", "hztpndeqdowygdim");
-            smtpClient.EnableSsl = true;
-
-            // Send the email
-            smtpClient.Send(mailMessage);
+            }
         }
 
         public DataSet GetEmails(string Id)
