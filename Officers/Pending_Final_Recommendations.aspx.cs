@@ -168,5 +168,12 @@ namespace CEIHaryana.Officers
             }
         }
 
+        protected void lnkFile_Click(object sender, EventArgs e)
+        {
+            Session["Application_Id"] = txtApplicationId.Text.Trim();
+            string script = "window.open('/Officers/Pending_Final_Recommendations_List.aspx', '_blank');";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "OpenDoc", script, true);
+        }
+
     }
 }

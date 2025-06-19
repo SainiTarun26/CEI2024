@@ -10,9 +10,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
-namespace CEIHaryana.Admin
+namespace CEIHaryana.Officers
 {
-    public partial class Pending_Licence_Approval_Cei : System.Web.UI.Page
+    public partial class Xen_LicenceFinal_DetailView : System.Web.UI.Page
     {
         //Page Created by aslam 18-June-2025
         CEI CEI = new CEI();
@@ -20,6 +20,7 @@ namespace CEIHaryana.Admin
         {
             try
             {
+
                 if (!IsPostBack)
                 {
                     if (!IsPostBack && Request.UrlReferrer != null)
@@ -27,7 +28,7 @@ namespace CEIHaryana.Admin
                         ViewState["PreviousPageUrl"] = Request.UrlReferrer.ToString();
                     }
 
-                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty && Convert.ToString(Session["Application_Id"]) != null && Convert.ToString(Session["Application_Id"]) != string.Empty)
+                    if (Convert.ToString(Session["StaffID"]) != null && Convert.ToString(Session["StaffID"]) != string.Empty && Convert.ToString(Session["Application_Id"]) != null && Convert.ToString(Session["Application_Id"]) != string.Empty)
                     {
                         hdn_Lic_ApplicationId.Value = Session["Application_Id"].ToString();
                         Session["Application_Id"] = null;
@@ -40,11 +41,12 @@ namespace CEIHaryana.Admin
                             BindApplicationLogDetails(var_Lic_ApplicationId);
                         }
 
+
                     }
                     else
                     {
-                        Session["AdminId"] = null;
-                        Response.Redirect("/AdminLogout.aspx", false);
+                        Session["StaffID"] = null;
+                        Response.Redirect("/OfficerLogout.aspx", false);
                     }
 
                 }
@@ -54,13 +56,14 @@ namespace CEIHaryana.Admin
                 string errorMessage = ex.ToString().Replace("'", "\\'");
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", $"alert('An unexpected error occurred: {errorMessage}');", true);
                 return;
+
             }
 
         }
 
         private void GetHeaderDetailsWithId(string licApplicationId)
         {
-            DataSet ds = CEI.Licence_Cei_Approval_GetHeaderDetails(licApplicationId);
+            DataSet ds = CEI.Licence_XenfinalRecommend_GetHeaderDetails(licApplicationId);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 DataRow row = ds.Tables[0].Rows[0];
@@ -103,61 +106,6 @@ namespace CEIHaryana.Admin
             }
         }
 
-        protected void btnSubmit_Click(object sender, EventArgs e)
-        {
-            if (Session["AdminId"].ToString() != null)
-            {
-                try
-                {
-                    string applicationId = txtApplicationId.Text.Trim();
-                    string remarks = TextBox1.Text.Trim();
-                    string actionTaken = ddlReview.SelectedValue;
-
-                    if (string.IsNullOrEmpty(applicationId))
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('Application ID is required.');", true);
-                        return;
-                    }
-                    if (actionTaken == "0")
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('Please select an action.');", true);
-                        return;
-                    }
-                    if (string.IsNullOrEmpty(remarks))
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('Please enter remarks.');", true);
-                        return;
-                    }
-
-                    int result = CEI.Insert_Licence_CeiApprovalRejection(applicationId, remarks, actionTaken, Session["AdminId"].ToString());
-
-                    if (result == 1)
-                    {
-                        string actionText = ddlReview.SelectedItem.Text;
-                        string message = $"Application {actionText} successfully.";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "successMessage", $"alert('{message}'); window.location='Pending_Licence_Approval_Cei_List.aspx';", true);
-                        return;
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "errorMessage", "alert('Failed to save . Please try again later.');", true);
-                        return;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "exceptionMessage", "alert('" + ex.Message.ToString() + "');", true);
-                    return;
-                }
-            }
-            else
-            {
-                Session["AdminId"] = null;
-                Response.Redirect("/AdminLogout.aspx");
-            }
-
-        }
-
         protected void btnBack_Click(object sender, EventArgs e)
         {
             if (ViewState["PreviousPageUrl"] != null)
@@ -169,7 +117,7 @@ namespace CEIHaryana.Admin
         protected void lnkFile_Click(object sender, EventArgs e)
         {
             Session["Application_Id"] = txtApplicationId.Text.Trim();
-            string script = "window.open('/Admin/Pending_Licence_Approval_Cei_List.aspx', '_blank');";
+            string script = "window.open('/Officers/Pending_Final_Recommendations_List.aspx', '_blank');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "OpenDoc", script, true);
         }
     }

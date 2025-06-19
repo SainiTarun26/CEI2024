@@ -7,9 +7,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace CEIHaryana.Admin
+namespace CEIHaryana.Officers
 {
-    public partial class Pending_Licence_Approval_Cei_List : System.Web.UI.Page
+    public partial class Approved_Final_Recommendations_List : System.Web.UI.Page
     {
         //Page Created by aslam 18-June-2025
         CEI CEI = new CEI();
@@ -20,22 +20,19 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
-                    if (Convert.ToString(Session["AdminId"]) != null || Convert.ToString(Session["AdminId"]) != string.Empty)
+                    if (Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty)
                     {
                         GridBind();
                     }
                     else
                     {
-                        Session["AdminId"] = null;
-                        Response.Redirect("/AdminLogout.aspx", false);
-                        return;
+
                     }
                 }
             }
             catch (Exception ex)
             {
-                Session["AdminId"] = null;
-                Response.Redirect("/AdminLogout.aspx", false);
+                Response.Redirect("/OfficerLogout.aspx");
             }
         }
         public void GridBind()
@@ -43,7 +40,7 @@ namespace CEIHaryana.Admin
             try
             {
                 DataSet ds = new DataSet();
-                ds = CEI.Licence_CEI_Pending_FinalRecommendationList();
+                ds = CEI.Licence_Xen_Recommended_FinalRecommendationList();
 
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
@@ -76,7 +73,7 @@ namespace CEIHaryana.Admin
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblApplicationId = (Label)row.FindControl("lblApplicationId");
                 Session["Application_Id"] = lblApplicationId.Text.ToString();
-                Response.Redirect("Pending_Licence_Approval_Cei.aspx", false);
+                Response.Redirect("Xen_LicenceFinal_DetailView.aspx", false);
                 return;
             }
             else

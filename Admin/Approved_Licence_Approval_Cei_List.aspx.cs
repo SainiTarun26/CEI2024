@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace CEIHaryana.Admin
 {
-    public partial class Pending_Licence_Approval_Cei_List : System.Web.UI.Page
+    public partial class Approved_Licence_Approval_Cei_List : System.Web.UI.Page
     {
         //Page Created by aslam 18-June-2025
         CEI CEI = new CEI();
@@ -29,6 +29,7 @@ namespace CEIHaryana.Admin
                         Session["AdminId"] = null;
                         Response.Redirect("/AdminLogout.aspx", false);
                         return;
+
                     }
                 }
             }
@@ -43,7 +44,7 @@ namespace CEIHaryana.Admin
             try
             {
                 DataSet ds = new DataSet();
-                ds = CEI.Licence_CEI_Pending_FinalRecommendationList();
+                ds = CEI.Licence_CEI_Approved_FinalRecommendationList();
 
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
@@ -70,19 +71,41 @@ namespace CEIHaryana.Admin
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "Select")
+            if (e.CommandName == "Select" || e.CommandName == "Print")
             {
                 Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblApplicationId = (Label)row.FindControl("lblApplicationId");
-                Session["Application_Id"] = lblApplicationId.Text.ToString();
-                Response.Redirect("Pending_Licence_Approval_Cei.aspx", false);
-                return;
-            }
-            else
-            {
+                Label lblgetCategory = (Label)row.FindControl("lblgetCategory");
 
+                string applicationId = lblApplicationId?.Text;
+                string category = lblgetCategory?.Text;
+
+                Session["Application_Id"] = applicationId;
+
+                if (e.CommandName == "Select")
+                {
+                    Response.Redirect("Licence_Approval_DetailsView_Cei.aspx", false);
+                    return;
+                }
+
+                if (e.CommandName == "Print")
+                {
+                    switch (category)
+                    {
+                        case "Contractor":
+                            Response.Redirect("/Print_Forms/Contractor_Licence_New_Certificate.aspx", false);
+                            break;
+                        case "Supervisor":
+                            Response.Redirect("/Print_Forms/Certificate_of_Competency.aspx", false);
+                            break;
+                        case "Wireman":
+                            Response.Redirect("/Print_Forms/Certificate_of_wireman_Permit.aspx", false);
+                            break;
+                    }
+                }
             }
         }
+
     }
 }

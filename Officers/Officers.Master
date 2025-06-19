@@ -475,8 +475,15 @@
                                 <a class="nav-link" href="/Officers/Pending_Final_Recommendations_List.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                    <span class="menu-title">Pending Final<br />
-             Recommendations
-  </span>
+                                     Recommendations
+                                 </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Officers/Approved_Final_Recommendations_List.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                   <span class="menu-title">Final RecommendedList
+                                 </span>
                                 </a>
                             </li>
                         </ul>

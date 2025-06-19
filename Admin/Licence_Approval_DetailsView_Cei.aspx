@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" AutoEventWireup="true" CodeBehind="Pending_Final_Recommendations.aspx.cs" Inherits="CEIHaryana.Officers.Pending_Final_Recommendations" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="Licence_Approval_DetailsView_Cei.aspx.cs" Inherits="CEIHaryana.Admin.Licence_Approval_DetailsView_Cei" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
@@ -299,7 +299,7 @@
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
             <div class="card-title" style="margin-top: -15px; margin-bottom: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
-                Pending Final Recommendations 
+                 Licence Details
 
             </div>
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
@@ -339,12 +339,11 @@
                         <asp:TextBox class="form-control" ID="txtRegistrationId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
 
-                    <div class="col-md-4">
+                     <div class="col-md-4">
                         <label>
                         </label>
                         <asp:LinkButton ID="LinkButton1" runat="server" AutoPostBack="true" OnClick="lnkFile_Click" Text="Registration Details" />
                     </div>
-
 
 
                     <asp:HiddenField ID="hdn_Lic_ApplicationId" runat="server" />
@@ -381,35 +380,11 @@
 
             <div class="row">
 
-                <div class="col-md-4" id="ApprovalRequired" runat="server" visible="true">
-                    <label>
-                        Action<samp style="color: red"> * </samp>
-                    </label>
-                    <asp:DropDownList class="form-control  select-form select2" runat="server" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;">
-                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                        <asp:ListItem Text="Recommend" Value="Recommend"></asp:ListItem>
-                        <asp:ListItem Text="NotRecommend" Value="NotRecommend"></asp:ListItem>
-                    </asp:DropDownList>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-
-                </div>
-
-                <div class="col-md-12" id="Div1" runat="server" visible="true">
-                    <label>
-                        Comments<samp style="color: red"> * </samp>
-                    </label>
-                    <asp:TextBox class="form-control" ID="TextBox1" autocomplete="off" TextMode="MultiLine" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="TextBox1" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                </div>
-
-
             </div>
             <div class="row" style="margin-top: 25px;">
                 <div class="col-md-4"></div>
                 <div class="col-md-4" style="text-align: center;">
-
-                    <asp:Button ID="btnSubmit" Text="Submit" ValidationGroup="Submit" runat="server" class="btn btn-primary mr-2" OnClientClick="return validateFileUpload();" OnClick="btnSubmit_Click" />
-                    <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="true" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+                    <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="true" class="btn btn-primary mr-2" OnClick="btnBack_Click"/>
                 </div>
             </div>
         </div>
@@ -429,50 +404,6 @@
             </div>
         </div>
     </div>
-
-
-    <%--   </ContentTemplate>
-            </asp:UpdatePanel>--%>
-
-
-    <script type="text/javascript">
-
-        function validateFileUpload() {
-
-            var ddlReview = document.getElementById('<%= ddlReview.ClientID %>');
-            var reviewValue = ddlReview.value;
-
-            var comments = document.getElementById('<%= TextBox1.ClientID %>').value.trim();
-
-            if (reviewValue === "0") {
-                alert('Please select an action.');
-                ddlReview.focus();
-                return false;
-            }
-
-
-            if (comments === '') {
-                alert('Please enter comments.');
-                document.getElementById('<%= TextBox1.ClientID %>').focus();
-                return false;
-            }
-
-
-            if (isSubmitting) {
-                return false;
-            }
-
-
-            if (Page_ClientValidate()) {
-                isSubmitting = true;
-                return true;
-            } else {
-                return false;
-            }
-        }
-        let isSubmitting = false;
-    </script>
-
 
 
 </asp:Content>

@@ -11955,6 +11955,16 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_PendingLicence_Verified_Applications");
         }
 
+        public DataSet Licence_CEI_Approved_FinalRecommendationList()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_ApprovedLicence_Cei_Applications_List");
+        }
+
+        public DataSet Licence_Xen_Recommended_FinalRecommendationList()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_Xen_LetterVerified_Applications_List");
+        }
+
 
         #endregion
     }

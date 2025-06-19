@@ -337,6 +337,15 @@
                         </label>
                         <asp:TextBox class="form-control" ID="txtRegistrationId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
+
+                     <div class="col-md-4">
+                        <label>
+                        </label>
+                        <asp:LinkButton ID="LinkButton1" runat="server" AutoPostBack="true" OnClick="lnkFile_Click" Text="Registration Details" />
+                    </div>
+
+
+
                     <asp:HiddenField ID="hdn_Lic_ApplicationId" runat="server" />
 
 

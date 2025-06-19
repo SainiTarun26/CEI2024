@@ -12,7 +12,7 @@ using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.Admin
 {
-    public partial class Pending_Licence_Approval_Cei : System.Web.UI.Page
+    public partial class Licence_Approval_DetailsView_Cei : System.Web.UI.Page
     {
         //Page Created by aslam 18-June-2025
         CEI CEI = new CEI();
@@ -103,61 +103,6 @@ namespace CEIHaryana.Admin
             }
         }
 
-        protected void btnSubmit_Click(object sender, EventArgs e)
-        {
-            if (Session["AdminId"].ToString() != null)
-            {
-                try
-                {
-                    string applicationId = txtApplicationId.Text.Trim();
-                    string remarks = TextBox1.Text.Trim();
-                    string actionTaken = ddlReview.SelectedValue;
-
-                    if (string.IsNullOrEmpty(applicationId))
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('Application ID is required.');", true);
-                        return;
-                    }
-                    if (actionTaken == "0")
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('Please select an action.');", true);
-                        return;
-                    }
-                    if (string.IsNullOrEmpty(remarks))
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('Please enter remarks.');", true);
-                        return;
-                    }
-
-                    int result = CEI.Insert_Licence_CeiApprovalRejection(applicationId, remarks, actionTaken, Session["AdminId"].ToString());
-
-                    if (result == 1)
-                    {
-                        string actionText = ddlReview.SelectedItem.Text;
-                        string message = $"Application {actionText} successfully.";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "successMessage", $"alert('{message}'); window.location='Pending_Licence_Approval_Cei_List.aspx';", true);
-                        return;
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "errorMessage", "alert('Failed to save . Please try again later.');", true);
-                        return;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "exceptionMessage", "alert('" + ex.Message.ToString() + "');", true);
-                    return;
-                }
-            }
-            else
-            {
-                Session["AdminId"] = null;
-                Response.Redirect("/AdminLogout.aspx");
-            }
-
-        }
-
         protected void btnBack_Click(object sender, EventArgs e)
         {
             if (ViewState["PreviousPageUrl"] != null)
@@ -169,8 +114,28 @@ namespace CEIHaryana.Admin
         protected void lnkFile_Click(object sender, EventArgs e)
         {
             Session["Application_Id"] = txtApplicationId.Text.Trim();
-            string script = "window.open('/Admin/Pending_Licence_Approval_Cei_List.aspx', '_blank');";
+
+            
+            string category = txtLicenceType.Text.Trim();
+            string url = "";
+
+            if (category.Equals("Wireman", StringComparison.OrdinalIgnoreCase))
+            {
+                url = "/Print_Forms/Certificate_of_wireman_Permit.aspx";
+            }
+            else if (category.Equals("Supervisor", StringComparison.OrdinalIgnoreCase))
+            {
+                url = "/Admin/Pending_Licence_Approval_Cei_List.aspx"; 
+            }
+            else if (category.Equals("Contractor", StringComparison.OrdinalIgnoreCase))
+            {
+                url = "/Print_Forms/Contractor_Licence_New_Certificate.aspx";
+            }
+
+            string script = $"window.open('{url}', '_blank');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "OpenDoc", script, true);
+
         }
+
     }
 }

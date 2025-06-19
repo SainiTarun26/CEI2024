@@ -231,6 +231,7 @@
     <Content Include="Admin\AdminDashboard.aspx" />
     <Content Include="Admin\AdminMaster.aspx" />
     <Content Include="Admin\AllTestReports.aspx" />
+    <Content Include="Admin\Approved_Licence_Approval_Cei_List.aspx" />
     <Content Include="Admin\CESE_Registration.aspx" />
     <Content Include="Admin\ChangeStaff.aspx" />
     <Content Include="Admin\CinemaInspectionDetails.aspx" />
@@ -246,6 +247,7 @@
     <Content Include="Admin\IntimationForHistory.aspx" />
     <Content Include="Admin\IntimationHistoryForAdmin.aspx" />
     <Content Include="Admin\Investigation_of_Electrical_Accidents_officer_Admin.aspx" />
+    <Content Include="Admin\Licence_Approval_DetailsView_Cei.aspx" />
     <Content Include="Admin\LiftApprovalData.aspx" />
     <Content Include="Admin\LiftEscalatorData.aspx" />
     <Content Include="Admin\LiftInspectionDetails.aspx" />
@@ -1968,6 +1970,7 @@
     <Content Include="Officers\ActionForCinemaVideo_Talkies.aspx" />
     <Content Include="Officers\ActionOnSelfCertification.aspx" />
     <Content Include="Officers\ActionTakenInspections.aspx" />
+    <Content Include="Officers\Approved_Final_Recommendations_List.aspx" />
     <Content Include="Officers\ConsolidatedReport.aspx" />
     <Content Include="Officers\DisconnectionNotice.aspx" />
     <Content Include="Officers\DisConnectionNoticeView.aspx" />
@@ -2004,6 +2007,7 @@
     <Content Include="Officers\Self_CertificationStatus.aspx" />
     <Content Include="Officers\TotalRequest.aspx" />
     <Content Include="Officers\TotalRequestInspectionForOfficer_SearchWithCafId.aspx" />
+    <Content Include="Officers\Xen_LicenceFinal_DetailView.aspx" />
     <Content Include="OTPVerification.aspx" />
     <Content Include="OurOnlineServices.aspx" />
     <Content Include="PaymentPage.aspx" />
@@ -2304,6 +2308,13 @@
     <Compile Include="Admin\AllTestReports.aspx.designer.cs">
       <DependentUpon>AllTestReports.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Approved_Licence_Approval_Cei_List.aspx.cs">
+      <DependentUpon>Approved_Licence_Approval_Cei_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Approved_Licence_Approval_Cei_List.aspx.designer.cs">
+      <DependentUpon>Approved_Licence_Approval_Cei_List.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\CESE_Registration.aspx.cs">
       <DependentUpon>CESE_Registration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2408,6 +2419,13 @@
     </Compile>
     <Compile Include="Admin\Investigation_of_Electrical_Accidents_officer_Admin.aspx.designer.cs">
       <DependentUpon>Investigation_of_Electrical_Accidents_officer_Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Licence_Approval_DetailsView_Cei.aspx.cs">
+      <DependentUpon>Licence_Approval_DetailsView_Cei.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Licence_Approval_DetailsView_Cei.aspx.designer.cs">
+      <DependentUpon>Licence_Approval_DetailsView_Cei.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\LiftApprovalData.aspx.cs">
       <DependentUpon>LiftApprovalData.aspx</DependentUpon>
@@ -3322,6 +3340,13 @@
     <Compile Include="Officers\ActionTakenInspections.aspx.designer.cs">
       <DependentUpon>ActionTakenInspections.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Officers\Approved_Final_Recommendations_List.aspx.cs">
+      <DependentUpon>Approved_Final_Recommendations_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\Approved_Final_Recommendations_List.aspx.designer.cs">
+      <DependentUpon>Approved_Final_Recommendations_List.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Officers\ConsolidatedReport.aspx.cs">
       <DependentUpon>ConsolidatedReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3580,6 +3605,13 @@
     </Compile>
     <Compile Include="Officers\TotalRequestInspectionForOfficer_SearchWithCafId.aspx.designer.cs">
       <DependentUpon>TotalRequestInspectionForOfficer_SearchWithCafId.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\Xen_LicenceFinal_DetailView.aspx.cs">
+      <DependentUpon>Xen_LicenceFinal_DetailView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\Xen_LicenceFinal_DetailView.aspx.designer.cs">
+      <DependentUpon>Xen_LicenceFinal_DetailView.aspx</DependentUpon>
     </Compile>
     <Compile Include="OTPVerification.aspx.cs">
       <DependentUpon>OTPVerification.aspx</DependentUpon>
