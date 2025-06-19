@@ -11109,9 +11109,9 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetdataforXenletter", registrationId);
         }
-        public DataTable GetPendingPhysicalVerification_Gridview()
+        public DataTable GetPendingPhysicalVerification_Gridview(string UserId)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPendingPhysicalVerification_Gridview");
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPendingPhysicalVerification_Gridview", UserId);
         }
         public void AddXenVerifiedLetter(string registrationId, string userid, string XenVerifiedLetterPath)
         {

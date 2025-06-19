@@ -23,7 +23,7 @@ namespace CEIHaryana.Officers
                     if (Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty)
                     {
 
-                        GridBind();
+                        GridBind(LoginID);
                     }
                     else
                     {
@@ -36,11 +36,11 @@ namespace CEIHaryana.Officers
                 Response.Redirect("/OfficerLogout.aspx");
             }
         }
-        public void GridBind()
+        public void GridBind(string LoginID)
         {
 
             DataTable ds = new DataTable();
-            ds = CEI.GetPendingPhysicalVerification_Gridview();
+            ds = CEI.GetPendingPhysicalVerification_Gridview(LoginID);
             if (ds.Rows.Count > 0 && ds != null)
             {
                 GridView1.DataSource = ds;

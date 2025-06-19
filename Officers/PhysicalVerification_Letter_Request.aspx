@@ -367,7 +367,7 @@
                       <asp:GridView ID="GridView1" CssClass="table table-responsive table-bordered table-striped" runat="server" AutoGenerateColumns="False" EmptyDataText="No data to display.">
                             <Columns>
                                 <asp:BoundField DataField="ActionTakenBy" HeaderText="Action Taken By" />
-                                <asp:BoundField DataField="ActionTaken" HeaderText="Action Taken" />
+                                <asp:BoundField DataField="ApplicationStatus" HeaderText="Action Taken" />
                                 <asp:BoundField DataField="remarks" HeaderText="Remarks" />
 
                             
