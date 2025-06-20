@@ -910,18 +910,17 @@
                                         <div class="card"
                                             style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important;">
                                             <div class="card-body">
-                                               
-                                             <div class="row">
-                                                 <div class="col-md-12" style="text-align: center; font-size: 22px; font-weight: 800;">
-                                                      <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                                                 </div>
-                                             </div>
+                                                <div class="row">
+                                                    <div class="col-md-12" style="text-align: center; font-size: 22px; font-weight: 800;">
+                                                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                                                    </div>
+                                                </div>
                                                 <br />
-                                                 <div class="row">
-     <div class="col-md-12">
-         <h4 class="card-title">Qualification Detail</h4>
-     </div>
- </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <h4 class="card-title">Qualification Detail</h4>
+                                                    </div>
+                                                </div>
                                                 <div class="row">
                                                     <div class="table-responsive">
                                                         <table class="table table-bordered">
@@ -1183,11 +1182,11 @@
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator44" runat="server" ControlToValidate="txtIssuingAuthority" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter IssuingAuthority">Please Enter IssuingAuthority</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" type="date" min='0000-01-01' max='9999-01-01' autocomplete="off" TabIndex="29" ID="txtIssuingDate" runat="server" onchange="validateDates()"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" type="date" autocomplete="off" TabIndex="29" ID="txtIssuingDate" runat="server" onchange="validateDates()"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator45" runat="server" ControlToValidate="txtIssuingDate" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Select Issuing Date">Please Select Issuing Date</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" type="date" min='0000-01-01' max='9999-01-01' autocomplete="off" ID="txtExpiryDate" runat="server" TabIndex="30" onchange="validateDates()"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtExpiryDate" runat="server" TabIndex="30" onchange="validateDates()"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator46" runat="server" ControlToValidate="txtExpiryDate" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Select Expiry Date">Please Select Expiry Date</asp:RequiredFieldValidator>
                                                                         <asp:CompareValidator ID="cmpDate" runat="server" ControlToCompare="txtIssuingDate" ControlToValidate="txtExpiryDate" Operator="GreaterThanEqual"
                                                                             ErrorMessage="Expiry Date must be greater than Issue Date" Display="Dynamic" ForeColor="Red" />
@@ -1204,13 +1203,13 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <asp:RadioButtonList ID="RadioButtonList3" runat="server" AutoPostBack="true" RepeatDirection="Horizontal" TabIndex="31" OnSelectedIndexChanged="RadioButtonList3_SelectedIndexChanged">
-                                                            <asp:ListItem Text="Yes" Value="0"></asp:ListItem>
-                                                            <asp:ListItem Text="No" Value="1" Selected="True"></asp:ListItem>
+                                                            <asp:ListItem Text="Yes" Value="0" Selected="True"></asp:ListItem>
+                                                            <asp:ListItem Text="No" Value="1"></asp:ListItem>
                                                         </asp:RadioButtonList>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator47" runat="server" InitialValue="" ControlToValidate="RadioButtonList3" ForeColor="Red" ValidationGroup="Submit" Display="Dynamic" ErrorMessage="Please Choose Yes Or No">Please Choose Yes Or No</asp:RequiredFieldValidator>
                                                     </div>
                                                 </div>
-                                                <div class="row" id="PermanentEmployee" runat="server" visible="false">
+                                                <div class="row" id="PermanentEmployee" runat="server" visible="true">
                                                     <div class="table-responsive">
                                                         <table class="table table-bordered">
                                                             <thead>
@@ -1235,11 +1234,11 @@
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator49" runat="server" ControlToValidate="txtPermanentDescription" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter Employer Name">Please Enter Employer Name</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtPermanentFrom" TabIndex="34" runat="server" onchange="validateDates1()"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" ID="txtPermanentFrom" TabIndex="34" runat="server" onchange="validateDates1()"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator50" runat="server" ControlToValidate="txtPermanentFrom" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter From Date">Please Enter From Date</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtPermanentTo" TabIndex="35" runat="server" onchange="validateDates1()"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" ID="txtPermanentTo" TabIndex="35" runat="server" onchange="validateDates1()"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator51" runat="server" ControlToValidate="txtPermanentTo" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Please Enter TO Date">Please Enter TO Date</asp:RequiredFieldValidator>
                                                                         <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtPermanentFrom" ControlToValidate="txtPermanentTo" Operator="GreaterThan"
                                                                             ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
@@ -1297,15 +1296,15 @@
                                                                             ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" OnTextChanged="txtTo1_TextChanged" type="date" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="dateexperincefrom" onchange="validateDates12()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox ID="dateexperincefrom"  class="form-control" autocomplete="off" OnTextChanged="txtTo1_TextChanged" type="date" AutoPostBack="true" onchange="validateExperienceDate1()" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator89" runat="server" ControlToValidate="dateexperincefrom"
                                                                             ErrorMessage="Please Add From Date" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="dateexpericeto" OnTextChanged="txtTo1_TextChanged" onchange="validateDates12()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox ID="dateexpericeto" class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" onchange="validateExperienceDate1()" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator91" runat="server" ControlToValidate="dateexpericeto"
                                                                             ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
-                                                                        <asp:CompareValidator ID="CompareValidator12" runat="server" ControlToCompare="txtExperienceFrom" ControlToValidate="txtExperienceTo" Operator="GreaterThan"
+                                                                        <asp:CompareValidator ID="CompareValidator12" runat="server" ControlToCompare="dateexperincefrom" ControlToValidate="dateexpericeto" Operator="GreaterThan"
                                                                             ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
 
                                                                     </td>
@@ -1341,17 +1340,16 @@
                                                                             ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" OnTextChanged="txtTo1_TextChanged" type="date" min='0000-01-01' max='9999-01-01' AutoPostBack="true" ID="txtExperienceFrom" TabIndex="40" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox ID="txtExperienceFrom" class="form-control" autocomplete="off" OnTextChanged="txtTo1_TextChanged" type="date" AutoPostBack="true" TabIndex="40" onchange="validateExperienceDate2()" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtExperienceFrom"
                                                                             ErrorMessage="Please Add From Date" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo" TabIndex="41" OnTextChanged="txtTo1_TextChanged" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox ID="txtExperienceTo" class="form-control" autocomplete="off" type="date" AutoPostBack="true" TabIndex="41" OnTextChanged="txtTo1_TextChanged" onchange="validateExperienceDate2()" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtExperienceTo"
                                                                             ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
                                                                         <asp:CompareValidator ID="CompareValidator2" runat="server" ControlToCompare="txtExperienceFrom" ControlToValidate="txtExperienceTo" Operator="GreaterThan"
                                                                             ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
-
                                                                     </td>
                                                                 </tr>
                                                                 <tr id="Experience1" runat="server" visible="false">
@@ -1361,7 +1359,6 @@
                                                                             <asp:ListItem Text="Erection" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Operation" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Maintenance of Electrical Installation" Value="3"></asp:ListItem>
-
                                                                         </asp:DropDownList>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator54" runat="server" ControlToValidate="ddlExperience1" InitialValue="0" ForeColor="Red"
                                                                             ValidationGroup="Submit" Display="Dynamic" ErrorMessage="Please Select Experience1">Please Select Experience1</asp:RequiredFieldValidator>
@@ -1386,12 +1383,12 @@
                                                                             ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" OnTextChanged="txtTo1_TextChanged" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom1" TabIndex="46" onchange="validateDates3()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox ID="txtExperienceFrom1" class="form-control" autocomplete="off" OnTextChanged="txtTo1_TextChanged" type="date" TabIndex="46" onchange="validateExperienceDate3()" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtExperienceFrom1"
                                                                             ErrorMessage="Please Add From Date" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" AutoPostBack="true" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo1" OnTextChanged="txtTo1_TextChanged" TabIndex="47" onchange="validateDates3()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox ID="txtExperienceTo1" class="form-control" AutoPostBack="true" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" TabIndex="47" onchange="validateExperienceDate3()" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtExperienceTo1"
                                                                             ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
                                                                         <asp:CompareValidator ID="CompareValidator3" runat="server" ControlToCompare="txtExperienceFrom1" ControlToValidate="txtExperienceTo1" Operator="GreaterThan"
@@ -1430,12 +1427,12 @@
                                                                             ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" OnTextChanged="txtTo1_TextChanged" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom2" TabIndex="51" onchange="validateDates4()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox ID="txtExperienceFrom2" class="form-control" autocomplete="off" OnTextChanged="txtTo1_TextChanged" type="date" TabIndex="51" onchange="validateExperienceDate4()" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtExperienceFrom2"
                                                                             ErrorMessage="Please Add From Date" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo2" TabIndex="52" onchange="validateDates4()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox ID="txtExperienceTo2" class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" TabIndex="52" onchange="validateExperienceDate4" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtExperienceTo2"
                                                                             ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
                                                                         <asp:CompareValidator ID="CompareValidator4" runat="server" ControlToCompare="txtExperienceFrom2" ControlToValidate="txtExperienceTo2" Operator="GreaterThan"
@@ -1474,12 +1471,12 @@
                                                                             ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom3" TabIndex="57" onchange="validateDates5()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox  ID="txtExperienceFrom3" class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" TabIndex="57" onchange="validateExperienceDate5()" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator183" runat="server" ControlToValidate="txtExperienceFrom3"
                                                                             ErrorMessage="Please Add From Date" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" AutoPostBack="true" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo3" OnTextChanged="txtTo1_TextChanged" TabIndex="58" onchange="validateDates5()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox ID="txtExperienceTo3" class="form-control" AutoPostBack="true" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" TabIndex="58" onchange="validateExperienceDate5()" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator193" runat="server" ControlToValidate="txtExperienceTo3"
                                                                             ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
                                                                         <asp:CompareValidator ID="CompareValidator5" runat="server" ControlToCompare="txtExperienceFrom3" ControlToValidate="txtExperienceTo3" Operator="GreaterThan"
@@ -1493,7 +1490,6 @@
                                                                             <asp:ListItem Text="Erection" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Operation" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Maintenance of Electrical Installation" Value="3"></asp:ListItem>
-
                                                                         </asp:DropDownList>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator60" runat="server" ControlToValidate="ddlExperience4" InitialValue="0" ForeColor="Red"
                                                                             ValidationGroup="Submit" Display="Dynamic" ErrorMessage="Please Select Experience4 "></asp:RequiredFieldValidator>
@@ -1518,12 +1514,12 @@
                                                                             ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom4" TabIndex="63" onchange="validateDates6()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox ID="txtExperienceFrom4" class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" TabIndex="63" onchange="validateExperienceDate6()" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator224" runat="server" ControlToValidate="txtExperienceFrom4"
                                                                             ErrorMessage="Please Add Experience Date" ValidationGroup="Submit" ForeColor="Red">Please Add Experience Date</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo4" TabIndex="64" onchange="validateDates6()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox ID="txtExperienceTo4" class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" TabIndex="64" onchange="validateExperienceDate6()" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator234" runat="server" ControlToValidate="txtExperienceTo4"
                                                                             ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>
                                                                         <asp:CompareValidator ID="CompareValidator6" runat="server" ControlToCompare="txtExperienceFrom4" ControlToValidate="txtExperienceTo4" Operator="GreaterThan"
@@ -1563,12 +1559,12 @@
                                                                             ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom5" TabIndex="69" onchange="validateDates7()" runat="server" AutoPostBack="true"> </asp:TextBox>
+                                                                        <asp:TextBox ID="txtExperienceFrom5" class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" TabIndex="69" onchange="validateExperienceDate7()" runat="server" AutoPostBack="true"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator59" runat="server" ControlToValidate="txtExperienceFrom5"
                                                                             ErrorMessage="Please Add Experience Date" ValidationGroup="Submit" ForeColor="Red">Please Add Experience Date</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo5" TabIndex="70" onchange="validateDates7()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox ID="txtExperienceTo5" class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" TabIndex="70" onchange="validateExperienceDate7()" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator61" runat="server" ControlToValidate="txtExperienceTo5"
                                                                             ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>
                                                                         <asp:CompareValidator ID="CompareValidator7" runat="server" ControlToCompare="txtExperienceFrom5" ControlToValidate="txtExperienceTo5" Operator="GreaterThan"
@@ -1607,12 +1603,12 @@
                                                                             ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom6" TabIndex="75" onchange="validateDates8()" runat="server" AutoPostBack="true"> </asp:TextBox>
+                                                                        <asp:TextBox ID="txtExperienceFrom6" class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" TabIndex="75" onchange="validateExperienceDate8()" runat="server" AutoPostBack="true"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator70" runat="server" ControlToValidate="txtExperienceFrom6"
                                                                             ErrorMessage="Please Add Experience Date" ValidationGroup="Submit" ForeColor="Red">Please Add Experience Date</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo6" TabIndex="76" onchange="validateDates8()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox ID="txtExperienceTo6" class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" TabIndex="76" onchange="validateExperienceDate8()" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator71" runat="server" ControlToValidate="txtExperienceTo6"
                                                                             ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>
                                                                         <asp:CompareValidator ID="CompareValidator8" runat="server" ControlToCompare="txtExperienceFrom6" ControlToValidate="txtExperienceTo6" Operator="GreaterThan"
@@ -1652,12 +1648,12 @@
                                                                             ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom7" TabIndex="81" onchange="validateDates9()" runat="server" AutoPostBack="true"> </asp:TextBox>
+                                                                        <asp:TextBox ID="txtExperienceFrom7" class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged"  TabIndex="81" onchange="validateExperienceDate9()" runat="server" AutoPostBack="true"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator75" runat="server" ControlToValidate="txtExperienceFrom7"
                                                                             ErrorMessage="Please Add Experience Date" ValidationGroup="Submit" ForeColor="Red">Please Add Experience Date</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo7" TabIndex="82" onchange="validateDates9()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox ID="txtExperienceTo7" class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" TabIndex="82" onchange="validateExperienceDate9()" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator76" runat="server" ControlToValidate="txtExperienceTo7"
                                                                             ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>
                                                                         <asp:CompareValidator ID="CompareValidator9" runat="server" ControlToCompare="txtExperienceFrom7" ControlToValidate="txtExperienceTo7" Operator="GreaterThan"
@@ -1697,12 +1693,12 @@
                                                                             ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom8" TabIndex="87" onchange="validateDates10()" runat="server" AutoPostBack="true"> </asp:TextBox>
+                                                                        <asp:TextBox  ID="txtExperienceFrom8" class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" TabIndex="87" onchange="validateExperienceDate10()" runat="server" AutoPostBack="true"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator79" runat="server" ControlToValidate="txtExperienceFrom8"
                                                                             ErrorMessage="Please Add Experience Date" ValidationGroup="Submit" ForeColor="Red">Please Add Experience Date</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo8" TabIndex="88" onchange="validateDates10()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox  ID="txtExperienceTo8" OnTextChanged="txtTo1_TextChanged" class="form-control" autocomplete="off" type="date" AutoPostBack="true"  onchange="validateExperienceDate10()" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator81" runat="server" ControlToValidate="txtExperienceTo8"
                                                                             ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>
                                                                         <asp:CompareValidator ID="CompareValidator10" runat="server" ControlToCompare="txtExperienceFrom8" ControlToValidate="txtExperienceTo8" Operator="GreaterThan"
@@ -1742,12 +1738,12 @@
                                                                             ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom9" TabIndex="93" onchange="validateDates11()" runat="server" AutoPostBack="true"> </asp:TextBox>
+                                                                        <asp:TextBox ID="txtExperienceFrom9" class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" onchange="validateExperienceDate11()" runat="server" AutoPostBack="true"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator84" runat="server" ControlToValidate="txtExperienceFrom9"
                                                                             ErrorMessage="Please Add Experience Date" ValidationGroup="Submit" ForeColor="Red">Please Add Experience Date</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo9" TabIndex="94" onchange="validateDates11()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox ID="txtExperienceTo9"  class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" onchange="validateExperienceDate11()" runat="server" AutoPostBack="true"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator85" runat="server" ControlToValidate="txtExperienceTo9"
                                                                             ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>
                                                                         <asp:CompareValidator ID="CompareValidator11" runat="server" ControlToCompare="txtExperienceFrom9" ControlToValidate="txtExperienceTo9" Operator="GreaterThan"
@@ -1810,12 +1806,12 @@
                                                                             ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add Description</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtFrom2" onchange="validateDates13()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" ID="txtFrom2" onchange="validateRetiredDates()" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator65" runat="server" ControlToValidate="txtFrom2"
                                                                             ErrorMessage="Please Enter Your Name" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
                                                                     </td>
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" min='0000-01-01' max='9999-01-01' ID="txtTo2" onchange="validateDates13()" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" autocomplete="off" type="date" ID="txtTo2" onchange="validateRetiredDates()" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator66" runat="server" ControlToValidate="txtTo2"
                                                                             ErrorMessage="Please Enter Your " ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
                                                                     </td>
@@ -1913,252 +1909,599 @@
             </script>
             <script type="text/javascript">
                 function validateDates() {
-                    var issuingDate = document.getElementById('<%=txtIssuingDate.ClientID %>').value;
-                    var expiryDate = document.getElementById('<%=txtExpiryDate.ClientID %>').value;
+                    var issuingDateInput = document.getElementById('<%=txtIssuingDate.ClientID %>');
+                    var expiryDateInput = document.getElementById('<%=txtExpiryDate.ClientID %>');
 
-                    if (new Date(issuingDate) > new Date(expiryDate)) {
-                        alert('Expiry Date should be greater than Issuing Date');
-                        document.getElementById('<%=txtExpiryDate.ClientID %>').value = '';
+                    var issuingDate = issuingDateInput.value;
+                    var expiryDate = expiryDateInput.value;
+
+                    var today = new Date();
+                    today.setHours(0, 0, 0, 0); // remove time part
+
+                    // Validate issuing date is not in the future
+                    if (issuingDate) {
+                        var issue = new Date(issuingDate);
+                        if (issue > today) {
+                            alert('Issuing Date cannot be a future date.');
+                            issuingDateInput.value = '';
+                            issuingDateInput.focus();
+                            return;
+                        }
+                    }
+
+                    // Validate expiry >= issuing
+                    if (issuingDate && expiryDate) {
+                        var issue = new Date(issuingDate);
+                        var expire = new Date(expiryDate);
+
+                        if (issue > expire) {
+                            alert('Expiry Date should be greater than or equal to Issuing Date.');
+                            expiryDateInput.value = '';
+                            expiryDateInput.focus();
+                        }
                     }
                 }
             </script>
+
             <script type="text/javascript">
                 function validateDates1() {
-                    var fromDate = document.getElementById('<%=txtPermanentFrom.ClientID %>').value;
+
+
+                    var from = document.getElementById('<%=txtPermanentFrom.ClientID %>');
+                    var to = document.getElementById('<%=txtPermanentTo.ClientID %>');
+                    var today = new Date();
+                    today.setHours(0, 0, 0, 0);
+
+                    if (from.value) {
+                        var fromDate = new Date(from.value);
+                        if (fromDate > today) {
+                            alert('From Date cannot be a future date.');
+                            from.value = '';
+                            from.focus();
+                            return;
+                        }
+                    }
+
+                    if (from.value && to.value) {
+                        var fromDate = new Date(from.value);
+                        var toDate = new Date(to.value);
+                        if (fromDate > toDate) {
+                            alert('To Date should be greater than or equal to From Date.');
+                            to.value = '';
+                            to.focus();
+                            return;
+                        }
+                        if (toDate > today) {
+                            alert('To Date cannot be a future date.');
+                            to.value = '';
+                            to.focus();
+                            return;
+                        }
+                    }
+                   <%-- var fromDate = document.getElementById('<%=txtPermanentFrom.ClientID %>').value;
                     var ToDate = document.getElementById('<%=txtPermanentTo.ClientID %>').value;
 
                     if (new Date(fromDate) > new Date(ToDate)) {
                         alert('To Date should be greater than From Date');
                         document.getElementById('<%=txtPermanentTo.ClientID %>').value = '';
+                    }--%>
+                }
+            </script>
+
+            
+
+            <script type="text/javascript">
+                function validateExperienceDate1() {
+                    var from = document.getElementById('<%=dateexperincefrom.ClientID %>');
+                    var to = document.getElementById('<%=dateexpericeto.ClientID %>');
+                    var today = new Date();
+                    today.setHours(0, 0, 0, 0);
+
+                    if (from.value) {
+                        var fromDate = new Date(from.value);
+                        if (fromDate > today) {
+                            alert('From Date cannot be a future date.');
+                            from.value = '';
+                            from.focus();
+                            return;
+                        }
+                    }
+
+                    if (from.value && to.value) {
+                        var fromDate = new Date(from.value);
+                        var toDate = new Date(to.value);
+                        if (fromDate > toDate) {
+                            alert('To Date should be greater than or equal to From Date.');
+                            to.value = '';
+                            to.focus();
+                            return;
+                        }
+                        if (toDate > today) {
+                            alert('To Date cannot be a future date.');
+                            to.value = '';
+                            to.focus();
+                            return;
+                        }
+                       
+                    }
+
+                    if (to.value) {
+                        var toDate = new Date(to.value);
+                        if (toDate > today) {
+                            alert('To Date cannot be a future date.');
+                            from.value = '';
+                            from.focus();
+                            return;
+                        }
                     }
                 }
             </script>
             <script type="text/javascript">
-                function validateDates12() {
-                    var ExpfromDate = document.getElementById('<%=dateexperincefrom.ClientID %>').value;
-                    var ExpToDate = document.getElementById('<%=dateexpericeto.ClientID %>').value;
+                function validateExperienceDate2() {
+                    var from = document.getElementById('<%=txtExperienceFrom.ClientID %>');
+                      var to = document.getElementById('<%=txtExperienceTo.ClientID %>');
+                      var today = new Date();
+                      today.setHours(0, 0, 0, 0);
 
-                    var today = new Date();
+                      if (from.value) {
+                          var fromDate = new Date(from.value);
+                          if (fromDate > today) {
+                              alert('From Date cannot be a future date.');
+                              from.value = '';
+                              from.focus();
+                              return;
+                          }
+                      }
 
+                      if (from.value && to.value) {
+                          var fromDate = new Date(from.value);
+                          var toDate = new Date(to.value);
+                          if (fromDate > toDate) {
+                              alert('To Date should be greater than or equal to From Date.');
+                              to.value = '';
+                              to.focus();
+                              return;
+                          }
+                          if (toDate > today) {
+                              alert('To Date cannot be a future date.');
+                              to.value = '';
+                              to.focus();
+                              return;
+                          }
 
-                    today.setHours(0, 0, 0, 0);
+                      }
 
-                    if (new Date(ExpfromDate).setHours(0, 0, 0, 0) > new Date(ExpToDate)) {
-                        alert('To Date should be greater than From Date');
-                        document.getElementById('<%=txtExperienceTo.ClientID %>').value = '';
-                    }
-
-                    if (new Date(ExpToDate) > today) {
-                        alert('To Date cannot be a future date');
-                        document.getElementById('<%=dateexpericeto.ClientID %>').value = '';
-                        return false;
-                    }
-                }
+                      if (to.value) {
+                          var toDate = new Date(to.value);
+                          if (toDate > today) {
+                              alert('To Date cannot be a future date.');
+                              from.value = '';
+                              from.focus();
+                              return;
+                          }
+                      }
+                  }
             </script>
             <script type="text/javascript">
-                function validateDates2() {
-                    var ExpfromDate = document.getElementById('<%=txtExperienceFrom.ClientID %>').value;
-                    var ExpToDate = document.getElementById('<%=txtExperienceTo.ClientID %>').value;
+                function validateExperienceDate3() {
+                    var from = document.getElementById('<%=txtExperienceFrom1.ClientID %>');
+                     var to = document.getElementById('<%=txtExperienceTo1.ClientID %>');
+                     var today = new Date();
+                     today.setHours(0, 0, 0, 0);
 
-                    var today = new Date();
+                     if (from.value) {
+                         var fromDate = new Date(from.value);
+                         if (fromDate > today) {
+                             alert('From Date cannot be a future date.');
+                             from.value = '';
+                             from.focus();
+                             return;
+                         }
+                     }
 
-                    today.setHours(0, 0, 0, 0);
+                     if (from.value && to.value) {
+                         var fromDate = new Date(from.value);
+                         var toDate = new Date(to.value);
+                         if (fromDate > toDate) {
+                             alert('To Date should be greater than or equal to From Date.');
+                             to.value = '';
+                             to.focus();
+                             return;
+                         }
+                         if (toDate > today) {
+                             alert('To Date cannot be a future date.');
+                             to.value = '';
+                             to.focus();
+                             return;
+                         }
 
-                    if (new Date(ExpfromDate) > new Date(ExpToDate)) {
-                        alert('To Date should be greater than From Date');
-                        document.getElementById('<%=txtExperienceTo.ClientID %>').value = '';
-                    }
-                    if (new Date(ExpToDate).setHours(0, 0, 0, 0) > today) {
-                        alert('To Date cannot be a future date');
-                        document.getElementById('<%=txtExperienceTo.ClientID %>').value = '';
-                        return false;
-                    }
-                }
+                     }
+
+                     if (to.value) {
+                         var toDate = new Date(to.value);
+                         if (toDate > today) {
+                             alert('To Date cannot be a future date.');
+                             from.value = '';
+                             from.focus();
+                             return;
+                         }
+                     }
+                 }
             </script>
             <script type="text/javascript">
-                function validateDates3() {
-                    var ExpfromDate1 = document.getElementById('<%=txtExperienceFrom1.ClientID %>').value;
-                    var ExpToDate1 = document.getElementById('<%=txtExperienceTo1.ClientID %>').value;
-                    var today = new Date();
+                function validateExperienceDate4() {
+                    var from = document.getElementById('<%=txtExperienceFrom2.ClientID %>');
+                     var to = document.getElementById('<%=txtExperienceTo2.ClientID %>');
+                     var today = new Date();
+                     today.setHours(0, 0, 0, 0);
 
+                     if (from.value) {
+                         var fromDate = new Date(from.value);
+                         if (fromDate > today) {
+                             alert('From Date cannot be a future date.');
+                             from.value = '';
+                             from.focus();
+                             return;
+                         }
+                     }
 
-                    today.setHours(0, 0, 0, 0);
+                     if (from.value && to.value) {
+                         var fromDate = new Date(from.value);
+                         var toDate = new Date(to.value);
+                         if (fromDate > toDate) {
+                             alert('To Date should be greater than or equal to From Date.');
+                             to.value = '';
+                             to.focus();
+                             return;
+                         }
+                         if (toDate > today) {
+                             alert('To Date cannot be a future date.');
+                             to.value = '';
+                             to.focus();
+                             return;
+                         }
 
-                    if (new Date(ExpfromDate1).setHours(0, 0, 0, 0) > new Date(ExpToDate1)) {
-                        alert('To Date should be greater than From Date');
-                        document.getElementById('<%=txtExperienceTo1.ClientID %>').value = '';
-                    }
+                     }
 
-                    if (new Date(ExpToDate1) > today) {
-                        alert('To Date cannot be a future date');
-                        document.getElementById('<%=txtExperienceTo1.ClientID %>').value = '';
-                        return false;
-                    }
-                }
+                     if (to.value) {
+                         var toDate = new Date(to.value);
+                         if (toDate > today) {
+                             alert('To Date cannot be a future date.');
+                             from.value = '';
+                             from.focus();
+                             return;
+                         }
+                     }
+                 }
+                        </script>
+            <script type="text/javascript">
+                function validateExperienceDate5() {
+                    var from = document.getElementById('<%=txtExperienceFrom3.ClientID %>');
+                     var to = document.getElementById('<%=txtExperienceTo3.ClientID %>');
+                     var today = new Date();
+                     today.setHours(0, 0, 0, 0);
+
+                     if (from.value) {
+                         var fromDate = new Date(from.value);
+                         if (fromDate > today) {
+                             alert('From Date cannot be a future date.');
+                             from.value = '';
+                             from.focus();
+                             return;
+                         }
+                     }
+
+                     if (from.value && to.value) {
+                         var fromDate = new Date(from.value);
+                         var toDate = new Date(to.value);
+                         if (fromDate > toDate) {
+                             alert('To Date should be greater than or equal to From Date.');
+                             to.value = '';
+                             to.focus();
+                             return;
+                         }
+                         if (toDate > today) {
+                             alert('To Date cannot be a future date.');
+                             to.value = '';
+                             to.focus();
+                             return;
+                         }
+
+                     }
+
+                     if (to.value) {
+                         var toDate = new Date(to.value);
+                         if (toDate > today) {
+                             alert('To Date cannot be a future date.');
+                             from.value = '';
+                             from.focus();
+                             return;
+                         }
+                     }
+                 }
             </script>
             <script type="text/javascript">
-                function validateDates4() {
-                    var ExpfromDate2 = document.getElementById('<%=txtExperienceFrom2.ClientID %>').value;
-                    var ExpToDate2 = document.getElementById('<%=txtExperienceTo2.ClientID %>').value;
+                function validateExperienceDate6() {
+                    var from = document.getElementById('<%=txtExperienceFrom4.ClientID %>');
+                     var to = document.getElementById('<%=txtExperienceTo4.ClientID %>');
+                     var today = new Date();
+                     today.setHours(0, 0, 0, 0);
 
-                    var today = new Date();
+                     if (from.value) {
+                         var fromDate = new Date(from.value);
+                         if (fromDate > today) {
+                             alert('From Date cannot be a future date.');
+                             from.value = '';
+                             from.focus();
+                             return;
+                         }
+                     }
 
-                    today.setHours(0, 0, 0, 0);
-                    if (new Date(ExpfromDate2) > new Date(ExpToDate2)) {
-                        alert('To Date should be greater than From Date');
-                        document.getElementById('<%=txtExperienceTo2.ClientID %>').value = '';
-                    }
+                     if (from.value && to.value) {
+                         var fromDate = new Date(from.value);
+                         var toDate = new Date(to.value);
+                         if (fromDate > toDate) {
+                             alert('To Date should be greater than or equal to From Date.');
+                             to.value = '';
+                             to.focus();
+                             return;
+                         }
+                         if (toDate > today) {
+                             alert('To Date cannot be a future date.');
+                             to.value = '';
+                             to.focus();
+                             return;
+                         }
 
-                    if (new Date(ExpToDate2).setHours(0, 0, 0, 0) > today) {
-                        alert('To Date cannot be a future date');
-                        document.getElementById('<%=txtExperienceTo2.ClientID %>').value = '';
-                        return false;
-                    }
+                     }
 
-                }
-            </script>
-
-            <script type="text/javascript">
-                function validateDates5() {
-                    var ExpfromDate3 = document.getElementById('<%=txtExperienceFrom3.ClientID %>').value;
-                    var ExpToDate3 = document.getElementById('<%=txtExperienceTo3.ClientID %>').value;
-                    var today = new Date();
-
-                    today.setHours(0, 0, 0, 0);
-
-                    if (new Date(ExpfromDate3) > new Date(ExpToDate3)) {
-                        alert('To Date should be greater than From Date');
-                        document.getElementById('<%=txtExperienceTo3.ClientID %>').value = '';
-                    }
-
-                    if (new Date(ExpToDate3).setHours(0, 0, 0, 0) > today) {
-                        alert('To Date cannot be a future date');
-                        document.getElementById('<%=txtExperienceTo3.ClientID %>').value = '';
-                        return false;
-                    }
-
-                }
-            </script>
-            <script type="text/javascript">
-                function validateDates6() {
-                    var ExpfromDate4 = document.getElementById('<%=txtExperienceFrom4.ClientID %>').value;
-                    var ExpToDate4 = document.getElementById('<%=txtExperienceTo4.ClientID %>').value;
-                    var today = new Date();
-
-                    today.setHours(0, 0, 0, 0);
-
-                    if (new Date(ExpfromDate4) > new Date(ExpToDate4)) {
-                        alert('To Date should be greater than From Date');
-                        document.getElementById('<%=txtExperienceTo4.ClientID %>').value = '';
-                    }
-                    if (new Date(ExpToDate4).setHours(0, 0, 0, 0) > today) {
-                        alert('To Date cannot be a future date');
-                        document.getElementById('<%=txtExperienceTo4.ClientID %>').value = '';
-                        return false;
-                    }
-                }
+                     if (to.value) {
+                         var toDate = new Date(to.value);
+                         if (toDate > today) {
+                             alert('To Date cannot be a future date.');
+                             from.value = '';
+                             from.focus();
+                             return;
+                         }
+                     }
+                 }
             </script>
             <script type="text/javascript">
-                function validateDates7() {
-                    var ExpfromDate5 = document.getElementById('<%=txtExperienceFrom5.ClientID %>').value;
-                    var ExpToDate5 = document.getElementById('<%=txtExperienceTo5.ClientID %>').value;
+                function validateExperienceDate7() {
+                    var from = document.getElementById('<%=txtExperienceFrom5.ClientID %>');
+                     var to = document.getElementById('<%=txtExperienceTo5.ClientID %>');
+                     var today = new Date();
+                     today.setHours(0, 0, 0, 0);
 
-                    var today = new Date();
+                     if (from.value) {
+                         var fromDate = new Date(from.value);
+                         if (fromDate > today) {
+                             alert('From Date cannot be a future date.');
+                             from.value = '';
+                             from.focus();
+                             return;
+                         }
+                     }
 
-                    today.setHours(0, 0, 0, 0);
-                    if (new Date(ExpfromDate5) > new Date(ExpToDate5)) {
-                        alert('To Date should be greater than From Date');
-                        document.getElementById('<%=txtExperienceTo5.ClientID %>').value = '';
-                    }
-                    if (new Date(ExpToDate5).setHours(0, 0, 0, 0) > today) {
-                        alert('To Date cannot be a future date');
-                        document.getElementById('<%=txtExperienceTo5.ClientID %>').value = '';
-                        return false;
-                    }
+                     if (from.value && to.value) {
+                         var fromDate = new Date(from.value);
+                         var toDate = new Date(to.value);
+                         if (fromDate > toDate) {
+                             alert('To Date should be greater than or equal to From Date.');
+                             to.value = '';
+                             to.focus();
+                             return;
+                         }
+                         if (toDate > today) {
+                             alert('To Date cannot be a future date.');
+                             to.value = '';
+                             to.focus();
+                             return;
+                         }
 
-                }
+                     }
+
+                     if (to.value) {
+                         var toDate = new Date(to.value);
+                         if (toDate > today) {
+                             alert('To Date cannot be a future date.');
+                             from.value = '';
+                             from.focus();
+                             return;
+                         }
+                     }
+                 }
             </script>
             <script type="text/javascript">
-                function validateDates8() {
-                    var ExpfromDate6 = document.getElementById('<%=txtExperienceFrom6.ClientID %>').value;
-                    var ExpToDate6 = document.getElementById('<%=txtExperienceTo6.ClientID %>').value;
+                function validateExperienceDate8() {
+                    var from = document.getElementById('<%=txtExperienceFrom6.ClientID %>');
+                      var to = document.getElementById('<%=txtExperienceTo6.ClientID %>');
+                      var today = new Date();
+                      today.setHours(0, 0, 0, 0);
 
-                    var today = new Date();
+                      if (from.value) {
+                          var fromDate = new Date(from.value);
+                          if (fromDate > today) {
+                              alert('From Date cannot be a future date.');
+                              from.value = '';
+                              from.focus();
+                              return;
+                          }
+                      }
 
-                    today.setHours(0, 0, 0, 0);
+                      if (from.value && to.value) {
+                          var fromDate = new Date(from.value);
+                          var toDate = new Date(to.value);
+                          if (fromDate > toDate) {
+                              alert('To Date should be greater than or equal to From Date.');
+                              to.value = '';
+                              to.focus();
+                              return;
+                          }
+                          if (toDate > today) {
+                              alert('To Date cannot be a future date.');
+                              to.value = '';
+                              to.focus();
+                              return;
+                          }
 
-                    if (new Date(ExpfromDate6) > new Date(ExpToDate6)) {
-                        alert('To Date should be greater than From Date');
-                        document.getElementById('<%=txtExperienceTo6.ClientID %>').value = '';
-                    }
-                    if (new Date(ExpToDate6).setHours(0, 0, 0, 0) > today) {
-                        alert('To Date cannot be a future date');
-                        document.getElementById('<%=txtExperienceTo6.ClientID %>').value = '';
-                        return false;
-                    }
-                }
+                      }
+
+                      if (to.value) {
+                          var toDate = new Date(to.value);
+                          if (toDate > today) {
+                              alert('To Date cannot be a future date.');
+                              from.value = '';
+                              from.focus();
+                              return;
+                          }
+                      }
+                  }
+             
             </script>
             <script type="text/javascript">
-                function validateDates9() {
-                    var ExpfromDate7 = document.getElementById('<%=txtExperienceFrom7.ClientID %>').value;
-                    var ExpToDate7 = document.getElementById('<%=txtExperienceTo7.ClientID %>').value;
+                function validateExperienceDate9() {
+                    var from = document.getElementById('<%=txtExperienceFrom7.ClientID %>');
+                      var to = document.getElementById('<%=txtExperienceTo7.ClientID %>');
+                      var today = new Date();
+                      today.setHours(0, 0, 0, 0);
 
-                    var today = new Date();
+                      if (from.value) {
+                          var fromDate = new Date(from.value);
+                          if (fromDate > today) {
+                              alert('From Date cannot be a future date.');
+                              from.value = '';
+                              from.focus();
+                              return;
+                          }
+                      }
 
-                    today.setHours(0, 0, 0, 0);
-                    if (new Date(ExpfromDate7) > new Date(ExpToDate7)) {
-                        alert('To Date should be greater than From Date');
-                        document.getElementById('<%=txtExperienceTo7.ClientID %>').value = '';
-                    }
-                    if (new Date(ExpToDate7).setHours(0, 0, 0, 0) > today) {
-                        alert('To Date cannot be a future date');
-                        document.getElementById('<%=txtExperienceTo7.ClientID %>').value = '';
-                        return false;
-                    }
+                      if (from.value && to.value) {
+                          var fromDate = new Date(from.value);
+                          var toDate = new Date(to.value);
+                          if (fromDate > toDate) {
+                              alert('To Date should be greater than or equal to From Date.');
+                              to.value = '';
+                              to.focus();
+                              return;
+                          }
+                          if (toDate > today) {
+                              alert('To Date cannot be a future date.');
+                              to.value = '';
+                              to.focus();
+                              return;
+                          }
 
-                }
+                      }
+
+                      if (to.value) {
+                          var toDate = new Date(to.value);
+                          if (toDate > today) {
+                              alert('To Date cannot be a future date.');
+                              from.value = '';
+                              from.focus();
+                              return;
+                          }
+                      }
+                  }
+            
             </script>
-
             <script type="text/javascript">
-                function validateDates10() {
-                    var ExpfromDate8 = document.getElementById('<%=txtExperienceFrom8.ClientID %>').value;
-                    var ExpToDate8 = document.getElementById('<%=txtExperienceTo8.ClientID %>').value;
+                function validateExperienceDate10() {
+                    var from = document.getElementById('<%=txtExperienceFrom8.ClientID %>');
+                      var to = document.getElementById('<%=txtExperienceTo8.ClientID %>');
+                      var today = new Date();
+                      today.setHours(0, 0, 0, 0);
 
-                    var today = new Date();
+                      if (from.value) {
+                          var fromDate = new Date(from.value);
+                          if (fromDate > today) {
+                              alert('From Date cannot be a future date.');
+                              from.value = '';
+                              from.focus();
+                              return;
+                          }
+                      }
 
-                    today.setHours(0, 0, 0, 0);
-                    if (new Date(ExpfromDate8) > new Date(ExpToDate8)) {
-                        alert('To Date should be greater than From Date');
-                        document.getElementById('<%=txtExperienceTo8.ClientID %>').value = '';
-                    }
-                    if (new Date(ExpToDate8).setHours(0, 0, 0, 0) > today) {
-                        alert('To Date cannot be a future date');
-                        document.getElementById('<%=txtExperienceTo8.ClientID %>').value = '';
-                        return false;
-                    }
-                }
+                      if (from.value && to.value) {
+                          var fromDate = new Date(from.value);
+                          var toDate = new Date(to.value);
+                          if (fromDate > toDate) {
+                              alert('To Date should be greater than or equal to From Date.');
+                              to.value = '';
+                              to.focus();
+                              return;
+                          }
+                          if (toDate > today) {
+                              alert('To Date cannot be a future date.');
+                              to.value = '';
+                              to.focus();
+                              return;
+                          }
+
+                      }
+
+                      if (to.value) {
+                          var toDate = new Date(to.value);
+                          if (toDate > today) {
+                              alert('To Date cannot be a future date.');
+                              from.value = '';
+                              from.focus();
+                              return;
+                          }
+                      }
+                  }
+         
             </script>
             <script type="text/javascript">
-                function validateDates11() {
-                    var ExpfromDate9 = document.getElementById('<%=txtExperienceFrom9.ClientID %>').value;
-                    var ExpToDate9 = document.getElementById('<%=txtExperienceTo9.ClientID %>').value;
+                function validateExperienceDate11() {
+                    var from = document.getElementById('<%=txtExperienceFrom9.ClientID %>');
+                      var to = document.getElementById('<%=txtExperienceTo9.ClientID %>');
+                      var today = new Date();
+                      today.setHours(0, 0, 0, 0);
 
-                    var today = new Date();
+                      if (from.value) {
+                          var fromDate = new Date(from.value);
+                          if (fromDate > today) {
+                              alert('From Date cannot be a future date.');
+                              from.value = '';
+                              from.focus();
+                              return;
+                          }
+                      }
 
-                    today.setHours(0, 0, 0, 0);
-                    if (new Date(ExpfromDate9) > new Date(ExpToDate9)) {
-                        alert('To Date should be greater than From Date');
-                        document.getElementById('<%=txtExperienceTo9.ClientID %>').value = '';
-                    }
-                    if (new Date(ExpToDate9).setHours(0, 0, 0, 0) > today) {
-                        alert('To Date cannot be a future date');
-                        document.getElementById('<%=txtExperienceTo9.ClientID %>').value = '';
-                        return false;
-                    }
+                      if (from.value && to.value) {
+                          var fromDate = new Date(from.value);
+                          var toDate = new Date(to.value);
+                          if (fromDate > toDate) {
+                              alert('To Date should be greater than or equal to From Date.');
+                              to.value = '';
+                              to.focus();
+                              return;
+                          }
+                          if (toDate > today) {
+                              alert('To Date cannot be a future date.');
+                              to.value = '';
+                              to.focus();
+                              return;
+                          }
+
+                      }
+
+                      if (to.value) {
+                          var toDate = new Date(to.value);
+                          if (toDate > today) {
+                              alert('To Date cannot be a future date.');
+                              from.value = '';
+                              from.focus();
+                              return;
+                          }
+                      }
+                  }
+                       </script>
 
 
-                }
-            </script>
+
 
             <script type="text/javascript">
                 function validateAddBtn() {
@@ -2236,27 +2579,24 @@
                     return isValid;
                 }
             </script>
-
-
             <script type="text/javascript">
                 function validateAddBtnExperience() {
                     var isValid = true;
 
-                    function validateField(element, fieldName) {
-                        if (element.value.trim() === '') {
+                    function validateField(element) {
+                        if (element && element.value.trim() === '') {
                             isValid = false;
                             element.style.border = '1px solid red';
-                        } else {
+                        } else if (element) {
                             element.style.border = '';
                         }
                     }
 
                     function validateDropdown(element) {
-                        if (element.value === '0') {
-                            debugger;
+                        if (element && element.value === '0') {
                             isValid = false;
                             element.style.border = '1px solid red';
-                        } else {
+                        } else if (element) {
                             element.style.border = '';
                         }
                     }
@@ -2277,7 +2617,7 @@
                     var Experience = document.getElementById('Experience');
                     if (Experience && Experience.style.visibility !== 'hidden') {
                         validateDropdown(document.getElementById('ddlExperience'));
-                        validateDropdown(document.getElementById('ddlTraningUnder'));
+                        validateDropdown(document.getElementById('ddlTrainingUnder'));
 
                         validateField(document.getElementById('txtPostDescription'), 'PostDescription');
                         validateField(document.getElementById('txtExperienceFrom'), 'ExperienceFrom');
@@ -2381,150 +2721,170 @@
                     return isValid;
                 }
             </script>
+            <script type="text/javascript">
+                function validateForm() {
+                    var isValid = true;
 
-
-
-
-        <script type="text/javascript">
-            function validateForm() {
-                var isValid = true;
-
-                function validateField(element, fieldName) {
-                    if (element && element.value.trim() === '') {
-                        isValid = false;
-                        element.style.border = '1px solid red';
-                    } else if (element) {
-                        element.style.border = '';
+                    function validateField(element, fieldName) {
+                        if (element && element.value.trim() === '') {
+                            isValid = false;
+                            element.style.border = '1px solid red';
+                        } else if (element) {
+                            element.style.border = '';
+                        }
                     }
-                }
 
-                function validateDropdown(element) {
-                    if (element && element.value === '0') {
-                        isValid = false;
-                        element.style.border = '1px solid red';
-                    } else if (element) {
-                        element.style.border = '';
+                    function validateDropdown(element) {
+                        if (element && element.value === '0') {
+                            isValid = false;
+                            element.style.border = '1px solid red';
+                        } else if (element) {
+                            element.style.border = '';
+                        }
                     }
-                }
 
-                validateDropdown(document.getElementById('ddlQualification'));
-                validateDropdown(document.getElementById('ddlQualification1'));
-                validateField(document.getElementById('txtUniversity'), 'University');
-                validateDropdown(document.getElementById('YearDropdown'), 'Passing Year');
+                    validateDropdown(document.getElementById('ddlQualification'));
+                    validateDropdown(document.getElementById('ddlQualification1'));
+                    validateField(document.getElementById('txtUniversity'), 'University');
+                    validateDropdown(document.getElementById('YearDropdown'), 'Passing Year');
 
-                validateField(document.getElementById('txtmarksObtained'), 'Marks Obtained');
-                validateField(document.getElementById('txtmarksmax'), 'Maximum Marks');
-                validateField(document.getElementById('txtUniversity1'), 'University');
-                validateDropdown(document.getElementById('DropDownList1'), 'Passing Year');
-
-                validateField(document.getElementById('txtmarksObtained1'), 'Marks Obtained');
-                validateField(document.getElementById('txtmarksmax1'), 'Maximum Marks');
-                validateField(document.getElementById('txtUniversity2'), 'University');
-                validateDropdown(document.getElementById('DropDownList2'), 'Passing Year');
-
-                validateField(document.getElementById('txtmarksObtained2'), 'Marks Obtained');
-                validateField(document.getElementById('txtmarksmax2'), 'Maximum Marks');
-
-                var ddlQualification = document.getElementById('ddlQualification');
-                if (ddlQualification && ddlQualification.offsetParent !== null) {
-                    validateDropdown(ddlQualification);
+                    validateField(document.getElementById('txtmarksObtained'), 'Marks Obtained');
+                    validateField(document.getElementById('txtmarksmax'), 'Maximum Marks');
                     validateField(document.getElementById('txtUniversity1'), 'University');
                     validateDropdown(document.getElementById('DropDownList1'), 'Passing Year');
+
                     validateField(document.getElementById('txtmarksObtained1'), 'Marks Obtained');
                     validateField(document.getElementById('txtmarksmax1'), 'Maximum Marks');
-                }
+                    validateField(document.getElementById('txtUniversity2'), 'University');
+                    validateDropdown(document.getElementById('DropDownList2'), 'Passing Year');
 
-                var DdlDegree = document.getElementById('DdlDegree');
-                if (DdlDegree && DdlDegree.offsetParent !== null) {
-                    validateDropdown(document.getElementById('ddlQualification2'));
-                    validateField(document.getElementById('txtUniversity3'), 'University');
-                    validateDropdown(document.getElementById('DropDownList3'), 'Passing Year');
-                    validateField(document.getElementById('txtmarksObtained3'), 'Marks Obtained');
-                    validateField(document.getElementById('txtmarksmax3'), 'Percentage');
-                }
+                    validateField(document.getElementById('txtmarksObtained2'), 'Marks Obtained');
+                    validateField(document.getElementById('txtmarksmax2'), 'Maximum Marks');
 
-                var DdlMasters = document.getElementById('DdlMasters');
-                if (DdlMasters && DdlMasters.offsetParent !== null) {
-                    validateDropdown(document.getElementById('ddlQualification3'));
-                    validateField(document.getElementById('txtUniversity4'), 'University');
-                    validateDropdown(document.getElementById('DropDownList4'), 'Passing Year');
-                    validateField(document.getElementById('txtmarksObtained4'), 'Marks Obtained');
-                    validateField(document.getElementById('txtmarksmax4'), 'Percentage');
-                }
-
-                
-                // Wireman Experience
-                var Experiencewireman = document.getElementById('experiencewireman');
-                if (Experiencewireman && Experiencewireman.offsetParent !== null) {
-                    validateDropdown(document.getElementById('ddlExperiencewireman'));
-                    validateDropdown(document.getElementById('Ddltrainingwiremenexprince'));
-                    validateField(document.getElementById('txtnamewireman'), 'ExperienceEmployer');
-                    validateField(document.getElementById('txtjobdescription'), 'PostDescription');
-                    validateField(document.getElementById('dateexperincefrom'), 'ExperienceFrom');
-                    validateField(document.getElementById('dateexpericeto'), 'ExperienceTo');
-                }
-
-                // Repeat for Experience0 to Experience9 using the same check
-                for (var i = 0; i <= 9; i++) {
-                    var exp = document.getElementById('Experience' + (i === 0 ? '' : i));
-                    if (exp && exp.offsetParent !== null) {
-                        validateDropdown(document.getElementById('ddlExperience' + (i === 0 ? '' : i)));
-                        validateDropdown(document.getElementById('ddlTrainingUnder' + (i === 0 ? '' : i)));
-                        validateField(document.getElementById('txtExperienceEmployer' + (i === 0 ? '' : i)), 'ExperienceEmployer');
-                        validateField(document.getElementById('txtPostDescription' + (i === 0 ? '' : i)), 'PostDescription');
-                        validateField(document.getElementById('txtExperienceFrom' + (i === 0 ? '' : i)), 'ExperienceFrom');
-                        validateField(document.getElementById('txtExperienceTo' + (i === 0 ? '' : i)), 'ExperienceTo');
+                    var ddlQualification = document.getElementById('ddlQualification');
+                    if (ddlQualification && ddlQualification.offsetParent !== null) {
+                        validateDropdown(ddlQualification);
+                        validateField(document.getElementById('txtUniversity1'), 'University');
+                        validateDropdown(document.getElementById('DropDownList1'), 'Passing Year');
+                        validateField(document.getElementById('txtmarksObtained1'), 'Marks Obtained');
+                        validateField(document.getElementById('txtmarksmax1'), 'Maximum Marks');
                     }
-                }
 
-                // Competency Section
-                var competency = document.getElementById('competency');
-                if (competency && competency.offsetParent !== null) {
-                    validateField(document.getElementById('txtCategory'), 'Category');
-                    validateField(document.getElementById('txtPermitNo'), 'Permit No');
-                    validateField(document.getElementById('txtIssuingAuthority'), 'Issuing Authority');
-                    validateField(document.getElementById('txtIssuingDate'), 'Issuing Date');
-                    validateField(document.getElementById('txtExpiryDate'), 'Expiry Date');
-                }
+                    var DdlDegree = document.getElementById('DdlDegree');
+                    if (DdlDegree && DdlDegree.offsetParent !== null) {
+                        validateDropdown(document.getElementById('ddlQualification2'));
+                        validateField(document.getElementById('txtUniversity3'), 'University');
+                        validateDropdown(document.getElementById('DropDownList3'), 'Passing Year');
+                        validateField(document.getElementById('txtmarksObtained3'), 'Marks Obtained');
+                        validateField(document.getElementById('txtmarksmax3'), 'Percentage');
+                    }
 
-                // Permanent Employee Section
-                var PermanentEmployee = document.getElementById('PermanentEmployee');
-                if (PermanentEmployee && PermanentEmployee.offsetParent !== null) {
-                    validateField(document.getElementById('txtPermanentEmployerName'), 'Employer Name');
-                    validateField(document.getElementById('txtPermanentDescription'), 'Description');
-                    validateField(document.getElementById('txtPermanentFrom'), 'From');
-                    validateField(document.getElementById('txtPermanentTo'), 'To');
-                }
+                    var DdlMasters = document.getElementById('DdlMasters');
+                    if (DdlMasters && DdlMasters.offsetParent !== null) {
+                        validateDropdown(document.getElementById('ddlQualification3'));
+                        validateField(document.getElementById('txtUniversity4'), 'University');
+                        validateDropdown(document.getElementById('DropDownList4'), 'Passing Year');
+                        validateField(document.getElementById('txtmarksObtained4'), 'Marks Obtained');
+                        validateField(document.getElementById('txtmarksmax4'), 'Percentage');
+                    }
 
-                // Retired Employee Section
-                var RetiredEmployee = document.getElementById('RetiredEmployee');
-                if (RetiredEmployee && RetiredEmployee.offsetParent !== null) {
-                    validateField(document.getElementById('txtEmployerName2'), 'Employer Name');
-                    validateField(document.getElementById('txtDescription2'), 'Description');
-                    validateField(document.getElementById('txtFrom2'), 'From');
-                    validateField(document.getElementById('txtTo2'), 'To');
-                }
 
-                if (!isValid) {
-                    alert('Please fill in all the required fields.');
-                }
+                    // Wireman Experience
+                    var Experiencewireman = document.getElementById('experiencewireman');
+                    if (Experiencewireman && Experiencewireman.offsetParent !== null) {
+                        validateDropdown(document.getElementById('ddlExperiencewireman'));
+                        validateDropdown(document.getElementById('Ddltrainingwiremenexprince'));
+                        validateField(document.getElementById('txtnamewireman'), 'ExperienceEmployer');
+                        validateField(document.getElementById('txtjobdescription'), 'PostDescription');
+                        validateField(document.getElementById('dateexperincefrom'), 'ExperienceFrom');
+                        validateField(document.getElementById('dateexpericeto'), 'ExperienceTo');
+                    }
 
-                return isValid;
-            }
-        </script>
+                    // Repeat for Experience0 to Experience9 using the same check
+                    for (var i = 0; i <= 9; i++) {
+                        var exp = document.getElementById('Experience' + (i === 0 ? '' : i));
+                        if (exp && exp.offsetParent !== null) {
+                            validateDropdown(document.getElementById('ddlExperience' + (i === 0 ? '' : i)));
+                            validateDropdown(document.getElementById('ddlTrainingUnder' + (i === 0 ? '' : i)));
+                            validateField(document.getElementById('txtExperienceEmployer' + (i === 0 ? '' : i)), 'ExperienceEmployer');
+                            validateField(document.getElementById('txtPostDescription' + (i === 0 ? '' : i)), 'PostDescription');
+                            validateField(document.getElementById('txtExperienceFrom' + (i === 0 ? '' : i)), 'ExperienceFrom');
+                            validateField(document.getElementById('txtExperienceTo' + (i === 0 ? '' : i)), 'ExperienceTo');
+                        }
+                    }
+
+                    // Competency Section
+                    var competency = document.getElementById('competency');
+                    if (competency && competency.offsetParent !== null) {
+                        validateField(document.getElementById('txtCategory'), 'Category');
+                        validateField(document.getElementById('txtPermitNo'), 'Permit No');
+                        validateField(document.getElementById('txtIssuingAuthority'), 'Issuing Authority');
+                        validateField(document.getElementById('txtIssuingDate'), 'Issuing Date');
+                        validateField(document.getElementById('txtExpiryDate'), 'Expiry Date');
+                    }
+
+                    // Permanent Employee Section
+                    var PermanentEmployee = document.getElementById('PermanentEmployee');
+                    if (PermanentEmployee && PermanentEmployee.offsetParent !== null) {
+                        validateField(document.getElementById('txtPermanentEmployerName'), 'Employer Name');
+                        validateField(document.getElementById('txtPermanentDescription'), 'Description');
+                        validateField(document.getElementById('txtPermanentFrom'), 'From');
+                        validateField(document.getElementById('txtPermanentTo'), 'To');
+                    }
+
+                    // Retired Employee Section
+                    var RetiredEmployee = document.getElementById('RetiredEmployee');
+                    if (RetiredEmployee && RetiredEmployee.offsetParent !== null) {
+                        validateField(document.getElementById('txtEmployerName2'), 'Employer Name');
+                        validateField(document.getElementById('txtDescription2'), 'Description');
+                        validateField(document.getElementById('txtFrom2'), 'From');
+                        validateField(document.getElementById('txtTo2'), 'To');
+                    }
+
+                    if (!isValid) {
+                        alert('Please fill in all the required fields.');
+                    }
+
+                    return isValid;
+                }
+            </script>
+
 
             <script type="text/javascript">
-                function validateDates13() {
-                    var txtFrom2 = document.getElementById('<%=txtFrom2.ClientID %>').value;
-                    var txtTo2 = document.getElementById('<%=txtTo2.ClientID %>').value;
+                function validateRetiredDates() {
+                    var fromInput = document.getElementById('<%=txtFrom2.ClientID %>');
+                    var toInput = document.getElementById('<%=txtTo2.ClientID %>');
 
-                    if (new Date(txtFrom2) > new Date(txtTo2)) {
-                        alert('To Date should be greater than From Date');
-                        document.getElementById('<%=txtTo2.ClientID %>').value = '';
+                    var fromDate = fromInput.value;
+                    var toDate = toInput.value;
+
+                    var today = new Date();
+                    today.setHours(0, 0, 0, 0); // remove time
+
+                    // Validate From Date is not in the future
+                    if (fromDate) {
+                        var from = new Date(fromDate);
+                        if (from > today) {
+                            alert('From Date cannot be a future date.');
+                            fromInput.value = '';
+                            fromInput.focus();
+                            return;
+                        }
                     }
 
+                    // Validate To Date is greater than or equal to From Date
+                    if (fromDate && toDate) {
+                        var from = new Date(fromDate);
+                        var to = new Date(toDate);
+
+                        if (from > to) {
+                            alert('To Date should be greater than or equal to From Date.');
+                            toInput.value = '';
+                            toInput.focus();
+                        }
+                    }
                 }
-</script>
+            </script>
         </div>
     </form>
 </body>
