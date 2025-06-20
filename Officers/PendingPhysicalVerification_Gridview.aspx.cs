@@ -22,8 +22,8 @@ namespace CEIHaryana.Officers
                 {
                     if (Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty)
                     {
-
-                        GridBind(LoginID);
+                        LoginID = Session["StaffID"].ToString();
+                        GridBind(LoginID.Trim());
                     }
                     else
                     {
