@@ -20,10 +20,10 @@ namespace CEIHaryana.Officers
         {
             if (!IsPostBack)
             {  
-                ApplicationId = Session["ApplicationId"].ToString();
+                ApplicationId = Session["Application_Id"].ToString();
                 GetHeaderDetailsWithId(ApplicationId);
                 BindApplicationLogDetails(ApplicationId);
-               // Session["ApplicationId"] = "";
+               // Session["Application_Id"] = "";
             }
 
         }

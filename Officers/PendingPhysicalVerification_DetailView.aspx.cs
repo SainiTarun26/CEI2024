@@ -12,7 +12,7 @@ namespace CEIHaryana.Officers
     public partial class PendingPhysicalVerification_DetailView : System.Web.UI.Page
     {
         //Page created by navneet 18-June-2025
-        CEI CEI = new CEI(); string ApplicationId;
+        CEI CEI = new CEI(); string Application_Id;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -22,10 +22,10 @@ namespace CEIHaryana.Officers
                     txtDate.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
                     if (Convert.ToString(Session["StaffID"]) != null && Convert.ToString(Session["StaffID"]) != string.Empty)
                     {
-                        ApplicationId = Session["ApplicationId"].ToString();
-                        GetHeaderDetailsWithId(ApplicationId);
-                        BindApplicationLogDetails(ApplicationId);
-                        //Session["ApplicationId"] = "";
+                        Application_Id = Session["Application_Id"].ToString();
+                        GetHeaderDetailsWithId(Application_Id);
+                        BindApplicationLogDetails(Application_Id);
+                        //Session["Application_Id"] = "";
                     }
                     else
                     {
@@ -40,9 +40,9 @@ namespace CEIHaryana.Officers
                 ScriptManager.RegisterStartupScript(this, GetType(), "errorMessage", errorScript, true);
             }
         }
-        private void GetHeaderDetailsWithId(string licApplicationId)
+        private void GetHeaderDetailsWithId(string licApplication_Id)
         {
-            DataSet ds = CEI.Licence_XenfinalRecommend_GetHeaderDetails(licApplicationId);
+            DataSet ds = CEI.Licence_XenfinalRecommend_GetHeaderDetails(licApplication_Id);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 DataRow row = ds.Tables[0].Rows[0];
@@ -54,12 +54,12 @@ namespace CEIHaryana.Officers
             }
         }
 
-        private void BindApplicationLogDetails(string licApplicationId)
+        private void BindApplicationLogDetails(string licApplication_Id)
         {
             try
             {
                 DataSet ds = new DataSet();
-                ds = CEI.Get_Licence_ApplicationLogDetails(licApplicationId);
+                ds = CEI.Get_Licence_ApplicationLogDetails(licApplication_Id);
 
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {

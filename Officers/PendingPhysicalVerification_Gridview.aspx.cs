@@ -22,6 +22,7 @@ namespace CEIHaryana.Officers
                 {
                     if (Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty)
                     {
+                        Session["Application_Id"] = "";
                         LoginID = Session["StaffID"].ToString();
                         GridBind(LoginID.Trim());
                     }
@@ -63,17 +64,22 @@ namespace CEIHaryana.Officers
                 Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblApplicationStatus = (Label)row.FindControl("lblApplicationStatus");
-                Session["ApplicationId"] = e.CommandArgument.ToString();
+                Session["Application_Id"] = e.CommandArgument.ToString();
                 if (lblApplicationStatus.Text == "Ready For Issue Letter")
                 {
                     Response.Redirect("PhysicalVerification_Letter_Request.aspx", false);
                 }
-                else
+                else if (lblApplicationStatus.Text == "InProcess")
                 {
                     Response.Redirect("PendingPhysicalVerification_DetailView.aspx", false);
 
                 }
-                
+                else
+                {
+
+                    Response.Redirect("Xen_LicenceFinal_DetailView.aspx", false);
+                }
+
             }
             else
             {

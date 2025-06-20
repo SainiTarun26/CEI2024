@@ -19,7 +19,7 @@ namespace CEIHaryana.Print_Forms
         {
             if (!IsPostBack)
             {
-                ApplicationId = Session["ApplicationId"].ToString();
+                ApplicationId = Session["Application_Id"].ToString();
                 GetLetterData(ApplicationId);
             }
         }
