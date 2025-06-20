@@ -14,6 +14,14 @@
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
+
+    <!-- Example for Font Awesome 4.x -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<!-- Or Font Awesome 5+ -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
         .headercolor {
@@ -107,17 +115,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
 
-        <div class="card-title" style="margin-top: -15px; margin-bottom: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
-          Approved Licence List
-
-        </div>
-
-        <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
+             <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
                 <div class="row ">
                     <div class="col-sm-4 col-md-4">
                         <h6 class="card-title fw-semibold mb-4">
-                            <asp:Label ID="lblData" runat="server"></asp:Label></h6>
+                            <asp:Label ID="lblData" runat="server"></asp:Label>Approved Licence</h6>
                     </div>
                     <div class="col-sm-6 col-md-6"></div>
                 </div>
@@ -189,6 +192,7 @@
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="ApplicationStatus">
+                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemTemplate>
                                     <asp:Label ID="lblApplicationStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
                                 </ItemTemplate>

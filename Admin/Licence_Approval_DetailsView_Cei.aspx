@@ -290,6 +290,8 @@
 
         th {
             width: 1%;
+            COLOR: white !important;
+            background: #9292cc !important;
         }
     </style>
 </asp:Content>
@@ -299,7 +301,7 @@
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
             <div class="card-title" style="margin-top: -15px; margin-bottom: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
-                 Licence Details
+                Licence Details
 
             </div>
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
@@ -339,7 +341,7 @@
                         <asp:TextBox class="form-control" ID="txtRegistrationId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
 
-                     <div class="col-md-4">
+                    <div class="col-md-4" style="margin-top: 3%;">
                         <label>
                         </label>
                         <asp:LinkButton ID="LinkButton1" runat="server" AutoPostBack="true" OnClick="lnkFile_Click" Text="Registration Details" />
@@ -364,10 +366,19 @@
                         <asp:GridView ID="GridView1" CssClass="table table-responsive table-bordered table-striped" runat="server" AutoGenerateColumns="False" EmptyDataText="No data to display.">
                             <Columns>
                                 <asp:BoundField DataField="ActionTakenBy" HeaderText="Action Taken By" />
-                                <asp:BoundField DataField="ActionTaken" HeaderText="Action Taken" />
+                                <asp:BoundField DataField="ApplicationStatus" HeaderText="Action Taken" />
                                 <asp:BoundField DataField="Remarks" HeaderText="Comments" />
                                 <asp:BoundField DataField="ActionDate" HeaderText="Action Date" DataFormatString="{0:dd-MMM-yy}" />
                             </Columns>
+                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                            <RowStyle ForeColor="#000066" />
+                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#00547E" />
                         </asp:GridView>
                     </div>
 
@@ -379,12 +390,11 @@
 
 
             <div class="row">
-
             </div>
             <div class="row" style="margin-top: 25px;">
                 <div class="col-md-4"></div>
                 <div class="col-md-4" style="text-align: center;">
-                    <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="true" class="btn btn-primary mr-2" OnClick="btnBack_Click"/>
+                    <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="true" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
                 </div>
             </div>
         </div>

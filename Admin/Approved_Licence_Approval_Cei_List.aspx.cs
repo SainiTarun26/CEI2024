@@ -11,7 +11,6 @@ namespace CEIHaryana.Admin
 {
     public partial class Approved_Licence_Approval_Cei_List : System.Web.UI.Page
     {
-        //Page Created by aslam 18-June-2025
         CEI CEI = new CEI();
         string LoginID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)

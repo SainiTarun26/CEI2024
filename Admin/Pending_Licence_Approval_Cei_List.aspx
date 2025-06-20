@@ -109,9 +109,9 @@
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
                 <div class="row ">
-                    <div class="col-sm-4 col-md-4">
+                    <div class="col-sm-10 col-md-4">
                         <h6 class="card-title fw-semibold mb-4">
-                            <asp:Label ID="lblData" runat="server"></asp:Label></h6>
+                            <asp:Label ID="lblData" runat="server"></asp:Label>Pending Licence Approval</h6>
                     </div>
                     <div class="col-sm-6 col-md-6"></div>
                 </div>
@@ -182,6 +182,7 @@
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="ApplicationStatus">
+                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemTemplate>
                                     <asp:Label ID="lblApplicationStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
                                 </ItemTemplate>

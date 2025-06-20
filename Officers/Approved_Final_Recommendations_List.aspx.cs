@@ -26,6 +26,8 @@ namespace CEIHaryana.Officers
                     }
                     else
                     {
+                        Response.Redirect("/OfficerLogout.aspx");
+                        return;
 
                     }
                 }
@@ -33,6 +35,7 @@ namespace CEIHaryana.Officers
             catch (Exception ex)
             {
                 Response.Redirect("/OfficerLogout.aspx");
+                return;
             }
         }
         public void GridBind()
