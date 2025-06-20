@@ -11683,10 +11683,11 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
 
 
 
-        public void ContractorApplicationData(string GSTNumber, string StyleOfCompany, string CompanyRegisterdOffice, string CompanyPartnerOrDirector,
-       string LibraryAvailable, string AgentName, string ManufacturingFirmOrProductionUnit, string ContractorLicencePreviouslyGranted,
-     string NameOfIssuingAuthority, string IssuedateOtherState, string DateOfLicenseExpiring, string WorkPermitUndertaken, string ContractorLicencePreviouslyGrantedWithSameName,
-     string LicenseNoIfYes, string DateoFIssue, string DoCompanyHavePenalties, string Penalities, string CreatedBy)
+        public void ContractorApplicationData(string BusinessAddress, string BusinessAddPinCode, string BusinessAddEmail, string BusinessAddPhoneNo, string GSTNumber, string StyleOfCompany,
+        string NameOfCompany, string CompanyRegisterdOffice, string CompanyPartnerOrDirector,
+   string LibraryAvailable, string AgentName, string ManufacturingFirmOrProductionUnit, string ContractorLicencePreviouslyGranted,
+ string NameOfIssuingAuthority, string IssuedateOtherState, string DateOfLicenseExpiring, string WorkPermitUndertaken, string ContractorLicencePreviouslyGrantedWithSameName,
+ string LicenseNoIfYes, string DateoFIssue, string DoCompanyHavePenalties, string Penalities, string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_SetContractorApplicationFormData");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -11698,8 +11699,13 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             }
 
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@BusinessAddress", BusinessAddress);
+            cmd.Parameters.AddWithValue("@BusinessAddPinCode", BusinessAddPinCode);
+            cmd.Parameters.AddWithValue("@BusinessAddEmail", BusinessAddEmail);
+            cmd.Parameters.AddWithValue("@BusinessAddPhoneNo", BusinessAddPhoneNo);
             cmd.Parameters.AddWithValue("@GSTNumber", GSTNumber);
-            cmd.Parameters.AddWithValue("StyleOfCompany", StyleOfCompany);
+            cmd.Parameters.AddWithValue("@StyleOfCompany", StyleOfCompany);
+            cmd.Parameters.AddWithValue("@NameOfCompany", NameOfCompany);
             cmd.Parameters.AddWithValue("@CompanyRegisterdOffice", CompanyRegisterdOffice);
             cmd.Parameters.AddWithValue("@CompanyPartnerOrDirector", CompanyPartnerOrDirector);
             cmd.Parameters.AddWithValue("@LibraryAvailable", LibraryAvailable);
@@ -11721,7 +11727,6 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             con.Close();
 
         }
-
         public void ContractorPartners(string TypeOfAuthority, string Name, string Address, string State, string District, string Pincode, string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_ContractorPartners");

@@ -261,11 +261,14 @@ namespace CEIHaryana.UserPages
 
                             //string Createdby = Session["ContractorID"].ToString();
                             string selectedValues = txtPenalities.Text.Trim();
-                            CEI.ContractorApplicationData(txtGstNumber.Text, ddlCompanyStyle.SelectedItem.ToString(), ddlOffice.SelectedItem.ToString(),
-     DdlPartnerOrDirector.SelectedItem.ToString(), ddlAnnexureOrNot.SelectedItem.ToString(),
-     txtAgentName.Text, ddlUnitOrNot.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(), txtIssusuingName.Text,
-     txtIssuedateOtherState.Text, txtLicenseExpiry.Text, txtWorkPermitUndertaken.Text, ddlSameNameLicense.SelectedItem.ToString(), txtLicenseNo.Text, txtLicenseIssue.Text, DropDownList2.SelectedItem.ToString(), txtPenalities.Text,
-     LoginID);
+                            CEI.ContractorApplicationData(txtBusinessAddress.Text, txtBusinessPin.Text, txtBusinessEmail.Text, txtBusinessPhoneNo.Text,
+                                                          txtGstNumber.Text, ddlCompanyStyle.SelectedItem.ToString(), txtNameOfCompany.Text, ddlOffice.SelectedItem.ToString(),
+                                                          DdlPartnerOrDirector.SelectedItem.ToString(), ddlAnnexureOrNot.SelectedItem.ToString(),
+                                                          txtAgentName.Text, ddlUnitOrNot.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(), 
+                                                          txtIssusuingName.Text, txtIssuedateOtherState.Text, txtLicenseExpiry.Text, txtWorkPermitUndertaken.Text,
+                                                          ddlSameNameLicense.SelectedItem.ToString(), txtLicenseNo.Text, txtLicenseIssue.Text,
+                                                          DropDownList2.SelectedItem.ToString(), txtPenalities.Text,
+                                                          LoginID);
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application Submitted Successfully !!!')", true);
                             Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
                         }
@@ -592,7 +595,37 @@ namespace CEIHaryana.UserPages
             { }
         }
 
-       
+        protected void ddlCompanyStyle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+             if (ddlCompanyStyle.SelectedValue == "1")
+            {          
+                Lbl1.Visible = true;
+                Lbl2.Visible = false;
+                Lbl3.Visible = false;
+                Lbl4.Visible = false;
+            }
+            else if (ddlCompanyStyle.SelectedValue == "2")
+            {               
+                Lbl1.Visible = false;
+                Lbl2.Visible = true;
+                Lbl3.Visible = false;
+                Lbl4.Visible = false;
+            }
+            else if (ddlCompanyStyle.SelectedValue == "3")
+            {               
+                Lbl1.Visible = false;
+                Lbl2.Visible = false;
+                Lbl3.Visible = true;
+                Lbl4.Visible = false;
+            }
+            else if (ddlCompanyStyle.SelectedValue == "4")
+            {             
+                Lbl1.Visible = false;
+                Lbl2.Visible = false;
+                Lbl3.Visible = false;
+                Lbl4.Visible = true;
+            }
+        }
     }
 
 }
