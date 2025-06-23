@@ -11972,6 +11972,109 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
 
 
         #endregion
+        #region neeraj attach deattach 23-Jue-2025
+        public DataTable GetContractorDetails(string SupervisiorId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AttactedContractor", SupervisiorId);
+        }
+
+        public DataTable GetContractorDetailsForView(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AttactedContractorDetails", Id);
+        }
+
+
+        public int InsertDataForDeAttachment(string ContractorId, string Attachment, string Remarks, string SupervisiorId, string SupervisiorReId)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                using (SqlCommand cmd = new SqlCommand("sp_DeattachtheContractor", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@DeAttachedFrom", ContractorId);
+                    cmd.Parameters.AddWithValue("@Attachment", Attachment);
+                    cmd.Parameters.AddWithValue("@Remarks", Remarks);
+                    cmd.Parameters.AddWithValue("@SupervisiorId", SupervisiorId);
+                    cmd.Parameters.AddWithValue("@SupervisiorReId", SupervisiorReId);
+                    con.Open();
+                    int x = cmd.ExecuteNonQuery();
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public void emailForDeattachmentRequest(string Email)
+        {
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("ceiharyana58@gmail.com");
+            mailMessage.To.Add(Email);
+            mailMessage.Subject = "DeAttachment Request";
+            string body = $"Dear Customer,\n\nWe are pleased to inform you that user request has been submitted successfully.\n\nThank you for choosing our services. If you have any questions or need further assistance, please feel free to contact our support team.\n\nBest regards,\n[CEI Haryana]";
+            mailMessage.Body = body;
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.Port = 587;
+            smtpClient.Credentials = new NetworkCredential("ceiharyana58@gmail.com", "hztpndeqdowygdim");
+            smtpClient.EnableSsl = true;
+
+            smtpClient.Send(mailMessage);
+        }
+        public DataSet GetContractorList(string SupervisiorId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorList", SupervisiorId);
+        }
+        public DataTable GetContractorViewDetails(string ContractorId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ControctorDetails", ContractorId);
+        }
+        public DataTable GetSupervisiorStatus
+            (string SupervisiorId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDeAttachStatus", SupervisiorId);
+        }
+        public DataTable GetSupervisiorRequest(string SupervisiorId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDeAttachData", SupervisiorId);
+        }
+
+        public int InsertDataForAttachment(string ContractorId, string Attachment, string Remarks, string SupervisiorId, string SupervisiorReId)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                using (SqlCommand cmd = new SqlCommand("sp_AttachedContractorRequest", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@AttachedFrom", ContractorId);
+                    cmd.Parameters.AddWithValue("@Attachment", Attachment);
+                    cmd.Parameters.AddWithValue("@Remarks", Remarks);
+                    cmd.Parameters.AddWithValue("@SupervisiorId", SupervisiorId);
+                    cmd.Parameters.AddWithValue("@SupervisiorReId", SupervisiorReId);
+                    con.Open();
+                    int x = cmd.ExecuteNonQuery();
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+        public DataTable GetSupervisiorReID(string SupervisiorId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSupervisiorReID", SupervisiorId);
+        }
+        public DataTable GetContractorDetailsForAttachedRequest(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Contractor_AttachedDetails", Id);
+        }
+        #endregion
     }
 }
 

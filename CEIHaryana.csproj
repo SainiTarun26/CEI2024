@@ -2127,6 +2127,11 @@
     <Content Include="Superintendent\CommentForRequest.aspx" />
     <Content Include="Superintendent\UserDetails.aspx" />
     <Content Include="SupervisorLogout.aspx" />
+    <Content Include="Supervisor\AttachedRequest.aspx" />
+    <Content Include="Supervisor\AttachedRequestViewDetails.aspx" />
+    <Content Include="Supervisor\DeAttachedRequestView.aspx" />
+    <Content Include="Supervisor\DeattachmentRequest.aspx" />
+    <Content Include="Supervisor\DeAttacted_Staff.aspx" />
     <Content Include="Supervisor\GeneratingSetTestReport.aspx" />
     <Content Include="Supervisor\InstallationDetails.aspx" />
     <Content Include="Supervisor\IntimationData.aspx" />
@@ -4433,6 +4438,41 @@
     </Compile>
     <Compile Include="SupervisorLogout.aspx.designer.cs">
       <DependentUpon>SupervisorLogout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\AttachedRequest.aspx.cs">
+      <DependentUpon>AttachedRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\AttachedRequest.aspx.designer.cs">
+      <DependentUpon>AttachedRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\AttachedRequestViewDetails.aspx.cs">
+      <DependentUpon>AttachedRequestViewDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\AttachedRequestViewDetails.aspx.designer.cs">
+      <DependentUpon>AttachedRequestViewDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\DeAttachedRequestView.aspx.cs">
+      <DependentUpon>DeAttachedRequestView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\DeAttachedRequestView.aspx.designer.cs">
+      <DependentUpon>DeAttachedRequestView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\DeattachmentRequest.aspx.cs">
+      <DependentUpon>DeattachmentRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\DeattachmentRequest.aspx.designer.cs">
+      <DependentUpon>DeattachmentRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\DeAttacted_Staff.aspx.cs">
+      <DependentUpon>DeAttacted_Staff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\DeAttacted_Staff.aspx.designer.cs">
+      <DependentUpon>DeAttacted_Staff.aspx</DependentUpon>
     </Compile>
     <Compile Include="Supervisor\GeneratingSetTestReport.aspx.cs">
       <DependentUpon>GeneratingSetTestReport.aspx</DependentUpon>
