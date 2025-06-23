@@ -238,5 +238,32 @@ namespace CEIHaryana.Admin
         {
             Response.Redirect("/Admin/Committee_Details.aspx", false);
         }
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Select")
+            {
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                Label Categary = (Label)row.FindControl("lblCategory");
+                //LinkButton lnkRegNo= row.FindControl("LinkRegistrationNo") as LinkButton;
+                //string RegNo = lnkRegNo.Text;
+                string RegNo = e.CommandArgument.ToString();
+                Session["NewApplicationRegistrationNo"] = "";
+                Session["NewApplication_Contractor_RegNo"] = "";
+                if (Categary.Text == "Wireman" || Categary.Text == "Supervisor")
+                {
+                    Session["NewApplicationRegistrationNo"] = RegNo;
+                    Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
+                }
+                else if (Categary.Text == "Contractor")
+                {
+                    Session["NewApplication_Contractor_RegNo"] = RegNo;
+                    Response.Redirect("/UserPages/New_Registration_Information_Contractor.aspx", false);
+
+                }
+
+
+            }
+        }
     }
 }

@@ -328,7 +328,7 @@
                     <div class="row" style="margin-bottom: -30px;">
                         <div class="col-md-12">
                             <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false"
-                                BorderWidth="1px" BorderColor="#dbddff">
+                                BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand" Autopostback="true">
                                 <PagerStyle CssClass="pagination-ys" />
                                 <Columns>
                                     <asp:TemplateField ItemStyle-HorizontalAlign="left" ItemStyle-VerticalAlign="Middle">
@@ -379,7 +379,7 @@
                                         <HeaderStyle Width="10%" CssClass="headercolor" />
                                         <ItemStyle Width="10%" CssClass="text-wrap" />
                                         <ItemTemplate>
-                                            <asp:Label ID="lblRegistrationNo" runat="server" Text='<%# Eval("UserId") %>' CssClass="text-wrap"></asp:Label>
+                                           <asp:LinkButton ID="LinkRegistrationNo" runat="server" CommandArgument=' <%#Eval("UserId") %> ' CommandName="Select"><%#Eval("UserId") %></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <%--<asp:BoundField DataField="UserId" HeaderText="User Id">
