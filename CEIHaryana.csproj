@@ -2184,6 +2184,8 @@
     <Content Include="UserPages\FormPrintWiremen.aspx" />
     <Content Include="UserPages\index.aspx" />
     <Content Include="UserPages\Instructions.aspx" />
+    <Content Include="UserPages\New_Registration_Information.aspx" />
+    <Content Include="UserPages\New_Registration_Information_Contractor.aspx" />
     <Content Include="UserPages\OurServices.aspx" />
     <Content Include="UserPages\PrintGeneratingSetTestReport.aspx" />
     <Content Include="UserPages\PrintLineTestReport.aspx" />
@@ -4851,6 +4853,20 @@
     </Compile>
     <Compile Include="UserPages\Instructions.aspx.designer.cs">
       <DependentUpon>Instructions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\New_Registration_Information.aspx.cs">
+      <DependentUpon>New_Registration_Information.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\New_Registration_Information.aspx.designer.cs">
+      <DependentUpon>New_Registration_Information.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\New_Registration_Information_Contractor.aspx.cs">
+      <DependentUpon>New_Registration_Information_Contractor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\New_Registration_Information_Contractor.aspx.designer.cs">
+      <DependentUpon>New_Registration_Information_Contractor.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\OurServices.aspx.cs">
       <DependentUpon>OurServices.aspx</DependentUpon>

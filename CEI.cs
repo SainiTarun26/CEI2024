@@ -12075,6 +12075,24 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Contractor_AttachedDetails", Id);
         }
         #endregion
+        #region gurmeet NewRegistrationView form 23-June-2025
+        public DataSet ViewDocumentsNewApplications(string UserId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDocumentListForNewApplicastion", UserId);
+        }
+        public DataTable GetNewLicenceApplicationData(string RegistartionID)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetLicenceApplicationData", RegistartionID);
+        }
+        public DataTable GetNewLicenceApplicationData_contractor(string RegistartionID)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetLicenceApplicationData_Contractor", RegistartionID);
+        }
+        public DataSet GetContractorPartners(string UserId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetContractor_partners", UserId);
+        }
+        #endregion
     }
 }
 

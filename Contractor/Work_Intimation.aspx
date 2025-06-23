@@ -1002,10 +1002,25 @@
                         </div>
                     </div>
                 </div>
+                <div id="warningPopup" style="display: none; position: fixed; top: 30%; left: 30%; width: 40%; background: #fff; border: 2px solid red; padding: 20px; z-index: 10000; box-shadow: 0 0 10px #000;">
+                    <div style="color: red; font-weight: bold; font-size: 14px;">
+                        If you have applied under 'Commercial' in the 'Type of Premises' for an industry file, your license will be rejected. 
+        Please upload the correct file and select the correct 'Type of Premises'.
+                    </div>
+                    <div style="text-align: right; margin-top: 15px;">
+                        <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2"
+                            OnClick="Submit_Click" />
+                        <asp:Button type="submit" ID="btnCancel" TabIndex="22" ValidationGroup="Cancel" Text="Cancel" runat="server" class="btn btn-primary mr-2"
+                            OnClientClick="return submitAfterWarning();" />
+                        <%--<button type="button" onclick="submitAfterWarning()" style="padding: 6px 12px;">OK</button>--%>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: center;">
-                        <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />
+                        <asp:Button type="submit" ID="Button1" TabIndex="22" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2"
+                             OnClick="Button1_Click" />
                         <%--OnClientClick="this.disabled=true;this.value='Processing...';" UseSubmitBehavior="false"--%>
                         <%--<asp:Button type="submit" ID="btnSubmit" ValidationGroup="Submit" Text="Submit" OnClientClick="return validateCheckBoxes();" runat="server" class="btn btn-primary mr-2" OnClick="Submit_Click" />--%>
                         <asp:Button type="submit" ID="btnReset" TabIndex="23" Text="Reset" runat="server" class="btn btn-primary mr-2" OnClick="Unnamed2_Click" Style="padding-left: 18px; padding-right: 18px;" />
@@ -1053,6 +1068,26 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
+    <script type="text/javascript">
+        function showWarningPopup() {
+            // Run validators for the 'Submit' validation group
+            if (typeof (Page_ClientValidate) === "function") {
+                if (!Page_ClientValidate('Submit')) {
+                    return false; // validation failed, block submission
+                }
+            }
+
+            // Show warning div
+            document.getElementById("warningPopup").style.display = "block";
+            return false; // stop form submission until user clicks OK
+        }
+
+        function submitAfterWarning() {
+            document.getElementById("warningPopup").style.display = "none";
+          //  __doPostBack('btnSubmit', ''); // Replace with your actual button's UniqueID
+        }
+    </script>
+
     <script type="text/javascript">
         function FileName() {
             var fileInput = document.getElementById('customFile');
@@ -1428,6 +1463,19 @@
         });
     </script>
 
+    <script type="text/javascript">
+        function showAlert(message, isWarning) {
+            var msgDiv = document.getElementById("alertMessage");
+            msgDiv.innerText = message;
+            msgDiv.style.color = isWarning ? "red" : "black";
+            document.getElementById("customAlert").style.display = "block";
+        }
+
+        function submitData() {
+            document.getElementById("customAlert").style.display = "none";
+            __doPostBack('', '');
+        }
+    </script>
 
 
 </asp:Content>
