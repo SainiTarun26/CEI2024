@@ -11,7 +11,7 @@
         <div>
            <p class="style1">
     We are pleased to inform you that your account has been successfully created. Please check your email for your ID and password.<br /><br />
-    <a href="https://ceiharyana.com" target="_blank">Click here to proceed with the further process</a>.
+    <a href="https://uat.ceiharyana.com" target="_blank">Click here to proceed with the further process</a>.
 </p>
         </div>
     </form>
