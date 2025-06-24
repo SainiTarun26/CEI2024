@@ -343,7 +343,7 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Id" Visible="False">
                                         <ItemTemplate>
-                                            <%-- <asp:Label ID="lblRowID" runat="server" Text='<%#Eval("REID") %>'></asp:Label>--%>
+                                             <asp:Label ID="lblRegistrationNo" runat="server" Text='<%#Eval("REID") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="SNo">
