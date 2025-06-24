@@ -7398,9 +7398,10 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
             }
         }
 
-        public DataSet GetEmails(string Id)
+        public DataTable GetEmails(string Id)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetEmails", Id);
+            //return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetEmails", Id);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerEmailIDs", Convert.ToInt32(Id));
         }
         public void UpdateStatusOfReturnedInspection(string ID, string StaffId, string ReturnedBasedOnDocumentValue, SqlTransaction transaction)
         {

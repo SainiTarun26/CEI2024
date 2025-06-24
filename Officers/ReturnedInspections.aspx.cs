@@ -274,12 +274,12 @@ namespace CEIHaryana.Officers
                 }
                 ID = Session["InspectionId"].ToString();
 
-                DataSet dsa = new DataSet();
-                dsa = CEI.GetEmails(ID);
+                DataTable dt = new DataTable();
+                dt = CEI.GetEmails(ID);
                 try
                 {
-                    ToEmail = dsa.Tables[0].Rows[0]["ToEmail"].ToString();
-                    CCemail = dsa.Tables[0].Rows[0]["CCemail"].ToString();
+                    ToEmail = dt.Rows[0]["ToEmail"].ToString();
+                    CCemail = dt.Rows[0]["CCemail"].ToString();
                     Session["ToEmail"] = ToEmail.Trim();
                     if (CCemail.Trim() != null && CCemail.Trim() != "")
                     {

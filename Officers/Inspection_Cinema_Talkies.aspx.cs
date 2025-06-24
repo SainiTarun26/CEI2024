@@ -127,12 +127,12 @@ namespace CEIHaryana.Officers
                         GridBindDocument(Id);
                     //}
 
-                    DataSet dsa = new DataSet();
-                    dsa = CEI.GetEmails(Id);
+                    DataTable dta = new DataTable();
+                    dta = CEI.GetEmails(ID);
                     try
                     {
-                        ToEmail = dsa.Tables[0].Rows[0]["ToEmail"].ToString();
-                        CCemail = dsa.Tables[0].Rows[0]["CCemail"].ToString();
+                        ToEmail = dta.Rows[0]["ToEmail"].ToString();
+                        CCemail = dta.Rows[0]["CCemail"].ToString();
                         Session["ToEmail"] = ToEmail.Trim();
                         if (CCemail.Trim() != null && CCemail.Trim() != "")
                         {

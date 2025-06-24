@@ -386,19 +386,19 @@ namespace CEIHaryana.Officers
                         StaffId = Session["StaffID"].ToString();
                         ID = Session["InspectionId"].ToString();
                         //Added by vinod sir on 19-June-2025
-                        DataSet dsa = new DataSet();
-                        dsa = CEI.GetEmails(ID);
-                        if (dsa.Tables[0].Rows.Count>0)
+                        DataTable dt = new DataTable();
+                        dt = CEI.GetEmails(ID);
+                        if (dt.Rows.Count>0)
                         {
-                            ToEmail = dsa.Tables[0].Rows[0]["ToEmail"].ToString();
-                            CCemail = dsa.Tables[0].Rows[0]["CCemail"].ToString();
+                            ToEmail = dt.Rows[0]["ToEmail"].ToString();
+                            CCemail = dt.Rows[0]["CCemail"].ToString();
                         }
                         else
                         {
                             ToEmail = "";
                             CCemail = "";
                         }
-                        dsa.Dispose();
+                        dt.Dispose();
                             //
 
                         bool isRemarksValid = true;
