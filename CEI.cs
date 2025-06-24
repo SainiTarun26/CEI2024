@@ -2607,55 +2607,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDetailsByPanNumberIdLift", PANNumber);
         }
-        #region Insert New user data Data
-        public void InserNewUserData(string ApplicationFor, string Name, string Age, string CalculatedAge, string FatherName,
-            string gender, string aadhar, string Address, string District, string State, string PinCode, string PhoneNo, string Email,
-            string Category, string CreatedBy, string UserId,
-            string CommunicationAddress, string CommState, string CommDistrict, string CommPin, string Password, string IPAddress)
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand("sp_NewUserRegistration");
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                cmd.Connection = con;
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                    con.Open();
-                }
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("@ApplicationFor", ApplicationFor);
-                cmd.Parameters.AddWithValue("@Name", Name);
-                //cmd.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
-                cmd.Parameters.AddWithValue("@Age", Age);
-                cmd.Parameters.AddWithValue("@CalculatedAge", CalculatedAge);
-                cmd.Parameters.AddWithValue("@FatherName", FatherName);
-                cmd.Parameters.AddWithValue("@Gender", gender);
-                cmd.Parameters.AddWithValue("@Aadhar", aadhar);
-                cmd.Parameters.AddWithValue("@Address", Address);
-                cmd.Parameters.AddWithValue("@District", District);
-                cmd.Parameters.AddWithValue("@State", State);
-                cmd.Parameters.AddWithValue("@PinCode", PinCode);
-                cmd.Parameters.AddWithValue("@PhoneNo", PhoneNo);
-                cmd.Parameters.AddWithValue("@Email", Email);
-                cmd.Parameters.AddWithValue("@Category", Category);
-                cmd.Parameters.AddWithValue("@Createdby", CreatedBy);
-                cmd.Parameters.AddWithValue("@UserId", UserId);
-                cmd.Parameters.AddWithValue("@CommunicationAddress", CommunicationAddress);
-                cmd.Parameters.AddWithValue("@CommState", CommState);
-                cmd.Parameters.AddWithValue("@CommDistrict", CommDistrict);
-                cmd.Parameters.AddWithValue("@CommPin", CommPin);
-                cmd.Parameters.AddWithValue("@Password", Password);
-                cmd.Parameters.AddWithValue("@IPAddres", IPAddress);
-                cmd.ExecuteNonQuery();
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-            }
-        }
-        #endregion
+        
 
         public DataSet GetddlSecondaryVotlage(string Volts)
         {
@@ -11018,11 +10970,12 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
 
         #endregion
         #region neeraj Physicalverification 18-June-2025
-        public DataTable BindDataForDealingHand(string Category = null, string District = null, string Status = null, string Name = null)
+        public DataTable BindDataForDealingHand(string Id, string Category = null, string District = null, string Status = null, string Name = null)
         {
             return DBTask.ExecuteDataTable(
          ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
          "sp_GetDetailsForDealingHand",
+         Id,
          Category == "Select" ? (object)DBNull.Value : Category,
          District == "Select" ? (object)DBNull.Value : District,
          Status == "Select" ? (object)DBNull.Value : Status,
@@ -11149,11 +11102,12 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return count;
         }
 
+        #region Chaged by neeraj 24-Jue-2025
 
         public void InserNewUserData(string ApplicationFor, string Name, string Age, string CalculatedAge, string FatherName,
-           string gender, string aadhar, string Address, string District, string State, string PinCode, string PhoneNo, string Email,
-           string Category, string CreatedBy, string UserId,
-           string CommunicationAddress, string CommState, string CommDistrict, string CommPin, string Password, string IPAddress, string RandomUniqueNumber)
+        string gender, string aadhar, string Address, string District, string State, string PinCode, string PhoneNo, string Email,
+        string Category, string CreatedBy, string UserId,
+        string CommunicationAddress, string CommState, string CommDistrict, string CommPin, string Password, string IPAddress, string District_Division, string Division, string RandomUniqueNumber)
         {
             try
             {
@@ -11169,7 +11123,6 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
 
                 cmd.Parameters.AddWithValue("@ApplicationFor", ApplicationFor);
                 cmd.Parameters.AddWithValue("@Name", Name);
-                //cmd.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
                 cmd.Parameters.AddWithValue("@Age", Age);
                 cmd.Parameters.AddWithValue("@CalculatedAge", CalculatedAge);
                 cmd.Parameters.AddWithValue("@FatherName", FatherName);
@@ -11190,6 +11143,8 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
                 cmd.Parameters.AddWithValue("@CommPin", CommPin);
                 cmd.Parameters.AddWithValue("@Password", Password);
                 cmd.Parameters.AddWithValue("@IPAddres", IPAddress);
+                cmd.Parameters.AddWithValue("@District_Division", District_Division);
+                cmd.Parameters.AddWithValue("@Division", Division);
                 cmd.Parameters.AddWithValue("@RandomUniqueNumber", RandomUniqueNumber);
                 cmd.ExecuteNonQuery();
                 con.Close();
@@ -11199,8 +11154,15 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             }
         }
 
-
-
+        public DataTable getDistrict()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDistrict");
+        }
+        public DataTable getDivisionDistrict(string District)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDivision_District", District);
+        }
+        #endregion
         public void ToActivateAndVerifyEmail(string Email, string RandomUniqueNumber)
         {
             string encryptedNumber = EncryptRandomNumber(RandomUniqueNumber);

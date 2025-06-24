@@ -376,6 +376,8 @@
             line-height: 1.4rem;
             vertical-align: top;
             margin-bottom: 0px !important;
+            padding: .0px !important;
+    padding-bottom: 10px !important;
         }
 
         img {
@@ -386,6 +388,22 @@
         .uppercase {
             text-transform: uppercase;
         }
+        select#ddlDist {
+    height: 31px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    color: #252525;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    width: 100%;
+}
+   select#ddlDivision {
+    height: 31px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    color: #252525;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    width: 100%;
+}
     </style>
     <script type="text/javascript">
         function alertWithRedirectdata() {
@@ -510,13 +528,16 @@
                                             <h4 class="card-title">APPLICANT'S DETAIL</h4>
                                         </div>
                                     </div>
+                                                                                                               <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+<ContentTemplate>
                                     <div class="row">
-                                        <div class="col-md-12">
+                                                                          
+                                        <div class="col-md-4">
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-2 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 15px;">
+                                                <label for="exampleInputUsername2" class="col-sm-5 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 12px;padding-left:45px !important;">
                                                     Applying For<samp style="color: red">* </samp>
                                                     :</label>
-                                                <div class="col-sm-3" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
+                                                <div class="col-sm-6" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
                                                     <asp:DropDownList class="select-form select2" ID="ddlcategory" AutoPostBack="true" Style="margin-left: -35px;" runat="server" TabIndex="1" OnSelectedIndexChanged="ddlcategory_SelectedIndexChanged">
                                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                         <asp:ListItem Text="Wireman Permit" Value="1"></asp:ListItem>
@@ -524,11 +545,43 @@
                                                         <asp:ListItem Text="Contractor" Value="3"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ErrorMessage="Required" ControlToValidate="ddlcategory" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" CssClass="validation_required" />
-                                                </div>
+                                                </div>   
                                             </div>
                                         </div>
-                                    </div>
-                                    <hr />
+                                         
+                                         <div class="col-md-4">
+     <div class="form-group row">
+         <label for="exampleInputUsername2" class="col-sm-5 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 12px;">
+             Applying For District: <samp style="color: red">* </samp>
+             :</label>
+         <div class="col-sm-6" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
+             <asp:DropDownList class="select-form select2" ID="ddlDist" AutoPostBack="true" Style="margin-left: -35px;" runat="server" TabIndex="1" 
+                 OnSelectedIndexChanged="ddlDist_SelectedIndexChanged" >                
+             </asp:DropDownList>
+             <asp:RequiredFieldValidator ID="RequiredFieldValidator19" ErrorMessage="Required" ControlToValidate="ddlDist" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" CssClass="validation_required" />
+         </div>   
+     </div>
+ </div>
+                                        
+                                                                                <div class="col-md-4">
+    <div class="form-group row">
+        <label for="exampleInputUsername2" class="col-sm-5 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 12px;">
+            Applying For Division: <samp style="color: red">* </samp>
+            :</label>
+        <div class="col-sm-6" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
+            <asp:DropDownList class="select-form select2" ID="ddlDivision" AutoPostBack="true" Style="margin-left: -35px;" runat="server" TabIndex="1"  >            
+            </asp:DropDownList>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator18" ErrorMessage="Required" ControlToValidate="ddlDivision" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" CssClass="validation_required" />
+        </div>   
+    </div>
+</div>
+                                               
+                                
+                                    
+                                                 
+                                            </div>
+                                                       </ContentTemplate>
+</asp:UpdatePanel><hr />
                                     <div class="row">
                                         <div class="col-md-12 grid-margin stretch-card">
                                             <div class="card">

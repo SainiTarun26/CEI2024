@@ -28,12 +28,36 @@ namespace CEIHaryana.UserPages
                 {
                     ddlLoadBindState();
                     ddlLoadBindState1();
+                    ddlBindDistrict();
                 }
             }
             catch
             {
                 Response.Redirect("/Login.aspx", false);
             }
+        }
+        private void ddlBindDistrict()
+        {
+            DataTable ds = new DataTable();
+            ds = CEI.getDistrict();
+            ddlDist.DataSource = ds;
+            ddlDist.DataTextField = "HeadOffice";
+            ddlDist.DataValueField = "Area";
+            ddlDist.DataBind();
+            ddlDist.Items.Insert(0, new ListItem("Select", "0"));
+            ds.Clear();
+        }
+        private void ddlBindDivision()
+        {
+            string District = ddlDist.SelectedItem.ToString();
+            DataTable ds = new DataTable();
+            ds = CEI.getDivisionDistrict(District);
+            ddlDivision.DataSource = ds;
+            ddlDivision.DataTextField = "Area";
+            ddlDivision.DataValueField = "HeadOffice";
+            ddlDivision.DataBind();
+            ddlDivision.Items.Insert(0, new ListItem("Select", "0"));
+            ds.Clear();
         }
         #region GetIP
         protected void GetIP()
@@ -89,7 +113,7 @@ namespace CEIHaryana.UserPages
                             ddlGender.SelectedItem.ToString(), txtAadhaar.Text.Trim(), txtPermanentAddress.Text, ddlDistrict.SelectedItem.ToString(),
                             ddlState.SelectedItem.ToString(), txtPinCode.Text, txtphone.Text,
                             txtEmailID.Text, Category, userId, userId, txtCommunicationAddress.Text, ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(),
-                            txtPin.Text, txtConfirmPswrd.Text, ipaddress, RandomUniqueNumber);
+                            txtPin.Text, txtConfirmPswrd.Text, ipaddress, ddlDist.SelectedItem.ToString(), ddlDivision.SelectedItem.ToString(), RandomUniqueNumber);
 
                             CEI.ToActivateAndVerifyEmail(txtEmailID.Text, RandomUniqueNumber);
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
@@ -345,5 +369,12 @@ namespace CEIHaryana.UserPages
             txtPin.Attributes.Remove("readonly");
             ddlDistrict.Attributes.Remove("disabled");
         }
+
+        protected void ddlDist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlBindDivision();
+        }
+
+       
     }
 }

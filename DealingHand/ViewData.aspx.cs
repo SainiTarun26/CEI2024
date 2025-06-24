@@ -21,8 +21,9 @@ namespace CEIHaryana.DealingHand
 
                     if (Convert.ToString(Session["DealingHandId"]) != null && Convert.ToString(Session["DealingHandId"]) != string.Empty)
                     {
+                        hdnId.Value = Session["DealingHandId"].ToString();
                         BindDistrict();
-                        GridBind();
+                        GridBind(hdnId.Value);
 
                     }
                 }
@@ -52,7 +53,7 @@ namespace CEIHaryana.DealingHand
             }
         }
 
-        public void GridBind()
+        public void GridBind(string Id)
         {
             try
             {
@@ -60,7 +61,7 @@ namespace CEIHaryana.DealingHand
                 string Category = ddlcategory.SelectedItem.ToString();
                 string Status = ddlApplicationStatus.SelectedItem.ToString();
                 DataTable ds = new DataTable();
-                ds = CEI.BindDataForDealingHand(Category, District, Status, txtName.Text.Trim());
+                ds = CEI.BindDataForDealingHand(Id, Category, District, Status, txtName.Text.Trim());
                 if (ds.Rows.Count > 0)
                 {
                     GridView1.DataSource = ds;
@@ -183,7 +184,7 @@ namespace CEIHaryana.DealingHand
                         }
                     }
 
-                    GridBind();
+                    GridBind(hdnId.Value);
                 }
                 else
                 {
@@ -211,7 +212,7 @@ namespace CEIHaryana.DealingHand
             district.Visible = false;
             AppStatus.Visible = false;
             Name.Visible = false;
-            GridBind();
+            GridBind(hdnId.Value);
         }
     }
 }
