@@ -259,12 +259,35 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-
-                throw;
+                string errorMessage = ex.Message.Replace("'", "\\'").Replace("\r", "").Replace("\n", "");
+                string script = $"alert('{errorMessage}');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorAlert", script, true);
             }
-           
-        }
 
+
+        }
+        #region Navneet 25-June-2025
+
+        protected void lnkButtonDeleteCommitte_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton lnkDelete = (LinkButton)sender;
+                string Committee_Id = lnkDelete.CommandArgument;
+                cei.DeleteCommitteeAtAdminEnd(Committee_Id);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ALert", "alert('Committe Deleted Successfully');", true);
+
+            }
+            catch (Exception ex)
+            {
+                string errorMessage = ex.Message.Replace("'", "\\'").Replace("\r", "").Replace("\n", "");
+                string script = $"alert('{errorMessage}');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorAlert", script, true);
+            }
+
+
+        }
+        #endregion
         protected void lnkShowCreate_Click(object sender, EventArgs e)
         {
             hdnFieldCommitteeId.Value = "";

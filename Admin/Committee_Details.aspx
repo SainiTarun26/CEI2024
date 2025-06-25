@@ -249,6 +249,8 @@
                                                 CssClass="eye-icon-link">
             <i class="fa fa-eye"></i>
                                             </asp:LinkButton>
+                                              <asp:LinkButton runat="server" ID="lnkButtonDeleteMemberId" CommandArgument=' <%#Eval("CommitteeID") %>' OnClick="lnkButtonDeleteCommitte_Click" OnClientClick="return confirmDeleteMember(this);"><i class="fa fa-trash"></i></asp:LinkButton>
+                                        
                                         </ItemTemplate>
                                     </asp:TemplateField>
 

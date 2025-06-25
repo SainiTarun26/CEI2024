@@ -10968,7 +10968,12 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             cmd.ExecuteNonQuery();
         }
-
+        #region Navneet commitee updates 25-June-2025
+        public void DeleteCommitteeAtAdminEnd(string CommitteeId)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_DeleteCommitteeAtAdminEnd", CommitteeId);
+        }
+        #endregion
         #endregion
         #region neeraj Physicalverification 18-June-2025
         public DataTable BindDataForDealingHand(string Id, string Category = null, string District = null, string Status = null, string Name = null)
