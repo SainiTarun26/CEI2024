@@ -343,7 +343,7 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Id" Visible="False">
                                         <ItemTemplate>
-                                             <asp:Label ID="lblRegistrationNo" runat="server" Text='<%#Eval("REID") %>'></asp:Label>
+                                             <asp:Label ID="lblRegistrationNo" runat="server" Text='<%#Eval("UserId") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="SNo">
@@ -364,7 +364,7 @@
                                     <asp:TemplateField HeaderText="Name">
                                         <HeaderStyle Width="13%" CssClass="headercolor" />
                                         <ItemStyle Width="13%" CssClass="text-wrap" />
-                                        <ItemTemplate>
+                                        <ItemTemplate> 
                                             <asp:Label ID="lblName" runat="server" Text='<%# Eval("Name") %>' CssClass="text-wrap"></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>

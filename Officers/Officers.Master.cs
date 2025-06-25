@@ -31,6 +31,13 @@ namespace CEIHaryana.Officers
                         DisconnectionNoticeRequest.Visible = true;
                         }
                     #endregion
+                    #region navneet 25-June-2025
+                    if (!string.IsNullOrEmpty(Convert.ToString(Session["StaffID"])) &&
+    Convert.ToString(Session["StaffID"]).IndexOf("xen", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        NewApplications.Visible = true;
+                    }
+                    #endregion
                 }
                 else if (Session["StaffID"] == null)
                 {
