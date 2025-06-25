@@ -17,12 +17,13 @@ namespace CEIHaryana.Print_Forms
         {
             if (!IsPostBack)
             {
-              //  Session["Application_Id"] = "App-101";
+              // Session["Application_Id"] = "App-109";
                 if (Convert.ToString(Session["Application_Id"]) != null && Convert.ToString(Session["Application_Id"]) != string.Empty)
                 {
                     hdnApplicationId.Value = Session["Application_Id"].ToString();
                     GetData(hdnApplicationId.Value);
                     GridData(hdnApplicationId.Value);
+                    getContractorSignature();
                     GetPatnersDetails();
                     GetSupervisiorWiremanDetails();
                 }
@@ -52,7 +53,24 @@ namespace CEIHaryana.Print_Forms
                 return;
             }
         }
+        public void getContractorSignature()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = CEI.getContractorSignature(lblRegistationId.Text);
+                if (dt.Rows.Count > 0)
+                {
+                    myImage.ImageUrl = dt.Rows[0]["DocumentPath"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
 
+        }
         public void GetPatnersDetails()
         {
             DataTable dt = new DataTable();

@@ -11,6 +11,7 @@ namespace CEIHaryana.Superintendent
 {
     public partial class CommentForRequest : System.Web.UI.Page
     {
+        //Page Created By Neeraj on june 2025
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -55,7 +56,12 @@ namespace CEIHaryana.Superintendent
                 txtContactNo.Text = dt.Rows[0]["PhoneNo"].ToString();
                 txtEmailId.Text = dt.Rows[0]["Email"].ToString();
                 txtCatogary.Text = dt.Rows[0]["Category"].ToString();
-               string SuperidentComment = dt.Rows[0]["SuperintendentReviewComment"].ToString();              
+                txtStatus.Text = dt.Rows[0]["ApplicationStatus"].ToString();
+                if (txtStatus.Text != "Submit")
+                {
+                    Status.Visible = true;
+                }
+                string SuperidentComment = dt.Rows[0]["SuperintendentReviewComment"].ToString();              
                if(SuperidentComment != null && SuperidentComment != string.Empty)
                 {
                     SupComment.Visible = false;

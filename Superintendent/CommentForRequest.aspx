@@ -334,6 +334,16 @@
                     </div>
                </div>
          </div>
+                    <div id="Status" runat="server"  Visible="false">
+             <div class="row" style="margin-bottom: 15px;">
+<div class="col-md-4">
+    <label>
+        Application Status
+    </label>
+    <asp:TextBox class="form-control" ID="txtStatus" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+</div>
+</div>
+            </div>
 
         </div>
         <div class="row">

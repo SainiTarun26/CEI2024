@@ -11,6 +11,7 @@ namespace CEIHaryana.DealingHand
 {
     public partial class ViewData : System.Web.UI.Page
     {
+        //Page Created By Neeraj on june 2025
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -93,6 +94,7 @@ namespace CEIHaryana.DealingHand
             Label lblID = (Label)row.FindControl("lblID");
             Label lblStatus = (Label)row.FindControl("lblStatus");
             Label lblAssignTo = (Label)row.FindControl("lblAssignTo");
+            Label lblRegistrationId  = (Label)row.FindControl("lblRegistrationId");
             if (e.CommandName == "Select")
             {
               
@@ -101,7 +103,7 @@ namespace CEIHaryana.DealingHand
             }
             else if(e.CommandName == "Print")
             {
-                Session["Application_Id"] = lblID.Text;
+                Session["NewApplicationRegistrationNo"] = lblRegistrationId.Text;
                 Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
             }
         }

@@ -72,7 +72,7 @@ namespace CEIHaryana.Superintendent
                 string Category = ddlcategory.SelectedItem.ToString();
                 string Status = ddlApplicationStatus.SelectedItem.ToString();
                 DataTable ds = new DataTable();
-                ds = CEI.BindDataForDealingHand(Category, District, Status, txtName.Text.Trim());
+                ds = CEI.BindDataForSuperident(Category, District, Status, txtName.Text.Trim());
                 if (ds.Rows.Count > 0)
                 {
                     GridView1.DataSource = ds;

@@ -13,6 +13,7 @@ namespace CEIHaryana.DealingHand
 {
     public partial class CommentByDealingHand : System.Web.UI.Page
     {
+        //Page Created By Neeraj in june 2025
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -58,6 +59,11 @@ namespace CEIHaryana.DealingHand
                 txtContactNo.Text = dt.Rows[0]["PhoneNo"].ToString();
                 txtEmailId.Text = dt.Rows[0]["Email"].ToString();
                 txtCatogary.Text = dt.Rows[0]["Category"].ToString();
+                txtStatus.Text = dt.Rows[0]["ApplicationStatus"].ToString();
+                if(txtStatus.Text != "Submit")
+                {
+                    Status.Visible = true;
+                }
                 string DealingHandComment = dt.Rows[0]["DealingHandComment"].ToString();
                 if (DealingHandComment != null && DealingHandComment != string.Empty)
                 {
@@ -72,6 +78,7 @@ namespace CEIHaryana.DealingHand
                     Comments.Visible = false;
                     btnSubmit.Visible = false;
                 }
+
             }
             }
 

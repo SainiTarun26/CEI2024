@@ -12042,6 +12042,21 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Contractor_AttachedDetails", Id);
         }
+        public DataTable BindDataForSuperident(string Category = null, string District = null, string Status = null, string Name = null)
+        {
+            return DBTask.ExecuteDataTable(
+         ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+         "sp_GetDetailsForSuperident",
+         Category == "Select" ? (object)DBNull.Value : Category,
+         District == "Select" ? (object)DBNull.Value : District,
+         Status == "Select" ? (object)DBNull.Value : Status,
+         string.IsNullOrWhiteSpace(Name) ? (object)DBNull.Value : Name
+     );
+        }
+        public DataTable getContractorSignature(string RegistrationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getContractorSignature", RegistrationId);
+        }
         #endregion
         #region gurmeet NewRegistrationView form 23-June-2025
         public DataSet ViewDocumentsNewApplications(string UserId)
