@@ -11,6 +11,7 @@ namespace CEIHaryana.UserPages
 {
     public partial class New_Registration_Information_Contractor : System.Web.UI.Page
     {
+        //Page created By Gurmeet 26-June-2025
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,6 +21,10 @@ namespace CEIHaryana.UserPages
                 {
                     if (Convert.ToString(Session["NewApplication_Contractor_RegNo"]) != null && Convert.ToString(Session["NewApplication_Contractor_RegNo"]) != "")
                     {
+                        if (Request.UrlReferrer != null)
+                        {
+                            Session["BackPreviousPage"] = Request.UrlReferrer.ToString();
+                        }
                         GetDetailsOfUser(Convert.ToString(Session["NewApplication_Contractor_RegNo"]));
                     }
                     //GetDetailsOfUser("");
@@ -48,14 +53,16 @@ namespace CEIHaryana.UserPages
                     txtNationailty.Text = dt.Rows[0]["Nationality"].ToString();
                     txtAadhar.Text = dt.Rows[0]["Aadhar"].ToString();
                     txtdob.Text = dt.Rows[0]["DOB"].ToString();
-                    string calculatedAge = dt.Rows[0]["CalculatedAge"].ToString();
-                    string[] parts = calculatedAge.Split('-');
-                    if (parts.Length == 3)
-                    {
-                        txtAge.Text = parts[0].Trim().Split(' ')[0];
-                        txtMonth.Text = parts[1].Trim().Split(' ')[0];
-                        txtdays.Text = parts[2].Trim().Split(' ')[0];
-                    }
+                    txtAge.Text = dt.Rows[0]["CalculatedAge"].ToString();
+
+                    //string[] parts = calculatedAge.Split('-');
+                    //if (parts.Length == 3)
+                    //{
+                    //    txtAge.Text = parts[0].Trim().Split(' ')[0];
+                    // //   txtMonth.Text = parts[1].Trim().Split(' ')[0];
+                    // //   txtdays.Text = parts[2].Trim().Split(' ')[0];
+                    //}
+                    
                     txtphone.Text = dt.Rows[0]["PhoneNo"].ToString();
                     txtEmail.Text = dt.Rows[0]["Email"].ToString();
                     txtCommunicationAddress.Text = dt.Rows[0]["CommunicationAddress"].ToString();
@@ -88,7 +95,7 @@ namespace CEIHaryana.UserPages
                     if (txtContractorLicence_sameName.Text == "YES")
                     {
                         divLicence.Visible = true;
-                        divDOIssue.Visible = true;
+                        //divDOIssue.Visible = true;
                         txtLicenseNo.Text = dt.Rows[0]["LicenseNoIfYes"].ToString();
                     }
 
@@ -119,6 +126,22 @@ namespace CEIHaryana.UserPages
                 ds = CEI.ViewDocumentsNewApplications(Userid);
                 if (ds.Tables.Count > 0 && ds != null)
                 {
+                    string photoUrl ="";                   
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        string a = row["DocumentName"].ToString();
+                        if (row["DocumentName"].ToString() =="Candidate Image")
+                        {
+                            photoUrl = row["DocumentPath"].ToString();
+                            imgPhoto.ImageUrl = photoUrl;                           
+                        }
+                        if (row["DocumentName"].ToString() == "Candidate Signature")
+                        {
+                            photoUrl = row["DocumentPath"].ToString();
+                            mySignature.ImageUrl = photoUrl;                            
+                        }
+                    }
+
                     grd_Documemnts.DataSource = ds;
                     grd_Documemnts.DataBind();
                 }
@@ -209,6 +232,29 @@ namespace CEIHaryana.UserPages
             catch (Exception ex)
             {
 
+            }
+        }
+
+        protected void grd_Documemnts_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType ==DataControlRowType.DataRow)
+            {
+                DataRowView dataRowView = (DataRowView)e.Row.DataItem;
+                string DocmentName = dataRowView["DocumentName"].ToString().ToLower();
+                if (DocmentName == "candidate image" || DocmentName == "candidate signature")
+                {
+                    e.Row.Visible = false;
+                }
+            }
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            string previousPageUrl = Session["BackPreviousPage"] as string;
+            if (!string.IsNullOrEmpty(previousPageUrl))
+            {
+                Response.Redirect(previousPageUrl, false);
+                Session["BackPreviousPage"] = null;              
             }
         }
     }
