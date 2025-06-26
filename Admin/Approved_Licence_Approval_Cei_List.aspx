@@ -203,8 +203,17 @@
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemStyle Width="5%" />
                                 <ItemTemplate>
-                                    <asp:LinkButton runat="server" ID="lnkBtn" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
-                                        Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>" />
+                                    <asp:LinkButton
+                                        runat="server"
+                                        ID="LinkButton1"
+                                        Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
+                                        Text="<i class='fa fa-print' style='color:white !important;'></i>"
+                                        CssClass='greenButton btn-primary'
+                                        CommandName="Print"
+                                        CommandArgument='<%# Container.DataItemIndex %>'
+                                        Visible='<%# Eval("ApplicationStatus").ToString() == "Approved" %>' />
+                                   <%--Changed by navneet on 26-June-2025 <asp:LinkButton runat="server" ID="lnkBtn" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
+                                        Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>" />--%>
                                 </ItemTemplate>
                             </asp:TemplateField>
 

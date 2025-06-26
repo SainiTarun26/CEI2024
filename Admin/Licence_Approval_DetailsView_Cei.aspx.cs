@@ -112,24 +112,16 @@ namespace CEIHaryana.Admin
 
         protected void lnkFile_Click(object sender, EventArgs e)
         {
-            Session["Application_Id"] = txtApplicationId.Text.Trim();
+            //Only redirect Changed by navneet 26-June-2025
+            Session["NewApplicationRegistrationNo"] = txtRegistrationId.Text.Trim();
 
             
-            string category = txtLicenceType.Text.Trim();
+            string category = txtRegistrationId.Text.Trim();
             string url = "";
 
-            if (category.Equals("Wireman", StringComparison.OrdinalIgnoreCase))
-            {
-                url = "/Print_Forms/Certificate_of_wireman_Permit.aspx";
-            }
-            else if (category.Equals("Supervisor", StringComparison.OrdinalIgnoreCase))
-            {
-                url = "/Admin/Pending_Licence_Approval_Cei_List.aspx"; 
-            }
-            else if (category.Equals("Contractor", StringComparison.OrdinalIgnoreCase))
-            {
-                url = "/Print_Forms/Contractor_Licence_New_Certificate.aspx";
-            }
+            
+                url = "/UserPages/New_Registration_Information.aspx";
+            
 
             string script = $"window.open('{url}', '_blank');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "OpenDoc", script, true);

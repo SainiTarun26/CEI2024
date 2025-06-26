@@ -115,8 +115,10 @@ namespace CEIHaryana.Officers
 
         protected void lnkFile_Click(object sender, EventArgs e)
         {
-            Session["Application_Id"] = txtApplicationId.Text.Trim();
-            string script = "window.open('/Officers/Pending_Final_Recommendations_List.aspx', '_blank');";
+            //Only redirect Changed by navneet 26-June-2025
+            //Session["Application_Id"] = txtApplicationId.Text.Trim();
+            Session["NewApplicationRegistrationNo"] = txtRegistrationId.Text.Trim();
+            string script = "window.open('/UserPages/New_Registration_Information.aspx', '_blank');";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "OpenDoc", script, true);
         }
     }
