@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Print _New_Registration_Information.aspx.cs" Inherits="CEIHaryana.Print_Forms.Print__New_Registration_Information" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Print_New_Registration_Information.aspx.cs" Inherits="CEIHaryana.Print_Forms.Print__New_Registration_Information" %>
 
 <!DOCTYPE html>
 
@@ -724,7 +724,8 @@
                                 </div>
                                 <div class="col-3">
                                     <div class="mx-auto" style="width: 175px; height: 195px; border: 1px solid #ccc; background-color: #f8f9fa;">
-                                        <!-- Placeholder for image -->
+                                         <asp:Image ID="imgPhoto" runat="server" Width="100px" Height="100px" style="object-fit: cover;" />
+                                                           
                                     </div>
                                 </div>
 
@@ -984,12 +985,12 @@ Board/Chief Electrical Inspector. If so, give details:
 
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="col-5">
+                                        <div class="col-9">
                                             <h4 class="card-title" style="font-size: 15px;">Are you Employed on Permanent
 Basis.</h4>
                                         </div>
                                         </h6>
-                                        <div class="col-2">
+                                        <div class="col-12">
                                             <asp:RadioButtonList ID="RadioButtonList3" Enabled="false" runat="server" AutoPostBack="true" RepeatDirection="Horizontal" TabIndex="31">
                                                 <asp:ListItem Text="Yes" Value="0" Selected="True"></asp:ListItem>
                                                 <asp:ListItem Text="No" Value="1"></asp:ListItem>
@@ -1244,13 +1245,7 @@ Basis.</h4>
                                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                                             </asp:BoundField>
-                                            <asp:TemplateField HeaderText="Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                                                <ItemTemplate>
-                                                    <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
-                                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                            </asp:TemplateField>
+                                          
                                         </Columns>
                                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                                     </asp:GridView>
@@ -1286,7 +1281,7 @@ stage
                                 </div>
                                 <div class="col-9" style="text-align: end">
 
-                                    <asp:Image ID="myImage" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
+                                    <asp:Image ID="mySignature" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 700; margin-right: 55px;">Signature of Applicant</h6>
 
                                 </div>

@@ -450,6 +450,12 @@
         th.headercolor {
             WIDTH: 23% !IMPORTANT;
         }
+        label {
+        font-size:12px !important;
+        }
+        .col-md-4 {
+    margin-bottom: 15px !important;
+}
     </style>
     <script type="text/javascript">
         function alertWithRedirectdata() {
@@ -574,8 +580,8 @@
 
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-2 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 15px;">
+                                            <div class="form-group row" style="margin-left:5px;">
+                                                <label for="exampleInputUsername2" class="col-sm-1 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 15px;">
                                                     Applying For  
                                                             :</label>
                                                 <div class="col-sm-3" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
@@ -591,120 +597,100 @@
                                         <div class="col-md-12 grid-margin stretch-card">
                                             <div class="card">
                                                 <div class="card-body">
+                                                    
+
                                                     <div class="row">
-                                                        <div class="col-md-2">
-                                                            <div class="forms-sample">
-                                                                <div class="form-group">
-                                                                    <label id="WireSup" runat="server" visible="true">
-                                                                        Name of Applicant  
-                                                                    </label>
-                                                                    <label id="contractor" runat="server" visible="false">
-                                                                        Name in which Electrical contractor license is applied for    
-                                                                    </label>
-                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtName" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label id="Label1" runat="server" visible="true">
-                                                                        Age  
-                                                                    </label>
-                                                                    <label id="Label2" runat="server" visible="false">
-                                                                        Name in which Electrical contractor license is applied for  
-                                                                    </label>
-                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtAge" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                </div>
-                                                            </div>
+                                                     <div class="col-md-10">
+                                                         <div class="row">
+                                                             <div class="col-md-4">
+                                                                 <label id="WireSup" runat="server" visible="true">
+    Name of Applicant  
+</label>
+<label id="contractor" runat="server" visible="false">
+    Name in which Electrical contractor license is applied for    
+</label>
+<asp:TextBox ReadOnly="true" class="form-control" ID="txtName" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                
+                                                             </div>
+                                                             <div class="col-md-4">
+                                                                  <label for="FatherName">
+     Father's Name  
+ </label>
+ <asp:TextBox ReadOnly="true" class="form-control" ID="txtFatherName" MaxLength="50" autocomplete="off" TabIndex="3" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                               
+                                                             </div>
+                                                             <div class="col-md-4">
+                                                                  <label for="Gender">
+     Gender  
+ </label>
+ <asp:TextBox ReadOnly="true" class="form-control" ID="txtgender" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                
+                                                             </div>
+                                                             <div class="col-md-4"> <label for="nationality">
+     Nationality  
+ </label>
+ <asp:TextBox ReadOnly="true" class="form-control" ID="txtNationailty" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                               </div>
+                                                             <div class="col-md-4">
+                                                                 <label for="Gender">
+    Date of Birth  
+</label>
+<asp:TextBox ReadOnly="true" class="form-control" ID="txtdob" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                               
+                                                             </div>
+                                                             <div class="col-md-4">
+                                                                 <label id="Label1" runat="server" visible="true">
+    Age  
+</label>
+                                                                   
+<asp:TextBox ReadOnly="true" class="form-control" ID="txtAge" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                
+                                                             </div>
+                                                             <div class="col-md-4">
+                                                                  <label for="Gender">
+     Aadhaar Card No.  
+ </label>
+ <asp:TextBox ReadOnly="true" class="form-control" ID="txtAadhar" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server" Style="width: 100%;"> </asp:TextBox>
+                                                                
+                                                             </div>
+                                                             <div class="col-md-4">
+                                                                 <label for="Gender">
+    Email Id.  
+</label>
+<asp:TextBox ReadOnly="true" class="form-control" ID="txtEmail" autocomplete="off" runat="server" MaxLength="50" onkeyup="return ValidateEmail();" TabIndex="17" Style="width: 100%;"> </asp:TextBox>
+                                                               
+                                                             </div>
+                                                             <div class="col-md-4"> <label for="nationality">
+     Phone No.  
+ </label>
+ <asp:TextBox ReadOnly="true" class="form-control" ID="txtphone" autocomplete="off" onkeypress="return isNumberKey(event)" onkeyup="return isvalidphoneno();" runat="server" TabIndex="16" MaxLength="10" Style="width: 100%;"> </asp:TextBox>
+                                                              </div>
+                                                           <div class="col-md-12">
+                                                               <label runat="server" visible="true" style="font-size: 12px;">
+    Communication Address  
+</label>
+<asp:TextBox ReadOnly="true" class="form-control" ID="txtCommunicationAddress" autocomplete="off" runat="server" TabIndex="7" MaxLength="200" Style="width: 99% !important;"> </asp:TextBox>
+                                                       
+                                                           </div>
+                                                         </div>
+                                                     </div>
+                                                        <div class="col-md-2" style="margin-top:auto;margin-bottom:auto;">
+                                                              <asp:Image ID="imgPhoto" runat="server" Width="145px" Height="160px" style="object-fit: cover;" />
                                                         </div>
-                                                        <div class="col-md-2">
-                                                            <div class="forms-sample">
-                                                                <div class="form-group">
-                                                                    <label for="FatherName">
-                                                                        Father's Name  
-                                                                    </label>
-                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtFatherName" MaxLength="50" autocomplete="off" TabIndex="3" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                </div>
-                                                                <div class="form-group" style="margin-top: 17px;">
-                                                                    <label for="nationality">
-                                                                        Phone No.  
-                                                                    </label>
-                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtphone" autocomplete="off" onkeypress="return isNumberKey(event)" onkeyup="return isvalidphoneno();" runat="server" TabIndex="16" MaxLength="10" Style="width: 100%;"> </asp:TextBox>
-                                                                </div>
-                                                            </div>
-                                                            <%-- <div class="form-group">
-                                                                <label id="Label3" runat="server" visible="true">
-                                                                    Months  
-                                                                </label>
-                                                                <label id="Label4" runat="server" visible="false">
-                                                                    Name in which Electrical contractor license is applied for  
-                                                                </label>
-                                                                <asp:TextBox ReadOnly="true" class="form-control" ID="txtMonth" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                            </div>--%>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="forms-sample">
-                                                                <div class="form-group">
-                                                                    <label for="Gender">
-                                                                        Gender  
-                                                                    </label>
-                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtgender" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                </div>
-                                                                <div class="form-group" style="margin-top: 17px;">
-                                                                    <label for="Gender">
-                                                                        Email Id.  
-                                                                    </label>
-                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtEmail" autocomplete="off" runat="server" MaxLength="50" onkeyup="return ValidateEmail();" TabIndex="17" Style="width: 100%;"> </asp:TextBox>
-                                                                </div>
-                                                                <%--  <div class="form-group" style="margin-top: 17px;">
-                                                                    <label for="Gender">
-                                                                        Days  
-                                                                    </label>
-                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtdays" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                </div>--%>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="forms-sample">
-                                                                <div class="form-group">
-                                                                    <label for="nationality">
-                                                                        Nationality  
-                                                                    </label>
-                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtNationailty" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="Gender">
-                                                                        Date of Birth  
-                                                                    </label>
-                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtdob" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="forms-sample">
-                                                                <div class="form-group">
-                                                                    <label for="Gender">
-                                                                        Aadhaar Card No.  
-                                                                    </label>
-                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtAadhar" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server" Style="width: 100%;"> </asp:TextBox>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="forms-sample">
-                                                                <%--<img src="path_to_your_image.jpg" alt="Sample Image"
-                                                                    style="width: 100px; height: 100px; object-fit: cover;">--%>
-                                                            <asp:Image ID="imgPhoto" runat="server" Width="100px" Height="100px" style="object-fit: cover;" />
-                                                            </div>
-                                                        </div>
-
-
                                                     </div>
+
+
+
+
+
+
+
+
+
+
                                                     <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label runat="server" visible="true" style="font-size: 12px;">
-                                                                Communication Address  
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtCommunicationAddress" autocomplete="off" runat="server" TabIndex="7" MaxLength="200" Style="width: 99% !important;"> </asp:TextBox>
-                                                        </div>
+                                                        <div class="col-md-10">
+                                                             </div>
                                                         <div class="col-md-6">
                                                         </div>
                                                     </div>
@@ -736,7 +722,7 @@
                                                                     </label>
                                                                     <asp:TextBox class="form-control" ID="txtGstNumber" ReadOnly="true" autocomplete="off" runat="server" onKeyPress="return isNumberKey(event) || alphabetKey(event);" TabIndex="1" MaxLength="15"> </asp:TextBox>
                                                                 </div>
-                                                                <div class="form-group">
+                                                                <div class="form-group" style="margin-top:15px;">
                                                                     <label for="Gender">
                                                                         Whether the company have Partner/Director    
                                                                     </label>
@@ -873,7 +859,7 @@
                                                                     </label>
                                                                     <asp:TextBox class="form-control" ID="txtIssusuingName" autocomplete="off" ReadOnly="true" runat="server"> </asp:TextBox>
                                                                 </div>
-                                                                <div class="form-group" id="divLicensePreviouslyGranted" runat="server" visible="false">
+                                                                <div class="form-group" id="divLicensePreviouslyGranted" runat="server" visible="true" style="margin-top:15px;">
                                                                     <label id="Label13" runat="server" visible="true">
                                                                         Is Contractor License Previously Granted with same name    
                                                                     </label>
@@ -921,7 +907,7 @@
                                                     <hr style="margin-top: 10px; margin-bottom: 30px;" />
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <h4 class="card-title">EMPLOYEES DETAILS</h4>
+                                                            <h4 class="card-title">PARTNERS/DIRECTORS DETAILS</h4>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -1349,7 +1335,7 @@
                                </div>
                            <div class="col-9" style="text-align: end">
 
-                               <asp:Image ID="mySignature" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
+                               <asp:Image ID="mySignature" runat="server" Width="200" Height="60" Style="bottom: 140px; margin-left: -300px;" />
                                <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 700; margin-right: 55px;">Signature of Applicant</h6>
 
                            </div>

@@ -64,17 +64,54 @@ namespace CEIHaryana.UserPages
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "ViewUser")
-            {
-                Control ctrl = e.CommandSource as Control;
-                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                Label lblID = (Label)row.FindControl("lblID");
-                //string id = lblID.Text;
-                Session["RegisteredUserId"] = lblID.Text;
+            Control ctrl = e.CommandSource as Control;
 
-                Response.Redirect("~/Print_Forms/Print_Certificate_Competency_Wireman_Permit.aspx");
+            if (ctrl != null)
+            {
+                GridViewRow row = ctrl.NamingContainer as GridViewRow;
+
+                if (row != null)
+                {
+                    Label lblID = row.FindControl("lblID") as Label;
+                    Label lblCategory = row.FindControl("lblCategory") as Label;
+
+                    if (lblID == null || lblCategory == null)
+                        return;
+
+                    string idValue = lblID.Text.Trim();
+                    string category = lblCategory.Text.Trim();
+
+                    if (e.CommandName == "ViewUser")
+                    {
+                        if (category == "Supervisor" || category == "Wireman")
+                        {
+                            Session["NewApplicationRegistrationNo"] = idValue;
+                            Response.Redirect("~/Print_Forms/Print_New_Registration_Information");
+                        }
+                        else if (category == "Contractor")
+                        {
+                            Session["NewApplication_Contractor_RegNo"] = idValue;
+                            Response.Redirect("~/Print_Forms/Print_New_Registration_Information_Contractor.aspx");
+                        }
+                        
+                    }
+                    else if (e.CommandName == "ViewDetails")
+                    {
+                        if (category == "Supervisor" || category == "Wireman")
+                        {
+                            Session["NewApplicationRegistrationNo"] = idValue;
+                            Response.Redirect("~/UserPages/New_Registration_Information.aspx");
+                        }
+                        else if (category == "Contractor")
+                        {
+                            Session["NewApplication_Contractor_RegNo"] = idValue;
+                            Response.Redirect("~/UserPages/New_Registration_Information_Contractor.aspx");
+                        }
+                    }
+                }
             }
         }
+
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {

@@ -14,6 +14,8 @@
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet" />
     <!-- Vendor CSS Files -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
     <link href="/assetsnew/vendor/aos/aos.css" rel="stylesheet" />
     <link href="/assetsnew/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/assetsnew/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
@@ -937,7 +939,7 @@
                                                 </div>
                                                 <hr />
 
-                                                <div class="row">
+                                                <div class="row" style="margin-top: 15px">
                                                     <div class="col-md-12">
                                                         <%-- Add GridView Here --%>
                                                         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-responsive table-striped table-hover" ShowHeader="true" OnRowCommand="GridView1_RowCommand">
@@ -945,6 +947,7 @@
                                                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                                                     <ItemTemplate>
                                                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("CreatedBy") %>'></asp:Label>
+                                                                        <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Category") %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
                                                                 <asp:TemplateField HeaderText="Name" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
@@ -952,36 +955,52 @@
                                                                         <%# Eval("Name") %>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
-
+                                                                <asp:TemplateField HeaderText="Father's Name" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
+                                                                    <ItemTemplate><%# Eval("FatherName") %> </ItemTemplate>
+                                                                </asp:TemplateField>
                                                                 <asp:TemplateField HeaderText="Category" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
                                                                     <ItemTemplate>
                                                                         <%# Eval("Category") %>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
-
-                                                                <asp:TemplateField HeaderText="User Id" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
+                                                                <asp:TemplateField HeaderText="User Id" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center" Visible="false">
                                                                     <ItemTemplate>
                                                                         <%# Eval("CreatedBy") %>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
-
                                                                 <asp:TemplateField HeaderText="Phone No" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
                                                                     <ItemTemplate>
                                                                         <%# Eval("PhoneNo") %>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
-
                                                                 <asp:TemplateField HeaderText="Email" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
                                                                     <ItemTemplate>
                                                                         <%# Eval("Email") %>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
-
-                                                                <asp:TemplateField HeaderText="Action" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center" Visible="false">
+                                                                <asp:TemplateField HeaderText="Status" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
                                                                     <ItemTemplate>
-                                                                        <asp:Button ID="btnView" runat="server" Text="View" CommandName="ViewUser" CssClass="btn btn-primary" />
+                                                                        <%# Eval("Status") %>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Application Details" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
+                                                                    <ItemTemplate>
+                                                                        <asp:LinkButton ID="lnkViewDetails" runat="server" CommandName="ViewDetails" CssClass="btn btn-link" ToolTip="View Details">
+                                                                           <i class="fas fa-eye"></i>
+                                                                        </asp:LinkButton>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+
+                                                                <asp:TemplateField HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
+                                                                    <ItemTemplate>
+
+                                                                        <asp:LinkButton ID="lnkPrint" runat="server" CommandName="ViewUser" CssClass="btn btn-link" ToolTip="View Details">
+                                                                          <i class="fas fa-print"></i>
+                                                                        </asp:LinkButton>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+
+
                                                             </Columns>
                                                             <FooterStyle BackColor="White" ForeColor="#000066" />
                                                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -996,7 +1015,17 @@
                                                     </div>
 
                                                 </div>
+                                                <div class="row" style="margin-top: 15px">
+                                                    <div class="col-md-12" style="text-align: center;">
+                                                        <asp:Button type="button" ID="btnEdit" Text="Edit" Visible="false" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
 
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-top: 15px">
+                                                    <div class="col-md-12" style="text-align: center;">
+                                                        <asp:Label ID="lblUpdate" runat="server" Visible="false" Style="color: red;">Note: You have to update your documents before the date of your appointment scheduled.</asp:Label>
+                                                    </div>
+                                                </div>
                                                 <div class="col-4">
                                                     <asp:HiddenField ID="hdnId" runat="server" />
                                                     <asp:HiddenField ID="HdnCategory" runat="server" />

@@ -227,12 +227,12 @@ namespace CEIHaryana.Print_Forms
                         if (row["DocumentName"].ToString() == "Candidate Image")
                         {
                             photoUrl = row["DocumentPath"].ToString();
-                         //   imgPhoto.ImageUrl = photoUrl;
+                            imgPhoto.ImageUrl = photoUrl;
                         }
                         if (row["DocumentName"].ToString() == "Candidate Signature")
                         {
                             photoUrl = row["DocumentPath"].ToString();
-                           // mySignature.ImageUrl = photoUrl;
+                            mySignature.ImageUrl = photoUrl;
                         }
                     }
                     grd_Documemnts.DataSource = ds;

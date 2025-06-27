@@ -2029,7 +2029,7 @@
     <Content Include="Print_Forms\NewInspectionApprovalCertificate_Industry.aspx" />
     <Content Include="Print_Forms\PeriodicApprovalCertificate.aspx" />
     <Content Include="Print_Forms\PeriodicApprovalCertificate_Industry.aspx" />
-    <Content Include="Print_Forms\Print _New_Registration_Information.aspx" />
+    <Content Include="Print_Forms\Print_New_Registration_Information.aspx" />
     <Content Include="Print_Forms\PrintCertificate1.aspx" />
     <Content Include="Print_Forms\PrintCertificate1_Industry.aspx" />
     <Content Include="Print_Forms\PrintCertificate2.aspx" />
@@ -3773,12 +3773,12 @@
     <Compile Include="Print_Forms\PeriodicApprovalCertificate_Industry.aspx.designer.cs">
       <DependentUpon>PeriodicApprovalCertificate_Industry.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Print_Forms\Print _New_Registration_Information.aspx.cs">
-      <DependentUpon>Print _New_Registration_Information.aspx</DependentUpon>
+    <Compile Include="Print_Forms\Print_New_Registration_Information.aspx.cs">
+      <DependentUpon>Print_New_Registration_Information.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Print_Forms\Print _New_Registration_Information.aspx.designer.cs">
-      <DependentUpon>Print _New_Registration_Information.aspx</DependentUpon>
+    <Compile Include="Print_Forms\Print_New_Registration_Information.aspx.designer.cs">
+      <DependentUpon>Print_New_Registration_Information.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print_Forms\PrintCertificate1.aspx.cs">
       <DependentUpon>PrintCertificate1.aspx</DependentUpon>
