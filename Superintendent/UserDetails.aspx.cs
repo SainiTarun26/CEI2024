@@ -103,19 +103,19 @@ namespace CEIHaryana.Superintendent
             GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
             Label lblID = (Label)row.FindControl("lblID");
             Label lblStatus = (Label)row.FindControl("lblStatus");
-            
+            Label lblRegistrationId = (Label)row.FindControl("lblRegistrationId");
             if (e.CommandName == "Select")
             {
                 Session["Application_Id"] = lblID.Text;
                 Session["Superidentent"] = "SUP_CDG";
-               
-                    Response.Redirect("/Superintendent/CommentForRequest.aspx", false);
-               
+
+                Response.Redirect("/Superintendent/CommentForRequest.aspx", false);
+
 
             }
             else if (e.CommandName == "Print")
             {
-                Session["Application_Id"] = lblID.Text;
+                Session["NewApplicationRegistrationNo"] = lblRegistrationId.Text;
                 Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
             }
         }
