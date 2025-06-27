@@ -498,7 +498,7 @@
                                                             <td style="">Matriculation certificate indicating date of birth.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td style="text-align: center;">
-                                                                <text style="color: red; font-size: 12px;" id="text2" runat="server" visible="true">Upload File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;" id="text2" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="FileUpload2" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 <asp:LinkButton ID="lnkbtn_Save2" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success">
@@ -515,7 +515,7 @@
                                                             <td style="">Residence Proof.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td style="text-align: center;">
-                                                                <text style="color: red; font-size: 12px;"  id="text3" runat="server" visible="true">Upload File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;"  id="text3" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload3" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="FileUpload3" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 <asp:LinkButton ID="lnkbtn_Save3" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success">
@@ -541,7 +541,7 @@
                                                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ddlIdproof" InitialValue="0" ValidationGroup="Submit" ForeColor="Red">Please select Id proof</asp:RequiredFieldValidator>
                                                             </td>
                                                             <td style="text-align: center;">
-                                                                <text style="color: red; font-size: 12px;"  id="text4" runat="server" visible="true">Upload File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;"  id="text4" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload4" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="FileUpload4" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 <asp:LinkButton ID="lnkbtn_Save4" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success">
@@ -562,7 +562,7 @@
                                                                 </p>
                                                             </td>
                                                             <td style="text-align: center;">
-                                                                <text style="color: red; font-size: 12px;"  id="text5" runat="server" visible="true">Upload File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;"  id="text5" runat="server" visible="true">Upload Only PDF, ZIP File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload5" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".zip,.pdf" />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="FileUpload5" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 <asp:LinkButton ID="lnkbtn_Save5" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success">
@@ -579,7 +579,7 @@
                                                             <td style="">Experience Certificate.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td style="text-align: center;">
-                                                                <text style="color: red; font-size: 12px;"  id="text6" runat="server" visible="true">Upload File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;"  id="text6" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload6" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="FileUpload6" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 <asp:LinkButton ID="lnkbtn_Save6" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success">
@@ -601,7 +601,7 @@
                                                                 of age on the date of submission of application.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td style="text-align: center;">
-                                                                <text style="color: red; font-size: 12px;"  id="text8" runat="server" visible="true">Upload File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;"  id="text8" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload8" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="FileUpload8" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 <asp:LinkButton ID="lnkbtn_Save8" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"> <i class="fa fa-check"></i>  
@@ -616,7 +616,7 @@
                                                             <td style="">Copy of retirement orders.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td style="text-align: center;">
-                                                                <text style="color: red; font-size: 12px;" id="text9" runat="server" visible="true">Upload File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;" id="text9" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload9" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="FileUpload9" ValidationGroup="Submit" ErrorMessage="Required" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 <asp:LinkButton ID="lnkbtn_Save9" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
@@ -634,7 +634,7 @@
                                                                 </p>
                                                             </td>
                                                             <td style="text-align: center;">
-                                                                <text style="color: red; font-size: 12px;"  id="text10" runat="server" visible="true">Upload File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;"  id="text10" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload10" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="FileUpload10" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 <asp:LinkButton ID="lnkbtn_Save10" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
@@ -669,7 +669,7 @@
                                                                 </div>
                                                             </td>
                                                             <td style="text-align: center;">
-                                                                <text style="color: red; font-size: 12px;"  id="text11" runat="server" visible="true">Upload File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;"  id="text11" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload11" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="FileUpload11" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 <asp:LinkButton ID="lnkbtn_Save11" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success">
@@ -689,7 +689,7 @@
                                                                 </label>
                                                                 <asp:FileUpload ID="FileUpload12" runat="server" CssClass="form-control" Style="padding: 0px; font-size: 15px; height: 28px !important;" onchange="previewImage(this, 'imagePreview')" accept="image/*" />
                                                                 
-                                                                <text style="color: red; font-size: 12px;"  id="text12" runat="server" visible="true">Upload File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;"  id="text12" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="FileUpload12" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                             </td>
                                                             <td style="text-align: center;">
@@ -709,7 +709,7 @@
                                                                 </label>
                                                                 <asp:FileUpload ID="FileUpload13" runat="server" CssClass="form-control" Style="padding: 0px; font-size: 15px; height: 28px !important;" onchange="previewImage(this, 'signaturePreview')" accept="image/*" />
                                                                 
-                                                                <text style="color: red; font-size: 12px;"  id="text13" runat="server" visible="true">Upload File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;"  id="text13" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorSignature" runat="server" ControlToValidate="FileUpload13" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                             </td>
                                                             <td style="text-align: center;">

@@ -404,6 +404,10 @@ namespace CEIHaryana.UserPages
                     divLicenseExpiry.Visible = false;
                     divDetailsOfWorkPermit.Visible = false;
                     //divLicensePreviouslyGranted.Visible = false;
+                    txtIssusuingName.Text = "";
+                    txtIssuedateOtherState.Text = "";
+                    txtLicenseExpiry.Text = "";
+                    txtWorkPermitUndertaken.Text = "";
                 }
 
             }
@@ -464,6 +468,9 @@ namespace CEIHaryana.UserPages
                 {
                     DivLicenseNo.Visible = false;
                     DivLicenseIssueDateifSameName.Visible = false;
+
+                    txtLicenseNo.Text = "";
+                    txtLicenseIssue.Text = "";
                 }
             }
             catch
@@ -594,6 +601,7 @@ namespace CEIHaryana.UserPages
                 Lbl3.Visible = false;
                 Lbl4.Visible = false;
                 DivAgentName.Visible = false;
+                txtAgentName.Text = "";
             }
             else if (ddlCompanyStyle.SelectedValue == "2")
             {               
@@ -610,6 +618,7 @@ namespace CEIHaryana.UserPages
                 Lbl3.Visible = true;
                 Lbl4.Visible = false;
                 DivAgentName.Visible = false;
+                txtAgentName.Text = "";
             }
             else if (ddlCompanyStyle.SelectedValue == "4")
             {             
@@ -618,6 +627,7 @@ namespace CEIHaryana.UserPages
                 Lbl3.Visible = false;
                 Lbl4.Visible = true;
                 DivAgentName.Visible = false;
+                txtAgentName.Text = "";
             }
         }
     }

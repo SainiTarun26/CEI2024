@@ -347,9 +347,13 @@ namespace CEIHaryana.UserPages
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (RadioButtonList1.SelectedValue == "1")
+            if (RadioButtonList1.SelectedValue == "1") //NO
             {
                 RetiredEmployee.Visible = false;
+                txtEmployerName2.Text = "";
+                txtDescription2.Text = "";
+                txtFrom2.Text = "";
+                txtTo2.Text = "";
             }
             else
             {

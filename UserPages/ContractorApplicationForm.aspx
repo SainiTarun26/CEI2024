@@ -1624,7 +1624,7 @@
 
                                                         <div class="row" style="margin-top: 15px !important; margin-bottom: 10PX; font-size: 20PX;">
                                                             <div class="col-md-12">
-                                                                <h3 class="card-title" style="margin-top: 15px; font-size: 21px; padding-left: 25px !important;">Employees Details
+                                                                <h3 class="card-title" style="margin-top: 15px; font-size: 21px; padding-left: 25px !important;">Employees Details (From Here You Can Add Supervisor and Wireman)
                                                                 </h3>
                                                             </div>
                                                         </div>
@@ -1671,7 +1671,7 @@
                                                                             <div class="row" style="margin-bottom: 15px;">
                                                                                 <div class="col-md-4 d-flex align-items-center">
                                                                                     <label for="inputBox" class="me-2" style="margin-top: 7px;">Search:</label>
-                                                                                    <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control"></asp:TextBox>
+                                                                                    <asp:TextBox ID="txtSearch" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)" runat="server" CssClass="form-control"></asp:TextBox>
                                                                                 </div>
                                                                             </div>
 
@@ -2615,5 +2615,31 @@
             }
         }
     </script>
+      <script type="text/javascript">
+          function Search_Gridview(strKey) {
+              var strData = strKey.value.toLowerCase().split(" ");
+              var tblData = document.getElementById("<%=GridView4.ClientID %>");
+              var rowData;
+              for (var i = 1; i < tblData.rows.length; i++) {
+                  rowData = tblData.rows[i].innerHTML;
+                  var styleDisplay = 'none';
+                  for (var j = 0; j < strData.length; j++) {
+                      if (rowData.toLowerCase().indexOf(strData[j]) >= 0)
+                          styleDisplay = '';
+                      else {
+                          styleDisplay = 'none';
+                          break;
+                      }
+                  }
+                  tblData.rows[i].style.display = styleDisplay;
+              }
+          }
+          function SearchOnEnter(event) {
+              if (event.keyCode === 13) {
+                  event.preventDefault(); // Prevent default form submission
+                  Search_Gridview(document.getElementById('txtSearch'));
+              }
+          }
+      </script>
 </body>
 </html>

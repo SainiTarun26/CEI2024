@@ -319,6 +319,7 @@ namespace CEIHaryana.UserPages
                     HdnField_Document2.Value = "0";
                     ddlIdproof.Enabled = true;
                     text2.Visible = true;
+                    ddlIdproof.SelectedIndex = 0;
                 }
             }
         }

@@ -75,5 +75,13 @@ namespace CEIHaryana.UserPages
                 Response.Redirect("~/Print_Forms/Print_Certificate_Competency_Wireman_Permit.aspx");
             }
         }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Session.Clear();
+            Session.RemoveAll();
+            Response.Redirect("/Login.aspx");
+        }
     }
 }
