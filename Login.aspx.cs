@@ -316,9 +316,9 @@ namespace CEIHaryana
                                 {
                                     Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
                                 }
-                                else
+                                else if (ApplicationStatus.Trim() == "Old")
                                 {
-                                    Response.Redirect("/Contractor/Work_Intimation.aspx", false);
+                                    Response.Redirect("/UserPages/New_Application_Status.aspx", false);
                                 }
                             }
                             else if (Category.Trim() == "Lift")
@@ -337,18 +337,27 @@ namespace CEIHaryana
                                     Response.Redirect("/SiteOwnerLogout.aspx", false);
                                 }
                             }
-                            else
+                            else if (Category.Trim() == "Supervisor")
                             {
-                                if (Category.Trim() == "Supervisor")
+                                Session["SupervisorID"] = txtUserID.Text;
+                                Session["InsertedCategory"] = "Supervisor";
+                                if (ApplicationStatus.Trim() == "New")
                                 {
-                                    Session["SupervisorID"] = txtUserID.Text;
-                                    Session["InsertedCategory"] = "Supervisor";
+                                    Response.Redirect("/UserPages/SupervisorQualification.aspx", false);
                                 }
-                                else
+                                else if (ApplicationStatus.Trim() == "Mid")
                                 {
-                                    Session["WiremanId"] = txtUserID.Text;
-                                    Session["InsertedCategory"] = "Wireman";
+                                    Response.Redirect("/UserPages/Documents.aspx", false);
                                 }
+                                else if (ApplicationStatus.Trim() == "Old")
+                                {
+                                    Response.Redirect("/UserPages/New_Application_Status.aspx", false);
+                                }
+                            }
+                            else if (Category.Trim() == "Wireman")
+                            {
+                                Session["WiremanId"] = txtUserID.Text;
+                                Session["InsertedCategory"] = "Wireman";
                                 if (ApplicationStatus.Trim() == "New")
                                 {
                                     Response.Redirect("/UserPages/Qualification.aspx", false);
@@ -357,8 +366,32 @@ namespace CEIHaryana
                                 {
                                     Response.Redirect("/UserPages/Documents.aspx", false);
                                 }
-
+                                else if (ApplicationStatus.Trim() == "Old")
+                                {
+                                    Response.Redirect("/UserPages/New_Application_Status.aspx", false);
+                                }
                             }
+                            //else
+                            //{
+                            //    if (Category.Trim() == "Supervisor")
+                            //    {
+                            //        Session["SupervisorID"] = txtUserID.Text;
+                            //        Session["InsertedCategory"] = "Supervisor";
+                            //    }
+                            //    else
+                            //    {
+                            //        Session["WiremanId"] = txtUserID.Text;
+                            //        Session["InsertedCategory"] = "Wireman";
+                            //    }
+                            //    if (ApplicationStatus.Trim() == "New")
+                            //    {
+                            //        Response.Redirect("/UserPages/Qualification.aspx", false);
+                            //    }
+                            //    else if (ApplicationStatus.Trim() == "Mid")
+                            //    {
+                            //        Response.Redirect("/UserPages/Documents.aspx", false);
+                            //    }
+                            //}
                         }
                         else
                         {
