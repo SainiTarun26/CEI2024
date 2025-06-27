@@ -107,7 +107,7 @@ namespace CEIHaryana.Superintendent
             if (e.CommandName == "Select")
             {
                 Session["Application_Id"] = lblID.Text;
-                Session["Superidentent"] = "SUP_CDG";
+                //Session["Superidentent"] = "SUP_CDG";
 
                 Response.Redirect("/Superintendent/CommentForRequest.aspx", false);
 
