@@ -20,7 +20,7 @@ namespace CEIHaryana.Superintendent
                 if (Convert.ToString(Session["SuperidentId"]) != null && Convert.ToString(Session["SuperidentId"]) != string.Empty)
                 {
                     string Id = Session["SuperidentId"].ToString();
-                   
+                    lblName.Text = Id;
                 }
                 else
                 {

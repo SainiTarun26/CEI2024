@@ -19,7 +19,7 @@ namespace CEIHaryana.DealingHand
             {
                 if (Convert.ToString(Session["DealingHandId"]) != null && Convert.ToString(Session["DealingHandId"]) != string.Empty)
                 {
-                  
+                    lblName.Text = Session["DealingHandId"].ToString();
                 }
                 
                 else

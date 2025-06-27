@@ -12804,6 +12804,39 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetGridUserDetails", userId);
         }
         #endregion
+        #region neeraj 27-June-2025
+        public DataTable GetDocumentForWiremanSupervisior(string Id, string Category)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDocumentForWiremanSupervisior", Id, Category);
+        }
+        public int ReSubmitDocumentForSupWireman(long TempId, string Category, int DocumentId, string DocumentName, string FileName,
+          string DocumentPath, string CreatedBy)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                using (SqlCommand cmd = new SqlCommand("sp_ReSumitWireManSupervisiorDocuments", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@TempId", TempId);
+                    cmd.Parameters.AddWithValue("@Category", Category);
+                    cmd.Parameters.AddWithValue("@DocumentId", DocumentId);
+                    cmd.Parameters.AddWithValue("@DocumentName", GetValue(DocumentName));
+                    cmd.Parameters.AddWithValue("@FileName", GetValue(FileName));
+                    cmd.Parameters.AddWithValue("@DocumentPath", GetValue(DocumentPath));
+                    cmd.Parameters.AddWithValue("@Id", CreatedBy);
+                    con.Open();
+                    int x = cmd.ExecuteNonQuery();
+                    return x;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+        #endregion
     }
 }
 

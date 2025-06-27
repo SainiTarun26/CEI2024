@@ -2198,6 +2198,8 @@
     <Content Include="UserPages\PrintWorkIntimationNew.aspx" />
     <Content Include="UserPages\Qualification.aspx" />
     <Content Include="UserPages\Registration.aspx" />
+    <Content Include="UserPages\ReSubmitContractorDocuments.aspx" />
+    <Content Include="UserPages\ReSubmitDocumentofSup_Wireman.aspx" />
     <Content Include="UserPages\SiteOwnerRegistration.aspx" />
     <Content Include="UserPages\SupervisorQualification.aspx" />
     <Content Include="UserPages\User_Profile_Create.aspx" />
@@ -4957,6 +4959,20 @@
     </Compile>
     <Compile Include="UserPages\Registration.aspx.designer.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\ReSubmitContractorDocuments.aspx.cs">
+      <DependentUpon>ReSubmitContractorDocuments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\ReSubmitContractorDocuments.aspx.designer.cs">
+      <DependentUpon>ReSubmitContractorDocuments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\ReSubmitDocumentofSup_Wireman.aspx.cs">
+      <DependentUpon>ReSubmitDocumentofSup_Wireman.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\ReSubmitDocumentofSup_Wireman.aspx.designer.cs">
+      <DependentUpon>ReSubmitDocumentofSup_Wireman.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\SiteOwnerRegistration.aspx.cs">
       <DependentUpon>SiteOwnerRegistration.aspx</DependentUpon>
