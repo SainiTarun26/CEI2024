@@ -1,6 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Qualification.aspx.cs" Inherits="CEIHaryana.UserPages.Qualification" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SupervisorQualification.aspx.cs" Inherits="CEIHaryana.UserPages.SupervisorQualification" %>
 
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
@@ -67,7 +68,14 @@
         }
     </script>
     <style>
-        input#RadioButtonList3_1 {
+                input#RadioButtonList2_0 {
+    margin-right: 5px;
+}
+        input#RadioButtonList2_1 {
+    margin-right: 5px;
+    margin-left: 10px;
+}
+                input#RadioButtonList3_1 {
     margin-right: 5px;
     margin-left: 10px;
 }
@@ -770,7 +778,8 @@
         }
 
 
-        select#ddlAppretince {
+
+        select#Ddltrainingwiremenexprince {
             height: 25px;
             width: 100%;
             font-size: 13px;
@@ -779,6 +788,8 @@
             border-radius: 5px;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         }
+
+
 
         label {
             font-size: .875rem;
@@ -799,13 +810,6 @@
         input#txtAppliedFor {
             width: 95% !important;
         }
-        input#RadioButtonList2_0 {
-    margin-right: 5px;
-}
-        input#RadioButtonList2_1 {
-    margin-right: 5px;
-    margin-left: 10px;
-}
     </style>
 </head>
 <body>
@@ -932,7 +936,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <p style="text-align: center; font-weight: 700; margin-top: -40px; margin-bottom: 10px;">
-                                    (Please read the instructions carefully as given in Instruction Page before filling the form)
+                                    (Please read the instructions carefully as given in Instruction
+                            Page before filling the form)
                                 </p>
                                 <img src="/Assets/capsules/qualification.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
 
@@ -943,7 +948,7 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-12" style="text-align: center; font-size: 22px; font-weight: 800;">
-                                                        Application For Grant of Certificate of Wireman Permit
+                                                        Application For Grant of Certificate of Competency(Supervisor)
                                                     </div>
                                                 </div>
                                                 <hr />
@@ -992,10 +997,12 @@
                                                         <table class="table table-bordered">
                                                             <thead>
                                                                 <tr style="text-align: center;">
+
                                                                     <th scope="col" style="width: 20% !important;">Exam Name</th>
                                                                     <th scope="col">Board/University Name</th>
                                                                     <th scope="col" style="width: 0% !important;">Passing Year</th>
-                                                                    <th scope="col" style="width: 0% !important;">Obtained Marks&nbsp;/&nbsp;Max Marks</th>
+                                                                    <th scope="col" style="width: 0% !important;">Obtained Marks&nbsp;/&nbsp;Max Marks
+                                                                    </th>
                                                                     <th scope="col" style="width: 10% !important;">% </th>
                                                                 </tr>
                                                             </thead>
@@ -1036,48 +1043,9 @@
                                                                             ErrorMessage="Please Add Your Percentage in 10th" ValidationGroup="Submit" ForeColor="Red">Please Add Your Percentage in 10th</asp:RequiredFieldValidator>
                                                                     </td>
                                                                 </tr>
-                                                                <tr id="certificatewireman" visible="true" runat="server">
-                                                                    <td style="text-align: center;">
-                                                                        <asp:DropDownList class="  select-form select2" ID="ddlQualification" runat="server" TabIndex="16" AutoPostBack="true" OnSelectedIndexChanged="ddlQualification_SelectedIndexChanged">
-                                                                            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="Certificate or Diploma in Wireman,Linemen & Electrician" Value="1"></asp:ListItem>
-                                                                        </asp:DropDownList>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" Text="*Please Select Qualification*" ErrorMessage="*Please Select Qualification*" ControlToValidate="ddlQualification" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" ID="txtUniversity1" runat="server" onkeyup="convertToUpperCase(this.id);"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtUniversity1"
-                                                                            ErrorMessage="Please Add Board/University Name" ValidationGroup="Submit" ForeColor="Red">Please Add Board/University Name</asp:RequiredFieldValidator>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True">
-                                                                        </asp:DropDownList>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="DropDownList1" InitialValue="0"
-                                                                            ErrorMessage="Please Add Passing Year" ValidationGroup="Submit" ForeColor="Red">Please Add Passing Year</asp:RequiredFieldValidator>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <asp:TextBox class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksObtained1" runat="server" AutoPostBack="true" OnTextChanged="txtmarksmax1_TextChanged"> </asp:TextBox>
-                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtmarksObtained1"
-                                                                                    ErrorMessage="Please Add Your Marks Obtained" ValidationGroup="Submit" ForeColor="Red">Please Add Your Marks Obtained </asp:RequiredFieldValidator>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <asp:TextBox class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksmax1" runat="server" AutoPostBack="true" OnTextChanged="txtmarksmax1_TextChanged"> </asp:TextBox>
-                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtmarksmax1"
-                                                                                    ErrorMessage="Please Add Max Marks" ValidationGroup="Submit" ForeColor="Red">Please Add Max Marks </asp:RequiredFieldValidator>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtprcntg1" ReadOnly="true" runat="server"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtprcntg1"
-                                                                            ErrorMessage="Please Add Your Percentage" ValidationGroup="Submit" ForeColor="Red">Please Add Your Percentage </asp:RequiredFieldValidator>
-                                                                    </td>
-                                                                </tr>
                                                                 <tr>
                                                                     <td style="text-align: center;">
-                                                                        <asp:DropDownList class="select-form select2" ID="ddlQualification1" runat="server" TabIndex="16" AutoPostBack="true" OnSelectedIndexChanged="ddlQualification1_SelectedIndexChanged">
+                                                                        <asp:DropDownList class="select-form select2" ID="ddlQualification1" runat="server" TabIndex="16" OnSelectedIndexChanged="ddlQualification1_SelectedIndexChanged" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                             <asp:ListItem Text="Diploma in Electrical Engineering" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Diploma in Electrical and Electronics Engineering" Value="2"></asp:ListItem>
@@ -1119,7 +1087,7 @@
                                                                 </tr>
                                                                 <tr id="DdlDegree" runat="server">
                                                                     <td style="text-align: center;">
-                                                                        <asp:DropDownList class="select-form select2" ID="ddlQualification2" runat="server" TabIndex="16" AutoPostBack="true">
+                                                                        <asp:DropDownList class="select-form select2" ID="ddlQualification2" runat="server" TabIndex="16" AutoPostBack="true" OnSelectedIndexChanged="ddlQualification2_SelectedIndexChanged">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                             <asp:ListItem Text="Degree in Electrical Engineering" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Degree in Electrical and Electronics Engineering" Value="2"></asp:ListItem>
@@ -1204,7 +1172,9 @@
                                                 <hr />
                                                 <div class="row" style="margin-top: 15px;">
                                                     <div class="col-md-8">
-                                                        <h4 class="card-title" style="font-size: 15px;">Whether you are holder of certificate of  Wireman Permit issued by any state licincing board/chief electrical inspector.</h4>
+                                                        <h4 class="card-title" style="font-size: 15px;">Whether you are holder of
+                                            certificate of competency issued by any state licincing
+                                            board/chief electrical inspector.</h4>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <asp:RadioButtonList ID="RadioButtonList2" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged">
@@ -1322,7 +1292,7 @@
                                                             <thead>
                                                                 <tr style="text-align: center;">
                                                                     <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Experienced in &nbsp;&nbsp;&nbsp; &nbsp; </th>
-                                                                    <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Experience(Practical Training Under) &nbsp;&nbsp;&nbsp; &nbsp; </th>
+                                                                    <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Experience &nbsp;&nbsp;&nbsp; &nbsp; </th>
                                                                     <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Name of Employer &nbsp;&nbsp;&nbsp; &nbsp; </th>
                                                                     <th scope="col">Description of post held by the applicant</th>
                                                                     <th scope="col">From</th>
@@ -1330,45 +1300,11 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr id="TrApprenticeship" runat="server" visible="false" autopostback="true">
-                                                                    <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" ID="txtApprenticeship" Text="Apprenticeship Certificate" ReadOnly="true" runat="server" onkeyup="convertToUpperCase(this.id);"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator92" runat="server" ControlToValidate="txtApprenticeship"
-                                                                            ErrorMessage="Please Add Employer Name" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" ID="txtAppretinceExperience" Text="Apprenticeship Act,1961(Central Act 52 of 1961)" ReadOnly="true" runat="server" onkeyup="convertToUpperCase(this.id);"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator86" runat="server" ControlToValidate="txtAppretinceExperience"
-                                                                            ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" ID="txtApprenticeshipEmployer" MaxLength="30" runat="server" onkeyup="convertToUpperCase(this.id);"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator93" runat="server" ControlToValidate="txtApprenticeshipEmployer"
-                                                                            ErrorMessage="Please Add Employer Name" ValidationGroup="Submit" ForeColor="Red">Please Add Employer Name</asp:RequiredFieldValidator>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" ID="txtApprenticesPost" MaxLength="50" runat="server" onkeyup="convertToUpperCase(this.id);"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator94" runat="server" ControlToValidate="txtApprenticesPost"
-                                                                            ErrorMessage="Please Add Post Description" ValidationGroup="Submit" ForeColor="Red">Please Add Post Description</asp:RequiredFieldValidator>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ID="Apprenticesdatefrom" class="form-control" autocomplete="off" OnTextChanged="txtTo1_TextChanged" type="date" AutoPostBack="true" onchange="validateApprenticesDate()" runat="server"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator95" runat="server" ControlToValidate="Apprenticesdatefrom"
-                                                                            ErrorMessage="Please Add From Date" ValidationGroup="Submit" ForeColor="Red">Please Add From Date</asp:RequiredFieldValidator>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ID="Apprenticesdateto" class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" onchange="validateApprenticesDate()" runat="server"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator96" runat="server" ControlToValidate="Apprenticesdateto"
-                                                                            ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
-                                                                        <asp:CompareValidator ID="CompareValidator13" runat="server" ControlToCompare="Apprenticesdatefrom" ControlToValidate="Apprenticesdateto" Operator="GreaterThan"
-                                                                            ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
-                                                                    </td>
-                                                                </tr>
                                                                 <tr id="Experience" runat="server" visible="false">
                                                                     <td>
                                                                         <asp:DropDownList class="select-form select2" ID="ddlExperience" runat="server" TabIndex="36" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="Electrical Wiring and installation work" Value="1"></asp:ListItem>
+                                                                            <asp:ListItem Text="Erection,Operation,Maintenance of Electrical Installation" Value="1"></asp:ListItem>
 
                                                                         </asp:DropDownList>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator52" runat="server" ControlToValidate="ddlExperience" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" Display="Dynamic" ErrorMessage="Please Select ExperienceIn"></asp:RequiredFieldValidator>
@@ -1379,8 +1315,8 @@
                                                                             <asp:ListItem Text="A class licensed electrical contractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Central government" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="State government" Value="3"></asp:ListItem>
-                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                              <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1410,7 +1346,7 @@
                                                                     <td>
                                                                         <asp:DropDownList class="select-form select2" ID="ddlExperience1" runat="server" TabIndex="42" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="Electrical Wiring and installation work" Value="1"></asp:ListItem>
+                                                                            <asp:ListItem Text="Erection,Operation,Maintenance of Electrical Installation" Value="1"></asp:ListItem>
 
                                                                         </asp:DropDownList>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator54" runat="server" ControlToValidate="ddlExperience1" InitialValue="0" ForeColor="Red"
@@ -1422,8 +1358,8 @@
                                                                             <asp:ListItem Text=" A class licensed electricalcontractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Central government" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="State government" Value="3"></asp:ListItem>
-                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                             <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1453,7 +1389,7 @@
                                                                     <td>
                                                                         <asp:DropDownList class="select-form select2" ID="ddlExperience2" runat="server" TabIndex="48" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="Electrical Wiring and installation work" Value="1"></asp:ListItem>
+                                                                            <asp:ListItem Text="Erection,Operation,Maintenance of Electrical Installation" Value="1"></asp:ListItem>
 
                                                                         </asp:DropDownList>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator56" runat="server" ControlToValidate="ddlExperience2" InitialValue="0" ForeColor="Red"
@@ -1465,8 +1401,8 @@
                                                                             <asp:ListItem Text="A classlicensed electricalcontractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
-                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                              <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1496,7 +1432,7 @@
                                                                     <td>
                                                                         <asp:DropDownList class="select-form select2" ID="ddlExperience3" runat="server" TabIndex="53" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="Electrical Wiring and installation work" Value="1"></asp:ListItem>
+                                                                            <asp:ListItem Text="Erection,Operation,Maintenance of Electrical Installation" Value="1"></asp:ListItem>
 
                                                                         </asp:DropDownList>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator58" runat="server" ControlToValidate="ddlExperience3" InitialValue="0" ForeColor="Red"
@@ -1508,8 +1444,8 @@
                                                                             <asp:ListItem Text=" A classlicensed electricalcontractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
-                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                          <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1539,7 +1475,7 @@
                                                                     <td>
                                                                         <asp:DropDownList class="select-form select2" ID="ddlExperience4" runat="server" TabIndex="59" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="Electrical Wiring and installation work" Value="1"></asp:ListItem>
+                                                                            <asp:ListItem Text="Erection,Operation,Maintenance of Electrical Installation" Value="1"></asp:ListItem>
 
                                                                         </asp:DropDownList>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator60" runat="server" ControlToValidate="ddlExperience4" InitialValue="0" ForeColor="Red"
@@ -1551,8 +1487,8 @@
                                                                             <asp:ListItem Text="A classlicensed electricalcontractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
-                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                             <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1582,7 +1518,7 @@
                                                                     <td>
                                                                         <asp:DropDownList class="select-form select2" ID="ddlExperience5" runat="server" TabIndex="65" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="Electrical Wiring and installation work" Value="1"></asp:ListItem>
+                                                                            <asp:ListItem Text="Erection,Operation,Maintenance of Electrical Installation" Value="1"></asp:ListItem>
 
                                                                         </asp:DropDownList>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator53" runat="server" ControlToValidate="ddlExperience5" InitialValue="0" ForeColor="Red"
@@ -1595,8 +1531,8 @@
                                                                             <asp:ListItem Text="A classlicensed electricalcontractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
-                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                             <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1626,7 +1562,7 @@
                                                                     <td>
                                                                         <asp:DropDownList class="select-form select2" ID="ddlExperience6" runat="server" TabIndex="71" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="Electrical Wiring and installation work" Value="1"></asp:ListItem>
+                                                                            <asp:ListItem Text="Erection,Operation,Maintenance of Electrical Installation" Value="1"></asp:ListItem>
 
                                                                         </asp:DropDownList>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator67" runat="server" ControlToValidate="ddlExperience6" InitialValue="0" ForeColor="Red"
@@ -1639,8 +1575,8 @@
                                                                             <asp:ListItem Text="A classlicensed electricalcontractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
-                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                             <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1670,7 +1606,7 @@
                                                                     <td>
                                                                         <asp:DropDownList class="select-form select2" ID="ddlExperience7" runat="server" TabIndex="77" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="Electrical Wiring and installation work" Value="1"></asp:ListItem>
+                                                                            <asp:ListItem Text="Erection,Operation,Maintenance of Electrical Installation" Value="1"></asp:ListItem>
 
                                                                         </asp:DropDownList>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator72" runat="server" ControlToValidate="ddlExperience7" InitialValue="0" ForeColor="Red"
@@ -1683,8 +1619,8 @@
                                                                             <asp:ListItem Text="A classlicensed electricalcontractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
-                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                           <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1714,7 +1650,8 @@
                                                                     <td>
                                                                         <asp:DropDownList class="select-form select2" ID="ddlExperience8" runat="server" TabIndex="83" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="Electrical Wiring and installation work" Value="1"></asp:ListItem>
+                                                                            <asp:ListItem Text="Erection,Operation,Maintenance of Electrical Installation" Value="1"></asp:ListItem>
+
                                                                         </asp:DropDownList>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator80" runat="server" ControlToValidate="ddlExperience8" InitialValue="0" ForeColor="Red"
                                                                             ValidationGroup="Submit" Display="Dynamic" ErrorMessage="Please Select Experience8 "></asp:RequiredFieldValidator>
@@ -1727,7 +1664,7 @@
                                                                             <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
                                                                             <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1757,7 +1694,8 @@
                                                                     <td>
                                                                         <asp:DropDownList class="select-form select2" ID="ddlExperience9" runat="server" TabIndex="89" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                            <asp:ListItem Text="Electrical Wiring and installation work" Value="1"></asp:ListItem>
+                                                                            <asp:ListItem Text="Erection,Operation,Maintenance of Electrical Installation" Value="1"></asp:ListItem>
+
                                                                         </asp:DropDownList>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator90" runat="server" ControlToValidate="ddlExperience9" InitialValue="0" ForeColor="Red"
                                                                             ValidationGroup="Submit" Display="Dynamic" ErrorMessage="Please Select Experience9 "></asp:RequiredFieldValidator>
@@ -1769,8 +1707,8 @@
                                                                             <asp:ListItem Text="A classlicensed electricalcontractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
-                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                             <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1868,8 +1806,7 @@
                                                 </div>
                                                 <div class="row" style="margin-top: 15px;">
                                                     <div class="col-md-6">
-                                                        <%--  <asp:Button ID="btnBack" runat="server" Text="Back" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
-                                                            OnClick="btnBack_Click"></asp:Button>--%>
+                                                        <%--  <asp:Button ID="btnBack" runat="server" Text="Back" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnBack_Click"></asp:Button>--%>
                                                     </div>
                                                     <div class="col-md-6" style="text-align: end;">
                                                         <asp:Button ID="btnNext" runat="server" Text="Next" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClientClick="return validateForm();"
@@ -1880,7 +1817,7 @@
                                                     <asp:HiddenField ID="hdnId" runat="server" />
                                                     <asp:HiddenField ID="HdnCategory" runat="server" />
                                                     <asp:HiddenField ID="hdnTotalExperience" runat="server" />
-                                                      <asp:HiddenField ID="HdnDOBYear" runat="server" />
+                                                    <asp:HiddenField ID="HdnDOBYear" runat="server" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1929,6 +1866,7 @@
             <script src="/js2/file-upload.js"></script>
             <script src="/js2/typeahead.js"></script>
             <script src="/js2/select2.js"></script>
+
             <script type="text/javascript">
                 function convertToUpperCase(id) {
                     var input = document.getElementById(id);
@@ -1970,8 +1908,11 @@
                     }
                 }
             </script>
+
             <script type="text/javascript">
                 function validateDates1() {
+
+
                     var from = document.getElementById('<%=txtPermanentFrom.ClientID %>');
                     var to = document.getElementById('<%=txtPermanentTo.ClientID %>');
                     var today = new Date();
@@ -2003,52 +1944,7 @@
                             return;
                         }
                     }
-                }
-            </script>
-            <script type="text/javascript">
-                function validateApprenticesDate() {
-                    var from = document.getElementById('<%=Apprenticesdatefrom.ClientID %>');
-                    var to = document.getElementById('<%=Apprenticesdateto.ClientID %>');
-                    var today = new Date();
-                    today.setHours(0, 0, 0, 0);
 
-                    if (from.value) {
-                        var fromDate = new Date(from.value);
-                        if (fromDate > today) {
-                            alert('From Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
-
-                    if (from.value && to.value) {
-                        var fromDate = new Date(from.value);
-                        var toDate = new Date(to.value);
-                        if (fromDate > toDate) {
-                            alert('To Date should be greater than or equal to From Date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
-
-                    }
-
-                    if (to.value) {
-                        var toDate = new Date(to.value);
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
                 }
             </script>
             <script type="text/javascript">
@@ -2514,6 +2410,10 @@
                     }
                 }
             </script>
+
+
+
+
             <script type="text/javascript">
                 function validateAddBtn() {
                     var isValid = true;
@@ -2537,8 +2437,10 @@
                         }
                     }
 
+
                     validateField(document.getElementById('txtUniversity'), 'University');
                     validateDropdown(document.getElementById('YearDropdown'), 'Passing Year');
+
                     validateField(document.getElementById('txtmarksObtained'), 'Marks Obtained');
                     validateField(document.getElementById('txtmarksmax'), 'Maximum Marks');
 
@@ -2550,13 +2452,9 @@
                         validateField(document.getElementById('txtmarksmax2'), 'Maximum Marks');
                     }
 
-                    var qualificationDropdown = document.getElementById('ddlQualification');
-                    if (qualificationDropdown && qualificationDropdown.value !== '0') {
-                        validateField(document.getElementById('txtUniversity1'), 'University');
-                        validateDropdown(document.getElementById('DropDownList1'), 'Passing Year');
-                        validateField(document.getElementById('txtmarksObtained1'), 'Marks Obtained');
-                        validateField(document.getElementById('txtmarksmax1'), 'Maximum Marks');
-                    }
+
+
+                    var DdlDegree = document.getElementById('DdlDegree');
 
                     var qualificationDropdown2 = document.getElementById('ddlQualification2');
                     if (qualificationDropdown2 && qualificationDropdown2.value !== '0') {
@@ -2565,6 +2463,7 @@
                         validateField(document.getElementById('txtmarksObtained3'), 'Marks Obtained');
                         validateField(document.getElementById('txtmarksmax3'), 'Percentage');
                     }
+
 
                     var DdlMasters = document.getElementById('DdlMasters');
                     if (DdlMasters && DdlMasters.style.visibility !== 'hidden') {
@@ -2604,24 +2503,21 @@
                         }
                     }
 
-                    var ApprenticeCretificate = document.getElementById('txtApprenticeship');
-                    if (ApprenticeCretificate && ApprenticeCretificate.style.visibility !== 'hidden') {
-                        validateField(document.getElementById('txtAppretinceExperience'), 'AppretinceExperience');
-                        validateField(document.getElementById('txtApprenticeshipEmployer'), 'ExperienceEmployer');
-                        validateField(document.getElementById('txtApprenticesPost'), 'PostDescription');
-                        validateField(document.getElementById('Apprenticesdatefrom'), 'ExperienceFrom');
-                        validateField(document.getElementById('Apprenticesdateto'), 'ExperienceTo');
-                    }
+
 
                     var Experience = document.getElementById('Experience');
                     if (Experience && Experience.style.visibility !== 'hidden') {
                         validateDropdown(document.getElementById('ddlExperience'));
                         validateDropdown(document.getElementById('ddlTrainingUnder'));
+
                         validateField(document.getElementById('txtPostDescription'), 'PostDescription');
                         validateField(document.getElementById('txtExperienceFrom'), 'ExperienceFrom');
                         validateField(document.getElementById('txtExperienceTo'), 'ExperienceTo');
                         validateField(document.getElementById('txtExperienceEmployer'), 'ExperienceEmployer');
+
                     }
+
+
 
                     var Experience1 = document.getElementById('Experience1');
                     if (Experience1 && Experience1.style.visibility !== 'hidden') {
@@ -2738,38 +2634,30 @@
                         }
                     }
 
-                    var ddlQualification = document.getElementById('ddlQualification');
+                    //var ddlQualification = document.getElementById('ddlQualification');
                     var ddlQualification1 = document.getElementById('ddlQualification1');
                     var ddlQualification2 = document.getElementById('ddlQualification2');
-                    var qualificationValue = ddlQualification ? ddlQualification.value : '0';
+
+                    //var qualificationValue = ddlQualification ? ddlQualification.value : '0';
                     var qualification1Value = ddlQualification1 ? ddlQualification1.value : '0';
                     var qualification2Value = ddlQualification2 ? ddlQualification2.value : '0';
 
-                    if (qualificationValue === '0' && qualification1Value === '0' && qualification2Value === '0') {
+                    if (qualification1Value === '0' && qualification2Value === '0') {
                         isValid = false;
 
-                        if (ddlQualification) ddlQualification.style.border = '1px solid red';
                         if (ddlQualification1) ddlQualification1.style.border = '1px solid red';
                         if (ddlQualification2) ddlQualification2.style.border = '1px solid red';
 
                         alert('Please select at least one more qualification other than 10th.');
                     }
 
-                    var ApprenticeCretificate = document.getElementById('txtApprenticeship');
-                    if (ApprenticeCretificate && ApprenticeCretificate.style.visibility !== 'hidden') {
-                        validateField(document.getElementById('txtAppretinceExperience'), 'AppretinceExperience');
-                        validateField(document.getElementById('txtApprenticeshipEmployer'), 'ExperienceEmployer');
-                        validateField(document.getElementById('txtApprenticesPost'), 'PostDescription');
-                        validateField(document.getElementById('Apprenticesdatefrom'), 'ExperienceFrom');
-                        validateField(document.getElementById('Apprenticesdateto'), 'ExperienceTo');
-                    }
 
 
                     validateField(document.getElementById('txtUniversity'), 'University');
                     validateDropdown(document.getElementById('YearDropdown'), 'Passing Year');
+
                     validateField(document.getElementById('txtmarksObtained'), 'Marks Obtained');
                     validateField(document.getElementById('txtmarksmax'), 'Maximum Marks');
-
 
                     var qualificationDropdown = document.getElementById('ddlQualification1');
                     if (qualificationDropdown && qualificationDropdown.value !== '0') {
@@ -2779,14 +2667,6 @@
                         validateField(document.getElementById('txtmarksmax2'), 'Maximum Marks');
                     }
 
-
-                    var qualificationDropdown = document.getElementById('ddlQualification');
-                    if (qualificationDropdown && qualificationDropdown.value !== '0') {
-                        validateField(document.getElementById('txtUniversity1'), 'University');
-                        validateDropdown(document.getElementById('DropDownList1'), 'Passing Year');
-                        validateField(document.getElementById('txtmarksObtained1'), 'Marks Obtained');
-                        validateField(document.getElementById('txtmarksmax1'), 'Maximum Marks');
-                    }
 
 
                     var qualificationDropdown2 = document.getElementById('ddlQualification2');
@@ -2805,6 +2685,7 @@
                         validateField(document.getElementById('txtmarksmax4'), 'Percentage');
                     }
 
+
                     for (var i = 0; i <= 9; i++) {
                         var exp = document.getElementById('Experience' + (i === 0 ? '' : i));
                         if (exp && exp.offsetParent !== null) {
@@ -2817,7 +2698,7 @@
                         }
                     }
 
-                    // Competency Section
+
                     var competency = document.getElementById('competency');
                     if (competency && competency.offsetParent !== null) {
                         validateField(document.getElementById('txtCategory'), 'Category');
@@ -2827,7 +2708,7 @@
                         validateField(document.getElementById('txtExpiryDate'), 'Expiry Date');
                     }
 
-                    // Permanent Employee Section
+
                     var PermanentEmployee = document.getElementById('PermanentEmployee');
                     if (PermanentEmployee && PermanentEmployee.offsetParent !== null) {
                         validateField(document.getElementById('txtPermanentEmployerName'), 'Employer Name');
@@ -2836,7 +2717,7 @@
                         validateField(document.getElementById('txtPermanentTo'), 'To');
                     }
 
-                    // Retired Employee Section
+
                     var RetiredEmployee = document.getElementById('RetiredEmployee');
                     if (RetiredEmployee && RetiredEmployee.offsetParent !== null) {
                         validateField(document.getElementById('txtEmployerName2'), 'Employer Name');
@@ -2852,6 +2733,8 @@
                     return isValid;
                 }
             </script>
+
+
             <script type="text/javascript">
                 function validateRetiredDates() {
                     var fromInput = document.getElementById('<%=txtFrom2.ClientID %>');

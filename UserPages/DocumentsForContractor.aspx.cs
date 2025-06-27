@@ -34,8 +34,12 @@ namespace CEIHaryana.UserPages
 
                         DetailsforDocuments(UserID);
                     }
-
+                    else
+                    {
+                        Response.Redirect("/LogOut.aspx", false);
+                    }
                 }
+              
             }
             catch (Exception ex)
             {
@@ -247,12 +251,13 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload1, Button1, 1, lnkbtn_Delete1, lnkbtn_Save1, "Last Three Year Income Tax Returns and Balance Sheet", null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload1, Button1, 44, lnkbtn_Delete1, lnkbtn_Save1, "Last Three Year Income Tax Returns and Balance Sheet", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document1.Value = "1";
                     lnkbtn_Delete1.Visible = true;
                     lnkbtn_Save1.Visible = true;
+                    text1.Visible = false;
                 }
             }
             else
@@ -271,6 +276,7 @@ namespace CEIHaryana.UserPages
                 if (IsDelete)
                 {
                     HdnField_Document1.Value = "0";
+                    text1.Visible = true;
                 }
             }
         }
@@ -278,12 +284,21 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload2, Button2, 2, lnkbtn_Delete2, lnkbtn_Save2, "Id Proof", null, null);
+                if (ddlIdproof.SelectedValue == "0")
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "Validation", "alert('First Select the Id proof you want to Upload');", true);
+                    return;
+                }
+
+                string selectedIdProof = ddlIdproof.SelectedItem.Text;
+                string Result = SaveDocumentWithTransaction(FileUpload2, Button2, 33, lnkbtn_Delete2, lnkbtn_Save2, selectedIdProof , null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document2.Value = "1";
                     lnkbtn_Delete2.Visible = true;
                     lnkbtn_Save2.Visible = true;
+                    text2.Visible = false;
+                    ddlIdproof.Enabled = false;
                 }
             }
             else
@@ -302,6 +317,8 @@ namespace CEIHaryana.UserPages
                 if (IsDelete)
                 {
                     HdnField_Document2.Value = "0";
+                    ddlIdproof.Enabled = true;
+                    text2.Visible = true;
                 }
             }
         }
@@ -310,12 +327,13 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload3, Button3, 3, lnkbtn_Delete3, lnkbtn_Save3, "Calibration Certificate from NABL or Government testing laboratory respect of electrical equipment’s invoices", null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload3, Button3, 43, lnkbtn_Delete3, lnkbtn_Save3, "Calibration Certificate from NABL or Government testing laboratory respect of electrical equipment’s invoices", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document3.Value = "1";
                     lnkbtn_Delete3.Visible = true;
                     lnkbtn_Save3.Visible = true;
+                    text3.Visible = false;
                 }
             }
             else
@@ -334,6 +352,7 @@ namespace CEIHaryana.UserPages
                 if (IsDelete)
                 {
                     HdnField_Document3.Value = "0";
+                    text3.Visible = true;
                 }
             }
         }
@@ -342,12 +361,13 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload4, Button4, 4, lnkbtn_Delete4, lnkbtn_Save4, "Copy of Annexure 3 & 5", null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload4, Button4, 42, lnkbtn_Delete4, lnkbtn_Save4, "Copy of Annexure 3 & 5", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document4.Value = "1";
                     lnkbtn_Delete4.Visible = true;
                     lnkbtn_Save4.Visible = true;
+                    text4.Visible = false;
                 }
             }
             else
@@ -366,6 +386,7 @@ namespace CEIHaryana.UserPages
                 if (IsDelete)
                 {
                     HdnField_Document4.Value = "0";
+                    text4.Visible = true;
                 }
             }
         }
@@ -374,12 +395,13 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload5, Button5, 5, lnkbtn_Delete5, lnkbtn_Save5, "Medical fitness certificate from Government/Government approved Hospital in case he is above 55 years of age on the date of submission of application", null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload5, Button5, 38, lnkbtn_Delete5, lnkbtn_Save5, "Medical fitness certificate from Government/Government approved Hospital in case he is above 55 years of age on the date of submission of application", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document5.Value = "1";
                     lnkbtn_Delete5.Visible = true;
                     lnkbtn_Save5.Visible = true;
+                    text5.Visible = false;
                 }
             }
             else
@@ -398,6 +420,7 @@ namespace CEIHaryana.UserPages
                 if (IsDelete)
                 {
                     HdnField_Document5.Value = "0";
+                    text5.Visible = true;
                 }
             }
         }
@@ -411,7 +434,7 @@ namespace CEIHaryana.UserPages
                     ScriptManager.RegisterStartupScript(this, GetType(), "Validation", "alert('UTR No. and Date are required.');", true);
                     return;
                 }
-                string Result = SaveDocumentWithTransaction(FileUpload6, Button6, 6, lnkbtn_Delete6, lnkbtn_Save6, "Copy of treasury challan of fees deposited in any treasury of Haryana", txtUtrNo.Text, txtdate.Text);
+                string Result = SaveDocumentWithTransaction(FileUpload6, Button6, 40, lnkbtn_Delete6, lnkbtn_Save6, "Copy of treasury challan of fees deposited in any treasury of Haryana", txtUtrNo.Text, txtdate.Text);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document6.Value = "1";
@@ -419,6 +442,7 @@ namespace CEIHaryana.UserPages
                     lnkbtn_Save6.Visible = true;
                     txtdate.ReadOnly = true;
                     txtUtrNo.ReadOnly = true;
+                    text6.Visible = false;
                 }
             }
             else
@@ -439,6 +463,9 @@ namespace CEIHaryana.UserPages
                     HdnField_Document6.Value = "0";
                     txtdate.ReadOnly = false;
                     txtUtrNo.ReadOnly = false;
+                    text6.Visible = true;
+                    txtdate.Text = "";
+                    txtUtrNo.Text = "";
                 }
             }
         }
@@ -448,55 +475,59 @@ namespace CEIHaryana.UserPages
             {
                 if (Convert.ToString(HdnUserId.Value) != null && Convert.ToString(HdnUserId.Value) != "")
                 {
-                    if (chkDeclaration.Checked == true)
+                    if (Convert.ToString(Session["TempUniqueId"]) != null && Convert.ToString(Session["TempUniqueId"]) != "")
                     {
-                        bool allMandatoryUploaded = true;
-                        string errorMessage = "";
-
-                        if (HdnField_Document1.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Last Three Year Income Tax Returns and Balance Sheet.<br>"; }
-                        if (HdnField_Document2.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Id proof.<br>"; }
-                        if (HdnField_Document3.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Calibration Certificate from NABL or Government testing laboratory respect of electrical equipment’s invoices.<br>"; }
-                        if (HdnField_Document4.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of Annexure 3 & 5.<br>"; }
-                        if (Convert.ToString(Hdn_medicalcertificatevisible.Value) == "yes" && Convert.ToString(Hdn_medicalcertificatevisible.Value) != "")
-                        {
-                            if (HdnField_Document5.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Medical fitness certificate (for age > 55).<br>"; }
-                        }
-                        if (HdnField_Document6.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of treasury challan of fees deposited in any treasury of Haryana.<br>"; }
-                        if (HdnField_Document7.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Image.<br>"; }
-                        if (HdnField_Document8.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Signature.<br>"; }
-                        if (HdnField_Document9.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload blue prints Drawing.<br>"; }
-
-                        if (!allMandatoryUploaded)
-                        {
-                            string[] lines = errorMessage.Split(new string[] { "<br>" }, StringSplitOptions.RemoveEmptyEntries);
-                            string formattedMessage = "";
-                            for (int i = 0; i < lines.Length; i++)
+                        //if (chkDeclaration.Checked == true)
+                        //{
+                            bool allMandatoryUploaded = true;
+                            string errorMessage = "";
+                            if (HdnField_Document1.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Last Three Year Income Tax Returns and Balance Sheet.<br>"; }
+                            if (HdnField_Document2.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Id proof.<br>"; }
+                            if (HdnField_Document3.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Calibration Certificate from NABL or Government testing laboratory respect of electrical equipment’s invoices.<br>"; }
+                            if (HdnField_Document4.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of Annexure 3 & 5.<br>"; }
+                            if (Convert.ToString(Hdn_medicalcertificatevisible.Value) == "yes" && Convert.ToString(Hdn_medicalcertificatevisible.Value) != "")
                             {
-                                formattedMessage += $"{i + 1}. {lines[i].Trim()}\\n";
+                                if (HdnField_Document5.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Medical fitness certificate (for age > 55).<br>"; }
+                            }
+                            if (HdnField_Document6.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of treasury challan of fees deposited in any treasury of Haryana.<br>"; }
+                            if (HdnField_Document7.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Image.<br>"; }
+                            if (HdnField_Document8.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Signature.<br>"; }
+                            //if (HdnField_Document9.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload blue prints Drawing.<br>"; }
+
+                            if (!allMandatoryUploaded)
+                            {
+                                string[] lines = errorMessage.Split(new string[] { "<br>" }, StringSplitOptions.RemoveEmptyEntries);
+                                string formattedMessage = "";
+                                for (int i = 0; i < lines.Length; i++)
+                                {
+                                    formattedMessage += $"{i + 1}. {lines[i].Trim()}\\n";
+                                }
+
+                                string script = $"alert('{formattedMessage}');";
+                                ClientScript.RegisterStartupScript(this.GetType(), "alertMessage", script, true);
+
+                                return;
                             }
 
-                            string script = $"alert('{formattedMessage}');";
-                            ClientScript.RegisterStartupScript(this.GetType(), "alertMessage", script, true);
+                            Response.Redirect("/UserPages/Contractor_Declaration.aspx", false);
 
-                            return;
-                        }
-
-                        string UniqueNumber = Session["TempUniqueId"].ToString().Trim();
-                        if (Convert.ToString(UniqueNumber) != null && Convert.ToString(UniqueNumber) != "")
-                        {
-                            CEI.ToSaveDocumentsdataofNewregistration(UniqueNumber, HdnUserId.Value, "Contractor");
-
-
-                            Session["TempUniqueId"] = "";
-                            Session["TempUniqueId"] = null;
-
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "if (confirm('New User Registration Process completed successfully.')) { window.location.href = '/Login.aspx'; }", true);
-
-                        }
+                            //string UniqueNumber = Session["TempUniqueId"].ToString().Trim();
+                            //if (Convert.ToString(UniqueNumber) != null && Convert.ToString(UniqueNumber) != "")
+                            //{
+                            //    CEI.ToSaveDocumentsdataofNewregistration(UniqueNumber, HdnUserId.Value, "Contractor");
+                            //    Session["TempUniqueId"] = "";
+                            //    Session["TempUniqueId"] = null;
+                            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "if (confirm('New User Registration Process completed successfully.')) { window.location.href = '/Login.aspx'; }", true);
+                            //}
+                        //}
+                        //else
+                        //{
+                        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Please accept declaration first to proceed.')", true);
+                        //}
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Please accept declaration first to proceed.')", true);
+                        Response.Redirect("/LogOut.aspx", false);
                     }
                 }
                 else
@@ -601,12 +632,13 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransactionIfPhoto(FileUpload7, Button7, 7, lnkbtn_Delete7, "Candidate Image", null, null);
+                string Result = SaveDocumentWithTransactionIfPhoto(FileUpload7, Button7, 31, lnkbtn_Delete7, "Candidate Image", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document7.Value = "1";
                     lnkbtn_Delete7.Visible = true;
                     lnkbtn_Save7.Visible = true;
+                    text7.Visible = false;
                 }
             }
             else
@@ -625,6 +657,7 @@ namespace CEIHaryana.UserPages
                 if (IsDelete)
                 {
                     HdnField_Document7.Value = "0";
+                    text7.Visible = true;
                 }
             }
         }
@@ -633,12 +666,13 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransactionIfPhoto(FileUpload8, Button8, 8, lnkbtn_Delete8, "Candidate Signature", null, null);
+                string Result = SaveDocumentWithTransactionIfPhoto(FileUpload8, Button8, 32, lnkbtn_Delete8, "Candidate Signature", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document8.Value = "1";
                     lnkbtn_Delete8.Visible = true;
                     lnkbtn_Save8.Visible = true;
+                    text8.Visible = false;
                 }
             }
             else
@@ -657,40 +691,41 @@ namespace CEIHaryana.UserPages
                 if (IsDelete)
                 {
                     HdnField_Document8.Value = "0";
+                    text8.Visible = true;
                 }
             }
         }
 
-        protected void Button9_Click(object sender, EventArgs e)
-        {
-            if (IsSessionValid())
-            {
-                string Result = SaveDocumentWithTransaction(FileUpload9, Button9, 9, lnkbtn_Delete9, lnkbtn_Save9, "Whether blue prints is available", null, null);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document9.Value = "1";
-                    lnkbtn_Delete9.Visible = true;
-                    lnkbtn_Save9.Visible = true;
-                }
-            }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
+        //protected void Button9_Click(object sender, EventArgs e)
+        //{
+        //    if (IsSessionValid())
+        //    {
+        //        string Result = SaveDocumentWithTransaction(FileUpload9, Button9, 9, lnkbtn_Delete9, lnkbtn_Save9, "Whether blue prints is available", null, null);
+        //        if (Result != null && Result != "")
+        //        {
+        //            HdnField_Document9.Value = "1";
+        //            lnkbtn_Delete9.Visible = true;
+        //            lnkbtn_Save9.Visible = true;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Response.Redirect("/LogOut.aspx", false);
+        //    }
+        //}
 
-        protected void lnkbtn_Delete9_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete9, lnkbtn_Save9, FileUpload9, Button9);
-                if (IsDelete)
-                {
-                    HdnField_Document9.Value = "0";
-                }
-            }
-        }
+        //protected void lnkbtn_Delete9_Click(object sender, EventArgs e)
+        //{
+        //    LinkButton btn = (LinkButton)sender;
+        //    int fileId = Convert.ToInt32(btn.CommandArgument);
+        //    if (fileId != 0)
+        //    {
+        //        bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete9, lnkbtn_Save9, FileUpload9, Button9);
+        //        if (IsDelete)
+        //        {
+        //            HdnField_Document9.Value = "0";
+        //        }
+        //    }
+        //}
     }
 }

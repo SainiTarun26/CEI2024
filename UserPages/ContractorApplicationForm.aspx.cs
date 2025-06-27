@@ -42,6 +42,7 @@ namespace CEIHaryana.UserPages
                         }
                         ContractorInformation(ContractorId);
                         ddlLoadBindState();
+                        ddlBusinessStateBind();
                         PartnersModalDirectorData(ContractorId);
                         ContractorTeamBind(ContractorId);
                         //if (Session["PartnerDirector"] != null)
@@ -61,12 +62,31 @@ namespace CEIHaryana.UserPages
                 Response.Redirect("/LogOut.aspx");
             }
         }
+
+        private void ddlBusinessStateBind()
+        {
+            try
+            {
+                DataSet dsBusinessState = new DataSet();
+                dsBusinessState = CEI.GetddlDrawState();
+                ddlBusinessState.DataSource = dsBusinessState;
+                ddlBusinessState.DataTextField = "StateName";
+                ddlBusinessState.DataValueField = "StateID";
+                ddlBusinessState.DataBind();
+                ddlBusinessState.Items.Insert(0, new ListItem("Select", "0"));
+                dsBusinessState.Clear();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
         private void ContractorInformation(string ContractorId)
         {
             try
             {
                 DataTable ds = new DataTable();
-                ds = CEI.ContractorBasicInformation(ContractorId);
+                ds = CEI.GetApplicantBasicInformation(ContractorId);
                 txtContractorName.Text = ds.Rows[0]["Name"].ToString();
                 txtFatherName.Text = ds.Rows[0]["FatherName"].ToString();
                 txtBirthDate.Text = ds.Rows[0]["DOB"].ToString();
@@ -250,18 +270,18 @@ namespace CEIHaryana.UserPages
                     }
                     else
                     {
-                        ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
+                        ////ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
+                        ////string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
+                        ////bool isValidBoolean;
 
-                        string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
-
-                        bool isValidBoolean;
-                        if (!bool.TryParse(validationResult, out isValidBoolean))
-                        {
-                           
-
+                        ////// Check if the string is a valid boolean representation
+                        ////if (!bool.TryParse(validationResult, out isValidBoolean))
+                        
+                        ////    {
+                       
                             //string Createdby = Session["ContractorID"].ToString();
                             string selectedValues = txtPenalities.Text.Trim();
-                            CEI.ContractorApplicationData(txtBusinessAddress.Text, txtBusinessPin.Text, txtBusinessEmail.Text, txtBusinessPhoneNo.Text,
+                            CEI.ContractorApplicationData(txtBusinessAddress.Text,ddlBusinessState.SelectedItem.ToString(), txtBusinessDistrict.Text, txtBusinessPin.Text, txtBusinessEmail.Text, txtBusinessPhoneNo.Text,
                                                           txtGstNumber.Text, ddlCompanyStyle.SelectedItem.ToString(), txtNameOfCompany.Text, ddlOffice.SelectedItem.ToString(),
                                                           DdlPartnerOrDirector.SelectedItem.ToString(), ddlAnnexureOrNot.SelectedItem.ToString(),
                                                           txtAgentName.Text, ddlUnitOrNot.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(), 
@@ -271,7 +291,7 @@ namespace CEIHaryana.UserPages
                                                           LoginID);
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application Submitted Successfully !!!')", true);
                             Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
-                        }
+                       /// }
                     }
                 }
             }
@@ -398,37 +418,7 @@ namespace CEIHaryana.UserPages
             Response.Redirect("/Login.aspx");
         }
 
-        ////protected void btnAddEmployeeDetails_Click(object sender, EventArgs e)
-        ////{
-        ////    try
-        ////    {
-        //// string CreatedBy = Session["ContractorID"].ToString();
-        //// //bool isvaild = bool.Parse(hdnIsClientSideValid.Value);
-        //// //if (isvaild){}               
-        //// DataTable ds = new DataTable();
-        //// ds = CEI.checkvacantSupervisor(txtLicense1.Text.Trim());
-        //// if (ds.Rows.Count > 0)
-        //// {
-        ////     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "CheckVacantSupervisor();", true);
-
-
-        ////}
-        //// //else {
-        //// //    CEI.InsertContractorTeam(ddlEmployer1.SelectedItem.ToString(), txtLicense1.Text.Trim(), txtIssueDate1.Text.Trim(), txtValidity1.Text.Trim(),
-        //// //                       txtQualification1.Text.Trim(), CreatedBy);
-        //// //    ContractorTeamBind();
-        //// //}
-        ////     ddlEmployer1.SelectedValue = "0";
-        ////     txtLicense1.Text = "";
-        ////     txtIssueDate1.Text = ""; txtValidity1.Text = ""; txtQualification1.Text = "";
-
-        ////    }
-        ////    catch (Exception ex)
-        ////    {
-        ////        ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", "alert('An Error occured');", true);
-        ////    }
-        ////}
-
+       
         private void ContractorTeamBind(string LoginID)
         {
             try
@@ -603,6 +593,7 @@ namespace CEIHaryana.UserPages
                 Lbl2.Visible = false;
                 Lbl3.Visible = false;
                 Lbl4.Visible = false;
+                DivAgentName.Visible = false;
             }
             else if (ddlCompanyStyle.SelectedValue == "2")
             {               
@@ -610,6 +601,7 @@ namespace CEIHaryana.UserPages
                 Lbl2.Visible = true;
                 Lbl3.Visible = false;
                 Lbl4.Visible = false;
+                DivAgentName.Visible = true;
             }
             else if (ddlCompanyStyle.SelectedValue == "3")
             {               
@@ -617,6 +609,7 @@ namespace CEIHaryana.UserPages
                 Lbl2.Visible = false;
                 Lbl3.Visible = true;
                 Lbl4.Visible = false;
+                DivAgentName.Visible = false;
             }
             else if (ddlCompanyStyle.SelectedValue == "4")
             {             
@@ -624,6 +617,7 @@ namespace CEIHaryana.UserPages
                 Lbl2.Visible = false;
                 Lbl3.Visible = false;
                 Lbl4.Visible = true;
+                DivAgentName.Visible = false;
             }
         }
     }

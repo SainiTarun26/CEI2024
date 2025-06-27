@@ -42,6 +42,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
+        /// text2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl text2;
+
+        /// <summary>
         /// FileUpload2 control.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkbtn_Delete2;
+
+        /// <summary>
+        /// text3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl text3;
 
         /// <summary>
         /// FileUpload3 control.
@@ -132,6 +150,24 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.LinkButton lnkbtn_Delete3;
 
         /// <summary>
+        /// ddlIdproof control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlIdproof;
+
+        /// <summary>
+        /// text4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl text4;
+
+        /// <summary>
         /// FileUpload4 control.
         /// </summary>
         /// <remarks>
@@ -177,6 +213,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.LinkButton lnkbtn_Delete4;
 
         /// <summary>
+        /// text5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl text5;
+
+        /// <summary>
         /// FileUpload5 control.
         /// </summary>
         /// <remarks>
@@ -220,6 +265,15 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkbtn_Delete5;
+
+        /// <summary>
+        /// text6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl text6;
 
         /// <summary>
         /// FileUpload6 control.
@@ -276,6 +330,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Medicalfitness;
 
         /// <summary>
+        /// text8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl text8;
+
+        /// <summary>
         /// FileUpload8 control.
         /// </summary>
         /// <remarks>
@@ -330,6 +393,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Retired;
 
         /// <summary>
+        /// text9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl text9;
+
+        /// <summary>
         /// FileUpload9 control.
         /// </summary>
         /// <remarks>
@@ -382,6 +454,15 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Apprenticecertificate;
+
+        /// <summary>
+        /// text10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl text10;
 
         /// <summary>
         /// FileUpload10 control.
@@ -447,6 +528,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtdate;
 
         /// <summary>
+        /// text11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl text11;
+
+        /// <summary>
         /// FileUpload11 control.
         /// </summary>
         /// <remarks>
@@ -510,6 +600,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.FileUpload FileUpload12;
 
         /// <summary>
+        /// text12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl text12;
+
+        /// <summary>
         /// RequiredFieldValidator13 control.
         /// </summary>
         /// <remarks>
@@ -562,6 +661,15 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload13;
+
+        /// <summary>
+        /// text13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl text13;
 
         /// <summary>
         /// RequiredFieldValidatorSignature control.

@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.UI;
@@ -270,12 +271,13 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload2, Button2, 2, lnkbtn_Delete2, lnkbtn_Save2, "Matriculation certificate indicating date of birth", null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload2, Button2, 39, lnkbtn_Delete2, lnkbtn_Save2, "Matriculation certificate indicating date of birth", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document2.Value = "1";
                     lnkbtn_Delete2.Visible = true;
                     lnkbtn_Save2.Visible = true;
+                    text2.Visible = false;
                 }
             }
             else
@@ -293,6 +295,7 @@ namespace CEIHaryana.UserPages
                 if (IsDelete)
                 {
                     HdnField_Document2.Value = "0";
+                    text2.Visible = true;
                 }
             }
         }
@@ -300,12 +303,13 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload3, Button3, 3, lnkbtn_Delete3, lnkbtn_Save3, "Residence Proof", null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload3, Button3, 34, lnkbtn_Delete3, lnkbtn_Save3, "Residence Proof", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document3.Value = "1";
                     lnkbtn_Delete3.Visible = true;
                     lnkbtn_Save3.Visible = true;
+                    text3.Visible = false;
                 }
             }
             else
@@ -323,6 +327,7 @@ namespace CEIHaryana.UserPages
                 if (IsDelete)
                 {
                     HdnField_Document3.Value = "0";
+                    text3.Visible = true;
                 }
             }
         }
@@ -330,12 +335,21 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload4, Button4, 4, lnkbtn_Delete4, lnkbtn_Save4, "Identity Proof", null, null);
+                if (ddlIdproof.SelectedValue == "0")
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "Validation", "alert('Select the Id proof you want to Upload');", true);
+                    return;
+                }
+
+                string selectedIdProof = ddlIdproof.SelectedItem.Text;
+                string Result = SaveDocumentWithTransaction(FileUpload4, Button4, 33, lnkbtn_Delete4, lnkbtn_Save4, selectedIdProof, null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document4.Value = "1";
                     lnkbtn_Delete4.Visible = true;
                     lnkbtn_Save4.Visible = true;
+                    ddlIdproof.Enabled = false;
+                    text4.Visible = false;
                 }
             }
             else
@@ -353,6 +367,8 @@ namespace CEIHaryana.UserPages
                 if (IsDelete)
                 {
                     HdnField_Document4.Value = "0";
+                    text4.Visible = true;
+                    ddlIdproof.Enabled = true;
                 }
             }
         }
@@ -360,12 +376,13 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload5, Button5, 5, lnkbtn_Delete5, lnkbtn_Save5, "Degree/Diploma in Electrical Engineering/Electrical and Electronics Engineering or its equivalent", null, null);
+                string Result = SaveDocumentWithTransaction_IfZipOrPdf(FileUpload5, Button5, 41, lnkbtn_Delete5, lnkbtn_Save5, "Degree/Diploma in Electrical Engineering/Electrical and Electronics Engineering or its equivalent", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document5.Value = "1";
                     lnkbtn_Delete5.Visible = true;
                     lnkbtn_Save5.Visible = true;
+                    text5.Visible = false;
                 }
             }
             else
@@ -383,6 +400,7 @@ namespace CEIHaryana.UserPages
                 if (IsDelete)
                 {
                     HdnField_Document5.Value = "0";
+                    text5.Visible = true;
                 }
             }
         }
@@ -390,12 +408,13 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload6, Button6, 6, lnkbtn_Delete6, lnkbtn_Save6, "Experience Certificate", null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload6, Button6, 35, lnkbtn_Delete6, lnkbtn_Save6, "Experience Certificate", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document6.Value = "1";
                     lnkbtn_Delete6.Visible = true;
                     lnkbtn_Save6.Visible = true;
+                    text6.Visible = false;
                 }
             }
             else
@@ -413,6 +432,7 @@ namespace CEIHaryana.UserPages
                 if (IsDelete)
                 {
                     HdnField_Document6.Value = "0";
+                    text6.Visible = true;
                 }
             }
         }
@@ -420,12 +440,13 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload8, Button8, 8, lnkbtn_Delete8, lnkbtn_Save8, "Medical fitness certificate from Government/Government approved Hospital in case he is above 55 years of age on the date of submission of application", null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload8, Button8, 38, lnkbtn_Delete8, lnkbtn_Save8, "Medical fitness certificate from Government/Government approved Hospital in case he is above 55 years of age on the date of submission of application", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document8.Value = "1";
                     lnkbtn_Delete8.Visible = true;
                     lnkbtn_Save8.Visible = true;
+                    text8.Visible = false;
                 }
             }
             else
@@ -443,6 +464,7 @@ namespace CEIHaryana.UserPages
                 if (IsDelete)
                 {
                     HdnField_Document8.Value = "0";
+                    text8.Visible = true;
                 }
             }
         }
@@ -450,12 +472,13 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload9, Button9, 9, lnkbtn_Delete9, lnkbtn_Save9, "Copy of retirement orders", null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload9, Button9, 36, lnkbtn_Delete9, lnkbtn_Save9, "Copy of retirement orders", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document9.Value = "1";
                     lnkbtn_Delete9.Visible = true;
                     lnkbtn_Save9.Visible = true;
+                    text9.Visible = false;
                 }
             }
             else
@@ -473,6 +496,7 @@ namespace CEIHaryana.UserPages
                 if (IsDelete)
                 {
                     HdnField_Document9.Value = "0";
+                    text9.Visible = true;
                 }
             }
         }
@@ -480,12 +504,13 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload10, Button10, 10, lnkbtn_Delete10, lnkbtn_Save10, "Apprentice Certificate", null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload10, Button10, 37, lnkbtn_Delete10, lnkbtn_Save10, "Apprentice Certificate", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document10.Value = "1";
                     lnkbtn_Delete10.Visible = true;
                     lnkbtn_Save10.Visible = true;
+                    text10.Visible = false;
                 }
             }
             else
@@ -503,6 +528,7 @@ namespace CEIHaryana.UserPages
                 if (IsDelete)
                 {
                     HdnField_Document10.Value = "0";
+                    text10.Visible = true;
                 }
             }
         }
@@ -515,7 +541,7 @@ namespace CEIHaryana.UserPages
                     ScriptManager.RegisterStartupScript(this, GetType(), "Validation", "alert('UTR No. and Date are required.');", true);
                     return;
                 }
-                string Result = SaveDocumentWithTransaction(FileUpload11, Button11, 11, lnkbtn_Delete11, lnkbtn_Save11, "Copy of treasury challan of fees deposited in any treasury of Haryana", txtUtrNo.Text, txtdate.Text);
+                string Result = SaveDocumentWithTransaction(FileUpload11, Button11, 40, lnkbtn_Delete11, lnkbtn_Save11, "Copy of treasury challan of fees deposited in any treasury of Haryana", txtUtrNo.Text, txtdate.Text);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document11.Value = "1";
@@ -523,6 +549,7 @@ namespace CEIHaryana.UserPages
                     lnkbtn_Save11.Visible = true;
                     txtdate.ReadOnly = true;
                     txtUtrNo.ReadOnly = true;
+                    text11.Visible = false;
                 }
             }
             else
@@ -542,6 +569,9 @@ namespace CEIHaryana.UserPages
                     HdnField_Document11.Value = "0";
                     txtdate.ReadOnly = false;
                     txtUtrNo.ReadOnly = false;
+                    text11.Visible = true;
+                    txtdate.Text = "";
+                    txtUtrNo.Text = "";
                 }
             }
         }
@@ -597,6 +627,8 @@ namespace CEIHaryana.UserPages
                             Session["TempUniqueId"] = null;
                             // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "if (confirm('New User Registration Process completed successfully.')) { window.location.href = '/Login.aspx'; }", true);
+                            Response.Redirect("/UserPages/New_Application_Status.aspx", false);
+
                         }
                     }
                     else
@@ -699,12 +731,13 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransactionIfPhoto(FileUpload12, Button12, 12, lnkbtn_Delete12, "Candidate Image", null, null);
+                string Result = SaveDocumentWithTransactionIfPhoto(FileUpload12, Button12, 31, lnkbtn_Delete12, "Candidate Image", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document12.Value = "1";
                     lnkbtn_Delete12.Visible = true;
                     lnkbtn_Save12.Visible = true;
+                    text12.Visible = false;
                 }
             }
             else
@@ -722,6 +755,7 @@ namespace CEIHaryana.UserPages
                 if (IsDelete)
                 {
                     HdnField_Document12.Value = "0";
+                    text12.Visible = true;
                 }
             }
         }
@@ -729,12 +763,13 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransactionIfPhoto(FileUpload13, Button13, 13, lnkbtn_Delete13, "Candidate Signature", null, null);
+                string Result = SaveDocumentWithTransactionIfPhoto(FileUpload13, Button13, 32, lnkbtn_Delete13, "Candidate Signature", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document13.Value = "1";
                     lnkbtn_Delete13.Visible = true;
                     lnkbtn_Save13.Visible = true;
+                    text13.Visible = false;
                 }
             }
             else
@@ -752,8 +787,100 @@ namespace CEIHaryana.UserPages
                 if (IsDelete)
                 {
                     HdnField_Document13.Value = "0";
+                    text13.Visible = true;
                 }
             }
+        }
+
+        private string SaveDocumentWithTransaction_IfZipOrPdf(FileUpload fileUpload, Button uploadbutton, int DocumentId, LinkButton deleteButton, LinkButton tickButton, string documentName, string Utrn, string challandate)
+        {
+            string fileName = "";
+            string dbPath = "";
+            string fullPath = "";
+
+            string CreatedBy = Convert.ToString(HdnUserId.Value);
+            long TempUniqueId = (long)Session["TempUniqueId"];
+            string DocumentNametoSave = documentName.Replace(" ", "_").Replace("/", "_");
+
+            // Validate .zip or .pdf files (Max 5MB)
+            if (!fileUpload.HasFile || !IsValidZipOrPdf(fileUpload))
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                    "alert('Please upload a valid .zip or .pdf file (Max: 5MB)');", true);
+                fileUpload.Focus();
+                return null;
+            }
+
+            // Get file extension and build file name
+            string extension = Path.GetExtension(fileUpload.FileName).ToLower();
+            fileName = $"{DocumentNametoSave}_{DateTime.Now:yyyyMMddHHmmssFFF}{extension}";
+
+            // Build server path and save file
+            string directoryPath = Server.MapPath($"~/Attachment/{TempUniqueId}/{CreatedBy}/");
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            dbPath = $"/Attachment/{TempUniqueId}/{CreatedBy}/{fileName}";
+            fullPath = Path.Combine(directoryPath, fileName);
+            fileUpload.SaveAs(fullPath);
+
+            // Save record in DB with transaction
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                SqlTransaction transaction = null;
+                try
+                {
+                    connection.Open();
+                    transaction = connection.BeginTransaction();
+
+                    string documentId = CEI.InsertDocumentOfNewUserApplication(
+                        TempUniqueId, documentName, DocumentId, fileName, dbPath, Utrn, challandate, CreatedBy, transaction
+                    );
+
+                    if (!string.IsNullOrEmpty(documentId))
+                    {
+                        deleteButton.CommandArgument = documentId;
+                        fileUpload.Visible = false;
+                        uploadbutton.Visible = false;
+                        deleteButton.Visible = true;
+                        tickButton.Visible = true;
+
+                        transaction.Commit();
+                        return documentId;
+                    }
+                    else
+                    {
+                        transaction.Rollback();
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    transaction?.Rollback();
+                    string errorMessage = ex.Message.Replace("'", "\\'");
+                    ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
+                    return null;
+                }
+                finally
+                {
+                    transaction?.Dispose();
+                    connection.Close();
+                }
+            }
+        }
+
+        private bool IsValidZipOrPdf(FileUpload fileUpload)
+        {
+            string[] allowedExtensions = { ".zip", ".pdf" };
+            string extension = Path.GetExtension(fileUpload.FileName).ToLower();
+
+            if (!allowedExtensions.Contains(extension))
+                return false;
+
+            int maxFileSizeBytes = 5 * 1024 * 1024; // 5MB
+            return fileUpload.PostedFile.ContentLength <= maxFileSizeBytes;
         }
     }
 }
