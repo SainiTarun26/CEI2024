@@ -542,7 +542,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Installaion Invoice" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" Visible="false">
                             <ItemTemplate>
-                                <asp:LinkButton ID="lnkInstallaionInvoice" runat="server" Text="View Document" CommandName="ViewInvoice" CommandArgument='<%# Eval("installaionInvoice") %>' />
+                                <asp:LinkButton ID="lnkInstallaionInvoice" runat="server" Text="View Document" CommandName="ViewInvoice" CommandArgument='<%# Eval("installaionInvoice") %>' Visible='<%# Eval("installaionInvoice").ToString() != "" %>' />
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
@@ -558,7 +558,7 @@
 
                         <asp:TemplateField HeaderText="Manufacturing Report" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" Visible="false">
                             <ItemTemplate>
-                                <asp:LinkButton ID="lnkManufacturingReport" runat="server" Text="View Document" CommandName="View" CommandArgument='<%# Eval("ManufacturingReport") %>' />
+                                <asp:LinkButton ID="lnkManufacturingReport" runat="server" Text="View Document" CommandName="View" CommandArgument='<%# Eval("ManufacturingReport") %>' Visible='<%# Eval("installaionInvoice").ToString() != "" %>' />
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />

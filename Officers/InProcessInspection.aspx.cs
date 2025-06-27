@@ -1072,47 +1072,24 @@ namespace CEIHaryana.Officers
                         lnkPreviosManufacturingReport.Visible = true;
                         lnkPreviosManufacturingReport.Text = "View Document";
                     }
-                    if (lnkPreviousInstallaionInvoice.Text.Trim() == "" || lnkPreviousInstallaionInvoice == null)
-                    {
-                        lnkPreviousInstallaionInvoice.Visible = false;
 
-                    }
-                    else
-                    {
-                        lnkPreviousInstallaionInvoice.Visible = true;
-                        lnkPreviousInstallaionInvoice.Text = "View Document";
-                    }
-                    if (LblInstallationName.Text.Trim() == "Line" || lnkPreviousInstallaionInvoice.Text.Trim() == "")
+                    if (LblInstallationName.Text.Trim() == "Line")
                     {
                         lnkPreviousInstallaionInvoice.Visible = false;
                         lnkPreviosManufacturingReport.Visible = false;
                         linkButtonInvoice.Visible = false;
                         LinkButtonReport.Visible = false;
-                        linkButtonInvoice.Text = "";
+                        //linkButtonInvoice.Text = "";
                     }
                     else
                     {
                         lnkPreviousInstallaionInvoice.Visible = true;
                         lnkPreviosManufacturingReport.Visible = true;
-                        linkButtonInvoice.Visible = true;
-                        LinkButtonReport.Visible = true;
+                        // linkButtonInvoice.Visible = true;
+                        // LinkButtonReport.Visible = true;
                         ViewState["AllRowsAreLine"] = false;
                     }
-                    //Conditionadded by navneet 15-may-2025
-                    if (linkButtonInvoice.Text.Trim() == "" || linkButtonInvoice.Text.Trim() == null)
-                    {
-                        linkButtonInvoice.Visible = false;
-                        LinkButtonReport.Visible = false;
-                    }
-                    else
-                    {
 
-                        linkButtonInvoice.Visible = true;
-                        LinkButtonReport.Visible = true;
-                        linkButtonInvoice.Text = "View Document";
-                        LinkButtonReport.Text = "View Document";
-                    }
-                    //
 
                 }
                 else
