@@ -1,0 +1,291 @@
+﻿using CEI_PRoject;
+using CEIHaryana.Contractor;
+using CEIHaryana.Officers;
+using CEIHaryana.SiteOwnerPages;
+using CEIHaryana.UserPages;
+using Org.BouncyCastle.Asn1.X509.Qualified;
+using Pipelines.Sockets.Unofficial.Arenas;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing.Drawing2D;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Web.Services.Description;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Windows;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
+
+namespace CEIHaryana.Admin
+{
+    public partial class Transfer_Sld_ToDifferentStaff_ByAdmin : System.Web.UI.Page
+    {
+        //page created By aslam 30-June-2025
+        CEI CEI = new CEI();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            try
+            {   
+
+                if (!IsPostBack)
+                {
+                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
+                    {
+                        BindStaff();
+                    }
+                    else
+                    {
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Redirect("/AdminLogout.aspx", false);
+            }
+        }
+
+
+        public void BindStaff()
+        {
+            DataSet ds = new DataSet();
+            ds = CEI.GetAllHeadQuarterStaffList();
+            ddlToAssign.DataSource = ds;
+            ddlToAssign.DataTextField = "StaffUserID";
+            ddlToAssign.DataValueField = "StaffUserID";
+            ddlToAssign.DataBind();
+            //ddlToAssign.Items.Insert(0, new ListItem("Select", "0"));
+            ddlToAssign.SelectedValue = "CEI";
+            ds.Clear();
+        }
+
+        public void GetGridData()
+        {
+            try
+            {
+                string selectedStaffID = ddlToAssign.SelectedValue;
+                DataSet ds = new DataSet();
+                ds = CEI.SldTransferGridDataList_Admin(selectedStaffID,txtSearch.Text.ToString());
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+                    BindStaff_ToTransfer();
+                    btnSubmit.Visible = true;
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                    string script = "alert(\"No Record Found\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    btnSubmit.Visible = false;
+                }
+
+            }
+            catch { }
+        }
+
+        public void GetGridData2_WithNoMessage()
+        {
+            try
+            {
+                string selectedStaffID = ddlToAssign.SelectedValue;
+                DataSet ds = new DataSet();
+                ds = CEI.SldTransferGridDataList_Admin(selectedStaffID, txtSearch.Text.ToString());
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    GridView1.DataSource = ds;
+                    GridView1.DataBind();
+
+                    btnSubmit.Visible = true;
+                }
+                else
+                {
+                    GridView1.DataSource = null;
+                    GridView1.DataBind();
+                    btnSubmit.Visible = false;
+                }
+
+            }
+            catch { }
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+
+                string status = DataBinder.Eval(e.Row.DataItem, "Status_type").ToString();
+
+                LinkButton linkButton1 = (LinkButton)e.Row.FindControl("LinkButton1");
+                string RequestLetter = DataBinder.Eval(e.Row.DataItem, "RequestLetter").ToString();
+                LinkButton Lnkbtn = (LinkButton)e.Row.FindControl("Lnkbtn");
+                linkButton1.Visible = true;
+
+                if (RequestLetter != null && RequestLetter != "")
+                {
+                    Lnkbtn.Visible = true;
+                }
+                else
+                {
+                    Lnkbtn.Visible = false;
+                }
+            }
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
+            {
+
+                bool atLeastOneSupervisorChecked = false;
+                foreach (GridViewRow row in GridView1.Rows)
+                {
+                    CheckBox chk = row.FindControl("CheckBox1") as CheckBox;
+                    if (chk != null && chk.Checked)
+                    {
+                        atLeastOneSupervisorChecked = true;
+                        break;
+                    }
+                }
+
+                if (!atLeastOneSupervisorChecked)
+                {   
+                    Response.Write("<script>alert('Please Select Atleast One SldId At A Time.');</script>");
+                    return;
+                }
+
+                try
+                {
+                    foreach (GridViewRow CurrentRow in GridView1.Rows)
+                    {
+                        CheckBox chkSelect = CurrentRow.FindControl("CheckBox1") as CheckBox;
+
+                        if (chkSelect != null && chkSelect.Checked)
+                        {
+                            Label lbllblInspectionIds = CurrentRow.FindControl("lblSLD_ID") as Label;
+
+                            if (lbllblInspectionIds != null)
+                            {
+                                CEI.sp_Transfer_Sld_ToDifferentStaff_ByAdmin_Method(Convert.ToInt32(lbllblInspectionIds.Text), ddlNewAssignee.SelectedItem.Value, Session["AdminId"].ToString());
+                            }
+                        }
+                    }
+
+                    GetGridData2_WithNoMessage();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alertWithRedirectUpdation();", true);
+
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "'); window.location.href = '/Admin/Transfer_Sld_ToDifferentStaff_ByAdmin.aspx';", true);
+                    return;
+                }
+            }
+            else
+            {
+                Session["AdminId"] = "";
+                Response.Redirect("/AdminLogout.aspx", false);
+            }
+
+        }
+        public void BindStaff_ToTransfer()
+        {
+            string selectedStaffID = ddlToAssign.SelectedValue;
+            DataSet ds = new DataSet();
+            ds = CEI.GetNewStaffByHeadQuarterList(selectedStaffID);
+            ddlNewAssignee.DataSource = ds;
+            ddlNewAssignee.DataTextField = "StaffUserID";
+            ddlNewAssignee.DataValueField = "StaffUserID";
+            ddlNewAssignee.DataBind();
+            ddlNewAssignee.Items.Insert(0, new ListItem("Select", "0"));
+            ds.Clear();
+
+        }
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                GridView1.PageIndex = e.NewPageIndex;
+                GetGridData();
+            }
+            catch { }
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
+            {
+                ddlNewAssignee.ClearSelection();
+                ddlNewAssignee.Items.Clear();
+                ddlNewAssignee.Items.Add(new ListItem("Select", "0"));
+                ddlNewAssignee.Items.FindByValue("0").Selected = true;
+                GetGridData();
+            }
+            else
+            {
+                Session["AdminId"] = "";
+                Response.Redirect("/AdminLogout.aspx", false);
+            }
+        }
+
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void chkSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chkSelectAll = (CheckBox)sender;
+            foreach (GridViewRow row in GridView1.Rows)
+            {
+                CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
+                if (chk != null)
+                {
+                    chk.Checked = chkSelectAll.Checked;
+                }
+            }
+        }
+
+        protected void ddlToAssign_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindStaff_ToTransfer();
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+            if (e.CommandName == "Select1")
+            {
+                string fileName = e.CommandArgument.ToString();
+                string folderPath = Server.MapPath(fileName);
+                string filePath = Path.Combine(folderPath);
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            if (e.CommandName == "Print")
+            {
+                string fileName = e.CommandArgument.ToString();
+                string folderPath = Server.MapPath(fileName);
+                string filePath = Path.Combine(folderPath);
+                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+
+        }
+
+        protected void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string enteredText = txtSearch.Text;
+            if (enteredText.Length >= 4)
+            {
+                GetGridData();
+            }
+        }
+
+    }
+}

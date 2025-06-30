@@ -12837,6 +12837,115 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             }
         }
         #endregion
+        #region Aslam transfer request
+
+        public DataSet SldTransferGridDataList_Admin(string selectedStaffUserID, string searchText)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAllSld_ToTransfer_List_ByAdmin", selectedStaffUserID, searchText);
+        }
+
+        public DataSet GetNewStaffByHeadQuarterList(string selectedStaffID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_New_StaffSldToTransfer_List", selectedStaffID);
+        }
+
+        public void sp_Transfer_Sld_ToDifferentStaff_ByAdmin_Method(int Id, string Staff, string LoginUser)
+        {
+            SqlCommand cmd = new SqlCommand("sp_Transfer_Sld_ToDifferentStaff_ByAdmin");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", Id);
+                cmd.Parameters.AddWithValue("@Staff", String.IsNullOrEmpty(Staff) ? null : Staff);
+                cmd.Parameters.AddWithValue("@LoginUser", String.IsNullOrEmpty(LoginUser) ? null : LoginUser);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
+        public DataSet ViewSldDocuments_AtOfficerEnd(string loginId, string searchText = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_getSldDocument_AtOfficer", loginId, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+
+        public void SldRequestForOfficer(string SLD_ID, string Status_type, string ActionTaken, string Rejection, string SiteOwnerId)
+        {
+            SqlConnection con = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            string sqlProc = "Sp_SldRequest_Officer";
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = sqlProc;
+            cmd.Connection = con;
+            cmd.Parameters.AddWithValue("@SLD_ID", SLD_ID);
+            cmd.Parameters.AddWithValue("@Status_type", Status_type);
+            cmd.Parameters.AddWithValue("@ActionTaken", ActionTaken);
+            cmd.Parameters.AddWithValue("@Rejection", String.IsNullOrEmpty(Rejection) ? DBNull.Value : (object)Rejection);
+            cmd.Parameters.AddWithValue("@SiteOwnerId", SiteOwnerId);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+        }
+
+        public DataSet ViewSldDocumentsFoApproval_AtOfficer(string LoginId, string searchText = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_getSdlDocumentFoApproval_AtOfficer", LoginId, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+
+
+        public int SldApprovedByOfficer(string SLD_ID, string Status_type, string ActionTaken, string SLDApproved, string Remarks, string Rejection)
+        {
+            SqlConnection con = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+            string sqlProc = "Sp_ApproveSld_ByOfficer";
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = sqlProc;
+            cmd.Connection = con;
+            cmd.Parameters.AddWithValue("@SLD_ID", SLD_ID);
+            cmd.Parameters.AddWithValue("@Status_type", Status_type);
+            cmd.Parameters.AddWithValue("@ActionTaken", ActionTaken);
+            cmd.Parameters.AddWithValue("@SLDApproved", SLDApproved);
+            cmd.Parameters.AddWithValue("@Remarks", String.IsNullOrEmpty(Remarks) ? DBNull.Value : (object)Remarks);
+            cmd.Parameters.AddWithValue("@Rejection", String.IsNullOrEmpty(Rejection) ? DBNull.Value : (object)Rejection);
+            int x = cmd.ExecuteNonQuery();
+            con.Close();
+            return x;
+        }
+
+        public DataSet GetAllHeadQuarterStaffList()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_All_SldStaff_List");
+        }
+        #endregion
     }
 }
 

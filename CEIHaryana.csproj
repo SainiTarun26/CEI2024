@@ -273,6 +273,7 @@
     <Content Include="Admin\TotalRequestInspectionForAdmin_SearchWithCafId.aspx" />
     <Content Include="Admin\TransferRequestReport.aspx" />
     <Content Include="Admin\Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx" />
+    <Content Include="Admin\Transfer_Sld_ToDifferentStaff_ByAdmin.aspx" />
     <Content Include="Admin\UploadSignature.aspx" />
     <Content Include="Admin\UtilityMaster.aspx" />
     <Content Include="Admin\WebForm1.aspx" />
@@ -2006,6 +2007,8 @@
     <Content Include="Officers\SelfCertificationofInstallations.aspx" />
     <Content Include="Officers\Self_CertificationActionView.aspx" />
     <Content Include="Officers\Self_CertificationStatus.aspx" />
+    <Content Include="Officers\SldApprovalRequest_AtOfficer.aspx" />
+    <Content Include="Officers\SldApproval_Officer.aspx" />
     <Content Include="Officers\TotalRequest.aspx" />
     <Content Include="Officers\TotalRequestInspectionForOfficer_SearchWithCafId.aspx" />
     <Content Include="Officers\Xen_LicenceFinal_DetailView.aspx" />
@@ -2621,6 +2624,13 @@
     </Compile>
     <Compile Include="Admin\Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx.designer.cs">
       <DependentUpon>Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Transfer_Sld_ToDifferentStaff_ByAdmin.aspx.cs">
+      <DependentUpon>Transfer_Sld_ToDifferentStaff_ByAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Transfer_Sld_ToDifferentStaff_ByAdmin.aspx.designer.cs">
+      <DependentUpon>Transfer_Sld_ToDifferentStaff_ByAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\UploadSignature.aspx.cs">
       <DependentUpon>UploadSignature.aspx</DependentUpon>
@@ -3611,6 +3621,20 @@
     </Compile>
     <Compile Include="Officers\Self_CertificationStatus.aspx.designer.cs">
       <DependentUpon>Self_CertificationStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\SldApprovalRequest_AtOfficer.aspx.cs">
+      <DependentUpon>SldApprovalRequest_AtOfficer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\SldApprovalRequest_AtOfficer.aspx.designer.cs">
+      <DependentUpon>SldApprovalRequest_AtOfficer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\SldApproval_Officer.aspx.cs">
+      <DependentUpon>SldApproval_Officer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\SldApproval_Officer.aspx.designer.cs">
+      <DependentUpon>SldApproval_Officer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\TotalRequest.aspx.cs">
       <DependentUpon>TotalRequest.aspx</DependentUpon>
