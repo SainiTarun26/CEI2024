@@ -1597,12 +1597,14 @@
     <Content Include="Contractor\Approved_Test_Reports.aspx" />
     <Content Include="Contractor\Attach_DeAttach_Staff.aspx" />
     <Content Include="Contractor\ContractorRenewal.aspx" />
+    <Content Include="Contractor\Deattatch_Supervisor.aspx" />
     <Content Include="Contractor\GeneratingSetHistory.aspx" />
     <Content Include="Contractor\LiftWork_Intimation.aspx" />
     <Content Include="Contractor\PreviousProjects.aspx" />
     <Content Include="Contractor\ReturnedInspection.aspx" />
     <Content Include="Contractor\ReturnedInspectionForPeriodic.aspx" />
     <Content Include="Contractor\SubstationTransformer.aspx" />
+    <Content Include="Contractor\Supervisor_Requests.aspx" />
     <Content Include="Contractor\TestReportForContractor.aspx" />
     <Content Include="Contractor\TestReportHistory.aspx" />
     <Content Include="Contractor\TestReportsWithIntimation.aspx" />
@@ -2753,6 +2755,13 @@
     <Compile Include="Contractor\ContractorRenewal.aspx.designer.cs">
       <DependentUpon>ContractorRenewal.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Contractor\Deattatch_Supervisor.aspx.cs">
+      <DependentUpon>Deattatch_Supervisor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contractor\Deattatch_Supervisor.aspx.designer.cs">
+      <DependentUpon>Deattatch_Supervisor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contractor\GeneratingSetHistory.aspx.cs">
       <DependentUpon>GeneratingSetHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2794,6 +2803,13 @@
     </Compile>
     <Compile Include="Contractor\SubstationTransformer.aspx.designer.cs">
       <DependentUpon>SubstationTransformer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contractor\Supervisor_Requests.aspx.cs">
+      <DependentUpon>Supervisor_Requests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contractor\Supervisor_Requests.aspx.designer.cs">
+      <DependentUpon>Supervisor_Requests.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contractor\TestReportForContractor.aspx.cs">
       <DependentUpon>TestReportForContractor.aspx</DependentUpon>

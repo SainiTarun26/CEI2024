@@ -285,25 +285,46 @@ namespace CEIHaryana.UserPages
         {
             ddlLoadBindDistrict1(ddlState1.SelectedItem.ToString());
         }
-
+        #region gurmeet 30-June-2025
         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (CheckBox1.Checked == true)
             {
-                txtPermanentAddress.Text = txtCommunicationAddress.Text;
-                ddlState.SelectedValue = ddlState1.SelectedValue;
-                ddlDistrict.ClearSelection();
-                ddlDistrict.Items.Clear();
-                ddlDistrict.Items.Add(new ListItem(ddlDistrict1.SelectedItem.Text, "1"));
 
-                txtPin.Text = txtPinCode.Text;
-                txtPermanentAddress.Attributes.Add("readonly", "false");
-                ddlState.Attributes.Add("disabled", "disabled");
-                txtPin.Attributes.Add("readonly", "false");
-                ddlDistrict.Attributes.Add("disabled", "disabled");
+                if (txtCommunicationAddress.Text != "" && ddlDistrict1.SelectedValue != "" && ddlDistrict1.SelectedValue != "0" && txtPinCode.Text != ""
+                    && ddlState1.SelectedValue != "" && ddlState1.SelectedValue != "0"
+                    )
+                {
+                    txtPermanentAddress.Text = txtCommunicationAddress.Text;
+                    ddlState.SelectedValue = ddlState1.SelectedValue;
+                    //ddlDistrict.ClearSelection();
+                    ddlLoadBindDistrict(ddlState1.SelectedItem.ToString());
+                    ddlDistrict.SelectedValue = ddlDistrict1.SelectedValue;
+                    //ddlDistrict.Items.Clear();
+                    //ddlDistrict.Items.Add(new ListItem(ddlDistrict1.SelectedItem.Text, "1"));
+                    txtPin.Text = txtPinCode.Text;
+
+                    txtPermanentAddress.Attributes.Add("readonly", "false");
+                    txtPin.Attributes.Add("readonly", "false");
+                    ddlState.Attributes.Add("disabled", "disabled");
+                    ddlDistrict.Attributes.Add("disabled", "disabled");
+
+                    txtCommunicationAddress.Attributes.Add("readonly", "true");
+                    txtCommunicationAddress.ReadOnly = true;
+                    txtPinCode.Attributes.Add("readonly", "false");
+                    ddlState1.Attributes.Add("disabled", "disabled");
+                    ddlDistrict1.Attributes.Add("disabled", "disabled");
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please Select Registered Office Address First!!!')", true);
+                    ddlDistrict.Focus();
+                    CheckBox1.Checked = false;
+                }
             }
             else
             {
+                txtCommunicationAddress.ReadOnly = false;
                 txtPermanentAddress.Text = "";
                 ddlState.SelectedValue = "0";
                 ddlDistrict.Items.Clear();
@@ -313,9 +334,16 @@ namespace CEIHaryana.UserPages
                 ddlState.Attributes.Remove("disabled");
                 txtPin.Attributes.Remove("readonly");
                 ddlDistrict.Attributes.Remove("disabled");
+
+                txtCommunicationAddress.Attributes.Remove("readonly");
+                txtCommunicationAddress.ReadOnly = false;
+                txtPinCode.Attributes.Remove("disabled");
+                ddlState1.Attributes.Remove("disabled");
+                ddlDistrict1.Attributes.Remove("disabled");
+
             }
         }
-
+        #endregion
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Login.aspx", false);

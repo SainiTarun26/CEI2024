@@ -12946,6 +12946,48 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_All_SldStaff_List");
         }
         #endregion
+        #region gurmeet attachdeattach 30-June-2025
+        public DataSet GetSupervisorRequestForDeattachment_Attachments(string ContractorId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetsupervisorListForDeattached", ContractorId);
+        }
+        public DataTable GetDetailsForDeattachedSupervisor(string SupervisorRequestID)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetsupervisorDetails_ForDetattached", SupervisorRequestID);
+        }
+        public int DeattachedbyContractor(string ContractorId, string SupervisorREID, string UserId)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("Sp_Deattached_Supervisor");
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@contratorId", ContractorId);
+            cmd.Parameters.AddWithValue("@SupervisorREID", SupervisorREID);
+            cmd.Parameters.AddWithValue("@UserId", UserId);
+            int x = cmd.ExecuteNonQuery();
+            con.Close();
+            return x;
+        }
+        public int AttachedbyContractor(string ContractorId, string SupervisorREID, string UserId)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("Sp_Attached_Supervisor");
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@contratorId", ContractorId);
+            cmd.Parameters.AddWithValue("@SupervisorREID", SupervisorREID);
+            cmd.Parameters.AddWithValue("@UserId", UserId);
+            int x = cmd.ExecuteNonQuery();
+            con.Close();
+            return x;
+        }
+        public DataSet GetSupervisorRequestForDeattachment_AttachmentHistroy(string ContractorId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetsupervisorListForDeattached_AttachedHistroy", ContractorId);
+        }
+        #endregion
     }
 }
 
