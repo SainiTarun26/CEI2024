@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -75,6 +76,7 @@ namespace CEIHaryana.UserPages
                     Label lblID = row.FindControl("lblID") as Label;
                     Label lblCategory = row.FindControl("lblCategory") as Label;
 
+
                     if (lblID == null || lblCategory == null)
                         return;
 
@@ -86,7 +88,7 @@ namespace CEIHaryana.UserPages
                         if (category == "Supervisor" || category == "Wireman")
                         {
                             Session["NewApplicationRegistrationNo"] = idValue;
-                            Response.Redirect("~/Print_Forms/Print_New_Registration_Information.aspx");
+                            Response.Redirect("~/Print_Forms/Print_New_Registration_Information");
                         }
                         else if (category == "Contractor")
                         {
@@ -119,6 +121,43 @@ namespace CEIHaryana.UserPages
             Session.Clear();
             Session.RemoveAll();
             Response.Redirect("/Login.aspx");
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string status = DataBinder.Eval(e.Row.DataItem, "Status")?.ToString();
+
+
+                Label lblID = e.Row.FindControl("lblID") as Label;
+               
+                if (lblID != null)
+                {
+                    HdnID.Value = lblID.Text.Trim();
+                }
+
+               
+                if (status == "Returned")
+                {
+                   btnEdit.Visible = true;
+                   lblUpdate.Visible = true;
+                }
+                else
+                {
+                    btnEdit.Visible = false;
+                    lblUpdate.Visible = false;
+                }
+            }
+        }
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (HdnID.Value != null && HdnID.Value != null)
+            {
+                //Session["NewApplication_Contractor_RegNo"] = HdnID.Value;
+                Response.Redirect("~/UserPages/ReSubmitDocumentofNewUser.aspx");
+            }
         }
     }
 }

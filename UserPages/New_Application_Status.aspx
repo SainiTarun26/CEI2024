@@ -942,12 +942,14 @@
                                                 <div class="row" style="margin-top: 15px">
                                                     <div class="col-md-12">
                                                         <%-- Add GridView Here --%>
-                                                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-responsive table-striped table-hover" ShowHeader="true" OnRowCommand="GridView1_RowCommand">
+                                                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-responsive table-striped table-hover" ShowHeader="true"
+                                                            OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
                                                             <Columns>
                                                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                                                     <ItemTemplate>
                                                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("CreatedBy") %>'></asp:Label>
                                                                         <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Category") %>'></asp:Label>
+                                                                         <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status") %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
                                                                 <asp:TemplateField HeaderText="Name" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
@@ -1017,7 +1019,7 @@
                                                 </div>
                                                 <div class="row" style="margin-top: 15px">
                                                     <div class="col-md-12" style="text-align: center;">
-                                                        <asp:Button type="button" ID="btnEdit" Text="Edit" Visible="false" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+                                                        <asp:Button type="button" ID="btnEdit" Text="Edit" Visible="false" OnClick="btnEdit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
 
                                                     </div>
                                                 </div>
@@ -1027,10 +1029,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <asp:HiddenField ID="hdnId" runat="server" />
-                                                    <asp:HiddenField ID="HdnCategory" runat="server" />
-                                                    <asp:HiddenField ID="hdnTotalExperience" runat="server" />
-                                                </div>
+                                                   <asp:HiddenField ID="HdnID" runat="server" />
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-md-1"></div>

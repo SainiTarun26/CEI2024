@@ -87,30 +87,12 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Label lblUpdate;
 
         /// <summary>
-        /// hdnId control.
+        /// HdnID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnId;
-
-        /// <summary>
-        /// HdnCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HdnCategory;
-
-        /// <summary>
-        /// hdnTotalExperience control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnTotalExperience;
+        protected global::System.Web.UI.WebControls.HiddenField HdnID;
     }
 }
