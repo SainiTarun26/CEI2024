@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReSubmitDocumentofSup_Wireman.aspx.cs" Inherits="CEIHaryana.UserPages.ReSubmitDocumentofSup_Wireman" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReSubmitDocumentofNewUser.aspx.cs" Inherits="CEIHaryana.UserPages.ReSubmitDocumentofNewUser" %>
 
 <!DOCTYPE html>
 
@@ -942,7 +942,8 @@
                                                       
                                                          <asp:HiddenField ID="hdnCategory" runat="server" />
                                                         <asp:GridView class="table-responsive table table-striped table-bordered" ID="GridView1" runat="server" Width="100%"
-                                                            AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff"  OnRowCommand="GridView1_RowCommand">
+                                                            AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff"  OnRowCommand="GridView1_RowCommand" >
+                                                           
 
 
                                                             <PagerStyle CssClass="pagination-ys" />
@@ -995,10 +996,32 @@
                                                         </asp:GridView>
                                                     </div>
                                                 </div>
+                                                <div class="row" id="Challan" runat="server"  style="margin-top: 15px; margin-bottom: 10px;">
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <label for="State1">
+                                                                UTR No.<samp style="color: red">* </samp>
+                                                            </label>
+
+                                                            <asp:TextBox class="form-control" ID="txtUtrNo" MaxLength="50" autocomplete="off" runat="server" Style="margin-bottom: 15px;"> </asp:TextBox>
+                                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtUtrNo" ValidationGroup="Submit" ForeColor="Red">Enter UTR No.</asp:RequiredFieldValidator>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <label for="State1">
+                                                                Date<samp style="color: red">* </samp>
+                                                            </label>
+
+                                                            <asp:TextBox class="form-control" Type="date" ID="txtdate" MaxLength="50" autocomplete="off" runat="server" Onchange="validateDate()" Style="margin-bottom: 15px;"> </asp:TextBox>
+                                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtdate" ValidationGroup="Submit" ForeColor="Red">Enter Date</asp:RequiredFieldValidator>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <br />
                                                 <div class="row">
                                                     <div class="col-md-12" style="text-align:center;">
-                                                        <asp:Button ID="btnsubmit" runat="server" Text="Submit"  CssClass="btn btn-primary" OnClick="btnsubmit_Click"/>
+                                                        <asp:Button ID="btnsubmit" runat="server" Text="Submit" ValidationGroup="Submit"  CssClass="btn btn-primary" OnClick="btnsubmit_Click"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
@@ -1076,6 +1099,12 @@
                     input.value = input.value.toUpperCase();
                 }
             </script>
+              <script type="text/javascript">
+                  window.onload = function () {
+                      var today = new Date().toISOString().split('T')[0];
+                      document.getElementById('<%= txtdate.ClientID %>').setAttribute('max', today);
+                  };
+              </script>
         </div>
     </form>
 </body>

@@ -12810,7 +12810,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDocumentForWiremanSupervisior", Id, Category);
         }
         public int ReSubmitDocumentForSupWireman(long TempId, string Category, int DocumentId, string DocumentName, string FileName,
-          string DocumentPath, string CreatedBy)
+   string DocumentPath, string CreatedBy, string Utrn, string challandate)
         {
             try
             {
@@ -12825,6 +12825,16 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
                     cmd.Parameters.AddWithValue("@FileName", GetValue(FileName));
                     cmd.Parameters.AddWithValue("@DocumentPath", GetValue(DocumentPath));
                     cmd.Parameters.AddWithValue("@Id", CreatedBy);
+                    cmd.Parameters.AddWithValue("@UtrnNo", String.IsNullOrEmpty(Utrn) ? DBNull.Value : (object)Utrn);
+                    DateTime ChallanDate;
+                    if (DateTime.TryParse(challandate, out ChallanDate) && ChallanDate != DateTime.MinValue)
+                    {
+                        cmd.Parameters.AddWithValue("@challandate", ChallanDate.Date); // .Date ensures time = 00:00:00
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@challandate", DBNull.Value);
+                    }
                     con.Open();
                     int x = cmd.ExecuteNonQuery();
                     return x;
@@ -12835,6 +12845,11 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             {
                 return 0;
             }
+        }
+        //30-June-2025
+        public DataTable GetChallanDetails(string Id, string Category)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetChallanDetails", Id, Category);
         }
         #endregion
         #region Aslam transfer request

@@ -16,7 +16,7 @@ using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.UserPages
 {
-    public partial class ReSubmitDocumentofSup_Wireman : System.Web.UI.Page
+    public partial class ReSubmitDocumentofNewUser : System.Web.UI.Page
     {
         //Created By Neeraj 27-June-2025
         CEI CEI = new CEI();
@@ -27,18 +27,28 @@ namespace CEIHaryana.UserPages
             {
                 if (!IsPostBack)
                 {
-                    Session["WiremanId"] = "Paru19651013";
+                   // Session["WiremanId"] = "Trun19780509";
                     if (Convert.ToString(Session["SupervisorID"]) != null && Convert.ToString(Session["SupervisorID"]) != "")
                     {
                         hdnSupWiremanId.Value = Session["SupervisorID"].ToString();                     
                         hdnCategory.Value = "Supervisor";
                         bindData(hdnSupWiremanId.Value, hdnCategory.Value);
+                        getDetails(hdnSupWiremanId.Value, hdnCategory.Value);
                     }
                     else if (Convert.ToString(Session["WiremanId"]) != null && Convert.ToString(Session["WiremanId"]) != "")
                     {
                         hdnSupWiremanId.Value = Session["WiremanId"].ToString();                      
                         hdnCategory.Value = "Wireman";
                         bindData(hdnSupWiremanId.Value, hdnCategory.Value);
+                        getDetails(hdnSupWiremanId.Value, hdnCategory.Value);
+                    }
+                   
+                   else if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != "")
+                    {
+                        hdnSupWiremanId.Value = Session["ContractorID"].ToString();
+                        hdnCategory.Value = "Contractor";
+                        bindData(hdnSupWiremanId.Value, hdnCategory.Value);
+                        getDetails(hdnSupWiremanId.Value, hdnCategory.Value);
                     }
                 }
             }
@@ -48,6 +58,14 @@ namespace CEIHaryana.UserPages
             }
         }
 
+        private void getDetails(string Id, string Category)
+        {
+            DataTable ds = new DataTable();
+            ds = CEI.GetChallanDetails(Id, Category);
+            txtUtrNo.Text = ds.Rows[0]["UtrnNo"].ToString();
+            string Date = ds.Rows[0]["challanDate"].ToString();
+            txtdate.Text = DateTime.Parse(Date).ToString("yyyy-MM-dd");
+        }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             //string fileName = "";
@@ -130,7 +148,7 @@ namespace CEIHaryana.UserPages
                             string filePathInfo = "";
                             filePathInfo = Server.MapPath(path + "/" + fileName1);
                             fileUpload.PostedFile.SaveAs(filePathInfo);
-                            int x = CEI.ReSubmitDocumentForSupWireman(Convert.ToInt64(lblTempId.Text), hdnCategory.Value, Convert.ToInt32(LblDocumentID.Text), lblDocumentName.Text, lblFileName.Text, filePathInfo, hdnSupWiremanId.Value);
+                            int x = CEI.ReSubmitDocumentForSupWireman(Convert.ToInt64(lblTempId.Text), hdnCategory.Value, Convert.ToInt32(LblDocumentID.Text), lblDocumentName.Text, lblFileName.Text, filePathInfo, hdnSupWiremanId.Value, txtUtrNo.Text, txtdate.Text);
                             if (x > 0)
                             {
                                 successCount++;
@@ -146,8 +164,8 @@ namespace CEIHaryana.UserPages
                     }                   
                     if (successCount > 0 && failCount == 0)
                     {
-                       string script = $"alert('Document Re-Submitted Successfully.');";
-                       ScriptManager.RegisterStartupScript(this, this.GetType(), "AlertRedirect", script, true);
+                        string script = "alert('Document Re-Submitted Successfully.'); window.location='New_Application_Status.aspx.aspx';";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "AlertRedirect", script, true);
                        return;
                     }
                   
@@ -230,5 +248,6 @@ namespace CEIHaryana.UserPages
 
         }
 
+        
     }
 }
