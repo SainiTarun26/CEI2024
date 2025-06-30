@@ -88,7 +88,7 @@ namespace CEIHaryana.UserPages
                         if (category == "Supervisor" || category == "Wireman")
                         {
                             Session["NewApplicationRegistrationNo"] = idValue;
-                            Response.Redirect("~/Print_Forms/Print_New_Registration_Information");
+                            Response.Redirect("~/Print_Forms/Print_New_Registration_Information.aspx");
                         }
                         else if (category == "Contractor")
                         {
