@@ -42,7 +42,11 @@ namespace CEIHaryana.Supervisor
                                 GetContractorDetails(hdnId.Value);
                             }
                         }
-                        
+                        else
+                        {
+                            GetContractorDetails(hdnId.Value);
+                        }
+
                     }
                     else
                     {
@@ -168,7 +172,7 @@ namespace CEIHaryana.Supervisor
                     {
 
                         CEI.emailForDeattachmentRequest(TxtEmailId.Text);
-                        string script = $"alert('De-attachment request submitted successfully!!.'); window.location='IntimationData.aspx';";
+                        string script = $"alert('De-attachment request submitted successfully!!.'); window.location='DeattachmentRequest.aspx';";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
                     }
                 }

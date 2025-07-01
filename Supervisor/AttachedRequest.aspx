@@ -215,6 +215,52 @@
     padding: 10px 10px 10px 10px !important;
 }
     </style>
+        <script type="text/javascript">
+            function isNumberKey(evt) {
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                }
+                return true;
+            }
+
+            //Allow Only Aplhabet, Delete and Backspace
+
+            function isAlpha(keyCode) {
+
+                return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
+
+            }
+
+            function alphabetKey(e) {
+                var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
+                var k;
+                k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+                return (allow.indexOf(String.fromCharCode(k)) != -1);
+            }
+        </script>
+     <script type="text/javascript">
+         function isvalidphoneno() {
+
+             var Phone1 = document.getElementById("<%=TxtContactNo.ClientID %>");
+             phoneNo = Phone1.value;
+             var lblErrorContect = document.getElementById("lblErrorContect");
+             lblErrorContect.innerHTML = "";
+             var expr = /^[6-9]\d{9}$/;
+             if (phoneNo == "") {
+                 lblErrorContect.innerHTML = "Please Enter Contact Number" + "\n";
+                 return false;
+             }
+             else if (expr.test(phoneNo)) {
+                 lblErrorContect.innerHTML = "";
+                 return true;
+             }
+             else {
+                 lblErrorContect.innerHTML = "Invalid Contact Number" + "\n";
+                 return false;
+             }
+         }
+     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
@@ -318,9 +364,10 @@
         <label>
             Contact No. <samp style="color: red">*</samp>
         </label>
-        <asp:TextBox class="form-control" ID="TxtContactNo" runat="server" autocomplete="off" TabIndex="1"
-            MaxLength="200" Style="margin-left: 18px;">
+        <asp:TextBox class="form-control" ID="TxtContactNo" runat="server" onKeyPress="return isNumberKey(event);" onkeyup="return isvalidphoneno();" autocomplete="off" TabIndex="1"
+            MaxLength="10" Style="margin-left: 18px;">
         </asp:TextBox>
+          <span id="lblErrorContect" style="color: red"></span>
     </div>
 
  

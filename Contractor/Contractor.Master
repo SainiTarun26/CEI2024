@@ -438,7 +438,13 @@
                                     <span class="menu-title">Approved Test Reports</span>
                                 </a>
                             </li>
-                           <%-- <li class="nav-item">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Contractor/Supervisor_Requests.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Supervisor Request</span>
+                                </a>
+                            </li>
+                            <%-- <li class="nav-item">
                                 <a class="nav-link" href="/Contractor/Attach_DeAttach_Staff.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Add/Remove Staff</span>
