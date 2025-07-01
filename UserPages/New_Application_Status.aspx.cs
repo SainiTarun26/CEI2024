@@ -155,7 +155,7 @@ namespace CEIHaryana.UserPages
         {
             if (HdnID.Value != null && HdnID.Value != null)
             {
-                //Session["NewApplication_Contractor_RegNo"] = HdnID.Value;
+                Session["NewUser_RegNoID"] = HdnID.Value;
                 Response.Redirect("~/UserPages/ReSubmitDocumentofNewUser.aspx");
             }
         }
