@@ -37,11 +37,12 @@ namespace CEIHaryana.Supervisor
                             {
                                 Response.Redirect("/Supervisor/DeattachmentRequest.aspx", false);
                             }
+                            else
+                            {
+                                GetContractorDetails(hdnId.Value);
+                            }
                         }
-                        else
-                        {
-                            GetContractorDetails(hdnId.Value);
-                        }
+                        
                     }
                     else
                     {

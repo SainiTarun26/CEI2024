@@ -12810,7 +12810,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetDocumentForWiremanSupervisior", Id, Category);
         }
         public int ReSubmitDocumentForSupWireman(long TempId, string Category, int DocumentId, string DocumentName, string FileName,
-   string DocumentPath, string CreatedBy, string Utrn, string challandate)
+      string DocumentPath, string CreatedBy, string Utrn, string challandate)
         {
             try
             {
@@ -13001,6 +13001,16 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         public DataSet GetSupervisorRequestForDeattachment_AttachmentHistroy(string ContractorId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetsupervisorListForDeattached_AttachedHistroy", ContractorId);
+        }
+        #endregion
+        #region neeraj attach dettach
+        public DataTable GetContractorDetailsForDeattach(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DeAttactedContractorDetails", Id);
+        }
+        public DataTable GetCategoryForNewUser(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetCategoryNewUser", Id);
         }
         #endregion
     }

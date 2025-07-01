@@ -27,28 +27,24 @@ namespace CEIHaryana.UserPages
             {
                 if (!IsPostBack)
                 {
-                   // Session["WiremanId"] = "Trun19780509";
-                    if (Convert.ToString(Session["SupervisorID"]) != null && Convert.ToString(Session["SupervisorID"]) != "")
+                    // Session["WiremanId"] = "Trun19780509";
+                    if (Convert.ToString(Session["NewUser_RegNoID"]) != null && Convert.ToString(Session["NewUser_RegNoID"]) != "")
                     {
-                        hdnSupWiremanId.Value = Session["SupervisorID"].ToString();                     
-                        hdnCategory.Value = "Supervisor";
-                        bindData(hdnSupWiremanId.Value, hdnCategory.Value);
-                        getDetails(hdnSupWiremanId.Value, hdnCategory.Value);
+                        hdnSupWiremanId.Value = Session["NewUser_RegNoID"].ToString();
+                        DataTable ds = new DataTable();
+                        ds = CEI.GetCategoryForNewUser(hdnSupWiremanId.Value);
+                        if (ds.Rows.Count > 0)
+                        {
+                            hdnCategory.Value = ds.Rows[0]["Category"].ToString();
+                            bindData(hdnSupWiremanId.Value, hdnCategory.Value);
+                            getDetails(hdnSupWiremanId.Value, hdnCategory.Value);
+                        }
+
                     }
-                    else if (Convert.ToString(Session["WiremanId"]) != null && Convert.ToString(Session["WiremanId"]) != "")
+                    else
                     {
-                        hdnSupWiremanId.Value = Session["WiremanId"].ToString();                      
-                        hdnCategory.Value = "Wireman";
-                        bindData(hdnSupWiremanId.Value, hdnCategory.Value);
-                        getDetails(hdnSupWiremanId.Value, hdnCategory.Value);
-                    }
-                   
-                   else if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != "")
-                    {
-                        hdnSupWiremanId.Value = Session["ContractorID"].ToString();
-                        hdnCategory.Value = "Contractor";
-                        bindData(hdnSupWiremanId.Value, hdnCategory.Value);
-                        getDetails(hdnSupWiremanId.Value, hdnCategory.Value);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('An Error Occurred While Login.');", true);
+                        Response.Redirect("/Login.aspx");
                     }
                 }
             }
@@ -95,7 +91,7 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                if (hdnSupWiremanId.Value != null && hdnSupWiremanId.Value != string.Empty)
+                if (Convert.ToString(Session["NewUser_RegNoID"]) == hdnSupWiremanId.Value )
                 {
                     Category = hdnCategory.Value;
                     int successCount = 0;

@@ -44,7 +44,7 @@ namespace CEIHaryana.Supervisor
         public void GetContractorDetails(string Id)
         {
             DataTable dt = new DataTable();
-            dt = CEI.GetContractorDetailsForView(Id);
+            dt = CEI.GetContractorDetailsForDeattach(Id);
             if (dt.Rows.Count > 0)
             {
                 txtContractorName.Text = dt.Rows[0]["Name"].ToString();

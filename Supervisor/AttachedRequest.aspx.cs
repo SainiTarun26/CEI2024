@@ -206,7 +206,7 @@ namespace CEIHaryana.Supervisor
                     {
 
                         CEI.emailForDeattachmentRequest(TxtEmailId.Text);
-                        string script = $"alert('Attachment request submitted successfully!!.'); window.location='IntimationData.aspx';";
+                        string script = $"alert('Attachment request submitted successfully!!.'); window.location='DeattachmentRequest.aspx';";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
                     }
                 }
