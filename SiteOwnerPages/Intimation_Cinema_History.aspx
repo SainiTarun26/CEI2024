@@ -190,6 +190,7 @@
                                             <tr>
                                                 <td>
                                                     <div class="col-md-12">
+
                                                         <asp:TextBox class="form-control" ID="txtinstallationType1" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                     </div>
                                                 </td>
@@ -216,8 +217,7 @@
                         <div class="col-md-4"></div>
                         <div class="col-md-4" style="text-align: center;">
                             <asp:Button type="submit" ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
-                            <asp:Button ID="btnOpenWindow" runat="server" Text="Print" class="btn btn-primary mr-2" OnClientClick="openNewWindow(); return false;" />
-
+                          
                         </div>
                         <div class="col-md-4"></div>
                     </div>

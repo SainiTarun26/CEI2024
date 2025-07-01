@@ -402,7 +402,7 @@
                                     <label for="Name">
                                         Name of Cinema/Video Talkies<samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtNameOfCinemas" Enabled="false" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%;"></asp:TextBox>
+                                    <asp:TextBox class="form-control" ID="txtNameOfCinemas" Enabled="false" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="width: 100%;"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtNameOfCinemas" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">*</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-md-3" id="Div12" runat="server">
@@ -429,7 +429,7 @@
                                             Name of Screen
                                             <samp style="color: red">* </samp>
                                         </label>
-                                        <asp:TextBox class="form-control" ID="txtNameOfCinema" onpaste="preventPaste(event)" autocomplete="off" MaxLength="50" onKeyPress="return alphabetKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="txtNameOfCinema" onpaste="preventPaste(event)" autocomplete="off" MaxLength="50" onKeyPress="preventZero(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtNameOfCinema" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                         <%--<asp:RangeValidator ID="rangevalidator" runat="server" ControlToValidate="TxtOthervoltage" MinimumValue="200" MaximumValue="400000" Type="Integer" ForeColor="Red" ErrorMessage="Voltage between 200 to 400000" ></asp:RangeValidator>--%>
                                     </div>
@@ -439,13 +439,13 @@
                                             Serial No.<samp style="color: red">* </samp>
                                         </label>
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-                                        <asp:TextBox class="form-control" ID="txtSerialNo" onpaste="preventPaste(event)" autocomplete="off" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="10" placeholder="" TabIndex="4" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="txtSerialNo" onpaste="preventPaste(event)" autocomplete="off" onkeydown="return preventEnterSubmit(event)" MaxLength="10" placeholder="" TabIndex="4" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                        
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtSerialNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                     </div>
                                     <div class="col-md-4" runat="server" id="Div1">
                                         <label for="Name">
-                                            Size of Screen<samp style="color: red">* </samp>
+                                            Size of Screen (In Sq ft)<samp style="color: red">* </samp>
                                         </label>
                                         <%--<asp:TextBox class="form-control" ID="txtLineLength" onKeyPress="return isNumberKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="3" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
                                         <asp:TextBox class="form-control" ID="txtScreenSize" onpaste="preventPaste(event)" autocomplete="off" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="10" placeholder="" TabIndex="4" runat="server" Style="margin-left: 18px"></asp:TextBox>

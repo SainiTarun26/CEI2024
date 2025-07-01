@@ -499,10 +499,13 @@
                                                             <tr>
                                                                 <td>
                                                                     <div class="col-md-12">
-                                                                        <asp:TextBox class="form-control" ID="txtinstallationType1" TabIndex="8" ReadOnly="false" Text="" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtinstallationType1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Type Of Installation</asp:RequiredFieldValidator>
-                                                                      
-                                                                        </div>
+                                                                        <asp:DropDownList ID="ddlinstallationType1" runat="server" AutoPostBack="true" class="form-control  select-form select2" Style="width: 100% !important;">                                                                           
+                                                                            <asp:ListItem Value="1" Text="Cinemas" Selected ="True"></asp:ListItem>
+                                                                            <asp:ListItem Value="2" Text="Videos Talkies"></asp:ListItem>
+                                                                        </asp:DropDownList>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlinstallationType1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Type Of Installation</asp:RequiredFieldValidator>
+
+                                                                    </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="col-md-12">
