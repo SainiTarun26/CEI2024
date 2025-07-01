@@ -1457,10 +1457,13 @@ namespace CEIHaryana.SiteOwnerPages
                 if (GridView_humanPopUp.Rows.Count <= 1)
                 {
                     hdnfieldDocument_mandtry.Value = "0";
-                    if (hdnFieldGridView.Value == "1")     // this check for identify there is must one victime details added
+                    //if (hdnFieldGridView.Value == "1")     // this check for identify there is must one victime details added
+                    //{
+                    if (GridView_animalPopUp.Rows.Count == 0)
                     {
                         hdnFieldGridView.Value = "0";
                     }
+                    //}
                     
                 }
                 HumanGridViewBind(Convert.ToString(Session["TempUniqueId"]));
@@ -1485,7 +1488,7 @@ namespace CEIHaryana.SiteOwnerPages
                 if (GridView_animalPopUp.Rows.Count <= 1)
                 {
                     //hdnfieldDocument_mandtry.Value = "0";
-                    if (hdnFieldGridView.Value == "2")     // this check for identify there is must one victime details added
+                    if (GridView_humanPopUp.Rows.Count == 0)     // this check for identify there is must one victime details added
                     {
                         hdnFieldGridView.Value = "0";
                     }

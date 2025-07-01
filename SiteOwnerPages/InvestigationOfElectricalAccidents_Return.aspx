@@ -771,6 +771,13 @@
                             <asp:TextBox class="form-control" ID="txtOtherPremsesCase" autocomplete="off" MaxLength="20" Visible="false" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtOtherPremsesCase" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                         </div>
+                          <div class="col-md-4" id="Div_Remarkss" runat="server" visible="false">
+      <label>
+          Remarks
+      </label>
+      <asp:TextBox class="form-control" ID="txtRemarks" autocomplete="off"   runat="server" Style="margin-left: 18px"></asp:TextBox>
+      
+  </div>
                     </div>
                 </div>
                 <%--  </ContentTemplate>

@@ -106,9 +106,9 @@ namespace CEIHaryana.SiteOwnerPages
                     string Remarks = ds.Rows[0]["Remarks"].ToString();
                     if (!string.IsNullOrEmpty(Remarks))
                     {
-                        //Div_Remark.Visible = true;
-                        //txtRemarks.Text = Remarks;
-                        //txtRemarks.ReadOnly = true;
+                        Div_Remarkss.Visible = true;
+                        txtRemarks.Text = Remarks;
+                        txtRemarks.ReadOnly = true;
                     }
                     string ApplicationStatus = ds.Rows[0]["ApplicationStatus"].ToString();
                     if (ApplicationStatus == "Return") //  ApplicationStatus == "Report Issued" || ApplicationStatus == "Reject")
