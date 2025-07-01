@@ -222,10 +222,10 @@
                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                     <ItemStyle HorizontalAlign="center" VerticalAlign="Middle" Width="15%" Font-Bold="true" />
                 </asp:BoundField>
-                <%-- <asp:BoundField DataField="SubmittedDate" HeaderText="SubmittedDate">
+                 <asp:BoundField DataField="StatusDate" HeaderText="StatusDate">
                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                    <ItemStyle HorizontalAlign="center" VerticalAlign="Middle" Width="15%" Font-Bold="true" />
-                </asp:BoundField>--%>
+                    <ItemStyle HorizontalAlign="center" VerticalAlign="Middle" Width="15%"  />
+                </asp:BoundField>
                 <asp:TemplateField HeaderText="Action">
                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                     <ItemStyle HorizontalAlign="center" VerticalAlign="Middle" Width="15%" Font-Bold="true" />

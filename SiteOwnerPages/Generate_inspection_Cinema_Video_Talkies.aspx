@@ -31,7 +31,15 @@
             var k;
             k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
             return (allow.indexOf(String.fromCharCode(k)) != -1);
-        }       
+        }
+        function preventEnterSubmit(e) {
+            // Prevent form submission on Enter key press
+            if (e.keyCode === 13) {
+                e.preventDefault();
+                return false;
+            }
+            return true;
+        }ssss
     </script>
     <style>
         div#ContentPlaceHolder1_Declaration {
@@ -505,14 +513,14 @@
                                 <label>
                                       Transaction ID(GRN Number)<samp style="color: red"> * </samp>
                                 </label>
-                                <asp:TextBox ID="txttransactionId" runat="server" MaxLength="10" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
+                                <asp:TextBox ID="txttransactionId" runat="server" MaxLength="10" onkeydown="return preventEnterSubmit(event)" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
                                 <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Id</asp:RequiredFieldValidator>--%>
                             </div>
                             <div class="col-4">
                                 <label>
                                     Transaction Date<samp style="color: red"> * </samp>
                                 </label>
-                                <asp:TextBox ID="txttransactionDate" onfocus="disableFutureDates()" min='0000-01-01' onkeydown="return false;" max='9999-01-01' TextMode="Date" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
+                                <asp:TextBox ID="txttransactionDate"  onfocus="disableFutureDates()" min='0000-01-01' onkeydown="return false;" max='9999-01-01' TextMode="Date" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
                                 <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter Transcation Date</asp:RequiredFieldValidator>--%>
                             </div>
                             <div class="col-4" style="margin-top: auto; margin-bottom: auto;">
@@ -533,7 +541,7 @@
                                 <label for="Remarks">
                                     Inspection Remarks<samp style="color: red"> * </samp>
                                 </label>
-                                <asp:TextBox class="form-control" ID="txtInspectionRemarks" runat="server" autocomplete="off" MaxLength="500" Style="margin-left: 18px" TabIndex="3"></asp:TextBox>
+                                <asp:TextBox class="form-control"  onkeydown="return preventEnterSubmit(event)" ID="txtInspectionRemarks" runat="server" autocomplete="off" MaxLength="500" Style="margin-left: 18px" TabIndex="3"></asp:TextBox>
                                 <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtInspectionRemarks" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Inspection Remarks</asp:RequiredFieldValidator>--%>
                             </div>
                         </div>
