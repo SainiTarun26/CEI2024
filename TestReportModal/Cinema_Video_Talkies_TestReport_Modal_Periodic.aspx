@@ -2036,7 +2036,7 @@
             <ul style="margin: 40px 20px 20px 15px!important;">
                 <li class="tab-content tab-content-3 typography">
                     <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
-                        <asp:Button ID="btnBack" Text="Back" Enabled="true" runat="server" class="btn btn-primary mr-2"
+                        <asp:Button ID="btnBack" Text="Back" Enabled="true" OnClick="btnBack_Click" runat="server" class="btn btn-primary mr-2"
                             Style="margin-top: -45px; margin-bottom: -40px; font-size: 20px; padding-left: 25px; padding-right: 25px; position: fixed; left: 10px; z-index: 50;" />
 
                         <asp:Button ID="btnPrint" Text="Print" Enabled="true" runat="server" class="btn btn-primary mr-2"
@@ -2119,7 +2119,7 @@
                                         </label>
                                         <asp:TextBox ReadOnly="true" class="form-control" ID="txtInstallationtype" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
-                                    <div class="col-4" id="Div3" runat="server">
+                                    <div class="col-4" id="Div3" runat="server" visible="false">
                                         <label>
                                             Name of Cinema/Video Talkies
                                         </label>

@@ -279,7 +279,7 @@
                                             </div>
                                         </div>
                                         <div class="col-4">
-                                            <div runat="server">
+                                            <div runat="server" id="Div2" visible="false">
                                                 <label>
                                                     Name of CInema/VIdeo Talkies
                                                 </label>

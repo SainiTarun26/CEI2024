@@ -20,6 +20,10 @@ namespace CEIHaryana.TestReportModal
             {
                 if (!Page.IsPostBack)
                 {
+                    if (Request.UrlReferrer != null)
+                    {
+                        Session["PreviousPage"] = Request.UrlReferrer.ToString();
+                    }
                     if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                     {
                         if (Convert.ToString(Session["TestReportId"]) != null && Convert.ToString(Session["TestReportId"]) != "")
@@ -69,6 +73,22 @@ namespace CEIHaryana.TestReportModal
             txtLastInspectiondate.Text = ds.Tables[0].Rows[0]["LastInspectionDate"].ToString();
             txtTRCreatedBy.Text = ds.Tables[0].Rows[0]["TestReportCreatedBy"].ToString();
             txtTRCreatedDate.Text = ds.Tables[0].Rows[0]["TestReportCreatedDate"].ToString();
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string previousPageUrl = Session["PreviousPage"] as string;
+                if (!string.IsNullOrEmpty(previousPageUrl))
+                {
+
+                    Response.Redirect(previousPageUrl, false);
+                    Session["PreviousPage"] = null;
+
+                }
+            }
+            catch { }
         }
     }
 }
