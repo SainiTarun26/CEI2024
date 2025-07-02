@@ -175,7 +175,7 @@ namespace CEIHaryana.UserPages
                     //Only Diploma
                     if (hasDiploma && !hasCertificate)
                     {
-                        if (totalExperiences < 5)
+                        if (totalExperiences < 1)
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('As per your qualification, Total Experience should be at least 1 years.');", true);
                             return;
