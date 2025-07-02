@@ -180,7 +180,8 @@ namespace CEIHaryana.SiteOwnerPages
                     //if (lblCategory.Text.Trim() == "Lift")
                     //{
                        Session["TestReportId"] = lblTestReportId.Text;
-                       Response.Redirect("/SiteOwnerPages/Cinema_Video_Talkies_TestReport_Modal.aspx", false);
+                    //Link Chnage by navneet 2-July-2025
+                       Response.Redirect("/TestReportModal/Cinema_Video_Talkies_TestReport_Modal.aspx", false);
                     //}                    
                 }
             }
