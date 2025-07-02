@@ -38,6 +38,28 @@ namespace CEIHaryana.Officers
                         NewApplications.Visible = true;
                     }
                     #endregion
+
+                    #region aslam 2 july 2025 uat 
+                    string staffId = Convert.ToString(Session["StaffID"]);
+
+                    List<string> allowedStaffIds = new List<string>
+                    {
+                        "XEN_CDG",
+                        "AE_CDG",
+                        "AE_CDG_2"
+                    };
+
+                    if (!string.IsNullOrEmpty(staffId) &&
+                        allowedStaffIds.Contains(staffId, StringComparer.OrdinalIgnoreCase))
+                    {
+                        Transfer_Sld.Visible = true;
+                    }
+                    else
+                    {
+                        Transfer_Sld.Visible = false;
+                    }
+
+                    #endregion
                 }
                 else if (Session["StaffID"] == null)
                 {

@@ -484,6 +484,14 @@
                                 </a>
                             </li>
 
+
+                            <li class="nav-item" runat="server" id="Transfer_Sld" visible="false" >
+                                <a class="nav-link" href="/Officers/Transfer_Sld_ToLowerStaff_ByOfficer.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Transfer Slds</span>
+                                </a>
+                            </li>
+
                             <li class="nav-item" id="NewApplications" runat="server" visible="false">
                                 <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 576 512">

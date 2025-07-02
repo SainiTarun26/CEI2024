@@ -12960,6 +12960,54 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_All_SldStaff_List");
         }
+        //2-July-2025
+        public DataSet Get_Sld_SelectedStaffFromLogin(string loginid)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_Selected_SldStaff_FromList", loginid);
+        }
+
+        public DataSet Get_Sld_LowerStaffByHeadQuarterList(string selectedStaffID)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_LowerFiltered_SldStaff_List", selectedStaffID);
+        }
+
+        public DataSet SldTransfer_ToLowerStaff_GridDataList_Officer(string selectedStaffUserID, string searchText)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAllSld_ToTransfer_ToLowerStaff_List_ByOfficer", selectedStaffUserID, searchText);
+        }
+
+
+        public void sp_Transfer_Sld_ToDifferent_Lower_Staff_ByOfficer_Method(int Id, string Staff, string LoginUser)
+        {
+            SqlCommand cmd = new SqlCommand("sp_Transfer_Sld_ToDifferent_LowerStaff_ByOfficer");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", Id);
+                cmd.Parameters.AddWithValue("@Staff", String.IsNullOrEmpty(Staff) ? null : Staff);
+                cmd.Parameters.AddWithValue("@LoginUser", String.IsNullOrEmpty(LoginUser) ? null : LoginUser);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
         #endregion
         #region gurmeet attachdeattach 30-June-2025
         public DataSet GetSupervisorRequestForDeattachment_Attachments(string ContractorId)

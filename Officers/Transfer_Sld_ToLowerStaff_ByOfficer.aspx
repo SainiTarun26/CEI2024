@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="Transfer_Sld_ToDifferentStaff_ByAdmin.aspx.cs" Inherits="CEIHaryana.Admin.Transfer_Sld_ToDifferentStaff_ByAdmin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" AutoEventWireup="true" CodeBehind="Transfer_Sld_ToLowerStaff_ByOfficer.aspx.cs" Inherits="CEIHaryana.Officers.Transfer_Sld_ToLowerStaff_ByOfficer" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -184,10 +184,11 @@
 
                     </div>
 
-                    <div class="col-md-6" runat="server" style="margin-top: 45px !important;">
-                        <label>
-   &nbsp;
-</label>
+                    <div class="col-md-6" runat="server" style="margin-top: 4%;">
+                         <label>
+     &nbsp;
+  
+ </label>
                         <!-- Search Box -->
                         <asp:TextBox ID="txtSearch" runat="server"
                             PlaceHolder="Other Search Parameters Like OwnerName,SldId etc.."
@@ -322,7 +323,7 @@
 
         function alertWithRedirectUpdation() {
             alert('Sld Transfered Successfully');
-            window.location.href = "/Admin/Transfer_Sld_ToDifferentStaff_ByAdmin.aspx";
+            window.location.href = "/Officers/Transfer_Sld_ToLowerStaff_ByOfficer.aspx";
 
         }
 
