@@ -2054,8 +2054,6 @@
     <Content Include="SiteOwnerPages\ChallanReport.aspx" />
     <Content Include="SiteOwnerPages\CinemaInstallationComponentDetails.aspx" />
     <Content Include="SiteOwnerPages\CinemaIntimationDetails.aspx" />
-    <Content Include="SiteOwnerPages\Cinema_Video_Talkies_TestReport_Modal.aspx" />
-    <Content Include="SiteOwnerPages\Cinema_Video_Talkies_TestReport_Modal_Periodic.aspx" />
     <Content Include="SiteOwnerPages\CreateInspectionReport.aspx" />
     <Content Include="SiteOwnerPages\CreateTestReports.aspx" />
     <Content Include="SiteOwnerPages\CreateTestReports_Industry.aspx" />
@@ -2161,6 +2159,8 @@
     <Content Include="Supervisor\TestReportForm1.aspx" />
     <Content Include="Supervisor\TestReportHistory.aspx" />
     <Content Include="Supervisor\TestReportIntimationHistory.aspx" />
+    <Content Include="TestReportModal\Cinema_Video_Talkies_TestReport_Modal.aspx" />
+    <Content Include="TestReportModal\Cinema_Video_Talkies_TestReport_Modal_Periodic.aspx" />
     <Content Include="TestReportModal\EscalatorPeriodicTestReportModal.aspx" />
     <Content Include="TestReportModal\EscalatorTestReportModal.aspx" />
     <Content Include="TestReportModal\GeneratingSetTestReportModal.aspx" />
@@ -3933,20 +3933,6 @@
     <Compile Include="SiteOwnerPages\CinemaIntimationDetails.aspx.designer.cs">
       <DependentUpon>CinemaIntimationDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SiteOwnerPages\Cinema_Video_Talkies_TestReport_Modal.aspx.cs">
-      <DependentUpon>Cinema_Video_Talkies_TestReport_Modal.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SiteOwnerPages\Cinema_Video_Talkies_TestReport_Modal.aspx.designer.cs">
-      <DependentUpon>Cinema_Video_Talkies_TestReport_Modal.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SiteOwnerPages\Cinema_Video_Talkies_TestReport_Modal_Periodic.aspx.cs">
-      <DependentUpon>Cinema_Video_Talkies_TestReport_Modal_Periodic.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SiteOwnerPages\Cinema_Video_Talkies_TestReport_Modal_Periodic.aspx.designer.cs">
-      <DependentUpon>Cinema_Video_Talkies_TestReport_Modal_Periodic.aspx</DependentUpon>
-    </Compile>
     <Compile Include="SiteOwnerPages\CreateInspectionReport.aspx.cs">
       <DependentUpon>CreateInspectionReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4702,6 +4688,20 @@
     </Compile>
     <Compile Include="Supervisor\TestReportIntimationHistory.aspx.designer.cs">
       <DependentUpon>TestReportIntimationHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestReportModal\Cinema_Video_Talkies_TestReport_Modal.aspx.cs">
+      <DependentUpon>Cinema_Video_Talkies_TestReport_Modal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestReportModal\Cinema_Video_Talkies_TestReport_Modal.aspx.designer.cs">
+      <DependentUpon>Cinema_Video_Talkies_TestReport_Modal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestReportModal\Cinema_Video_Talkies_TestReport_Modal_Periodic.aspx.cs">
+      <DependentUpon>Cinema_Video_Talkies_TestReport_Modal_Periodic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestReportModal\Cinema_Video_Talkies_TestReport_Modal_Periodic.aspx.designer.cs">
+      <DependentUpon>Cinema_Video_Talkies_TestReport_Modal_Periodic.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestReportModal\EscalatorPeriodicTestReportModal.aspx.cs">
       <DependentUpon>EscalatorPeriodicTestReportModal.aspx</DependentUpon>
