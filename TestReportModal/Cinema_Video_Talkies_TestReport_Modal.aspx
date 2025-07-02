@@ -2119,7 +2119,7 @@
                                         </label>
                                         <asp:TextBox ReadOnly="true" class="form-control" ID="txtInstallationtype" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
-                                    <div class="col-4" id="Div3" runat="server" visible="false">
+                                    <div class="col-4" id="Div3" runat="server">
                                         <label>
                                             Name of Cinema/Video Talkies
                                         </label>

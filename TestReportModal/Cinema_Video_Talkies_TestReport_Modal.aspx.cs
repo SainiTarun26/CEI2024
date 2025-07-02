@@ -64,7 +64,7 @@ namespace CEIHaryana.TestReportModal
             txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
             txtWorkIntimationId.Text = ds.Tables[0].Rows[0]["IntimationId"].ToString();
             txtInstallationtype.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
-            txtCinemaName.Text = ds.Tables[0].Rows[0]["NameOfScreen"].ToString();
+            txtCinemaName.Text = ds.Tables[0].Rows[0]["InstallationTypeOFCinema"].ToString();
             txtScreenName.Text = ds.Tables[0].Rows[0]["NameOfScreen"].ToString();
             txtInstallationNo.Text = ds.Tables[0].Rows[0]["count"].ToString();
             txtSerialNo.Text = ds.Tables[0].Rows[0]["SerialNo"].ToString();

@@ -28,7 +28,7 @@ namespace CEIHaryana.SiteOwnerPages
                             if (dt.Rows.Count > 0)
                             {
                                 txtWorkintimation.Text = dt.Rows[0]["IntimationId"].ToString();
-                                txtInstallation.Text = dt.Rows[0]["InstallationType"].ToString();
+                                txtInstallation.Text = dt.Rows[0]["InstallationTypeOFCinema"].ToString();
                                 txtNameOfCinemas.Text = dt.Rows[0]["InstallationType"].ToString();
                                 txtNOOfInstallation.Text = dt.Rows[0]["InstallationNo"].ToString();
                                 HiddenField1.Value = dt.Rows[0]["Count"].ToString();

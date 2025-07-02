@@ -475,7 +475,7 @@
                                          <div class="col-md-4" runat="server">
                                                 <label for="Pin">Type of installation</label>
                                         <asp:DropDownList ID="ddlinstallationType1" runat="server" AutoPostBack="true" class="form-control  select-form select2" Style="width: 100% !important;">
-                                            <asp:ListItem Value="1" Text="Cinemas" Selected="True"></asp:ListItem>
+                                            <asp:ListItem Value="1" Text="Cinema" Selected="True"></asp:ListItem>
                                             <asp:ListItem Value="2" Text="Videos Talkies"></asp:ListItem>
                                         </asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlinstallationType1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Type Of Installation</asp:RequiredFieldValidator>

@@ -386,19 +386,19 @@
                                             Name of Screen
                                             <samp style="color: red">* </samp>
                                         </label>
-                                        <asp:TextBox class="form-control" ID="txtScreenName" onpaste="preventPaste(event)" autocomplete="off" MaxLength="50" onKeyPress="return alphabetKey(event) && preventZero(event);" onkeydown="return preventEnterSubmit(event)" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="txtScreenName" onpaste="preventPaste(event)" autocomplete="off" MaxLength="50" onkeydown="return preventEnterSubmit(event)" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtScreenName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Details</asp:RequiredFieldValidator>
                                     </div>
                                     <div class="col-md-4" runat="server" id="Contact">
                                         <label for="Name">
                                             Serial No.<samp style="color: red">* </samp>
                                         </label>
-                                        <asp:TextBox class="form-control" ID="txtSerialNo" onpaste="preventPaste(event)" autocomplete="off" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="10" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                        <asp:TextBox class="form-control" ID="txtSerialNo" onpaste="preventPaste(event)" autocomplete="off" onkeydown="return preventEnterSubmit(event)" MaxLength="10" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtSerialNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Details</asp:RequiredFieldValidator>
                                     </div>
                                     <div class="col-md-4" runat="server" id="Div1">
                                         <label for="Name">
-                                            Size of Screen<samp style="color: red">* </samp>
+                                            Size of Screen (In Sq ft)<samp style="color: red">* </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtScreenSize" onpaste="preventPaste(event)" autocomplete="off" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="10" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtScreenSize" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Details</asp:RequiredFieldValidator>
