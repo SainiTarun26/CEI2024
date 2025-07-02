@@ -309,8 +309,8 @@ namespace CEIHaryana.UserPages
                     ddlState.Attributes.Add("disabled", "disabled");
                     ddlDistrict.Attributes.Add("disabled", "disabled");
 
-                    txtCommunicationAddress.Attributes.Add("readonly", "true");
-                    txtCommunicationAddress.ReadOnly = true;
+                    //txtCommunicationAddress.Attributes.Add("readonly", "true");
+                    //txtCommunicationAddress.ReadOnly = true;
                     txtPinCode.Attributes.Add("readonly", "false");
                     ddlState1.Attributes.Add("disabled", "disabled");
                     ddlDistrict1.Attributes.Add("disabled", "disabled");
@@ -402,7 +402,26 @@ namespace CEIHaryana.UserPages
         {
             ddlBindDivision();
         }
+        #region neeraj 2-July-2025
+        protected void txtCommunicationAddress_TextChanged(object sender, EventArgs e)
+        {
 
-       
+            ddlState1.SelectedValue = "0";
+            ddlDistrict1.SelectedValue = "0";
+            txtPinCode.Text = "";          
+            txtPinCode.Attributes.Remove("readonly");
+            txtPermanentAddress.Text = "";
+            ddlState.SelectedValue = "0";          
+            ddlDistrict.SelectedValue = "0";
+            txtPin.Text = "";
+            txtPermanentAddress.Attributes.Remove("readonly");
+            txtPin.Attributes.Remove("readonly");
+            ddlState1.Attributes.Remove("disabled");
+            ddlDistrict1.Attributes.Remove("disabled");
+            ddlState.Attributes.Remove("disabled");
+            ddlDistrict.Attributes.Remove("disabled");
+            CheckBox1.Checked = false;
+        }
+        #endregion
     }
 }

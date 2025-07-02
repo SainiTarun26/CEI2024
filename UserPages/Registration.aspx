@@ -377,7 +377,7 @@
             vertical-align: top;
             margin-bottom: 0px !important;
             padding: .0px !important;
-    padding-bottom: 10px !important;
+            padding-bottom: 10px !important;
         }
 
         img {
@@ -388,22 +388,24 @@
         .uppercase {
             text-transform: uppercase;
         }
+
         select#ddlDist {
-    height: 31px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    color: #252525;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    width: 100%;
-}
-   select#ddlDivision {
-    height: 31px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    color: #252525;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    width: 100%;
-}
+            height: 31px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            color: #252525;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        select#ddlDivision {
+            height: 31px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            color: #252525;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            width: 100%;
+        }
     </style>
     <script type="text/javascript">
         function alertWithRedirectdata() {
@@ -528,13 +530,29 @@
                                             <h4 class="card-title">APPLICANT'S DETAIL</h4>
                                         </div>
                                     </div>
-                                                                                                               <asp:UpdatePanel ID="UpdatePanel4" runat="server">
-<ContentTemplate>
+                                    <%-- <div class="row">
+                                      <div class="col-md-4">
+      <div class="form-group row">
+          <label for="exampleInputUsername2" class="col-sm-5 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 12px;padding-left:45px !important;">
+              Applying For<samp style="color: red">* </samp>
+              :</label>
+          <div class="col-sm-6" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
+              <asp:DropDownList class="select-form select2" ID="ddlcategory" AutoPostBack="true" Style="margin-left: -35px;" runat="server" TabIndex="1" OnSelectedIndexChanged="ddlcategory_SelectedIndexChanged">
+                  <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                  <asp:ListItem Text="Wireman Permit" Value="1"></asp:ListItem>
+                  <asp:ListItem Text="Supervisor" Value="2"></asp:ListItem>
+                  <asp:ListItem Text="Contractor" Value="3"></asp:ListItem>
+              </asp:DropDownList>
+              <asp:RequiredFieldValidator ID="RequiredFieldValidator20" ErrorMessage="Required" ControlToValidate="ddlcategory" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" CssClass="validation_required" />
+          </div>   
+      </div>
+  </div>
+            </div>             --%>
                                     <div class="row">
-                                                                          
+
                                         <div class="col-md-4">
                                             <div class="form-group row">
-                                                <label for="exampleInputUsername2" class="col-sm-5 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 12px;padding-left:45px !important;">
+                                                <label for="exampleInputUsername2" class="col-sm-5 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 12px; padding-left: 45px !important;">
                                                     Applying For<samp style="color: red">* </samp>
                                                     :</label>
                                                 <div class="col-sm-6" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
@@ -545,43 +563,54 @@
                                                         <asp:ListItem Text="Contractor" Value="3"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ErrorMessage="Required" ControlToValidate="ddlcategory" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" CssClass="validation_required" />
-                                                </div>   
+                                                </div>
                                             </div>
                                         </div>
-                                         
-                                         <div class="col-md-4">
-     <div class="form-group row">
-         <label for="exampleInputUsername2" class="col-sm-5 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 12px;">
-             Applying For District: <samp style="color: red">* </samp>
-             :</label>
-         <div class="col-sm-6" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
-             <asp:DropDownList class="select-form select2" ID="ddlDist" AutoPostBack="true" Style="margin-left: -35px;" runat="server" TabIndex="1" 
-                 OnSelectedIndexChanged="ddlDist_SelectedIndexChanged" >                
-             </asp:DropDownList>
-             <asp:RequiredFieldValidator ID="RequiredFieldValidator19" ErrorMessage="Required" ControlToValidate="ddlDist" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" CssClass="validation_required" />
-         </div>   
-     </div>
- </div>
-                                        
-                                                                                <div class="col-md-4">
-    <div class="form-group row">
-        <label for="exampleInputUsername2" class="col-sm-5 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 12px;">
-            Applying For Division: <samp style="color: red">* </samp>
-            :</label>
-        <div class="col-sm-6" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
-            <asp:DropDownList class="select-form select2" ID="ddlDivision" AutoPostBack="true" Style="margin-left: -35px;" runat="server" TabIndex="1"  >            
-            </asp:DropDownList>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator18" ErrorMessage="Required" ControlToValidate="ddlDivision" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" CssClass="validation_required" />
-        </div>   
-    </div>
-</div>
-                                               
-                                
-                                    
-                                                 
-                                            </div>
-                                                       </ContentTemplate>
-</asp:UpdatePanel><hr />
+
+                                       
+                                                <div class="col-md-4">
+                                                     <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+     <ContentTemplate>
+                                                    <div class="form-group row">
+                                                        <label for="exampleInputUsername2" class="col-sm-5 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 12px;">
+                                                            Applying For District:
+                                                            <samp style="color: red">* </samp>
+                                                            :</label>
+                                                        <div class="col-sm-6" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
+                                                            <asp:DropDownList class="select-form select2" ID="ddlDist" AutoPostBack="true" Style="margin-left: -35px;" runat="server" TabIndex="1"
+                                                                OnSelectedIndexChanged="ddlDist_SelectedIndexChanged">
+                                                            </asp:DropDownList>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator19" ErrorMessage="Required" ControlToValidate="ddlDist" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" CssClass="validation_required" />
+                                                        </div>
+                                                    </div>
+             </ContentTemplate>
+</asp:UpdatePanel>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                                                                    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+<ContentTemplate>
+                                                    <div class="form-group row">
+                                                        <label for="exampleInputUsername2" class="col-sm-5 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 12px;">
+                                                            Applying For Division:
+                                                            <samp style="color: red">* </samp>
+                                                            :</label>
+                                                        <div class="col-sm-6" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
+                                                            <asp:DropDownList class="select-form select2" ID="ddlDivision" AutoPostBack="true" Style="margin-left: -35px;" runat="server" TabIndex="1">
+                                                            </asp:DropDownList>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator18" ErrorMessage="Required" ControlToValidate="ddlDivision" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" CssClass="validation_required" />
+                                                        </div>
+                                                    </div>
+                 </ContentTemplate>
+</asp:UpdatePanel>
+                                                </div>
+
+
+                                           
+                                        <hr style="margin-top:15px !important;" />
+
+                                    </div>
+
                                     <div class="row">
                                         <div class="col-md-12 grid-margin stretch-card">
                                             <div class="card">
@@ -605,7 +634,7 @@
                                                                         Nationality
                                                                 <samp style="color: red">* </samp>
                                                                     </label>
-                                                                    <asp:TextBox class="form-control" ID="txtNationality" runat="server" TabIndex="2" placeholder="INDIA" readonly="true" MaxLength="30"> </asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtNationality" runat="server" TabIndex="2" placeholder="INDIA" ReadOnly="true" MaxLength="30"> </asp:TextBox>
                                                                 </div>
                                                                 <asp:UpdatePanel ID="UpdatePanelCalculatedYears" runat="server">
                                                                     <ContentTemplate>
@@ -679,16 +708,18 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-6">
+                                                     <asp:UpdatePanel ID="UpdatePanelDropdowns" runat="server">
+     <ContentTemplate>
                                                     <div class="form-group">
                                                         <label for="CommunicationAddress">
                                                             Address for Communication<samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:TextBox CssClass="form-control uppercase" class="form-control" ID="txtCommunicationAddress" autocomplete="off" TextMode="MultiLine" runat="server" TabIndex="7" MaxLength="200"> </asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control uppercase" class="form-control" ID="txtCommunicationAddress" autocomplete="off" TextMode="MultiLine" runat="server" TabIndex="7" MaxLength="200" AutoPostBack="true" OnTextChanged="txtCommunicationAddress_TextChanged"> </asp:TextBox>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtCommunicationAddress"
                                                             CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                     </div>
-                                                    <asp:UpdatePanel ID="UpdatePanelDropdowns" runat="server">
-                                                        <ContentTemplate>
+                                                   <%-- <asp:UpdatePanel ID="UpdatePanelDropdowns" runat="server">
+                                                        <ContentTemplate>--%>
                                                             <div class="form-group">
                                                                 <div class="row">
                                                                     <div class="col-md-4">

@@ -1813,8 +1813,8 @@
                                                                             <asp:DropDownList class="select-form select2" AutoPostBack="true" Style="border: 1px solid #ced4da; border-radius: 5px;"
                                                                                 ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
                                                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                                <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
-                                                                                <asp:ListItem Text="No" Value="2"></asp:ListItem>
+                                                                                <asp:ListItem Text="YES" Value="1"></asp:ListItem>
+                                                                                <asp:ListItem Text="NO" Value="2"></asp:ListItem>
                                                                             </asp:DropDownList>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLicenseGranted" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                         </div>
