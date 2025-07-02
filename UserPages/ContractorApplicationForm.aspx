@@ -1833,7 +1833,7 @@
                                                                                 <asp:ListItem Text="By government & other agencies" Value="2"></asp:ListItem>
                                                                                 <asp:ListItem Text="Any court of law." Value="3"></asp:ListItem>
                                                                             </asp:DropDownList>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLicenseGranted" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPenalities" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
