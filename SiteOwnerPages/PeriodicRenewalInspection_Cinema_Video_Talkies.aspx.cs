@@ -232,7 +232,8 @@ namespace CEIHaryana.SiteOwnerPages
             string TestReportId = LblTestReportId.Text;
 
             Session["TestReportId"] = TestReportId;
-            Response.Write("<script>window.open('/SiteOwnerPages/Cinema_Video_Talkies_TestReport_Modal_Periodic.aspx','_blank');</script>");
+            //Only link change by navneet 2-July-2025
+            Response.Write("<script>window.open('/TestReportModal/Cinema_Video_Talkies_TestReport_Modal_Periodic.aspx','_blank');</script>");
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
