@@ -21,6 +21,12 @@
     <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
     <style>
+        .form-control:disabled, .form-control[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+    height: 30px !important;
+    width:100% !important;
+}
         ul#profile_drop {
             margin-left: -86px;
             width: 120px;
@@ -452,7 +458,6 @@
             min-height: 100vh;
             margin: 0px;
             border: solid 1px black;
-            PADDING: 10PX;
         }
 
         input#InstallationType {
@@ -602,6 +607,12 @@
                 padding: 8px 0 8px 20px; /* Add space for numbers */
                 border-bottom: 1px dotted black;
             }
+            @media print {
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+  }
+}
     </style>
 
     <script type="text/javascript">
@@ -711,14 +722,9 @@
                                         </asp:Label>
 
                                         <text>Years:</text>
-                                        <asp:Label ID="Age" runat="server" Style="font-weight: 700; width: 11%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="Age" runat="server" Style="font-weight: 700; width: 52%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
-                                        <text>Months:</text>
-                                        <asp:Label ID="Label7" runat="server" Style="font-weight: 700; width: 11%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
-                                        </asp:Label>
-                                        <text>Days:</text>
-                                        <asp:Label ID="Label8" runat="server" Style="font-weight: 700; width: 11%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
-                                        </asp:Label>
+                                       
                                     </h6>
 
                                 </div>
@@ -757,14 +763,14 @@
                                 <div class="col-7">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>E-mail Id:</text>
-                                        <asp:Label ID="Email" runat="server" Style="font-weight: 700; width: 77%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="Email" runat="server" Style="font-weight: 700; width: 84%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
                                 <div class="col-12" style="padding-right: 0px !important;">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>Aadhaar No.:</text>
-                                        <asp:Label ID="Aadhar" runat="server" Style="font-weight: 700; width: 30%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="Aadhar" runat="server" Style="font-weight: 700; width: 29%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
@@ -782,12 +788,12 @@
         <thead>
             <tr style="text-align: center;">
 
-                <th scope="col" style="width: 20% !important;">Exam Name</th>
-                <th scope="col">Board/University Name</th>
-                <th scope="col" style="width: 0% !important;">Passing Year</th>
-                <th scope="col" style="width: 0% !important;">Obtained Marks&nbsp;/&nbsp;Max Marks                                                      
+                <th scope="col" style="width: 15% !important;">Exam Name</th>
+                <th scope="col" style="width: 20% !important;">Board/University Name</th>
+                <th scope="col" style="width: 10% !important;">Passing Year</th>
+                <th scope="col" style="width: 15% !important;">Obtained Marks&nbsp;/&nbsp;Max Marks                                                      
                 </th>
-                <th scope="col" style="width: 10% !important;">% </th>
+                <th scope="col" style="width: 7% !important;">% </th>
             </tr>
         </thead>
         <tbody>
@@ -937,7 +943,8 @@
                             <div class="row">
                                 <div class="col-12">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">Whether you are holder of Certificate of Competency/Wireman Permit issued by any State Licensing
-Board/Chief Electrical Inspector. If so, give details:
+Board/Chief Electrical Inspector. If so, give details:
+
                                     </h6>
 
                                 </div>
@@ -985,18 +992,19 @@ Board/Chief Electrical Inspector. If so, give details:
 
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="col-9">
+                                     
                                             <h4 class="card-title" style="font-size: 15px;">Are you Employed on Permanent
 Basis.</h4>
-                                        </div>
-                                        </h6>
+                                       
+                                       
+                                    </div>
+         
                                         <div class="col-12">
                                             <asp:RadioButtonList ID="RadioButtonList3" Enabled="false" runat="server" AutoPostBack="true" RepeatDirection="Horizontal" TabIndex="31">
                                                 <asp:ListItem Text="Yes" Value="0" Selected="True"></asp:ListItem>
                                                 <asp:ListItem Text="No" Value="1"></asp:ListItem>
                                             </asp:RadioButtonList>
                                         </div>
-                                    </div>
                                     <div class="col-12" id="PermanentEmployee" visible="false" runat="server">
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
@@ -1177,7 +1185,7 @@ Basis.</h4>
                                     </div>
                                 </div>
                             </div>
-
+                                <div class="page-break"></div> <!-- This causes the next content to shift to new printed page -->
 
                             <div class="row">
                                 <div class="col-12">
@@ -1271,7 +1279,7 @@ stage
                             <br />
 
 
-                            <div class="row">
+                            <div class="row" style="width:100%;margin-bottom:50px;">
                                 <div class="col-3" style="margin-top: auto !important;">
 
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 700;">Place:
@@ -1279,7 +1287,7 @@ stage
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 700;">Dated:
      <asp:Label ID="Label12" runat="server" Text="29-Aug-2025" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
                                 </div>
-                                <div class="col-9" style="text-align: end">
+                                <div class="col-9" style="text-align: end !important;">
 
                                     <asp:Image ID="mySignature" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 700; margin-right: 55px;">Signature of Applicant</h6>
@@ -1289,9 +1297,10 @@ stage
 
                             <br />
                             <br />
-                            <div class="row">
+                            <%--<div class="row">
                                 <div class="col-12">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 18PX; text-align: Justify;">Photocopies of documents to be forwarded alongwith the application:-</h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 18PX; text-align: Justify;">Photocopies of documents to be forwarded alongwith the application:-
+</h6>
 
                                 </div>
                                 <div class="col-12" style="padding-left: 30px;">
@@ -1314,7 +1323,7 @@ of age on the date of submission of application.</li>
 ‗0043-Taxes and Duties on Electricity –Other Receipts i.e. 0043-51-800-99-51—Other Receipts‘.</bold></li>
                                     </ol>
                                 </div>
-                            </div>
+                            </div>--%>
 
 
 
@@ -1327,6 +1336,7 @@ of age on the date of submission of application.</li>
         <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
         </footer>
+            </div>
     </form>
 </body>
 </html>
