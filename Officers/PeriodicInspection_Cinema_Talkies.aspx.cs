@@ -120,7 +120,7 @@ namespace CEIHaryana.Officers
                     //}
 
                     DataTable dta = new DataTable();
-                    dta = CEI.GetEmails(ID);
+                    dta = CEI.GetEmails(Id);
                     try
                     {
                         ToEmail = dta.Rows[0]["ToEmail"].ToString();
