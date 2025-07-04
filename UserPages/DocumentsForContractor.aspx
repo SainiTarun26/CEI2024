@@ -781,7 +781,7 @@
                                         </div>--%>
                                         <div class="row" style="margin-top: 15px;">
                                             <div class="col-md-6">
-                                              <%-- <asp:Button type="button" ID="btnBack" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />--%>
+                                               <asp:Button type="button" ID="btnBack" Text="Back" OnClick="btnBack_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
                                             </div>
                                             <div class="col-md-6" style="text-align: end;">
                                                 <asp:Button type="button" ValidationGroup="Submit" ID="btnNext" Text="Next" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnNext_Click" />

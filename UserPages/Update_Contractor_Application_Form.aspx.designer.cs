@@ -42,15 +42,6 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-
-        /// <summary>
         /// Label17 control.
         /// </summary>
         /// <remarks>
@@ -130,6 +121,15 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAppliedFor;
+
+        /// <summary>
+        /// UpdatePanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
 
         /// <summary>
         /// ddlCompanyStyle control.
@@ -573,6 +573,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Button btnupdate1;
 
         /// <summary>
+        /// UpdatePanel3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
+
+        /// <summary>
         /// Label4 control.
         /// </summary>
         /// <remarks>
@@ -870,6 +879,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Button btnupdate2;
 
         /// <summary>
+        /// UpdatePanel4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel4;
+
+        /// <summary>
         /// DdlPartnerOrDirector control.
         /// </summary>
         /// <remarks>
@@ -915,13 +933,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.GridView GridView2;
 
         /// <summary>
-        /// btnupdate3 control.
+        /// UpdatePanel5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnupdate3;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel5;
 
         /// <summary>
         /// typeemp control.
@@ -1014,13 +1032,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.GridView GridView3;
 
         /// <summary>
-        /// btnupdate4 control.
+        /// UpdatePanel6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnupdate4;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel6;
 
         /// <summary>
         /// ddlAnnexureOrNot control.
@@ -1122,6 +1140,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label1;
 
         /// <summary>
+        /// DivPenelity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivPenelity;
+
+        /// <summary>
         /// txtPenalities control.
         /// </summary>
         /// <remarks>
@@ -1131,31 +1158,22 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtPenalities;
 
         /// <summary>
-        /// RequiredFieldValidator11 control.
+        /// btnupdate3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator11;
+        protected global::System.Web.UI.WebControls.Button btnupdate3;
 
         /// <summary>
-        /// btnupdate5 control.
+        /// BtnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnupdate5;
-
-        /// <summary>
-        /// Button2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button BtnSubmit;
 
         /// <summary>
         /// HFContractor control.

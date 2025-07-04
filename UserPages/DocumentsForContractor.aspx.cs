@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using CEIHaryana.Contractor;
 using iText.Forms.Form.Element;
 using Newtonsoft.Json;
 using System;
@@ -694,6 +695,26 @@ namespace CEIHaryana.UserPages
                     HdnField_Document8.Value = "0";
                     text8.Visible = true;
                 }
+            }
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToString(HdnUserId.Value) != null && Convert.ToString(HdnUserId.Value) != "")
+                {
+                    CEI.BackToEditDetailsOfNewRegisteredUser(HdnUserId.Value);
+                    Response.Redirect("/UserPages/Update_Contractor_Application_Form.aspx", false);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('There is an issue in Edit!!!')", true);
+                }
+            }
+            catch
+            {
+                Response.Redirect("/LogOut.aspx");
             }
         }
 

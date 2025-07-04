@@ -310,7 +310,15 @@ namespace CEIHaryana
                                     Session["ContractorID"] = txtUserID.Text;
                                     if (ApplicationStatus.Trim() == "New")
                                     {
-                                        Response.Redirect("/UserPages/ContractorApplicationForm.aspx", false);
+                                        int result = Convert.ToInt32(cei.DetailOfContractorExist(txtUserID.Text));
+                                        if (result == 1)
+                                        {
+                                            Response.Redirect("/UserPages/Update_Contractor_Application_Form.aspx", false);
+                                        }
+                                        else if (result == 0)
+                                        {
+                                            Response.Redirect("/UserPages/ContractorApplicationForm.aspx", false);
+                                        }
                                     }
                                     else if (ApplicationStatus.Trim() == "Mid")
                                     {

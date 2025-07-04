@@ -11,7 +11,7 @@ namespace CEIHaryana.UserPages
 {
 
 
-    public partial class Update_Qualification
+    public partial class Update_Wireman_Qualification
     {
 
         /// <summary>
@@ -328,6 +328,15 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator11;
+
+        /// <summary>
+        /// diploma control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow diploma;
 
         /// <summary>
         /// ddlQualification1 control.
@@ -697,6 +706,15 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
+        /// certificate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl certificate;
 
         /// <summary>
         /// RadioButtonList2 control.

@@ -10,10 +10,9 @@ using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.UserPages
 {
-
-    //Page created by kalpana 4-July -2025
-    public partial class Update_Supervisor_Qualification : System.Web.UI.Page
+    public partial class Update_Wireman_Qualification : System.Web.UI.Page
     {
+        //Page created by kalpana 4-July -2025
         string userid = "";
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
@@ -21,27 +20,31 @@ namespace CEIHaryana.UserPages
             if (!IsPostBack)
             {
 
+                // HdnCategory.Value = Session["InsertedCategory"].ToString();
                 if (Convert.ToString(Session["UserIdForEdit"]) != null && Convert.ToString(Session["UserIdForEdit"]) != "")
                 {
-                    hdnId.Value = Session["UserIdForEdit"].ToString();
 
+                    hdnId.Value = Session["UserIdForEdit"].ToString();
                     ApplicantDetail(hdnId.Value);
+
                     GetYearDropdown(YearDropdown);
                     GetYearDropdown(DropDownList2);
                     GetYearDropdown(DropDownList3);
                     GetYearDropdown(DropDownList4);
+                    GetYearDropdown(DropDownList1);
 
                     GetEducationData(hdnId.Value);
                     getcertificateofcompetencyDetails(hdnId.Value);
                     PermanentEmployed(hdnId.Value);
                     getExperienceDetail(hdnId.Value);
                     RetiredEngineer(hdnId.Value);
-
                 }
                 else
                 {
-                    Response.Redirect("/LogOut.aspx");
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('An Error Occurred While Login.');", true);
+                    Response.Redirect("/Login.aspx");
                 }
+
             }
         }
 
@@ -79,12 +82,11 @@ namespace CEIHaryana.UserPages
             }
         }
 
-
         private void GetEducationData(string userid)
         {
             try
             {
-                //DataTable dt = CEI.GetUserQualificationforSupervisor(userid);
+                //DataTable dt = CEI.GetUserQualificationforWireman(userid);
 
                 //txtUniversity.Text = dt.Rows[0]["UniversityName10th"].ToString();
                 //YearDropdown.SelectedValue = dt.Rows[0]["PassingYear10th"]?.ToString();
@@ -92,11 +94,28 @@ namespace CEIHaryana.UserPages
                 //txtmarksmax.Text = dt.Rows[0]["MarksMax10th"].ToString();
                 //txtprcntg.Text = dt.Rows[0]["Percentage10th"].ToString();
 
+
+                //if (!string.IsNullOrWhiteSpace(dt.Rows[0]["Name12ITIDiploma"].ToString()))
+                //{
+                //    var item = ddlQualification.Items.FindByText(dt.Rows[0]["Name12ITIDiploma"].ToString());
+                //    if (item != null) ddlQualification.SelectedValue = item.Value;
+                //    txtUniversity1.Text = dt.Rows[0]["UniversityName12thorITI"].ToString();
+                //    DropDownList1.SelectedValue = dt.Rows[0]["PassingYear12thorITI"].ToString();
+                //    txtmarksObtained1.Text = dt.Rows[0]["MarksObtained12thorITI"].ToString();
+                //    txtmarksmax1.Text = dt.Rows[0]["MarksMaxDiplomaorDegree"].ToString();
+                //    txtprcntg1.Text = dt.Rows[0]["Percentage12thorITI"].ToString();
+                //    certificatewireman.Visible = true;
+                //}
+                //else
+                //{
+                //    certificatewireman.Visible = false;
+                //}
+
+
                 //if (!string.IsNullOrWhiteSpace(dt.Rows[0]["NameofDiplomaDegree"].ToString()))
                 //{
                 //    var item = ddlQualification1.Items.FindByText(dt.Rows[0]["NameofDiplomaDegree"].ToString());
-                //    if (item != null)
-                //    { ddlQualification1.SelectedValue = item.Value; }
+                //    if (item != null) ddlQualification1.SelectedValue = item.Value;
                 //    txtUniversity2.Text = dt.Rows[0]["UniversityNameDiplomaorDegree"].ToString();
                 //    DropDownList2.SelectedValue = dt.Rows[0]["PassingYearDiplomaorDegree"].ToString();
                 //    txtmarksObtained2.Text = dt.Rows[0]["MarksObtainedDiplomaorDegree"].ToString();
@@ -155,7 +174,12 @@ namespace CEIHaryana.UserPages
                 string MarksMax10th = txtmarksmax.Text;
                 string Percentage10th = txtprcntg.Text;
 
-
+                string certificateWirman = ddlQualification.SelectedItem.ToString();
+                string UniversityNameWirman = txtUniversity1.Text;
+                int PassingYearWirman = Convert.ToInt32(DropDownList1.SelectedValue.ToString());
+                string MarksObtainedWirman = txtmarksObtained1.Text;
+                string MarksMaxWirman = txtmarksmax1.Text;
+                string PercentageWirman = txtprcntg1.Text;
 
                 string NameofDiplomaDegree = ddlQualification1.SelectedItem.ToString();
                 string UniversityNameDiplomaorDegree = txtUniversity2.Text;
@@ -181,8 +205,9 @@ namespace CEIHaryana.UserPages
 
 
 
-                //CEI.UpdateEducationDetailsByIdforsupervisor(userid, UniversityName10th, PassingYear10th, MarksObtained10th, MarksMax10th, Percentage10th,
-                //    NameofDiplomaDegree, UniversityNameDiplomaorDegree, PassingYearDiplomaorDegree, MarksObtainedDiplomaorDegree, MarksMaxDiplomaorDegree, PercentageDiplomaorDegree,
+                //CEI.UpdateEducationDetailsByIdforWireman(userid, UniversityName10th, PassingYear10th, MarksObtained10th, MarksMax10th, Percentage10th,
+                //    certificateWirman, UniversityNameWirman, PassingYearWirman, MarksObtainedWirman, MarksMaxWirman, PercentageWirman,
+                //     NameofDiplomaDegree, UniversityNameDiplomaorDegree, PassingYearDiplomaorDegree, MarksObtainedDiplomaorDegree, MarksMaxDiplomaorDegree, PercentageDiplomaorDegree,
                 //    NameofDegree, UniversityNamePG, PassingYearPG, MarksObtainedPG, MarksMaxPG, PercentagePG,
                 //    NameofMasters, MastersUniversityName, MastersPassingYear, MasterMarksObtained, MastersMarksMax, MatersPercentage);
 
@@ -198,7 +223,7 @@ namespace CEIHaryana.UserPages
             try
             {
                 //DataTable dt = new DataTable();
-                //dt = CEI.GetUserQualificationforSupervisor(userid);
+                //dt = CEI.GetUserQualificationforWireman(userid);
 
                 //if (dt != null && dt.Rows.Count > 0)
                 //{
@@ -263,7 +288,7 @@ namespace CEIHaryana.UserPages
         protected void PermanentEmployed(string userid)
         {
             //DataTable dt = new DataTable();
-            //dt = CEI.GetUserQualificationforSupervisor(userid);
+            //dt = CEI.GetUserQualificationforWireman(userid);
 
             //if (dt != null && dt.Rows.Count > 0)
             //{
@@ -327,15 +352,41 @@ namespace CEIHaryana.UserPages
 
 
                 //DataTable dt = new DataTable();
-                //dt = CEI.GetUserQualificationforSupervisor(userid);
+                //dt = CEI.GetUserQualificationforWireman(userid);
+
 
                 //if (dt != null && dt.Rows.Count > 0)
                 //{
+                //    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticeExperience"].ToString()) || !string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticenameofEmployer"].ToString()))
+                //    {
+
+                //        txtApprenticeship.Text = dt.Rows[0]["ApprenticeExperience"].ToString();
+                //        txtAppretinceExperience.Text = dt.Rows[0]["ApprenticeTrainingUnder"].ToString();
+                //        txtApprenticeshipEmployer.Text = dt.Rows[0]["ApprenticenameofEmployer"].ToString();
+                //        txtApprenticesPost.Text = dt.Rows[0]["ApprenticePostDescription"].ToString();
+
+                //        if (DateTime.TryParse(dt.Rows[0]["ApprenticeExperienceFromDate"].ToString(), out DateTime apprenticeFrom))
+                //        {
+                //            Apprenticesdatefrom.Text = apprenticeFrom.ToString("yyyy-MM-dd");
+                //        }
+
+                //        if (DateTime.TryParse(dt.Rows[0]["ApprenticeExperienceToDate"].ToString(), out DateTime apprenticeTo))
+                //        {
+                //            Apprenticesdateto.Text = apprenticeTo.ToString("yyyy-MM-dd");
+                //        }
+
+                //        TrApprenticeship.Visible = true;
+                //    }
+                //    else
+                //    {
+                //        TrApprenticeship.Visible = false;
+                //    }
+
+
+
                 //    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencedIn"].ToString()) ||
                 //        !string.IsNullOrWhiteSpace(dt.Rows[0]["ExperienceEmployerName"].ToString()))
                 //    {
-                //        //var experienceItem = ddlExperience.Items.FindByText(dt.Rows[0]["ExperiencedIn"].ToString());
-                //        //if (experienceItem != null) ddlExperience.SelectedValue = experienceItem.Value;
 
                 //        var experienceText = dt.Rows[0]["ExperiencedIn"].ToString().Trim();
                 //        var item = ddlExperience.Items.FindByText(experienceText);
@@ -602,6 +653,13 @@ namespace CEIHaryana.UserPages
             {
                 userid = hdnId.Value;
 
+                string Apprenticesexperience = txtApprenticeship.Text;
+                string Apprenticestraining = txtAppretinceExperience.Text;
+                string Apprenticesname = txtApprenticeshipEmployer.Text;
+                string Apprenticesjobdesc = txtApprenticesPost.Text;
+                string Apprenticesexpfrom = Apprenticesdatefrom.Text;
+                string Apprenticesexpto = Apprenticesdateto.Text;
+
                 string experience = ddlExperience.SelectedItem.ToString();
                 string trainingUnder = ddlTrainingUnder.SelectedItem.ToString();
                 string employer = txtExperienceEmployer.Text;
@@ -663,7 +721,9 @@ namespace CEIHaryana.UserPages
                 string expFrom9 = txtExperienceFrom9.Text;
                 string expTo9 = txtExperienceTo9.Text;
                 string totalExperience = txtTotalExperience.Text;
-                //CEI.updateExperienceforsupervisor(userid, experience, trainingUnder, employer, postDescription, expFrom, expTo,
+                //CEI.updateExperienceforWireman(userid,
+                //    Apprenticesexperience, Apprenticestraining, Apprenticesname, Apprenticesjobdesc, Apprenticesexpfrom, Apprenticesexpto,
+                //    experience, trainingUnder, employer, postDescription, expFrom, expTo,
                 //            experience1, trainingUnder1, employer1, postDescription1, expFrom1, expTo1,
                 //            experience2, trainingUnder2, employer2, postDescription2, expFrom2, expTo2,
                 //            experience3, trainingUnder3, employer3, postDescription3, expFrom3, expTo3,
@@ -688,7 +748,7 @@ namespace CEIHaryana.UserPages
             try
             {
                 //DataTable dt = new DataTable();
-                //dt = CEI.GetUserQualificationforSupervisor(userid);
+                //dt = CEI.GetUserQualificationforWireman(userid);
 
                 //if (dt != null && dt.Rows.Count > 0)
                 //{
@@ -756,56 +816,53 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-
-                double totalExperiences;
-                if (!double.TryParse(hdnTotalExperience.Value.Trim(), out totalExperiences))
+                if (hdnId.Value != null && hdnId.Value != "")
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertInvalid", "alert('Total Experience value is invalid.');", true);
-                    return;
-                }
 
-                bool hasDiploma = ddlQualification1.SelectedIndex > 0;
-                bool hasDegree = ddlQualification2.SelectedIndex > 0;
-
-                //Only Diploma
-                if (hasDiploma && !hasDegree)
-                {
-                    if (totalExperiences < 5)
+                    double totalExperiences;
+                    if (!double.TryParse(hdnTotalExperience.Value.Trim(), out totalExperiences))
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('As per your qualification, Total Experience should be at least 5 years.');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertInvalid", "alert('Total Experience value is invalid.');", true);
                         return;
                     }
-                }
+                    bool hasCertificate = ddlQualification.SelectedIndex > 0;
+                    bool hasDiploma = ddlQualification1.SelectedIndex > 0;
 
-                //Only Degree
-                if (hasDegree && !hasDiploma)
-                {
-                    if (totalExperiences < 1)
+                    //Only Diploma
+                    if (hasDiploma && !hasCertificate)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDegree", "alert('As per your qualification, Total Experience should be at least 1 year.');", true);
-                        return;
+                        if (totalExperiences < 5)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('As per your qualification, Total Experience should be at least 1 years.');", true);
+                            return;
+                        }
                     }
-                }
 
-                // Both Degree and Diploma
-                if (hasDegree && hasDiploma)
-                {
-                    if (totalExperiences < 1)
+                    //Only Certificate
+                    if (hasCertificate && !hasDiploma)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpBoth", "alert('As per your qualifications, Total Experience should be at least 1 year.');", true);
-                        return;
+                        if (totalExperiences < 3)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDegree", "alert('As per your qualification, Total Experience should be at least 3 year.');", true);
+                            return;
+                        }
                     }
+
+                    // Both Certificate and Diploma
+                    if (hasCertificate && hasDiploma)
+                    {
+                        if (totalExperiences < 1)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpBoth", "alert('As per your qualifications, Total Experience should be at least 1 year.');", true);
+                            return;
+                        }
+                    }
+                    ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
+
+
+
+
                 }
-
-
-
-                ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
-                string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
-
-
-                Response.Redirect("/UserPages/Documents.aspx", false);
-
-
             }
             catch (Exception ex)
             {
@@ -959,6 +1016,17 @@ namespace CEIHaryana.UserPages
             }
         }
 
+        protected void ddlQualification1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlQualification1.SelectedValue == "0")
+            {
+                txtUniversity2.Text = "";
+                DropDownList2.SelectedValue = "0";
+                txtmarksObtained2.Text = "";
+                txtmarksmax2.Text = "";
+                txtprcntg2.Text = "";
+            }
+        }
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (RadioButtonList2.SelectedValue == "0")
@@ -1009,6 +1077,38 @@ namespace CEIHaryana.UserPages
             }
         }
 
+        protected void txtmarksmax1_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtmarksObtained1.Text) || string.IsNullOrWhiteSpace(txtmarksmax1.Text))
+            {
+                txtmarksmax1.Text = "";
+                txtprcntg1.Text = "";
+                return;
+            }
+            try
+            {
+                double obtainedMarks = Convert.ToDouble(txtmarksObtained1.Text);
+                double maxMarks = Convert.ToDouble(txtmarksmax1.Text);
+
+                if (obtainedMarks <= maxMarks)
+                {
+                    double percentage = (obtainedMarks / maxMarks) * 100;
+                    txtprcntg1.Text = percentage.ToString("F1");
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Showalert", "alert('Obtained Marks cannot be greater than Maximum Marks.')", true);
+                    txtmarksmax1.Text = "";
+                    txtprcntg1.Text = "";
+                }
+            }
+            catch (FormatException)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Showalert", "alert('Please enter valid numeric values.')", true);
+                txtmarksmax1.Text = "";
+                txtprcntg1.Text = "";
+            }
+        }
         protected void txtmarksmax2_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtmarksObtained2.Text) || string.IsNullOrWhiteSpace(txtmarksmax2.Text))
@@ -1215,6 +1315,7 @@ namespace CEIHaryana.UserPages
             hdnTotalExperience.Value = totalYears.ToString();
             txtTotalExperience.Text = $"{totalYears} years, {totalMonths} months, {totalDays} days";
         }
+
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {

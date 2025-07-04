@@ -46,6 +46,44 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+        textarea#txtPenalities {
+    height: 100px;
+    margin-top: 19px;
+}
+         #penaltyContainer {
+     min-height: 100px;
+     padding: 8px;
+     border: 1px solid #ced4da;
+     border-radius: 5px;
+     display: flex;
+     flex-wrap: wrap;
+ }
+
+ .penalty-tag {
+     background: white;
+     border: 1px solid black;
+     color: black;
+     padding: 10px 10px;
+     border-radius: 20px;
+     margin: 4px;
+     display: flex;
+     align-items: center;
+     font-size: 14px;
+     height: 30px;
+ }
+
+     .penalty-tag span.remove-icon {
+         cursor: pointer;
+         margin-left: 10px;
+         font-weight: bold;
+         color: red;
+         font-size: 18px;
+         background: #cbcbcb;
+         border-radius: 40px;
+         height: 16px;
+         padding-left: 4px;
+         padding-right: 4px;
+     }
         th.headercolor {
             background: #9292cc;
             color: white;
@@ -1816,37 +1854,48 @@
                                                                                 <asp:ListItem Text="YES" Value="1"></asp:ListItem>
                                                                                 <asp:ListItem Text="NO" Value="2"></asp:ListItem>
                                                                             </asp:DropDownList>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlLicenseGranted" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="DropDownList2" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4" id="DdlPenelity" runat="server" visible="false">
                                                                     <div class="forms-sample">
                                                                         <div class="form-group">
-                                                                            <label id="Label10" runat="server" visible="true">
-                                                                                Select penalties or punishments<samp style="color: red">* </samp>
-                                                                            </label>
-                                                                            <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                                ID="ddlPenalities" runat="server" OnSelectedIndexChanged="ddlPenalities_SelectedIndexChanged" AutoPostBack="true">
-                                                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                                <asp:ListItem Text="By state licensing board, Haryana/chief Electrical inspector,Haryana" Value="1"></asp:ListItem>
-                                                                                <asp:ListItem Text="By government & other agencies" Value="2"></asp:ListItem>
-                                                                                <asp:ListItem Text="Any court of law." Value="3"></asp:ListItem>
-                                                                            </asp:DropDownList>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPenalities" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                                                        </div>
+     <label id="Label10" runat="server" visible="true">
+         Select penalties or punishments<samp style="color: red">* </samp>
+     </label>
+     <asp:DropDownList ID="ddlPenalities" runat="server"
+         CssClass="select-form select2 form-control"
+         AutoPostBack="false"
+         onchange="updatePenalityText(this)">
+         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+         <asp:ListItem Text="By state licensing board, Haryana/chief Electrical inspector,Haryana" Value="1"></asp:ListItem>
+         <asp:ListItem Text="By government & other agencies" Value="2"></asp:ListItem>
+         <asp:ListItem Text="Any court of law." Value="3"></asp:ListItem>
+     </asp:DropDownList>
+     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtPenalities"
+         runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
+ </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-8">
-                                                                    <div class="forms-sample">
-                                                                        <div class="form-group" id="ShowPenelity" runat="server" visible="false">
-                                                                            <label id="Label1" runat="server" visible="true">
-                                                                            </label>
-                                                                            <asp:TextBox class="form-control" ID="txtPenalities" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" runat="server" TextMode="MultiLine" Rows="2"> </asp:TextBox>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtAgentName" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                <div class="col-md-6">
+     <div class="form-group" id="ShowPenelity" runat="server" visible="false">
+         <label id="Label1" runat="server" visible="true"></label>
+         <div id="penaltyContainer" class="form-control">
+             <!-- Tags will be added here -->
+         </div>
+
+     </div>
+ </div>
+ <div class="col-md-6"  id="DivPenelity" runat="server" visible="false">
+     <asp:TextBox ID="txtPenalities" runat="server" TextMode="MultiLine"
+         Rows="2" CssClass="form-control" />
+<%--     <asp:RequiredFieldValidator ID="RequiredFieldValidator11"
+         runat="server" ControlToValidate="txtPenalities"
+         CssClass="validation_required" ErrorMessage="Required"
+         ValidationGroup="Submit3" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+ </div>
                                                             </div>
                                                         </div>
                                                         <div class="row" style="margin-bottom: -75px; margin-top: 50px;">
@@ -2641,5 +2690,74 @@
               }
           }
       </script>
+    <script type="text/javascript">
+        function updatePenalityText(dropdown) {
+            var selectedOption = dropdown.options[dropdown.selectedIndex];
+            var value = selectedOption.value;
+            var text = selectedOption.text;
+
+            if (value === "0") return;
+
+            // Remove selected option from dropdown
+            dropdown.remove(dropdown.selectedIndex);
+
+            // Create tag element
+            var container = document.getElementById("penaltyContainer");
+
+            var tag = document.createElement("div");
+            tag.className = "penalty-tag";
+            tag.setAttribute("data-value", value);
+            tag.setAttribute("data-text", text);
+            tag.innerHTML = '' + text + ' <span class="remove-icon" onclick="removePenaltyTag(this, \'' + value + '\', \'' + text + '\')">&times;</span>';
+
+            container.appendChild(tag);
+
+            renumberPenaltyTags();
+            updateHiddenTextbox();
+        }
+
+        function removePenaltyTag(span, value, text) {
+            var tag = span.parentElement;
+            tag.parentNode.removeChild(tag);
+
+            // Re-add option to dropdown
+            var ddl = document.getElementById("<%= ddlPenalities.ClientID %>");
+        var newOption = document.createElement("option");
+        newOption.value = value;
+        newOption.text = text;
+        ddl.add(newOption);
+
+        ddl.selectedIndex = 0;
+
+        renumberPenaltyTags();
+        updateHiddenTextbox();
+    }
+
+    function renumberPenaltyTags() {
+        var container = document.getElementById("penaltyContainer");
+        var tags = container.children;
+
+        for (var i = 0; i < tags.length; i++) {
+            var tag = tags[i];
+            var value = tag.getAttribute("data-value");
+            var text = tag.getAttribute("data-text");
+
+            tag.innerHTML = (i + 1) + '. ' + text + ' <span class="remove-icon" onclick="removePenaltyTag(this, \'' + value + '\', \'' + text + '\')">&times;</span>';
+        }
+    }
+
+    function updateHiddenTextbox() {
+        var tags = document.getElementById("penaltyContainer").children;
+        var values = [];
+
+        for (var i = 0; i < tags.length; i++) {
+            var tag = tags[i];
+            var text = tag.getAttribute("data-text");
+            values.push((i + 1) + '. ' + text);
+        }
+
+        document.getElementById("<%= txtPenalities.ClientID %>").value = values.join(", ");
+        }
+    </script>
 </body>
 </html>

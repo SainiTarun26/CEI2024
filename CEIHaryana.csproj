@@ -2210,8 +2210,8 @@
     <Content Include="UserPages\SiteOwnerRegistration.aspx" />
     <Content Include="UserPages\SupervisorQualification.aspx" />
     <Content Include="UserPages\Update_Contractor_Application_Form.aspx" />
-    <Content Include="UserPages\Update_Qualification.aspx" />
     <Content Include="UserPages\Update_Supervisor_Qualification.aspx" />
+    <Content Include="UserPages\Update_Wireman_Qualification.aspx" />
     <Content Include="UserPages\User_Profile_Create.aspx" />
     <Content Include="VerifyCertificate.aspx" />
     <Content Include="Web.config" />
@@ -5054,16 +5054,19 @@
     <Compile Include="UserPages\Update_Contractor_Application_Form.aspx.designer.cs">
       <DependentUpon>Update_Contractor_Application_Form.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserPages\Update_Qualification.aspx.cs">
-      <DependentUpon>Update_Qualification.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserPages\Update_Qualification.aspx.designer.cs">
-      <DependentUpon>Update_Qualification.aspx</DependentUpon>
-    </Compile>
     <Compile Include="UserPages\Update_Supervisor_Qualification.aspx.cs">
       <DependentUpon>Update_Supervisor_Qualification.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\Update_Supervisor_Qualification.aspx.designer.cs">
+      <DependentUpon>Update_Supervisor_Qualification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\Update_Wireman_Qualification.aspx.cs">
+      <DependentUpon>Update_Wireman_Qualification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\Update_Wireman_Qualification.aspx.designer.cs">
+      <DependentUpon>Update_Wireman_Qualification.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\User_Profile_Create.aspx.cs">
       <DependentUpon>User_Profile_Create.aspx</DependentUpon>

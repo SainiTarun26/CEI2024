@@ -13061,6 +13061,63 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetCategoryNewUser", Id);
         }
         #endregion
+        #region neha 4-July-2025
+        public DataTable GetContractorApplicationsInformation(string UserId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorApplicationsInformation", UserId);
+        }
+
+        public DataTable UpdateContractorOrganisationDetails(string BusinessAddress, string BusinessState, string BusinessDistrict, string BusinessAddPinCode,
+            string BusinessAddEmail, string BusinessAddPhoneNo, string GSTNumber, string StyleOfCompany,
+            string NameOfCompany, string CompanyRegisterdOffice, string AgentName, string ModifiedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateContractorOrganisationDetails", BusinessAddress,
+                                                     BusinessState, BusinessDistrict, BusinessAddPinCode, BusinessAddEmail, BusinessAddPhoneNo, GSTNumber, StyleOfCompany,
+                                                     NameOfCompany, CompanyRegisterdOffice, AgentName, ModifiedBy);
+        }
+        public DataTable UpdateOtherConOrganisationDetails(string ManufacturingFirmOrProductionUnit, string ContractorLicencePreviouslyGranted,
+  string NameOfIssuingAuthority, string IssuedateOtherState, string DateOfLicenseExpiring, string WorkPermitUndertaken, string ContractorLicencePreviouslyGrantedWithSameName,
+  string LicenseNoIfYes, string DateoFIssue, string ModifiedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateOtherConOrganisationDetails",
+                ManufacturingFirmOrProductionUnit, ContractorLicencePreviouslyGranted, NameOfIssuingAuthority, IssuedateOtherState, DateOfLicenseExpiring,
+                WorkPermitUndertaken, ContractorLicencePreviouslyGrantedWithSameName, LicenseNoIfYes, DateoFIssue, ModifiedBy);
+        }
+        public DataTable UpdateConAnnextureAndPenality(string LibraryAvailable, string DoCompanyHavePenalties, string Penalities, string ModifiedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateConAnnextureAndPenality", LibraryAvailable, DoCompanyHavePenalties, Penalities, ModifiedBy);
+        }
+        public DataTable BackToEditDetailsOfNewRegisteredUser(string UserId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_BackToEditDetailsOfNewRegisteredUser", UserId);
+        }
+
+        public int DetailOfContractorExist(string UserId)
+        {
+            int result = 0;
+
+            string connStr = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_DetailOfContractorExist", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UserId", UserId);
+
+                    // Return value parameter
+                    SqlParameter retParam = new SqlParameter("@ret", SqlDbType.Int);
+                    retParam.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(retParam);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    result = Convert.ToInt32(retParam.Value);
+                }
+            }
+            return result;
+        }
+        #endregion
     }
 }
 

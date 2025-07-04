@@ -374,11 +374,14 @@ namespace CEIHaryana.UserPages
                 {
                     DdlPenelity.Visible = true;
                     ShowPenelity.Visible = true;
+                    DivPenelity.Visible = true;
                 }
                 else
                 {
                     DdlPenelity.Visible = false;
                     ShowPenelity.Visible = false;
+                    DivPenelity.Visible = false;
+                    txtPenalities.Text = "";
                 }
 
             }
