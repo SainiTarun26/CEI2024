@@ -1641,7 +1641,7 @@
      <hr />
      <div class="row">
          <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="GridView2" runat="server" Width="100%"
-             AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff" DataKeyNames="Id">
+             AutoGenerateColumns="false" OnRowCommand="GridView2_RowCommand" BorderWidth="1px" BorderColor="#dbddff" DataKeyNames="Id">
              <PagerStyle CssClass="pagination-ys" />
              <Columns>
                  <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">

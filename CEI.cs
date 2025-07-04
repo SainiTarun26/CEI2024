@@ -13138,6 +13138,37 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             }
             return result;
         }
+        public int DetailOfSupervisorAndWiremanExist(string UserId)
+        {
+            int result = 0;
+
+            string connStr = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_DetailOfSupervisorAndWiremanExist", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UserId", UserId);
+
+                    // Return value parameter
+                    SqlParameter retParam = new SqlParameter("@ret", SqlDbType.Int);
+                    retParam.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(retParam);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    result = Convert.ToInt32(retParam.Value);
+                }
+            }
+            return result;
+        }
+
+
+        public DataTable UpdateStatusAfterEdit(string UserId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateStatusAfterEdit", UserId);
+        }
         #endregion
     }
 }

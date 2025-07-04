@@ -438,7 +438,30 @@ namespace CEIHaryana.UserPages
             catch { }
         }
 
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        //protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        //{
+        //    try
+        //    {
+        //        try
+        //        {
+        //            if (HFContractor.Value != null && HFContractor.Value != "")
+        //            {
+        //                //String ConId = Convert.ToString(Session["ContractorID"]);
+        //                if (e.CommandName == "DeleteRecord")
+        //                {
+        //                    int id = Convert.ToInt32(e.CommandArgument);
+        //                    CEI.DeleteContractorPartner(id);
+        //                    PartnersModalDirectorData(HFContractor.Value);
+        //                }
+        //            }
+        //        }
+        //        catch (Exception Ex)
+        //        { }
+        //    }
+        //    catch { }
+        //}
+
+        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
             {
@@ -599,13 +622,18 @@ namespace CEIHaryana.UserPages
                     String LoginID = HFContractor.Value;
                     DataTable ds = new DataTable();
                     ds = CEI.GetPartnersDirectorDate(LoginID);
-                    if (DdlPartnerOrDirector.SelectedValue == "1")
+                    //if (DdlPartnerOrDirector.SelectedValue == "1")
+                    //{
+                    //    if (GridView2.Rows.Count == 0)
+                    //    {
+                    //        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Add at least one partner');", true);
+                    //        return;
+                    //    }
+                    //}
+                    if (ds == null || ds.Rows.Count == 0)
                     {
-                        if (GridView2.Rows.Count == 0)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Add at least one partner');", true);
-                            return;
-                        }
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Add at least one partner');", true);
+                        return;
                     }
 
                     bool atLeastOneSupervisorConnect = false;
@@ -643,7 +671,7 @@ namespace CEIHaryana.UserPages
                     }
                     else
                     {
-                      
+                        CEI.UpdateStatusAfterEdit(LoginID);
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application Updated Successfully !!!')", true);
                         Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
                         
@@ -723,6 +751,8 @@ namespace CEIHaryana.UserPages
                 txtAgentName.Text = "";
             }
         }
+
+       
     }
 }
 
