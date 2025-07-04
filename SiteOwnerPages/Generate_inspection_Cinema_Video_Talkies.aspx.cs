@@ -253,11 +253,7 @@ namespace CEIHaryana.SiteOwnerPages
             if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
             {
                 string CreatedBy = Session["SiteOwnerId"].ToString();
-                if (Session["IntimationId_Cinema"] == null || Convert.ToString(Session["IntimationId_Cinema"]) == "")
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "error", "alert('you already submit the inspection for this Record');", true);
-                    return;
-                }
+                
                 try
                     {
                         bool atLeastOneInspectionChecked = false;
@@ -275,7 +271,12 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             if (Check.Checked == true)
                             {
-                                string District = HdnDistrict.Value;
+                            if (Session["IntimationId_Cinema"] == null || Convert.ToString(Session["IntimationId_Cinema"]) == "")
+                            {
+                                ScriptManager.RegisterStartupScript(this, GetType(), "error", "alert('you already submit the inspection for this Record');", true);
+                                return;
+                            }
+                            string District = HdnDistrict.Value;
                                 string AssignedOfficer = "";
                                 DataTable dt = new DataTable();
                                 dt = CEI.FetchOfficerFor_Accidental(District, "XEN");

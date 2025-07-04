@@ -512,7 +512,7 @@
                                                                         <asp:TextBox class="form-control" ID="txtinstallationType1" TabIndex="8" ReadOnly="false" Text="" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                                                   
                                                                    
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlinstallationType1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Type Of Installation</asp:RequiredFieldValidator>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtinstallationType1" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Type Of Installation</asp:RequiredFieldValidator>
 
                                                                     </div>
                                                                 </td>
