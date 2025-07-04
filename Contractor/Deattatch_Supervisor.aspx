@@ -291,7 +291,8 @@
                         <div class="col-md-4" id="hiddenfield" runat="server" style="margin-top: 15px;">
                            <asp:HiddenField runat="server" ID="hdnFeildDocumnet" />
                            <asp:HiddenField runat="server" ID="hdnfeildRequestFor" />
-
+                             <asp:HiddenField runat="server" ID="HdnContractorEmail" />
+                           <asp:HiddenField runat="server" ID="HdnSupervisorEmail" />
                             <label class="form-label" for="customFile">Attached Document by User</label><br />
                             <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" OnClick="lnkFile_Click" Text="Open Document" style="margin-left:-145px;"/>
                         </div>

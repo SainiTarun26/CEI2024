@@ -12,7 +12,6 @@ namespace CEIHaryana.Contractor
 {
     public partial class Deattatch_Supervisor : System.Web.UI.Page
     {
-        //Page created by 30-June-2025
         CEI cei = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -59,6 +58,9 @@ namespace CEIHaryana.Contractor
                     txtvoltageWithEffect.Text = dt.Rows[0]["voltageWithEffect"].ToString();
                     txtRemarks.Text= dt.Rows[0]["Remarks"].ToString();
                     string RequestFor = dt.Rows[0]["RequestFor"].ToString();
+                    HdnContractorEmail.Value= dt.Rows[0]["ContractorEmail"].ToString();
+                    HdnSupervisorEmail.Value = dt.Rows[0]["Email"].ToString();
+
                     if (RequestFor== "Attached")
                     {
                         btnToDeattach.Text = "Attached";
@@ -88,7 +90,9 @@ namespace CEIHaryana.Contractor
                 if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != null)
                 {
                     string UserId = Convert.ToString(Session["ContractorID"]);
-                    if (hdnSupervisorRequestID.Value != null && hdnSupervisorRequestID.Value != "")
+                    if (hdnSupervisorRequestID.Value != null && hdnSupervisorRequestID.Value != ""
+                        && HdnContractorEmail.Value != null && HdnContractorEmail.Value != ""
+                        && HdnSupervisorEmail.Value != null && HdnSupervisorEmail.Value != "")
                     {
                         string ContractorId = string.Empty;
                         string SupervisorREID = string.Empty;
@@ -109,12 +113,13 @@ namespace CEIHaryana.Contractor
                         }
                         else
                         {
-                             x = cei.DeattachedbyContractor(ContractorId, SupervisorREID, UserId);
+                            x = cei.DeattachedbyContractor(ContractorId, SupervisorREID, UserId);
                             AlertMessage = "DeAttached";
                         }
                        
                         if (x>0)
                         {
+                            cei.EmailForDeattachmentRequestContractor(AlertMessage,HdnContractorEmail.Value,HdnSupervisorEmail.Value);
                             ScriptManager.RegisterStartupScript(this,this.GetType(),"Alert","alert('Supervisor Sucessfully "+AlertMessage+ " '); window.location.href = '/Contractor/Supervisor_Requests.aspx'; ", true);
                         }
                         else

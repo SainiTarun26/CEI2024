@@ -253,82 +253,88 @@ namespace CEIHaryana.SiteOwnerPages
             if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
             {
                 string CreatedBy = Session["SiteOwnerId"].ToString();
-                try
+                if (Session["IntimationId_Cinema"] == null || Convert.ToString(Session["IntimationId_Cinema"]) == "")
                 {
-                    bool atLeastOneInspectionChecked = false;
-                    foreach (GridViewRow rows in GridView1.Rows)
+                    ScriptManager.RegisterStartupScript(this, GetType(), "error", "alert('you already submit the inspection for this Record');", true);
+                    return;
+                }
+                try
                     {
-                        CheckBox chk = (CheckBox)rows.FindControl("CheckBox1");
+                        bool atLeastOneInspectionChecked = false;
+                        foreach (GridViewRow rows in GridView1.Rows)
+                        {
+                            CheckBox chk = (CheckBox)rows.FindControl("CheckBox1");
 
-                        if (chk != null && chk.Checked)
-                        {
-                            atLeastOneInspectionChecked = true;
-                            break;
-                        }
-                    }
-                    if (atLeastOneInspectionChecked)
-                    {
-                        if (Check.Checked == true)
-                        {
-                            string District = HdnDistrict.Value;
-                            string AssignedOfficer = "";
-                            DataTable dt = new DataTable();
-                            dt = CEI.FetchOfficerFor_Accidental(District, "XEN");
-                            if (dt == null || dt.Rows.Count < 0)
+                            if (chk != null && chk.Checked)
                             {
-                                ScriptManager.RegisterStartupScript(this, GetType(), "error", "alert('please Contact Team');", true);
-                                return;
+                                atLeastOneInspectionChecked = true;
+                                break;
                             }
-                            AssignedOfficer = dt.Rows[0]["StaffUserID"].ToString();
-                            
-                            
-                            ApplicantType = HdnApplicantType.Value;
-                            string Division = HdnDivision.Value;
-                            string transcationId = string.Empty;
-                            string TranscationDate = string.Empty;
-                            decimal TotalAmount = Convert.ToDecimal(Session["CinemaAmount"]);                           
-                            string InstallationTypeID = string.Empty;
-                            IntimationId = Hdn_IntimationID.Value;
-                            ApplicantTypeCode = Hdn_ApplicantTypeCode.Value;
-                            if (ChallanDetail.Visible == true)
+                        }
+                        if (atLeastOneInspectionChecked)
+                        {
+                            if (Check.Checked == true)
                             {
-                                if (txttransactionId.Text != "")
+                                string District = HdnDistrict.Value;
+                                string AssignedOfficer = "";
+                                DataTable dt = new DataTable();
+                                dt = CEI.FetchOfficerFor_Accidental(District, "XEN");
+                                if (dt == null || dt.Rows.Count < 0)
                                 {
-                                    transcationId = txttransactionId.Text.Trim();
-                                    TranscationDate = string.IsNullOrEmpty(txttransactionDate.Text) ? null : txttransactionDate.Text;
-                                }
-                                else
-                                {
-                                    txttransactionDate.Focus();
-                                    txttransactionId.Focus();
+                                    ScriptManager.RegisterStartupScript(this, GetType(), "error", "alert('please Contact Team');", true);
                                     return;
                                 }
-                            }
-                            if (RadioButtonList2.SelectedValue != null)
-                            {
-                                PaymentMode = RadioButtonList2.SelectedItem.ToString();
-                            }
+                                AssignedOfficer = dt.Rows[0]["StaffUserID"].ToString();
 
-                            //InstallationTypeID = "11";
-                            InstallationTypeID = "19";
-                            IntstallationType = "Cinema_Videos Talkies";
-                            InsertFilesIntoDatabase(InstallationTypeID, CreatedBy, txtContact.Text, ApplicantTypeCode, IntimationId, ApplicantType, IntstallationType,
-                            District, Division, PaymentMode, txtInspectionRemarks.Text.Trim(), CreatedBy, TotalAmount, AssignedOfficer, transcationId, TranscationDate, Convert.ToInt32(InspectionIdClientSideCheckedRow.Value) );
+
+                                ApplicantType = HdnApplicantType.Value;
+                                string Division = HdnDivision.Value;
+                                string transcationId = string.Empty;
+                                string TranscationDate = string.Empty;
+                                decimal TotalAmount = Convert.ToDecimal(Session["CinemaAmount"]);
+                                string InstallationTypeID = string.Empty;
+                                IntimationId = Hdn_IntimationID.Value;
+                                ApplicantTypeCode = Hdn_ApplicantTypeCode.Value;
+                                if (ChallanDetail.Visible == true)
+                                {
+                                    if (txttransactionId.Text != "")
+                                    {
+                                        transcationId = txttransactionId.Text.Trim();
+                                        TranscationDate = string.IsNullOrEmpty(txttransactionDate.Text) ? null : txttransactionDate.Text;
+                                    }
+                                    else
+                                    {
+                                        txttransactionDate.Focus();
+                                        txttransactionId.Focus();
+                                        return;
+                                    }
+                                }
+                                if (RadioButtonList2.SelectedValue != null)
+                                {
+                                    PaymentMode = RadioButtonList2.SelectedItem.ToString();
+                                }
+
+                                //InstallationTypeID = "11";
+                                InstallationTypeID = "19";
+                                IntstallationType = "Cinema_Videos Talkies";
+                                InsertFilesIntoDatabase(InstallationTypeID, CreatedBy, txtContact.Text, ApplicantTypeCode, IntimationId, ApplicantType, IntstallationType,
+                                District, Division, PaymentMode, txtInspectionRemarks.Text.Trim(), CreatedBy, TotalAmount, AssignedOfficer, transcationId, TranscationDate, Convert.ToInt32(InspectionIdClientSideCheckedRow.Value));
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please accept declaration first to proceed')", true);
+                            }
                         }
                         else
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please accept declaration first to proceed')", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please First tick the any one installation for inspection')", true);
                         }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please First tick the any one installation for inspection')", true);
+                        throw;
                     }
-                }
-                catch (Exception ex)
-                {
-                 throw;
-                }
+                
             }
             else
             {

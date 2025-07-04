@@ -159,6 +159,24 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.HiddenField hdnfeildRequestFor;
 
         /// <summary>
+        /// HdnContractorEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HdnContractorEmail;
+
+        /// <summary>
+        /// HdnSupervisorEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HdnSupervisorEmail;
+
+        /// <summary>
         /// lnkFile control.
         /// </summary>
         /// <remarks>
