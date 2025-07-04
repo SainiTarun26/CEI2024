@@ -4,14 +4,15 @@
 
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
@@ -150,6 +151,45 @@
             th.headercolor.sld {
                 width: 1% !important;
             }
+
+
+        #ownerPopup {
+            display: none;
+            position: fixed;
+            top: 30%;
+            left: 60%;
+            transform: translate(-50%, -30%);
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            z-index: 1001;
+            box-shadow: 0 0 10px #999;
+            width: 75%;
+        }
+
+        #popupOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            width: 1000px !important;
+            right: 110px !important;
+        }
+
+        span#ContentPlaceHolder1_lblOwnerName {
+            font-size: 13px !important;
+        }
+
+        span#ContentPlaceHolder1_lblAgencyName {
+            font-size: 13px !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -185,10 +225,10 @@
                     </div>
 
                     <div class="col-md-6" runat="server" style="margin-top: 4%;">
-                         <label>
-     &nbsp;
+                        <label>
+                            &nbsp;
   
- </label>
+                        </label>
                         <!-- Search Box -->
                         <asp:TextBox ID="txtSearch" runat="server"
                             PlaceHolder="Other Search Parameters Like OwnerName,SldId etc.."
@@ -235,11 +275,23 @@
                                     <HeaderStyle HorizontalAlign="Left" />
                                 </asp:TemplateField>
 
-
-                                <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
+                                <asp:TemplateField HeaderText="Owner Name">
                                     <HeaderStyle HorizontalAlign="center" CssClass="headercolor thwidth" />
                                     <ItemStyle HorizontalAlign="Left" CssClass="break-text-10" />
-                                </asp:BoundField>
+                                    <ItemTemplate>
+                                        <asp:LinkButton
+                                            ID="lnkOwnerName"
+                                            runat="server"
+                                            Text='<%# Eval("OwnerName") %>'
+                                            CommandName="ShowPopup"
+                                            CommandArgument='<%# Eval("SLD_ID") %>'
+                                            OnCommand="lnkOwnerName_Command"
+                                            CssClass="owner-link" />
+
+
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
 
                                 <asp:BoundField DataField="Status_type" HeaderText="Status">
                                     <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
@@ -278,7 +330,88 @@
                             <SortedDescendingCellStyle BackColor="#CAC9C9" />
                             <SortedDescendingHeaderStyle BackColor="#00547E" />
                         </asp:GridView>
+                        <div class="modal fade" id="ownerModal" tabindex="-1" role="dialog" aria-labelledby="ownerModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="ownerModalLabel">Owner Details</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" id="modalContent">
+                                        <!-- Dynamic content will go here -->
+                                        <div class="row">
 
+                                            <div class="col-md-6">
+                                                <div id="OwnerNameDiv" runat="server">
+                                                    <asp:Label ID="lblOwnerName" runat="server" Text="Name of Owner"></asp:Label>
+
+                                                    <asp:TextBox CssClass="form-control" ID="txtNameOfOwner" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px" />
+                                                </div>
+                                                <div id="AgencyNameDiv" runat="server">
+                                                    <asp:Label ID="lblAgencyName" runat="server" Text="Name of Agency"></asp:Label>
+                                                    <asp:TextBox CssClass="form-control" ID="txtNameOfAgency" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>
+                                                    PanNo
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtPanNoOrTanNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <label>
+                                                    Address
+                                      
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                                            </div>
+
+
+                                            <div class="col-md-6">
+                                                <label>
+                                                    ContactNo
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtContactNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label>
+                                                    Email
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label>
+                                                    Applicant Type
+                                      
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtApplicant" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>
+                                                    ContractorType
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtContractorType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row" style="margin-left: 0px;">
 
@@ -301,6 +434,7 @@
                             <div class="col-md-12" style="text-align: center;">
                                 <asp:Button type="submit" Visible="false" ID="btnSubmit" TabIndex="22" OnClientClick="return validateFileUpload();" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
 
+
                             </div>
                         </div>
                     </div>
@@ -308,6 +442,23 @@
             </div>
         </div>
     </div>
+
+    <!-- Bootstrap Modal -->
+    <!-- Bootstrap Modal -->
+
+
+     <script src="/Assets/js/js/vendor.bundle.base.js"></script>
+ <script src="/Assets/js/chart.js/Chart.min.js"></script>
+ <script src="/Assets/js/datatables.net/jquery.dataTables.js"></script>
+ <script src="/Assets/js/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+ <script src="/Assets/js/dataTables.select.min.js"></script>
+ <script src="/Assets/js/off-canvas.js"></script>
+ <script src="/Assets/js/hoverable-collapse.js"></script>
+ <script src="/Assets/js/template.js"></script>
+ <script src="/Assets/js/settings.js"></script>
+ <script src="/Assets/js/todolist.js"></script>
+ <script src="/Assets/js/dashboard.js"></script>
+ <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
 
     <script type="text/javascript">
         window.onload = function () {
@@ -341,7 +492,6 @@
                 return false;
             }
 
-
             var ddlToAssign = document.getElementById('<%= ddlToAssign.ClientID %>');
             if (ddlToAssign.value == "0") {
                 alert("Please select Current staff member .");
@@ -354,10 +504,23 @@
             } else {
                 return false;
             }
+
         }
 
+        function showPopup(content) {
+            var popup = document.getElementById("ownerPopup");
+            var popupContent = document.getElementById("popupContent");
+            popupContent.innerHTML = content;
+            popup.style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("ownerPopup").style.display = "none";
+        }
 
     </script>
+
+
 
 
 </asp:Content>

@@ -4,21 +4,18 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
-    <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" integrity="sha512-P9pgMgcSNlLb4Z2WAB2sH5KBKGnBfyJnq+bhcfLCFusrRc4XdXrhfDluBl/usq75NF5gTDIMcwI1GaG5gju+Mw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
         function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode
@@ -28,7 +25,7 @@
             return true;
         }
 
-      
+
 
         function isAlpha(keyCode) {
 
@@ -288,6 +285,44 @@
             width: 1% !IMPORTANT;
             color: white;
         }
+
+        #ownerPopup {
+            display: none;
+            position: fixed;
+            top: 30%;
+            left: 60%;
+            transform: translate(-50%, -30%);
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            z-index: 1001;
+            box-shadow: 0 0 10px #999;
+            width: 75%;
+        }
+
+        #popupOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            width: 1000px !important;
+            right: 110px !important;
+        }
+
+        span#ContentPlaceHolder1_lblOwnerName {
+            font-size: 13px !important;
+        }
+
+        span#ContentPlaceHolder1_lblAgencyName {
+            font-size: 13px !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -312,42 +347,42 @@
                     </div>
                 </div>
                 <div class="row" style="margin-bottom: 8px;">
-      <div class="col-md-12">
-          <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">SLD Diagram Details</h7>
-      </div>
-  </div>
+                    <div class="col-md-12">
+                        <h7 class="card-title fw-semibold mb-4" style="font-size: 18px !important;">SLD Diagram Details</h7>
+                    </div>
+                </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div>
                         <div class="row" style="margin-bottom: -30px; margin-left: 0px !important;">
-      <div class="col-md-6">
-          <div class="form-group row">
-              <label for="search" class="col-md-2 col-form-label" style="margin-top: 3px; padding: 0px;">Search:</label>
-              <div class="col-md-6" style="margin-left: -35px;">
-                  <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)"  class="form-control" Font-Size="12px"></asp:TextBox><br />
-              </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="search" class="col-md-2 col-form-label" style="margin-top: 3px; padding: 0px;">Search:</label>
+                                    <div class="col-md-6" style="margin-left: -35px;">
+                                        <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)" class="form-control" Font-Size="12px"></asp:TextBox><br />
+                                    </div>
 
 
-          </div>
-      </div>
-  </div>
-                                           
-                        <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoPostBack="true" AutoGenerateColumns="false"  OnRowCommand="grd_Documemnts_RowCommand"  OnRowDataBound="grd_Documemnts_RowDataBound" AllowPaging="True" PageSize="50"  EnableViewState="true" OnPageIndexChanging="grd_Documemnts_PageIndexChanging">
+                                </div>
+                            </div>
+                        </div>
+
+                        <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoPostBack="true" AutoGenerateColumns="false" OnRowCommand="grd_Documemnts_RowCommand" OnRowDataBound="grd_Documemnts_RowDataBound" AllowPaging="True" PageSize="50" EnableViewState="true" OnPageIndexChanging="grd_Documemnts_PageIndexChanging">
                             <HeaderStyle BackColor="#B7E2F0" />
                             <Columns>
                                 <asp:TemplateField ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Middle">
                                     <ItemTemplate>
-                                      <asp:CheckBox ID="chkSelect"  runat="server" AutoPostBack="true" OnCheckedChanged="chkSelect_CheckedChanged1"/>
+                                        <asp:CheckBox ID="chkSelect" runat="server" AutoPostBack="true" OnCheckedChanged="chkSelect_CheckedChanged1" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblSldId" runat="server" Text='<%#Eval("SLD_ID") %>'></asp:Label>
-                                    <asp:Label ID="lblSiteOwnerId" runat="server" Text='<%#Eval("SiteOwnerID") %>'></asp:Label>
-                                  
-                                   
-                                    
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblSldId" runat="server" Text='<%#Eval("SLD_ID") %>'></asp:Label>
+                                        <asp:Label ID="lblSiteOwnerId" runat="server" Text='<%#Eval("SiteOwnerID") %>'></asp:Label>
+
+
+
+                                    </ItemTemplate>
+                                </asp:TemplateField>
 
                                 <asp:TemplateField HeaderText="SNo">
                                     <HeaderStyle Width="5%" CssClass="headercolor" />
@@ -356,22 +391,36 @@
                                         <%#Container.DataItemIndex+1 %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                 <asp:BoundField DataField="SLD_ID" HeaderText="SLD ID">
-                                <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="28%" />
-                            </asp:BoundField>
-                                 <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
-                                <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="28%" />
-                            </asp:BoundField>
-                                 <asp:BoundField DataField="SiteOwnerAddress" HeaderText="Owner Address">
-                                <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="28%"  CssClass="break-text-10" />
-                            </asp:BoundField>
-                                 <asp:BoundField DataField="SubmittedDate" HeaderText="Received Date">
-                                <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="28%" />
-                            </asp:BoundField>
+                                <asp:BoundField DataField="SLD_ID" HeaderText="SLD ID">
+                                    <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" Width="28%" />
+                                </asp:BoundField>
+                                
+                                <asp:TemplateField HeaderText="Request Letter OwnerName" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                    <ItemTemplate>
+                                        <asp:LinkButton
+                                            ID="lnkOwnerName"
+                                            runat="server"
+                                            Text='<%# Eval("OwnerName") %>'
+                                            CommandName="ShowPopup"
+                                            CommandArgument='<%# Eval("SLD_ID") %>'
+                                            OnCommand="lnkOwnerName_Command"
+                                            CssClass="owner-link" />
+
+                                    </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                                    <HeaderStyle HorizontalAlign="Left" />
+                                </asp:TemplateField>
+
+                                <asp:BoundField DataField="SiteOwnerAddress" HeaderText="Owner Address">
+                                    <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" Width="28%" CssClass="break-text-10" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="SubmittedDate" HeaderText="Received Date">
+                                    <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" Width="28%" />
+                                </asp:BoundField>
                                 <asp:TemplateField HeaderText="Document Name">
                                     <HeaderStyle Width="5%" CssClass="headercolor" />
                                     <ItemStyle Width="5%" />
@@ -389,78 +438,158 @@
                                     <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
                                     <HeaderStyle HorizontalAlign="Left" />
                                 </asp:TemplateField>
-                                   <asp:TemplateField HeaderText="Request Letter" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                                   <HeaderStyle Width="5%" CssClass="headercolor" />
-                                  <ItemTemplate>
-                                  <asp:LinkButton ID="Lnkbtn" runat="server" CommandArgument='<%# Bind("RequestLetter") %>' CommandName="Print">view document </asp:LinkButton>
-                                </ItemTemplate>
-                           <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
-                           <HeaderStyle HorizontalAlign="Left" />
-                    </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Request Letter" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="Lnkbtn" runat="server" CommandArgument='<%# Bind("RequestLetter") %>' CommandName="Print">view document </asp:LinkButton>
+                                    </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                                    <HeaderStyle HorizontalAlign="Left" />
+                                </asp:TemplateField>
                             </Columns>
                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                         </asp:GridView>
-     
- 
+
+                        <div class="modal fade" id="ownerModal" tabindex="-1" role="dialog" aria-labelledby="ownerModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="ownerModalLabel">Owner Details</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" id="modalContent">
+                                        <!-- Dynamic content will go here -->
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <div id="OwnerNameDiv" runat="server">
+                                                    <asp:Label ID="lblOwnerName" runat="server" Text="Name of Owner"></asp:Label>
+
+                                                    <asp:TextBox CssClass="form-control" ID="txtNameOfOwner" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px" />
+                                                </div>
+                                                <div id="AgencyNameDiv" runat="server">
+                                                    <asp:Label ID="lblAgencyName" runat="server" Text="Name of Agency"></asp:Label>
+                                                    <asp:TextBox CssClass="form-control" ID="txtNameOfAgency" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>
+                                                    PanNo
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtPanNoOrTanNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <label>
+                                                    Address
+                               
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                                            </div>
+
+
+                                            <div class="col-md-6">
+                                                <label>
+                                                    ContactNo
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtContactNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label>
+                                                    Email
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label>
+                                                    Applicant Type
+                               
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtApplicant" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>
+                                                    ContractorType
+                                                </label>
+                                                <asp:TextBox class="form-control" ID="txtContractorType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row">
                         </div>
                     </div>
                 </div>
                 <div class="card-body" id="ApproveDocument" runat="server" visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                <div class="row" >
-                    <div class="col-md-4" id="ApprovalRequired" runat="server" visible="true">
-                        <label>
-                            Approval<samp style="color: red"> * </samp>
-                        </label>
-                        <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
-                            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                            <asp:ListItem Text="Approved" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
-                        </asp:DropDownList>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                    </div>
-                    <div class="col-md-4" id="Document" runat="server" visible="false">
-                        <label for="formFile" class="form-label">
-                            SLD Document (2MB PDF ONLY)<samp style="color: red">* </samp>
-                           
-                        </label>
-                        <asp:FileUpload class="form-control" ID="Signature" runat="server" Style="padding: 2px;" accept=".pdf" />
-                          <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
+                    <div class="row">
+                        <div class="col-md-4" id="ApprovalRequired" runat="server" visible="true">
+                            <label>
+                                Approval<samp style="color: red"> * </samp>
+                            </label>
+                            <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;" OnSelectedIndexChanged="ddlReview_SelectedIndexChanged">
+                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="Approved" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="Rejected" Value="2"></asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-md-4" id="Document" runat="server" visible="false">
+                            <label for="formFile" class="form-label">
+                                SLD Document (2MB PDF ONLY)<samp style="color: red">* </samp>
+
+                            </label>
+                            <asp:FileUpload class="form-control" ID="Signature" runat="server" Style="padding: 2px;" accept=".pdf" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
                                 ControlToValidate="Signature" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                        </div>
                     </div>
-                </div>
-                <div class="row" id="Rejection" runat="server" visible="false">
-                    <div class="col-md-12">
-                        <label for="Phone">
-                            Reason For Return
+                    <div class="row" id="Rejection" runat="server" visible="false">
+                        <div class="col-md-12">
+                            <label for="Phone">
+                                Reason For Return
         <samp style="color: red">* </samp>
-                        </label>
-                        <asp:TextBox class="form-control" ID="TxtRejectionReason" TabIndex="8" onkeydown="return preventEnterSubmit(event)"  MaxLength="200" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        <span id="RejectionReason" style="color: red"></span>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TxtRejectionReason" ValidationGroup="Submit" ForeColor="Red">Please Enter Rejection reason for Reject.</asp:RequiredFieldValidator>
+                            </label>
+                            <asp:TextBox class="form-control" ID="TxtRejectionReason" TabIndex="8" onkeydown="return preventEnterSubmit(event)" MaxLength="200" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <span id="RejectionReason" style="color: red"></span>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TxtRejectionReason" ValidationGroup="Submit" ForeColor="Red">Please Enter Rejection reason for Reject.</asp:RequiredFieldValidator>
+                        </div>
                     </div>
-                </div>
-                <div class="row" id="Remarks" runat="server" visible="false">
-                    <div class="col-md-12">
-                        <label for="Phone">
-                            Remarks
+                    <div class="row" id="Remarks" runat="server" visible="false">
+                        <div class="col-md-12">
+                            <label for="Phone">
+                                Remarks
         <samp style="color: red">* </samp>
-                        </label>
-                        <asp:TextBox class="form-control" ID="TxtRemarks" TabIndex="8" onkeydown="return preventEnterSubmit(event)"  MaxLength="200" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        <span id="Remark" style="color: red"></span>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TxtRemarks" ValidationGroup="Submit" ForeColor="Red">Please Enter Remarks for Approval.</asp:RequiredFieldValidator>
+                            </label>
+                            <asp:TextBox class="form-control" ID="TxtRemarks" TabIndex="8" onkeydown="return preventEnterSubmit(event)" MaxLength="200" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <span id="Remark" style="color: red"></span>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TxtRemarks" ValidationGroup="Submit" ForeColor="Red">Please Enter Remarks for Approval.</asp:RequiredFieldValidator>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
-  
+
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4" style="text-align: center;">
-                    <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Submit" runat="server" onClick="btnSubmit_Click" class="btn btn-primary mr-2" OnClientClick="return validateFileUpload();"/>
+                    <asp:Button type="submit" ID="btnSubmit" TabIndex="22" ValidationGroup="Submit" Text="Submit" runat="server" OnClick="btnSubmit_Click" class="btn btn-primary mr-2" OnClientClick="return validateFileUpload();" />
 
-                 
+
                     <asp:Button type="submit" ID="btnReset" TabIndex="23" Text="Reset" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
                     <asp:Button type="Back" ID="btnBack" TabIndex="24" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
                 </div>
@@ -473,7 +602,7 @@
             </div>
         </div>
     </div>
-        <footer class="footer">
+    <footer class="footer">
     </footer>
     <script src="/Assets/js/js/vendor.bundle.base.js"></script>
     <script src="/Assets/js/chart.js/Chart.min.js"></script>
@@ -493,7 +622,7 @@
             var selectedFileName = document.getElementById('customFileLocation');
 
             if (fileInput.files.length > 0) {
-               
+
                 selectedFileName.value = fileInput.files[0].name;
             }
         }
@@ -521,33 +650,33 @@
     </script>
 
 
-       <script type="text/javascript">
-           function Search_Gridview(strKey) {
-               var strData = strKey.value.toLowerCase().split(" ");
-               var tblData = document.getElementById("<%=grd_Documemnts.ClientID %>");
-               var rowData;
-               for (var i = 1; i < tblData.rows.length; i++) {
-                   rowData = tblData.rows[i].innerHTML;
-                   var styleDisplay = 'none';
-                   for (var j = 0; j < strData.length; j++) {
-                       if (rowData.toLowerCase().indexOf(strData[j]) >= 0)
-                           styleDisplay = '';
-                       else {
-                           styleDisplay = 'none';
-                           break;
-                       }
-                   }
-                   tblData.rows[i].style.display = styleDisplay;
-               }
+    <script type="text/javascript">
+        function Search_Gridview(strKey) {
+            var strData = strKey.value.toLowerCase().split(" ");
+            var tblData = document.getElementById("<%=grd_Documemnts.ClientID %>");
+            var rowData;
+            for (var i = 1; i < tblData.rows.length; i++) {
+                rowData = tblData.rows[i].innerHTML;
+                var styleDisplay = 'none';
+                for (var j = 0; j < strData.length; j++) {
+                    if (rowData.toLowerCase().indexOf(strData[j]) >= 0)
+                        styleDisplay = '';
+                    else {
+                        styleDisplay = 'none';
+                        break;
+                    }
+                }
+                tblData.rows[i].style.display = styleDisplay;
+            }
 
-           }
-           function SearchOnEnter(event) {
-               if (event.keyCode === 13) {
-                   event.preventDefault();
-                   Search_Gridview(document.getElementById('txtSearch'));
-               }
-           }
-       </script>
+        }
+        function SearchOnEnter(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                Search_Gridview(document.getElementById('txtSearch'));
+            }
+        }
+    </script>
 
 
 
@@ -556,7 +685,7 @@
     <script>
         function preventEnterSubmit(event) {
             if (event.keyCode === 13) {
-                event.preventDefault(); 
+                event.preventDefault();
                 return false;
             }
         }
@@ -617,7 +746,7 @@
         function allowAlphabets(event) {
             var keyCode = event.which || event.keyCode;
 
-          
+
             if ((keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122)) {
                 return true;
             } else {
@@ -628,7 +757,7 @@
     </script>
     <script type="text/javascript">
         function restrictInput(event) {
-            var allowedKeys = [49, 50, 51, 52, 53]; 
+            var allowedKeys = [49, 50, 51, 52, 53];
             var keyCode = event.which || event.keyCode;
 
             if (allowedKeys.indexOf(keyCode) === -1) {
@@ -695,9 +824,9 @@
         }
     </script>
 
-            <script type="text/javascript">
+    <script type="text/javascript">
 
-                function validateFileUpload() {
+        function validateFileUpload() {
 
 <%--                var ddlReview = document.getElementById('<%= ddlReview.ClientID %>');
             var reviewValue = ddlReview.value;
@@ -718,20 +847,31 @@
                 }--%>
 
 
-                    if (isSubmitting) {
-                        return false;
-                    }
+            if (isSubmitting) {
+                return false;
+            }
 
 
-                    if (Page_ClientValidate()) {
-                        isSubmitting = true;
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-                let isSubmitting = false;
-            </script>
+            if (Page_ClientValidate()) {
+                isSubmitting = true;
+                return true;
+            } else {
+                return false;
+            }
+        }
+        let isSubmitting = false;
+        function showPopup(content) {
+            var popup = document.getElementById("ownerPopup");
+            var popupContent = document.getElementById("popupContent");
+            popupContent.innerHTML = content;
+            popup.style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("ownerPopup").style.display = "none";
+        }
+
+    </script>
 
 
     <script type="text/javascript">

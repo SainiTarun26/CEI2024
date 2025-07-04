@@ -95,7 +95,13 @@ namespace CEIHaryana.Admin
                 {
                    // linkButton1.Visible = false;
                     lnkDocumemtPath.Visible = true;
-                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+                    e.Row.Cells[4].ForeColor = System.Drawing.Color.Green;
+                }
+               else if (status == "Rejected" || status == "Returned")
+                {
+                    // linkButton1.Visible = false;
+                    lnkDocumemtPath.Visible = true;
+                    e.Row.Cells[4].ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {

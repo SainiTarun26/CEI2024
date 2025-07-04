@@ -13008,6 +13008,11 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             }
 
         }
+        //4-July
+        public DataSet SldTransfer_GetSiteOwnerDetails_OnPopup(int sldId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_SldTransfer_GetSiteOwnerData", sldId);
+        }
         #endregion
         #region gurmeet attachdeattach 30-June-2025
         public void EmailForDeattachmentRequestContractor(string Text, string From, string To)

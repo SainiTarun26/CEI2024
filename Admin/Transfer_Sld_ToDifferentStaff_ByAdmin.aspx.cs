@@ -287,5 +287,53 @@ namespace CEIHaryana.Admin
             }
         }
 
+        protected void GetPopUpDetails(string sldId)
+        {
+            try
+            {
+                DataSet ds = CEI.SldTransfer_GetSiteOwnerDetails_OnPopup(Convert.ToInt32(sldId));
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    DataRow row = ds.Tables[0].Rows[0];
+                    txtApplicant.Text = row["ApplicantType"].ToString();
+                    txtContractorType.Text = row["ContractorType"].ToString();
+                    txtPanNoOrTanNo.Text = row["UserId"].ToString();
+
+                    if (!string.IsNullOrEmpty(row["NameOfOwner"].ToString()))
+                    {
+                        txtNameOfOwner.Text = row["NameOfOwner"].ToString();
+                        OwnerNameDiv.Visible = true;
+                        AgencyNameDiv.Visible = false;
+                    }
+                    else
+                    {
+                        txtNameOfAgency.Text = row["NameOfAgency"].ToString();
+                        AgencyNameDiv.Visible = true;
+                        OwnerNameDiv.Visible = false;
+                    }
+
+
+                    txtAddress.Text = row["Address"].ToString();
+                    txtContactNo.Text = row["ContactNo"].ToString();
+                    txtEmail.Text = row["Email"].ToString();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        protected void lnkOwnerName_Command(object sender, CommandEventArgs e)
+        {
+            string sldId = e.CommandArgument.ToString();
+            // Fetch owner details
+            GetPopUpDetails(sldId);
+            // Show the modal using Bootstrap (after data is filled)
+            ScriptManager.RegisterStartupScript(this, GetType(), "ShowOwnerModal", "$('#ownerModal').modal('show');", true);
+        }
+
+
     }
 }
