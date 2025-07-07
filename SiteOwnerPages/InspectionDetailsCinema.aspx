@@ -255,32 +255,32 @@
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
                             <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle Width="5%" CssClass="headercolor" />
-                                <ItemStyle Width="5%" />
+                                <HeaderStyle CssClass="headercolor" />
+                                <ItemStyle />
                                 <ItemTemplate>
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" />
                             </asp:BoundField>
                             <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" />
                             </asp:BoundField>                           
                             <asp:BoundField DataField="ActionDate" HeaderText="ActionDate">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" />
                             </asp:BoundField>
                             <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
 
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                <ItemStyle HorizontalAlign="center" />
                             </asp:BoundField>
                             <asp:BoundField DataField="Remarks" HeaderText="Remarks">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor width" />
+                                <ItemStyle HorizontalAlign="Left" />
                             </asp:BoundField>
                         </Columns>
                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />

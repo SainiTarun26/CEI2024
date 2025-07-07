@@ -160,6 +160,7 @@
         th.headercolor {
             background: #9292cc;
             color: white;
+            width:1% !important;
         }
         h6#maincard {
     font-size: 20px !important;
@@ -176,6 +177,9 @@
        div#ContentPlaceHolder1_Div1{
            margin-left:0px;
        }
+       th.headercolor.width {
+    width: 12% !important;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -294,51 +298,35 @@
                             <HeaderStyle BackColor="#B7E2F0" />
                             <Columns>
                                 <asp:TemplateField HeaderText="SNo">
-                                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                                    <ItemStyle Width="5%" />
+                                    <HeaderStyle CssClass="headercolor" />
+                                    <ItemStyle />
                                     <ItemTemplate>
                                         <%#Container.DataItemIndex+1 %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
-                                <%-- <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                                     <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" Visible="false">
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="lnkRedirect" runat="server" Text="View Test Report" OnClick="lnkRedirect_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>' />
-                                </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
-                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                            </asp:TemplateField>--%>
+                              
                                 <asp:BoundField DataField="ActionDate" HeaderText="ActionDate">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
-                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" />
                                 </asp:BoundField>
-                                <%--  <asp:BoundField DataField="ReturnDate" HeaderText="ReturnDate">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                </asp:BoundField>--%>
+                               
                                 <asp:BoundField DataField="Remarks" HeaderText="Remarks">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor width" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
-                                <%--  <asp:BoundField  DataField="ReturnBased" HeaderText="Return Based" >
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>--%>
+                              
                             </Columns>
                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                         </asp:GridView>

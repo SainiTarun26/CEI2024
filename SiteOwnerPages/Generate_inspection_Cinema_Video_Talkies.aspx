@@ -181,6 +181,7 @@
             color: white;
             width: 15%;
             text-align:center !important;
+            width:1% !important;
         }
 
 

@@ -18,6 +18,7 @@
     <style>
         th.headercolor {
     background: #9292cc;
+    width:1% !important;
 }
     </style>
 </asp:Content>
