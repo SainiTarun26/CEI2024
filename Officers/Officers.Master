@@ -484,6 +484,13 @@
                                 </a>
                             </li>
 
+                            <li class="nav-item" runat="server">
+                                <a class="nav-link" href="/Officers/SLDHistory_AtOfficer.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">SLD History</span>
+                                </a>
+                            </li>
+
 
                             <li class="nav-item" runat="server" id="Transfer_Sld" visible="false" >
                                 <a class="nav-link" href="/Officers/Transfer_Sld_ToLowerStaff_ByOfficer.aspx">

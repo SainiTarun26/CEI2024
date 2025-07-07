@@ -2011,6 +2011,7 @@
     <Content Include="Officers\Self_CertificationStatus.aspx" />
     <Content Include="Officers\SldApprovalRequest_AtOfficer.aspx" />
     <Content Include="Officers\SldApproval_Officer.aspx" />
+    <Content Include="Officers\SLDHistory_AtOfficer.aspx" />
     <Content Include="Officers\TotalRequest.aspx" />
     <Content Include="Officers\TotalRequestInspectionForOfficer_SearchWithCafId.aspx" />
     <Content Include="Officers\Transfer_Sld_ToLowerStaff_ByOfficer.aspx" />
@@ -3652,6 +3653,13 @@
     </Compile>
     <Compile Include="Officers\SldApproval_Officer.aspx.designer.cs">
       <DependentUpon>SldApproval_Officer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\SLDHistory_AtOfficer.aspx.cs">
+      <DependentUpon>SLDHistory_AtOfficer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\SLDHistory_AtOfficer.aspx.designer.cs">
+      <DependentUpon>SLDHistory_AtOfficer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\TotalRequest.aspx.cs">
       <DependentUpon>TotalRequest.aspx</DependentUpon>
