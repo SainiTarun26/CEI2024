@@ -90,7 +90,14 @@ namespace CEIHaryana.SiteOwnerPages
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
-            {            
+            {
+                if (Convert.ToString(Session["TempUniqueId"]) != hdnTempId_Same_or_not.Value)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                      "alert('Please Reload Full page Your session has expired');", true);
+                    return;
+                }
+
                 if (Convert.ToString(Session["TempUniqueId"]) != null && Convert.ToString(Session["TempUniqueId"]) != "")
                 {             
                     //hdnFieldGridView
@@ -202,7 +209,6 @@ namespace CEIHaryana.SiteOwnerPages
                     #endregion
 
                     int ComponentId = 0; // Convert.ToInt32(HdnField_PopUp_InstallationId.Value);                    
-
                     if (!string.IsNullOrWhiteSpace(HdnField_PopUp_InstallationId.Value))
                     {
                         bool isValid = int.TryParse(HdnField_PopUp_InstallationId.Value.Trim(), out ComponentId);
@@ -446,7 +452,9 @@ namespace CEIHaryana.SiteOwnerPages
 
             string combined = randomNumber.ToString() + currentDate; // "127878893816042025"
             long finalNumber = long.Parse(combined); // Convert to long
+            hdnTempId_Same_or_not.Value = finalNumber.ToString();
             Session["TempUniqueId"] = finalNumber;
+
         }
         private bool IsSessionValid()
         {

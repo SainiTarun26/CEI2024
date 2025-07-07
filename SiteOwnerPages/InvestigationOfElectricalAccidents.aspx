@@ -125,9 +125,27 @@
         }
 
         function openHumanModal() {
+            // Clear TextBoxes
+            $('#<%= txtHumanName.ClientID %>').val('');
+            $('#<%= txtHumanFatherName.ClientID %>').val('');
+            $('#<%= txtAge.ClientID %>').val('');
+            $('#<%= txtPostalAddress.ClientID %>').val('');
+            // Reset DropDowns to default (value "0")
+            $('#<%= ddlGender.ClientID %>').val('0').trigger('change');
+            $('#<%= ddlFatelNonFatelHuman.ClientID %>').val('0').trigger('change');
+            $('#<%= ddlPersonCategory.ClientID %>').val('0').trigger('change');
             $('#humanModal').modal('show');
         }
         function openAnimalModal() {
+            // Clear TextBoxes
+            $('#<%= txtDescriptionAnimal.ClientID %>').val('');
+            $('#<%= txtNumber.ClientID %>').val('');
+            $('#<%= txtOwnerName.ClientID %>').val('');
+            $('#<%= txtAddressofOwner.ClientID %>').val('');
+            // Reset DropDowns to default (value "0")
+            $('#<%= ddlFatelTypeAnimal.ClientID %>').val('0').trigger('change');
+            $('#<%= ddlFatelNonFatelHuman.ClientID %>').val('0').trigger('change');
+            $('#<%= ddlPersonCategory.ClientID %>').val('0').trigger('change');
             $('#animalModal').modal('show');
         }
 
@@ -637,6 +655,7 @@
                             <asp:HiddenField ID="HdnUser" runat="server" />
                             <asp:HiddenField ID="HdnField_PopUp_InstallationId" runat="server" />
                             <asp:HiddenField ID="HiddenField2" runat="server" />
+                             <asp:HiddenField ID="hdnTempId_Same_or_not" runat="server" />
 
                             <div>
                             </div>
