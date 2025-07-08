@@ -99,9 +99,8 @@ namespace CEIHaryana.Admin
                 }
                else if (status == "Rejected" || status == "Returned")
                 {
-                    // linkButton1.Visible = false;
-                    lnkDocumemtPath.Visible = true;
                     e.Row.Cells[4].ForeColor = System.Drawing.Color.Red;
+                    lnkDocumemtPath.Visible = false;
                 }
                 else
                 {

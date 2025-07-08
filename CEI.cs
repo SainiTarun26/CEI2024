@@ -13018,6 +13018,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SdlHistoryForOfficer", Id, String.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
+
         #endregion
         #region gurmeet attachdeattach 30-June-2025
         public void EmailForDeattachmentRequestContractor(string Text, string From, string To)
