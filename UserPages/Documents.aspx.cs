@@ -883,5 +883,37 @@ namespace CEIHaryana.UserPages
             int maxFileSizeBytes = 5 * 1024 * 1024; // 5MB
             return fileUpload.PostedFile.ContentLength <= maxFileSizeBytes;
         }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToString(HdnUserId.Value) != null && Convert.ToString(HdnUserId.Value) != "")
+            {
+                if (Convert.ToString(HdnUserType.Value) != null && Convert.ToString(HdnUserType.Value) != "")
+                {
+                    if (HdnUserType.Value == "Supervisor")
+                    {
+                        CEI.BackToEditDetailsOfNewRegisteredUser(HdnUserId.Value);
+                        Session["UserIDForEdit"] = Convert.ToString(HdnUserId.Value);
+
+                        Response.Redirect("/UserPages/Update_Supervisor_Qualification.aspx", false);
+                    }
+                    else if (HdnUserType.Value == "Wireman")
+                    {
+                        CEI.BackToEditDetailsOfNewRegisteredUser(HdnUserId.Value);
+                        Session["UserIDForEdit"] = Convert.ToString(HdnUserId.Value);
+
+                        Response.Redirect("/UserPages/Update_Wireman_Qualification.aspx", false);
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('There is an issue in Edit!!!')", true);
+                }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('There is an issue in Edit!!!')", true);
+            }
+        }
     }
 }

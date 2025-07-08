@@ -843,13 +843,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.CompareValidator cmpDate;
 
         /// <summary>
-        /// Button2 control.
+        /// Button6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button Button6;
 
         /// <summary>
         /// RadioButtonList3 control.
@@ -2443,5 +2443,14 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HdnDOBYear;
+
+        /// <summary>
+        /// HdnExistedTotalexperience control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HdnExistedTotalexperience;
     }
 }

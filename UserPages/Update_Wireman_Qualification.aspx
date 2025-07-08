@@ -1233,8 +1233,8 @@
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" InitialValue="" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" Display="Dynamic" ErrorMessage="Please Choose Yes Or No">Please Choose Yes Or No</asp:RequiredFieldValidator>
                                                     </div>
                                                 </div>
-                                                <div class="row" id="competency" runat="server" visible="true">
-                                                    <div class="table-responsive" runat="server">
+                                                <div class="row">
+                                                    <div class="table-responsive" id="competency" runat="server" visible="true">
                                                         <table class="table table-bordered">
                                                             <thead>
                                                                 <tr style="text-align: center;">
@@ -1273,15 +1273,14 @@
                                                                             ErrorMessage="Expiry Date must be greater than Issue Date" Display="Dynamic" ForeColor="Red" />
                                                                     </td>
                                                                 </tr>
-                                                                <tr style="text-align: end;">
-                                                                    <td style="font-size: 12px;" colspan="6">
-                                                                        <asp:Button ID="Button2" runat="server" Text="Update" class="btn btn-primary"
-                                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="Button2_Click" OnClientClick="return validateUpdate2();"></asp:Button>
 
-                                                                    </td>
-                                                                </tr>
                                                             </tbody>
                                                         </table>
+                                                    </div>
+                                                    <div class="col-md-12" style="text-align: end;">
+                                                        <asp:Button ID="Button6" runat="server" Text="Update" class="btn btn-primary"
+                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="Button2_Click" OnClientClick="return validateUpdate2();"></asp:Button>
+
                                                     </div>
                                                 </div>
                                                 <hr />
@@ -1297,8 +1296,8 @@
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator47" runat="server" InitialValue="" ControlToValidate="RadioButtonList3" ForeColor="Red" ValidationGroup="Submit" Display="Dynamic" ErrorMessage="Please Choose Yes Or No">Please Choose Yes Or No</asp:RequiredFieldValidator>
                                                     </div>
                                                 </div>
-                                                <div class="row" id="PermanentEmployee" runat="server">
-                                                    <div class="table-responsive">
+                                                <div class="row">
+                                                    <div class="table-responsive" id="PermanentEmployee" runat="server">
                                                         <table class="table table-bordered">
                                                             <thead>
                                                                 <tr style="text-align: center;">
@@ -1332,15 +1331,14 @@
                                                                             ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
                                                                     </td>
                                                                 </tr>
-                                                                <tr style="text-align: end;">
-                                                                    <td style="font-size: 12px;" colspan="6">
-                                                                        <asp:Button ID="Button3" c runat="server" Text="Update" class="btn btn-primary"
-                                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="Button3_Click" OnClientClick="return validateUpdate3();"></asp:Button>
 
-                                                                    </td>
-                                                                </tr>
                                                             </tbody>
                                                         </table>
+                                                    </div>
+                                                    <div class="col-md-12" style="text-align: end; margin-top: 10px;">
+                                                        <asp:Button ID="Button3" c runat="server" Text="Update" class="btn btn-primary"
+                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="Button3_Click" OnClientClick="return validateUpdate3();"></asp:Button>
+
                                                     </div>
                                                 </div>
                                                 <hr />
@@ -1905,14 +1903,15 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr style="text-align: end;">
-                                                                    <td style="font-size: 12px;" colspan="6">
-                                                                        <asp:Button ID="Button5" c runat="server" Text="Update" class="btn btn-primary"
-                                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="Button5_Click" OnClientClick="return validateUpdate5();"></asp:Button>
-
-                                                                    </td>
+                                                                    <td style="font-size: 12px;" colspan="6"></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
+                                                    </div>
+                                                    <div class="col-md-12" style="text-align: end;">
+                                                        <asp:Button ID="Button5" c runat="server" Text="Update" class="btn btn-primary"
+                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="Button5_Click" OnClientClick="return validateUpdate5();"></asp:Button>
+
                                                     </div>
                                                 </div>
                                                 <div class="row" style="margin-top: 15px;">
@@ -1928,6 +1927,7 @@
                                                     <asp:HiddenField ID="HdnCategory" runat="server" />
                                                     <asp:HiddenField ID="hdnTotalExperience" runat="server" />
                                                     <asp:HiddenField ID="HdnDOBYear" runat="server" />
+                                                    <asp:HiddenField ID="HdnExistedTotalexperience" runat="server" />
                                                 </div>
                                             </div>
                                         </div>
@@ -2899,7 +2899,7 @@
             <script type="text/javascript">
                 function validateUpdate1() {
                     var isValid = true;
-
+                    debugger;
                     function validateField(element, fieldName) {
                         if (element && element.value.trim() === '') {
                             isValid = false;

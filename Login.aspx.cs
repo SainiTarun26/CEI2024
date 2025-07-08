@@ -351,7 +351,18 @@ namespace CEIHaryana
                                     Session["InsertedCategory"] = "Supervisor";
                                     if (ApplicationStatus.Trim() == "New")
                                     {
-                                        Response.Redirect("/UserPages/SupervisorQualification.aspx", false);
+                                        int result = Convert.ToInt32(cei.DetailOfSupervisorAndWiremanExist(txtUserID.Text));
+                                        if (result == 1)
+                                        {
+                                            Response.Redirect("/UserPages/Update_Supervisor_Qualification.aspx", false);
+                                        }
+                                        else if (result == 0)
+                                        {
+                                            Response.Redirect("/UserPages/SupervisorQualification.aspx", false);
+                                        }
+
+
+
                                     }
                                     else if (ApplicationStatus.Trim() == "Mid")
                                     {
@@ -368,7 +379,16 @@ namespace CEIHaryana
                                     Session["InsertedCategory"] = "Wireman";
                                     if (ApplicationStatus.Trim() == "New")
                                     {
-                                        Response.Redirect("/UserPages/Qualification.aspx", false);
+                                        int result = Convert.ToInt32(cei.DetailOfSupervisorAndWiremanExist(txtUserID.Text));
+                                        if (result == 1)
+                                        {
+                                            Response.Redirect("/UserPages/Update_Wireman_Qualification.aspx", false);
+                                        }
+                                        else if (result == 0)
+                                        {
+                                            Response.Redirect("/UserPages/Qualification.aspx", false);
+                                        }
+
                                     }
                                     else if (ApplicationStatus.Trim() == "Mid")
                                     {

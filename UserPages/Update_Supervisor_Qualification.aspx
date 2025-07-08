@@ -1051,7 +1051,7 @@
                                                                 </tr>
                                                                 <tr id="diploma" runat="server">
                                                                     <td style="text-align: center;">
-                                                                        <asp:DropDownList class="select-form select2" ID="ddlQualification1" runat="server" TabIndex="16" AutoPostBack="true">
+                                                                        <asp:DropDownList class="select-form select2" ID="ddlQualification1" OnSelectedIndexChanged="ddlQualification1_SelectedIndexChanged" runat="server" TabIndex="16" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                             <asp:ListItem Text="Diploma in Electrical Engineering" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Diploma in Electrical and Electronics Engineering" Value="2"></asp:ListItem>
@@ -1093,7 +1093,7 @@
                                                                 </tr>
                                                                 <tr id="DdlDegree" runat="server">
                                                                     <td style="text-align: center;">
-                                                                        <asp:DropDownList class="select-form select2" ID="ddlQualification2" runat="server" TabIndex="16" AutoPostBack="true">
+                                                                        <asp:DropDownList class="select-form select2" ID="ddlQualification2" runat="server" TabIndex="16" AutoPostBack="true" OnSelectedIndexChanged="ddlQualification2_SelectedIndexChanged">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                             <asp:ListItem Text="Degree in Electrical Engineering" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Degree in Electrical and Electronics Engineering" Value="2"></asp:ListItem>
@@ -1193,8 +1193,8 @@
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" InitialValue="" ControlToValidate="RadioButtonList2" ForeColor="Red" ValidationGroup="Submit" Display="Dynamic" ErrorMessage="Please Choose Yes Or No">Please Choose Yes Or No</asp:RequiredFieldValidator>
                                                     </div>
                                                 </div>
-                                                <div class="row" id="competency" runat="server" visible="true">
-                                                    <div class="table-responsive" runat="server">
+                                                <div class="row">
+                                                    <div class="table-responsive" id="competency" runat="server" visible="true">
                                                         <table class="table table-bordered">
                                                             <thead>
                                                                 <tr style="text-align: center;">
@@ -1233,15 +1233,14 @@
                                                                             ErrorMessage="Expiry Date must be greater than Issue Date" Display="Dynamic" ForeColor="Red" />
                                                                     </td>
                                                                 </tr>
-                                                                <tr style="text-align: end;">
-                                                                    <td style="font-size: 12px;" colspan="6">
-                                                                        <asp:Button ID="Button2" runat="server" Text="Update" class="btn btn-primary"
-                                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="Button2_Click" OnClientClick="return validateUpdate2();"></asp:Button>
 
-                                                                    </td>
-                                                                </tr>
                                                             </tbody>
                                                         </table>
+                                                    </div>
+                                                    <div class="col-md-12" style="text-align: end; margin-top: 10px;">
+                                                        <asp:Button ID="Button2" runat="server" Text="Update" class="btn btn-primary"
+                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="Button2_Click" OnClientClick="return validateUpdate2();"></asp:Button>
+
                                                     </div>
                                                 </div>
                                                 <hr />
@@ -1257,8 +1256,8 @@
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator47" runat="server" InitialValue="" ControlToValidate="RadioButtonList3" ForeColor="Red" ValidationGroup="Submit" Display="Dynamic" ErrorMessage="Please Choose Yes Or No">Please Choose Yes Or No</asp:RequiredFieldValidator>
                                                     </div>
                                                 </div>
-                                                <div class="row" id="PermanentEmployee" runat="server">
-                                                    <div class="table-responsive">
+                                                <div class="row">
+                                                    <div class="table-responsive" id="PermanentEmployee" runat="server">
                                                         <table class="table table-bordered">
                                                             <thead>
                                                                 <tr style="text-align: center;">
@@ -1292,15 +1291,14 @@
                                                                             ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
                                                                     </td>
                                                                 </tr>
-                                                                <tr style="text-align: end;">
-                                                                    <td style="font-size: 12px;" colspan="6">
-                                                                        <asp:Button ID="Button3" c runat="server" Text="Update" class="btn btn-primary"
-                                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="Button3_Click" OnClientClick="return validateUpdate3();"></asp:Button>
 
-                                                                    </td>
-                                                                </tr>
                                                             </tbody>
                                                         </table>
+                                                    </div>
+                                                    <div class="col-md-12" style="text-align: end;">
+                                                        <asp:Button ID="Button3" runat="server" Text="Update" class="btn btn-primary"
+                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="Button3_Click" OnClientClick="return validateUpdate3();"></asp:Button>
+
                                                     </div>
                                                 </div>
                                                 <hr />
@@ -1830,15 +1828,13 @@
                                                                             ErrorMessage="Please Enter Your " ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
                                                                     </td>
                                                                 </tr>
-                                                                <tr style="text-align: end;">
-                                                                    <td style="font-size: 12px;" colspan="6">
-                                                                        <asp:Button ID="Button5" c runat="server" Text="Update" class="btn btn-primary"
-                                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="Button5_Click" OnClientClick="return validateUpdate5();"></asp:Button>
 
-                                                                    </td>
-                                                                </tr>
                                                             </tbody>
                                                         </table>
+                                                    </div>
+                                                    <div class="col-md-12" style="text-align: end;">
+                                                        <asp:Button ID="Button5" runat="server" Text="Update" class="btn btn-primary"
+                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="Button5_Click" OnClientClick="return validateUpdate5();"></asp:Button>
                                                     </div>
                                                 </div>
                                                 <div class="row" style="margin-top: 15px;">
@@ -1854,6 +1850,7 @@
                                                     <asp:HiddenField ID="HdnCategory" runat="server" />
                                                     <asp:HiddenField ID="hdnTotalExperience" runat="server" />
                                                     <asp:HiddenField ID="HdnDOBYear" runat="server" />
+                                                    <asp:HiddenField ID="HdnExistedTotalexperience" runat="server" />
                                                 </div>
                                             </div>
                                         </div>
