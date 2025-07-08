@@ -94,121 +94,130 @@ namespace CEIHaryana.Admin
         }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
-            if (e.CommandName == "Select" || e.CommandName == "Print")
+            try
             {
-                Control ctrl = e.CommandSource as Control;
-                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                Label lblID = (Label)row.FindControl("lblID");
-                Label LblInspectionType = (Label)row.FindControl("LblInspectionType");
-                Label lblApproval = (Label)row.FindControl("lblApproval");
-                Session["Approval"] = lblApproval.Text.Trim();
-                Label lblInstallationFor = (Label)row.FindControl("lblInstallationFor");
-                Label lblApproveDateLabel = row.FindControl("lblApproveDate") as Label;
-                string ApproveDate = lblApproveDateLabel.Text;
-                //Added By neeraj 22-May-2025
-                Label lblApproveCertificate = row.FindControl("lblApproveCertificate") as Label;
-                string ApproveCertificate = lblApproveCertificate.Text;
-                //
-                string id = lblID.Text;
-                //Session["InspectionId"] = id;
-                if (e.CommandName == "Select")
+                if (e.CommandName == "Select" || e.CommandName == "Print")
                 {
+                    Control ctrl = e.CommandSource as Control;
+                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                    Label lblID = (Label)row.FindControl("lblID");
+                    Label LblInspectionType = (Label)row.FindControl("LblInspectionType");
+                    Label lblApproval = (Label)row.FindControl("lblApproval");
+                    Session["Approval"] = lblApproval.Text.Trim();
+                    Label lblInstallationFor = (Label)row.FindControl("lblInstallationFor");
+                    Label lblApproveDateLabel = row.FindControl("lblApproveDate") as Label;
+                    string ApproveDate = lblApproveDateLabel.Text;
                     //Added By neeraj 22-May-2025
-                    if (lblInstallationFor.Text == "Cinema_Videos Talkies")
-                    {
-                        Session["InspectionId"] = id;
-                        Response.Redirect("/Admin/CinemaInspectionDetails.aspx", false);
-                    }
-                    else if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
-                    {
-                        Session["InspectionId"] = id;
-                        Response.Redirect("/Admin/LiftInspectionDetails.aspx", false);
-                    }
-                    else
-                    {
-                        Session["InspectionId"] = id;
-                        Response.Redirect("/Admin/InspectionDetails.aspx", false);
-                    }
+                    Label lblApproveCertificate = row.FindControl("lblApproveCertificate") as Label;
+                    string ApproveCertificate = lblApproveCertificate.Text;
                     //
-                }
-                else if (e.CommandName == "Print")
-                {
-                    if (LblInspectionType.Text == "New")
-                    {
-                        Session["InProcessInspectionId"] = id;
+                    string id = lblID.Text;
+                    //Session["InspectionId"] = id;
+                    if (e.CommandName == "Select")
+                    {                        
                         //Added By neeraj 22-May-2025
                         if (lblInstallationFor.Text == "Cinema_Videos Talkies")
                         {
-                            string fileName = lblApproveCertificate.Text;
-                            string folderPath = Server.MapPath(fileName);
-                            string filePath = Path.Combine(folderPath);
-                            if (System.IO.File.Exists(filePath))
-                            {
-                                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-                            }
-                            else
-                            {
-                                string errorMessage = "An error occurred: " + "Loading failed Please try Again later";
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
-                            }
-                        }//
-                       else  if (lblInstallationFor.Text != "Lift" && lblInstallationFor.Text != "Escalator" && lblInstallationFor.Text != "Lift/Escalator" && lblInstallationFor.Text != "MultiLift" && lblInstallationFor.Text != "MultiEscalator")
+                            Session["InspectionId"] = id;
+                            Response.Redirect("/Admin/CinemaInspectionDetails.aspx", false);
+                        }
+                        else if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
                         {
-                            if (ApproveDate != null && DateTime.TryParse(ApproveDate, out DateTime lblApproveDate))
+                            Session["InspectionId"] = id;
+                            Response.Redirect("/Admin/LiftInspectionDetails.aspx", false);
+                        }
+                        else
+                        {
+                            Session["InspectionId"] = id;
+                            Response.Redirect("/Admin/InspectionDetails.aspx", false);
+                        }                      
+                    }
+                    else if (e.CommandName == "Print")
+                    {                        
+                        if (LblInspectionType.Text == "New")
+                        {
+                            Session["InProcessInspectionId"] = id;
+                            //Added By neeraj 22-May-2025
+                            if (lblInstallationFor.Text == "Cinema_Videos Talkies")
                             {
-                                DateTime comparisonDate = DateTime.Parse("2024-11-16");
-
-                                if (lblApproveDate <= comparisonDate)
+                                string fileName = lblApproveCertificate.Text;
+                                string folderPath = Server.MapPath(fileName);
+                                string filePath = Path.Combine(folderPath);
+                               
+                                if (System.IO.File.Exists(filePath))
                                 {
-                                    Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                                    string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                                 }
                                 else
                                 {
-                                    Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                                    string errorMessage = "An error occurred: " + "Loading failed Please try Again later";
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
                                 }
-
-                            }
-                        }
-                        else if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
-                        {
-                            Session["InProcessInspectionId"] = id;
-                            Response.Redirect("/Admin/LiftApprovalData.aspx", false);
-                        }
-
-                    }
-                    else if (LblInspectionType.Text == "Periodic")
-                    { //Added By neeraj 22-May-2025
-                        //Session["InProcessInspectionId"] = id;
-                        if (lblInstallationFor.Text == "Cinema_Videos Talkies")
-                        {
-                            string fileName = lblApproveCertificate.Text;
-                            string folderPath = Server.MapPath(fileName);
-                            string filePath = Path.Combine(folderPath);
-                            if (System.IO.File.Exists(filePath))
+                            }//
+                            else if (lblInstallationFor.Text != "Lift" && lblInstallationFor.Text != "Escalator" && lblInstallationFor.Text != "Lift/Escalator" && lblInstallationFor.Text != "MultiLift" && lblInstallationFor.Text != "MultiEscalator")
                             {
-                                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-                            }
-                            else
-                            {
-                                string errorMessage = "An error occurred: " + "Loading failed Please try Again later";
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
-                            }
-                        }//
-                       else   if (lblInstallationFor.Text != "Lift" && lblInstallationFor.Text != "Escalator" && lblInstallationFor.Text != "Lift/Escalator" && lblInstallationFor.Text != "MultiLift" && lblInstallationFor.Text != "MultiEscalator")
-                        {
-                            Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
-                        }
-                        else if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
-                        {
-                            Response.Redirect("/Admin/LiftApprovalData.aspx", false);
-                        }
+                                if (ApproveDate != null && DateTime.TryParse(ApproveDate, out DateTime lblApproveDate))
+                                {
+                                    DateTime comparisonDate = DateTime.Parse("2024-11-16");
 
+                                    if (lblApproveDate <= comparisonDate)
+                                    {
+                                        Response.Redirect("/Print_Forms/PrintCertificate1.aspx", false);
+                                    }
+                                    else
+                                    {
+                                        Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                                    }
+
+                                }
+                            }
+                            else if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
+                            {
+                                Session["InProcessInspectionId"] = id;
+                                Response.Redirect("/Admin/LiftApprovalData.aspx", false);
+                            }
+
+                        }
+                        else if (LblInspectionType.Text == "Periodic")
+                        { //Added By neeraj 22-May-2025
+                          //Session["InProcessInspectionId"] = id;
+                            if (lblInstallationFor.Text == "Cinema_Videos Talkies")
+                            {
+                                string fileName = lblApproveCertificate.Text;
+                                string folderPath = Server.MapPath(fileName);
+                                string filePath = Path.Combine(folderPath);
+                                if (System.IO.File.Exists(filePath))
+                                {
+                                    string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                                }
+                                else
+                                {
+                                    string errorMessage = "An error occurred: " + "Loading failed Please try Again later";
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+                                }
+                            }//
+                            else if (lblInstallationFor.Text != "Lift" && lblInstallationFor.Text != "Escalator" && lblInstallationFor.Text != "Lift/Escalator" && lblInstallationFor.Text != "MultiLift" && lblInstallationFor.Text != "MultiEscalator")
+                            {
+                                Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
+                            }
+                            else if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
+                            {
+                                Response.Redirect("/Admin/LiftApprovalData.aspx", false);
+                            }
+
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "aleert", "alert('" + ex.Message + "');", true);
+            }
+
+            
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
