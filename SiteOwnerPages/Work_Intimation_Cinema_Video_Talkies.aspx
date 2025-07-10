@@ -500,7 +500,7 @@
                                                         <tr>
                                                             <th style="width: 70%;">Name of Cinema/Videos Talkies
                                                             </th>
-                                                            <th style="width: 20%;">No of Installations
+                                                            <th style="width: 20%;">No of Screens
                                                             </th>
                                                         </tr>
                                                     </thead>

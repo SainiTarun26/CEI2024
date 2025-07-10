@@ -166,11 +166,11 @@
                                                     CommandName="Select"><%#Eval("Apllication") %></asp:LinkButton>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:BoundField DataField="Typs" HeaderText="Installations Type">
+                                        <asp:BoundField DataField="Typs" HeaderText="Cinema/VideoTalkis Name">
                                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                             <ItemStyle HorizontalAlign="Left" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="NoOfInstallations" HeaderText="Installations">
+                                        <asp:BoundField DataField="NoOfInstallations" HeaderText="Installation No.">
                                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                             <ItemStyle HorizontalAlign="Left" />
                                         </asp:BoundField>

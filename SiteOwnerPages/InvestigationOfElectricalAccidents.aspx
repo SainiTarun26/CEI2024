@@ -727,7 +727,7 @@
                         </div>
                         <div class="col-md-4">
                             <label>
-                                Village /City / Town<samp style="color: red">*</samp>
+                                Village /City / Town Address With<samp style="color: red">*</samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtVillageCityTown" MaxLength="100" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtVillageCityTown" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
@@ -766,8 +766,8 @@
                                 <asp:ListItem Text="Line" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="Substation Transformer" Value="2"></asp:ListItem>
                                 <asp:ListItem Text="Generating Set" Value="3"></asp:ListItem>
-                                <asp:ListItem Text="Lift" Value="4"></asp:ListItem>
-                                <asp:ListItem Text="Escalator" Value="5"></asp:ListItem>
+                               <%-- <asp:ListItem Text="Lift" Value="4"></asp:ListItem>
+                                <asp:ListItem Text="Escalator" Value="5"></asp:ListItem>--%>
                                 <asp:ListItem Text="Switching Station" Value="6"></asp:ListItem>
                                 <asp:ListItem Text="Other" Value="7"></asp:ListItem>
                             </asp:DropDownList>
