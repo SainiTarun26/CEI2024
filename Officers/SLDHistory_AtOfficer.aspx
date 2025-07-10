@@ -12,7 +12,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+    <%--    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>--%>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
@@ -90,6 +91,83 @@
             background-color: #f9c7c7 !important;
         }
 
+
+        .dashboard-card {
+            border-radius: 10px;
+            padding: 20px;
+            height: 90px;
+            color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-right: 31px;
+        }
+
+        .dashboard-icon {
+            font-size: 28px;
+        }
+
+        .dashboard-text {
+            text-align: right;
+        }
+
+            .dashboard-text h3 {
+                margin: 0;
+                font-size: 26px;
+                font-weight: 700;
+                font-size: 30px !important;
+                font-weight: bold;
+            }
+
+            .dashboard-text p {
+                margin: 0;
+                font-weight: 600;
+                margin-top: 12px;
+                font-size: 13px !important;
+                color: white !important;
+            }
+
+        .content-wrapper {
+            padding: 42px 20px;
+        }
+
+        a:link, a:visited, a:active {
+            color: inherit !important;
+            text-decoration: none !important;
+        }
+
+        h3 {
+            color: white !important;
+        }
+
+        svg {
+            margin-right: 10px;
+            color: white !important;
+        }
+
+        a#ContentPlaceHolder1_LinkButton5:hover {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+            border-radius: 10px !important;
+        }
+
+        a#ContentPlaceHolder1_LinkButton2:hover {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+            border-radius: 10px !important;
+        }
+
+        a#ContentPlaceHolder1_LinkButton3:hover {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+            border-radius: 10px !important;
+        }
+
+        a#ContentPlaceHolder1_LinkButton4:hover {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+            border-radius: 10px !important;
+        }
+
+
+
         #ownerPopup {
             display: none;
             position: fixed;
@@ -127,10 +205,139 @@
         span#ContentPlaceHolder1_lblAgencyName {
             font-size: 13px !important;
         }
+
+        .modal-backdrop {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1040;
+        }
+
+        .fade {
+            width: 101% !important;
+            height: 100% !important;
+        }
+        th.headercolor {
+    text-align: justify;
+}
+        td {
+    text-align: justify;
+}
+        a:link, a:visited, a:active{
+            color: #007bff !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
+
+        <!-- Your provided card wrapper -->
+        <!-- Your provided card wrapper -->
+        <div class="card" style="background: #f9f9f9; margin-bottom: 10px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding: 10px 24px 10px 25px; border-radius: 10px;">
+
+            <div class="row g-3">
+
+                <!-- Card 1 -->
+                <div class="col-sm-6 col-lg-3">
+                    <asp:LinkButton runat="server" ID="LinkButton5"
+                        CommandName="All" CommandArgument="Submitted,Approved,InProcess,Returned,Rejected" OnCommand="DashboardCard_Command"
+                        Style="text-decoration: none; display: block;">
+                        <div class="dashboard-card" style="background-color: #6c4ebf; cursor: pointer;">
+                            <!-- File Plus Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white"
+                                class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+                                <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
+                                <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
+                            </svg>
+
+                            <div class="dashboard-text">
+                                <h3 style="font-size: 30px !important; font-weight: bold; color: white !important;">
+                                    <asp:Literal ID="litRequestAllCount" runat="server" />
+                                </h3>
+                                <p style="font-size: 13px !important; color: white !important;">
+                                    All Requests Received
+                                </p>
+                            </div>
+                        </div>
+                    </asp:LinkButton>
+                </div>
+
+
+                <!-- Card 2 -->
+                <div class="col-sm-6 col-lg-3">
+                    <asp:LinkButton runat="server" ID="LinkButton2"
+                        CommandName="All" CommandArgument="Approved,Returned,Rejected" OnCommand="DashboardCard_Command"
+                        Style="text-decoration: none; display: block;">
+                        <div class="dashboard-card" style="background-color: #64c395; color: black;">
+                            <!-- SVG Icon -->
+                           <svg xmlns="http://www.w3.org/2000/svg"
+     width="32" height="32"
+     viewBox="0 0 16 16"
+     fill="currentColor"
+     style="width: 32px !important; height: 32px !important;"
+     class="bi bi-file-earmark-check">
+  <path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+</svg>
+
+                            <div class="dashboard-text">
+                                <h3>
+                                    <asp:Literal ID="lit_App_Rej_Ret" runat="server" /></h3>
+                                <p style="font-size:13px;">Approved/Rejected/Returned</p>
+                            </div>
+                        </div>
+                    </asp:LinkButton>
+
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-sm-6 col-lg-3">
+                    <asp:LinkButton runat="server" ID="LinkButton3"
+                        CommandName="All" CommandArgument="InProcess" OnCommand="DashboardCard_Command"
+                        Style="text-decoration: none; display: block;">
+                        <div class="dashboard-card" style="background-color: #f3399e;">
+                            <!-- Journal Code Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-journal-medical" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v.634l.549-.317a.5.5 0 1 1 .5.866L9 6l.549.317a.5.5 0 1 1-.5.866L8.5 6.866V7.5a.5.5 0 0 1-1 0v-.634l-.549.317a.5.5 0 1 1-.5-.866L7 6l-.549-.317a.5.5 0 0 1 .5-.866l.549.317V4.5A.5.5 0 0 1 8 4M5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5" />
+                                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2" />
+                                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z" />
+                            </svg>
+                            <div class="dashboard-text">
+                                <h3>
+                                    <asp:Literal ID="LitInprocess" runat="server" /></h3>
+                                <p style="font-size:13px;">In Process</p>
+                            </div>
+                        </div>
+                    </asp:LinkButton>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-sm-6 col-lg-3">
+                    <asp:LinkButton runat="server" ID="LinkButton4"
+                        CommandName="All" CommandArgument="Submitted" OnCommand="DashboardCard_Command"
+                        Style="text-decoration: none; display: block;">
+                        <div class="dashboard-card" style="background-color: #fd8160;">
+                            <!-- Folder Symlink Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-folder-symlink-fill" viewBox="0 0 16 16">
+                                <path d="M13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2l.04.87a2 2 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3M2.19 3q-.362.002-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672a1 1 0 0 1 .707.293L7.586 3zm9.608 5.271-3.182 1.97c-.27.166-.616-.036-.616-.372V9.1s-2.571-.3-4 2.4c.571-4.8 3.143-4.8 4-4.8v-.769c0-.336.346-.538.616-.371l3.182 1.969c.27.166.27.576 0 .742" />
+                            </svg>
+                            <div class="dashboard-text">
+                                <h3>
+                                    <asp:Literal ID="LitNew" runat="server" /></h3>
+                                <p style="font-size:13px;">New Application</p>
+                            </div>
+                        </div>
+                    </asp:LinkButton>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
                 <div class="row ">
@@ -155,7 +362,8 @@
                         <div class="row" style="margin-bottom: -30px;">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="search" class="col-md-2 col-form-label" style="margin-top: 3px; padding: 0px;">Search:</label>
+                                    <label for="search" class="col-md-2 col-form-label" style="margin-top: 3px; padding: 0px;">
+                                        Search:</label>
                                     <div class="col-md-6" style="margin-left: -35px;">
                                         <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px"></asp:TextBox><br />
                                     </div>
@@ -186,7 +394,7 @@
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
 
-                            <asp:TemplateField HeaderText="Request Letter OwnerName" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                            <asp:TemplateField HeaderText="OwnerName" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemTemplate>
                                     <asp:LinkButton
@@ -203,11 +411,16 @@
                                 <HeaderStyle HorizontalAlign="Left" />
                             </asp:TemplateField>
 
+
                             <asp:BoundField DataField="SiteOwnerAddress" HeaderText="Address">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="break-text-10" />
                             </asp:BoundField>
                             <asp:BoundField DataField="Status_type" HeaderText="Status">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="PendingAt" HeaderText="PendingAt">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
@@ -240,7 +453,22 @@
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
-
+                            <asp:BoundField DataField="AcceptedOrReturnDate" HeaderText="Accepted/Returned Date">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Rejection" HeaderText="ReturnOrRejection Reason">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" CssClass="break-text-10" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ApprovedOrRejectedDate" HeaderText="Approved/Rejected Date">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Remarks" HeaderText="Remarks">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -252,6 +480,7 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
+
                     <div class="modal fade" id="ownerModal" tabindex="-1" role="dialog" aria-labelledby="ownerModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -286,7 +515,7 @@
                                         <div class="col-md-12">
                                             <label>
                                                 Address
-                     
+                                      
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -310,7 +539,7 @@
                                         <div class="col-md-6">
                                             <label>
                                                 Applicant Type
-                     
+                                      
                                             </label>
                                             <asp:TextBox class="form-control" ID="txtApplicant" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
@@ -334,16 +563,15 @@
                         </div>
                     </div>
 
+
                 </div>
             </div>
         </div>
 
     </div>
+
     <footer class="footer">
     </footer>
-    <script>
-        new DataTable('#example');
-    </script>
 
     <script src="/Assets/js/js/vendor.bundle.base.js"></script>
     <script src="/Assets/js/chart.js/Chart.min.js"></script>
@@ -359,6 +587,9 @@
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
 
 
+    <script>
+        new DataTable('#example');
+    </script>
     <script type="text/javascript">
         function Search_Gridview(strKey) {
             var strData = strKey.value.toLowerCase().split(" ");
@@ -386,6 +617,8 @@
             }
         }
     </script>
+
+
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function () {
             const elements = document.querySelectorAll('.break-text-10');
@@ -422,7 +655,6 @@
             });
         });
 
-
         function showPopup(content) {
             var popup = document.getElementById("ownerPopup");
             var popupContent = document.getElementById("popupContent");
@@ -434,4 +666,5 @@
             document.getElementById("ownerPopup").style.display = "none";
         }
     </script>
+
 </asp:Content>

@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 
 namespace CEIHaryana.Officers
 {
@@ -21,22 +23,24 @@ namespace CEIHaryana.Officers
             {
                 if (Convert.ToString(Session["StaffID"]) != null && Convert.ToString(Session["StaffID"]) != string.Empty)
                 {
+                    GetTabsCountForSldHistory(Session["StaffID"].ToString());
                     BindGrid();
                 }
                 else
                 {
                     Session["StaffID"] = "";
-                    Response.Redirect("/AdminLogout.aspx", false);
+                    Response.Redirect("/OfficerLogout.aspx", false);
                 }
             }
 
         }
         public void BindGrid(string searchText = null)
         {
+            ViewState["StatusFilter"] = null;
             string LoginID = string.Empty;
             LoginID = Session["StaffID"].ToString();
             DataTable ds = new DataTable();
-            ds = CEI.SldHistoryForOfficer(LoginID, searchText);
+            ds = CEI.SldHistoryAtOfficer(LoginID, searchText);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -50,6 +54,7 @@ namespace CEIHaryana.Officers
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             ds.Dispose();
+
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -127,28 +132,93 @@ namespace CEIHaryana.Officers
             try
             {
                 GridView1.PageIndex = e.NewPageIndex;
-                BindGrid();
+                if (ViewState["StatusFilter"] != null)
+                {
+                    string statusFilter = ViewState["StatusFilter"].ToString();
+                    BindFilteredGrid(statusFilter); // Use filtered data
+                }
+                else
+                {
+                    BindGrid(); // Default unfiltered method
+                }
             }
             catch { }
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            string searchText = txtSearch.Text.Trim();
-            if (!string.IsNullOrEmpty(searchText))
+            if (Convert.ToString(Session["StaffID"]) != null && Convert.ToString(Session["StaffID"]) != string.Empty)
             {
-                BindGrid(searchText);
+                string searchText = txtSearch.Text.Trim();
+                if (!string.IsNullOrEmpty(searchText))
+                {
+                    BindGrid(searchText);
+                }
+                else
+                {
+                    BindGrid();
+                }
             }
             else
             {
-                BindGrid();
+                Session["StaffID"] = "";
+                Response.Redirect("/OfficerLogout.aspx", false);
             }
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
-            BindGrid();
+            if (Convert.ToString(Session["StaffID"]) != null && Convert.ToString(Session["StaffID"]) != string.Empty)
+            {
+                BindGrid();
+            }
+            else
+            {
+                Session["StaffID"] = "";
+                Response.Redirect("/OfficerLogout.aspx", false);
+            }
         }
+
+        protected void DashboardCard_Command(object sender, CommandEventArgs e)
+        {
+            if (Convert.ToString(Session["StaffID"]) != null && Convert.ToString(Session["StaffID"]) != string.Empty)
+            {
+                if (e.CommandName == "All")
+                {
+                    txtSearch.Text = "";
+                    string statusFilter = e.CommandArgument.ToString();
+                    ViewState["StatusFilter"] = statusFilter;
+                    BindFilteredGrid(statusFilter);
+                }
+            }
+            else
+            {
+                Session["StaffID"] = "";
+                Response.Redirect("/OfficerLogout.aspx", false);
+            }
+        }
+
+        public void BindFilteredGrid(string statusFilter)
+        {
+            string LoginID = string.Empty;
+            LoginID = Session["StaffID"].ToString();
+            DataTable ds = new DataTable();
+            ds = CEI.SldHistoryForOfficer_WithFilterTabs(LoginID, statusFilter);
+            if (ds.Rows.Count > 0)
+            {
+                GridView1.DataSource = ds;
+                GridView1.DataBind();
+            }
+            else
+            {
+                GridView1.DataSource = null;
+                GridView1.DataBind();
+                string script = "alert(\"No Record Found\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+            ds.Dispose();
+        }
+
         protected void GetPopUpDetails(string sldId)
         {
             try
@@ -190,10 +260,24 @@ namespace CEIHaryana.Officers
         protected void lnkOwnerName_Command(object sender, CommandEventArgs e)
         {
             string sldId = e.CommandArgument.ToString();
-            // Fetch owner details
             GetPopUpDetails(sldId);
-            // Show the modal using Bootstrap (after data is filled)
             ScriptManager.RegisterStartupScript(this, GetType(), "ShowOwnerModal", "$('#ownerModal').modal('show');", true);
+        }
+
+        private void GetTabsCountForSldHistory(string LoginId)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                ds = CEI.GetData_For_Sldhistory_TabCount_Officer(LoginId);
+                litRequestAllCount.Text = ds.Tables[0].Rows[0]["TotalRequest"].ToString();
+                lit_App_Rej_Ret.Text = ds.Tables[0].Rows[0]["ActionTaken"].ToString();
+                LitInprocess.Text = ds.Tables[0].Rows[0]["InProcess"].ToString();
+                LitNew.Text = ds.Tables[0].Rows[0]["NewApplication"].ToString();
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
     }

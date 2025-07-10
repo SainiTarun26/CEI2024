@@ -12852,7 +12852,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetChallanDetails", Id, Category);
         }
         #endregion
-        #region Aslam transfer request
+        #region Aslam transfer request sld
 
         public DataSet SldTransferGridDataList_Admin(string selectedStaffUserID, string searchText)
         {
@@ -13018,6 +13018,39 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SdlHistoryForOfficer", Id, String.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
+
+        //10July
+        public DataTable SldHistoryForCei_WithFilterTabs(string Id, string searchText = null)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ApproveSdlHistoryForAdmin_WithFilterTabs", Id, String.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+
+        public DataSet GetData_For_Sldhistory_TabCount_Admin(string LoginId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSldHistory_TabsCount_ForAdmin", LoginId);
+        }
+
+
+        public DataTable SldHistoryAtOfficer(string Id, string searchText = null)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SldHistoryForOfficer", Id, String.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+
+
+        public DataTable SldHistoryForOfficer_WithFilterTabs(string Id, string searchText = null)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_SldHistoryForOfficer_WithFilterTabs", Id, String.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+
+        public DataSet GetData_For_Sldhistory_TabCount_Officer(string LoginId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSldHistory_TabsCount_ForOfficer", LoginId);
+        }
+
+
+
+
+
 
         #endregion
         #region gurmeet attachdeattach 30-June-2025
