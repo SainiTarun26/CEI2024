@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Print_New_Registration_Information_Contractor.aspx.cs" Inherits="CEIHaryana.Print_Forms.Print_New_Registration_Information_Contractor" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -452,7 +453,7 @@
             margin: 0px;
             border: solid 1px black;
             PADDING: 10PX;
-            padding-right:9px !important;
+            padding-right: 9px !important;
         }
 
         input#InstallationType {
@@ -602,6 +603,10 @@
                 padding: 8px 0 8px 20px; /* Add space for numbers */
                 border-bottom: 1px dotted black;
             }
+
+        .uppercase-label {
+            text-transform: uppercase;
+        }
     </style>
     <script type="text/javascript">
         function printDiv(printableDiv) {
@@ -686,23 +691,23 @@
                                 <div class="col-9">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>Applying for:    </text>
-                                        <asp:Label ID="ApplyingFor" runat="server" Style="font-weight: 700; width: 83%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="ApplyingFor" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 83%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                         <br />
 
                                         <text>Name of Applicant:    </text>
-                                        <asp:Label ID="Name" runat="server" Style="font-weight: 700; width: 76%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="Name" runat="server" CssClass="uppercase-label" Style="font-weight: 700; width: 76%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                         <br />
                                         <text>Father's Name:    </text>
-                                        <asp:Label ID="FatherName" runat="server" Style="font-weight: 700; width: 81%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="FatherName" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 81%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                         <br />
                                         <text>Gender:    </text>
-                                        <asp:Label ID="gender" runat="server" Style="font-weight: 700; width: 40%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="gender" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 40%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                         <text>Nationality:</text>
-                                        <asp:Label ID="Nationailty" runat="server" Style="font-weight: 700; width: 34%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="Nationailty" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 34%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                         <br />
                                         <text>Date of Birth:</text>
@@ -710,15 +715,15 @@
                                         </asp:Label>
 
                                         <text>Years:</text>
-                                        <asp:Label ID="Age" runat="server" Style="font-weight: 700; width:52%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="Age" runat="server" Style="font-weight: 700; width: 52%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
-                                                                            </h6>
+                                    </h6>
 
                                 </div>
                                 <div class="col-3">
-                                        <!-- Placeholder for image -->
-                                         <asp:Image ID="myimg" runat="server" Width="250" Height="90" Style="bottom: 140px;" />
-                                  
+                                    <!-- Placeholder for image -->
+                                    <asp:Image ID="myimg" runat="server" Width="250" Height="90" Style="bottom: 140px;" />
+
                                 </div>
 
 
@@ -728,21 +733,21 @@
                                 <div class="col-12">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>Permanent Address:</text>
-                                        <asp:Label ID="Label5" runat="server" Style="font-weight: 700; width: 82%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="Label5" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 82%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
                                 <div class="col-12">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>Communication Address:</text>
-                                        <asp:Label ID="CommunicationAddress" runat="server" Style="font-weight: 700; width: 77%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="CommunicationAddress" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 77%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
                                 <div class="col-5" style="padding-right: 0px !important;">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>Mobile No.:</text>
-                                        <asp:Label ID="phone" runat="server" Style="font-weight: 700; width: 74%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="phone" runat="server" CssClass="uppercase-label" Style="font-weight: 700; width: 74%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
@@ -761,15 +766,16 @@
                                     </h6>
                                 </div>
                             </div>
-                          
-                            
 
 
 
-                            
+
+
+
                             <div class="row">
                                 <div class="col-12">
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 20PX; font-weight: 600; line-height: 2.7;text-decoration:underline;">Director Details:
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 20PX; font-weight: 600; line-height: 2.7; text-decoration: underline;">Director Details:
+
                                     </h6>
 
                                 </div>
@@ -783,247 +789,251 @@
                                 <div class="col-8" style="padding-right: 0px !important;">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>Registered office in (Haryana/UT Chandigarh/ NCT Delhi):</text>
-                                        <asp:Label ID="lblRegisteroffice" runat="server" Style="font-weight: 700; width: 20%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="lblRegisteroffice" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 20%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
                                 <div class="col-6" style="padding-right: 0px !important;">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>Style of Company:</text>
-                                        <asp:Label ID="lblStylecompany" runat="server" Style="font-weight: 700; width:65%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="lblStylecompany" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 65%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
-                                 <div class="col-6" style="padding-right: 0px !important;">
+                                <div class="col-6" style="padding-right: 0px !important;">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>Whether the company have Partner/Director:</text>
-                                        <asp:Label ID="lblweathercompnypartner" runat="server" Style="font-weight: 700; width: 14%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="lblweathercompnypartner" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 14%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
-                                
-                                </div>
+
+                            </div>
 
 
                             <div class="row">
                                 <div class="col-12">
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 20PX; font-weight: 600; line-height: 2.7;text-decoration:underline;">Applicant Details:
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 20PX; font-weight: 600; line-height: 2.7; text-decoration: underline;">Applicant Details:
+
                                     </h6>
 
                                 </div>
                                 <div class="col-12" style="padding-right: 0px !important;">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>Full Name of Agent/Manager:</text>
-                                        <asp:Label ID="lblAgentName" runat="server" Style="font-weight: 700; width: 70%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="lblAgentName" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 70%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
-                                 <div class="col-12" style="padding-right: 0px !important;">
+                                <div class="col-12" style="padding-right: 0px !important;">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>
-                                    Is Applicant a manufacturing firm or production unit:</text>
-                                        <asp:Label ID="lblManufacturing" runat="server" Style="font-weight: 700; width:50%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                            Is Applicant a manufacturing firm or production unit:</text>
+                                        <asp:Label ID="lblManufacturing" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 50%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
-                               <div class="col-12" style="padding-right: 0px !important;" id="divLicensePreviouslyGranted" runat="server" visible="true">
+                                <div class="col-12" style="padding-right: 0px !important;" id="divLicensePreviouslyGranted" runat="server" visible="true">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>
-                                        Is Contractor License Previously Granted with same name  :</text>
-                                        <asp:Label ID="lblLicencePrivouslySameName" runat="server" Style="font-weight: 700; width:46%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                            Is Contractor License Previously Granted with same name  :</text>
+                                        <asp:Label ID="lblLicencePrivouslySameName" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 46%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
-                              <div class="col-6" style="padding-right: 0px !important;">
+                                <div class="col-6" style="padding-right: 0px !important;">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>
-                        Enter License No.:</text>
-                                        <asp:Label ID="lblLicenceNo" runat="server" Style="font-weight: 700; width:65%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                            Enter License No.:</text>
+                                        <asp:Label ID="lblLicenceNo" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 65%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
-                               <div class="col-6" style="padding-right: 0px !important;" id="divLicence" runat="server" visible="false">
+                                <div class="col-6" style="padding-right: 0px !important;" id="divLicence" runat="server" visible="false">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>
-   Date of Issue:</text>
-                                        <asp:Label ID="lblDateOfIssue" runat="server" Style="font-weight: 700; width:66%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                            Date of Issue:</text>
+                                        <asp:Label ID="lblDateOfIssue" runat="server" Style="font-weight: 700; width: 66%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
-                               <div class="col-12" style="padding-right: 0px !important;">
+                                <div class="col-12" style="padding-right: 0px !important;">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>
-   Is Contractor License Previously Granted with same name from other state:</text>
-                                        <asp:Label ID="lblCOntractorLicencesamename_otherstate" runat="server" Style="font-weight: 700; width:32%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                            Is Contractor License Previously Granted with same name from other state:</text>
+                                        <asp:Label ID="lblCOntractorLicencesamename_otherstate" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 32%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
-                               <div class="col-6" style="padding-right: 0px !important;" id="divIssueAuthority" runat="server" visible="false">
+                                <div class="col-6" style="padding-right: 0px !important;" id="divIssueAuthority" runat="server" visible="false">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>
-   Name of Issuing Authority:</text>
-                                        <asp:Label ID="lblIssuingAuthority" runat="server" Style="font-weight: 700; width:50%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                            Name of Issuing Authority:</text>
+                                        <asp:Label ID="lblIssuingAuthority" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 50%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
-                              <div class="col-6" style="padding-right: 0px !important;">
+                                <div class="col-6" style="padding-right: 0px !important;">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>
-   Date of Issue:</text>
-                                        <asp:Label ID="lablDateOfIssue" runat="server" Style="font-weight: 700; width:66%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                            Date of Issue:</text>
+                                        <asp:Label ID="lablDateOfIssue" runat="server" Style="font-weight: 700; width: 66%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
-                              
+
                                 <div class="col-6" style="padding-right: 0px !important;" id="divLicenseExpiry" runat="server" visible="false">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>
-   Date of Licence Expiry:</text>
-                                        <asp:Label ID="lblDateOfExpiry" runat="server" Style="font-weight: 700; width:50%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                            Date of Licence Expiry:</text>
+                                        <asp:Label ID="lblDateOfExpiry" runat="server" Style="font-weight: 700; width: 50%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
-                               <div class="col-12" style="padding-right: 0px !important;">
+                                <div class="col-12" style="padding-right: 0px !important;">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>
-  Details of work permit to be undertaken:</text>
-                                        <asp:Label ID="lblWorkPermitUndertaken" runat="server" Style="font-weight: 700; width:94%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                            Details of work permit to be undertaken:</text>
+                                        <asp:Label ID="lblWorkPermitUndertaken" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 94%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
-                                
-                                </div>
+
+                            </div>
 
 
-                             <div class="row">
+                            <div class="row">
                                 <div class="col-12">
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 20PX; font-weight: 600; line-height: 2.7;text-decoration:underline;">Partners/Directors Details:
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 20PX; font-weight: 600; line-height: 2.7; text-decoration: underline;">Partners/Directors Details:
+
                                     </h6>
 
                                 </div>
-                                 <div class="col-md-12">
-                                     <%-- Add gridview here --%>
- <div class="row" id="Partner_Div" runat="server" visible="false" style="margin-top: 40px;">
-                                                     
-     <div class="col-12">
-         <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="grdview_Partners" runat="server" Width="100%"
-                                                            AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
-                                                            <PagerStyle CssClass="pagination-ys" />
-                                                            <Columns>
-                                                                <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
-                                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                                    <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="tdpadding" />
-                                                                </asp:BoundField>
-                                                                <asp:BoundField DataField="Name" HeaderText="Name">
-                                                                    <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                                                    <ItemStyle HorizontalAlign="center" Width="12%" CssClass="tdpadding" />
-                                                                </asp:BoundField>
-                                                                <asp:BoundField DataField="State" HeaderText="State">
-                                                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                    <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
-                                                                </asp:BoundField>
-                                                                <asp:BoundField DataField="District" HeaderText="District">
-                                                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                    <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
-                                                                </asp:BoundField>
-                                                                <asp:BoundField DataField="PinCode" HeaderText="PinCode">
-                                                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                    <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
-                                                                </asp:BoundField>
-                                                                <asp:BoundField DataField="Address" HeaderText="Address">
-                                                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                    <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
-                                                                </asp:BoundField>
-                                                            </Columns>
-                                                            <FooterStyle BackColor="White" ForeColor="#000066" />
-                                                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                                            <RowStyle ForeColor="#000066" CssClass="gridViewRow" />
-                                                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                                            <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                                        </asp:GridView>
-         </div>
+                                <div class="col-md-12">
+                                    <%-- Add gridview here --%>
+                                    <div class="row" id="Partner_Div" runat="server" visible="false" style="margin-top: 40px;">
+
+                                        <div class="col-12">
+                                            <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="grdview_Partners" runat="server" Width="100%"
+                                                AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                                                <PagerStyle CssClass="pagination-ys" />
+                                                <Columns>
+                                                    <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
+                                                        <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="tdpadding" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="Name" HeaderText="Name">
+                                                        <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" Width="12%" CssClass="tdpadding" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="State" HeaderText="State">
+                                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="District" HeaderText="District">
+                                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="PinCode" HeaderText="PinCode">
+                                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="Address" HeaderText="Address">
+                                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
+                                                    </asp:BoundField>
+                                                </Columns>
+                                                <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                <RowStyle ForeColor="#000066" CssClass="gridViewRow" />
+                                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                            </asp:GridView>
+                                        </div>
 
 
-                                                    </div>
-                                 </div>
-                                 </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
-                             <div class="row">
+                            <div class="row">
                                 <div class="col-12">
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 20PX; font-weight: 600; line-height: 2.7;text-decoration:underline;">Other Details:
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 20PX; font-weight: 600; line-height: 2.7; text-decoration: underline;">Other Details:
+
                                     </h6>
 
                                 </div>
-                                  <div class="col-12" style="padding-right: 0px !important;">
+                                <div class="col-12" style="padding-right: 0px !important;">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>Whether E library/library as per ANNEXURE-2 Available:</text>
-                                        <asp:Label ID="lblLibraryAnnexure" runat="server" Style="font-weight: 700; width: 46%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="lblLibraryAnnexure" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 46%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
-                                 <div class="col-12" style="padding-right: 0px !important;">
+                                <div class="col-12" style="padding-right: 0px !important;">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>Do company/firm have any penalties or punishments? :</text>
-                                        <asp:Label ID="lblAnyPenality" runat="server" Style="font-weight: 700; width: 46%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="lblAnyPenality" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 46%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
-                                  <div class="col-12" style="padding-right: 0px !important;" id="ShowPenelity" runat="server" visible="false">
+                                <div class="col-12" style="padding-right: 0px !important;" id="ShowPenelity" runat="server" visible="false">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>penalties or punishments:</text>
                                         <asp:Label ID="lblPenality" runat="server" Style="font-weight: 700; width: 71%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
-                                 </div>
+                            </div>
 
-                             <div class="row">
+                            <div class="row">
                                 <div class="col-12">
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 20PX; font-weight: 600; line-height: 2.7;text-decoration:underline;">Employees Details:</h6>                                           <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="grdView_ContractorTeam" runat="server" Width="100%"
-                                                            AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
-                                                            <PagerStyle CssClass="pagination-ys" />
-                                                            <Columns>
-                                                                <asp:BoundField DataField="Name" HeaderText="Name">
-                                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                                    <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="tdpadding" />
-                                                                </asp:BoundField>
-                                                                <asp:BoundField DataField="TypeOfEmployee" HeaderText="TypeOfEmployee">
-                                                                    <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                                                    <ItemStyle HorizontalAlign="center" Width="12%" CssClass="tdpadding" />
-                                                                </asp:BoundField>
-                                                                <asp:BoundField DataField="LicenseNo" HeaderText="LicenseNo">
-                                                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                    <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
-                                                                </asp:BoundField>
-                                                                <asp:BoundField DataField="IssueDate" HeaderText="LicenseIssueDate">
-                                                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                    <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
-                                                                </asp:BoundField>
-                                                                <asp:BoundField DataField="ValidityDate" HeaderText="LicenseValidity">
-                                                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                                                    <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
-                                                                </asp:BoundField>
-                                                            </Columns>
-                                                            <FooterStyle BackColor="White" ForeColor="#000066" />
-                                                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                                            <RowStyle ForeColor="#000066" CssClass="gridViewRow" />
-                                                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                                            <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                                        </asp:GridView>
-                                    
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 20PX; font-weight: 600; line-height: 2.7; text-decoration: underline;">Employees Details:</h6>
+                                    <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="grdView_ContractorTeam" runat="server" Width="100%"
+                                        AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                                        <PagerStyle CssClass="pagination-ys" />
+                                        <Columns>
+                                            <asp:BoundField DataField="Name" HeaderText="Name">
+                                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="tdpadding" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="TypeOfEmployee" HeaderText="TypeOfEmployee">
+                                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="center" Width="12%" CssClass="tdpadding" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="LicenseNo" HeaderText="LicenseNo">
+                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="IssueDate" HeaderText="LicenseIssueDate">
+                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="ValidityDate" HeaderText="LicenseValidity">
+                                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
+                                            </asp:BoundField>
+                                        </Columns>
+                                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                        <RowStyle ForeColor="#000066" CssClass="gridViewRow" />
+                                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                    </asp:GridView>
+
 
                                 </div>
-                                 <div class="col-md-12">
-                                   <asp:GridView ID="grd_Documemnts" OnRowDataBound="grd_Documemnts_RowDataBound" autopostback="true" CssClass="table table-bordered table-striped table-responsive" runat="server"  AutoGenerateColumns="false">
+                                <div class="col-md-12">
+                                    <asp:GridView ID="grd_Documemnts" OnRowDataBound="grd_Documemnts_RowDataBound" autopostback="true" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false">
                                         <HeaderStyle BackColor="#B7E2F0" />
                                         <Columns>
                                             <asp:TemplateField HeaderText="SNo">
@@ -1037,13 +1047,13 @@
                                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                                             </asp:BoundField>
-                                          
+
                                         </Columns>
                                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                                     </asp:GridView>
 
-                                 </div>
-                                 </div>
+                                </div>
+                            </div>
 
                             <br />
 
@@ -1062,11 +1072,6 @@ stage
 
                             <div class="row">
                                 <div class="col-3" style="margin-top: auto !important;">
-
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 700;">Place:
-                                        <asp:Label ID="lblApprovedDate" runat="server" Text="29-Aug-2025" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 700;">Dated:
-     <asp:Label ID="Label12" runat="server" Text="29-Aug-2025" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
                                 </div>
                                 <div class="col-9" style="text-align: end">
 
@@ -1080,7 +1085,8 @@ stage
                             <br />
                             <div class="row">
                                 <div class="col-12">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 18PX; text-align: Justify;">Photocopies of documents to be forwarded alongwith the application:-</h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 18PX; text-align: Justify;">Photocopies of documents to be forwarded alongwith the application:-
+                                    </h6>
 
                                 </div>
                                 <div class="col-12" style="padding-left: 30px;">

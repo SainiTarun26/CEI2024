@@ -114,24 +114,6 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label Age;
 
         /// <summary>
-        /// Label7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label7;
-
-        /// <summary>
-        /// Label8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
-
-        /// <summary>
         /// imgPhoto control.
         /// </summary>
         /// <remarks>
@@ -141,13 +123,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Image imgPhoto;
 
         /// <summary>
-        /// Label5 control.
+        /// PermanentAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::System.Web.UI.WebControls.Label PermanentAddress;
 
         /// <summary>
         /// CommunicationAddress control.
@@ -186,13 +168,22 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label Aadhar;
 
         /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+
+        /// <summary>
         /// University control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox University;
+        protected global::System.Web.UI.WebControls.Label University;
 
         /// <summary>
         /// Passingyear control.
@@ -201,7 +192,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Passingyear;
+        protected global::System.Web.UI.WebControls.Label Passingyear;
 
         /// <summary>
         /// marksObtained control.
@@ -210,7 +201,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox marksObtained;
+        protected global::System.Web.UI.WebControls.Label marksObtained;
 
         /// <summary>
         /// marksmax control.
@@ -219,7 +210,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox marksmax;
+        protected global::System.Web.UI.WebControls.Label marksmax;
 
         /// <summary>
         /// prcntg control.
@@ -228,7 +219,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox prcntg;
+        protected global::System.Web.UI.WebControls.Label prcntg;
 
         /// <summary>
         /// Tr_Qualification2 control.
@@ -246,7 +237,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Exam1;
+        protected global::System.Web.UI.WebControls.Label Exam1;
 
         /// <summary>
         /// University1 control.
@@ -255,7 +246,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox University1;
+        protected global::System.Web.UI.WebControls.Label University1;
 
         /// <summary>
         /// Passingyear1 control.
@@ -264,7 +255,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Passingyear1;
+        protected global::System.Web.UI.WebControls.Label Passingyear1;
 
         /// <summary>
         /// marksObtained1 control.
@@ -273,7 +264,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox marksObtained1;
+        protected global::System.Web.UI.WebControls.Label marksObtained1;
 
         /// <summary>
         /// marksmax1 control.
@@ -282,7 +273,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox marksmax1;
+        protected global::System.Web.UI.WebControls.Label marksmax1;
 
         /// <summary>
         /// prcntg1 control.
@@ -291,7 +282,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox prcntg1;
+        protected global::System.Web.UI.WebControls.Label prcntg1;
 
         /// <summary>
         /// Tr_Qualification3 control.
@@ -309,7 +300,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Exam2;
+        protected global::System.Web.UI.WebControls.Label Exam2;
 
         /// <summary>
         /// University2 control.
@@ -318,7 +309,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox University2;
+        protected global::System.Web.UI.WebControls.Label University2;
 
         /// <summary>
         /// Passingyear2 control.
@@ -327,7 +318,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Passingyear2;
+        protected global::System.Web.UI.WebControls.Label Passingyear2;
 
         /// <summary>
         /// marksObtained2 control.
@@ -336,7 +327,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox marksObtained2;
+        protected global::System.Web.UI.WebControls.Label marksObtained2;
 
         /// <summary>
         /// marksmax2 control.
@@ -345,7 +336,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox marksmax2;
+        protected global::System.Web.UI.WebControls.Label marksmax2;
 
         /// <summary>
         /// prcntg2 control.
@@ -354,7 +345,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox prcntg2;
+        protected global::System.Web.UI.WebControls.Label prcntg2;
 
         /// <summary>
         /// DdlDegree control.
@@ -372,7 +363,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Exam3;
+        protected global::System.Web.UI.WebControls.Label Exam3;
 
         /// <summary>
         /// University3 control.
@@ -381,7 +372,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox University3;
+        protected global::System.Web.UI.WebControls.Label University3;
 
         /// <summary>
         /// Passingyear3 control.
@@ -390,7 +381,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Passingyear3;
+        protected global::System.Web.UI.WebControls.Label Passingyear3;
 
         /// <summary>
         /// marksObtained3 control.
@@ -399,7 +390,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox marksObtained3;
+        protected global::System.Web.UI.WebControls.Label marksObtained3;
 
         /// <summary>
         /// marksmax3 control.
@@ -408,7 +399,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox marksmax3;
+        protected global::System.Web.UI.WebControls.Label marksmax3;
 
         /// <summary>
         /// prcntg3 control.
@@ -417,7 +408,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox prcntg3;
+        protected global::System.Web.UI.WebControls.Label prcntg3;
 
         /// <summary>
         /// DdlMasters control.
@@ -435,7 +426,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Exam4;
+        protected global::System.Web.UI.WebControls.Label Exam4;
 
         /// <summary>
         /// University4 control.
@@ -444,7 +435,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox University4;
+        protected global::System.Web.UI.WebControls.Label University4;
 
         /// <summary>
         /// Passingyear4 control.
@@ -453,7 +444,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Passingyear4;
+        protected global::System.Web.UI.WebControls.Label Passingyear4;
 
         /// <summary>
         /// marksObtained4 control.
@@ -462,7 +453,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox marksObtained4;
+        protected global::System.Web.UI.WebControls.Label marksObtained4;
 
         /// <summary>
         /// marksmax4 control.
@@ -471,7 +462,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox marksmax4;
+        protected global::System.Web.UI.WebControls.Label marksmax4;
 
         /// <summary>
         /// prcntg4 control.
@@ -480,7 +471,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox prcntg4;
+        protected global::System.Web.UI.WebControls.Label prcntg4;
 
         /// <summary>
         /// Category control.
@@ -489,7 +480,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Category;
+        protected global::System.Web.UI.WebControls.Label Category;
 
         /// <summary>
         /// PermitNo control.
@@ -498,7 +489,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PermitNo;
+        protected global::System.Web.UI.WebControls.Label PermitNo;
 
         /// <summary>
         /// IssuingAuthority control.
@@ -507,7 +498,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox IssuingAuthority;
+        protected global::System.Web.UI.WebControls.Label IssuingAuthority;
 
         /// <summary>
         /// IssuingDate control.
@@ -516,7 +507,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox IssuingDate;
+        protected global::System.Web.UI.WebControls.Label IssuingDate;
 
         /// <summary>
         /// ExpiryDate control.
@@ -525,7 +516,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ExpiryDate;
+        protected global::System.Web.UI.WebControls.Label ExpiryDate;
 
         /// <summary>
         /// RadioButtonList3 control.
@@ -552,7 +543,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PermanentEmployerName;
+        protected global::System.Web.UI.WebControls.Label PermanentEmployerName;
 
         /// <summary>
         /// PermanentDescription control.
@@ -561,7 +552,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PermanentDescription;
+        protected global::System.Web.UI.WebControls.Label PermanentDescription;
 
         /// <summary>
         /// PermanentFrom control.
@@ -570,7 +561,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PermanentFrom;
+        protected global::System.Web.UI.WebControls.Label PermanentFrom;
 
         /// <summary>
         /// PermanentTo control.
@@ -579,7 +570,70 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PermanentTo;
+        protected global::System.Web.UI.WebControls.Label PermanentTo;
+
+        /// <summary>
+        /// TrApprenticeship control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrApprenticeship;
+
+        /// <summary>
+        /// txtApprenticeship control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtApprenticeship;
+
+        /// <summary>
+        /// txtAppretinceExperience control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtAppretinceExperience;
+
+        /// <summary>
+        /// txtApprenticeshipEmployer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtApprenticeshipEmployer;
+
+        /// <summary>
+        /// txtApprenticesPost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtApprenticesPost;
+
+        /// <summary>
+        /// Apprenticesdatefrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Apprenticesdatefrom;
+
+        /// <summary>
+        /// Apprenticesdateto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Apprenticesdateto;
 
         /// <summary>
         /// Experience control.
@@ -588,52 +642,61 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Experience;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Experience;
 
         /// <summary>
-        /// Trainingunder control.
+        /// ddlExperience control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Trainingunder;
+        protected global::System.Web.UI.WebControls.Label ddlExperience;
 
         /// <summary>
-        /// ExperienceEmployer control.
+        /// ddlTrainingUnder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ExperienceEmployer;
+        protected global::System.Web.UI.WebControls.Label ddlTrainingUnder;
 
         /// <summary>
-        /// PostDescription control.
+        /// txtExperienceEmployer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PostDescription;
+        protected global::System.Web.UI.WebControls.Label txtExperienceEmployer;
 
         /// <summary>
-        /// ExperienceFrom control.
+        /// txtPostDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ExperienceFrom;
+        protected global::System.Web.UI.WebControls.Label txtPostDescription;
 
         /// <summary>
-        /// ExperienceTo control.
+        /// txtExperienceFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ExperienceTo;
+        protected global::System.Web.UI.WebControls.Label txtExperienceFrom;
+
+        /// <summary>
+        /// txtExperienceTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtExperienceTo;
 
         /// <summary>
         /// Experience1 control.
@@ -645,58 +708,58 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Experience1;
 
         /// <summary>
-        /// txtExperience1 control.
+        /// ddlExperience1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtExperience1;
+        protected global::System.Web.UI.WebControls.Label ddlExperience1;
 
         /// <summary>
-        /// Trainingunder1 control.
+        /// ddlTrainingUnder1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Trainingunder1;
+        protected global::System.Web.UI.WebControls.Label ddlTrainingUnder1;
 
         /// <summary>
-        /// ExperienceEmployer1 control.
+        /// txtExperienceEmployer1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ExperienceEmployer1;
+        protected global::System.Web.UI.WebControls.Label txtExperienceEmployer1;
 
         /// <summary>
-        /// PostDescription1 control.
+        /// txtPostDescription1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PostDescription1;
+        protected global::System.Web.UI.WebControls.Label txtPostDescription1;
 
         /// <summary>
-        /// ExperienceFrom1 control.
+        /// txtExperienceFrom1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ExperienceFrom1;
+        protected global::System.Web.UI.WebControls.Label txtExperienceFrom1;
 
         /// <summary>
-        /// ExperienceTo1 control.
+        /// txtExperienceTo1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ExperienceTo1;
+        protected global::System.Web.UI.WebControls.Label txtExperienceTo1;
 
         /// <summary>
         /// Experience2 control.
@@ -708,58 +771,58 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Experience2;
 
         /// <summary>
-        /// txtExperience2 control.
+        /// ddlExperience2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtExperience2;
+        protected global::System.Web.UI.WebControls.Label ddlExperience2;
 
         /// <summary>
-        /// Trainingunder2 control.
+        /// ddlTrainingUnder2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Trainingunder2;
+        protected global::System.Web.UI.WebControls.Label ddlTrainingUnder2;
 
         /// <summary>
-        /// ExperienceEmployer2 control.
+        /// txtExperienceEmployer2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ExperienceEmployer2;
+        protected global::System.Web.UI.WebControls.Label txtExperienceEmployer2;
 
         /// <summary>
-        /// PostDescription2 control.
+        /// txtPostDescription2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PostDescription2;
+        protected global::System.Web.UI.WebControls.Label txtPostDescription2;
 
         /// <summary>
-        /// ExperienceFrom2 control.
+        /// txtExperienceFrom2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ExperienceFrom2;
+        protected global::System.Web.UI.WebControls.Label txtExperienceFrom2;
 
         /// <summary>
-        /// ExperienceTo2 control.
+        /// txtExperienceTo2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ExperienceTo2;
+        protected global::System.Web.UI.WebControls.Label txtExperienceTo2;
 
         /// <summary>
         /// Experience3 control.
@@ -771,58 +834,58 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Experience3;
 
         /// <summary>
-        /// txtExperience3 control.
+        /// ddlExperience3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtExperience3;
+        protected global::System.Web.UI.WebControls.Label ddlExperience3;
 
         /// <summary>
-        /// Trainingunder3 control.
+        /// ddlTrainingUnder3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Trainingunder3;
+        protected global::System.Web.UI.WebControls.Label ddlTrainingUnder3;
 
         /// <summary>
-        /// ExperienceEmployer3 control.
+        /// txtExperienceEmployer3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ExperienceEmployer3;
+        protected global::System.Web.UI.WebControls.Label txtExperienceEmployer3;
 
         /// <summary>
-        /// PostDescription3 control.
+        /// txtPostDescription3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PostDescription3;
+        protected global::System.Web.UI.WebControls.Label txtPostDescription3;
 
         /// <summary>
-        /// ExperienceFrom3 control.
+        /// txtExperienceFrom3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ExperienceFrom3;
+        protected global::System.Web.UI.WebControls.Label txtExperienceFrom3;
 
         /// <summary>
-        /// ExperienceTo3 control.
+        /// txtExperienceTo3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ExperienceTo3;
+        protected global::System.Web.UI.WebControls.Label txtExperienceTo3;
 
         /// <summary>
         /// Experience4 control.
@@ -834,58 +897,373 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Experience4;
 
         /// <summary>
-        /// txtExperience4 control.
+        /// ddlExperience4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtExperience4;
+        protected global::System.Web.UI.WebControls.Label ddlExperience4;
 
         /// <summary>
-        /// Trainingunder4 control.
+        /// ddlTrainingUnder4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Trainingunder4;
+        protected global::System.Web.UI.WebControls.Label ddlTrainingUnder4;
 
         /// <summary>
-        /// ExperienceEmployer4 control.
+        /// txtExperienceEmployer4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ExperienceEmployer4;
+        protected global::System.Web.UI.WebControls.Label txtExperienceEmployer4;
 
         /// <summary>
-        /// PostDescription4 control.
+        /// txtPostDescription4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PostDescription4;
+        protected global::System.Web.UI.WebControls.Label txtPostDescription4;
 
         /// <summary>
-        /// ExperienceFrom4 control.
+        /// txtExperienceFrom4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ExperienceFrom4;
+        protected global::System.Web.UI.WebControls.Label txtExperienceFrom4;
 
         /// <summary>
-        /// ExperienceTo4 control.
+        /// txtExperienceTo4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ExperienceTo4;
+        protected global::System.Web.UI.WebControls.Label txtExperienceTo4;
+
+        /// <summary>
+        /// Experience5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Experience5;
+
+        /// <summary>
+        /// ddlExperience5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ddlExperience5;
+
+        /// <summary>
+        /// ddlTrainingUnder5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ddlTrainingUnder5;
+
+        /// <summary>
+        /// txtExperienceEmployer5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtExperienceEmployer5;
+
+        /// <summary>
+        /// txtPostDescription5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtPostDescription5;
+
+        /// <summary>
+        /// txtExperienceFrom5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtExperienceFrom5;
+
+        /// <summary>
+        /// txtExperienceTo5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtExperienceTo5;
+
+        /// <summary>
+        /// Experience6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Experience6;
+
+        /// <summary>
+        /// ddlExperience6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ddlExperience6;
+
+        /// <summary>
+        /// ddlTrainingUnder6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ddlTrainingUnder6;
+
+        /// <summary>
+        /// txtExperienceEmployer6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtExperienceEmployer6;
+
+        /// <summary>
+        /// txtPostDescription6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtPostDescription6;
+
+        /// <summary>
+        /// txtExperienceFrom6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtExperienceFrom6;
+
+        /// <summary>
+        /// txtExperienceTo6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtExperienceTo6;
+
+        /// <summary>
+        /// Experience7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Experience7;
+
+        /// <summary>
+        /// ddlExperience7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ddlExperience7;
+
+        /// <summary>
+        /// ddlTrainingUnder7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ddlTrainingUnder7;
+
+        /// <summary>
+        /// txtExperienceEmployer7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtExperienceEmployer7;
+
+        /// <summary>
+        /// txtPostDescription7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtPostDescription7;
+
+        /// <summary>
+        /// txtExperienceFrom7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtExperienceFrom7;
+
+        /// <summary>
+        /// txtExperienceTo7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtExperienceTo7;
+
+        /// <summary>
+        /// Experience8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Experience8;
+
+        /// <summary>
+        /// ddlExperience8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ddlExperience8;
+
+        /// <summary>
+        /// ddlTrainingUnder8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ddlTrainingUnder8;
+
+        /// <summary>
+        /// txtExperienceEmployer8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtExperienceEmployer8;
+
+        /// <summary>
+        /// txtPostDescription8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtPostDescription8;
+
+        /// <summary>
+        /// txtExperienceFrom8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtExperienceFrom8;
+
+        /// <summary>
+        /// txtExperienceTo8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtExperienceTo8;
+
+        /// <summary>
+        /// Experience9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Experience9;
+
+        /// <summary>
+        /// ddlExperience9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ddlExperience9;
+
+        /// <summary>
+        /// ddlTrainingUnder9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ddlTrainingUnder9;
+
+        /// <summary>
+        /// txtExperienceEmployer9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtExperienceEmployer9;
+
+        /// <summary>
+        /// txtPostDescription9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtPostDescription9;
+
+        /// <summary>
+        /// txtExperienceFrom9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtExperienceFrom9;
+
+        /// <summary>
+        /// txtExperienceTo9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtExperienceTo9;
 
         /// <summary>
         /// TotalExperience control.
@@ -894,7 +1272,16 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TotalExperience;
+        protected global::System.Web.UI.WebControls.Label TotalExperience;
+
+        /// <summary>
+        /// RadioButtonList1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
 
         /// <summary>
         /// RetiredEmployee control.
@@ -912,7 +1299,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox EmployerName2;
+        protected global::System.Web.UI.WebControls.Label EmployerName2;
 
         /// <summary>
         /// Description2 control.
@@ -921,7 +1308,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Description2;
+        protected global::System.Web.UI.WebControls.Label Description2;
 
         /// <summary>
         /// From2 control.
@@ -930,7 +1317,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox From2;
+        protected global::System.Web.UI.WebControls.Label From2;
 
         /// <summary>
         /// To2 control.
@@ -939,7 +1326,7 @@ namespace CEIHaryana.Print_Forms
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox To2;
+        protected global::System.Web.UI.WebControls.Label To2;
 
         /// <summary>
         /// grd_Documemnts control.
@@ -949,24 +1336,6 @@ namespace CEIHaryana.Print_Forms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grd_Documemnts;
-
-        /// <summary>
-        /// lblApprovedDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblApprovedDate;
-
-        /// <summary>
-        /// Label12 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label12;
 
         /// <summary>
         /// mySignature control.

@@ -402,24 +402,6 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.GridView grd_Documemnts;
 
         /// <summary>
-        /// lblApprovedDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblApprovedDate;
-
-        /// <summary>
-        /// Label12 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label12;
-
-        /// <summary>
         /// imgsignature control.
         /// </summary>
         /// <remarks>

@@ -26,7 +26,7 @@ namespace CEIHaryana.Print_Forms
                             Session["BackPreviousPage"] = Request.UrlReferrer.ToString();
                         }
                         GetDetailsOfUser(Convert.ToString(Session["NewApplication_Contractor_RegNo"]));
-                    }                  
+                    }
                 }
             }
             catch (Exception ex)
@@ -42,7 +42,7 @@ namespace CEIHaryana.Print_Forms
                 DataTable dt = new DataTable();
                 dt = CEI.GetNewLicenceApplicationData_contractor(RegistartionID);
                 if (dt.Rows.Count > 0)
-                {                   
+                {
                     string Userid = dt.Rows[0]["CreatedBy"].ToString();
                     ApplyingFor.Text = dt.Rows[0]["ApplicationFor"].ToString();
                     Name.Text = dt.Rows[0]["Name"].ToString();
@@ -174,7 +174,7 @@ namespace CEIHaryana.Print_Forms
 
                 DataSet ds = new DataSet();
                 ds = CEI.GetContractorPartners(Userid);
-                if (ds.Tables.Count > 0 )
+                if (ds.Tables.Count > 0)
                 {
                     grdview_Partners.DataSource = ds;
                     grdview_Partners.DataBind();
@@ -201,7 +201,7 @@ namespace CEIHaryana.Print_Forms
 
                 DataTable ds = new DataTable();
                 ds = CEI.GetContractorTeam(Userid);
-                if (ds.Rows.Count > 0 )
+                if (ds.Rows.Count > 0)
                 {
                     grdView_ContractorTeam.DataSource = ds;
                     grdView_ContractorTeam.DataBind();
