@@ -18,14 +18,19 @@ namespace CEIHaryana.Admin
         {
             try
             {
-                if (Convert.ToString(Session["AdminID"]) != null && Convert.ToString(Session["AdminID"]) != "")
+                if (!IsPostBack)
                 {
-                    CommitteeGridViewBind();
+                    if (Convert.ToString(Session["AdminID"]) != null && Convert.ToString(Session["AdminID"]) != "")
+                    {                       
+                        CommitteeGridViewBind();
+                        Page.Session["double_Clickbutton"] = "1";
+                    }
+                    else
+                    {
+                        Response.Redirect("LogOut.aspx", false);
+                    }
                 }
-                else
-                {
-                    Response.Redirect("LogOut.aspx", false);
-                }
+                
             }
             catch (Exception ex)
             {
@@ -144,60 +149,67 @@ namespace CEIHaryana.Admin
                         string connectionstring = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
                         SqlConnection conn = new SqlConnection(connectionstring);
 
-                        try
+                        if (Convert.ToString(Session["double_Clickbutton"]) == "1")
                         {
-                            conn.Open();
-                            //transaction = conn.BeginTransaction();
-                            string CommitteeID = txtCommittee.Text;
-                            if (CommitteeID == "" || CommitteeID == null)
+                            try
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('No committe active pls activate the commite');", true);
-                                return;
-                            }
-                            //if (GridViewCommittee.Rows.Count >0)
-                            //{
-                            //    GridViewRow row = GridViewCommittee.Rows[0];
-                            //    Label lblCommitteeID = (Label)row.FindControl("lblCommitteeID");
-                            //    CommitteeID = lblCommitteeID.Text;
-                            //}
-                            foreach (GridViewRow row in GridView1.Rows)
-                            {
-                                string ApplicationID, Category, RegistrationNo = "";
-                                CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
-                                if (chk != null && chk.Checked)
+                                conn.Open();
+                                //transaction = conn.BeginTransaction();
+                                string CommitteeID = txtCommittee.Text;
+                                if (CommitteeID == "" || CommitteeID == null)
                                 {
-                                    SqlTransaction transaction = null;
-                                    try
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('No committe active pls activate the commite');", true);
+                                    return;
+                                }
+                                //if (GridViewCommittee.Rows.Count >0)
+                                //{
+                                //    GridViewRow row = GridViewCommittee.Rows[0];
+                                //    Label lblCommitteeID = (Label)row.FindControl("lblCommitteeID");
+                                //    CommitteeID = lblCommitteeID.Text;
+                                //}
+                                foreach (GridViewRow row in GridView1.Rows)
+                                {
+                                    string ApplicationID, Category, RegistrationNo = "";
+                                    CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
+                                    if (chk != null && chk.Checked)
                                     {
-                                        transaction = conn.BeginTransaction();
-                                        //Label lblApplicationID = (Label)row.FindControl("lblApplicationID");
-                                        //ApplicationID = lblApplicationID.Text;
-                                        Label lblCategory = (Label)row.FindControl("lblCategory");
-                                        Category = lblCategory.Text;
-                                        Label lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
-                                        RegistrationNo = lblRegistrationNo.Text;
+                                        SqlTransaction transaction = null;
+                                        try
+                                        {
+                                            transaction = conn.BeginTransaction();
+                                            //Label lblApplicationID = (Label)row.FindControl("lblApplicationID");
+                                            //ApplicationID = lblApplicationID.Text;
+                                            Label lblCategory = (Label)row.FindControl("lblCategory");
+                                            Category = lblCategory.Text;
+                                            Label lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
+                                            RegistrationNo = lblRegistrationNo.Text;
 
-                                        cei.InsertNewLicenceApplicationFromCEI(RegistrationNo, CommitteeID, Category, CreatedBy, transaction);
-                                        transaction.Commit();
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        transaction.Rollback();
-                                        ScriptManager.RegisterStartupScript(this, GetType(), "Error", $"alert('Error: {ex.Message}');", true);
+                                            cei.InsertNewLicenceApplicationFromCEI(RegistrationNo, CommitteeID, Category, CreatedBy, transaction);
+                                            transaction.Commit();
+                                            Session["double_Clickbutton"] = "";
+                                            Session["double_Clickbutton"] = null;
+
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            transaction.Rollback();
+                                            ScriptManager.RegisterStartupScript(this, GetType(), "Error", $"alert('Error: {ex.Message}');", true);
+                                        }
                                     }
                                 }
-                            }
 
-                            ScriptManager.RegisterStartupScript(this, GetType(), "Success", "alert('Application Forword Successfully!');  window.location.href='/Admin/NewApplications_Licence.aspx';", true);
+                                ScriptManager.RegisterStartupScript(this, GetType(), "Success", "alert('Application Forword Successfully!');  window.location.href='/Admin/NewApplications_Licence.aspx';", true);
+                            }
+                            catch (Exception ex)
+                            {
+                                throw;
+                            }
+                            finally
+                            {
+                                conn.Close();
+                            }
                         }
-                        catch (Exception ex)
-                        {
-                            throw;
-                        }
-                        finally
-                        {
-                            conn.Close();
-                        }
+                       
                     }
                     else
                     {
@@ -264,6 +276,11 @@ namespace CEIHaryana.Admin
 
 
             }
+        }
+
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Session["double_Clickbutton"] = "1";
         }
     }
 }

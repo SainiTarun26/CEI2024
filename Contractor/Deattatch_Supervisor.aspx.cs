@@ -25,6 +25,7 @@ namespace CEIHaryana.Contractor
                     {
                         hdnSupervisorRequestID.Value = Convert.ToString(Session["SupervisorRequestId_Deattachment"]);
                         GetDataSUpervisor(Convert.ToString(Session["SupervisorRequestId_Deattachment"]));
+                        Page.Session["DoubleClick_Btn"] = "1";
                     }
                     else
                     {
@@ -89,46 +90,53 @@ namespace CEIHaryana.Contractor
             {
                 if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != null)
                 {
-                    string UserId = Convert.ToString(Session["ContractorID"]);
-                    if (hdnSupervisorRequestID.Value != null && hdnSupervisorRequestID.Value != ""
-                        && HdnContractorEmail.Value != null && HdnContractorEmail.Value != ""
-                        && HdnSupervisorEmail.Value != null && HdnSupervisorEmail.Value != "")
+                    if (Convert.ToString(Session["DoubleClick_Btn"]) == "1")
                     {
-                        string ContractorId = string.Empty;
-                        string SupervisorREID = string.Empty;
-
-                        DataTable dt = new DataTable();
-                        dt = cei.GetDetailsForDeattachedSupervisor(hdnSupervisorRequestID.Value.ToString());
-                        if (dt.Rows.Count > 0)
-                        {                            
-                            SupervisorREID= dt.Rows[0]["SupervisiorReId"].ToString();
-                            ContractorId = dt.Rows[0]["contractorId"].ToString();
-                        }
-                        int x = 0;
-                        string AlertMessage = string.Empty;
-                        if (btnToDeattach.Text== "Attached")
+                        string UserId = Convert.ToString(Session["ContractorID"]);
+                        if (hdnSupervisorRequestID.Value != null && hdnSupervisorRequestID.Value != ""
+                            && HdnContractorEmail.Value != null && HdnContractorEmail.Value != ""
+                            && HdnSupervisorEmail.Value != null && HdnSupervisorEmail.Value != "")
                         {
-                          x = cei.AttachedbyContractor(ContractorId, SupervisorREID, UserId);
-                          AlertMessage = "Attached";
+                            string ContractorId = string.Empty;
+                            string SupervisorREID = string.Empty;
+
+                            DataTable dt = new DataTable();
+                            dt = cei.GetDetailsForDeattachedSupervisor(hdnSupervisorRequestID.Value.ToString());
+                            if (dt.Rows.Count > 0)
+                            {
+                                SupervisorREID = dt.Rows[0]["SupervisiorReId"].ToString();
+                                ContractorId = dt.Rows[0]["contractorId"].ToString();
+                            }
+                            int x = 0;
+                            string AlertMessage = string.Empty;
+                            if (btnToDeattach.Text == "Attached")
+                            {
+                                x = cei.AttachedbyContractor(ContractorId, SupervisorREID, UserId);
+                                AlertMessage = "Attached";
+                            }
+                            else
+                            {
+                                x = cei.DeattachedbyContractor(ContractorId, SupervisorREID, UserId);
+                                AlertMessage = "DeAttached";
+                            }
+
+                            if (x > 0)  
+                            {
+                                cei.EmailForDeattachmentRequestContractor(AlertMessage, HdnContractorEmail.Value, HdnSupervisorEmail.Value);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Supervisor Sucessfully " + AlertMessage + " '); window.location.href = '/Contractor/Supervisor_Requests.aspx'; ", true);
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('there is some Error');", true);
+                            }
+
                         }
                         else
                         {
-                            x = cei.DeattachedbyContractor(ContractorId, SupervisorREID, UserId);
-                            AlertMessage = "DeAttached";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "Alert", "alert('Missing Email of supervisor/Contractor');", true);
                         }
-                       
-                        if (x>0)
-                        {
-                            cei.EmailForDeattachmentRequestContractor(AlertMessage,HdnContractorEmail.Value,HdnSupervisorEmail.Value);
-                            ScriptManager.RegisterStartupScript(this,this.GetType(),"Alert","alert('Supervisor Sucessfully "+AlertMessage+ " '); window.location.href = '/Contractor/Supervisor_Requests.aspx'; ", true);
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('there is some Error');", true);
-                        }
-
                     }
-                    
+                    Session["DoubleClick_Btn"] = "0";
                 }
                 else
                 {
@@ -137,8 +145,8 @@ namespace CEIHaryana.Contractor
             }
             catch (Exception ex)
             {
-
-                throw;
+                ScriptManager.RegisterStartupScript(this, GetType(), "Alert", "alert('"+ ex.Message +"');", true);
+                //throw;
             }
         }
 

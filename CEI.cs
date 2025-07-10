@@ -13024,15 +13024,16 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         public void EmailForDeattachmentRequestContractor(string Text, string From, string To)
         {
             MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress(From);
+            mailMessage.From = new MailAddress("ceiharyana58@gmail.com");
             mailMessage.To.Add(To);
-            mailMessage.Subject = "DeAttachment Request";
+            mailMessage.CC.Add(From);
+            mailMessage.Subject = Text + " Request";
 
             string body = $"Dear Customer,\n\nWe are pleased to inform you that user request for  '{Text}' successfully.\n\nThank you for choosing our services. If you have any questions or need further assistance, please feel free to contact our support team.\n\nBest regards,\n[CEI Haryana]";
             mailMessage.Body = body;
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
             smtpClient.Port = 587;
-            smtpClient.Credentials = new NetworkCredential(From, "hztpndeqdowygdim");
+            smtpClient.Credentials = new NetworkCredential("ceiharyana58@gmail.com", "hztpndeqdowygdim");
             smtpClient.EnableSsl = true;
 
             smtpClient.Send(mailMessage);

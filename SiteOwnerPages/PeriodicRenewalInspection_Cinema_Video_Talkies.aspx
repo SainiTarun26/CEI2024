@@ -346,7 +346,7 @@
                                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" />
                                                 </asp:BoundField>
-                                                <asp:BoundField DataField="TypeOf" HeaderText="Installation Type">
+                                                <asp:BoundField DataField="TypeOf" HeaderText="Cinema/VideoTalkis Name">
                                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                                     <ItemStyle HorizontalAlign="Left" />
                                                 </asp:BoundField>

@@ -338,7 +338,7 @@
                                             <asp:CheckBox ID="chkSelectAll" runat="server" Style="text-align: left !important;" onclick="SelectAllCheckboxes(this);" />
                                         </HeaderTemplate>
                                         <ItemTemplate>
-                                            <asp:CheckBox ID="CheckBox1" CssClass="rowCheckbox" runat="server" HorizontalAlign="center" />
+                                            <asp:CheckBox ID="CheckBox1" CssClass="rowCheckbox" runat="server"  AutoPostBack="true" OnCheckedChanged="CheckBox1_CheckedChanged" HorizontalAlign="center" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Id" Visible="False">
