@@ -1168,7 +1168,7 @@
                                                                         <asp:Button ID="BtnAddMoreQualification" runat="server" Text="Add More" class="btn btn-primary"
                                                                             Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="BtnAddMoreQualification_Click" OnClientClick="return validateAddBtn();"></asp:Button>
                                                                         <asp:Button ID="BtnDelete" runat="server" Text="Delete" class="btn btn-primary"
-                                                                            Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="BtnDelete_Click" Visible="false"></asp:Button>
+                                                                            Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="BtnDelete_Click1" Visible="false"></asp:Button>
                                                                     </td>
                                                                     <td style="font-size: 12px; text-align: end;">
                                                                         <asp:Button ID="Button1" runat="server" Text="Update" class="btn btn-primary" OnClick="Button1_Click" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClientClick="return validateUpdate1();"></asp:Button>

@@ -2121,7 +2121,7 @@
                                     </div>
                                     <div class="col-4" id="Div3" runat="server">
                                         <label>
-                                            Name of Cinema/Video Talkies
+                                            Type of Cinema/Video Talkies
                                         </label>
                                         <asp:TextBox ReadOnly="true" class="form-control" ID="txtCinemaName" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>

@@ -110,14 +110,15 @@ namespace CEIHaryana.UserPages
                 txtprcntg.Text = dt.Rows[0]["Percentage10th"].ToString();
 
 
-                if (!string.IsNullOrWhiteSpace(dt.Rows[0]["Name12ITIDiploma"].ToString()))
+                if (!string.IsNullOrWhiteSpace(dt.Rows[0]["Name12ITIDiploma"].ToString()) ||
+                      !string.IsNullOrWhiteSpace(dt.Rows[0]["MarksObtained12thorITI"].ToString()))
                 {
                     var item = ddlQualification.Items.FindByText(dt.Rows[0]["Name12ITIDiploma"].ToString());
                     if (item != null) ddlQualification.SelectedValue = item.Value;
                     txtUniversity1.Text = dt.Rows[0]["UniversityName12thorITI"].ToString();
                     DropDownList1.SelectedValue = dt.Rows[0]["PassingYear12thorITI"].ToString();
                     txtmarksObtained1.Text = dt.Rows[0]["MarksObtained12thorITI"].ToString();
-                    txtmarksmax1.Text = dt.Rows[0]["MarksMaxDiplomaorDegree"].ToString();
+                    txtmarksmax1.Text = dt.Rows[0]["MarksMax12thorITI"].ToString();
                     txtprcntg1.Text = dt.Rows[0]["Percentage12thorITI"].ToString();
                     certificatewireman.Visible = true;
                 }
@@ -396,7 +397,8 @@ namespace CEIHaryana.UserPages
 
                 if (dt != null && dt.Rows.Count > 0)
                 {
-                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticeExperience"].ToString()) || !string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticenameofEmployer"].ToString()))
+                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticePostDescription"].ToString()) ||
+                        !string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticenameofEmployer"].ToString()))
                     {
 
                         txtApprenticeship.Text = dt.Rows[0]["ApprenticeExperience"].ToString();
@@ -423,7 +425,7 @@ namespace CEIHaryana.UserPages
 
 
 
-                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencedIn"].ToString()) ||
+                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencePostDescription"].ToString()) ||
                         !string.IsNullOrWhiteSpace(dt.Rows[0]["ExperienceEmployerName"].ToString()))
                     {
 
@@ -453,8 +455,8 @@ namespace CEIHaryana.UserPages
                     else { Experience.Visible = false; }
 
 
-                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencedIn1"].ToString()) ||
-                        !string.IsNullOrWhiteSpace(dt.Rows[0]["ExperienceEmployerName1"].ToString()))
+                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperienceEmployerName1"].ToString()) ||
+                        !string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencePostDescription1"].ToString()))
                     {
                         var experienceItem = ddlExperience1.Items.FindByText(dt.Rows[0]["ExperiencedIn1"].ToString());
                         if (experienceItem != null) ddlExperience1.SelectedValue = experienceItem.Value;
@@ -478,8 +480,8 @@ namespace CEIHaryana.UserPages
                     else { Experience1.Visible = false; }
 
 
-                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencedIn2"].ToString()) ||
-                        !string.IsNullOrWhiteSpace(dt.Rows[0]["ExperienceEmployerName2"].ToString()))
+                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperienceEmployerName2"].ToString()) ||
+                        !string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencePostDescription2"].ToString()))
                     {
                         var experienceItem = ddlExperience2.Items.FindByText(dt.Rows[0]["ExperiencedIn2"].ToString());
                         if (experienceItem != null) ddlExperience2.SelectedValue = experienceItem.Value;
@@ -503,7 +505,7 @@ namespace CEIHaryana.UserPages
                     else { Experience2.Visible = false; }
 
 
-                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencedIn3"].ToString()) ||
+                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencePostDescription3"].ToString()) ||
                         !string.IsNullOrWhiteSpace(dt.Rows[0]["ExperienceEmployerName3"].ToString()))
                     {
                         var experienceItem = ddlExperience3.Items.FindByText(dt.Rows[0]["ExperiencedIn3"].ToString());
@@ -527,7 +529,7 @@ namespace CEIHaryana.UserPages
                     else { Experience3.Visible = false; }
 
 
-                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencedIn4"].ToString()) ||
+                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencePostDescription4"].ToString()) ||
                         !string.IsNullOrWhiteSpace(dt.Rows[0]["ExperienceEmployerName4"].ToString()))
                     {
                         var experienceItem = ddlExperience4.Items.FindByText(dt.Rows[0]["ExperiencedIn4"].ToString());
@@ -552,7 +554,7 @@ namespace CEIHaryana.UserPages
                     else { Experience4.Visible = false; }
 
 
-                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencedIn5"].ToString()) ||
+                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencePostDescription5"].ToString()) ||
                         !string.IsNullOrWhiteSpace(dt.Rows[0]["ExperienceEmployerName5"].ToString()))
                     {
                         var experienceItem = ddlExperience5.Items.FindByText(dt.Rows[0]["ExperiencedIn5"].ToString());
@@ -576,7 +578,7 @@ namespace CEIHaryana.UserPages
                     }
                     else { Experience5.Visible = false; }
 
-                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencedIn6"].ToString()) ||
+                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencePostDescription6"].ToString()) ||
                         !string.IsNullOrWhiteSpace(dt.Rows[0]["ExperienceEmployerName6"].ToString()))
                     {
                         var experienceItem = ddlExperience6.Items.FindByText(dt.Rows[0]["ExperiencedIn6"].ToString());
@@ -601,7 +603,7 @@ namespace CEIHaryana.UserPages
                     else { Experience6.Visible = false; }
 
 
-                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencedIn7"].ToString()) ||
+                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencePostDescription7"].ToString()) ||
                         !string.IsNullOrWhiteSpace(dt.Rows[0]["ExperienceEmployerName7"].ToString()))
                     {
                         var experienceItem = ddlExperience7.Items.FindByText(dt.Rows[0]["ExperiencedIn7"].ToString());
@@ -626,7 +628,7 @@ namespace CEIHaryana.UserPages
                     else { Experience7.Visible = false; }
 
 
-                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencedIn8"].ToString()) ||
+                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencePostDescription8"].ToString()) ||
                         !string.IsNullOrWhiteSpace(dt.Rows[0]["ExperienceEmployerName8"].ToString()))
                     {
                         var experienceItem = ddlExperience8.Items.FindByText(dt.Rows[0]["ExperiencedIn8"].ToString());
@@ -650,7 +652,7 @@ namespace CEIHaryana.UserPages
                     }
                     else { Experience8.Visible = false; }
 
-                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencedIn8"].ToString()) ||
+                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ExperiencePostDescription9"].ToString()) ||
                         !string.IsNullOrWhiteSpace(dt.Rows[0]["ExperienceEmployerName8"].ToString()))
                     {
                         var experienceItem = ddlExperience9.Items.FindByText(dt.Rows[0]["ExperiencedIn9"].ToString());
@@ -978,7 +980,7 @@ namespace CEIHaryana.UserPages
                     ddlQualification2.SelectedValue = "0";
                     txtUniversity3.Text = "";
                     DropDownList3.SelectedValue = "0";
-                    txtmarksmax3.Text = "";
+                    txtmarksObtained3.Text = "";
                     txtmarksmax3.Text = "";
                     txtprcntg3.Text = "";
                     DdlDegree.Visible = false;

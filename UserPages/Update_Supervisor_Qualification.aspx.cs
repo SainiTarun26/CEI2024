@@ -885,7 +885,7 @@ namespace CEIHaryana.UserPages
                 BtnDelete.Visible = true;
             }
         }
-        protected void BtnDelete_Click(object sender, EventArgs e)
+        protected void BtnDelete_Click1(object sender, EventArgs e)
         {
             try
             {
@@ -904,14 +904,14 @@ namespace CEIHaryana.UserPages
                     ddlQualification2.SelectedValue = "0";
                     txtUniversity3.Text = "";
                     DropDownList3.SelectedValue = "0";
-                    txtmarksmax3.Text = "";
+                    txtmarksObtained3.Text = "";
                     txtmarksmax3.Text = "";
                     txtprcntg3.Text = "";
                     DdlDegree.Visible = false;
                     BtnDelete.Visible = false;
                 }
             }
-            catch
+            catch (Exception ex)
             {
 
             }
@@ -1290,5 +1290,7 @@ namespace CEIHaryana.UserPages
                 txtprcntg2.Text = "";
             }
         }
+
+
     }
 }

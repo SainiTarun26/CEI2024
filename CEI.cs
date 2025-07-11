@@ -13884,12 +13884,11 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             con.Close();
         }
 
-
         public void UpdateEducationDetailsByIdforWireman(string UserId, string UniversityName10th, int PassingYear10th, string MarksObtained10th, string MarksMax10th, string Percentage10th,
-      string certificateWirman, string UniversityNameWirman, int PassingYearWirman, string MarksObtainedWirman, string MarksMaxWirman, string PercentageWirman,
-string NameofDiplomaDegree, string UniversityNameDiplomaorDegree, int PassingYearDiplomaorDegree, string MarksObtainedDiplomaorDegree, string MarksMaxDiplomaorDegree, string PercentageDiplomaorDegree,
-string NameofDegree, string UniversityNamePG, int PassingYearPG, string MarksObtainedPG, string MarksMaxPG, string PercentagePG,
-string NameofMasters, string MastersUniversityName, int MastersPassingYear, string MasterMarksObtained, string MastersMarksMax, string MatersPercentage)
+              string certificateWirman, string UniversityNameWirman, int PassingYearWirman, string MarksObtainedWirman, string MarksMaxWirman, string PercentageWirman,
+        string NameofDiplomaDegree, string UniversityNameDiplomaorDegree, int PassingYearDiplomaorDegree, string MarksObtainedDiplomaorDegree, string MarksMaxDiplomaorDegree, string PercentageDiplomaorDegree,
+        string NameofDegree, string UniversityNamePG, int PassingYearPG, string MarksObtainedPG, string MarksMaxPG, string PercentagePG,
+        string NameofMasters, string MastersUniversityName, int MastersPassingYear, string MasterMarksObtained, string MastersMarksMax, string MatersPercentage)
         {
 
 
@@ -13910,12 +13909,12 @@ string NameofMasters, string MastersUniversityName, int MastersPassingYear, stri
             cmd.Parameters.AddWithValue("@MarksMax10th", MarksMax10th);
             cmd.Parameters.AddWithValue("@Percentage10th", Percentage10th);
 
-            cmd.Parameters.AddWithValue("@certificateWirman", certificateWirman);
-            cmd.Parameters.AddWithValue("@UniversityNameWirman", UniversityNameWirman);
+            cmd.Parameters.AddWithValue("@certificateWirman", certificateWirman == "Select" ? null : certificateWirman);
+            cmd.Parameters.AddWithValue("@UniversityNameWirman", UniversityNameWirman == "Select" ? null : UniversityNameWirman);
             cmd.Parameters.AddWithValue("@PassingYearWirman", PassingYearWirman);
-            cmd.Parameters.AddWithValue("@MarksObtainedWirman", MarksObtainedWirman);
-            cmd.Parameters.AddWithValue("@MarksMaxWirman", MarksMaxWirman);
-            cmd.Parameters.AddWithValue("@PercentageWirman", PercentageWirman);
+            cmd.Parameters.AddWithValue("@MarksObtainedWirman", String.IsNullOrEmpty(MarksObtainedWirman) ? null : MarksObtainedWirman);
+            cmd.Parameters.AddWithValue("@MarksMaxWirman", String.IsNullOrEmpty(MarksMaxWirman) ? null : MarksMaxWirman);
+            cmd.Parameters.AddWithValue("@PercentageWirman", String.IsNullOrEmpty(PercentageWirman) ? null : PercentageWirman);
 
 
             cmd.Parameters.AddWithValue("@NameofDiplomaDegree", NameofDiplomaDegree == "Select" ? null : NameofDiplomaDegree);
