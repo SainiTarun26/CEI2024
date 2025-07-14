@@ -714,7 +714,7 @@
                                                         <label for="CommunicationAddress">
                                                             Address for Communication<samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:TextBox CssClass="form-control uppercase" class="form-control" ID="txtCommunicationAddress" autocomplete="off" TextMode="MultiLine" runat="server" TabIndex="7" MaxLength="200" AutoPostBack="true" OnTextChanged="txtCommunicationAddress_TextChanged"> </asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control uppercase" class="form-control" ID="txtCommunicationAddress" autocomplete="off" TextMode="MultiLine" runat="server" TabIndex="7" MaxLength="200" AutoPostBack="true" > </asp:TextBox> <%--OnTextChanged="txtCommunicationAddress_TextChanged"--%>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtCommunicationAddress"
                                                             CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                     </div>

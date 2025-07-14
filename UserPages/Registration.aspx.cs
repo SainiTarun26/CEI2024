@@ -306,13 +306,15 @@ namespace CEIHaryana.UserPages
 
                     txtPermanentAddress.Attributes.Add("readonly", "false");
                     txtPin.Attributes.Add("readonly", "false");
+
                     ddlState.Attributes.Add("disabled", "disabled");
                     ////ddlDistrict.Attributes.Add("disabled", "disabled");
                     ddlDistrict.Enabled = false;
 
                     //txtCommunicationAddress.Attributes.Add("readonly", "true");
-                    //txtCommunicationAddress.ReadOnly = true;
-                    txtPinCode.Attributes.Add("readonly", "false");
+                    txtCommunicationAddress.ReadOnly = true;
+                    //txtPinCode.Attributes.Add("readonly", "false");
+                    txtPinCode.ReadOnly = true;
                     ddlState1.Attributes.Add("disabled", "disabled");
                     ////ddlDistrict1.Attributes.Add("disabled", "disabled");
                     ddlDistrict1.Enabled = false;
@@ -339,9 +341,12 @@ namespace CEIHaryana.UserPages
 
                 txtCommunicationAddress.Attributes.Remove("readonly");
                 txtCommunicationAddress.ReadOnly = false;
-                txtPinCode.Attributes.Remove("disabled");
+                //txtPinCode.Attributes.Remove("disabled");
                 ddlState1.Attributes.Remove("disabled");
                 ddlDistrict1.Attributes.Remove("disabled");
+                txtPinCode.ReadOnly = false;
+                ddlDistrict.Enabled = true;
+                ddlDistrict1.Enabled = true;
 
             }
         }
@@ -405,25 +410,26 @@ namespace CEIHaryana.UserPages
             ddlBindDivision();
         }
         #region neeraj 2-July-2025
-        protected void txtCommunicationAddress_TextChanged(object sender, EventArgs e)
-        {
+        //protected void txtCommunicationAddress_TextChanged(object sender, EventArgs e)
+        //{
 
-            ddlState1.SelectedValue = "0";
-            ddlDistrict1.SelectedValue = "0";
-            txtPinCode.Text = "";          
-            txtPinCode.Attributes.Remove("readonly");
-            txtPermanentAddress.Text = "";
-            ddlState.SelectedValue = "0";          
-            ddlDistrict.SelectedValue = "0";
-            txtPin.Text = "";
-            txtPermanentAddress.Attributes.Remove("readonly");
-            txtPin.Attributes.Remove("readonly");
-            ddlState1.Attributes.Remove("disabled");
-            ddlDistrict1.Attributes.Remove("disabled");
-            ddlState.Attributes.Remove("disabled");
-            ddlDistrict.Attributes.Remove("disabled");
-            CheckBox1.Checked = false;
-        }
+        //    ddlState1.SelectedValue = "0";
+        //    ddlDistrict1.SelectedValue = "0";
+        //    txtPinCode.Text = "";          
+        //    txtPinCode.Attributes.Remove("readonly");
+        //    txtPermanentAddress.Text = "";
+        //    ddlState.SelectedValue = "0";          
+        //    ddlDistrict.SelectedValue = "0";
+        //    txtPin.Text = "";
+        //    txtPermanentAddress.Attributes.Remove("readonly");
+        //    txtPin.Attributes.Remove("readonly");
+        //    ddlState1.Attributes.Remove("disabled");
+        //    ddlDistrict1.Attributes.Remove("disabled");
+        //    ddlState.Attributes.Remove("disabled");
+        //    ddlDistrict.Attributes.Remove("disabled");
+        //    CheckBox1.Checked = false;
+
+        //}
         #endregion
     }
 }
