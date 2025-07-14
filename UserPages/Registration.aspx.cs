@@ -317,7 +317,7 @@ namespace CEIHaryana.UserPages
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please Select Registered Office Address First!!!')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please Select Communication Address First!!!')", true);
                     ddlDistrict.Focus();
                     CheckBox1.Checked = false;
                 }
