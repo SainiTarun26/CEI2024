@@ -319,12 +319,12 @@
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="txtPrevChallanDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                                         </div>
-                                        <div class="col-4">
+                                      <%--  <div class="col-4">
                                             <label class="form-label" for="customFile">
                                                 Uploaded Previous Challan
                                             </label>
                                             <asp:TextBox class="form-control" ReadOnly="true" ID="TextBox1" Text="Yes" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
-                                        </div>
+                                        </div>--%>
                                         <div class="col-4" runat="server">
                                             <label>
                                                 Last Approval Date 

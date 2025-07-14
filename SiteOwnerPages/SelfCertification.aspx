@@ -482,7 +482,7 @@
                                 <td>FORM I.
                                 </td>
                                 <td style="text-align: center;">
-                                    <asp:HyperLink ID="lnkForm1" runat="server" NavigateUrl="~/Downloads/WI%20SATBIR%20YADAV%20SOLAR%20275KWP.pdf" Text="Document Sample" Target="_blank" />
+                                   <asp:HyperLink ID="lnkForm1" runat="server" NavigateUrl="~/UserManual/FORM I.pdf" Text="Document Sample" Target="_blank" />
                                 </td>
                                 <td>
                                     <asp:FileUpload ID="FileUploadForm1" runat="server" CssClass="form-control"
@@ -498,7 +498,7 @@
                                 <td>FORM II.
                                 </td>
                                 <td style="text-align: center;">
-                                    <asp:HyperLink ID="lnkForm2" runat="server" NavigateUrl="/documents/sample.pdf" Text="Document Sample" Target="_blank" />
+                                   <asp:HyperLink ID="lnkForm2" runat="server"  NavigateUrl="~/UserManual/FORM II.pdf" Text="Document Sample" Target="_blank" />
                                 </td>
                                 <td>
                                     <asp:FileUpload ID="FileUploadForm2" runat="server" CssClass="form-control"
@@ -515,7 +515,7 @@
                                 <td>FORM III.
                                 </td>
                                 <td style="text-align: center;">
-                                    <asp:HyperLink ID="lnkForm3" runat="server" NavigateUrl="~/documents/sample.pdf" Text="Document Sample" Target="_blank" />
+                                   <asp:HyperLink ID="lnkForm3" runat="server" NavigateUrl="~/UserManual/FORM III.pdf" Text="Document Sample" Target="_blank" />
                                 </td>
                                 <td>
                                     <asp:FileUpload ID="FileUploadForm3" runat="server" CssClass="form-control"

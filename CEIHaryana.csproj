@@ -5345,6 +5345,9 @@
     <Content Include="UserManual\USERmanualSiteowner.pdf" />
     <Content Include="UserManual\USERmanualSupervisor.pdf" />
     <Content Include="Superintendent\Superintendent.Master" />
+    <Content Include="UserManual\FORM I.pdf" />
+    <Content Include="UserManual\FORM II.pdf" />
+    <Content Include="UserManual\FORM III.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

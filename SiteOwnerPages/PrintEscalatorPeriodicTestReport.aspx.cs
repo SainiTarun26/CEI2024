@@ -68,10 +68,9 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     string RegistrationNo = Session["RegistrationNo"].ToString();
                     string TRId = Session["TestReportID"].ToString();
-                    //DataSet ds = CEI.GetDetailsOfLiftRenewalReport(RegistrationNo);
                     DataSet ds = CEI.GetDetailsOfLiftRenewalReport(RegistrationNo, TRId);
 
-                    object previousChallanDateObj = ds.Tables[0].Rows[0]["PreviousChallanDate"];
+                    object previousChallanDateObj = ds.Tables[0].Rows[0]["RenewalDate"];
                     if (previousChallanDateObj != DBNull.Value)
                     {
                         DateTime previousChallanDate = Convert.ToDateTime(previousChallanDateObj);
@@ -113,7 +112,7 @@ namespace CEIHaryana.SiteOwnerPages
                     txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
                     txtDistrictOfTr.Text = ds.Tables[0].Rows[0]["ApplicantDistrict"].ToString();
                     txtEscalatorType.Text = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
-                    Session["File"] = ds.Tables[0].Rows[0]["PreviousChallanUpload"].ToString();
+                    //Session["File"] = ds.Tables[0].Rows[0]["PreviousChallanUpload"].ToString();
 
                     GridDocument();
                 }

@@ -456,7 +456,7 @@ namespace CEIHaryana.SiteOwnerPages
                             return;
                         }
 
-                        string District = Session["District"].ToString();
+                        string District = ddlDistrict.SelectedItem.ToString(); 
                         string PaymentMode = string.Empty;
                         string Division = string.Empty;
                         DataSet ds = new DataSet();
