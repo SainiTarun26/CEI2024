@@ -2188,14 +2188,14 @@
                                     </label>
                                     <asp:TextBox class="form-control" ReadOnly="true" ID="txtPrevChallanDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                                 </div>
-                                <div class="col-4">
+                            <%--    <div class="col-4">
                                     <label class="form-label" for="customFile">
                                         Upload Previous Challan
                                     </label>
                                     <br />
                                     <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" OnClick="lnkFile_Click" Visible="true" Text="Open Document" />
 
-                                </div>
+                                </div>--%>
                                 <div class="col-4" runat="server">
                                     <label>
                                         Last Approval Date 

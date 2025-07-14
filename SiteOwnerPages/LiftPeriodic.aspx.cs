@@ -34,25 +34,25 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                     {
+                        String UserId = Convert.ToString(Session["SiteOwnerId"]);
+                        HdnUserID.Value = UserId;
                         Session["RegistrationNosessionPass"] = null;
                         Session["InstallTypePass"] = null;
                         Session["ReturnedValue"] = "Treys";
-                        BindDistrict();
+                        BindDistrict(UserId);
                     }
                 }
             }
             catch
             { }
         }
-        private void BindDistrict()
+        private void BindDistrict(string UserId)
         {
             try
             {
-                string SiteOwnerId = Session["SiteOwnerId"].ToString();
-                DataSet dsDistrict = new DataSet();
-                dsDistrict = CEI.GetDistrictForLiftRenewal(SiteOwnerId);
+                DataSet dsDistrict = CEI.GetDistrictForLiftRenewal(UserId);
                 ddlDistrict.DataSource = dsDistrict;
-                ddlDistrict.DataTextField = "ApplicantDistrict"; // Change to "ApplicantDistrict"
+                ddlDistrict.DataTextField = "ApplicantDistrict";
                 ddlDistrict.DataValueField = "ApplicantDistrict";
                 ddlDistrict.DataBind();
                 ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
@@ -61,11 +61,30 @@ namespace CEIHaryana.SiteOwnerPages
             catch
             { }
         }
-        private void GridBind()
+      
+        protected void btnAddnew_Click(object sender, EventArgs e)
         {
-            string SiteOwnerId = Session["SiteOwnerId"].ToString();
-            string District = Session["District"].ToString();
-            DataTable ds = CEI.GetDataForLiftRenewal(District, SiteOwnerId);
+            Session["ReturnedValue"] = "Treys";
+            Response.Redirect("/SiteOwnerPages/LiftPeriodicRenewal.aspx", false);
+        }
+        protected void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToString(HdnUserID.Value) != null && Convert.ToString(HdnUserID.Value) != "")
+            {
+                ddlDistrict.SelectedItem.ToString();
+                string District = ddlDistrict.SelectedItem.ToString();
+                Session["Duplicacy"] = "0";
+
+                GridBind(District, HdnUserID.Value);               
+            }
+            else
+            {
+
+            }
+        }
+        private void GridBind(string District,string SiteOwnerId)
+        {
+             DataTable ds = CEI.GetDataForLiftRenewal(District, SiteOwnerId);
             if (ds != null && ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -78,23 +97,6 @@ namespace CEIHaryana.SiteOwnerPages
                 string script = "alert('No Record Found for document');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
-
-        }
-        protected void btnAddnew_Click(object sender, EventArgs e)
-        {
-            Session["ReturnedValue"] = "Treys";
-            Response.Redirect("/SiteOwnerPages/LiftPeriodicRenewal.aspx", false);
-        }
-        protected void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ddlDistrict.SelectedItem.ToString();
-            Session["District"] = ddlDistrict.SelectedItem.ToString();
-            Session["Duplicacy"] = "0";
-            GridBind();
-            //PaymentDetails.Visible = true;
-            //UploadDocuments.Visible = true;
-            //btnSubmit.Visible = true;
-
         }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -126,153 +128,161 @@ namespace CEIHaryana.SiteOwnerPages
         {
             try
             {
-                int liftCount = 0;
-                int EscalatorCount = 0;
-                int LiftCountForPayment = 0;
-                int EscalatorCountForPayment = 0;
-                //int yearsDifference = 0;
-
-                string selectedTypes = string.Empty;
-                foreach (GridViewRow rows in GridView1.Rows)
+                if (Convert.ToString(HdnUserID.Value) != null && Convert.ToString(HdnUserID.Value) != "")
                 {
-                    CheckBox chk = (CheckBox)rows.FindControl("CheckBox1");
-                    if (chk != null && chk.Checked)
+                    String SiteOwnerId = Convert.ToString(HdnUserID.Value);
+
+                    int liftCount = 0;
+                    int EscalatorCount = 0;
+                    int LiftCountForPayment = 0;
+                    int EscalatorCountForPayment = 0;
+                    //int yearsDifference = 0;
+
+                    string selectedTypes = string.Empty;
+                    foreach (GridViewRow rows in GridView1.Rows)
                     {
-                        Label lblTypes = (Label)rows.FindControl("LblCategory");
-                        //Label lblYearsDifference = (Label)rows.FindControl("LblYearsDifference");
-                        Label LblAmount = (Label)rows.FindControl("LblAmount");
-                        
+                        CheckBox chk = (CheckBox)rows.FindControl("CheckBox1");
+                        if (chk != null && chk.Checked)
+                        {
+                            Label lblTypes = (Label)rows.FindControl("LblCategory");
+                            //Label lblYearsDifference = (Label)rows.FindControl("LblYearsDifference");
+                            Label LblAmount = (Label)rows.FindControl("LblAmount");
 
-                        if (lblTypes.Text == "Lift")
-                        {
-                            liftCount++;
-                        }
-                        else if (lblTypes.Text == "Escalator")
-                        {
-                            EscalatorCount++;
-                        }
-                        string type = lblTypes.Text;
-                        if (type == "Lift" && !selectedTypes.Contains("4"))
-                        {
-                            selectedTypes += "4,";
-                        }
-                        else if (type == "Escalator" && !selectedTypes.Contains("10"))
-                        {
-                            selectedTypes += "10,";
-                        }
 
-                        //if (int.TryParse(lblYearsDifference.Text, out yearsDifference))
-                        decimal Amount;
-
-                        if (decimal.TryParse(LblAmount.Text, out Amount)) 
-                        {
-                            if (lblTypes.Text == "Lift" && Amount > 0.00m) 
+                            if (lblTypes.Text == "Lift")
                             {
-                                LiftCountForPayment++;
+                                liftCount++;
                             }
-                            else if (lblTypes.Text == "Escalator" && Amount > 0.00m) 
+                            else if (lblTypes.Text == "Escalator")
                             {
-                                EscalatorCountForPayment++; 
+                                EscalatorCount++;
+                            }
+                            string type = lblTypes.Text;
+                            if (type == "Lift" && !selectedTypes.Contains("4"))
+                            {
+                                selectedTypes += "4,";
+                            }
+                            else if (type == "Escalator" && !selectedTypes.Contains("10"))
+                            {
+                                selectedTypes += "10,";
+                            }
+
+                            //if (int.TryParse(lblYearsDifference.Text, out yearsDifference))
+                            decimal Amount;
+
+                            if (decimal.TryParse(LblAmount.Text, out Amount))
+                            {
+                                if (lblTypes.Text == "Lift" && Amount > 0.00m)
+                                {
+                                    LiftCountForPayment++;
+                                }
+                                else if (lblTypes.Text == "Escalator" && Amount > 0.00m)
+                                {
+                                    EscalatorCountForPayment++;
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid amount input.");
                             }
                         }
                         else
                         {
-                            Console.WriteLine("Invalid amount input.");
+                            Label LblRegistrationNo = (Label)rows.FindControl("LblRegistrationNo");
+                            //CEI.TohandleUncheckedCheckbox(LblRegistrationNo.Text, Session["SiteOwnerId"].ToString());
+                            CEI.TohandleUncheckedCheckbox(LblRegistrationNo.Text, SiteOwnerId); 
                         }
                     }
-                    else
+
+                    GridViewRow row = ((Control)sender).NamingContainer as GridViewRow;
+                    if (row != null)
                     {
-                        Label LblRegistrationNo = (Label)rows.FindControl("LblRegistrationNo");
-                        CEI.TohandleUncheckedCheckbox(LblRegistrationNo.Text, Session["SiteOwnerId"].ToString());
+                        Label LblCategory = (Label)row.FindControl("LblCategory");
+                        Label LblDistrict = (Label)row.FindControl("LblDistrict");
+                        Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
+
+                        CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
+                        string CreatedBy = Session["SiteOwnerId"].ToString();
+                        TotalPayment.Visible = true;
+                        ChallanDetail.Visible = true;
+
+                        //Session["SelectedCategory"] = LblCategory.Text;
+
+                        Category = LblCategory.Text;
+                        if (Session["Duplicacy"].ToString().Trim() == "0")
+                        {
+                            CEI.CheckDuplicacyInLift(LblRegistrationNo.Text, CreatedBy);
+                            Session["Duplicacy"] = "1";
+                        }
+                        else
+                        { }
+                        DataTable dt = new DataTable();
+                        dt = CEI.GetApplicantCode(LblCategory.Text);
+                        if (dt.Rows.Count > 0)
+                        {
+                            InstallationId = dt.Rows[0]["Id"].ToString();
+                        }
+                        else
+                        {
+                        }
+                        if (chk.Checked)
+                        {
+                            CEI.Update_LiftRenewalPeriodicInspection(LblRegistrationNo.Text, int.Parse(InstallationId), CreatedBy);
+                        }
+                        else
+                        { }
+                        InspectionType = "Periodic";
+                        FeesDetails.Visible = true;
+                        PaymentDetails.Visible = true;
+                        btnSubmit.Visible = true;
+                        btnReset.Visible = true;
+
+                        if (selectedTypes.EndsWith(","))
+                        {
+                            selectedTypes = selectedTypes.Substring(0, selectedTypes.Length - 1);
+                        }
+                        PaymentGridViewBind(selectedTypes, liftCount, EscalatorCount, LiftCountForPayment, EscalatorCountForPayment);
+                        string Installationtypes = string.Empty;
+                        if (liftCount == 0 && EscalatorCount == 1)
+                        {
+                            Installationtypes = "Escalator";
+                        }
+                        else if (liftCount == 1 && EscalatorCount == 0)
+                        {
+                            Installationtypes = "Lift";
+                        }
+                        else if (liftCount >= 1)
+                        {
+                            if (EscalatorCount >= 1)
+                            {
+                                Installationtypes = "Lift/Escalator";
+                            }
+                            else
+                            {
+                                Installationtypes = "MultiLift";
+                            }
+                        }
+                        else if (EscalatorCount >= 1)
+                        {
+                            if (liftCount >= 1)
+                            {
+                                Installationtypes = "Lift/Escalator";
+                            }
+                            else
+                            {
+                                Installationtypes = "MultiEscalator";
+                            }
+                        }
+                        hdnInstallationType.Value = Installationtypes;
                     }
-                }
 
-                GridViewRow row = ((Control)sender).NamingContainer as GridViewRow;
-
-                if (row != null)
-                {
-                    Label LblCategory = (Label)row.FindControl("LblCategory");
-                    Label LblDistrict = (Label)row.FindControl("LblDistrict");
-                    Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
-
-                    CheckBox chk = (CheckBox)row.FindControl("CheckBox1");
-                    string CreatedBy = Session["SiteOwnerId"].ToString();
-                    TotalPayment.Visible = true;
-                    ChallanDetail.Visible = true;
-
-                    Session["SelectedCategory"] = LblCategory.Text;
-
-                    Category = LblCategory.Text;
-                    if (Session["Duplicacy"].ToString().Trim() == "0")
-                    {
-                        CEI.CheckDuplicacyInLift(LblRegistrationNo.Text, CreatedBy);
-                        Session["Duplicacy"] = "1";
-                    }
-                    else
-                    { }
-                    DataTable dt = new DataTable();
-                    dt = CEI.GetApplicantCode(LblCategory.Text);
-                    if (dt.Rows.Count > 0)
-                    {
-                        InstallationId = dt.Rows[0]["Id"].ToString();
-                    }
-                    else
-                    { }
-                    if (chk.Checked)
-                    {
-                        CEI.Update_LiftRenewalPeriodicInspection(LblRegistrationNo.Text, int.Parse(InstallationId), CreatedBy);
-                    }
-                    else
-                    { }
-                    InspectionType = "Periodic";
-                    FeesDetails.Visible = true;
-                    PaymentDetails.Visible = true;
+                    //PaymentDetails.Visible = true;
+                    UploadDocuments.Visible = true;
                     btnSubmit.Visible = true;
-                    btnReset.Visible = true;
-
-                    if (selectedTypes.EndsWith(","))
-                    {
-                        selectedTypes = selectedTypes.Substring(0, selectedTypes.Length - 1);
-                    }
-                    PaymentGridViewBind(selectedTypes, liftCount, EscalatorCount, LiftCountForPayment, EscalatorCountForPayment);
-                    string Installationtypes = string.Empty;
-                    if (liftCount == 0 && EscalatorCount == 1)
-                    {
-                        Installationtypes = "Escalator";
-                    }
-                    else if (liftCount == 1 && EscalatorCount == 0)
-                    {
-                        Installationtypes = "Lift";
-                    }
-                    else if (liftCount >= 1)
-                    {
-                        if (EscalatorCount >= 1)
-                        {
-                            Installationtypes = "Lift/Escalator";
-                        }
-                        else
-                        {
-                            Installationtypes = "MultiLift";
-                        }
-                    }
-                    else if (EscalatorCount >= 1)
-                    {
-                        if (liftCount >= 1)
-                        {
-                            Installationtypes = "Lift/Escalator";
-                        }
-                        else
-                        {
-                            Installationtypes = "MultiEscalator";
-                        }
-                    }
-                    hdnInstallationType.Value = Installationtypes;
+                    InspectionRemarks.Visible = true;
                 }
-
-                //PaymentDetails.Visible = true;
-                UploadDocuments.Visible = true;
-                btnSubmit.Visible = true;
-                InspectionRemarks.Visible = true;
+                else
+                { }
             }
             catch (Exception ex)
             { }
@@ -376,8 +386,6 @@ namespace CEIHaryana.SiteOwnerPages
                     btnReset.Visible = false;
                     UploadDocuments.Visible = false;
                     InspectionRemarks.Visible = false;
-
-
                 }
                 dsa.Dispose();
             }
@@ -402,12 +410,7 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             atLeastOneInspectionChecked = true;
                             break;
-                        }
-                        //else
-                        //{
-                        //    Label LblRegistrationNo = (Label)rows.FindControl("LblRegistrationNo");
-                        //    CEI.TohandleUncheckedCheckbox(LblRegistrationNo.Text, Session["SiteOwnerId"].ToString());
-                        //}
+                        }                   
                     }
                     if (atLeastOneInspectionChecked)
                     {
@@ -453,9 +456,6 @@ namespace CEIHaryana.SiteOwnerPages
                             return;
                         }
 
-                        /////IntimationId = Session["IntimationId_LiftEscalator"].ToString();
-                        //string lblApplicant = Session["SelectedApplicant"].ToString().Trim();
-
                         string District = Session["District"].ToString();
                         string PaymentMode = string.Empty;
                         string Division = string.Empty;
@@ -470,8 +470,6 @@ namespace CEIHaryana.SiteOwnerPages
                         //DateTime TranscationDate = DateTime.Now;
                         string TranscationDate = string.Empty;
                         TotalAmount = Convert.ToDecimal(Session["Amount"]);
-
-
 
                         string Assigned = string.Empty;
                         string InstallationTypeID = string.Empty;
@@ -521,8 +519,6 @@ namespace CEIHaryana.SiteOwnerPages
                         InsertFilesIntoDatabase(InstallationTypeID, CreatedBy, ApplicantType, lblCategory.Trim(), District, Division, PaymentMode,
                    txtInspectionRemarks.Text.Trim(), CreatedBy, TotalAmount, Assigned, transcationId, TranscationDate,
                    inspectionId, ServiceType);
-
-                        
                     }
                     else
                     {
@@ -536,7 +532,6 @@ namespace CEIHaryana.SiteOwnerPages
                 }
             }
         }
-
         public void InsertFilesIntoDatabase(string InstallationTypeID, string para_CreatedBy, string para_ApplicantType, string para_lblCategory, string para_District,
             string para_To, string para_PaymentMode, string para_txtInspectionRemarks, string para_CreatedByy, decimal para_TotalAmount,
             string para_Assigned, string para_transcationId, string para_TranscationDate, int para_InspectID,
@@ -559,9 +554,7 @@ namespace CEIHaryana.SiteOwnerPages
 
                     foreach (var file in uploadedFiles)
                     {
-
                         string query = "sp_InsertInspectionAttachments";
-
                         using (SqlCommand command = new SqlCommand(query, connection, transaction))
                         {
                             command.CommandType = CommandType.StoredProcedure;
@@ -612,7 +605,6 @@ namespace CEIHaryana.SiteOwnerPages
 
             }
         }
-
         public void UploadCheckListDocInCollection(string Category, string CreatedByy, string InstallTypes, string InspectionId)
         {
             if (InstallTypes == "Lift/Escalator")
@@ -633,16 +625,13 @@ namespace CEIHaryana.SiteOwnerPages
                     string CreatedBy = CreatedByy;
                     if (Path.GetExtension(fileUpload.FileName).ToLower() == ".pdf")
                     {
-
                         if (fileUpload.PostedFile.ContentLength <= 1048576)
                         {
                             string FileName = Path.GetFileName(fileUpload.PostedFile.FileName);
-
                             if (!Directory.Exists(Server.MapPath("~/Attachment/" + CreatedBy + "/" + InspectionId + "/" + InstallTypes + "/")))
                             {
                                 Directory.CreateDirectory(Server.MapPath("~/Attachment/" + CreatedBy + "/" + InspectionId + "/" + InstallTypes + "/"));
                             }
-
                             string ext = fileUpload.PostedFile.FileName.Split('.')[1];
                             string path = "";
                             path = "/Attachment/" + CreatedBy + "/" + InspectionId + "/" + InstallTypes + "/";

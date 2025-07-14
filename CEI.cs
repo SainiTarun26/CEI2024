@@ -7850,10 +7850,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertLiftNewAttachments", InstallationType, int.Parse(DocumentID), DocSaveName, FileName, FilePath, CreatedBy);
         }
         //NaVNEET 5-12
-        public DataSet GetRenewalLiftData(string Type, string RegistrationNo, string CreatedBy)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPeriodicRenewalData", Type, RegistrationNo, CreatedBy);
-        }
+   
         public DataTable UpdateLiftTestReportHistory(string Type, string ID, string count, string CreatedBy)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_LiftTestReportApproval", Type, ID, count, CreatedBy);
@@ -10715,10 +10712,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertPeriodicReturnData", TestReportId, InstallationType, RegistrationNo, LastExpiryDate, PreviousChallanUpload, LastApprovalDate, ErectionDate, Make,
  SerialNo, TypeOfLift, TypeOfControl, Capacity, Weight, ApplicantDistrict, MemoNo, MemoDate, SiteAddress, InspectionID, CreatedBy);
         }
-        public DataSet GetRenewalLiftData(string Type, string RegistrationNo)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPeriodicRenewalData", Type, RegistrationNo);
-        }
+       
         #endregion
         #region Neeraj 29-May-2025
         public DataTable GetUtilityName_Disconnection()
@@ -13204,10 +13198,41 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return result;
         }
 
-
+        //14-July
         public DataTable UpdateStatusAfterEdit(string UserId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateStatusAfterEdit", UserId);
+        }
+        public int ToCheckeitherLiftOrEsclatorRegistered(string registrationNo, string userId)
+        {
+            int result = -1; // Default: Not Found
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString()))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ToCheckeitherLiftOrEsclatorRegistered", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@RegistrationNo", registrationNo);
+                    cmd.Parameters.AddWithValue("@CreatedBy", userId);
+
+                    // Explicitly define the return value parameter
+                    SqlParameter returnValue = new SqlParameter("@ReturnVal", SqlDbType.Int);
+                    returnValue.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(returnValue);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+
+                    result = Convert.ToInt32(returnValue.Value);
+                }
+            }
+
+            return result;
+        }
+        public DataSet GetRenewalLiftData(string Type, string RegistrationNo, string CreatedBy) //REPLACED
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPeriodicRenewalData", Type, RegistrationNo, CreatedBy);
         }
         #endregion
         #region kalpana userregistration 8-July-2025

@@ -448,9 +448,10 @@
                     <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
                 </div>
                 <asp:HiddenField ID="hdnInstallationType" runat="server" />
-                <asp:HiddenField ID="HdnDistrict" runat="server" />
-                <asp:HiddenField ID="HdnDivision" runat="server" />
+             <%--   <asp:HiddenField ID="HdnDistrict" runat="server" />--%>
+               <%-- <asp:HiddenField ID="HdnDivision" runat="server" />--%>
                 <asp:HiddenField ID="InspectionIdClientSideCheckedRow" runat="server" />
+                <asp:HiddenField ID="HdnUserID" runat="server" />
                 <div class="col-4"></div>
             </div>
         </div>

@@ -22,19 +22,19 @@
 
     <style>
         .modal-dialog {
-            max-width: 80%; /* Sets a maximum width for the modal */
-            width: 100%; /* Ensures the modal takes up full available width */
-            margin: 30px auto; /* Centers the modal vertically and horizontally */
+            max-width: 80%;
+            width: 100%;
+            margin: 30px auto;
         }
 
         .modal-content {
-            height: auto; /* Ensures the content height adjusts to the content inside */
-            overflow: visible; /* Ensures any overflowed content is visible */
+            height: auto;
+            overflow: visible;
         }
 
         .modal-body {
-            max-height: 70vh; /* Set a maximum height for the modal body */
-            overflow-y: auto; /* Adds vertical scroll if content exceeds the max-height */
+            max-height: 70vh;
+            overflow-y: auto;
         }
 
         .fa-magnifying-glass:before, .fa-search:before {
@@ -202,9 +202,9 @@
 
         /* Style for the GridView inside the modal */
         .modal-grid-container {
-            width: 80%; /* Adjust this to your preference */
-            max-height: 70%; /* Adjust height based on your modal size */
-            overflow-y: auto; /* Enable vertical scrolling */
+            width: 80%;
+            max-height: 70%;
+            overflow-y: auto;
             background-color: white;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -214,17 +214,15 @@
         /* Optional: Style for the grid itself */
         .table-responsive {
             width: 100%;
-            max-height: 500px; /* Adjust height as needed */
-            overflow-y: scroll; /* Enable scrolling when the grid overflows */
         }
 
         .wrap-text {
-            white-space: normal; /* Allow the text to wrap naturally */
-            word-wrap: break-word; /* Break long words if necessary */
-            word-break: break-word; /* Ensures that long words can break and wrap within the container */
-            max-width: 200px; /* Set a maximum width for the text to wrap (adjust this as necessary) */
-            overflow: hidden; /* Prevents text from overflowing outside the container */
-            word-break: break-all; /* This ensures that long words will break at any point if they exceed the container width */
+            white-space: normal;
+            word-wrap: break-word;
+            word-break: break-word;
+            max-width: 200px;
+            overflow: hidden;
+            word-break: break-all;
         }
 
         i.fa.fa-search {
@@ -233,6 +231,10 @@
 
         a#ContentPlaceHolder1_lnkbtnSearch {
             border-radius: 5px !important;
+        }
+
+        .input-group {
+            width: 95% !important;
         }
     </style>
 </asp:Content>
@@ -270,7 +272,7 @@
             </div>
             <div class="card" id="divInspectiondetails" runat="server" visible="true" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <label>
                             Registration No.<samp style="color: red"> * </samp>
                         </label>
@@ -278,7 +280,7 @@
                             <asp:TextBox class="form-control" ID="txtRegistrationNo" MaxLength="20" autocomplete="off" runat="server"
                                 Style="margin-right: 5px;" AutoPostBack="true" OnTextChanged="txtRegistrationNo_TextChanged"></asp:TextBox>
                             <div class="input-group-append">
-                                <asp:LinkButton ID="lnkbtnSearch" CssClass="btn btn-primary" runat="server" Style="height: 100%; padding: 0px;">
+                                <asp:LinkButton ID="lnkbtnSearch" CssClass="btn btn-primary" runat="server" Style="height: 100%; padding: 2px 0px 0px 8px !important;">
                                 <i class="fa fa-search"></i>
                                 </asp:LinkButton>
                             </div>
@@ -286,7 +288,7 @@
                         <asp:RequiredFieldValidator ID="RfvtxtRegistrationNo" ControlToValidate="txtRegistrationNo" runat="server"
                             ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="col-md-2" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>
                             Last Approval Date<samp style="color: red"> * </samp>
                         </label>
@@ -295,19 +297,18 @@
                     </div>
                     <div class="col-md-4" runat="server">
                         <label>
-                            Last expiry date in which payment made<samp style="color: red"> * </samp>
+                            Last date of payment<samp style="color: red"> * </samp>
                         </label>
                         <asp:TextBox type="date" class="form-control" ID="txtLastexpirydate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RfvtxtLastexpirydate" ControlToValidate="txtLastexpirydate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-
-                    <div class="col-md-3">
+                    <%--<div class="col-md-3">
                         <label class="form-label" for="customFile">
                             Upload Previous Challan<samp style="color: red"> * </samp>
                         </label>
                         <asp:FileUpload ID="customFile" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="customFile" ValidationGroup="Submit" ForeColor="Red" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
             <div class="card-title" id="divLiftDetails" runat="server" visible="false" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
@@ -339,7 +340,7 @@
                                 <label>
                                     Date of Erection<samp style="color: red"> * </samp>
                                 </label>
-                                <asp:TextBox type="date" class="form-control" ID="txtDateofErection" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                <asp:TextBox type="date" class="form-control" ID="txtDateofErection" autocomplete="off" runat="server" Style="margin-left: 18px" onblur="validateErectionDateLimit()"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ControlToValidate="txtDateofErection" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
                             <div class="col-md-4">
@@ -374,7 +375,7 @@
                             </div>
                             <div class="col-md-3" runat="server">
                                 <label>
-                                    Weight(In Kgs)<samp style="color: red"> * </samp>
+                                    Capacity(In Kg)<samp style="color: red"> * </samp>
                                 </label>
                                 <asp:TextBox class="form-control" ID="txtWeight" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="5" onkeypress="return isNumberKey(event)"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ControlToValidate="txtWeight" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
@@ -403,7 +404,7 @@
                                 <asp:TextBox class="form-control" Type="date" ID="txtMemoDate" autocomplete="off" runat="server" MaxLength="25" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ControlToValidate="txtMemoDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                             </div>
-                             <div class="col-md-12" runat="server">
+                            <div class="col-md-12" runat="server">
                                 <label>
                                     Site Address<samp style="color: red"> * </samp>
                                 </label>
@@ -423,10 +424,14 @@
                     <PagerStyle CssClass="pagination-ys" />
                     <Columns>
                         <asp:BoundField DataField="SNo" HeaderText="SNo" />
-                        <asp:BoundField DataField="DocumentName" HeaderText="DocumentName">
-                            <HeaderStyle HorizontalAlign="Left" Width="70%" CssClass="headercolor leftalign" />
-                            <ItemStyle HorizontalAlign="Left" Width="70%" />
-                        </asp:BoundField>
+                        <asp:TemplateField HeaderText="Document Name">
+                            <HeaderStyle HorizontalAlign="center" Width="85%" CssClass="headercolor leftalign" />
+                            <ItemStyle HorizontalAlign="center" Width="85%" />
+                            <ItemTemplate>
+                                <asp:Label ID="lblDocumentName" runat="server" Text='<%#Eval("DocumentName") %>'></asp:Label>
+                                <asp:Label ID="lblMandatory1" runat="server" Text="*" ForeColor="Red" Visible='<%# Eval("DocumentName").ToString() != "Other Document" %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="File Upload (1MB PDF Only)">
                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
                             <ItemTemplate>
@@ -436,7 +441,6 @@
                         <asp:TemplateField HeaderText="Id" Visible="False">
                             <ItemTemplate>
                                 <asp:Label ID="LblDocumentID" runat="server" Text='<%#Eval("DocumentID") %>'></asp:Label>
-                                <asp:Label ID="LblDocumentName" runat="server" Text='<%#Eval("DocumentName") %>'></asp:Label>
                                 <asp:Label ID="LblShortName" runat="server" Text='<%#Eval("DocumentShortName") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -454,7 +458,7 @@
             </div>
             <div class="row" style="margin-top: 25px;">
                 <div class="col-6" style="text-align: end; padding-right: 0px;">
-                    <asp:Button ID="btnSubmit" Text="Save" runat="server" OnClick="btnSubmit_Click" OnClientClick="return validateDates();" ValidationGroup="Submit" class="btn btn-primary mr-2" Style="padding-left: 30px; padding-right: 30px;" />
+                    <asp:Button ID="btnSubmit" Text="Save" runat="server" OnClick="btnSubmit_Click" ValidationGroup="Submit" class="btn btn-primary mr-2" Style="padding-left: 30px; padding-right: 30px;" />
                 </div>
                 <div class="col-6" style="text-align: left; padding-left: 0px;">
                     <asp:Button ID="btnBack" Style="padding-left: 35px; padding-right: 35px;" OnClick="btnBack_Click" Text="Back" runat="server" class="btn btn-primary mr-2" CausesValidation="false" />
@@ -483,10 +487,6 @@
                                     <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" OnRowCommand="GridView1_RowCommand" runat="server" AutoGenerateColumns="false">
                                         <PagerStyle CssClass="pagination-ys" />
                                         <Columns>
-                                            <%--<asp:BoundField DataField="RegistrationNo" HeaderText="Registration No">
-                                                        <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor leftalign" />
-                                                        <ItemStyle HorizontalAlign="Left" Width="30%" />
-                                                    </asp:BoundField>--%>
                                             <asp:TemplateField>
                                                 <HeaderStyle Width="10%" CssClass="headercolor" />
                                                 <ItemStyle Width="10%" Font-Bold="true" />
@@ -529,6 +529,7 @@
                                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                                     </asp:GridView>
+                                      <label id="LblGridView1" runat="server"></label>
                                 </div>
                             </div>
                         </div>
@@ -536,6 +537,9 @@
                             <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
                         </div>
                     </div>
+                    <asp:HiddenField ID="HdnUserID" runat="server" />
+                    <asp:HiddenField ID="HdnApplicantTypeID" runat="server" />
+                    <asp:HiddenField ID="HdnInstallationType" runat="server" />
                 </div>
             </div>
         </div>
@@ -561,11 +565,9 @@
                         break;
                     }
                 }
-
                 tblData.rows[i].style.display = styleDisplay;  // Apply the visibility
             }
         }
-
         // Function to trigger search when pressing Enter
         function SearchOnEnter(event) {
             if (event.keyCode === 13) {  // Check if Enter (keyCode 13) was pressed
@@ -644,7 +646,6 @@
                 openModal();
             }
         });
-
     </script>
     <script type="text/javascript">
         // Validate if the file is a PDF and the size is less than 1MB
@@ -667,7 +668,6 @@
                 fileUpload.value = ""; // Clear the file input
                 return false;
             }
-
             return true;
         }
     </script>
@@ -744,54 +744,20 @@
             }
         }
     </script>
-
     <script type="text/javascript">
-        function validateDates() {
-            var isValid = true;
-
-            // Get all the dates
-            var dateOfErection = document.getElementById('<%= txtDateofErection.ClientID %>').value;
-        var memoDate = document.getElementById('<%= txtMemoDate.ClientID %>').value;
-            var currentDate = new Date();
+        function validateErectionDateLimit() {
+            var input = document.getElementById('<%= txtDateofErection.ClientID %>');
+            var dateValue = new Date(input.value);
+            var today = new Date();
             var twentyYearsAgo = new Date();
-            twentyYearsAgo.setFullYear(currentDate.getFullYear() - 20);
+            twentyYearsAgo.setFullYear(today.getFullYear() - 20);
 
-            // Function to check if a date is more than 20 years ago
-            function isDateMoreThan20YearsAgo(dateString) {
-                if (!dateString) return false;  // If no date is provided, return false
-                var inputDate = new Date(dateString);
-                return inputDate < twentyYearsAgo;
-            }
-
-            // Check if "Date of Erection" is more than 20 years ago
-            if (isDateMoreThan20YearsAgo(dateOfErection)) {
-                isValid = false;
-                alert("You are not eligible for renewal. As your Erection date is more than 20 years old.");
-                return false;  // Prevent form submission
-            }
-
-            // Check if Date of Erection is smaller than Memo Date
-            if (dateOfErection && memoDate) {
-                var dateErectionObj = new Date(dateOfErection);
-                var dateMemoObj = new Date(memoDate);
-
-                if (dateErectionObj >= dateMemoObj) {
-                    alert("Date of Erection must be smaller than Memo Date.");
-                    isValid = false;
-                }
-            } else {
-                // If either of the dates is missing, show an error
-                alert("Both Date of Erection and Memo Date are required.");
-                isValid = false;
-            }
-
-            // If the validation fails, prevent form submission
-            if (!isValid) {
+            if (dateValue < twentyYearsAgo || dateValue > today) {
+                alert("Please enter a Date of Erection within the last 20 years.");
+                input.value = ""; // Clear invalid input
                 return false;
             }
-
-            // If all validations pass, allow form submission
             return true;
         }
-</script>
+    </script>
 </asp:Content>

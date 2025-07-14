@@ -307,17 +307,19 @@ namespace CEIHaryana.UserPages
                     txtPermanentAddress.Attributes.Add("readonly", "false");
                     txtPin.Attributes.Add("readonly", "false");
                     ddlState.Attributes.Add("disabled", "disabled");
-                    ddlDistrict.Attributes.Add("disabled", "disabled");
+                    ////ddlDistrict.Attributes.Add("disabled", "disabled");
+                    ddlDistrict.Enabled = false;
 
                     //txtCommunicationAddress.Attributes.Add("readonly", "true");
                     //txtCommunicationAddress.ReadOnly = true;
                     txtPinCode.Attributes.Add("readonly", "false");
                     ddlState1.Attributes.Add("disabled", "disabled");
-                    ddlDistrict1.Attributes.Add("disabled", "disabled");
+                    ////ddlDistrict1.Attributes.Add("disabled", "disabled");
+                    ddlDistrict1.Enabled = false;
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please Select Communication Address First!!!')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please Select Registered Office Address First!!!')", true);
                     ddlDistrict.Focus();
                     CheckBox1.Checked = false;
                 }

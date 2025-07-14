@@ -31,7 +31,6 @@ namespace CEIHaryana.TestReportModal
                         Session["PreviousPage"] = Request.UrlReferrer.ToString();
                     }
 
-
                     if (!string.IsNullOrEmpty(siteOwnerId) && !string.IsNullOrEmpty(registrationNo) && !string.IsNullOrEmpty(TestReportID))
                     {
                         GetData();
@@ -65,7 +64,6 @@ namespace CEIHaryana.TestReportModal
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                     txtInstallationFor.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                     txtName.Text = ds.Tables[0].Rows[0]["NameOfOwner"].ToString();
-                    //txtagency.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                     txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
                     txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                     txtPin.Text = ds.Tables[0].Rows[0]["Pincode"].ToString();
@@ -73,11 +71,7 @@ namespace CEIHaryana.TestReportModal
                     txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                 }
             }
-            //else if ((Convert.ToString(Session["StaffID"]) != null || Convert.ToString(Session["StaffID"]) != string.Empty) && !string.IsNullOrEmpty(Convert.ToString(Session["RegistrationNo"])))
-            //{
-
-            //}
-            else
+             else
             {
                 Response.Redirect("/login.aspx", false);
             }
@@ -93,7 +87,7 @@ namespace CEIHaryana.TestReportModal
                     string TRId = Session["TestReportID"].ToString();
                     DataSet ds = CEI.GetDetailsOfLiftRenewalReport(RegistrationNo, TRId);
 
-                    object previousChallanDateObj = ds.Tables[0].Rows[0]["PreviousChallanDate"];
+                    object previousChallanDateObj = ds.Tables[0].Rows[0]["RenewalDate"];
                     if (previousChallanDateObj != DBNull.Value)
                     {
                         DateTime previousChallanDate = Convert.ToDateTime(previousChallanDateObj);
@@ -135,7 +129,7 @@ namespace CEIHaryana.TestReportModal
                     txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
                     txtDistrictOfTr.Text = ds.Tables[0].Rows[0]["ApplicantDistrict"].ToString();
                     txtLiftType.Text = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
-                    Session["File"] = ds.Tables[0].Rows[0]["PreviousChallanUpload"].ToString();
+                    //Session["File"] = ds.Tables[0].Rows[0]["PreviousChallanUpload"].ToString();
 
                     GridDocument();
                 }
@@ -183,26 +177,26 @@ namespace CEIHaryana.TestReportModal
             }
         }
 
-        protected void lnkFile_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Session["File"] != null && Session["File"].ToString() != "")
-                {
-                    string fileName = Session["File"].ToString();
+        //protected void lnkFile_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (Session["File"] != null && Session["File"].ToString() != "")
+        //        {
+        //            string fileName = Session["File"].ToString();
 
-                    string filePath = fileName.Replace("~", "");
-                    //filePath = "https://uat.ceiharyana.com" + filePath;
-                    fileName = "https://uat.ceiharyana.com" + filePath;
-                    string script = $@"<script>window.open('{filePath}','_blank');</script>";
-                    ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-                }
-            }
-            catch (Exception ex)
-            {
-                ClientScript.RegisterStartupScript(this.GetType(), "Error", $"alert('Error: {ex.Message}');", true);
-            }
-        }
+        //            string filePath = fileName.Replace("~", "");
+        //            //filePath = "https://uat.ceiharyana.com" + filePath;
+        //            fileName = "https://uat.ceiharyana.com" + filePath;
+        //            string script = $@"<script>window.open('{filePath}','_blank');</script>";
+        //            ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ClientScript.RegisterStartupScript(this.GetType(), "Error", $"alert('Error: {ex.Message}');", true);
+        //    }
+        //}
 
         private void GetDetails_AtOfficerEnd()
         {
