@@ -24,8 +24,14 @@ namespace CEIHaryana.Admin
                 {
                     if (!IsPostBack && Request.UrlReferrer != null)
                     {
-                        ViewState["PreviousPageUrl"] = Request.UrlReferrer.ToString();
+                        string referrerUrl = Request.UrlReferrer.ToString();
+
+                        if (!referrerUrl.Contains("New_Registration_Information.aspx") && !referrerUrl.Contains("New_Registration_Information_Contractor.aspx"))
+                        {
+                            Session["PreviousPageUrl2"] = referrerUrl;
+                        }
                     }
+
 
                     if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty && Convert.ToString(Session["Application_Id"]) != null && Convert.ToString(Session["Application_Id"]) != string.Empty)
                     {
@@ -160,17 +166,35 @@ namespace CEIHaryana.Admin
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            if (ViewState["PreviousPageUrl"] != null)
+            if (Session["PreviousPageUrl2"] != null)
             {
-                Response.Redirect(ViewState["PreviousPageUrl"].ToString(), false);
+                Response.Redirect(Session["PreviousPageUrl2"].ToString(), false);
             }
         }
 
         protected void lnkFile_Click(object sender, EventArgs e)
         {
-            Session["Application_Id"] = txtApplicationId.Text.Trim();
-            string script = "window.open('/Admin/Pending_Licence_Approval_Cei_List.aspx', '_blank');";
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "OpenDoc", script, true);
+            
+            Session["NewApplicationRegistrationNo"] = "";
+            Session["NewApplication_Contractor_RegNo"] = "";
+            Session["Application_Id"] = txtApplicationId.Text.ToString();
+            if (txtLicenceType.Text == "Wireman" || txtLicenceType.Text == "Supervisor")
+            {
+                Session["NewApplicationRegistrationNo"] = txtRegistrationId.Text.Trim();
+                Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
+
+                //string script = "window.open('/UserPages/New_Registration_Information.aspx', '_blank');";
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "OpenDoc", script, true);
+            }
+            else if (txtLicenceType.Text == "Contractor")
+            {
+                Session["NewApplication_Contractor_RegNo"] = txtRegistrationId.Text.Trim();
+
+                //string script = "window.open('/UserPages/New_Registration_Information_Contractor.aspx', '_blank');";
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "OpenDoc", script, true);
+                Response.Redirect("/UserPages/New_Registration_Information_Contractor.aspx", false);
+
+            }
         }
     }
 }
