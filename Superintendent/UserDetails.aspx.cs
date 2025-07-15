@@ -104,6 +104,7 @@ namespace CEIHaryana.Superintendent
             Label lblID = (Label)row.FindControl("lblID");
             Label lblStatus = (Label)row.FindControl("lblStatus");
             Label lblRegistrationId = (Label)row.FindControl("lblRegistrationId");
+            Label lblCategory = (Label)row.FindControl("lblCategory");
             if (e.CommandName == "Select")
             {
                 Session["Application_Id"] = lblID.Text;
@@ -115,8 +116,17 @@ namespace CEIHaryana.Superintendent
             }
             else if (e.CommandName == "Print")
             {
-                Session["NewApplicationRegistrationNo"] = lblRegistrationId.Text;
-                Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
+                if(lblCategory.Text == "Contractor")
+                {
+                    Session["NewApplication_Contractor_RegNo"] = lblRegistrationId.Text;
+                    Response.Redirect("/UserPages/New_Registration_Information_Contractor.aspx", false);
+                }
+                else
+                {
+                    Session["NewApplicationRegistrationNo"] = lblRegistrationId.Text;
+                    Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
+                }
+              
             }
         }
                  

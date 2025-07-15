@@ -247,6 +247,7 @@
                                   <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
                                    <asp:Label ID="lblAssignTo" runat="server" Text='<%#Eval("Assignto") %>'></asp:Label>
                                       <asp:Label ID="lblRegistrationId" runat="server" Text='<%#Eval("RegistrationId") %>'></asp:Label>
+                                    <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Categary") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="SNo">
