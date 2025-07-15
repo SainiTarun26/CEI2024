@@ -2765,30 +2765,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckAadhar", Aadhar);
         }
-        #region insert ContractorTeam
-        public void InsertContractorTeam(string TypeofEmployee, string LicenseNo, string issueDate, string Validity, string Qualification, string CreatedBy)
-        {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-            SqlCommand cmd = new SqlCommand("Sp_InsertContractorTeam");
-            cmd.Connection = con;
-            if (con.State == ConnectionState.Closed)
-            {
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                con.Open();
-            }
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@TypeOfEmployee", TypeofEmployee);
-            cmd.Parameters.AddWithValue("@LicenseNo", LicenseNo);
-            cmd.Parameters.AddWithValue("@LicenseIssueDate", issueDate);
-            cmd.Parameters.AddWithValue("@LicenseValidity", Validity);
-            cmd.Parameters.AddWithValue("@Qualification", Qualification);
-            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
-            cmd.ExecuteNonQuery();
-            con.Close();
-        }
-
-     
-        #endregion
+        
 
 
         #region insert ContractotpEmail
@@ -11753,7 +11730,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
 
 
 
-        public int InsertContractorTeam(string Name, string TypeofEmployee, string LicenseNo, DateTime issueDate, DateTime Validity, string CreatedBy)
+        public int InsertContractorTeam(string Name, string TypeofEmployee, string LicenseNo, DateTime issueDate, DateTime Validity, string CreatedBy, string REID)
         {
             int RowAffected;
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -11771,12 +11748,12 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             cmd.Parameters.AddWithValue("@LicenseIssueDate", issueDate);
             cmd.Parameters.AddWithValue("@LicenseValidity", Validity);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            cmd.Parameters.AddWithValue("@REID", REID);
             RowAffected = cmd.ExecuteNonQuery();
             con.Close();
 
             return RowAffected;
         }
-
 
 
         public DataTable DeleteContractorTeam(int Id)

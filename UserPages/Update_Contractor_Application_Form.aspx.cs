@@ -544,11 +544,12 @@ namespace CEIHaryana.UserPages
                 Label lblLicenseNo = (Label)row.FindControl("lblLicenseNo");
                 Label lblIssueDate = (Label)row.FindControl("lblIssueDate");
                 Label lblValidityDate = (Label)row.FindControl("lblValidityDate");
+                Label lblREID = (Label)row.FindControl("lblREID");
 
                 // Extract values
                 string Name = lblName.Text.Trim();
                 string licenseNo = lblLicenseNo.Text.Trim();
-
+                string REID = lblREID.Text.Trim();
 
                 DateTime issueDate, validityDate;
                 if (lblIssueDate == null || !DateTime.TryParseExact(lblIssueDate.Text.Trim(), "dd-MM-yyyy", null, System.Globalization.DateTimeStyles.None, out issueDate))
@@ -563,7 +564,7 @@ namespace CEIHaryana.UserPages
                 }
 
                 // Pass all values to your insert method
-                int RowAffected = CEI.InsertContractorTeam(Name, typeOfEmployee, licenseNo, issueDate, validityDate, createdBy);
+                int RowAffected = CEI.InsertContractorTeam(Name, typeOfEmployee, licenseNo, issueDate, validityDate, createdBy, REID);
 
 
                 if (RowAffected > 0)

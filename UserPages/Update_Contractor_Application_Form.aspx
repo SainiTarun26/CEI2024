@@ -1791,6 +1791,12 @@
                                               <asp:Label ID="lblValidityDate" runat="server" Text='<%# Eval("ValidityDate", "{0:dd-MM-yyyy}") %>' />
                                           </ItemTemplate>
                                       </asp:TemplateField>
+                                         <asp:TemplateField HeaderText="Validity Date" Visible="false">
+       <HeaderStyle HorizontalAlign="Center" CssClass="headercolor" />
+       <ItemTemplate>
+           <asp:Label ID="lblREID" runat="server" Text='<%# Eval("REID") %>' />
+       </ItemTemplate>
+   </asp:TemplateField>
                                       <asp:TemplateField HeaderText="Select">
                                           <ItemTemplate>
                                               <asp:LinkButton ID="lnkSelect" runat="server" CommandName="Select" Text="Select" ForeColor="Blue" />
