@@ -94,6 +94,10 @@
             text-align: center;
         }
 
+                        .PowerUtilityRowColor {
+            background-color: #e3dcc0 !important;
+        }
+
         /* input#ContentPlaceHolder1_RadioButtonList2_1 {
             margin-left: 15px;
             margin-right: 5px !important;
@@ -132,7 +136,7 @@
                             </asp:RadioButtonList>
                              </div>--%>
                     </div>
-                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
+                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" OnRowDataBound="GridView1_RowDataBound"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="20" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                         <Columns>
                             <asp:TemplateField HeaderText="Id" Visible="False">

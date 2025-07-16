@@ -93,6 +93,10 @@
         td {
             text-align: center;
         }
+
+        .PowerUtilityRowColor {
+            background-color: #e3dcc0 !important;
+        }
     </style>
 
 </asp:Content>
@@ -117,7 +121,7 @@
                             </div>
                         </div>
                     </div>
-                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
+                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" OnRowDataBound="GridView1_RowDataBound"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand"  BorderWidth="1px" BorderColor="#dbddff">
                         <Columns>
                             <asp:TemplateField HeaderText="Id" Visible="False">

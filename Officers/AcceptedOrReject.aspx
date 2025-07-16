@@ -94,6 +94,10 @@
         td {
             text-align: center;
         }
+        .PowerUtilityRowColor {
+            background-color: #e3dcc0 !important;
+        }
+
     </style>
 
 </asp:Content>

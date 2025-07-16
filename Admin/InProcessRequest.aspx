@@ -127,6 +127,10 @@ input#ContentPlaceHolder1_RadioButtonList1_1 {
     margin-right: 7px;
 }
 
+        .PowerUtilityRowColor {
+            background-color: #e3dcc0 !important;
+        }
+
     </style>
 
 </asp:Content>
@@ -169,7 +173,7 @@ input#ContentPlaceHolder1_RadioButtonList1_1 {
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                        <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
+                        <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" OnRowDataBound="GridView1_RowDataBound"
                             AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging"
                             AllowPaging="true" PageSize="500" BorderWidth="1px" BorderColor="#dbddff">
                             <Columns>
@@ -180,6 +184,7 @@ input#ContentPlaceHolder1_RadioButtonList1_1 {
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
+                                        <asp:Label ID="lblApplicantFor" runat="server" Text='<%#Eval("ApplicantFor") %>'></asp:Label>
                                         <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
                                          <asp:Label ID="lblInstallationFor" runat="server" Text='<%#Eval("Installationfor") %>'></asp:Label>
                                     </ItemTemplate>

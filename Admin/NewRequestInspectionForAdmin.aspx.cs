@@ -135,5 +135,20 @@ namespace CEIHaryana.Admin
             string InstallationType = RadioButtonList1.SelectedValue.ToString();
             GridBind();
         }
+        //Powerutility condition aded by aslam 16-July-2025
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label lbllblApplicantFor = (Label)e.Row.FindControl("lblApplicantFor");
+
+                if (lbllblApplicantFor != null && lbllblApplicantFor.Text == "Power Utility")
+                {
+                    e.Row.CssClass = "PowerUtilityRowColor";
+                }
+            }
+        }
+        //
     }
 }

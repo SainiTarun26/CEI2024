@@ -254,6 +254,15 @@ namespace CEIHaryana.Officers
 
                     linkButton.Visible = false;
                 }
+                //Powerutility condition aded by aslam 16-July-2025
+
+                Label lbllblApplicantFor = (Label)e.Row.FindControl("lblApplicantFor");
+
+                if (lbllblApplicantFor != null && lbllblApplicantFor.Text == "Power Utility")
+                {
+                    e.Row.CssClass = "PowerUtilityRowColor";
+                }
+                //
             }
         }
     }
