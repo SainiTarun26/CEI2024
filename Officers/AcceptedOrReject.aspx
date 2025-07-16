@@ -95,7 +95,7 @@
             text-align: center;
         }
         .PowerUtilityRowColor {
-            background-color: #e3dcc0 !important;
+            background-color: #ef4a8f !important;
         }
 
     </style>

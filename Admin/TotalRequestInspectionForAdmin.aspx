@@ -118,7 +118,7 @@ input#ContentPlaceHolder1_RadioButtonList1_1 {
 }
 
         .PowerUtilityRowColor {
-            background-color: #e3dcc0 !important;
+            background-color: #ef4a8f !important;
         }
     </style>
 
