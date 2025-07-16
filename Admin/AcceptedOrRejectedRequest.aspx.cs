@@ -114,7 +114,7 @@ namespace CEIHaryana.Admin
                     string id = lblID.Text;
                     //Session["InspectionId"] = id;
                     if (e.CommandName == "Select")
-                    {                        
+                    {
                         //Added By neeraj 22-May-2025
                         if (lblInstallationFor.Text == "Cinema_Videos Talkies")
                         {
@@ -130,10 +130,10 @@ namespace CEIHaryana.Admin
                         {
                             Session["InspectionId"] = id;
                             Response.Redirect("/Admin/InspectionDetails.aspx", false);
-                        }                      
+                        }
                     }
                     else if (e.CommandName == "Print")
-                    {                        
+                    {
                         if (LblInspectionType.Text == "New")
                         {
                             Session["InProcessInspectionId"] = id;
@@ -143,7 +143,7 @@ namespace CEIHaryana.Admin
                                 string fileName = lblApproveCertificate.Text;
                                 string folderPath = Server.MapPath(fileName);
                                 string filePath = Path.Combine(folderPath);
-                               
+
                                 if (System.IO.File.Exists(filePath))
                                 {
                                     string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
@@ -171,6 +171,10 @@ namespace CEIHaryana.Admin
                                     }
 
                                 }
+                                else
+                                {
+                                    Response.Redirect("/Print_Forms/NewInspectionApprovalCertificate.aspx", false);
+                                }
                             }
                             else if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
                             {
@@ -181,7 +185,8 @@ namespace CEIHaryana.Admin
                         }
                         else if (LblInspectionType.Text == "Periodic")
                         { //Added By neeraj 22-May-2025
-                          //Session["InProcessInspectionId"] = id;
+                            Session["InProcessInspectionId"] = id;
+                            //Session["InProcessInspectionId"] = id;
                             if (lblInstallationFor.Text == "Cinema_Videos Talkies")
                             {
                                 string fileName = lblApproveCertificate.Text;
@@ -217,7 +222,7 @@ namespace CEIHaryana.Admin
                 ScriptManager.RegisterStartupScript(this, GetType(), "aleert", "alert('" + ex.Message + "');", true);
             }
 
-            
+
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
