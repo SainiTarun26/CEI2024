@@ -1,7 +1,9 @@
-﻿using CEI_PRoject;
+﻿using AjaxControlToolkit;
+using CEI_PRoject;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -12,10 +14,11 @@ namespace CEIHaryana.UserPages
 {
     public partial class SiteOwnerRegistration : System.Web.UI.Page
     {
+        //Page created by gurmeet
         CEI CEI = new CEI();
         string ApplicantType, ApplicantCode, PanTanNumber, ElectricalInstallationFor, NameOfOwner, NameofAgency, Address,
             District, PinCode, PhoneNumber, Email;
-
+        string fileName;
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -179,6 +182,52 @@ namespace CEIHaryana.UserPages
                 return true;
             }
         }
+        #region navneet added upload document changes 4-July-2025
+        public string UploadPannumber()
+        {
+            string path = "";
+             fileName = "CopyOfPanCard" + ".pdf";
+            string filePathInfo2 = "";
+            PanTanNumber = txtPANTan.Text.Trim();
+            if (Path.GetExtension(FileUpload1.FileName).ToLower() == ".pdf")
+            {
+
+                if (FileUpload1.PostedFile.ContentLength <= 1048576)
+                {
+                    string FileName = Path.GetFileName(FileUpload1.PostedFile.FileName);
+
+                    if (!Directory.Exists(Server.MapPath("~/Attachment/" + "/SiteOwner/" + PanTanNumber + "/" + "CopyOfPanCard" + "/"  )))
+                    {
+                        Directory.CreateDirectory(Server.MapPath("~/Attachment/" + "/SiteOwner/" + PanTanNumber + "/" + "CopyOfPanCard" + "/"));
+                    }
+
+                    string ext = FileUpload1.PostedFile.FileName.Split('.')[1];
+                    
+                    path = "/Attachment/" +"/SiteOwner/" + PanTanNumber + "/" + "CopyOfPanCard" + "/" ;
+                    //string fileName = DocSaveName + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + "." + ext;
+                    //string fileName = DocSaveName + "." + ext;
+
+
+                    filePathInfo2 = Server.MapPath("~/Attachment/" + "/SiteOwner/" + PanTanNumber + "/" + "CopyOfPanCard" + "/"  + fileName);
+
+                    FileUpload1.PostedFile.SaveAs(filePathInfo2);
+
+                }
+                else
+                {
+                    fileName = "";
+                    throw new Exception("Please Upload Pdf Files Less Than 1 Mb Only");
+                }
+            }
+            else
+            {
+                fileName = "";
+                throw new Exception("Please Upload Pdf Only");
+            }
+            path = path + fileName;
+            return path;
+        }
+        #endregion
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             try
@@ -187,31 +236,46 @@ namespace CEIHaryana.UserPages
                 PanTanNumber = txtPANTan.Text.Trim();
                 if (CheckSiteownerPAN(PanTanNumber))
                 {
-                    ApplicantType = ddlApplicantType.SelectedItem.ToString();
-                    ApplicantCode = ddlApplicantType.SelectedValue;
-                    ElectricalInstallationFor = ddlworktype.SelectedItem.ToString();
-                    if (LblNameofOwner.Visible == true)
+                    if (FileUpload1.HasFile)
                     {
-                        NameOfOwner = txtName.Text;
+                        fileName = UploadPannumber();
+                        if (fileName!="" && fileName != null) {
+                            ApplicantType = ddlApplicantType.SelectedItem.ToString();
+                            ApplicantCode = ddlApplicantType.SelectedValue;
+                            ElectricalInstallationFor = ddlworktype.SelectedItem.ToString();
+                            if (LblNameofOwner.Visible == true)
+                            {
+                                NameOfOwner = txtName.Text;
+                            }
+                            else if (LblAgency.Visible == true)
+                            {
+                                NameofAgency = txtName.Text;
+                            }
+                            Address = txtAddress.Text.Trim();
+                            District = ddlDistrict.SelectedItem.ToString();
+                            PinCode = txtPin.Text;
+                            PhoneNumber = txtPhone.Text;
+                            Email = txtEmail.Text;
+                            int Ad = CEI.InsertSiteOwnerRegistration(ApplicantType, ApplicantCode, PanTanNumber, ElectricalInstallationFor, NameOfOwner, NameofAgency
+                                 , Address, District, PinCode, PhoneNumber, Email, fileName);
+                            if (Ad > 0)
+                            {
+                                CEI.SiteOwnerCredentials(txtEmail.Text, PanTanNumber);
+                                Reset();
+                                string script = "alert('Registration Succesffuly,Your userId And Password is sent to email'); window.location='/Login.aspx';";
+                                //string script = "alert('Registration Succesffuly,Your userId And Password is sent to email');";
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
+                            }
+                        }
+                        else
+                        {
+
+                        }
                     }
-                    else if (LblAgency.Visible == true)
+                    else
                     {
-                        NameofAgency = txtName.Text;
-                    }
-                    Address = txtAddress.Text.Trim();
-                    District = ddlDistrict.SelectedItem.ToString();
-                    PinCode = txtPin.Text;
-                    PhoneNumber = txtPhone.Text;
-                    Email = txtEmail.Text;
-                    int Ad = CEI.InsertSiteOwnerRegistration(ApplicantType, ApplicantCode, PanTanNumber, ElectricalInstallationFor, NameOfOwner, NameofAgency
-                         , Address, District, PinCode, PhoneNumber, Email);
-                    if (Ad > 0)
-                    {
-                        CEI.SiteOwnerCredentials(txtEmail.Text, PanTanNumber);
-                        Reset();
-                        string script = "alert('Registration Succesffuly,Your userId And Password is sent to email'); window.location='/Login.aspx';";
-                        //string script = "alert('Registration Succesffuly,Your userId And Password is sent to email');";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
+
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please Upload file');", true);
                     }
                 }
                 else

@@ -4082,36 +4082,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckSiteownerPan", PanNumber);
         }
-
-        public int InsertSiteOwnerRegistration(string ApplicantType, string ApplicantCode, string PanTanNumber, string ElectricalInstallationFor, string NameOfOwner, string NameofAgency
-                    , string Address, string District, string PinCode, string PhoneNumber, string Email)
-        {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand("InsertRegistrationSiteOwner", con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
-                    cmd.Parameters.AddWithValue("@ApplicantTypeCode", ApplicantCode);
-                    cmd.Parameters.AddWithValue("@PANNumber", PanTanNumber);
-                    //cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
-                    cmd.Parameters.AddWithValue("@ContractorType", ElectricalInstallationFor);
-                    cmd.Parameters.AddWithValue("@NameOfOwner", NameOfOwner);
-                    cmd.Parameters.AddWithValue("@District", District);
-                    cmd.Parameters.AddWithValue("@NameOfAgency", NameofAgency);
-                    cmd.Parameters.AddWithValue("@Address", Address);
-                    //cmd.Parameters.AddWithValue("@District", District);
-                    cmd.Parameters.AddWithValue("@Pincode", PinCode);
-                    cmd.Parameters.AddWithValue("@ContactNo", PhoneNumber);
-                    cmd.Parameters.AddWithValue("@Email", Email);
-                    con.Open();
-                    int Ad = cmd.ExecuteNonQuery();
-                    return Ad;
-                }
-
-            }
-        }
-
+       
         #endregion
         #region SLD 
         //public DataTable SldHistory(string SiteOwnerId)
@@ -13946,6 +13917,60 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             con.Close();
 
         }
+        #endregion
+        #region navneet Login of siteownerverification
+        public DataTable LoginsiteownerPanverification(string UserId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetUserTypeOfLoginUser", UserId);
+        }
+        public DataTable GetSiteOwnerDetailsforverifying(string UserId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSiteOwnerDetailsforverifying", UserId);
+        }
+        public void UpdatePendingsignatureOfOwner(string Pannumber, string CopyofPanNumber)
+        {
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdatePendingsignatureOfOwner", Pannumber, CopyofPanNumber);
+        }
+        //Insert created by gurmeet changed by navneet 17-July-2025
+        public int InsertSiteOwnerRegistration(string ApplicantType, string ApplicantCode, string PanTanNumber, string ElectricalInstallationFor, string NameOfOwner, string NameofAgency
+                    , string Address, string District, string PinCode, string PhoneNumber, string Email, string CopyofPanNumber)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("InsertRegistrationSiteOwner", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
+                    cmd.Parameters.AddWithValue("@ApplicantTypeCode", ApplicantCode);
+                    cmd.Parameters.AddWithValue("@PANNumber", PanTanNumber);
+                    //cmd.Parameters.AddWithValue("@ApplicantType", ApplicantType);
+                    cmd.Parameters.AddWithValue("@ContractorType", ElectricalInstallationFor);
+                    cmd.Parameters.AddWithValue("@NameOfOwner", NameOfOwner);
+                    cmd.Parameters.AddWithValue("@District", District);
+                    cmd.Parameters.AddWithValue("@NameOfAgency", NameofAgency);
+                    cmd.Parameters.AddWithValue("@Address", Address);
+                    //cmd.Parameters.AddWithValue("@District", District);
+                    cmd.Parameters.AddWithValue("@Pincode", PinCode);
+                    cmd.Parameters.AddWithValue("@ContactNo", PhoneNumber);
+                    cmd.Parameters.AddWithValue("@Email", Email);
+                    cmd.Parameters.AddWithValue("@CopyofPanNumber", CopyofPanNumber);
+                    con.Open();
+                    int Ad = cmd.ExecuteNonQuery();
+                    return Ad;
+                }
+
+            }
+        }
+
+
+        #endregion
+        #region navneet staff email
+        public string getStaffEmal(string StaffUserId)
+        {
+            object result = DBTask.ExecuteScalar(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getstaffmail", StaffUserId);
+            return result?.ToString();
+        }
+
         #endregion
     }
 }

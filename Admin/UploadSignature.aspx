@@ -58,11 +58,12 @@
         }
     </script>
     <style>
-         img {
-    height: 60px !important;
-    width: 150px !important;
-    max-width: 126% !important;
-}
+        img {
+            height: 60px !important;
+            width: 150px !important;
+            max-width: 126% !important;
+        }
+
         .headercolor1 {
             text-align: initial !important;
         }
@@ -229,9 +230,9 @@
             padding: 9px !important;
         }
 
-        table{
-          width:100%;
-      }        
+        table {
+            width: 100%;
+        }
 
         .input-box {
             display: flex;
@@ -263,18 +264,22 @@
             .input-box:focus-within {
                 border-color: #777;
             }
-            th.headercolor1 {
-    width:15%;
-}
-            th.headercolor3 {
-    width: 12%;
-}
-            th.headercolor4 {
-    width: 20%;
-}
-            th.headersizeSignature {
-    width: 17%;
-}
+
+        th.headercolor1 {
+            width: 15%;
+        }
+
+        th.headercolor3 {
+            width: 12%;
+        }
+
+        th.headercolor4 {
+            width: 20%;
+        }
+
+        th.headersizeSignature {
+            width: 17%;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -332,20 +337,36 @@
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                             <div class="row">
-                                <div class="col-md-12" style="margin-top: 15px;">
+                                <div class="col-md-8" style="margin-top: 15px;">
                                     <label for="formFile" class="form-label">
                                         Upload Signature<samp style="color: red">* </samp>
-                                        <samp style="color: red; font-weight: 800;"><b>(Max Dimensions 300 X 110 pixel, Image size 1 MB , Image Format .jpg ,jpeg,.png only)</b></samp>
+                                        <samp style="color: red; font-weight: 800; font-size: 12px;"><b>(Max Dimensions 300 X 110 pixel, Image size 1 MB , Image Format .jpg ,jpeg,.png only)</b></samp>
                                     </label>
                                     <asp:FileUpload class="form-control" ID="Signature" runat="server" Style="padding: 2px;" accept=".jpg, jpeg ,.png  " />
+                                              <asp:TextBox class="form-control" ID="txtsignature" Visible="false" ReadOnly="true" MaxLength="6" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                   </div>
+
+                                <div runat="server" id="OTPVERIFICATION" visible="false" class="col-md-4" style="margin-top: 15px;">
+                                    <label for="formFile" class="form-label">
+                                        Enter OTP<samp style="color: red">* </samp>
+
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtOTP" autocomplete="off"
+                                        runat="server" MaxLength="50"
+                                        TabIndex="17" />
                                 </div>
                             </div>
                         </div>
                         <div class="row" style="margin-top: 25px; margin-bottom: -15px;">
                             <div class="col-4" style="margin-top: auto;"></div>
                             <div class="col-4" style="margin-top: auto; text-align: center;">
-                                <asp:Button type="submit" ID="BtnSubmit" TabIndex="23" Text="Submit" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" OnClick="BtnSubmit_Click" />
-                            </div>
+
+
+                                <asp:Button type="submit" ID="BtnSentOtp" TabIndex="23" Text="Submit" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" OnClick="BtnSendotp_Click" />
+                                <asp:Button type="submit" ID="BtnSubmit" TabIndex="23" Visible="false" Text="Submit" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" OnClick="BtnSubmit_Click" />
+     <br />   <text id="Resendotp" runat="server" visible="false">(An OTP has been sent to the email. If you have not received yet, please <asp:LinkButton ID="LinkButton4" runat="server" AutoPostBack="true" OnClick="LinkButton4_Click">click here to resend</asp:LinkButton> .)</text>
+                                                    
+ </div>
                         </div>
                         <div class="card" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px; margin-top: 20px;">
                             <asp:GridView ID="gvImages" runat="server" AutoGenerateColumns="false" OnRowCommand="gvImages_RowCommand" OnRowDataBound="gvImages_OnRowDataBound">
@@ -359,7 +380,7 @@
                                         <HeaderStyle HorizontalAlign="center" CssClass="headercolor2 headercolor" />
                                         <ItemStyle HorizontalAlign="center" />
                                     </asp:BoundField>
-                                    
+
                                     <asp:BoundField DataField="Staff" HeaderText="User Name">
                                         <HeaderStyle HorizontalAlign="center" CssClass="headercolor2 headercolor" />
                                         <ItemStyle HorizontalAlign="center" />
@@ -380,25 +401,25 @@
                                         <ItemTemplate>
                                             <asp:Label ID="lblSignatureStatus" runat="server" Text="Not Uploaded" Visible="false"></asp:Label>
                                             <asp:Image ID="ImageUrl" runat="server" Visible="false" />
-                                           
+
                                         </ItemTemplate>
                                         <HeaderStyle HorizontalAlign="center" CssClass="headercolor headersizeSignature" />
-                                        <ItemStyle HorizontalAlign="center"/>
+                                        <ItemStyle HorizontalAlign="center" />
                                     </asp:TemplateField>
 
-                                 <asp:TemplateField HeaderText=" ">
-    <HeaderStyle ForeColor="White" HorizontalAlign="Center" />
-    <ItemTemplate>
-        <asp:ImageButton 
-            ID="btnDelete" 
-            runat="server" 
-            ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png" 
-            CommandArgument='<%# Eval("Id") %>' 
-            CommandName="DeleteRow" 
-            CssClass="delete-button" 
-            Style="display: block; margin: 0 auto; height: 30px; width: 30px;" />
-    </ItemTemplate>
-</asp:TemplateField>
+                                    <asp:TemplateField HeaderText=" ">
+                                        <HeaderStyle ForeColor="White" HorizontalAlign="Center" />
+                                        <ItemTemplate>
+                                            <asp:ImageButton
+                                                ID="btnDelete"
+                                                runat="server"
+                                                ImageUrl="/Image/Image/ImageToDelete-removebg-preview.png"
+                                                CommandArgument='<%# Eval("Id") %>'
+                                                CommandName="DeleteRow"
+                                                CssClass="delete-button"
+                                                Style="display: block; margin: 0 auto; height: 30px; width: 30px;" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
 
 
                                 </Columns>
@@ -450,5 +471,17 @@
             }
         }
 
+    </script>
+    <script>
+        window.onload = function () {
+            checkLoginBeforeSubmit();
+        };
+
+        function checkLoginBeforeSubmit() {
+            // Check if user is already logged in another tab
+            localStorage.removeItem('activeSession');
+            sessionStorage.clear();
+            // window.location.href = 'Login.aspx';
+        }
     </script>
 </asp:Content>

@@ -229,21 +229,34 @@ namespace CEIHaryana
                         {
                             if (txtPassword.Text != "123456")
                             {
-                                if (chkSignedin.Checked == true)
+                                //dt aaded by navneet for siteowner login
+                                DataTable dt = new DataTable();
+                                dt = cei.LoginsiteownerPanverification(txtUserID.Text.Trim());
+                                string path = dt.Rows[0]["panpath"].ToString();
+                                //
+                                if (path != null && path != "")
                                 {
-                                    Session["SiteOwnerId"] = txtUserID.Text;
-                                    Session["logintype"] = "SiteOwner";
-                                    Response.Cookies["SiteOwnerId"].Value = txtUserID.Text;
-                                    Response.Cookies["logintype"].Value = "SiteOwner";
-                                    Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);
+                                    if (chkSignedin.Checked == true)
+                                    {
+                                        Session["SiteOwnerId"] = txtUserID.Text;
+                                        Session["logintype"] = "SiteOwner";
+                                        Response.Cookies["SiteOwnerId"].Value = txtUserID.Text;
+                                        Response.Cookies["logintype"].Value = "SiteOwner";
+                                        Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);
+                                    }
+                                    else
+                                    {
+                                        Session["SiteOwnerId"] = txtUserID.Text;
+                                        Session["logintype"] = "SiteOwner";
+                                        Response.Cookies["SiteOwnerId"].Value = txtUserID.Text;
+                                        Response.Cookies["logintype"].Value = "SiteOwner";
+                                        Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);
+                                    }
                                 }
                                 else
                                 {
                                     Session["SiteOwnerId"] = txtUserID.Text;
-                                    Session["logintype"] = "SiteOwner";
-                                    Response.Cookies["SiteOwnerId"].Value = txtUserID.Text;
-                                    Response.Cookies["logintype"].Value = "SiteOwner";
-                                    Response.Redirect("/SiteOwnerPages/InspectionHistory.aspx", false);
+                                    Response.Redirect("/SiteOwner_Verification/Pan_Card_Verification.aspx", false);
                                 }
                             }
                             else
@@ -254,28 +267,15 @@ namespace CEIHaryana
                         }
                         else if (check == 8)
                         {
+                            Session["StaffID"] = txtUserID.Text;
                             if (txtPassword.Text != "123456")
                             {
-                                if (chkSignedin.Checked == true)
-                                {
-                                    Session["StaffID"] = txtUserID.Text;
-                                    Session["logintype"] = "Staff";
-                                    Response.Cookies["StaffID"].Value = txtUserID.Text;
-                                    Response.Cookies["logintype"].Value = "Staff";
-                                    Response.Redirect("Officers/OfficerDashboard.aspx", false);
-                                }
-                                else
-                                {
-                                    Session["StaffID"] = txtUserID.Text;
-                                    Session["logintype"] = "Staff";
-                                    Response.Cookies["StaffID"].Value = txtUserID.Text;
-                                    Response.Cookies["logintype"].Value = "Staff";
-                                    Response.Redirect("Officers/OfficerDashboard.aspx", false);
-                                }
+
+                             Response.Redirect("OfficerVerification/OTP.aspx", false);
+
                             }
                             else
                             {
-                                Session["StaffID"] = txtUserID.Text;
                                 Response.Redirect("/ChangePassword.aspx", false);
                             }
                         }

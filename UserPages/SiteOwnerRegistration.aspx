@@ -674,8 +674,6 @@
                     <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-12">
-                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                <ContentTemplate>
                                     <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important; padding-left: 30px;">
 
                                         <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
@@ -684,6 +682,9 @@
                                             </div>
                                         </div>
                                         <hr style="margin-top: 0px !important;" />
+                                        
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                <ContentTemplate>
                                         <div class="row" style="margin-top: 20px;">
 
                                             <div class="col-md-6">
@@ -844,6 +845,16 @@
                                                 </asp:RegularExpressionValidator>
                                             </div>
                                         </div>
+                                    
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                                        <div class="row" style="margin-bottom: 30px; margin-top: 20px;">
+                                         
+                                        <div class="col-md-4" runat="server">
+                                            <label for="Pin">Upload Copy of PAN Card</label>
+                                            <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control" Style="padding: 9px;" />
+                                        </div>
+                                            </div>
                                         <div class="row" style="margin-bottom: 30px; margin-top: 20px;">
                                             <div class="col-md-4"></div>
                                             <div class="col-md-4" style="text-align: center;">
@@ -856,8 +867,6 @@
                                             <div class="col-md-4"></div>
                                         </div>
                                     </div>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
                         </div>
                         <div class="col-md-1"></div>
                     </div>

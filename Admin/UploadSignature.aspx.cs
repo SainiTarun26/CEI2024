@@ -1,5 +1,6 @@
 ﻿using CEI_PRoject;
 using CEIHaryana.Contractor;
+using Org.BouncyCastle.Crypto.Tls;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -248,47 +249,50 @@ namespace CEIHaryana.Admin
 
 
         //}
-
-        protected void BtnSubmit_Click(object sender, EventArgs e)
+        #region Navneet OTP condition 9-July-2025
+        protected void LinkButton4_Click(object sender, EventArgs e)
         {
-            string DivisionName = ddlDivisionName.SelectedItem.ToString();
-            string StaffName = ddlstaffname.SelectedValue;
-            byte[] signatureBytes = null;
-            string filePathInfo1 = "";
-            string fileExtensionFormat = "";
+            SENDEMAIL();
+        }
+        protected void SENDEMAIL()
+        {
 
-            if (Signature.HasFile)
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Otp has been sent to your registered email please add OTP');", true);
+            OTPVERIFICATION.Visible = true;
+            string Email = CEI.getStaffEmal(ddlstaffname.SelectedItem.ToString());
+            Random random = new Random();
+            int otpInt = random.Next(100000, 999999);
+
+            string otp = otpInt.ToString("D6");
+            HttpContext.Current.Session["OTP"] = otp;
+            string body = $"Dear Customer,\n\n Your OTP for Updation Of Signture is {otp}. OTPs are confidential - Do not share them with anyone. Thank you for choosing our services. If you need any assistance, feel free to contact our support team.\n\n Best regards,\n\n[CEI Haryana]";
+
+            CEI.ResetMessagethroughEmail(Email.Trim(), "Otp For Signature Update", body);
+            BtnSubmit.Text = "Verify OTP";
+            BtnSubmit.Visible = true;
+            BtnSentOtp.Visible = false;
+            Resendotp.Visible = true;
+
+        }
+
+        protected void saveImageByteInsession()
+        {
+            try
             {
-                string[] allowedExtensions = { ".jpg", ".jpeg", ".png" };
-
-
-                int maxFileSize = 1 * 1024 * 1024;
-
-
-                string fileName = Path.GetFileName(Signature.FileName);
-                string fileExtension = Path.GetExtension(fileName).ToLower();
-                fileExtensionFormat = fileExtension.TrimStart('.'); ;
-                int fileSize = Signature.PostedFile.ContentLength;
-
-                if (allowedExtensions.Contains(fileExtension))
+                if (Signature.HasFile)
                 {
+                    string[] allowedExtensions = { ".jpg", ".jpeg", ".png" };
+
+                    int maxFileSize = 1 * 1024 * 1024;
+                    int fileSize = Signature.PostedFile.ContentLength;
                     if (fileSize <= maxFileSize)
                     {
-                        string AdminID = Session["AdminID"].ToString();
-                        string directoryPath = Server.MapPath("~/Attachment/" + AdminID + "/Signature/");
+                        Session["Selectedphotobyte"] = Signature.FileBytes;
+                        txtsignature.Visible = true;
+                        Signature.Visible = false;
+                        txtsignature.Text = Signature.FileName;
+                        SENDEMAIL();
 
-                        if (!Directory.Exists(directoryPath))
-                        {
-                            Directory.CreateDirectory(directoryPath);
-                        }
-
-                        string uniqueFileName = "Signature" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + fileExtension;
-                        string filePath = Path.Combine(directoryPath, uniqueFileName);
-
-                        Signature.SaveAs(filePath);
-
-                        signatureBytes = Signature.FileBytes;
-                        filePathInfo1 = "/Attachment/" + AdminID + "/Signature/" + uniqueFileName;
                     }
                     else
                     {
@@ -298,26 +302,66 @@ namespace CEIHaryana.Admin
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please upload an image ');", true);
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please upload a file.');", true);
                     return;
+                }
+            }
+            catch
+            {
+
+                string script = $"alert('ERROR In sending email,Please try again later');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+            }
+        }
+        protected void BtnSendotp_Click(object sender, EventArgs e)
+        {
+            saveImageByteInsession();
+        }
+        #endregion
+
+        protected void BtnSubmit_Click(object sender, EventArgs e)
+        {
+            if (Session["OTP"].ToString() == txtOTP.Text.Trim())
+            {
+                BtnSubmit.Text = "Submit";
+                txtOTP.Enabled = false;
+                if (BtnSubmit.Text == "Submit"&& Session["Selectedphotobyte"].ToString() != "")
+                {
+
+                    string fileExtensionFormat = "";
+                    string fileName = txtsignature.Text;
+                   // string fileName = Path.GetFileName(Signature.FileName);
+                    string fileExtension = Path.GetExtension(fileName).ToLower();
+                    fileExtensionFormat = fileExtension.TrimStart('.'); 
+                    string DivisionName = ddlDivisionName.SelectedItem.ToString();
+                    string StaffName = ddlstaffname.SelectedValue;
+                    byte[] signatureBytes = Session["Selectedphotobyte"] as byte[];
+
+                    CEI.UploadSignature(DivisionName, StaffName, signatureBytes, fileExtensionFormat);
+
+                    ddlDivisionName.SelectedIndex = 0;
+                    ddlstaffname.SelectedIndex = 0;
+                    Session["Selectedphotobyte"]="";
+                    LoadSavedRecords();
+                    string script = $"alert('Signature for {StaffName} updated successfully.'); window.location='AdminMaster.aspx';";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+
+                }
+                
+                else
+                {
+                    string script = $"alert('OTP Verified Successfully');";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+
                 }
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please upload a file.');", true);
-                return;
+
+                string script = $"alert('Incorrect OTP');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
             }
-
-
-            CEI.UploadSignature(DivisionName, StaffName, signatureBytes, fileExtensionFormat);
-
-
-            ddlDivisionName.SelectedIndex = 0;
-            ddlstaffname.SelectedIndex = 0;
-
-            LoadSavedRecords();
-            string script = $"alert('Signature for {StaffName} updated successfully.'); window.location='AdminMaster.aspx';";
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
 
         }
 
