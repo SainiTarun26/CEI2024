@@ -79,6 +79,8 @@ namespace CEIHaryana.Officers
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
                     Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
+                    //lblInspectionType added by neeraj and if condition also 17-July-2025
+                    Label lblInspectionType = (Label)row.FindControl("lblInspectionType");
                     string id = lblID.Text;
                     #region aslam code changed by aslam 19-May-2025
 
@@ -91,7 +93,15 @@ namespace CEIHaryana.Officers
 
                         if (lblInstallationType.Text == "Lift")
                         {
-                            Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                            //
+                            if (lblInspectionType.Text == "Periodic")
+                            {
+                                Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
+                            }
+                            else
+                            {
+                                Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                            }
                         }
                         else
                         {

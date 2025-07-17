@@ -2044,6 +2044,7 @@
     <Content Include="Print_Forms\PrintCertificate3.aspx" />
     <Content Include="Print_Forms\PrintCertificate4.aspx" />
     <Content Include="Print_Forms\Print_New_Registration_Information_Contractor.aspx" />
+    <Content Include="Print_Forms\Print_Renewal_Of_Lift.aspx" />
     <Content Include="Print_Forms\VerificationLetter.aspx" />
     <Content Include="Procedure_for_Electrical _Installation.aspx" />
     <Content Include="Procedure_for_grant_of_approval.aspx" />
@@ -3886,6 +3887,13 @@
     </Compile>
     <Compile Include="Print_Forms\Print_New_Registration_Information_Contractor.aspx.designer.cs">
       <DependentUpon>Print_New_Registration_Information_Contractor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print_Forms\Print_Renewal_Of_Lift.aspx.cs">
+      <DependentUpon>Print_Renewal_Of_Lift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print_Forms\Print_Renewal_Of_Lift.aspx.designer.cs">
+      <DependentUpon>Print_Renewal_Of_Lift.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print_Forms\VerificationLetter.aspx.cs">
       <DependentUpon>VerificationLetter.aspx</DependentUpon>
