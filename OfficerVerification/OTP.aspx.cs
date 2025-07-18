@@ -80,6 +80,8 @@ namespace CEIHaryana.OfficerVerification
         protected void LinkButton4_Click(object sender, EventArgs e)
         {
             SENDEMAIL();
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Otp Sent again!!!!');", true);
         }
     }
 }
