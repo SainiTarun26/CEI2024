@@ -247,9 +247,9 @@ namespace CEIHaryana.SiteOwnerPages
         protected void txtRegistrationNo_TextChanged(object sender, EventArgs e)
         {
             string CreatedBy = HdnUserID.Value;
-            int result = Convert.ToInt32(CEI.ToCheckeitherLiftOrEsclatorRegistered(txtRegistrationNo.Text.Trim(), CreatedBy));
-            if (result == 1)
-            {
+            //int result = Convert.ToInt32(CEI.ToCheckeitherLiftOrEsclatorRegistered(txtRegistrationNo.Text.Trim(), CreatedBy));
+            //if (result == 1)
+            //{
                 DataSet ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text.Trim(), CreatedBy);
                 if (ds.Tables[0].Rows.Count > 0 && ds != null)
                 {
@@ -345,17 +345,17 @@ namespace CEIHaryana.SiteOwnerPages
                     txtRegistrationNo.Text = "";
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An application with the same Registration No. already exists for another user.')", true);
                 }
-            }
-            else if (result == 0)
-            {
-                Reset();
-                txtRegistrationNo.Text = "";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An application with the same Registration No. already exists for another user.')", true);
-            }
-            else
-            {
-                Reset();
-            }
+            //}
+            //else if (result == 0)
+            //{
+            //    Reset();
+            //    txtRegistrationNo.Text = "";
+            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An application with the same Registration No. already exists for another user.')", true);
+            //}
+            //else
+            //{
+            //    Reset();
+            //}
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -479,9 +479,9 @@ namespace CEIHaryana.SiteOwnerPages
                 {
                     string SiteOwnerID = HdnUserID.Value;
 
-                    int result = Convert.ToInt32(CEI.ToCheckeitherLiftOrEsclatorRegistered(txtRegistrationNo.Text.Trim(), SiteOwnerID));
-                    if (result == -1)
-                    {
+                    //int result = Convert.ToInt32(CEI.ToCheckeitherLiftOrEsclatorRegistered(txtRegistrationNo.Text.Trim(), SiteOwnerID));
+                    //if (result == -1)
+                    //{
 
                         DateTime lastExpiryDate = Convert.ToDateTime(txtLastexpirydate.Text);
                         DateTime memoDate = Convert.ToDateTime(txtMemoDate.Text);
@@ -583,13 +583,13 @@ namespace CEIHaryana.SiteOwnerPages
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithReturnRedirectdata();", true);  //Returned-Application SuccessfulSubmit                        
                         }
                         Reset();
-                    }
-                    else
-                    {
-                        Reset();
-                        txtRegistrationNo.Text = "";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An application with the same Registration No. already exists for another user.')", true);
-                    }
+                    //}
+                    //else
+                    //{
+                    //    Reset();
+                    //    txtRegistrationNo.Text = "";
+                    //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An application with the same Registration No. already exists for another user.')", true);
+                    //}
                 }
                 else
                 {
