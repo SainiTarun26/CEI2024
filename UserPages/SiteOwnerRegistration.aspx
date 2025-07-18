@@ -852,7 +852,7 @@
                                          
                                         <div class="col-md-4" runat="server">
                                             <label for="Pin">Upload Copy of PAN Card</label>
-                                            <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control" Style="padding: 9px;" />
+                                            <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control" />
                                         </div>
                                             </div>
                                         <div class="row" style="margin-bottom: 30px; margin-top: 20px;">

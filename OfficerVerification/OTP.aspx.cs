@@ -35,9 +35,7 @@ namespace CEIHaryana.OfficerVerification
             txtUserId.Text = Session["StaffID"].ToString();
             txtEmail.Text = CEI.getStaffEmal(txtUserId.Text.Trim());
             SENDEMAIL();
-            Session.Abandon();
-            Session.Clear();
-            Session.RemoveAll();
+            Session["StaffID"] = "";
         }
 
         protected void btnverifyOTP_Click(object sender, EventArgs e)
@@ -58,6 +56,7 @@ namespace CEIHaryana.OfficerVerification
                 else
                 {
 
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Incorrect otp please try again later!!!!');", true);
                 }
             }
             catch (Exception ex)
