@@ -63,21 +63,21 @@ namespace CEIHaryana.Officers
 
             Control ctrl = e.CommandSource as Control;
             GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-            Label lblID = (Label)row.FindControl("lblID");
-            string id = lblID.Text;
-
-            Label lblInspectionType = (Label)row.FindControl("lblInspectionType");
-            Label lblInstallationfor = (Label)row.FindControl("lblInstallationfor");
-
-
-            Label lblApproval = (Label)row.FindControl("lblApproval");
-            Session["Approval"] = lblApproval.Text.Trim();
-            Session["InspectionId"] = id;
             if (e.CommandName == "Select")
             {
 
-               
-                    if (lblInstallationfor.Text.Trim() == "Lift" || lblInstallationfor.Text.Trim() == "Escalator" || lblInstallationfor.Text.Trim() == "MultiLift" || lblInstallationfor.Text.Trim() == "MultiEscalator" || lblInstallationfor.Text.Trim() == "Lift/Escalator")
+                Label lblID = (Label)row.FindControl("lblID");
+                string id = lblID.Text;
+
+                Label lblInspectionType = (Label)row.FindControl("lblInspectionType");
+                Label lblInstallationfor = (Label)row.FindControl("lblInstallationfor");
+
+
+                Label lblApproval = (Label)row.FindControl("lblApproval");
+                Session["Approval"] = lblApproval.Text.Trim();
+                Session["InspectionId"] = id;
+
+                if (lblInstallationfor.Text.Trim() == "Lift" || lblInstallationfor.Text.Trim() == "Escalator" || lblInstallationfor.Text.Trim() == "MultiLift" || lblInstallationfor.Text.Trim() == "MultiEscalator" || lblInstallationfor.Text.Trim() == "Lift/Escalator")
                     {
                         if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "New")
                         {

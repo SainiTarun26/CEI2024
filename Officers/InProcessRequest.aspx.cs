@@ -56,16 +56,16 @@ namespace CEIHaryana.Officers
             {
                 Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                Label lblID = (Label)row.FindControl("lblID");
-                Label lblInstallationfor = (Label)row.FindControl("lblInstallationfor");
-                Label LblInspectionCount = (Label)row.FindControl("LblInspectionCount");
-                string id = lblID.Text;
-                Session["InProcessInspectionId"] = id;
                 if (e.CommandName == "Select")
                 {
 
-                   
-                        if (lblInstallationfor.Text.Trim() == "Lift" || lblInstallationfor.Text.Trim() == "Escalator" || lblInstallationfor.Text.Trim() == "MultiLift" || lblInstallationfor.Text.Trim() == "MultiEscalator" || lblInstallationfor.Text.Trim() == "Lift/Escalator")
+
+                    Label lblID = (Label)row.FindControl("lblID");
+                    Label lblInstallationfor = (Label)row.FindControl("lblInstallationfor");
+                    Label LblInspectionCount = (Label)row.FindControl("LblInspectionCount");
+                    string id = lblID.Text;
+                    Session["InProcessInspectionId"] = id;
+                    if (lblInstallationfor.Text.Trim() == "Lift" || lblInstallationfor.Text.Trim() == "Escalator" || lblInstallationfor.Text.Trim() == "MultiLift" || lblInstallationfor.Text.Trim() == "MultiEscalator" || lblInstallationfor.Text.Trim() == "Lift/Escalator")
                         {
                             if (int.TryParse(LblInspectionCount.Text, out int count) && count > 1)
                             {
@@ -126,6 +126,23 @@ namespace CEIHaryana.Officers
                 return;
             }
         }
+
+        //Powerutility condition aded by aslam 16-July-2025
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label lbllblApplicantFor = (Label)e.Row.FindControl("lblApplicantFor");
+
+                if (lbllblApplicantFor != null && lbllblApplicantFor.Text == "Power Utility")
+                {
+                    e.Row.CssClass = "PowerUtilityRowColor";
+                }
+            }
+        }
+        //
+
         #region Kalpna siteownerpop up 18-July-2025
 
         protected void binddata(string CreatedBy)

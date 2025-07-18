@@ -74,25 +74,25 @@ namespace CEIHaryana.Officers
             {
                 Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                Label lblID = (Label)row.FindControl("lblID");
-                Label LblInspectionType = (Label)row.FindControl("LblInspectionType");
-                string id = lblID.Text;
-                Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
-                string InstallationType = lblInstallationType.Text.Trim();
-                Label lblApplicationStatus = (Label)row.FindControl("lblApplicationStatus");
-                string ApplicationStatus = lblApplicationStatus.Text;
-                Label lblApproveDateLabel = row.FindControl("lblApproveDate") as Label;
-                // code changed by aslam 19M-May-2025
-                Label lblblUserType = row.FindControl("lblUserType") as Label;//
-                string ApproveDate = lblApproveDateLabel.Text;
-                //lblApproveCertificate added by neeraj on 20-may-2025
-                Label lblApproveCertificate = row.FindControl("lblApproveCertificate") as Label;
-                string ApproveCertificate = lblApproveCertificate.Text;
-                Session["InProcessInspectionId"] = id;
 
                 if (e.CommandName == "Select" || e.CommandName == "Print")
                 {
 
+                    Label lblID = (Label)row.FindControl("lblID");
+                    Label LblInspectionType = (Label)row.FindControl("LblInspectionType");
+                    string id = lblID.Text;
+                    Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
+                    string InstallationType = lblInstallationType.Text.Trim();
+                    Label lblApplicationStatus = (Label)row.FindControl("lblApplicationStatus");
+                    string ApplicationStatus = lblApplicationStatus.Text;
+                    Label lblApproveDateLabel = row.FindControl("lblApproveDate") as Label;
+                    // code changed by aslam 19M-May-2025
+                    Label lblblUserType = row.FindControl("lblUserType") as Label;//
+                    string ApproveDate = lblApproveDateLabel.Text;
+                    //lblApproveCertificate added by neeraj on 20-may-2025
+                    Label lblApproveCertificate = row.FindControl("lblApproveCertificate") as Label;
+                    string ApproveCertificate = lblApproveCertificate.Text;
+                    Session["InProcessInspectionId"] = id;
                     if (e.CommandName == "Select")
                     {
 
