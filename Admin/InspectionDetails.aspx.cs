@@ -97,7 +97,21 @@ namespace CEIHaryana.Admin
                     }
                     txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
                     txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
-                    txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    //start added by gurmeet 17 july-2025
+                    string Premises = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    if (!string.IsNullOrEmpty(Premises))
+                    {
+                        txtPremises.Text = Premises;
+                    }
+                    else
+                    {
+                        txtPremises.Text = "     -";
+                    }
+                    txtContactPersonContact.Text = ds.Tables[0].Rows[0]["SiteownerContactNumber"].ToString();
+                    txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
+                    txtSupervisorContact.Text = ds.Tables[0].Rows[0]["SupervisorPhoneNo"].ToString();
+                    txtcontractorContact.Text = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
+                    //** end added by gurmeet 17 july-2025
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
                     if (txtWorkType.Text == "Line")

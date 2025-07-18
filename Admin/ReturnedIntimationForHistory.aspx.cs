@@ -83,7 +83,7 @@ namespace CEIHaryana.Admin
                     {
                         txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
                         txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
-                        txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                        //txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                         txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                         txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
                         if (txtWorkType.Text == "Line")
@@ -111,7 +111,21 @@ namespace CEIHaryana.Admin
 
                         IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
                         DivTRinMultipleCaseNew.Visible = true;
-
+                        //added by gurmeet 18july
+                        string Premises = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                        if (!string.IsNullOrEmpty(Premises))
+                        {
+                            txtPremises.Text = Premises;
+                        }
+                        else
+                        {
+                            txtPremises.Text = "-";
+                        }
+                        txtContactPersonContact.Text = ds.Tables[0].Rows[0]["SiteownerContactNumber"].ToString();
+                        txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
+                        txtSupervisorContact.Text = ds.Tables[0].Rows[0]["SupervisorPhoneNo"].ToString();
+                        txtcontractorContact.Text = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
+                        //**end here
                         //GetGridNewInspectionMultiple();
 
                         string ReturnedValue = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
