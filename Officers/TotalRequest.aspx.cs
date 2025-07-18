@@ -59,14 +59,36 @@ namespace CEIHaryana.Officers
             catch (Exception ex)
             {
 
-               //throw;
+                //throw;
             }
-            
+
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            #region Kalpna siteownerpop up 18-July-2025
 
+            try
+            {
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+
+                if (e.CommandName == "ShowDetails")
+                {
+                    LinkButton lnkbtnshowdetails = (LinkButton)row.FindControl("LnkResetButton");
+                    string CreatedBy = e.CommandArgument.ToString();
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ModalScript", "openModal();", true);
+                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModal", "$('#ownerModal').modal('show');", true);
+                    binddata(CreatedBy);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "aleert", "alert('" + ex.Message + "');", true);
+            }
+            #endregion
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -93,5 +115,27 @@ namespace CEIHaryana.Officers
             }
         }
         //
+        #region Kalpna siteownerpop up 18-July-2025
+
+        protected void binddata(string CreatedBy)
+        {
+
+            DataTable dt = CEI.DetailsofSiteOwner(CreatedBy);
+
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                txttypeofapplicant.Text = dt.Rows[0]["ApplicantType"].ToString();
+                txtPANTan.Text = dt.Rows[0]["UserID"].ToString();
+                txtElectricalInstallation.Text = dt.Rows[0]["ContractorType"].ToString();
+                txtName.Text = dt.Rows[0]["OwnerName"].ToString();
+                txtAddress.Text = dt.Rows[0]["Address"].ToString();
+                txtDistrict.Text = dt.Rows[0]["District"].ToString();
+                txtPin.Text = dt.Rows[0]["Pincode"].ToString();
+                txtPhone.Text = dt.Rows[0]["ContactNo"].ToString();
+                txtEmail.Text = dt.Rows[0]["Email"].ToString();
+            }
+        }
+        #endregion
     }
 }

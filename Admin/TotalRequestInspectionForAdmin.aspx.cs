@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using Org.BouncyCastle.Crypto.Tls;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.Admin
 {
@@ -64,6 +66,8 @@ namespace CEIHaryana.Admin
                     string script = "alert(\"No Record Found\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                 }
+
+
                 ds.Dispose();
             }
             catch (Exception ex)
@@ -94,32 +98,43 @@ namespace CEIHaryana.Admin
         }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            Control ctrl = e.CommandSource as Control;
+            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
             if (e.CommandName == "Select")
             {
-                Control ctrl = e.CommandSource as Control;
-                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                //if (e.CommandName == "Select")
+                //{
                 Label lblID = (Label)row.FindControl("lblID");
                 Label lblApproval = (Label)row.FindControl("lblApproval");
                 Session["Approval"] = lblApproval.Text.Trim();
                 Label lblInstallationFor = (Label)row.FindControl("lblInstallationFor");
                 string id = lblID.Text;
                 Session["InspectionId"] = id;
-                if (e.CommandName == "Select")
+
+                if (lblInstallationFor.Text == "Cinema_Videos Talkies")
                 {
-                    if (lblInstallationFor.Text == "Cinema_Videos Talkies")
-                    {
-                        Response.Redirect("/Admin/CinemaInspectionDetails.aspx", false);
-                    }
-                    else if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
-                    {
-                        Response.Redirect("/Admin/LiftInspectionDetails.aspx", false);
-                    }
-                    else
-                    {
-                        Response.Redirect("/Admin/InspectionDetails.aspx", false);
-                    }
+                    Response.Redirect("/Admin/CinemaInspectionDetails.aspx", false);
+                }
+                else if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
+                {
+                    Response.Redirect("/Admin/LiftInspectionDetails.aspx", false);
+                }
+                else
+                {
+                    Response.Redirect("/Admin/InspectionDetails.aspx", false);
                 }
             }
+            else if (e.CommandName == "ShowDetails")
+            {
+
+                LinkButton lnkbtnshowdetails = (LinkButton)row.FindControl("LnkResetButton");
+                string CreatedBy = e.CommandArgument.ToString();
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "ModalScript", "openModal();", true);
+                // ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModal", "$('#ownerModal').modal('show');", true);
+                binddata(CreatedBy);
+            }
+
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -156,8 +171,6 @@ namespace CEIHaryana.Admin
         //    catch (Exception ex)
         //    { }
         //}
-
-
         //Powerutility condition aded by aslam 16-July-2025
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -166,13 +179,34 @@ namespace CEIHaryana.Admin
             {
                 Label lbllblApplicantFor = (Label)e.Row.FindControl("lblApplicantFor");
 
-                if (lbllblApplicantFor != null &&  lbllblApplicantFor.Text == "Power Utility")
+                if (lbllblApplicantFor != null && lbllblApplicantFor.Text == "Power Utility")
                 {
                     e.Row.CssClass = "PowerUtilityRowColor";
                 }
             }
         }
         //
+        #region Kalpna siteownerpop up 18-July-2025
 
+        protected void binddata(string CreatedBy)
+        {
+
+            DataTable dt = CEI.DetailsofSiteOwner(CreatedBy);
+
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                txttypeofapplicant.Text = dt.Rows[0]["ApplicantType"].ToString();
+                txtPANTan.Text = dt.Rows[0]["UserID"].ToString();
+                txtElectricalInstallation.Text = dt.Rows[0]["ContractorType"].ToString();
+                txtName.Text = dt.Rows[0]["OwnerName"].ToString();
+                txtAddress.Text = dt.Rows[0]["Address"].ToString();
+                txtDistrict.Text = dt.Rows[0]["District"].ToString();
+                txtPin.Text = dt.Rows[0]["Pincode"].ToString();
+                txtPhone.Text = dt.Rows[0]["ContactNo"].ToString();
+                txtEmail.Text = dt.Rows[0]["Email"].ToString();
+            }
+        }
+        #endregion
     }
 }

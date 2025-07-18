@@ -51,20 +51,20 @@ namespace CEIHaryana.Officers
 
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
-        {  
+        {
             try
-              {
+            {
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                Label lblID = (Label)row.FindControl("lblID");
+                Label lblInstallationfor = (Label)row.FindControl("lblInstallationfor");
+                Label LblInspectionCount = (Label)row.FindControl("LblInspectionCount");
+                string id = lblID.Text;
+                Session["InProcessInspectionId"] = id;
                 if (e.CommandName == "Select")
                 {
-                    Control ctrl = e.CommandSource as Control;
-                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                    Label lblID = (Label)row.FindControl("lblID");
-                    Label lblInstallationfor = (Label)row.FindControl("lblInstallationfor");
-                    Label LblInspectionCount = (Label)row.FindControl("LblInspectionCount");
-                    string id = lblID.Text;
-                    Session["InProcessInspectionId"] = id;
-                    if (e.CommandName == "Select")
-                    {
+
+                   
                         if (lblInstallationfor.Text.Trim() == "Lift" || lblInstallationfor.Text.Trim() == "Escalator" || lblInstallationfor.Text.Trim() == "MultiLift" || lblInstallationfor.Text.Trim() == "MultiEscalator" || lblInstallationfor.Text.Trim() == "Lift/Escalator")
                         {
                             if (int.TryParse(LblInspectionCount.Text, out int count) && count > 1)
@@ -105,30 +105,49 @@ namespace CEIHaryana.Officers
                         }
 
 
-                    }
+                    
+
                 }
+                //Kalpna siteownerpop up 18-July-2025
+                else if (e.CommandName == "ShowDetails")
+                {
+                    LinkButton lnkbtnshowdetails = (LinkButton)row.FindControl("LnkResetButton");
+                    string CreatedBy = e.CommandArgument.ToString();
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ModalScript", "openModal();", true);
+                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModal", "$('#ownerModal').modal('show');", true);
+                    binddata(CreatedBy);
+                }
+                //
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
                 return;
             }
         }
-        //Powerutility condition aded by aslam 16-July-2025
+        #region Kalpna siteownerpop up 18-July-2025
 
-        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void binddata(string CreatedBy)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                Label lbllblApplicantFor = (Label)e.Row.FindControl("lblApplicantFor");
 
-                if (lbllblApplicantFor != null && lbllblApplicantFor.Text == "Power Utility")
-                {
-                    e.Row.CssClass = "PowerUtilityRowColor";
-                }
+            DataTable dt = CEI.DetailsofSiteOwner(CreatedBy);
+
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                txttypeofapplicant.Text = dt.Rows[0]["ApplicantType"].ToString();
+                txtPANTan.Text = dt.Rows[0]["UserID"].ToString();
+                txtElectricalInstallation.Text = dt.Rows[0]["ContractorType"].ToString();
+                txtName.Text = dt.Rows[0]["OwnerName"].ToString();
+                txtAddress.Text = dt.Rows[0]["Address"].ToString();
+                txtDistrict.Text = dt.Rows[0]["District"].ToString();
+                txtPin.Text = dt.Rows[0]["Pincode"].ToString();
+                txtPhone.Text = dt.Rows[0]["ContactNo"].ToString();
+                txtEmail.Text = dt.Rows[0]["Email"].ToString();
             }
         }
-        //
+        #endregion
 
     }
 }

@@ -13972,6 +13972,12 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         }
 
         #endregion
+        #region kalpana siteowner details
+        public static DataTable DetailsofSiteOwner(string CreatedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DetailsofSiteOwner", CreatedBy);
+        }
+        #endregion
     }
 }
 
