@@ -355,7 +355,7 @@ namespace CEIHaryana.Admin
             string filePath = HdnPanFilePath.Value;
             if (!string.IsNullOrEmpty(filePath))
             {
-                string fileUrl = "https://localhost:44393/" + filePath;
+                string fileUrl = "https://uat.ceiharyana.com" + filePath;
                 string script = $@"<script>window.open('{fileUrl}', '_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
