@@ -443,7 +443,7 @@
                                        
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtSerialNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-md-4" runat="server" id="Div1">
+                                    <div class="col-md-4" runat="server" id="Div1" visible="false">
                                         <label for="Name">
                                             Size of Screen (In Sq ft)<samp style="color: red">* </samp>
                                         </label>

@@ -523,10 +523,10 @@ Inspection/SiteOwner Detail (<asp:Label ID="lblInspectionType" runat="server" Te
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="SizeOfScreen" HeaderText="Size Of Screen">
+                           <%-- <asp:BoundField DataField="SizeOfScreen" HeaderText="Size Of Screen">
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" />
-                            </asp:BoundField>
+                            </asp:BoundField>--%>
                         </Columns>
                     </asp:GridView>
                 </div>

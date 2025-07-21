@@ -396,15 +396,13 @@
                                         <asp:TextBox class="form-control" ID="txtSerialNo" onpaste="preventPaste(event)" autocomplete="off" onkeydown="return preventEnterSubmit(event)" MaxLength="10" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtSerialNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Details</asp:RequiredFieldValidator>
                                     </div>
-                                    <div class="col-md-4" runat="server" id="Div1">
+                                    <div class="col-md-4" runat="server" id="Div1" visible="false">
                                         <label for="Name">
                                             Size of Screen (In Sq ft)<samp style="color: red">* </samp>
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtScreenSize" onpaste="preventPaste(event)" autocomplete="off" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" MaxLength="10" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtScreenSize" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Details</asp:RequiredFieldValidator>
                                     </div>
-                                </div>
-                                <div class="row" style="margin-top: 10px;">
                                     <div class="col-md-4" id="Div3" runat="server" visible="True" style="top: 0px !important;">
                                         <label for="Voltage">
                                             Last Inspection Date<samp style="color: red">* </samp>

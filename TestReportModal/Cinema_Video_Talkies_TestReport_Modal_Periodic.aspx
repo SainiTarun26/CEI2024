@@ -2143,7 +2143,7 @@
                                         </label>
                                         <asp:TextBox ReadOnly="true" class="form-control" ID="txtSerialNo" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
-                                    <div class="col-4" id="Div7" runat="server">
+                                    <div class="col-4" id="Div7" runat="server" visible="false">
                                         <label>
                                             Size of Screen
                                         </label>
