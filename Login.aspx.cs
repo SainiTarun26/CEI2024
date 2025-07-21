@@ -270,8 +270,24 @@ namespace CEIHaryana
                             Session["StaffID"] = txtUserID.Text;
                             if (txtPassword.Text != "123456")
                             {
-
-                             Response.Redirect("OfficerVerification/OTP.aspx", false);
+                                 if (chkSignedin.Checked == true)
+                                {
+                                    Session["StaffID"] = txtUserID.Text;
+                                    Session["logintype"] = "Staff";
+                                    Response.Cookies["StaffID"].Value = txtUserID.Text;
+                                    Response.Cookies["logintype"].Value = "Staff";
+                                    Response.Redirect("Officers/OfficerDashboard.aspx", false);
+                                }
+                                else
+                                {
+                                    Session["StaffID"] = txtUserID.Text;
+                                    Session["logintype"] = "Staff";
+                                    Response.Cookies["StaffID"].Value = txtUserID.Text;
+                                    Response.Cookies["logintype"].Value = "Staff";
+                                    Response.Redirect("Officers/OfficerDashboard.aspx", false);
+                                }
+                                //for otp verification
+                             //Response.Redirect("OfficerVerification/OTP.aspx", false);
 
                             }
                             else

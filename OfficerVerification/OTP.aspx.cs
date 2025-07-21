@@ -26,6 +26,7 @@ namespace CEIHaryana.OfficerVerification
             }
             catch (Exception ex)
             {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('An Error Occured!!!!');", true);
 
             }
         }
