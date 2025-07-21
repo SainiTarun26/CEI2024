@@ -60,15 +60,6 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivPancard_TanNo;
 
         /// <summary>
-        /// LblPanNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblPanNumber;
-
-        /// <summary>
         /// LblTanNumber control.
         /// </summary>
         /// <remarks>
@@ -85,24 +76,6 @@ namespace CEIHaryana.Officers
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPANTan;
-
-        /// <summary>
-        /// revPAN control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revPAN;
-
-        /// <summary>
-        /// RequiredFieldValidator6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
 
         /// <summary>
         /// txtElectricalInstallation control.
@@ -132,15 +105,6 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblNameofOwner;
 
         /// <summary>
-        /// LblAgency control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblAgency;
-
-        /// <summary>
         /// txtName control.
         /// </summary>
         /// <remarks>
@@ -150,15 +114,6 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.TextBox txtName;
 
         /// <summary>
-        /// RequiredFieldValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-
-        /// <summary>
         /// txtAddress control.
         /// </summary>
         /// <remarks>
@@ -166,15 +121,6 @@ namespace CEIHaryana.Officers
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAddress;
-
-        /// <summary>
-        /// RequiredFieldValidator9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
 
         /// <summary>
         /// txtState control.
@@ -213,24 +159,6 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.TextBox txtPhone;
 
         /// <summary>
-        /// RequiredFieldValidator8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
-
-        /// <summary>
-        /// RegularExpressionValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
-
-        /// <summary>
         /// txtEmail control.
         /// </summary>
         /// <remarks>
@@ -240,21 +168,21 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// RequiredFieldValidator24 control.
+        /// LnkDocumemtPath control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator24;
+        protected global::System.Web.UI.WebControls.LinkButton LnkDocumemtPath;
 
         /// <summary>
-        /// RegularExpressionValidator1 control.
+        /// HdnPanFilePath control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+        protected global::System.Web.UI.WebControls.HiddenField HdnPanFilePath;
     }
 }

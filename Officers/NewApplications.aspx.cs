@@ -78,75 +78,91 @@ namespace CEIHaryana.Officers
                 Session["InspectionId"] = id;
 
                 if (lblInstallationfor.Text.Trim() == "Lift" || lblInstallationfor.Text.Trim() == "Escalator" || lblInstallationfor.Text.Trim() == "MultiLift" || lblInstallationfor.Text.Trim() == "MultiEscalator" || lblInstallationfor.Text.Trim() == "Lift/Escalator")
-                    {
-                        if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "New")
-                        {
-                            Response.Redirect("/Officers/Inspection_Lift_Escalator.aspx", false);
-                            return;
-                        }
-                        else if (lblApproval.Text.Trim() == "ReSubmit" && lblInspectionType.Text.Trim() == "New")
-                        {
-                            Response.Redirect("/Officers/Returned_Inspection_Lift_Escalator.aspx", false);
-                            return;
-                        }
-                        else if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "Periodic")
-                        {
-                            Response.Redirect("/Officers/PeriodicInspection_Lift_Escalator.aspx", false);
-                            return;
-                        }
-                        else if (lblApproval.Text.Trim() == "ReSubmit" && lblInspectionType.Text.Trim() == "Periodic")
-                        {
-                            Response.Redirect("/Officers/Returned_PeriodicInspection_Lift_Escalator.aspx", false);
-                            return;
-                        }
-
-                    }
-
-                    #region Added By Aslam 23-May-2025 For Cinema For New And Periodic New Records.
-                    //if (lblInstallationfor.Text.Trim() == "Cinema/Videos Talkis")
-                    if (lblInstallationfor.Text.Trim() == "Cinema_Videos Talkies")
-                    {
-                        if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "New")
-                        {
-                            Response.Redirect("/Officers/Inspection_Cinema_Talkies.aspx", false);
-                            return;
-                        }
-                        else if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "Periodic")
-                        {
-                            Response.Redirect("/Officers/PeriodicInspection_Cinema_Talkies.aspx", false);
-                            return;
-                        }
-                    }
-                    #endregion
-
+                {
                     if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "New")
                     {
-
-                        Response.Redirect("/Officers/Inspection.aspx", false);
+                        Response.Redirect("/Officers/Inspection_Lift_Escalator.aspx", false);
+                        return;
                     }
                     else if (lblApproval.Text.Trim() == "ReSubmit" && lblInspectionType.Text.Trim() == "New")
                     {
-                        Response.Redirect("/Officers/ReturnedInspections.aspx", false);
+                        Response.Redirect("/Officers/Returned_Inspection_Lift_Escalator.aspx", false);
+                        return;
                     }
                     else if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "Periodic")
                     {
-                        Response.Redirect("/Officers/PeriodicInspection.aspx", false);
+                        Response.Redirect("/Officers/PeriodicInspection_Lift_Escalator.aspx", false);
+                        return;
                     }
                     else if (lblApproval.Text.Trim() == "ReSubmit" && lblInspectionType.Text.Trim() == "Periodic")
                     {
-                        Response.Redirect("/Officers/PeriodicInspection.aspx", false);
+                        Response.Redirect("/Officers/Returned_PeriodicInspection_Lift_Escalator.aspx", false);
+                        return;
                     }
-                
+
+                }
+
+                #region Added By Aslam 23-May-2025 For Cinema For New And Periodic New Records.
+                //if (lblInstallationfor.Text.Trim() == "Cinema/Videos Talkis")
+                if (lblInstallationfor.Text.Trim() == "Cinema_Videos Talkies")
+                {
+                    if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "New")
+                    {
+                        Response.Redirect("/Officers/Inspection_Cinema_Talkies.aspx", false);
+                        return;
+                    }
+                    else if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "Periodic")
+                    {
+                        Response.Redirect("/Officers/PeriodicInspection_Cinema_Talkies.aspx", false);
+                        return;
+                    }
+                }
+                #endregion
+
+                if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "New")
+                {
+
+                    Response.Redirect("/Officers/Inspection.aspx", false);
+                }
+                else if (lblApproval.Text.Trim() == "ReSubmit" && lblInspectionType.Text.Trim() == "New")
+                {
+                    Response.Redirect("/Officers/ReturnedInspections.aspx", false);
+                }
+                else if (lblApproval.Text.Trim() == "New" && lblInspectionType.Text.Trim() == "Periodic")
+                {
+                    Response.Redirect("/Officers/PeriodicInspection.aspx", false);
+                }
+                else if (lblApproval.Text.Trim() == "ReSubmit" && lblInspectionType.Text.Trim() == "Periodic")
+                {
+                    Response.Redirect("/Officers/PeriodicInspection.aspx", false);
+                }
+
 
             }
             else if (e.CommandName == "ShowDetails")
             {
-                LinkButton lnkbtnshowdetails = (LinkButton)row.FindControl("LnkResetButton");
-                string CreatedBy = e.CommandArgument.ToString();
+                Label lbllblApplicantFor = (Label)row.FindControl("lblApplicantFor");
 
-                ScriptManager.RegisterStartupScript(this, GetType(), "ModalScript", "openModal();", true);
-                // ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModal", "$('#ownerModal').modal('show');", true);
-                binddata(CreatedBy);
+                if (lbllblApplicantFor.Text == "Power Utility")
+                {
+                    LinkButton lnkbtnshowdetails = (LinkButton)row.FindControl("LnkResetButton");
+                    string CreatedBy = e.CommandArgument.ToString();
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ModalScript", "openModal();", true);
+                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModal", "$('#ownerModal').modal('show');", true);
+                    binddataforPowerUtility(CreatedBy);
+                }
+                else
+                {
+                    LinkButton lnkbtnshowdetails = (LinkButton)row.FindControl("LnkResetButton");
+                    string CreatedBy = e.CommandArgument.ToString();
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ModalScript", "openModal();", true);
+                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModal", "$('#ownerModal').modal('show');", true);
+                    binddata(CreatedBy);
+
+                }
+
             }
         }
 
@@ -194,9 +210,47 @@ namespace CEIHaryana.Officers
                 txtPin.Text = dt.Rows[0]["Pincode"].ToString();
                 txtPhone.Text = dt.Rows[0]["ContactNo"].ToString();
                 txtEmail.Text = dt.Rows[0]["Email"].ToString();
+                HdnPanFilePath.Value = dt.Rows[0]["CopyofPanNumber"].ToString();
+            }
+        }
+        protected void binddataforPowerUtility(string CreatedBy)
+        {
+
+            DataTable dt = CEI.DetailsforPowerUtility(CreatedBy);
+
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                txttypeofapplicant.Text = dt.Rows[0]["ApplicantType"].ToString();
+                txtPANTan.Text = dt.Rows[0]["PANNumber"].ToString();
+                txtElectricalInstallation.Text = dt.Rows[0]["ContractorType"].ToString();
+                txtName.Text = dt.Rows[0]["OwnerName"].ToString();
+                txtAddress.Text = dt.Rows[0]["Address"].ToString();
+                txtDistrict.Text = dt.Rows[0]["District"].ToString();
+                txtPin.Text = dt.Rows[0]["Pincode"].ToString();
+                txtPhone.Text = dt.Rows[0]["ContactNo"].ToString();
+                txtEmail.Text = dt.Rows[0]["Email"].ToString();
+                HdnPanFilePath.Value = dt.Rows[0]["CopyofPanNumber"].ToString();
+            }
+        }
+
+        protected void LnkDocumemtPath_Click(object sender, EventArgs e)
+        {
+            string filePath = HdnPanFilePath.Value;
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                string fileUrl = "https://localhost:44393/" + filePath;
+                string script = $@"<script>window.open('{fileUrl}', '_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('File not found!');", true);
             }
         }
         #endregion
+
+
 
     }
 }

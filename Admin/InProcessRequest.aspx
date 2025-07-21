@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="InProcessRequest.aspx.cs" Inherits="CEIHaryana.Admin.InProcessRequest" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+    <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
     <!-- CSS -->
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
@@ -133,9 +133,11 @@
             margin-left: 10px;
             margin-right: 7px;
         }
- .PowerUtilityRowColor {
-     background-color: rgb(255, 205, 210) !important;
- }
+
+        .PowerUtilityRowColor {
+            background-color: rgb(255, 205, 210) !important;
+        }
+
         .modal-content {
             width: 1000px !important;
             right: 20%;
@@ -170,15 +172,15 @@
                                 </div>
                             </div>
                         </div>
-                                 <div class="col-4" style="text-align:center;">
-        <div style="display: inline-block;margin-left: -55px;">
+                        <div class="col-4" style="text-align: center;">
+                            <div style="display: inline-block; margin-left: -55px;">
                                 <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
                                     <asp:ListItem Text="Lift/Escalator" Value="1"></asp:ListItem>
                                     <asp:ListItem Text="Line/Substration/Generating Set" Value="0"></asp:ListItem>
                                 </asp:RadioButtonList>
                             </div>
                         </div>
-                        <div class="col-4" style="padding-right:30px;">
+                        <div class="col-4" style="padding-right: 30px;">
                             <div class="form-group row">
                                 <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Division:</label>
                                 <asp:DropDownList ID="ddldivision" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddldivision_SelectedIndexChanged" class="form-control  select-form select2" Style="width: 75% !important; height: 25px;">
@@ -188,7 +190,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                        <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" OnRowDataBound="GridView1_RowDataBound"
+                            <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" OnRowDataBound="GridView1_RowDataBound"
                                 AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging"
                                 AllowPaging="true" PageSize="500" BorderWidth="1px" BorderColor="#dbddff">
                                 <Columns>
@@ -199,7 +201,7 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Id" Visible="False">
                                         <ItemTemplate>
-                                        <asp:Label ID="lblApplicantFor" runat="server" Text='<%#Eval("ApplicantFor") %>'></asp:Label>
+                                            <asp:Label ID="lblApplicantFor" runat="server" Text='<%#Eval("ApplicantFor") %>'></asp:Label>
                                             <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
                                             <asp:Label ID="lblInstallationFor" runat="server" Text='<%#Eval("Installationfor") %>'></asp:Label>
                                         </ItemTemplate>
@@ -260,8 +262,10 @@
                                 </asp:BoundField>--%>
                                     <asp:TemplateField HeaderText="">
                                         <HeaderTemplate>
-                                        <div class="headercolor" style="text-align: center; width: 100%;">Inspection<br />
-                                            Type</div>
+                                            <div class="headercolor" style="text-align: center; width: 100%;">
+                                                Inspection<br />
+                                                Type
+                                            </div>
                                         </HeaderTemplate>
                                         <ItemTemplate>
                                             <%# Eval("TypeOfInspection") %>
@@ -294,8 +298,10 @@
 
                                     <asp:TemplateField HeaderText="">
                                         <HeaderTemplate>
-                                        <div class="headercolor" style="text-align: center; width: 100%;">Assigned<br>
-                                            Days</div>
+                                            <div class="headercolor" style="text-align: center; width: 100%;">
+                                                Assigned<br>
+                                                Days
+                                            </div>
                                         </HeaderTemplate>
                                         <ItemTemplate>
                                             <%# Eval("PendingDays") %>
@@ -331,30 +337,24 @@
                                                 <div class="col-md-4">
                                                     <label>
                                                         Applicant Type
-    <samp style="color: red">* </samp>
+                                                        <samp style="color: red">* </samp>
                                                     </label>
-                                                    <asp:TextBox class="form-control" ID="txttypeofapplicant" Visible="true" TabIndex="1" MaxLength="10" oninput="this.value = this.value.toUpperCase();" AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
+                                                    <asp:TextBox class="form-control" ID="txttypeofapplicant" Visible="true" ReadOnly="true" TabIndex="1" MaxLength="10" oninput="this.value = this.value.toUpperCase();" AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
                                                 </div>
 
                                                 <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="true">
-                                                    <label id="LblPanNumber" runat="server" visible="true" for="PanNumber">
-                                                        PAN/TAN Card
-                                                        <samp style="color: red">* </samp>
-                                                    </label>
+
                                                     <label id="LblTanNumber" runat="server" visible="true" for="TanNumber">
                                                         PAN/TAN Number
-                           <samp style="color: red">* </samp>
+                       <samp style="color: red">* </samp>
                                                     </label>
-                                                    <asp:TextBox class="form-control" ID="txtPANTan" Visible="true" TabIndex="1" MaxLength="10" oninput="this.value = this.value.toUpperCase();" AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
-                                                    <asp:RegularExpressionValidator ID="revPAN" runat="server" ControlToValidate="txtPANTan" ValidationExpression="^[A-Za-z]{4}[0-9]{5}[A-Za-z]{1}$|^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$" ValidationGroup="Submit"
-                                                        ErrorMessage="Enter a valid PAN/TAN number" Display="Dynamic" ForeColor="Red" SetFocusOnError="true" />
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtPANTan" ErrorMessage="RequiredFieldValidator" SetFocusOnError="true" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                                                    <asp:TextBox class="form-control" ID="txtPANTan" Visible="true" ReadOnly="true" TabIndex="1" MaxLength="10" oninput="this.value = this.value.toUpperCase();" AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>
                                                         Electrical Installation For<samp style="color: red"> * </samp>
                                                     </label>
-                                                    <asp:TextBox class="form-control" ID="txtElectricalInstallation" Visible="true" TabIndex="1" MaxLength="10" oninput="this.value = this.value.toUpperCase();" AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
+                                                    <asp:TextBox class="form-control" ID="txtElectricalInstallation" Visible="true" ReadOnly="true" TabIndex="1" MaxLength="10" oninput="this.value = this.value.toUpperCase();" AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -362,25 +362,20 @@
 
                                                 <div class="col-md-4" id="individual" runat="server">
                                                     <label id="LblNameofOwner" runat="server" for="Name">
-                                                        Name of Owner/ Consumer<samp style="color: red"> * </samp>
+                                                        Name of Owner/ Org.<samp style="color: red"> * </samp>
                                                     </label>
-                                                    <label id="LblAgency" runat="server" visible="true" for="agency">
-                                                        Name of Firm/ Org./ Company/ Department
-                       <samp style="color: red">* </samp>
-                                                    </label>
+
                                                     <div class="input-box" style="padding-left: 0px !important;">
-                                                        <asp:TextBox class="form-control" ID="txtName" TabIndex="4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return alphabetKey(event)" MaxLength="50" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="padding-left: 10px !important; padding: 0px; height: 30px; box-shadow: none !important; font-size: inherit;"></asp:TextBox>
+                                                        <asp:TextBox class="form-control" ID="txtName" ReadOnly="true" TabIndex="4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return alphabetKey(event)" MaxLength="50" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="padding-left: 10px !important; padding: 0px; height: 30px; box-shadow: none !important; font-size: inherit;"></asp:TextBox>
                                                     </div>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtName" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Name</asp:RequiredFieldValidator>
                                                 </div>
                                                 <div class="col-md-8">
                                                     <label for="Address">
                                                         Address of Site(As Per Demand Notice of Utility/Electricity Bill)
-        <samp style="color: red">* </samp>
+    <samp style="color: red">* </samp>
                                                     </label>
                                                     <%-- <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
-                                                    <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" MaxLength="100" TabIndex="5" runat="server" Style="width: 100%;"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtAddress" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Address</asp:RequiredFieldValidator>
+                                                    <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" MaxLength="100" TabIndex="5" runat="server" Style="width: 100%;"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -392,14 +387,13 @@
                                                 <div class="col-md-4">
                                                     <label>
                                                         District
-                                                        <samp style="color: red">* </samp>
+                                                    <samp style="color: red">* </samp>
                                                     </label>
-                                                    <asp:TextBox class="form-control" ID="txtDistrict" Visible="true" TabIndex="1" MaxLength="10" oninput="this.value = this.value.toUpperCase();" AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
+                                                    <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" Visible="true" TabIndex="1" MaxLength="10" oninput="this.value = this.value.toUpperCase();" AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
                                                 </div>
                                                 <div class="col-md-4" runat="server">
                                                     <label for="Pin">PinCode</label>
-                                                    <asp:TextBox class="form-control" ID="txtPin" TabIndex="7" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server"></asp:TextBox>
-                                                    <span id="lblPinError" style="color: red"></span>
+                                                    <asp:TextBox class="form-control" ID="txtPin" TabIndex="7" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server"></asp:TextBox>
                                                 </div>
 
                                             </div>
@@ -408,32 +402,26 @@
                                                 <div class="col-md-4" style="margin-top: 20px;">
                                                     <label for="Phone">
                                                         Contact Number
-    <samp style="color: red">* </samp>
+                                                        <samp style="color: red">* </samp>
                                                     </label>
-                                                    <asp:TextBox class="form-control" ID="txtPhone" TabIndex="8" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" MaxLength="10" autocomplete="off" runat="server"></asp:TextBox>
-                                                    <span id="lblErrorContect" style="color: red"></span>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtPhone" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
-                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2"
-                                                        runat="server" ErrorMessage="Enter valid Phone number" ControlToValidate="txtPhone" ForeColor="Red" SetFocusOnError="true" ValidationGroup="Submit"
-                                                        ValidationExpression="^\d{10}$"></asp:RegularExpressionValidator>
+                                                    <asp:TextBox class="form-control" ID="txtPhone" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" MaxLength="10" autocomplete="off" runat="server"></asp:TextBox>
                                                 </div>
                                                 <div class="col-md-4" runat="server" style="margin-top: 20px;">
                                                     <label for="Email">
                                                         Email
-        <samp style="color: red">* </samp>
+    <samp style="color: red">* </samp>
                                                     </label>
-                                                    <asp:TextBox class="form-control" ID="txtEmail" TabIndex="9" MaxLength="50" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" autocomplete="off" runat="server"></asp:TextBox>
-                                                    <span id="lblError" style="color: red"></span>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtEmail" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Email Id</asp:RequiredFieldValidator>
-                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                                                        ControlToValidate="txtEmail"
-                                                        ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-                                                        ErrorMessage="Enter a Valid Email"
-                                                        CssClass="error-message"
-                                                        ForeColor="Red"
-                                                        Display="Dynamic" SetFocusOnError="true" ValidationGroup="Submit">
-                                                    </asp:RegularExpressionValidator>
+                                                    <asp:TextBox class="form-control" ID="txtEmail" ReadOnly="true" TabIndex="9" MaxLength="50" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" autocomplete="off" runat="server"></asp:TextBox>
+
                                                 </div>
+                                                <div class="col-md-4" runat="server" style="margin-top: 45px;">
+                                                    <label for="copyofpan">
+                                                        Copy of PanNumber
+                                                    </label>
+                                                    <asp:LinkButton ID="LnkDocumemtPath" runat="server" OnClick="LnkDocumemtPath_Click"> View document </asp:LinkButton>
+
+                                                </div>
+
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -442,6 +430,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <asp:HiddenField ID="HdnPanFilePath" runat="server" />
                         </div>
                     </div>
                 </div>

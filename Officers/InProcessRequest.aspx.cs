@@ -66,57 +66,73 @@ namespace CEIHaryana.Officers
                     string id = lblID.Text;
                     Session["InProcessInspectionId"] = id;
                     if (lblInstallationfor.Text.Trim() == "Lift" || lblInstallationfor.Text.Trim() == "Escalator" || lblInstallationfor.Text.Trim() == "MultiLift" || lblInstallationfor.Text.Trim() == "MultiEscalator" || lblInstallationfor.Text.Trim() == "Lift/Escalator")
+                    {
+                        if (int.TryParse(LblInspectionCount.Text, out int count) && count > 1)
                         {
-                            if (int.TryParse(LblInspectionCount.Text, out int count) && count > 1)
-                            {
 
-                                Response.Redirect("/Officers/InProcess_Returned_Inspection_Lift_Escalator.aspx", false);
-                                return;
-
-                            }
-                            else
-                            {
-                                Response.Redirect("/Officers/InProcessInspection_Lift_Escalator.aspx", false);
-                                return;
-                            }
-                        }
-                        //if (int.TryParse(LblInspectionCount.Text, out int count) && count > 1)
-                        //{
-
-                        //    Response.Redirect("/Officers/InProcess_Returned_Inspection_Lift_Escalator.aspx", false);
-                        //    return;
-
-                        //}
-
-                        //else   if (lblInstallationfor.Text.Trim() == "Lift" || lblInstallationfor.Text.Trim() == "Escalator" || lblInstallationfor.Text.Trim() == "MultiLift" || lblInstallationfor.Text.Trim() == "MultiEscalator" || lblInstallationfor.Text.Trim() == "Lift/Escalator")
-                        //{
-                        //    Response.Redirect("/Officers/InProcessInspection_Lift_Escalator.aspx", false);
-                        //    return;
-                        //} else if condition added by neeraj on 20-may-2025
-                        else if (lblInstallationfor.Text.Trim() == "Cinema_Videos Talkies")
-                        {
-                            Response.Redirect("/Officers/ActionForCinemaVideo_Talkies.aspx", false);
+                            Response.Redirect("/Officers/InProcess_Returned_Inspection_Lift_Escalator.aspx", false);
                             return;
+
                         }
-                        //
                         else
                         {
-                            Response.Redirect("/Officers/InProcessInspection.aspx", false);
+                            Response.Redirect("/Officers/InProcessInspection_Lift_Escalator.aspx", false);
+                            return;
                         }
+                    }
+                    //if (int.TryParse(LblInspectionCount.Text, out int count) && count > 1)
+                    //{
+
+                    //    Response.Redirect("/Officers/InProcess_Returned_Inspection_Lift_Escalator.aspx", false);
+                    //    return;
+
+                    //}
+
+                    //else   if (lblInstallationfor.Text.Trim() == "Lift" || lblInstallationfor.Text.Trim() == "Escalator" || lblInstallationfor.Text.Trim() == "MultiLift" || lblInstallationfor.Text.Trim() == "MultiEscalator" || lblInstallationfor.Text.Trim() == "Lift/Escalator")
+                    //{
+                    //    Response.Redirect("/Officers/InProcessInspection_Lift_Escalator.aspx", false);
+                    //    return;
+                    //} else if condition added by neeraj on 20-may-2025
+                    else if (lblInstallationfor.Text.Trim() == "Cinema_Videos Talkies")
+                    {
+                        Response.Redirect("/Officers/ActionForCinemaVideo_Talkies.aspx", false);
+                        return;
+                    }
+                    //
+                    else
+                    {
+                        Response.Redirect("/Officers/InProcessInspection.aspx", false);
+                    }
 
 
-                    
+
 
                 }
                 //Kalpna siteownerpop up 18-July-2025
                 else if (e.CommandName == "ShowDetails")
                 {
-                    LinkButton lnkbtnshowdetails = (LinkButton)row.FindControl("LnkResetButton");
-                    string CreatedBy = e.CommandArgument.ToString();
+                    Label lbllblApplicantFor = (Label)row.FindControl("lblApplicantFor");
 
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ModalScript", "openModal();", true);
-                    // ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModal", "$('#ownerModal').modal('show');", true);
-                    binddata(CreatedBy);
+                    if (lbllblApplicantFor.Text == "Power Utility")
+                    {
+                        LinkButton lnkbtnshowdetails = (LinkButton)row.FindControl("LnkResetButton");
+                        string CreatedBy = e.CommandArgument.ToString();
+
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ModalScript", "openModal();", true);
+                        // ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModal", "$('#ownerModal').modal('show');", true);
+                        binddataforPowerUtility(CreatedBy);
+                    }
+                    else
+                    {
+                        LinkButton lnkbtnshowdetails = (LinkButton)row.FindControl("LnkResetButton");
+                        string CreatedBy = e.CommandArgument.ToString();
+
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ModalScript", "openModal();", true);
+                        // ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowModal", "$('#ownerModal').modal('show');", true);
+                        binddata(CreatedBy);
+
+                    }
+
                 }
                 //
             }
@@ -162,9 +178,47 @@ namespace CEIHaryana.Officers
                 txtPin.Text = dt.Rows[0]["Pincode"].ToString();
                 txtPhone.Text = dt.Rows[0]["ContactNo"].ToString();
                 txtEmail.Text = dt.Rows[0]["Email"].ToString();
+                HdnPanFilePath.Value = dt.Rows[0]["CopyofPanNumber"].ToString();
+            }
+        }
+        protected void binddataforPowerUtility(string CreatedBy)
+        {
+
+            DataTable dt = CEI.DetailsforPowerUtility(CreatedBy);
+
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                txttypeofapplicant.Text = dt.Rows[0]["ApplicantType"].ToString();
+                txtPANTan.Text = dt.Rows[0]["PANNumber"].ToString();
+                txtElectricalInstallation.Text = dt.Rows[0]["ContractorType"].ToString();
+                txtName.Text = dt.Rows[0]["OwnerName"].ToString();
+                txtAddress.Text = dt.Rows[0]["Address"].ToString();
+                txtDistrict.Text = dt.Rows[0]["District"].ToString();
+                txtPin.Text = dt.Rows[0]["Pincode"].ToString();
+                txtPhone.Text = dt.Rows[0]["ContactNo"].ToString();
+                txtEmail.Text = dt.Rows[0]["Email"].ToString();
+
+                HdnPanFilePath.Value = dt.Rows[0]["CopyofPanNumber"].ToString();
+            }
+        }
+
+        protected void LnkDocumemtPath_Click(object sender, EventArgs e)
+        {
+            string filePath = HdnPanFilePath.Value;
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                string fileUrl = "https://localhost:44393/" + filePath;
+                string script = $@"<script>window.open('{fileUrl}', '_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('File not found!');", true);
             }
         }
         #endregion
+
 
     }
 }

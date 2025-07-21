@@ -13977,6 +13977,10 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DetailsofSiteOwner", CreatedBy);
         }
+        public static DataTable DetailsforPowerUtility(string CreatedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_DetailsforPowerUtility", CreatedBy);
+        }
         #endregion
     }
 }
