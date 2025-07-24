@@ -342,7 +342,7 @@ namespace CEIHaryana.SiteOwnerPages
                 else
                 {
                     Reset();
-                    txtRegistrationNo.Text = "";
+                    //txtRegistrationNo.Text = "";
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An application with the same Registration No. already exists for another user.')", true);
                 }
             //}
