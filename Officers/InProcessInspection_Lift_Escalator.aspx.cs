@@ -27,10 +27,12 @@ namespace CEIHaryana.Officers
     public partial class InProcessInspection_Lift_Escalator : System.Web.UI.Page
     {
 
+        //page setted by aslam 24-July-2025
+
         CEI CEI = new CEI();
         private static int lineNumber = 0;
         IndustryApiLogDetails logDetails = new IndustryApiLogDetails();
-        private static string ApprovedorReject, Reason, StaffId, Suggestions;
+        private static string ApprovedorReject, Reason, StaffId, Suggestions, LiftApprovalRemarks;
         string Type = string.Empty;
         //added x and y for checking status by neeraj on 6-May-2025
         int x = 0; int y = 0;
@@ -271,6 +273,20 @@ namespace CEIHaryana.Officers
                         //        txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
                         //        txtInspectionDate.Attributes.Add("disabled", "true");
                         //    }
+
+
+                        string RemarksToShowHideConditionvar = ds.Tables[0].Rows[0]["ApprovalLiftRemarks"]?.ToString();
+                        if (!string.IsNullOrWhiteSpace(RemarksToShowHideConditionvar))
+                        {
+                            divApproveRemarks.Visible = true;
+                            txtRemarks.Text = RemarksToShowHideConditionvar;
+                            txtRemarks.Attributes.Add("disabled", "true");
+                        }
+                        else
+                        {
+                            divApproveRemarks.Visible = false;
+                        }
+
                         btnBack.Visible = true;
                         btnSubmit.Visible = false;
                     }
@@ -278,7 +294,12 @@ namespace CEIHaryana.Officers
                     {
                         InspectionDate.Visible = false;
                         InsDate.Visible = true;
-                        txtDATE.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
+
+                        if (ds.Tables[0].Rows[0]["InspectionDate"] != DBNull.Value && !string.IsNullOrWhiteSpace(ds.Tables[0].Rows[0]["InspectionDate"].ToString()))
+                        {
+                            txtDATE.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
+                        }
+
                         if (txtAmount.Text == "0")
 
                         {
@@ -319,6 +340,9 @@ namespace CEIHaryana.Officers
                         btnSubmit.Visible = false;
                         grd_Documemnts.Columns[3].Visible = true;
                         grd_Documemnts.Columns[4].Visible = false;
+                        divApproveRemarks.Visible = false;
+
+
                     }
                     if (Status == "Return")
                     {
@@ -331,7 +355,7 @@ namespace CEIHaryana.Officers
 
                         divTestReportAttachment.Visible = false;
 
-
+                        divApproveRemarks.Visible = false;
 
 
 
@@ -339,6 +363,10 @@ namespace CEIHaryana.Officers
                 }
                 else if (Type == "Periodic")
                 {
+
+                    int showHideInspectionDate = Convert.ToInt32(ds.Tables[0].Rows[0]["ShowHideInspectionDate"]);
+                    InspectionDate.Visible = showHideInspectionDate == 1;
+
                     grd_Documemnts.Columns[4].Visible = false;
                     txtInspectionReportID.Text = ds.Tables[0].Rows[0]["Id"].ToString();
                     //InspectionType.Visible = false;
@@ -347,7 +375,7 @@ namespace CEIHaryana.Officers
                     Session["InstallationType"] = txtWorkType.Text;
                     //ChallanDate.Visible = true;
                     //RegNo.Visible = true;
-                    txtChallanDate.Text = ds.Tables[0].Rows[0]["PreviousChallanDate"].ToString();
+                   // txtChallanDate.Text = ds.Tables[0].Rows[0]["PreviousChallanDate"].ToString();
                     txtRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
                     txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
@@ -401,7 +429,11 @@ namespace CEIHaryana.Officers
                     txtContactNo.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString(); // Added by Neha on 15-05
                     txtOwnerDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString(); // Added by Neha on 15-05
                     //
-                    string SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
+                    string SiteInspectionDate = string.Empty;
+                    if (ds.Tables[0].Rows[0]["InspectionDate"] != DBNull.Value && !string.IsNullOrWhiteSpace(ds.Tables[0].Rows[0]["InspectionDate"].ToString()))
+                    {
+                         SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
+                    }
                     grd_Documemnts.Columns[1].Visible = true;
 
                     GridView1.Columns[5].Visible = false;
@@ -413,13 +445,17 @@ namespace CEIHaryana.Officers
                     GridBindDocument();
 
                     string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
+
+
                     Session["ApplicationStatus"] = Status;
                     if (Status == "Approved")
                     {
                         InspectionDate.Visible = false;
                         InsDate.Visible = true;
-
-                        txtDATE.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
+                        if (ds.Tables[0].Rows[0]["InspectionDate"] != DBNull.Value && !string.IsNullOrWhiteSpace(ds.Tables[0].Rows[0]["InspectionDate"].ToString()))
+                        {
+                            txtDATE.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
+                        }
                         if (txtAmount.Text == "0")
 
                         {
@@ -441,6 +477,20 @@ namespace CEIHaryana.Officers
                         //    txtInspectionDate.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
                         //    txtInspectionDate.Attributes.Add("disabled", "true");
                         //}
+
+                        string RemarksToShowHideConditionvar = ds.Tables[0].Rows[0]["ApprovalLiftRemarks"]?.ToString();
+
+                        if (!string.IsNullOrWhiteSpace(RemarksToShowHideConditionvar))
+                        {
+                            divApproveRemarks.Visible = true;
+                            txtRemarks.Text = RemarksToShowHideConditionvar;
+                            txtRemarks.Attributes.Add("disabled", "true");
+                        }
+                        else
+                        {
+                            divApproveRemarks.Visible = false;
+                        }
+
                         btnBack.Visible = true;
                         btnSubmit.Visible = false;
                     }
@@ -448,7 +498,10 @@ namespace CEIHaryana.Officers
                     {
                         InspectionDate.Visible = false;
                         InsDate.Visible = true;
-                        txtDATE.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
+                        if (ds.Tables[0].Rows[0]["InspectionDate"] != DBNull.Value && !string.IsNullOrWhiteSpace(ds.Tables[0].Rows[0]["InspectionDate"].ToString()))
+                        {
+                            txtDATE.Text = DateTime.Parse(SiteInspectionDate).ToString("yyyy-MM-dd");
+                        }
                         if (txtAmount.Text == "0")
 
                         {
@@ -473,6 +526,7 @@ namespace CEIHaryana.Officers
                         txtRejected.Attributes.Add("disabled", "true");
                         btnBack.Visible = true;
                         btnSubmit.Visible = false;
+                        divApproveRemarks.Visible = false;
                     }
                     if (Status == "Return")
                     {
@@ -480,6 +534,7 @@ namespace CEIHaryana.Officers
                         ApprovalRequired.Visible = false;
                         btnSubmit.Visible = false;
                         ddlReview.Attributes.Add("disabled", "true");
+                        divApproveRemarks.Visible = false;
                     }
                 }
             }
@@ -537,6 +592,7 @@ namespace CEIHaryana.Officers
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            bool isTransactionSuccessful = false;
             int checksuccessmessage = 0;
             int ClickCount = 0;
             ClickCount = Convert.ToInt32(Session["ClickCount"]);
@@ -606,46 +662,50 @@ namespace CEIHaryana.Officers
                             if (ddlReview.SelectedValue != null && ddlReview.SelectedValue != "" && ddlReview.SelectedValue != "0")
                             {
                                 DateTime inspectionDate;
-                                if (!DateTime.TryParse(txtInspectionDate.Text, out inspectionDate))
+                                if (InspectionDate.Visible)
                                 {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid inspection date.');", true);
-                                    return;
-                                }
-                                foreach (GridViewRow row in GridView1.Rows)
-                                {
-                                    if (row.RowType == DataControlRowType.DataRow)
+                                    if (!DateTime.TryParse(txtInspectionDate.Text, out inspectionDate))
                                     {
-                                        //string status = row.Cells[2].Text.Trim();
-                                        Label lblstatus = (Label)row.FindControl("lblStatus");
-                                        Label lblSubmittedDate = (Label)row.FindControl("lblSubmittedDate");
-                                        SubmittedDated = lblSubmittedDate.Text;     //added by gurmeet to take last action date O 2-JUNE-2025
-                                        //if (lblSubmittedDate != null && lblstatus.Text == "Submit")
-                                        //{
-                                        //  SubmittedDated = lblSubmittedDate.Text;
-                                        //}
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid inspection date.');", true);
+                                        return;
+                                    }
+
+                                    foreach (GridViewRow row in GridView1.Rows)
+                                    {
+                                        if (row.RowType == DataControlRowType.DataRow)
+                                        {
+                                            //string status = row.Cells[2].Text.Trim();
+                                            Label lblstatus = (Label)row.FindControl("lblStatus");
+                                            Label lblSubmittedDate = (Label)row.FindControl("lblSubmittedDate");
+                                            SubmittedDated = lblSubmittedDate.Text;     //added by gurmeet to take last action date O 2-JUNE-2025
+                                                                                        //if (lblSubmittedDate != null && lblstatus.Text == "Submit")
+                                                                                        //{
+                                                                                        //  SubmittedDated = lblSubmittedDate.Text;
+                                                                                        //}
+                                        }
+                                    }
+                                    DateTime submittedDate;
+                                    if (!DateTime.TryParse(SubmittedDated, out submittedDate))
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid submitted date.');", true);
+                                        return;
+                                    }
+                                    if (inspectionDate.Date < submittedDate.Date)
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection/Approval date must be greater or equal to the last action date of application.');", true);
+                                        return;
+                                    }
+                                    //Server date condition added by Navneet as per instructions from Vinod Sir on 19-May-2025
+                                    DateTime serverDate = DateTime.Now.Date;
+                                    if (inspectionDate.Date > serverDate.Date)
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be less than or equal to current date.');", true);
+                                        return;
                                     }
                                 }
-                                DateTime submittedDate;
-                                if (!DateTime.TryParse(SubmittedDated, out submittedDate))
-                                {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Invalid submitted date.');", true);
-                                    return;
-                                }                      
-                                if (inspectionDate.Date < submittedDate.Date)
-                                {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection/Approval date must be greater or equal to the last action date of application.');", true);
-                                    return;
-                                }
-                                //Server date condition added by Navneet as per instructions from Vinod Sir on 19-May-2025
-                                DateTime serverDate = DateTime.Now.Date;
-                                if (inspectionDate.Date > serverDate.Date)
-                                {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Inspection date must be less than or equal to current date.');", true);
-                                    return;
-                                }
-
                                 ApprovedorReject = ddlReview.SelectedItem.ToString();
                                 Reason = string.IsNullOrEmpty(txtRejected.Text) ? null : txtRejected.Text.Trim();
+                                LiftApprovalRemarks = string.IsNullOrEmpty(txtRemarks.Text) ? null : txtRemarks.Text.Trim();
                                 ClickCount = ClickCount + 1;
                                 Session["ClickCount"] = ClickCount;
                                 //if (Suggestion.Visible == true)
@@ -670,7 +730,7 @@ namespace CEIHaryana.Officers
                                     }
                                     #endregion
                                     transaction = connection.BeginTransaction();
-                                    y = CEI.InspectionFinalAction_Lift(ID, StaffId, ApprovedorReject, Reason, txtInspectionDate.Text, transaction);
+                                    y = CEI.InspectionFinalAction_Lift(ID, StaffId, ApprovedorReject, Reason, txtInspectionDate.Text, LiftApprovalRemarks, transaction);
                                     if (ApprovedorReject == "Approved")
                                     {
 
@@ -690,9 +750,15 @@ namespace CEIHaryana.Officers
                                                 DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
                                                 string lblOwner = (row.FindControl("lblOwner") as Label)?.Text;
 
-                                                x += CEI.InstallationApproval_Lift_New(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
+                                                int result  = CEI.InstallationApproval_Lift_New(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
                                                       lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, txtAddress.Text, txtDistrict.Text, DateTime.Parse(txtTranscationDate.Text), lblOwner, transaction);
 
+                                                if (result <= 0)
+                                                {
+                                                    x = 0;
+                                                    break;
+                                                }
+                                                x += result;
                                             }
 
                                             //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
@@ -717,9 +783,22 @@ namespace CEIHaryana.Officers
                                                 DateTime lblLastApprovalDate = DateTime.Parse((row.FindControl("lblLastApprovalDate") as Label)?.Text);
 
                                                 // string InstallationName = (row.FindControl("LblInstallation") as Label)?.Text;
-                                                CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                                 lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, LblMemoNo, txtTranscationDate.Text, transaction);
 
+                                                ///commented By aslam on 21 july 2025 earlier working by neeraj challandate not required owner name not passing  new method will create
+                                                //CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
+                                                //lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, LblMemoNo, txtTranscationDate.Text, transaction);
+
+                                                string ownerNameInMethod = GetOwnerName();
+
+                                                int result =  CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
+                                                lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, LblMemoNo, txtTranscationDate.Text, ownerNameInMethod, transaction);
+
+                                                if (result <= 0)
+                                                {
+                                                    x = 0;
+                                                    break;
+                                                }
+                                                x += result;
                                             }
                                             //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
 
@@ -729,6 +808,7 @@ namespace CEIHaryana.Officers
                                             transaction.Commit();
                                             CEI.UpdateLiftApprovedCertificatedata(ID);
                                             //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                                            isTransactionSuccessful = true;
                                         }
                                         else
                                         {
@@ -741,6 +821,7 @@ namespace CEIHaryana.Officers
                                     else if (ApprovedorReject == "Rejected")
                                     {
                                         transaction.Commit();
+                                        isTransactionSuccessful = true;
                                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata2()", true);
                                     }
 
@@ -892,7 +973,10 @@ namespace CEIHaryana.Officers
                                 }
                                 finally
                                 {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                                    if (isTransactionSuccessful)
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
+                                    }
                                     transaction?.Dispose();
                                     connection.Close();
                                 }
@@ -1010,6 +1094,7 @@ namespace CEIHaryana.Officers
         protected void ddlReview_SelectedIndexChanged(object sender, EventArgs e)
         {
             Rejection.Visible = false;
+            divApproveRemarks.Visible = false;
             //Suggestion.Visible = false;
             //ddlSuggestions.Visible = false;
             // btnPreview.Visible = false;
@@ -1019,6 +1104,7 @@ namespace CEIHaryana.Officers
             }
             else if (ddlReview.SelectedValue == "1")
             {
+                divApproveRemarks.Visible = true;
                 //btnPreview.Visible = true;
                 //ddlSuggestions.Visible = true;
 
@@ -1392,6 +1478,17 @@ namespace CEIHaryana.Officers
             }
             catch (Exception ex) { }
         }
+
+        private string GetOwnerName()
+        {
+            if (agency.Visible)
+                return txtagency.Text;
+            else if (individual.Visible)
+                return txtSiteOwnerName.Text;
+            else
+                return string.Empty;
+        }
+
 
     }
 }

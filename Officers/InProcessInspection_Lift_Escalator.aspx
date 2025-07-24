@@ -37,7 +37,7 @@
 
         th.headercolor {
             color: white !important;
-            width:5% !important;
+            width: 5% !important;
         }
 
         .multiselect {
@@ -292,9 +292,10 @@
         div#ContentPlaceHolder1_DivViewTRinMultipleCaseNew {
             padding: 10px 10px 0px 10px !important;
         }
+
         th.headercolor.thwidth {
-    width: 10% !important;
-}
+            width: 10% !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -455,10 +456,10 @@
                         <div id="District" class="col-md-4" runat="server" visible="false">
                             <label>District</label>
                             <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                 </div>
-                <div  id="divusertype"   class="col-md-4" runat="server" visible="true">
-                                 <label>UserType</label>
-                <asp:TextBox class="form-control" ID="txtUserType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>       
+                        </div>
+                        <div id="divusertype" class="col-md-4" runat="server" visible="true">
+                            <label>UserType</label>
+                            <asp:TextBox class="form-control" ID="txtUserType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
                         <%--<div class="col-md-4" id="Inspection_Type" runat="server" visible="false">
                         <label>Inspection Type</label>
@@ -469,8 +470,8 @@
 
             </div>
             <div class="row" id="divTestReportAttachment" runat="server" visible="true">
-               
-                    <div class="card-title" style="margin-bottom: 10px; font-size: 17px; font-weight: 600; margin-left: -10px;">
+
+                <div class="card-title" style="margin-bottom: 10px; font-size: 17px; font-weight: 600; margin-left: -10px;">
                     Inspection Details
                 </div>
                 <div class="card row" style="padding-top: 10px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-left: 0px !important; padding-left: 0px !important; padding-right: 0px !important;">
@@ -488,7 +489,7 @@
                             </asp:TemplateField>
                             <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left"/>
+                                <ItemStyle HorizontalAlign="Left" />
                             </asp:BoundField>
                             <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
@@ -800,6 +801,15 @@
                         </label>
                         <asp:TextBox class="form-control" ID="txtRejected" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12" id="divApproveRemarks" runat="server" visible="false">
+                        <label>
+                            Remarks
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtRemarks" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                 </div>
 

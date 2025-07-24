@@ -16,11 +16,15 @@ namespace CEIHaryana.Admin
 
     public partial class Action_InProcessLift_Return : System.Web.UI.Page
     {
+
+        //page setted by aslam 24-July-2025
         CEI CEI = new CEI();
         private static int lineNumber = 0;
         IndustryApiLogDetails logDetails = new IndustryApiLogDetails();
         private static string Reason;
         string Type = string.Empty;
+        //added x and y for checking status by neeraj on 6-May-2025
+        int x = 0; int y = 0;
         string AssignFrom;
         string InstallType = string.Empty;
         private static string IntimationId, AcceptorReturn;
@@ -691,7 +695,7 @@ namespace CEIHaryana.Admin
                                
                                 transaction = connection.BeginTransaction();
                                 txtInspectionDate.Text = DateTime.Parse(txtInspectionDate.Text).ToString("yyyy-MM-dd");
-                                CEI.InspectionFinalAction_Lift(ID, AdminId, ApprovedorReject, Reason, txtInspectionDate.Text, transaction);
+                               y += CEI.InspectionFinalAction_Lift(ID, AdminId, ApprovedorReject, Reason, txtInspectionDate.Text,"", transaction);
                                     if (ApprovedorReject == "Approved")
                                     {
                                         if (lblInspectionType.Text == "New")
@@ -732,17 +736,35 @@ namespace CEIHaryana.Admin
                                                 string LblRegistrationNo = (row.FindControl("LblRegistrationNo") as Label)?.Text;
                                                 string lblMemoNo = (row.FindControl("lblMemoNo") as Label)?.Text;
                                                 DateTime LblErectionDate = DateTime.Parse((row.FindControl("LblErectionDate") as Label)?.Text);
-                                                DateTime lblLastApprovalDate = DateTime.Parse((row.FindControl("lblLastApprovalDate") as Label)?.Text);                                              
-                                                CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, AdminId, lblInspectionType.Text, txtRegistrationNo.Text, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
-                                                 lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, lblMemoNo, txtTranscationDate.Text, transaction);
+                                                DateTime lblLastApprovalDate = DateTime.Parse((row.FindControl("lblLastApprovalDate") as Label)?.Text);
+
+
+                                            ///commented By aslam on 21 july 2025 earlier working by neeraj challandate not required owner name not passing  new method will create
+                                            //CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, AdminId, lblInspectionType.Text, txtRegistrationNo.Text, DateTime.Parse(txtChallanDate.Text), TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
+                                            //     lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, lblMemoNo, txtTranscationDate.Text, transaction);
+
+                                            string ownerNameInMethod = GetOwnerName();
+
+                                            x += CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, AdminId, lblInspectionType.Text, txtRegistrationNo.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
+     lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, lblMemoNo, txtTranscationDate.Text, ownerNameInMethod, transaction);
 
                                             }                                         
                                         }
 
+                                    if (x > 0 && y > 0)
+                                    {
                                         transaction.Commit();
                                         CEI.UpdateLiftApprovedCertificatedata(ID);
                                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata('" + ApprovedorReject + "');", true);
                                     }
+                                    else
+                                    {
+                                        transaction?.Rollback();
+                                        string alertScript = "alert('Please try again.');";
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                                        return;
+                                    }
+                                }
 
                                     else if (ApprovedorReject == "Rejected")
                                     {
@@ -1118,6 +1140,16 @@ namespace CEIHaryana.Admin
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
                 return;
             }
+        }
+
+        private string GetOwnerName()
+        {
+            if (agency.Visible)
+                return txtagency.Text;
+            else if (individual.Visible)
+                return txtSiteOwnerName.Text;
+            else
+                return string.Empty;
         }
     }
 }

@@ -454,10 +454,10 @@
                             <label>District</label>
                             <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
-                                    <div  id="divusertype"   class="col-md-4" runat="server" visible="true">
-                                 <label>UserType</label>
-                <asp:TextBox class="form-control" ID="txtUserType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        </div>                        
+                        <div id="divusertype" class="col-md-4" runat="server" visible="true">
+                            <label>UserType</label>
+                            <asp:TextBox class="form-control" ID="txtUserType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        </div>
                         <%--<div class="col-md-4" id="Inspection_Type" runat="server" visible="false">
                         <label>Inspection Type</label>
                         <asp:TextBox class="form-control" ID="TxtInspection" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -473,7 +473,7 @@
                 <div class="card row" style="padding: 10px 10px 0px 10px !important; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 10px; margin-left: 0px !important; padding-left: 0px !important; padding-right: 0px !important;">
 
 
-                    <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server"  OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false">
+                    <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false">
                         <HeaderStyle BackColor="#B7E2F0" />
                         <%-- <Columns>
                             <asp:TemplateField HeaderText="SNo">
@@ -557,12 +557,12 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                             <asp:TemplateField HeaderText="Status" Visible="False">
+                            <asp:TemplateField HeaderText="Status" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("ActionTaken") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                             <asp:TemplateField HeaderText="Id" Visible="False">
+                            <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblSubmittedDate" runat="server" Text='<%#Eval("ActionDate") %>'></asp:Label>
                                 </ItemTemplate>
@@ -806,6 +806,15 @@
                         </label>
                         <asp:TextBox class="form-control" ID="txtRejected" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12" id="divApproveRemarks" runat="server" visible="false">
+                        <label>
+                            Remarks
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtRemarks" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                 </div>
 
