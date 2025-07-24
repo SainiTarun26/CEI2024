@@ -486,10 +486,12 @@ namespace CEIHaryana.SiteOwnerPages
                         DateTime lastExpiryDate = Convert.ToDateTime(txtLastexpirydate.Text);
                         DateTime memoDate = Convert.ToDateTime(txtMemoDate.Text);
                         DateTime erectionDate = Convert.ToDateTime(txtDateofErection.Text);
+                        DateTime LastApprovalDate = Convert.ToDateTime(txtLastApprovalDate.Text);
+                        DateTime Lastexpirydate = Convert.ToDateTime(txtLastexpirydate.Text);
 
                         //validation for erection & memo dates
                         string errorMsg = "";
-                        if (!ValidateErectionAndMemoDates(erectionDate, memoDate, out errorMsg))
+                        if (!ValidateErectionAndMemoDates(Lastexpirydate,LastApprovalDate, erectionDate, memoDate, out errorMsg))
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('{errorMsg}');", true);
                             return;
@@ -611,12 +613,12 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
-        private bool ValidateErectionAndMemoDates(DateTime erectionDate, DateTime memoDate, out string errorMsg)
+        private bool ValidateErectionAndMemoDates(DateTime Lastexpirydate, DateTime LastApprovalDate,DateTime erectionDate, DateTime memoDate, out string errorMsg)
         {
             errorMsg = "";
             DateTime currentDate = DateTime.Today;
             DateTime twentyYearsAgo = currentDate.AddYears(-20);
-
+            DateTime ThreeYear = memoDate.AddYears(3);
             if (erectionDate < twentyYearsAgo)
             {
                 errorMsg = "You are not eligible for renewal. As your Erection date is more than 20 years old.";
@@ -626,6 +628,17 @@ namespace CEIHaryana.SiteOwnerPages
             if (erectionDate >= memoDate)
             {
                 errorMsg = "Date of Erection must be smaller than Memo Date.";
+                return false;
+            }
+            //2 date checks added by navneet on instructions of vinod sir
+            if (LastApprovalDate <= Lastexpirydate)
+            {
+                errorMsg = "Date of Renewal must be smaller than Memo Date.";
+                return false;
+            }
+            if (Lastexpirydate <= ThreeYear)
+            {
+                errorMsg = "Last date of payment must be 3 years Greater than Memo Date.";
                 return false;
             }
             return true;

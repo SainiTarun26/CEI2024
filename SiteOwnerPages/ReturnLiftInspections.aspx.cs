@@ -663,8 +663,15 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     if (date==""|| date ==null)
                     {
-                        throw new Exception("Please add transaction Date");
-                        //  date = "1899-09-09";
+                        if (Session["Amount"].ToString() == "0" || Session["Amount"].ToString() == "0.00")
+                        {
+                             date = "1899-09-09";
+                        }
+                        else
+                        {
+                            throw new Exception("Please add transaction Date");
+
+                        }
                     }
                         DataTable ds = new DataTable();
                         if (Session["TypeOfInspection"].ToString() == "New" && Session["ReturnedValue"].ToString() == "1")
