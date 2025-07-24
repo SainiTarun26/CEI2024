@@ -790,7 +790,7 @@ namespace CEIHaryana.Officers
 
                                                 string ownerNameInMethod = GetOwnerName();
 
-                                                int result =  CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
+                                                int result =  CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, LblRegistrationNo, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
                                                 lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, LblMemoNo, txtTranscationDate.Text, ownerNameInMethod, transaction);
 
                                                 if (result <= 0)
