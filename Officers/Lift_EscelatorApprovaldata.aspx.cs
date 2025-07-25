@@ -131,7 +131,11 @@ namespace CEIHaryana.Officers
 
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('Exception: " + ex.Message.Replace("'", "\\'") + "');</script>");
+
+            }
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
