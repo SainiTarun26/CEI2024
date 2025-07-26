@@ -165,36 +165,37 @@
             background: #9292cc;
             color: white;
         }
-          .input-box {
-       display: flex;
-       align-items: center;
-       max-width: 300px;
-       background: #fff;
-       border: 1px solid #a0a0a0;
-       border-radius: 4px;
-       padding-left: 0.5rem;
-       overflow: hidden;
-       font-family: sans-serif;
-   }
 
-       .input-box .prefix {
-           font-weight: 300;
-           font-size: 14px;
-           color: black;
-       }
+        .input-box {
+            display: flex;
+            align-items: center;
+            max-width: 300px;
+            background: #fff;
+            border: 1px solid #a0a0a0;
+            border-radius: 4px;
+            padding-left: 0.5rem;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
 
-       .input-box input {
-           flex-grow: 1;
-           font-size: 14px;
-           background: #fff;
-           border: none;
-           outline: none;
-           padding: 0.5rem;
-       }
+            .input-box .prefix {
+                font-weight: 300;
+                font-size: 14px;
+                color: black;
+            }
 
-       .input-box:focus-within {
-           border-color: #777;
-       }
+            .input-box input {
+                flex-grow: 1;
+                font-size: 14px;
+                background: #fff;
+                border: none;
+                outline: none;
+                padding: 0.5rem;
+            }
+
+            .input-box:focus-within {
+                border-color: #777;
+            }
     </style>
 
     <script type="text/javascript">
@@ -231,21 +232,12 @@
                         <label>Inspection Application No</label>
                         <asp:TextBox class="form-control" ID="txtInspectionReportID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-md-4" id="individual" runat="server">
-                        <label>Owner Name</label>
-                        <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-
-                                         <div class="col-md-4" id="agency" runat="server" visible="false">
-                        <label for="agency">
-                            Name of Firm/ Org./ Company/ Department
+                    <div class="col-md-4" style="margin-top: -10px;">
+                        <label>
+                            Type of Applicant
                         </label>
-                        <div class="input-box">
-                            <span class="prefix">M/s.</span>
-                            <asp:TextBox class="form-control" ID="txtagency" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
-                        </div>
+                        <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-
                     <div class="col-md-4" runat="server" id="DivPancard_TanNo">
                         <label for="PanNumber">
                             PAN Card
@@ -260,17 +252,32 @@
                         <asp:TextBox class="form-control" ID="txtTanNumber" ReadOnly="true" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
 
+                   
                     <div class="col-md-4" style="margin-top: -10px;">
-                        <label>
-                            Type of Applicant
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-                     <div class="col-md-4" style="margin-top: -10px;">
                         <label>
                             Electrical Installation For
                         </label>
                         <asp:TextBox class="form-control" ID="txtelectrical" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                     <div class="col-md-4" id="individual" runat="server">
+                        <label>Owner Name</label>
+                        <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+
+                    <div class="col-md-4" id="agency" runat="server" visible="false">
+                        <label for="agency">
+                            Name of Firm/ Org./ Company/ Department
+                        </label>
+                        <div class="input-box">
+                            <span class="prefix">M/s.</span>
+                            <asp:TextBox class="form-control" ID="txtagency" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label>
+                            Contact Person Mobile No.
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtContactNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-md-4" id="Installation" runat="server" visible="false">
                         <label>
@@ -278,9 +285,25 @@
                         </label>
                         <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px" Visible="false"></asp:TextBox>
                     </div>
-                    <div class="col-md-12" id="OwnerAddress" visible="true" runat="server">
+                    <div class="col-md-8" id="OwnerAddress" visible="true" runat="server">
                         <label>Address</label>
                         <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4">
+                        <label>
+                            District
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtOwnerDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div id="divusertype" class="col-md-4" runat="server" visible="true">
+                        <label>UserType</label>
+                        <asp:TextBox class="form-control" ID="txtUserType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4">
+                        <label>
+                            Contact Person Email
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                 </div>
             </div>
@@ -354,12 +377,12 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                               <asp:BoundField DataField="TotalAmount" HeaderText="Fees Amount">
-                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                         <ItemStyle HorizontalAlign="Left" Width="15%" />
-                              </asp:BoundField>
+                            <asp:BoundField DataField="TotalAmount" HeaderText="Fees Amount">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
 
-       <%--                     <asp:BoundField DataField="ReturnDate" HeaderText="Return Date">
+                            <%--                     <asp:BoundField DataField="ReturnDate" HeaderText="Return Date">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
@@ -470,7 +493,7 @@
                             </Columns>
                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                         </asp:GridView>
-                        <div class="row" ID ="statements" runat="server" visible="false">
+                        <div class="row" id="statements" runat="server" visible="false">
                             <label for="CompletionDateasperWorkOrder" style="font-size: 16px; font-weight: bold;">
                                 No  any Document Attach                                             
                             </label>

@@ -111,6 +111,10 @@ namespace CEIHaryana.Admin
                     txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
                     txtSupervisorContact.Text = ds.Tables[0].Rows[0]["SupervisorPhoneNo"].ToString();
                     txtcontractorContact.Text = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
+                    //Added By gurmeet 26-July-2025
+                    txtContractorEmail.Text = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
+                    txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["SiteownerEmail"].ToString();
+                    txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();
                     //** end added by gurmeet 17 july-2025
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();

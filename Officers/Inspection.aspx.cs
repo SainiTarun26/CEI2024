@@ -96,7 +96,21 @@ namespace CEIHaryana.Officers
                 if (Type == "New")
                 {
                     txtInspectionReportID.Text = ds.Tables[0].Rows[0]["Id"].ToString();
-                    txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    //txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    //added by gurmeet 24 july                    
+                    txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["SiteownerEmail"].ToString();
+                    txtSupervisorMobile.Text = ds.Tables[0].Rows[0]["SupervisorPhoneNo"].ToString();
+                    txtOwnerDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                    string Premises = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    if (!string.IsNullOrEmpty(Premises))
+                    {
+                        txtPremises.Text = Premises;
+                    }
+                    else
+                    {
+                        txtPremises.Text = "     -";
+                    }
+                    //end here
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
                     if (txtWorkType.Text == "Line")
@@ -175,15 +189,30 @@ namespace CEIHaryana.Officers
                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                     txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                    PermisesType.Visible = false;
+                    //added by gurmeet 24 july                    
+                    txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["SiteownerEmail"].ToString();
+                    txtSupervisorMobile.Text = ds.Tables[0].Rows[0]["SupervisorPhoneNo"].ToString();
+                    txtOwnerDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                    string Premises = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    if (!string.IsNullOrEmpty(Premises))
+                    {
+                        txtPremises.Text = Premises;
+                    }
+                    else
+                    {
+                        txtPremises.Text = "     -";
+                    }
+                   
+                    //PermisesType.Visible = false;
                     LineVoltage.Visible = false;
-                    ContractorName.Visible = false;
-                    ContractorPhoneNo.Visible = false;
-                    ContractorEmail.Visible = false;
-                    SupervisorName.Visible = false;
-                    SupervisorEmail.Visible = false;
-                    SiteOwnerContact.Visible = false;
-                    OwnerAddress.Visible = false;
+                    //ContractorName.Visible = false;
+                    //ContractorPhoneNo.Visible = false;
+                    //ContractorEmail.Visible = false;
+                    //SupervisorName.Visible = false;
+                    //SupervisorEmail.Visible = false;
+                    //SiteOwnerContact.Visible = false;
+                    //OwnerAddress.Visible = false;
+                    //****end here
                     //if (txtApplicantType.Text != "Multiple")
                     //{
                     TRAttached.Visible = true;

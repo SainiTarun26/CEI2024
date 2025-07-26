@@ -148,6 +148,8 @@ namespace CEIHaryana.Officers
                     txtContactNo.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString(); // Added by Neha on 15-05
                     txtOwnerDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString(); // Added by Neha on 15-05
                     //
+                    txtUserType.Text = ds.Tables[0].Rows[0]["UserType"].ToString(); // Added by gurmeet on 23-07
+                    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString(); // Added by gurmeet on 23-07
                     txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                     string SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
                     Session["InspectionType"] = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
@@ -381,6 +383,9 @@ namespace CEIHaryana.Officers
                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                     txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+
+                   
+
                     if (txtAmount.Text == "0")
                     {
                         labelApprovalDate.Visible = true;
@@ -428,7 +433,9 @@ namespace CEIHaryana.Officers
                     // Added by Neha on 15-05
                     txtContactNo.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString(); // Added by Neha on 15-05
                     txtOwnerDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString(); // Added by Neha on 15-05
-                    //
+                                                                                         //
+                    txtUserType.Text = ds.Tables[0].Rows[0]["UserType"].ToString(); // Added by gurmeet on 23-07
+                    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString(); // Added by gurmeet on 23-07
                     string SiteInspectionDate = string.Empty;
                     if (ds.Tables[0].Rows[0]["InspectionDate"] != DBNull.Value && !string.IsNullOrWhiteSpace(ds.Tables[0].Rows[0]["InspectionDate"].ToString()))
                     {
@@ -790,7 +797,7 @@ namespace CEIHaryana.Officers
 
                                                 string ownerNameInMethod = GetOwnerName();
 
-                                                int result =  CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, LblRegistrationNo, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
+                                                int result =  CEI.InstallationApproval_Lift(ID, TestReportId, InstallationType, StaffId, InspectionType, txtRegistrationNo.Text, TxtDivision.Text, lblMake, lblLiftSrNo, lblTypeOfLift,
                                                 lblTypeOfControl, lblCapacity, lblWeight, LblErectionDate, lblLastApprovalDate, txtAddress.Text, txtDistrict.Text, LblMemoNo, txtTranscationDate.Text, ownerNameInMethod, transaction);
 
                                                 if (result <= 0)

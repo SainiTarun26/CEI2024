@@ -72,6 +72,19 @@ namespace CEIHaryana.Admin
                     string SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
                     Session["InspectionType"] = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                     string ReturnValu = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
+                    //Added By gurmeet 26-July-2025
+                    txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+                    txtUserType.Text = ds.Tables[0].Rows[0]["UserType"].ToString();
+                    //string Premises = ds.Tables[0].Rows[0]["PremisesType"].ToString();
+                    //if (!string.IsNullOrEmpty(Premises))
+                    //{
+                    //    txtPermises.Text = Premises;
+                    //}
+                    //else
+                    //{
+                    //    txtPermises.Text = "       -";
+                    //}
+                    //
                     GridBindDocument(ID);
                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                     txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
@@ -159,13 +172,22 @@ namespace CEIHaryana.Admin
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                     if (txtAmount.Text == "0")
                     {
-                        TranscationDetails.Visible = false;
+                        //TranscationDetails.Visible = false;
                     }
                     else
                     {
                         TranscationDetails.Visible = true;
                     }
-
+                    txtUserType.Text = ds.Tables[0].Rows[0]["UserType"].ToString();
+                    //string Premises = ds.Tables[0].Rows[0]["PremisesType"].ToString();
+                    //if (!string.IsNullOrEmpty(Premises))
+                    //{
+                    //    txtPermises.Text = Premises;
+                    //}
+                    //else
+                    //{
+                    //    txtPermises.Text = "    -";
+                    //}
                     txtelectrical.Text = ds.Tables[0].Rows[0]["ContractorType"].ToString();
                     if (ds.Tables[0].Rows[0]["ContractorType"].ToString() == "Firm/Company")
                     {

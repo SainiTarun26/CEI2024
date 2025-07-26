@@ -252,6 +252,18 @@
                         <label>Supervisor Contact No.</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorContact" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
+                      <div class="col-md-4" id="Div5" runat="server" visible="true">
+                        <label>ContactPerson Email</label>
+                        <asp:TextBox class="form-control" ID="txtContactPersonEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>                                        
+                     <div class="col-md-4" id="ContractorEmail" runat="server" visible="true">
+                        <label>Contractor Email</label>
+                        <asp:TextBox class="form-control" ID="txtContractorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4" id="SupervisorEmail" runat="server" visible="true">
+                        <label>Supervisor Email</label>
+                        <asp:TextBox class="form-control" ID="txtSupervisorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
                      <%--<div class="col-4" runat="server">
                         <label>ContactPerson Email</label>
                         <asp:TextBox class="form-control" ID="txtContactPersonEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>

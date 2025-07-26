@@ -142,7 +142,21 @@ namespace CEIHaryana.Officers
                 if (Type == "New")
                 {
                     txtInspectionReportID.Text = ds.Tables[0].Rows[0]["Id"].ToString();
-                    txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    //added by gurmeet 22 july 
+                    //txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["SiteownerEmail"].ToString();
+                    txtSupervisorMobile.Text = ds.Tables[0].Rows[0]["SupervisorPhoneNo"].ToString();
+                    txtOwnerDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString(); 
+                    string Premises = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    if (!string.IsNullOrEmpty(Premises))
+                    {
+                        txtPremises.Text = Premises;
+                    }
+                    else
+                    {
+                        txtPremises.Text = "     -";
+                    }
+                    //end here
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
                     Session["InstallationType"] = txtWorkType.Text;
@@ -161,6 +175,7 @@ namespace CEIHaryana.Officers
                     txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                     txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                     txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
+                   
                     txtSiteOwnerContact.Text = ds.Tables[0].Rows[0]["SiteownerContactNumber"].ToString();
                     txtContractorName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
                     txtContractorPhoneNo.Text = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
@@ -174,7 +189,8 @@ namespace CEIHaryana.Officers
                     GridBindDocument();
                     //txtAmount.Visible = false;
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-
+                    txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                    txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
 
                     DivViewTRinMultipleCaseNew.Visible = true;
                     GridToViewMultipleCaseNew();
@@ -315,7 +331,7 @@ namespace CEIHaryana.Officers
                 {
                     grd_Documemnts.Columns[4].Visible = false;
                     txtInspectionReportID.Text = ds.Tables[0].Rows[0]["Id"].ToString();
-                    InspectionType.Visible = false;
+                   // InspectionType.Visible = false;
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
                     Session["InstallationType"] = txtWorkType.Text;
@@ -333,17 +349,43 @@ namespace CEIHaryana.Officers
                     }
                     txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                     txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+
+                    txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                    txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                     Session["InspectionType"] = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                     //divTestReportAttachment.Visible = false;
                     Address.Visible = true;
                     txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
-                    SiteOwnerContact.Visible = false;
-                    ContractorName.Visible = false;
-                    ContractorPhoneNo.Visible = false;
-                    ContractorEmail.Visible = false;
-                    divSupervisorName.Visible = false;
-                    SupervisorEmail.Visible = false;
+                    //added by gurmeet 22 july
+                    //txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    string Premises = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    if (!string.IsNullOrEmpty(Premises))
+                    {
+                        txtPremises.Text = Premises;
+                    }
+                    else
+                    {
+                        txtPremises.Text = "     -";
+                    }
+                   
+                    txtSiteOwnerContact.Text = ds.Tables[0].Rows[0]["SiteownerContactNumber"].ToString();
+                    txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["SiteownerEmail"].ToString();
+                    txtSupervisorMobile.Text = ds.Tables[0].Rows[0]["SupervisorPhoneNo"].ToString();
+                    txtOwnerDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString(); 
+                    txtContractorName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
+                    txtContractorPhoneNo.Text = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
+                    txtContractorEmail.Text = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
+                    txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
+                    txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();
+                    // comment by gurmeet 22july 2025
+                    //SiteOwnerContact.Visible = false;
+                    //ContractorName.Visible = false;
+                    //ContractorPhoneNo.Visible = false;
+                    //ContractorEmail.Visible = false;
+                    //divSupervisorName.Visible = false;
+                    //SupervisorEmail.Visible = false;
+                    //end here
                     string SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
                     grd_Documemnts.Columns[1].Visible = true;
                     // comment by gurmeet1 may 2025

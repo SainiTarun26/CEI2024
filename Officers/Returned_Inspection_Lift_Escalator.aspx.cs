@@ -68,7 +68,9 @@ namespace CEIHaryana.Officers
                     /// Added by Neha on 15-05 frontend also
                     txtContactNo.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString(); // Added by Neha on 15-05
                     txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString(); // Added by Neha on 15-05
-                    // 
+                                                                                    // 
+                    txtUserType.Text = ds.Tables[0].Rows[0]["UserType"].ToString(); // Added by gurmeet on 23-07
+                    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString(); // Added by gurmeet on 23-07
 
                     txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();

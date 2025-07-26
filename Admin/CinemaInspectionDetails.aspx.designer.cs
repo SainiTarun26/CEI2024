@@ -33,6 +33,15 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.Label lblInspectionType;
 
         /// <summary>
+        /// lblUserType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUserType;
+
+        /// <summary>
         /// lblInstallation control.
         /// </summary>
         /// <remarks>
@@ -51,22 +60,13 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.TextBox txtInspectionID;
 
         /// <summary>
-        /// individual control.
+        /// txtCinemaName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl individual;
-
-        /// <summary>
-        /// txtSiteOwnerName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSiteOwnerName;
+        protected global::System.Web.UI.WebControls.TextBox txtCinemaName;
 
         /// <summary>
         /// DivPancard_TanNo control.
@@ -87,13 +87,22 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.TextBox txtPAN;
 
         /// <summary>
-        /// txtCinemaName control.
+        /// individual control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCinemaName;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl individual;
+
+        /// <summary>
+        /// txtSiteOwnerName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSiteOwnerName;
 
         /// <summary>
         /// txtEmail control.

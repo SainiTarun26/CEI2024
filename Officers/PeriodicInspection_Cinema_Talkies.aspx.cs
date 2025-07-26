@@ -70,7 +70,7 @@ namespace CEIHaryana.Officers
                     txtEmail.Text = dt.Rows[0]["Email"].ToString();
                     txtContactNo.Text = dt.Rows[0]["ContactNo"].ToString();
                     txtAddress.Text = dt.Rows[0]["Address"].ToString();
-                    txtDistrict.Text = dt.Rows[0]["District"].ToString();
+                    txtDistrict.Text = dt.Rows[0]["District"].ToString();                    
                     txtTransactionId.Text = dt.Rows[0]["TransactionId"].ToString();
                     txtTranscationDate.Text = dt.Rows[0]["TransactionDate"].ToString();
                     lblInspectionType.Text = dt.Rows[0]["TypeOfInspection"].ToString();

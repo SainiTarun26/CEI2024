@@ -94,7 +94,21 @@ namespace CEIHaryana.Officers
                 if (Type == "New")
                 {
                     txtInspectionReportID.Text = ds.Tables[0].Rows[0]["Id"].ToString();
-                    txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    //txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    //added by gurmeet 24 july                    
+                    txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["SiteownerEmail"].ToString();
+                    txtSupervisorMobile.Text = ds.Tables[0].Rows[0]["SupervisorPhoneNo"].ToString();
+                    txtOwnerDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                    string Premises = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    if (!string.IsNullOrEmpty(Premises))
+                    {
+                        txtPremises.Text = Premises;
+                    }
+                    else
+                    {
+                        txtPremises.Text = "     -";
+                    }
+                    //end here
                     txtApplicantType.Text = ds.Tables[0].Rows[0]["TypeOfApplicant"].ToString();
                     txtWorkType.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
                     if (txtWorkType.Text == "Line")
@@ -126,6 +140,12 @@ namespace CEIHaryana.Officers
                     //count = Convert.ToInt32(ds.Tables[0].Rows[0]["TestReportCount"].ToString());           //Added     
                     IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();        //Added     
                     string ReturnValu = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
+                    //added by gurmeet 24 july 
+                    txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["SiteownerEmail"].ToString();
+                    txtSupervisorMobile.Text = ds.Tables[0].Rows[0]["SupervisorPhoneNo"].ToString();
+                    txtOwnerDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+
+
                     GridBindDocument();
                     DivViewTRinMultipleCaseNew.Visible = true;
                     if (Type == "New")
@@ -213,15 +233,30 @@ namespace CEIHaryana.Officers
                     txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                     //PermisesType.Visible = false;
-                    txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString().ToLower() == "industry" ? "Industry" : "NonIndustry";
+                    //added by gurmeet 24 july 
+                    //txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString().ToLower() == "industry" ? "Industry" : "NonIndustry";                   
+                    txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["SiteownerEmail"].ToString();
+                    txtSupervisorMobile.Text = ds.Tables[0].Rows[0]["SupervisorPhoneNo"].ToString();
+                    txtOwnerDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                    string Premises = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    if (!string.IsNullOrEmpty(Premises))
+                    {
+                        txtPremises.Text = Premises;
+                    }
+                    else
+                    {
+                        txtPremises.Text = "     -";
+                    }
+                    //end here
+
                     LineVoltage.Visible = false;
-                    ContractorName.Visible = false;
-                    ContractorPhoneNo.Visible = false;
-                    ContractorEmail.Visible = false;
-                    SupervisorName.Visible = false;
-                    SupervisorEmail.Visible = false;
-                    SiteOwnerContact.Visible = false;
-                    OwnerAddress.Visible = false;
+                    //ContractorName.Visible = false;
+                    //ContractorPhoneNo.Visible = false;
+                    //ContractorEmail.Visible = false;
+                    //SupervisorName.Visible = false;
+                    //SupervisorEmail.Visible = false;
+                    //SiteOwnerContact.Visible = false;
+                    //OwnerAddress.Visible = false;
                     //if (txtApplicantType.Text != "Multiple")
                     //{
                     TRAttached.Visible = true;

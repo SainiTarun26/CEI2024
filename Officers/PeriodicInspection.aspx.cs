@@ -89,16 +89,31 @@ namespace CEIHaryana.Officers
                 txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                 txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                 //PermisesType.Visible = false;
-                txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString().ToLower() == "industry" ? "Industry" : "NonIndustry";
 
                 LineVoltage.Visible = false;
-                ContractorName.Visible = false;
-                ContractorPhoneNo.Visible = false;
-                ContractorEmail.Visible = false;
-                SupervisorName.Visible = false;
-                SupervisorEmail.Visible = false;
-                SiteOwnerContact.Visible = false;
-                OwnerAddress.Visible = false;
+                
+                txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString().ToLower() == "industry" ? "Industry" : "NonIndustry";
+                //commented by gurmeet 22 july toshow same pages
+                txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["SiteownerEmail"].ToString();
+                txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
+                txtSiteOwnerContact.Text = ds.Tables[0].Rows[0]["SiteownerContactNumber"].ToString();
+                txtContractorName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
+                txtContractorPhoneNo.Text = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
+                txtSupervisorContact.Text = ds.Tables[0].Rows[0]["SupervisorPhoneNo"].ToString();
+                txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
+                txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                txtContractorEmail.Text = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
+                txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
+                txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString(); 
+                //ContractorName.Visible = false;
+                //ContractorPhoneNo.Visible = false;
+                //ContractorEmail.Visible = false;
+                //SupervisorName.Visible = false;
+                //SupervisorEmail.Visible = false;
+                //SiteOwnerContact.Visible = false;
+                //OwnerAddress.Visible = false;
+                //end here 22 july
                 TRAttached.Visible = true;
                 TRAttachedGrid.Visible = true;
                 // comment by gurmeet1 may 2025

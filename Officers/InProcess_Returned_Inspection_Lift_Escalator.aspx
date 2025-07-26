@@ -375,6 +375,16 @@
                         </label>
                         <asp:TextBox class="form-control" ID="txtOwnerDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
+                     <div id="divusertype" class="col-md-4" runat="server" visible="true">
+                            <label>UserType</label>
+                            <asp:TextBox class="form-control" ID="txtUserType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        </div>
+                       <div class="col-md-4">
+                        <label>
+                            Contact Person Email
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
                 </div>
             </div>
             <div id="TranscationDetails" runat="server">
@@ -454,10 +464,7 @@
                             <label>District</label>
                             <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                         </div>
-                        <div id="divusertype" class="col-md-4" runat="server" visible="true">
-                            <label>UserType</label>
-                            <asp:TextBox class="form-control" ID="txtUserType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        </div>
+                       
                         <%--<div class="col-md-4" id="Inspection_Type" runat="server" visible="false">
                         <label>Inspection Type</label>
                         <asp:TextBox class="form-control" ID="TxtInspection" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>

@@ -255,31 +255,55 @@
                        <label>Address</label>
                        <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                    </div>
-                   <div class="col-md-4" id="SiteOwnerContact" visible="true" runat="server">
-                       <label>Contact Details</label>
-                       <asp:TextBox class="form-control" ID="txtSiteOwnerContact" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                   </div>
+                     <div class="col-md-4">
+                        <label>
+                            District
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtOwnerDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                  
                    <div class="col-md-4" id="ContractorName" visible="true" runat="server">
                        <label>Contractor Name</label>
                        <asp:TextBox class="form-control" ID="txtContractorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                    </div>
-                   <div class="col-md-4" id="ContractorPhoneNo" visible="true" runat="server">
+                  <div class="col-md-4" id="SupervisorName" visible="true" runat="server">
+                       <label>Supervisor Name</label>
+                       <asp:TextBox class="form-control" ID="txtSupervisorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                   </div>
+                    <div class="col-md-4" id="SiteOwnerContact" visible="true" runat="server">
+                       <label>Contact Person Mobile No.</label>
+                       <asp:TextBox class="form-control" ID="txtSiteOwnerContact" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                   </div>
+                  
+                     <div class="col-md-4" id="ContractorPhoneNo" visible="true" runat="server">
                        <label>Contractor Phone No.</label>
                        <asp:TextBox class="form-control" ID="txtContractorPhoneNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                    </div>
+                   <div class="col-md-4" id="Div3" runat="server" visible="true">
+                        <label>Supervisor Phone No.</label>
+                        <asp:TextBox class="form-control" ID="txtSupervisorMobile" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4" id="Div2" runat="server" visible="true">
+                        <label>Contact Person Email</label>
+                        <asp:TextBox class="form-control" ID="txtContactPersonEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>  
                    <div class="col-md-4" id="ContractorEmail" visible="true" runat="server">
                        <label>Contractor Email</label>
                        <asp:TextBox class="form-control" ID="txtContractorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                   </div>
-                   <div class="col-md-4" id="SupervisorName" visible="true" runat="server">
-                       <label>Supervisor Name</label>
-                       <asp:TextBox class="form-control" ID="txtSupervisorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                    </div>
                    <div class="col-md-4" id="SupervisorEmail" visible="true" runat="server">
                        <label>Supervisor Email</label>
                        <asp:TextBox class="form-control" ID="txtSupervisorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                    </div>
-                   <div class="col-md-4" runat="server">
+                   
+               </div>
+           </div>
+           <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-top: 20px; font-weight: 600; margin-left: -10px; margin-bottom: 20px;">
+               Transaction Details
+           </div>
+           <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+                  <div class="row">
+                      <div class="col-md-4" runat="server">
                        <label>Transaction ID(GRN Number)</label>
                        <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                    </div>
@@ -291,8 +315,8 @@
                        <label>Fees Amount</label>
                        <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                    </div>
+                      </div>
                </div>
-           </div>
            <div class="row" id="TRAttached" runat="server" visible="true">
     <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
         Inspection Details

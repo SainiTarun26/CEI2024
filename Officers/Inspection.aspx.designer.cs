@@ -141,22 +141,13 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.TextBox txtAddress;
 
         /// <summary>
-        /// SiteOwnerContact control.
+        /// txtOwnerDistrict control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SiteOwnerContact;
-
-        /// <summary>
-        /// txtSiteOwnerContact control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSiteOwnerContact;
+        protected global::System.Web.UI.WebControls.TextBox txtOwnerDistrict;
 
         /// <summary>
         /// ContractorName control.
@@ -177,6 +168,42 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.TextBox txtContractorName;
 
         /// <summary>
+        /// SupervisorName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SupervisorName;
+
+        /// <summary>
+        /// txtSupervisorName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSupervisorName;
+
+        /// <summary>
+        /// SiteOwnerContact control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SiteOwnerContact;
+
+        /// <summary>
+        /// txtSiteOwnerContact control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSiteOwnerContact;
+
+        /// <summary>
         /// ContractorPhoneNo control.
         /// </summary>
         /// <remarks>
@@ -195,6 +222,42 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.TextBox txtContractorPhoneNo;
 
         /// <summary>
+        /// Div3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div3;
+
+        /// <summary>
+        /// txtSupervisorMobile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSupervisorMobile;
+
+        /// <summary>
+        /// Div2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div2;
+
+        /// <summary>
+        /// txtContactPersonEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContactPersonEmail;
+
+        /// <summary>
         /// ContractorEmail control.
         /// </summary>
         /// <remarks>
@@ -211,24 +274,6 @@ namespace CEIHaryana.Officers
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtContractorEmail;
-
-        /// <summary>
-        /// SupervisorName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SupervisorName;
-
-        /// <summary>
-        /// txtSupervisorName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSupervisorName;
 
         /// <summary>
         /// SupervisorEmail control.

@@ -73,6 +73,7 @@ namespace CEIHaryana.Admin
                     txtReasonReject.Text = dt.Rows[0]["ReasonForRejection"].ToString();
                     lblInspectionType.Text = dt.Rows[0]["TypeOfInspection"].ToString();
                     lblInstallation.Text = dt.Rows[0]["InstallationType"].ToString();
+                    lblUserType.Text = dt.Rows[0]["UserType"].ToString();
                     txtApplicationStatus.Text = dt.Rows[0]["ApplicationStatus"].ToString();
                     {
                       

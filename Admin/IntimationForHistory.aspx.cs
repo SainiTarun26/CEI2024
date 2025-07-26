@@ -152,9 +152,28 @@ namespace CEIHaryana.Admin
                     {
                         txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
                         txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
-                        txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                        // txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                        //start added by gurmeet 18 july-2025
+                        string Premises = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                        if (!string.IsNullOrEmpty(Premises))
+                        {
+                            txtPremises.Text = Premises;
+                        }
+                        else
+                        {
+                            txtPremises.Text = "     -";
+                        }
+                        txtContactPersonContact.Text = ds.Tables[0].Rows[0]["SiteownerContactNumber"].ToString();
+                        txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
+                        txtSupervisorContact.Text = ds.Tables[0].Rows[0]["SupervisorPhoneNo"].ToString();
+                        txtcontractorContact.Text = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
+                        txtContractorEmail.Text = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
+                        txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["SiteownerEmail"].ToString();
+                        txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();
+                        //** end added by gurmeet 17 july-2025
                         txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                         txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+
                         if (txtWorkType.Text == "Line")
                         {
                             Capacity.Visible = false;
@@ -221,14 +240,34 @@ namespace CEIHaryana.Admin
                         txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
                         txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                         ////txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
+                         //start added by gurmeet 18 july-2025
+                        string Premises = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                        if (!string.IsNullOrEmpty(Premises))
+                        {
+                            txtPremises.Text = Premises;
+                        }
+                        else
+                        {
+                            txtPremises.Text = "     -";
+                        }
+                        txtContactPersonContact.Text = ds.Tables[0].Rows[0]["SiteownerContactNumber"].ToString();
+                        txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
+                        txtContractorName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
+                        txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
+                        txtSupervisorContact.Text = ds.Tables[0].Rows[0]["SupervisorPhoneNo"].ToString();
+                        txtcontractorContact.Text = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
+                        txtContractorEmail.Text = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
+                        txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["SiteownerEmail"].ToString();
+                        txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();
+                        //** end added by gurmeet 17 july-2025
                         txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
-                        ContractorName.Visible = false;
-                        SupervisorName.Visible = false;
+                       // ContractorName.Visible = false;
+                       // SupervisorName.Visible = false;
                         LineVoltage.Visible = false;
                         txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                         txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                         txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                        TypeOfInspection.Visible = false;
+                        //TypeOfInspection.Visible = false;
                         txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
                         txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                         txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
@@ -236,13 +275,13 @@ namespace CEIHaryana.Admin
                         txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                         txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
                         txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
-                        ContractorName.Visible = false;
-                        SupervisorName.Visible = false;
+                       // ContractorName.Visible = false;
+                       // SupervisorName.Visible = false;
                         LineVoltage.Visible = false;
                         txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                         txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                         txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                        TypeOfInspection.Visible = false;
+                        //TypeOfInspection TypeOfInspection.Visible = false;
                         TRAttached.Visible = true;
                         TRAttachedGrid.Visible = true;
                         //GridView1.Columns[7].Visible = false;

@@ -250,19 +250,13 @@
                         <label>Inspection Application No</label>
                         <asp:TextBox class="form-control" ID="txtInspectionReportID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-md-4" id="individual" runat="server">
-                        <label>Owner Name</label>
-                        <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-                    <div class="col-md-4" id="agency" runat="server" visible="false">
-                        <label for="agency">
-                            Name of Firm/ Org./ Company/ Department
+                     <div class="col-md-4">
+                        <label>
+                            Type of Applicant
                         </label>
-                        <div class="input-box">
-                            <span class="prefix">M/s.</span>
-                            <asp:TextBox class="form-control" ID="txtagency" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
-                        </div>
+                        <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
+                   
 
                     <div class="col-md-4" runat="server" id="DivPancard_TanNo">
                         <label for="PanNumber">
@@ -278,11 +272,18 @@
                         <asp:TextBox class="form-control" ID="txtTanNumber" ReadOnly="true" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
 
-                    <div class="col-md-4">
-                        <label>
-                            Type of Applicant
+                    <div class="col-md-4" id="individual" runat="server">
+                        <label>Owner Name</label>
+                        <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4" id="agency" runat="server" visible="false">
+                        <label for="agency">
+                            Name of Firm/ Org./ Company/ Department
                         </label>
-                        <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <div class="input-box">
+                            <span class="prefix">M/s.</span>
+                            <asp:TextBox class="form-control" ID="txtagency" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
+                        </div>
                     </div>
                     <div class="col-md-4">
                         <label>
@@ -292,7 +293,7 @@
                     </div>
                     <div class="col-md-4">
                         <label>
-                            Contact No.
+                           Contact Person Mobile No.
                         </label>
                         <asp:TextBox class="form-control" ID="txtContactNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -315,7 +316,13 @@
                     <div class="col-md-12" id="Usertype" visible="true" runat="server">
                         <label>UserType</label>
                         <asp:TextBox class="form-control" ID="txtUserType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>                     
+                    </div>   
+                     <div class="col-md-4">
+                        <label>
+                            Contact Person Email
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
                 </div>
             </div>
             <div id="TranscationDetails" runat="server">

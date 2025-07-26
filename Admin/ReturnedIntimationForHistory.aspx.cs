@@ -125,6 +125,10 @@ namespace CEIHaryana.Admin
                         txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
                         txtSupervisorContact.Text = ds.Tables[0].Rows[0]["SupervisorPhoneNo"].ToString();
                         txtcontractorContact.Text = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
+                        //Added By gurmeet 26-July-2025
+                        txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["SiteownerEmail"].ToString();
+                        txtContractorEmail.Text = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
+                        txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
                         //**end here
                         //GetGridNewInspectionMultiple();
 

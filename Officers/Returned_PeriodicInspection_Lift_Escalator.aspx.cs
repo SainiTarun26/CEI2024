@@ -83,7 +83,12 @@ namespace CEIHaryana.Officers
                 txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                 txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                 txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-
+                //added by gurmeet 25july 
+                txtContactNo.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+                txtOwnerDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                txtUserType.Text = ds.Tables[0].Rows[0]["UserType"].ToString();
+                txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
+                //end here
                 if (txtAmount.Text == "0")
                 {
                     TranscationDetails.Visible = false;

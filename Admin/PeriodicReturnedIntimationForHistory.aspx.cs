@@ -125,13 +125,33 @@ namespace CEIHaryana.Admin
                     txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                     //txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                     txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
-                    ContractorName.Visible = false;
-                    SupervisorName.Visible = false;
+                   // ContractorName.Visible = false;
+                   // SupervisorName.Visible = false;
                     LineVoltage.Visible = false;
                     txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                     txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                    TypeOfInspection.Visible = false;
+                    //TypeOfInspection.Visible = false;
+                    //start added by gurmeet 21 july-2025
+                    string Premises = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    if (!string.IsNullOrEmpty(Premises))
+                    {
+                        txtPremises.Text = Premises;
+                    }
+                    else
+                    {
+                        txtPremises.Text = "     -";
+                    }
+                    txtContactPersonContact.Text = ds.Tables[0].Rows[0]["SiteownerContactNumber"].ToString();
+                    txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
+                    txtContractorName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
+                    txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
+                    txtSupervisorContact.Text = ds.Tables[0].Rows[0]["SupervisorPhoneNo"].ToString();
+                    txtcontractorContact.Text = ds.Tables[0].Rows[0]["ContractorContactNo"].ToString();
+                    txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["SiteownerEmail"].ToString();
+                    txtContractorEmail.Text = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
+                    txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
+                    //** end added by gurmeet 21 july-2025
                     //txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
                     //txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                     //txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();

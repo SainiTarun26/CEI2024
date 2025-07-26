@@ -341,15 +341,15 @@ Inspection/SiteOwner Detail (<asp:Label ID="lblInspectionType" runat="server" Te
             </div>
             <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                 <div class="row">
-                    <div class="col-md-3" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>Inspection Application No</label>
                         <asp:TextBox class="form-control" ID="txtInspectionID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-md-5" id="individual" runat="server">
-                        <label>Owner Name</label>
-                        <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                   
+                     <div class="col-md-4">
+                        <label>Cinema & Video Talkies</label>
+                        <asp:TextBox class="form-control" ID="txtCinemaName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-
 
                     <div class="col-md-4" runat="server" id="DivPancard_TanNo">
                         <label for="PanNumber">
@@ -358,20 +358,20 @@ Inspection/SiteOwner Detail (<asp:Label ID="lblInspectionType" runat="server" Te
                         <asp:TextBox class="form-control" ID="txtPAN" TabIndex="1" ReadOnly="true" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
 
-
-                    <div class="col-md-4">
-                        <label>Cinema & Video Talkies</label>
-                        <asp:TextBox class="form-control" ID="txtCinemaName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                     <div class="col-md-4" id="individual" runat="server">
+                        <label>Owner Name</label>
+                        <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
+                   
                     <div class="col-md-4">
                         <label>
-                            Email Id.
+                           Contact Person Email Id
                         </label>
                         <asp:TextBox class="form-control" ID="txtEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-md-4">
                         <label>
-                            Contact No.
+                            Contact Person Mobile No.
                         </label>
                         <asp:TextBox class="form-control" ID="txtContactNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -385,6 +385,7 @@ Inspection/SiteOwner Detail (<asp:Label ID="lblInspectionType" runat="server" Te
                         </label>
                         <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
+                    
                 </div>
             </div>
             <div id="TranscationDetails" runat="server">

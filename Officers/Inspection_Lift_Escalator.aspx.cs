@@ -68,7 +68,7 @@ namespace CEIHaryana.Officers
                     lblInspectionType.Text = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                     lblInstallation.Text = ds.Tables[0].Rows[0]["TypeOfInstallation"].ToString();
                     txtUserType.Text = ds.Tables[0].Rows[0]["UserType"].ToString();
-
+                    txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                     if (txtWorkType.Text == "Line")
                     {
                         //Capacity.Visible = false;

@@ -86,10 +86,15 @@ namespace CEIHaryana.Officers
                 txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                 txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                 txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-
+                // Added by gurmeet on 23-07
+                txtAddress.Text = ds.Tables[0].Rows[0]["SiteownerAddress"].ToString();
+                txtContactNo.Text = ds.Tables[0].Rows[0]["ContactNo"].ToString();
+                txtOwnerDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
+                txtUserType.Text = ds.Tables[0].Rows[0]["UserType"].ToString(); 
+                txtEmail.Text = ds.Tables[0].Rows[0]["Email"].ToString();
                 if (txtAmount.Text == "0")
                 {
-                    TranscationDetails.Visible = false;
+                    //TranscationDetails.Visible = false;
                 }
                 else
                 {
@@ -117,7 +122,7 @@ namespace CEIHaryana.Officers
                     DivOtherDepartment.Visible = false;
                     txtPAN.Text = ds.Tables[0].Rows[0]["PanOrTan"].ToString();
                 }
-                OwnerAddress.Visible = false;
+                //OwnerAddress.Visible = false; comment by gurmeet on 23-07
                 TRAttached.Visible = true;
                 TRAttachedGrid.Visible = true;
                 GridView1.Columns[7].Visible = false;

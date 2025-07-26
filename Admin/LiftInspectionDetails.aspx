@@ -310,18 +310,11 @@
                         <label>Inspection Application No</label>
                         <asp:TextBox class="form-control" ID="txtInspectionReportID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-md-4" id="individual" runat="server">
-                        <label>Owner Name</label>
-                        <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-                    <div class="col-md-4" id="agency" runat="server" visible="false">
-                        <label for="agency">
-                            Name of Firm/ Org./ Company/ Department
+                    <div class="col-md-4">
+                        <label>
+                            Electrical Installation For
                         </label>
-                        <div class="input-box">
-                            <span class="prefix">M/s.</span>
-                            <asp:TextBox class="form-control" ID="txtagency" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
-                        </div>
+                        <asp:TextBox class="form-control" ID="txtelectrical" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
 
                     <div class="col-md-4" runat="server" id="DivPancard_TanNo">
@@ -341,15 +334,24 @@
                         <label>Type of Applicant</label>
                         <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-md-4">
-                        <label>
-                            Electrical Installation For
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtelectrical" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    <div class="col-md-4" id="individual" runat="server">
+                        <label>Owner Name</label>
+                        <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
+                    <div class="col-md-4" id="agency" runat="server" visible="false">
+                        <label for="agency">
+                            Name of Firm/ Org./ Company/ Department
+                        </label>
+                        <div class="input-box">
+                            <span class="prefix">M/s.</span>
+                            <asp:TextBox class="form-control" ID="txtagency" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
+                        </div>
+                    </div>
+                    
+                    
                     <div class="col-md-4">
                         <label>
-                            Contact No. 
+                            ContactPerson Mobile 
                         </label>
                         <asp:TextBox class="form-control" ID="txtContactNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>                    
@@ -366,7 +368,26 @@
                             District
                         </label>
                         <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>                    
+                    </div>  
+                     <div class="col-md-4">
+                        <label>
+                            User Type
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtUserType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                     <div class="col-md-4">
+                        <label>
+                            ContactPerson Email 
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtContactPersonEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>  
+                   <%--  <div class="col-md-4">
+                        <label>
+                            SiteOwnerName
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtSiteownerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div> --%>
+                    
                 </div>
             </div>
             <div id="TranscationDetails" runat="server">
