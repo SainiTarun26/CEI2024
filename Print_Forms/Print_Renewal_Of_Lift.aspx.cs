@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using Org.BouncyCastle.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.Print_Forms
 {
@@ -67,31 +69,31 @@ namespace CEIHaryana.Print_Forms
 
                 }
                 ID = Session["LiftTestReportID"].ToString();
-                DataTable dt = new DataTable();
-                dt = CEI.GetLiftCertificateData(InspectionId, ID);
-                if (dt.Rows.Count > 0)
+                DataSet ds = new DataSet();
+                ds = CEI.GetRenewalLiftData(InspectionId, ID);
+                if (ds.Tables.Count > 0)
                 {
-                    lblAddress1.Text = dt.Rows[0]["Header1"].ToString();
-                    lblAdress2.Text = dt.Rows[0]["Header2"].ToString();
-                    lblAdress3.Text = dt.Rows[0]["Header3"].ToString();
-                    if (string.IsNullOrEmpty(dt.Rows[0]["Header4"].ToString()))
+                    lblAddress1.Text = ds.Tables[0].Rows[0]["Header1"].ToString();
+                    lblAdress2.Text = ds.Tables[0].Rows[0]["Header2"].ToString();
+                    lblAdress3.Text = ds.Tables[0].Rows[0]["Header3"].ToString();
+                    if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Header4"].ToString()))
                     {
                         lblEmail.Visible = false;
                     }
                     else
                     {
                         lblEmail.Visible = true;
-                        lblEmail.Text = dt.Rows[0]["Header4"].ToString();
+                        lblEmail.Text = ds.Tables[0].Rows[0]["Header4"].ToString();
                     }
-                    lblRegistrationNo.Text = dt.Rows[0]["RegistrationNo"].ToString();
-                    lblMemoNo.Text = dt.Rows[0]["MemoNo"].ToString();
-                    lblApprovedDate.Text = dt.Rows[0]["ApprovedDate"].ToString();
+                    lblRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
+                    lblMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
+                    lblApprovedDate.Text = ds.Tables[0].Rows[0]["InspectionCreatedDate"].ToString();
                     //lblApprovedDate.Text = DateTime.Parse(createdDate1).ToString("dd/MM/yyyy");
                   
                    
                 }
 
-                GridBind();
+                GridBind(InspectionId, ID);
 
                 string script = "<script type=\"text/javascript\">printDiv('printableDiv');</script>";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "PrintOnLoad", script, false);
@@ -105,30 +107,31 @@ namespace CEIHaryana.Print_Forms
             }
 
         }
-        protected void GridBind()
+        protected void GridBind(string InspectionId, string ID)
         {
             try
             {
                 ID = Session["LiftTestReportID"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.getDataforLift(ID);
-                if (ds.Tables.Count > 0)
+                ds = CEI.GetRenewalLiftData(InspectionId, ID);
+
+                if (ds.Tables.Count > 1 && ds.Tables[1].Rows.Count > 0)
                 {
-                    Gridview1.DataSource = ds;
+                    Gridview1.DataSource = ds.Tables[1];  // ✅ Bind to 2nd table
                     Gridview1.DataBind();
                 }
                 else
                 {
                     Gridview1.DataSource = null;
                     Gridview1.DataBind();
-
                 }
+
                 ds.Dispose();
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
-                return;
+                // Optional: Log or display error
+                Response.Write("Error: " + ex.Message);
             }
         }
 

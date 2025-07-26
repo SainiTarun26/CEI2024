@@ -14098,6 +14098,12 @@ SqlTransaction transaction)
 
 
         #endregion
+        #region Print certificate Periodic lift by vinod sir
+        public DataSet GetRenewalLiftData(string InspectionId, string Lift_Escelator_Id) //REPLACED
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLiftApproalRenewableHistory", InspectionId, Lift_Escelator_Id);
+        }
+        #endregion
     }
 }
 
