@@ -182,6 +182,7 @@ namespace CEIHaryana.SiteOwnerPages
                     divEscalatorDetails.Visible = false;
                     lblTypeOfLift.InnerText = "Type of Lift";
                     RadioBtnType.Visible = true;
+                    rvfRadioButtonList.Visible = true;
                     RadioBtnEscType.Visible = false;
                     lblMake.InnerText = "Make of Lift";
                 }
@@ -192,6 +193,7 @@ namespace CEIHaryana.SiteOwnerPages
                     divEscalatorDetails.Visible = true;
                     lblTypeOfLift.InnerText = "Type of Escalator";
                     RadioBtnEscType.Visible = true;
+                    RequiredFieldValidator9.Visible = true;
                     RadioBtnType.Visible = false;
                     lblMake.InnerText = "Make of Escalator";
                 }

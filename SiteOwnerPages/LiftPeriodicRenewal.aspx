@@ -351,12 +351,12 @@
                                     <asp:ListItem Text="Passenger lift" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
                                     <asp:ListItem Text="Goods Lift" Value="1" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
                                 </asp:RadioButtonList>
-                                <asp:RequiredFieldValidator ID="rvfRadioButtonList" ErrorMessage="Choose one" ControlToValidate="RadioBtnType" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />
+                                <asp:RequiredFieldValidator ID="rvfRadioButtonList" ErrorMessage="Choose one" ControlToValidate="RadioBtnType" Visible="false" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />
                                 <asp:RadioButtonList ID="RadioBtnEscType" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" Visible="false">
                                     <asp:ListItem Text="Travelator" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
                                     <asp:ListItem Text="Escalator" Value="1" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
                                 </asp:RadioButtonList>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ErrorMessage="Choose one" ControlToValidate="RadioBtnEscType" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ErrorMessage="Choose one" ControlToValidate="RadioBtnEscType" Visible="false" runat="server" ValidationGroup="Submit" SetFocusOnError="true" ForeColor="Red" />
                             </div>
                             <div class="col-md-4" runat="server">
                                 <label>
