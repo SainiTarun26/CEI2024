@@ -633,7 +633,7 @@ namespace CEIHaryana.SiteOwnerPages
             //2 date checks added by navneet on instructions of vinod sir
             if (LastApprovalDate <= Lastexpirydate)
             {
-                errorMsg = "Date of Renewal must be smaller than Memo Date.";
+                errorMsg = "Date of Renewal must be Greater than or equal to Last date of payment";
                 return false;
             }
             if (Lastexpirydate <= ThreeYear)
