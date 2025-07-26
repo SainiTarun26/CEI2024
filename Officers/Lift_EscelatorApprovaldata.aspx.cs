@@ -105,7 +105,18 @@ namespace CEIHaryana.Officers
                         }
                         else
                         {
-                            Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                            #region aslam lift periodic redirection 26-July-2025
+                            if (lblInspectionType.Text == "Periodic")
+                            {
+                                Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
+                                return;
+                            }
+                            else
+                            {
+                                Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                                return;
+                            }
+                            #endregion
                         }
                     }
                     #region aslam code changed by aslam 19-May-2025

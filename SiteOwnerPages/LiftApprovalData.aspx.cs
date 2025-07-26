@@ -69,17 +69,40 @@ namespace CEIHaryana.SiteOwnerPages
                     Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
                     Label lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
                     Session["RegistrationNo"] = lblRegistrationNo.Text;
+                    //lblInspectionType added by Aslam  26-July-2025
+                    Label lblInspectionType = (Label)row.FindControl("lblInspectionType");
                     string InspectionId = Session["InspectionId"].ToString();
                     Session["LiftTestReportID"] = id;
-                    if(lblInstallationType.Text =="Lift")
+
+                    #region aslam code liftperiodic 26-July-2025
+                    if (lblInstallationType.Text == "Lift")
                     {
-                        Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                        if (lblInspectionType.Text == "Periodic")
+                        {
+                            Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
+                            return;
+                        }
+                        else
+                        {
+                            Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                            return;
+                        }
                     }
                     else
                     {
-                        Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                        if (lblInspectionType.Text == "Periodic")
+                        {
+                            Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
+                            return;
+                        }
+                        else
+                        {
+                            Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                            return;
+                        }
                     }
-                   
+                    #endregion
+
                 }
             }
             catch { }

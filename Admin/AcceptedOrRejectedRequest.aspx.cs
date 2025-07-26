@@ -114,7 +114,7 @@ namespace CEIHaryana.Admin
                     string id = lblID.Text;
 
 
-                    //Session["InspectionId"] = id;
+                    Session["InspectionId"] = id;
                     if (e.CommandName == "Select")
                     {
                         //Added By neeraj 22-May-2025

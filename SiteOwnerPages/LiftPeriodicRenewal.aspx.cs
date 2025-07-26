@@ -618,7 +618,7 @@ namespace CEIHaryana.SiteOwnerPages
             errorMsg = "";
             DateTime currentDate = DateTime.Today;
             DateTime twentyYearsAgo = currentDate.AddYears(-20);
-            DateTime ThreeYear = memoDate.AddYears(3);
+            DateTime ThreeYear = memoDate.AddYears(2);
             if (erectionDate < twentyYearsAgo)
             {
                 errorMsg = "You are not eligible for renewal. As your Erection date is more than 20 years old.";
@@ -638,7 +638,7 @@ namespace CEIHaryana.SiteOwnerPages
             }
             if (Lastexpirydate <= ThreeYear)
             {
-                errorMsg = "Last date of payment must be 3 years Greater than Memo Date.";
+                errorMsg = "Last date of payment must be 2 years Greater than Memo Date.";
                 return false;
             }
             return true;

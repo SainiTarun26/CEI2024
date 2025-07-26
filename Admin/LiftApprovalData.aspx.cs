@@ -75,6 +75,8 @@ namespace CEIHaryana.Admin
                     Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
                     //labe added by aslam 19-may-2025
                     Label lblblUserType = row.FindControl("lblUserType") as Label;
+                    //lblInspectionType added by aslam 24-July-2025
+                    Label lblInspectionType = (Label)row.FindControl("lblInspectionType");
                     string id = lblID.Text;
                     string InspectionId = Session["InspectionId"].ToString();
 
@@ -85,14 +87,34 @@ namespace CEIHaryana.Admin
                     {
                         #endregion
                         Session["LiftTestReportID"] = id;
+                        #region aslam code liftperiodic 26-July-2025
                         if (lblInstallationType.Text == "Lift")
                         {
-                            Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                            if (lblInspectionType.Text == "Periodic")
+                            {
+                                Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
+                                return;
+                            }
+                            else
+                            {
+                                Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                                return;
+                            }
                         }
                         else
                         {
-                            Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                            if (lblInspectionType.Text == "Periodic")
+                            {
+                                Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
+                                return;
+                            }
+                            else
+                            {
+                                Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                                return;
+                            }
                         }
+                        #endregion
                     }
 
                     #region aslam code lift industry_19M-May-2025
