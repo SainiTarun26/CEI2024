@@ -87,13 +87,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvtxtRegistrationNo;
 
         /// <summary>
-        /// txtLastApprovalDate control.
+        /// txtExpiryDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLastApprovalDate;
+        protected global::System.Web.UI.WebControls.TextBox txtExpiryDate;
 
         /// <summary>
         /// RequiredFieldValidator8 control.
@@ -105,22 +105,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
 
         /// <summary>
-        /// txtLastexpirydate control.
+        /// txtLastdateOfPayment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLastexpirydate;
-
-        /// <summary>
-        /// RfvtxtLastexpirydate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvtxtLastexpirydate;
+        protected global::System.Web.UI.WebControls.TextBox txtLastdateOfPayment;
 
         /// <summary>
         /// divLiftDetails control.

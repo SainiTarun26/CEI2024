@@ -10632,7 +10632,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ToCheckDatesForLiftRenewal", lastExpiryDate, memoDate);
         }
-        public string InsertPeriodicLiftData(string InstallationType, string RegistrationNo, string LastExpiryDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
+        public string InsertPeriodicLiftData(string InstallationType, string RegistrationNo, string LastExpiryDate, string PreviousChallanUpload, string lastDateOfPayment, string ErectionDate, string Make,
 string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string MemoNo, string MemoDate, string SiteAddress, string CreatedBy, SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_InsertPeriodicLiftData", transaction.Connection, transaction);
@@ -10641,7 +10641,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
             cmd.Parameters.AddWithValue("@LastExpiryDate", LastExpiryDate);
             cmd.Parameters.AddWithValue("@PreviousChallanUpload", PreviousChallanUpload);
-            cmd.Parameters.AddWithValue("@LastApprovalDate", LastApprovalDate);
+            cmd.Parameters.AddWithValue("@lastDateOfPayment", lastDateOfPayment);
             cmd.Parameters.AddWithValue("@ErectionDate", ErectionDate);
             cmd.Parameters.AddWithValue("@Make", Make);
             cmd.Parameters.AddWithValue("@SerialNo", SerialNo);
@@ -10663,10 +10663,10 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             string TRID = cmd.Parameters["@GeneratedTestReportID"].Value.ToString();
             return TRID;
         }
-        public DataTable InsertReturnPeriodicLiftData(string TestReportId, string InstallationType, string RegistrationNo, string LastExpiryDate, string PreviousChallanUpload, string LastApprovalDate, string ErectionDate, string Make,
+        public DataTable InsertReturnPeriodicLiftData(string TestReportId, string InstallationType, string RegistrationNo, string LastExpiryDate, string PreviousChallanUpload, string lastDateOfPayment, string ErectionDate, string Make,
     string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decimal Weight, string ApplicantDistrict, string MemoNo, string MemoDate, string SiteAddress, int InspectionID, string CreatedBy)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertPeriodicReturnData", TestReportId, InstallationType, RegistrationNo, LastExpiryDate, PreviousChallanUpload, LastApprovalDate, ErectionDate, Make,
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InsertPeriodicReturnData", TestReportId, InstallationType, RegistrationNo, LastExpiryDate, PreviousChallanUpload, lastDateOfPayment, ErectionDate, Make,
  SerialNo, TypeOfLift, TypeOfControl, Capacity, Weight, ApplicantDistrict, MemoNo, MemoDate, SiteAddress, InspectionID, CreatedBy);
         }
        

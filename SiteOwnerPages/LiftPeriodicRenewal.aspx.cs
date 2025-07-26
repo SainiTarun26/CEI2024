@@ -220,8 +220,8 @@ namespace CEIHaryana.SiteOwnerPages
             txtDateofErection.ReadOnly = false;
             txtMemoNo.ReadOnly = false;
             txtMemoDate.ReadOnly = false;
-            txtLastApprovalDate.ReadOnly = false;
-            txtLastexpirydate.ReadOnly = false;
+            txtLastdateOfPayment.ReadOnly = false;
+            txtExpiryDate.ReadOnly = false;
 
             txtMake.Text = "";
             txtSerialNo.Text = "";
@@ -236,8 +236,8 @@ namespace CEIHaryana.SiteOwnerPages
             txtDateofErection.Text = "";
             txtMemoNo.Text = "";
             txtMemoDate.Text = "";
-            txtLastApprovalDate.Text = "";
-            txtLastexpirydate.Text = "";
+            txtLastdateOfPayment.Text = "";
+            txtExpiryDate.Text = "";
         }
         protected void btnBack_Click(object sender, EventArgs e)
         {
@@ -266,8 +266,8 @@ namespace CEIHaryana.SiteOwnerPages
                     txtDateofErection.ReadOnly = true;
                     txtMemoNo.ReadOnly = true;
                     txtMemoDate.ReadOnly = true;
-                    txtLastApprovalDate.ReadOnly = true;
-                    txtLastexpirydate.ReadOnly = true;
+                    txtLastdateOfPayment.ReadOnly = true;
+                    txtExpiryDate.ReadOnly = true;
                     txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
                     txtSerialNo.Text = ds.Tables[0].Rows[0]["LiftSrNo"].ToString();
 
@@ -310,20 +310,20 @@ namespace CEIHaryana.SiteOwnerPages
                     DateTime LastApprovalDate;
                     if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastApprovalDate"].ToString(), out LastApprovalDate))
                     {
-                        txtLastApprovalDate.Text = LastApprovalDate.ToString("yyyy-MM-dd");
+                        txtLastdateOfPayment.Text = LastApprovalDate.ToString("yyyy-MM-dd");
                     }
                     else
                     {
-                        txtLastApprovalDate.Text = "";
+                        txtLastdateOfPayment.Text = "";
                     }
                     DateTime PrevChallanDate;
                     if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastTransactionDate"].ToString(), out PrevChallanDate))
                     {
-                        txtLastexpirydate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
+                        txtExpiryDate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
                     }
                     else
                     {
-                        txtLastexpirydate.Text = "";
+                        txtExpiryDate.Text = "";
                     }
                     txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                     txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
@@ -385,8 +385,8 @@ namespace CEIHaryana.SiteOwnerPages
                     txtDateofErection.ReadOnly = true;
                     txtMemoNo.ReadOnly = true;
                     txtMemoDate.ReadOnly = true;
-                    txtLastApprovalDate.ReadOnly = true;
-                    txtLastexpirydate.ReadOnly = true;
+                    txtLastdateOfPayment.ReadOnly = true;
+                    txtExpiryDate.ReadOnly = true;
                     txtMake.Text = ds.Tables[0].Rows[0]["Make"].ToString();
                     txtSerialNo.Text = ds.Tables[0].Rows[0]["LiftSrNo"].ToString();
                     string typeOfLift = ds.Tables[0].Rows[0]["TypeOfLift"].ToString();
@@ -427,20 +427,20 @@ namespace CEIHaryana.SiteOwnerPages
                     DateTime LastApprovalDate;
                     if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastApprovalDate"].ToString(), out LastApprovalDate))
                     {
-                        txtLastApprovalDate.Text = LastApprovalDate.ToString("yyyy-MM-dd");
+                        txtLastdateOfPayment.Text = LastApprovalDate.ToString("yyyy-MM-dd");
                     }
                     else
                     {
-                        txtLastApprovalDate.Text = "";
+                        txtLastdateOfPayment.Text = "";
                     }
                     DateTime PrevChallanDate;
                     if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastTransactionDate"].ToString(), out PrevChallanDate))
                     {
-                        txtLastexpirydate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
+                        txtExpiryDate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
                     }
                     else
                     {
-                        txtLastexpirydate.Text = "";
+                        txtExpiryDate.Text = "";
                     }
                     txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                     txtSiteAddress.Text = ds.Tables[0].Rows[0]["SiteAddress"].ToString();
@@ -483,19 +483,25 @@ namespace CEIHaryana.SiteOwnerPages
                     //if (result == -1)
                     //{
 
-                        DateTime lastExpiryDate = Convert.ToDateTime(txtLastexpirydate.Text);
+                        DateTime lastExpiryDate = Convert.ToDateTime(txtExpiryDate.Text);
                         DateTime memoDate = Convert.ToDateTime(txtMemoDate.Text);
                         DateTime erectionDate = Convert.ToDateTime(txtDateofErection.Text);
-                        DateTime LastApprovalDate = Convert.ToDateTime(txtLastApprovalDate.Text);
-                        DateTime Lastexpirydate = Convert.ToDateTime(txtLastexpirydate.Text);
+                    //LastdateOfPayment changed by navneet as per instructions of vinod sir
+                    DateTime LastdateOfPayment ;
+                       DateTime Lastexpirydate = Convert.ToDateTime(txtExpiryDate.Text);
+                    if (Convert.ToString(txtLastdateOfPayment.Text) != ""|| Convert.ToString(txtLastdateOfPayment.Text) !=null)
+                    {
 
+                        LastdateOfPayment = Convert.ToDateTime(txtLastdateOfPayment.Text);
                         //validation for erection & memo dates
                         string errorMsg = "";
-                        if (!ValidateErectionAndMemoDates(Lastexpirydate,LastApprovalDate, erectionDate, memoDate, out errorMsg))
+                        if (!ValidateErectionAndMemoDates(Lastexpirydate, LastdateOfPayment, erectionDate, memoDate, out errorMsg))
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('{errorMsg}');", true);
                             return;
                         }
+                    }
+                   //
 
                         //Check for memo vs expiry logic
                         ////if (!ToCheckDatesForLiftRenewal(lastExpiryDate, memoDate))
@@ -515,8 +521,8 @@ namespace CEIHaryana.SiteOwnerPages
                         if (Session["ReturnedValue"].ToString() != "1")
                         {
                             TRID = CEI.InsertPeriodicLiftData(
-                                ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtLastexpirydate.Text,
-                                filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text, txtMake.Text,
+                                ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtExpiryDate.Text,
+                                filePathInfo, txtLastdateOfPayment.Text, txtDateofErection.Text, txtMake.Text,
                                 txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight,
                                 districtValue, txtMemoNo.Text, txtMemoDate.Text, txtSiteAddress.Text,
                                 SiteOwnerID, transaction);
@@ -527,7 +533,7 @@ namespace CEIHaryana.SiteOwnerPages
                             int InspectionId = int.Parse(Session["InspectionId"].ToString());
                             DataTable dt = CEI.InsertReturnPeriodicLiftData(
                                 TestReportId, ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text,
-                                txtLastexpirydate.Text, filePathInfo, txtLastApprovalDate.Text, txtDateofErection.Text,
+                                txtExpiryDate.Text, filePathInfo, txtLastdateOfPayment.Text, txtDateofErection.Text,
                                 txtMake.Text, txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text,
                                 weight, districtValue, txtMemoNo.Text, txtMemoDate.Text, txtSiteAddress.Text,
                                 InspectionId, SiteOwnerID);

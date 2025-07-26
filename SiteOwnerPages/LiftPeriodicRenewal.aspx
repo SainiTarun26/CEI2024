@@ -290,18 +290,17 @@
                     </div>
                     <div class="col-md-4" runat="server">
                         <label>
-                            Last Approval Date<samp style="color: red"> * </samp>
+                            Last Expiry Date<samp style="color: red"> * </samp>
                         </label>
-                        <asp:TextBox type="date" class="form-control" ID="txtLastApprovalDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="txtLastApprovalDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                        <asp:TextBox type="date" class="form-control" ID="txtExpiryDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="txtExpiryDate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
                     <div class="col-md-4" runat="server">
                         <label>
-                            Last date of payment<samp style="color: red"> * </samp>
+                            Last date of payment
                         </label>
-                        <asp:TextBox type="date" class="form-control" ID="txtLastexpirydate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RfvtxtLastexpirydate" ControlToValidate="txtLastexpirydate" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                    </div>
+                        <asp:TextBox type="date" class="form-control" ID="txtLastdateOfPayment" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
+                        </div>
                     <%--<div class="col-md-3">
                         <label class="form-label" for="customFile">
                             Upload Previous Challan<samp style="color: red"> * </samp>
@@ -692,15 +691,15 @@
             const formattedToday = today.toISOString().split('T')[0];
             const formattedMinDate = minDate.toISOString().split('T')[0];
 
-            // Set the date range for txtLastApprovalDate
-            const txtLastApprovalDate = document.getElementById('<%= txtLastApprovalDate.ClientID %>');
-            if (txtLastApprovalDate) {
-                txtLastApprovalDate.setAttribute("max", formattedToday); // Disable future dates
-                txtLastApprovalDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
+            // Set the date range for txtExpiryDate
+            const txtExpiryDate = document.getElementById('<%= txtExpiryDate.ClientID %>');
+            if (txtExpiryDate) {
+                txtExpiryDate.setAttribute("max", formattedToday); // Disable future dates
+                txtExpiryDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
             }
 
             // Set the date range for txtLastexpirydate
-            const txtLastexpirydate = document.getElementById('<%= txtLastexpirydate.ClientID %>');
+            const txtLastexpirydate = document.getElementById('<%= txtLastdateOfPayment.ClientID %>');
             if (txtLastexpirydate) {
                 txtLastexpirydate.setAttribute("max", formattedToday); // Disable future dates
                 txtLastexpirydate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
@@ -730,8 +729,8 @@
             }
 
             // Set date range for all specified TextBoxes
-            setDateRange('<%= txtLastApprovalDate.ClientID %>');
-            setDateRange('<%= txtLastexpirydate.ClientID %>');
+            setDateRange('<%= txtExpiryDate.ClientID %>');
+            setDateRange('<%= txtLastdateOfPayment.ClientID %>');
             setDateRange('<%= txtDateofErection.ClientID %>');
             setDateRange('<%= txtMemoDate.ClientID %>');
         });
