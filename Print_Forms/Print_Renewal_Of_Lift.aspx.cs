@@ -76,6 +76,7 @@ namespace CEIHaryana.Print_Forms
                     lblAddress1.Text = ds.Tables[0].Rows[0]["Header1"].ToString();
                     lblAdress2.Text = ds.Tables[0].Rows[0]["Header2"].ToString();
                     lblAdress3.Text = ds.Tables[0].Rows[0]["Header3"].ToString();
+                    lblInspectionId.Text = ds.Tables[0].Rows[0]["InspectionId"].ToString();
                     if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Header4"].ToString()))
                     {
                         lblEmail.Visible = false;

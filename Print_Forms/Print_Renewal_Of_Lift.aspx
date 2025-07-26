@@ -255,7 +255,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <p>
-                                        This is in continuation to registration of lift no. "<asp:Label ID="lblRegistrationNo" runat="server" Text="Label"></asp:Label>" and Memo no. "<asp:Label ID="lblMemoNo" runat="server" Text="Label"></asp:Label>" dated "<asp:Label ID="lblApprovedDate" runat="server" Text="Label"></asp:Label>".
+                                        This is in continuation to registration of lift no. "<asp:Label ID="lblRegistrationNo" runat="server" Text="Label"></asp:Label>" and Memo no. "<asp:Label ID="lblMemoNo" runat="server" Text="Label"></asp:Label>"InspectionId "<asp:Label ID="lblInspectionId" runat="server" Text="Label"></asp:Label>" dated "<asp:Label ID="lblApprovedDate" runat="server" Text="Label"></asp:Label>".
                                     </p>
                                 </div>
                             </div>
