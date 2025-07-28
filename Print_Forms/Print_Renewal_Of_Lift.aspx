@@ -46,7 +46,7 @@
             min-height: 100vh;
             margin: 0px;
             border: solid 1px black;
-            PADDING: 10PX;
+            PADDING: 8PX;
             border-radius:5px;
         }
 
@@ -172,6 +172,15 @@
             padding-top: 4px !important;
             padding-bottom: 3px !important;
         }
+          .page-break {
+            page-break-before: always; /* Forces new page when printing */
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
     </style>
 
     <script type="text/javascript">
@@ -205,7 +214,7 @@
             textbox.value = lines.join('\n');
         }
     </script>
-    <script>
+  <%--<script>
         // Detect when the print dialog is closed (whether by printing or canceling)
         window.onafterprint = function () {
             // Delay execution to ensure the print dialog is fully closed
@@ -217,7 +226,7 @@
                 }
             }, 100);
         };
-    </script>
+    </script>--%>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -252,10 +261,18 @@
                             <hr />
                             <br />
                             <br />
+                              <div class="row">
+      <div class="col-12">
+          <p style="text-align:center;font-size: 22px;
+    font-weight: bold;">
+              Renewal Of Lift License No. <asp:Label ID="lblRegistrationNo" runat="server" Text="Label" style="font-size:22px !important;text-decoration:underline;"></asp:Label>
+              </p>
+          </div>
+                                  </div>
                             <div class="row">
                                 <div class="col-12">
                                     <p>
-                                        This is in continuation to registration of lift no. "<asp:Label ID="lblRegistrationNo" runat="server" Text="Label"></asp:Label>" and Memo no. "<asp:Label ID="lblMemoNo" runat="server" Text="Label"></asp:Label>"InspectionId "<asp:Label ID="lblInspectionId" runat="server" Text="Label"></asp:Label>" dated "<asp:Label ID="lblApprovedDate" runat="server" Text="Label"></asp:Label>".
+                                        In Condition to this Office Memo No "<asp:Label ID="lblMemoNo" runat="server" Text="Label"></asp:Label>" And your Online Application No "<asp:Label ID="lblInspectionId" runat="server" Text="Label"></asp:Label>"(inspection id) Dated "<asp:Label ID="lblApprovedDate" runat="server" Text="Label"></asp:Label>" (Apply date).
                                     </p>
                                 </div>
                             </div>
@@ -328,7 +345,81 @@
                                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                                     </asp:GridView>
      </div>
- </div>
+                                   </div>
+                     <div class="row">
+    <div class="col-12" style="text-align: center; margin-top: 30px;padding-left:70%">
+        <!-- Signature Image -->
+        <asp:Image ID="ImgSignature2" runat="server"           
+            Width="150px" Height="50px"
+            Style="display: block; margin: 0 auto;" />
+        
+        <!-- Text Below Signature (Centered & Bold) -->
+        <asp:Label ID="lblstamp1" runat="server"
+            Style="display: block; font-size: 18px; font-weight: bold; margin-top: 8px;" />
+        <asp:Label ID="lblstamp2" runat="server"
+            Style="display: block; font-size: 18px; font-weight: bold;" />
+        <asp:Label ID="lblstamp3" runat="server"
+            Style="display: block; font-size: 18px; font-weight: bold;" />
+    </div>
+</div>
+
+
+
+                           
+
+                            <div class="page-break">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p style="text-align: center; font-size: 22px; font-weight: bold; text-decoration: underline;">Conditions</p>
+           </div>
+       </div>
+       
+        <ul style="text-align:justify;">
+            <li>1.	The lifts and its installation shall be worked and maintained in conformity with the provisions of the Haryana Lifts and Escalators Act 2008, Rules and amendments thereon.</li>
+            <li>2.	If the holder of this registration does not reside in the town or village in which the lift has been erected, he shall within one month from the date of this registration appoint an agent who shall be resident in the town or village in which the lift has been erected. The agent so appointed shall be responsible for the working and maintenance of the lift in conformity with the provisions of the said Act and rules. The name of every such agent shall be communicated to the Inspector of lifts. Any change of agent shall also be similarly communicated.</li>
+            <li>3.	The holder of this registration or his agent, if any shall, within one month from the date of this registration, appoint a manufacturer of lift or a company of Electrical and Mechanical Engineers responsible for working of the lift in healthy condition and shall communicate the same to the Inspector. Any change of the above so appointed, shall be communicated.</li>
+            <li>4.	No additions or alterations to the lift and its installation shall be carried out without previous permission in writing of the Inspector.</li>
+       <li>5.	If the holder of this registration ceases to have interest in the lift installation for which the registration is granted the same shall be deemed to be invalid and it shall be returned to the Inspector.</li>
+          <li>6.	Whoever contravenes any of the provisions of the Act or the rules made there under or the terms and conditions of a permission or of a registration or a direction given by the Inspector or any person appointed under section 3 (i) of the Act to assist him, shall on conviction be punishable with imprisonment for a term which may extend to three months or with a fine which may extend to Rs 50,000/- (Rupees fifty thousand only) or with both and in the case of a continuing contravention with a further fine which may extend to Rs. 1,000/- (one thousand rupees only) for every day during which such contravention is continued after such conviction for the first such contravention.</li>
+            </ul>
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+                                   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+ 
+    </div>
+
                         </div>
                     </div>
                 </div>

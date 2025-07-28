@@ -89,9 +89,13 @@ namespace CEIHaryana.Print_Forms
                     lblRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
                     lblMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
                     lblApprovedDate.Text = ds.Tables[0].Rows[0]["InspectionCreatedDate"].ToString();
+                    ImgSignature2.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])ds.Tables[0].Rows[0]["Signature"]);
+                    lblstamp1.Text = ds.Tables[0].Rows[0]["Stamp1"].ToString();
+                    lblstamp2.Text = ds.Tables[0].Rows[0]["Stamp2"].ToString();
+                    lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
                     //lblApprovedDate.Text = DateTime.Parse(createdDate1).ToString("dd/MM/yyyy");
-                  
-                   
+
+
                 }
 
                 GridBind(InspectionId, ID);
