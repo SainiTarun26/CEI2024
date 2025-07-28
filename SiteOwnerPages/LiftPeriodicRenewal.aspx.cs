@@ -310,7 +310,7 @@ namespace CEIHaryana.SiteOwnerPages
                         txtDateofErection.Text = "";
                     }
                     DateTime LastApprovalDate;
-                    if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastApprovalDate"].ToString(), out LastApprovalDate))
+                    if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastPaymentDate"].ToString(), out LastApprovalDate))
                     {
                         txtLastdateOfPayment.Text = LastApprovalDate.ToString("yyyy-MM-dd");
                     }
@@ -436,7 +436,7 @@ namespace CEIHaryana.SiteOwnerPages
                         txtLastdateOfPayment.Text = "";
                     }
                     DateTime PrevChallanDate;
-                    if (DateTime.TryParse(ds.Tables[0].Rows[0]["LastTransactionDate"].ToString(), out PrevChallanDate))
+                    if (DateTime.TryParse(ds.Tables[0].Rows[0]["ExpiryDate"].ToString(), out PrevChallanDate))
                     {
                         txtExpiryDate.Text = PrevChallanDate.ToString("yyyy-MM-dd");
                     }
@@ -626,7 +626,6 @@ namespace CEIHaryana.SiteOwnerPages
             errorMsg = "";
             DateTime currentDate = DateTime.Today;
             DateTime twentyYearsAgo = currentDate.AddYears(-20);
-            DateTime ThreeYear = memoDate.AddYears(2);
             if (erectionDate < twentyYearsAgo)
             {
                 errorMsg = "You are not eligible for renewal. As your Erection date is more than 20 years old.";
@@ -644,11 +643,7 @@ namespace CEIHaryana.SiteOwnerPages
                 errorMsg = "Date of Renewal must be Greater than or equal to Last date of payment";
                 return false;
             }
-            if (Lastexpirydate <= ThreeYear)
-            {
-                errorMsg = "Last date of payment must be 2 years Greater than Memo Date.";
-                return false;
-            }
+           
             return true;
         }
     }
