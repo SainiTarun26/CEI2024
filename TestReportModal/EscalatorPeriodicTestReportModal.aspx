@@ -2182,32 +2182,30 @@
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtSerialNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-                                <div class="col-md-4" runat="server">
-                                    <label>
-                                        Previous Challan Date
-                                    </label>
-                                    <asp:TextBox class="form-control" ReadOnly="true" ID="txtPrevChallanDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
-                                </div>
-                                <%--<div class="col-md-4">
-                                    <label class="form-label" for="customFile">
-                                        Upload Previous Challan
-                                    </label>
-                                    <br />
-                                    <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" OnClick="lnkFile_Click" Visible="true" Text="Open Document" />
-
-                                </div>--%>
-                                <div class="col-md-4" runat="server">
-                                    <label>
-                                        Last Approval Date 
-                                    </label>
-                                    <asp:TextBox class="form-control" ID="txtLastApprovalDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
-                                </div>
-                                <div class="col-md-4" runat="server">
-                                    <label>
-                                        Date of Erection
-                                    </label>
-                                    <asp:TextBox class="form-control" ID="txtDateofErection" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                </div>
+                                <div class="col-4" runat="server">
+        <label>
+            Last Expiry Date
+        </label>
+        <asp:TextBox class="form-control" ReadOnly="true" ID="txtLastExpiryDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
+    </div>
+    <div class="col-4" runat="server">
+        <label>
+            Last Date of Payment 
+        </label>
+        <asp:TextBox class="form-control" ID="txtLastPaymentDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
+    </div>
+    <div class="col-4" runat="server">
+        <label>
+            Date of Erection
+        </label>
+        <asp:TextBox class="form-control" ID="txtDateofErection" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+    </div>
+    <div class="col-4" runat="server">
+        <label>
+            Memo Date
+        </label>
+        <asp:TextBox class="form-control" ID="txtMemoDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+    </div>
                                 <div class="col-md-4">
                                     <label id="lblTypeOfEscalator" runat="server">
                                         Type of Escalator

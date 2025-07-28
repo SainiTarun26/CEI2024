@@ -312,30 +312,30 @@
                                             <asp:TextBox class="form-control" ID="txtSerialNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RfvtxtSerialNo" ControlToValidate="txtSerialNo" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                                         </div>
-                                        <div class="col-4" runat="server">
-                                            <label>
-                                                Previous Challan Date
-                                            </label>
-                                            <asp:TextBox class="form-control" ReadOnly="true" ID="txtPrevChallanDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
-                                        </div>
-                                     <%--   <div class="col-4">
-                                            <label class="form-label" for="customFile">
-                                                Uploaded Previous Challan
-                                            </label>
-                                            <asp:TextBox class="form-control" ReadOnly="true" ID="TextBox1" Text="Yes" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
-                                        </div>--%>
-                                        <div class="col-4" runat="server">
-                                            <label>
-                                                Last Approval Date 
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtLastApprovalDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
-                                            </div>
-                                        <div class="col-4" runat="server">
-                                            <label>
-                                                Date of Erection
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtDateofErection" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                             </div>
+                                          <div class="col-4" runat="server">
+        <label>
+            Last Expiry Date
+        </label>
+        <asp:TextBox class="form-control" ReadOnly="true" ID="txtLastExpiryDate" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
+    </div>
+    <div class="col-4" runat="server">
+        <label>
+            Last Date of Payment 
+        </label>
+        <asp:TextBox class="form-control" ID="txtLastPaymentDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px; width: 100% !important;"></asp:TextBox>
+    </div>
+    <div class="col-4" runat="server">
+        <label>
+            Date of Erection
+        </label>
+        <asp:TextBox class="form-control" ID="txtDateofErection" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+    </div>
+    <div class="col-4" runat="server">
+        <label>
+            Memo Date
+        </label>
+        <asp:TextBox class="form-control" ID="txtMemoDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+    </div>
 
                                         <div class="col-4">
                                             <label id="lblTypeOfLift" runat="server">

@@ -204,22 +204,22 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvtxtSerialNo;
 
         /// <summary>
-        /// txtPrevChallanDate control.
+        /// txtLastExpiryDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrevChallanDate;
+        protected global::System.Web.UI.WebControls.TextBox txtLastExpiryDate;
 
         /// <summary>
-        /// txtLastApprovalDate control.
+        /// txtLastPaymentDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLastApprovalDate;
+        protected global::System.Web.UI.WebControls.TextBox txtLastPaymentDate;
 
         /// <summary>
         /// txtDateofErection control.
@@ -229,6 +229,15 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDateofErection;
+
+        /// <summary>
+        /// txtMemoDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMemoDate;
 
         /// <summary>
         /// lblTypeOfLift control.
