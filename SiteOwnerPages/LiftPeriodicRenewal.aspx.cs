@@ -491,7 +491,7 @@ namespace CEIHaryana.SiteOwnerPages
                     //LastdateOfPayment changed by navneet as per instructions of vinod sir
                     DateTime LastdateOfPayment ;
                        DateTime Lastexpirydate = Convert.ToDateTime(txtExpiryDate.Text);
-                    if (Convert.ToString(txtLastdateOfPayment.Text) != ""|| Convert.ToString(txtLastdateOfPayment.Text) !=null)
+                    if (Convert.ToString(txtLastdateOfPayment.Text) != "")
                     {
 
                         LastdateOfPayment = Convert.ToDateTime(txtLastdateOfPayment.Text);
@@ -639,7 +639,7 @@ namespace CEIHaryana.SiteOwnerPages
                 return false;
             }
             //2 date checks added by navneet on instructions of vinod sir
-            if (LastApprovalDate <= Lastexpirydate)
+            if (Lastexpirydate  <= LastApprovalDate)
             {
                 errorMsg = "Date of Renewal must be Greater than or equal to Last date of payment";
                 return false;
