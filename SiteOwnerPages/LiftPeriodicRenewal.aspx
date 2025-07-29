@@ -686,7 +686,11 @@
             // Calculate the minimum date (20 years before today)
             const minDate = new Date();
             minDate.setFullYear(today.getFullYear() - 20);
+            const nextMonth = new Date(today);
+            nextMonth.setMonth(today.getMonth() + 1);
 
+            // Format to YYYY-MM-DD
+            const formattedMaxMonthDate = nextMonth.toISOString().split('T')[0];
             // Format the dates to YYYY-MM-DD
             const formattedToday = today.toISOString().split('T')[0];
             const formattedMinDate = minDate.toISOString().split('T')[0];
@@ -694,6 +698,7 @@
             // Set the date range for txtExpiryDate
             const txtExpiryDate = document.getElementById('<%= txtExpiryDate.ClientID %>');
             if (txtExpiryDate) {
+                txtExpiryDate.setAttribute("max", formattedMaxMonthDate); // Disable future dates
                 txtExpiryDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
             }
 
