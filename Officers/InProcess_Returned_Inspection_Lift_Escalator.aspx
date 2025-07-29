@@ -859,6 +859,13 @@
             </asp:UpdatePanel>--%>
 
     <script type="text/javascript">
+
+        function alertWithRedirectdata_CheckAlert(Message) {
+            if (confirm(Message)) {
+            } else {
+            }
+        }
+
         function alertWithRedirectdata(Message) {
             if (confirm('Inspection Request has been Successfully ' + Message)) {
                 window.location.href = "/Officers/AcceptedOrReject.aspx";

@@ -657,6 +657,22 @@ namespace CEIHaryana.Officers
                                 //    Suggestions = string.IsNullOrEmpty(txtSuggestion.Text) ? null : txtSuggestion.Text.Trim();
                                 //}
 
+                                #region aslam 29-July-2025 lift periodic
+
+                                try
+                                {
+                                    CEI.InspectionFinalAction_Lift_Check(ID, StaffId, ApprovedorReject, Reason, txtInspectionDate.Text);
+                                }
+                                catch (Exception ex)
+                                {
+                                    string errorMessage = ex.Message.Replace("'", "\\'");
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata_CheckAlert('" + errorMessage + "');", true);
+                                    ClickCount = ClickCount - 1;
+                                    Session["ClickCount"] = ClickCount;
+                                    return;
+                                }
+
+                                #endregion
                                 try
                                 {
                                     //commented 3 dec 2024 for 

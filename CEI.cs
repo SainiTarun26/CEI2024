@@ -14104,6 +14104,40 @@ SqlTransaction transaction)
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLiftApproalRenewableHistory", InspectionId, Lift_Escelator_Id);
         }
         #endregion
+        #region aslam code periodic lift
+        public void InspectionFinalAction_Lift_Check(string InspectionID, string StaffId, string AcceptedOrReReturn, string Reason, /*string MemoNo,*/ string InspectionDate)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand("sp_InspectionApproveReject_Lift_Escelater_CheckBeforeApproval", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", InspectionID);
+                    cmd.Parameters.AddWithValue("@StaffId", StaffId);
+                    cmd.Parameters.AddWithValue("@AcceptedOrRejected", AcceptedOrReReturn);
+                    cmd.Parameters.AddWithValue("@ReasonForRejection", Reason);
+                    //cmd.Parameters.AddWithValue("@MemoNo", MemoNo);
+                    //cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
+                    DateTime InsDate;
+                    if (DateTime.TryParse(InspectionDate, out InsDate) && InsDate != DateTime.MinValue)
+                    {
+                        cmd.Parameters.AddWithValue("@InspectionDate", InspectionDate);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@InspectionDate", DBNull.Value);
+                    }
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+
+        }
+
+        #endregion
     }
 }
 
