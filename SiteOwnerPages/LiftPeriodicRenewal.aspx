@@ -694,7 +694,6 @@
             // Set the date range for txtExpiryDate
             const txtExpiryDate = document.getElementById('<%= txtExpiryDate.ClientID %>');
             if (txtExpiryDate) {
-                txtExpiryDate.setAttribute("max", formattedToday); // Disable future dates
                 txtExpiryDate.setAttribute("min", formattedMinDate); // Allow dates up to 20 years in the past
             }
 
@@ -729,7 +728,6 @@
             }
 
             // Set date range for all specified TextBoxes
-            setDateRange('<%= txtExpiryDate.ClientID %>');
             setDateRange('<%= txtLastdateOfPayment.ClientID %>');
             setDateRange('<%= txtDateofErection.ClientID %>');
             setDateRange('<%= txtMemoDate.ClientID %>');
