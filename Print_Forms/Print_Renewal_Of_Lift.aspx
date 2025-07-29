@@ -47,7 +47,7 @@
             margin: 0px;
             border: solid 1px black;
             PADDING: 8PX;
-            border-radius:5px;
+            border-radius: 5px;
         }
 
         input#txtInstallationType {
@@ -141,7 +141,7 @@
 
         span {
             font-size: 18px !important;
-            font-weight:bold;
+            font-weight: bold;
         }
 
         table.table {
@@ -172,7 +172,8 @@
             padding-top: 4px !important;
             padding-bottom: 3px !important;
         }
-          .page-break {
+
+        .page-break {
             page-break-before: always; /* Forces new page when printing */
         }
 
@@ -180,6 +181,10 @@
             .no-print {
                 display: none;
             }
+        }
+
+        li {
+            line-height: 2;
         }
     </style>
 
@@ -214,7 +219,7 @@
             textbox.value = lines.join('\n');
         }
     </script>
-  <%--<script>
+    <script>
         // Detect when the print dialog is closed (whether by printing or canceling)
         window.onafterprint = function () {
             // Delay execution to ensure the print dialog is fully closed
@@ -226,7 +231,7 @@
                 }
             }, 100);
         };
-    </script>--%>
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -261,14 +266,14 @@
                             <hr />
                             <br />
                             <br />
-                              <div class="row">
-      <div class="col-12">
-          <p style="text-align:center;font-size: 22px;
-    font-weight: bold;">
-              Renewal Of Lift License No. <asp:Label ID="lblRegistrationNo" runat="server" Text="Label" style="font-size:22px !important;text-decoration:underline;"></asp:Label>
-              </p>
-          </div>
-                                  </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <p style="text-align: center; font-size: 22px; font-weight: bold;">
+                                        Renewal Of Lift License No.
+                                        <asp:Label ID="lblRegistrationNo" runat="server" Text="Label" Style="font-size: 22px !important; text-decoration: underline;"></asp:Label>
+                                    </p>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-12">
                                     <p>
@@ -293,10 +298,10 @@
                                     </p>
                                 </div>
                             </div>
-                             <div class="row">
-     <div class="col-12">
-       
-                                    <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false"  OnRowDataBound="Gridview1_RowDataBound">
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" OnRowDataBound="Gridview1_RowDataBound">
                                         <HeaderStyle BackColor="#B7E2F0" />
                                         <Columns>
                                             <asp:TemplateField HeaderText="Id" Visible="False">
@@ -305,7 +310,7 @@
 
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                         
+
                                             <asp:TemplateField HeaderText="Renewal Date">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="headercolor" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="itemcenter" />
@@ -319,14 +324,10 @@
                                                     </div>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-
-
-
                                             <asp:BoundField DataField="ExpiryDate" HeaderText="Date of Expiry">
                                                 <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
                                                 <ItemStyle HorizontalAlign="center" />
                                             </asp:BoundField>
-                                            
                                             <asp:TemplateField HeaderText="Signature">
                                                 <ItemTemplate>
                                                     <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 30%; text-align: center !important;">
@@ -334,54 +335,44 @@
                                                             ImageUrl='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null 
                            ? "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) 
                            : "" %>'
-                                                            Visible='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null %>'  Width="150px" Height="50px" />
+                                                            Visible='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null %>' Width="150px" Height="50px" />
                                                     </div>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-
-
-
                                         </Columns>
                                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                                     </asp:GridView>
-     </div>
-                                   </div>
-                     <div class="row">
-    <div class="col-12" style="text-align: center; margin-top: 30px;padding-left:70%">
-        <!-- Signature Image -->
-        <asp:Image ID="ImgSignature2" runat="server"           
-            Width="150px" Height="50px"
-            Style="display: block; margin: 0 auto;" />
-        
-        <!-- Text Below Signature (Centered & Bold) -->
-        <asp:Label ID="lblstamp1" runat="server"
-            Style="display: block; font-size: 18px; font-weight: bold; margin-top: 8px;" />
-        <asp:Label ID="lblstamp2" runat="server"
-            Style="display: block; font-size: 18px; font-weight: bold;" />
-        <asp:Label ID="lblstamp3" runat="server"
-            Style="display: block; font-size: 18px; font-weight: bold;" />
-    </div>
-</div>
-
-
-
-                           
-
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" style="text-align: center; margin-top: 30px; padding-left: 70%">
+                                    <!-- Signature Image -->
+                                    <asp:Image ID="ImgSignature2" runat="server"
+                                        Width="150px" Height="50px"
+                                        Style="display: block; margin: 0 auto;" />
+                                    <!-- Text Below Signature (Centered & Bold) -->
+                                    <asp:Label ID="lblstamp1" runat="server"
+                                        Style="display: block; font-size: 18px; font-weight: bold; margin-top: 8px;" />
+                                    <asp:Label ID="lblstamp2" runat="server"
+                                        Style="display: block; font-size: 18px; font-weight: bold;" />
+                                    <asp:Label ID="lblstamp3" runat="server"
+                                        Style="display: block; font-size: 18px; font-weight: bold;" />
+                                </div>
+                            </div>
                             <div class="page-break">
                                 <div class="row">
                                     <div class="col-12">
-                                        <p style="text-align: center; font-size: 22px; font-weight: bold; text-decoration: underline;">Conditions</p>
-           </div>
-       </div>
-       
-        <ul style="text-align:justify;">
-            <li>1.	The lifts and its installation shall be worked and maintained in conformity with the provisions of the Haryana Lifts and Escalators Act 2008, Rules and amendments thereon.</li>
-            <li>2.	If the holder of this registration does not reside in the town or village in which the lift has been erected, he shall within one month from the date of this registration appoint an agent who shall be resident in the town or village in which the lift has been erected. The agent so appointed shall be responsible for the working and maintenance of the lift in conformity with the provisions of the said Act and rules. The name of every such agent shall be communicated to the Inspector of lifts. Any change of agent shall also be similarly communicated.</li>
-            <li>3.	The holder of this registration or his agent, if any shall, within one month from the date of this registration, appoint a manufacturer of lift or a company of Electrical and Mechanical Engineers responsible for working of the lift in healthy condition and shall communicate the same to the Inspector. Any change of the above so appointed, shall be communicated.</li>
-            <li>4.	No additions or alterations to the lift and its installation shall be carried out without previous permission in writing of the Inspector.</li>
-       <li>5.	If the holder of this registration ceases to have interest in the lift installation for which the registration is granted the same shall be deemed to be invalid and it shall be returned to the Inspector.</li>
-          <li>6.	Whoever contravenes any of the provisions of the Act or the rules made there under or the terms and conditions of a permission or of a registration or a direction given by the Inspector or any person appointed under section 3 (i) of the Act to assist him, shall on conviction be punishable with imprisonment for a term which may extend to three months or with a fine which may extend to Rs 50,000/- (Rupees fifty thousand only) or with both and in the case of a continuing contravention with a further fine which may extend to Rs. 1,000/- (one thousand rupees only) for every day during which such contravention is continued after such conviction for the first such contravention.</li>
-            </ul>
+                                        <p style="text-align: center; font-size: 22px; font-weight: bold; text-decoration: underline;">INSTRUCTIONS</p>
+                                    </div>
+                                </div>
+                                <ul style="text-align: justify; padding: 50px;">
+                                    <li>The lifts and its installation shall be worked and maintained in conformity with the provisions of the Haryana Lifts and Escalators Act 2008, Rules and amendments thereon.</li>
+                                    <li>If the holder of this registration does not reside in the town or village in which the lift has been erected, he shall within one month from the date of this registration appoint an agent who shall be resident in the town or village in which the lift has been erected. The agent so appointed shall be responsible for the working and maintenance of the lift in conformity with the provisions of the said Act and rules. The name of every such agent shall be communicated to the Inspector of lifts. Any change of agent shall also be similarly communicated.</li>
+                                    <li>The holder of this registration or his agent, if any shall, within one month from the date of this registration, appoint a manufacturer of lift or a company of Electrical and Mechanical Engineers responsible for working of the lift in healthy condition and shall communicate the same to the Inspector. Any change of the above so appointed, shall be communicated.</li>
+                                    <li>No additions or alterations to the lift and its installation shall be carried out without previous permission in writing of the Inspector.</li>
+                                    <li>If the holder of this registration ceases to have interest in the lift installation for which the registration is granted the same shall be deemed to be invalid and it shall be returned to the Inspector.</li>
+                                    <li>Whoever contravenes any of the provisions of the Act or the rules made there under or the terms and conditions of a permission or of a registration or a direction given by the Inspector or any person appointed under section 3 (i) of the Act to assist him, shall on conviction be punishable with imprisonment for a term which may extend to three months or with a fine which may extend to Rs 50,000/- (Rupees fifty thousand only) or with both and in the case of a continuing contravention with a further fine which may extend to Rs. 1,000/- (one thousand rupees only) for every day during which such contravention is continued after such conviction for the first such contravention.</li>
+                                </ul>
                                 <br />
                                 <br />
                                 <br />
@@ -397,29 +388,7 @@
                                 <br />
                                 <br />
                                 <br />
-                                <br />
-                                   <br />
-   <br />
-   <br />
-   <br />
-   <br />
-   <br />
-   <br />
-   <br />
-   <br />
-   <br />
-   <br />
-   <br />
-                                   <br />
-   <br />
-   <br />
-   <br />
-   <br />
-   <br />
-   <br />
- 
-    </div>
-
+                            </div>
                         </div>
                     </div>
                 </div>
