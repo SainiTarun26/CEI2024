@@ -269,7 +269,8 @@
                             <div class="row">
                                 <div class="col-12">
                                     <p style="text-align: center; font-size: 22px; font-weight: bold;">
-                                        Renewal Of Lift License No.
+                                        Renewal Of  <asp:Label ID="lbltype" style="font-size: 22px!important" runat="server" ></asp:Label>
+                                     License No.
                                         <asp:Label ID="lblRegistrationNo" runat="server" Text="Label" Style="font-size: 22px !important; text-decoration: underline;"></asp:Label>
                                     </p>
                                 </div>
@@ -277,7 +278,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <p>
-                                        In Condition to this Office Memo No "<asp:Label ID="lblMemoNo" runat="server" Text="Label"></asp:Label>" And your Online Application No "<asp:Label ID="lblInspectionId" runat="server" Text="Label"></asp:Label>"(inspection id) Dated "<asp:Label ID="lblApprovedDate" runat="server" Text="Label"></asp:Label>" (Apply date).
+                                        In Condition to this Office Memo No "<asp:Label ID="lblMemoNo" runat="server" Text="Label"></asp:Label>" And your Online Application No "<asp:Label ID="lblInspectionId" runat="server" Text="Label"></asp:Label>"Dated "<asp:Label ID="lblApprovedDate" runat="server" Text="Label"></asp:Label>".
                                     </p>
                                 </div>
                             </div>
@@ -293,7 +294,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <p>
-                                        Details of lift renewal are displayed below:
+                                        Details of <asp:Label ID="lbltype2" runat="server" ></asp:Label> renewal are displayed below:
 
                                     </p>
                                 </div>

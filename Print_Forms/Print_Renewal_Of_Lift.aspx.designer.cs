@@ -78,6 +78,15 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblEmail;
 
         /// <summary>
+        /// lbltype control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbltype;
+
+        /// <summary>
         /// lblRegistrationNo control.
         /// </summary>
         /// <remarks>
@@ -112,6 +121,15 @@ namespace CEIHaryana.Print_Forms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblApprovedDate;
+
+        /// <summary>
+        /// lbltype2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbltype2;
 
         /// <summary>
         /// Gridview1 control.

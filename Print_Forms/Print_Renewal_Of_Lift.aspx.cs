@@ -73,6 +73,8 @@ namespace CEIHaryana.Print_Forms
                 ds = CEI.GetRenewalLiftData(InspectionId, ID);
                 if (ds.Tables.Count > 0)
                 {
+                    lbltype.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
+                    lbltype2.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
                     lblAddress1.Text = ds.Tables[0].Rows[0]["Header1"].ToString();
                     lblAdress2.Text = ds.Tables[0].Rows[0]["Header2"].ToString();
                     lblAdress3.Text = ds.Tables[0].Rows[0]["Header3"].ToString();
