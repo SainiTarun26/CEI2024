@@ -11062,56 +11062,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
 
         #region Chaged by neeraj 24-Jue-2025
 
-        public void InserNewUserData(string ApplicationFor, string Name, string Age, string CalculatedAge, string FatherName,
-        string gender, string aadhar, string Address, string District, string State, string PinCode, string PhoneNo, string Email,
-        string Category, string CreatedBy, string UserId,
-        string CommunicationAddress, string CommState, string CommDistrict, string CommPin, string Password, string IPAddress, string District_Division, string Division, string RandomUniqueNumber)
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand("sp_NewUserRegistration");
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
-                cmd.Connection = con;
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-                    con.Open();
-                }
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("@ApplicationFor", ApplicationFor);
-                cmd.Parameters.AddWithValue("@Name", Name);
-                cmd.Parameters.AddWithValue("@Age", Age);
-                cmd.Parameters.AddWithValue("@CalculatedAge", CalculatedAge);
-                cmd.Parameters.AddWithValue("@FatherName", FatherName);
-                cmd.Parameters.AddWithValue("@Gender", gender);
-                cmd.Parameters.AddWithValue("@Aadhar", aadhar);
-                cmd.Parameters.AddWithValue("@Address", Address);
-                cmd.Parameters.AddWithValue("@District", District);
-                cmd.Parameters.AddWithValue("@State", State);
-                cmd.Parameters.AddWithValue("@PinCode", PinCode);
-                cmd.Parameters.AddWithValue("@PhoneNo", PhoneNo);
-                cmd.Parameters.AddWithValue("@Email", Email);
-                cmd.Parameters.AddWithValue("@Category", Category);
-                cmd.Parameters.AddWithValue("@Createdby", CreatedBy);
-                cmd.Parameters.AddWithValue("@UserId", UserId);
-                cmd.Parameters.AddWithValue("@CommunicationAddress", CommunicationAddress);
-                cmd.Parameters.AddWithValue("@CommState", CommState);
-                cmd.Parameters.AddWithValue("@CommDistrict", CommDistrict);
-                cmd.Parameters.AddWithValue("@CommPin", CommPin);
-                cmd.Parameters.AddWithValue("@Password", Password);
-                cmd.Parameters.AddWithValue("@IPAddres", IPAddress);
-                cmd.Parameters.AddWithValue("@District_Division", District_Division);
-                cmd.Parameters.AddWithValue("@Division", Division);
-                cmd.Parameters.AddWithValue("@RandomUniqueNumber", RandomUniqueNumber);
-                cmd.ExecuteNonQuery();
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-            }
-        }
-
+     
         public DataTable getDistrict()
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getDistrict");
@@ -13926,6 +13877,85 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             cmd.ExecuteNonQuery();
             con.Close();
 
+        }
+        public int CheckAadharOrPANExist(string aadhar, string PanCardNo)
+        {
+            int count = 0;
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                SqlCommand cmd = new SqlCommand("sp_CheckAadhar", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Add parameters only if not null or empty
+                if (!string.IsNullOrEmpty(aadhar))
+                    cmd.Parameters.AddWithValue("@Aadhar", aadhar);
+                else
+                    cmd.Parameters.AddWithValue("@Aadhar", DBNull.Value);
+
+                if (!string.IsNullOrEmpty(PanCardNo))
+                    cmd.Parameters.AddWithValue("@PanCardNo", PanCardNo);
+                else
+                    cmd.Parameters.AddWithValue("@PanCardNo", DBNull.Value);
+
+                con.Open();
+                object result = cmd.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    count = Convert.ToInt32(result);
+                }
+            }
+
+            return count;
+        }
+
+        public void InserNewUserData(string ApplicationFor, string Name, string Age, string CalculatedAge, string FatherName,
+ string gender, string aadhar, string PanCardNo, string Address, string District, string State, string PinCode, string PhoneNo, string Email,
+ string Category, string CreatedBy, string UserId,
+ string CommunicationAddress, string CommState, string CommDistrict, string CommPin, string Password, string IPAddress, string RandomUniqueNumber)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("sp_NewUserRegistration");
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+                cmd.Connection = con;
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@ApplicationFor", ApplicationFor);
+                cmd.Parameters.AddWithValue("@Name", Name);
+                cmd.Parameters.AddWithValue("@Age", Age);
+                cmd.Parameters.AddWithValue("@CalculatedAge", CalculatedAge);
+                cmd.Parameters.AddWithValue("@FatherName", FatherName);
+                cmd.Parameters.AddWithValue("@Gender", gender);
+                cmd.Parameters.AddWithValue("@Aadhar", String.IsNullOrEmpty(aadhar) ? null : aadhar);
+                cmd.Parameters.AddWithValue("@PanCardNo", String.IsNullOrEmpty(PanCardNo) ? null : PanCardNo);
+                cmd.Parameters.AddWithValue("@Address", Address);
+                cmd.Parameters.AddWithValue("@District", District);
+                cmd.Parameters.AddWithValue("@State", State);
+                cmd.Parameters.AddWithValue("@PinCode", PinCode);
+                cmd.Parameters.AddWithValue("@PhoneNo", PhoneNo);
+                cmd.Parameters.AddWithValue("@Email", Email);
+                cmd.Parameters.AddWithValue("@Category", Category);
+                cmd.Parameters.AddWithValue("@Createdby", CreatedBy);
+                cmd.Parameters.AddWithValue("@UserId", UserId);
+                cmd.Parameters.AddWithValue("@CommunicationAddress", CommunicationAddress);
+                cmd.Parameters.AddWithValue("@CommState", CommState);
+                cmd.Parameters.AddWithValue("@CommDistrict", CommDistrict);
+                cmd.Parameters.AddWithValue("@CommPin", CommPin);
+                cmd.Parameters.AddWithValue("@Password", Password);
+                cmd.Parameters.AddWithValue("@IPAddres", IPAddress);
+                cmd.Parameters.AddWithValue("@RandomUniqueNumber", RandomUniqueNumber);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+            }
         }
         #endregion
         #region navneet Login of siteownerverification

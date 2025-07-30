@@ -417,9 +417,17 @@
     </script>
     <script type="text/javascript">
         function AadharAlert() {
-            if (confirm('The  Aadhar number is already in use. Please Register with a different Aadhar number.')) {
-                window.location.href = "/UserPages/Registration.aspx";
-            } else {
+            alert("The Aadhar number or PAN Card number is already in use. Please register with a different Aadhar number or PAN Card number.");
+
+            var aadharInput = document.getElementById('<%= txtAadhaar.ClientID %>');
+            if (aadharInput) {
+                aadharInput.value = "";
+                aadharInput.focus();
+            }
+            var pancard = document.getElementById('<%= txtpancard.ClientID %>');
+            if (pancard) {
+                pancard.value = "";
+
             }
         }
     </script>
@@ -567,8 +575,8 @@
                                             </div>
                                         </div>
 
-                                       
-                                                <div class="col-md-4">
+
+                                        <%--       <div class="col-md-4">
                                                      <asp:UpdatePanel ID="UpdatePanel4" runat="server">
      <ContentTemplate>
                                                     <div class="form-group row">
@@ -585,9 +593,9 @@
                                                     </div>
              </ContentTemplate>
 </asp:UpdatePanel>
-                                                </div>
+                                                </div>--%>
 
-                                                <div class="col-md-4">
+                                        <%--      <div class="col-md-4">
                                                                                                     <asp:UpdatePanel ID="UpdatePanel3" runat="server">
 <ContentTemplate>
                                                     <div class="form-group row">
@@ -603,11 +611,11 @@
                                                     </div>
                  </ContentTemplate>
 </asp:UpdatePanel>
-                                                </div>
+                                                </div>--%>
 
 
-                                           
-                                        <hr style="margin-top:15px !important;" />
+
+                                        <hr style="margin-top: 15px !important;" />
 
                                     </div>
 
@@ -656,7 +664,7 @@
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFatherNmae"
                                                                         CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 </div>
-                                                                <div class="form-group" style="margin-bottom: 0px;">
+                                                                <div class="form-group" id="Aadhaarcard" style="margin-bottom: 0px;" visible="true" runat="server">
                                                                     <label for="Aadhaar">
                                                                         Aadhaar Card No.<samp style="color: red">* </samp>
                                                                     </label>
@@ -664,6 +672,15 @@
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtAadhaar"
                                                                         CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                                                                     <asp:RegularExpressionValidator ID="rgxAadhaar" runat="server" ControlToValidate="txtAadhaar" ValidationExpression="^\d{4}\s?\d{4}\s?\d{4}$" ErrorMessage="Invalid Aadhaar number format." ForeColor="Red"></asp:RegularExpressionValidator>
+                                                                </div>
+                                                                <div class="form-group" id="Pancardno" style="margin-bottom: 0px;" visible="false" runat="server">
+                                                                    <label for="Pancard">
+                                                                        PAN Card No.<samp style="color: red">* </samp>
+                                                                    </label>
+                                                                    <asp:TextBox CssClass="form-control uppercase" class="form-control" ID="txtpancard" autocomplete="off" MaxLength="14" TabIndex="5" runat="server"> </asp:TextBox>
+                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtpancard"
+                                                                        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtpancard" ValidationExpression="^[A-Z]{5}[0-9]{4}[A-Z]{1}$" ErrorMessage="Invalid PAN number format." ForeColor="Red"></asp:RegularExpressionValidator>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -708,17 +725,18 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-6">
-                                                     <asp:UpdatePanel ID="UpdatePanelDropdowns" runat="server">
-     <ContentTemplate>
-                                                    <div class="form-group">
-                                                        <label for="CommunicationAddress">
-                                                            Address for Communication<samp style="color: red">* </samp>
-                                                        </label>
-                                                        <asp:TextBox CssClass="form-control uppercase" class="form-control" ID="txtCommunicationAddress" autocomplete="off" TextMode="MultiLine" runat="server" TabIndex="7" MaxLength="200" AutoPostBack="true" > </asp:TextBox> <%--OnTextChanged="txtCommunicationAddress_TextChanged"--%>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtCommunicationAddress"
-                                                            CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                    </div>
-                                                   <%-- <asp:UpdatePanel ID="UpdatePanelDropdowns" runat="server">
+                                                    <asp:UpdatePanel ID="UpdatePanelDropdowns" runat="server">
+                                                        <ContentTemplate>
+                                                            <div class="form-group">
+                                                                <label for="CommunicationAddress">
+                                                                    Address for Communication<samp style="color: red">* </samp>
+                                                                </label>
+                                                                <asp:TextBox CssClass="form-control uppercase" class="form-control" ID="txtCommunicationAddress" autocomplete="off" TextMode="MultiLine" runat="server" TabIndex="7" MaxLength="200" AutoPostBack="true"> </asp:TextBox>
+                                                                <%--OnTextChanged="txtCommunicationAddress_TextChanged"--%>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtCommunicationAddress"
+                                                                    CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                            </div>
+                                                            <%-- <asp:UpdatePanel ID="UpdatePanelDropdowns" runat="server">
                                                         <ContentTemplate>--%>
                                                             <div class="form-group">
                                                                 <div class="row">
@@ -771,7 +789,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="phone">
-                                                            Password<samp style="color: red">* </samp>
+                                                            Create Password<samp style="color: red">* </samp>
                                                         </label>
                                                         <asp:TextBox class="form-control" ID="txtPassword" autocomplete="off" runat="server" TabIndex="18" MaxLength="30" TextMode="Password" Style="width: 100%;"> </asp:TextBox>
                                                         <span id="lblErrorPassword" style="color: red"></span>
@@ -788,7 +806,7 @@
                                                 <div class="col-sm-6">
                                                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                                         <ContentTemplate>
-                                                            <div class="form-group" style="margin-top: -24px;">
+                                                            <div class="form-group" style="margin-top: -33px;">
                                                                 <asp:CheckBox ID="CheckBox1" runat="server" Text="&nbsp;&nbsp;Same as Communication Address" Font-Size="Medium" Font-Bold="True" AutoPostBack="true" TabIndex="11" OnCheckedChanged="CheckBox1_CheckedChanged" />
                                                                 <br />
                                                                 <label for="CommunicationAddress">

@@ -28,7 +28,7 @@ namespace CEIHaryana.UserPages
                 {
                     ddlLoadBindState();
                     ddlLoadBindState1();
-                    ddlBindDistrict();
+                    //ddlBindDistrict();
                 }
             }
             catch
@@ -36,29 +36,29 @@ namespace CEIHaryana.UserPages
                 Response.Redirect("/Login.aspx", false);
             }
         }
-        private void ddlBindDistrict()
-        {
-            DataTable ds = new DataTable();
-            ds = CEI.getDistrict();
-            ddlDist.DataSource = ds;
-            ddlDist.DataTextField = "HeadOffice";
-            ddlDist.DataValueField = "Area";
-            ddlDist.DataBind();
-            ddlDist.Items.Insert(0, new ListItem("Select", "0"));
-            ds.Clear();
-        }
-        private void ddlBindDivision()
-        {
-            string District = ddlDist.SelectedItem.ToString();
-            DataTable ds = new DataTable();
-            ds = CEI.getDivisionDistrict(District);
-            ddlDivision.DataSource = ds;
-            ddlDivision.DataTextField = "Area";
-            ddlDivision.DataValueField = "HeadOffice";
-            ddlDivision.DataBind();
-            ddlDivision.Items.Insert(0, new ListItem("Select", "0"));
-            ds.Clear();
-        }
+        //private void ddlBindDistrict()
+        //{
+        //    DataTable ds = new DataTable();
+        //    ds = CEI.getDistrict();
+        //    ddlDist.DataSource = ds;
+        //    ddlDist.DataTextField = "HeadOffice";
+        //    ddlDist.DataValueField = "Area";
+        //    ddlDist.DataBind();
+        //    ddlDist.Items.Insert(0, new ListItem("Select", "0"));
+        //    ds.Clear();
+        //}
+        //private void ddlBindDivision()
+        //{
+        //    string District = ddlDist.SelectedItem.ToString();
+        //    DataTable ds = new DataTable();
+        //    ds = CEI.getDivisionDistrict(District);
+        //    ddlDivision.DataSource = ds;
+        //    ddlDivision.DataTextField = "Area";
+        //    ddlDivision.DataValueField = "HeadOffice";
+        //    ddlDivision.DataBind();
+        //    ddlDivision.Items.Insert(0, new ListItem("Select", "0"));
+        //    ds.Clear();
+        //}
         #region GetIP
         protected void GetIP()
         {
@@ -93,7 +93,7 @@ namespace CEIHaryana.UserPages
                         Category = "Contractor";
                     }
                     GetIP();
-                    int Aadhar = CEI.CheckAadharExist(txtAadhaar.Text.Trim());
+                    int Aadhar = CEI.CheckAadharOrPANExist(txtAadhaar.Text.Trim(), txtpancard.Text.Trim());
                     if (Aadhar > 0)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "AadharAlert();", true);
@@ -110,10 +110,10 @@ namespace CEIHaryana.UserPages
                             string RandomUniqueNumber = hdnrandomNumber.Value;
                             GetIP();
                             CEI.InserNewUserData(ddlcategory.SelectedItem.ToString(), txtName.Text, txtDOB.Text, txtyears.Text, txtFatherNmae.Text,
-                            ddlGender.SelectedItem.ToString(), txtAadhaar.Text.Trim(), txtPermanentAddress.Text, ddlDistrict.SelectedItem.ToString(),
+                            ddlGender.SelectedItem.ToString(), txtAadhaar.Text.Trim(), txtpancard.Text.Trim(), txtPermanentAddress.Text, ddlDistrict.SelectedItem.ToString(),
                             ddlState.SelectedItem.ToString(), txtPinCode.Text, txtphone.Text,
                             txtEmailID.Text, Category, userId, userId, txtCommunicationAddress.Text, ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(),
-                            txtPin.Text, txtConfirmPswrd.Text, ipaddress, ddlDist.SelectedItem.ToString(), ddlDivision.SelectedItem.ToString(), RandomUniqueNumber);
+                            txtPin.Text, txtConfirmPswrd.Text, ipaddress, RandomUniqueNumber);
 
                             CEI.ToActivateAndVerifyEmail(txtEmailID.Text, RandomUniqueNumber);
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
@@ -355,11 +355,14 @@ namespace CEIHaryana.UserPages
         {
             Response.Redirect("/UserPages/Instructions.aspx", false);
         }
+
         protected void ddlcategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             Reset();
             if (ddlcategory.SelectedValue == "3")
             {
+                Pancardno.Visible = true;
+                Aadhaarcard.Visible = false;
                 WireSup.Visible = false;
                 contractor.Visible = true;
             }
@@ -367,6 +370,8 @@ namespace CEIHaryana.UserPages
             {
                 contractor.Visible = false;
                 WireSup.Visible = true;
+                Aadhaarcard.Visible = true;
+                Pancardno.Visible = false;
             }
         }
 
@@ -375,6 +380,7 @@ namespace CEIHaryana.UserPages
             txtName.Text = "";
             txtFatherNmae.Text = "";
             txtAadhaar.Text = "";
+            txtpancard.Text = "";
             ddlGender.SelectedValue = "0";
             txtDOB.Text = "";
             txtCommunicationAddress.Text = "";
@@ -404,10 +410,10 @@ namespace CEIHaryana.UserPages
             ddlDistrict.Attributes.Remove("disabled");
         }
 
-        protected void ddlDist_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ddlBindDivision();
-        }
+        //protected void ddlDist_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    ddlBindDivision();
+        //}
         #region neeraj 2-July-2025
         //protected void txtCommunicationAddress_TextChanged(object sender, EventArgs e)
         //{

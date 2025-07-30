@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -145,36 +146,36 @@ namespace CEIHaryana.Admin
         protected void ddlUtility_SelectedIndexChanged(object sender, EventArgs e)
         {
             string UtilityId = ddlUtility.SelectedValue.ToString();
-           
+
             DdlWingBind();
             GridBind();
-            
+
 
         }
 
         protected void ddlWing_SelectedIndexChanged(object sender, EventArgs e)
         {
             string WingId = ddlWing.SelectedValue.ToString();
-          if(ddlWing.SelectedValue == "0")
+            if (ddlWing.SelectedValue == "0")
             {
                 ddlWing.SelectedValue = "0";
             }
             DdlZoneBind();
             GridBind();
-           
+
 
         }
 
         protected void ddlZone_SelectedIndexChanged(object sender, EventArgs e)
         {
             string ZoneId = ddlZone.SelectedValue.ToString();
-            if(ddlZone.SelectedValue == "0")
+            if (ddlZone.SelectedValue == "0")
             {
                 ddlZone.SelectedValue = "0";
             }
             DdlCircleBind();
             GridBind();
-            
+
         }
 
 
@@ -185,28 +186,28 @@ namespace CEIHaryana.Admin
             try
             {
                 string email = txtEmail.Text.Trim();
-            if (email.Contains("@"))
-            {
-                UserId = email.Split('@')[0];
-            }
+                if (email.Contains("@"))
+                {
+                    UserId = email.Split('@')[0];
+                }
 
-            DataSet ds1 = CEI.checkEmail(email);
-            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
-            {
+                DataSet ds1 = CEI.checkEmail(email);
+                if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+                {
 
-                string script = $"alert('User with Email ID  {email}  already exists.');";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
+                    string script = $"alert('User with Email ID  {email}  already exists.');";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
 
-            }
-            else
-            {
+                }
+                else
+                {
 
 
-                CEI.InsertInSubDivisionMaster(txtSubDivision.Text.Trim(), txtEmail.Text.Trim(), txtPhone.Text.Trim(),
-                    ddlUtility.SelectedValue, ddlWing.SelectedValue, ddlZone.SelectedValue, ddlCircle.SelectedValue, ddlDivision.SelectedValue, UserId);
-                Reset();
-               ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Sub-Division name Submitted Successfully !!!');", true);
-                GridBind();
+                    CEI.InsertInSubDivisionMaster(txtSubDivision.Text.Trim(), txtEmail.Text.Trim(), txtPhone.Text.Trim(),
+                        ddlUtility.SelectedValue, ddlWing.SelectedValue, ddlZone.SelectedValue, ddlCircle.SelectedValue, ddlDivision.SelectedValue, UserId);
+                    Reset();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Sub-Division name Submitted Successfully !!!');", true);
+                    GridBind();
                 }
             }
             catch (Exception ex)
@@ -244,7 +245,7 @@ namespace CEIHaryana.Admin
             }
             DdlDivisionBind();
             GridBind();
-           }
+        }
 
         protected void ddlDivision_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -255,7 +256,7 @@ namespace CEIHaryana.Admin
             }
             Session["DivisionId"] = ddlDivision.SelectedValue.ToString();
             GridBind();
-}
+        }
 
         private void GridBind()
         {
@@ -289,10 +290,46 @@ namespace CEIHaryana.Admin
             }
         }
 
-       
+        protected void btnUpdatePassword_Click(object sender, EventArgs e)
+        {
+            string UserId = txtUserId.Text.Trim();
+            string password = txtPassword.Text.Trim();
+            string Email = hdnEmailId.Value;
+            try
+            {
+                if (!string.IsNullOrEmpty(UserId) && !string.IsNullOrEmpty(Email))
+                {
+                    int Ad = CEI.ResetPasswordByAdmin(UserId, password);
+                    if (Ad > 0)
+                    {
+                        hdnEmailId.Value = null;
+                        string script = @"
+                    alert('Password Reset successfully.');
+                    $('#updatePasswordModal').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
+                ";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ResetSuccessScript", script, true);
+                    }
+                    else
+                    {
+                        string script = "alert('Password Not Reset.')";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ResetFailScript", script, true);
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "MissingFieldsScript", "alert('UserId or Email is Not Found')", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ExceptionScript", $"alert('{ex.Message.Replace("'", "\\'")}')", true);
+            }
+        }
+
+
     }
 
 
-      
-    
 }
