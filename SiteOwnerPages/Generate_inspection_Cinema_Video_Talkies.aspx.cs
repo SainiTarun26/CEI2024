@@ -278,14 +278,15 @@ namespace CEIHaryana.SiteOwnerPages
                             }
                             string District = HdnDistrict.Value;
                                 string AssignedOfficer = "";
-                                DataTable dt = new DataTable();
-                                dt = CEI.FetchOfficerFor_Accidental(District, "XEN");
-                                if (dt == null || dt.Rows.Count < 0)
-                                {
-                                    ScriptManager.RegisterStartupScript(this, GetType(), "error", "alert('please Contact Team');", true);
-                                    return;
-                                }
-                                AssignedOfficer = dt.Rows[0]["StaffUserID"].ToString();
+                            //Assigned officer changed by navneet on 30-July-2025
+                                //DataTable dt = new DataTable();
+                                //dt = CEI.FetchOfficerFor_Accidental(District, "XEN");
+                                //if (dt == null || dt.Rows.Count < 0)
+                                //{
+                                //    ScriptManager.RegisterStartupScript(this, GetType(), "error", "alert('please Contact Team');", true);
+                                //    return;
+                                //}
+                                AssignedOfficer = "CEI";
 
 
                                 ApplicantType = HdnApplicantType.Value;
