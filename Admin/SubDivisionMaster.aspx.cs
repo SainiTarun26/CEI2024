@@ -289,7 +289,7 @@ namespace CEIHaryana.Admin
                 //throw;
             }
         }
-
+        #region kalpana change password 30-July-2025
         protected void btnUpdatePassword_Click(object sender, EventArgs e)
         {
             string UserId = txtUserId.Text.Trim();
@@ -327,6 +327,7 @@ namespace CEIHaryana.Admin
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "ExceptionScript", $"alert('{ex.Message.Replace("'", "\\'")}')", true);
             }
         }
+        #endregion
 
 
     }

@@ -36,6 +36,8 @@ namespace CEIHaryana.UserPages
                 Response.Redirect("/Login.aspx", false);
             }
         }
+
+        #region kalpana 30-July-2025
         //private void ddlBindDistrict()
         //{
         //    DataTable ds = new DataTable();
@@ -59,6 +61,7 @@ namespace CEIHaryana.UserPages
         //    ddlDivision.Items.Insert(0, new ListItem("Select", "0"));
         //    ds.Clear();
         //}
+        #endregion
         #region GetIP
         protected void GetIP()
         {
@@ -93,12 +96,15 @@ namespace CEIHaryana.UserPages
                         Category = "Contractor";
                     }
                     GetIP();
+
+                    #region kalpana 30-July-2025
                     int Aadhar = CEI.CheckAadharOrPANExist(txtAadhaar.Text.Trim(), txtpancard.Text.Trim());
                     if (Aadhar > 0)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "AadharAlert();", true);
                         return;
                     }
+                    #endregion
                     else
                     {
                         if (Convert.ToString(hdnrandomNumber.Value) == null || Convert.ToString(hdnrandomNumber.Value) == "")
