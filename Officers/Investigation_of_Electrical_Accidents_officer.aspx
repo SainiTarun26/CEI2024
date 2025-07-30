@@ -434,6 +434,9 @@
             max-width: 1300px !important;
             margin-left: 19%;
         }
+        input#ContentPlaceHolder1_File_approvedDocument {
+    padding: 2px;
+}
     </style>
 
 </asp:Content>
@@ -859,7 +862,7 @@
                             <label>
                                 Action
                             </label>
-                            <asp:DropDownList class="form-control  select-form select2" runat="server" ID="ddlAction" TabIndex="6" selectionmode="Multiple" Style="width: 100% !important">
+                            <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" OnSelectedIndexChanged="ddlAction_SelectedIndexChanged" runat="server" ID="ddlAction" TabIndex="6" selectionmode="Multiple" Style="width: 100% !important">
                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                 <asp:ListItem Text="Approved" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="Return" Value="2"></asp:ListItem>
@@ -867,7 +870,16 @@
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" Text="Please Select Action" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAction" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                         </div>
-                        <div class="col-md-8">
+                        
+                        <div id="Document" runat="server" visible="false" class="col-md-4">
+                            <label>
+                               Upload Document
+                            </label>
+                           <asp:FileUpload  ID="File_approvedDocument" runat="server" CssClass="form-control mt-2"/>
+
+                        </div>
+                              
+                        <div class="col-md-12">
                             <label>
                                 Remarks
                             </label>

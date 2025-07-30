@@ -115,6 +115,23 @@
                 transform: scale(1.05);
                 box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
             }
+            i.fa.fa-print {
+            color: white !important;
+            background: #007bff;
+            padding: 4px 5px 3px 5px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+            i.fa.fa-print:hover {
+                color: white !important;
+                background: #007bff;
+                padding: 4px 5px 3px 5px;
+                border-radius: 5px;
+                font-size: 16px;
+                transform: scale(1.05);
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            }
 
         ::before {
             color: white !important;
@@ -194,6 +211,8 @@
                     <ItemTemplate>
                         <asp:Label ID="AccidentId" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
                         <asp:Label ID="lblApplicationStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
+                        <asp:Label ID="lblApprovedDoucmentPath" runat="server" Text='<%#Eval("ApprovedDocument") %>'></asp:Label>
+
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField>
@@ -241,6 +260,13 @@
                     </ItemTemplate>
 
                 </asp:TemplateField>
+                <asp:TemplateField HeaderText="Certificate" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <ItemTemplate>
+                                    <asp:LinkButton  ID="LnkDocumemtPath" Visible="false" runat="server" CommandArgument='<%# Bind("ApprovedDocument") %>' CommandName="Print" Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' > </asp:LinkButton>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Center" CssClass="headercolor" />
+                            </asp:TemplateField>
             </Columns>
             <FooterStyle BackColor="White" ForeColor="#000066" />
             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

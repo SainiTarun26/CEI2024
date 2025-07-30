@@ -9293,7 +9293,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAccidentialAttachmentsForReturn", TempId);
         }
-        public int AccidentAction(int AccidentID, string ActionType, string Remarks, string OfficerId)
+        public int AccidentAction(int AccidentID, string ActionType, string Remarks, string OfficerId, string DbPath)
         {
             try
             {
@@ -9306,6 +9306,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
                         cmd.Parameters.AddWithValue("@Action", ActionType);
                         cmd.Parameters.AddWithValue("@Remarks", Remarks);
                         cmd.Parameters.AddWithValue("@StaffId", OfficerId);
+                        cmd.Parameters.AddWithValue("@DbPath", DbPath);
                         con.Open();
                         int x = cmd.ExecuteNonQuery();
                         con.Close();

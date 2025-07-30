@@ -122,7 +122,6 @@ namespace CEIHaryana.Officers
                         {
                             ListItem Returnitem = ddlAction.Items.FindByText("Return");
                             ddlAction.Items.Remove(Returnitem);
-
                         }
                     }
                 }
@@ -203,7 +202,7 @@ namespace CEIHaryana.Officers
                     //string folderPath = Server.MapPath(fileNames);
                     //string filePath = Path.Combine(folderPath);
 
-                    string fileNames = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    string fileNames = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileNames}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -232,9 +231,43 @@ namespace CEIHaryana.Officers
                             txtRemarks.Focus();
                             return;
                         }
+
+                        string fileName=string.Empty;
+                        string dbPath = string.Empty;
+                        string fullPath = string.Empty;
+                        string filePathInfo = string.Empty;
+
                         if (ddlAction.SelectedValue == "1")
-                        {
+                        {                            
+                            if (!File_approvedDocument.HasFile || !IsValidPdf(File_approvedDocument))
+                            {
+                                ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                                    "alert('Please upload a valid PDF file (Max: 1MB)');", true);
+                                File_approvedDocument.Focus();
+                                return;
+                            }
+
+                            if (!Directory.Exists(Server.MapPath("~/Attachment/" + "/Accident/"+ AccidentID + "/ApprovedDocument/")))
+                            {
+                                Directory.CreateDirectory(Server.MapPath("~/Attachment/" + "/Accident/" + AccidentID + "/ApprovedDocument/"));
+                            }                            
+                            string path = "/Attachment/" + "/Accident/" + AccidentID + "/ApprovedDocument/";
+                            fileName = "ApprovedDocument" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ".pdf";
+                            filePathInfo = Server.MapPath("~/Attachment/" + "/Accident/" + AccidentID + "/ApprovedDocument/" + fileName);
+                            dbPath = path + fileName;
+                            //string DirectoryPath = Server.MapPath($"~Attachment/ApprovedDocument/");
+                            //// Ensure directory exists
+                            //if (!Directory.Exists(DirectoryPath))
+                            //{
+                            //    Directory.CreateDirectory(DirectoryPath);
+                            //}
+                            //// Generate file path and name
+                            //fileName = $"{AccidentID}/ApprovedDocument_{DateTime.Now:yyyyMMddHHmmssFFF}.pdf";
+                            //dbPath = $"/Attachment/ApprovedDocument/{AccidentID}/{fileName}";
+                            //fullPath = Path.Combine(DirectoryPath, fileName);
+                            //fileUpload.PostedFile.SaveAs(fullPath);
                             AlertMessage = "Application approved and report issued to the user.";
+                            
                         }
                         else if (ddlAction.SelectedValue == "2")
                         {
@@ -245,9 +278,16 @@ namespace CEIHaryana.Officers
                             AlertMessage = "Application has been rejected.";
                         }
 
-                        int x = CEI.AccidentAction(AccidentID, ddlAction.SelectedItem.Text, txtRemarks.Text.Trim(), OfficerId);
+                        int x = CEI.AccidentAction(AccidentID, ddlAction.SelectedItem.Text, txtRemarks.Text.Trim(), OfficerId, dbPath);
                         if (x > 0)
                         {
+                            if (ddlAction.SelectedValue == "1")
+                            {
+                                
+                                //File_approvedDocument.PostedFile.SaveAs(fullPath);
+                                File_approvedDocument.PostedFile.SaveAs(filePathInfo);
+
+                            }
                             ScriptManager.RegisterStartupScript(this, GetType(), "successful",
                             "alert(' " + AlertMessage + "'); window.location.href = '/Officers/AccidentialReports.aspx';",
                             true);
@@ -298,6 +338,34 @@ namespace CEIHaryana.Officers
             {
 
             }
+        }
+
+        protected void ddlAction_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlAction.SelectedValue == "1") 
+            {
+                Document.Visible = true;
+            }
+            else
+            {
+                Document.Visible = false;
+            }
+        }
+        private bool IsValidPdf(FileUpload fileUpload)
+        {
+            if (!fileUpload.HasFile)
+            {
+                return false;
+            }
+            if (Path.GetExtension(fileUpload.FileName).ToLower() != ".pdf")  // Check file extension
+            {
+                return false;
+            }
+            if (fileUpload.PostedFile.ContentLength > 1048576)   // Check file size (1 MB = 1048576 bytes)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

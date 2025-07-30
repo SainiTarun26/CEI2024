@@ -63,13 +63,34 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["Accident_IdReturn_siteowner"] = AccidentId.Text;
                 Response.Redirect("/SiteOwnerPages/InvestigationOfElectricalAccidents_Return.aspx", false);
             }
+            else if (e.CommandName == "Print")
+            {
+                string fileNames = "https://ceiharyana.com" + e.CommandArgument.ToString();
+               // string fileNames = "https://localhost:44393" + e.CommandArgument.ToString();
+
+                // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                string script = $@"<script>window.open('{fileNames}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 Label lblApplicationStatus = (Label)e.Row.FindControl("lblApplicationStatus");
+                Label ApprovedDoucmentPath = (Label)e.Row.FindControl("lblApprovedDoucmentPath");
+
                 LinkButton btnResubmit = (LinkButton)e.Row.FindControl("LnkBtnReturn");
+                LinkButton LnkDocumemtPath = (LinkButton)e.Row.FindControl("LnkDocumemtPath");
+
+                if (ApprovedDoucmentPath.Text != null && ApprovedDoucmentPath.Text != "")
+                {
+                    LnkDocumemtPath.Visible = true;
+                }
+                else
+                {
+                    LnkDocumemtPath.Visible = false ;
+                }
                 if (lblApplicationStatus.Text == "Return")
                 {
                     btnResubmit.Visible = true;
