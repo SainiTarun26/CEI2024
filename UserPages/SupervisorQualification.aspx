@@ -68,27 +68,33 @@
         }
     </script>
     <style>
-                input#RadioButtonList2_0 {
-    margin-right: 5px;
-}
+        input#RadioButtonList2_0 {
+            margin-right: 5px;
+        }
+
         input#RadioButtonList2_1 {
-    margin-right: 5px;
-    margin-left: 10px;
-}
-                input#RadioButtonList3_1 {
-    margin-right: 5px;
-    margin-left: 10px;
-}
+            margin-right: 5px;
+            margin-left: 10px;
+        }
+
+        input#RadioButtonList3_1 {
+            margin-right: 5px;
+            margin-left: 10px;
+        }
+
         input#RadioButtonList3_0 {
-    margin-right: 5px;
-}
+            margin-right: 5px;
+        }
+
         input#RadioButtonList1_1 {
-    margin-right: 5px;
-    margin-left: 10px;
-}
+            margin-right: 5px;
+            margin-left: 10px;
+        }
+
         input#RadioButtonList1_0 {
-    margin-right: 5px;
-}
+            margin-right: 5px;
+        }
+
         .container.aos-init.aos-animate {
             max-width: 1440px;
         }
@@ -1315,8 +1321,8 @@
                                                                             <asp:ListItem Text="A class licensed electrical contractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Central government" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="State government" Value="3"></asp:ListItem>
-                                                                              <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1358,8 +1364,8 @@
                                                                             <asp:ListItem Text=" A class licensed electricalcontractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Central government" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="State government" Value="3"></asp:ListItem>
-                                                                             <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1401,8 +1407,8 @@
                                                                             <asp:ListItem Text="A classlicensed electricalcontractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
-                                                                              <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1444,8 +1450,8 @@
                                                                             <asp:ListItem Text=" A classlicensed electricalcontractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
-                                                                          <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1487,8 +1493,8 @@
                                                                             <asp:ListItem Text="A classlicensed electricalcontractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
-                                                                             <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1531,8 +1537,8 @@
                                                                             <asp:ListItem Text="A classlicensed electricalcontractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
-                                                                             <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1575,8 +1581,8 @@
                                                                             <asp:ListItem Text="A classlicensed electricalcontractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
-                                                                             <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1619,8 +1625,8 @@
                                                                             <asp:ListItem Text="A classlicensed electricalcontractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
-                                                                           <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1664,7 +1670,7 @@
                                                                             <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
                                                                             <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1707,8 +1713,8 @@
                                                                             <asp:ListItem Text="A classlicensed electricalcontractor" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="Centralgovernment" Value="2"></asp:ListItem>
                                                                             <asp:ListItem Text="Stategovernment" Value="3"></asp:ListItem>
-                                                                             <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
-  <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
+                                                                            <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
+                                                                            <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                     </td>
                                                                     <td>
@@ -1736,8 +1742,9 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td colspan="4" style="font-size: 12px;">
-                                                                        <asp:Button ID="btnAddMore" runat="server" Text="Add" class="btn btn-primary"
-                                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClientClick="if (!validateAddBtnExperience()) return false;" OnClick="btnAddMore_Click"></asp:Button>
+                                                                        <asp:Button ID="btnAddMore" Visible="true" runat="server" Text="Add" class="btn btn-primary"
+                                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClientClick="return validateAddBtnExperience();" OnClick="btnAddMore_Click"></asp:Button>
+                                                                        <asp:Button ID="btnDeleteExp" Visible="false" runat="server" Text="Delete" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnDeleteExp_Click" />
                                                                     </td>
                                                                     <td colspan="2" style="font-size: 12px;">
                                                                         <p style="font-size: 12px;">Total Experience:</p>
@@ -1811,6 +1818,7 @@
                                                     <div class="col-md-6" style="text-align: end;">
                                                         <asp:Button ID="btnNext" runat="server" Text="Next" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClientClick="return validateForm();"
                                                             OnClick="btnNext_Click" />
+
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
@@ -1997,6 +2005,9 @@
                 function validateExperienceDate3() {
                     var from = document.getElementById('<%=txtExperienceFrom1.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo1.ClientID %>');
+
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2007,6 +2018,15 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2043,6 +2063,9 @@
                 function validateExperienceDate4() {
                     var from = document.getElementById('<%=txtExperienceFrom2.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo2.ClientID %>');
+
+                    var ForNextFromDateDate = document.getElementById('<%=txtExperienceTo1.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2053,6 +2076,15 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2089,6 +2121,9 @@
                 function validateExperienceDate5() {
                     var from = document.getElementById('<%=txtExperienceFrom3.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo3.ClientID %>');
+
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo2.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2099,6 +2134,15 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2135,6 +2179,9 @@
                 function validateExperienceDate6() {
                     var from = document.getElementById('<%=txtExperienceFrom4.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo4.ClientID %>');
+
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo3.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2145,6 +2192,15 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2181,6 +2237,9 @@
                 function validateExperienceDate7() {
                     var from = document.getElementById('<%=txtExperienceFrom5.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo5.ClientID %>');
+
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo4.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2191,6 +2250,15 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2227,6 +2295,9 @@
                 function validateExperienceDate8() {
                     var from = document.getElementById('<%=txtExperienceFrom6.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo6.ClientID %>');
+
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo5.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2237,6 +2308,15 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2274,6 +2354,9 @@
                 function validateExperienceDate9() {
                     var from = document.getElementById('<%=txtExperienceFrom7.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo7.ClientID %>');
+
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo6.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2284,6 +2367,15 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2321,6 +2413,9 @@
                 function validateExperienceDate10() {
                     var from = document.getElementById('<%=txtExperienceFrom8.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo8.ClientID %>');
+
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo7.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2331,6 +2426,15 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2368,6 +2472,9 @@
                 function validateExperienceDate11() {
                     var from = document.getElementById('<%=txtExperienceFrom9.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo9.ClientID %>');
+
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo8.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2378,6 +2485,15 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 

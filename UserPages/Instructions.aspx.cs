@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CEI_PRoject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,5 +14,25 @@ namespace CEIHaryana.UserPages
         {
 
         }
+
+        protected void btnNext_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkDeclaration.Checked == true)
+                {
+                    Response.Redirect("/UserPages/Registration.aspx", false);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Please check declaration first to proceed.')", true);
+                }
+            }
+            catch (Exception)
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
     }
 }
+

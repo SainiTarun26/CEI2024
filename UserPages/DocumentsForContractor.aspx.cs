@@ -91,14 +91,14 @@ namespace CEIHaryana.UserPages
                 return null;
             }
             // Ensure directory exists
-            string directoryPath = Server.MapPath($"~/Attachment/{TempUniqueId}/{CreatedBy}/");
+            string directoryPath = Server.MapPath($"~/Attachment/License_Documents/{TempUniqueId}/{CreatedBy}/");
             if (!Directory.Exists(directoryPath))
             {
                 Directory.CreateDirectory(directoryPath);
             }
             // Generate file path and name
             fileName = $"{DocumentNametoSave}_{DateTime.Now:yyyyMMddHHmmssFFF}.pdf";
-            dbPath = $"/Attachment/{TempUniqueId}/{CreatedBy}/{fileName}";
+            dbPath = $"/Attachment/License_Documents/{TempUniqueId}/{CreatedBy}/{fileName}";
             fullPath = Path.Combine(directoryPath, fileName);
 
             // Save the uploaded file to the server folder
@@ -564,7 +564,7 @@ namespace CEIHaryana.UserPages
             }
 
             // Ensure directory exists
-            string directoryPath = Server.MapPath($"~/Attachment/{TempUniqueId}/{CreatedBy}/");
+            string directoryPath = Server.MapPath($"~/Attachment/License_Documents/{TempUniqueId}/{CreatedBy}/");
             if (!Directory.Exists(directoryPath))
             {
                 Directory.CreateDirectory(directoryPath);
@@ -573,7 +573,7 @@ namespace CEIHaryana.UserPages
             // Get extension and generate file name accordingly
             string extension = Path.GetExtension(fileUpload.FileName).ToLower();
             fileName = $"{DocumentNametoSave}_{DateTime.Now:yyyyMMddHHmmssFFF}{extension}";
-            dbPath = $"/Attachment/{TempUniqueId}/{CreatedBy}/{fileName}";
+            dbPath = $"/Attachment/License_Documents/{TempUniqueId}/{CreatedBy}/{fileName}";
             fullPath = Path.Combine(directoryPath, fileName);
 
             // Save image file

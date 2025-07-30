@@ -353,9 +353,8 @@ namespace CEIHaryana.UserPages
         #endregion
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Login.aspx", false);
+            Response.Redirect("/UserPages/Instructions.aspx", false);
         }
-
         protected void ddlcategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             Reset();

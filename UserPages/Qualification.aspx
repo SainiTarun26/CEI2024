@@ -68,19 +68,23 @@
     </script>
     <style>
         input#RadioButtonList3_1 {
-    margin-right: 5px;
-    margin-left: 10px;
-}
+            margin-right: 5px;
+            margin-left: 10px;
+        }
+
         input#RadioButtonList3_0 {
-    margin-right: 5px;
-}
+            margin-right: 5px;
+        }
+
         input#RadioButtonList1_1 {
-    margin-right: 5px;
-    margin-left: 10px;
-}
+            margin-right: 5px;
+            margin-left: 10px;
+        }
+
         input#RadioButtonList1_0 {
-    margin-right: 5px;
-}
+            margin-right: 5px;
+        }
+
         .container.aos-init.aos-animate {
             max-width: 1440px;
         }
@@ -799,13 +803,15 @@
         input#txtAppliedFor {
             width: 95% !important;
         }
+
         input#RadioButtonList2_0 {
-    margin-right: 5px;
-}
+            margin-right: 5px;
+        }
+
         input#RadioButtonList2_1 {
-    margin-right: 5px;
-    margin-left: 10px;
-}
+            margin-right: 5px;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
@@ -1191,7 +1197,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td colspan="5" style="font-size: 12px;">
-                                                                        <asp:Button ID="BtnAddMoreQualification" runat="server" Text="Add More" class="btn btn-primary"
+                                                                        <asp:Button ID="BtnAddMoreQualification" Visible="true" runat="server" Text="Add More" class="btn btn-primary"
                                                                             Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="BtnAddMoreQualification_Click" OnClientClick="return validateAddBtn();"></asp:Button>
                                                                         <asp:Button ID="BtnDelete" runat="server" Text="Delete" class="btn btn-primary"
                                                                             Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="BtnDelete_Click" Visible="false"></asp:Button>
@@ -1358,8 +1364,8 @@
                                                                     </td>
                                                                     <td>
                                                                         <asp:TextBox ID="Apprenticesdateto" class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" onchange="validateApprenticesDate()" runat="server"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator96" runat="server" ControlToValidate="Apprenticesdateto"
-                                                                            ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
+                                                                        <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator96" runat="server" ControlToValidate="Apprenticesdateto"
+                                                                            ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>--%>
                                                                         <asp:CompareValidator ID="CompareValidator13" runat="server" ControlToCompare="Apprenticesdatefrom" ControlToValidate="Apprenticesdateto" Operator="GreaterThan"
                                                                             ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
                                                                     </td>
@@ -1400,8 +1406,8 @@
                                                                     </td>
                                                                     <td>
                                                                         <asp:TextBox ID="txtExperienceTo" class="form-control" autocomplete="off" type="date" AutoPostBack="true" TabIndex="41" OnTextChanged="txtTo1_TextChanged" onchange="validateExperienceDate2()" runat="server"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtExperienceTo"
-                                                                            ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
+                                                                        <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtExperienceTo"
+                                                                            ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>--%>
                                                                         <asp:CompareValidator ID="CompareValidator2" runat="server" ControlToCompare="txtExperienceFrom" ControlToValidate="txtExperienceTo" Operator="GreaterThan"
                                                                             ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
                                                                     </td>
@@ -1443,8 +1449,8 @@
                                                                     </td>
                                                                     <td>
                                                                         <asp:TextBox ID="txtExperienceTo1" class="form-control" AutoPostBack="true" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" TabIndex="47" onchange="validateExperienceDate3()" runat="server"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtExperienceTo1"
-                                                                            ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
+                                                                        <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtExperienceTo1"
+                                                                            ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>--%>
                                                                         <asp:CompareValidator ID="CompareValidator3" runat="server" ControlToCompare="txtExperienceFrom1" ControlToValidate="txtExperienceTo1" Operator="GreaterThan"
                                                                             ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
                                                                     </td>
@@ -1486,8 +1492,8 @@
                                                                     </td>
                                                                     <td>
                                                                         <asp:TextBox ID="txtExperienceTo2" class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" TabIndex="52" onchange="validateExperienceDate4" runat="server"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtExperienceTo2"
-                                                                            ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
+                                                                        <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtExperienceTo2"
+                                                                            ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>--%>
                                                                         <asp:CompareValidator ID="CompareValidator4" runat="server" ControlToCompare="txtExperienceFrom2" ControlToValidate="txtExperienceTo2" Operator="GreaterThan"
                                                                             ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
                                                                     </td>
@@ -1529,8 +1535,8 @@
                                                                     </td>
                                                                     <td>
                                                                         <asp:TextBox ID="txtExperienceTo3" class="form-control" AutoPostBack="true" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" TabIndex="58" onchange="validateExperienceDate5()" runat="server"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator193" runat="server" ControlToValidate="txtExperienceTo3"
-                                                                            ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>
+                                                                        <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator193" runat="server" ControlToValidate="txtExperienceTo3"
+                                                                            ErrorMessage="Please Add To Date" ValidationGroup="Submit" ForeColor="Red">Please Add To Date</asp:RequiredFieldValidator>--%>
                                                                         <asp:CompareValidator ID="CompareValidator5" runat="server" ControlToCompare="txtExperienceFrom3" ControlToValidate="txtExperienceTo3" Operator="GreaterThan"
                                                                             ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
                                                                     </td>
@@ -1572,8 +1578,8 @@
                                                                     </td>
                                                                     <td>
                                                                         <asp:TextBox ID="txtExperienceTo4" class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" TabIndex="64" onchange="validateExperienceDate6()" runat="server"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator234" runat="server" ControlToValidate="txtExperienceTo4"
-                                                                            ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>
+                                                                        <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator234" runat="server" ControlToValidate="txtExperienceTo4"
+                                                                            ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>--%>
                                                                         <asp:CompareValidator ID="CompareValidator6" runat="server" ControlToCompare="txtExperienceFrom4" ControlToValidate="txtExperienceTo4" Operator="GreaterThan"
                                                                             ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
                                                                     </td>
@@ -1616,8 +1622,8 @@
                                                                     </td>
                                                                     <td>
                                                                         <asp:TextBox ID="txtExperienceTo5" class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" TabIndex="70" onchange="validateExperienceDate7()" runat="server"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator61" runat="server" ControlToValidate="txtExperienceTo5"
-                                                                            ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>
+                                                                        <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator61" runat="server" ControlToValidate="txtExperienceTo5"
+                                                                            ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>--%>
                                                                         <asp:CompareValidator ID="CompareValidator7" runat="server" ControlToCompare="txtExperienceFrom5" ControlToValidate="txtExperienceTo5" Operator="GreaterThan"
                                                                             ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
                                                                     </td>
@@ -1660,8 +1666,8 @@
                                                                     </td>
                                                                     <td>
                                                                         <asp:TextBox ID="txtExperienceTo6" class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" TabIndex="76" onchange="validateExperienceDate8()" runat="server"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator71" runat="server" ControlToValidate="txtExperienceTo6"
-                                                                            ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>
+                                                                        <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator71" runat="server" ControlToValidate="txtExperienceTo6"
+                                                                            ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>--%>
                                                                         <asp:CompareValidator ID="CompareValidator8" runat="server" ControlToCompare="txtExperienceFrom6" ControlToValidate="txtExperienceTo6" Operator="GreaterThan"
                                                                             ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
                                                                     </td>
@@ -1704,8 +1710,8 @@
                                                                     </td>
                                                                     <td>
                                                                         <asp:TextBox ID="txtExperienceTo7" class="form-control" autocomplete="off" type="date" AutoPostBack="true" OnTextChanged="txtTo1_TextChanged" TabIndex="82" onchange="validateExperienceDate9()" runat="server"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator76" runat="server" ControlToValidate="txtExperienceTo7"
-                                                                            ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>
+                                                                        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator76" runat="server" ControlToValidate="txtExperienceTo7"
+                                                                            ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>--%>
                                                                         <asp:CompareValidator ID="CompareValidator9" runat="server" ControlToCompare="txtExperienceFrom7" ControlToValidate="txtExperienceTo7" Operator="GreaterThan"
                                                                             ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
                                                                     </td>
@@ -1747,8 +1753,8 @@
                                                                     </td>
                                                                     <td>
                                                                         <asp:TextBox ID="txtExperienceTo8" OnTextChanged="txtTo1_TextChanged" class="form-control" autocomplete="off" type="date" AutoPostBack="true" onchange="validateExperienceDate10()" runat="server"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator81" runat="server" ControlToValidate="txtExperienceTo8"
-                                                                            ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>
+                                                                        <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator81" runat="server" ControlToValidate="txtExperienceTo8"
+                                                                            ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>--%>
                                                                         <asp:CompareValidator ID="CompareValidator10" runat="server" ControlToCompare="txtExperienceFrom8" ControlToValidate="txtExperienceTo8" Operator="GreaterThan"
                                                                             ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
                                                                     </td>
@@ -1790,16 +1796,18 @@
                                                                     </td>
                                                                     <td>
                                                                         <asp:TextBox ID="txtExperienceTo9" class="form-control" autocomplete="off" type="date" OnTextChanged="txtTo1_TextChanged" onchange="validateExperienceDate11()" runat="server" AutoPostBack="true"> </asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator85" runat="server" ControlToValidate="txtExperienceTo9"
-                                                                            ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>
+                                                                        <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator85" runat="server" ControlToValidate="txtExperienceTo9"
+                                                                            ErrorMessage="Please Add Experience ToDate" ValidationGroup="Submit" ForeColor="Red">Please Add Experience ToDate</asp:RequiredFieldValidator>--%>
                                                                         <asp:CompareValidator ID="CompareValidator11" runat="server" ControlToCompare="txtExperienceFrom9" ControlToValidate="txtExperienceTo9" Operator="GreaterThan"
                                                                             ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td colspan="4" style="font-size: 12px;">
-                                                                        <asp:Button ID="btnAddMore" runat="server" Text="Add" class="btn btn-primary"
-                                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClientClick="if (!validateAddBtnExperience()) return false;" OnClick="btnAddMore_Click"></asp:Button>
+                                                                        <asp:Button ID="btnAddMore" Visible="true" runat="server" Text="Add" class="btn btn-primary"
+                                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClientClick="return validateAddBtnExperience();" OnClick="btnAddMore_Click"></asp:Button>
+                                                                        <asp:Button ID="btnDeleteExp" Visible="false" runat="server" Text="Delete" OnClick="btnDeleteExp_Click" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"></asp:Button>
+
                                                                     </td>
                                                                     <td colspan="2" style="font-size: 12px;">
                                                                         <p style="font-size: 12px;">Total Experience:</p>
@@ -1880,7 +1888,7 @@
                                                     <asp:HiddenField ID="hdnId" runat="server" />
                                                     <asp:HiddenField ID="HdnCategory" runat="server" />
                                                     <asp:HiddenField ID="hdnTotalExperience" runat="server" />
-                                                      <asp:HiddenField ID="HdnDOBYear" runat="server" />
+                                                    <asp:HiddenField ID="HdnDOBYear" runat="server" />
                                                 </div>
                                             </div>
                                         </div>
@@ -2055,6 +2063,9 @@
                 function validateExperienceDate2() {
                     var from = document.getElementById('<%=txtExperienceFrom.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo.ClientID %>');
+
+                    var apprenticeTo = document.getElementById('<%=Apprenticesdateto.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2065,6 +2076,16 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+
+                        if (apprenticeTo.value) {
+                            var apprenticeToDate = new Date(apprenticeTo.value);
+                            if (fromDate <= apprenticeToDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2101,6 +2122,9 @@
                 function validateExperienceDate3() {
                     var from = document.getElementById('<%=txtExperienceFrom1.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo1.ClientID %>');
+
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2111,6 +2135,16 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2147,6 +2181,9 @@
                 function validateExperienceDate4() {
                     var from = document.getElementById('<%=txtExperienceFrom2.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo2.ClientID %>');
+
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo1.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2157,6 +2194,15 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2193,6 +2239,9 @@
                 function validateExperienceDate5() {
                     var from = document.getElementById('<%=txtExperienceFrom3.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo3.ClientID %>');
+
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo2.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2203,6 +2252,15 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2239,6 +2297,9 @@
                 function validateExperienceDate6() {
                     var from = document.getElementById('<%=txtExperienceFrom4.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo4.ClientID %>');
+
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo3.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2249,6 +2310,15 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2285,6 +2355,9 @@
                 function validateExperienceDate7() {
                     var from = document.getElementById('<%=txtExperienceFrom5.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo5.ClientID %>');
+
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo4.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2295,6 +2368,15 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2331,6 +2413,9 @@
                 function validateExperienceDate8() {
                     var from = document.getElementById('<%=txtExperienceFrom6.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo6.ClientID %>');
+
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo5.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2341,6 +2426,15 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2378,6 +2472,9 @@
                 function validateExperienceDate9() {
                     var from = document.getElementById('<%=txtExperienceFrom7.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo7.ClientID %>');
+
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo6.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2388,6 +2485,15 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2425,6 +2531,9 @@
                 function validateExperienceDate10() {
                     var from = document.getElementById('<%=txtExperienceFrom8.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo8.ClientID %>');
+
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo7.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2435,6 +2544,15 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2472,6 +2590,9 @@
                 function validateExperienceDate11() {
                     var from = document.getElementById('<%=txtExperienceFrom9.ClientID %>');
                     var to = document.getElementById('<%=txtExperienceTo9.ClientID %>');
+
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo8.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2482,6 +2603,15 @@
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 

@@ -1,5 +1,7 @@
 ﻿using CEI_PRoject;
+using Org.BouncyCastle.Asn1.X500;
 using Org.BouncyCastle.Bcpg.OpenPgp;
+using StackExchange.Redis;
 using System;
 using System.Configuration;
 using System.Data;
@@ -63,8 +65,53 @@ namespace CEIHaryana.UserPages
                 string Age = ds.Tables[0].Rows[0]["AgeInYears"].ToString();
                 string Retired = ds.Tables[0].Rows[0]["RetiredEngineer"].ToString();
 
+                string Name12ITIDiploma = ds.Tables[0].Rows[0]["Name12ITIDiploma"].ToString();
+                string NameofDiplomaDegree = ds.Tables[0].Rows[0]["NameofDiplomaDegree"].ToString();
+                string NameofDegree = ds.Tables[0].Rows[0]["NameofDegree"].ToString();
+                string NameofMasters = ds.Tables[0].Rows[0]["NameofMasters"].ToString();
+
+
+                string Exp = ds.Tables[0].Rows[0]["ExperienceEmployerName"].ToString();
+                string Exp1 = ds.Tables[0].Rows[0]["ExperienceEmployerName1"].ToString();
+                string Exp2 = ds.Tables[0].Rows[0]["ExperienceEmployerName2"].ToString();
+                string Exp3 = ds.Tables[0].Rows[0]["ExperienceEmployerName3"].ToString();
+                string Exp4 = ds.Tables[0].Rows[0]["ExperienceEmployerName4"].ToString();
+                string Exp5 = ds.Tables[0].Rows[0]["ExperienceEmployerName5"].ToString();
+                string Exp6 = ds.Tables[0].Rows[0]["ExperienceEmployerName6"].ToString();
+                string Exp7 = ds.Tables[0].Rows[0]["ExperienceEmployerName7"].ToString();
+                string Exp8 = ds.Tables[0].Rows[0]["ExperienceEmployerName8"].ToString();
+                string Exp9 = ds.Tables[0].Rows[0]["ExperienceEmployerName9"].ToString();
+
                 HdnAge.Value = Age;
                 Hdnretirment.Value = Retired;
+                HdnName12ITIDiploma.Value = Name12ITIDiploma;
+                HdnNameofDiplomaDegree.Value = NameofDiplomaDegree;
+                HdnNameofDegree.Value = NameofDegree;
+                HdnNameofMasters.Value = NameofMasters;
+
+                LblExp.Text = Exp;
+                LblExp1.Text = Exp1;
+                LblExp2.Text = Exp2;
+                LblExp3.Text = Exp3;
+                LblExp4.Text = Exp4;
+                LblExp5.Text = Exp5;
+                LblExp6.Text = Exp6;
+                LblExp7.Text = Exp7;
+                LblExp8.Text = Exp8;
+                LblExp9.Text = Exp9;
+
+
+
+                HdnEXP.Value = Exp;
+                HdnEXP1.Value = Exp1;
+                HdnEXP2.Value = Exp2;
+                HdnEXP3.Value = Exp3;
+                HdnEXP4.Value = Exp4;
+                HdnEXP5.Value = Exp5;
+                HdnEXP6.Value = Exp6;
+                HdnEXP7.Value = Exp7;
+                HdnEXP8.Value = Exp8;
+                HdnEXP9.Value = Exp9;
             }
             else
             {
@@ -93,6 +140,123 @@ namespace CEIHaryana.UserPages
                 Retired.Visible = false;
                 Hdn_retirementcertificatevisible.Value = "";
             }
+
+            #region Qualification Conditions
+            if (HdnName12ITIDiploma.Value != "" && HdnName12ITIDiploma.Value != null)
+            {
+               CertificateOrDiploma.Visible = true;
+            }
+            else
+            {
+                CertificateOrDiploma.Visible = false;
+            }
+            if (HdnNameofDiplomaDegree.Value != "" && HdnNameofDiplomaDegree.Value != null)
+            {
+                Diploma.Visible = true;
+            }
+            else
+            {
+                Diploma.Visible = false;
+            }
+            if (HdnNameofDegree.Value != "" && HdnNameofDegree.Value != null)
+            {
+                Degree.Visible = true;
+            }
+            else
+            {
+                Degree.Visible = false;
+            }
+            if (HdnNameofMasters.Value != "" && HdnNameofMasters.Value != null)
+            {
+                MasterDegree.Visible = true;
+            }
+            else
+            {
+                MasterDegree.Visible = false;
+            }
+            #endregion
+            #region Experience Conditions
+            if (HdnEXP.Value != "" && HdnEXP.Value != null)
+            {
+                Exp.Visible = true;
+            }
+            else
+            {
+                Exp.Visible = false;
+            }
+            if (HdnEXP1.Value != "" && HdnEXP1.Value != null)
+            {
+                Exp1.Visible = true;
+            }
+            else
+            {
+                Exp1.Visible = false;
+            }
+            if (HdnEXP2.Value != "" && HdnEXP2.Value != null)
+            {
+                Exp2.Visible = true;
+            }
+            else
+            {
+                Exp2.Visible = false;
+            }
+            if (HdnEXP3.Value != "" && HdnEXP3.Value != null)
+            {
+                Exp3.Visible = true;
+            }
+            else
+            {
+                Exp3.Visible = false;
+            }
+            if (HdnEXP4.Value != "" && HdnEXP4.Value != null)
+            {
+                Exp4.Visible = true;
+            }
+            else
+            {
+                Exp4.Visible = false;
+            }
+            if (HdnEXP5.Value != "" && HdnEXP5.Value != null)
+            {
+                Exp5.Visible = true;
+            }
+            else
+            {
+                Exp5.Visible = false;
+            }
+            if (HdnEXP6.Value != "" && HdnEXP6.Value != null)
+            {
+                Exp6.Visible = true;
+            }
+            else
+            {
+                Exp6.Visible = false;
+            }
+            if (HdnEXP7.Value != "" && HdnEXP7.Value != null)
+            {
+                Exp7.Visible = true;
+            }
+            else
+            {
+                Exp7.Visible = false;
+            }
+            if (HdnEXP8.Value != "" && HdnEXP8.Value != null)
+            {
+                Exp8.Visible = true;
+            }
+            else
+            {
+                Exp8.Visible = false;
+            }
+            if (HdnEXP9.Value != "" && HdnEXP9.Value != null)
+            {
+                Exp9.Visible = true;
+            }
+            else
+            {
+                Exp9.Visible = false;
+            }
+            #endregion
         }
         protected void btnLogout_Click(object sender, EventArgs e)
         {
@@ -114,14 +278,14 @@ namespace CEIHaryana.UserPages
                 return null;
             }
             // Ensure directory exists
-            string directoryPath = Server.MapPath($"~/Attachment/{TempUniqueId}/{CreatedBy}/");
+            string directoryPath = Server.MapPath($"~/Attachment/License_Documents/{TempUniqueId}/{CreatedBy}/");
             if (!Directory.Exists(directoryPath))
             {
                 Directory.CreateDirectory(directoryPath);
             }
             // Generate file path and name
             fileName = $"{DocumentNametoSave}_{DateTime.Now:yyyyMMddHHmmssFFF}.pdf";
-            dbPath = $"/Attachment/{TempUniqueId}/{CreatedBy}/{fileName}";
+            dbPath = $"/Attachment/License_Documents/{TempUniqueId}/{CreatedBy}/{fileName}";
             fullPath = Path.Combine(directoryPath, fileName);
 
             // Save the uploaded file to the server folder
@@ -373,70 +537,70 @@ namespace CEIHaryana.UserPages
                 }
             }
         }
-        protected void Button5_Click(object sender, EventArgs e)
-        {
-            if (IsSessionValid())
-            {
-                string Result = SaveDocumentWithTransaction_IfZipOrPdf(FileUpload5, Button5, 41, lnkbtn_Delete5, lnkbtn_Save5, "Degree/Diploma in Electrical Engineering/Electrical and Electronics Engineering or its equivalent", null, null);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document5.Value = "1";
-                    lnkbtn_Delete5.Visible = true;
-                    lnkbtn_Save5.Visible = true;
-                    text5.Visible = false;
-                }
-            }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
-        protected void lnkbtn_Delete5_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete5, lnkbtn_Save5, FileUpload5, Button5);
-                if (IsDelete)
-                {
-                    HdnField_Document5.Value = "0";
-                    text5.Visible = true;
-                }
-            }
-        }
-        protected void Button6_Click(object sender, EventArgs e)
-        {
-            if (IsSessionValid())
-            {
-                string Result = SaveDocumentWithTransaction(FileUpload6, Button6, 35, lnkbtn_Delete6, lnkbtn_Save6, "Experience Certificate", null, null);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document6.Value = "1";
-                    lnkbtn_Delete6.Visible = true;
-                    lnkbtn_Save6.Visible = true;
-                    text6.Visible = false;
-                }
-            }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
-        protected void lnkbtn_Delete6_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete6, lnkbtn_Save6, FileUpload6, Button6);
-                if (IsDelete)
-                {
-                    HdnField_Document6.Value = "0";
-                    text6.Visible = true;
-                }
-            }
-        }
+        ////protected void Button5_Click(object sender, EventArgs e)
+        ////{
+        ////    if (IsSessionValid())
+        ////    {
+        ////        string Result = SaveDocumentWithTransaction_IfZipOrPdf(FileUpload5, Button5, 41, lnkbtn_Delete5, lnkbtn_Save5, "Degree/Diploma in Electrical Engineering/Electrical and Electronics Engineering or its equivalent", null, null);
+        ////        if (Result != null && Result != "")
+        ////        {
+        ////            HdnField_Document5.Value = "1";
+        ////            lnkbtn_Delete5.Visible = true;
+        ////            lnkbtn_Save5.Visible = true;
+        ////            text5.Visible = false;
+        ////        }
+        ////    }
+        ////    else
+        ////    {
+        ////        Response.Redirect("/LogOut.aspx", false);
+        ////    }
+        ////}
+        ////protected void lnkbtn_Delete5_Click(object sender, EventArgs e)
+        ////{
+        ////    LinkButton btn = (LinkButton)sender;
+        ////    int fileId = Convert.ToInt32(btn.CommandArgument);
+        ////    if (fileId != 0)
+        ////    {
+        ////        bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete5, lnkbtn_Save5, FileUpload5, Button5);
+        ////        if (IsDelete)
+        ////        {
+        ////            HdnField_Document5.Value = "0";
+        ////            text5.Visible = true;
+        ////        }
+        ////    }
+        ////}
+        ////protected void Button6_Click(object sender, EventArgs e)
+        ////{
+        ////    if (IsSessionValid())
+        ////    {
+        ////        string Result = SaveDocumentWithTransaction(FileUpload6, Button6, 35, lnkbtn_Delete6, lnkbtn_Save6, "Experience Certificate", null, null);
+        ////        if (Result != null && Result != "")
+        ////        {
+        ////            HdnField_Document6.Value = "1";
+        ////            lnkbtn_Delete6.Visible = true;
+        ////            lnkbtn_Save6.Visible = true;
+        ////            text6.Visible = false;
+        ////        }
+        ////    }
+        ////    else
+        ////    {
+        ////        Response.Redirect("/LogOut.aspx", false);
+        ////    }
+        ////}
+        ////protected void lnkbtn_Delete6_Click(object sender, EventArgs e)
+        ////{
+        ////    LinkButton btn = (LinkButton)sender;
+        ////    int fileId = Convert.ToInt32(btn.CommandArgument);
+        ////    if (fileId != 0)
+        ////    {
+        ////        bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete6, lnkbtn_Save6, FileUpload6, Button6);
+        ////        if (IsDelete)
+        ////        {
+        ////            HdnField_Document6.Value = "0";
+        ////            text6.Visible = true;
+        ////        }
+        ////    }
+        ////}
         protected void Button8_Click(object sender, EventArgs e)
         {
             if (IsSessionValid())
@@ -590,8 +754,8 @@ namespace CEIHaryana.UserPages
                         if (HdnField_Document2.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Matriculation certificate indicating date of birth.<br>"; }
                         if (HdnField_Document3.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Residence Proof.<br>"; }
                         if (HdnField_Document4.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Identity Proof.<br>"; }
-                        if (HdnField_Document5.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Degree/Diploma in Electrical Engineering/Electrical and Electronics Engineering or its equivalent.<br>"; }
-                        if (HdnField_Document6.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
+                        ////if (HdnField_Document5.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Degree/Diploma in Electrical Engineering/Electrical and Electronics Engineering or its equivalent.<br>"; }
+                        ////if (HdnField_Document6.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
                         if (Convert.ToString(Hdn_medicalcertificatevisible.Value) == "yes" && Convert.ToString(Hdn_medicalcertificatevisible.Value) != "")
                         {
                             if (HdnField_Document8.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Medical fitness certificate (for age > 55).<br>"; }
@@ -663,7 +827,7 @@ namespace CEIHaryana.UserPages
             }
 
             // Ensure directory exists
-            string directoryPath = Server.MapPath($"~/Attachment/{TempUniqueId}/{CreatedBy}/");
+            string directoryPath = Server.MapPath($"~/Attachment/License_Documents/{TempUniqueId}/{CreatedBy}/");
             if (!Directory.Exists(directoryPath))
             {
                 Directory.CreateDirectory(directoryPath);
@@ -672,7 +836,7 @@ namespace CEIHaryana.UserPages
             // Get extension and generate file name accordingly
             string extension = Path.GetExtension(fileUpload.FileName).ToLower();
             fileName = $"{DocumentNametoSave}_{DateTime.Now:yyyyMMddHHmmssFFF}{extension}";
-            dbPath = $"/Attachment/{TempUniqueId}/{CreatedBy}/{fileName}";
+            dbPath = $"/Attachment/License_Documents/{TempUniqueId}/{CreatedBy}/{fileName}";
             fullPath = Path.Combine(directoryPath, fileName);
 
             // Save image file
@@ -793,97 +957,6 @@ namespace CEIHaryana.UserPages
             }
         }
 
-        private string SaveDocumentWithTransaction_IfZipOrPdf(FileUpload fileUpload, Button uploadbutton, int DocumentId, LinkButton deleteButton, LinkButton tickButton, string documentName, string Utrn, string challandate)
-        {
-            string fileName = "";
-            string dbPath = "";
-            string fullPath = "";
-
-            string CreatedBy = Convert.ToString(HdnUserId.Value);
-            long TempUniqueId = (long)Session["TempUniqueId"];
-            string DocumentNametoSave = documentName.Replace(" ", "_").Replace("/", "_");
-
-            // Validate .zip or .pdf files (Max 5MB)
-            if (!fileUpload.HasFile || !IsValidZipOrPdf(fileUpload))
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
-                    "alert('Please upload a valid .zip or .pdf file (Max: 5MB)');", true);
-                fileUpload.Focus();
-                return null;
-            }
-
-            // Get file extension and build file name
-            string extension = Path.GetExtension(fileUpload.FileName).ToLower();
-            fileName = $"{DocumentNametoSave}_{DateTime.Now:yyyyMMddHHmmssFFF}{extension}";
-
-            // Build server path and save file
-            string directoryPath = Server.MapPath($"~/Attachment/{TempUniqueId}/{CreatedBy}/");
-            if (!Directory.Exists(directoryPath))
-            {
-                Directory.CreateDirectory(directoryPath);
-            }
-
-            dbPath = $"/Attachment/{TempUniqueId}/{CreatedBy}/{fileName}";
-            fullPath = Path.Combine(directoryPath, fileName);
-            fileUpload.SaveAs(fullPath);
-
-            // Save record in DB with transaction
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
-            {
-                SqlTransaction transaction = null;
-                try
-                {
-                    connection.Open();
-                    transaction = connection.BeginTransaction();
-
-                    string documentId = CEI.InsertDocumentOfNewUserApplication(
-                        TempUniqueId, documentName, DocumentId, fileName, dbPath, Utrn, challandate, CreatedBy, transaction
-                    );
-
-                    if (!string.IsNullOrEmpty(documentId))
-                    {
-                        deleteButton.CommandArgument = documentId;
-                        fileUpload.Visible = false;
-                        uploadbutton.Visible = false;
-                        deleteButton.Visible = true;
-                        tickButton.Visible = true;
-
-                        transaction.Commit();
-                        return documentId;
-                    }
-                    else
-                    {
-                        transaction.Rollback();
-                        return null;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    transaction?.Rollback();
-                    string errorMessage = ex.Message.Replace("'", "\\'");
-                    ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
-                    return null;
-                }
-                finally
-                {
-                    transaction?.Dispose();
-                    connection.Close();
-                }
-            }
-        }
-
-        private bool IsValidZipOrPdf(FileUpload fileUpload)
-        {
-            string[] allowedExtensions = { ".zip", ".pdf" };
-            string extension = Path.GetExtension(fileUpload.FileName).ToLower();
-
-            if (!allowedExtensions.Contains(extension))
-                return false;
-
-            int maxFileSizeBytes = 5 * 1024 * 1024; // 5MB
-            return fileUpload.PostedFile.ContentLength <= maxFileSizeBytes;
-        }
-
         protected void btnBack_Click(object sender, EventArgs e)
         {
             if (Convert.ToString(HdnUserId.Value) != null && Convert.ToString(HdnUserId.Value) != "")
@@ -915,5 +988,487 @@ namespace CEIHaryana.UserPages
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('There is an issue in Edit!!!')", true);
             }
         }
+
+        protected void Button15_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload15, Button15, 45, lnkbtn_Delete15, lnkbtn_Save15, "Certificate or Diploma in Wireman,Linemen & Electrician", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document15.Value = "1";
+                    lnkbtn_Delete15.Visible = true;
+                    lnkbtn_Save15.Visible = true;
+                    text15.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void Button16_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload16, Button16, 46, lnkbtn_Delete16, lnkbtn_Save16, "Diploma Certificate", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document16.Value = "1";
+                    lnkbtn_Delete16.Visible = true;
+                    lnkbtn_Save16.Visible = true;
+                    text16.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void Button17_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload17, Button17, 47, lnkbtn_Delete17, lnkbtn_Save17, "Degree Certificate", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document17.Value = "1";
+                    lnkbtn_Delete17.Visible = true;
+                    lnkbtn_Save17.Visible = true;
+                    text17.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void Button18_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload18, Button18, 48, lnkbtn_Delete18, lnkbtn_Save18, "Master Degree Certificate", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document18.Value = "1";
+                    lnkbtn_Delete18.Visible = true;
+                    lnkbtn_Save18.Visible = true;
+                    text18.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+       
+        #region Upload experience document
+
+        protected void Button19_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload19, Button19, 35, lnkbtn_Delete19, lnkbtn_Save19, "Exp. Certificate of " + LblExp.Text, null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document19.Value = "1";
+                    lnkbtn_Delete19.Visible = true;
+                    lnkbtn_Save19.Visible = true;
+                    text19.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void Button20_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload20, Button20, 35, lnkbtn_Delete20, lnkbtn_Save20, "Exp. Certificate of " + LblExp1.Text, null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document20.Value = "1";
+                    lnkbtn_Delete20.Visible = true;
+                    lnkbtn_Save20.Visible = true;
+                    text20.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void Button21_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload21, Button21, 35, lnkbtn_Delete21, lnkbtn_Save21, "Exp. Certificate of " + LblExp2.Text, null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document21.Value = "1";
+                    lnkbtn_Delete21.Visible = true;
+                    lnkbtn_Save21.Visible = true;
+                    text21.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void Button22_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload22, Button22, 35, lnkbtn_Delete22, lnkbtn_Save22, "Exp. Certificate of " + LblExp3.Text, null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document22.Value = "1";
+                    lnkbtn_Delete22.Visible = true;
+                    lnkbtn_Save22.Visible = true;
+                    text22.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void Button23_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload23, Button23, 35, lnkbtn_Delete23, lnkbtn_Save23, "Exp. Certificate of " + LblExp4.Text, null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document23.Value = "1";
+                    lnkbtn_Delete23.Visible = true;
+                    lnkbtn_Save23.Visible = true;
+                    text23.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void Button24_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload24, Button24, 35, lnkbtn_Delete24, lnkbtn_Save24, "Exp. Certificate of " + LblExp5.Text, null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document24.Value = "1";
+                    lnkbtn_Delete24.Visible = true;
+                    lnkbtn_Save24.Visible = true;
+                    text24.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void Button25_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload25, Button25, 35, lnkbtn_Delete25, lnkbtn_Save25, "Exp. Certificate of " + LblExp6.Text, null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document25.Value = "1";
+                    lnkbtn_Delete25.Visible = true;
+                    lnkbtn_Save25.Visible = true;
+                    text25.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void Button26_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload26, Button26, 35, lnkbtn_Delete26, lnkbtn_Save26, "Exp. Certificate of " + LblExp7.Text, null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document26.Value = "1";
+                    lnkbtn_Delete26.Visible = true;
+                    lnkbtn_Save26.Visible = true;
+                    text26.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void Button27_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload27, Button27, 35, lnkbtn_Delete27, lnkbtn_Save27, "Exp. Certificate of " + LblExp8.Text, null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document27.Value = "1";
+                    lnkbtn_Delete27.Visible = true;
+                    lnkbtn_Save27.Visible = true;
+                    text27.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void Button28_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload28, Button28, 35, lnkbtn_Delete28, lnkbtn_Save28, "Exp. Certificate of " + LblExp9.Text, null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document28.Value = "1";
+                    lnkbtn_Delete28.Visible = true;
+                    lnkbtn_Save28.Visible = true;
+                    text28.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+        #endregion
+        protected void lnkbtn_Delete15_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete15, lnkbtn_Save15, FileUpload15, Button15);
+                if (IsDelete)
+                {
+                    HdnField_Document15.Value = "0";
+                    text15.Visible = true;
+                }
+            }
+        }
+
+        protected void lnkbtn_Delete16_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete16, lnkbtn_Save16, FileUpload16, Button16);
+                if (IsDelete)
+                {
+                    HdnField_Document16.Value = "0";
+                    text16.Visible = true;
+                }
+            }
+        }
+
+        protected void lnkbtn_Delete17_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete17, lnkbtn_Save17, FileUpload17, Button17);
+                if (IsDelete)
+                {
+                    HdnField_Document17.Value = "0";
+                    text17.Visible = true;
+                }
+            }
+        }
+
+        protected void lnkbtn_Delete18_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete18, lnkbtn_Save18, FileUpload18, Button18);
+                if (IsDelete)
+                {
+                    HdnField_Document18.Value = "0";
+                    text18.Visible = true;
+                }
+            }
+        }
+
+        #region Delete experience Documents
+
+        protected void lnkbtn_Delete19_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete19, lnkbtn_Save19, FileUpload19, Button19);
+                if (IsDelete)
+                {
+                    HdnField_Document19.Value = "0";
+                    text19.Visible = true;
+                }
+            }
+        }
+
+        protected void lnkbtn_Delete20_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete20, lnkbtn_Save20, FileUpload20, Button20);
+                if (IsDelete)
+                {
+                    HdnField_Document20.Value = "0";
+                    text20.Visible = true;
+                }
+            }
+        }
+
+        protected void lnkbtn_Delete21_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete21, lnkbtn_Save21, FileUpload21, Button21);
+                if (IsDelete)
+                {
+                    HdnField_Document21.Value = "0";
+                    text21.Visible = true;
+                }
+            }
+        }
+
+        protected void lnkbtn_Delete22_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete22, lnkbtn_Save22, FileUpload22, Button22);
+                if (IsDelete)
+                {
+                    HdnField_Document22.Value = "0";
+                    text22.Visible = true;
+                }
+            }
+        }
+
+        protected void lnkbtn_Delete23_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete23, lnkbtn_Save23, FileUpload23, Button23);
+                if (IsDelete)
+                {
+                    HdnField_Document23.Value = "0";
+                    text23.Visible = true;
+                }
+            }
+        }
+
+        protected void lnkbtn_Delete24_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete24, lnkbtn_Save24, FileUpload24, Button24);
+                if (IsDelete)
+                {
+                    HdnField_Document24.Value = "0";
+                    text24.Visible = true;
+                }
+            }
+        }
+
+        protected void lnkbtn_Delete25_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete25, lnkbtn_Save25, FileUpload25, Button25);
+                if (IsDelete)
+                {
+                    HdnField_Document25.Value = "0";
+                    text25.Visible = true;
+                }
+            }
+        }
+
+        protected void lnkbtn_Delete26_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete26, lnkbtn_Save26, FileUpload26, Button26);
+                if (IsDelete)
+                {
+                    HdnField_Document26.Value = "0";
+                    text26.Visible = true;
+                }
+            }
+        }
+
+        protected void lnkbtn_Delete27_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete27, lnkbtn_Save27, FileUpload27, Button27);
+                if (IsDelete)
+                {
+                    HdnField_Document27.Value = "0";
+                    text27.Visible = true;
+                }
+            }
+        }
+
+        protected void lnkbtn_Delete28_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete28, lnkbtn_Save28, FileUpload28, Button28);
+                if (IsDelete)
+                {
+                    HdnField_Document28.Value = "0";
+                    text28.Visible = true;
+                }
+            }
+        }
+        #endregion
     }
 }

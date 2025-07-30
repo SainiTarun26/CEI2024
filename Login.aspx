@@ -472,7 +472,7 @@
                                         </a>
                                     </li>
                                     <li>
-    <a href="/UserPages/Registration.aspx" target="_blank">For New Licence
+    <a href="/UserPages/Instructions.aspx" target="_blank">For New Licence
     </a>
 </li>
                                 </ul>

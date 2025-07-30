@@ -41,8 +41,8 @@
             height: 100px;
             width: 100px;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0
-        }  
-    </style>    
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -146,7 +146,7 @@
                                 (Please read the instructions carefully as given in Instruction
                             Page before filling the form)                           
                             </p>
-                            <img src="/Assets/Personal_data.jpg" alt="NO IMAGE FOUND" style="margin-left: 17%; width: 66%; height: ; 45px;" />
+                            <%--  <img src="/Assets/Personal_data.jpg" alt="NO IMAGE FOUND" style="margin-left: 17%; width: 66%; height: ; 45px;" />--%>
                         </div>
                     </div>
                     <div class="row">
@@ -161,40 +161,54 @@
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        <div class="col-md-4">
-                                                            <div class="forms-sample">
-                                                                <div class="form-group">
-                                                                    <ol type="1">
-                                                                        <li>Instructions 1</li>
-                                                                        <li>Instructions 1</li>
-                                                                        <li>Instructions 1</li>
-                                                                        <li>Instructions 1</li>
-                                                                        <li>Instructions 1</li>
-                                                                        <li>Instructions 1</li>
-                                                                        <li>Instructions 1</li>
-                                                                        <li>Instructions 1</li>
-                                                                        <li>Instructions 1</li>
-                                                                        <li>Instructions 1</li>
-                                                                    </ol>
-                                                                </div>
+                                                        <div class="col-md-12 text-center">
+                                                            <h4 class="card-title">Instructions</h4>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <ul>
+                                                                <li>How to Apply </li>
+                                                                <li>Fee Details </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <div class="row" style="margin-left: 5px;">
+                                                        <div class="col-md-12">
+                                                            <div class="form-check">
+                                                                <asp:CheckBox ID="chkDeclaration" runat="server" CssClass="form-check-input" Style="padding: 0px 4px 15px 1px !important; border: 0px solid black !important; margin-top: .1em !important;" />
+                                                                <label class="form-check-label" for="<%= chkDeclaration.ClientID %>" style="margin-left: 0px;">
+                                                                    I agree to all terms and Conditions given Above.
+                                                                </label>
                                                             </div>
-                                                            <br />                                                          
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="margin-top: 15px;">
+                                                        <div class="col-md-6">
+                                                        </div>
+                                                        <div class="col-md-6" style="text-align: end;">
+                                                            <asp:Button type="button" ValidationGroup="Submit" ID="btnNext" Text="Next" OnClick="btnNext_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                            </div>
                                         </div>
-                                        <br />
-                                        <br />
-                                        <br />
+                                        <div class="row">
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-1"></div>
                     </div>
+                    <div class="col-md-1"></div>
                 </div>
             </section>
             <!-- End About Section -->

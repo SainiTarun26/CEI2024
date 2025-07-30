@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="/css/vertical-layout-light/style.css" />
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
         .table-bordered > :not(caption) > * {
             border-width: none !important;
@@ -354,9 +354,10 @@
             display: inline-block;
             margin-bottom: 1rem;
         }
+
         input {
-    margin-top: 10px;
-}
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -511,11 +512,75 @@
                                                                 <i class="fa fa-times"></i> </asp:LinkButton>
                                                             </td>
                                                         </tr>
+                                                        <tr id="CertificateOrDiploma" runat="server" visible="false">
+                                                            <td style="">Upload Certificate or Diploma in Wireman,Linemen & Electrician.(<span style="color: red;">★</span>)
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <text style="color: red; font-size: 12px;" id="text15" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <asp:FileUpload ID="FileUpload15" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="FileUpload15" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:LinkButton ID="lnkbtn_Save15" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Button ID="Button15" runat="server" Text="Upload" OnClick="Button15_Click" class="btn btn-primary" />
+                                                                <asp:LinkButton ID="lnkbtn_Delete15" OnClick="lnkbtn_Delete15_Click" runat="server" Visible="false" CssClass="btn btn-danger">
+     <i class="fa fa-times"></i> </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="Diploma" runat="server" visible="false">
+                                                            <td style="">Upload your Diploma certificate.(<span style="color: red;">★</span>)
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <text style="color: red; font-size: 12px;" id="text16" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <asp:FileUpload ID="FileUpload16" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="FileUpload16" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:LinkButton ID="lnkbtn_Save16" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Button ID="Button16" runat="server" Text="Upload" OnClick="Button16_Click" class="btn btn-primary" />
+                                                                <asp:LinkButton ID="lnkbtn_Delete16" OnClick="lnkbtn_Delete16_Click" runat="server" Visible="false" CssClass="btn btn-danger">
+     <i class="fa fa-times"></i> </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="Degree" runat="server" visible="false">
+                                                            <td style="">Upload your Degree certificate.(<span style="color: red;">★</span>)
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <text style="color: red; font-size: 12px;" id="text17" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <asp:FileUpload ID="FileUpload17" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="FileUpload17" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:LinkButton ID="lnkbtn_Save17" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Button ID="Button17" runat="server" Text="Upload" OnClick="Button17_Click" class="btn btn-primary" />
+                                                                <asp:LinkButton ID="lnkbtn_Delete17" OnClick="lnkbtn_Delete17_Click" runat="server" Visible="false" CssClass="btn btn-danger">
+     <i class="fa fa-times"></i> </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="MasterDegree" runat="server" visible="false">
+                                                            <td style="">Upload your Master Degree certificate.(<span style="color: red;">★</span>)
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <text style="color: red; font-size: 12px;" id="text18" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <asp:FileUpload ID="FileUpload18" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="FileUpload18" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:LinkButton ID="lnkbtn_Save18" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Button ID="Button18" runat="server" Text="Upload" OnClick="Button18_Click" class="btn btn-primary" />
+                                                                <asp:LinkButton ID="lnkbtn_Delete18" OnClick="lnkbtn_Delete18_Click" runat="server" Visible="false" CssClass="btn btn-danger">
+     <i class="fa fa-times"></i> </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
                                                         <tr>
                                                             <td style="">Residence Proof.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td style="text-align: center;">
-                                                                <text style="color: red; font-size: 12px;"  id="text3" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;" id="text3" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload3" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="FileUpload3" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 <asp:LinkButton ID="lnkbtn_Save3" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success">
@@ -530,7 +595,7 @@
                                                         </tr>
                                                         <tr>
                                                             <%--<td style="">ID Proof.(<span style="color: red;">★</span>)</td>--%>
-                                                             <td style="text-align: justify;">Which Id proof you want to Upload(<span style="color: red;">★</span>)<br />
+                                                            <td style="text-align: justify;">Which Id proof you want to Upload(<span style="color: red;">★</span>)<br />
                                                                 <asp:DropDownList class="select-form" Style="border: 1px solid #ced4da; border-radius: 5px; width: 30%; height: 32px; margin-top: 15px;"
                                                                     ID="ddlIdproof" runat="server" TabIndex="4">
                                                                     <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -541,7 +606,7 @@
                                                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ddlIdproof" InitialValue="0" ValidationGroup="Submit" ForeColor="Red">Please select Id proof</asp:RequiredFieldValidator>
                                                             </td>
                                                             <td style="text-align: center;">
-                                                                <text style="color: red; font-size: 12px;"  id="text4" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;" id="text4" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload4" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="FileUpload4" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 <asp:LinkButton ID="lnkbtn_Save4" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success">
@@ -554,44 +619,7 @@
                                                                 <i class="fa fa-times"></i> </asp:LinkButton>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td style="">
-                                                                <p>
-                                                                    Degree/Diploma in Electrical Engineering/Electrical<br />
-                                                                    and Electronics Engineering or its equivalent.(<span style="color: red;">★</span>)
-                                                                </p>
-                                                            </td>
-                                                            <td style="text-align: center;">
-                                                                <text style="color: red; font-size: 12px;"  id="text5" runat="server" visible="true">Upload Only PDF, ZIP File not more than 1mb.</text>
-                                                                <asp:FileUpload ID="FileUpload5" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".zip,.pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="FileUpload5" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:LinkButton ID="lnkbtn_Save5" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success">
-                                                                <i class="fa fa-check"></i>  
-                                                                </asp:LinkButton>
-                                                            </td>
-                                                            <td>
-                                                                <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete5" OnClick="lnkbtn_Delete5_Click" Visible="false" runat="server" CssClass="btn btn-danger">
-                                                                <i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="">Experience Certificate.(<span style="color: red;">★</span>)
-                                                            </td>
-                                                            <td style="text-align: center;">
-                                                                <text style="color: red; font-size: 12px;"  id="text6" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
-                                                                <asp:FileUpload ID="FileUpload6" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="FileUpload6" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:LinkButton ID="lnkbtn_Save6" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success">
-                                                                <i class="fa fa-check"></i>  
-                                                                </asp:LinkButton>
-                                                            </td>
-                                                            <td>
-                                                                <asp:Button ID="Button6" runat="server" OnClick="Button6_Click" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete6" OnClick="lnkbtn_Delete6_Click" Visible="false" runat="server" CssClass="btn btn-danger">
-                                                                <i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>
+                                                      
                                                         <tr id="Medicalfitness" runat="server" visible="false">
                                                             <td style="">
                                                                 <p>
@@ -601,7 +629,7 @@
                                                                 of age on the date of submission of application.(<span style="color: red;">★</span>)
                                                             </td>
                                                             <td style="text-align: center;">
-                                                                <text style="color: red; font-size: 12px;"  id="text8" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;" id="text8" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload8" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="FileUpload8" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 <asp:LinkButton ID="lnkbtn_Save8" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"> <i class="fa fa-check"></i>  
@@ -634,7 +662,7 @@
                                                                 </p>
                                                             </td>
                                                             <td style="text-align: center;">
-                                                                <text style="color: red; font-size: 12px;"  id="text10" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;" id="text10" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload10" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="FileUpload10" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 <asp:LinkButton ID="lnkbtn_Save10" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
@@ -645,6 +673,162 @@
                                                                 <asp:LinkButton ID="lnkbtn_Delete10" OnClick="lnkbtn_Delete10_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
                                                             </td>
                                                         </tr>
+
+
+                                                        <tr id="Exp" runat="server" visible="false">
+                                                            <td>Upload Exp. Certificate of
+                                                                <asp:Label ID="LblExp" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <text style="color: red; font-size: 12px;" id="text19" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <asp:FileUpload ID="FileUpload19" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="FileUpload19" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:LinkButton ID="lnkbtn_Save19" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Button ID="Button19" runat="server" Text="Upload" OnClick="Button19_Click" class="btn btn-primary" />
+                                                                <asp:LinkButton ID="lnkbtn_Delete19" OnClick="lnkbtn_Delete19_Click" runat="server" Visible="false" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="Exp1" runat="server" visible="false">
+                                                            <td>Upload Exp. Certificate of
+                                                                <asp:Label ID="LblExp1" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td style="text-align: center;">
+                                                                <text style="color: red; font-size: 12px;" id="text20" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <asp:FileUpload ID="FileUpload20" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="FileUpload20" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:LinkButton ID="lnkbtn_Save20" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Button ID="Button20" runat="server" Text="Upload" OnClick="Button20_Click" class="btn btn-primary" />
+                                                                <asp:LinkButton ID="lnkbtn_Delete20" OnClick="lnkbtn_Delete20_Click" runat="server" Visible="false" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="Exp2" runat="server" visible="false">
+                                                            <td style="">Upload Exp. Certificate of
+                                                                <asp:Label ID="LblExp2" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td style="text-align: center;">
+                                                                <text style="color: red; font-size: 12px;" id="text21" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <asp:FileUpload ID="FileUpload21" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="FileUpload21" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:LinkButton ID="lnkbtn_Save21" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Button ID="Button21" runat="server" Text="Upload" OnClick="Button21_Click" class="btn btn-primary" />
+                                                                <asp:LinkButton ID="lnkbtn_Delete21" OnClick="lnkbtn_Delete21_Click" runat="server" Visible="false" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="Exp3" runat="server" visible="false">
+                                                            <td>Upload Exp. Certificate of
+                                                                <asp:Label ID="LblExp3" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td style="text-align: center;">
+                                                                <text style="color: red; font-size: 12px;" id="text22" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <asp:FileUpload ID="FileUpload22" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="FileUpload22" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:LinkButton ID="lnkbtn_Save22" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Button ID="Button22" runat="server" Text="Upload" OnClick="Button22_Click" class="btn btn-primary" />
+                                                                <asp:LinkButton ID="lnkbtn_Delete22" OnClick="lnkbtn_Delete22_Click" runat="server" Visible="false" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="Exp4" runat="server" visible="false">
+                                                            <td>Upload Exp. Certificate of
+                                                                <asp:Label ID="LblExp4" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td style="text-align: center;">
+                                                                <text style="color: red; font-size: 12px;" id="text23" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <asp:FileUpload ID="FileUpload23" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="FileUpload23" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:LinkButton ID="lnkbtn_Save23" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Button ID="Button23" runat="server" Text="Upload" OnClick="Button23_Click" class="btn btn-primary" />
+                                                                <asp:LinkButton ID="lnkbtn_Delete23" OnClick="lnkbtn_Delete23_Click" runat="server" Visible="false" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="Exp5" runat="server" visible="false">
+                                                            <td>Upload Exp. Certificate of
+                                                                <asp:Label ID="LblExp5" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td style="text-align: center;">
+                                                                <text style="color: red; font-size: 12px;" id="text24" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <asp:FileUpload ID="FileUpload24" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="FileUpload24" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:LinkButton ID="lnkbtn_Save24" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Button ID="Button24" runat="server" Text="Upload" OnClick="Button24_Click" class="btn btn-primary" />
+                                                                <asp:LinkButton ID="lnkbtn_Delete24" OnClick="lnkbtn_Delete24_Click" runat="server" Visible="false" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="Exp6" runat="server" visible="false">
+                                                            <td>Upload Exp. Certificate of
+                                                                <asp:Label ID="LblExp6" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td style="text-align: center;">
+                                                                <text style="color: red; font-size: 12px;" id="text25" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <asp:FileUpload ID="FileUpload25" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="FileUpload25" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:LinkButton ID="lnkbtn_Save25" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Button ID="Button25" runat="server" Text="Upload" OnClick="Button25_Click" class="btn btn-primary" />
+                                                                <asp:LinkButton ID="lnkbtn_Delete25" OnClick="lnkbtn_Delete25_Click" runat="server" Visible="false" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="Exp7" runat="server" visible="false">
+                                                            <td>Upload Exp. Certificate of
+                                                                <asp:Label ID="LblExp7" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td style="text-align: center;">
+                                                                <text style="color: red; font-size: 12px;" id="text26" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <asp:FileUpload ID="FileUpload26" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="FileUpload26" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:LinkButton ID="lnkbtn_Save26" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Button ID="Button26" runat="server" Text="Upload" OnClick="Button26_Click" class="btn btn-primary" />
+                                                                <asp:LinkButton ID="lnkbtn_Delete26" OnClick="lnkbtn_Delete26_Click" runat="server" Visible="false" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="Exp8" runat="server" visible="false">
+                                                            <td>Upload Exp. Certificate of
+                                                                <asp:Label ID="LblExp8" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td style="text-align: center;">
+                                                                <text style="color: red; font-size: 12px;" id="text27" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <asp:FileUpload ID="FileUpload27" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="FileUpload27" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:LinkButton ID="lnkbtn_Save27" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Button ID="Button27" runat="server" Text="Upload" OnClick="Button27_Click" class="btn btn-primary" />
+                                                                <asp:LinkButton ID="lnkbtn_Delete27" OnClick="lnkbtn_Delete27_Click" runat="server" Visible="false" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="Exp9" runat="server" visible="false">
+                                                            <td>Upload Exp. Certificate of
+                                                                <asp:Label ID="LblExp9" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td style="text-align: center;">
+                                                                <text style="color: red; font-size: 12px;" id="text28" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <asp:FileUpload ID="FileUpload28" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="FileUpload28" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:LinkButton ID="lnkbtn_Save28" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
+                                                                </asp:LinkButton>
+                                                            </td>
+                                                            <td>
+                                                                <asp:Button ID="Button28" runat="server" Text="Upload" OnClick="Button28_Click" class="btn btn-primary" />
+                                                                <asp:LinkButton ID="lnkbtn_Delete28" OnClick="lnkbtn_Delete28_Click" runat="server" Visible="false" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
+                                                            </td>
+                                                        </tr>
+
+
+
                                                         <tr>
                                                             <td style="text-align: justify; padding-top: 20px !important;">Copy of treasury challan of fees deposited in any treasury of Haryana.(<span style="color: red;">★</span>)
                                                                 <div class="row" style="margin-top: 15px; margin-bottom: 10px;">
@@ -669,7 +853,7 @@
                                                                 </div>
                                                             </td>
                                                             <td style="text-align: center;">
-                                                                <text style="color: red; font-size: 12px;"  id="text11" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;" id="text11" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload11" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="FileUpload11" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                 <asp:LinkButton ID="lnkbtn_Save11" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success">
@@ -688,8 +872,8 @@
                                                                     Upload Candidate Image<samp style="color: red">* </samp>
                                                                 </label>
                                                                 <asp:FileUpload ID="FileUpload12" runat="server" CssClass="form-control" Style="padding: 0px; font-size: 15px; height: 28px !important;" onchange="previewImage(this, 'imagePreview')" accept="image/*" />
-                                                                
-                                                                <text style="color: red; font-size: 12px;"  id="text12" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+
+                                                                <text style="color: red; font-size: 12px;" id="text12" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="FileUpload12" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                             </td>
                                                             <td style="text-align: center;">
@@ -708,8 +892,8 @@
                                                                     Upload Candidate Signature<samp style="color: red">* </samp>
                                                                 </label>
                                                                 <asp:FileUpload ID="FileUpload13" runat="server" CssClass="form-control" Style="padding: 0px; font-size: 15px; height: 28px !important;" onchange="previewImage(this, 'signaturePreview')" accept="image/*" />
-                                                                
-                                                                <text style="color: red; font-size: 12px;"  id="text13" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+
+                                                                <text style="color: red; font-size: 12px;" id="text13" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorSignature" runat="server" ControlToValidate="FileUpload13" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                             </td>
                                                             <td style="text-align: center;">
@@ -731,14 +915,13 @@
                                                     <asp:CheckBox ID="chkDeclaration" runat="server" CssClass="form-check-input" Style="padding: 0px 4px 15px 1px !important; border: 0px solid black !important; margin-top: .1em !important;" />
                                                     <label class="form-check-label" for="<%= chkDeclaration.ClientID %>" style="margin-left: 0px;">
                                                         I hereby declare that the information furnished in this application is correct, that all registers and books as prescribed under the licensing conditions of Haryana are being duly maintained, and that I am authorized to sign this application as the contractor or on behalf of the contractor.
-       
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row" style="margin-top: 15px;">
                                             <div class="col-md-6">
-                                                  <asp:Button type="button" ID="btnBack" Text="Back" Onclick="btnBack_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" /> 
+                                                <asp:Button type="button" ID="btnBack" Text="Back" OnClick="btnBack_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
                                             </div>
                                             <div class="col-md-6" style="text-align: end;">
                                                 <asp:Button type="button" ValidationGroup="Submit" ID="btnNext" Text="Next" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnNext_Click" />
@@ -751,6 +934,24 @@
                             <asp:HiddenField ID="Hdnretirment" runat="server" />
                             <asp:HiddenField ID="HdnUserId" runat="server" />
                             <asp:HiddenField ID="HdnUserType" runat="server" />
+
+                            <asp:HiddenField ID="HdnName12ITIDiploma" runat="server" />
+                            <asp:HiddenField ID="HdnNameofDiplomaDegree" runat="server" />
+                            <asp:HiddenField ID="HdnNameofDegree" runat="server" />
+                            <asp:HiddenField ID="HdnNameofMasters" runat="server" />
+
+                            <asp:HiddenField ID="HdnEXP" runat="server" />
+                            <asp:HiddenField ID="HdnEXP1" runat="server" />
+                            <asp:HiddenField ID="HdnEXP2" runat="server" />
+                            <asp:HiddenField ID="HdnEXP3" runat="server" />
+                            <asp:HiddenField ID="HdnEXP4" runat="server" />
+                            <asp:HiddenField ID="HdnEXP5" runat="server" />
+                            <asp:HiddenField ID="HdnEXP6" runat="server" />
+                            <asp:HiddenField ID="HdnEXP7" runat="server" />
+                            <asp:HiddenField ID="HdnEXP8" runat="server" />
+                            <asp:HiddenField ID="HdnEXP9" runat="server" />
+
+
                             <asp:HiddenField ID="HdnField_Document1" runat="server" />
                             <asp:HiddenField ID="HdnField_Document2" runat="server" />
                             <asp:HiddenField ID="HdnField_Document3" runat="server" />
@@ -767,6 +968,22 @@
                             <asp:HiddenField ID="Hdn_medicalcertificatevisible" runat="server" />
                             <asp:HiddenField ID="Hdn_retirementcertificatevisible" runat="server" />
                             <asp:HiddenField ID="Hdn_Apprenticecertificatevisible" runat="server" />
+                            <%-- <asp:HiddenField ID="HdnField_Document14" runat="server" />--%>
+                            <asp:HiddenField ID="HdnField_Document15" runat="server" />
+                            <asp:HiddenField ID="HdnField_Document16" runat="server" />
+                            <asp:HiddenField ID="HdnField_Document17" runat="server" />
+                            <asp:HiddenField ID="HdnField_Document18" runat="server" />
+
+                            <asp:HiddenField ID="HdnField_Document19" runat="server" />
+                            <asp:HiddenField ID="HdnField_Document20" runat="server" />
+                            <asp:HiddenField ID="HdnField_Document21" runat="server" />
+                            <asp:HiddenField ID="HdnField_Document22" runat="server" />
+                            <asp:HiddenField ID="HdnField_Document23" runat="server" />
+                            <asp:HiddenField ID="HdnField_Document24" runat="server" />
+                            <asp:HiddenField ID="HdnField_Document25" runat="server" />
+                            <asp:HiddenField ID="HdnField_Document26" runat="server" />
+                            <asp:HiddenField ID="HdnField_Document27" runat="server" />
+                            <asp:HiddenField ID="HdnField_Document28" runat="server" />
                         </div>
                         <div class="col-md-1"></div>
                     </div>
@@ -867,33 +1084,33 @@
         }
     </script>
 
-<script type="text/javascript">
-    function validateDate() {
-        var ClnDate = document.getElementById('<%=txtdate.ClientID %>');
-        debugger;
-        if (ClnDate.value) {
-            // Parse the yyyy-MM-dd value from the date input
-            var inputParts = ClnDate.value.split("-");
-            var year = parseInt(inputParts[0], 10);
-            var month = parseInt(inputParts[1], 10) - 1; // JS months are 0-based
-            var day = parseInt(inputParts[2], 10);
+    <script type="text/javascript">
+        function validateDate() {
+            var ClnDate = document.getElementById('<%=txtdate.ClientID %>');
+            debugger;
+            if (ClnDate.value) {
+                // Parse the yyyy-MM-dd value from the date input
+                var inputParts = ClnDate.value.split("-");
+                var year = parseInt(inputParts[0], 10);
+                var month = parseInt(inputParts[1], 10) - 1; // JS months are 0-based
+                var day = parseInt(inputParts[2], 10);
 
-            var ChallanDate = new Date(year, month, day);
-            ChallanDate.setHours(0, 0, 0, 0); // Remove time component
+                var ChallanDate = new Date(year, month, day);
+                ChallanDate.setHours(0, 0, 0, 0); // Remove time component
 
-            var today = new Date();
-            today.setHours(0, 0, 0, 0); // Remove time component
+                var today = new Date();
+                today.setHours(0, 0, 0, 0); // Remove time component
 
-            // Now allow today's date and past dates only
-            if (ChallanDate > today) {
-                alert('Challan Date cannot be a future date.');
-                ClnDate.value = '';
-                ClnDate.focus();
-                return false;
+                // Now allow today's date and past dates only
+                if (ChallanDate > today) {
+                    alert('Challan Date cannot be a future date.');
+                    ClnDate.value = '';
+                    ClnDate.focus();
+                    return false;
+                }
             }
         }
-    }
-</script>
+    </script>
 
 
 
