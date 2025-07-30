@@ -499,13 +499,34 @@
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtDivision" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-8">
                                         <label>
                                             Name of the Sub-Division
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtSubdivision" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                 </div>
+                                  <div class="row" style="margin-top: 15px;">
+                                           <div class="col-md-4">
+    <label>
+      Application Id
+    </label>
+    <asp:TextBox class="form-control" ID="txtApplicationID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+</div>
+                                      <div class="col-md-4">
+          <label>
+              Email Id
+          </label>
+          <asp:TextBox class="form-control" ID="txtEmailId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+      </div>
+                                       <div class="col-md-4">
+     <label>
+        Contact No.
+     </label>
+     <asp:TextBox class="form-control" ID="txtContact" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+ </div>
+                                     
+                                      </div>
                                 <div>
                                     <div class="card" id="grid" runat="server" visible="false" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
                                     </div>

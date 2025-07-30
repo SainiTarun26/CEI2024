@@ -944,7 +944,7 @@
                                             <asp:ListItem Text="Utility Regular Employee" Value="1"></asp:ListItem>
                                             <asp:ListItem Text="Utility Contractual employee" Value="2"></asp:ListItem>
                                             <asp:ListItem Text="Licensed Electrical Contractor Employee" Value="3"></asp:ListItem>
-                                            <asp:ListItem Text="Private Person" Value="3"></asp:ListItem>
+                                            <asp:ListItem Text="Private Person" Value="4"></asp:ListItem>
                                         </asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator16" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlPersonCategory" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="HumanSubmit" ForeColor="Red" />
                                     </div>

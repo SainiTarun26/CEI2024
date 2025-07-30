@@ -53,6 +53,10 @@ namespace CEIHaryana.Officers
                 ds = CEI.GetAccidentReportData(Accident_ID);
                 if (ds != null)
                 {
+                    txtApplicationID.Text = ds.Rows[0]["Id"].ToString();
+                    txtEmailId.Text = ds.Rows[0]["Email"].ToString();
+                    txtContact.Text = ds.Rows[0]["Mobile"].ToString();
+
                     txtUtility.Text = ds.Rows[0]["NameOfUtility"].ToString();
                     txtSubdivision.Text = ds.Rows[0]["NameOfSubDivision"].ToString();
                     txtZone.Text = ds.Rows[0]["NameofZone"].ToString();
