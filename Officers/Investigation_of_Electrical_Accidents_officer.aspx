@@ -449,7 +449,13 @@
                     <div class="row">
                         <div class="col-md-12" style="text-align: center;">
                             <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" ShowMessageBox="True" ShowSummary="true" />
-                            <h6 class="card-title fw-semibold mb-4" id="maincard" style="font-size: 22px;">INVESTIGATION OF ELECTRICAL ACCIDENTS
+                            <h6 class="card-title fw-semibold mb-2" id="maincard" style="font-size: 22px;">INVESTIGATION OF ELECTRICAL ACCIDENTS
+                            </h6>
+                            <h6 class="card-title fw-semibold" id="maincard" style="font-size: 22px;margin-bottom:0px !important;">
+                                <asp:Label ID="txtApplicationID" runat="server" Text="Label" style="font-size:14px;"></asp:Label>
+                            </h6>
+                            <h6 class="card-title fw-semibold" id="maincard" style="font-size: 22px;">
+                                <asp:Label ID="txtEmailId" runat="server" Text="Label" style="font-size:14px;"></asp:Label> / <asp:Label style="font-size:14px;" ID="txtContact" runat="server" Text="Label"></asp:Label>
                             </h6>
                         </div>
                     </div>
@@ -499,34 +505,14 @@
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtDivision" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
-                                    <div class="col-md-8">
+                                    <div class="col-md-4">
                                         <label>
                                             Name of the Sub-Division
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtSubdivision" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                     </div>
                                 </div>
-                                  <div class="row" style="margin-top: 15px;">
-                                           <div class="col-md-4">
-    <label>
-      Application Id
-    </label>
-    <asp:TextBox class="form-control" ID="txtApplicationID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-</div>
-                                      <div class="col-md-4">
-          <label>
-              Email Id
-          </label>
-          <asp:TextBox class="form-control" ID="txtEmailId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-      </div>
-                                       <div class="col-md-4">
-     <label>
-        Contact No.
-     </label>
-     <asp:TextBox class="form-control" ID="txtContact" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
- </div>
-                                     
-                                      </div>
+                                  
                                 <div>
                                     <div class="card" id="grid" runat="server" visible="false" style="padding: 15px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding-bottom: 30px;">
                                     </div>
