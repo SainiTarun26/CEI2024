@@ -272,6 +272,7 @@
     <Content Include="Admin\TotalRequestInspectionForAdmin.aspx" />
     <Content Include="Admin\TotalRequestInspectionForAdmin_SearchWithCafId.aspx" />
     <Content Include="Admin\TransferRequestReport.aspx" />
+    <Content Include="Admin\Transfer_Cinema_Inspections_ToDifferentStaff_ByAdmin.aspx" />
     <Content Include="Admin\Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx" />
     <Content Include="Admin\Transfer_Sld_ToDifferentStaff_ByAdmin.aspx" />
     <Content Include="Admin\UploadSignature.aspx" />
@@ -2624,6 +2625,13 @@
     </Compile>
     <Compile Include="Admin\TransferRequestReport.aspx.designer.cs">
       <DependentUpon>TransferRequestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Transfer_Cinema_Inspections_ToDifferentStaff_ByAdmin.aspx.cs">
+      <DependentUpon>Transfer_Cinema_Inspections_ToDifferentStaff_ByAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Transfer_Cinema_Inspections_ToDifferentStaff_ByAdmin.aspx.designer.cs">
+      <DependentUpon>Transfer_Cinema_Inspections_ToDifferentStaff_ByAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx.cs">
       <DependentUpon>Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx</DependentUpon>

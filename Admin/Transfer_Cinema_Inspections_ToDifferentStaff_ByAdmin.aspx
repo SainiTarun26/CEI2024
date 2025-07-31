@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx.cs" Inherits="CEIHaryana.Admin.Transfer_Inspections_ToDifferentStaff_ByAdmin" EnableViewState="true" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="Transfer_Cinema_Inspections_ToDifferentStaff_ByAdmin.aspx.cs" Inherits="CEIHaryana.Admin.Transfer_Cinema_Inspections_ToDifferentStaff_ByAdmin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -152,7 +152,7 @@
     <div class="content-wrapper">
         <div class="card-body" id="CardId" runat="server" style="background: white; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <div class="card-title" style="margin-bottom: 20px; margin-top: 05px; font-size: 17px; font-weight: 600; margin-left: 5px; text-align: center; font-size: 20px !important;">
-                Transfer Inspections
+                Transfer Cinema Inspections
             </div>
             <%--   <div class="row">
                 <div class="col-md-12">
@@ -161,16 +161,12 @@
                     </asp:RadioButtonList>
                 </div>
             </div>--%>
-
-
-
             <div class="card" style="background: white; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-
                 <div class="row" style="margin-bottom: 20px;">
                     <div class="col-md-12" style="text-align: center;">
                         <asp:RadioButtonList ID="RadioButtonListInspectionType" runat="server" AutoPostBack="true" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonListInspectionType_SelectedIndexChanged">
-                            <asp:ListItem Text="Inspection" Value="Inspection" Selected="True" style="margin-right: 20px;"></asp:ListItem>
-                            <asp:ListItem Text="Cinema Inspection" Value="Cinema"></asp:ListItem>
+                            <asp:ListItem Text="Inspection" Value="Inspection"  style="margin-right: 20px;"></asp:ListItem>
+                            <asp:ListItem Text="Cinema Inspection" Value="Cinema" Selected="True"></asp:ListItem>
                         </asp:RadioButtonList>
                     </div>
                 </div>
@@ -198,7 +194,7 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="ddlToAssign" runat="server" InitialValue="0" ForeColor="Red" ValidationGroup="Search" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
                     <div class="col-md-3" id="Div1" runat="server" visible="false">
-                     
+
                         <label>
                             District
                         <samp style="color: red">* </samp>
@@ -208,7 +204,7 @@
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="DropDownList1" runat="server" InitialValue="0" ForeColor="Red" ValidationGroup="Search" ErrorMessage="Required"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="col-md-3" id="Div2" runat="server" visible="true" style="margin-top: 30Px;">
+                    <div class="col-md-3" id="Div2" runat="server" visible="true" style="margin-top: 30px;">
                         <asp:Button ID="Button1" Class="btn btn-primary" runat="server" ValidationGroup="Search" Text="Search" Style="height: 30px; padding: 0px 10px 0px 10px;"
                             OnClick="Button1_Click" />
                     </div>
@@ -286,8 +282,9 @@
                         </asp:GridView>
                         <div class="row" style="margin-left: 0px;">
 
-                            <div class="col-md-4" id="ddlNewAssigneediv" runat="server" visible="true" style="margin-top: 15px; padding-left: 0px;">
-
+                            <div class="col-md-4" id="ddlNewAssigneediv" runat="server" visible="true" style="margin-top: -33px; padding-left: 0px;">
+                                <br />
+                                <br />
                                 <label>
                                     TransferTo
                             <samp style="color: red">* </samp>
@@ -337,7 +334,7 @@
 
         function alertWithRedirectUpdation() {
             alert('Inspection Transfered Successfully');
-            window.location.href = "/Admin/Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx";
+            window.location.href = "/Admin/Transfer_Cinema_Inspections_ToDifferentStaff_ByAdmin.aspx";
 
         }
 
@@ -405,3 +402,4 @@
 
     </script>
 </asp:Content>
+

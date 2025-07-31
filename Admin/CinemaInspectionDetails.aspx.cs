@@ -35,6 +35,12 @@ namespace CEIHaryana.Admin
 
 
                         Page.Session["ClickCount"] = "0";
+
+                        //Added by aslam 30-July-2025
+                        if (!IsPostBack && Request.UrlReferrer != null)
+                        {
+                            ViewState["PreviousPageUrl"] = Request.UrlReferrer.ToString();
+                        }
                     }
                     else
                     {
@@ -198,7 +204,12 @@ namespace CEIHaryana.Admin
         {
             if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
             {
-                Response.Redirect("/Admin/AcceptedOrRejectedRequest.aspx", false);
+                //Response.Redirect("/Admin/AcceptedOrRejectedRequest.aspx", false);
+                //Commented by aslam 30-July-2025
+                if (ViewState["PreviousPageUrl"] != null)
+                {
+                    Response.Redirect(ViewState["PreviousPageUrl"].ToString(), false);
+                }
             }
             else
             {

@@ -11,7 +11,7 @@ namespace CEIHaryana.Admin
 {
 
 
-    public partial class Transfer_Inspections_ToDifferentStaff_ByAdmin
+    public partial class Transfer_Cinema_Inspections_ToDifferentStaff_ByAdmin
     {
 
         /// <summary>

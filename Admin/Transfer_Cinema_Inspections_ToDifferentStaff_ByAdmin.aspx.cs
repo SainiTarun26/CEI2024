@@ -20,8 +20,7 @@ using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.Admin
 {
-
-    public partial class Transfer_Inspections_ToDifferentStaff_ByAdmin : System.Web.UI.Page
+    public partial class Transfer_Cinema_Inspections_ToDifferentStaff_ByAdmin : System.Web.UI.Page
     {
         private string selectedDistrict = "";
         private bool secondProcedureExecuted = false;
@@ -65,7 +64,7 @@ namespace CEIHaryana.Admin
         public void BindStaff(string division)
         {
             DataSet ds = new DataSet();
-            ds = CEI.GetStaffByDivisionList(division);
+            ds = CEI.GetCinemaStaffByDivisionList(division);
             ddlToAssign.DataSource = ds;
             ddlToAssign.DataTextField = "Staff";
             ddlToAssign.DataValueField = "StaffUserID";
@@ -140,7 +139,7 @@ namespace CEIHaryana.Admin
 
                 district = (district == "0" || string.IsNullOrEmpty(district)) ? null : district;
                 DataSet ds = new DataSet();
-                ds = CEI.InspectionGridDataList_Admin(division, staff, district);
+                ds = CEI.CinemaInspectionGridDataList_Admin(division, staff, district);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     GridView1.DataSource = ds;
@@ -177,7 +176,7 @@ namespace CEIHaryana.Admin
 
                 district = (district == "0" || string.IsNullOrEmpty(district)) ? null : district;
                 DataSet ds = new DataSet();
-                ds = CEI.InspectionGridDataList_Admin(division, staff, district);
+                ds = CEI.CinemaInspectionGridDataList_Admin(division, staff, district);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     GridView1.DataSource = ds;
@@ -337,13 +336,13 @@ namespace CEIHaryana.Admin
                 selectedInspectionIds.Clear();
                 GetGridData2_WithNoMessage();
                 ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alertWithRedirectUpdation();", true);
-         
+
 
             }
             catch (Exception ex)
             {
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "'); window.location.href = '/Admin/Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx';", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "'); window.location.href = '/Admin/Transfer_Cinema_Inspections_ToDifferentStaff_ByAdmin.aspx';", true);
                 return;
             }
         }
@@ -351,7 +350,7 @@ namespace CEIHaryana.Admin
         private string TransferAttachmentSaveMethod(string fixfileName, int newReturnedTransferOrderId)
         {
             string fileName;
-            fileName = Path.GetFileName(CustomFile.PostedFile.FileName); 
+            fileName = Path.GetFileName(CustomFile.PostedFile.FileName);
 
             string directoryPath = Server.MapPath("~/Attachment/TransferOrder/" + newReturnedTransferOrderId.ToString());
 
@@ -397,7 +396,7 @@ namespace CEIHaryana.Admin
         public void BindStaff_ToTransfer(string district, string staffcurrentid)
         {
             DataSet ds = new DataSet();
-            ds = CEI.GetNewStaffByDistrictList(district, staffcurrentid);
+            ds = CEI.GetCinemaNewStaffByDistrictList(district, staffcurrentid);
             ddlNewAssignee.DataSource = ds;
             ddlNewAssignee.DataTextField = "StaffUserID";
             ddlNewAssignee.DataValueField = "StaffUserID";
@@ -419,7 +418,7 @@ namespace CEIHaryana.Admin
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-    
+
             ViewState["SelectedDistrict"] = null;
             ViewState["IsFirstSelection"] = null;
             //ViewState["SelectedInspectionIds"] = null;
@@ -526,16 +525,16 @@ namespace CEIHaryana.Admin
             {
                 Control ctrl = e.CommandSource as Control;
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                Label lblInspectionId = (Label)row.FindControl("lblInspectionId");                      
+                Label lblInspectionId = (Label)row.FindControl("lblInspectionId");
                 if (e.CommandName == "Select")
                 {
                     Session["InspectionId"] = lblInspectionId.Text;
-                    Response.Redirect("/Admin/InspectionDetails.aspx", false);
-                    
+                    Response.Redirect("/Admin/CinemaInspectionDetails.aspx", false);
+                    return;
+
                 }
             }
-            }
-
+        }
         protected void RadioButtonListInspectionType_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedValue = RadioButtonListInspectionType.SelectedValue;

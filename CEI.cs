@@ -14169,6 +14169,100 @@ SqlTransaction transaction)
         }
 
         #endregion
+
+        #region cinema transfer 
+
+        public DataSet GetCinemaStaffByDivisionList(string division)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetCinemaStaffByDivisionList", division);
+        }
+
+        public DataSet CinemaInspectionGridDataList_Admin(string ddlDivisions, string staff, string district)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAll_Cinema_Inspections_ToTransfer_List_ByAdmin", ddlDivisions, staff, district);
+        }
+
+        public DataSet GetCinemaNewStaffByDistrictList(string division, string staffcurrentid)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_Cinema_New_StaffByDivisionAndDistrict_List", division, staffcurrentid);
+        }
+
+
+        public int Transfer_Order_Cinema_Inspections_Attachments_ToDifferentStaff_ByAdmin(int Id, string Staff, string LoginUser, string Attachmentpath)
+        {
+            SqlCommand cmd = new SqlCommand("sp_Transfer_Order_Cinema_Inspections_Attachments_ToDifferentStaff_ByAdmin");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", Id);
+                cmd.Parameters.AddWithValue("@Staff", String.IsNullOrEmpty(Staff) ? null : Staff);
+                cmd.Parameters.AddWithValue("@LoginUser", String.IsNullOrEmpty(LoginUser) ? null : LoginUser);
+                cmd.Parameters.AddWithValue("@TransferAttachmentPath", Attachmentpath);
+                SqlParameter outputId = new SqlParameter("@NewTransferOrderId", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(outputId);
+                cmd.ExecuteNonQuery();
+                int newTransferOrderId = (int)outputId.Value;
+                con.Close();
+                return newTransferOrderId;
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
+        public void sp_Transfer_Cinema_Inspections_ToDifferentStaff_ByAdmin_Method(int Id, string Staff, string LoginUser, int newReturnedTransferOrderId)
+        {
+            SqlCommand cmd = new SqlCommand("sp_Transfer_Cinema_Inspections_ToDifferentStaff_ByAdmin");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            cmd.Connection = con;
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                    con.Open();
+                }
+
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", Id);
+                cmd.Parameters.AddWithValue("@Staff", String.IsNullOrEmpty(Staff) ? null : Staff);
+                cmd.Parameters.AddWithValue("@LoginUser", String.IsNullOrEmpty(LoginUser) ? null : LoginUser);
+                cmd.Parameters.AddWithValue("@TransferOrderId", newReturnedTransferOrderId);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
+        #endregion
     }
 }
 
