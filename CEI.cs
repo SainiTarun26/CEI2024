@@ -14263,6 +14263,31 @@ SqlTransaction transaction)
         }
 
         #endregion
+        #region Kalpana Restrict user login
+        public bool IsUserExpired(string userName, string password)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand("sp_CheckUserExpiry", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@userid", userName);
+                cmd.Parameters.AddWithValue("@pwd", password);
+
+                SqlParameter output = new SqlParameter("@isExpired", SqlDbType.Bit)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(output);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                return Convert.ToBoolean(output.Value);
+            }
+        }
+        #endregion
     }
 }
 
