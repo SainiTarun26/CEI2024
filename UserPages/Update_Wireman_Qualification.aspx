@@ -2060,9 +2060,9 @@
                 }
             </script>
             <script type="text/javascript">
-                function validateExperienceDate2() {
-                    var from = document.getElementById('<%=txtExperienceFrom.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo.ClientID %>');
+                function validateApprenticesDate() {
+                    var from = document.getElementById('<%=Apprenticesdatefrom.ClientID %>');
+         var to = document.getElementById('<%=Apprenticesdateto.ClientID %>');
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2105,423 +2105,591 @@
                     }
                 }
             </script>
-            <script type="text/javascript">
-                function validateExperienceDate3() {
-                    var from = document.getElementById('<%=txtExperienceFrom1.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo1.ClientID %>');
-                    var today = new Date();
-                    today.setHours(0, 0, 0, 0);
+ <script type="text/javascript">
+     function validateExperienceDate2() {
+         var from = document.getElementById('<%=txtExperienceFrom.ClientID %>');
+         var to = document.getElementById('<%=txtExperienceTo.ClientID %>');
 
-                    if (from.value) {
-                        var fromDate = new Date(from.value);
-                        if (fromDate > today) {
-                            alert('From Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
+         var apprenticeTo = document.getElementById('<%=Apprenticesdateto.ClientID %>');
 
-                    if (from.value && to.value) {
-                        var fromDate = new Date(from.value);
-                        var toDate = new Date(to.value);
-                        if (fromDate > toDate) {
-                            alert('To Date should be greater than or equal to From Date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
+         var today = new Date();
+         today.setHours(0, 0, 0, 0);
 
-                    }
+         if (from.value) {
+             var fromDate = new Date(from.value);
+             if (fromDate > today) {
+                 alert('From Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
 
-                    if (to.value) {
-                        var toDate = new Date(to.value);
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
-                }
-            </script>
-            <script type="text/javascript">
-                function validateExperienceDate4() {
-                    var from = document.getElementById('<%=txtExperienceFrom2.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo2.ClientID %>');
-                    var today = new Date();
-                    today.setHours(0, 0, 0, 0);
+             if (apprenticeTo.value) {
+                 var apprenticeToDate = new Date(apprenticeTo.value);
+                 if (fromDate <= apprenticeToDate) {
+                     alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                     from.value = '';
+                     from.focus();
+                     return;
+                 }
+             }
+         }
 
-                    if (from.value) {
-                        var fromDate = new Date(from.value);
-                        if (fromDate > today) {
-                            alert('From Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
+         if (from.value && to.value) {
+             var fromDate = new Date(from.value);
+             var toDate = new Date(to.value);
+             if (fromDate > toDate) {
+                 alert('To Date should be greater than or equal to From Date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
 
-                    if (from.value && to.value) {
-                        var fromDate = new Date(from.value);
-                        var toDate = new Date(to.value);
-                        if (fromDate > toDate) {
-                            alert('To Date should be greater than or equal to From Date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
+         }
 
-                    }
+         if (to.value) {
+             var toDate = new Date(to.value);
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+         }
+     }
+ </script>
+ <script type="text/javascript">
+     function validateExperienceDate3() {
+         var from = document.getElementById('<%=txtExperienceFrom1.ClientID %>');
+         var to = document.getElementById('<%=txtExperienceTo1.ClientID %>');
 
-                    if (to.value) {
-                        var toDate = new Date(to.value);
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
-                }
-            </script>
-            <script type="text/javascript">
-                function validateExperienceDate5() {
-                    var from = document.getElementById('<%=txtExperienceFrom3.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo3.ClientID %>');
-                    var today = new Date();
-                    today.setHours(0, 0, 0, 0);
+         var ForNextFromDate = document.getElementById('<%=txtExperienceTo.ClientID %>');
 
-                    if (from.value) {
-                        var fromDate = new Date(from.value);
-                        if (fromDate > today) {
-                            alert('From Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
+         var today = new Date();
+         today.setHours(0, 0, 0, 0);
 
-                    if (from.value && to.value) {
-                        var fromDate = new Date(from.value);
-                        var toDate = new Date(to.value);
-                        if (fromDate > toDate) {
-                            alert('To Date should be greater than or equal to From Date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
+         if (from.value) {
+             var fromDate = new Date(from.value);
+             if (fromDate > today) {
+                 alert('From Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
 
-                    }
+             if (ForNextFromDate.value) {
+                 var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                 if (fromDate <= ForNextFromDateDate) {
+                     alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                     from.value = '';
+                     from.focus();
+                     return;
+                 }
+             }
+         }
 
-                    if (to.value) {
-                        var toDate = new Date(to.value);
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
-                }
-            </script>
-            <script type="text/javascript">
-                function validateExperienceDate6() {
-                    var from = document.getElementById('<%=txtExperienceFrom4.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo4.ClientID %>');
-                    var today = new Date();
-                    today.setHours(0, 0, 0, 0);
+         if (from.value && to.value) {
+             var fromDate = new Date(from.value);
+             var toDate = new Date(to.value);
+             if (fromDate > toDate) {
+                 alert('To Date should be greater than or equal to From Date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
 
-                    if (from.value) {
-                        var fromDate = new Date(from.value);
-                        if (fromDate > today) {
-                            alert('From Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
+         }
 
-                    if (from.value && to.value) {
-                        var fromDate = new Date(from.value);
-                        var toDate = new Date(to.value);
-                        if (fromDate > toDate) {
-                            alert('To Date should be greater than or equal to From Date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
+         if (to.value) {
+             var toDate = new Date(to.value);
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+         }
+     }
+ </script>
+ <script type="text/javascript">
+     function validateExperienceDate4() {
+         var from = document.getElementById('<%=txtExperienceFrom2.ClientID %>');
+         var to = document.getElementById('<%=txtExperienceTo2.ClientID %>');
 
-                    }
+         var ForNextFromDate = document.getElementById('<%=txtExperienceTo1.ClientID %>');
 
-                    if (to.value) {
-                        var toDate = new Date(to.value);
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
-                }
-            </script>
-            <script type="text/javascript">
-                function validateExperienceDate7() {
-                    var from = document.getElementById('<%=txtExperienceFrom5.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo5.ClientID %>');
-                    var today = new Date();
-                    today.setHours(0, 0, 0, 0);
+         var today = new Date();
+         today.setHours(0, 0, 0, 0);
 
-                    if (from.value) {
-                        var fromDate = new Date(from.value);
-                        if (fromDate > today) {
-                            alert('From Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
+         if (from.value) {
+             var fromDate = new Date(from.value);
+             if (fromDate > today) {
+                 alert('From Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+             if (ForNextFromDate.value) {
+                 var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                 if (fromDate <= ForNextFromDateDate) {
+                     alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                     from.value = '';
+                     from.focus();
+                     return;
+                 }
+             }
+         }
 
-                    if (from.value && to.value) {
-                        var fromDate = new Date(from.value);
-                        var toDate = new Date(to.value);
-                        if (fromDate > toDate) {
-                            alert('To Date should be greater than or equal to From Date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
+         if (from.value && to.value) {
+             var fromDate = new Date(from.value);
+             var toDate = new Date(to.value);
+             if (fromDate > toDate) {
+                 alert('To Date should be greater than or equal to From Date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
 
-                    }
+         }
 
-                    if (to.value) {
-                        var toDate = new Date(to.value);
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
-                }
-            </script>
-            <script type="text/javascript">
-                function validateExperienceDate8() {
-                    var from = document.getElementById('<%=txtExperienceFrom6.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo6.ClientID %>');
-                    var today = new Date();
-                    today.setHours(0, 0, 0, 0);
+         if (to.value) {
+             var toDate = new Date(to.value);
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+         }
+     }
+ </script>
+ <script type="text/javascript">
+     function validateExperienceDate5() {
+         var from = document.getElementById('<%=txtExperienceFrom3.ClientID %>');
+         var to = document.getElementById('<%=txtExperienceTo3.ClientID %>');
 
-                    if (from.value) {
-                        var fromDate = new Date(from.value);
-                        if (fromDate > today) {
-                            alert('From Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
+         var ForNextFromDate = document.getElementById('<%=txtExperienceTo2.ClientID %>');
 
-                    if (from.value && to.value) {
-                        var fromDate = new Date(from.value);
-                        var toDate = new Date(to.value);
-                        if (fromDate > toDate) {
-                            alert('To Date should be greater than or equal to From Date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
+         var today = new Date();
+         today.setHours(0, 0, 0, 0);
 
-                    }
+         if (from.value) {
+             var fromDate = new Date(from.value);
+             if (fromDate > today) {
+                 alert('From Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+             if (ForNextFromDate.value) {
+                 var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                 if (fromDate <= ForNextFromDateDate) {
+                     alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                     from.value = '';
+                     from.focus();
+                     return;
+                 }
+             }
+         }
 
-                    if (to.value) {
-                        var toDate = new Date(to.value);
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
-                }
+         if (from.value && to.value) {
+             var fromDate = new Date(from.value);
+             var toDate = new Date(to.value);
+             if (fromDate > toDate) {
+                 alert('To Date should be greater than or equal to From Date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
 
-            </script>
-            <script type="text/javascript">
-                function validateExperienceDate9() {
-                    var from = document.getElementById('<%=txtExperienceFrom7.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo7.ClientID %>');
-                    var today = new Date();
-                    today.setHours(0, 0, 0, 0);
+         }
 
-                    if (from.value) {
-                        var fromDate = new Date(from.value);
-                        if (fromDate > today) {
-                            alert('From Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
+         if (to.value) {
+             var toDate = new Date(to.value);
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+         }
+     }
+ </script>
+ <script type="text/javascript">
+     function validateExperienceDate6() {
+         var from = document.getElementById('<%=txtExperienceFrom4.ClientID %>');
+         var to = document.getElementById('<%=txtExperienceTo4.ClientID %>');
 
-                    if (from.value && to.value) {
-                        var fromDate = new Date(from.value);
-                        var toDate = new Date(to.value);
-                        if (fromDate > toDate) {
-                            alert('To Date should be greater than or equal to From Date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
+         var ForNextFromDate = document.getElementById('<%=txtExperienceTo3.ClientID %>');
 
-                    }
+         var today = new Date();
+         today.setHours(0, 0, 0, 0);
 
-                    if (to.value) {
-                        var toDate = new Date(to.value);
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
-                }
+         if (from.value) {
+             var fromDate = new Date(from.value);
+             if (fromDate > today) {
+                 alert('From Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+             if (ForNextFromDate.value) {
+                 var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                 if (fromDate <= ForNextFromDateDate) {
+                     alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                     from.value = '';
+                     from.focus();
+                     return;
+                 }
+             }
+         }
 
-            </script>
-            <script type="text/javascript">
-                function validateExperienceDate10() {
-                    var from = document.getElementById('<%=txtExperienceFrom8.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo8.ClientID %>');
-                    var today = new Date();
-                    today.setHours(0, 0, 0, 0);
+         if (from.value && to.value) {
+             var fromDate = new Date(from.value);
+             var toDate = new Date(to.value);
+             if (fromDate > toDate) {
+                 alert('To Date should be greater than or equal to From Date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
 
-                    if (from.value) {
-                        var fromDate = new Date(from.value);
-                        if (fromDate > today) {
-                            alert('From Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
+         }
 
-                    if (from.value && to.value) {
-                        var fromDate = new Date(from.value);
-                        var toDate = new Date(to.value);
-                        if (fromDate > toDate) {
-                            alert('To Date should be greater than or equal to From Date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
+         if (to.value) {
+             var toDate = new Date(to.value);
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+         }
+     }
+ </script>
+ <script type="text/javascript">
+     function validateExperienceDate7() {
+         var from = document.getElementById('<%=txtExperienceFrom5.ClientID %>');
+         var to = document.getElementById('<%=txtExperienceTo5.ClientID %>');
 
-                    }
+         var ForNextFromDate = document.getElementById('<%=txtExperienceTo4.ClientID %>');
 
-                    if (to.value) {
-                        var toDate = new Date(to.value);
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
-                }
+         var today = new Date();
+         today.setHours(0, 0, 0, 0);
 
-            </script>
-            <script type="text/javascript">
-                function validateExperienceDate11() {
-                    var from = document.getElementById('<%=txtExperienceFrom9.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo9.ClientID %>');
-                    var today = new Date();
-                    today.setHours(0, 0, 0, 0);
+         if (from.value) {
+             var fromDate = new Date(from.value);
+             if (fromDate > today) {
+                 alert('From Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+             if (ForNextFromDate.value) {
+                 var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                 if (fromDate <= ForNextFromDateDate) {
+                     alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                     from.value = '';
+                     from.focus();
+                     return;
+                 }
+             }
+         }
 
-                    if (from.value) {
-                        var fromDate = new Date(from.value);
-                        if (fromDate > today) {
-                            alert('From Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
+         if (from.value && to.value) {
+             var fromDate = new Date(from.value);
+             var toDate = new Date(to.value);
+             if (fromDate > toDate) {
+                 alert('To Date should be greater than or equal to From Date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
 
-                    if (from.value && to.value) {
-                        var fromDate = new Date(from.value);
-                        var toDate = new Date(to.value);
-                        if (fromDate > toDate) {
-                            alert('To Date should be greater than or equal to From Date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            to.value = '';
-                            to.focus();
-                            return;
-                        }
+         }
 
-                    }
+         if (to.value) {
+             var toDate = new Date(to.value);
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+         }
+     }
+ </script>
+ <script type="text/javascript">
+     function validateExperienceDate8() {
+         var from = document.getElementById('<%=txtExperienceFrom6.ClientID %>');
+         var to = document.getElementById('<%=txtExperienceTo6.ClientID %>');
 
-                    if (to.value) {
-                        var toDate = new Date(to.value);
-                        if (toDate > today) {
-                            alert('To Date cannot be a future date.');
-                            from.value = '';
-                            from.focus();
-                            return;
-                        }
-                    }
-                }
-            </script>
+         var ForNextFromDate = document.getElementById('<%=txtExperienceTo5.ClientID %>');
+
+         var today = new Date();
+         today.setHours(0, 0, 0, 0);
+
+         if (from.value) {
+             var fromDate = new Date(from.value);
+             if (fromDate > today) {
+                 alert('From Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+             if (ForNextFromDate.value) {
+                 var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                 if (fromDate <= ForNextFromDateDate) {
+                     alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                     from.value = '';
+                     from.focus();
+                     return;
+                 }
+             }
+         }
+
+         if (from.value && to.value) {
+             var fromDate = new Date(from.value);
+             var toDate = new Date(to.value);
+             if (fromDate > toDate) {
+                 alert('To Date should be greater than or equal to From Date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
+
+         }
+
+         if (to.value) {
+             var toDate = new Date(to.value);
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+         }
+     }
+
+ </script>
+ <script type="text/javascript">
+     function validateExperienceDate9() {
+         var from = document.getElementById('<%=txtExperienceFrom7.ClientID %>');
+         var to = document.getElementById('<%=txtExperienceTo7.ClientID %>');
+
+         var ForNextFromDate = document.getElementById('<%=txtExperienceTo6.ClientID %>');
+
+         var today = new Date();
+         today.setHours(0, 0, 0, 0);
+
+         if (from.value) {
+             var fromDate = new Date(from.value);
+             if (fromDate > today) {
+                 alert('From Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+             if (ForNextFromDate.value) {
+                 var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                 if (fromDate <= ForNextFromDateDate) {
+                     alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                     from.value = '';
+                     from.focus();
+                     return;
+                 }
+             }
+         }
+
+         if (from.value && to.value) {
+             var fromDate = new Date(from.value);
+             var toDate = new Date(to.value);
+             if (fromDate > toDate) {
+                 alert('To Date should be greater than or equal to From Date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
+
+         }
+
+         if (to.value) {
+             var toDate = new Date(to.value);
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+         }
+     }
+
+ </script>
+ <script type="text/javascript">
+     function validateExperienceDate10() {
+         var from = document.getElementById('<%=txtExperienceFrom8.ClientID %>');
+         var to = document.getElementById('<%=txtExperienceTo8.ClientID %>');
+
+         var ForNextFromDate = document.getElementById('<%=txtExperienceTo7.ClientID %>');
+
+         var today = new Date();
+         today.setHours(0, 0, 0, 0);
+
+         if (from.value) {
+             var fromDate = new Date(from.value);
+             if (fromDate > today) {
+                 alert('From Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+             if (ForNextFromDate.value) {
+                 var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                 if (fromDate <= ForNextFromDateDate) {
+                     alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                     from.value = '';
+                     from.focus();
+                     return;
+                 }
+             }
+         }
+
+         if (from.value && to.value) {
+             var fromDate = new Date(from.value);
+             var toDate = new Date(to.value);
+             if (fromDate > toDate) {
+                 alert('To Date should be greater than or equal to From Date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
+
+         }
+
+         if (to.value) {
+             var toDate = new Date(to.value);
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+         }
+     }
+
+ </script>
+ <script type="text/javascript">
+     function validateExperienceDate11() {
+         var from = document.getElementById('<%=txtExperienceFrom9.ClientID %>');
+         var to = document.getElementById('<%=txtExperienceTo9.ClientID %>');
+
+         var ForNextFromDate = document.getElementById('<%=txtExperienceTo8.ClientID %>');
+
+         var today = new Date();
+         today.setHours(0, 0, 0, 0);
+
+         if (from.value) {
+             var fromDate = new Date(from.value);
+             if (fromDate > today) {
+                 alert('From Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+             if (ForNextFromDate.value) {
+                 var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                 if (fromDate <= ForNextFromDateDate) {
+                     alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                     from.value = '';
+                     from.focus();
+                     return;
+                 }
+             }
+         }
+
+         if (from.value && to.value) {
+             var fromDate = new Date(from.value);
+             var toDate = new Date(to.value);
+             if (fromDate > toDate) {
+                 alert('To Date should be greater than or equal to From Date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 to.value = '';
+                 to.focus();
+                 return;
+             }
+
+         }
+
+         if (to.value) {
+             var toDate = new Date(to.value);
+             if (toDate > today) {
+                 alert('To Date cannot be a future date.');
+                 from.value = '';
+                 from.focus();
+                 return;
+             }
+         }
+     }
+ </script>
 
 
             <script type="text/javascript">
@@ -2687,13 +2855,14 @@
                     var ddlQualification1 = document.getElementById('ddlQualification1');
                     var ddlQualification2 = document.getElementById('ddlQualification2');
 
-                    //var qualificationValue = ddlQualification ? ddlQualification.value : '0';
+                    var qualificationValue = ddlQualification ? ddlQualification.value : '0';
                     var qualification1Value = ddlQualification1 ? ddlQualification1.value : '0';
                     var qualification2Value = ddlQualification2 ? ddlQualification2.value : '0';
 
-                    if (qualification1Value === '0' && qualification2Value === '0') {
+                    if (qualificationValue === '0' && qualification1Value === '0' && qualification2Value === '0') {
                         isValid = false;
 
+                        if (ddlQualification) ddlQualification.style.border = '1px solid red';
                         if (ddlQualification1) ddlQualification1.style.border = '1px solid red';
                         if (ddlQualification2) ddlQualification2.style.border = '1px solid red';
 

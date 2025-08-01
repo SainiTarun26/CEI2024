@@ -160,50 +160,135 @@
                                         <div class="col-md-12 grid-margin stretch-card">
                                             <div class="card">
                                                 <div class="card-body">
+                                                    <!-- Header -->
                                                     <div class="row">
                                                         <div class="col-md-12 text-center">
-                                                            <h4 class="card-title">Instructions</h4>
+                                                            <h2 class="card-title">Instructions</h2>
                                                         </div>
                                                     </div>
-                                                    <br />
-                                                    <div class="row">
+
+                                                    <!-- Instruction Text -->
+                                                    <div class="row mt-3">
                                                         <div class="col-md-12">
+                                                            <p>
+                                                                Please read the following instructions carefully before proceeding with your application.
+                        These guidelines will help you understand the steps required for a successful submission.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Application Steps -->
+                                                    <div class="row mt-2">
+                                                        <div class="col-md-12">
+                                                            <h4>Step-by-Step Application Process</h4>
                                                             <ul>
-                                                                <li>How to Apply </li>
-                                                                <li>Fee Details </li>
+                                                                <li>Register on CEI portal using email/mobile no.</li>
+                                                                <li>Activate ID through link sent via mail and login with credentials.</li>
+                                                                <li>Fill form with personal, academic, work details and other information.</li>
+                                                                <li>Pay fee via E-GRAS Haryana (<a href="https://egrashry.nic.in/" target="_blank">https://egrashry.nic.in/</a>)</li>
+                                                                <li>Upload all required documents.</li>
+                                                                <li>Submit application and download application form.</li>
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <br />
-                                                    <br />
-                                                    <br />
-                                                    <br />
-                                                    <br />
-                                                    <br />
-                                                    <div class="row" style="margin-left: 5px;">
+
+                                                    <!-- Fee Structure -->
+                                                    <div class="row mt-4">
                                                         <div class="col-md-12">
+                                                            <h4>Fee Structure</h4>
+                                                            <table class="table table-bordered table-striped">
+                                                                <thead class="thead-dark">
+                                                                    <tr>
+                                                                        <th>Category</th>
+                                                                        <th>Type</th>
+                                                                        <th>Fees</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <!-- Wireman -->
+                                                                    <tr>
+                                                                        <td rowspan="3">Wireman</td>
+                                                                        <td>New</td>
+                                                                        <td>400/- Rs for One Year</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Renewal</td>
+                                                                        <td>450/- Rs for Five Year, 100/- Rs for One Year</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Late Fee</td>
+                                                                        <td>50/- Rs After 14 days Grace Period, 100/- Rs After 30 days Annual</td>
+                                                                    </tr>
+
+                                                                    <!-- Supervisor -->
+                                                                    <tr>
+                                                                        <td rowspan="4">Supervisor</td>
+                                                                        <td>New</td>
+                                                                        <td>950/- Rs for Five Year</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Renewal</td>
+                                                                        <td>200/- Rs for One Year, 200/- Rs for One Year</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Late Fee</td>
+                                                                        <td>100/- Rs After 14 days Grace Period, 200/- Rs After 30 days Annual</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Upgradation Fee</td>
+                                                                        <td>Nil/-</td>
+                                                                    </tr>
+
+                                                                    <!-- Contractor -->
+                                                                    <tr>
+                                                                        <td rowspan="4">Contractor</td>
+                                                                        <td>New</td>
+                                                                        <td>3350/- Rs for One Year</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Renewal</td>
+                                                                        <td>5250/- Rs for Five Year, 1050/- Rs for One Year</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Late Fee</td>
+                                                                        <td>300/- Rs After 14 days Grace Period, 8600/- Rs After 30 days Annual</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Upgradation Fee</td>
+                                                                        <td>2100/- Rs for HT/EHT</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Declaration -->
+                                                    <div class="row mt-4">
+                                                        <div class="col-md-12">
+                                                            <h4>Declaration:</h4>
                                                             <div class="form-check">
-                                                                <asp:CheckBox ID="chkDeclaration" runat="server" CssClass="form-check-input" Style="padding: 0px 4px 15px 1px !important; border: 0px solid black !important; margin-top: .1em !important;" />
-                                                                <label class="form-check-label" for="<%= chkDeclaration.ClientID %>" style="margin-left: 0px;">
-                                                                    I agree to all terms and Conditions given Above.
+                                                                <asp:CheckBox ID="chkDeclaration" runat="server" CssClass="form-check-input" />
+                                                                <label class="form-check-label" for="<%= chkDeclaration.ClientID %>">
+                                                                    I have read and understood all the process before applying for the CEI license.
                                                                 </label>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row" style="margin-top: 15px;">
-                                                        <div class="col-md-6">
-                                                        </div>
-                                                        <div class="col-md-6" style="text-align: end;">
-                                                            <asp:Button type="button" ValidationGroup="Submit" ID="btnNext" Text="Next" OnClick="btnNext_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+
+                                                    <!-- Button -->
+                                                    <div class="row mt-4">
+                                                        <div class="col-md-6"></div>
+                                                        <div class="col-md-6 text-end">
+                                                            <asp:Button ID="btnNext" Text="Next" OnClick="btnNext_Click" runat="server"
+                                                                CssClass="btn btn-primary"
+                                                                Style="padding: 10px 20px; border-radius: 5px;" />
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                        </div>
-                                    </div>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>

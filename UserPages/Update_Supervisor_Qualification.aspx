@@ -1759,9 +1759,9 @@
                                                                     <td colspan="4" style="font-size: 12px;">
                                                                         <asp:Button ID="btnAddMore" runat="server" Text="Add" class="btn btn-primary"
                                                                             Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClientClick="if (!validateAddBtnExperience()) return false;" OnClick="btnAddMore_Click"></asp:Button>
-                                                                                                                                       <asp:Button ID="btnDeleteExp" runat="server" Text="Delete" class="btn btn-primary"
-Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_Click" Visible="false"></asp:Button>
-                                                                        </td>
+                                                                        <asp:Button ID="btnDeleteExp" runat="server" Text="Delete" class="btn btn-primary"
+                                                                            Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_Click" Visible="false"></asp:Button>
+                                                                    </td>
                                                                     <td colspan="2" style="font-size: 12px;">
                                                                         <p style="font-size: 12px;">Total Experience:</p>
                                                                         <asp:TextBox class="form-control" ReadOnly="true" autocomplete="off" ID="txtTotalExperience" runat="server" AutoPostBack="true"> </asp:TextBox>
@@ -2031,7 +2031,10 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
             <script type="text/javascript">
                 function validateExperienceDate3() {
                     var from = document.getElementById('<%=txtExperienceFrom1.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo1.ClientID %>');
+          var to = document.getElementById('<%=txtExperienceTo1.ClientID %>');
+
+          var ForNextFromDate = document.getElementById('<%=txtExperienceTo.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2042,6 +2045,15 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2077,7 +2089,10 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
             <script type="text/javascript">
                 function validateExperienceDate4() {
                     var from = document.getElementById('<%=txtExperienceFrom2.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo2.ClientID %>');
+          var to = document.getElementById('<%=txtExperienceTo2.ClientID %>');
+
+          var ForNextFromDateDate = document.getElementById('<%=txtExperienceTo1.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2088,6 +2103,15 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2123,7 +2147,10 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
             <script type="text/javascript">
                 function validateExperienceDate5() {
                     var from = document.getElementById('<%=txtExperienceFrom3.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo3.ClientID %>');
+          var to = document.getElementById('<%=txtExperienceTo3.ClientID %>');
+
+          var ForNextFromDate = document.getElementById('<%=txtExperienceTo2.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2134,6 +2161,15 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2169,7 +2205,10 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
             <script type="text/javascript">
                 function validateExperienceDate6() {
                     var from = document.getElementById('<%=txtExperienceFrom4.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo4.ClientID %>');
+          var to = document.getElementById('<%=txtExperienceTo4.ClientID %>');
+
+          var ForNextFromDate = document.getElementById('<%=txtExperienceTo3.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2180,6 +2219,15 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2215,7 +2263,10 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
             <script type="text/javascript">
                 function validateExperienceDate7() {
                     var from = document.getElementById('<%=txtExperienceFrom5.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo5.ClientID %>');
+          var to = document.getElementById('<%=txtExperienceTo5.ClientID %>');
+
+          var ForNextFromDate = document.getElementById('<%=txtExperienceTo4.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2226,6 +2277,15 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2261,7 +2321,10 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
             <script type="text/javascript">
                 function validateExperienceDate8() {
                     var from = document.getElementById('<%=txtExperienceFrom6.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo6.ClientID %>');
+          var to = document.getElementById('<%=txtExperienceTo6.ClientID %>');
+
+          var ForNextFromDate = document.getElementById('<%=txtExperienceTo5.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2272,6 +2335,15 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2308,7 +2380,10 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
             <script type="text/javascript">
                 function validateExperienceDate9() {
                     var from = document.getElementById('<%=txtExperienceFrom7.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo7.ClientID %>');
+          var to = document.getElementById('<%=txtExperienceTo7.ClientID %>');
+
+          var ForNextFromDate = document.getElementById('<%=txtExperienceTo6.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2319,6 +2394,15 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2355,7 +2439,10 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
             <script type="text/javascript">
                 function validateExperienceDate10() {
                     var from = document.getElementById('<%=txtExperienceFrom8.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo8.ClientID %>');
+          var to = document.getElementById('<%=txtExperienceTo8.ClientID %>');
+
+          var ForNextFromDate = document.getElementById('<%=txtExperienceTo7.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2366,6 +2453,15 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2402,7 +2498,10 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
             <script type="text/javascript">
                 function validateExperienceDate11() {
                     var from = document.getElementById('<%=txtExperienceFrom9.ClientID %>');
-                    var to = document.getElementById('<%=txtExperienceTo9.ClientID %>');
+          var to = document.getElementById('<%=txtExperienceTo9.ClientID %>');
+
+          var ForNextFromDate = document.getElementById('<%=txtExperienceTo8.ClientID %>');
+
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
@@ -2413,6 +2512,15 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
                             from.value = '';
                             from.focus();
                             return;
+                        }
+                        if (ForNextFromDate.value) {
+                            var ForNextFromDateDate = new Date(ForNextFromDate.value);
+                            if (fromDate <= ForNextFromDateDate) {
+                                alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
+                                from.value = '';
+                                from.focus();
+                                return;
+                            }
                         }
                     }
 
@@ -2445,7 +2553,6 @@ Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_
                     }
                 }
             </script>
-
 
             <script type="text/javascript">
                 function validateAddBtnExperience() {
