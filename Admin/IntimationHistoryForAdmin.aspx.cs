@@ -84,6 +84,7 @@ namespace CEIHaryana.Admin
                     string TestRportId = lblTestRportId.Text.Trim();
                     Label lblRequestStatus = (Label)row.FindControl("lblRequestStatus");
                     Label lblTypeOfInspection = (Label)row.FindControl("lblTypeOfInspection");
+                    Label lblInstallationFor = (Label)row.FindControl("lblInstallationType");
 
 
                     if (installationType.Trim() == "Line")
@@ -104,17 +105,24 @@ namespace CEIHaryana.Admin
                     }
                     if (e.CommandName == "Select")
                     {
-                        if (lblRequestStatus != null && lblRequestStatus.Text == "ReSubmit" && lblTypeOfInspection.Text == "New")
+                        if (lblInstallationFor.Text == "Cinema_Videos Talkies")
                         {
-                            Response.Redirect("/Admin/ReturnedIntimationForHistory.aspx", false);
+                            Response.Redirect("/Admin/CinemaInspectionDetails.aspx", false);
                         }
-                        else if (lblRequestStatus != null && lblRequestStatus.Text == "ReSubmit" && lblTypeOfInspection.Text == "Periodic")
+                        else
                         {
-                            Response.Redirect("/Admin/PeriodicReturnedIntimationForHistory.aspx", false);
-                        }
-                        else //if (lblRequestStatus != null && lblRequestStatus.Text == "New")
-                        {
-                            Response.Redirect("/Admin/IntimationForHistory.aspx", false);
+                            if (lblRequestStatus != null && lblRequestStatus.Text == "ReSubmit" && lblTypeOfInspection.Text == "New")
+                            {
+                                Response.Redirect("/Admin/ReturnedIntimationForHistory.aspx", false);
+                            }
+                            else if (lblRequestStatus != null && lblRequestStatus.Text == "ReSubmit" && lblTypeOfInspection.Text == "Periodic")
+                            {
+                                Response.Redirect("/Admin/PeriodicReturnedIntimationForHistory.aspx", false);
+                            }
+                            else //if (lblRequestStatus != null && lblRequestStatus.Text == "New")
+                            {
+                                Response.Redirect("/Admin/IntimationForHistory.aspx", false);
+                            }
                         }
                     }
                     else
