@@ -38,6 +38,9 @@ namespace CEIHaryana.UserPages
                     getExperienceDetail(hdnId.Value);
                     RetiredEngineer(hdnId.Value);
 
+                    btnDeleteExp.Visible = true;
+                    BtnDelete.Visible = true;
+
                 }
                 else if (Convert.ToString(Session["SupervisorID"]) != null && Convert.ToString(Session["SupervisorID"]) != "")
                 {
@@ -54,6 +57,9 @@ namespace CEIHaryana.UserPages
                     PermanentEmployed(hdnId.Value);
                     getExperienceDetail(hdnId.Value);
                     RetiredEngineer(hdnId.Value);
+
+                    btnDeleteExp.Visible = true;
+                    BtnDelete.Visible = true;
                 }
                 else
                 {
@@ -941,6 +947,8 @@ namespace CEIHaryana.UserPages
                 Experience7.Visible = true;
                 Experience8.Visible = true;
                 Experience9.Visible = true;
+
+                btnAddMore.Visible = false;
             }
             if (Experience7.Visible == true)
             {
@@ -1006,11 +1014,13 @@ namespace CEIHaryana.UserPages
             {
                 Experience1.Visible = true;
                 Experience2.Visible = false;
+                btnDeleteExp.Visible = true;
             }
             else
             {
                 Experience1.Visible = false;
                 Experience2.Visible = false;
+                btnDeleteExp.Visible = false;
             }
         }
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
@@ -1291,6 +1301,418 @@ namespace CEIHaryana.UserPages
             }
         }
 
+        protected void btnDeleteExp_Click(object sender, EventArgs e)
+        {
+            if (Experience9.Visible == true)
+            {
 
+                Experience9.Visible = false;
+                btnAddMore.Visible = true;
+                ToCalculateExperience();
+                ddlExperience9.SelectedValue = "0";
+                ddlTrainingUnder9.SelectedValue = "0";
+                txtExperienceEmployer9.Text = "";
+                txtPostDescription9.Text = "";
+                txtExperienceFrom9.Text = "";
+                txtExperienceTo9.Text = "";
+
+
+            }
+            else if (Experience8.Visible == true)
+            {
+                Experience8.Visible = false;
+                Experience9.Visible = false;
+                ToCalculateExperience();
+
+                ddlExperience8.SelectedValue = "0";
+                ddlTrainingUnder8.SelectedValue = "0";
+                txtExperienceEmployer8.Text = "";
+                txtPostDescription8.Text = "";
+                txtExperienceFrom8.Text = "";
+                txtExperienceTo8.Text = "";
+
+
+                ddlExperience9.SelectedValue = "0";
+                ddlTrainingUnder9.SelectedValue = "0";
+                txtExperienceEmployer9.Text = "";
+                txtPostDescription9.Text = "";
+                txtExperienceFrom9.Text = "";
+                txtExperienceTo9.Text = "";
+            }
+            else if (Experience7.Visible == true)
+            {
+                Experience7.Visible = false;
+                Experience8.Visible = false;
+                Experience9.Visible = false;
+                ToCalculateExperience();
+
+
+                ddlExperience7.SelectedValue = "0";
+                ddlTrainingUnder7.SelectedValue = "0";
+                txtExperienceEmployer7.Text = "";
+                txtPostDescription7.Text = "";
+                txtExperienceFrom7.Text = "";
+                txtExperienceTo7.Text = "";
+
+                ddlExperience8.SelectedValue = "0";
+                ddlTrainingUnder8.SelectedValue = "0";
+                txtExperienceEmployer8.Text = "";
+                txtPostDescription8.Text = "";
+                txtExperienceFrom8.Text = "";
+                txtExperienceTo8.Text = "";
+
+
+                ddlExperience9.SelectedValue = "0";
+                ddlTrainingUnder9.SelectedValue = "0";
+                txtExperienceEmployer9.Text = "";
+                txtPostDescription9.Text = "";
+                txtExperienceFrom9.Text = "";
+                txtExperienceTo9.Text = "";
+            }
+            else if (Experience6.Visible == true)
+            {
+                Experience6.Visible = false;
+                Experience7.Visible = false;
+                Experience8.Visible = false;
+                Experience9.Visible = false;
+                ToCalculateExperience();
+
+                ddlExperience6.SelectedValue = "0";
+                ddlTrainingUnder6.SelectedValue = "0";
+                txtExperienceEmployer6.Text = "";
+                txtPostDescription6.Text = "";
+                txtExperienceFrom6.Text = "";
+                txtExperienceTo6.Text = "";
+
+                ddlExperience7.SelectedValue = "0";
+                ddlTrainingUnder7.SelectedValue = "0";
+                txtExperienceEmployer7.Text = "";
+                txtPostDescription7.Text = "";
+                txtExperienceFrom7.Text = "";
+                txtExperienceTo7.Text = "";
+
+                ddlExperience8.SelectedValue = "0";
+                ddlTrainingUnder8.SelectedValue = "0";
+                txtExperienceEmployer8.Text = "";
+                txtPostDescription8.Text = "";
+                txtExperienceFrom8.Text = "";
+                txtExperienceTo8.Text = "";
+
+
+                ddlExperience9.SelectedValue = "0";
+                ddlTrainingUnder9.SelectedValue = "0";
+                txtExperienceEmployer9.Text = "";
+                txtPostDescription9.Text = "";
+                txtExperienceFrom9.Text = "";
+                txtExperienceTo9.Text = "";
+            }
+            else if (Experience5.Visible == true)
+            {
+                Experience5.Visible = false;
+                Experience6.Visible = false;
+                Experience7.Visible = false;
+                Experience8.Visible = false;
+                Experience9.Visible = false;
+                ToCalculateExperience();
+                ddlExperience5.SelectedValue = "0";
+                ddlTrainingUnder5.SelectedValue = "0";
+                txtExperienceEmployer5.Text = "";
+                txtPostDescription5.Text = "";
+                txtExperienceFrom5.Text = "";
+                txtExperienceTo5.Text = "";
+
+                ddlExperience6.SelectedValue = "0";
+                ddlTrainingUnder6.SelectedValue = "0";
+                txtExperienceEmployer6.Text = "";
+                txtPostDescription6.Text = "";
+                txtExperienceFrom6.Text = "";
+                txtExperienceTo6.Text = "";
+
+                ddlExperience7.SelectedValue = "0";
+                ddlTrainingUnder7.SelectedValue = "0";
+                txtExperienceEmployer7.Text = "";
+                txtPostDescription7.Text = "";
+                txtExperienceFrom7.Text = "";
+                txtExperienceTo7.Text = "";
+
+                ddlExperience8.SelectedValue = "0";
+                ddlTrainingUnder8.SelectedValue = "0";
+                txtExperienceEmployer8.Text = "";
+                txtPostDescription8.Text = "";
+                txtExperienceFrom8.Text = "";
+                txtExperienceTo8.Text = "";
+
+
+                ddlExperience9.SelectedValue = "0";
+                ddlTrainingUnder9.SelectedValue = "0";
+                txtExperienceEmployer9.Text = "";
+                txtPostDescription9.Text = "";
+                txtExperienceFrom9.Text = "";
+                txtExperienceTo9.Text = "";
+            }
+            else if (Experience4.Visible == true)
+            {
+                Experience4.Visible = false;
+                Experience5.Visible = false;
+                Experience6.Visible = false;
+                Experience7.Visible = false;
+                Experience8.Visible = false;
+                Experience9.Visible = false;
+                ToCalculateExperience();
+                ddlExperience4.SelectedValue = "0";
+                ddlTrainingUnder4.SelectedValue = "0";
+                txtExperienceEmployer4.Text = "";
+                txtPostDescription4.Text = "";
+                txtExperienceFrom4.Text = "";
+                txtExperienceTo4.Text = "";
+
+                ddlExperience5.SelectedValue = "0";
+                ddlTrainingUnder5.SelectedValue = "0";
+                txtExperienceEmployer5.Text = "";
+                txtPostDescription5.Text = "";
+                txtExperienceFrom5.Text = "";
+                txtExperienceTo5.Text = "";
+
+                ddlExperience6.SelectedValue = "0";
+                ddlTrainingUnder6.SelectedValue = "0";
+                txtExperienceEmployer6.Text = "";
+                txtPostDescription6.Text = "";
+                txtExperienceFrom6.Text = "";
+                txtExperienceTo6.Text = "";
+
+                ddlExperience7.SelectedValue = "0";
+                ddlTrainingUnder7.SelectedValue = "0";
+                txtExperienceEmployer7.Text = "";
+                txtPostDescription7.Text = "";
+                txtExperienceFrom7.Text = "";
+                txtExperienceTo7.Text = "";
+
+                ddlExperience8.SelectedValue = "0";
+                ddlTrainingUnder8.SelectedValue = "0";
+                txtExperienceEmployer8.Text = "";
+                txtPostDescription8.Text = "";
+                txtExperienceFrom8.Text = "";
+                txtExperienceTo8.Text = "";
+
+
+                ddlExperience9.SelectedValue = "0";
+                ddlTrainingUnder9.SelectedValue = "0";
+                txtExperienceEmployer9.Text = "";
+                txtPostDescription9.Text = "";
+                txtExperienceFrom9.Text = "";
+                txtExperienceTo9.Text = "";
+            }
+            else if (Experience3.Visible == true)
+            {
+                Experience3.Visible = false;
+                Experience4.Visible = false;
+                Experience5.Visible = false;
+                Experience6.Visible = false;
+                Experience7.Visible = false;
+                Experience8.Visible = false;
+                Experience9.Visible = false;
+                ToCalculateExperience();
+                ddlExperience3.SelectedValue = "0";
+                ddlTrainingUnder3.SelectedValue = "0";
+                txtExperienceEmployer3.Text = "";
+                txtPostDescription3.Text = "";
+                txtExperienceFrom3.Text = "";
+                txtExperienceTo3.Text = "";
+
+                ddlExperience4.SelectedValue = "0";
+                ddlTrainingUnder4.SelectedValue = "0";
+                txtExperienceEmployer4.Text = "";
+                txtPostDescription4.Text = "";
+                txtExperienceFrom4.Text = "";
+                txtExperienceTo4.Text = "";
+
+                ddlExperience5.SelectedValue = "0";
+                ddlTrainingUnder5.SelectedValue = "0";
+                txtExperienceEmployer5.Text = "";
+                txtPostDescription5.Text = "";
+                txtExperienceFrom5.Text = "";
+                txtExperienceTo5.Text = "";
+
+                ddlExperience6.SelectedValue = "0";
+                ddlTrainingUnder6.SelectedValue = "0";
+                txtExperienceEmployer6.Text = "";
+                txtPostDescription6.Text = "";
+                txtExperienceFrom6.Text = "";
+                txtExperienceTo6.Text = "";
+
+                ddlExperience7.SelectedValue = "0";
+                ddlTrainingUnder7.SelectedValue = "0";
+                txtExperienceEmployer7.Text = "";
+                txtPostDescription7.Text = "";
+                txtExperienceFrom7.Text = "";
+                txtExperienceTo7.Text = "";
+
+                ddlExperience8.SelectedValue = "0";
+                ddlTrainingUnder8.SelectedValue = "0";
+                txtExperienceEmployer8.Text = "";
+                txtPostDescription8.Text = "";
+                txtExperienceFrom8.Text = "";
+                txtExperienceTo8.Text = "";
+
+
+                ddlExperience9.SelectedValue = "0";
+                ddlTrainingUnder9.SelectedValue = "0";
+                txtExperienceEmployer9.Text = "";
+                txtPostDescription9.Text = "";
+                txtExperienceFrom9.Text = "";
+                txtExperienceTo9.Text = "";
+            }
+            else if (Experience2.Visible == true)
+            {
+                Experience2.Visible = false;
+                Experience3.Visible = false;
+                Experience4.Visible = false;
+                Experience5.Visible = false;
+                Experience6.Visible = false;
+                Experience7.Visible = false;
+                Experience8.Visible = false;
+                Experience9.Visible = false;
+                ToCalculateExperience();
+
+                ddlExperience2.SelectedValue = "0";
+                ddlTrainingUnder2.SelectedValue = "0";
+                txtExperienceEmployer2.Text = "";
+                txtPostDescription2.Text = "";
+                txtExperienceFrom2.Text = "";
+                txtExperienceTo2.Text = "";
+
+                ddlExperience3.SelectedValue = "0";
+                ddlTrainingUnder3.SelectedValue = "0";
+                txtExperienceEmployer3.Text = "";
+                txtPostDescription3.Text = "";
+                txtExperienceFrom3.Text = "";
+                txtExperienceTo3.Text = "";
+
+                ddlExperience4.SelectedValue = "0";
+                ddlTrainingUnder4.SelectedValue = "0";
+                txtExperienceEmployer4.Text = "";
+                txtPostDescription4.Text = "";
+                txtExperienceFrom4.Text = "";
+                txtExperienceTo4.Text = "";
+
+                ddlExperience5.SelectedValue = "0";
+                ddlTrainingUnder5.SelectedValue = "0";
+                txtExperienceEmployer5.Text = "";
+                txtPostDescription5.Text = "";
+                txtExperienceFrom5.Text = "";
+                txtExperienceTo5.Text = "";
+
+                ddlExperience6.SelectedValue = "0";
+                ddlTrainingUnder6.SelectedValue = "0";
+                txtExperienceEmployer6.Text = "";
+                txtPostDescription6.Text = "";
+                txtExperienceFrom6.Text = "";
+                txtExperienceTo6.Text = "";
+
+                ddlExperience7.SelectedValue = "0";
+                ddlTrainingUnder7.SelectedValue = "0";
+                txtExperienceEmployer7.Text = "";
+                txtPostDescription7.Text = "";
+                txtExperienceFrom7.Text = "";
+                txtExperienceTo7.Text = "";
+
+                ddlExperience8.SelectedValue = "0";
+                ddlTrainingUnder8.SelectedValue = "0";
+                txtExperienceEmployer8.Text = "";
+                txtPostDescription8.Text = "";
+                txtExperienceFrom8.Text = "";
+                txtExperienceTo8.Text = "";
+
+
+                ddlExperience9.SelectedValue = "0";
+                ddlTrainingUnder9.SelectedValue = "0";
+                txtExperienceEmployer9.Text = "";
+                txtPostDescription9.Text = "";
+                txtExperienceFrom9.Text = "";
+                txtExperienceTo9.Text = "";
+            }
+            else if (Experience1.Visible == true)
+            {
+                Experience1.Visible = false;
+                Experience2.Visible = false;
+                Experience3.Visible = false;
+                Experience4.Visible = false;
+                Experience5.Visible = false;
+                Experience6.Visible = false;
+                Experience7.Visible = false;
+                Experience8.Visible = false;
+                Experience9.Visible = false;
+                ToCalculateExperience();
+                ddlExperience1.SelectedValue = "0";
+                ddlTrainingUnder1.SelectedValue = "0";
+                txtExperienceEmployer1.Text = "";
+                txtPostDescription1.Text = "";
+                txtExperienceFrom1.Text = "";
+                txtExperienceTo1.Text = "";
+
+                ddlExperience2.SelectedValue = "0";
+                ddlTrainingUnder2.SelectedValue = "0";
+                txtExperienceEmployer2.Text = "";
+                txtPostDescription2.Text = "";
+                txtExperienceFrom2.Text = "";
+                txtExperienceTo2.Text = "";
+
+                ddlExperience3.SelectedValue = "0";
+                ddlTrainingUnder3.SelectedValue = "0";
+                txtExperienceEmployer3.Text = "";
+                txtPostDescription3.Text = "";
+                txtExperienceFrom3.Text = "";
+                txtExperienceTo3.Text = "";
+
+                ddlExperience4.SelectedValue = "0";
+                ddlTrainingUnder4.SelectedValue = "0";
+                txtExperienceEmployer4.Text = "";
+                txtPostDescription4.Text = "";
+                txtExperienceFrom4.Text = "";
+                txtExperienceTo4.Text = "";
+
+                ddlExperience5.SelectedValue = "0";
+                ddlTrainingUnder5.SelectedValue = "0";
+                txtExperienceEmployer5.Text = "";
+                txtPostDescription5.Text = "";
+                txtExperienceFrom5.Text = "";
+                txtExperienceTo5.Text = "";
+
+                ddlExperience6.SelectedValue = "0";
+                ddlTrainingUnder6.SelectedValue = "0";
+                txtExperienceEmployer6.Text = "";
+                txtPostDescription6.Text = "";
+                txtExperienceFrom6.Text = "";
+                txtExperienceTo6.Text = "";
+
+                ddlExperience7.SelectedValue = "0";
+                ddlTrainingUnder7.SelectedValue = "0";
+                txtExperienceEmployer7.Text = "";
+                txtPostDescription7.Text = "";
+                txtExperienceFrom7.Text = "";
+                txtExperienceTo7.Text = "";
+
+                ddlExperience8.SelectedValue = "0";
+                ddlTrainingUnder8.SelectedValue = "0";
+                txtExperienceEmployer8.Text = "";
+                txtPostDescription8.Text = "";
+                txtExperienceFrom8.Text = "";
+                txtExperienceTo8.Text = "";
+
+
+                ddlExperience9.SelectedValue = "0";
+                ddlTrainingUnder9.SelectedValue = "0";
+                txtExperienceEmployer9.Text = "";
+                txtPostDescription9.Text = "";
+                txtExperienceFrom9.Text = "";
+                txtExperienceTo9.Text = "";
+
+                btnDeleteExp.Visible = false;
+            }
+            else
+            {
+                btnDeleteExp.Visible = false;
+            }
+        }
     }
 }

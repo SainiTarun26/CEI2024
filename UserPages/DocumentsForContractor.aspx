@@ -671,7 +671,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="text-align: justify; padding-top: 20px !important;">Copy of treasury challan of fees deposited in any treasury of Haryana.(<span style="color: red;">★</span>)
+                                                            <td style="text-align: justify; padding-top: 20px !important;">Copy of treasury challan of fees (₹3350/-) deposited in any treasury of Haryana.(<span style="color: red;">★</span>)
                                                                 <div class="row" style="margin-top: 15px; margin-bottom: 10px;">
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">

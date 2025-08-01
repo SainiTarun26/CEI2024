@@ -676,8 +676,7 @@
 
 
                                                         <tr id="Exp" runat="server" visible="false">
-                                                            <td>Upload Exp. Certificate of
-                                                                <asp:Label ID="LblExp" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)
+                                                            <td>Upload <asp:Label ID="LblExp" runat="server" Text="Label"></asp:Label> Experience Letter 1 (<span style="color: red;">★</span>)
                                                             </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text19" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
@@ -692,8 +691,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp1" runat="server" visible="false">
-                                                            <td>Upload Exp. Certificate of
-                                                                <asp:Label ID="LblExp1" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td>Upload <asp:Label ID="LblExp1" runat="server" Text="Label"></asp:Label> Experience Letter 2 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text20" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload20" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -707,8 +705,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp2" runat="server" visible="false">
-                                                            <td style="">Upload Exp. Certificate of
-                                                                <asp:Label ID="LblExp2" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td style="">Upload <asp:Label ID="LblExp2" runat="server" Text="Label"></asp:Label> Experience Letter 3 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text21" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload21" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -722,8 +719,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp3" runat="server" visible="false">
-                                                            <td>Upload Exp. Certificate of
-                                                                <asp:Label ID="LblExp3" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td>Upload <asp:Label ID="LblExp3" runat="server" Text="Label"></asp:Label> Experience Letter 4 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text22" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload22" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -737,8 +733,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp4" runat="server" visible="false">
-                                                            <td>Upload Exp. Certificate of
-                                                                <asp:Label ID="LblExp4" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td>Upload <asp:Label ID="LblExp4" runat="server" Text="Label"></asp:Label> Experience Letter 5 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text23" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload23" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -752,8 +747,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp5" runat="server" visible="false">
-                                                            <td>Upload Exp. Certificate of
-                                                                <asp:Label ID="LblExp5" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td>Upload <asp:Label ID="LblExp5" runat="server" Text="Label"></asp:Label> Experience Letter 6 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text24" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload24" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -767,8 +761,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp6" runat="server" visible="false">
-                                                            <td>Upload Exp. Certificate of
-                                                                <asp:Label ID="LblExp6" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td>Upload <asp:Label ID="LblExp6" runat="server" Text="Label"></asp:Label> Experience Letter 7 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text25" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload25" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -782,8 +775,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp7" runat="server" visible="false">
-                                                            <td>Upload Exp. Certificate of
-                                                                <asp:Label ID="LblExp7" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td>Upload <asp:Label ID="LblExp7" runat="server" Text="Label"></asp:Label> Experience Letter 8 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text26" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload26" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -797,8 +789,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp8" runat="server" visible="false">
-                                                            <td>Upload Exp. Certificate of
-                                                                <asp:Label ID="LblExp8" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td>Upload <asp:Label ID="LblExp8" runat="server" Text="Label"></asp:Label> Experience Letter 9 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text27" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload27" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -812,8 +803,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp9" runat="server" visible="false">
-                                                            <td>Upload Exp. Certificate of
-                                                                <asp:Label ID="LblExp9" runat="server" Text="Label"></asp:Label>(<span style="color: red;">★</span>)</td>
+                                                            <td>Upload <asp:Label ID="LblExp9" runat="server" Text="Label"></asp:Label> Experience Letter 10 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text28" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload28" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -830,7 +820,7 @@
 
 
                                                         <tr>
-                                                            <td style="text-align: justify; padding-top: 20px !important;">Copy of treasury challan of fees deposited in any treasury of Haryana.(<span style="color: red;">★</span>)
+                                                            <td style="text-align: justify; padding-top: 20px !important;">Copy of treasury challan of fees (₹400/-) deposited in any treasury of Haryana.(<span style="color: red;">★</span>)
                                                                 <div class="row" style="margin-top: 15px; margin-bottom: 10px;">
                                                                     <div class="col-md-6">
                                                                         <div class="form-group" style="margin-bottom: 0px !important;">

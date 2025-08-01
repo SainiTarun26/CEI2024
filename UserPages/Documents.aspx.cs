@@ -1072,7 +1072,7 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload19, Button19, 35, lnkbtn_Delete19, lnkbtn_Save19, "Exp. Certificate of " + LblExp.Text, null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload19, Button19, 35, lnkbtn_Delete19, lnkbtn_Save19, LblExp.Text + "Experience Letter1", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document19.Value = "1";
@@ -1091,7 +1091,7 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload20, Button20, 35, lnkbtn_Delete20, lnkbtn_Save20, "Exp. Certificate of " + LblExp1.Text, null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload20, Button20, 35, lnkbtn_Delete20, lnkbtn_Save20, LblExp1.Text + "Experience Letter2", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document20.Value = "1";
@@ -1110,7 +1110,7 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload21, Button21, 35, lnkbtn_Delete21, lnkbtn_Save21, "Exp. Certificate of " + LblExp2.Text, null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload21, Button21, 35, lnkbtn_Delete21, lnkbtn_Save21, LblExp2.Text + "Experience Letter3", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document21.Value = "1";
@@ -1129,7 +1129,7 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload22, Button22, 35, lnkbtn_Delete22, lnkbtn_Save22, "Exp. Certificate of " + LblExp3.Text, null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload22, Button22, 35, lnkbtn_Delete22, lnkbtn_Save22, LblExp3.Text + "Experience Letter4", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document22.Value = "1";
@@ -1148,7 +1148,7 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload23, Button23, 35, lnkbtn_Delete23, lnkbtn_Save23, "Exp. Certificate of " + LblExp4.Text, null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload23, Button23, 35, lnkbtn_Delete23, lnkbtn_Save23, LblExp4.Text + "Experience Letter5", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document23.Value = "1";
@@ -1167,7 +1167,7 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload24, Button24, 35, lnkbtn_Delete24, lnkbtn_Save24, "Exp. Certificate of " + LblExp5.Text, null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload24, Button24, 35, lnkbtn_Delete24, lnkbtn_Save24, LblExp5.Text + "Experience Letter6", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document24.Value = "1";
@@ -1186,7 +1186,7 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload25, Button25, 35, lnkbtn_Delete25, lnkbtn_Save25, "Exp. Certificate of " + LblExp6.Text, null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload25, Button25, 35, lnkbtn_Delete25, lnkbtn_Save25, LblExp6.Text + "Experience Letter7", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document25.Value = "1";
@@ -1205,7 +1205,7 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload26, Button26, 35, lnkbtn_Delete26, lnkbtn_Save26, "Exp. Certificate of " + LblExp7.Text, null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload26, Button26, 35, lnkbtn_Delete26, lnkbtn_Save26, LblExp7.Text + "Experience Letter8", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document26.Value = "1";
@@ -1224,7 +1224,7 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload27, Button27, 35, lnkbtn_Delete27, lnkbtn_Save27, "Exp. Certificate of " + LblExp8.Text, null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload27, Button27, 35, lnkbtn_Delete27, lnkbtn_Save27, LblExp8.Text + "Experience Letter9", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document27.Value = "1";
@@ -1243,7 +1243,7 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload28, Button28, 35, lnkbtn_Delete28, lnkbtn_Save28, "Exp. Certificate of " + LblExp9.Text, null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload28, Button28, 35, lnkbtn_Delete28, lnkbtn_Save28, LblExp9.Text + "Experience Letter10", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document28.Value = "1";

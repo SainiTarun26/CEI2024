@@ -1832,7 +1832,9 @@
                                                                 <tr>
                                                                     <td colspan="4" style="font-size: 12px;">
                                                                         <asp:Button ID="btnAddMore" runat="server" Text="Add" class="btn btn-primary"
-                                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClientClick="if (!validateAddBtnExperience()) return false;" OnClick="btnAddMore_Click"></asp:Button>
+                                                                            Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClientClick="return validateAddBtnExperience();" OnClick="btnAddMore_Click"></asp:Button>
+                                                                          <asp:Button ID="btnDeleteExp" runat="server" Text="Delete" class="btn btn-primary"
+      Style="padding: 10px 29px 10px 29px; border-radius: 5px;" OnClick="btnDeleteExp_Click" Visible="false"></asp:Button>
                                                                     </td>
                                                                     <td colspan="2" style="font-size: 12px;">
                                                                         <p style="font-size: 12px;">Total Experience:</p>
