@@ -444,6 +444,7 @@
     <div class="content-wrapper">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
+            <div id="printdiv" >
             <div id="DetailsOfInstallations">
                 <div class="card-body" style="padding-bottom: 0px !important;">
                     <div class="row">
@@ -584,7 +585,7 @@
                         </div>
                         <div class="col-md-4">
                             <label>
-                                Village /City / Town
+                                Address along with village/city/town
                             </label>
                             <asp:TextBox class="form-control" ID="txtVillageCityTown" ReadOnly="true" MaxLength="100" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtVillageCityTown" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
@@ -685,6 +686,10 @@
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="Gender" HeaderText="Gender">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                             <asp:BoundField DataField="FullPostalAddress" HeaderText="FullPostalAddress">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
@@ -896,11 +901,14 @@
                     </div>
                 </div>
             </div>
+            </div>
             <div class="row" style="margin-top: 0px; margin-bottom: 15px;">
                 <div class="col-md-12" style="text-align: center;">
 
                     <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" ValidationGroup="Submit" Class="btn btn-primary" Text="Submit" />
-
+                    <div style="text-align:center; margin-top:20px;">
+    <asp:Button ID="btnPrint" runat="server" Text="Print" CssClass="btn btn-success" OnClientClick="printDiv('printdiv'); return false;" />
+</div>
                 </div>
             </div>
         </div>
@@ -1111,6 +1119,53 @@
             //    toggleFileUpload($(this).closest("table"));
             //});              
         });
+    </script>
+   <%-- <script type="text/javascript">
+        function printDiv(divId) {
+            debugger;
+            var divContents = document.getElementById(divId).innerHTML;
+            var printWindow = window.open('', '', 'height=800,width=1000');
+            printWindow.document.write('<html><head><title>Print Content</title>');
+            printWindow.document.write('<link rel="stylesheet" type="text/css" href="styles.css">'); // optional: link your CSS
+            printWindow.document.write('</head><body>');
+            printWindow.document.write(divContents);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.focus();
+            setTimeout(function () {
+                printWindow.print();
+                printWindow.close();
+            }, 500);
+        }
+    </script>--%>
+    <script type="text/javascript">
+        function printDiv(divId) {
+            // Clone the content
+            var originalDiv = document.getElementById(divId);
+            var clone = originalDiv.cloneNode(true);
+
+            // Remove all hidden elements (style="display: none" or class="d-none" etc.)
+            var hiddenElements = clone.querySelectorAll('[style*="display: none"], .d-none, [hidden]');
+            hiddenElements.forEach(function (el) {
+                el.remove();
+            });
+
+            // Open a new print window
+            var printWindow = window.open('', '', 'height=800,width=1000');
+            printWindow.document.write('<html><head><title>Print</title>');
+            printWindow.document.write('<link rel="stylesheet" href="Styles/bootstrap.min.css" type="text/css" />'); // optional CSS
+            printWindow.document.write('</head><body>');
+            printWindow.document.write(clone.innerHTML);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.focus();
+
+            // Wait a bit, then print
+            setTimeout(function () {
+                printWindow.print();
+                printWindow.close();
+            }, 500);
+        }
     </script>
 
     <%--    <script>

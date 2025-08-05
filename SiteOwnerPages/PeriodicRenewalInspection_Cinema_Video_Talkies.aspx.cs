@@ -267,14 +267,8 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     }
                     decimal TotalAmount = Convert.ToDecimal(Session["CinemaAmount"]);                    
-                    DataTable dt = new DataTable();
-                    dt = CEI.FetchOfficerFor_Accidental(District, "XEN");
-                    if (dt == null || dt.Rows.Count < 0)
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "error", "alert('please Contact Team');", true);
-                        return;
-                    }
-                    AssignedOfficer = dt.Rows[0]["StaffUserID"].ToString();
+                    //assigned officer changes by navneet on instructions of vinod sir
+                    AssignedOfficer = "CEI";
 
                     if (txttransactionId.Text != "")
                     {

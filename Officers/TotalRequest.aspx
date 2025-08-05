@@ -6,18 +6,32 @@
     <!-- CSS -->
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
-    <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+     <!-- Bootstrap 4.6.2 CSS -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <!-- JS (correct order) -->
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
+ <!-- DataTables with Bootstrap 4 CSS -->
+ <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+ <!-- Select2 CSS -->
+ <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
+ <!-- Font Awesome 6.5.2 CSS -->
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+ <!-- jQuery 3.5.1 (must be first) -->
+ <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+ <!-- DataTables Core -->
+ <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+ <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+
+ <!-- Popper.js (required by Bootstrap dropdowns/modals) -->
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+ <!-- Bootstrap 4.6.2 JS -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+
+ <!-- Select2 JS -->
+ <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         .headercolor {
@@ -437,6 +451,14 @@
             $('#ownerModal').modal('show');
         }
     </script>
+     <script>
+         $(document).ready(function () {
+             // Initialize DataTables on specific table only
+             $('#myTable').DataTable();
 
+             // Re-initialize dropdown (in case DataTables interferes)
+             $('.dropdown-toggle').dropdown();
+         });
+     </script>
 </asp:Content>
 
