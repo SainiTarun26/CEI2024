@@ -114,7 +114,7 @@ namespace CEIHaryana.Admin
                     string id = lblID.Text;
 
 
-                    Session["InspectionId"] = id;
+                    //Session["InspectionId"] = id;
                     if (e.CommandName == "Select")
                     {
                         //Added By neeraj 22-May-2025
@@ -361,7 +361,7 @@ namespace CEIHaryana.Admin
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('File not found!');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Siteowner has not uploaded the PAN card yet!');", true);
             }
         }
         #endregion

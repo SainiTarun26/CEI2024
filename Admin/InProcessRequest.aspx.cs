@@ -225,7 +225,7 @@ namespace CEIHaryana.Admin
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('File not found!');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Siteowner has not uploaded the PAN card yet!');", true);
             }
         }
 
