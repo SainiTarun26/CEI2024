@@ -278,7 +278,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <p>
-                                        In Condition to this Office Memo No "<asp:Label ID="lblMemoNo" runat="server" Text="Label"></asp:Label>" And your Online Application No "<asp:Label ID="lblInspectionId" runat="server" Text="Label"></asp:Label>"Dated "<asp:Label ID="lblApprovedDate" runat="server" Text="Label"></asp:Label>".
+                                        In Continuation to this Office Memo No "<asp:Label ID="lblMemoNo" runat="server" Text="Label"></asp:Label>" And your Online Application No "<asp:Label ID="lblInspectionId" runat="server" Text="Label"></asp:Label>"Dated "<asp:Label ID="lblApprovedDate" runat="server" Text="Label"></asp:Label>".
                                     </p>
                                 </div>
                             </div>
