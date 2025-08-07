@@ -260,11 +260,17 @@ namespace CEIHaryana.SiteOwnerPages
                 Form2.Visible = true;
                 Form3.Visible = false;
             }
-            if (ddlVoltage.SelectedValue == "11KV" || ddlVoltage.SelectedValue == "33KV" || ddlVoltage.SelectedValue == "66KV"
-                 || ddlVoltage.SelectedValue == "132KV" || ddlVoltage.SelectedValue == "220KV" || ddlVoltage.SelectedValue == "220KV")
+
+            else if (ddlVoltage.SelectedValue != "0"&& ddlVoltage.SelectedValue == "650V")
             {
                 Form3.Visible = true;
                 Form2.Visible = false;
+            }
+            else 
+            {
+                Form1.Visible = false;
+                Form2.Visible = false;
+                Form3.Visible = false;
             }
         }
         //
