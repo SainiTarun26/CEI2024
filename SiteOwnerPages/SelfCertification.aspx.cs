@@ -261,7 +261,7 @@ namespace CEIHaryana.SiteOwnerPages
                 Form3.Visible = false;
             }
 
-            else if (ddlVoltage.SelectedValue != "0"&& ddlVoltage.SelectedValue == "650V")
+            else if (ddlVoltage.SelectedValue != "0"&& ddlVoltage.SelectedValue != "650V")
             {
                 Form3.Visible = true;
                 Form2.Visible = false;
