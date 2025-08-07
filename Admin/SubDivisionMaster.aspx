@@ -535,7 +535,7 @@
                             </div>
                         </div>
                         <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
-                            AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                            AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView1_RowCommand">
                             <Columns>
 
                                 <asp:TemplateField HeaderText="SNo">
@@ -545,7 +545,11 @@
                                         <%#Container.DataItemIndex+1 %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblRowID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
 
                                 <asp:BoundField DataField="UtilityId" HeaderText="Utility Id">
                                     <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />

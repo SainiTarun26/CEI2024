@@ -327,9 +327,28 @@ namespace CEIHaryana.Admin
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "ExceptionScript", $"alert('{ex.Message.Replace("'", "\\'")}')", true);
             }
         }
+
         #endregion
+        #region Neha search 7-Aug-2025
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Reset")
+            {
+                Control ctrl = e.CommandSource as Control;
+                if (ctrl != null)
+                {
+                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                    Label RowID = (Label)row.FindControl("lblRowID");
+                    int rowIdInt = Convert.ToInt32(RowID.Text);
+                   
+                    DataTable dt = new DataTable();
+                    dt = CEI.GetSubDivisionMasterDataAfterFilter(rowIdInt);
+                    txtUserId.Text = dt.Rows[0]["UserId"].ToString();
+                }
 
-
+            }
+        }
+        #endregion
     }
 
 

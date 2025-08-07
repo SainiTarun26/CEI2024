@@ -14288,6 +14288,12 @@ SqlTransaction transaction)
             }
         }
         #endregion
+        #region Neha search subdivision
+        public DataTable GetSubDivisionMasterDataAfterFilter(int Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSubDivisionMasterDataAfterFilter", Id);
+        }
+        #endregion
     }
 }
 
