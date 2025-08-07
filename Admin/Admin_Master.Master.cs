@@ -27,10 +27,10 @@ namespace CEI_PRoject.ADMIN
                             DivisionMasterTab.Visible = true;
                             SubDivisionMasterTab.Visible = true;
                             SLDRequest.Visible = false;
-                            SLDApproval.Visible = false;
-                            SLDHistory.Visible = false;
+                            //SLDApproval.Visible = false;
+                            //SLDHistory.Visible = false;
                             NewInspectionTab.Visible = false;
-                            ActionInprocesstab.Visible = false;
+                            //ActionInprocesstab.Visible = false;
                             CESE.Visible = true;
                         }
                         else
@@ -43,10 +43,10 @@ namespace CEI_PRoject.ADMIN
                             DivisionMasterTab.Visible = false;
                             SubDivisionMasterTab.Visible = false;
                             SLDRequest.Visible = true;
-                            SLDApproval.Visible = true;
-                            SLDHistory.Visible = true;
+                            //SLDApproval.Visible = true;
+                            //SLDHistory.Visible = true;
                             NewInspectionTab.Visible = true;
-                            ActionInprocesstab.Visible = true;
+                            //ActionInprocesstab.Visible = true;
                             CESE.Visible = false;
                         }
                     }

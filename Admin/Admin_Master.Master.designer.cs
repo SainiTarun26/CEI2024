@@ -69,15 +69,6 @@ namespace CEI_PRoject.ADMIN
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl NewInspectionTab;
 
         /// <summary>
-        /// ActionInprocesstab control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ActionInprocesstab;
-
-        /// <summary>
         /// ConsolidatedReport control.
         /// </summary>
         /// <remarks>
@@ -94,24 +85,6 @@ namespace CEI_PRoject.ADMIN
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl SLDRequest;
-
-        /// <summary>
-        /// SLDApproval control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SLDApproval;
-
-        /// <summary>
-        /// SLDHistory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SLDHistory;
 
         /// <summary>
         /// ChangeStaffTab control.

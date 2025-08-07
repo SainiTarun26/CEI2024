@@ -403,11 +403,11 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" target="_blank">Apply for New
+                                        <a href="Login.aspx" target="_blank">Apply for New
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://egovservices.in/" target="_blank">Apply for Renewal Lift
+                                        <a href="Login.aspx" target="_blank">Apply for Renewal Lift
                                         </a>
                                     </li>
                                     <li>

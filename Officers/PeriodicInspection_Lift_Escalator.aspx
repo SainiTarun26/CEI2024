@@ -550,6 +550,12 @@
             </div>
             <%--     </ContentTemplate>
             </asp:UpdatePanel>--%>
+                     <div class="row" style="margin-top:20px;">
+                <div class="col-md-12" visible="true">
+                    <asp:CheckBox ID="CheckBox1" runat="server" style="font-size:14px;" AutoPostBack="true" Text="&nbsp;&nbsp;The name of the applicant mentioned in online application has been checked, verified with original office record and found in order." /> <br />
+
+</div>
+         </div>
         </div>
         <div class="row">
             <div class="col-md-4"></div>

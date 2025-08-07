@@ -10386,7 +10386,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("sp_InsertApprovedCertificatedata", transaction.Connection, transaction))
+                using (SqlCommand cmd = new SqlCommand("sp_InsertCinemaApprovedCertificatedata", transaction.Connection, transaction))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@InspectionId", InspectionId);

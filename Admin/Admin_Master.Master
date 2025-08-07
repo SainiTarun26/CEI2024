@@ -419,26 +419,24 @@
                                     <span class="menu-title">Test Report History</span>
                                 </a>
                             </li>
-                            <li class="nav-item" id="NewInspectionTab" runat="server" visible="false">
-                                <a class="nav-link" href="/Admin/IntimationHistoryForAdmin.aspx">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="#fff" viewBox="0 0 576 512">
-                                        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-                                        <path d="M96 80c0-26.5 21.5-48 48-48H432c26.5 0 48 21.5 48 48V384H96V80zm313 47c-9.4-9.4-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L409 161c9.4-9.4 9.4-24.6 0-33.9zM0 336c0-26.5 21.5-48 48-48H64V416H512V288h16c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336z" />
-                                    </svg>
-                                    <span class="menu-title">New Inspections</span>
-                                </a>
 
-                            </li>
-                            <li class="nav-item" id="ActionInprocesstab" runat="server" visible="false">
-                                <a class="nav-link" href="/Admin/ActionInspectioHistrory.aspx">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="#fff" viewBox="0 0 576 512">
+                            <li class="nav-item" id="NewInspectionTab" runat="server" visible="false">
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic8" aria-expanded="false" aria-controls="ui-basic8">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 640 512">
                                         <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-                                        <path d="M96 80c0-26.5 21.5-48 48-48H432c26.5 0 48 21.5 48 48V384H96V80zm313 47c-9.4-9.4-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L409 161c9.4-9.4 9.4-24.6 0-33.9zM0 336c0-26.5 21.5-48 48-48H64V416H512V288h16c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336z" />
+                                         <path d="M96 80c0-26.5 21.5-48 48-48H432c26.5 0 48 21.5 48 48V384H96V80zm313 47c-9.4-9.4-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L409 161c9.4-9.4 9.4-24.6 0-33.9zM0 336c0-26.5 21.5-48 48-48H64V416H512V288h16c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336z" />
                                     </svg>
-                                    <%--<span class="menu-title">Action Inspection</span>--%>
-                                    <span class="menu-title">InProcess Inspection</span>
+                                    <span class="menu-title">Inspections</span>
+                                    <i class="menu-arrow"></i>
                                 </a>
+                                <div class="collapse" id="ui-basic8">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/IntimationHistoryForAdmin.aspx">New</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/ActionInspectioHistrory.aspx">InProcess</a></li>>
+                                    </ul>
+                                </div>
                             </li>
+                           
                             <li class="nav-item" id="ConsolidatedReport" runat="server" visible="false">
                                 <a class="nav-link" href="/Admin/Consolidated_Report.aspx">
                                     <i class="icon-grid menu-icon"></i>
@@ -464,23 +462,22 @@
                                 </a>
                             </li>
                             <li class="nav-item" id="SLDRequest" runat="server" visible="false">
-                                <a class="nav-link" href="/Admin/SldApproval.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">SLD Request Recevied</span>
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic5" aria-expanded="false" aria-controls="ui-basic5">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 576 512">
+                                        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                        <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 256h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
+                                    </svg>
+                                    <span class="menu-title">SLD</span>
+                                    <i class="menu-arrow"></i>
                                 </a>
-                            </li>
-                            <li class="nav-item" id="SLDApproval" runat="server" visible="false">
-                                <a class="nav-link" href="/Admin/SldApprovalRequest.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">SLD Approval Request</span>
-                                </a>
-                            </li>
-                            <li class="nav-item" id="SLDHistory" runat="server" visible="false">
-                                <a class="nav-link" href="/Admin/SLDHistory.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">SLD History</span>
-                                </a>
-                            </li>
+                                <div class="collapse" id="ui-basic5">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/SldApproval.aspx">Request Recevied</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/SldApprovalRequest.aspx">Approval Request</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/SLDHistory.asp">History</a></li>
+                                    </ul>
+                                </div>
+                            </li>                         
 
 
 
@@ -493,34 +490,25 @@
                                     <span class="menu-title">Change Staff</span>
                                 </a>
                             </li>
-
                             <li class="nav-item">
-                                <a class="nav-link" href="/Admin/Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Transfer Inspections</span>
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 640 512">
+                                        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                        <path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM504 312V248H440c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V136c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H552v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
+                                    </svg>
+                                    <span class="menu-title">Transfer</span>
+                                    <i class="menu-arrow"></i>
                                 </a>
+                                <div class="collapse" id="ui-basic4">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx">Inspections</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/Xen_To_XenLiftTransfer_ByAdmin.aspx">Lift Inspections</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/Transfer_Sld_ToDifferentStaff_ByAdmin.aspx">Slds</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/TransferRequestReport.aspx">Request Report</a></li>
+                                    </ul>
+                                </div>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Admin/Xen_To_XenLiftTransfer_ByAdmin.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Transfer Lift Inspections</span>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Admin/Transfer_Sld_ToDifferentStaff_ByAdmin.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Transfer Slds</span>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Admin/TransferRequestReport.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Transfer Request Report</span>
-                                </a>
-                            </li>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="/Admin/TotalRequestInspectionForAdmin_SearchWithCafId.aspx">
@@ -579,18 +567,23 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/Admin/NoticeForDisconnection.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Disconnection Notice</span>
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic6">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 576 512">
+                                        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                        <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 256h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
+                                    </svg>
+                                    <span class="menu-title">Disconnection</span>
+                                    <i class="menu-arrow"></i>
                                 </a>
+                                <div class="collapse" id="ui-basic6">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/NoticeForDisconnection.aspx">Notice</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/DisconnectionRequest.aspx">Status Of Notice
+                                        </a></li>
+                                    </ul>
+                                </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Admin/DisconnectionRequest.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Status Of Disconnection<br />
-                                        Notice</span>
-                                </a>
-                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="/Admin/Committee_Details.aspx">
                                     <i class="icon-grid menu-icon"></i>
@@ -598,25 +591,23 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/Admin/NewApplications_Licence.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">NewApplcations</span>
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic7">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 576 512">
+                                        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                        <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 256h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
+                                    </svg>
+                                    <span class="menu-title">New Applications</span>
+                                    <i class="menu-arrow"></i>
                                 </a>
+                                <div class="collapse" id="ui-basic7">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/NewApplications_Licence.aspx">NewApplcations</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/Pending_Licence_Approval_Cei_List.aspx">Pending Licencen</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/Approved_Licence_Approval_Cei_List.aspx">Application History</a></li>
+                                    </ul>
+                                </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Admin/Pending_Licence_Approval_Cei_List.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Pending Licence<br />
-                                        Approval  </span>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Admin/Approved_Licence_Approval_Cei_List.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Approved Licence </span>
-                                </a>
-                            </li>
+                            
                         </ul>
                     </nav>
                     <div class="main-panel">

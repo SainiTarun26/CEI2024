@@ -270,15 +270,15 @@
                                 <div class="col-12">
                                     <p style="text-align: center; font-size: 22px; font-weight: bold;">
                                         Renewal Of  <asp:Label ID="lbltype" style="font-size: 22px!important" runat="server" ></asp:Label>
-                                     License No.
-                                        <asp:Label ID="lblRegistrationNo" runat="server" Text="Label" Style="font-size: 22px !important; text-decoration: underline;"></asp:Label>
+                                    <br /> (Registration No.
+                                        <asp:Label ID="lblRegistrationNo" runat="server" Text="Label" Style="font-size: 22px !important; text-decoration: underline;"></asp:Label>)
                                     </p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
                                     <p>
-                                        In Continuation to this Office Memo No "<asp:Label ID="lblMemoNo" runat="server" Text="Label"></asp:Label>" And your Online Application No "<asp:Label ID="lblInspectionId" runat="server" Text="Label"></asp:Label>"Dated "<asp:Label ID="lblApprovedDate" runat="server" Text="Label"></asp:Label>".
+                                        In continuation to this office Memo No. "<asp:Label ID="lblMemoNo" runat="server" Text="Label"></asp:Label>" and your Online Application No "<asp:Label ID="lblInspectionId" runat="server" Text="Label"></asp:Label>"Dated "<asp:Label ID="lblApprovedDate" runat="server" Text="Label"></asp:Label>".
                                     </p>
                                 </div>
                             </div>

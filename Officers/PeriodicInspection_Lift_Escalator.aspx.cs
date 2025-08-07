@@ -256,7 +256,9 @@ namespace CEIHaryana.Officers
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            int ClickCount = 0;
+            if (CheckBox1.Checked == true)
+            {
+                int ClickCount = 0;
             ClickCount = Convert.ToInt32(Session["ClickCount"]);
             if (ClickCount < 1)
             {
@@ -466,6 +468,12 @@ namespace CEIHaryana.Officers
             else
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('You double click on Button.'); window.location='NewApplications.aspx'", true);
+            }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please check declaration first');", true);
+
             }
         }
         private void GridToViewCart()
