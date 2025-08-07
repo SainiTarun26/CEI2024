@@ -541,7 +541,7 @@
                <div class="row ">
                     <div class="col-md-12">
                         <h6 class="card-title fw-semibold">
-                            <asp:Label ID="Label3" runat="server"></asp:Label>Disconnection Approval</h6>
+                            <asp:Label ID="Label3" runat="server"></asp:Label>Disconnection Process</h6>
                     </div>
                     <div class="col-md-6 col-md-6"></div>
                 </div>
@@ -559,7 +559,7 @@
                    <%-- </ContentTemplate></asp:UpdatePanel>--%>
                     <div class="row">
        <div class="col-md-6"   style="margin-top: auto;">
-      <label>Action taken Report:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <label>Temporary Disconnection Order(TDCO):</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 <asp:LinkButton ID="lnkFile" runat="server" OnClick="lnkFile_Click" Text="Open Document" />
   </div>
@@ -581,10 +581,10 @@
 
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row"  id="Remarks" runat="server" visible="false">
                         <div class="col-md-12">
                             <label>
-                                Remarks
+                              Any Remarks
 
                             </label>
                             <asp:TextBox ID="txtRemarks" runat="server" TextMode="MultiLine" Rows="2" ReadOnly="true" CssClass="form-control" autocomplete="off"  TabIndex="1" MaxLength="200" Style="margin-left: 18px;"></asp:TextBox>

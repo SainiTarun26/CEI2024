@@ -98,6 +98,10 @@ namespace CEIHaryana.SiteOwnerPages
                     }
                     txtSanctionLoad.Text = dt.Rows[0]["SanctionLoad"].ToString();
                     txtRemarks.Text = dt.Rows[0]["OwnerRemarks"].ToString();
+                    if (txtRemarks.Text.Trim()!=""&& txtRemarks.Text!=null)
+                    {
+                        Remarks.Visible= true;
+                    }
                     hnFile.Value = dt.Rows[0]["ActionReport"].ToString();
                     hnOtherfile.Value = dt.Rows[0]["OtherDocument"].ToString();
                     if(hnOtherfile.Value != null && hnOtherfile.Value != string.Empty)
@@ -105,15 +109,16 @@ namespace CEIHaryana.SiteOwnerPages
                         Document.Visible = true;
                     }
                     txtStatus.Text = dt.Rows[0]["ApplicationStatus"].ToString();
-                    if (txtStatus.Text == "Approved")
-                    {
-                        Suggestion.Visible = true;                     
-                        txtSuggestion.Text = dt.Rows[0]["Suggestions"].ToString();
-                    }
-                    else
-                    {                   
-                        Suggestion.Visible = false;                    
-                    }
+                    //Commented by navneet as per instructio of sunil and vinod sir of remoing sugestons
+                    //if (txtStatus.Text == "Approved")
+                    //{
+                    //    Suggestion.Visible = true;                     
+                    //    txtSuggestion.Text = dt.Rows[0]["Suggestions"].ToString();
+                    //}
+                    //else
+                    //{                   
+                    //    Suggestion.Visible = false;                    
+                    //}
 
 
                 }

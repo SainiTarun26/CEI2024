@@ -395,14 +395,15 @@
                                     </label>
                                 </div>
                             </div>
-                       
+
                             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
 
 
-                                  <asp:HiddenField ID="hdnOwnerId" runat="server" />
+                                <asp:HiddenField ID="hdnOwnerId" runat="server" />
                                 <div class="row" style="margin-top: 15px;">
                                     <div class="col-md-8">
-                                        <label>Installation Type<samp style="color: red">* </samp>
+                                        <label>
+                                            Installation Type<samp style="color: red">* </samp>
                                         </label>
                                         <div style="display: flex; align-items: center; gap: 15px; margin-left: 18px; flex-wrap: wrap;">
                                             <label>
@@ -414,7 +415,7 @@
                                             <label>
                                                 <asp:CheckBox ID="chkSubstationOption" runat="server" />
                                                 Substation Transformer</label>
-                                            
+
                                             <br>
                                             <label>
                                                 <asp:CheckBox ID="chkSwitchingOption" runat="server" />
@@ -432,14 +433,14 @@
                                         <label>
                                             Other Installation Type<samp style="color: red">* </samp>
                                         </label>
-                                        <asp:TextBox class="form-control" ID="txtOtherInstallation" TabIndex="8" onkeydown="return preventEnterSubmit(event)"  MaxLength="20" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>                                
+                                        <asp:TextBox class="form-control" ID="txtOtherInstallation" TabIndex="8" onkeydown="return preventEnterSubmit(event)" MaxLength="20" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtOtherInstallation" ValidationGroup="Submit" ForeColor="Red">Please Enter Contact No.</asp:RequiredFieldValidator>
                                     </div>
                                     <div class="col-md-4">
                                         <label>
                                             Max Voltage Level(Kv)<samp style="color: red">* </samp>
                                         </label>
-                                        <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlVoltage" TabIndex="2" runat="server">
+                                        <asp:DropDownList class="form-control  select-form select2" AutoPostBack="true" Style="width: 100% !important;" ID="ddlVoltage" TabIndex="2" runat="server" OnSelectedIndexChanged="ddlVoltage_SelectedIndexChanged">
                                         </asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" Text="Please Select Division name" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlVoltage" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                     </div>
@@ -448,18 +449,18 @@
                                 <div>
                                 </div>
                             </div>
-                           
-                            
+
+
                             <div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <div id="DocumentChecklist" visible="true" runat="server" style="padding: 25px !important; padding-top: 0px !important; margin-right: 15px; margin-left: 15px; padding-bottom: 0px !important; margin-top: -20px;">
                 <div class="row">
                     <div class="col-md-12">
-                        <h4 class="card-title fw-semibold mb-4" id="maincard2">Document Checklist <span style="color: red;font-size:15px;"><strong>(NOTE:</strong> Only one among Form I / Form II / Form III is mandatory; others are optional.)</span>
+                        <h4 class="card-title fw-semibold mb-4" id="maincard2">Document Checklist <span style="color: red; font-size: 15px;"><strong>(NOTE:</strong> Only one among Form I / Form II / Form III is mandatory; others are optional.)</span>
                         </h4>
 
                     </div>
@@ -477,12 +478,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr runat="server" id="Form1" visible="false">
                                 <td style="text-align: center;">1</td>
-                                <td>FORM I.
+                                <td>FORM I.<samp style="color: red">* </samp>
                                 </td>
                                 <td style="text-align: center;">
-                                   <asp:HyperLink ID="lnkForm1" runat="server" NavigateUrl="~/UserManual/FORM I.pdf" Text="Document Sample" Target="_blank" />
+                                    <asp:HyperLink ID="lnkForm1" runat="server" NavigateUrl="~/UserManual/FORM I.pdf" Text="Document Sample" Target="_blank" />
                                 </td>
                                 <td>
                                     <asp:FileUpload ID="FileUploadForm1" runat="server" CssClass="form-control"
@@ -493,12 +494,12 @@
                                 </td>
 
                             </tr>
-                            <tr>
+                            <tr runat="server" id="Form2" visible="false">
                                 <td style="text-align: center;">2</td>
-                                <td>FORM II.
+                                <td>FORM II.<samp style="color: red">* </samp>
                                 </td>
                                 <td style="text-align: center;">
-                                   <asp:HyperLink ID="lnkForm2" runat="server"  NavigateUrl="~/UserManual/FORM II.pdf" Text="Document Sample" Target="_blank" />
+                                    <asp:HyperLink ID="lnkForm2" runat="server" NavigateUrl="~/UserManual/FORM II.pdf" Text="Document Sample" Target="_blank" />
                                 </td>
                                 <td>
                                     <asp:FileUpload ID="FileUploadForm2" runat="server" CssClass="form-control"
@@ -510,12 +511,12 @@
                                 </td>
 
                             </tr>
-                            <tr>
+                            <tr runat="server" id="Form3" visible="false">
                                 <td style="text-align: center;">3</td>
-                                <td>FORM III.
+                                <td>FORM III.<samp style="color: red">* </samp>
                                 </td>
                                 <td style="text-align: center;">
-                                   <asp:HyperLink ID="lnkForm3" runat="server" NavigateUrl="~/UserManual/FORM III.pdf" Text="Document Sample" Target="_blank" />
+                                    <asp:HyperLink ID="lnkForm3" runat="server" NavigateUrl="~/UserManual/FORM III.pdf" Text="Document Sample" Target="_blank" />
                                 </td>
                                 <td>
                                     <asp:FileUpload ID="FileUploadForm3" runat="server" CssClass="form-control"
@@ -561,7 +562,7 @@
                     </table>
                 </div>
             </div>
-        
+
             <div id="Div2" visible="true" runat="server" style="padding: 25px !important; padding-top: 0px !important; margin-right: 15px; margin-left: 15px;">
 
                 <div class="row">

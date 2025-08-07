@@ -109,7 +109,7 @@ namespace CEIHaryana.Admin
                     if(txtStatus.Text == "Submit")
                     {
                         OwnerAttactment.Visible = false;
-                        Suggestion.Visible = false;
+                       // Suggestion.Visible = false;
                         CeiRemarks.Visible = true;
                         OwnerRemarks.Visible = false;
                         txtRemarks.Text = dt.Rows[0]["Remarks"].ToString();
@@ -118,8 +118,8 @@ namespace CEIHaryana.Admin
                     else if(txtStatus.Text == "Approved")
                     {
                         OwnerAttactment.Visible = true;
-                        Suggestion.Visible = true;
-                        txtSuggestion.Text = dt.Rows[0]["Suggestions"].ToString();
+                       // Suggestion.Visible = true;
+                        //txtSuggestion.Text = dt.Rows[0]["Suggestions"].ToString();
                         OwnerRemarks.Visible = true;
                         txtOwnerRemarks.Text = dt.Rows[0]["OwnerRemarks"].ToString();
                     }
@@ -127,7 +127,7 @@ namespace CEIHaryana.Admin
                     {
                         OwnerAttactment.Visible = true;
                         OwnerRemarks.Visible = true;
-                        Suggestion.Visible = false;
+                        //Suggestion.Visible = false;
                         CeiRemarks.Visible = false;
                         txtOwnerRemarks.Text = dt.Rows[0]["OwnerRemarks"].ToString();
                     }                  

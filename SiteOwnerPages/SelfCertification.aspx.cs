@@ -37,13 +37,13 @@ namespace CEIHaryana.SiteOwnerPages
                         ddlLoadBindVoltage();
                     }
                     else
-                    {                       
+                    {
                         Session["SiteOwnerId"] = "";
                         Response.Redirect("/SiteOwnerLogout.aspx", false);
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
                 return;
@@ -65,7 +65,7 @@ namespace CEIHaryana.SiteOwnerPages
         }
         protected void chkOtherOption_CheckedChanged(object sender, EventArgs e)
         {
-            if(chkOtherOption.Checked)
+            if (chkOtherOption.Checked)
             {
                 OtherInstallation.Visible = true;
             }
@@ -136,7 +136,7 @@ namespace CEIHaryana.SiteOwnerPages
                             if (!string.IsNullOrEmpty(SC_ID))
                             {
                                 // FOR INSERT DOCUMENTS
-                               int x = UploadDocumentd(transaction);
+                                int x = UploadDocumentd(transaction);
                                 if (x > 0)
                                 {
                                     transaction.Commit();
@@ -173,7 +173,7 @@ namespace CEIHaryana.SiteOwnerPages
                     Response.Redirect("/SiteOwnerLogout.aspx", false);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 if (transaction != null)
                 {
@@ -199,7 +199,7 @@ namespace CEIHaryana.SiteOwnerPages
             {
                 FileUpload fileUploadControl = null;
                 string fileName = "";
-                string DocumentId = "";             
+                string DocumentId = "";
                 switch (i)
                 {
                     case 1:
@@ -252,7 +252,21 @@ namespace CEIHaryana.SiteOwnerPages
             }
             return successCount;
         }
-
-
+        //added by kalpana on instructions of vinod and sunil sir 
+        protected void ddlVoltage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlVoltage.SelectedValue == "650V")
+            {
+                Form2.Visible = true;
+                Form3.Visible = false;
+            }
+            if (ddlVoltage.SelectedValue == "11KV" || ddlVoltage.SelectedValue == "33KV" || ddlVoltage.SelectedValue == "66KV"
+                 || ddlVoltage.SelectedValue == "132KV" || ddlVoltage.SelectedValue == "220KV" || ddlVoltage.SelectedValue == "220KV")
+            {
+                Form3.Visible = true;
+                Form2.Visible = false;
+            }
+        }
+        //
     }
 }

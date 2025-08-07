@@ -107,26 +107,40 @@ namespace CEIHaryana.Officers
                     if (txtStatus.Text == "Submit")
                     {
                         OwnerAttactment.Visible = false;
-                        Suggestion.Visible = false;
-                        CeiRemarks.Visible = true;
-                        OwnerRemarks.Visible = false;
+                        //  Suggestion.Visible = false;
+                        if (txtRemarks.Text.Trim() != "" && txtRemarks.Text != null)
+                        {
+
+                            CeiRemarks.Visible = true;
+                        }
+                        
+                            OwnerRemarks.Visible = false;
+                        
                         txtRemarks.Text = dt.Rows[0]["Remarks"].ToString();
 
                     }
                     else if (txtStatus.Text == "Approved")
                     {
                         OwnerAttactment.Visible = true;
-                        Suggestion.Visible = true;
-                        txtSuggestion.Text = dt.Rows[0]["Suggestions"].ToString();
-                        OwnerRemarks.Visible = true;
+                        //Suggestion.Visible = true;
+                        //txtSuggestion.Text = dt.Rows[0]["Suggestions"].ToString();
+                        if (txtOwnerRemarks.Text.Trim() != "" && txtOwnerRemarks.Text != null)
+                        {
+
+                            OwnerRemarks.Visible = true;
+                        }
                         txtOwnerRemarks.Text = dt.Rows[0]["OwnerRemarks"].ToString();
                     }
                     else
                     {
                         OwnerAttactment.Visible = true;
-                        OwnerRemarks.Visible = true;
-                        Suggestion.Visible = false;
-                        CeiRemarks.Visible = false;
+                        if (txtOwnerRemarks.Text.Trim() != "" && txtOwnerRemarks.Text != null)
+                        {
+
+                            OwnerRemarks.Visible = true;
+                        }                      
+
+                            CeiRemarks.Visible = false;
                         txtOwnerRemarks.Text = dt.Rows[0]["OwnerRemarks"].ToString();
                     }
 

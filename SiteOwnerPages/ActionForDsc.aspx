@@ -541,7 +541,7 @@
                <div class="row ">
                     <div class="col-md-12">
                         <h6 class="card-title fw-semibold">
-                            <asp:Label ID="Label3" runat="server"></asp:Label>Disconnection Approval</h6>
+                            <asp:Label ID="Label3" runat="server"></asp:Label>Initiate Disconnection Process</h6>
                     </div>
                     <div class="col-md-6 col-md-6"></div>
                 </div>
@@ -554,19 +554,16 @@
                                 Select Action
                                 <samp style="color: red">* </samp>
                             </label>
-                            <asp:DropDownList ID="ddlAction" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlAction_SelectedIndexChanged" CssClass="form-control select-form select2" Style="width: 100% !important;" TabIndex="2">
-                                <asp:ListItem Text="Select" Value="Select"></asp:ListItem>
-                                <asp:ListItem Text="Approved" Value="Approved"></asp:ListItem>
-                                <asp:ListItem Text="Rejected" Value="Rejected"></asp:ListItem>
+                            <asp:DropDownList ID="ddlAction" runat="server" AutoPostBack="true" CssClass="form-control select-form select2" Style="width: 100% !important;" TabIndex="2">
+                                <asp:ListItem Text="Yes" Value="Approved"></asp:ListItem>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" Text="Please Select  any Action to proceed" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAction" runat="server" InitialValue="Select" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                        </div>
+                           </div>
                     </div>
                     <%-- </ContentTemplate></asp:UpdatePanel>--%>
                     <div class="row">
-                            <div class="col-md-4">
-        <label>
-            Action Taken Report
+                        <div class="col-md-4">
+                            <label>
+                                Upload Temporary Disconnection Order (TDOC)
 <samp style="color: red">* </samp>
         </label>
         <asp:FileUpload ID="FileReport" runat="server" CssClass="form-control"
@@ -600,13 +597,11 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label>
-                                Remarks
-            <samp style="color: red">* </samp>
+                              Any Remarks
                             </label>
                             <asp:TextBox ID="txtRemarks" runat="server" TextMode="MultiLine" Rows="2" ReadOnly="false" CssClass="form-control" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1" MaxLength="200" Style="margin-left: 18px;"></asp:TextBox>
 
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtRemarks" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Remarks</asp:RequiredFieldValidator>
-
+                           
                         </div>
                     </div>
                 </div>

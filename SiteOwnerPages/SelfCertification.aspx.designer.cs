@@ -168,6 +168,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl DocumentChecklist;
 
         /// <summary>
+        /// Form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Form1;
+
+        /// <summary>
         /// lnkForm1 control.
         /// </summary>
         /// <remarks>
@@ -195,6 +204,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
+        /// Form2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Form2;
+
+        /// <summary>
         /// lnkForm2 control.
         /// </summary>
         /// <remarks>
@@ -220,6 +238,15 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+
+        /// <summary>
+        /// Form3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Form3;
 
         /// <summary>
         /// lnkForm3 control.

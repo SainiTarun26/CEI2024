@@ -180,17 +180,18 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
-        protected void ddlAction_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(ddlAction.SelectedValue == "Approved")
-            {
-                Suggestion.Visible = true;
-            }
-            else
-            {
-                Suggestion.Visible = false;
-            }
-        }
+        //Commented by navneet as per instructio of sunil and vinod sir of remoing sugestons
+        //protected void ddlAction_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if(ddlAction.SelectedValue == "Approved")
+        //    {
+        //        Suggestion.Visible = true;
+        //    }
+        //    else
+        //    {
+        //        Suggestion.Visible = false;
+        //    }
+        //}
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
