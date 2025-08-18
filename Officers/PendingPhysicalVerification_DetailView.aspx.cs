@@ -22,6 +22,7 @@ namespace CEIHaryana.Officers
                     txtDate.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
                     if (Convert.ToString(Session["StaffID"]) != null && Convert.ToString(Session["StaffID"]) != string.Empty)
                     {
+                        BindVenue();
                         Application_Id = Session["Application_Id"].ToString();
                         GetHeaderDetailsWithId(Application_Id);
                         BindApplicationLogDetails(Application_Id);
@@ -39,6 +40,17 @@ namespace CEIHaryana.Officers
                 string errorScript = "alert(\"An error occurred: " + ex.Message.Replace("'", "\\'") + "\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "errorMessage", errorScript, true);
             }
+        }
+        private void BindVenue()
+        {
+            DataTable dt = new DataTable();
+            dt = CEI.GetVenueforOfficer();
+            ddlvenue.DataSource = dt;
+            ddlvenue.DataTextField = "Venue";
+            ddlvenue.DataValueField = "Venue";
+            ddlvenue.DataBind();
+            ddlvenue.Items.Insert(0, new ListItem("Select", "0"));
+            dt.Clear();
         }
         private void GetHeaderDetailsWithId(string licApplication_Id)
         {
@@ -89,13 +101,13 @@ namespace CEIHaryana.Officers
             {
             string StaffID = Session["StaffID"].ToString();
                 if (RadioButtonList1.SelectedValue== "Accept") {
-                    CEI.UpdateXenVerificationstatus(txtApplicationId.Text, StaffID, ddlcorrection.SelectedItem.Text, RadioButtonList1.SelectedValue, txtRemarks.Text, txtCorrectionRemarks.Text, txtDate.Text, "Ready For Issue Letter");
+                    CEI.UpdateXenVerificationstatus(txtApplicationId.Text, StaffID, ddlcorrection.SelectedItem.Text, RadioButtonList1.SelectedValue, txtRemarks.Text, txtCorrectionRemarks.Text, txtDate.Text, txtTime.Text, ddlvenue.SelectedValue, "Ready For Issue Letter");
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                 }
                 else
                 {
 
-                    CEI.UpdateXenVerificationstatus(txtApplicationId.Text, StaffID, ddlcorrection.SelectedItem.Text, RadioButtonList1.SelectedValue.ToString(), txtRemarks.Text, txtCorrectionRemarks.Text,null, "Verified");
+                    CEI.UpdateXenVerificationstatus(txtApplicationId.Text, StaffID, ddlcorrection.SelectedItem.Text, RadioButtonList1.SelectedValue.ToString(), txtRemarks.Text, txtCorrectionRemarks.Text,null,null,null, "Verified");
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata2();", true);
                 }
             }
@@ -127,6 +139,8 @@ namespace CEIHaryana.Officers
                 AcceptedLabel.Visible= false;
                 NeedCorrection.Visible= false;
                 VerificationDate.Visible= false;
+                Div1.Visible= false;
+                Div2.Visible= false;
             }
             else
             {
@@ -135,6 +149,8 @@ namespace CEIHaryana.Officers
                 AcceptedLabel.Visible = true;
                 NeedCorrection.Visible = true;
                 VerificationDate.Visible = true;
+                Div1.Visible = true;
+                Div2.Visible = true;
             }
         }
     }

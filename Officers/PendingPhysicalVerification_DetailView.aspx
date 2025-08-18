@@ -317,6 +317,12 @@
     color: white !important;
     background:#9292cc !important;
 }
+        select#ContentPlaceHolder1_ddlvenue {
+    height: 30px !important;
+    padding: 2px 0px 5px 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin-left: 0px !important;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -390,78 +396,94 @@
 
                                 <asp:BoundField DataField="ActionDate" HeaderText="Action Date" DataFormatString="{0:dd-MMM-yy}" />
                             </Columns>
-                        <FooterStyle BackColor="White" ForeColor="#000066" />
- <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
- <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
- <RowStyle ForeColor="#000066" />
- <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
- <SortedAscendingCellStyle BackColor="#F1F1F1" />
- <SortedAscendingHeaderStyle BackColor="#007DBB" />
- <SortedDescendingCellStyle BackColor="#CAC9C9" />
- <SortedDescendingHeaderStyle BackColor="#00547E" />
-                        </asp:GridView>
+                       <FooterStyle BackColor="White" ForeColor="#000066" />
+                       <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                       <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                       <RowStyle ForeColor="#000066" />
+                       <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                       <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                       <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                       <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                       <SortedDescendingHeaderStyle BackColor="#00547E" />
+                   </asp:GridView>
                     </div>
 
                 </div>
             </div>
 
-             <div class="card-title" style="margin-top: 15px; margin-bottom: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
-    Action
- </div>
-
-               <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
-
-            <div class="row">
-                  <div class="col-md-3">
-      <label>
-          Action
-      </label>
-
-      <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" TabIndex="4" AutoPostBack="true" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
-          <asp:ListItem Value="Accept" Selected="True">Accept</asp:ListItem>
-          <asp:ListItem Value="Reject">Not Recommend</asp:ListItem>
-      </asp:RadioButtonList>
-  </div>
-                  <div class="col-md-9" runat="server" id="RejectionRemarks" visible="false">
-      <label>
-         Rejection Remarks
-      </label>
-      
-       <asp:TextBox class="form-control" ID="txtRemarks" TabIndex="5" MaxLength="500" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
- 
-  </div>
-                <div class="col-md-3" style="margin-top: 15px;" id="VerificationDate" runat="server">
-                    <label>
-                        Physical Verification Date 
-                    </label>
-                    <asp:TextBox class="form-control" ID="txtDate" TabIndex="1" TextMode="Date" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                      <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
-
-                </div>
-                <div class="col-md-3" style="margin-top: 15px;" id="NeedCorrection" runat="server">
-                    <label>
-                        Correction Needed?
-                    </label>
-                    <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="ddlcorrection" runat="server" TabIndex="2"
-                        AutoPostBack="true" OnSelectedIndexChanged="ddlcorrection_SelectedIndexChanged">
-                        <asp:ListItem Value="1" Text="Yes"></asp:ListItem>
-                        <asp:ListItem Value="2" Text="No" Selected="True"></asp:ListItem>
-                    </asp:DropDownList>
-
-                </div>
-                
-                <div class="col-md-6" runat="server" id="Correction" visible="false" style="margin-top: 15px;">
-                    <label>
-                        Correction Remarks
-                    </label>
-                    <asp:TextBox class="form-control" ID="txtCorrectionRemarks"  MaxLength="500" TabIndex="3" TextMode="MultiLine" utocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                      <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtCorrectionRemarks" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
-
-                </div>
-           
-              
-              
+            <div class="card-title" style="margin-top: 15px; margin-bottom: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
+                Action
             </div>
+
+            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>
+                            Action
+                        </label>
+
+                        <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" TabIndex="4" AutoPostBack="true" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+                            <asp:ListItem Value="Accept" Selected="True">Accept</asp:ListItem>
+                            <asp:ListItem Value="Reject">Not Recommend</asp:ListItem>
+                        </asp:RadioButtonList>
+                    </div>
+                    <div class="col-md-9" runat="server" id="RejectionRemarks" visible="false">
+                        <label>
+                            Rejection Remarks
+                        </label>
+
+                        <asp:TextBox class="form-control" ID="txtRemarks" TabIndex="5" MaxLength="500" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                    </div>
+                    <div class="col-md-4" style="margin-top: 15px;" id="VerificationDate" runat="server">
+                        <label>
+                            Physical Verification Date 
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtDate" TabIndex="1" TextMode="Date" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtDate" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+
+                    </div>
+                    <div class="col-md-4" style="margin-top: 15px;" id="Div1" runat="server">
+                        <label>
+                            Time 
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtTime" Type="time" min="09:00" max="18:00" TabIndex="1" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtTime" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+
+                    </div>
+                    <div class="col-md-4" style="margin-top: 15px;" id="Div2" runat="server">
+                        <label>
+                            Venue
+                        </label>
+                        <asp:DropDownList ID="ddlvenue" runat="server" CssClass="form-select"></asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Venue" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlvenue" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                        
+                    </div>
+                    <div class="col-md-4" style="margin-top: 15px;" id="NeedCorrection" runat="server">
+                        <label>
+                            Correction Needed?
+                        </label>
+                        <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="ddlcorrection" runat="server" TabIndex="2"
+                            AutoPostBack="true" OnSelectedIndexChanged="ddlcorrection_SelectedIndexChanged">
+                            <asp:ListItem Value="1" Text="Yes"></asp:ListItem>
+                            <asp:ListItem Value="2" Text="No" Selected="True"></asp:ListItem>
+                        </asp:DropDownList>
+
+                    </div>
+
+                    <div class="col-md-4" runat="server" id="Correction" visible="false" style="margin-top: 15px;">
+                        <label>
+                            Correction Remarks
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtCorrectionRemarks" MaxLength="500" TabIndex="3" TextMode="MultiLine" utocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtCorrectionRemarks" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+
+                    </div>
+
+
+
+                </div>
                     </div>
             <div class="row" style="margin-top: 25px;">
                 <div class="col-md-4"></div>
@@ -471,10 +493,10 @@
                 </div>
             </div>
             <div class="row" id="AcceptedLabel" runat="server">
-                <div class="col-md-12" style="text-align:center;">
-                     <label>
-    To Generate Appointment Letter Kindly Proceed.
- </label>
+                <div class="col-md-12" style="text-align: center;">
+                    <label>
+                        To Generate Appointment Letter Kindly Proceed.
+                    </label>
                 </div>
             </div>
         </div>
@@ -499,6 +521,14 @@
     <%--   </ContentTemplate>
             </asp:UpdatePanel>--%>
 
+     <script>
+         document.getElementById("<%= txtTime.ClientID %>").addEventListener("change", function () {
+             if (this.value < "09:00" || this.value > "18:00") {
+                 alert("Please select a time between 9:00 AM and 6:00 PM.");
+                 this.value = "";
+             }
+         });
+     </script>
 
     <script type="text/javascript">
         window.onload = (event) => {

@@ -496,7 +496,7 @@
                                     <span class="menu-title">Accident History</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" runat="server" id="Cinema_Sidebar">
                                 <a class="nav-link" data-toggle="collapse" href="#Cinema_Sidebar" aria-expanded="false" aria-controls="ui-basic">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 576 512">
                                         <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
@@ -505,7 +505,7 @@
                                     <span class="menu-title">Cinema/Video Talkies</span>
                                     <i class="menu-arrow"></i>
                                 </a>
-                                <div class="collapse" runat="server" id="Cinema_Sidebar">
+                                <div class="collapse" >
                                     <ul class="nav flex-column sub-menu">
                                         <li class="nav-item"><a class="nav-link" href="Work_Intimation_Cinema_Video_Talkies.aspx">Intimation</a></li>
                                         <li class="nav-item"><a class="nav-link" href="Intimation_Cinema_HistoryGridView.aspx">Intimation History</a></li>

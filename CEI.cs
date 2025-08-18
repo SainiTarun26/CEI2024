@@ -11035,9 +11035,14 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AddXenVerifiedLetter", registrationId, userid, XenVerifiedLetterPath);
         }
-        public void UpdateXenVerificationstatus(string registrationId, string userid, string XenAdvisedCorrection, string XenRecomendation, string RejectionRemarks_XEN, string XenCorrectionNote, string PhysicalVerificationDate, string ApplicationStatus)
+        public void UpdateXenVerificationstatus(string registrationId, string userid, string XenAdvisedCorrection, string XenRecomendation, string RejectionRemarks_XEN, string XenCorrectionNote, string PhysicalVerificationDate,string PhysicalVerificationTime, string PhysicalVerificationPlace, string ApplicationStatus)
         {
-            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateXenVerificationstatus", registrationId, userid, XenAdvisedCorrection, XenRecomendation, RejectionRemarks_XEN, XenCorrectionNote, PhysicalVerificationDate, ApplicationStatus);
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateXenVerificationstatus", registrationId, userid, XenAdvisedCorrection, XenRecomendation, RejectionRemarks_XEN, XenCorrectionNote, PhysicalVerificationDate, PhysicalVerificationTime, PhysicalVerificationPlace, ApplicationStatus);
+        }
+        //18-Aug-2025
+        public DataTable GetVenueforOfficer()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetVenueforOfficer");
         }
         #endregion
         #region Neha New registration 18-June-2025
@@ -14294,6 +14299,7 @@ SqlTransaction transaction)
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSubDivisionMasterDataAfterFilter", Id);
         }
         #endregion
+
     }
 }
 
