@@ -244,129 +244,130 @@
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
 
-                    <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
-                            <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">APPLICATION FOR RENEWAL OF CERTIFICATE OF COMPETENCY/WIREMAN PERMIT</h6>
-                        </div>
-                        <br />
-                        <div class="col-md-2"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4" style="text-align: center;">
-                            <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                Data Updated Successfully !!!.
-                            </label>
-                            <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                Data Saved Successfully !!!.
-                            </label>
-                        </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
+                        <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">APPLICATION FOR RENEWAL OF CERTIFICATE OF COMPETENCY/WIREMAN PERMIT</h6>
                     </div>
                     <br />
-                    <h7 class="card-title fw-semibold mb-4">Personal Details</h7>
-                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                        <div class="row" style="margin-bottom: 15px;">
-                            <asp:HiddenField ID="hdnId" runat="server" />
-                            <div class="col-md-4" runat="server" visible="true">
-                                <label>
-                                    Applicant Name
-           <samp style="color: red">* </samp>
-                                </label>
-
-                                <asp:TextBox class="form-control" ID="txtname" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
-                            </div>
-                            <div class="col-md-4" runat="server" visible="true">
-                                <label>
-                                    Age 
-           <samp style="color: red">* </samp>
-                                </label>
-
-                                <asp:TextBox class="form-control" ID="txtage" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
-                            </div>
-                            <div class="col-md-4" runat="server" id="Ifage55" visible="false">
-                                <label>
-                                    Date when applicant completed 55 years
-            <samp style="color: red">* </samp>
-                                </label>
-
-                                <asp:TextBox class="form-control" ID="txtage55" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-bottom: 15px;">
-                            <asp:HiddenField ID="HiddenField1" runat="server" />
-                            <div class="col-md-4" runat="server" visible="true">
-                                <label>
-                                    Present Address with Pincode
-                                        <samp style="color: red">* </samp>
-                                </label>
-
-                                <asp:TextBox class="form-control" ID="txtaddress" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
-                            </div>
-                            <div class="col-md-4" runat="server" visible="true">
-                                <label>
-                                    Supervisor Competency Certificate No.
-                                        <samp style="color: red">* </samp>
-                                </label>
-
-                                <asp:TextBox class="form-control" ID="txtcertificateno" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
-                            </div>
-                            <div class="col-md-4">
-                                <label>
-                                    Date of Expiry
- <samp style="color: red">* </samp>
-                                </label>
-
-                                <asp:TextBox class="form-control" ID="txtexpirydate" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-bottom: 15px;">
-                            <asp:HiddenField ID="HiddenField2" runat="server" />
-                            <div class="col-md-4" style="margin-top: 30px;">
-                                <label>
-                                    Is renewal application belated? If yes, mention delay period.
-        <samp style="color: red">*</samp>
-                                </label>
-
-
-                                <%--  <div class="col-md-4">--%>
-
-                                <asp:RadioButtonList runat="server" Enabled="false" ID="rblbelated">
-                                    <asp:ListItem Value="1" Text="Yes"></asp:ListItem>
-                                    <asp:ListItem Value="0" Text="No"></asp:ListItem>
-                                </asp:RadioButtonList>
-
-                                <%--   </div>--%>
-                            </div>
-                        </div>
-
-
-
-
-
-                        <div class="col-md-4" runat="server" visible="false" id="days">
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4" style="text-align: center;">
+                        <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                            Data Updated Successfully !!!.
+                        </label>
+                        <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                            Data Saved Successfully !!!.
+                        </label>
+                    </div>
+                </div>
+                <br />
+                <h7 class="card-title fw-semibold mb-4">Personal Details</h7>
+                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                    <div class="row" style="margin-bottom: 15px;">
+                        <asp:HiddenField ID="hdnId" runat="server" />
+                        <div class="col-md-4" runat="server" visible="true">
                             <label>
-                                Mention Days
-                                        <samp style="color: red">* </samp>
+                                Applicant Name
+           <samp style="color: red">* </samp>
                             </label>
 
-                            <asp:TextBox class="form-control" ID="txtdays" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                MaxLength="200" Style="margin-left: 18px;">
+                            <asp:TextBox class="form-control" ID="txtname" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                        </div>
+                        <div class="col-md-4" runat="server" visible="true">
+                            <label>
+                                Age 
+           <samp style="color: red">* </samp>
+                            </label>
+
+                            <asp:TextBox class="form-control" ID="txtage" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                        </div>
+                        <div class="col-md-4" runat="server" id="Ifage55" visible="false">
+                            <label>
+                                Date when applicant completed 55 years
+            <samp style="color: red">* </samp>
+                            </label>
+
+                            <asp:TextBox class="form-control" ID="txtage55" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                Style="margin-left: 18px;">
                             </asp:TextBox>
                         </div>
                     </div>
+                    <div class="row" style="margin-bottom: 15px;">
+                        <asp:HiddenField ID="HiddenField1" runat="server" />
+                        <div class="col-md-4" runat="server" visible="true">
+                            <label>
+                                Present Address with Pincode
+                                        <samp style="color: red">* </samp>
+                            </label>
+
+                            <asp:TextBox class="form-control" ID="txtaddress" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                        </div>
+                        <div class="col-md-4" runat="server" visible="true">
+                            <label>
+                                Supervisor Competency Certificate No.
+                                        <samp style="color: red">* </samp>
+                            </label>
+
+                            <asp:TextBox class="form-control" ID="txtcertificateno" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                        </div>
+                        <div class="col-md-4">
+                            <label>
+                                Date of Expiry
+ <samp style="color: red">* </samp>
+                            </label>
+
+                            <asp:TextBox class="form-control" ID="txtexpirydate" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 15px;">
+                        <asp:HiddenField ID="HiddenField2" runat="server" />
+                        <div class="col-md-4" style="margin-top: 30px;">
+                            <label>
+                                Is renewal application belated? If yes, mention delay period.
+        <samp style="color: red">*</samp>
+                            </label>
+
+
+                            <%--  <div class="col-md-4">--%>
+
+                            <asp:RadioButtonList runat="server" Enabled="false" ID="rblbelated">
+                                <asp:ListItem Value="1" Text="Yes"></asp:ListItem>
+                                <asp:ListItem Value="0" Text="No"></asp:ListItem>
+                            </asp:RadioButtonList>
+
+
+                            <%--   </div>--%>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="col-md-4" runat="server" visible="false" id="days">
+                        <label>
+                            Mention Days
+                                        <samp style="color: red">* </samp>
+                        </label>
+
+                        <asp:TextBox class="form-control" ID="txtdays" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                            MaxLength="200" Style="margin-left: 18px;">
+                        </asp:TextBox>
+                    </div>
+                </div>
             </div>
 
 
@@ -380,9 +381,12 @@
                             Renewal Time 
                         </label>
                         <asp:DropDownList ID="ddlRenewalTime" runat="server" OnSelectedIndexChanged="ddlRenewalTime_SelectedIndexChanged" AutoPostBack="true">
+                            <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                             <asp:ListItem Value="1" Text="1 Year"></asp:ListItem>
                             <asp:ListItem Value="5" Text="5 Year"></asp:ListItem>
                         </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" InitialValue="0" ControlToValidate="ddlRenewalTime" ValidationGroup="Submit" ForeColor="Red">Please select</asp:RequiredFieldValidator>
+
                     </div>
                     <div class="col-md-4">
                         <label>
@@ -393,6 +397,8 @@
                         <asp:TextBox class="form-control" ID="txtgrnno" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                             MaxLength="200" Style="margin-left: 18px;">
                         </asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtgrnno" ValidationGroup="Submit" ForeColor="Red">Please Enter GRN No.</asp:RequiredFieldValidator>
+
                     </div>
 
                     <div class="col-md-4">
@@ -401,6 +407,7 @@
             <samp style="color: red">* </samp>
                         </label>
                         <asp:TextBox class="form-control" Type="date" ID="txtdate" onchange="validateDate()" autocomplete="off" runat="server" Style="margin-bottom: 15px;"> </asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtdate" ValidationGroup="Submit" ForeColor="Red">Please Select Date</asp:RequiredFieldValidator>
 
                     </div>
                     <div class="col-md-4">
@@ -424,7 +431,7 @@
             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                 <div class="row" style="margin-bottom: 15px;">
                     <asp:HiddenField ID="HiddenField4" runat="server" />
-                    <div class="col-md-4" runat="server" visible="true">
+                    <div class="col-md-4" runat="server" visible="false" id="NameContractor">
                         <label>
                             Name of Employer
            <samp style="color: red">* </samp>
@@ -434,7 +441,7 @@
                             MaxLength="200" Style="margin-left: 18px;">
                         </asp:TextBox>
                     </div>
-                    <div class="col-md-4" runat="server" visible="true">
+                    <div class="col-md-4" runat="server" visible="false" id="LicensenContractor">
                         <label>
                             License No.
            <samp style="color: red">* </samp>
@@ -444,7 +451,7 @@
                             MaxLength="200" Style="margin-left: 18px;">
                         </asp:TextBox>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4" runat="server" visible="false" id="AddressContractor">
                         <label>
                             Address of Employer
             <samp style="color: red">* </samp>
@@ -468,6 +475,8 @@
                                 <asp:ListItem Value="1" Text="Yes"></asp:ListItem>
                                 <asp:ListItem Value="0" Text="No"></asp:ListItem>
                             </asp:RadioButtonList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="RadioButtonList1" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+
                         </div>
                     </div>
                 </div>
@@ -500,7 +509,7 @@
                                         </span>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CertificateofCompetency" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
                                     </div>
-                                    
+
                                 </div>
                             </td>
 
@@ -525,7 +534,7 @@
                                         </span>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server" ControlToValidate="txtChallan" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
                                     </div>
-                                  
+
                                 </div>
                             </td>
                         </tr>
@@ -551,7 +560,7 @@
                                         </span>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtMedicalFitness" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
                                     </div>
-                                  
+
                                 </div>
                             </td>
                         </tr>
@@ -575,9 +584,9 @@
                                             <asp:Button ID="btnUndertaking" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="UndertakingDialog(); return false;" TabIndex="16" />
                                             <input type="file" id="Undertaking" name="Undertaking" accept=".pdf" style="display: none;" runat="server" onchange="UndertakingDialogName()" />
                                         </span>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtMedicalFitness" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtUndertaking" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
                                     </div>
-                                    
+
                                 </div>
                             </td>
                         </tr>
@@ -603,7 +612,7 @@
                                         </span>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPresentworkingStatus" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
                                     </div>
-                                   
+
                                 </div>
                             </td>
                         </tr>
@@ -685,7 +694,7 @@
 
         function ChallanDialogName() {
             var ChallanCertificate = document.getElementById('<%= Challan.ClientID %>');
-             var selectedFileName = document.getElementById('<%= txtChallan.ClientID %>');
+            var selectedFileName = document.getElementById('<%= txtChallan.ClientID %>');
 
             if (ChallanCertificate.files.length > 0) {
                 selectedFileName.value = ChallanCertificate.files[0].name;
@@ -697,7 +706,7 @@
 
         function CertificateDialogName() {
             var ChallanCertificate = document.getElementById('<%= Certificate.ClientID %>');
-             var selectedFileName = document.getElementById('<%= CertificateofCompetency.ClientID %>');
+            var selectedFileName = document.getElementById('<%= CertificateofCompetency.ClientID %>');
 
             if (ChallanCertificate.files.length > 0) {
                 selectedFileName.value = ChallanCertificate.files[0].name;
@@ -709,7 +718,7 @@
 
         function MedicalDialogName() {
             var ChallanCertificate = document.getElementById('<%= MedicalFitness.ClientID %>');
-             var selectedFileName = document.getElementById('<%= txtMedicalFitness.ClientID %>');
+            var selectedFileName = document.getElementById('<%= txtMedicalFitness.ClientID %>');
 
             if (ChallanCertificate.files.length > 0) {
                 selectedFileName.value = ChallanCertificate.files[0].name;
@@ -721,7 +730,7 @@
 
         function UndertakingDialogName() {
             var ChallanCertificate = document.getElementById('<%= Undertaking.ClientID %>');
-             var selectedFileName = document.getElementById('<%= txtUndertaking.ClientID %>');
+            var selectedFileName = document.getElementById('<%= txtUndertaking.ClientID %>');
 
             if (ChallanCertificate.files.length > 0) {
                 selectedFileName.value = ChallanCertificate.files[0].name;
@@ -733,7 +742,7 @@
 
         function StatusDialogName() {
             var ChallanCertificate = document.getElementById('<%= PresentworkingStatus.ClientID %>');
-             var selectedFileName = document.getElementById('<%= txtPresentworkingStatus.ClientID %>');
+            var selectedFileName = document.getElementById('<%= txtPresentworkingStatus.ClientID %>');
 
             if (ChallanCertificate.files.length > 0) {
                 selectedFileName.value = ChallanCertificate.files[0].name;
@@ -777,7 +786,7 @@
             }
         }
     </script>
-    
+
 
 
 </asp:Content>

@@ -40,10 +40,29 @@ namespace CEIHaryana
 
                     if (expired)
                     {
-                        string script = "alert('Your license has expired.');";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                        //string script = "alert('Your license has expired.');";
+                        //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
 
-                        return;
+                        DataSet ds = new DataSet();
+                        ds = cei.checkApplicationStatus(txtUserID.Text);
+                        string Category = ds.Tables[0].Rows[0]["Category"].ToString();
+
+                        if (Category.Trim() == "Contractor")
+                        {
+                            Session["ContractorID"] = txtUserID.Text;
+                            Response.Redirect("/Contractor/Renewal_Contractor_Licence.aspx", false);
+
+                        }
+                        else if (Category.Trim() == "Supervisor")
+                        {
+                            Session["SupervisorID"] = txtUserID.Text;
+                            Response.Redirect("/Supervisor/Renewal_Certificate_Competency.aspx", false);
+                        }
+                        else if (Category.Trim() == "Wireman")
+                        {
+                            Session["WiremanId"] = txtUserID.Text;
+                            Response.Redirect("/Supervisor/Renewal_Certificate_Competency.aspx", false);
+                        }
                     }
                     else
                     {

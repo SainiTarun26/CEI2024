@@ -15,7 +15,7 @@ namespace CEIHaryana.Supervisor
         {
             try
             {
-                Session["SupervisorID"] = "CPH-3188";
+
                 GetSupervisorName();
 
                 if (Convert.ToString(Session["SupervisorID"]) != null || Convert.ToString(Session["SupervisorID"]) != string.Empty || Request.Cookies["SupervisorID"] != null)
