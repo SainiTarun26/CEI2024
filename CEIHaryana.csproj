@@ -2154,6 +2154,7 @@
     <Content Include="Supervisor\LineTestReport.aspx" />
     <Content Include="Supervisor\PrintRenewalCertificateSupervisor.aspx" />
     <Content Include="Supervisor\RenewalCertificateSupervisor.aspx" />
+    <Content Include="Supervisor\Renewal_Certificate_Competency.aspx" />
     <Content Include="Supervisor\ReportsHistory.aspx" />
     <Content Include="Supervisor\SubstationTestReport.aspx" />
     <Content Include="Supervisor\SupervisorDashboard.aspx" />
@@ -4653,6 +4654,13 @@
     <Compile Include="Supervisor\RenewalCertificateSupervisor.aspx.designer.cs">
       <DependentUpon>RenewalCertificateSupervisor.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Supervisor\Renewal_Certificate_Competency.aspx.cs">
+      <DependentUpon>Renewal_Certificate_Competency.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\Renewal_Certificate_Competency.aspx.designer.cs">
+      <DependentUpon>Renewal_Certificate_Competency.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Supervisor\ReportsHistory.aspx.cs">
       <DependentUpon>ReportsHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4708,6 +4716,13 @@
     </Compile>
     <Compile Include="Supervisor\SupervisorSubstationTestReport.aspx.designer.cs">
       <DependentUpon>SupervisorSubstationTestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\Supervisor_Renewal.Master.cs">
+      <DependentUpon>Supervisor_Renewal.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\Supervisor_Renewal.Master.designer.cs">
+      <DependentUpon>Supervisor_Renewal.Master</DependentUpon>
     </Compile>
     <Compile Include="Supervisor\TestReportForm.aspx.cs">
       <DependentUpon>TestReportForm.aspx</DependentUpon>
@@ -5380,6 +5395,7 @@
     <Content Include="UserManual\FORM I.pdf" />
     <Content Include="UserManual\FORM II.pdf" />
     <Content Include="UserManual\FORM III.pdf" />
+    <Content Include="Supervisor\Supervisor_Renewal.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

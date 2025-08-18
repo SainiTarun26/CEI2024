@@ -14299,7 +14299,18 @@ SqlTransaction transaction)
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSubDivisionMasterDataAfterFilter", Id);
         }
         #endregion
-
+        #region kalpana renewal of licenses
+        public void InsertRenewalData(string Category, string RenewalTime, string TotalAmount, string CertificateofCompetency, string Challanfp, string GRNNo, string ChallanDate, string MedicalFitnessfp, string PresentworkingStatusfp,
+   string Undertakingfp, string changeofemployer, string CreatedBy)
+        {
+            DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_RenewalofSupAndWireDetails", Category, RenewalTime, TotalAmount, CertificateofCompetency, Challanfp, GRNNo, ChallanDate, MedicalFitnessfp, PresentworkingStatusfp,
+   Undertakingfp, changeofemployer, CreatedBy);
+        }
+        public DataTable GetSuperviserDetailsforRenewal(string UserID)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSuperviserDetailsforRenewal", UserID);
+        }
+        #endregion
     }
 }
 
