@@ -677,7 +677,7 @@
                                                                     <label for="Pancard">
                                                                         PAN Card No.<samp style="color: red">* </samp>
                                                                     </label>
-                                                                    <asp:TextBox CssClass="form-control uppercase" class="form-control" ID="txtpancard" autocomplete="off" MaxLength="14" TabIndex="5" runat="server"> </asp:TextBox>
+                                                                    <asp:TextBox CssClass="form-control uppercase" class="form-control" ID="txtpancard" autocomplete="off" onkeyup="convertToUpperCase(event)" MaxLength="10" TabIndex="5" runat="server"> </asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtpancard"
                                                                         CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtpancard" ValidationExpression="^[A-Z]{5}[0-9]{4}[A-Z]{1}$" ErrorMessage="Invalid PAN number format." ForeColor="Red"></asp:RegularExpressionValidator>
@@ -1100,6 +1100,13 @@
             }
 
             aadhaarTextbox.value = formattedValue;
+        }
+    </script>
+    <script type="text/javascript">
+
+        function convertToUpperCase(event) {
+            var textBox = event.target;
+            textBox.value = textBox.value.toUpperCase();
         }
     </script>
 </body>
