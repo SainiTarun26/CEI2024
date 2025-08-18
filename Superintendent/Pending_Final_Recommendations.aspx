@@ -1,0 +1,524 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Superintendent/Superintendent.Master" AutoEventWireup="true" CodeBehind="Pending_Final_Recommendations.aspx.cs" Inherits="CEIHaryana.Superintendent.Pending_Final_Recommendations" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+    <link rel="stylesheet" href="/css2/style.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <!-- Bootstrap JavaScript Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <style>
+        th {
+            width: 1%;
+            COLOR: white !important;
+            background: #9292cc !important;
+        }
+
+        .card {
+            padding-left: 30px !important;
+            padding-right: 30px !important;
+        }
+
+        th.headercolor {
+            color: white !important;
+        }
+
+        .multiselect {
+            width: 100%;
+        }
+
+        .selectBox {
+            position: relative;
+        }
+
+            .selectBox select {
+                width: 100%;
+                width: 100%;
+            }
+
+        .overSelect {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        #mySelectOptions {
+            display: none;
+            border: 0.5px #7c7c7c solid;
+            background-color: #ffffff;
+            max-height: 150px;
+            overflow-y: scroll;
+        }
+
+            #mySelectOptions label {
+                display: block;
+                font-weight: normal;
+                display: block;
+                white-space: nowrap;
+                min-height: 1.2em;
+                background-color: #ffffff00;
+                padding: 0 2.25rem 0 .75rem;
+                /* padding: .375rem 2.25rem .375rem .75rem; */
+            }
+
+                #mySelectOptions label:hover {
+                    background-color: #1e90ff;
+                }
+
+        .submit {
+            border: 1px solid #563d7c;
+            border-radius: 5px;
+            color: white;
+            padding: 5px 10px 5px 10px;
+            background: left 3px top 5px no-repeat #563d7c;
+        }
+
+            .submit:hover {
+                border: 1px solid #563d7c;
+                border-radius: 5px;
+                color: white;
+                padding: 5px 10px 5px 10px;
+                background: left 3px top 5px no-repeat #26005f;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            }
+
+        .table-dark {
+            text-align: center !important;
+            background-color: #9292cc !important;
+        }
+
+        .col-md-4 {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            margin-left: 0px !important;
+            height: 30px;
+        }
+
+        select.form-control {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            margin-left: 0px !important;
+            height: 30px;
+        }
+
+        label {
+            font-size: 13px;
+        }
+
+        .form-control:focus {
+            border: 2px solid #80bdff;
+        }
+
+        select.form-control:focus {
+            border: 2px solid #80bdff;
+        }
+
+        .select2-container .select2-selection--single {
+            height: 30px !important;
+        }
+
+        .select2-container--default .select2-selection--single {
+            border: 1px solid #ccc !important;
+            border-radius: 0px !important;
+        }
+
+        span.select2-selection.select2-selection--single {
+            padding: 0px 0px 0px 5px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            margin-left: 0px !important;
+            height: 30px;
+            border-radius: 5px !important;
+        }
+
+            span.select2-selection.select2-selection--single:focus {
+                border: 2px solid #80bdff;
+            }
+
+        .card .card-title {
+            font-size: 1rem !important;
+        }
+
+        .btn-primary:hover {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        }
+
+        button.btn.btn-primary.mr-2 {
+            padding: 10px 25px 10px 25px;
+            font-size: 18px;
+        }
+
+        select.form-control.select-form.select2 {
+            height: 30px !important;
+            padding: 2px 0px 5px 10px;
+        }
+
+        ul.chosen-choices {
+            border-radius: 5px;
+        }
+
+        input#customFile {
+            padding: 0px 0px 0px 0px;
+        }
+
+        input#ContentPlaceHolder1_txtName {
+            font-size: 12.5px !important;
+        }
+
+        input#ContentPlaceHolder1_txtagency {
+            font-size: 12.5px;
+        }
+
+        th.headercolor {
+            background: #9292cc;
+            color: white;
+        }
+
+        select#ContentPlaceHolder1_ddlSuggestion {
+            display: block;
+            width: 90%;
+            padding-left: 12px;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            height: 30px !important;
+        }
+
+        textarea#ContentPlaceHolder1_txtSuggestion {
+            display: block;
+            width: 100%;
+            padding-left: 12px;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            height: 100px !important;
+        }
+
+        .modal1 {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        input#ContentPlaceHolder1_BtnAddSuggestion {
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+
+        .input-box {
+            display: flex;
+            align-items: center;
+            max-width: 300px;
+            background: #fff;
+            border: 1px solid #a0a0a0;
+            border-radius: 4px;
+            padding-left: 0.5rem;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+            .input-box .prefix {
+                font-weight: 300;
+                font-size: 14px;
+                color: black;
+            }
+
+            .input-box input {
+                flex-grow: 1;
+                font-size: 14px;
+                background: #fff;
+                border: none;
+                outline: none;
+                padding: 0.5rem;
+            }
+
+            .input-box:focus-within {
+                border-color: #777;
+            }
+
+        th {
+            width: 1%;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="content-wrapper">
+        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+            <div class="card-title" style="margin-top: -15px; margin-bottom: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
+                Pending Final Recommendations 
+
+            </div>
+            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+                <div class="row">
+                    <div class="col-md-4" runat="server">
+                        <label>
+                            Licence Type
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtLicenceType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4" id="individual" runat="server">
+                        <label>
+                            Application Id.
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtApplicationId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+
+                    <div class="col-md-4" runat="server" id="DivPancard_TanNo">
+                        <label for="txtCommiteeId">
+                            Commitee Id.
+
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtCommiteeId" TabIndex="1" ReadOnly="true" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+
+                    <div class="col-md-4" runat="server" id="DivOtherDepartment" visible="true">
+                        <label for="txtApplicantName">
+                            Applicant Name
+
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtApplicantName" ReadOnly="true" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4">
+                        <label>
+                            Registration Id.
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtRegistrationId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+
+                    <div class="col-md-4" style="margin-top: 3%;">
+                        <label>
+                        </label>
+                        <asp:LinkButton ID="LinkButton1" runat="server" AutoPostBack="true" OnClick="lnkFile_Click" Text="Registration Details" />
+                    </div>
+
+
+
+                    <asp:HiddenField ID="hdn_Lic_ApplicationId" runat="server" />
+
+
+                </div>
+            </div>
+
+
+
+
+            <div class="card-title" style="margin-top: 15px; margin-bottom: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
+                Applications Status
+            </div>
+            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <asp:GridView ID="GridView1" CssClass="table table-responsive table-bordered table-striped" runat="server" AutoGenerateColumns="False" EmptyDataText="No data to display.">
+                            <Columns>
+                                <asp:BoundField DataField="ActionTakenBy" HeaderText="Action Taken By" />
+                                <asp:BoundField DataField="ApplicationStatus" HeaderText="Action Taken" />
+                                <asp:BoundField DataField="Remarks" HeaderText="Comments" />
+                                <asp:BoundField DataField="ActionDate" HeaderText="Action Date" DataFormatString="{0:dd-MMM-yy}" />
+                            </Columns>
+                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                            <RowStyle ForeColor="#000066" />
+                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#00547E" />
+                        </asp:GridView>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+            <div class="row">
+
+                <div class="col-md-4" id="ApprovalRequired" runat="server" visible="true">
+                    <label>
+                        Action<samp style="color: red"> * </samp>
+                    </label>
+                    <asp:DropDownList class="form-control  select-form select2" runat="server" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;">
+                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                        <asp:ListItem Text="Recommend" Value="Recommend"></asp:ListItem>
+                        <asp:ListItem Text="NotRecommend" Value="NotRecommend"></asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+
+                </div>
+
+                <div class="col-md-4" id="hiddenfield1" runat="server" >
+                    <label class="form-label" for="CustomFile" style="margin-bottom: 5px !important">
+                        Minutes Of Meeting Document (2MB PDF ONLY)<samp style="color: red"> * </samp>
+                    </label>
+                    <br />
+                    <asp:FileUpload ID="CustomFile" TabIndex="19" runat="server" CssClass="form-control"
+                        Style="margin-left: 18px; padding: 0px; font-size: 15px;" accept=".pdf" />
+
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
+                        ControlToValidate="CustomFile" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                </div>
+
+                <div class="col-md-12" id="Div1" runat="server" visible="true">
+                    <label>
+                        Comments<samp style="color: red"> * </samp>
+                    </label>
+                    <asp:TextBox class="form-control" ID="TextBox1" autocomplete="off" TextMode="MultiLine" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="TextBox1" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                </div>
+
+
+            </div>
+            <div class="row" style="margin-top: 25px;">
+                <div class="col-md-4"></div>
+                <div class="col-md-4" style="text-align: center;">
+
+                    <asp:Button ID="btnSubmit" Text="Submit" ValidationGroup="Submit" runat="server" class="btn btn-primary mr-2" OnClientClick="return validateFileUpload();" OnClick="btnSubmit_Click" />
+                    <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="true" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="updatePasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updatePasswordModalLabel">Suggestion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <%--   </ContentTemplate>
+            </asp:UpdatePanel>--%>
+
+
+    <script type="text/javascript">
+
+        function validateFileUpload() {
+
+            var ddlReview = document.getElementById('<%= ddlReview.ClientID %>');
+            var reviewValue = ddlReview.value;
+
+            var comments = document.getElementById('<%= TextBox1.ClientID %>').value.trim();
+
+
+
+            if (reviewValue === "0") {
+                alert('Please select an action.');
+                ddlReview.focus();
+                return false;
+            }
+
+            var customFile = document.getElementById('<%= CustomFile.ClientID %>');
+            if (!customFile.value) {
+                alert("Please upload Minutes Of Meeting document (PDF only).");
+                return false;
+            }
+
+
+            if (comments === '') {
+                alert('Please enter comments.');
+                document.getElementById('<%= TextBox1.ClientID %>').focus();
+                return false;
+            }
+
+            var fileExtension = customFile.value.split('.').pop().toLowerCase();
+            if (fileExtension !== "pdf") {
+                alert("Please upload a PDF file only.");
+                return false;
+            }
+
+            var fileSize = customFile.files[0].size;
+            if (fileSize > 2 * 1024 * 1024) {
+                alert("File size should not exceed 2MB.");
+                return false;
+            }
+
+            if (isSubmitting) {
+                return false;
+            }
+
+
+            if (Page_ClientValidate()) {
+                isSubmitting = true;
+                return true;
+            } else {
+                return false;
+            }
+        }
+        let isSubmitting = false;
+    </script>
+
+
+
+</asp:Content>

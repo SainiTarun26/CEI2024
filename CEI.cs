@@ -11858,7 +11858,42 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_Xen_LetterVerified_Applications_List");
         }
 
+        //18-aug
+        public DataSet Licence_Sup_Pending_FinalRecommendationList()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_PendingLicence_LetterIssued_Applications");
+        }
 
+        public int Insert_Licence_SupFinalRecommendation(string applicationId, string remarks, string actionTaken, string actionTakenBy, string savePathMom)
+        {
+            int result = 0;
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_Licence_SupfinalRecommend_SaveDetails", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ApplicationId", applicationId);
+                    cmd.Parameters.AddWithValue("@Remarks", remarks);
+                    cmd.Parameters.AddWithValue("@ActionTaken", actionTaken);
+                    cmd.Parameters.AddWithValue("@ActionTakenBy", actionTakenBy);
+                    cmd.Parameters.AddWithValue("@SupMeetingDocPath", savePathMom);
+
+                    SqlParameter returnParam = new SqlParameter();
+                    returnParam.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(returnParam);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    result = (int)returnParam.Value;
+                }
+            }
+            return result;
+        }
+
+        public DataSet Licence_Sup_Recommended_FinalRecommendationList()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_Sup_LetterVerified_Applications_List");
+        }
         #endregion
         #region neeraj attach deattach 23-Jue-2025
         public DataTable GetContractorDetails(string SupervisiorId)

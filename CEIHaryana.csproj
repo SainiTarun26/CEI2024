@@ -2138,7 +2138,11 @@
     <Content Include="StaticPage1.aspx" />
     <Content Include="StaticPage2.aspx" />
     <Content Include="StaticPage3.aspx" />
+    <Content Include="Superintendent\Approved_Final_Recommendations_List.aspx" />
     <Content Include="Superintendent\CommentForRequest.aspx" />
+    <Content Include="Superintendent\Pending_Final_Recommendations.aspx" />
+    <Content Include="Superintendent\Pending_Final_Recommendations_List.aspx" />
+    <Content Include="Superintendent\Sup_LicenceFinal_DetailView.aspx" />
     <Content Include="Superintendent\UserDetails.aspx" />
     <Content Include="SupervisorLogout.aspx" />
     <Content Include="Supervisor\AttachedRequest.aspx" />
@@ -4538,6 +4542,13 @@
     <Compile Include="StaticPage3.aspx.designer.cs">
       <DependentUpon>StaticPage3.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Superintendent\Approved_Final_Recommendations_List.aspx.cs">
+      <DependentUpon>Approved_Final_Recommendations_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Superintendent\Approved_Final_Recommendations_List.aspx.designer.cs">
+      <DependentUpon>Approved_Final_Recommendations_List.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Superintendent\CommentForRequest.aspx.cs">
       <DependentUpon>CommentForRequest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4545,12 +4556,33 @@
     <Compile Include="Superintendent\CommentForRequest.aspx.designer.cs">
       <DependentUpon>CommentForRequest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Superintendent\Pending_Final_Recommendations.aspx.cs">
+      <DependentUpon>Pending_Final_Recommendations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Superintendent\Pending_Final_Recommendations.aspx.designer.cs">
+      <DependentUpon>Pending_Final_Recommendations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Superintendent\Pending_Final_Recommendations_List.aspx.cs">
+      <DependentUpon>Pending_Final_Recommendations_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Superintendent\Pending_Final_Recommendations_List.aspx.designer.cs">
+      <DependentUpon>Pending_Final_Recommendations_List.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Superintendent\Superintendent.Master.cs">
       <DependentUpon>Superintendent.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Superintendent\Superintendent.Master.designer.cs">
       <DependentUpon>Superintendent.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Superintendent\Sup_LicenceFinal_DetailView.aspx.cs">
+      <DependentUpon>Sup_LicenceFinal_DetailView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Superintendent\Sup_LicenceFinal_DetailView.aspx.designer.cs">
+      <DependentUpon>Sup_LicenceFinal_DetailView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Superintendent\UserDetails.aspx.cs">
       <DependentUpon>UserDetails.aspx</DependentUpon>
