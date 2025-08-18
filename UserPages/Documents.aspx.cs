@@ -1470,5 +1470,17 @@ namespace CEIHaryana.UserPages
             }
         }
         #endregion
+
+        protected void btn_Preview_Click(object sender, EventArgs e)
+        {
+            if (HdnUserType.Value == "Supervisor")
+            {
+                Response.Redirect("/UserPages/Supervisor_Registration_Details.aspx", false);
+            }
+            else if (HdnUserType.Value == "Wireman")
+            {
+                Response.Redirect("/UserPages/Wireman_Registration_Details.aspx", false);
+            }
+        }
     }
 }

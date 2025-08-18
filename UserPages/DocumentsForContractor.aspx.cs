@@ -494,7 +494,7 @@ namespace CEIHaryana.UserPages
                             if (HdnField_Document6.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of treasury challan of fees deposited in any treasury of Haryana.<br>"; }
                             if (HdnField_Document7.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Image.<br>"; }
                             if (HdnField_Document8.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Signature.<br>"; }
-                            //if (HdnField_Document9.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload blue prints Drawing.<br>"; }
+                            if (HdnField_Document9.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Document of Major works carried out in Haryana.<br>"; }
 
                             if (!allMandatoryUploaded)
                             {
@@ -718,36 +718,282 @@ namespace CEIHaryana.UserPages
             }
         }
 
-        //protected void Button9_Click(object sender, EventArgs e)
-        //{
-        //    if (IsSessionValid())
-        //    {
-        //        string Result = SaveDocumentWithTransaction(FileUpload9, Button9, 9, lnkbtn_Delete9, lnkbtn_Save9, "Whether blue prints is available", null, null);
-        //        if (Result != null && Result != "")
-        //        {
-        //            HdnField_Document9.Value = "1";
-        //            lnkbtn_Delete9.Visible = true;
-        //            lnkbtn_Save9.Visible = true;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Response.Redirect("/LogOut.aspx", false);
-        //    }
-        //}
+        protected void btn_Preview_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/UserPages/Contractor_Registration_Details.aspx", false);
+        }
 
-        //protected void lnkbtn_Delete9_Click(object sender, EventArgs e)
-        //{
-        //    LinkButton btn = (LinkButton)sender;
-        //    int fileId = Convert.ToInt32(btn.CommandArgument);
-        //    if (fileId != 0)
-        //    {
-        //        bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete9, lnkbtn_Save9, FileUpload9, Button9);
-        //        if (IsDelete)
-        //        {
-        //            HdnField_Document9.Value = "0";
-        //        }
-        //    }
-        //}
+        protected void Button9_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload9, Button9, 49, lnkbtn_Delete9, lnkbtn_Save9, "Major works carried out in Haryana", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document9.Value = "1";
+                    lnkbtn_Delete9.Visible = true;
+                    lnkbtn_Save9.Visible = true;
+                    text9.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void lnkbtn_Delete9_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete9, lnkbtn_Save9, FileUpload9, Button9);
+                if (IsDelete)
+                {
+                    HdnField_Document9.Value = "0";
+                    text9.Visible = true;
+                }
+            }
+        }
+
+        protected void Button10_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload10, Button10, 50, lnkbtn_Delete10, lnkbtn_Save10, "Income tax return for last 3 year of 1st Year", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document10.Value = "1";
+                    lnkbtn_Delete10.Visible = true;
+                    lnkbtn_Save10.Visible = true;
+                    text10.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void lnkbtn_Delete10_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete10, lnkbtn_Save10, FileUpload10, Button10);
+                if (IsDelete)
+                {
+                    HdnField_Document10.Value = "0";
+                    text10.Visible = true;
+                }
+            }
+        }
+
+        protected void Button11_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload11, Button11, 51, lnkbtn_Delete11, lnkbtn_Save11, "Income tax return for last 3 year of 2nd Year", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document11.Value = "1";
+                    lnkbtn_Delete11.Visible = true;
+                    lnkbtn_Save11.Visible = true;
+                    text11.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void lnkbtn_Delete11_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete11, lnkbtn_Save11, FileUpload11, Button11);
+                if (IsDelete)
+                {
+                    HdnField_Document11.Value = "0";
+                    text11.Visible = true;
+                }
+            }
+        }
+
+        protected void Button12_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload12, Button12, 52, lnkbtn_Delete12, lnkbtn_Save12, "Income tax return for last 3 year of 3rd Year", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document12.Value = "1";
+                    lnkbtn_Delete12.Visible = true;
+                    lnkbtn_Save12.Visible = true;
+                    text12.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void lnkbtn_Delete12_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete12, lnkbtn_Save12, FileUpload12, Button12);
+                if (IsDelete)
+                {
+                    HdnField_Document12.Value = "0";
+                    text12.Visible = true;
+                }
+            }
+        }
+
+        protected void Button13_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload13, Button13, 53, lnkbtn_Delete13, lnkbtn_Save13, "Balance sheet of last 1st year", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document13.Value = "1";
+                    lnkbtn_Delete13.Visible = true;
+                    lnkbtn_Save13.Visible = true;
+                    text13.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void Button14_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload14, Button14, 54, lnkbtn_Delete14, lnkbtn_Save14, "Balance sheet of last 2nd year", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document14.Value = "1";
+                    lnkbtn_Delete14.Visible = true;
+                    lnkbtn_Save14.Visible = true;
+                    text14.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void Button15_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload15, Button15, 55, lnkbtn_Delete15, lnkbtn_Save15, "Balance sheet of last 3rd year", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document15.Value = "1";
+                    lnkbtn_Delete15.Visible = true;
+                    lnkbtn_Save15.Visible = true;
+                    text15.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+
+        }
+
+        protected void Button16_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload16, Button16, 56, lnkbtn_Delete16, lnkbtn_Save16, "Invoice of instruments and calibrate", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document16.Value = "1";
+                    lnkbtn_Delete16.Visible = true;
+                    lnkbtn_Save16.Visible = true;
+                    text16.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
+
+        protected void lnkbtn_Delete13_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete13, lnkbtn_Save13, FileUpload13, Button13);
+                if (IsDelete)
+                {
+                    HdnField_Document13.Value = "0";
+                    text13.Visible = true;
+                }
+            }
+        }
+
+        protected void lnkbtn_Delete14_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete14, lnkbtn_Save14, FileUpload14, Button14);
+                if (IsDelete)
+                {
+                    HdnField_Document14.Value = "0";
+                    text14.Visible = true;
+                }
+            }
+        }
+
+        protected void lnkbtn_Delete15_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete15, lnkbtn_Save15, FileUpload15, Button15);
+                if (IsDelete)
+                {
+                    HdnField_Document15.Value = "0";
+                    text15.Visible = true;
+                }
+            }
+        }
+
+        protected void lnkbtn_Delete16_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int fileId = Convert.ToInt32(btn.CommandArgument);
+            if (fileId != 0)
+            {
+                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete16, lnkbtn_Save16, FileUpload16, Button16);
+                if (IsDelete)
+                {
+                    HdnField_Document16.Value = "0";
+                    text16.Visible = true;
+                }
+            }
+        }
     }
 }

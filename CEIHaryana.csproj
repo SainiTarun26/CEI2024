@@ -2194,6 +2194,7 @@
     <Content Include="UserPages\ApplicationForLiftEscalators.aspx" />
     <Content Include="UserPages\ContractorApplicationForm.aspx" />
     <Content Include="UserPages\Contractor_Declaration.aspx" />
+    <Content Include="UserPages\Contractor_Registration_Details.aspx" />
     <Content Include="UserPages\Documents.aspx" />
     <Content Include="UserPages\DocumentsForContractor.aspx" />
     <Content Include="UserPages\DocumentsForLift.aspx" />
@@ -2215,10 +2216,12 @@
     <Content Include="UserPages\ReSubmitDocumentofNewUser.aspx" />
     <Content Include="UserPages\SiteOwnerRegistration.aspx" />
     <Content Include="UserPages\SupervisorQualification.aspx" />
+    <Content Include="UserPages\Supervisor_Registration_Details.aspx" />
     <Content Include="UserPages\Update_Contractor_Application_Form.aspx" />
     <Content Include="UserPages\Update_Supervisor_Qualification.aspx" />
     <Content Include="UserPages\Update_Wireman_Qualification.aspx" />
     <Content Include="UserPages\User_Profile_Create.aspx" />
+    <Content Include="UserPages\Wireman_Registration_Details.aspx" />
     <Content Include="VerifyCertificate.aspx" />
     <Content Include="Web.config" />
     <Content Include="Wiremen\CertificateRenewal.aspx" />
@@ -4955,6 +4958,13 @@
     <Compile Include="UserPages\Contractor_Declaration.aspx.designer.cs">
       <DependentUpon>Contractor_Declaration.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserPages\Contractor_Registration_Details.aspx.cs">
+      <DependentUpon>Contractor_Registration_Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\Contractor_Registration_Details.aspx.designer.cs">
+      <DependentUpon>Contractor_Registration_Details.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserPages\Documents.aspx.cs">
       <DependentUpon>Documents.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5102,6 +5112,13 @@
     <Compile Include="UserPages\SupervisorQualification.aspx.designer.cs">
       <DependentUpon>SupervisorQualification.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserPages\Supervisor_Registration_Details.aspx.cs">
+      <DependentUpon>Supervisor_Registration_Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\Supervisor_Registration_Details.aspx.designer.cs">
+      <DependentUpon>Supervisor_Registration_Details.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserPages\Update_Contractor_Application_Form.aspx.cs">
       <DependentUpon>Update_Contractor_Application_Form.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5129,6 +5146,13 @@
     </Compile>
     <Compile Include="UserPages\User_Profile_Create.aspx.designer.cs">
       <DependentUpon>User_Profile_Create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\Wireman_Registration_Details.aspx.cs">
+      <DependentUpon>Wireman_Registration_Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\Wireman_Registration_Details.aspx.designer.cs">
+      <DependentUpon>Wireman_Registration_Details.aspx</DependentUpon>
     </Compile>
     <Compile Include="VerifyCertificate.aspx.cs">
       <DependentUpon>VerifyCertificate.aspx</DependentUpon>

@@ -42,7 +42,8 @@ namespace CEIHaryana.UserPages
                     }
                     else
                     {
-                        Response.Redirect("/LogOut.aspx");
+                        ScriptManager.RegisterStartupScript(this, GetType(), "Error", "alert('An error Occurred');", true);
+                        Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
                     }
                 }
             }
@@ -191,6 +192,13 @@ namespace CEIHaryana.UserPages
                         txtPenalities.Text = "";
                         DivPenelity.Visible = false;
                     }
+                }
+
+                ListItem itemWorkUnderConditionsandgulation29 = DdlWorkUnderConditionsandgulation29.Items.FindByText(ds.Rows[0]["WorkUnderLicenceConditionsandregulation29"].ToString());
+                if (itemWorkUnderConditionsandgulation29 != null)
+                {
+                    DdlWorkUnderConditionsandgulation29.ClearSelection();
+                    itemWorkUnderConditionsandgulation29.Selected = true;
                 }
             }
             catch
@@ -672,8 +680,9 @@ namespace CEIHaryana.UserPages
                     }
                     else
                     {
-                        CEI.UpdateStatusAfterEdit(LoginID);
+                     
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application Updated Successfully !!!')", true);
+                        CEI.UpdateStatusAfterEdit(LoginID);
                         Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
                         
                     }
@@ -753,7 +762,25 @@ namespace CEIHaryana.UserPages
             }
         }
 
-       
+        protected void btnupdateWorkUnderConditionsandgulation29_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (HFContractor.Value != null && HFContractor.Value != "")
+                {
+                    CEI.UpdatevalueofWorkUnderConditionsandgulation29(DdlWorkUnderConditionsandgulation29.SelectedItem.ToString(), HFContractor.Value);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Details Updated Successfully !!!')", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('There is an issue in Updating!!!')", true);
+                }
+            }
+            catch
+            {
+                Response.Redirect("/LogOut.aspx");
+            }
+        }
     }
 }
 

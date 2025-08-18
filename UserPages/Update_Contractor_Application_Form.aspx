@@ -987,6 +987,20 @@
             margin-top: 20px;
             height: 100px;
         }
+        input#btnupdateWorkUnderConditionsandgulation29 {
+      padding: 12px;
+      border-radius: 5px;
+  }
+        select#DdlWorkUnderConditionsandgulation29 {
+    width: 100%;
+    height: 30PX;
+    width: 100%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: 1px solid #CED4DA;
+    font-weight: 400;
+    font-size: 12px !important;
+    border-radius: 4px;
+}
     </style>
     <script type="text/javascript">
         function alertWithRedirectdata() {
@@ -1158,6 +1172,8 @@
 
                         </div>
                     </div>
+                    <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+    <ContentTemplate>
                     <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-12">
@@ -1213,8 +1229,7 @@
                                                             </h3>
                                                         </div>
                                                     </div>
-                                                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                                                        <ContentTemplate>
+                                                  
                                                             <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: -20px; padding: 17px; padding-bottom: 15px;">
                                                                 <div class="row">
                                                                     <div class="col-md-4">
@@ -1502,16 +1517,14 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </ContentTemplate>
-                                                    </asp:UpdatePanel>
+                                                      
                                                     <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">
                                                         <div class="col-md-12">
                                                             <h3 class="card-title" style="margin-top: 50px; font-size: 21px;">Other Organisation Details
                                                             </h3>
                                                         </div>
                                                     </div>
-                                                    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
-                                                        <ContentTemplate>
+                                                   
                                                             <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: -20px; padding: 17px; padding-bottom: 15px;">
                                                                 <div class="row">
                                                                     <div class="col-md-4">
@@ -1604,16 +1617,14 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </ContentTemplate>
-                                                    </asp:UpdatePanel>
+                                                     
                                                     <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">
                                                         <div class="col-md-12">
                                                             <h3 class="card-title" style="margin-top: 50px; font-size: 21px;">Partner/Directors Details
                                                             </h3>
                                                         </div>
                                                     </div>
-                                                    <asp:UpdatePanel ID="UpdatePanel4" runat="server">
-                                                        <ContentTemplate>
+                                                    
                                                              <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: -20px; padding: 17px; padding-bottom: 15px;">
      <div class="row">
          <div class="col-md-4">
@@ -1633,7 +1644,7 @@
          <div class="col-md-4">
              <div class="form-group">
                  <div id="ADDpartner" runat="server" visible="false" class="form-group" style="margin-top: 8px;">
-                     <asp:Button ID="btnShowPartnerDiv" runat="server" Text="Add Partner" OnClick="btnShowPartnerDiv_Click" CssClass="btn btn-primary" Style="border-radius: 5px; font-size: 18px; padding: 4px 8px; margin-top: 16px;" />
+                     <asp:Button ID="btnShowPartnerDiv" runat="server" Text="Add Partner/Director" OnClick="btnShowPartnerDiv_Click" CssClass="btn btn-primary" Style="border-radius: 5px; font-size: 18px; padding: 4px 8px; margin-top: 16px;" />
                  </div>
              </div>
          </div>
@@ -1690,8 +1701,7 @@
          </asp:GridView>
      </div>
  </div>
-                                                        </ContentTemplate>
-                                                    </asp:UpdatePanel>
+                                                     
                                                 </div>
                                                 <div class="row" style="margin-top: 15px !important; margin-bottom: 10PX; font-size: 20PX;">
                                                     <div class="col-md-12">
@@ -1699,8 +1709,7 @@
                                                         </h3>
                                                     </div>
                                                 </div>
-                                                <asp:UpdatePanel ID="UpdatePanel5" runat="server">
-                                                    <ContentTemplate>
+                                              
                                                          <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding: 17px; padding-bottom: 17px; margin: -20px 0px 0px 0px;">
       <div class="row">
           <div class="col-md-3">
@@ -1855,17 +1864,49 @@
               </Columns>
           </asp:GridView>
       </div>
-  </div>
-                                                    </ContentTemplate>
-                                                </asp:UpdatePanel>
+                                    </div>               
+
+                                                  
+                                                        <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: 35px 0px 0px 0px !important; padding: 17px; padding-bottom: 20px;">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="forms-sample">
+                        <div class="form-group">
+                            <label id="Label16" runat="server" >
+    Whether the staff indicated under column 13 are exclusively earmark for the work under the conditions for licencing and Regulation 29 of "Central Electricity Authority (Measures relating to Safety and Electric Supply)"?<samp style="color: red">* </samp>
+</label>
+                              <div class="row">
+                                   <div class="col-md-4">
+                            <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" 
+    ID="DdlWorkUnderConditionsandgulation29" runat="server" Enabled="true">
+    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+    <asp:ListItem Text="YES" Value="1" ></asp:ListItem>
+    <asp:ListItem Text="NO" Value="2"></asp:ListItem>
+</asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlWorkUnderConditionsandgulation29" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit3" ForeColor="Red" />
+</div>
+                                  </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12" style="text-align: end; margin-top: 15px;">
+                    <asp:Button ID="btnupdateWorkUnderConditionsandgulation29"  OnClick="btnupdateWorkUnderConditionsandgulation29_Click"  ValidationGroup="Submit3" runat="server" Text="Update" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+
+
                                                 <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">
                                                     <div class="col-md-12">
                                                         <h3 class="card-title" style="margin-top: 35px; font-size: 21px; padding-left: 25px !important;">Other Details
                                                         </h3>
                                                     </div>
                                                 </div>
-                                                <asp:UpdatePanel ID="UpdatePanel6" runat="server">
-                                                    <ContentTemplate>
+
+
+
+                                              
+       
                                                         <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: -20px 0px 0px 0px !important; padding: 17px; padding-bottom: 20px;">
                                                             <div class="row">
                                                                 <div class="col-md-4">
@@ -1947,9 +1988,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </ContentTemplate>
-
-                                                </asp:UpdatePanel>
+                                                   
                                                 <div class="row" style="margin-bottom: -75px; margin-top: 50px;">
                                                     <div class="col-md-6" style="padding-left: 0px;">
                                                     </div>
@@ -1957,7 +1996,7 @@
                                                         <asp:Button type="BtnSubmit" ID="BtnSubmit" Text="Next" OnClick="BtnSubmit_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
                                                     </div>
                                                 </div>
-                                            </div>
+                                          
                                         </div>
                                         <asp:HiddenField ID="HFContractor" runat="server" />
                                     </div>
@@ -1966,6 +2005,8 @@
                         </div>
                     </div>
                 </div>
+        </ContentTemplate>
+                        </asp:UpdatePanel>
                 <div class="col-md-1"></div>
             </section>
             <!-- End About Section -->

@@ -107,6 +107,8 @@ namespace CEIHaryana.UserPages
                         ShowPenelity.Visible = true;
                         txtPenalities.Text = dt.Rows[0]["Penalities"].ToString();
                     }
+                    //Added by neha
+                    txtWorkUnderConditionsandgulation29.Text = dt.Rows[0]["WorkUnderLicenceConditionsandregulation29"].ToString();
                 }
             }
             catch (Exception ex)

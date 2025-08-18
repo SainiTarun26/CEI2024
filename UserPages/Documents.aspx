@@ -349,6 +349,12 @@
             input#btnNext {
                 padding: 10px !important;
             }
+             input#btn_Preview  {
+     padding: 10px !important;
+ }
+              input#btnBack {
+     padding: 10px !important;
+ }
 
         label {
             display: inline-block;
@@ -910,10 +916,15 @@
                                             </div>
                                         </div>
                                         <div class="row" style="margin-top: 15px;">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4" style="text-align: start;">
                                                 <asp:Button type="button" ID="btnBack" Text="Back" OnClick="btnBack_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
                                             </div>
-                                            <div class="col-md-6" style="text-align: end;">
+                                              <div class="col-md-4" style="text-align: center;">
+     <asp:Button type="button"  ID="btn_Preview" Text="Preview" runat="server" OnClick="btn_Preview_Click" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+                                          
+  </div>
+
+                                            <div class="col-md-4" style="text-align: end;">
                                                 <asp:Button type="button" ValidationGroup="Submit" ID="btnNext" Text="Next" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnNext_Click" />
                                             </div>
                                         </div>

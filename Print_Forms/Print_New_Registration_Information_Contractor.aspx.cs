@@ -103,6 +103,8 @@ namespace CEIHaryana.Print_Forms
                         lblLicenceNo.Text = dt.Rows[0]["LicenseNoIfYes"].ToString();
                     }
                     lblLibraryAnnexure.Text = dt.Rows[0]["LibraryAvailable"].ToString();
+                    //Added by neha
+                    lblWorkUnderConditionsandgulation29.Text = dt.Rows[0]["WorkUnderLicenceConditionsandregulation29"].ToString();
                 }
             }
             catch (Exception ex)

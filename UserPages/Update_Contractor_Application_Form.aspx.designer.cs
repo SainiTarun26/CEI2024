@@ -42,6 +42,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
+        /// UpdatePanel4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel4;
+
+        /// <summary>
         /// Label17 control.
         /// </summary>
         /// <remarks>
@@ -121,15 +130,6 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAppliedFor;
-
-        /// <summary>
-        /// UpdatePanel2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
 
         /// <summary>
         /// ddlCompanyStyle control.
@@ -573,15 +573,6 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Button btnupdate1;
 
         /// <summary>
-        /// UpdatePanel3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
-
-        /// <summary>
         /// Label4 control.
         /// </summary>
         /// <remarks>
@@ -879,15 +870,6 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Button btnupdate2;
 
         /// <summary>
-        /// UpdatePanel4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel4;
-
-        /// <summary>
         /// DdlPartnerOrDirector control.
         /// </summary>
         /// <remarks>
@@ -931,15 +913,6 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView2;
-
-        /// <summary>
-        /// UpdatePanel5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel5;
 
         /// <summary>
         /// typeemp control.
@@ -1032,13 +1005,40 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.GridView GridView3;
 
         /// <summary>
-        /// UpdatePanel6 control.
+        /// Label16 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel6;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label16;
+
+        /// <summary>
+        /// DdlWorkUnderConditionsandgulation29 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlWorkUnderConditionsandgulation29;
+
+        /// <summary>
+        /// RequiredFieldValidator11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator11;
+
+        /// <summary>
+        /// btnupdateWorkUnderConditionsandgulation29 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnupdateWorkUnderConditionsandgulation29;
 
         /// <summary>
         /// ddlAnnexureOrNot control.

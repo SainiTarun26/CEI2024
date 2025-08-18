@@ -11558,12 +11558,12 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         }
 
         #region chaged by neha on 27-June-2025
-
+        
         public void ContractorApplicationData(string BusinessAddress, string BusinessState, string BusinessDistrict, string BusinessAddPinCode, string BusinessAddEmail, string BusinessAddPhoneNo, string GSTNumber, string StyleOfCompany,
-         string NameOfCompany, string CompanyRegisterdOffice, string CompanyPartnerOrDirector,
-    string LibraryAvailable, string AgentName, string ManufacturingFirmOrProductionUnit, string ContractorLicencePreviouslyGranted,
-  string NameOfIssuingAuthority, string IssuedateOtherState, string DateOfLicenseExpiring, string WorkPermitUndertaken, string ContractorLicencePreviouslyGrantedWithSameName,
-  string LicenseNoIfYes, string DateoFIssue, string DoCompanyHavePenalties, string Penalities, string CreatedBy)
+        string NameOfCompany, string CompanyRegisterdOffice, string CompanyPartnerOrDirector,
+   string LibraryAvailable, string AgentName, string ManufacturingFirmOrProductionUnit, string ContractorLicencePreviouslyGranted,
+ string NameOfIssuingAuthority, string IssuedateOtherState, string DateOfLicenseExpiring, string WorkPermitUndertaken, string ContractorLicencePreviouslyGrantedWithSameName,
+ string LicenseNoIfYes, string DateoFIssue, string DoCompanyHavePenalties, string Penalities, string WorkUnderLicenceConditionsandregulation29, string CreatedBy)
         {
             SqlCommand cmd = new SqlCommand("sp_SetContractorApplicationFormData");
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -11600,12 +11600,17 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             cmd.Parameters.AddWithValue("@DateoFIssue", DateoFIssue);
             cmd.Parameters.AddWithValue("@DoCompanyHavePenalties", DoCompanyHavePenalties);
             cmd.Parameters.AddWithValue("@Penalities", Penalities);
+            cmd.Parameters.AddWithValue("@WorkUnderLicenceConditionsandregulation29", WorkUnderLicenceConditionsandregulation29);
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             cmd.ExecuteNonQuery();
             con.Close();
 
         }
-
+        //18-aug
+        public DataTable UpdatevalueofWorkUnderConditionsandgulation29(string WorkUnderConditionsandgulation29, string ModifiedBy)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdatevalueofWorkUnderConditionsandgulation29", WorkUnderConditionsandgulation29, ModifiedBy);
+        }
         #endregion
         public void ContractorPartners(string TypeOfAuthority, string Name, string Address, string State, string District, string Pincode, string CreatedBy)
         {

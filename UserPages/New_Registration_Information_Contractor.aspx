@@ -998,6 +998,27 @@
                                                         </div>
                                                     </div>
 
+                                                       <hr style="margin-top: 15px; margin-bottom: 30px;" />
+   <div class="row">
+       <div class="col-md-12">
+           <h4 class="card-title"> </h4>
+       </div>
+   </div>
+   <div class="row" style="margin-top: -30px;">
+       <div class="col-md-4">
+           <div class="forms-sample">
+               <div class="form-group" style="margin-top: 20px;">
+                   <label for="Gender">
+                       Whether the staff indicated under column 13 are exclusively earmark for the work under the conditions for licencing and Regulation 29 of "Central Electricity Authority (Measures relating to Safety and Electric Supply)"?<samp style="color: red">* </samp>
+
+                   </label>
+                   <asp:TextBox class="form-control" ID="txtWorkUnderConditionsandgulation29" ReadOnly="true" autocomplete="off" runat="server" onKeyPress="return isNumberKey(event) || alphabetKey(event);" TabIndex="1" MaxLength="15"> </asp:TextBox>
+
+                   </div>
+           </div>
+       </div>
+   </div>
+
 
                                                     <%--
 

@@ -943,6 +943,7 @@ namespace CEIHaryana.UserPages
 
                 // If all validations pass
                 ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
+                CEI.UpdateStatusAfterEdit(hdnId.Value);
                 Response.Redirect("/UserPages/Documents.aspx", false);
             }
             catch (Exception ex)

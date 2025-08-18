@@ -867,6 +867,8 @@ namespace CEIHaryana.UserPages
                 }
 
                 ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
+
+                CEI.UpdateStatusAfterEdit(hdnId.Value);
                 string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
 
 

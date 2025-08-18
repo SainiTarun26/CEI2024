@@ -287,7 +287,7 @@ namespace CEIHaryana.UserPages
                                                           txtAgentName.Text, ddlUnitOrNot.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(), 
                                                           txtIssusuingName.Text, txtIssuedateOtherState.Text, txtLicenseExpiry.Text, txtWorkPermitUndertaken.Text,
                                                           ddlSameNameLicense.SelectedItem.ToString(), txtLicenseNo.Text, txtLicenseIssue.Text,
-                                                          DropDownList2.SelectedItem.ToString(), txtPenalities.Text,
+                                                          DropDownList2.SelectedItem.ToString(), txtPenalities.Text, DdlWorkUnderLicenceConditionsandregulation29.SelectedItem.ToString(),
                                                           LoginID);
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application Submitted Successfully !!!')", true);
                             Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);

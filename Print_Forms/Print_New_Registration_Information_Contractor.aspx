@@ -1032,6 +1032,14 @@
 
 
                                 </div>
+
+                                  <div class="col-12" style="padding-right: 0px !important;">
+      <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
+          <text>  Whether the staff indicated under column 13 are exclusively earmark for the work under the conditions for licencing and Regulation 29 of "Central Electricity Authority (Measures relating to Safety and Electric Supply)"? :</text>
+          <asp:Label ID="lblWorkUnderConditionsandgulation29" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 46%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+          </asp:Label>
+      </h6>
+  </div>
                                 <div class="col-md-12">
                                     <asp:GridView ID="grd_Documemnts" OnRowDataBound="grd_Documemnts_RowDataBound" autopostback="true" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false">
                                         <HeaderStyle BackColor="#B7E2F0" />

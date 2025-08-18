@@ -393,6 +393,15 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.GridView grdView_ContractorTeam;
 
         /// <summary>
+        /// lblWorkUnderConditionsandgulation29 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblWorkUnderConditionsandgulation29;
+
+        /// <summary>
         /// grd_Documemnts control.
         /// </summary>
         /// <remarks>
