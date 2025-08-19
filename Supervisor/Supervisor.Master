@@ -17,20 +17,22 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style type="text/css">
-                span#Slash {
-    margin-left: 7px;
-    margin-right: 5px;
-    font-size: 20px;
-}
+        span#Slash {
+            margin-left: 7px;
+            margin-right: 5px;
+            font-size: 20px;
+        }
+
         span#LoginType {
-    font-size: 20px;
-    text-transform: uppercase;
-}
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
         div#PageDetails {
             margin: 15px 35px 15px 35px;
             padding: 5px;
-            padding-left:20px;
-            padding-right:20px;
+            padding-left: 20px;
+            padding-right: 20px;
             margin-bottom: -25px;
             background: #639fc2;
             color: white;
@@ -70,8 +72,9 @@
             zoom: 90%; /* Webkit browsers */
             zoom: 90%; /* Webkit browsers */
         }
-         svg{
-            margin-right:15px;
+
+        svg {
+            margin-right: 15px;
         }
     </style>
 </head>
@@ -158,7 +161,7 @@
                                     </a>
                                 </div>
                             </li>--%>
-                          
+
                             <li class="nav-item nav-profile dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                                     <img class="avatar" src="/Assets/images.png" alt="profile" />
@@ -175,9 +178,9 @@
                                         <asp:Label ID="lblName" runat="server" />
                                     </a>
                                     <a class="dropdown-item">
-                                     <asp:Button ID="BtnChangePassword" Text="Change Password" OnClick="BtnChangePassword_Click" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
+                                        <asp:Button ID="BtnChangePassword" Text="Change Password" OnClick="BtnChangePassword_Click" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
 
-                                   
+
                                     </a>
                                     <a class="dropdown-item">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
@@ -388,7 +391,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                               <a class="nav-link" href="IntimationData.aspx">
+                                <a class="nav-link" href="IntimationData.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Create Test Report</span>
                                 </a>
@@ -398,24 +401,30 @@
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Test Report History</span>
                                 </a></li>
-              <li class="nav-item">
-        <a class="nav-link" href="DeAttacted_Staff.aspx">
-            <i class="icon-grid menu-icon"></i>
-            <span class="menu-title">DeAttached-Request</span>
-        </a></li>
-                                  <li class="nav-item">
-<a class="nav-link" href="DeattachmentRequest.aspx">
-    <i class="icon-grid menu-icon"></i>
-    <span class="menu-title"> Attached-DeAttached  <br />Request Status</span>
-</a></li>
                             <li class="nav-item">
-<a class="nav-link" href="AttachedRequest.aspx">
-    <i class="icon-grid menu-icon"></i>
-    <span class="menu-title">Attached-Request</span>
-</a></li>
-                          
+                                <a class="nav-link" href="DeAttacted_Staff.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">DeAttached-Request</span>
+                                </a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="DeattachmentRequest.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Attached-DeAttached 
+                                        <br />
+                                        Request Status</span>
+                                </a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="AttachedRequest.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Attached-Request</span>
+                                </a></li>
 
-                          <%-- <li class="nav-item">
+                            <li class="nav-item" id="SupervisorUpgradation" runat="server">
+                                <a class="nav-link" href="Supervisor_Licence_Upgradation.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Licence Upgradation</span>
+                                </a></li>
+                            <%-- <li class="nav-item">
                                 <a class="nav-link" href="RenewalCertificateSupervisor.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Renewal Certificate</span>
@@ -428,17 +437,17 @@
                         </ul>
                     </nav>
                     <div class="main-panel">
-                        <div class="card" id="PageDetails" style="border-radius: 0.25rem !important;border: 1px solid #5f8fad;padding:5px !important;padding-left: 20px !important; padding-right: 20px !important;">
-    <div class="row">
-        <div class="col-sm-9">
-            <asp:Label ID="LoginType" runat="server" Text="Supervisor"></asp:Label><%--<span id="Slash">></span>--%>
-            <%--<asp:Label ID="PageName" runat="server" Text="Work Intimation"></asp:Label>--%>
-        </div>
-        <div class="col-sm-3" style="text-align:end;">
-            <asp:Label ID="PersonDetails" runat="server" ></asp:Label>
-        </div>
-    </div>
-</div>
+                        <div class="card" id="PageDetails" style="border-radius: 0.25rem !important; border: 1px solid #5f8fad; padding: 5px !important; padding-left: 20px !important; padding-right: 20px !important;">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <asp:Label ID="LoginType" runat="server" Text="Supervisor"></asp:Label><%--<span id="Slash">></span>--%>
+                                    <%--<asp:Label ID="PageName" runat="server" Text="Work Intimation"></asp:Label>--%>
+                                </div>
+                                <div class="col-sm-3" style="text-align: end;">
+                                    <asp:Label ID="PersonDetails" runat="server"></asp:Label>
+                                </div>
+                            </div>
+                        </div>
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>
@@ -458,15 +467,15 @@
     <script src="/Assets/js/todolist.js"></script>
     <script src="/Assets/js/dashboard.js"></script>
     <script src="/Assets/js/Chart.roundedBarCharts.js"></script>
-       <script type="text/javascript">
-   window.addEventListener("beforeunload", function () {
-       // Notify the server to clear the session
-       navigator.sendBeacon('AdminLogout.aspx');
+    <script type="text/javascript">
+        window.addEventListener("beforeunload", function () {
+            // Notify the server to clear the session
+            navigator.sendBeacon('AdminLogout.aspx');
 
-       // Clear session storage and local storage
-       sessionStorage.clear();
-       localStorage.removeItem('activeSession');
-   });
-       </script>
+            // Clear session storage and local storage
+            sessionStorage.clear();
+            localStorage.removeItem('activeSession');
+        });
+    </script>
 </body>
 </html>
