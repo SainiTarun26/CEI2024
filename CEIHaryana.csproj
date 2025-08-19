@@ -2230,6 +2230,7 @@
     <Content Include="Web.config" />
     <Content Include="Wiremen\CertificateRenewal.aspx" />
     <Content Include="Wiremen\CompetencyRenewalCertificate.aspx" />
+    <Content Include="Wiremen\Renewal_Certificate_Wiremen.aspx" />
     <Content Include="Wiremen\WiremenCompetencyCertificate.aspx" />
     <Content Include="Wiremen\WiremenDashboard.aspx" />
     <Content Include="Wiremen\WiremenUpgradationLicence.aspx" />
@@ -5206,6 +5207,13 @@
     </Compile>
     <Compile Include="Wiremen\CompetencyRenewalCertificate.aspx.designer.cs">
       <DependentUpon>CompetencyRenewalCertificate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Wiremen\Renewal_Certificate_Wiremen.aspx.cs">
+      <DependentUpon>Renewal_Certificate_Wiremen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wiremen\Renewal_Certificate_Wiremen.aspx.designer.cs">
+      <DependentUpon>Renewal_Certificate_Wiremen.aspx</DependentUpon>
     </Compile>
     <Compile Include="Wiremen\Wiremen.Master.cs">
       <DependentUpon>Wiremen.Master</DependentUpon>

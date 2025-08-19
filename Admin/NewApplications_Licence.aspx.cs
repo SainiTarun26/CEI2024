@@ -183,10 +183,21 @@ namespace CEIHaryana.Admin
                                             //ApplicationID = lblApplicationID.Text;
                                             Label lblCategory = (Label)row.FindControl("lblCategory");
                                             Category = lblCategory.Text;
-                                            Label lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
-                                            RegistrationNo = lblRegistrationNo.Text;
+                                            Label lblApplicationType = (Label)row.FindControl("lblApplicationType");
+                                            if (lblApplicationType.Text.Trim() == "New")
+                                            {
 
-                                            cei.InsertNewLicenceApplicationFromCEI(RegistrationNo, CommitteeID, Category, CreatedBy, transaction);
+                                                Label lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
+                                                RegistrationNo = lblRegistrationNo.Text;
+                                            }
+                                            else
+                                            {
+
+                                                Label lblRegistrationNo = (Label)row.FindControl("lblId");
+                                                RegistrationNo = lblRegistrationNo.Text;
+                                            }
+
+                                            cei.InsertNewLicenceApplicationFromCEI(lblApplicationType.Text.Trim(),RegistrationNo, CommitteeID, Category, CreatedBy, transaction);
                                             transaction.Commit();
                                             Session["double_Clickbutton"] = "";
                                             Session["double_Clickbutton"] = null;

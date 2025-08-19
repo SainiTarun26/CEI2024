@@ -53,7 +53,7 @@ namespace CEIHaryana
                             Response.Redirect("/Contractor/Renewal_Contractor_Licence.aspx", false);
 
                         }
-                        else if (Category.Trim() == "Supervisor")
+                        if (Category.Trim() == "Supervisor")
                         {
                             Session["SupervisorID"] = txtUserID.Text;
                             Response.Redirect("/Supervisor/Renewal_Certificate_Competency.aspx", false);
@@ -61,7 +61,7 @@ namespace CEIHaryana
                         else if (Category.Trim() == "Wireman")
                         {
                             Session["WiremanId"] = txtUserID.Text;
-                            Response.Redirect("/Supervisor/Renewal_Certificate_Competency.aspx", false);
+                            Response.Redirect("/Wiremen/Renewal_Certificate_Wiremen.aspx", false);
                         }
                     }
                     else

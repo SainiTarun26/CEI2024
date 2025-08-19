@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Supervisor/Supervisor_Renewal.Master" AutoEventWireup="true" CodeBehind="Renewal_Certificate_Competency.aspx.cs" Inherits="CEIHaryana.Supervisor.Renewal_Certificate_Competency" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Wiremen/Wiremen.Master" AutoEventWireup="true" CodeBehind="Renewal_Certificate_Wiremen.aspx.cs" Inherits="CEIHaryana.Wiremen.Renewal_Certificate_Wiremen" %>
 
-<asp:Content ID="Content3" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
@@ -238,7 +238,8 @@
         }
     </style>
 </asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
@@ -979,3 +980,4 @@
             }
         </script>
 </asp:Content>
+

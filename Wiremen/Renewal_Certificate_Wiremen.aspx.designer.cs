@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CEIHaryana.Supervisor
+namespace CEIHaryana.Wiremen
 {
 
 
-    public partial class Renewal_Certificate_Competency
+    public partial class Renewal_Certificate_Wiremen
     {
 
         /// <summary>

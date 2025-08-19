@@ -10909,11 +10909,12 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_GetFreshLicenceApplicationForCEI", Categary, string.IsNullOrEmpty(RegistrtaiionNo) ? null : RegistrtaiionNo, string.IsNullOrEmpty(Name) ? null : Name);
         }
 
-        public void InsertNewLicenceApplicationFromCEI(string RegistrationNo, string CommitteeId, string Categary, string CreatedBy, SqlTransaction transaction)
+        public void InsertNewLicenceApplicationFromCEI(string Type, string RegistrationNo, string CommitteeId, string Categary, string CreatedBy, SqlTransaction transaction)
         {
             SqlCommand cmd = new SqlCommand("sp_Insert_Licence_Application", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
             //cmd.Parameters.AddWithValue("@ApplicationId", ApplicationID);
+            cmd.Parameters.AddWithValue("@Type", Type);
             cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
             cmd.Parameters.AddWithValue("@CommitteeId", CommitteeId);
             cmd.Parameters.AddWithValue("@Categary", Categary);
@@ -14345,15 +14346,33 @@ SqlTransaction transaction)
         }
         #endregion
         #region kalpana renewal of licenses
-        public void InsertRenewalData(string Category, string RenewalTime, string TotalAmount, string CertificateofCompetency, string Challanfp, string GRNNo, string ChallanDate, string MedicalFitnessfp, string PresentworkingStatusfp,
-   string Undertakingfp, string changeofemployer, string CreatedBy)
+        public void InsertRenewalData(string Category, string name, string DOB, string age, string Dateturn55, string FatherName, string AadharNo, string District, string Address, string PhoneNo, string Email, string LicenceNew, string LicenceOld, string RenewalTime, string amount, string GRNno, string ChallanDate, string changeofemployer, string CreatedBy)
         {
-            DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_RenewalofSupAndWireDetails", Category, RenewalTime, TotalAmount, CertificateofCompetency, Challanfp, GRNNo, ChallanDate, MedicalFitnessfp, PresentworkingStatusfp,
-   Undertakingfp, changeofemployer, CreatedBy);
+            DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_RenewalDetails", Category, name, DOB, age, Dateturn55, FatherName, AadharNo, District, Address, PhoneNo, Email, LicenceNew, LicenceOld, RenewalTime, amount, GRNno, ChallanDate, changeofemployer, CreatedBy);
         }
         public DataTable GetSuperviserDetailsforRenewal(string UserID)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSuperviserDetailsforRenewal", UserID);
+        }
+        public void InsertRenewalDocuments(string category, string documentName, string documentPath, int status, string createdBy)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_UploadRenewalUserDocument", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@Category", category);
+                    cmd.Parameters.AddWithValue("@DocumentName", documentName);
+                    cmd.Parameters.AddWithValue("@DocumentPath", documentPath);
+                    cmd.Parameters.AddWithValue("@Status", status);
+                    cmd.Parameters.AddWithValue("@CreatedBy", createdBy);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
         }
         #endregion
     }

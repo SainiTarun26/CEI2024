@@ -346,6 +346,7 @@
                                     <asp:TemplateField HeaderText="Id" Visible="False">
                                         <ItemTemplate>
                                             <asp:Label ID="lblRegistrationNo" runat="server" Text='<%#Eval("UserId") %>'></asp:Label>
+                                            <asp:Label ID="lblId" runat="server" Text='<%# Eval("Id") %>' CssClass="text-wrap"></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="SNo">
@@ -407,6 +408,14 @@
                                         <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="right" Width="15%" />
                                     </asp:BoundField>
+                                    
+                                    <asp:TemplateField HeaderText="ApplicationType">
+                                        <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="Left" Width="10%" CssClass="text-wrap" />
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblApplicationType" runat="server" Text='<%# Eval("ApplicationType") %>' CssClass="text-wrap"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                 </Columns>
                                 <FooterStyle BackColor="White" ForeColor="#000066" />
                                 <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

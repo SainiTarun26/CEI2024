@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 using CEI_PRoject;
-using iText.Forms.Form.Element;
+using Org.BouncyCastle.Asn1.X509;
+using Org.BouncyCastle.Ocsp;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
-namespace CEIHaryana.Supervisor
+namespace CEIHaryana.Wiremen
 {
-    public partial class Renewal_Certificate_Competency : System.Web.UI.Page
+    public partial class Renewal_Certificate_Wiremen : System.Web.UI.Page
     {
         CEI CEI = new CEI();
         string userID = "";
@@ -33,20 +32,12 @@ namespace CEIHaryana.Supervisor
 
             try
             {
-
-                if (Convert.ToString(Session["SupervisorID"]) != null && Convert.ToString(Session["SupervisorID"]) != "")
-                {
-                    Category = "Supervisor";
-                    userID = Session["SupervisorID"].ToString();
-                    GetSupervisorDetails(userID);
-                }
-                else if (Convert.ToString(Session["WiremanId"]) != null && Convert.ToString(Session["WiremanId"]) != "")
+                if (Convert.ToString(Session["WiremanId"]) != null && Convert.ToString(Session["WiremanId"]) != "")
                 {
                     Category = "Wireman";
                     userID = Session["WiremanId"].ToString();
                     GetSupervisorDetails(userID);
                 }
-
             }
             catch (Exception ex)
             {
