@@ -21,7 +21,8 @@ namespace CEIHaryana.Admin
                 if (!IsPostBack)
                 {
                     if (Convert.ToString(Session["AdminID"]) != null && Convert.ToString(Session["AdminID"]) != "")
-                    {                       
+                    {
+                        BindCommittee();
                         CommitteeGridViewBind();
                         Page.Session["double_Clickbutton"] = "1";
                     }
@@ -155,7 +156,8 @@ namespace CEIHaryana.Admin
                             {
                                 conn.Open();
                                 //transaction = conn.BeginTransaction();
-                                string CommitteeID = txtCommittee.Text;
+                                //commented by aslma string CommitteeID = txtCommittee.Text;
+                                string CommitteeID = ddlCommittee.SelectedItem.Value;
                                 if (CommitteeID == "" || CommitteeID == null)
                                 {
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('No committe active pls activate the commite');", true);
@@ -235,7 +237,8 @@ namespace CEIHaryana.Admin
             dt = cei.GetCommitteeDetails();
             if (dt.Rows.Count > 0 && dt != null)
             {
-                txtCommittee.Text = dt.Rows[0]["CommitteeID"].ToString();
+                ddlCommittee.SelectedValue = dt.Rows[0]["CommitteeID"].ToString();
+                //txtCommittee.Text = dt.Rows[0]["CommitteeID"].ToString();
                 //GridViewCommittee.DataSource =  dt;
                 //GridViewCommittee.DataBind();
             }
@@ -282,5 +285,18 @@ namespace CEIHaryana.Admin
         {
             Session["double_Clickbutton"] = "1";
         }
+        #region aslam dropdown of committee
+        public void BindCommittee()
+        {
+            DataSet ds = new DataSet();
+            ds = cei.GetCommitteeList();
+            ddlCommittee.DataSource = ds;
+            ddlCommittee.DataTextField = "CommitteeName";
+            ddlCommittee.DataValueField = "CommitteeID";
+            ddlCommittee.DataBind();
+            ddlCommittee.Items.Insert(0, new ListItem("Select", "0"));
+            ds.Clear();
+        }
+        #endregion
     }
 }

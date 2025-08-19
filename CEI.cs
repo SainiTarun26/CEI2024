@@ -11894,6 +11894,11 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_Sup_LetterVerified_Applications_List");
         }
+        //19-Aug
+        public DataSet GetCommitteeList()
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAllCommitteeMasterList");
+        }
         #endregion
         #region neeraj attach deattach 23-Jue-2025
         public DataTable GetContractorDetails(string SupervisiorId)

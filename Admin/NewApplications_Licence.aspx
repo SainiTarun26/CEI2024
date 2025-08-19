@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="NewApplications_Licence.aspx.cs" Inherits="CEIHaryana.Admin.NewApplications_Licence" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -17,9 +18,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
         input#ContentPlaceHolder1_Button1 {
-    padding: 0px 10px 0px 10px !important;
-    margin-top: 22px;
-}
+            padding: 0px 10px 0px 10px !important;
+            margin-top: 22px;
+        }
+
         .fade {
             transition: opacity 0.15s linear;
             width: 110% !important;
@@ -162,7 +164,7 @@
 
         .headercolor {
             background-color: #9292cc;
-            text-align:center;
+            text-align: center;
         }
 
         .text-wrap {
@@ -313,7 +315,7 @@
                                 <asp:TextBox CssClass="form-control" ID="txtName" runat="server" autocomplete="off"
                                     TabIndex="1" MaxLength="200"
                                     Style="width: calc(100% - 40px);">
-                </asp:TextBox>
+                                </asp:TextBox>
                             </div>
                         </asp:Panel>
                     </div>
@@ -338,12 +340,12 @@
                                             <asp:CheckBox ID="chkSelectAll" runat="server" Style="text-align: left !important;" onclick="SelectAllCheckboxes(this);" />
                                         </HeaderTemplate>
                                         <ItemTemplate>
-                                            <asp:CheckBox ID="CheckBox1" CssClass="rowCheckbox" runat="server"  AutoPostBack="true" OnCheckedChanged="CheckBox1_CheckedChanged" HorizontalAlign="center" />
+                                            <asp:CheckBox ID="CheckBox1" CssClass="rowCheckbox" runat="server" AutoPostBack="true" OnCheckedChanged="CheckBox1_CheckedChanged" HorizontalAlign="center" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Id" Visible="False">
                                         <ItemTemplate>
-                                             <asp:Label ID="lblRegistrationNo" runat="server" Text='<%#Eval("UserId") %>'></asp:Label>
+                                            <asp:Label ID="lblRegistrationNo" runat="server" Text='<%#Eval("UserId") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="SNo">
@@ -364,7 +366,7 @@
                                     <asp:TemplateField HeaderText="Name">
                                         <HeaderStyle Width="13%" CssClass="headercolor" />
                                         <ItemStyle Width="13%" CssClass="text-wrap" />
-                                        <ItemTemplate> 
+                                        <ItemTemplate>
                                             <asp:Label ID="lblName" runat="server" Text='<%# Eval("Name") %>' CssClass="text-wrap"></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
@@ -375,11 +377,11 @@
                                             <asp:Label ID="lblCategory" runat="server" Text='<%# Eval("Category") %>' CssClass="text-wrap"></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                     <asp:TemplateField HeaderText="RegistrationNo">
+                                    <asp:TemplateField HeaderText="RegistrationNo">
                                         <HeaderStyle Width="10%" CssClass="headercolor" />
                                         <ItemStyle Width="10%" CssClass="text-wrap" />
                                         <ItemTemplate>
-                                           <asp:LinkButton ID="LinkRegistrationNo" runat="server" CommandArgument=' <%#Eval("UserId") %> ' CommandName="Select"><%#Eval("UserId") %></asp:LinkButton>
+                                            <asp:LinkButton ID="LinkRegistrationNo" runat="server" CommandArgument=' <%#Eval("UserId") %> ' CommandName="Select"><%#Eval("UserId") %></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <%--<asp:BoundField DataField="UserId" HeaderText="User Id">
@@ -416,19 +418,23 @@
                                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                 <SortedDescendingHeaderStyle BackColor="#00547E" />
                             </asp:GridView>
-                                                   </div>
+                        </div>
 
                     </div>
-                    <div class="row" style="margin-top:15px;">
+                    <div class="row" style="margin-top: 15px;">
                         <div class="div-4">
-                             <asp:Label ID="Label1" runat="server" Text="Commettiee Id.:" />
-                                <asp:TextBox CssClass="form-control" ReadOnly="true" ID="txtCommittee" runat="server" autocomplete="off"
+                            <asp:Label ID="Label1" runat="server" Text="Commettiee Id.:" />
+                            <%--                                <asp:TextBox CssClass="form-control" ReadOnly="true" ID="txtCommittee" runat="server" autocomplete="off"
                                     TabIndex="1" MaxLength="200"
                                     Style="width: calc(100% - 40px);">
-                </asp:TextBox>
+                </asp:TextBox>--%>
+
+                            <asp:DropDownList class="form-control  select-form select2" runat="server"  ID="ddlCommittee" Style="width: 94% !important;">
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="ddlCommittee" runat="server" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                         </div>
-                         <div class="div-4">
-                        <asp:Button ID="Button1" Text="ForWord To Committee" OnClick="Button1_Click" runat="server" class="btn btn-primary mr-2" />
+                        <div class="div-4">
+                            <asp:Button ID="Button1" Text="ForWord To Committee" OnClick="Button1_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
 
                         </div>
                     </div>
